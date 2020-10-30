@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64a255e9_152eacf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "As first paragraph states, the test is not meant to be run in automated suite.\nAnyway, these parameters (except hostname of course) are optional.",
+      "parentUuid": "95aa4e30_e386d057",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 48
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ff9376a_88076a36",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-29T09:13:50Z",
       "side": 1,
       "message": "gets the signal level on the interface specified, using \u0027iw link\u0027 output.",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 94
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d70f224_7d0ed9d9",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6ff9376a_88076a36",
       "range": {
         "startLine": 304,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ed33e86_684d360f",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "OK, I can handle it in the caller function.",
+      "parentUuid": "98ff173f_cdd6ea37",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 46
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc3862fc_32345630",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 2
@@ -89,6 +161,64 @@
         "endLine": 61,
         "endChar": 35
       },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5569ac72_dd6820b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "No, it isn\u0027t.",
+      "parentUuid": "fc3862fc_32345630",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7614632a_f34f1e0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "Might be worth adding some tests with encryption.",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17245887_a2f0c566",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "Some description for this (and below) might be handy.",
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +248,64 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f777cd5_f2ec6465",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "This is local function and obtaining signal level is not the main goal of the test; therefore I soft-fail here. It is more important to have performance data and hardcoded signal level rather than no data at all.\nNevertheless, it is worth mentioning in comment.",
+      "parentUuid": "c443af89_42b53730",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 13
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5cdfd6b_c13cbb23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "magic number",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d08db010_c601a2ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "Frequency should be derived from channel.",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e98142e6_cde5dd13",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 2
@@ -135,6 +323,47 @@
         "endLine": 258,
         "endChar": 0
       },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f957845c_16bf55b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "Can be",
+      "parentUuid": "e98142e6_cde5dd13",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 0
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "987a367e_e65efed1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "There\u0027s no need to override freq.",
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -164,6 +393,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0c4a675_53bdd990",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "I have 100/100 reproduction (@112 dB total attenuation):\n\nError at attenuated_perf.go:333: Testcase #0: Failed to disconnect WiFi, err: failed to get selected service: rpc error: code \u003d Unknown desc \u003d no selected service\n2020/10/29 13:43:18 [13:43:18.200] Stack trace:\nTestcase #0: Failed to disconnect WiFi, err\n\tat chromiumos/tast/remote/bundles/cros/wifi.AttenuatedPerf.func3.3 (attenuated_perf.go:333)\n\tat chromiumos/tast/remote/bundles/cros/wifi.AttenuatedPerf.func3 (attenuated_perf.go:424)\n\tat chromiumos/tast/remote/bundles/cros/wifi.AttenuatedPerf.func4 (attenuated_perf.go:429)\n\tat chromiumos/tast/internal/testing.(*State).Run.func1 (state.go:627)\n\tat runtime.goexit (asm_amd64.s:1357)\nfailed to get selected service\n\tat chromiumos/tast/remote/wificell.(*TestFixture).disconnectWifi (test_fixture.go:666)\n\tat chromiumos/tast/remote/wificell.(*TestFixture).CleanDisconnectWifi (test_fixture.go:691)\n\tat chromiumos/tast/remote/bundles/cros/wifi.AttenuatedPerf.func3.3 (attenuated_perf.go:332)\n\tat chromiumos/tast/remote/bundles/cros/wifi.AttenuatedPerf.func3 (attenuated_perf.go:424)\n\tat chromiumos/tast/remote/bundles/cros/wifi.AttenuatedPerf.func4 (attenuated_perf.go:429)\n\tat chromiumos/tast/internal/testing.(*State).Run.func1 (state.go:627)\n\tat runtime.goexit (asm_amd64.s:1357)\n\nIt may just mean the wifi is already disconnected at that stage, but it doesn\u0027t change FAIL outcome of the test, that comes from the test fixture.",
+      "parentUuid": "a56e5b0e_3f376583",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 23
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ab0be9c_046d4b87",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 2
@@ -180,6 +433,70 @@
         "startChar": 3,
         "endLine": 380,
         "endChar": 14
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9fc5d41_015b7339",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ab0be9c_046d4b87",
+      "range": {
+        "startLine": 380,
+        "startChar": 3,
+        "endLine": 380,
+        "endChar": 14
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd82c850_b026f858",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "Some comment why this is not fatal might be handy.",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbcfc7aa_7120e93a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-10-30T15:50:47Z",
+      "side": 1,
+      "message": "the fact,",
+      "range": {
+        "startLine": 400,
+        "startChar": 25,
+        "endLine": 400,
+        "endChar": 29
       },
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
