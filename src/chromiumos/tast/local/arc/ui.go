@@ -13,5 +13,5 @@ import (
 // NewUIDevice creates a Device object by starting and connecting to UI Automator server.
 // Close must be called to clean up resources when a test is over.
 func (a *ARC) NewUIDevice(ctx context.Context) (*ui.Device, error) {
-	return ui.NewDevice(ctx, a.device, IPAddr)
+	return ui.NewDevice(ctx, a.device)
 }
