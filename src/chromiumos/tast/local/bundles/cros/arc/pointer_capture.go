@@ -50,7 +50,7 @@ func PointerCapture(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	s.Log("Installing apk ", motioninput.APK)
 	if err := a.Install(ctx, arc.APKPath(motioninput.APK)); err != nil {

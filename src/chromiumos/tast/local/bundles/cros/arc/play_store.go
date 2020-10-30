@@ -84,7 +84,7 @@ func PlayStore(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	// Install app.
 	s.Log("Installing app")
