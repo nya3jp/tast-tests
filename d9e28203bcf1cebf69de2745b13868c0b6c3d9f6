@@ -22,6 +22,30 @@
       },
       "revId": "d9e28203bcf1cebf69de2745b13868c0b6c3d9f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f6dba9a_47e337c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/ppds_all.tar.xz.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-10-31T05:52:34Z",
+      "side": 1,
+      "message": "Yup that part is intended (the old archive was outdated and had a lot less PPD files). Actually I\u0027ll probably upload another version of ppds_all.tar.xz with PPD files that fail to verify stripped out so that the test passes before submitting this CL.",
+      "parentUuid": "302c6392_0653e6d9",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 18
+      },
+      "revId": "d9e28203bcf1cebf69de2745b13868c0b6c3d9f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
