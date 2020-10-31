@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac7d2ea_f82b3c33",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-10-31T00:01:07Z",
+      "side": 1,
+      "message": "I am not sure where to file this bug. I would assume there is a bugnizer component somewhere for adb. Does anyone who deals with arc/android more know?",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 93
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
