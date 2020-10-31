@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f796d6_bfbb7c50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-10-31T02:45:15Z",
+      "side": 1,
+      "message": "Added a version of the test for high-visibility receiving using only the Mojo APIs (some UI interaction still to check that the file was received). Once I figure out the sending flow, I\u0027ll start a design doc for the Nearby Share wrapper and figure out the best way to manage the JS object references there.",
+      "revId": "89e7bd95d95bb9c6036f7c2802ffe63912519434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
