@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb7f772f_00396b8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-31T00:16:25Z",
+      "side": 1,
+      "message": "vm?",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b736b67_9b4f0d59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-31T00:16:25Z",
+      "side": 1,
+      "message": "This is similar to src/chromiumos/tast/local/bundles/cros/crostini/run_with_arc.go (but seems more generic). Once you finish this, you might want to delete run_with_arc.go. Please talk to niwa@ (author of the test) too.",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "980c0cb7_f9118c96",
@@ -14,6 +54,40 @@
       "writtenOn": "2020-10-28T07:27:24Z",
       "side": 1,
       "message": "Please do a full review.\n\nI\u0027ve got some WIP tests based on top of this, so I can evaluate any changes now with much more confidence.",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6beb7c_5135ad4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-31T00:16:25Z",
+      "side": 1,
+      "message": "the concept seems fine. I\u0027m not too familiar with tast internals though. Some questions below:",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b2acf0_f54f5d5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-31T00:16:25Z",
+      "side": 1,
+      "message": "Does this start both VMs in parallel? Or does this start ARCVM, wait for the package manager to be ready, and then start Crostini?\n\nAssuming it is the latter, can you add \"crostini_arc\"? In the past, we had issues where one VM prevented the other from starting e.g. due to vsock port conflict.",
       "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
