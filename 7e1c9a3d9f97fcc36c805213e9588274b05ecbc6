@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daf61037_43dfa04a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-31T16:00:16Z",
+      "side": 1,
+      "message": "\\o/\n\nYou should totally advertise this point more broadly. This could be  useful for some people.",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "635c35fe_ecb143f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-31T16:00:16Z",
+      "side": 1,
+      "message": "Should all the \"d.Close() -\u003e d.Close(ctx)\" go in a separate patch for clarify ?",
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ac7d2ea_f82b3c33",
         "filename": "src/chromiumos/tast/local/android/adb/device.go",
         "patchSetId": 2
@@ -19,6 +59,99 @@
         "startChar": 4,
         "endLine": 144,
         "endChar": 93
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a52f0d_99d5ab9c",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-31T16:00:16Z",
+      "side": 1,
+      "message": "When an adb client knows about multiple devices, you need to specify the target device either through the ANDROID_SERIAL environment variable or with the \"-s\" option.",
+      "parentUuid": "3ac7d2ea_f82b3c33",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 93
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01538df6_d292562c",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-31T16:00:16Z",
+      "side": 1,
+      "message": "I am not sure I understand exactly: is this the dst port inside the Android environment where adbd is running ? Or the local port on the environment hosting the adb client ?",
+      "range": {
+        "startLine": 308,
+        "startChar": 46,
+        "endLine": 308,
+        "endChar": 55
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a490c0_ea060a74",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-31T16:00:16Z",
+      "side": 1,
+      "message": "A more generic function would be to just take as arguments the two strings for the local entry and the remote entry and let the caller specify tcp, and refer to adb doc.\n\nThere are maybe other interesting forwarding setups that just tcp.",
+      "range": {
+        "startLine": 309,
+        "startChar": 39,
+        "endLine": 309,
+        "endChar": 80
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b44315c_8eccb785",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-10-31T16:00:16Z",
+      "side": 1,
+      "message": "You can force a specific local port here ? Should this be an additional option in Forward() args ?",
+      "range": {
+        "startLine": 309,
+        "startChar": 40,
+        "endLine": 309,
+        "endChar": 45
       },
       "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
