@@ -11,5 +11,6 @@ import (
 )
 
 func TestSoftwareDeps(t *testing.T) {
-	testcheck.SoftwareDeps(t, testcheck.Glob(t, "printer.*"), []string{"cups"})
+	testcheck.SoftwareDeps(t, testcheck.Glob(t, "printer.*"), []string{"cros_internal", "cups"})
+	testcheck.SoftwareDeps(t, testcheck.Glob(t, "printer.Proxy*"), []string{"chrome", "plugin_vm"})
 }
