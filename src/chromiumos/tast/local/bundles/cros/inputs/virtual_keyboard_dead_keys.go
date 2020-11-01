@@ -14,8 +14,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -50,18 +48,16 @@ func init() {
 			{
 				Name:              "french_stable",
 				ExtraHardwareDeps: pre.InputsStableModels,
+				// "French - French keyboard" input method uses a compact-layout VK for
+				// non-a11y mode where there's no dead keys, and a full-layout VK for
+				// a11y mode where there's dead keys. To test dead keys on the VK of
+				// this input method, a11y mode must be enabled.
+				Pre: pre.VKEnabledClamshell(),
 				Val: deadKeysTestCase{
 					// "French - French keyboard" input method is decoder-backed. Dead keys
 					// are implemented differently from those of a no-frills input method.
 					inputMethodID: "xkb:fr::fra",
 					hasDecoder:    true,
-
-					// "French - French keyboard" input method uses a compact-layout VK for
-					// non-a11y mode where there's no dead keys, and a full-layout VK for
-					// a11y mode where there's dead keys. To test dead keys on the VK of
-					// this input method, a11y mode must be enabled.
-					useA11yVk: true,
-
 					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
 					// based on Shift and Caps states, then add Shift and Caps related
 					// typing sequences to the test case.
@@ -72,25 +68,24 @@ func init() {
 				Name:              "french_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 				ExtraAttr:         []string{"informational"},
+				Pre:               pre.VKEnabledClamshell(),
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:fr::fra",
 					hasDecoder:           true,
-					useA11yVk:            true,
 					typingKeys:           []string{circumflex, "a"},
 					expectedTypingResult: "â",
 				},
 			}, {
 				Name:              "catalan_stable",
 				ExtraHardwareDeps: pre.InputsStableModels,
+				// "Catalan keyboard" input method uses the same full-layout VK (that
+				// has dead keys) for both a11y & non-a11y. Just use non-a11y here.
+				Pre: pre.VKEnabledTablet(),
 				Val: deadKeysTestCase{
 					// "Catalan keyboard" input method is no-frills. Dead keys are
 					// implemented differently from those of a decoder-backed input method.
 					inputMethodID: "xkb:es:cat:cat",
 					hasDecoder:    false,
-
-					// "Catalan keyboard" input method uses the same full-layout VK (that
-					// has dead keys) for both a11y & non-a11y. Just use non-a11y here.
-					useA11yVk: false,
 
 					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
 					// based on Shift and Caps states, then add Shift and Caps related
@@ -102,10 +97,10 @@ func init() {
 				Name:              "catalan_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 				ExtraAttr:         []string{"informational"},
+				Pre:               pre.VKEnabledTablet(),
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",
 					hasDecoder:           false,
-					useA11yVk:            false,
 					typingKeys:           []string{acuteAccent, "a"},
 					expectedTypingResult: "á",
 				},
@@ -116,25 +111,8 @@ func init() {
 func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(deadKeysTestCase)
 
-	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
-
-	if !testCase.useA11yVk {
-		// Use tablet mode when testing with non-a11y VK to be more realistic.
-		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
-		if err != nil {
-			s.Fatal("Failed to ensure in tablet mode: ", err)
-		}
-		defer cleanup(ctx)
-	}
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
@@ -156,15 +134,6 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	s.Log("Set input method to: ", testCase.inputMethodID)
 	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.IMEPrefix+testCase.inputMethodID); err != nil {
 		s.Fatalf("Failed to set input method to %q: %v", testCase.inputMethodID, err)
-	}
-
-	if testCase.useA11yVk {
-		s.Log("Enabling the accessibility keyboard")
-	} else {
-		s.Log("Disabling the accessibility keyboard")
-	}
-	if err := vkb.EnableA11yVirtualKeyboard(ctx, tconn, testCase.useA11yVk); err != nil {
-		s.Fatal("Failed to enable/disable the accessibility keyboard: ", err)
 	}
 
 	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
