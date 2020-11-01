@@ -11,7 +11,6 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/printer/usbprintertests"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,10 +20,9 @@ func init() {
 		Desc:         "Tests that USB print job can be successfully sent",
 		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
+		SoftwareDeps: []string{"cros_internal", "cups", "virtual_usb_printer"},
 		Data: []string{"print_usb_ps.ppd.gz", "print_usb_to_print.pdf",
 			"print_usb_golden.ps"},
-		Pre: chrome.LoggedIn(),
 	})
 }
 

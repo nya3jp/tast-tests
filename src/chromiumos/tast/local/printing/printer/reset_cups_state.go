@@ -7,6 +7,7 @@ package printer
 
 import (
 	"context"
+	"os"
 	"time"
 
 	"chromiumos/tast/local/upstart"
@@ -16,6 +17,14 @@ import (
 // ResetCups removes the privileged directories for cupsd.
 // If cupsd is running, this stops it.
 func ResetCups(ctx context.Context) error {
+	testing.ContextLog(ctx, "Waiting for stamp file")
+	for {
+		if _, err := os.Stat("/run/cups/.stamp"); err == nil {
+			break
+		} else if err := ctx.Err(); err != nil {
+			return err
+		}
+	}
 	testing.ContextLog(ctx, "Resetting cups")
 	// If cups-clear-state is running, the job could fail. Retry then to
 	// ensure the directories are properly removed.

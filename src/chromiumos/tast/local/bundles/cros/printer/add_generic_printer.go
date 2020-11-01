@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/lpprint"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,9 +19,8 @@ func init() {
 			"skau@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome", "cros_internal", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{genericPPDFile, genericToPrintFile, genericGoldenFile},
-		Pre:          chrome.LoggedIn(),
 		Attr:         []string{"group:mainline"},
 	})
 }
@@ -42,6 +40,5 @@ func AddGenericPrinter(ctx context.Context, s *testing.State) {
 	// diffFile is the name of the file containing the diff between the
 	// golden data and actual request in case of failure.
 	const diffFile = "printer_add_generic_printer_diff.txt"
-
 	lpprint.Run(ctx, s, genericPPDFile, genericToPrintFile, genericGoldenFile, diffFile)
 }
