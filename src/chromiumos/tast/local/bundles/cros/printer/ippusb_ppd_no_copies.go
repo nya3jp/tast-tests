@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/usbprintertests"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -18,9 +17,8 @@ func init() {
 		Desc:         "Verifies that the 'copies-supported' attribute of the printer is used to populate the cupsManualCopies and cupsMaxCopies values in the corresponding generated PPD",
 		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
+		SoftwareDeps: []string{"cups", "virtual_usb_printer"},
 		Data:         []string{"ippusb_no_copies.json"},
-		Pre:          chrome.LoggedIn(),
 	})
 }
 
