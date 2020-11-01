@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "570b5a97_979d7d0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-01T23:46:22Z",
+      "side": 1,
+      "message": "LGTM. Please have your team members who are familiar with the test review first.",
+      "revId": "22106ba852947c03e9a03905cbe7597941cb17d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
