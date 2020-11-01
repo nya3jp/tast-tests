@@ -45,15 +45,15 @@ func CleanPSContents(content string) string {
 			`|@PJL SET DATE=".*` +
 			`|@PJL SET TIME=".*)[\r\n])` +
 			// For Ricoh jobs, the /ID tag is time-specific.
-			`|(\/ID \[<.*>\])` +
+			`|\/ID \[<.*>\]` +
 			// For Ricoh jobs, "usercode (\d+)" contains the date
 			// and time of the print job.
-			`|(usrcode \(\d+\))` +
+			`|usrcode \(\d+\)` +
 			// For Ricoh PS jobs, the time is contained here.
-			`|(/Time \(\d+\))` +
+			`|/Time \(\d+\)` +
 			// For Ricoh jobs, "(\d+) lppswd" contains the date
 			// and time of the print job.
-			`|(\(\d+\)) lppswd` +
+			`|\(\d+\) lppswd` +
 			// Remove time metadata for PCLm Jobs
 			`|% *job-start-time: .*[\r\n]`)
 	return r.ReplaceAllLiteralString(content, "")
