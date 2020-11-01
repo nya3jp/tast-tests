@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f71f723_11665ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-01T23:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f69048_d50b33ee",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 71
+      },
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9f40b7b_32126084",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-29T22:38:31Z",
       "side": 1,
       "message": "Can we skip this if everything went ok?",
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c773abca_22088574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-01T23:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9f40b7b_32126084",
       "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb426b81_b4038bea",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-01T23:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27b770a2_872c3012",
+      "range": {
+        "startLine": 213,
+        "startChar": 23,
+        "endLine": 213,
+        "endChar": 32
+      },
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00e84e8a_956930ae",
@@ -77,6 +143,24 @@
       "writtenOn": "2020-10-29T22:38:31Z",
       "side": 1,
       "message": "If you want to abstract some of this, feel free to make a crostiniWindow page object, like\n\napp :\u003d crostini.FindWindow(title)\napp.Focus()\napp.Type(content)\napp.Accel(\"ctrl+S\")\napp.Accel(\"ctrl+W\")\napp.Accel(\"ctrl+W\")\napp.WaitUntilGone()",
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc37cd2_3449007c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-01T23:29:12Z",
+      "side": 1,
+      "message": "After moving these code (including the following method InputStringToAppAndSave) back to test code, I think it is simpler to keep them as it is.",
+      "parentUuid": "00e84e8a_956930ae",
       "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c859bfec_aba4e5a2",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-01T23:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f90d569_5a713db9",
+      "range": {
+        "startLine": 234,
+        "startChar": 23,
+        "endLine": 234,
+        "endChar": 46
+      },
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7385b40b_610f558e",
@@ -121,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eafe193f_c0e3253d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-01T23:29:12Z",
+      "side": 1,
+      "message": "Like this method, FocusWindow can only be shared by two tests (this one and visual studio), I\u0027d prefer to leave all of them in test code.",
+      "parentUuid": "7385b40b_610f558e",
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b69c8618_f2c028a4",
@@ -134,6 +260,30 @@
       "writtenOn": "2020-10-29T22:38:31Z",
       "side": 1,
       "message": "Please include the path that was searched for the container to make this easier to debug.",
+      "range": {
+        "startLine": 178,
+        "startChar": 50,
+        "endLine": 178,
+        "endChar": 51
+      },
+      "revId": "4de81a31925bcfafa37b5bdcfd8541cf719b70fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a2e6da_eb7a4c84",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-01T23:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b69c8618_f2c028a4",
       "range": {
         "startLine": 178,
         "startChar": 50,
