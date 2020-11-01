@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b4e65d7_bdaa096b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-11-01T15:43:54Z",
+      "side": 1,
+      "message": "Sorry for being belated. Thank you for the clean up!",
+      "revId": "cc5dcaa88066faef8c988af297646e3ae820f741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59dbc3e3_4031ef8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-11-01T15:43:54Z",
+      "side": 1,
+      "message": "nit defaultIMECode is ...",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "cc5dcaa88066faef8c988af297646e3ae820f741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9f5999_e1095a0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-11-01T15:43:54Z",
+      "side": 1,
+      "message": "What is this the description for ?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 68
+      },
+      "revId": "cc5dcaa88066faef8c988af297646e3ae820f741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddcb3228_e135f89c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-11-01T15:43:54Z",
+      "side": 1,
+      "message": "nit: a11y ?",
+      "range": {
+        "startLine": 199,
+        "startChar": 13,
+        "endLine": 199,
+        "endChar": 17
+      },
+      "revId": "cc5dcaa88066faef8c988af297646e3ae820f741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8cc3a54_347db28a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-11-01T15:43:54Z",
+      "side": 1,
+      "message": "nit: %q\nto be consistent with the error message below?",
+      "revId": "cc5dcaa88066faef8c988af297646e3ae820f741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
