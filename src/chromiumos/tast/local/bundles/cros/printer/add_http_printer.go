@@ -8,7 +8,6 @@ import (
 	"context"
 	"io/ioutil"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/testing"
@@ -24,9 +23,8 @@ func init() {
 		Contacts: []string{
 			"skau@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{httpTestPpdFile},
-		Pre:          chrome.LoggedIn(),
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }

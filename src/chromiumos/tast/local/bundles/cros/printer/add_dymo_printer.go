@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/lpprint"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,9 +20,8 @@ func init() {
 			"cros-printing-dev@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{dymolwPPD, dymolmPPD, dymoToPrintFile, dymolwGoldenFile, dymolmGoldenFile},
-		Pre:          chrome.LoggedIn(),
 	})
 }
 
