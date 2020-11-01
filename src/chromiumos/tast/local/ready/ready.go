@@ -34,6 +34,7 @@ import (
 // depends on a critical daemon to need to call upstart.WaitForJobStatus to wait for the
 // corresponding job to be running. See https://crbug.com/897521 for more details.
 func Wait(ctx context.Context) error {
+	testing.ContextLog(ctx, "wait is called - system services ready")
 	// Periodically log a message to make it clearer what we're doing.
 	// Sending a periodic control message is also needed to let the main tast process
 	// know that the DUT is still responsive.

@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/ghostscript"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -18,9 +17,8 @@ func init() {
 		Desc:         "Tests that the gstopdf CUPS filter produces expected output",
 		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "cros_internal", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{"gstopdf_input.ps", "gstopdf_golden.pdf"},
-		Pre:          chrome.LoggedIn(),
 	})
 }
 

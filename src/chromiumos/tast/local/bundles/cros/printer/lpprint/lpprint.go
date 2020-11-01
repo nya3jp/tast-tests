@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -77,6 +78,10 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 	expect, err := ioutil.ReadFile(s.DataPath(goldenFile))
 	if err != nil {
 		s.Fatal("Failed to read golden file: ", err)
+	}
+
+	if err := upstart.WaitForJobStatus(ctx, "system-services", upstart.StartGoal, upstart.RunningState, upstart.TolerateWrongGoal, 0); err != nil {
+		s.Fatal("System services not running: ", err)
 	}
 
 	if err := printer.ResetCups(ctx); err != nil {
