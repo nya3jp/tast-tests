@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "589bf987_1f7639f7",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-11-01T05:03:00Z",
+      "side": 1,
+      "message": "SGTM. Thanks for digging into this.",
+      "parentUuid": "56672f2a_321c1135",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9dc9412_c9424d56",
@@ -190,6 +214,30 @@
       "side": 1,
       "message": "I don\u0027t have the initial context since I am just porting. I switched to using ip6tables and it seems to work just fine. If the test ends up being flaky in the lab, I will come back and look at this.",
       "parentUuid": "d9dc9412_c9424d56",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 103
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "290d058d_70195eeb",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-11-01T05:03:00Z",
+      "side": 1,
+      "message": "I suspect the original autotest comment might be obsolete at that point. For context we completely rewrote the IPv6 ARC integration in late 2019.",
+      "parentUuid": "ef2b1a26_0aa9c639",
       "range": {
         "startLine": 69,
         "startChar": 29,
@@ -355,6 +403,30 @@
       "side": 1,
       "message": "Looking at this more, I am gonna create a follow up CL to remove the dependency for UIAutomator to use that ip address at all. `adb forward tcp:0 tcp:9008` should be able to totally replace the need for using that address here.",
       "parentUuid": "a84c414f_dd92583d",
+      "range": {
+        "startLine": 16,
+        "startChar": 36,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "fb2b03edd08d88378aefb4ddb073d7dc7b6b4504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae15801_6dc161b6",
+        "filename": "src/chromiumos/tast/local/arc/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-11-01T05:03:00Z",
+      "side": 1,
+      "message": "SGTM, yes this is exactly what I was suggesting.",
+      "parentUuid": "22796532_d62aa368",
       "range": {
         "startLine": 16,
         "startChar": 36,
