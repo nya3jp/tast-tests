@@ -115,7 +115,7 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 	}
 
 	testing.ContextLog(ctx, "Receiving print request")
-	recvCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	recvCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 	request, err := fake.ReadRequest(recvCtx)
 	if err != nil {
