@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ceec619_a461922d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-01T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9f80643_d6c85129",
+      "range": {
+        "startLine": 88,
+        "startChar": 30,
+        "endLine": 88,
+        "endChar": 370
+      },
+      "revId": "b7ebaf4fcd93f383db92d14f70f9ba862ed591d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4c814ce_ff05d716",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-30T08:15:20Z",
       "side": 1,
       "message": "it would be great to know from the error message what was the behavior that failed in the test. You did that already in s.Fatal - you say explicitly the reason of failure.",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 81
+      },
+      "revId": "b7ebaf4fcd93f383db92d14f70f9ba862ed591d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8147f8b5_2a91135a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-01T10:15:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f4c814ce_ff05d716",
       "range": {
         "startLine": 92,
         "startChar": 27,
