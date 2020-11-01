@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/ippprint"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,7 +19,7 @@ func init() {
 			"bmalcolm@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome", "cros_internal", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data: []string{
 			"to_print.pdf",
 			"printer_Ricoh_JobPassword.ppd",
@@ -28,7 +27,6 @@ func init() {
 			"printer_Ricoh_password.ppd",
 		},
 		Attr: []string{"group:mainline"},
-		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "jobpassword_no_pin",
 			Val: &ippprint.Params{

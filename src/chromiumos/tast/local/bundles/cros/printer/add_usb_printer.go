@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
@@ -21,8 +20,7 @@ func init() {
 		Desc:         "Verifies setup of a basic USB printer",
 		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
-		Pre:          chrome.LoggedIn(),
+		SoftwareDeps: []string{"cros_internal", "cups", "virtual_usb_printer"},
 	})
 }
 
