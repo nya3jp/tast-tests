@@ -10,7 +10,6 @@ import (
 	"os"
 	"time"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -25,8 +24,7 @@ func init() {
 			"briannorris@chromium.org", // Original autotest author
 			"hidehiko@chromium.org",    // Tast port author
 		},
-		SoftwareDeps: []string{"chrome", "cups"},
-		Pre:          chrome.LoggedIn(),
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Attr:         []string{"group:mainline"},
 	})
 }
