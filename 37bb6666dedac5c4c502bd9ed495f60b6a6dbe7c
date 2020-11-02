@@ -22,6 +22,30 @@
       },
       "revId": "37bb6666dedac5c4c502bd9ed495f60b6a6dbe7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc85eb19_200285fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-02T23:49:57Z",
+      "side": 1,
+      "message": "It is launched in M87, but turned off in M88 to collect metrics data. So I do not think it is going to be turned off for any reason.",
+      "parentUuid": "d70a9d01_185bce8c",
+      "range": {
+        "startLine": 165,
+        "startChar": 40,
+        "endLine": 165,
+        "endChar": 79
+      },
+      "revId": "37bb6666dedac5c4c502bd9ed495f60b6a6dbe7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
