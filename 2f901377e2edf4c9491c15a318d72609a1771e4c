@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e32fac71_4ca389d5",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T20:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bdfec1d_06a75011",
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9ff859c_dece2be3",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf6e4f9_0fce61f2",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T20:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9ff859c_dece2be3",
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c09bfa08_da50b4ba",
@@ -65,6 +101,30 @@
       "writtenOn": "2020-11-02T05:45:12Z",
       "side": 1,
       "message": "Is router2 a router or pcap?",
+      "range": {
+        "startLine": 123,
+        "startChar": 35,
+        "endLine": 123,
+        "endChar": 54
+      },
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a96c39_aa6e2a93",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T20:55:39Z",
+      "side": 1,
+      "message": "Both in this case. Lab configuration assumes that 2nd router is pcap, I don\u0027t want to change that.",
+      "parentUuid": "c09bfa08_da50b4ba",
       "range": {
         "startLine": 123,
         "startChar": 35,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc6b697c_65fb6909",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T20:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d25bec_1f7b447c",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 18
+      },
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c80d7a7a_fee521b3",
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd7b751_6fc3aa32",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T20:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c80d7a7a_fee521b3",
+      "range": {
+        "startLine": 204,
+        "startChar": 34,
+        "endLine": 204,
+        "endChar": 42
+      },
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e6090b3_156fd4d8",
@@ -134,6 +242,30 @@
       "writtenOn": "2020-11-02T05:45:12Z",
       "side": 1,
       "message": "testing lab should guarantee that no two devices names point to the same device.",
+      "range": {
+        "startLine": 253,
+        "startChar": 41,
+        "endLine": 254,
+        "endChar": 67
+      },
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "767e340e_75f619c8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T20:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e6090b3_156fd4d8",
       "range": {
         "startLine": 253,
         "startChar": 41,
