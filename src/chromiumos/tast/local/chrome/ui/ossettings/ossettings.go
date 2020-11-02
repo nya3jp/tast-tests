@@ -8,6 +8,8 @@ package ossettings
 
 import (
 	"context"
+	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -21,6 +23,8 @@ import (
 const uiTimeout = 15 * time.Second
 
 var defaultOSSettingsPollOptions = &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}
+
+const osSettingsURLPrefix = "chrome://os-settings/"
 
 // AboutChromeOS is a subpage link.
 var AboutChromeOS = ui.FindParams{
@@ -82,6 +86,36 @@ func LaunchAtPage(ctx context.Context, tconn *chrome.TestConn, subpage ui.FindPa
 	return nil
 }
 
+// LaunchAtPageURL launches the Settings app at a particular page via changing URL in javascript.
+// It uses a condition check to make sure the function completes correctly.
+// It is high recommended to use UI validation in condition check.
+func LaunchAtPageURL(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, pageShortURL string, condition func(context.Context) (bool, error)) error {
+	// Launch Settings App.
+	err := Launch(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	osSettingsConn, err := ChromeConn(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to OS settings target")
+	}
+
+	if err := osSettingsConn.Eval(ctx, fmt.Sprintf("window.location = %q", osSettingsURLPrefix+pageShortURL), nil); err != nil {
+		return errors.Wrap(err, "failed to run javascript")
+	}
+
+	// Wait for condition after changing location.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if result, err := condition(ctx); err != nil {
+			return errors.Wrap(err, "failed to evaluate condition")
+		} else if !result {
+			return errors.New("failed to match condition after changing page location in javascript")
+		}
+		return nil
+	}, defaultOSSettingsPollOptions)
+}
+
 // ChromeConn returns a Chrome connection to the Settings app.
 func ChromeConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
 	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://os-settings/"))
@@ -139,4 +173,61 @@ func LaunchWhatsNew(ctx context.Context, tconn *chrome.TestConn) error {
 		Name: "See what's new",
 		Role: ui.RoleTypeLink,
 	}, defaultOSSettingsPollOptions)
+}
+
+// UIRootNode returns the root a11y node of os-settings window.
+func UIRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
+	var rootNode *ui.Node
+
+	// Window object name changes when navigating sub pages.
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Get all window nodes.
+		allWindowNodes, err := ui.FindAll(ctx, tconn, ui.FindParams{Role: ui.RoleTypeRootWebArea})
+		if err != nil {
+			return err
+		}
+
+		namePrefix := "Settings"
+		for _, windowNode := range allWindowNodes {
+			if strings.HasPrefix(windowNode.Name, namePrefix) && rootNode == nil {
+				rootNode = windowNode
+			} else {
+				// Release all reset nodes after the first matching node found.
+				windowNode.Release(ctx)
+			}
+		}
+
+		if rootNode == nil {
+			return errors.Errorf("failed to find window that name starts with %q", namePrefix)
+		}
+		return nil
+	}, defaultOSSettingsPollOptions)
+
+	return rootNode, err
+}
+
+// DescendantNode returns an a11y ui node inside os-settings window.
+func DescendantNode(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) (*ui.Node, error) {
+	rootNode, err := UIRootNode(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get root node of os-settings window")
+	}
+	defer rootNode.Release(ctx)
+
+	return rootNode.DescendantWithTimeout(ctx, params, 10*time.Second)
+}
+
+// DescendantNodeExists checks if a descendant node of os-settings can be found.
+func DescendantNodeExists(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) (bool, error) {
+	rootNode, err := UIRootNode(ctx, tconn)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get root node of os-settings window")
+	}
+	defer rootNode.Release(ctx)
+
+	exists, err := rootNode.DescendantExists(ctx, params)
+	if err != nil {
+		err = errors.Wrapf(err, "failed to find descendant node with params: %v", params)
+	}
+	return exists, err
 }
