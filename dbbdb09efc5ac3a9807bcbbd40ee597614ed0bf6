@@ -16,6 +16,24 @@
       "message": "Ross, I have crbug.com/1132089 to track this issue.\n\nIt is helpful to me to keep this test running, what is the motivation to remove it?",
       "revId": "dbbdb09efc5ac3a9807bcbbd40ee597614ed0bf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a1c8e6_c04b2865",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-02T20:08:13Z",
+      "side": 1,
+      "message": "Please see the \"Why Not Just Let Tests Stay Red?\" section in our Goals document for the motivation:\n\nhttp://go/cros-green-stainless-goals\n\nPlease add your crbug to the appropriate line in our tast spreadsheet for this test:\n\nhttp://go/cros-green-stainless-tast",
+      "parentUuid": "5fcd84af_d8eb5ded",
+      "revId": "dbbdb09efc5ac3a9807bcbbd40ee597614ed0bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
