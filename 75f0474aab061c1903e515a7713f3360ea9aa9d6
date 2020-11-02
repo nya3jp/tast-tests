@@ -46,6 +46,30 @@
       },
       "revId": "75f0474aab061c1903e515a7713f3360ea9aa9d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581502e5_e43984cd",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-02T20:49:30Z",
+      "side": 1,
+      "message": "Yes. It is rebased already. Ready for review now.",
+      "parentUuid": "ecf3b86d_8b07ed98",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "75f0474aab061c1903e515a7713f3360ea9aa9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
