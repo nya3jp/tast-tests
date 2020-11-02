@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4947d33_8766a741",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-02T06:27:38Z",
+      "side": 1,
+      "message": "Dry-run looks fine, thank you :) ",
+      "revId": "05ba531b04ef6d2e56e4f1aa5e1d6dd88dfa3f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
