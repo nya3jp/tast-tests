@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60081bfe_96b51320",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-11-02T15:59:38Z",
+      "side": 1,
+      "message": "I don\u0027t think this bug should be on your CL - changing cros_healthd is separate from changing the clients.",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "950a6bd388c5768c8bafe817015e169f5d9a1a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
