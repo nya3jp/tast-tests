@@ -16,6 +16,23 @@
       "message": "The tests in this commit have few flakes or known issue, so might need one more look for approval. See: b/159092883#comment16",
       "revId": "906d8ee44acdbbdef759708e7feb3b3a666719a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b075c91_22250035",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T09:52:11Z",
+      "side": 1,
+      "message": "Thanks for checking the results and selecting the stable candidates.",
+      "revId": "906d8ee44acdbbdef759708e7feb3b3a666719a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
