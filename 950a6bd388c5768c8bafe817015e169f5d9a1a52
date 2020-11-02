@@ -22,6 +22,30 @@
       },
       "revId": "950a6bd388c5768c8bafe817015e169f5d9a1a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b99727ec_9a12019a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2020-11-02T17:24:10Z",
+      "side": 1,
+      "message": "I see.\n\nI just flagged/deleted the comment in the bug, does this sound good?",
+      "parentUuid": "60081bfe_96b51320",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "950a6bd388c5768c8bafe817015e169f5d9a1a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
