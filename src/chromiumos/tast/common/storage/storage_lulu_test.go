@@ -270,9 +270,10 @@ ID      Size     Value  Description
 	}
 
 	exp := &Info{
-		Name:   "145138402365",
-		Device: SSD,
-		Status: Healthy,
+		Name:           "145138402365",
+		Device:         SSD,
+		Status:         Healthy,
+		PercentageUsed: 2,
 	}
 
 	if !reflect.DeepEqual(info, exp) {

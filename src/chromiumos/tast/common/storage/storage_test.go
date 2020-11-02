@@ -78,9 +78,10 @@ func TestParseGetStorageInfoOutputSimpleHealthyNVMe(t *testing.T) {
 	}
 
 	exp := &Info{
-		Name:   "NVME",
-		Device: NVMe,
-		Status: Healthy,
+		Name:           "NVME",
+		Device:         NVMe,
+		Status:         Healthy,
+		PercentageUsed: 25,
 	}
 
 	if !reflect.DeepEqual(info, exp) {
@@ -100,9 +101,10 @@ func TestParseGetStorageInfoOutputSimpleFailingNVMe(t *testing.T) {
 	}
 
 	exp := &Info{
-		Name:   "NVME",
-		Device: NVMe,
-		Status: Failing,
+		Name:           "NVME",
+		Device:         NVMe,
+		Status:         Failing,
+		PercentageUsed: 100,
 	}
 
 	if !reflect.DeepEqual(info, exp) {
@@ -126,9 +128,10 @@ ID# ATTRIBUTE_NAME          FLAGS    VALUE WORST THRESH FAIL RAW_VALUE
 	}
 
 	exp := &Info{
-		Name:   "SATA",
-		Device: SSD,
-		Status: Healthy,
+		Name:           "SATA",
+		Device:         SSD,
+		Status:         Healthy,
+		PercentageUsed: -1,
 	}
 
 	if !reflect.DeepEqual(info, exp) {
@@ -152,9 +155,10 @@ ID# ATTRIBUTE_NAME          FLAGS    VALUE WORST THRESH FAIL RAW_VALUE
 	}
 
 	exp := &Info{
-		Name:   "SATA",
-		Device: SSD,
-		Status: Failing,
+		Name:           "SATA",
+		Device:         SSD,
+		Status:         Failing,
+		PercentageUsed: -1,
 	}
 
 	if !reflect.DeepEqual(info, exp) {
@@ -191,9 +195,10 @@ Page  Offset Size        Value Flags Description
 	}
 
 	exp := &Info{
-		Name:   "SATA",
-		Device: SSD,
-		Status: Healthy,
+		Name:           "SATA",
+		Device:         SSD,
+		Status:         Healthy,
+		PercentageUsed: 2,
 	}
 
 	if !reflect.DeepEqual(info, exp) {
@@ -230,9 +235,10 @@ Page  Offset Size        Value Flags Description
 	}
 
 	exp := &Info{
-		Name:   "SATA",
-		Device: SSD,
-		Status: Failing,
+		Name:           "SATA",
+		Device:         SSD,
+		Status:         Failing,
+		PercentageUsed: 99,
 	}
 
 	if !reflect.DeepEqual(info, exp) {
