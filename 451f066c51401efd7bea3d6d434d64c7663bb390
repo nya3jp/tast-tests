@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f0ff6c8_10855c85",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-02T03:14:33Z",
+      "side": 1,
+      "message": "I don\u0027t think this one will work, we will need to modify the PageObject code to allow a regex\n\nI had some code lying around so I put it up for review: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2512936\n\nFeel free to approve it or copy it into this CL.",
+      "range": {
+        "startLine": 250,
+        "startChar": 27,
+        "endLine": 250,
+        "endChar": 33
+      },
+      "revId": "451f066c51401efd7bea3d6d434d64c7663bb390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
