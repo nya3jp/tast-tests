@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d70a9d01_185bce8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-11-02T23:41:28Z",
+      "side": 1,
+      "message": "This is a new feature. So what if the feature is not landed on the Chrome or removed from the chrome.",
+      "range": {
+        "startLine": 165,
+        "startChar": 40,
+        "endLine": 165,
+        "endChar": 79
+      },
+      "revId": "37bb6666dedac5c4c502bd9ed495f60b6a6dbe7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
