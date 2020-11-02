@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6bdeea2_06b771e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-02T07:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04909ea9_e2380e4d",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 29
+      },
+      "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f126905b_a9505abe",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b796e63_4c061888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-02T07:59:06Z",
+      "side": 1,
+      "message": "But I think we do want to test the behavior when clicking icon on the launcher? The original motivation to add this test is to cover such behavior.\nhttps://b.corp.google.com/issues/155027774",
+      "parentUuid": "f126905b_a9505abe",
+      "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "138e75a9_07a67d78",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
         "patchSetId": 34
@@ -54,6 +96,30 @@
       "writtenOn": "2020-10-30T15:29:51Z",
       "side": 1,
       "message": "huge nit: I would prefer adding chrome.DisableFeatures() for consistency",
+      "range": {
+        "startLine": 60,
+        "startChar": 22,
+        "endLine": 60,
+        "endChar": 79
+      },
+      "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6deb547f_a7709405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-02T07:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "138e75a9_07a67d78",
       "range": {
         "startLine": 60,
         "startChar": 22,
@@ -83,6 +149,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "002a1bea_c24a661d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-02T07:59:06Z",
+      "side": 1,
+      "message": "I think the behavior of widget.Restore() is a bit different when manually click the camera icon on shelf to restore the window. When calling widget.Restore(), it seems that the window is restored but might not trigger focus. But it will focus by manually clicking the camera icon on the shelf.\n\nSince for SWA test, after minimizing the app window, the focus is now on the test page which is used to construct the test bridge. When calling widget.Restore(), the focus does not automatically transfer to the app window. So I call Focus() here.\n\nAlternatively, we can call Focus() on the windowController.Restore() implementation or somehow hide the test page to solve this. But I think adding a Focus() here might be simpler.",
+      "parentUuid": "28d82e57_a6639b51",
+      "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25701a6a_6c4a1797",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
         "patchSetId": 34
@@ -100,6 +184,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f49b3ed_393e4340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-02T07:59:06Z",
+      "side": 1,
+      "message": "We only do chrome.New() for sub tests which don\u0027t use precondition {fake , fake_swa}. Do you propose we also remove the preconditions for {real, vivid, real_swa, vivid_swa}?\n\nThe pro is the logic will be simpler and will be easier to read.\nThe con is we won\u0027t be able to reuse the test environment with other tests using testutil.ChromeWithPlatformApp() and testutil.ChromeWithSWA().",
+      "parentUuid": "25701a6a_6c4a1797",
+      "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4eb3cd8_aa3a0824",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
         "patchSetId": 34
@@ -111,6 +213,30 @@
       "writtenOn": "2020-10-30T15:29:51Z",
       "side": 1,
       "message": "\"a\"? same for other 3 usages",
+      "range": {
+        "startLine": 47,
+        "startChar": 105,
+        "endLine": 47,
+        "endChar": 107
+      },
+      "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db46a5e_40ba84f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-02T07:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4eb3cd8_aa3a0824",
       "range": {
         "startLine": 47,
         "startChar": 105,
