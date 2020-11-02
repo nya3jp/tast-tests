@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023ba9bb_c39a5a04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-02T20:18:58Z",
+      "side": 1,
+      "message": "I was under the impression that the goal for the _by_cmdline variants was to replace the non _by_cmdline variants. Should we remove the broker_crashpad_mock_consent test?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 53
+      },
+      "revId": "57b44fb54e9cfa727f225978813cee6cf26fbcf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17165cf7_729123c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-02T20:18:58Z",
+      "side": 1,
+      "message": "This test only has a few runs right now (https://tastboard.corp.google.com/test/ui.ChromeCrashLoggedIn.gpu_process_breakpad). Do you think it\u0027s still safe to report?",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "57b44fb54e9cfa727f225978813cee6cf26fbcf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
