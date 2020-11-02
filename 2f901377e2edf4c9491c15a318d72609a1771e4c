@@ -33,6 +33,115 @@
       "message": "Missing function header.",
       "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ff859c_dece2be3",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T05:45:12Z",
+      "side": 1,
+      "message": "Remove this to shrink the log.",
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c09bfa08_da50b4ba",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T05:45:12Z",
+      "side": 1,
+      "message": "Is router2 a router or pcap?",
+      "range": {
+        "startLine": 123,
+        "startChar": 35,
+        "endLine": 123,
+        "endChar": 54
+      },
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d25bec_1f7b447c",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T05:45:12Z",
+      "side": 1,
+      "message": "companion router pair:",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 18
+      },
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c80d7a7a_fee521b3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T05:45:12Z",
+      "side": 1,
+      "message": "provides",
+      "range": {
+        "startLine": 204,
+        "startChar": 34,
+        "endLine": 204,
+        "endChar": 42
+      },
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6090b3_156fd4d8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T05:45:12Z",
+      "side": 1,
+      "message": "testing lab should guarantee that no two devices names point to the same device.",
+      "range": {
+        "startLine": 253,
+        "startChar": 41,
+        "endLine": 254,
+        "endChar": 67
+      },
+      "revId": "2f901377e2edf4c9491c15a318d72609a1771e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
