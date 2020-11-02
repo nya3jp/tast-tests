@@ -50,6 +50,46 @@
       "message": "tast-owners@ ptal",
       "revId": "16d7a7d89b8f0d3b83ff16741cf2c06f87050b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac78381_f0356a46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-02T06:48:51Z",
+      "side": 1,
+      "message": "LGTM with one suggestion to make the function more maintainable.\n",
+      "revId": "16d7a7d89b8f0d3b83ff16741cf2c06f87050b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9d5c03_538c4b8a",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-02T06:48:51Z",
+      "side": 1,
+      "message": "I recommend writing a unit test of parsing \"dumpsys display\" output to make it easier to change this logic in the future.\n\nFor this, we can introduce a utility function that scrapes density info from a dumpsys output. For example:\n\n func (d *Display) PhysicalDensity(ctx context.Context) (density float64, err error) {\n   output, err :\u003d d.a.Command(ctx, \"dumpsys\", \"display\").Output(testexec.DumpLogOnError)\n   if err !\u003d nil {\n     return -1, errors.Wrap(err, \"failed to execute \u0027dumpsys display\u0027\")\n   }\n   return scrapeDensity(output)\n }\n\n func scrapeDensity(output []byte) (density float64, err error) {\n   ...\n }\n\nThen it\u0027s easy to write unit tests, e.g.\n\n func TestScrapeDensityAndroidP(t *testing.T) {\n   const output \u003d `Real output from Android P...`\n   got, err :\u003d scrapeDensity([]byte(output))\n   if err !\u003d nil {\n     t.Fatal(\"scrapeDensity failed: \", err)\n   }\n   const want \u003d ...\n   if got !\u003d want {\n     t.Fatal(\"scrapeDensity() \u003d %v; want %v\", got, want)\n   }\n }",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "16d7a7d89b8f0d3b83ff16741cf2c06f87050b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
