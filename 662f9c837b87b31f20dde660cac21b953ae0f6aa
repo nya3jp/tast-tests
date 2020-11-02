@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "676a1ac4_17327dc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-02T08:58:43Z",
+      "side": 1,
+      "message": "This is my attempt to compare Intel RAPL simulated metrics (should be supported only on Intel platforms) with what could be determined by monitoring the battery discharge.",
+      "revId": "662f9c837b87b31f20dde660cac21b953ae0f6aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
