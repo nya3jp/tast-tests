@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d13432d7_41a5afa6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T07:54:30Z",
+      "side": 1,
+      "message": "uses",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c363c36_af8e7d62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T07:54:30Z",
+      "side": 1,
+      "message": "it verifies",
+      "range": {
+        "startLine": 37,
+        "startChar": 59,
+        "endLine": 37,
+        "endChar": 67
+      },
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d4809d_ce0e6f93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T07:54:30Z",
+      "side": 1,
+      "message": "the malformed responses",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6cf5985e_8f89177d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
         "patchSetId": 1
@@ -14,6 +83,64 @@
       "writtenOn": "2020-10-29T07:27:32Z",
       "side": 1,
       "message": "I tried a few things but didn\u0027t find a very good way to replace this:\n- Detect the WARN_ON with crash file under /var/spool/crash: trigger the similar thing with \"echo 1 \u003e /sys/kernel/debug/mwifiex/mlan0/reset\", but when triggered multiple times, only the first one will have crash file. (not yet sure if it\u0027s expected) so this is not very accurate.\n- Drop this directly as mwifiex_sdio_card_reset will cause disconnect event in iw: This might not work for other driver, e.g. trigger some \u0027reset\u0027 with \"echo $TYPE \u003e /sys/kernel/debug/ieee80211/$PHY/ath10k/simulate_fw_crash` on grunt, but there will not be disconnect event. (We won\u0027t really lose coverage for this case, though)\n\nAny suggestion?",
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8665c76a_444bfa60",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T07:54:30Z",
+      "side": 1,
+      "message": "I have no good idea either.",
+      "parentUuid": "6cf5985e_8f89177d",
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b519e8_d0237769",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T07:54:30Z",
+      "side": 1,
+      "message": "If this only works on Marvell WiFi module, shall we restrict this test to DUTs with Marvell module?",
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f6548e_fb4103ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T07:54:30Z",
+      "side": 1,
+      "message": "Marvell",
+      "range": {
+        "startLine": 184,
+        "startChar": 31,
+        "endLine": 184,
+        "endChar": 37
+      },
       "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
