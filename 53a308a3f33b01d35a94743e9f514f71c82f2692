@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ba6fe7_25d8cd2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-02T10:30:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b796e63_4c061888",
+      "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "138e75a9_07a67d78",
@@ -165,6 +183,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "673b9497_59e51196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-02T10:30:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "002a1bea_c24a661d",
+      "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25701a6a_6c4a1797",
@@ -196,6 +232,24 @@
       "side": 1,
       "message": "We only do chrome.New() for sub tests which don\u0027t use precondition {fake , fake_swa}. Do you propose we also remove the preconditions for {real, vivid, real_swa, vivid_swa}?\n\nThe pro is the logic will be simpler and will be easier to read.\nThe con is we won\u0027t be able to reuse the test environment with other tests using testutil.ChromeWithPlatformApp() and testutil.ChromeWithSWA().",
       "parentUuid": "25701a6a_6c4a1797",
+      "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183e77de_d7dd6e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-02T10:30:18Z",
+      "side": 1,
+      "message": "Ah make sense.\n\nHow about making two more preconditions, such as as ChromeWithPlatformAppAndFakeCamera() and ChromeWithSWAAndFakeCamera()?\n\nNote that we can reuse these preconditions in CCAUIModes as well. IIRC human_face.y4m there was meant to trigger portrait mode, but it actually won\u0027t. So I think it\u0027s safe to remove it and use the unified precondition.\n\nI am also ok to land this CL with the current approach and clean up CCAUIModes in another CL.",
+      "parentUuid": "1f49b3ed_393e4340",
       "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
