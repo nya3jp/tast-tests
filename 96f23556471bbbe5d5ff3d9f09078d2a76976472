@@ -68,6 +68,24 @@
       "parentUuid": "f7117023_c76fad16",
       "revId": "96f23556471bbbe5d5ff3d9f09078d2a76976472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4025331c_c0b04994",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-02T19:33:59Z",
+      "side": 1,
+      "message": "That sounds much better than fully disabling the test, if you\u0027re able to make it work.",
+      "parentUuid": "9616a0ab_9b3d23ac",
+      "revId": "96f23556471bbbe5d5ff3d9f09078d2a76976472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
