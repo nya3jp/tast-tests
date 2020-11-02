@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16268543_b9f78770",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-02T02:48:13Z",
+      "side": 1,
+      "message": "I find this name confusing, why set a minimum if we are going to allow smaller?\n\nmaybe IsSoftMinimum or something, with an explanatory comment where it is defined?",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "0dc533743bf49b6c5dc45e4bb2b52954ec69fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "defea29a_fa2e00b8",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-02T02:48:13Z",
+      "side": 1,
+      "message": "Definitely needs a comment",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "0dc533743bf49b6c5dc45e4bb2b52954ec69fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb4eb29_78bac30b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-02T02:48:13Z",
+      "side": 1,
+      "message": "You can\u0027t put results in the options struct, it needs to be one of the return values.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "0dc533743bf49b6c5dc45e4bb2b52954ec69fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ad61e15_e7174352",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-02T02:48:13Z",
+      "side": 1,
+      "message": "if you change the other name, make sure you change this one to match.",
+      "range": {
+        "startLine": 68,
+        "startChar": 73,
+        "endLine": 68,
+        "endChar": 93
+      },
+      "revId": "0dc533743bf49b6c5dc45e4bb2b52954ec69fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
