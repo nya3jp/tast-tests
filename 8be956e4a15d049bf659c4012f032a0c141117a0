@@ -288,6 +288,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a616b0eb_0e348461",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T02:40:19Z",
+      "side": 1,
+      "message": "ACK.",
+      "parentUuid": "29e40b7c_e072dda9",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 12
+      },
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64861ec3_d39d1f1f",
@@ -370,6 +394,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15453746_7fc36937",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T02:40:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b27f229f_bbd92c34",
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f654635_40fbe086",
@@ -442,6 +484,30 @@
       "side": 1,
       "message": "It will be ok, note the Max call above.",
       "parentUuid": "a402b557_927d8508",
+      "range": {
+        "startLine": 290,
+        "startChar": 54,
+        "endLine": 290,
+        "endChar": 70
+      },
+      "revId": "8be956e4a15d049bf659c4012f032a0c141117a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f43d045_33717e59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T02:40:19Z",
+      "side": 1,
+      "message": "Oops, I missed it. Thanks. Ack.",
+      "parentUuid": "d113d7a5_3907d471",
       "range": {
         "startLine": 290,
         "startChar": 54,

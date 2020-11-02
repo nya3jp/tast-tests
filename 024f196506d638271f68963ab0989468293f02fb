@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2efa37ad_560656bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T02:40:19Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "range": {
+        "startLine": 303,
+        "startChar": 68,
+        "endLine": 303,
+        "endChar": 71
+      },
+      "revId": "024f196506d638271f68963ab0989468293f02fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
