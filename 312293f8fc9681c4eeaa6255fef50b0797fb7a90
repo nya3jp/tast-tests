@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39b7a09_1641819b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T05:45:00Z",
+      "side": 1,
+      "message": "only a few nits.\n\nI\u0027m not very familiar with FT, but the test flow looks correct.",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d9af77f_45478cb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T05:45:00Z",
+      "side": 1,
+      "message": "not sure but looks like this can be inferred by \"mixedSecConfFac !\u003d nil\"?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abccb025_b32cd290",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T05:45:00Z",
+      "side": 1,
+      "message": "nit: as this is a long function, might be nice to have some comment for it.",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29b782eb_8a67b7f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T05:45:00Z",
+      "side": 1,
+      "message": "nit: maybe use shorten-ed context for this call? See: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task\n\nIn WiFi tests, we\u0027re using mixed pattern as context for daemons is a problem... However, I think it is still nice to start using the suggested pattern for non-daemon cases.",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a761f051_ac2ab2e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T05:45:00Z",
+      "side": 1,
+      "message": "I think this part of logic is for this comment in Autotest:\n\n# Check that we don\u0027t disconnect along the way here, in case we\u0027re\n# ping-ponging around APs -- and after the first (failed) roam, the\n# second re-connection will not be testing FT at all.\n\nMight be nice to also have the same comment here.",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70ea511_8455453a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T05:45:00Z",
+      "side": 1,
+      "message": "According to [1], a corner case is that SetXXX takes almost all time in context and cleanup will not really have enough time.\n\nThe pattern in [1] is a little complicated as it needs two context variable. For the usage here, I wonder if it is simpler to re-order the logic to have deferred restore first:\n\n  oldSetting, err :\u003d getXXX(ctx)\n  if err !\u003d nil {\n    s.Fatal(...)\n  }\n  // Restore on leaving.\n  defer func(ctx context.Context) {\n    if err :\u003d setXXX(ctx, oldSetting); err !\u003d nil {\n      s.Error(...)\n    }\n  }(ctx)\n  ctx, cancel \u003d ctxutil.Shorten(ctx, time.Second)\n  defer cancel()\n  // Apply required setting.\n  if err :\u003d setXXX(ctx, requiredSetting); err !\u003d nil {\n    s.Fatal(...)\n  }\n\nWDYT?\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 15
+      },
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5024e42b_d7c961f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T05:45:00Z",
+      "side": 1,
+      "message": "nit: perhaps also shorten a little bit here.",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
