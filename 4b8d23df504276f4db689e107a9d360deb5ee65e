@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f75ca11d_bb26d41e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T09:32:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d784d72b_de06beab",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a5311d6_4349f8f6",
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "As above.",
       "parentUuid": "7a5311d6_4349f8f6",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15759b6_06a18ec2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T09:32:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d278962_04c4d1fe",
       "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -750,6 +792,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf956b7_20c9f41f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T09:32:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4865af33_7d07ed61",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76f65a40_e97ca121",
@@ -763,6 +823,24 @@
       "writtenOn": "2020-10-20T10:39:19Z",
       "side": 1,
       "message": "Same as above.",
+      "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77435d4b_bef8ae5a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ap_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T09:32:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76f65a40_e97ca121",
       "revId": "4b8d23df504276f4db689e107a9d360deb5ee65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
