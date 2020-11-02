@@ -505,6 +505,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "187bac61_6a2a8383",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T07:08:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "287f90cf_30d436ee",
+      "range": {
+        "startLine": 733,
+        "startChar": 0,
+        "endLine": 733,
+        "endChar": 125
+      },
+      "revId": "94a977a5ac83b00565f18429ce613e8790c850ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67621c31_cbb93639",
