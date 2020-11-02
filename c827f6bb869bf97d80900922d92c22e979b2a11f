@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "128f1eb2_e4c12f88",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T04:59:38Z",
+      "side": 1,
+      "message": "might be nice to notice the format. Copied from hostapd.conf:\n\n# List of R0KHs in the same Mobility Domain\n# format: \u003cMAC address\u003e \u003cNAS Identifier\u003e \u003c256-bit key as hex string\u003e\n\nsimilar for R1KHs",
+      "revId": "c827f6bb869bf97d80900922d92c22e979b2a11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e89a1ed_957219c7",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T04:59:38Z",
+      "side": 1,
+      "message": "maybe also check the length? I think it should be 256bits from the hostapd config manual.",
+      "range": {
+        "startLine": 574,
+        "startChar": 83,
+        "endLine": 575,
+        "endChar": 3
+      },
+      "revId": "c827f6bb869bf97d80900922d92c22e979b2a11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
