@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08de5a24_b9d68cd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-02T03:39:56Z",
+      "side": 1,
+      "message": "Would you please add \nMsg    *uig.Action `nameRegex:\"Delete all Linux applications and data in your Linux files folder from this .*?\" role:\"staticText\"`\nto\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/crostini/ui/settings/settings.go;l\u003d249",
+      "revId": "a9713ed5cffaf15f204990826f5edb99e59cab09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
