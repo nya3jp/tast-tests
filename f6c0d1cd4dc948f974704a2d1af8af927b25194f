@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f2c46c_305ed587",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-02T20:01:00Z",
+      "side": 1,
+      "message": "Added a new CL to remove the autotest tests from wifi-matfunc. See the cq-depends CL https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/2514669.",
+      "revId": "f6c0d1cd4dc948f974704a2d1af8af927b25194f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
