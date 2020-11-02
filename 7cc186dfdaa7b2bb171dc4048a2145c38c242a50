@@ -517,6 +517,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b2c092_f4877a13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T09:32:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15c1b773_fe9c4732",
+      "range": {
+        "startLine": 164,
+        "startChar": 36,
+        "endLine": 164,
+        "endChar": 85
+      },
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a548229_ae74123d",
@@ -623,6 +647,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f8b923_1208d4ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T09:32:22Z",
+      "side": 1,
+      "message": "I meant defer time reservation of course.",
+      "parentUuid": "b244571e_1d4836c5",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5974acc_b021fa47",
@@ -654,6 +696,24 @@
       "side": 1,
       "message": "As above",
       "parentUuid": "f5974acc_b021fa47",
+      "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0476fad9_7ff1baf1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T09:32:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1d4934e_8f60b684",
       "revId": "7cc186dfdaa7b2bb171dc4048a2145c38c242a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

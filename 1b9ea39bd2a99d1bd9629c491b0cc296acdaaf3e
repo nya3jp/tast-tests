@@ -196,6 +196,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edc91326_05304c0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T09:32:22Z",
+      "side": 1,
+      "message": "The point behind magic numbers is to keep all number uses defined in one place (e.g. const FilePerm 0644), so if we want to change it to e.g. 664 we don\u0027t omit other uses accidentally.",
+      "parentUuid": "cbef5f65_a4b057ab",
+      "range": {
+        "startLine": 228,
+        "startChar": 38,
+        "endLine": 228,
+        "endChar": 42
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96e2dc09_7b63c03f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
         "patchSetId": 5
@@ -231,6 +255,30 @@
       "side": 1,
       "message": "See above.",
       "parentUuid": "96e2dc09_7b63c03f",
+      "range": {
+        "startLine": 235,
+        "startChar": 38,
+        "endLine": 235,
+        "endChar": 42
+      },
+      "revId": "1b9ea39bd2a99d1bd9629c491b0cc296acdaaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38da179_d7b1d597",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-02T09:32:22Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "d7402242_1d38b2e3",
       "range": {
         "startLine": 235,
         "startChar": 38,
