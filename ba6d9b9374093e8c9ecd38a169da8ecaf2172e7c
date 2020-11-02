@@ -190,6 +190,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d537eed2_dc4d5b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-11-02T07:29:02Z",
+      "side": 1,
+      "message": "\u003e Since ARC starts as part of the ChromeOS login,\n\nThis is not always true. When the user who hasn\u0027t opted into ARC++ signs in, ARCVM doesn\u0027t start automatically. In that case, ARCVM only starts when the user opts into ARC++ via Settings. The crostini_arc variant ensures that such an opt-in would never fail (because of Crostini.)\n\nYury (khmel@) should know how to trigger opt-in in Tast tests.",
+      "parentUuid": "97e429db_ebf055a7",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d9fdccb_2b98d98d",
         "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
         "patchSetId": 6
