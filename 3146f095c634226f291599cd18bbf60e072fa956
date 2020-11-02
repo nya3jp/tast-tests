@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e1a462_4a4e67dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-11-02T09:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "069fbb7e_355ef9e5",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "3146f095c634226f291599cd18bbf60e072fa956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "640c8400_ef3a5a77",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-10-30T10:49:30Z",
       "side": 1,
       "message": "optional: Although I did not do in arc.Reboot, according to http://crbug.com/1049020#c0, it seems to be a good practice to create a separate context for the clean up job here using ctxutil.Shorten().",
+      "revId": "3146f095c634226f291599cd18bbf60e072fa956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d3feb3c_415fd57f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-11-02T09:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "640c8400_ef3a5a77",
       "revId": "3146f095c634226f291599cd18bbf60e072fa956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
