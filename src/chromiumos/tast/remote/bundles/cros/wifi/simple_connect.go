@@ -53,8 +53,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				// Verifies that DUT can connect to an open 802.11a network on channels 48, 64.
-				Name:      "80211a",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "80211a",
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211a), ap.Channel(48)}},
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211a), ap.Channel(64)}},
@@ -77,8 +76,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to an open 802.11n network on 2.4GHz channels 1, 6, 11 with a channel width of 20MHz.
-				Name:      "80211n24ht20",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "80211n24ht20",
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(1), ap.HTCaps(ap.HTCapHT20)}},
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(6), ap.HTCaps(ap.HTCapHT20)}},
@@ -86,8 +84,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to an open 802.11n network on 2.4GHz channel 6 with a channel width of 40MHz.
-				Name:      "80211n24ht40",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "80211n24ht40",
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(6), ap.HTCaps(ap.HTCapHT40)}},
 				},
@@ -509,8 +506,7 @@ func init() {
 				},
 			}, {
 				// This test case verifies that the DUT accepts ascii and non-ascii type characters as the SSID.
-				Name:      "non_ascii_ssid",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "non_ascii_ssid",
 				// TODO(b/158150763): Skip Marvell WiFi as there's a known issue to make the test always fail.
 				ExtraHardwareDeps: hwdep.D(hwdep.WifiNotMarvell()),
 				Val: []simpleConnectTestcase{
@@ -533,8 +529,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for dynamic WEP encryption.
-				Name:      "8021xwep",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xwep",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
