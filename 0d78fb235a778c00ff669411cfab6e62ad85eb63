@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24b59db_d4e45426",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-02T06:19:17Z",
+      "side": 1,
+      "message": "Yes, it can be extended to take options, e.g.\n\n func newFixture(opts ...arc.Option) *bootedFixture",
+      "parentUuid": "3174593c_2bf83ab7",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "832fd33a_16e81406",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-30T18:00:49Z",
       "side": 1,
       "message": "Do we want timing in these methods like we have in the precondition?",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be19fe7e_f5bf9e60",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-02T06:19:17Z",
+      "side": 1,
+      "message": "That\u0027s a very good point.\n\n- For now, timing is not supported for fixtures. We have to extend the protocol to report timing info correctly. It\u0027s tracked at crbug.com/1127169.\n- When crbug.com/1127169 is implemented, timings of fixture lifecycle methods should be reported automatically. Thus it\u0027s not necessary to report a timing corresponding to the whole SetUp scope. We can still report subscope timings, but I think in this case existing timings in chrome.New/arc.New are enough.",
+      "parentUuid": "832fd33a_16e81406",
       "range": {
         "startLine": 31,
         "startChar": 24,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec168475_f5104b00",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-02T06:19:17Z",
+      "side": 1,
+      "message": "I agree with you... maybe it\u0027s good to rename it to a longer one. Do you have a good naming in your mind? I can send a renaming CL separately.",
+      "parentUuid": "a715849f_eb839e54",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 7
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7114f10_38dd4d26",
         "filename": "src/chromiumos/tast/local/arc/fixture.go",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-30T18:00:49Z",
       "side": 1,
       "message": "super nit: is arc really a connection? Should this just say \"failed to close ARC\"? Especially since when we launch it, we say \"failed to start ARC\" not \"ARC connection?",
+      "range": {
+        "startLine": 77,
+        "startChar": 29,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e3ba32_c1a05c20",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-02T06:19:17Z",
+      "side": 1,
+      "message": "Practically arc.ARC is an ADB connection plus several others (e.g. logcat subprocess), so I\u0027m not very confused by calling it a connection. But \"failed to close ARC\" also sounds fine to me.",
+      "parentUuid": "d7114f10_38dd4d26",
       "range": {
         "startLine": 77,
         "startChar": 29,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7ca881b_c65e650b",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-02T06:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a13b135a_5f976a0c",
+      "range": {
+        "startLine": 83,
+        "startChar": 25,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cf773c5_ea3831bb",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e4ade58_5e1ac4f9",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-02T06:19:17Z",
+      "side": 1,
+      "message": "Yes you\u0027re right. We need pre/post-hook feature to implement this in fixtures (crbug.com/1136382).\n\nLet me add a TODO comment to fixture.go so as not to forget it...",
+      "parentUuid": "0cf773c5_ea3831bb",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 4
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "024cb53a_f76352bb",
@@ -152,6 +296,30 @@
       "writtenOn": "2020-10-30T18:00:49Z",
       "side": 1,
       "message": "I feel like this wouldn\u0027t necessarily be the job of snapshot. Maybe this comment should be moved to the reset function of the bootedFixture in general?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 62
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "896f53b0_5dd40d55",
+        "filename": "src/chromiumos/tast/local/arc/snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-02T06:19:17Z",
+      "side": 1,
+      "message": "Makes perfect sense, I\u0027ve moved the comment to Reset. Thanks!",
+      "parentUuid": "024cb53a_f76352bb",
       "range": {
         "startLine": 88,
         "startChar": 1,
