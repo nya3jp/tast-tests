@@ -28,8 +28,7 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // WiFi team
 		},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
-		// Disabled because this test should only be run manually,
-		// not with the CQ or any test suite.
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
