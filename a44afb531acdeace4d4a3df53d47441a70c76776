@@ -16,6 +16,24 @@
       "message": "Also add https://b.corp.google.com/issues/172069477",
       "revId": "a44afb531acdeace4d4a3df53d47441a70c76776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1ced26_845b9de9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2020-11-02T10:32:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baa21c39_6f4b3d29",
+      "revId": "a44afb531acdeace4d4a3df53d47441a70c76776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
