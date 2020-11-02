@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4a5a79b8_f8fbe49f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-02T19:22:13Z",
+      "side": 1,
+      "message": "It actually is currently not very useful because the only android device accessible in Tast is arc.\nIn the near future, we should be adding android devices connected to chromebooks in the lab to test things like nearby sharing. Once that happens, it will be a lot more useful. When devices get added to the lab, I believe there should be some sort of announcement.",
+      "parentUuid": "daf61037_43dfa04a",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "635c35fe_ecb143f5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-31T16:00:16Z",
       "side": 1,
       "message": "Should all the \"d.Close() -\u003e d.Close(ctx)\" go in a separate patch for clarify ?",
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35dfa06_b3d69ac8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-02T19:22:13Z",
+      "side": 1,
+      "message": "These changes have to be in this CL because we need to be able to free the the port forwarding. Without this change, the ports would never be released.",
+      "parentUuid": "635c35fe_ecb143f5",
       "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -90,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d034b0e_f1da7160",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-02T19:22:13Z",
+      "side": 1,
+      "message": "I understand how `-s` works, but adb also has `-t` for transport id. Transport id is actually more correct than serial because there can be multiple devices with the same serial, but there can never be multiple devices with the same transport id. For most cases `-t` works correctly, but for some reason when forwarding, transport id fails.",
+      "parentUuid": "90a52f0d_99d5ab9c",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 93
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01538df6_d292562c",
         "filename": "src/chromiumos/tast/local/android/adb/device.go",
         "patchSetId": 2
@@ -101,6 +167,30 @@
       "writtenOn": "2020-10-31T16:00:16Z",
       "side": 1,
       "message": "I am not sure I understand exactly: is this the dst port inside the Android environment where adbd is running ? Or the local port on the environment hosting the adb client ?",
+      "range": {
+        "startLine": 308,
+        "startChar": 46,
+        "endLine": 308,
+        "endChar": 55
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56417ef2_9352a636",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-02T19:22:13Z",
+      "side": 1,
+      "message": "Yeah, I just copied the terminology that the adb exectuable uses. In this case it is local to the android device, so I guess I will change the name to androidPort.",
+      "parentUuid": "01538df6_d292562c",
       "range": {
         "startLine": 308,
         "startChar": 46,
@@ -152,6 +242,54 @@
         "startChar": 40,
         "endLine": 309,
         "endChar": 45
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2025cc_1b5f9115",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-02T19:22:13Z",
+      "side": 1,
+      "message": "Yes, I can force a specific local and host port, but in this case I explicitly don\u0027t want to. I would rather just let adb figure out a port if this is called multiple times than have users have to pick a port and make sure there are no comments. As with the comment below, different parsing is required based on if we specify the port or not. I am opting to leave this minimal until other use cases arise in Tast.",
+      "parentUuid": "0b44315c_8eccb785",
+      "range": {
+        "startLine": 309,
+        "startChar": 40,
+        "endLine": 309,
+        "endChar": 45
+      },
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a20128_3769d9be",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-02T19:22:13Z",
+      "side": 1,
+      "message": "Since this is the only use of the function and depending on the call you have to parse the output differently, I think it is better to keep this simple until there is need for more functionality.",
+      "parentUuid": "29a490c0_ea060a74",
+      "range": {
+        "startLine": 309,
+        "startChar": 39,
+        "endLine": 309,
+        "endChar": 80
       },
       "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
