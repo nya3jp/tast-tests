@@ -39,6 +39,30 @@
       },
       "revId": "5f853fb93d710e463f7bff90c3ce9adeb52ccfe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a424364_ad70c5a4",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T09:03:42Z",
+      "side": 1,
+      "message": "Hmm... IMO, the 10 seconds in ReserveForClose is a recommended safe value instead of obligation? And, if the test body finished fast, I think it is OK to let Close have longer time for clean up. So, I\u0027m also a little hesitant to set a fixed timeout in Close (similar for Reinit) and slightly prefer to let callers have the flexibility. WDYT?\n\nOTOH, it is still good to use the recommended 10 seconds as ReserveForClose here. (but I\u0027m not really sure if we should export it. I feel it is excessive to export every recommended timeout...)",
+      "parentUuid": "52a5e938_6037e2fc",
+      "range": {
+        "startLine": 95,
+        "startChar": 47,
+        "endLine": 95,
+        "endChar": 61
+      },
+      "revId": "5f853fb93d710e463f7bff90c3ce9adeb52ccfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
