@@ -46,6 +46,11 @@ type Info struct {
 	Device Type
 	// Failing contains a final assessment that the device failed or will fail soon.
 	Status LifeStatus
+	// PercentageUsed contains the percentage of SSD life that has been used.
+	// For NVMe and SATA devices, an exact value is returned. For eMMC devices,
+	// the value is reported in 10's of percents (10, 20, 30, etc.).
+	// In case of any error reading SSD usage data, value will be -1.
+	PercentageUsed int64
 }
 
 // Get runs the storage info shell script and returns its info.
@@ -73,6 +78,7 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 	}
 
 	var lifeStatus LifeStatus
+	var percentageUsed int64
 	var name string
 	switch deviceType {
 	case EMMC:
@@ -82,13 +88,13 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 		}
 		name = parseDeviceNameEMMC(lines)
 	case NVMe:
-		lifeStatus, err = parseDeviceHealthNVMe(lines)
+		percentageUsed, lifeStatus, err = parseDeviceHealthNVMe(lines)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse NVMe health")
 		}
 		name = parseDeviceNameNVMe(lines)
 	case SSD:
-		lifeStatus, err = parseDeviceHealthSSD(lines)
+		percentageUsed, lifeStatus, err = parseDeviceHealthSSD(lines)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse SSD health")
 		}
@@ -97,7 +103,7 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 		return nil, errors.Errorf("parsing device health for type %v is not supported", deviceType)
 	}
 
-	return &Info{Name: name, Device: deviceType, Status: lifeStatus}, nil
+	return &Info{Name: name, Device: deviceType, Status: lifeStatus, PercentageUsed: percentageUsed}, nil
 }
 
 var (
@@ -233,23 +239,24 @@ func parseDeviceHealtheMMC(outLines []string) (LifeStatus, error) {
 
 // parsePercentageUsed is a helper function that analyzes the percentage used
 // value for indications of a failure.
-func parsePercentageUsed(match []string) (LifeStatus, error) {
+func parsePercentageUsed(match []string) (int64, LifeStatus, error) {
 	// Flag devices which report estimates approaching 100%
 
 	percentageUsed, err := strconv.ParseInt(match[1], 10, 32)
 	if err != nil {
-		return 0, errors.Errorf("failed to parse percentage used %v", match[1])
+		return 0, Healthy, errors.Errorf("failed to parse percentage used %v", match[1])
 	}
 
 	if percentageUsed > percentageUsedThreshold {
-		return Failing, nil
+		return percentageUsed, Failing, nil
 	}
 
-	return Healthy, nil
+	return percentageUsed, Healthy, nil
 }
 
 // parseDeviceHealthNVMe analyzes NVMe SMART attributes for indications of failure.
-func parseDeviceHealthNVMe(outLines []string) (LifeStatus, error) {
+// Returns usage percentage, drive health status and error (if encountered).
+func parseDeviceHealthNVMe(outLines []string) (int64, LifeStatus, error) {
 	// Flag devices which report estimates approaching 100%
 
 	for _, line := range outLines {
@@ -261,17 +268,18 @@ func parseDeviceHealthNVMe(outLines []string) (LifeStatus, error) {
 		return parsePercentageUsed(match)
 	}
 
-	return Healthy, nil
+	return -1, Healthy, nil
 }
 
 // parseDeviceHealthSSD analyzes storage information for indications of failure specific to SSDs.
-func parseDeviceHealthSSD(outLines []string) (LifeStatus, error) {
+// Returns usage percentage, drive health status and error (if encountered).
+func parseDeviceHealthSSD(outLines []string) (int64, LifeStatus, error) {
 	// Flag devices which report estimates approaching 100% or that report failing
 	// End-to-End_Error attribute
 
 	for _, line := range outLines {
 		if ssdFailingLegacy.MatchString(line) {
-			return Failing, nil
+			return -1, Failing, nil
 		}
 		match := ssdFailing.FindStringSubmatch(line)
 		if match == nil {
@@ -281,5 +289,5 @@ func parseDeviceHealthSSD(outLines []string) (LifeStatus, error) {
 		return parsePercentageUsed(match)
 	}
 
-	return Healthy, nil
+	return -1, Healthy, nil
 }
