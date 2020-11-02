@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7651413_87c70aef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-02T10:59:59Z",
+      "side": 1,
+      "message": "I think we usually uses \"an\" for words which sound like they start with a vowel even if the first letter is a consonant.",
+      "parentUuid": "454a95d4_fe6c3c2d",
+      "range": {
+        "startLine": 41,
+        "startChar": 97,
+        "endLine": 41,
+        "endChar": 99
+      },
+      "revId": "d01313e793fc71a0318ae6462098ae3ee18778a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b58c554c_0a8ec368",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-02T10:30:18Z",
       "side": 1,
       "message": "a",
+      "range": {
+        "startLine": 44,
+        "startChar": 99,
+        "endLine": 44,
+        "endChar": 101
+      },
+      "revId": "d01313e793fc71a0318ae6462098ae3ee18778a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2073fd74_f5756fff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-02T10:59:59Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "b58c554c_0a8ec368",
       "range": {
         "startLine": 44,
         "startChar": 99,
