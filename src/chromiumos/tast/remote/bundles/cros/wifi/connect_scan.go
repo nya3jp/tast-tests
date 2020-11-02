@@ -32,8 +32,7 @@ func init() {
 		Vars:        []string{"router", "pcap"},
 		Params: []testing.Param{
 			{
-				Name:      "hidden",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "hidden",
 				Val: []hostapd.Option{
 					hostapd.Channel(48),
 					hostapd.Mode(hostapd.Mode80211nPure),
@@ -42,8 +41,7 @@ func init() {
 				},
 			},
 			{
-				Name:      "visible",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "visible",
 				Val: []hostapd.Option{
 					hostapd.Channel(1), // We have visible_vht for 5G band, use 2.4G band here.
 					hostapd.Mode(hostapd.Mode80211nPure),
@@ -52,8 +50,7 @@ func init() {
 			},
 			{
 				// For coverage of 5G and VHT setting.
-				Name:      "visible_vht",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "visible_vht",
 				Val: []hostapd.Option{
 					hostapd.Channel(149),
 					hostapd.Mode(hostapd.Mode80211acPure),

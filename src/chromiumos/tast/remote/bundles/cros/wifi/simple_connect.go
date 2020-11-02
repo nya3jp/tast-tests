@@ -158,8 +158,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 40-bit pre-shared keys.
-				Name:      "wep40",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wep40",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -196,8 +195,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 104-bit pre-shared keys.
-				Name:      "wep104",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wep104",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -234,8 +232,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
-				Name:      "wephidden",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wephidden",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
@@ -656,8 +653,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for PEAP authentication with tunneled MSCHAPV2.
-				Name:      "8021xpeap_mschapv2",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xpeap_mschapv2",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -709,8 +705,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for PEAP authentication with tunneled MD5.
-				Name:      "8021xpeap_md5",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xpeap_md5",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -865,8 +860,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled MSCHAPV2.
-				Name:      "8021xttls_mschapv2",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xttls_mschapv2",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -918,8 +912,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled MD5.
-				Name:      "8021xttls_md5",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xttls_md5",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -1024,8 +1017,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled TTLSMSCHAPV2.
-				Name:      "8021xttls_ttlsmschapv2",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xttls_ttlsmschapv2",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -1077,8 +1069,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled TTLSMSCHAP.
-				Name:      "8021xttls_ttlsmschap",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xttls_ttlsmschap",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -1130,8 +1121,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled TTLSPAP.
-				Name:      "8021xttls_ttlspap",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "8021xttls_ttlspap",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
