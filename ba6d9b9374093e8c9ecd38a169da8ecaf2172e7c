@@ -101,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d252c2f7_f5f394c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-11-02T04:16:02Z",
+      "side": 1,
+      "message": "SGTM. Thanks!",
+      "parentUuid": "3bcc01ce_81264a66",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "980c0cb7_f9118c96",
