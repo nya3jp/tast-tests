@@ -16,6 +16,23 @@
       "message": "yhanada@, tast-owners@: Please take a look. Thank you.",
       "revId": "056a536beabbe2bde2be4a12cd68617d51842678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12171369_a1d512ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-11-02T07:52:07Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "056a536beabbe2bde2be4a12cd68617d51842678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
