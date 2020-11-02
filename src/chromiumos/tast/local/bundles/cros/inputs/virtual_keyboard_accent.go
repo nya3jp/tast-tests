@@ -79,7 +79,12 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		languageLabel = "FR"
 	)
 
-	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.IMEPrefix+inputMethodID); err != nil {
+	imePrefix, err := ime.GetIMEPrefix(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get IME prefix: ", err)
+	}
+
+	if err := ime.AddAndSetInputMethod(ctx, tconn, imePrefix+inputMethodID); err != nil {
 		s.Fatal("Failed to set input method: ", err)
 	}
 

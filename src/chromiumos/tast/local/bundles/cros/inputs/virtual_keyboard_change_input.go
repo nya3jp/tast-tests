@@ -54,7 +54,12 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		InputMethodLabel         = "FR"
 	)
 
-	if err := ime.AddInputMethod(ctx, tconn, ime.IMEPrefix+inputMethod); err != nil {
+	imePrefix, err := ime.GetIMEPrefix(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get IME prefix: ", err)
+	}
+
+	if err := ime.AddInputMethod(ctx, tconn, imePrefix+inputMethod); err != nil {
 		s.Fatal("Failed to add input method: ", err)
 	}
 
@@ -79,8 +84,8 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 			currentInputMethod, err := ime.GetCurrentInputMethod(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to get current input method")
-			} else if currentInputMethod != ime.IMEPrefix+inputMethod {
-				return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, ime.IMEPrefix+inputMethod)
+			} else if currentInputMethod != imePrefix+inputMethod {
+				return errors.Errorf("failed to verify current input method. got %q; want %q", currentInputMethod, imePrefix+inputMethod)
 			}
 
 			imeKeyNode, err := vkb.DescendantNode(ctx, tconn, ui.FindParams{Name: inputMethodLabel})

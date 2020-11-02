@@ -131,8 +131,13 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
+	imePrefix, err := ime.GetIMEPrefix(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get IME prefix: ", err)
+	}
+
 	s.Log("Set input method to: ", testCase.inputMethodID)
-	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.IMEPrefix+testCase.inputMethodID); err != nil {
+	if err := ime.AddAndSetInputMethod(ctx, tconn, imePrefix+testCase.inputMethodID); err != nil {
 		s.Fatalf("Failed to set input method to %q: %v", testCase.inputMethodID, err)
 	}
 

@@ -94,7 +94,10 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	const imePrefix = ime.IMEPrefix
+	imePrefix, err := ime.GetIMEPrefix(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get IME prefix: ", err)
+	}
 
 	switchInputMethod := func(ctx context.Context, language, layout string) {
 		if err := ime.EnableLanguage(ctx, tconn, language); err != nil {

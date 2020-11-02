@@ -51,7 +51,12 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	imeCode := ime.IMEPrefix + string(ime.INPUTMETHOD_NACL_MOZC_JP)
+	imePrefix, err := ime.GetIMEPrefix(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get IME prefix: ", err)
+	}
+
+	imeCode := imePrefix + string(ime.INPUTMETHOD_NACL_MOZC_JP)
 	if err := ime.SetCurrentInputMethod(ctx, tconn, imeCode); err != nil {
 		s.Fatal("Failed to set input method: ", err)
 	}

@@ -49,9 +49,6 @@ var InputsUnstableModels = hwdep.D(hwdep.SkipOnModel(append(StableModels, "kevin
 // resetTimeout is the timeout duration to trying reset of the current precondition.
 const resetTimeout = 30 * time.Second
 
-// defaultIMECode is used for new Chrome instance.
-const defaultIMECode = ime.IMEPrefix + string(ime.INPUTMETHOD_XKB_US_ENG)
-
 // VKEnabled creates a new precondition can be shared by tests that require an already-started Chromeobject that enables virtual keyboard.
 // It uses --enable-virtual-keyboard to force enable virtual keyboard regardless of device ui mode.
 func VKEnabled() testing.Precondition { return vkEnabledPre }
@@ -196,6 +193,12 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 // ResetIMEStatus resets IME input method and settings.
 func ResetIMEStatus(ctx context.Context, tconn *chrome.TestConn) error {
+	imePrefix, err := ime.GetIMEPrefix(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get ime prefix")
+	}
+	defaultIMECode := imePrefix + string(ime.INPUTMETHOD_XKB_US_ENG)
+
 	// Reset input to default input method.
 	currentIME, err := ime.GetCurrentInputMethod(ctx, tconn)
 	if err != nil {

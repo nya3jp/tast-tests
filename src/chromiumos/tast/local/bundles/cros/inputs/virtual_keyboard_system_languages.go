@@ -91,8 +91,6 @@ func init() {
 
 func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	regionCode := s.Param().(testParameters).regionCode
-	defaultInputMethodID := ime.IMEPrefix + s.Param().(testParameters).defaultInputMethodID
-	defaultInputMethodName := s.Param().(testParameters).defaultInputMethodName
 
 	cr, err := chrome.New(ctx, chrome.Region(regionCode), chrome.VKEnabled())
 	if err != nil {
@@ -104,6 +102,14 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+
+	imePrefix, err := ime.GetIMEPrefix(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get IME prefix: ", err)
+	}
+
+	defaultInputMethodID := imePrefix + s.Param().(testParameters).defaultInputMethodID
+	defaultInputMethodName := s.Param().(testParameters).defaultInputMethodName
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 

@@ -63,8 +63,13 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
+	imePrefix, err := ime.GetIMEPrefix(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get IME prefix: ", err)
+	}
+
 	// Get current input method. Change IME for testing and revert it back in teardown.
-	imeCode := ime.IMEPrefix + string(s.Param().(ime.InputMethodCode))
+	imeCode := imePrefix + string(s.Param().(ime.InputMethodCode))
 	originalInputMethod, err := ime.GetCurrentInputMethod(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get current input method: ", err)
