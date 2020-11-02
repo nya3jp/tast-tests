@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "152ef60c_828ea5a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-02T02:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb7f772f_00396b8f",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b736b67_9b4f0d59",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "nice!\n\nFYI, b/141783450 is a tracking bug for generalizing run_with_arc.go",
       "parentUuid": "0b736b67_9b4f0d59",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bcc01ce_81264a66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-02T02:55:59Z",
+      "side": 1,
+      "message": "Yeah, I starting trying to write memory tests with crostini.StartedARCEnabled, but it was buggy because it didn\u0027t clean up ARCVM between tests, and didn\u0027t expose *arc.ARC on the PreData, so I wrote this.\n\nI think crostini.RunWithARC is the only test that uses StartedARCEnabled. And I think the multivm.Login.arc_crostini does the same thing as RunWithArc, so I\u0027ll update that bug to mention that it\u0027s OK to delete that test (and the crostini.StartedARCEnabled precondition)",
+      "parentUuid": "7e60af5e_00b98cb1",
       "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +148,24 @@
       "writtenOn": "2020-10-31T00:16:25Z",
       "side": 1,
       "message": "Does this start both VMs in parallel? Or does this start ARCVM, wait for the package manager to be ready, and then start Crostini?\n\nAssuming it is the latter, can you add \"crostini_arc\"? In the past, we had issues where one VM prevented the other from starting e.g. due to vsock port conflict.",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97e429db_ebf055a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-02T02:55:59Z",
+      "side": 1,
+      "message": "The order is defined by StateManager.Activate in src/chromiumos/tast/local/multivm/state_manager.go.\n\nWe wait for ARC to complete booting and then start Crostini.\n\nSince ARC starts as part of the ChromeOS login, I don\u0027t know how you could make a crostini_arc variant.\n\nMy plan for tests that rely on specific ordering of VM startup would be to only use this precondition for the parts where ordering doesn\u0027t matter, and then launch the VM (using the same helpers that are used to implement this precondition) within the tests themselves.\n\nDoes this make sense? If we need to support arbitrary ordering of VM startup in the precondition, it will need to be refactored.",
+      "parentUuid": "82b2acf0_f54f5d5f",
       "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -194,6 +254,24 @@
       "side": 1,
       "message": "Clarified with the engineers, there is no longer any need to stop Concierge.  I will e updating the precondition when I get some time.",
       "parentUuid": "4e4da26d_75c2a514",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dace6632_2c31d894",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-02T02:55:59Z",
+      "side": 1,
+      "message": "Could you add an item to update this precondition with whatever you decide to do? I\u0027d like to keep this in sync with what crostini does.\n\nMaybe expose helpers like arc does with StateManager, so that it\u0027s easy to use the same code in both the crostini and multivm preconditions.\n\nI\u0027m happy to the work if it\u0027s already well scoped and not too complicated.",
+      "parentUuid": "95826f03_7d206371",
       "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
