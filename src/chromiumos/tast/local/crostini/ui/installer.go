@@ -245,7 +245,10 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 		return errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
 	}
 
-	vm.MountComponent(ctx, terminaImage)
+	if err := vm.MountComponent(ctx, terminaImage); err != nil {
+		return errors.Wrap(err, "failed to mount component")
+	}
+
 	if err := tconn.Eval(ctx, fmt.Sprintf(
 		`chrome.autotestPrivate.registerComponent(%q, %q)`,
 		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
