@@ -63,6 +63,30 @@
       },
       "revId": "5f853fb93d710e463f7bff90c3ce9adeb52ccfe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4e946d_0b55b84b",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T11:21:00Z",
+      "side": 1,
+      "message": "It makes sense giving the caller full control to decide how long an action can take. However, it also adds the caller\u0027s burden, e.g. more boilerplate code to shorten ctx. To get a balance, how about let the function still accept caller\u0027s ctx restriction as well as setting a reasonable timeout in its own so that tests won\u0027t spent time Close()ing something for more than, say, 60 seconds?",
+      "parentUuid": "8a424364_ad70c5a4",
+      "range": {
+        "startLine": 95,
+        "startChar": 47,
+        "endLine": 95,
+        "endChar": 61
+      },
+      "revId": "5f853fb93d710e463f7bff90c3ce9adeb52ccfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
