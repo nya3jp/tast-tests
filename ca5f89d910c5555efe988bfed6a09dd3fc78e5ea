@@ -39,6 +39,29 @@
       },
       "revId": "ca5f89d910c5555efe988bfed6a09dd3fc78e5ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "458a5799_fb2a8f8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-11-02T19:11:03Z",
+      "side": 1,
+      "message": "Do we want to check the returned error here and either raise a S.Error() or printing some debug logging if it\u0027s not nil?",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 25
+      },
+      "revId": "ca5f89d910c5555efe988bfed6a09dd3fc78e5ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
