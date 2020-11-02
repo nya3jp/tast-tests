@@ -95,6 +95,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "092fcb3a_d8b3fee0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T09:11:37Z",
+      "side": 1,
+      "message": "If New properly handles it, I\u0027m also OK with the it.\n\n(But we still don\u0027t have a proper guideline for when to use each pattern, might need to discuss this in some other place, perhaps a bug?)",
+      "parentUuid": "67063dc1_b7bcc6bb",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "517c9a8e_18902b4d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
         "patchSetId": 9
