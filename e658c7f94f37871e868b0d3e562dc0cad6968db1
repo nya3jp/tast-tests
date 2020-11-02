@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fad2845_a78d0ad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/input_method_management.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-02T22:59:55Z",
+      "side": 1,
+      "message": "Yes, abosultely. Ideally feature developer should own both product code and test code. So when you make the further change, please update the test in the same cl. I can always help if you can let me know when the change happens",
+      "parentUuid": "d8cadf9d_0f79de6e",
+      "range": {
+        "startLine": 33,
+        "startChar": 21,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "e658c7f94f37871e868b0d3e562dc0cad6968db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f20dfc8_07343354",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-02T22:46:33Z",
       "side": 1,
       "message": "Is this const used somewhere?",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "e658c7f94f37871e868b0d3e562dc0cad6968db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f692fe_02c305cf",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-02T22:59:55Z",
+      "side": 1,
+      "message": "It is not used so far if we do not add any language tests. I removed it for now. Thanks.",
+      "parentUuid": "5f20dfc8_07343354",
       "range": {
         "startLine": 29,
         "startChar": 6,
