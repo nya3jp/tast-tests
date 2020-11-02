@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ca1bc8_c6e5e235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-02T16:21:02Z",
+      "side": 1,
+      "message": "Can we just leave this out? We should never check it if wantRestricted is false, if I understand correctly. A user/future author might interpret this as part of the test case and be misled.",
+      "revId": "a3507d1ee48d58d454438d662c2c09c5f8cbedf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa31f79_29b65786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-02T16:21:02Z",
+      "side": 1,
+      "message": "nit/YMMV: since these constants are indices, it might help to name them, and it might also help to have a function that takes this and returns the human-readable protection level for logging. But since these constants are only used once and are right next to the test name that provides their human-readable description, this is not necessary.",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "a3507d1ee48d58d454438d662c2c09c5f8cbedf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a69ec7f6_26cb4626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-02T16:21:02Z",
+      "side": 1,
+      "message": "nit: Waiting for load",
+      "range": {
+        "startLine": 89,
+        "startChar": 13,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "a3507d1ee48d58d454438d662c2c09c5f8cbedf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
