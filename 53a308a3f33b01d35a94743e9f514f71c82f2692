@@ -254,6 +254,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddeb3ad1_1186f939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-02T10:59:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "183e77de_d7dd6e9c",
+      "revId": "53a308a3f33b01d35a94743e9f514f71c82f2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4eb3cd8_aa3a0824",
