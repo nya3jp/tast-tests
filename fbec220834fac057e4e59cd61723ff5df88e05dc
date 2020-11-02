@@ -50,6 +50,59 @@
       "message": "Test should be fixed by https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2504300",
       "revId": "fbec220834fac057e4e59cd61723ff5df88e05dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38446c5a_0d6b124d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-02T13:47:54Z",
+      "side": 1,
+      "message": "Right.",
+      "parentUuid": "0f21cc8d_12d7f9ab",
+      "revId": "fbec220834fac057e4e59cd61723ff5df88e05dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "963d5254_fe22d6d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-02T13:47:54Z",
+      "side": 1,
+      "message": "Sure, we can do that.",
+      "parentUuid": "7ea25826_0a46e5cb",
+      "revId": "fbec220834fac057e4e59cd61723ff5df88e05dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b53648_05555976",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-02T13:47:54Z",
+      "side": 1,
+      "message": "We should not merge this CL, because this test should be fixed now by Mahmoud CL.",
+      "revId": "fbec220834fac057e4e59cd61723ff5df88e05dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
