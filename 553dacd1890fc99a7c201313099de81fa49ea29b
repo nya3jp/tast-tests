@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7abe999e_c0302363",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-02T11:04:56Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "553dacd1890fc99a7c201313099de81fa49ea29b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f89cc8_33773368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_modes.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-02T11:04:56Z",
+      "side": 1,
+      "message": "nit: unused",
+      "range": {
+        "startLine": 26,
+        "startChar": 36,
+        "endLine": 26,
+        "endChar": 54
+      },
+      "revId": "553dacd1890fc99a7c201313099de81fa49ea29b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff8f551_785d5909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/util.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-02T11:04:56Z",
+      "side": 1,
+      "message": "nit: Add some comment about this flag.\n\nBtw, do we really need this...? IIRC it\u0027s for auto granting permission.",
+      "revId": "553dacd1890fc99a7c201313099de81fa49ea29b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
