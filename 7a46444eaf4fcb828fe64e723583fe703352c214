@@ -384,6 +384,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8e217ae6_f884c634",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T02:50:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "730e1754_79217978",
+      "range": {
+        "startLine": 138,
+        "startChar": 20,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "7a46444eaf4fcb828fe64e723583fe703352c214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f425e03e_1ecd1714",
         "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
         "patchSetId": 9
@@ -413,6 +437,24 @@
       "side": 1,
       "message": "RIght, I have added here because it\u0027s an important note in context of the RoamNatural test case (found in review).",
       "parentUuid": "f425e03e_1ecd1714",
+      "revId": "7a46444eaf4fcb828fe64e723583fe703352c214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5b5db6_36773bcc",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T02:50:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c4ddab83_31aa3dfc",
       "revId": "7a46444eaf4fcb828fe64e723583fe703352c214",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8f4c90_141117bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T02:50:41Z",
+      "side": 1,
+      "message": "LGTM. Matthew@, would you like to also take a glance at this CL?",
+      "revId": "95b7047048a8263a246c50cfd723227ba380ba26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
