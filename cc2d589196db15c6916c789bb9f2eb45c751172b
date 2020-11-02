@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a816ea_124741b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_games.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-02T23:21:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6571302_33287a96",
+      "range": {
+        "startLine": 88,
+        "startChar": 28,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "cc2d589196db15c6916c789bb9f2eb45c751172b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c23eccfa_29f8be64",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-02T22:17:09Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 89,
+        "startChar": 28,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "cc2d589196db15c6916c789bb9f2eb45c751172b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e198923b_b65bd961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_games.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-02T23:21:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c23eccfa_29f8be64",
       "range": {
         "startLine": 89,
         "startChar": 28,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09711ea_2bbeca2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_games.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-02T23:21:10Z",
+      "side": 1,
+      "message": "I have observed that update Google Play Services from Playstore is taking time, I would like to wait until checkForDeactivate Button gets enabled. Thanks.",
+      "parentUuid": "1799d39c_5ebe3365",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "cc2d589196db15c6916c789bb9f2eb45c751172b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1d2285b_48ba185f",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-02T22:17:09Z",
       "side": 1,
       "message": "Why does it need to be launched here? isn\u0027t it already launched earlier?",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "cc2d589196db15c6916c789bb9f2eb45c751172b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d11abbe_a9c95c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_games.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-02T23:21:10Z",
+      "side": 1,
+      "message": "Yes, it launched earlier. When it launches update google play services from play store. App closes by default. So relaunch the app is needed here. Thanks.",
+      "parentUuid": "b1d2285b_48ba185f",
       "range": {
         "startLine": 134,
         "startChar": 1,
