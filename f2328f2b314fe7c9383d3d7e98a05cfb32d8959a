@@ -37,6 +37,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b342eb46_fc52f76a",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T07:08:30Z",
+      "side": 1,
+      "message": "I second the proposal.",
+      "parentUuid": "ac121f74_aef25d6a",
+      "revId": "f2328f2b314fe7c9383d3d7e98a05cfb32d8959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21f0aab_bbd07360",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T07:08:30Z",
+      "side": 1,
+      "message": "The word \"status\" is slightly different from \"state\". To solve the name conflict, I would suggest:\n\ntype LinkStateType string\n...\nfunc (r *Runner) LinkState(ctx, iface) (LinkStateType, ...) {...}",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "f2328f2b314fe7c9383d3d7e98a05cfb32d8959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58bba688_5ba772b6",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 4
