@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -94,7 +95,26 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	const imePrefix = ime.IMEPrefix
+	var imeID string
+	if imeID, err = ime.GetCurrentInputMethod(ctx, tconn); err != nil {
+		s.Fatal("Failed to get current ime: ", err)
+	}
+
+	const (
+		chromeExtID   = "jkghodnilhceideoidjikpgommlajknk"
+		chromiumExtID = "fgoepimhcoialccpbmpnnblemnepkkao"
+	)
+
+	var extID string
+	if strings.Contains(imeID, chromeExtID) {
+		extID = chromeExtID
+	} else if strings.Contains(imeID, chromiumExtID) {
+		extID = chromiumExtID
+	} else {
+		s.Fatal("Unexpected default IME: ", imeID)
+	}
+
+	imePrefix := "_comp_ime_" + extID
 
 	switchInputMethod := func(ctx context.Context, language, layout string) {
 		if err := ime.EnableLanguage(ctx, tconn, language); err != nil {
