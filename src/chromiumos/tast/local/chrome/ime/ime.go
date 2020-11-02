@@ -7,6 +7,7 @@ package ime
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -16,6 +17,9 @@ import (
 
 // IMEPrefix is the prefix of IME chrome extension
 const IMEPrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
+
+// ChromiumIMEPrefix is the prefix of IME chromium extension
+const ChromiumIMEPrefix = "_comp_ime_fgoepimhcoialccpbmpnnblemnepkkao"
 
 // AddAndSetInputMethod adds the IME identified by imeID and then sets it to the current input method.
 func AddAndSetInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string) error {
@@ -158,4 +162,21 @@ func GetInstalledInputMethods(ctx context.Context, tconn *chrome.TestConn) ([]In
 		return nil, err
 	}
 	return inputMethods, nil
+}
+
+// GetIMEPrefix returns the prefix of the default IME extension, depending on whether the build is Chrome (official build) or Chromium.
+func GetIMEPrefix(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	imes, err := GetInstalledInputMethods(ctx, tconn)
+	if err != nil {
+		return "", err
+	}
+
+	for _, ime := range imes {
+		if strings.Contains(ime.ID, IMEPrefix) {
+			return IMEPrefix, nil
+		} else if strings.Contains(ime.ID, ChromiumIMEPrefix) {
+			return ChromiumIMEPrefix, nil
+		}
+	}
+	return "", errors.New("failed to detect the default IME extension")
 }
