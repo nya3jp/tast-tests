@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc7dad1_df96fcc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-11-02T21:35:30Z",
+      "side": 1,
+      "message": "It might make sense to write a short doc detailing the changes before we go full in on CLs?",
+      "revId": "293c583f1c77a997d72341a00ab0962a91942cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
