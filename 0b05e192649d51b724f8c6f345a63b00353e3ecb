@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9783bee3_31e11fcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-02T11:47:49Z",
+      "side": 1,
+      "message": "nit: Link to the design doc.",
+      "revId": "0b05e192649d51b724f8c6f345a63b00353e3ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1384d031_f3970979",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-02T11:47:49Z",
+      "side": 1,
+      "message": "Does this actually parse logs correctly on the device with modified logging?",
+      "revId": "0b05e192649d51b724f8c6f345a63b00353e3ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cd9507c6_ddd1b3cc",
@@ -14,6 +48,23 @@
       "writtenOn": "2020-11-02T11:26:09Z",
       "side": 1,
       "message": "Hi tast owners,\n\nCould you review this change?\n\nThank you,\nYuta",
+      "revId": "0b05e192649d51b724f8c6f345a63b00353e3ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2773bce3_8dd0df9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-02T11:47:49Z",
+      "side": 1,
+      "message": "LGTM for style, adding nya@ as the author of logging.",
       "revId": "0b05e192649d51b724f8c6f345a63b00353e3ecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
