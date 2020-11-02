@@ -39,6 +39,30 @@
       },
       "revId": "024f196506d638271f68963ab0989468293f02fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81feae5a_996bee57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-11-02T14:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2efa37ad_560656bb",
+      "range": {
+        "startLine": 303,
+        "startChar": 68,
+        "endLine": 303,
+        "endChar": 71
+      },
+      "revId": "024f196506d638271f68963ab0989468293f02fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
