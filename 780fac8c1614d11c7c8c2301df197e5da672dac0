@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6614fbd3_d48f5205",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T05:48:02Z",
+      "side": 1,
+      "message": "The usage in RoamFT test looks OK so I\u0027ll put the sticky +2 on this one.",
+      "revId": "780fac8c1614d11c7c8c2301df197e5da672dac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
