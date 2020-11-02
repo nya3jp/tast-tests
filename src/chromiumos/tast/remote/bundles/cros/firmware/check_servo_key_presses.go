@@ -23,8 +23,9 @@ func init() {
 		Desc:        "Verifies that key presses can be initiated on the servo's keyboard emulator and that the DUT can receive them",
 		Contacts:    []string{"kmshelton@chromium.org", "cros-fw-engprod@google.com", "chromeos-firmware@google.com"},
 		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
-		Attr:        []string{"group:mainline", "informational"},
-		Vars:        []string{"servo"},
+		// TODO(http://b/156512140): Test is disabled until it can be fixed
+		// Attr:        []string{"group:mainline", "informational"},
+		Vars: []string{"servo"},
 	})
 }
 
