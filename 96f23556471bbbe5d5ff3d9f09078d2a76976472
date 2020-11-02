@@ -50,6 +50,24 @@
       "message": "Rather than disabling the test is it possible to add a dependency to only run the test on devices where it makes sense?",
       "revId": "96f23556471bbbe5d5ff3d9f09078d2a76976472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9616a0ab_9b3d23ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-02T18:06:07Z",
+      "side": 1,
+      "message": "Thats actually a good question, since the list changes with every build. It depends whether or not the build has passed CTS verification on the device. I am not sure how this information is surfaced to Play Store.\n\nI will look into adding it as a tast dependency to skip the test, but I not sure how easy or hard that will be to do.",
+      "parentUuid": "f7117023_c76fad16",
+      "revId": "96f23556471bbbe5d5ff3d9f09078d2a76976472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
