@@ -33,6 +33,29 @@
       "message": "lgtm",
       "revId": "056a536beabbe2bde2be4a12cd68617d51842678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e2c510a_f0f67a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-02T15:55:36Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we try to factor this out? It is exactly the same code as in the other CL linked in the commit message.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "056a536beabbe2bde2be4a12cd68617d51842678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
