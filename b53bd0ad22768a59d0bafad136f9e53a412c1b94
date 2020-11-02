@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de042127_c0581897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T03:34:03Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t know a good solution for it now and it is also why I suggested separating the two parts as the persistent setting in chrome shouldn\u0027t need polling and we can save a few chrome initialization there. Current version also LGTM. I\u0027ll take a look if there are other remote tests that need UI information and if we can refine this a little more.",
+      "parentUuid": "969a65af_510ecf84",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e200af3_33de091a",

@@ -16,6 +16,144 @@
       "message": "Does anyone know a good contact for review for the Tast extension JS portion?",
       "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2912c645_98ca1528",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T03:34:03Z",
+      "side": 1,
+      "message": "a few more nits. Generally looks good to me.",
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc62f4e_cd5b454d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T03:34:03Z",
+      "side": 1,
+      "message": "Not sure. Perhaps also maintainer of chrome package?",
+      "parentUuid": "688c9300_ed9b025f",
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f95e1b_11c260d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T03:34:03Z",
+      "side": 1,
+      "message": "nit: I guess it can be nil here?",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f22d87e4_3c85a8ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T03:34:03Z",
+      "side": 1,
+      "message": "question: how much time will this test take? Default timeout for a remote test is 5 minutes. As this test contains many time-consuming steps: e.g. TestFixture, ping, reboot, Chrome, I\u0027m not sure if 5 minutes are enough for it.",
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9906aa53_7280da27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T03:34:03Z",
+      "side": 1,
+      "message": "This is not used anymore?",
+      "range": {
+        "startLine": 53,
+        "startChar": 28,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e719cd2d_1f4f1330",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T03:34:03Z",
+      "side": 1,
+      "message": "minor nit: might be nice to have this closed before reboot as the old logic (e.g. wrapping line84-100 in an inline function.) But if wrapping yet another function is excessive, it also does no harm with current logic, IIUC.",
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caad76a5_0cd08182",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-02T03:34:03Z",
+      "side": 1,
+      "message": "minor nit: We might break polling (with testing.PollBreak) in this case? as the persistent setting shouldn\u0027t change.",
+      "range": {
+        "startLine": 135,
+        "startChar": 10,
+        "endLine": 135,
+        "endChar": 80
+      },
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
