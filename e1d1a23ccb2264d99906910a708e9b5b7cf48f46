@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8d414d_ae0fb069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-02T22:17:11Z",
+      "side": 1,
+      "message": "resultDiskSize",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "e1d1a23ccb2264d99906910a708e9b5b7cf48f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b694e9c5_db745def",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_installation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-02T22:17:11Z",
+      "side": 1,
+      "message": "maybe parsedSize to match the function call?  It doesn\u0027t actually have anything to do with results of this function.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 11
+      },
+      "revId": "e1d1a23ccb2264d99906910a708e9b5b7cf48f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34eead2c_8a1a4380",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-02T22:17:11Z",
+      "side": 1,
+      "message": "resultDiskSize",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 16
+      },
+      "revId": "e1d1a23ccb2264d99906910a708e9b5b7cf48f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
