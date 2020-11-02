@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5351487_a8ab1ddf",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T08:16:29Z",
+      "side": 1,
+      "message": "Same, shall we set timeout in tf.Reinit()?",
+      "revId": "5f853fb93d710e463f7bff90c3ce9adeb52ccfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a5e938_6037e2fc",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-02T08:16:29Z",
+      "side": 1,
+      "message": "tf.ReserveForClose() reserves 10 seconds for close[1]. Shall we either export the duration or make tf.Close(ctx) run with 10s timeout [2]? I prefer later approach.\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/test_fixture.go?l\u003d291\n\n[2] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/test_fixture.go?l\u003d312",
+      "range": {
+        "startLine": 95,
+        "startChar": 47,
+        "endLine": 95,
+        "endChar": 61
+      },
+      "revId": "5f853fb93d710e463f7bff90c3ce9adeb52ccfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
