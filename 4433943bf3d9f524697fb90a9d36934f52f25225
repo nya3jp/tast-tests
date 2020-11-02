@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8204d551_f90fe9d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "nit: policy: Add",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72278471_7d15634c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "nit: Add",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14aa04aa_04f4101a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "nit: securityPageElement",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d12430_e4a633fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "nit: standardElement",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "157a0c8e_9a5eef45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "nit: radioGroupElement",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca04f26_983e7a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "Please add comments to these two variables.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd032201_65d3ea94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "nit: no_protection\nsame style for the other 2 names",
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a341dd30_0d84a444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "Please add a comment on why do you need polling here instead of just checking once.",
+      "range": {
+        "startLine": 89,
+        "startChar": 21,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0607e583_9162b0b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "Could you break the poll here?",
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267212ff_c7658047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "nit: It should be \"; got %s, want %s\"\n\":\" is a divider between error levels.",
+      "range": {
+        "startLine": 96,
+        "startChar": 64,
+        "endLine": 96,
+        "endChar": 81
+      },
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46b0885_56e5fef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "nit: same as above.",
+      "range": {
+        "startLine": 112,
+        "startChar": 94,
+        "endLine": 112,
+        "endChar": 111
+      },
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ae1e2b_ec39cf55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-02T08:16:24Z",
+      "side": 1,
+      "message": "nit: there is only 1 variable in it, you can use it in one line.",
+      "range": {
+        "startLine": 115,
+        "startChar": 6,
+        "endLine": 117,
+        "endChar": 4
+      },
+      "revId": "4433943bf3d9f524697fb90a9d36934f52f25225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
