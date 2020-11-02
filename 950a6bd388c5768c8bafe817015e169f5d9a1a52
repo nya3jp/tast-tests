@@ -46,6 +46,30 @@
       },
       "revId": "950a6bd388c5768c8bafe817015e169f5d9a1a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afbe8d97_5fc7a1f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-11-02T21:51:43Z",
+      "side": 1,
+      "message": "Sure, thank you - it\u0027s more for the future, because I think we\u0027re going to have a good amount of similar changes.",
+      "parentUuid": "b99727ec_9a12019a",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "950a6bd388c5768c8bafe817015e169f5d9a1a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
