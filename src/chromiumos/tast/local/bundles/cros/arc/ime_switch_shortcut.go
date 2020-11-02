@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -94,23 +93,13 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 	if imeID, err = ime.GetCurrentInputMethod(ctx, tconn); err != nil {
 		s.Fatal("Failed to get current ime: ", err)
 	}
-
-	const (
-		chromeExtID   = "jkghodnilhceideoidjikpgommlajknk"
-		chromiumExtID = "fgoepimhcoialccpbmpnnblemnepkkao"
-	)
-
-	var extID string
-	if strings.Contains(imeID, chromeExtID) {
-		extID = chromeExtID
-	} else if strings.Contains(imeID, chromiumExtID) {
-		extID = chromiumExtID
-	} else {
-		s.Fatal("Unexpected default IME: ", imeID)
+	var imePrefix string
+	if imePrefix, err = ime.GetIMEPrefix(ctx, tconn); err != nil {
+		s.Fatal("Failed to get ime prefix: ", err)
 	}
 
-	usIMEID := "_comp_ime_" + extID + string(ime.INPUTMETHOD_XKB_US_ENG)
-	intlIMEID := "_comp_ime_" + extID + string(ime.INPUTMETHOD_XKB_US_INTL)
+	usIMEID := imePrefix + string(ime.INPUTMETHOD_XKB_US_ENG)
+	intlIMEID := imePrefix + string(ime.INPUTMETHOD_XKB_US_INTL)
 
 	if imeID != usIMEID {
 		s.Fatalf("US keyboard is not default: got %q; want %q", imeID, usIMEID)
