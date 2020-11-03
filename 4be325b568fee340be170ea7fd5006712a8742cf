@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72249519_ea0ad59e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-03T19:37:59Z",
+      "side": 1,
+      "message": "Putting this on hold. Checking with Kimmy/Ricky on where crosbold_perbuild data is stored.",
+      "revId": "4be325b568fee340be170ea7fd5006712a8742cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
