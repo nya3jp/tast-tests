@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c043a2_557c8b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-03T02:15:35Z",
+      "side": 1,
+      "message": "testCreate",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "701b347d59e3abb900928350c0dbab41445ce05d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05bdf006_7037fe94",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-03T02:15:35Z",
+      "side": 1,
+      "message": "optional: maybe better to avoid spaces here, so downloadLargeContainer",
+      "range": {
+        "startLine": 42,
+        "startChar": 35,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "701b347d59e3abb900928350c0dbab41445ce05d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ccca42a_e752f617",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-03T02:15:35Z",
+      "side": 1,
+      "message": "optional: you could just do iOptions.Mode \u003d\u003d DownloadLargeContainer here and remove the if statement and variable above.",
+      "range": {
+        "startLine": 192,
+        "startChar": 79,
+        "endLine": 192,
+        "endChar": 93
+      },
+      "revId": "701b347d59e3abb900928350c0dbab41445ce05d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
