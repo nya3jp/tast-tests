@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -44,6 +45,22 @@ func ArcCameraOrientation(ctx context.Context, s *testing.State) {
 		testResID    = pkg + ":id/test_result"
 		testResLogID = pkg + ":id/test_result_log"
 	)
+
+	cr := s.PreValue().(arc.PreData).Chrome
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get Test API connection: ", err)
+	}
+
+	// The testing app expects to be launched in the clamshell mode.
+	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to check if it is tablet mode: ", err)
+	}
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to enter clamshell mode")
+	}
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletMode)
 
 	a := s.PreValue().(arc.PreData).ARC
 	d, err := a.NewUIDevice(ctx)
