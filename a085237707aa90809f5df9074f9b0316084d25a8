@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0bed64_5a176203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-03T22:58:45Z",
+      "side": 1,
+      "message": "Anyone with subject-matter expertise. Generally, I think of tast-owners review as the \"readability\" portion of code review.",
+      "parentUuid": "55d7caba_d7ae6f7b",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51024c5e_f29694ba",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Done, but isn\u0027t it redundant with the description in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2515103/1/src/chromiumos/tast/services/cros/platform/upstart_service.proto ?",
       "parentUuid": "de524c8e_63fd6db2",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f28d5466_dcba330b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/upstart_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-03T22:58:45Z",
+      "side": 1,
+      "message": "Yes, it is. The advantage of having a docstring here is that it\u0027ll show up when viewing the package documentation in Godoc in your browser.",
+      "parentUuid": "04e5585f_e9bdfb0a",
       "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
