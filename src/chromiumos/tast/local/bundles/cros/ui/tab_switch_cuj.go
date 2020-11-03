@@ -18,7 +18,7 @@ func init() {
 		Func:         TabSwitchCUJ,
 		Desc:         "Measures the performance of tab-switching CUJ",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{tabswitchcuj.WPRArchiveName},
 		Timeout:      15 * time.Minute,
