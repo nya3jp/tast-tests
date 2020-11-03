@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "f2103cd4_b44d0afc",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
@@ -14,10 +15,28 @@
       "side": 1,
       "message": "I thought 5G is the default?",
       "revId": "2538afcb2b56f34b236ba382d47934930777f02f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca33b2a1_c6249aa1",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-03T22:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2103cd4_b44d0afc",
+      "revId": "2538afcb2b56f34b236ba382d47934930777f02f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "6b1a1d7e_62d61416",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
@@ -31,8 +50,25 @@
       "side": 1,
       "message": "Can we rename this precondition to reflect what it is (16G disk) rather than where it used (trace tests), as we are now using this in other non-trace tests.",
       "revId": "2538afcb2b56f34b236ba382d47934930777f02f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0463a9e1_b715f138",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-03T22:45:56Z",
+      "side": 1,
+      "message": "Using large container now.",
+      "parentUuid": "6b1a1d7e_62d61416",
+      "revId": "2538afcb2b56f34b236ba382d47934930777f02f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
