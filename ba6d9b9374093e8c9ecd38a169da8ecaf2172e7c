@@ -208,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93baf2b4_9b4d4e26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-11-03T21:39:15Z",
+      "side": 1,
+      "message": "niwa@\u0027s test might be doing a similar thing already? It starts Crostini first, then ARCVM IIRC.",
+      "parentUuid": "d537eed2_dc4d5b94",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d9fdccb_2b98d98d",
         "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
         "patchSetId": 6
