@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33b4aaac_fba7f51c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-11-03T18:07:07Z",
+      "side": 1,
+      "message": "The crostini tests that failed are known-flaky (https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1144612), at that point the best way forward is actually to chump: you won\u0027t get more test coverage with an extra CQ run, and extra CQ runs are just hogging lab resources.",
+      "revId": "5ebc661014403dcafb2f12be17e5bbd78afcee8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
