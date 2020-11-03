@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "396a75a1_0e3eb893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T18:47:45Z",
+      "side": 1,
+      "message": "Chumping this CL because the only test it is failing is known to be flaky.",
+      "revId": "3ba485b23c1be4615a074f91535eebca2f3801ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
