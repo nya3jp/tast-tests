@@ -33,6 +33,24 @@
       "message": "Should we restrict the test to intel wifi? If so, I think you can add a SoftwareDeps \"iwlwifi_rescan\"",
       "revId": "3fec88bad962a3c7cc62a58142b70dcfebe4c1e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25e0833_41a55e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-11-03T01:35:47Z",
+      "side": 1,
+      "message": "See my comment https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2515340/1#message-8e349526a3f71af9a4fc784021f8efe60464b71e\n\n|iwlwifi_rescan| is not enabled for all iwlwifi boards, only some of them. I don\u0027t think that would work",
+      "parentUuid": "42a2cc7e_4673c05a",
+      "revId": "3fec88bad962a3c7cc62a58142b70dcfebe4c1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
