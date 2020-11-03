@@ -16,6 +16,23 @@
       "message": "Rebased the branch and \"chromiumos/tast/local/android/ui\" added to the code.",
       "revId": "90de8a2867e2dc71a3b59b6b193bd702cca487ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5324a8f_7ecf7859",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-11-03T18:19:15Z",
+      "side": 1,
+      "message": "Logs from builders - it seems the test is failing in CQ. \n\ntast-local-tests-pita-0.0.2-r1668: --- FAIL: TestTimeout (0.01s)\ntast-local-tests-pita-0.0.2-r1668:     testcheck.go:48: arc.VerifySettings: timeout is too short (3m0s \u003c 4m50s)\ntast-local-tests-pita-0.0.2-r1668:     testcheck.go:48: arc.VerifySettings.vm: timeout is too short (3m0s \u003c 4m50s)\ntast-local-tests-pita-0.0.2-r1668: FAIL\ntast-local-tests-pita-0.0.2-r1668: FAIL\tchromiumos/tast/local/bundles/cros/arc\t0.310s\n\nVaibhav, is the test passing on your local setup consistently ?",
+      "revId": "90de8a2867e2dc71a3b59b6b193bd702cca487ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
