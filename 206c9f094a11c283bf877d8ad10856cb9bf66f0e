@@ -16,6 +16,24 @@
       "message": "I think we still need the Chrome login dependency.  https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/1586e49e8c7745dfadaf05963bf14796b9698434\n\nIf you run just the printer tests, do they run on the login screen or in OOBE?",
       "revId": "206c9f094a11c283bf877d8ad10856cb9bf66f0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7012934a_ce3409a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-03T21:24:08Z",
+      "side": 1,
+      "message": "The debugd.conf file starts debugd when the ui is started (on boot), so in theory I think the tests shouldn\u0027t need the Chrome login dependency. In practice removing it appears to cause some tests to flake and I\u0027m trying to figure out why. Locally the tests run perfectly without the chrome login dependency.",
+      "parentUuid": "f87998e9_e65323ce",
+      "revId": "206c9f094a11c283bf877d8ad10856cb9bf66f0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
