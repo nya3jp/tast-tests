@@ -79,7 +79,9 @@ func cleanFontDescriptors(contents string, re *regexp.Regexp) string {
 		})
 }
 
-func cleanPdfContents(contents string) string {
+// CleanPDFContents removes font 'IDs' and other PDF metadata that causes
+// discrepancies when attempting to perform a diff between PDF documents.
+func CleanPDFContents(contents string) string {
 	contents = cleanFontDescriptors(contents, cleanBaseFontRegex)
 	contents = cleanFontDescriptors(contents, cleanFontNameRegex)
 	return cleanPdfRegex.ReplaceAllLiteralString(contents, "")
@@ -90,8 +92,8 @@ func cleanPdfContents(contents string) string {
 // differences between the given file contents then the results of the diff are
 // written to diffPath.
 func CompareFileContents(ctx context.Context, output, golden, diffPath string) error {
-	output = cleanPdfContents(output)
-	golden = cleanPdfContents(golden)
+	output = CleanPDFContents(output)
+	golden = CleanPDFContents(golden)
 
 	testing.ContextLog(ctx, "Comparing output with golden file")
 	if diff := diff.Diff(output, golden); diff != "" {
