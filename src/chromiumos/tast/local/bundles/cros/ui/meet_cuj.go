@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
 )
@@ -114,6 +115,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
+
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
 
 	meet := s.Param().(meetTest)
 

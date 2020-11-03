@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -27,6 +28,11 @@ func init() {
 }
 
 func DesksChainedAnimationPerf(ctx context.Context, s *testing.State) {
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
+
 	// TODO(sammiequon): When the feature is fully launched, use chrome.LoggedIn() precondition.
 	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=EnhancedDeskAnimations"))
 	if err != nil {
