@@ -16,6 +16,23 @@
       "message": "nya@, please help to review this unfortunate CL since mukai@ is OOO and you have more contexts.\n\nIt is a mechanic CL. I added power.TurnOnDisplay to all UI perf and CUJ tests.",
       "revId": "29c102db7fabe7f6f323cce8758fb08378fcd835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93f391d_7e94ac9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-03T16:48:03Z",
+      "side": 1,
+      "message": "yichenz@, please help to proof read the CL. Thanks.",
+      "revId": "29c102db7fabe7f6f323cce8758fb08378fcd835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
