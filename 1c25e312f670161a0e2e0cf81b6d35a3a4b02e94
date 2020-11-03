@@ -33,6 +33,23 @@
       "message": "Katherine is and was OOO.",
       "revId": "1c25e312f670161a0e2e0cf81b6d35a3a4b02e94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf08cfe3_8bdb63cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-03T08:23:48Z",
+      "side": 1,
+      "message": "This can overwrite a previous faillog if multiple subtests are failing. Please modify to be like this: I5d40cf5aa80b773131a2814845dc581e9aef19d7",
+      "revId": "1c25e312f670161a0e2e0cf81b6d35a3a4b02e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
