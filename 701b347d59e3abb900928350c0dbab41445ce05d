@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee97a518_953d6105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-03T03:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2c043a2_557c8b71",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "701b347d59e3abb900928350c0dbab41445ce05d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05bdf006_7037fe94",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c554fe55_078b032d",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-03T03:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05bdf006_7037fe94",
+      "range": {
+        "startLine": 42,
+        "startChar": 35,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "701b347d59e3abb900928350c0dbab41445ce05d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ccca42a_e752f617",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-03T02:15:35Z",
       "side": 1,
       "message": "optional: you could just do iOptions.Mode \u003d\u003d DownloadLargeContainer here and remove the if statement and variable above.",
+      "range": {
+        "startLine": 192,
+        "startChar": 79,
+        "endLine": 192,
+        "endChar": 93
+      },
+      "revId": "701b347d59e3abb900928350c0dbab41445ce05d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c0a3f1_99781bda",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-03T03:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ccca42a_e752f617",
       "range": {
         "startLine": 192,
         "startChar": 79,
