@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f525b72_ca11f443",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-11-03T01:20:34Z",
+      "side": 1,
+      "message": "LGTM - you\u0027ll need to add tast-owners@ as a reviewer as well to get OWNERs review.",
+      "revId": "abe575c543785b0ce17e5105d6e70b7dfdcd12ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
