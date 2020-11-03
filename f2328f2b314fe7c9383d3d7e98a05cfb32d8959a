@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70fb86a7_a7edd42e",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-03T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b342eb46_fc52f76a",
+      "revId": "f2328f2b314fe7c9383d3d7e98a05cfb32d8959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b21f0aab_bbd07360",
@@ -66,6 +84,30 @@
       "writtenOn": "2020-11-02T07:08:30Z",
       "side": 1,
       "message": "The word \"status\" is slightly different from \"state\". To solve the name conflict, I would suggest:\n\ntype LinkStateType string\n...\nfunc (r *Runner) LinkState(ctx, iface) (LinkStateType, ...) {...}",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "f2328f2b314fe7c9383d3d7e98a05cfb32d8959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d0900a1_384f78d5",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-03T17:43:47Z",
+      "side": 1,
+      "message": "The showLink function is separated from MAC() by other CL. Now I can wrap that function and name my new function as State(). Mark as resolved.",
+      "parentUuid": "b21f0aab_bbd07360",
       "range": {
         "startLine": 41,
         "startChar": 17,
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb3fdbad_33547be1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-03T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58bba688_5ba772b6",
+      "range": {
+        "startLine": 781,
+        "startChar": 7,
+        "endLine": 781,
+        "endChar": 8
+      },
+      "revId": "f2328f2b314fe7c9383d3d7e98a05cfb32d8959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28002bd0_0d6984fc",
@@ -112,6 +178,30 @@
       "writtenOn": "2020-10-29T08:52:43Z",
       "side": 1,
       "message": "nit: \u0027--print-reply\u0027 and dump Output when error might provide some messages useful?",
+      "range": {
+        "startLine": 790,
+        "startChar": 11,
+        "endLine": 792,
+        "endChar": 11
+      },
+      "revId": "f2328f2b314fe7c9383d3d7e98a05cfb32d8959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dfc5338_2910a381",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-03T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28002bd0_0d6984fc",
       "range": {
         "startLine": 790,
         "startChar": 11,
