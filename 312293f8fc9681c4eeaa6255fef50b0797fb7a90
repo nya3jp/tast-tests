@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d2d539_2ebf421c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-11-03T23:02:56Z",
+      "side": 1,
+      "message": "Thanks for doing this! Do you mind explaining why configuring the network this way allows the ping to go through (for me and for posterity)? In particular, what part of the autotest network setup was preventing it?",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b39b7a09_1641819b",
@@ -36,6 +53,29 @@
         "startChar": 1,
         "endLine": 33,
         "endChar": 21
+      },
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a4624f_48311735",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-11-03T23:02:56Z",
+      "side": 1,
+      "message": "nit: bound",
+      "range": {
+        "startLine": 114,
+        "startChar": 62,
+        "endLine": 114,
+        "endChar": 68
       },
       "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -130,6 +170,47 @@
         "endLine": 229,
         "endChar": 56
       },
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "518061d2_6d4af6d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-11-03T23:02:56Z",
+      "side": 1,
+      "message": "Should be: https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/network_WiFi_RoamFT/network_WiFi_RoamFT.py;l\u003d128\n\nI forget the details (you can find them documented in the example hostapd.conf file), but you\u0027re supposed to include the keys of the APs you intend to roam to in one of the fields.",
+      "parentUuid": "517c9a8e_18902b4d",
+      "range": {
+        "startLine": 229,
+        "startChar": 52,
+        "endLine": 229,
+        "endChar": 56
+      },
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bcc1487_eef201fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-11-03T23:02:56Z",
+      "side": 1,
+      "message": "Can we leave a TODO(b/171086223) somewhere here? We still have the same problem as with RoamDbus where the BSSID changing only really means we\u0027ve initiated the roam attempt as opposed to actually connecting.",
       "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
