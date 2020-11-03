@@ -16,6 +16,29 @@
       "message": "Hi Brendan,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "5a2948a73dab0a7d37001f601bb06af59a79a1c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73cb198d_3a1fcef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/flipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-03T22:25:47Z",
+      "side": 1,
+      "message": "This can be removed since you now use \"(?i)\" below.",
+      "range": {
+        "startLine": 94,
+        "startChar": 47,
+        "endLine": 94,
+        "endChar": 65
+      },
+      "revId": "5a2948a73dab0a7d37001f601bb06af59a79a1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
