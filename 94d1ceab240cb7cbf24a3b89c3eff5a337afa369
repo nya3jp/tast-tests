@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c525a801_ae8d1d9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-03T04:57:39Z",
+      "side": 1,
+      "message": "LGTM, I\u0027ll put the sticky +2 and defer to others.",
+      "revId": "94d1ceab240cb7cbf24a3b89c3eff5a337afa369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

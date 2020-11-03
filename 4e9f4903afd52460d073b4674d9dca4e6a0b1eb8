@@ -135,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe83445_dcbaa748",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-03T04:57:39Z",
+      "side": 1,
+      "message": "No, it\u0027s not included. Default 5 minutes sound safe in this case.\n\nbtw, you can see the time used in the test in log or a \"timing.json\" in the result dir",
+      "parentUuid": "306a7cd3_a451f703",
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9906aa53_7280da27",
