@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/debugd"
+	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -29,12 +30,18 @@ func CleanPSContents(content string) string {
 		// Matches the embedded ghostscript version in the PS file.
 		// This gets outdated on every gs uprev, so we strip it out.
 		`(?m)(^(%%Creator: GPL Ghostscript .*` +
-			// Remove postscript creation date
+			// Removes the postscript creation date.
 			`|%%CreationDate: D:.*` +
-			// Remove gs invocation command
+			// Removes the ghostscript invocation command.
 			`|%%Invocation: .*` +
-			// Remove additional lines of invocation command
+			// Removes additional lines of the ghostscript invocation command.
 			`|%%\+ .*` +
+			// Removes time metadata for PCLm Jobs.
+			`|% *job-start-time: .*` +
+			// Removes PDF xref objects (they contain byte offsets).
+			`|\d{10} \d{5} [fn] *` +
+			// Removes the byte offset of a PDF xref object.
+			`|startxref[\r\n]+\d+[\r\n]+%%EOF` +
 			// For Brother jobs, jobtime and printlog item 2 contain
 			// time-specific values.
 			`|@PJL SET JOBTIME = .*` +
@@ -55,10 +62,8 @@ func CleanPSContents(content string) string {
 			`|/Time \(\d+\)` +
 			// For Ricoh jobs, "(\d+) lppswd" contains the date
 			// and time of the print job.
-			`|\(\d+\) lppswd` +
-			// Remove time metadata for PCLm Jobs
-			`|% *job-start-time: .*[\r\n]`)
-	return r.ReplaceAllLiteralString(content, "")
+			`|\(\d+\) lppswd`)
+	return r.ReplaceAllLiteralString(document.CleanPDFContents(content), "")
 }
 
 // Run executes the main test logic with given parameters.
