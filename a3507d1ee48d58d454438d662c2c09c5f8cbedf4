@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8caab661_cc5967e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-03T13:42:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3ca1bc8_c6e5e235",
+      "revId": "a3507d1ee48d58d454438d662c2c09c5f8cbedf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6aa31f79_29b65786",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "992efe26_790bfbf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-03T13:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aa31f79_29b65786",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "a3507d1ee48d58d454438d662c2c09c5f8cbedf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a69ec7f6_26cb4626",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-11-02T16:21:02Z",
       "side": 1,
       "message": "nit: Waiting for load",
+      "range": {
+        "startLine": 89,
+        "startChar": 13,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "a3507d1ee48d58d454438d662c2c09c5f8cbedf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f50898_f9577e59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-03T13:42:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a69ec7f6_26cb4626",
       "range": {
         "startLine": 89,
         "startChar": 13,
