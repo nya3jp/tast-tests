@@ -22,12 +22,11 @@ func init() {
 		Func: ExistingUserLogin,
 		Desc: "Checks that an existing device user can login from the login screen",
 		Contacts: []string{
-			"kyleshima@chromium.org",
-			"bhansknecht@chromium.org",
-			"dhaddock@chromium.org",
+			"chromeos-sw-engprod@google.com",
+			"cros-oac@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars: []string{
 			"ui.signinProfileTestExtensionManifestKey",
 			"ui.oac_username",
