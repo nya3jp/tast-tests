@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25738209_d93f404e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-03T17:52:46Z",
+      "side": 1,
+      "message": "I\u0027d be a little worried that, in the current revision, changes to the UI strings could break this test without breaking the underlying functionality, but I\u0027m not sure there\u0027s much expectation of that.",
+      "revId": "3cda08f1619d3d99bfac8f5c1b386e74656eb4fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
