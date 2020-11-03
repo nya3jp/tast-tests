@@ -68,6 +68,24 @@
       "parentUuid": "bf08cfe3_8bdb63cf",
       "revId": "1c25e312f670161a0e2e0cf81b6d35a3a4b02e94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51604913_c65701f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-03T10:06:04Z",
+      "side": 1,
+      "message": "Please move it after Run(), before \"// Perform cleanup.\" to be like the other tests.",
+      "parentUuid": "5e09fd53_d506d2dd",
+      "revId": "1c25e312f670161a0e2e0cf81b6d35a3a4b02e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
