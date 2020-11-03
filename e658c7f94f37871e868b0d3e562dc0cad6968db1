@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc16c5c6_c54081c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/input_method_management.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2020-11-03T21:55:14Z",
+      "side": 1,
+      "message": "Thanks :D",
+      "parentUuid": "6fad2845_a78d0ad1",
+      "range": {
+        "startLine": 33,
+        "startChar": 21,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "e658c7f94f37871e868b0d3e562dc0cad6968db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f20dfc8_07343354",
