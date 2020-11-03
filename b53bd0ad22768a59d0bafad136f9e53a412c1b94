@@ -141,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac80698_2a576bdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-03T01:53:46Z",
+      "side": 1,
+      "message": "I\u0027ll keep it as is for now.",
+      "parentUuid": "de042127_c0581897",
+      "revId": "b53bd0ad22768a59d0bafad136f9e53a412c1b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e200af3_33de091a",
