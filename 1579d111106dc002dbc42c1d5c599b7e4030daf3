@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "6686fa1f_baac0c9e",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,34 @@
         "endChar": 57
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3d9613_ddd80c0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6686fa1f_baac0c9e",
+      "range": {
+        "startLine": 7,
+        "startChar": 54,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "cf5fa246_536f0593",
         "filename": "/PATCHSET_LEVEL",
@@ -37,10 +62,10 @@
       "side": 1,
       "message": "lgtm\n\nmight as well add the same test-owner as the 1st CL now",
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "545a0d79_e4c0866f",
         "filename": "/PATCHSET_LEVEL",
@@ -54,10 +79,10 @@
       "side": 1,
       "message": "Initial pass.",
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "08e663ae_1d60a3ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -77,10 +102,10 @@
         "endChar": 47
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ce36fe70_d871776b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -100,10 +125,34 @@
         "endChar": 9
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ebe1b3f_8c720d38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce36fe70_d871776b",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "0d57ee9a_653b6129",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -123,10 +172,34 @@
         "endChar": 8
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "274dadf2_48570dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d57ee9a_653b6129",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 8
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "30c2379f_c5c54f7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -146,10 +219,34 @@
         "endChar": 49
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc6bb41_5d79052b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "To my knowledge, no parser for this content is available.",
+      "parentUuid": "30c2379f_c5c54f7c",
+      "range": {
+        "startLine": 127,
+        "startChar": 46,
+        "endLine": 127,
+        "endChar": 49
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "a32e4fc7_f40bdbdf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -169,10 +266,34 @@
         "endChar": 3
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "879e182a_35fab998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "(TODO)",
+      "parentUuid": "a32e4fc7_f40bdbdf",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 3
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "7e39cc68_25e0095d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -192,10 +313,34 @@
         "endChar": 17
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5d39991_a523a3ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "I think checking values is correct here since there is a valid case where both \u0027values\u0027 and \u0027err\u0027 are nil, which indicates that the table was not present at all (which isn\u0027t an error).",
+      "parentUuid": "7e39cc68_25e0095d",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 17
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3d37d452_64c91c1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -215,10 +360,34 @@
         "endChar": 31
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e892e433_df7007d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d37d452_64c91c1d",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 31
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "d029e238_94e0678c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -238,10 +407,34 @@
         "endChar": 39
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "69da846c_fbf62d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "(TODO)",
+      "parentUuid": "d029e238_94e0678c",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 39
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "491f342d_9ce492c6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -261,10 +454,34 @@
         "endChar": 60
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad5d8867_01742417",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "491f342d_9ce492c6",
+      "range": {
+        "startLine": 237,
+        "startChar": 14,
+        "endLine": 237,
+        "endChar": 60
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "4251e099_dad46640",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -284,10 +501,10 @@
         "endChar": 24
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9acf4e8e_15870ac5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -307,10 +524,58 @@
         "endChar": 81
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e380a73_5446da91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4251e099_dad46640",
+      "range": {
+        "startLine": 242,
+        "startChar": 21,
+        "endLine": 242,
+        "endChar": 24
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b76f8d_a9ff2ee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9acf4e8e_15870ac5",
+      "range": {
+        "startLine": 242,
+        "startChar": 73,
+        "endLine": 242,
+        "endChar": 81
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "fcd9bb06_376a2d47",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
@@ -330,8 +595,31 @@
         "endChar": 63
       },
       "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9545f152_9cb56b34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "(TODO)",
+      "parentUuid": "fcd9bb06_376a2d47",
+      "range": {
+        "startLine": 257,
+        "startChar": 47,
+        "endLine": 257,
+        "endChar": 63
+      },
+      "revId": "1579d111106dc002dbc42c1d5c599b7e4030daf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

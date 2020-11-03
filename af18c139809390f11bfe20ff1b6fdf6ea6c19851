@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5841b377_54b1b76c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T00:08:50Z",
+      "side": 1,
+      "message": "Hi Keigo, thanks for all the helpful comments. Sorry for taking so long to get around to these changes.\n\nRecently, a P0 regression was found (b:172034758) which is related to this test. We think that the contents of this test may help us diagnose the issue, but we need these changes to be merged first. I\u0027ve implemented all of your suggestions which could be made quickly, but there are a few that would take up more time than I have right now (unit tests, unit changes, etc). Would you be willing to sign off on this patch on the condition that the incomplete suggestions be completed shortly after this P0 issue is resolved? I\u0027ve responded to the incomplete suggestions with \"(TODO)\" as a indication of my intent to complete them shortly.",
+      "revId": "af18c139809390f11bfe20ff1b6fdf6ea6c19851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
