@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eec0a58_47d12dc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-03T21:07:47Z",
+      "side": 1,
+      "message": "Per go/tast-reviews, please also get CR from a relevant test owner.",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51024c5e_f29694ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/upstart_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-03T21:07:47Z",
+      "side": 1,
+      "message": "Please add a godoc-style docstring for this top-level exported struct, per https://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de524c8e_63fd6db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/upstart_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-03T21:07:47Z",
+      "side": 1,
+      "message": "Please add a godoc-style docstring for this top-level exported method, per https://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e3a092_e3b19941",
+        "filename": "src/chromiumos/tast/services/cros/platform/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-03T21:07:47Z",
+      "side": 1,
+      "message": "Update this line to also refer to UpstartService",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8acd3e_83ceefb6",
+        "filename": "src/chromiumos/tast/services/cros/platform/upstart_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-03T21:07:47Z",
+      "side": 1,
+      "message": "nit/typo: Remove extra space after \"//\", and change plural \"upstart jobs\" into singular \"upstart job\".",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5fc72ed_dc656966",
+        "filename": "src/chromiumos/tast/services/cros/platform/upstart_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-03T21:07:47Z",
+      "side": 1,
+      "message": "Tast gRPCs already return an error alongside the response object, so this attribute is redundant. I recommend changing the RPC to return empty:\n\n    import \"google/protobuf/empty.proto\";\n    // BREAK\n    service UpstartService {\n        rpc CheckJob (CheckJobRequest) returns CheckJobResponse) {}\n    }\n\nThis would also change the contents of CheckJob in upstart_service.go:\n\n    import (\n        ...\n        \"github.com/golang/protobuf/ptypes/empty\"\n        ...\n    )\n    // BREAK\n    func (UpstartService) CheckJob(ctx context.Context, request *platform.CheckJobRequest) (*empty.Empty, error) {\n        if err :\u003d upstart.CheckJob(ctx, request.JobName); err !\u003d nil {\n            return nil, err\n        }\n        return \u0026empty.Empty{}, nil\n    }\n\nFor an example of an RPC returning empty, you can look at the firmware.BlockingSync RPC:\n\n* Protobuf: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/services/cros/firmware/utils_service.proto?q\u003dutils_service.proto\n* RPC implementation: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go?q\u003dBlockingSync",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
