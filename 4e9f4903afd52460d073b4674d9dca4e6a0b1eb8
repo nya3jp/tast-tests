@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0edb8f_6bb8ae4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-03T01:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11f95e1b_11c260d8",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f22d87e4_3c85a8ed",
@@ -89,6 +113,24 @@
       "writtenOn": "2020-11-02T03:34:03Z",
       "side": 1,
       "message": "question: how much time will this test take? Default timeout for a remote test is 5 minutes. As this test contains many time-consuming steps: e.g. TestFixture, ping, reboot, Chrome, I\u0027m not sure if 5 minutes are enough for it.",
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "306a7cd3_a451f703",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-03T01:53:46Z",
+      "side": 1,
+      "message": "Avg time for me is 2:30 with the reboot. I think it\u0027s longer if you need to emerge things for the first time, but I don\u0027t think that\u0027s part of the 5 minute timeout?",
+      "parentUuid": "f22d87e4_3c85a8ed",
       "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "790a5c7c_c63bd66a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-03T01:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9906aa53_7280da27",
+      "range": {
+        "startLine": 53,
+        "startChar": 28,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e719cd2d_1f4f1330",
@@ -133,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54dab83f_9898c38d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-03T01:53:46Z",
+      "side": 1,
+      "message": "That makes sense, I\u0027ll add a comment to the code block and the previous one to explain why I\u0027m wrapping them in the function.",
+      "parentUuid": "e719cd2d_1f4f1330",
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "caad76a5_0cd08182",
@@ -146,6 +230,30 @@
       "writtenOn": "2020-11-02T03:34:03Z",
       "side": 1,
       "message": "minor nit: We might break polling (with testing.PollBreak) in this case? as the persistent setting shouldn\u0027t change.",
+      "range": {
+        "startLine": 135,
+        "startChar": 10,
+        "endLine": 135,
+        "endChar": 80
+      },
+      "revId": "4e9f4903afd52460d073b4674d9dca4e6a0b1eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "504954ca_d62a953b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-03T01:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caad76a5_0cd08182",
       "range": {
         "startLine": 135,
         "startChar": 10,
