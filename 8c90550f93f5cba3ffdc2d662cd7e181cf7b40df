@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70110a53_b9510dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dddf9916_05b9cdbb",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 68
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70e66bbc_200fd0a0",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-30T13:17:39Z",
       "side": 1,
       "message": "Can you try putting the variations in a testing table, and use a second layer of s.Run() here?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 4
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92092b42_3535014b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70e66bbc_200fd0a0",
       "range": {
         "startLine": 108,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c6f6134_f77a7151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f3e3ad6_4e6225bf",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 1
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b6c529a_e19b2fad",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-30T13:17:39Z",
       "side": 1,
       "message": "This could also go to the common package.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 1
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27673949_951550b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b6c529a_e19b2fad",
       "range": {
         "startLine": 194,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c2521c7_096b398c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24eb8c2c_a8cf8a35",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 2
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d1c724b_fabfb01c",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-10-30T13:17:39Z",
       "side": 1,
       "message": "Please add error handling.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 2
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46e628bd_5cfe1673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1c724b_fabfb01c",
       "range": {
         "startLine": 260,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd6742f_881a7689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad2c872_675574c6",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 17
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0162e44a_9d12dfef",
@@ -175,6 +343,24 @@
       "writtenOn": "2020-10-30T13:17:39Z",
       "side": 1,
       "message": "This could also go to the common package.",
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17d9926_7c4f38b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0162e44a_9d12dfef",
       "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b7eef6f_9c763e23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f7a7b51_4cf74be1",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 2
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84d9159e_bd91e5ef",
@@ -215,6 +425,30 @@
       "writtenOn": "2020-10-30T13:17:39Z",
       "side": 1,
       "message": "This could also go to the common package.",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 17
+      },
+      "revId": "8c90550f93f5cba3ffdc2d662cd7e181cf7b40df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61431802_57a51112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d9159e_bd91e5ef",
       "range": {
         "startLine": 336,
         "startChar": 0,

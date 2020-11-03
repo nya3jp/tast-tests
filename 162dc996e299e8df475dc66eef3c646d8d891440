@@ -312,6 +312,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9067b7b7_2c0540aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced3b695_5b7d53c5",
+      "range": {
+        "startLine": 156,
+        "startChar": 64,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19974a84_bca2f18d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced3b695_5b7d53c5",
+      "range": {
+        "startLine": 156,
+        "startChar": 64,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66476b81_b7d9cfa6",
@@ -349,6 +397,30 @@
       "side": 1,
       "message": "Good catch.",
       "parentUuid": "66476b81_b7d9cfa6",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 10
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "235f1b10_711e49ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "562ac4c5_cc158384",
       "range": {
         "startLine": 190,
         "startChar": 1,

@@ -719,6 +719,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff471e60_070938ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-03T13:03:09Z",
+      "side": 1,
+      "message": "As I replied to Alex:\nI would debate on that. Doc says:\n\nLog and Logf record informational messages about the test\u0027s progress.\nWhen you‘re about to do something that could take a while or even hang, log a message using Log or Logf first.\nUI interactions involve waiting or interacting with something that may go away. Good practice in (especially) UI automation is to log high level execution so, that when looking at the logs one could perform the test without looking into the code.",
+      "parentUuid": "5461c475_8393aa79",
+      "revId": "6a49a168178152f3274b7954f90c788d615bdc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddbf6336_955e57bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 1
