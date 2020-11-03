@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad06cee_d61faf2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T18:47:14Z",
+      "side": 1,
+      "message": "Chumping this CL because the only test it is failing is known to be flaky.",
+      "revId": "3fec88bad962a3c7cc62a58142b70dcfebe4c1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42a2cc7e_4673c05a",
