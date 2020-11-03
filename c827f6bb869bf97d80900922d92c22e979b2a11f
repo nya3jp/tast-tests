@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c855362_4fb49ca2",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-03T17:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "128f1eb2_e4c12f88",
+      "revId": "c827f6bb869bf97d80900922d92c22e979b2a11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e89a1ed_957219c7",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-02T04:59:38Z",
       "side": 1,
       "message": "maybe also check the length? I think it should be 256bits from the hostapd config manual.",
+      "range": {
+        "startLine": 574,
+        "startChar": 83,
+        "endLine": 575,
+        "endChar": 3
+      },
+      "revId": "c827f6bb869bf97d80900922d92c22e979b2a11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa0c26e_e093d494",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-03T17:48:01Z",
+      "side": 1,
+      "message": "Hmm, in fact, the keys used in network_WiFi_RoamFT.py is actually 128 bits...\n\nI took a look at the source in third_party/wpa_supplicant and found out that it is really 128 bits:\nhttp://cs/chromeos_public/src/third_party/wpa_supplicant/src/ap/wpa_auth.h;l\u003d117\n\nHowever, in wpa_supplicant-2.9 it is 256 bits.\n\nIt seems like that hostapd is not checking the key length:\nhttp://cs/chromeos_public/src/third_party/wpa_supplicant/hostapd/config_file.c?l\u003d911\nhttp://cs/chromeos_public/src/third_party/wpa_supplicant/src/utils/common.c?l\u003d170\n\nSince it will still work fine if we provide a key exceeding maximum length, while a key which is not long enough may probably break something, I think we should restrict our keys to 256 bits then.",
+      "parentUuid": "4e89a1ed_957219c7",
       "range": {
         "startLine": 574,
         "startChar": 83,
