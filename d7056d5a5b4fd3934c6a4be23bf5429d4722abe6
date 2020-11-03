@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6054129b_5e8750b0",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-03T05:17:02Z",
+      "side": 1,
+      "message": "minor nit: not sure if it\u0027s simpler to use slice directly:\n\n  routers :\u003d []string{\n    companionName(s, dut.CompanionSuffixRouter),\n    companionName(s, dut.CompanionSuffixPcap),\n  }\n  s.Logf(\"companion routers: %v\", routers)\n  ops \u003d append(ops, TFRouter(routers...))",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 55
+      },
+      "revId": "d7056d5a5b4fd3934c6a4be23bf5429d4722abe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc21bec5_4d0e0f40",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-03T05:17:02Z",
+      "side": 1,
+      "message": "not really sure if the change here is needed as we already have the same \"default value\" logic in NewTestFixture? (similar for the pcap case)",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 3
+      },
+      "revId": "d7056d5a5b4fd3934c6a4be23bf5429d4722abe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58ddc3a_061a2e51",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-03T05:17:02Z",
+      "side": 1,
+      "message": "Isn\u0027t this \"-attenuator\" only? (at least, the Autotest version is using \"-attenuator\")",
+      "range": {
+        "startLine": 147,
+        "startChar": 29,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "d7056d5a5b4fd3934c6a4be23bf5429d4722abe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4969c2_f01b94f8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-03T05:17:02Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 204,
+        "startChar": 13,
+        "endLine": 204,
+        "endChar": 26
+      },
+      "revId": "d7056d5a5b4fd3934c6a4be23bf5429d4722abe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
