@@ -51,6 +51,24 @@
       "parentUuid": "42a2cc7e_4673c05a",
       "revId": "3fec88bad962a3c7cc62a58142b70dcfebe4c1e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4fe52e4_761e8061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-03T02:02:27Z",
+      "side": 1,
+      "message": "I see. Let\u0027s run it first to collect data given it is P0.",
+      "parentUuid": "b25e0833_41a55e6a",
+      "revId": "3fec88bad962a3c7cc62a58142b70dcfebe4c1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
