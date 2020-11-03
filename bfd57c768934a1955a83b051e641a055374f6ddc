@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f05793c_72633ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_games.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-03T23:50:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8662baed_af9682c1",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "bfd57c768934a1955a83b051e641a055374f6ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a67c4d6_7b831ee2",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-03T22:23:53Z",
       "side": 1,
       "message": "This can be removed since you now use \"(?i)\" below.",
+      "range": {
+        "startLine": 89,
+        "startChar": 28,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "bfd57c768934a1955a83b051e641a055374f6ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45cb0c6b_789e16a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_games.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-03T23:50:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a67c4d6_7b831ee2",
       "range": {
         "startLine": 89,
         "startChar": 28,

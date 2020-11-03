@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4e54424_a6570019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_games.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-03T23:50:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9760c5c8_1d88e325",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "cc2d589196db15c6916c789bb9f2eb45c751172b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1d2285b_48ba185f",
