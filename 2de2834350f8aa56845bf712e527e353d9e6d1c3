@@ -16,6 +16,23 @@
       "message": "Thanks for the review! PTAL at the latest patchset :) ",
       "revId": "2de2834350f8aa56845bf712e527e353d9e6d1c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "643142d4_1c1632ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-11-03T22:52:47Z",
+      "side": 1,
+      "message": "friendly ping :) ",
+      "revId": "2de2834350f8aa56845bf712e527e353d9e6d1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
