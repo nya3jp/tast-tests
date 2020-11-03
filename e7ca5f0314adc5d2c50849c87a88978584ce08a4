@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac58d314_db4b126f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/upstart_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-03T22:58:45Z",
+      "side": 1,
+      "message": "nit/style: You can make this slightly more concise:\n\n    return \u0026empty.Empty{}, upstart.CheckJob(ctx, request.JobName)",
+      "revId": "e7ca5f0314adc5d2c50849c87a88978584ce08a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
