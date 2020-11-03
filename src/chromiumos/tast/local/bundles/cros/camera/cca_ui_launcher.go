@@ -46,14 +46,11 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 	}
 
 	// Only tests clicking camera icon on launcher under clamshell mode since all apps will minimize when the launcher shows up in tablet mode.
-	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
-		s.Fatal("Failed to check if it is tablet mode: ", err)
+		s.Fatal("Failed to ensure in clamshell mode: ", err)
 	}
-	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to enter clamshell mode")
-	}
-	defer ash.SetTabletModeEnabled(ctx, tconn, tabletMode)
+	defer cleanup(ctx)
 
 	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
 	if err != nil {
