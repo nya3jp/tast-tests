@@ -35,6 +35,12 @@ func CleanPSContents(content string) string {
 			`|%%Invocation: .*` +
 			// Remove additional lines of invocation command
 			`|%%\+ .*` +
+			// Remove time metadata for PCLm Jobs
+			`|% *job-start-time: .*` +
+			// Remove PDF xref objects (they contain byte offsets)
+			`|\d{10} \d{5} [fn]` +
+			// Remove PDF byte offset to most recent xref object
+			`|startxref[\r\n]\d+[\r\n]%%EOF` +
 			// For Brother jobs, jobtime and printlog item 2 contain
 			// time-specific values.
 			`|@PJL SET JOBTIME = .*` +
@@ -55,9 +61,7 @@ func CleanPSContents(content string) string {
 			`|/Time \(\d+\)` +
 			// For Ricoh jobs, "(\d+) lppswd" contains the date
 			// and time of the print job.
-			`|\(\d+\) lppswd` +
-			// Remove time metadata for PCLm Jobs
-			`|% *job-start-time: .*[\r\n]`)
+			`|\(\d+\) lppswd`)
 	return r.ReplaceAllLiteralString(content, "")
 }
 
