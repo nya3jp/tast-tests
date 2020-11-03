@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9760c5c8_1d88e325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_games.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-03T22:03:22Z",
+      "side": 1,
+      "message": "Yes, that is what WaitForExist does, just give it a longer timeout and remove the testing.Poll",
+      "parentUuid": "b09711ea_2bbeca2f",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "cc2d589196db15c6916c789bb9f2eb45c751172b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1d2285b_48ba185f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_play_games.go",
         "patchSetId": 1
