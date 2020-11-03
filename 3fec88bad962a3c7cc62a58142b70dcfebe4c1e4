@@ -16,6 +16,23 @@
       "message": "LGTM considering this is required to help with a P0. For the future we\u0027ll need to only run on iwlwifi boards. There\u0027s apparently a temporary solution in the works https://crrev.com/c/2512245, hopefully \"soon\" replaced by hardware dependencies",
       "revId": "3fec88bad962a3c7cc62a58142b70dcfebe4c1e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a2cc7e_4673c05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-03T01:09:11Z",
+      "side": 1,
+      "message": "Should we restrict the test to intel wifi? If so, I think you can add a SoftwareDeps \"iwlwifi_rescan\"",
+      "revId": "3fec88bad962a3c7cc62a58142b70dcfebe4c1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
