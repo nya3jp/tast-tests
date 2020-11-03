@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7317f3d7_847afe2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T02:33:45Z",
+      "side": 1,
+      "message": "To your first point, getRawSARValuesAndCheckVersion() is used for Geo tables and non-Geo tables, so the exact format varies slightly. That\u0027s why the actual formats are spelled out specifically in getSARTableFromASL() and getGeoSARTableFromASL(), which each make their own calls to getRawSARValuesAndCheckVersion().\n\nTo your second point, done.",
+      "parentUuid": "a8311f17_0e9137e5",
+      "revId": "e501835397fd7a53cbbe0c6483fa8348f3fa89a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "395688ed_064c7564",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a49a515_dcfea7e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T02:33:45Z",
+      "side": 1,
+      "message": "I believe that is the code that indicates these values are relevant to WiFi, but I\u0027m not 100% sure.",
+      "parentUuid": "395688ed_064c7564",
+      "revId": "e501835397fd7a53cbbe0c6483fa8348f3fa89a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04b22e1f_2e6fdef4",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
         "patchSetId": 9
@@ -65,6 +101,30 @@
       "writtenOn": "2020-11-03T01:46:30Z",
       "side": 1,
       "message": "table: got %d values; want %d",
+      "range": {
+        "startLine": 163,
+        "startChar": 57,
+        "endLine": 163,
+        "endChar": 62
+      },
+      "revId": "e501835397fd7a53cbbe0c6483fa8348f3fa89a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1ae91a_40b201fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-11-03T02:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04b22e1f_2e6fdef4",
       "range": {
         "startLine": 163,
         "startChar": 57,
