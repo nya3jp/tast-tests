@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c07ce42_d81de3e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/upstart_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-03T22:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51024c5e_f29694ba",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de524c8e_63fd6db2",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-11-03T21:07:47Z",
       "side": 1,
       "message": "Please add a godoc-style docstring for this top-level exported method, per https://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e5585f_e9bdfb0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/upstart_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-03T22:48:51Z",
+      "side": 1,
+      "message": "Done, but isn\u0027t it redundant with the description in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2515103/1/src/chromiumos/tast/services/cros/platform/upstart_service.proto ?",
+      "parentUuid": "de524c8e_63fd6db2",
       "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d37d6610_ec941a11",
+        "filename": "src/chromiumos/tast/services/cros/platform/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-03T22:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8e3a092_e3b19941",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff8acd3e_83ceefb6",
@@ -82,6 +136,24 @@
       "writtenOn": "2020-11-03T21:07:47Z",
       "side": 1,
       "message": "nit/typo: Remove extra space after \"//\", and change plural \"upstart jobs\" into singular \"upstart job\".",
+      "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f958341e_a5414e3f",
+        "filename": "src/chromiumos/tast/services/cros/platform/upstart_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-03T22:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff8acd3e_83ceefb6",
       "revId": "a085237707aa90809f5df9074f9b0316084d25a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
