@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ffaa535_f9006807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-03T01:02:54Z",
+      "side": 1,
+      "message": "Please get Afshin\u0027s review too before submitting",
+      "revId": "5e11508d0794315eb4ff8e0f83c1391bf460ba4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9efef317_d207e3f9",
+        "filename": "src/chromiumos/tast/common/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-03T01:02:54Z",
+      "side": 1,
+      "message": "mention -1 on error?",
+      "revId": "5e11508d0794315eb4ff8e0f83c1391bf460ba4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d29e859_aba45363",
+        "filename": "src/chromiumos/tast/common/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-03T01:02:54Z",
+      "side": 1,
+      "message": "probably need to comment on what this return value is in all of these functions?",
+      "range": {
+        "startLine": 273,
+        "startChar": 46,
+        "endLine": 273,
+        "endChar": 51
+      },
+      "revId": "5e11508d0794315eb4ff8e0f83c1391bf460ba4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
