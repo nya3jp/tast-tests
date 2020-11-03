@@ -49,9 +49,7 @@ master
 
 # \bred.?line           - clean
 # rtfm                  - clean
-
-sane
-#    - see crbug/1135047
+# \bsane\b              - clean
 
 sanity
 #    - see crbug/1135049

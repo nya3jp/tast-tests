@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: SensorAccel,
-		Desc: "Tests that accelerometer sensors can be read and give sane data",
+		Desc: "Tests that accelerometer sensors can be read and give valid data",
 		Contacts: []string{
 			"gwendal@chromium.com", // Chrome OS sensors point of contact
 			"mathewk@chromium.org", // Test author

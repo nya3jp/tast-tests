@@ -51,7 +51,7 @@ func ServeBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.
 		return errors.Wrap(err, "failed to create Test API connection")
 	}
 
-	// Refresh policies and make sure Chrome is still sane.
+	// Refresh policies and make sure Chrome is still valid.
 	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)()`, nil); err != nil {
 		return errors.Wrap(err, "failed to refresh policies")
 	}

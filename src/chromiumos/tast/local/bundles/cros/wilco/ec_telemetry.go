@@ -32,7 +32,7 @@ func init() {
 // commands. The Wilco EC is able to return telemetry information (such
 // as temperature and fan state) via sysfs: You write a binary command
 // to the sysfs file, the kernel driver performs some filtering on the
-// command to ensure it is sane, and the EC returns the binary result,
+// command to ensure it is valid, and the EC returns the binary result,
 // to be read from the same file. You must keep the file descriptor open
 // between the read and write for the response to be kept. This test
 // checks for end-to-end communication with the EC, and checks that the
