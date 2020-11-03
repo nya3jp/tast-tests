@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d1bae08_97056841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-11-03T02:48:25Z",
+      "side": 1,
+      "message": "yes, this is ACPI_WIFI_DOMAIN in the driver",
+      "parentUuid": "2a49a515_dcfea7e5",
+      "revId": "e501835397fd7a53cbbe0c6483fa8348f3fa89a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04b22e1f_2e6fdef4",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
         "patchSetId": 9
