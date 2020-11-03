@@ -13,10 +13,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OOBESmoke,
-		Desc:         "Smoke test that clicks through OOBE",
-		Contacts:     []string{"bhansknecht@chromium.org", "dhaddock@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func: OOBESmoke,
+		Desc: "Smoke test that clicks through OOBE",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+			"cros-oac@google.com",
+		},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }
