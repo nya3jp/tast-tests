@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc1712df_d461d91a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-03T18:50:10Z",
+      "side": 1,
+      "message": "The flag that this cl toggles allows this cl https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2500407 to work. Without this change, I\u0027m not able to toggle a user preference setting properly. I\u0027m not sure how this flag is relevant, but it\u0027s the minimal change I need for the other cl to work.\n\nThanks!",
+      "revId": "c25a4fd4b391159a1353a366c9bbd157de437283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
