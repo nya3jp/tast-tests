@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -49,6 +50,11 @@ func init() {
 }
 
 func WindowCyclePerf(ctx context.Context, s *testing.State) {
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
+
 	cr, l, cs, err := lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)

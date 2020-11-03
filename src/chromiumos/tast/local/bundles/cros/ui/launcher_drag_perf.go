@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -39,13 +40,18 @@ func init() {
 		Params: []testing.Param{{
 			Pre: ash.LoggedInWith100FakeApps(),
 		}, {
-			Name:              "skia_renderer",
-			Pre:               ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
+			Name: "skia_renderer",
+			Pre:  ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
 		}},
 	})
 }
 
 func LauncherDragPerf(ctx context.Context, s *testing.State) {
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
+
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

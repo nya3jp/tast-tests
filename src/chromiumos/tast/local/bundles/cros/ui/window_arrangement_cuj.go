@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -61,6 +62,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		timeout  = 10 * time.Second
 		duration = 2 * time.Second
 	)
+
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
