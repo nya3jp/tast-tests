@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9330ba7e_8504e11e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-03T22:19:57Z",
+      "side": 1,
+      "message": "Sorry for the slow review.",
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4675583f_d27b82cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/input_method_management.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-03T22:19:57Z",
+      "side": 1,
+      "message": "Do we want this in the ui package, if there are going to be a lot of imesettings tests, can we put this in and imesettings package?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce122cef_0399db78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/input_method_management.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-03T22:19:57Z",
+      "side": 1,
+      "message": "Since ime.WaitForInstalledInputMethod exists, would it be worth making the equivalent ime.WaitForRemovedInputMethod",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a550c8d_a49b0089",
+        "filename": "src/chromiumos/tast/local/chrome/ui/imesettings/imesettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-03T22:19:57Z",
+      "side": 1,
+      "message": "you should probably make this in the main test body and pass it into this function, on certain devices/configurations, this can be an expense actions that we don\u0027t want to repeat multiple times in a test. In this case, it is not repeated, but if another test calls this method, it may be.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f11e643b_36db1a07",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-03T22:19:57Z",
+      "side": 1,
+      "message": "This could be replaced with regex lookup of a node:\n\n ui.FindParams{\n   Attributes: map[string]interface{}{\"name\": regexp.MustCompile(\"Settings.*\")}\n   Role: ...\n }\n\nI think I got the syntax right.",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 3
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a55d2672_a124c3de",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-03T22:19:57Z",
+      "side": 1,
+      "message": "nit: DescendantNodeWithTimeout",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 19
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f8440c_f3a3cf20",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-03T22:19:57Z",
+      "side": 1,
+      "message": "I am not exactly sure I like that this just forces a specific timeout, I think it would be better to pass in a timeout for future callers.",
+      "range": {
+        "startLine": 217,
+        "startChar": 52,
+        "endLine": 217,
+        "endChar": 66
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
