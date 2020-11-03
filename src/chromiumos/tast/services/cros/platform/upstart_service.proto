@@ -1,0 +1,23 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.platform;
+
+option go_package = "chromiumos/tast/services/cros/platform";
+
+// UpstartService provides RPC methods for interacting with upstart.
+service UpstartService {
+  //  Check that the given upstart jobs is running.
+  rpc CheckJob(CheckJobRequest) returns (CheckJobResponse) {}
+}
+
+message CheckJobRequest {
+  string job_name = 1;
+}
+
+message CheckJobResponse {
+  string error = 1;
+}

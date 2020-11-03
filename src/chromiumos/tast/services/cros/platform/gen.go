@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. boot_perf_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. upstart_service.proto
 
 // Package platform provides the BootPerfService.
 package platform
