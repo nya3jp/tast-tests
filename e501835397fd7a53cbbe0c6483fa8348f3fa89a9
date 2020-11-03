@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f7850a_e203c136",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-03T01:46:30Z",
+      "side": 1,
+      "message": "Some nits; mostly comment related.",
+      "revId": "e501835397fd7a53cbbe0c6483fa8348f3fa89a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8311f17_0e9137e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-03T01:46:30Z",
+      "side": 1,
+      "message": "It would be great to attach the format of SAR \"data\". Is it the same as the example in getGeoSARTablesFromASL()? If so, move the example to here.\n\nPlease add a brief description for the two line, e.g. what\u0027s the content in the outer {} and the inner {}.",
+      "revId": "e501835397fd7a53cbbe0c6483fa8348f3fa89a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395688ed_064c7564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-03T01:46:30Z",
+      "side": 1,
+      "message": "What does the value mean?",
+      "revId": "e501835397fd7a53cbbe0c6483fa8348f3fa89a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b22e1f_2e6fdef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-03T01:46:30Z",
+      "side": 1,
+      "message": "table: got %d values; want %d",
+      "range": {
+        "startLine": 163,
+        "startChar": 57,
+        "endLine": 163,
+        "endChar": 62
+      },
+      "revId": "e501835397fd7a53cbbe0c6483fa8348f3fa89a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
