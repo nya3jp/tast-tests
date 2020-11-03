@@ -484,8 +484,8 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	//   _10: top-right corner of the stencil.
 	//   _11: bottom-right corner of the stencil.
 	//   _01: bottom-left corner of the stencil.
-	edgeOffset := 7
-	stencilW := 2
+	edgeOffset := 5
+	stencilW := 5
 	innerCorners := map[string]struct {
 		x, y int
 	}{
