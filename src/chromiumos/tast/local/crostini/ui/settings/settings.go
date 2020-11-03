@@ -92,7 +92,7 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, subSettings 
 		return nil, errors.Wrap(err, "failed to open the Settings app")
 	}
 	defer func() {
-		if err != nil {
+		if err != nil && s != nil {
 			s.Close(ctx)
 		}
 	}()
