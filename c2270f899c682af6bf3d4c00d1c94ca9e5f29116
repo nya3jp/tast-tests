@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cadd7ab9_4cad27f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-03T01:50:51Z",
+      "side": 1,
+      "message": "shortcut break here",
+      "revId": "c2270f899c682af6bf3d4c00d1c94ca9e5f29116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
