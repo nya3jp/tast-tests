@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d41e53e_5320b489",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-04T08:08:36Z",
+      "side": 1,
+      "message": "I understand that we need updating Close, but having a separate CL for this (just add context.Context to Close without actually using it) might make your life easier when you encounter merge conflicts.\n\nFor example, let\u0027s say we had to revert this change for UI test failures due to subtle difference in networking. Then we have to revert modifications to Close as well, which has higher chance of conflicts.",
+      "parentUuid": "e35dfa06_b3d69ac8",
+      "revId": "7e1c9a3d9f97fcc36c805213e9588274b05ecbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ac7d2ea_f82b3c33",
         "filename": "src/chromiumos/tast/local/android/adb/device.go",
         "patchSetId": 2
