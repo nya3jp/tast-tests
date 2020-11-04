@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "f6c80404_a6c4d547",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
@@ -14,10 +15,28 @@
       "side": 1,
       "message": "Why do you need to click the top left?",
       "revId": "b79ea3ccd866baa9d2f2c7bea461787ce547b594",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab4f9ed7_f1334c12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T00:12:54Z",
+      "side": 1,
+      "message": "To focus. Clicking the centre would not work because the lower part of the window is not the editing area.",
+      "parentUuid": "f6c80404_a6c4d547",
+      "revId": "b79ea3ccd866baa9d2f2c7bea461787ce547b594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "2cefa0e5_e6bf8d9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
@@ -31,10 +50,28 @@
       "side": 1,
       "message": "Optional: should this be made into a general FocusWindow function?",
       "revId": "b79ea3ccd866baa9d2f2c7bea461787ce547b594",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d0b76f_edea8621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T00:12:54Z",
+      "side": 1,
+      "message": "Not really, it is not shared by other app testing.",
+      "parentUuid": "2cefa0e5_e6bf8d9d",
+      "revId": "b79ea3ccd866baa9d2f2c7bea461787ce547b594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "44c60814_6f7a69fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
@@ -48,8 +85,25 @@
       "side": 1,
       "message": "Why do you need to click the bottom right?",
       "revId": "b79ea3ccd866baa9d2f2c7bea461787ce547b594",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad3ac906_0c4f85cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T00:12:54Z",
+      "side": 1,
+      "message": "After pressed ctrl+X and ctrl+C, it needs to type y on the bottom of the window. The mouse is on the top editing area.",
+      "parentUuid": "44c60814_6f7a69fe",
+      "revId": "b79ea3ccd866baa9d2f2c7bea461787ce547b594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
