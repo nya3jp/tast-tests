@@ -16,6 +16,23 @@
       "message": "It seems the change in transition timing is causing hotseat hide metrics to get lost.\nStill looking into exactly what is happening, but I think this change makes sense regardless.",
       "revId": "5998e3d16575f224d9a63a1af2809f17ec4bb8fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "956f42b9_522ccad3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-04T23:59:03Z",
+      "side": 1,
+      "message": "lgtm too.\n\nTast owners, please approve. Thanks.",
+      "revId": "5998e3d16575f224d9a63a1af2809f17ec4bb8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
