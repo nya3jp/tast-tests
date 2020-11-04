@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6db5412b_bb5a7c0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-04T09:44:06Z",
+      "side": 1,
+      "message": "nit: Please replace TODO with something meaningful",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 9
+      },
+      "revId": "83b42ea931f72b25daf41e5207231ff43c1a8eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b7f224e_f730c7b4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -31,6 +54,23 @@
       "writtenOn": "2020-11-04T08:32:10Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "83b42ea931f72b25daf41e5207231ff43c1a8eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3f61bd_91956a45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-04T09:44:06Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "83b42ea931f72b25daf41e5207231ff43c1a8eff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
