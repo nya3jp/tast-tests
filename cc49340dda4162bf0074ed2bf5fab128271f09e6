@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cfe4ccd_4bb336b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-11-04T22:30:31Z",
+      "side": 1,
+      "message": "LGTM based on comments from other CLs. Leaving a chance for nya@ to see.",
+      "revId": "cc49340dda4162bf0074ed2bf5fab128271f09e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
