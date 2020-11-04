@@ -1,0 +1,200 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401be209_bb62e920",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-04T19:26:42Z",
+      "side": 1,
+      "message": "\u003e \"virutal\" is a possible misspelling of \"virtual\".\n\nPlease fix.",
+      "parentUuid": "d6dd9147_b15ba186",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43dff94e_0c759769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-04T19:26:42Z",
+      "side": 1,
+      "message": "nit: \"Failed\" for consistency",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a5ae92c_bb6fff3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-04T19:26:42Z",
+      "side": 1,
+      "message": "nit: \"Failed\" for consistency",
+      "range": {
+        "startLine": 116,
+        "startChar": 11,
+        "endLine": 116,
+        "endChar": 15
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ae1256_46422aeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-04T19:26:42Z",
+      "side": 1,
+      "message": "what was the point of this change? Is this for attempting to stabilize the test?",
+      "range": {
+        "startLine": 29,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2735fba3_007a2c26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-04T19:26:42Z",
+      "side": 1,
+      "message": "nit: \"Failed\" for consistency",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3030898_f51d9d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-04T19:26:42Z",
+      "side": 1,
+      "message": "Maybe not for this CL, but does this TODO have a bug associated?",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "492b7d79_dad8c61b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-04T19:26:42Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba58ce2a_bf2ce43b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-04T19:26:42Z",
+      "side": 1,
+      "message": "What\u0027s the long sleep for?",
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60075d54_c4f2a932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-04T19:26:42Z",
+      "side": 1,
+      "message": "nit: \"Failed\" for consistency",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
