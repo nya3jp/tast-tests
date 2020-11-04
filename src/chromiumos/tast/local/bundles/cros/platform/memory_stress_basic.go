@@ -45,8 +45,7 @@ func init() {
 		Func:     MemoryStressBasic,
 		Desc:     "Create heavy memory pressure and check if oom-killer is invoked",
 		Contacts: []string{"vovoy@chromium.org", "chromeos-memory@google.com"},
-		// TODO(http://b/172074406): Test is disabled until it can be fixed
-		// Attr:     []string{"group:crosbolt", "crosbolt_memory_nightly"},
+		Attr:     []string{"group:crosbolt", "crosbolt_memory_nightly"},
 		// This test takes 15-30 minutes to run.
 		Timeout: 45 * time.Minute,
 		Data: []string{
@@ -151,9 +150,7 @@ func stressTestCase(ctx context.Context, perfValues *perf.Values, localRand *ran
 		return testCaseResult{}, errors.Wrap(err, "cannot start chrome")
 	}
 
-	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
-	defer cancel()
-	if err := cpu.WaitUntilIdle(waitCtx); err != nil {
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return testCaseResult{}, errors.Wrap(err, "failed to wait for idle CPU")
 	}
 
@@ -184,7 +181,7 @@ func stressTestCase(ctx context.Context, perfValues *perf.Values, localRand *ran
 		return testCaseResult{}, errors.Wrap(err, "failed to connect to test API")
 	}
 
-	histogramNames := []string{"Browser.Responsiveness.JankyIntervalsPerThirtySeconds", "Arc.LowMemoryKiller.FirstKillLatency"}
+	histogramNames := []string{"Browser.Responsiveness.JankyIntervalsPerThirtySeconds", "Memory.LowMemoryKiller.FirstKillLatency"}
 	startHistograms, err := metrics.GetHistograms(ctx, tconn, histogramNames)
 	if err != nil {
 		return testCaseResult{}, errors.Wrap(err, "failed to get histograms")
