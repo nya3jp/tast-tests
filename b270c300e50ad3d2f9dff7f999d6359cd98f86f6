@@ -16,6 +16,24 @@
       "message": "Alexis, I think this is a cleaner way to add metrics, since in theory each MemoryTask could have its own custom metrics. It also allows tests to control exactly when during a test metrics are collected.\n\nWhat do you think?",
       "revId": "b270c300e50ad3d2f9dff7f999d6359cd98f86f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc54b82c_1cde26a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2020-11-04T06:20:35Z",
+      "side": 1,
+      "message": "I think that it definitely makes sense to move perf.Metrics into testEnv. The fact that I wasn\u0027t really collecting metrics during the specific tasks plus the lack of calling task.Close meant that I didn\u0027t run into the short-coming here, but I definitely agree that it will add more flexibility.",
+      "parentUuid": "d25bbac6_86f1e54a",
+      "revId": "b270c300e50ad3d2f9dff7f999d6359cd98f86f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
