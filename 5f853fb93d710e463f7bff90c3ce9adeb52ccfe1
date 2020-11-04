@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "393c6037_77427c84",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T10:34:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5351487_a8ab1ddf",
+      "revId": "5f853fb93d710e463f7bff90c3ce9adeb52ccfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52a5e938_6037e2fc",
