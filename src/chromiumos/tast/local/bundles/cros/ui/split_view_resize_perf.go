@@ -81,7 +81,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain the orientation info: ", err)
 	}
-	rotation := -orientation.Angle
 	if orientation.Type == display.OrientationPortraitPrimary {
 		info, err := display.GetPrimaryInfo(ctx, tconn)
 		if err != nil {
@@ -91,7 +90,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to rotate display: ", err)
 		}
 		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
-		rotation += 90
 	}
 
 	var pointerController pointer.Controller
