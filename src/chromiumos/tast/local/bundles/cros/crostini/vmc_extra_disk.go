@@ -83,7 +83,7 @@ func VmcExtraDisk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create an extra disk image: ", err)
 	}
 
-	const vmName = "tast_vmc_extra_disk_vm"
+	const vmName = "tast_extra_disk_vm"
 
 	// Run `vmc create $vmName`
 	if err := vmc.Command(ctx, hash, "create", vmName).Run(testexec.DumpLogOnError); err != nil {
