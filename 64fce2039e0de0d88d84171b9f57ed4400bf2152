@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fded1d1_c04a0fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T23:16:27Z",
+      "side": 1,
+      "message": "If you are capturing the output logs in case there is an error, it might be cleaner to pass testexec.DumpLogOnError to Run() instead. This automatically dumps out the streams you did not capture.\n\nThat way, you can limit which streams you are capturing to only what you need to produce the summary (e.g. Stdout). Lines 93-102 could be reduced to:\n\nexePath :\u003d filepath.Join(\"/usr/local/libexec/igt-gpu-tools\", testOpt.exe)\ncmd :\u003d textexec.CommandContext(ctx, exePath)\nb, err :\u003d cmd.Output(textexec.DumpLogOnError)\n...\nresults :\u003d summarizeLog(bytes.NewReader(b))\n...",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82d14671_c350e10f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T23:16:27Z",
+      "side": 1,
+      "message": "Is it correct that you expect this program to always return a non-zero exit code if any tests failed? Alternatively, would it be better to check that results.failed is actually 0?\n\nAs it seems your behaviour is to append the summary after the error from cmd.Run() anyway, I think it would be cleaner to deal with the exit code and results seperately. Tast should concatenate these anyway when producing the final failure string for the test. I.E. You could replace lines 105 down with:\n\nif err !\u003d nil {\n   s.Errorf(\"Error running %s: %v\", exePath, err)\n}\n\nif results.passed+results.failed+results.skipped \u003e 0 {\n   summary :\u003d fmt.Sprintf(\"Ran %d subtests with %d failures and %d skipped\",\n\t\t\tresults.passed+results.failed, results.failed, results.skipped)\n   if results.failed \u003e 0 {\n      s.Error(summary);\n   } else {\n      s.Log(summary);\n   }\n} else {\n   s.Error(\"No tests were run\")\n}\n\n(Personally, I probably wouldn\u0027t bother \u0027failed to run\u0027 case from the \u0027failure while running\u0027 case. The error message should tell you that anyway. But as another reviewer suggested this I\u0027m happy for you to do this if you want to.)",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af425ed6_0a7b5b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T23:16:27Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this say \"Failed to run\" and the other one \"Error running\"? (the former sounds to me more like a failure to start, the latter sounds like a failure while running). Ignore if eliminating this case due to comment above.",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
