@@ -7,6 +7,7 @@ package testserver
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -141,6 +142,19 @@ func Launch(ctx context.Context, cr *chrome.Chrome) (*InputsTestServer, error) {
 func (its *InputsTestServer) Close() {
 	its.conn.Close()
 	its.server.Close()
+}
+
+// WaitForFieldToBeActive waits for certain input field to be the active element.
+func (its *InputsTestServer) WaitForFieldToBeActive(ctx context.Context, inputField InputField) error {
+	return its.conn.WaitForExpr(ctx, fmt.Sprintf(`!!document.activeElement && document.querySelector("*[aria-label='%s']")===document.activeElement`, string(inputField)))
+}
+
+// ClickFieldAndWaitForActive clicks the input field and waits for it to be active.
+func (its *InputsTestServer) ClickFieldAndWaitForActive(ctx context.Context, tconn *chrome.TestConn, inputField InputField) error {
+	if err := inputField.Click(ctx, tconn); err != nil {
+		return errors.Wrapf(err, "failed to click %s", string(inputField))
+	}
+	return its.WaitForFieldToBeActive(ctx, inputField)
 }
 
 // Click clicks the input field.
