@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d2663df_869eb3da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T05:18:37Z",
+      "side": 1,
+      "message": "One possible mitigation, have the constants typed and prefixed. While they\u0027re still in package level, it is less likely to collide with prefix and if someone mis-reference the constants, they\u0027ll get type error. e.g.\n\n  type disconnectTrigger\n  const (\n    dtAPGone disconnectTrigger \u003d \"AP Gone\"\n    ...\n  )\n\n(I\u0027m not sure if \"dt\" is a good prefix, but \"disconnectTrigger\" is too verbose for me. :p)",
+      "parentUuid": "70011bda_247b9bd8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db94fe65_e7fbb4c7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -112,6 +136,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a5a5e0b_cec763a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T05:18:37Z",
+      "side": 1,
+      "message": "Looks like other \"disconnect triggers\" go Fatal directly. Any reason for this Error?",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 10
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a21a7ac3_f08726ba",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -123,6 +170,29 @@
       "writtenOn": "2020-11-03T10:13:06Z",
       "side": 1,
       "message": "there\u0027s some chance that DUT can miss the frame, so might need to send more than once. Also, power save setting will be an issue. (as the case in wifi.*CSA* tests)",
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3293c1_c94a8f70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T05:18:37Z",
+      "side": 1,
+      "message": "Hmm... a little redundant as we already schedule one deferred disconnect above. I guess your intention for this is to Error on disconnect error specifically on this case? If so, perhaps we can have a flag like \"var expectDisconnectErr bool\" to branch in the previous disconnect?\n\n(One missed cleanup might be that profile entry of AP2 might not be removed, but as Reinit will clean it for us, I\u0027m not too worried about the case.)",
+      "range": {
+        "startLine": 185,
+        "startChar": 16,
+        "endLine": 185,
+        "endChar": 35
+      },
       "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
