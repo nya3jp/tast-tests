@@ -90,6 +90,30 @@
       },
       "revId": "16d7a7d89b8f0d3b83ff16741cf2c06f87050b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eafa608b_430527aa",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-11-04T03:05:47Z",
+      "side": 1,
+      "message": "nice, thanks!!",
+      "parentUuid": "7f9d5c03_538c4b8a",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "16d7a7d89b8f0d3b83ff16741cf2c06f87050b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
