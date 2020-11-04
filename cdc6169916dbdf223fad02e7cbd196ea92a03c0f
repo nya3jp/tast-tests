@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f8162eb_26c655a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-11-04T08:12:10Z",
+      "side": 1,
+      "message": "IIUC we get err set when there is any failure. Even if the executable doesn\u0027t crash but runs to the end, which is the normal case. So \"Failed to run\" is misleading. Is it possible to distinguish a crash from a normal failure?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "cdc6169916dbdf223fad02e7cbd196ea92a03c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
