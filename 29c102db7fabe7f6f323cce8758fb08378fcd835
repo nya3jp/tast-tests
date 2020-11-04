@@ -33,6 +33,23 @@
       "message": "yichenz@, please help to proof read the CL. Thanks.",
       "revId": "29c102db7fabe7f6f323cce8758fb08378fcd835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7baee9b_39e3a4a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-04T08:26:59Z",
+      "side": 1,
+      "message": "I agree it\u0027s unfortunate. I hope it is resolved by graphics test side.\n",
+      "revId": "29c102db7fabe7f6f323cce8758fb08378fcd835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
