@@ -48,6 +48,7 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not initialize UI Automator: ", err)
 	}
+	defer d.Close(ctx)
 
 	s.Log("Creating a virtual gamepad device")
 	gp, err := input.Gamepad(ctx)

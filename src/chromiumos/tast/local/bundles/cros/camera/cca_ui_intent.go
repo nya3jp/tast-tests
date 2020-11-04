@@ -120,6 +120,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
+	defer uiDevice.Close(ctx)
 
 	s.Log("Installing camera intent testing app")
 	if err := a.Install(ctx, s.DataPath(testAppAPK)); err != nil {

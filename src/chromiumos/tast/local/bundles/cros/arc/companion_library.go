@@ -116,7 +116,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get device: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	// Using HTTP server to provide image for wallpaper setting, because this chrome API don't support local file and gs file.
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))

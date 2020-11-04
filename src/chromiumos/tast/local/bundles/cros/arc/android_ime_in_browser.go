@@ -71,7 +71,7 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer dev.Close()
+	defer dev.Close(ctx)
 
 	s.Log("Installing IME service")
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {

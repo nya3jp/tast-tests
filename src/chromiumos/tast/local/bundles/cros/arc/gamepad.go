@@ -211,7 +211,7 @@ func Gamepad(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	gp, err := input.Gamepad(ctx)
 	if err != nil {

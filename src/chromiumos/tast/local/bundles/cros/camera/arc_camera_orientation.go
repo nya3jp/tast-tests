@@ -64,7 +64,7 @@ func ArcCameraOrientation(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	s.Log("Installing app and granting needed permission")
 	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
