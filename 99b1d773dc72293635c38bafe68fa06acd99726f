@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b74fd68_6fcf260c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-04T07:41:51Z",
+      "side": 1,
+      "message": "Modified to return a struct.",
+      "parentUuid": "a66f2b00_fe97aee8",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 89
+      },
+      "revId": "99b1d773dc72293635c38bafe68fa06acd99726f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79a329a5_9bed8312",
@@ -172,6 +196,30 @@
       "writtenOn": "2020-11-04T07:10:26Z",
       "side": 1,
       "message": "Errorf won\u0027t terminate the test, but I like Ilja\u0027s suggestion too. \n\nIf you don\u0027t mind the error being concatenated after the first message in stainless/tastboard, you could still raise it below, but use Errorf instead of Logf (if failed \u003e 0).",
+      "parentUuid": "cb3dbffe_20bec27f",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "99b1d773dc72293635c38bafe68fa06acd99726f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da7e9d91_c2aa3e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-04T07:41:51Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "cb3dbffe_20bec27f",
       "range": {
         "startLine": 95,
