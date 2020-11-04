@@ -289,7 +289,7 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	// Wait for shelf/hotseat animations to complete to ensure shelf bounds are stable when the test
 	// starts.
 	if err := ash.WaitForStableShelfBounds(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for location changes: ", err)
+		s.Fatal("Failed to wait for stable shelf bounds: ", err)
 	}
 
 	type testSetting struct {

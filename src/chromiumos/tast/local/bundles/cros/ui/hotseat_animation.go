@@ -150,6 +150,12 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	// Changing tablet mode may change the shelf/hotseat bounds. Make sure the bounds
+	// stabilize before starting tests.
+	if err := ash.WaitForStableShelfBounds(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for stable shelf bouds: ", err)
+	}
+
 	// Prepare the touch screen as this test requires touch scroll events.
 	tsw, err := input.Touchscreen(ctx)
 	if err != nil {
