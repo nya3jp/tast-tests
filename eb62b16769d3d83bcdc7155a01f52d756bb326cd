@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ab0eca_d5f94f8c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-04T19:32:52Z",
+      "side": 1,
+      "message": "The function doesn\u0027t report the results. It simply saves the file so that the upload process can pick it up later.",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 38
+      },
+      "revId": "eb62b16769d3d83bcdc7155a01f52d756bb326cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5614cc_07634091",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-04T19:32:52Z",
+      "side": 1,
+      "message": "runTraceReplayInVM \nBetter not to expose the function if we don\u0027t need to.",
+      "range": {
+        "startLine": 217,
+        "startChar": 5,
+        "endLine": 217,
+        "endChar": 23
+      },
+      "revId": "eb62b16769d3d83bcdc7155a01f52d756bb326cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81e7399_e113246c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-04T19:32:52Z",
+      "side": 1,
+      "message": "It seems the only difference is perfValues?\nIf that\u0027s the case, how about adding a parameter to decide if we save the perfValue or not?",
+      "range": {
+        "startLine": 279,
+        "startChar": 5,
+        "endLine": 279,
+        "endChar": 31
+      },
+      "revId": "eb62b16769d3d83bcdc7155a01f52d756bb326cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
