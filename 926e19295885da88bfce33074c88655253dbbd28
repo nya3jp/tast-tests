@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51df35df_e7a8febf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-04T11:01:57Z",
+      "side": 1,
+      "message": "minor nit: add quotes",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "926e19295885da88bfce33074c88655253dbbd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bea705c_621c0b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-04T11:01:57Z",
+      "side": 1,
+      "message": "Maybe 60 seconds here to make sure we avoid chrome webstore flakiness?",
+      "range": {
+        "startLine": 140,
+        "startChar": 34,
+        "endLine": 140,
+        "endChar": 36
+      },
+      "revId": "926e19295885da88bfce33074c88655253dbbd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b350ecc_c7def8d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-04T11:01:57Z",
+      "side": 1,
+      "message": "Maybe move this at the beginning of the test. Previous tests might have also installed this extension.",
+      "revId": "926e19295885da88bfce33074c88655253dbbd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
