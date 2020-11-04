@@ -115,6 +115,24 @@
       "message": "same as above.",
       "revId": "5b121c93ab8985949083fddab71edae8bde7a2cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04eb2f9_cac828b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T08:26:20Z",
+      "side": 1,
+      "message": "This is fixed.",
+      "parentUuid": "0ce9b9da_e9582a68",
+      "revId": "5b121c93ab8985949083fddab71edae8bde7a2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
