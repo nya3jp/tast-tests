@@ -13,7 +13,9 @@ import (
 	"context"
 	"io"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"strconv"
 
 	"chromiumos/tast/bundle"
 	"chromiumos/tast/errors"
@@ -188,10 +190,48 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 	}
 }
 
+func logKillSyscall(ctx context.Context) (func(ctx context.Context) error, error) {
+	cmd := exec.Command("auditctl", "-D")
+	if err := cmd.Run(); err != nil {
+		return nil, err
+	}
+	for _, arch := range []string{"b32", "b64"} {
+		cmd = exec.Command("auditctl",
+			"-a", "always,exit", "-F", "arch="+arch, "-S", "kill",
+			"-F", "success=1", "-F", "a0="+strconv.Itoa(os.Getpid()))
+		if err := cmd.Run(); err != nil {
+			return nil, err
+		}
+	}
+	cmd = exec.Command("auditctl", "-a", "never,exit")
+	if err := cmd.Run(); err != nil {
+		return nil, err
+	}
+	cmd = exec.Command("auditctl", "-a", "never,exclude", "-F", "msgtype!=AVC",
+		"-F", "msgtype!=SELINUX_ERR", "-F", "msgtype!=SECCOMP", "-F", "msgtype!=SYSCALL")
+	if err := cmd.Run(); err != nil {
+		return nil, err
+	}
+
+	return func(ctx context.Context) error {
+		cmd := exec.Command("auditctl", "-D")
+		if err := cmd.Run(); err != nil {
+			return err
+		}
+		cmd = exec.Command("auditctl", "-a", "never,exclude", "-F", "msgtype!=AVC",
+			"-F", "msgtype!=SELINUX_ERR", "-F", "msgtype!=SECCOMP")
+		if err := cmd.Run(); err != nil {
+			return err
+		}
+		return nil
+	}, nil
+}
+
 // RunLocal is an entry point function for local bundles.
 func RunLocal() {
 	os.Exit(bundle.LocalDefault(bundle.LocalDelegate{
 		Ready:    ready.Wait,
+		RunHook:  logKillSyscall,
 		TestHook: testHookLocal,
 	}))
 }
