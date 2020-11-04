@@ -472,6 +472,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d4a8985_603d4c4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T07:34:11Z",
+      "side": 1,
+      "message": "This seems exactly the same as the ContextLogf above. Do we need another copy in log? (in case of file write error?) If so, perhaps fmt.Sprintf once and use it in the two places?",
+      "range": {
+        "startLine": 230,
+        "startChar": 30,
+        "endLine": 232,
+        "endChar": 46
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5cdfd6b_c13cbb23",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 2
@@ -586,6 +609,29 @@
         "startChar": 0,
         "endLine": 314,
         "endChar": 59
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f11802_8dca4ee8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T07:34:11Z",
+      "side": 1,
+      "message": "nit: merge into \"if _, err :\u003d tf.ConnectWifiAP(ctx, ap); err !\u003d nil {\" ?",
+      "range": {
+        "startLine": 326,
+        "startChar": 2,
+        "endLine": 327,
+        "endChar": 17
       },
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -711,6 +757,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca917ef6_c2723f27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T07:34:11Z",
+      "side": 1,
+      "message": "The Autotest version does a sanity check of the connection with \"wait_for_connection\" call (including state check and ping) before running netperf. Do you think it is useful here?",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd82c850_b026f858",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 2
@@ -722,6 +785,24 @@
       "writtenOn": "2020-10-30T15:50:47Z",
       "side": 1,
       "message": "Some comment why this is not fatal might be handy.",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf5a893_d8eb5e3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T07:34:11Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "bd82c850_b026f858",
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
