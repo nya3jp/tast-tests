@@ -52,6 +52,23 @@
       "parentUuid": "0c1175fb_d486d62e",
       "revId": "ebe99e81e992f165b04cee93706706ba76729cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ec176b_0ee8edce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-04T03:29:22Z",
+      "side": 1,
+      "message": "can you please resolve the merge conflict as some of these were already marked informational",
+      "revId": "ebe99e81e992f165b04cee93706706ba76729cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
