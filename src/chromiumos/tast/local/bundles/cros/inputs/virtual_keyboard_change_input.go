@@ -49,6 +49,9 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		defaultInputMethod       = string(ime.INPUTMETHOD_XKB_US_ENG)
 		defaultInputMethodLabel  = "US"
 		defaultInputMethodOption = "US keyboard"
+		// TODO(crbug/889763) : Update inputMethodOptions once
+		// https://crrev.com/c/2519337 is merged.
+		updatedInputMethodOption = "English (US)"
 		language                 = "fr-FR"
 		inputMethod              = string(ime.INPUTMETHOD_XKB_FR_FRA)
 		InputMethodLabel         = "FR"
@@ -127,9 +130,14 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	languageOptionParams := ui.FindParams{
 		Name: defaultInputMethodOption,
 	}
+	updatedLanguageOptionParams := ui.FindParams{
+		Name: updatedInputMethodOption,
+	}
 	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}
 	if err := ui.StableFindAndClick(ctx, tconn, languageOptionParams, &opts); err != nil {
-		s.Fatalf("Failed to select language option %s: %v", defaultInputMethodOption, err)
+		if err := ui.StableFindAndClick(ctx, tconn, updatedLanguageOptionParams, &opts); err != nil {
+			s.Fatalf("Failed to select language option %s or %s: %v", defaultInputMethodOption, updatedInputMethodOption, err)
+		}
 	}
 
 	assertInputMethod(ctx, defaultInputMethod, defaultInputMethodLabel)
