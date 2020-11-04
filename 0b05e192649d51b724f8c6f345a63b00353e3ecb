@@ -67,6 +67,23 @@
       "message": "LGTM for style, adding nya@ as the author of logging.",
       "revId": "0b05e192649d51b724f8c6f345a63b00353e3ecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef36213_c1505317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-11-04T06:43:35Z",
+      "side": 1,
+      "message": "Yuta-san, Thank you for great job!\n\nPlease make sure that we don\u0027t need to support old format simultaneously for transition.",
+      "revId": "0b05e192649d51b724f8c6f345a63b00353e3ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
