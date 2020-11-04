@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8e39bc_a4d78ae2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-04T19:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db5412b_bb5a7c0d",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 9
+      },
+      "revId": "83b42ea931f72b25daf41e5207231ff43c1a8eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b7f224e_f730c7b4",
@@ -112,6 +136,30 @@
       "side": 1,
       "message": "Not yet -- \"Vars:\" was never empty; sorry for the ambiguous comment. The issue is that the test will still run even if the required vars weren\u0027t provided on the command-line.",
       "parentUuid": "a3aebc66_f25a8b9a",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "83b42ea931f72b25daf41e5207231ff43c1a8eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7214d268_2681a315",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-04T19:25:09Z",
+      "side": 1,
+      "message": "updated comment to clarify.",
+      "parentUuid": "522dfe89_288f7e1a",
       "range": {
         "startLine": 27,
         "startChar": 0,
