@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6e51bc6_be66d38a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "Sorry for the late review. Looks good overall, mostly nits and clarification.",
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d12cfba_83184315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "prefer to use \"path/filepath\" instead of \"path\" (also applies to all other uses of path in this file)",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02faa81_0cb701cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "clar: why couldn\u0027t we use verifyDirectoryContents from utils.go? The implementations looks virtually identical apart from the length check.",
+      "range": {
+        "startLine": 66,
+        "startChar": 111,
+        "endLine": 94,
+        "endChar": 12
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee5021f_f316e998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "consider wrapping this error to indicate this occurred while testing the mount without a password",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 12
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f7f5f4_8db48cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "ditto (but testing invalid password instead of no password)",
+      "range": {
+        "startLine": 106,
+        "startChar": 10,
+        "endLine": 106,
+        "endChar": 13
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c87a5fa_8d51ed41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "could you add a comment for this method?",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d1b143_811119fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "I think it would improve readability to extract this value and give it a name. You can optionally explain how 16MB was selected in a comment.\n\nconst loopbackSizeBytes \u003d 16*1024*1024\nwithLoopbackDeviceDo(..., loopbackSizeBytes, ...)",
+      "range": {
+        "startLine": 98,
+        "startChar": 37,
+        "endLine": 98,
+        "endChar": 49
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8d7787_d9d45f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "nit: insert \u0027the\u0027",
+      "range": {
+        "startLine": 39,
+        "startChar": 102,
+        "endLine": 39,
+        "endChar": 103
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2182e8_199be09e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "nit: lists",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad80e629_4d272c63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "nit: insert \u0027its\u0027",
+      "range": {
+        "startLine": 97,
+        "startChar": 61,
+        "endLine": 97,
+        "endChar": 62
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f37d1a_56fe69a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T02:54:30Z",
+      "side": 1,
+      "message": "optional: maybe don\u0027t name the error, just insert \u0027return\u0027 here and \u0027return nil\u0027 below.",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 7
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
