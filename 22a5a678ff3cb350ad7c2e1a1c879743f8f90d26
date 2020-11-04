@@ -33,6 +33,23 @@
       "message": "Actually there is a fix in the queue. Is it fine to wait for a couple of more days?\n\ncrrev.com/c/2492524",
       "revId": "22a5a678ff3cb350ad7c2e1a1c879743f8f90d26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd617bf_25eff862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-04T00:53:28Z",
+      "side": 1,
+      "message": "Thanks Ross",
+      "revId": "22a5a678ff3cb350ad7c2e1a1c879743f8f90d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
