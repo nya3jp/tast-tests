@@ -16,6 +16,24 @@
       "message": "I have cl doing this: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2515336",
       "revId": "ebe99e81e992f165b04cee93706706ba76729cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c1175fb_d486d62e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-04T00:48:13Z",
+      "side": 1,
+      "message": "Okay, can you please make sure to include crostini.NoSharedFolder.artifact in your CL?\n\nThat one has been super flaky for me, and I imagine for others as well:\n\nhttp://go/croscl/q/owner:zwisler+crostini.NoSharedFolder.artifact",
+      "parentUuid": "ea2decb5_76ba6211",
+      "revId": "ebe99e81e992f165b04cee93706706ba76729cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
