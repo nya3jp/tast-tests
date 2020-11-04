@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba95e80_245f7be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-04T14:30:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51df35df_e7a8febf",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "926e19295885da88bfce33074c88655253dbbd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bea705c_621c0b71",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd8857cc_bda271e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-04T14:30:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bea705c_621c0b71",
+      "range": {
+        "startLine": 140,
+        "startChar": 34,
+        "endLine": 140,
+        "endChar": 36
+      },
+      "revId": "926e19295885da88bfce33074c88655253dbbd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b350ecc_c7def8d9",
@@ -60,6 +108,24 @@
       "writtenOn": "2020-11-04T11:01:57Z",
       "side": 1,
       "message": "Maybe move this at the beginning of the test. Previous tests might have also installed this extension.",
+      "revId": "926e19295885da88bfce33074c88655253dbbd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88fff36c_4778b518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-04T14:30:39Z",
+      "side": 1,
+      "message": "Right after installing the extension it can be removed with the Undo button, so only moving this part would be not enough.\nIf the theme extension type is disabled, but installed, you cannot uninstall it from the webstore or from the chrome://extensions.\nAnother approach could be isntalling the theme once at the start, and only check if the theme is applied with the different policy values, and clean up at the end of the test by removing the theme.",
+      "parentUuid": "0b350ecc_c7def8d9",
       "revId": "926e19295885da88bfce33074c88655253dbbd28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
