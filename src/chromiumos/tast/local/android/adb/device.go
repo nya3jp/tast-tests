@@ -138,9 +138,11 @@ func Connect(ctx context.Context, addr string, timeout time.Duration) (*Device, 
 
 // Command creates an ADB command on the specified device.
 func (d *Device) Command(ctx context.Context, args ...string) *testexec.Cmd {
-	if d.TransportID != "" {
-		return Command(ctx, append([]string{"-t", d.TransportID}, args...)...)
-	}
+	// ADB has an issue where if there are multiple devices connected and you try to forward a port with TransportID,
+	// it will fail with "error: unknown host service". Until this is fixed, disable TransportID.
+	// if d.TransportID != "" {
+	//	return Command(ctx, append([]string{"-t", d.TransportID}, args...)...)
+	// }
 	// Use Serial as a backup if TransportID is empty.
 	return Command(ctx, append([]string{"-s", d.Serial}, args...)...)
 }
