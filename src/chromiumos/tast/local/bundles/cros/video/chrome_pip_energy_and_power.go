@@ -14,9 +14,11 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/webutil"
@@ -263,9 +265,15 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start recording: ", err)
 	}
 
-	const timelineDuration = time.Minute
-	if err := testing.Sleep(ctx, timelineDuration); err != nil {
-		s.Fatalf("Failed to wait %v: %v", timelineDuration, err)
+	hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
+		const timelineDuration = time.Minute
+		if err := testing.Sleep(ctx, timelineDuration); err != nil {
+			return errors.Wrapf(err, "failed to wait %v", timelineDuration)
+		}
+		return nil
+	}, "Viz.DisplayCompositor.OverlayStrategy")
+	if err != nil {
+		s.Fatal("Error while recording histogram Viz.DisplayCompositor.OverlayStrategy: ", err)
 	}
 
 	pv, err := timeline.StopRecording()
@@ -290,5 +298,11 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 
 	if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(s.OutDir(), "trace.data.gz")); err != nil {
 		s.Error("Failed to save trace data: ", err)
+	}
+
+	// I am just trying to understand how to interpret the data.
+	for i, hist := range hists {
+		s.Log("At index ", i)
+		s.Log(hist.String())
 	}
 }
