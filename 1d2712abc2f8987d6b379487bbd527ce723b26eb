@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16b9895_f3cee01d",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-04T21:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5911ade_8b734f5a",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 5
+      },
+      "revId": "1d2712abc2f8987d6b379487bbd527ce723b26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b394869a_eee52960",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2887a838_008fe0ab",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-04T21:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b394869a_eee52960",
+      "range": {
+        "startLine": 308,
+        "startChar": 17,
+        "endLine": 308,
+        "endChar": 24
+      },
+      "revId": "1d2712abc2f8987d6b379487bbd527ce723b26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f0314d0_194ad651",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-04T08:08:36Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 317,
+        "startChar": 17,
+        "endLine": 317,
+        "endChar": 30
+      },
+      "revId": "1d2712abc2f8987d6b379487bbd527ce723b26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72aa8fd7_bb32cfdb",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-04T21:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f0314d0_194ad651",
       "range": {
         "startLine": 317,
         "startChar": 17,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47fddc4a_5344bec6",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-04T21:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "550955bf_f8262b8a",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "1d2712abc2f8987d6b379487bbd527ce723b26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7458d17c_2f9f4946",
@@ -130,6 +226,30 @@
       "writtenOn": "2020-11-04T08:08:36Z",
       "side": 1,
       "message": "I guess ictx is suitable here. IIUC \"ctx\" is for the \"am instrument\" process that continues to run after NewDevice, and \"ictx\" is for all other operations within this function.\n\nAlternatively I think we can start \"am instrument\" with context.Background(), and use a short ctx consistently in this function.",
+      "range": {
+        "startLine": 101,
+        "startChar": 28,
+        "endLine": 101,
+        "endChar": 31
+      },
+      "revId": "1d2712abc2f8987d6b379487bbd527ce723b26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "007c06fd_dc02ba7d",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-04T21:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7458d17c_2f9f4946",
       "range": {
         "startLine": 101,
         "startChar": 28,
@@ -165,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4aab288c_20860efd",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-04T21:20:37Z",
+      "side": 1,
+      "message": "If waitServer fails, ictx will be totally used up, so this needs to use ctx or it will fail to clean up the port.",
+      "parentUuid": "f688d21b_5691e0c6",
+      "range": {
+        "startLine": 108,
+        "startChar": 10,
+        "endLine": 108,
+        "endChar": 13
+      },
+      "revId": "1d2712abc2f8987d6b379487bbd527ce723b26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93ba2686_7b52515b",
         "filename": "src/chromiumos/tast/local/android/ui/device.go",
         "patchSetId": 6
@@ -176,6 +320,30 @@
       "writtenOn": "2020-11-04T08:08:36Z",
       "side": 1,
       "message": "d.sp.Wait is very likely to return an error because we call d.sp.Kill to abort the process. So I\u0027m afraid RemoveForward is called rarely.",
+      "range": {
+        "startLine": 152,
+        "startChar": 16,
+        "endLine": 152,
+        "endChar": 20
+      },
+      "revId": "1d2712abc2f8987d6b379487bbd527ce723b26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d115df68_a6911046",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-04T21:20:37Z",
+      "side": 1,
+      "message": "Thanks for the information. Didn\u0027t realize.",
+      "parentUuid": "93ba2686_7b52515b",
       "range": {
         "startLine": 152,
         "startChar": 16,
