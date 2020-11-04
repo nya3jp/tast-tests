@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f30538f_ed7cc0a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-11-04T18:11:39Z",
+      "side": 1,
+      "message": "Added the new Timeout: chrome.LoginTimeout + arc.BootTimeout + 120*time.Second",
+      "revId": "50be6f4d69bc2a68ce767b0a319b681240ec8326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

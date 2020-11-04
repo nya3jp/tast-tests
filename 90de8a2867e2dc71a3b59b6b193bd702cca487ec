@@ -104,6 +104,24 @@
       "message": "I\u0027ll update the test with new Timeout.",
       "revId": "90de8a2867e2dc71a3b59b6b193bd702cca487ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6180f1e2_d692b2dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-11-04T18:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91a43351_87d6f162",
+      "revId": "90de8a2867e2dc71a3b59b6b193bd702cca487ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
