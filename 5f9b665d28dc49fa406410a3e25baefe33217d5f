@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c096d1e_cd0f7cf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-04T08:23:21Z",
+      "side": 1,
+      "message": "LGTM with mostly minor comments.",
+      "revId": "5f9b665d28dc49fa406410a3e25baefe33217d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0802716a_ce072496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-04T08:23:21Z",
+      "side": 1,
+      "message": "Please avoid ignoring errors - we might miss some useful error messages when things go wrong.\n\n r, err :\u003d arc.InitExists()\n if err !\u003d nil {\n   return err  // or testing.PollBreak(err) if it\u0027s definitely unexpected\n }\n if r {\n   return errors.New(\"init still exists\")\n }\n return nil",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "5f9b665d28dc49fa406410a3e25baefe33217d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a07c71b_d9173d7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-04T08:23:21Z",
+      "side": 1,
+      "message": "style: init\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 70,
+        "startChar": 22,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "5f9b665d28dc49fa406410a3e25baefe33217d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d633aba_2a78b289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-04T08:23:21Z",
+      "side": 1,
+      "message": "Can you set a \u003d nil here for better safety for future changes (e.g. when someone inserts some code between a.Close and arc.New)?",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "5f9b665d28dc49fa406410a3e25baefe33217d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c63551_ff804633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-04T08:23:21Z",
+      "side": 1,
+      "message": "IIUC the purpose of this test to ensure Android comes back when mojo connection is aborted, am I right?\n\nThen I think it\u0027s worth adding a comment that the important check is arc.New above, not arc.InitPID here, because arc.New waits for successful boot of Android. Actually newPID !\u003d oldPID is almost trivial because we wait for Android init to exit above.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "5f9b665d28dc49fa406410a3e25baefe33217d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
