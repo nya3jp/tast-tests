@@ -16,6 +16,23 @@
       "message": "LGTM based on comments from other CLs. Leaving a chance for nya@ to see.",
       "revId": "cc49340dda4162bf0074ed2bf5fab128271f09e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "333699e9_b09dee3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-11-04T22:35:32Z",
+      "side": 1,
+      "message": "(upgrading to +2 after rechecking https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2511798)",
+      "revId": "cc49340dda4162bf0074ed2bf5fab128271f09e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
