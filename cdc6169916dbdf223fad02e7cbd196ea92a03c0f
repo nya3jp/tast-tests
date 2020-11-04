@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32327c8_32c2d3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-04T17:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95c0eb69_bc92d8ee",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "cdc6169916dbdf223fad02e7cbd196ea92a03c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f8162eb_26c655a6",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-04T08:12:10Z",
       "side": 1,
       "message": "IIUC we get err set when there is any failure. Even if the executable doesn\u0027t crash but runs to the end, which is the normal case. So \"Failed to run\" is misleading. Is it possible to distinguish a crash from a normal failure?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "cdc6169916dbdf223fad02e7cbd196ea92a03c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "648bc222_da3bb3cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-04T17:22:24Z",
+      "side": 1,
+      "message": "I\u0027ve made an attempt at this and it seems to work.\n\nIf the command runs to completion, we can parse the test log and s.Error or s.Log accordingly. If the command fails to run for whatever reason, we\u0027ll get a more generic error message. I tested this by renaming one of the test exes and it worked as expected, giving an error log of:\n```\n2020/11/04 10:16:45 [09:16:45.001] Error at igt.go:121: Error running /usr/local/libexec/igt-gpu-tools/kms_plane: fork/exec /usr/local/libexec/igt-gpu-tools/kms_plane: no such file or directory\n...\n```\n\nAs a go noob, this needs a look to make sure it\u0027s idiomatic/correct etc.",
+      "parentUuid": "8f8162eb_26c655a6",
       "range": {
         "startLine": 110,
         "startChar": 1,
