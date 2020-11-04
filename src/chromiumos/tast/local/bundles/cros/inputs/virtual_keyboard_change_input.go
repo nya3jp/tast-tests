@@ -69,7 +69,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 
 	ts, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer ts.Close()
 

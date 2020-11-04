@@ -9,7 +9,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ime"
@@ -81,38 +80,15 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
-	// Get current input method. Change IME for testing and revert it back in teardown.
 	imeCode := ime.IMEPrefix + string(s.Param().(ime.InputMethodCode))
-	originalInputMethod, err := ime.GetCurrentInputMethod(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get current input method: ", err)
-	} else if originalInputMethod != imeCode {
-		cleanupCtx := ctx
-		var cancel func()
-		ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
-		defer cancel()
-
-		s.Logf("Set current input method to: %s", imeCode)
-		if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
-			s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
-		}
-
-		defer func(ctx context.Context) {
-			s.Logf("Changing back input method to: %s", originalInputMethod)
-			if err := ime.SetCurrentInputMethod(ctx, tconn, originalInputMethod); err != nil {
-				s.Logf("Failed to set input method to %s: %v", originalInputMethod, err)
-			}
-		}(cleanupCtx)
-
-		// To install a new input method, it requires downloading and installing resources, it can take up to 10s.
-		// TODO(b/157686038): A better solution to identify decoder status.
-		// Decoder works async in returning status to frontend IME and self loading.
-		testing.Sleep(ctx, 10*time.Second)
+	s.Logf("Set current input method to: %s", imeCode)
+	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
+		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
 	}
 
 	its, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
 
