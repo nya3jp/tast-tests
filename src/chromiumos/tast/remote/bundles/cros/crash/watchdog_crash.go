@@ -25,11 +25,9 @@ func init() {
 		Desc:         "Verify artificial watchdog crash creates crash files",
 		Contacts:     []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"pstore", "reboot", "watchdog"},
+		SoftwareDeps: []string{"device_crash", "pstore", "reboot", "watchdog"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(
-			// TODO(https://crbug.com/1045821): Remove this once samus issue is resolved.
-			"samus",
 			// See https://crbug.com/1069618 for discussion of bob, scarlet, kevin issues.
 			"bob",
 			"scarlet",
