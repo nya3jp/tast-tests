@@ -280,6 +280,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aafe85f5_8b7ded4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-11-04T18:40:55Z",
+      "side": 1,
+      "message": "\u003e have the ARCVM opt-in code in a helper somewhere, and then use that for tests that care about ordering, and rely on multivm preconditions for tests where ordering doesn\u0027t matter?\n\nsgtm",
+      "parentUuid": "ddc9d1c3_574af596",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d9fdccb_2b98d98d",
         "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
         "patchSetId": 6
