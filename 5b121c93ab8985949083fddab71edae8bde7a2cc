@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f95036_4dffcecc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-11-04T08:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e25ca732_eab40626",
+      "revId": "5b121c93ab8985949083fddab71edae8bde7a2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "502583d5_2dbd66a1",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-11-04T01:50:10Z",
       "side": 1,
       "message": "this doesn\u0027t exist",
+      "range": {
+        "startLine": 241,
+        "startChar": 46,
+        "endLine": 241,
+        "endChar": 60
+      },
+      "revId": "5b121c93ab8985949083fddab71edae8bde7a2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea70344_b48243b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-11-04T08:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "502583d5_2dbd66a1",
       "range": {
         "startLine": 241,
         "startChar": 46,
