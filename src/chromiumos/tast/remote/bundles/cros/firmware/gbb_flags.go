@@ -40,7 +40,7 @@ func GBBFlags(ctx context.Context, s *testing.State) {
 
 	old, err := bs.GetGBBFlags(ctx, &empty.Empty{})
 	if err != nil {
-		s.Fatal("initial GetGBBFlags failed: ", old)
+		s.Fatal("initial GetGBBFlags failed: ", err)
 	}
 	s.Log("Current GBB flags: ", old)
 
