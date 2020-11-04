@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f096b6a1_aa8e597b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T07:42:59Z",
+      "side": 1,
+      "message": "I see Matthew asking on the RoamFT CL about the problems in Autotest version and what is fixed. Maybe also include to take a look at this CL?",
+      "revId": "283e033817a47d1175e013d867a518b0c2e5181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
