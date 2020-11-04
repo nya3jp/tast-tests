@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c901699_65122a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/input_method_management.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-04T01:05:37Z",
+      "side": 1,
+      "message": "I was thinking to put it into inputs, but seems not very much related. Besides, we do not intend to add more IME related tests in os-settings. This test is for os-settings only. WDYT",
+      "parentUuid": "4675583f_d27b82cc",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce122cef_0399db78",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/input_method_management.go",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-03T22:19:57Z",
       "side": 1,
       "message": "Since ime.WaitForInstalledInputMethod exists, would it be worth making the equivalent ime.WaitForRemovedInputMethod",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb894a4_88de1012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/input_method_management.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-04T01:05:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce122cef_0399db78",
       "range": {
         "startLine": 82,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c55464d_5c5253ef",
+        "filename": "src/chromiumos/tast/local/chrome/ui/imesettings/imesettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-04T01:05:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a550c8d_a49b0089",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f11e643b_36db1a07",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-03T22:19:57Z",
       "side": 1,
       "message": "This could be replaced with regex lookup of a node:\n\n ui.FindParams{\n   Attributes: map[string]interface{}{\"name\": regexp.MustCompile(\"Settings.*\")}\n   Role: ...\n }\n\nI think I got the syntax right.",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 3
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e59d7fc_e75af65b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-04T01:05:37Z",
+      "side": 1,
+      "message": "This is exactly what I am looking for. Tons of thanks.",
+      "parentUuid": "f11e643b_36db1a07",
       "range": {
         "startLine": 185,
         "startChar": 2,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "390acc21_8a1d151e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-04T01:05:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a55d2672_a124c3de",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 19
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54f8440c_f3a3cf20",
@@ -146,6 +266,30 @@
       "writtenOn": "2020-11-03T22:19:57Z",
       "side": 1,
       "message": "I am not exactly sure I like that this just forces a specific timeout, I think it would be better to pass in a timeout for future callers.",
+      "range": {
+        "startLine": 217,
+        "startChar": 52,
+        "endLine": 217,
+        "endChar": 66
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af17520a_32b771fe",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-04T01:05:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54f8440c_f3a3cf20",
       "range": {
         "startLine": 217,
         "startChar": 52,
