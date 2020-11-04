@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "997b3f7f_84ad6e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/input_method_management.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-04T22:59:08Z",
+      "side": 1,
+      "message": "Sounds fine with me. potentially os-settings may want to be it\u0027s own package eventually.",
+      "parentUuid": "7c901699_65122a56",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "2c51a9e14c6471bb61272a5d9c7bd8ab78db57e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce122cef_0399db78",
