@@ -165,7 +165,7 @@ func (p *Installer) Install(ctx context.Context) error {
 		uig.Steps(
 			install.FocusAndWait(uiTimeout),
 			install.LeftClick(),
-			uig.WaitUntilDescendantGone(installWindowFindParams, 5*time.Minute)).WithNamef("Install()"))
+			uig.WaitUntilDescendantGone(installWindowFindParams, 8*time.Minute)).WithNamef("Install()"))
 	if err != nil {
 		// If the install fails, return any error message from the installer rather than a timeout error.
 		message, messageErr := p.checkErrorMessage(cleanupCtx)
