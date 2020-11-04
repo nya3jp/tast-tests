@@ -146,6 +146,24 @@
       "parentUuid": "88fff36c_4778b518",
       "revId": "926e19295885da88bfce33074c88655253dbbd28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f00806_101d9da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-04T17:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "760ca1c4_c06c97aa",
+      "revId": "926e19295885da88bfce33074c88655253dbbd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
