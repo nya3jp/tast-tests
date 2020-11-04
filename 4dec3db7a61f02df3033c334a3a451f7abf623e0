@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce32bbd_a3722ce6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T19:04:18Z",
+      "side": 1,
+      "message": "Sorry that I missed the CL.",
+      "revId": "4dec3db7a61f02df3033c334a3a451f7abf623e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79680bca_afaff902",
@@ -48,6 +65,30 @@
       "writtenOn": "2020-10-28T08:51:30Z",
       "side": 1,
       "message": "Request for comment on the design here.\n\nI think it is excessive to add the whole set of functions (Start/Reserve/Close) for this simple wrapper. Exporting r.host + r.workDir is also prone to mis-use, so I choose a solution in between. WDYT? Is it better to follow the convention that all functions are on Router object?",
+      "range": {
+        "startLine": 537,
+        "startChar": 14,
+        "endLine": 539,
+        "endChar": 21
+      },
+      "revId": "4dec3db7a61f02df3033c334a3a451f7abf623e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6fb7e7d_e96e0693",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T19:04:18Z",
+      "side": 1,
+      "message": "I would lean to implement StopRawCapturer() and ReserveForStopRawCapturer() given the fact that they are just thin wrapper without involving Router object. The reason to do so is to have the same function mappings to the Capture counterpart.",
+      "parentUuid": "79680bca_afaff902",
       "range": {
         "startLine": 537,
         "startChar": 14,
