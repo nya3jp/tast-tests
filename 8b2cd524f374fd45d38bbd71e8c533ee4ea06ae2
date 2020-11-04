@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60be5c9c_99900dae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-11-04T20:28:19Z",
+      "side": 1,
+      "message": "Okay.  It seems that the daemon just starts on demand\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/chromiumos-overlay/net-print/cups/files/init/cupsd.conf\n\nbut the clear-state script runs when login is shown\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/chromiumos-overlay/net-print/cups/files/init/cups-clear-state.conf\n\nAnd we fix file permissions after the upstart-socket-bridge is started\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/chromiumos-overlay/net-print/cups/files/init/cups-post-upstart-socket-bridge.conf\n\nSo, we can run most cupsd tests on the login screen.  But need to be careful we wait for the login-prompt-visible event to be complete (or we could wipe CUPS state while the test is running).",
+      "revId": "8b2cd524f374fd45d38bbd71e8c533ee4ea06ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
