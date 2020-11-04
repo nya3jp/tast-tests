@@ -5,9 +5,11 @@
 package graphics
 
 import (
+	"bufio"
 	"context"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/local/testexec"
@@ -52,6 +54,26 @@ func init() {
 	})
 }
 
+func summarizeLog(f *os.File, s *testing.State) {
+	var passed, failed, skipped int
+
+	r := regexp.MustCompile("^Subtest .*: ([A-Z]+)")
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		if m := r.FindStringSubmatch(scanner.Text()); m != nil {
+			switch m[1] {
+			case "SKIP":
+				skipped++
+			case "FAIL":
+				failed++
+			case "SUCCESS":
+				passed++
+			}
+		}
+	}
+	s.Logf("Ran %d subtests with %d failures and %d skipped", passed+failed, failed, skipped)
+}
+
 func IGT(ctx context.Context, s *testing.State) {
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to stop ui job: ", err)
@@ -72,4 +94,8 @@ func IGT(ctx context.Context, s *testing.State) {
 	if err := cmd.Run(); err != nil {
 		s.Errorf("Failed to run %s: %v", exePath, err)
 	}
+
+	// Reset the file to the beginning so it can be read out again.
+	f.Seek(0, 0)
+	summarizeLog(f, s)
 }
