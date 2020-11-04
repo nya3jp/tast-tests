@@ -128,6 +128,24 @@
       "parentUuid": "0b350ecc_c7def8d9",
       "revId": "926e19295885da88bfce33074c88655253dbbd28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "760ca1c4_c06c97aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-04T14:52:09Z",
+      "side": 1,
+      "message": "Not being able to uninstall if it\u0027s already there is a bummer, but not critical. Let\u0027s keep the test as is, but add a comment.",
+      "parentUuid": "88fff36c_4778b518",
+      "revId": "926e19295885da88bfce33074c88655253dbbd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
