@@ -121,6 +121,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "55cd846d_955c0696",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-04T03:52:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d252c2f7_f5f394c0",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "980c0cb7_f9118c96",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -220,6 +238,24 @@
       "side": 1,
       "message": "niwa@\u0027s test might be doing a similar thing already? It starts Crostini first, then ARCVM IIRC.",
       "parentUuid": "d537eed2_dc4d5b94",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ca4a39_bd440550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-04T03:52:52Z",
+      "side": 1,
+      "message": "OK, so it\u0027s OK to have the ARCVM opt-in code in a helper somewhere, and then use that for tests that care about ordering, and rely on multivm preconditions for tests where ordering doesn\u0027t matter?\n\nWhich is niwa@\u0027s test?",
+      "parentUuid": "93baf2b4_9b4d4e26",
       "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
