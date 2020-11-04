@@ -189,7 +189,7 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 
 // RunMultiple is a utility to create a new runner, conduct runs multiple times,
 // and returns the recorded values.
-func RunMultiple(ctx context.Context, s *testing.State, cr *chrome.Chrome, scenario func(context.Context) ([]*metrics.Histogram, error), store StoreFunc) *Values {
+func RunMultiple(ctx context.Context, s *testing.State, cr *chrome.Chrome, scenario ScenarioFunc, store StoreFunc) *Values {
 	r := NewRunner(cr)
 	r.RunMultiple(ctx, s, "", scenario, store)
 	return r.Values()
