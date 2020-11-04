@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc2fe61_e0b897e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-04T22:51:41Z",
+      "side": 1,
+      "message": "remove the new line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 141,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "ca08eb9885e04862ade6db0bcb065c21ed597210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
