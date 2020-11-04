@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fc20336_567cefc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T23:19:04Z",
+      "side": 1,
+      "message": "*I wouldn\u0027t bother separating the \u0027failure to run\u0027 case from the \u0027failure while running\u0027 case.",
+      "parentUuid": "82d14671_c350e10f",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af425ed6_0a7b5b76",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 4
