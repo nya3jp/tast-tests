@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e25ca732_eab40626",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T03:22:48Z",
+      "side": 1,
+      "message": "(might be missed in previous comment fix) do we also need to handle the error here?",
+      "revId": "5b121c93ab8985949083fddab71edae8bde7a2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "502583d5_2dbd66a1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
         "patchSetId": 13
@@ -37,6 +54,23 @@
         "endLine": 241,
         "endChar": 60
       },
+      "revId": "5b121c93ab8985949083fddab71edae8bde7a2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce9b9da_e9582a68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T03:22:48Z",
+      "side": 1,
+      "message": "same as above.",
       "revId": "5b121c93ab8985949083fddab71edae8bde7a2cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
