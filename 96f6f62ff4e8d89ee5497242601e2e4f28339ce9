@@ -33,6 +33,24 @@
       "message": "nit: comments should be full sentences, ending with a period.\nCould you please fix the other comments as well insinde this MustCompile()?",
       "revId": "96f6f62ff4e8d89ee5497242601e2e4f28339ce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "775c4e68_aa821f93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lpprint/lpprint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-04T10:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98081a87_5bb4a143",
+      "revId": "96f6f62ff4e8d89ee5497242601e2e4f28339ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
