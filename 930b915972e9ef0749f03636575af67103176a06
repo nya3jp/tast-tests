@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac08f293_2c68d68a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-11-04T08:23:22Z",
+      "side": 1,
+      "message": "Reverted the attributes change, will be submitted separately with required changes in Tast.",
+      "revId": "930b915972e9ef0749f03636575af67103176a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
