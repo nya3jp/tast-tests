@@ -22,6 +22,30 @@
       },
       "revId": "de4de6651b62d4232bba15b3e933b401b2e40375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "912754ce_f3bf66a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T23:18:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acdee753_506faf55",
+      "range": {
+        "startLine": 76,
+        "startChar": 63,
+        "endLine": 76,
+        "endChar": 86
+      },
+      "revId": "de4de6651b62d4232bba15b3e933b401b2e40375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
