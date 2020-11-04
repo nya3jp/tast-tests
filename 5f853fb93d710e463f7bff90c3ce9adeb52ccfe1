@@ -87,6 +87,30 @@
       },
       "revId": "5f853fb93d710e463f7bff90c3ce9adeb52ccfe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c43a0127_04d84ff2",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T04:46:43Z",
+      "side": 1,
+      "message": "Yeah, that makes sense. I guess 20 seconds are long enough. I usually see it takes only 1~2 seconds.",
+      "parentUuid": "9b4e946d_0b55b84b",
+      "range": {
+        "startLine": 95,
+        "startChar": 47,
+        "endLine": 95,
+        "endChar": 61
+      },
+      "revId": "5f853fb93d710e463f7bff90c3ce9adeb52ccfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
