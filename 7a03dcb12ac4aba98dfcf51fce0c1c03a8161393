@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f283972_cc81be5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-04T23:22:32Z",
+      "side": 0,
+      "message": "This test is still failing. Virtual keyboard behaves inconsistently in autoCapitalization. I am afraid it can be a bug in virtual keyboard. I will discuss with inputs team, and come back to this test again.",
+      "parentUuid": "a9d4e2c7_d0ac1c7d",
+      "range": {
+        "startLine": 34,
+        "startChar": 75,
+        "endLine": 34,
+        "endChar": 90
+      },
+      "revId": "7a03dcb12ac4aba98dfcf51fce0c1c03a8161393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57d7b18f_cd4f0a2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-04T22:15:35Z",
       "side": 0,
       "message": "Why is this removed?",
+      "range": {
+        "startLine": 26,
+        "startChar": 44,
+        "endLine": 26,
+        "endChar": 57
+      },
+      "revId": "7a03dcb12ac4aba98dfcf51fce0c1c03a8161393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24748b7c_242b6711",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-04T23:22:32Z",
+      "side": 0,
+      "message": "It is commented in commit message: Take VirtualKeyboardInputFields off from mainline as it always fails due to crbug/1144622.",
+      "parentUuid": "57d7b18f_cd4f0a2a",
       "range": {
         "startLine": 26,
         "startChar": 44,
