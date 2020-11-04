@@ -48,7 +48,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	const (
 		defaultInputMethod       = string(ime.INPUTMETHOD_XKB_US_ENG)
 		defaultInputMethodLabel  = "US"
-		defaultInputMethodOption = "US keyboard"
+		defaultInputMethodOption = "English (US)"
 		language                 = "fr-FR"
 		inputMethod              = string(ime.INPUTMETHOD_XKB_FR_FRA)
 		InputMethodLabel         = "FR"
