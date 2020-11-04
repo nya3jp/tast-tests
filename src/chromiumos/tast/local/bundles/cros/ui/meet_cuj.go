@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/profiler"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -518,15 +519,18 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
-		if err != nil {
-			return errors.Wrap(err, "failed to start the profiler")
-		}
-		defer func() {
-			if err := prof.End(); err != nil {
-				s.Error("Failed to stop profiler: ", err)
+		// TODO(crbug.com/996728): aarch64 is disabled before the kernel crash is fixed.
+		if u, err := sysutil.Uname(); err == nil && u.Machine != "aarch64" {
+			prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
+			if err != nil {
+				return errors.Wrap(err, "failed to start the profiler")
 			}
-		}()
+			defer func() {
+				if err := prof.End(); err != nil {
+					s.Error("Failed to stop profiler: ", err)
+				}
+			}()
+		}
 
 		errc := make(chan error)
 		s.Log("Keeping the meet session for ", meetTimeout)
