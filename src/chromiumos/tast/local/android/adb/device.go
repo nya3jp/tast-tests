@@ -6,7 +6,9 @@ package adb
 
 import (
 	"context"
+	"fmt"
 	"regexp"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -300,4 +302,18 @@ func (d *Device) Uninstall(ctx context.Context, pkg string) error {
 		return errors.Errorf("failed to uninstall %v %q", pkg, string(out))
 	}
 	return nil
+}
+
+// ForwardTCP forwards the ADB device local port specified to a host port and returns that host port.
+func (d *Device) ForwardTCP(ctx context.Context, androidPort int) (int, error) {
+	out, err := d.Command(ctx, "forward", "tcp:0", fmt.Sprintf("tcp:%d", androidPort)).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return -1, err
+	}
+	return strconv.Atoi(strings.TrimSpace(string(out)))
+}
+
+// RemoveForwardTCP removes the forwarding from an ADB device local port to the specified host port.
+func (d *Device) RemoveForwardTCP(ctx context.Context, hostPort int) error {
+	return d.Command(ctx, "forward", "--remove", fmt.Sprintf("tcp:%d", hostPort)).Run(testexec.DumpLogOnError)
 }
