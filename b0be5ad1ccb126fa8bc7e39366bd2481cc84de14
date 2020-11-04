@@ -27,6 +27,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57664f03_141a0534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T22:15:35Z",
+      "side": 1,
+      "message": "nit: ipts is more readable.",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c5d9ab_6173b819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T22:15:35Z",
+      "side": 1,
+      "message": "GetNode might be more meaningful.",
+      "range": {
+        "startLine": 207,
+        "startChar": 29,
+        "endLine": 207,
+        "endChar": 33
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43dff94e_0c759769",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
         "patchSetId": 4
@@ -96,6 +142,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abda43b7_3cf77c0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T22:15:35Z",
+      "side": 1,
+      "message": "Please do not ignore the return error.",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7b9d35_e1c14418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T22:15:35Z",
+      "side": 1,
+      "message": "nit: ipts might be more readable.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 4
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2735fba3_007a2c26",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
         "patchSetId": 4
@@ -119,6 +211,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73460a34_e44aa5ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T22:15:35Z",
+      "side": 1,
+      "message": "Why using Split here?",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 52
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3030898_f51d9d51",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
         "patchSetId": 4
@@ -135,6 +250,52 @@
         "startChar": 11,
         "endLine": 91,
         "endChar": 16
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1785f59_f4578988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T22:15:35Z",
+      "side": 1,
+      "message": "Will the following method take a long time? Otherwise the log is not necessary.The method\u0027s name is meaningful enough.",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 8
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3537a266_11e3b57f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T22:15:35Z",
+      "side": 1,
+      "message": "Please do not ignore the return error.",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 12
       },
       "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -176,6 +337,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15a9a701_1f50223a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_english_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T22:15:35Z",
+      "side": 1,
+      "message": "If it is waiting for something, suggest to use testing.Poll",
+      "range": {
+        "startLine": 114,
+        "startChar": 11,
+        "endLine": 114,
+        "endChar": 16
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d96d06a_7623366b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T22:15:35Z",
+      "side": 1,
+      "message": "Will the following method take long time to run? If not, this log is not necessary since the method\u0027s name is meaningful enough.",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 7
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60075d54_c4f2a932",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
         "patchSetId": 4
@@ -192,6 +399,29 @@
         "startChar": 11,
         "endLine": 52,
         "endChar": 15
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be58fac2_5260d72b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T22:15:35Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 10
       },
       "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
