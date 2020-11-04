@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ee708a_61fba142",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-04T08:18:55Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "96f6f62ff4e8d89ee5497242601e2e4f28339ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98081a87_5bb4a143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lpprint/lpprint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-04T08:18:55Z",
+      "side": 1,
+      "message": "nit: comments should be full sentences, ending with a period.\nCould you please fix the other comments as well insinde this MustCompile()?",
+      "revId": "96f6f62ff4e8d89ee5497242601e2e4f28339ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
