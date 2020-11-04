@@ -33,6 +33,41 @@
       "message": "Just a note, since you already have CR+2, you can add CQ+2 to your CL. Also, you should hit Verified+1, generally it is best for the CL author to do that when they have verified it works locally and is ready to submit.",
       "revId": "50be6f4d69bc2a68ce767b0a319b681240ec8326",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74eb39df_f6f25b94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-11-04T19:09:07Z",
+      "side": 1,
+      "message": "Noted. Thanks.",
+      "parentUuid": "6f57241b_724459f8",
+      "revId": "50be6f4d69bc2a68ce767b0a319b681240ec8326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "438fccc7_a2ae7f04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-11-04T19:09:07Z",
+      "side": 1,
+      "message": "Noted",
+      "revId": "50be6f4d69bc2a68ce767b0a319b681240ec8326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
