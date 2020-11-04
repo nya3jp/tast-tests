@@ -262,6 +262,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddc9d1c3_574af596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-11-04T04:13:12Z",
+      "side": 1,
+      "message": "run_with_arc.go is the one.",
+      "parentUuid": "29ca4a39_bd440550",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d9fdccb_2b98d98d",
         "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
         "patchSetId": 6
