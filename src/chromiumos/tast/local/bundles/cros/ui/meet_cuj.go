@@ -526,13 +526,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
 		if err != nil {
-			return errors.Wrap(err, "failed to start the profiler")
-		}
-		defer func() {
-			if err := prof.End(); err != nil {
-				s.Error("Failed to stop profiler: ", err)
+			if errors.Is(err, profiler.ErrUnsupportedPlatform) {
+				s.Log("Profiler is not supported: ", err)
+			} else {
+				return errors.Wrap(err, "failed to start the profiler")
 			}
-		}()
+		}
+		if prof != nil {
+			defer func() {
+				if err := prof.End(); err != nil {
+					s.Error("Failed to stop profiler: ", err)
+				}
+			}()
+		}
 
 		errc := make(chan error)
 		s.Log("Keeping the meet session for ", meetTimeout)
