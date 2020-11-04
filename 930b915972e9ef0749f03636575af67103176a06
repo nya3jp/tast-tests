@@ -16,6 +16,23 @@
       "message": "Reverted the attributes change, will be submitted separately with required changes in Tast.",
       "revId": "930b915972e9ef0749f03636575af67103176a06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f26540a_d8ced9dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T08:26:24Z",
+      "side": 1,
+      "message": "Thanks for the quick fix.",
+      "revId": "930b915972e9ef0749f03636575af67103176a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
