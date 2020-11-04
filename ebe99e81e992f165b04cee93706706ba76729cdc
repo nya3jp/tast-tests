@@ -34,6 +34,24 @@
       "parentUuid": "ea2decb5_76ba6211",
       "revId": "ebe99e81e992f165b04cee93706706ba76729cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74eb0fc2_527df2a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-04T00:57:09Z",
+      "side": 1,
+      "message": "I believe mwarton\u0027s cl has fixed this: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2515323",
+      "parentUuid": "0c1175fb_d486d62e",
+      "revId": "ebe99e81e992f165b04cee93706706ba76729cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
