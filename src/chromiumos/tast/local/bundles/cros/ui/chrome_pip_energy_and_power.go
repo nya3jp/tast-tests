@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package ui
 
 import (
 	"context"
@@ -38,7 +38,7 @@ func init() {
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
-		Data:         []string{"bear-320x240.h264.mp4", "pip.html"},
+		Data:         []string{"bear-320x240.h264.mp4", "pip_video.html"},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
@@ -102,14 +102,14 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
 
-	conn, err := cr.NewConn(ctx, srv.URL+"/pip.html")
+	conn, err := cr.NewConn(ctx, srv.URL+"/pip_video.html")
 	if err != nil {
-		s.Fatal("Failed to load pip.html: ", err)
+		s.Fatal("Failed to load pip_video.html: ", err)
 	}
 	defer conn.Close()
 
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
+		s.Fatal("Failed to wait for pip_video.html to achieve quiescence: ", err)
 	}
 
 	var pipButtonCenterString string
