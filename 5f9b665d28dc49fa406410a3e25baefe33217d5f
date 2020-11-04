@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a9af367_2a671e25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-11-04T11:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0802716a_ce072496",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "5f9b665d28dc49fa406410a3e25baefe33217d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a07c71b_d9173d7e",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-04T08:23:21Z",
       "side": 1,
       "message": "style: init\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 70,
+        "startChar": 22,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "5f9b665d28dc49fa406410a3e25baefe33217d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0520e492_4a616cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-11-04T11:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a07c71b_d9173d7e",
       "range": {
         "startLine": 70,
         "startChar": 22,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7059aaca_d4ecb474",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-11-04T11:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d633aba_2a78b289",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "5f9b665d28dc49fa406410a3e25baefe33217d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05c63551_ff804633",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-04T08:23:21Z",
       "side": 1,
       "message": "IIUC the purpose of this test to ensure Android comes back when mojo connection is aborted, am I right?\n\nThen I think it\u0027s worth adding a comment that the important check is arc.New above, not arc.InitPID here, because arc.New waits for successful boot of Android. Actually newPID !\u003d oldPID is almost trivial because we wait for Android init to exit above.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "5f9b665d28dc49fa406410a3e25baefe33217d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc8e12a_22f6bfb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mojo_proxy_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-11-04T11:39:55Z",
+      "side": 1,
+      "message": "\u003e IIUC the purpose of this test to ensure Android comes back when mojo connection is aborted, am I right?\n\nYes, you\u0027re right.\n\n\u003e \n\u003e Then I think it\u0027s worth adding a comment that the important check is arc.New above, not arc.InitPID here, because arc.New waits for successful boot of Android. Actually newPID !\u003d oldPID is almost trivial because we wait for Android init to exit above.\n\nDone.",
+      "parentUuid": "05c63551_ff804633",
       "range": {
         "startLine": 85,
         "startChar": 0,
