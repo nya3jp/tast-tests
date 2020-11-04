@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d20d929b_d00225d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T06:55:56Z",
+      "side": 1,
+      "message": "Tast Owners Review: LGTM % one issue.",
+      "revId": "99b1d773dc72293635c38bafe68fa06acd99726f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11b526f3_66c4e09e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-04T06:55:56Z",
+      "side": 1,
+      "message": "This function probably doesn\u0027t need the full state object. Prefer to pass just the context and use testing.ContextLogf.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "99b1d773dc72293635c38bafe68fa06acd99726f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "156dc141_94c30853",
