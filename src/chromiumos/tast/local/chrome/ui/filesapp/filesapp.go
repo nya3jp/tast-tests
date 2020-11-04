@@ -326,13 +326,14 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 
 // SelectContextMenu right clicks and selects a context menu for a file.
 func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuNames ...string) error {
-	file, err := f.file(ctx, fileName, 15*time.Second)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find %s", fileName)
+	params := ui.FindParams{
+		Name: fileName,
+		Role: ui.RoleTypeStaticText,
 	}
-	defer file.Release(ctx)
-	if err := file.StableRightClick(ctx, f.stablePollOpts); err != nil {
-		return errors.Wrapf(err, "failed to right click on %s", fileName)
+
+	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}
+	if err := ui.StableFindAndRightClick(ctx, f.tconn, params, &opts); err != nil {
+		return errors.Wrapf(err, "failed to find and right click %s", fileName)
 	}
 
 	// Wait location.
