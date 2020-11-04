@@ -31,7 +31,7 @@ func AddInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string) e
 	if err := tconn.Call(ctx, nil, `chrome.languageSettingsPrivate.addInputMethod`, imeID); err != nil {
 		return errors.Wrapf(err, "failed to add input method %q", imeID)
 	}
-	if err := WaitForInstalledInputMethod(ctx, tconn, imeID, 20*time.Second); err != nil {
+	if err := WaitForInputMethodInstalled(ctx, tconn, imeID, 20*time.Second); err != nil {
 		return errors.Wrapf(err, "failed to wait for IME %q installed", imeID)
 	}
 
@@ -97,8 +97,8 @@ func WaitForInputMethodMatches(ctx context.Context, tconn *chrome.TestConn, imeI
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
-// WaitForInstalledInputMethod repeatedly checks until a certain IME is installed.
-func WaitForInstalledInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string, timeout time.Duration) error {
+// WaitForInputMethodInstalled repeatedly checks until a certain IME is installed.
+func WaitForInputMethodInstalled(ctx context.Context, tconn *chrome.TestConn, imeID string, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		inputMethods, err := GetInstalledInputMethods(ctx, tconn)
 		if err != nil {
@@ -111,6 +111,23 @@ func WaitForInstalledInputMethod(ctx context.Context, tconn *chrome.TestConn, im
 			}
 		}
 		return errors.Wrapf(err, "%q is not found in installed input methods: %+v", imeID, inputMethods)
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// WaitForInputMethodRemoved repeatedly checks until a certain IME is uninstalled.
+func WaitForInputMethodRemoved(ctx context.Context, tconn *chrome.TestConn, imeID string, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		inputMethods, err := GetInstalledInputMethods(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get installed input methods")
+		}
+
+		for _, inputMethod := range inputMethods {
+			if inputMethod.ID == imeID {
+				return errors.Wrapf(err, "%s is not removed", imeID)
+			}
+		}
+		return nil
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
