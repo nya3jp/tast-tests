@@ -20,6 +20,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9da49964_04de0572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1953,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "waits",
+      "range": {
+        "startLine": 1953,
+        "startChar": 45,
+        "endLine": 1953,
+        "endChar": 49
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bb6ac95_83578c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1953,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "wpa_supplicant\u0027s",
+      "range": {
+        "startLine": 1953,
+        "startChar": 58,
+        "endLine": 1953,
+        "endChar": 72
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd203166_da91af84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "To notify the caller that it is ready, it sends an empty response after the signal watcher is initialized.",
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70011bda_247b9bd8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -67,6 +130,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d008fecc_90546fa3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "Another way to mitigate that is to move most logic in sub-package:\nbundles/cros/wifi/disconnectreason/const.go\n\nand to shorten the lengthy package name:\n\nimport dr \"..../disconnectreason\"",
+      "parentUuid": "0d2663df_869eb3da",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db94fe65_e7fbb4c7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -84,6 +171,23 @@
         "endLine": 30,
         "endChar": 73
       },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd735a1_558370c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "It is hard to make the ctx reservation logic right. Here we should reserve time for DeconfigAP before calling ConfigureAP(). However, exact time needed for DeconfigAP() is derived from the AP instance (see the implementation of tf.ReserveForDeconfigAP). So it is a chicken-egg problem...\nFor now a tentative solution could be reserve some longer time for DeconfigAP when calling ConfigureAP, and after it is configured, reserve a more precise time.\n\nHow about this:\nconfigureAP :\u003d func(ctx) (*wificell.APIface, error) {\n        options :\u003d []hostapd.Option{...}\n        ctx, cancel :\u003d ctxutil.WithTimeout(ctx, 30 * time.Second)\n        defer cancel()\n        return tf.ConfigureAP(ctx, options, nil)\n}\n\n// At caller side:\nap, err :\u003d configureAP(ctx)\nif err !\u003d nil {\n        s.Fatal(\"...\")\n}\ndefer func(ctx) {\n        if ap \u003d\u003d nil {\n                return;\n        }\n        if err :\u003d tf.DeconfigAP(ctx, ap); err !\u003d nil {\n                s.Error(\"...\")\n        }\n}(ctx)\nctx, cancel :\u003d tf.ReserveForDeconfigAP(ctx, ap)",
       "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -136,6 +240,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "deafe5d7_c3554f6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "\u003d\u003d\n\nBut based on other comment, this code block may be removed...",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 80,
+        "endChar": 11
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c7d69a2_178c041c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "To be precise, either tf.ConnectWifiAP should  reserve time for disconnect or the caller should do so. We shall re-exam the ctx handling. For now you can:\n\nctxForDisconnect :\u003d ctx\nctx, cancel \u003d tf.ReserveForDisconnect(ctx)\ndefer cancel()\nif _,err :\u003d tf.ConnectWifiAP(ctx, ap1) ... {\n\n}\ndefer func(ctx) {\n  // ...\n}(ctxForDisconnect)",
+      "range": {
+        "startLine": 100,
+        "startChar": 31,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3a7dd9_440bd945",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "reasonRecv or reasonReceiver",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ad67ea6_e3dcecf4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "trigger",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 11
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a5a5e0b_cec763a0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -153,6 +349,46 @@
         "endLine": 132,
         "endChar": 10
       },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d36cc3c4_83e5fe74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "ctx",
+      "range": {
+        "startLine": 139,
+        "startChar": 13,
+        "endLine": 139,
+        "endChar": 17
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc9d7e58_9a2be551",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "Refer to comment in line 100.",
       "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -193,6 +429,46 @@
         "endLine": 185,
         "endChar": 35
       },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5ed0a0_cf065087",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "We shall expect the reason matches the trigger the test uses, right?",
+      "range": {
+        "startLine": 196,
+        "startChar": 58,
+        "endLine": 196,
+        "endChar": 64
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92225b9a_cb30c453",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-04T12:33:32Z",
+      "side": 1,
+      "message": "Please refer to the comments in wifi_service.go",
       "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
