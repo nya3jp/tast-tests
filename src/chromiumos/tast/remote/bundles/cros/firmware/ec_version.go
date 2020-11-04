@@ -9,14 +9,16 @@ import (
 
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ECVersion,
-		Desc:     "Verify that the EC version can be retrieved from ectool",
-		Contacts: []string{"cros-fw-engprod@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         ECVersion,
+		Desc:         "Verify that the EC version can be retrieved from ectool",
+		Contacts:     []string{"cros-fw-engprod@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
 }
 
