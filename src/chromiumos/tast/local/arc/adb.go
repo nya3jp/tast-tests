@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -15,7 +16,8 @@ import (
 	"chromiumos/tast/timing"
 )
 
-const adbAddr = "127.0.0.1:5555"
+// adbPort is the Hard-coded port of ADB in ARC.
+const adbPort = 5555
 
 // connectADB connects to the remote ADB daemon.
 // After this function returns successfully, we can assume that ADB connection is ready.
@@ -30,9 +32,10 @@ func connectADB(ctx context.Context) (*adb.Device, error) {
 		return device, device.WaitForState(ctx, adb.StateDevice, ctxutil.MaxTimeout)
 	}
 
-	// https://developer.android.com/studio/command-line/adb#notlisted shows that on certain conditions emulator may not be listed. For safety, fallback to manually connecting to adb-proxy address.
+	// https://developer.android.com/studio/command-line/adb#notlisted shows that on certain conditions emulator may not be listed.
+	// For safety, fallback to manually connecting to adb-proxy address.
 	testing.ContextLog(ctx, "ARC failed to find emulator. Falling back to ip address")
-	device, err := adb.Connect(ctx, adbAddr, ctxutil.MaxTimeout)
+	device, err := adb.Connect(ctx, fmt.Sprintf("localhost:%d", adbPort), ctxutil.MaxTimeout)
 	if err != nil {
 		return nil, err
 	}

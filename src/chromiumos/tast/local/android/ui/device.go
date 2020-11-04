@@ -23,9 +23,6 @@ import (
 )
 
 const (
-	// Port is the fixed port of the UI Automator server.
-	Port = 9008
-
 	// StartTimeout is the timeout of NewDevice.
 	StartTimeout = 120 * time.Second
 
@@ -45,9 +42,10 @@ var apkPaths = []string{
 // This object corresponds to UiDevice in UI Automator API:
 // https://developer.android.com/reference/android/support/test/uiautomator/UiDevice
 type Device struct {
-	host  string
-	sp    *testexec.Cmd // Server process
-	debug bool
+	hostDevice *adb.Device
+	hostPort   int
+	sp         *testexec.Cmd // Server process
+	debug      bool
 }
 
 type jsonRPCRequest struct {
@@ -84,7 +82,7 @@ type DeviceInfo struct {
 
 // NewDevice creates a Device object by starting and connecting to UI Automator server.
 // Close must be called to clean up resources when a test is over.
-func NewDevice(ctx context.Context, d *adb.Device, ipAddr string) (*Device, error) {
+func NewDevice(ctx context.Context, d *adb.Device) (*Device, error) {
 	ictx, cancel := context.WithTimeout(ctx, StartTimeout)
 	defer cancel()
 
@@ -99,8 +97,12 @@ func NewDevice(ctx context.Context, d *adb.Device, ipAddr string) (*Device, erro
 		return nil, errors.Wrap(err, "failed starting UI Automator server")
 	}
 
-	host := fmt.Sprintf("%s:%d", ipAddr, Port)
-	s := &Device{host, sp, false}
+	androidPort := 9008
+	hostPort, err := d.ForwardTCP(ictx, androidPort)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to forward UI Automator port to host")
+	}
+	s := &Device{d, hostPort, sp, false}
 
 	if err := s.waitServer(ictx); err != nil {
 		s.Close(ctx)
@@ -145,7 +147,10 @@ func (d *Device) EnableDebug() {
 }
 
 // Close releases resources associated with d.
-func (d *Device) Close(_ctx context.Context) error {
+func (d *Device) Close(ctx context.Context) error {
+	if err := d.hostDevice.RemoveForwardTCP(ctx, d.hostPort); err != nil {
+		testing.ContextLogf(ctx, "Failed to clean up UI Automator port(%d) for device(%v): %v", d.hostPort, d.hostDevice, err)
+	}
 	d.sp.Kill()
 	return d.sp.Wait()
 }
@@ -156,7 +161,7 @@ func (d *Device) Close(_ctx context.Context) error {
 // params is a list of parameters to the remote method.
 func (d *Device) call(ctx context.Context, method string, out interface{}, params ...interface{}) error {
 	// Prepare the request.
-	req, err := http.NewRequest("POST", "http://"+d.host+"/jsonrpc/0", nil)
+	req, err := http.NewRequest("POST", fmt.Sprintf("http://localhost:%d/jsonrpc/0", d.hostPort), nil)
 	if err != nil {
 		return errors.Wrapf(err, "%s: failed initializing request", method)
 	}

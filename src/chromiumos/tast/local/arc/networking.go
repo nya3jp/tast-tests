@@ -6,20 +6,13 @@ package arc
 
 import (
 	"context"
-	"strconv"
 	"strings"
 
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
 const (
-	// IPAddr is the Hard-coded IP addresses of ARC.
-	IPAddr = "100.115.92.2"
-	// ADBPort is the Hard-coded port of ADB in ARC.
-	ADBPort = 5555
-
 	// VethPrefix is a prefix for host veth interfaces name.
 	VethPrefix = "veth_"
 	// BridgePrefix is a prefix for host bridge interfaces name.
@@ -72,19 +65,13 @@ func (a *ARC) BlockOutbound(ctx context.Context) error {
 	if err := BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-I", "OUTPUT", "-j", "REJECT").Run(testexec.DumpLogOnError); err != nil {
 		return err
 	}
-	if err := BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-I", "OUTPUT", "-d", "localhost", "-j", "ACCEPT").Run(testexec.DumpLogOnError); err != nil {
-		return err
-	}
-	return BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-I", "OUTPUT", "-p", "tcp", "-s", IPAddr, "--sport", strconv.Itoa(ui.Port), "-j", "ACCEPT").Run(testexec.DumpLogOnError)
+	return BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-I", "OUTPUT", "-d", "localhost", "-j", "ACCEPT").Run(testexec.DumpLogOnError)
 }
 
 // UnblockOutbound unblocks all outbound traffic from ARC.
 func (a *ARC) UnblockOutbound(ctx context.Context) error {
 	testing.ContextLog(ctx, "Unblocking ARC outbound traffic")
 	if err := BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-D", "OUTPUT", "-d", "localhost", "-j", "ACCEPT").Run(testexec.DumpLogOnError); err != nil {
-		return err
-	}
-	if err := BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-D", "OUTPUT", "-p", "tcp", "-s", IPAddr, "--sport", strconv.Itoa(ui.Port), "-j", "ACCEPT").Run(testexec.DumpLogOnError); err != nil {
 		return err
 	}
 	if err := BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-D", "OUTPUT", "-j", "REJECT").Run(testexec.DumpLogOnError); err != nil {
