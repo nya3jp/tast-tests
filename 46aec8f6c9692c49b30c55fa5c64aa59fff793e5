@@ -16,6 +16,29 @@
       "message": "Fixed the nits and updated the test attributes to comply with what\u0027s suggested in b/171949862",
       "revId": "46aec8f6c9692c49b30c55fa5c64aa59fff793e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7dfb25_4df52b23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_diagnostics.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-04T08:09:07Z",
+      "side": 1,
+      "message": "Did you add the group and attributes in tast? If not, this will cause global failure for tast command.",
+      "range": {
+        "startLine": 79,
+        "startChar": 24,
+        "endLine": 79,
+        "endChar": 93
+      },
+      "revId": "46aec8f6c9692c49b30c55fa5c64aa59fff793e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
