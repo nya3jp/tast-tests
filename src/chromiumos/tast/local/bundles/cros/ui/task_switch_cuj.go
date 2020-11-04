@@ -97,7 +97,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to setup ARC and Play Store: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	// Install android apps for the everyday works: Gmail.
 	// Google Calendar and youtube are not installed to reduce the flakiness

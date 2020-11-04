@@ -71,7 +71,7 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Log("Failed to close Play Store: ", err)

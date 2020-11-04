@@ -133,7 +133,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			if err != nil {
 				s.Fatal("Failed initializing UI Automator: ", err)
 			}
-			defer d.Close()
+			defer d.Close(ctx)
 
 			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 
@@ -165,7 +165,7 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 	s.Log("Enable showing ANRs")
 	if err := a.Command(ctx, "settings", "put", "secure", "anr_show_background", "1").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to enable showing ANRs: ", err)

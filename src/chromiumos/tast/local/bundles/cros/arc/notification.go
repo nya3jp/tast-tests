@@ -86,7 +86,7 @@ func Notification(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to initialize UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	s.Log("Setup is done, and running the test scenario")
 

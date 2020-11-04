@@ -530,7 +530,7 @@ func SetupAndRunTestCases(ctx context.Context, s *testing.State, isTabletMode bo
 	if err != nil {
 		s.Fatal("Failed to initialize UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletMode)
 	if err != nil {

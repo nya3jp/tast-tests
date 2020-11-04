@@ -151,7 +151,7 @@ func (t *ARCAudioTast) verifyAppResult(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create ui.device")
 	}
-	defer device.Close()
+	defer device.Close(ctx)
 	if err := device.Object(ui.ID(resultID), ui.TextMatches("[01]")).WaitForExists(ctx, verifyUIResultTimeout); err != nil {
 		return errors.Wrap(err, "timed out for waiting result updated")
 	}

@@ -60,7 +60,7 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed initializing UI Automator: ", err)
 		}
-		defer device.Close()
+		defer device.Close(ctx)
 		// Mute the DUT
 		cmd := testexec.CommandContext(ctx, "cras_test_client", "--mute", "1")
 		if err := cmd.Run(); err != nil {

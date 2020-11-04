@@ -105,7 +105,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(tPowerSnapshotInterval))
 	if err != nil {

@@ -47,6 +47,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not initialize UI Automator: ", err)
 	}
+	defer d.Close(ctx)
 
 	s.Log("Creating virtual mouse")
 	m, err := input.Mouse(ctx)

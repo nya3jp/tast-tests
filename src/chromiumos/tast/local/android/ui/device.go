@@ -103,7 +103,7 @@ func NewDevice(ctx context.Context, d *adb.Device, ipAddr string) (*Device, erro
 	s := &Device{host, sp, false}
 
 	if err := s.waitServer(ictx); err != nil {
-		s.Close()
+		s.Close(ctx)
 		return nil, errors.Wrap(err, "UI Automator server did not come up")
 	}
 
@@ -145,7 +145,7 @@ func (d *Device) EnableDebug() {
 }
 
 // Close releases resources associated with d.
-func (d *Device) Close() error {
+func (d *Device) Close(_ctx context.Context) error {
 	d.sp.Kill()
 	return d.sp.Wait()
 }
