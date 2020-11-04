@@ -5,9 +5,12 @@
 package graphics
 
 import (
+	"bufio"
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/local/testexec"
@@ -19,6 +22,15 @@ import (
 type igtTest struct {
 	exe string // The test executable name.
 }
+
+// summary parsed from test result log.
+type resultSummary struct {
+	passed  int // Number of passed subtests
+	failed  int // Number of failed subtests
+	skipped int // Number of skipped subtests
+}
+
+var subtestResultRegex = regexp.MustCompile("^Subtest .*: ([A-Z]+)")
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -52,6 +64,24 @@ func init() {
 	})
 }
 
+func summarizeLog(f *os.File) resultSummary {
+	var r resultSummary
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		if m := subtestResultRegex.FindStringSubmatch(scanner.Text()); m != nil {
+			switch m[1] {
+			case "SKIP":
+				r.skipped++
+			case "FAIL":
+				r.failed++
+			case "SUCCESS":
+				r.passed++
+			}
+		}
+	}
+	return r
+}
+
 func IGT(ctx context.Context, s *testing.State) {
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to stop ui job: ", err)
@@ -69,7 +99,17 @@ func IGT(ctx context.Context, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, exePath)
 	cmd.Stdout = f
 	cmd.Stderr = f
-	if err := cmd.Run(); err != nil {
-		s.Errorf("Failed to run %s: %v", exePath, err)
+	err = cmd.Run()
+
+	// Reset the file to the beginning so the log can be read out again.
+	f.Seek(0, 0)
+	results := summarizeLog(f)
+	summary := fmt.Sprintf("Ran %d subtests with %d failures and %d skipped",
+		results.passed+results.failed, results.failed, results.skipped)
+
+	if err != nil {
+		s.Errorf("Failed to run %s (%v): %s", exePath, err, summary)
+	} else {
+		s.Log(summary)
 	}
 }
