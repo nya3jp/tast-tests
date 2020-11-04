@@ -16,6 +16,23 @@
       "message": "Thanks for the change! A potential fix of the test failure is under review here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2481627\n\ni\u0027ll turn it back on after the fix has in.",
       "revId": "3729787a903a6fc474155e75c6d9521b43558b9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a1ffb2_300e0083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-04T00:50:14Z",
+      "side": 1,
+      "message": "Ping for owners review.",
+      "revId": "3729787a903a6fc474155e75c6d9521b43558b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
