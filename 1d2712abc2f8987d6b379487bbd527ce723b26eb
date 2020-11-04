@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "550955bf_f8262b8a",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-11-04T08:31:56Z",
+      "side": 1,
+      "message": "I agree that \"local\" is ambiguous in a context where we are considering multiple peers. We should be more precise and say on this peer the port is and if it is a snd or rcv port.",
+      "parentUuid": "e5198b5e_0d156bd7",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "1d2712abc2f8987d6b379487bbd527ce723b26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7458d17c_2f9f4946",
         "filename": "src/chromiumos/tast/local/android/ui/device.go",
         "patchSetId": 6
