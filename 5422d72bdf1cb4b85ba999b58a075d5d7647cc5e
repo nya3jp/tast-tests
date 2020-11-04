@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb776a0_e302c5d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6bfdcb7_62d7d94b",
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec587451_16a96557",
@@ -31,6 +49,54 @@
       "writtenOn": "2020-11-04T14:01:24Z",
       "side": 1,
       "message": "Please change the comment markers to //.\nIf you have to wrap the comment lines, please consider https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#commentary",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 3
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f0b1af_f0748237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec587451_16a96557",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 3
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c2a389e_162a7d38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec587451_16a96557",
       "range": {
         "startLine": 155,
         "startChar": 1,
@@ -64,6 +130,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dcde312_ebf843eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d23aa66_3023ccf6",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 3
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ea49fc_6c331cf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d23aa66_3023ccf6",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 3
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6edc2630_793156ee",
@@ -77,6 +191,54 @@
       "writtenOn": "2020-11-04T14:01:24Z",
       "side": 1,
       "message": "See above.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 3
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62bfcbf8_a2022236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6edc2630_793156ee",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 3
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b50becc_4e31e4c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6edc2630_793156ee",
       "range": {
         "startLine": 221,
         "startChar": 0,
@@ -110,6 +272,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3b21ce_e0ebdebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7ba3b0b_46d34685",
+      "range": {
+        "startLine": 259,
+        "startChar": 50,
+        "endLine": 259,
+        "endChar": 61
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "450fdc45_7c842d77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7ba3b0b_46d34685",
+      "range": {
+        "startLine": 259,
+        "startChar": 50,
+        "endLine": 259,
+        "endChar": 61
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fb5d84a_b9994772",
@@ -123,6 +333,24 @@
       "writtenOn": "2020-11-04T14:01:24Z",
       "side": 1,
       "message": "Address after should be the initial bookmark address.",
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aac51db_457360e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb5d84a_b9994772",
       "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +378,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ded4c6_2ee6c60d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "573bb706_810ff103",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be8dd06e_2680685b",
@@ -167,6 +419,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14619f6e_4a23162e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be8dd06e_2680685b",
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a164c87f_7a38063f",
@@ -180,6 +450,30 @@
       "writtenOn": "2020-11-04T14:01:24Z",
       "side": 1,
       "message": "Please add ForCurrentTab, so it is clear which bookmark it removes.",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d1562f_ee4c6d31",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a164c87f_7a38063f",
       "range": {
         "startLine": 68,
         "startChar": 5,
@@ -213,6 +507,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b10157_91ff9c33",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e118744_e55f2007",
+      "range": {
+        "startLine": 73,
+        "startChar": 22,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e31fd7_dddbc370",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e118744_e55f2007",
+      "range": {
+        "startLine": 73,
+        "startChar": 22,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "188061f5_3ef6ab62",
@@ -230,6 +572,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dde89a8_fd2830f7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188061f5_3ef6ab62",
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4175da58_b76ecd18",
@@ -243,6 +603,24 @@
       "writtenOn": "2020-11-04T14:01:24Z",
       "side": 1,
       "message": "I don\u0027t think this part should be logged. This information is only interesting if it failed.",
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329eaa0b_0dcdc4ac",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-04T16:30:15Z",
+      "side": 1,
+      "message": "I am fine with removing it. However it will help when investigating problems. Most of the time we will be looking at logs when test fails. Currently logging looks like that:\n\n2020/11/03 12:48:23 [13:48:21.285] Check if bookmark can be added\n2020/11/03 12:48:23 [13:48:21.318] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:23 [13:48:21.318] Execute Ctrl+d\n2020/11/03 12:48:23 [13:48:21.542] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:23 [13:48:21.542] Execute Enter\n2020/11/03 12:48:23 [13:48:21.674] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:23 [13:48:21.674] Execute ctrl+shift+b\n2020/11/03 12:48:24 [13:48:22.002] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:24 [13:48:22.002] Execute ctrl+shift+b\n2020/11/03 12:48:24 [13:48:22.325] Check if bookmark can be edited\n2020/11/03 12:48:24 [13:48:22.348] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:24 [13:48:22.348] Execute Ctrl+d\n2020/11/03 12:48:24 [13:48:22.572] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:24 [13:48:22.572] Change bookmark name to Custom bookmark 1\n2020/11/03 12:48:25 [13:48:23.508] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:25 [13:48:23.508] Execute Ctrl+d\n2020/11/03 12:48:25 [13:48:23.747] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:25 [13:48:23.747] Execute Esc\n2020/11/03 12:48:26 [13:48:23.860] Check if bookmark can be removed\n2020/11/03 12:48:26 [13:48:23.877] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:26 [13:48:23.878] Execute Ctrl+d\n2020/11/03 12:48:26 [13:48:24.099] Click on Remove button\n2020/11/03 12:48:27 [13:48:25.124] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:27 [13:48:25.125] Execute ctrl+shift+b\n2020/11/03 12:48:27 [13:48:25.452] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:27 [13:48:25.452] Execute ctrl+shift+b\n\nOne could easily repeat that manually. If I remove the combo-key logging it will be like:\n\n2020/11/03 12:48:23 [13:48:21.285] Check if bookmark can be added\n2020/11/03 12:48:23 [13:48:21.318] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:23 [13:48:21.542] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:23 [13:48:21.674] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:24 [13:48:22.002] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:24 [13:48:22.325] Check if bookmark can be edited\n2020/11/03 12:48:24 [13:48:22.348] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:24 [13:48:22.572] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:24 [13:48:22.572] Change bookmark name to Custom bookmark 1\n2020/11/03 12:48:25 [13:48:23.508] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:25 [13:48:23.747] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:26 [13:48:23.860] Check if bookmark can be removed\n2020/11/03 12:48:26 [13:48:23.877] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:26 [13:48:24.099] Click on Remove button\n2020/11/03 12:48:27 [13:48:25.124] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)\n2020/11/03 12:48:27 [13:48:25.452] Using existing keyboard device /dev/input/event4 (\"AT Translated Set 2 keyboard\" 0011:0001:0001:ab83)",
+      "parentUuid": "4175da58_b76ecd18",
       "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
