@@ -29,10 +29,11 @@ func init() {
 		Func:         VirtualKeyboardSpeech,
 		Desc:         "Tests that user can input in speech on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{enTestFile},
-		Pre:          pre.VKEnabledTablet(),
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		// This test is a technical experiment. It is very flaky at the moment.
+		// Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
+		Data: []string{enTestFile},
+		Pre:  pre.VKEnabledTablet(),
 	})
 }
 
