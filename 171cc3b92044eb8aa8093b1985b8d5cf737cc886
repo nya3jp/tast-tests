@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb416a18_6e9ef727",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-11-05T11:10:04Z",
+      "side": 1,
+      "message": "LGTM on tastboard.",
+      "revId": "171cc3b92044eb8aa8093b1985b8d5cf737cc886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
