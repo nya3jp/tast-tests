@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7754753c_e83af680",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2020-11-05T02:47:35Z",
+      "side": 1,
+      "message": "Hi nya,\n\nCan you take a look at this change to syslog/reader.go?\n\nThanks,\nYuta",
+      "revId": "b015f0f5aea38b211b3f69a0275d4364e514caca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
