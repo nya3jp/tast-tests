@@ -33,6 +33,24 @@
       "message": "In cases where you are marked as the test owner, this might be somebody else on your team.",
       "revId": "07b78cde4c82eacdf68cd5c3b41de14b37717786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9402b6d_80997b14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2020-11-05T03:40:56Z",
+      "side": 1,
+      "message": "Thanks for the reminder.",
+      "parentUuid": "c762b10b_b55c7a78",
+      "revId": "07b78cde4c82eacdf68cd5c3b41de14b37717786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
