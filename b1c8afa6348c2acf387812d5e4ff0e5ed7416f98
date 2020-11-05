@@ -83,6 +83,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0b64c7b_281dcc97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1992,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T08:24:57Z",
+      "side": 1,
+      "message": ":\u003d\n\nSo you can omit the declaration at line#1990.",
+      "range": {
+        "startLine": 1992,
+        "startChar": 9,
+        "endLine": 1992,
+        "endChar": 10
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ea7ca8_0892516b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T08:24:57Z",
+      "side": 1,
+      "message": "How about \"if name !\u003d wpasupplicant.DBusInterfaceSignalPropertiesChanged\" to handle the unexpected case here, so we don\u0027t need to indent the normal case?",
+      "range": {
+        "startLine": 1994,
+        "startChar": 3,
+        "endLine": 1994,
+        "endChar": 66
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70011bda_247b9bd8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -154,6 +200,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a20a21a6_99cbf593",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T08:24:57Z",
+      "side": 1,
+      "message": "Not sure if it should belong to this thread... IIUC, I think these constants don\u0027t have to be strings, right?\n\nHow about \"type disconnectTrigger int\" and match these constants to the disconnect reason code instead?",
+      "parentUuid": "d008fecc_90546fa3",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db94fe65_e7fbb4c7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -212,6 +282,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62be57f6_d36b0ff7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T08:24:57Z",
+      "side": 1,
+      "message": "Since the guide now recommends reserving time before starting service, I think the constructors of daemon-like objects should have responsibilities to reserve time for Deconfig/Stop the daemon, especially in this case we don\u0027t know the accurate reserving time while tf.ConfigureAP do. (Or perhaps we can reserve time in the Start*/Configure* methods in TestFixture instead of the constructors so we can share some logics.)\n\nFor now, I guess we can just follow the old style. The current usage looks good to me except the \"ap !\u003d nil\" part.",
+      "parentUuid": "19f24c86_a0986aae",
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16d5fb1c_6823ec03",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -223,6 +311,30 @@
       "writtenOn": "2020-11-03T10:13:06Z",
       "side": 1,
       "message": "looks like all usages have the same ctx here as the one for configureAP, perhaps just use the ctx in this closure directly? so the caller don\u0027t need to save a sCtx.",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bad57673_4a3c56a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T08:24:57Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "16d5fb1c_6823ec03",
       "range": {
         "startLine": 79,
         "startChar": 20,
@@ -424,6 +536,29 @@
       "writtenOn": "2020-11-03T10:13:06Z",
       "side": 1,
       "message": "there\u0027s some chance that DUT can miss the frame, so might need to send more than once. Also, power save setting will be an issue. (as the case in wifi.*CSA* tests)",
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c83371f_4e7c0d2c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T08:24:57Z",
+      "side": 1,
+      "message": "deauthenticate the DUT",
+      "range": {
+        "startLine": 155,
+        "startChar": 22,
+        "endLine": 155,
+        "endChar": 37
+      },
       "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
