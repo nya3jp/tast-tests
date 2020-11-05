@@ -91,6 +91,30 @@
       },
       "revId": "5998e3d16575f224d9a63a1af2809f17ec4bb8fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e749d0_a1ebf2ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-11-05T17:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "003db80d_92d8dc9e",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 46
+      },
+      "revId": "5998e3d16575f224d9a63a1af2809f17ec4bb8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
