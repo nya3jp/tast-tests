@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd02326_1c062d59",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-05T22:23:35Z",
+      "side": 1,
+      "message": "I checked and none of the callers of OpenLauncher() care if it is peeking or regular. So yeh let\u0027s add a peeking option later when needed.",
+      "parentUuid": "9adda459_f755bb8b",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "2d23c6d73f8a0be1e17187e78df477644507c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d45da954_c6140c0a",
@@ -126,6 +150,30 @@
       "side": 1,
       "message": "I think there might have been a StableFind method added that essentially combines Find and WaitLocationStable, except that it also expects the node may be deleted and recreated.",
       "parentUuid": "d45da954_c6140c0a",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 10
+      },
+      "revId": "2d23c6d73f8a0be1e17187e78df477644507c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a1df6e8_998402d4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-05T22:23:35Z",
+      "side": 1,
+      "message": "StableFindAndClick ended up being less code so went with that. Lemme know if you think this won\u0027t be enough",
+      "parentUuid": "23dae4fa_e20a9b3d",
       "range": {
         "startLine": 58,
         "startChar": 1,
