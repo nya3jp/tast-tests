@@ -20,11 +20,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        GBBFlags,
-		Desc:        "Verifies GBB flags state can be obtained and manipulated on the DUT",
-		Contacts:    []string{"cros-fw-engprod@google.com", "aluo@google.com"},
-		ServiceDeps: []string{"tast.cros.firmware.BiosService"},
-		Attr:        []string{"group:mainline", "informational"},
+		Func:         GBBFlags,
+		Desc:         "Verifies GBB flags state can be obtained and manipulated on the DUT",
+		Timeout:      8 * time.Minute,
+		Contacts:     []string{"cros-fw-engprod@google.com", "aluo@google.com"},
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"flashrom"},
 	})
 }
 
@@ -48,8 +50,8 @@ func GBBFlags(ctx context.Context, s *testing.State) {
 		s.Fatal("initial ClearAndSetGBBFlags failed: ", err)
 	}
 	ctxForCleanup := ctx
-	// 60 seconds is a ballpark estimate, adjust as needed.
-	ctx, cancel := ctxutil.Shorten(ctx, 60*time.Second)
+	// 150 seconds is a ballpark estimate, adjust as needed.
+	ctx, cancel := ctxutil.Shorten(ctx, 150*time.Second)
 	defer cancel()
 	defer func(ctx context.Context) {
 		if _, err := bs.ClearAndSetGBBFlags(ctx, old); err != nil {
