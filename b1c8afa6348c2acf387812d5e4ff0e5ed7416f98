@@ -194,6 +194,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19f24c86_a0986aae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-05T01:36:48Z",
+      "side": 1,
+      "message": "This probably doesn\u0027t fully work as we spawn daemons in tf.ConfigureAP... Their context will be closed right after we return from configureAP and daemons will soon be killed on ctx.Done().\n\nSeparating context for the operation and daemon is possible but the interface will be uglier... btw, Command.Start() in fact does not separate the two already.",
+      "parentUuid": "cbd735a1_558370c6",
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16d5fb1c_6823ec03",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
