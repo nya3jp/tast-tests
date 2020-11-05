@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "684b7ff0_884c4d2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-11-05T19:42:27Z",
+      "side": 1,
+      "message": "Hello, please help me review this cherry-picked change.",
+      "revId": "839a87a158fc020dc0660c0a9d91b36bcb05b8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
