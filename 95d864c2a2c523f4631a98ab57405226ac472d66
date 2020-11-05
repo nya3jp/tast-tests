@@ -22,6 +22,30 @@
       },
       "revId": "95d864c2a2c523f4631a98ab57405226ac472d66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d127ff9f_22ea4c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-05T23:44:04Z",
+      "side": 1,
+      "message": "It is okay to add it. It is just used to identify these tests are Essential inputs related. It was not added by mistake.",
+      "parentUuid": "689d2593_f5d6ef91",
+      "range": {
+        "startLine": 34,
+        "startChar": 63,
+        "endLine": 34,
+        "endChar": 87
+      },
+      "revId": "95d864c2a2c523f4631a98ab57405226ac472d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
