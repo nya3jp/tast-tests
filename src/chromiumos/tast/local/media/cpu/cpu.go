@@ -158,14 +158,14 @@ func SetUpBenchmark(ctx context.Context) (cleanUp func(ctx context.Context), err
 	return cleanUp, nil
 }
 
-// WaitUntilIdle waits until the CPU is idle, for a maximum of 120s. The CPU is
+// WaitUntilIdle waits until the CPU is idle, for a maximum of 300s. The CPU is
 // considered idle if the average usage over all CPU cores is less than 5%.
 // This percentage will be gradually increased to 20%, as older boards might
 // have a hard time getting below 5%.
 func WaitUntilIdle(ctx context.Context) error {
 	const (
 		// time to wait for CPU to become idle.
-		waitIdleCPUTimeout = 120 * time.Second
+		waitIdleCPUTimeout = 300 * time.Second
 		// percentage below which CPU is ideally considered idle, gradually
 		// increased up to idleCPUUsagePercentMax.
 		idleCPUUsagePercentBase = 5.0
