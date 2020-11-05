@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/testing"
 )
@@ -48,12 +48,8 @@ func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open the Settings App from Quick Settings: ", err)
 	}
 
-	// Confirm that the Settings app is open by checking for the "Settings" heading.
-	params := ui.FindParams{
-		Role: ui.RoleTypeHeading,
-		Name: "Settings",
-	}
-	if err := ui.WaitUntilExists(ctx, tconn, params, 30*time.Second); err != nil {
-		s.Fatal("Waiting for Settings app heading failed: ", err)
+	// Confirm that the Settings app is open by checking for the search box.
+	if err := ossettings.WaitForSearchBox(ctx, tconn, 30*time.Second); err != nil {
+		s.Fatal("Waiting for Settings app search box failed: ", err)
 	}
 }
