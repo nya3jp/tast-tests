@@ -69,6 +69,24 @@
       "parentUuid": "d5880ab3_7f3599fe",
       "revId": "5498f6c4bfd8783178cb10a3d13e83c0208a1ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "503ea05d_42bf00f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-05T16:55:54Z",
+      "side": 1,
+      "message": "As this is the temporary patch and only two options to check, the current implementation is okay. Otherwise, I\u0027d prefer to use for-loop to check if any of the option is matched.",
+      "parentUuid": "60357e10_45e369fa",
+      "revId": "5498f6c4bfd8783178cb10a3d13e83c0208a1ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
