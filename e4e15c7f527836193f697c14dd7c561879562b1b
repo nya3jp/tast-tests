@@ -181,6 +181,24 @@
       "parentUuid": "a231d3b8_77e61b3b",
       "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3643a657_5400003b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-05T20:49:16Z",
+      "side": 1,
+      "message": "Confirmed via revert on suspect CL for arc-adbd error (http://b/172519824) fixes the high CPU utilization errors in arc.AppLoadingPerf.vm. \n\nIn this case, cpu.WaitUntilIdle() is doing its job by helping to find issues where rogue processes are keeping %CPU high.  Again, changing the timeout to be arbitrarily high will mask the high CPU utilization error on tasts and hiding real bugs that can affect users. The cpu package is working as expected and flaky tests should be fixed instead.\n\nI suggest we abandon this CL don\u0027t make any further arbitrary changes to cpu.IdleTimeout unless there is a good reason to.",
+      "parentUuid": "4299064a_46728b8a",
+      "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
