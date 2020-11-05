@@ -48,13 +48,7 @@ func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, appName string
 
 // OpenLauncher opens the launcher.
 func OpenLauncher(ctx context.Context, tconn *chrome.TestConn) error {
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		return err
-	}
-	defer keyboard.Close()
-
-	return keyboard.Accel(ctx, "Search")
+	return OpenExpandedView(ctx, tconn)
 }
 
 // Search executes a search query.
