@@ -89,23 +89,12 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Open an empty window.
-			// Opening the OS Settings page with cr.NewConn() would open it inside the browser window.
-			// This does not work with UI automation, the nodes inside the page won't show up in the node tree.
-			if err := kb.Accel(ctx, "ctrl+n"); err != nil {
-				s.Fatal("Failed to open window: ", err)
+			// Open settings page where the affected toggle button can be found.
+			conn, err := cr.NewConn(ctx, "chrome://os-settings/osAccessibility")
+			if err != nil {
+				s.Fatal("Failed to connect to the OS Accessibility settings page: ", err)
 			}
-
-			// Type the path of the Accessibility settings page to the address bar.
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeTextField,
-				Name: "Address and search bar",
-			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-				s.Fatal("Failed to click address bar: ", err)
-			}
-			if err := kb.Type(ctx, "chrome://os-settings/osAccessibility\n"); err != nil {
-				s.Fatal("Failed to open the Accessibility settings: ", err)
-			}
+			defer conn.Close()
 
 			// Find the toggle button node.
 			tbNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
