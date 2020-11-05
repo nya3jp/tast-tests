@@ -104,6 +104,24 @@
       "parentUuid": "0180ea20_5fa7d41b",
       "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "242bd99c_f32e12b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-11-05T04:43:14Z",
+      "side": 1,
+      "message": "The value of 300s is chosen arbitrarily but I don\u0027t think adapting the timeout to suite one of the many tests that use this function makes much sense.\n\nIdeally every test that uses this function should do something like\n  Timeout: cpu.IdleTimeout + testRunTime",
+      "parentUuid": "f4ed9d2d_50641977",
+      "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
