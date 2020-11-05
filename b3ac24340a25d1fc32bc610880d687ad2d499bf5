@@ -22,6 +22,30 @@
       },
       "revId": "b3ac24340a25d1fc32bc610880d687ad2d499bf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30bd9483_ba106abe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-05T22:59:39Z",
+      "side": 1,
+      "message": "I think it\u0027ll be okay without one for Chrome, I haven\u0027t seen it cause the same problem that the other 2 did. I\u0027ll keep an eye on it after this lands to make sure, though.",
+      "parentUuid": "677a85e8_cee7c4ca",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "b3ac24340a25d1fc32bc610880d687ad2d499bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
