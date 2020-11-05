@@ -503,11 +503,6 @@ func PageObject(pg interface{}) {
 				hasParams = true
 			}
 
-			if regexName, ok := fieldStruct.Tag.Lookup("regex"); ok && regexName != "" {
-				params.Attributes = map[string]interface{}{"name": regexp.MustCompile(regexName)}
-				hasParams = true
-			}
-
 			// TODO(jinrongwu): handle Attributes and State when necessary
 
 			// Set the field value.
