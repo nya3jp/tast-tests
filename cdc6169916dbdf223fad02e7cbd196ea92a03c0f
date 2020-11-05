@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1babe5c_9fc1c9fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-05T11:14:22Z",
+      "side": 1,
+      "message": "In the meantime I found that for variables it can be sentance fragment, so\n\u003e  // number of passed subtests\nis valid as well, so use whichever you prefer.",
+      "parentUuid": "b32327c8_32c2d3ed",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "cdc6169916dbdf223fad02e7cbd196ea92a03c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f8162eb_26c655a6",
