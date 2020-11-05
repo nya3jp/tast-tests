@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e320711d_b3068911",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-05T14:08:37Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0babf6c5_0d069598",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-05T14:08:37Z",
+      "side": 1,
+      "message": "nit: \"Url\" or \"urlOfInitialBookmark is the url\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "679d09b5_fa7dc7bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-05T14:08:37Z",
+      "side": 1,
+      "message": "nit: if you do a line break do it before col 80 if possible (in this case right after already), that way the comments will look nicer here and in a few other tools.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 111
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
