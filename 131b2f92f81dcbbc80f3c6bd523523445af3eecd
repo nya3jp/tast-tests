@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7033f7ed_7fa8365b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c3a76f1_710061be",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 6
+      },
+      "revId": "131b2f92f81dcbbc80f3c6bd523523445af3eecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab81a2d5_20a5ff54",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-04T19:54:16Z",
       "side": 1,
       "message": "Can you put the comment before the variable?\nfull stop at the end of comment too.\n \n// signalRunningFile is a file that controls/exists when the graphics_Power test is running.\nsignalRunningFile string\n// signalCheckpointFile is a file that the graphics_Power test listens to for creating new checkpoints.\nsignalCheckpointFile string",
+      "range": {
+        "startLine": 99,
+        "startChar": 29,
+        "endLine": 99,
+        "endChar": 120
+      },
+      "revId": "131b2f92f81dcbbc80f3c6bd523523445af3eecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a45894cc_24f45b0f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab81a2d5_20a5ff54",
       "range": {
         "startLine": 99,
         "startChar": 29,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc9bdeb_ec58931f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a512db01_1aabc14c",
+      "range": {
+        "startLine": 113,
+        "startChar": 15,
+        "endLine": 113,
+        "endChar": 24
+      },
+      "revId": "131b2f92f81dcbbc80f3c6bd523523445af3eecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0929e33_13b61ebe",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-04T19:54:16Z",
       "side": 1,
       "message": "Can you check if filepath exist?\n\nif _, ok :\u003d query[\"filepath\"]; !ok {\n   s.log(ctx, \"received a download request but no file specified\")\n}\nif err :\u003d s.serveDownloadRequest(...); err !\u003d nil {\n   ...\n}",
+      "range": {
+        "startLine": 202,
+        "startChar": 51,
+        "endLine": 202,
+        "endChar": 59
+      },
+      "revId": "131b2f92f81dcbbc80f3c6bd523523445af3eecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23b5be96_a2f13c07",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0929e33_13b61ebe",
       "range": {
         "startLine": 202,
         "startChar": 51,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "573ed2e0_9cf18d6f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d62dacad_d440b052",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 205,
+        "endChar": 8
+      },
+      "revId": "131b2f92f81dcbbc80f3c6bd523523445af3eecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9960941_a0d465e8",
@@ -146,6 +266,30 @@
       "writtenOn": "2020-11-04T19:54:16Z",
       "side": 1,
       "message": "Can you check if message exist in query?\n\nif msg, ok :\u003d query[\"message\"][0]; ok {\n    s.log(ctx, query[msg[0]];\n    wr.WriteHeader(...)\n}",
+      "range": {
+        "startLine": 207,
+        "startChar": 20,
+        "endLine": 207,
+        "endChar": 27
+      },
+      "revId": "131b2f92f81dcbbc80f3c6bd523523445af3eecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eaff867_948f3440",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:11:41Z",
+      "side": 1,
+      "message": "Done. Using query.Get(...) instead, since query[key][0] doesn\u0027t pass ok to lhs of assignment.",
+      "parentUuid": "e9960941_a0d465e8",
       "range": {
         "startLine": 207,
         "startChar": 20,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23333648_e5c9587b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97945315_b0a65129",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 8
+      },
+      "revId": "131b2f92f81dcbbc80f3c6bd523523445af3eecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b45b21f_ad7a9988",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a144f7fa_f3046737",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b45b21f_ad7a9988",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 8
+      },
+      "revId": "131b2f92f81dcbbc80f3c6bd523523445af3eecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d916411_ee187222",
@@ -215,6 +407,30 @@
       "writtenOn": "2020-11-04T19:54:16Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 227,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 8
+      },
+      "revId": "131b2f92f81dcbbc80f3c6bd523523445af3eecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0021b0b5_16c2efec",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d916411_ee187222",
       "range": {
         "startLine": 227,
         "startChar": 2,
