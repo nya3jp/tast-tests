@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7ff7ca_c954a14a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-11-05T20:11:38Z",
+      "side": 1,
+      "message": "I am for landing and verifying the job summaries indeed give us the information we are looking for. \n",
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fded1d1_c04a0fe4",
@@ -48,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a53652_508b1a1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-11-05T20:11:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25ff7572_8f383be0",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef822778_d3b12fd5",
@@ -61,6 +102,29 @@
       "writtenOn": "2020-11-05T11:14:22Z",
       "side": 1,
       "message": "Instead of converting, you can use errors.Is(err, exec.ExitError).",
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34786cd5_540a7cb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-11-05T20:11:38Z",
+      "side": 1,
+      "message": "Failures [during] run? Just a formulation.\n\nNotice the way this is set up we get the name of the executable indirectly from the tast name as there is a 1:1 mapping. But I don\u0027t mind putting it here for easy recognition.",
+      "range": {
+        "startLine": 114,
+        "startChar": 13,
+        "endLine": 114,
+        "endChar": 26
+      },
       "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +190,30 @@
       "side": 1,
       "message": "\u003e Is it correct that you expect this program to always return a non-zero exit code if any tests failed? Alternatively, would it be better to check that results.failed is actually 0?\nYes, I expect a non-zero exit code if a tests fails. But it seems reasonable to check for FAIL in the logs (as is being done as of this CL). By checking `if results.passed+results.failed+results.skipped \u003e 0` as you suggest, it makes the exceptional case of \"no tests run\" an error, which may not have been the case before. This is probably a good thing.\n\nOne thing I don\u0027t like about having multiple `s.Errorf` is that each one generates a stack trace, which reduces the snr of the log. Is there a way to suppress the stack trace generation?",
       "parentUuid": "9fc20336_567cefc6",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5eedc1f_6d503b01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-11-05T20:11:38Z",
+      "side": 1,
+      "message": "I agree. I don\u0027t even know why we would need stack traces here.\n\nAlso I don\u0027t think this is true in case of crash we should have partial results.\n} else {\n   s.Error(\"No tests were run\")\n}",
+      "parentUuid": "b9ca7239_0fdb8dd0",
       "range": {
         "startLine": 116,
         "startChar": 3,
