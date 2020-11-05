@@ -18,17 +18,23 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardAccessibility,
 		Desc:         "Checks that the accessibility keyboard displays correctly",
-		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:essential-inputs"},
+		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
+		Attr:         []string{"group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          pre.VKEnabledClamshell(),
 		Params: []testing.Param{{
 			Name:              "stable",
+			Pre:               pre.VKEnabledClamshell(),
 			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraAttr:         []string{"group:mainline"},
 		}, {
 			Name:              "unstable",
+			Pre:               pre.VKEnabledClamshell(),
 			ExtraHardwareDeps: pre.InputsUnstableModels,
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+		}, {
+			Name:              "mojo",
+			Pre:               pre.IMEServiceEnabled(pre.VKEnabledClamshell()),
+			ExtraHardwareDeps: pre.InputsMojoModels,
 		}},
 	})
 }

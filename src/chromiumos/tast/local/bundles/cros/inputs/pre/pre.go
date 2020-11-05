@@ -18,6 +18,14 @@ import (
 	"chromiumos/tast/timing"
 )
 
+// MojoModels is a list of boards that installed IME mojo service.
+var MojoModels = []string{
+	"betty",
+}
+
+// InputsMojoModels defines the hardware dependence on a list of boards in mojoModels.
+var InputsMojoModels = hwdep.D(hwdep.Model(MojoModels...))
+
 // StableModels is a list of boards that stable enough and aim to run inputs tests in CQ.
 var StableModels = []string{
 	// Top VK usage board in 2020 -- convertible, ARM.
@@ -63,6 +71,14 @@ func VKEnabledTablet() testing.Precondition { return vkEnabledTabletPre }
 // VKEnabledClamshell creates a new precondition for testing virtual keyboard in clamshell mode.
 // It uses Chrome API settings.a11y.virtual_keyboard to enable a11y vk instead of --enable-virtual-keyboard.
 func VKEnabledClamshell() testing.Precondition { return vkEnabledClamshellPre }
+
+// IMEServiceEnabled returns a precondition with IME service enabled.
+// It works on a predefined precondition type rather than creating a new definition.
+func IMEServiceEnabled(precondition testing.Precondition) testing.Precondition {
+	newPreImpl := precondition.(*preImpl)
+	newPreImpl.opts = append(newPreImpl.opts, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
+	return newPreImpl
+}
 
 // The PreData object is made available to users of this precondition via:
 //

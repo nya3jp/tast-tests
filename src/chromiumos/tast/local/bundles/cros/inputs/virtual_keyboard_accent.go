@@ -28,17 +28,23 @@ func init() {
 		Func:         VirtualKeyboardAccent,
 		Desc:         "Checks that long pressing keys pop up accent window",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:essential-inputs"},
+		Attr:         []string{"group:essential-inputs"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          pre.VKEnabledTablet(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
+			Pre:               pre.VKEnabledTablet(),
 			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraAttr:         []string{"group:mainline"},
 		}, {
 			Name:              "unstable",
+			Pre:               pre.VKEnabledTablet(),
 			ExtraHardwareDeps: pre.InputsUnstableModels,
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+		}, {
+			Name:              "mojo",
+			Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+			ExtraHardwareDeps: pre.InputsMojoModels,
 		}},
 	})
 }
