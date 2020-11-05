@@ -48,31 +48,15 @@ func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, appName string
 
 // OpenLauncher opens the launcher.
 func OpenLauncher(ctx context.Context, tconn *chrome.TestConn) error {
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		return err
-	}
-	defer keyboard.Close()
-
-	return keyboard.Accel(ctx, "Search")
+	return OpenExpandedView(ctx, tconn)
 }
 
 // Search executes a search query.
 // Launcher should be open already.
 func Search(ctx context.Context, tconn *chrome.TestConn, query string) error {
 	// Click the search box.
-	searchBox, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "SearchBoxView"}, defaultTimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed to wait for launcher searchbox")
-	}
-	defer searchBox.Release(ctx)
-
-	condition := func(ctx context.Context) (bool, error) {
-		return ui.Exists(ctx, tconn, ui.FindParams{ClassName: "SearchResultPageView"})
-	}
-	opts := testing.PollOptions{Timeout: defaultTimeout, Interval: 500 * time.Millisecond}
-	if err := searchBox.LeftClickUntil(ctx, condition, &opts); err != nil {
-		return errors.Wrap(err, "failed to click launcher searchbox")
+	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{ClassName: "SearchBoxView"}, &testing.PollOptions{Timeout: defaultTimeout}); err != nil {
+		return errors.Wrap(err, "failed to find and click launcher searchbox")
 	}
 
 	// Set up keyboard.

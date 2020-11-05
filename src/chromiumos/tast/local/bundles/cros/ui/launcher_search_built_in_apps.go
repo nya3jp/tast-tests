@@ -20,8 +20,7 @@ func init() {
 		Func: LauncherSearchBuiltInApps,
 		Desc: "Launches a built-in app through the launcher",
 		Contacts: []string{
-			"bhansknecht@chromium.org",
-			"dhaddock@chromium.org",
+			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
