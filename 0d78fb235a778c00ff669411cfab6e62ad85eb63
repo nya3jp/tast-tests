@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d012f821_8040b9bf",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-05T19:15:32Z",
+      "side": 1,
+      "message": "I like that. At least then you will know to look in other files for it.",
+      "parentUuid": "6d2d3b17_3a2da661",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 7
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7114f10_38dd4d26",
         "filename": "src/chromiumos/tast/local/arc/fixture.go",
         "patchSetId": 2
