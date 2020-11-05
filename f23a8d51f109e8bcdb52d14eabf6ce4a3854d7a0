@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca5985d_6fb08af1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-05T02:59:01Z",
+      "side": 1,
+      "message": "Sure, let me do that.",
+      "parentUuid": "30492cae_5197267b",
+      "range": {
+        "startLine": 41,
+        "startChar": 51,
+        "endLine": 41,
+        "endChar": 60
+      },
+      "revId": "f23a8d51f109e8bcdb52d14eabf6ce4a3854d7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e91a215e_9341aa10",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-05T02:52:51Z",
       "side": 1,
       "message": "do you want to remove the old file src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/bear-320x240.h264.mp4.external",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "f23a8d51f109e8bcdb52d14eabf6ce4a3854d7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b074a6e_7fa2186e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/bear-320x240.h264.mp4.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-05T02:59:01Z",
+      "side": 1,
+      "message": "No it\u0027s still used by other video.* tests:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go?q\u003dbear-320x240.h264.mp4",
+      "parentUuid": "e91a215e_9341aa10",
       "range": {
         "startLine": 1,
         "startChar": 0,
