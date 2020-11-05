@@ -52,6 +52,7 @@ var (
 	developersButton      = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Developers|Linux.*`)}, Role: ui.RoleTypeButton}
 	nextButton            = ui.FindParams{Name: "Next", Role: ui.RoleTypeButton}
 	settingsHeading       = ui.FindParams{Name: "Settings", Role: ui.RoleTypeHeading}
+	settingsWindow        = ui.FindParams{Name: "Settings", Role: ui.RoleTypeWindow}
 	linuxSettings         = ui.FindParams{Name: PageNameLinux, Role: ui.RoleTypeRootWebArea}
 	emptySharedFoldersMsg = ui.FindParams{Name: "Shared folders will appear here", Role: ui.RoleTypeStaticText}
 	sharedFoldersList     = ui.FindParams{Name: "Shared folders", Role: ui.RoleTypeList}
@@ -81,7 +82,11 @@ func Open(ctx context.Context, tconn *chrome.TestConn) (*Settings, error) {
 
 func navigateToDevelopers(ctx context.Context, tconn *chrome.TestConn) error {
 	// Navigate to Developers page or Linux settings page.
-	return uig.Do(ctx, tconn, uig.Retry(2, uig.FindWithTimeout(developersButton, uiTimeout).FocusAndWait(uiTimeout).LeftClick()).WithNamef("navigateToDevelopers()"))
+	return uig.Do(ctx, tconn, uig.Retry(2,
+		uig.FindWithTimeout(settingsWindow, uiTimeout).
+			FindWithTimeout(developersButton, uiTimeout).
+			FocusAndWait(uiTimeout).
+			LeftClick()).WithNamef("navigateToDevelopers()"))
 }
 
 // OpenLinuxSettings open finds or launches Settings app and navigate to Linux Settings and its sub settings if any.
