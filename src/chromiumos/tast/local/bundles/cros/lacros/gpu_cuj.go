@@ -712,6 +712,15 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 		}
 	}
 
+	// Sleep for three seconds after loading pages / setting up the environment.
+	// Loading a page can cause some transient spikes in activity or similar
+	// 'unstable' state. Unfortunately there's no clear condition to wait for like
+	// there is before the test starts (CPU activity and temperature). Wait three
+	// seconds before measuring performance stats to try to reduce the variance.
+	// Three seconds seems to work for most of the pages we're using (checked via
+	// manual inspection).
+	testing.Sleep(ctx, 3*time.Second)
+
 	return runHistogram(ctx, tconn, invoc, perfFn)
 }
 
