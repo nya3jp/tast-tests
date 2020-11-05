@@ -86,6 +86,24 @@
       "message": "One change request if the 300 seconds number is not back by data.  arc.AppLoadingPerf.vm WaitUntilIdle() error is still under investigation (https://crbug.com/1143647#c18) and it is still failing due to high CPU utilization after 300 seconds.  \n\nIf we change the timeout to match the timeout of the test itself, the stainless error will change to the test context timing out.  Since the CPU utilization in this case has not gone down and there is still a wait for CPU idle failure, I prefer not to mask that error.  \n\nCan we change to doubling (or less than double) the timeout to max of 240 seconds?  \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go;rcl\u003d016f5347777ca29a41f18d1f74620257f6a65fe3;l\u003d286",
       "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ed9d2d_50641977",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-05T04:33:15Z",
+      "side": 1,
+      "message": "And changing the test context timeout to be greater than 300 seconds doesn\u0027t make sense in this case because it won\u0027t fix the actual issue which is TBD.  WDYT?",
+      "parentUuid": "0180ea20_5fa7d41b",
+      "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
