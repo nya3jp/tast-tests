@@ -16,6 +16,23 @@
       "message": "Thanks for reviewing!",
       "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "539e7f50_ac4516e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-05T02:49:39Z",
+      "side": 1,
+      "message": "Hi David, I noted in https://crbug.com/1143647#c16 and https://crbug.com/1143647#c17 that the patch did not work on my local eve-arc-r DUT.  Also that I found a suspicious error in messages log within ARC that should be ruled out.\n\nPlease help take a look before deciding whether to submit current CL.  Thanks!",
+      "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
