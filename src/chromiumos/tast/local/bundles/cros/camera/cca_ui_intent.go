@@ -92,6 +92,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               testutil.ARCWithPlatformApp(),
@@ -234,11 +235,13 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 			},
 		},
 	} {
+		testing.ContextLog(ctx, "[TESTTEST] Before running a subtest")
 		s.Run(ctx, tc.Name, func(ctx context.Context, s *testing.State) {
 			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb, useSWA); err != nil {
 				s.Error("Failed when checking intent behavior: ", err)
 			}
 		})
+		testing.ContextLog(ctx, "[TESTTEST] After running a subtest")
 	}
 
 	s.Run(ctx, "instances coexistanece test", func(ctx context.Context, s *testing.State) {
