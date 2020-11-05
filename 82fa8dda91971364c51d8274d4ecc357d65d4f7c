@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1433977f_a174f363",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T04:01:45Z",
+      "side": 1,
+      "message": "Sorry for the late review. Only some nits.",
+      "revId": "82fa8dda91971364c51d8274d4ecc357d65d4f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbecb030_d15bd98d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T04:01:45Z",
+      "side": 1,
+      "message": "I guess it\u0027s a bit confusing since these code are not in ConnectAndCollectPcap function.\n\nHow about \"Error occurs when connecting and capturing L3 packets: \"?",
+      "range": {
+        "startLine": 74,
+        "startChar": 37,
+        "endLine": 74,
+        "endChar": 58
+      },
+      "revId": "82fa8dda91971364c51d8274d4ecc357d65d4f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a185629b_1e110a11",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T04:01:45Z",
+      "side": 1,
+      "message": "I guess these two lines are not necessary.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "82fa8dda91971364c51d8274d4ecc357d65d4f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
