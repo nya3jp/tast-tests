@@ -21,7 +21,7 @@ func init() {
 		Func:        SecChange,
 		Desc:        "Verifies that the DUT can connect to a BSS despite security changes",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func"},
+		Attr:        []string{"group:wificell", "wificell_func", "wificell_cq"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
