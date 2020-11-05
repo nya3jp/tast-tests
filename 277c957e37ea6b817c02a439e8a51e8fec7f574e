@@ -39,6 +39,30 @@
       },
       "revId": "277c957e37ea6b817c02a439e8a51e8fec7f574e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c87299a_cfc7d670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_open_close_switch_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-05T19:28:14Z",
+      "side": 1,
+      "message": "I think I tried that and it was undefined later on. Figured it was some golang branch scope thing. I can take another look",
+      "parentUuid": "6247fa2c_96d08552",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "277c957e37ea6b817c02a439e8a51e8fec7f574e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
