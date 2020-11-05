@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b2b45af_f2991f83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-05T13:10:38Z",
+      "side": 1,
+      "message": "After a talk with Gabor I will change the way interaction with the browser happens - all actions will be exposed via browser package, so in a test one would need to interact only with browser package functions.",
+      "revId": "9ff6b8ef74f4c5325295c26f418e5e3e1a2a3510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44ea1feb_e28c946f",
