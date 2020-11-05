@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0378c810_f018d8c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T10:25:53Z",
+      "side": 1,
+      "message": "I\u0027m not sure which one is the root cause (or maybe both?):\n\n1. In Autotest, router starts two dhcp server with *different* subnet. Since they (including the DUT) are L2 connected, the DUT is able to receive DHCP response from both of them. The dhcpcd on the DUT may be confused then. Also, I\u0027m not that sure how the L3 packet would be sent when the L2 connected interfaces has different subnet...\n\n2. The interfaces are managed by shill on the chromeOS-base routers. shill spawns dhcpcd on the all \"link/ether\" interfaces, except those whose name starts with \"veth\". Unfortunately, bridges are also \"link/ether\"... Thus, the two bridges, who have dhcp servers running on, have also dhcp clients running on -- that\u0027s what Brian observed at https://crbug.com/1070321#c9. Still, I don\u0027t know how it break our network, but it absolutely needs to be prevented.\nFor how to prevent shill from starting dhcp clients, refer the CL: https://crrev.com/c/2498621. It\u0027s also hacky though.",
+      "parentUuid": "d9d2d539_2ebf421c",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b39b7a09_1641819b",
@@ -60,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5da085ff_a76cd428",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T10:25:53Z",
+      "side": 1,
+      "message": "mixedSecConfFac is only for \"mixed_eap\" subtest due to a bug (See the TODO at line#83). Once that\u0027s fixed, the mixedSecConfFac field should be removed and only one factory should remain.\n\nAdded more comments.",
+      "parentUuid": "6d9af77f_45478cb7",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86a4624f_48311735",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
         "patchSetId": 9
@@ -71,6 +113,30 @@
       "writtenOn": "2020-11-03T23:02:56Z",
       "side": 1,
       "message": "nit: bound",
+      "range": {
+        "startLine": 114,
+        "startChar": 62,
+        "endLine": 114,
+        "endChar": 68
+      },
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae6277e_f98200ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T10:25:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86a4624f_48311735",
       "range": {
         "startLine": 114,
         "startChar": 62,
@@ -94,6 +160,24 @@
       "writtenOn": "2020-11-02T05:45:00Z",
       "side": 1,
       "message": "nit: as this is a long function, might be nice to have some comment for it.",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35e695d1_b09d7f5e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T10:25:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abccb025_b32cd290",
       "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -147,6 +231,24 @@
       "side": 1,
       "message": "If New properly handles it, I\u0027m also OK with the it.\n\n(But we still don\u0027t have a proper guideline for when to use each pattern, might need to discuss this in some other place, perhaps a bug?)",
       "parentUuid": "67063dc1_b7bcc6bb",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ecf0b6_4a57a2eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T10:25:53Z",
+      "side": 1,
+      "message": "In NewBridge/Veth, I follow the old style:\n  func NewBridge {\n    init A\n    if err then return\n    ctx \u003d reserveForDeconfigureA(ctx)\n    defer if retErr !\u003d nil then deconfigure A\n\n    // init other resources...\n  }\n\nI think it\u0027s not good enough under the new guideline, since I didn\u0027t reserve for deconfiguring A before initializing A. I\u0027m thinking if I should fix them in the not-yet-merged CLs...\n\nAnyway, I think we should handle them in the New* functions instead of here. Mark as resolved.",
+      "parentUuid": "092fcb3a_d8b3fee0",
       "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -215,6 +317,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece50224_ac5dc556",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T10:25:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bcc1487_eef201fa",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a761f051_ac2ab2e4",
@@ -228,6 +348,24 @@
       "writtenOn": "2020-11-02T05:45:00Z",
       "side": 1,
       "message": "I think this part of logic is for this comment in Autotest:\n\n# Check that we don\u0027t disconnect along the way here, in case we\u0027re\n# ping-ponging around APs -- and after the first (failed) roam, the\n# second re-connection will not be testing FT at all.\n\nMight be nice to also have the same comment here.",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff6a47c_a8829564",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T10:25:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a761f051_ac2ab2e4",
       "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -255,6 +393,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73aa152b_37fcbba2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T10:25:53Z",
+      "side": 1,
+      "message": "Good idea!",
+      "parentUuid": "f70ea511_8455453a",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 15
+      },
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5024e42b_d7c961f2",
@@ -272,6 +434,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed33450f_9095d242",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T10:25:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5024e42b_d7c961f2",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f40bb3e_54ea4f07",
@@ -285,6 +465,24 @@
       "writtenOn": "2020-11-02T06:20:31Z",
       "side": 1,
       "message": "Shall we also expect that test will fail if global FT is unset and APs are not in mixed mode?",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e60bbbf7_977c0acb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-05T10:25:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f40bb3e_54ea4f07",
       "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
