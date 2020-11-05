@@ -122,6 +122,24 @@
       "parentUuid": "f4ed9d2d_50641977",
       "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a231d3b8_77e61b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-05T05:00:43Z",
+      "side": 1,
+      "message": "Agree.  But changing the test context timeout by adding cpu.IdleTimeout may not work either?  For auth_perf.go below, the 90 second context is based on user optin timing requirement.  Adding cpu.IdleTimeout (which can change over time outside the control of the tast-test) may inflate the test context and bypass user requirement? \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go;rcl\u003d6ac6d041a4d20ba6db9192232e22f2cb365366ba;l\u003d292\n\nI tested 200 seconds for arc.AppLoadingPerf.vm and it will still fail at cpu.WaitUntilIdle() with the expected error message (context deadline exceeded; last error follows: CPU not idle: got 44.4%; want \u003c 20.0%).",
+      "parentUuid": "242bd99c_f32e12b2",
+      "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
