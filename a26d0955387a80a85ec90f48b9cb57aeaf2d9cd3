@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6202d261_032d9231",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-05T09:10:09Z",
+      "side": 1,
+      "message": "The CQ failure seems unrelated to this change. Retry CQ.",
+      "revId": "a26d0955387a80a85ec90f48b9cb57aeaf2d9cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
