@@ -16,6 +16,23 @@
       "message": "ejcaruso@, shengjun@: PTAL again. Thank you.",
       "revId": "ebfd2578de12a5b666bac2761224b6ede2de9526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b7091b_65784aec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-05T07:53:54Z",
+      "side": 1,
+      "message": "Thanks for making the change. LGTM",
+      "revId": "ebfd2578de12a5b666bac2761224b6ede2de9526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
