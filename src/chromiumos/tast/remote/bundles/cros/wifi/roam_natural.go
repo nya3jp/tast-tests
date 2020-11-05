@@ -80,7 +80,7 @@ func init() {
 		Func:        RoamNatural,
 		Desc:        "This test is used to sanity check that 'normal' roaming behavior is not broken by any roaming algorithm changes",
 		Contacts:    []string{"jakobczyk@google.com"},
-		Attr:        []string{"group:wificell", "wificell_unstable"}, // TODO(b/171949862): add proper attribute once available
+		Attr:        []string{"group:wificell_roam", "wificell_roam_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithFeatures(wificell.TFFeaturesRouters | wificell.TFFeaturesAttenuator),
 		Timeout:     time.Minute * 60,
