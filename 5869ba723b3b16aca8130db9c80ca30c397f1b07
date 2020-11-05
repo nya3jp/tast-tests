@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ad8b8d_c2eca928",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-11-05T00:07:36Z",
+      "side": 1,
+      "message": "nit: I think this should say ui.ChromePIPEnergyAndPower.* because in general, when the commit message of a CL gives a \"TEST\" I think it is to be run with the CL.",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "5869ba723b3b16aca8130db9c80ca30c397f1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "70b80a1c_59c42331",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-11-04T23:39:19Z",
       "side": 1,
       "message": "Following convo in bug, PTAL",
+      "revId": "5869ba723b3b16aca8130db9c80ca30c397f1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a96531_96be5bc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-11-05T00:07:36Z",
+      "side": 1,
+      "message": "Thank you for doing this. Lgtm with a nit.",
       "revId": "5869ba723b3b16aca8130db9c80ca30c397f1b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
