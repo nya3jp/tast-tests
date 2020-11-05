@@ -16,6 +16,46 @@
       "message": "Hi nya,\n\nCan you take a look at this change to syslog/reader.go?\n\nThanks,\nYuta",
       "revId": "b015f0f5aea38b211b3f69a0275d4364e514caca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "279b3a2c_fd2bc867",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-11-05T03:00:14Z",
+      "side": 1,
+      "message": "LGTM but deferring the final approve to nya@.",
+      "revId": "b015f0f5aea38b211b3f69a0275d4364e514caca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0f55ea_db49486f",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-11-05T03:00:14Z",
+      "side": 1,
+      "message": "nit: thank you for adding this! Could you file a bug to remove this backward compatibility code after a while, and add a TODO comment with the link to the bug here? I think it\u0027s better to mention about the context of this temporary code by adding the TODO code.",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 27
+      },
+      "revId": "b015f0f5aea38b211b3f69a0275d4364e514caca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
