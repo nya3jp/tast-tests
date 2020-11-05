@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a496c2_d376b485",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-05T18:06:34Z",
+      "side": 1,
+      "message": "Adding original committer of the flag to see if there\u0027s any insight onto why this flag impacts my cl.",
+      "revId": "3b1638bce4611548b0434889fe459d6f39051ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
