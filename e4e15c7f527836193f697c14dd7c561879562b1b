@@ -140,6 +140,24 @@
       "parentUuid": "242bd99c_f32e12b2",
       "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4299064a_46728b8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-05T05:23:27Z",
+      "side": 1,
+      "message": "Some other thoughts: \n\nIn this case arc.AppLoadingPerf.vm is failing for high CPU utilization while waiting for Idle.  But the test itself is not `flaky` since the failure is very repeatable after M88-13574.0.0 on eve-arc-r, so there is likely a real user issue concern after ARCVM boot keeping the CPU utilization high (http://b/172519824).  \n\nSeeing the `CPU not idle` message and not masking it (arbitrarily increasing idle timeout) is more helpful here than just generic a tast \"context deadline exceeded\" error since it gives more context on the actual product issue which the test is finding (e.g. some process is keeping %CPU high).  \n\nIt\u0027s certainly a different story if the test itself is flaky. Are there such cases where the error is `CPU not idle` and the fault is the test and not that we are uncovering a real issue with the product being tested?  For those cases, I suggest fixing the flaky test.",
+      "parentUuid": "a231d3b8_77e61b3b",
+      "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
