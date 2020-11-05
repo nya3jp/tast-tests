@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/testing"
 )
 
@@ -20,8 +21,7 @@ func init() {
 		Func: ShelfOpenCloseSwitchApps,
 		Desc: "Checks basic shelf functionality",
 		Contacts: []string{
-			"kyleshima@chromium.org",
-			"bhansknecht@chromium.org",
+			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
@@ -44,6 +44,17 @@ func ShelfOpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// Test acts different in clamshell or tablet mode.
+	tc, err := pointer.NewTouchController(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to create the touch controller: ", err)
+	}
+	defer tc.Close()
+	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode status: ", err)
 	}
 
 	// The test account has only Chrome pinned to the shelf, so we'll have to
@@ -75,7 +86,7 @@ func ShelfOpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	}
 	defer filesBtn.Release(ctx)
 
-	chromeInfo := appInfo{chromeBtn, apps.Chrome.ID, "Chrome - New Tab", "apps.Chrome.Name"}
+	chromeInfo := appInfo{chromeBtn, apps.Chrome.ID, "Chrome - New Tab", apps.Chrome.Name}
 	filesInfo := appInfo{filesBtn, apps.Files.ID, "Files - My files", apps.Files.Name}
 	checkApps := []appInfo{chromeInfo, filesInfo}
 
@@ -89,11 +100,15 @@ func ShelfOpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 			s.Fatalf("%s did not close successfully: %s", app.Name, err)
 		}
 	}
-
 	// Click the apps in the shelf and see if they open.
 	// Repeat a second time to make sure we can switch focus between them once opened.
 	for i := 0; i < 2; i++ {
 		for _, app := range checkApps {
+			if tabletMode {
+				if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
+					s.Fatal("Failed to swipe up the hotseat: ", err)
+				}
+			}
 			if err := app.ShelfBtn.LeftClick(ctx); err != nil {
 				s.Fatalf("Failed to click %v shelf button: %v", app.Name, err)
 			}
@@ -111,6 +126,11 @@ func ShelfOpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 
 	// Close the apps via shelf context menu
 	for _, app := range checkApps {
+		if tabletMode {
+			if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
+				s.Fatal("Failed to swipe up the hotseat: ", err)
+			}
+		}
 		if err := app.ShelfBtn.RightClick(ctx); err != nil {
 			s.Fatalf("Failed to right-click %v shelf button: %v", app.Name, err)
 		}
