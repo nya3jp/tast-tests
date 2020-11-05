@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cededae_3608b8cc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-05T18:35:35Z",
+      "side": 1,
+      "message": "Do you mean keep functionality the same as it is now or same between clamshell and tablet?\n\nHaving both call OpenExpandedView will mean we don\u0027t have to worry about tablet differences and both will use the full launcher. I don\u0027t have a strong opinion right now about which is the correct approach. I just want to make the test less flaky",
+      "parentUuid": "ec92ffd1_2dcbeda1",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "2d23c6d73f8a0be1e17187e78df477644507c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d45da954_c6140c0a",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 2
