@@ -92,6 +92,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
+		Timeout:      3 * time.Minute,
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
