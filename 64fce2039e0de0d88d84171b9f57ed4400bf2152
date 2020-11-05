@@ -50,6 +50,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef822778_d3b12fd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-05T11:14:22Z",
+      "side": 1,
+      "message": "Instead of converting, you can use errors.Is(err, exec.ExitError).",
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82d14671_c350e10f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 4
