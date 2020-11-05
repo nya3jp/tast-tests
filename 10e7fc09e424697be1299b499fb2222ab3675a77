@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2968a7b4_041e19ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-05T05:29:28Z",
+      "side": 1,
+      "message": "If we really want to refactor this part of ime. My personal suggestion is to keep IME prefix inside IME package. ime.GetCurrentInputMethod only returns \"xkb:us::eng\" while ime.SetCurrentInputMethod takes it as input, making IME prefix completely invisible from users.\n\nAnother thing is that ime is under tast/local/chrome package, many functions underneath only work for Chrome not Chromium. So make a constant ime prefix makes more sense than querying it.",
+      "revId": "10e7fc09e424697be1299b499fb2222ab3675a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ccfdec1_d81ddd02",
