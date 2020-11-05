@@ -16,6 +16,40 @@
       "message": "still lgtm",
       "revId": "f58fddfc5f4b3ff1a8499def906fc81eae47df6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1431559_cc9663a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-05T08:13:41Z",
+      "side": 1,
+      "message": "Still LGTM",
+      "revId": "f58fddfc5f4b3ff1a8499def906fc81eae47df6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7b656a_ab2959ea",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-05T08:13:41Z",
+      "side": 1,
+      "message": "nit: also add the above TODO here as well.",
+      "revId": "f58fddfc5f4b3ff1a8499def906fc81eae47df6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
