@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69458fee_0f696ee5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-05T03:56:03Z",
+      "side": 1,
+      "message": "BUG field required.",
+      "revId": "5498f6c4bfd8783178cb10a3d13e83c0208a1ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5880ab3_7f3599fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-05T03:56:03Z",
+      "side": 1,
+      "message": "Either we group the test CL and https://crrev.com/c/2519337 together, or we can make the test compatible on both \"US keyboard\" and \"English (US)\" first; then submit the keyboard string change (with Cq-Depend to the CL); finally, make the test stricker.\n\nI would prefer the second approach.",
+      "revId": "5498f6c4bfd8783178cb10a3d13e83c0208a1ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
