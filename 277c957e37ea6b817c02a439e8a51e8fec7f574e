@@ -63,6 +63,30 @@
       },
       "revId": "277c957e37ea6b817c02a439e8a51e8fec7f574e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12cbd2a0_c06ff4a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_open_close_switch_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-05T20:02:31Z",
+      "side": 1,
+      "message": "Something like:\n\n var tc *TouchController\n if tabletMode {\n   tc, err \u003d pointer.NewTouchController(ctx, tconn)\n   if err !\u003d nil {\n     s.Fatal(\"Failed to create the touch controller: \", err)\n   }\n   defer tc.Close()\n }",
+      "parentUuid": "7c87299a_cfc7d670",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "277c957e37ea6b817c02a439e8a51e8fec7f574e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
