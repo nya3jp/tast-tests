@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689d2593_f5d6ef91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-05T23:37:11Z",
+      "side": 1,
+      "message": "did you want to add it to this group, or just add it for when the comment is removed later?",
+      "range": {
+        "startLine": 34,
+        "startChar": 63,
+        "endLine": 34,
+        "endChar": 87
+      },
+      "revId": "95d864c2a2c523f4631a98ab57405226ac472d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
