@@ -78,7 +78,7 @@ func HomeDirectoryRenameFile(ctx context.Context, s *testing.State) {
 	defer filesApp.Close(cleanupCtx)
 
 	const (
-		fileName     = "testfile.txt"
+		fileName     = "testRename.txt"
 		newFileName  = "someotherdgsjtey"
 		lastFileName = "lastFileName.txt"
 	)
@@ -105,7 +105,9 @@ func testRenameFileFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesA
 	}
 
 	// Check the old file does not exist in container.
-	if err := cont.CheckFileDoesNotExistInDir(ctx, ".", fileName); err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return cont.CheckFileDoesNotExistInDir(ctx, ".", fileName)
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return err
 	}
 
