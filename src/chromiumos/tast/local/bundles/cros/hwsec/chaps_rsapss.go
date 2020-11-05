@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ChapsRSAPSS,
 		Desc: "Verifies RSA PSS works with RSA keys (sign, verify, encrypt, decrypt) in chaps",
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Contacts: []string{
 			"zuan@chromium.org",
 			"cros-hwsec@chromium.org",
