@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e33a9d_d41086b6",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0ab0eca_d5f94f8c",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 38
+      },
+      "revId": "eb62b16769d3d83bcdc7155a01f52d756bb326cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf5614cc_07634091",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ac9c03_9fcf0d2e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf5614cc_07634091",
+      "range": {
+        "startLine": 217,
+        "startChar": 5,
+        "endLine": 217,
+        "endChar": 23
+      },
+      "revId": "eb62b16769d3d83bcdc7155a01f52d756bb326cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d81e7399_e113246c",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-04T19:32:52Z",
       "side": 1,
       "message": "It seems the only difference is perfValues?\nIf that\u0027s the case, how about adding a parameter to decide if we save the perfValue or not?",
+      "range": {
+        "startLine": 279,
+        "startChar": 5,
+        "endLine": 279,
+        "endChar": 31
+      },
+      "revId": "eb62b16769d3d83bcdc7155a01f52d756bb326cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4afb108_1bdab581",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-11-05T00:12:10Z",
+      "side": 1,
+      "message": "I am working on another CL that implements more divergent logic for collecting and saving results for extended tests. That CL will fill out this function, and will use a different results struct from the one used in the vanilla TraceReplay test. The reason for submitting this CL now is to prevent any trace replay results from hitting Crosbolt, since it was being spammed in previous weeks. In upcoming weeks, we\u0027ll define a few useful Crosbolt metrics for this test instead of the hundreds displayed right now.",
+      "parentUuid": "d81e7399_e113246c",
       "range": {
         "startLine": 279,
         "startChar": 5,
