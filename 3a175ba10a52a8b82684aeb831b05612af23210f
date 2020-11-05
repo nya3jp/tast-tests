@@ -16,6 +16,29 @@
       "message": "PTAL again. Thank you.",
       "revId": "3a175ba10a52a8b82684aeb831b05612af23210f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27dc2784_5eba8a34",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-05T02:31:46Z",
+      "side": 1,
+      "message": "Optional: To avoid many duplication of testing.ContextLog and return, you can introduce subfunctions.\n\n func enableKillAudit(ctx context.Context) error\n\n func disableKillAudit(ctx context.Context) error\n\n func runHookLocal(ctx context.Context) (func(ctx context.Context) error, error) {\n   if err :\u003d enableKillAudit(ctx); err !\u003d nil {\n     testing.ContextLog(ctx, ...)\n     return nil, nil\n   }\n   return func(ctx context.Context) error {\n     if err :\u003d disableKillAudit(ctx); err !\u003d nil {\n       testing.ContextLog(ctx, ...)\n     }\n     return nil\n   }, nil\n }",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 19
+      },
+      "revId": "3a175ba10a52a8b82684aeb831b05612af23210f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
