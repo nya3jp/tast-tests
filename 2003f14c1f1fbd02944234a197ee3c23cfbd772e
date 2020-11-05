@@ -16,6 +16,23 @@
       "message": "Thanks for the simplification!",
       "revId": "2003f14c1f1fbd02944234a197ee3c23cfbd772e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3994a0d_1eb2bad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-05T14:10:30Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "2003f14c1f1fbd02944234a197ee3c23cfbd772e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
