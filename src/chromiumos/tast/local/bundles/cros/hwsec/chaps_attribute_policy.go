@@ -23,7 +23,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ChapsAttributePolicy,
 		Desc: "Verifies Chaps Attribute policy works as intended",
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Contacts: []string{
 			"zuan@chromium.org",
 			"cros-hwsec@chromium.org",
