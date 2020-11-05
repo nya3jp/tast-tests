@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f4bd68_507de982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-05T20:19:48Z",
+      "side": 1,
+      "message": "When you rebase this on master, I made a restartApp function that does this.",
+      "range": {
+        "startLine": 294,
+        "startChar": 3,
+        "endLine": 303,
+        "endChar": 4
+      },
+      "revId": "2f492fb7587296f94c98eb4e08d4dacef34d4eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cecaa64a_73373bd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-05T20:19:48Z",
+      "side": 1,
+      "message": "When you rebase this on master, I made a restartApp function that does this.",
+      "range": {
+        "startLine": 315,
+        "startChar": 3,
+        "endLine": 325,
+        "endChar": 4
+      },
+      "revId": "2f492fb7587296f94c98eb4e08d4dacef34d4eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
