@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb1a771_bd125101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-11-05T22:56:46Z",
+      "side": 1,
+      "message": "This is ok, but it would be ideal if filesApp.Rename could wait until it has received confirmation that the rename has completed in the underlying file system.  Unfortunately, I don\u0027t think that can be done.",
+      "revId": "ab9ea44b87e0d0fd49230d0dfa11a465b9aacc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
