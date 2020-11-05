@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ba64e5_4b547d2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-11-05T04:07:20Z",
+      "side": 1,
+      "message": "One questio",
+      "revId": "5773be39cf4b97c4e99cbddd8107a277dbd09798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "986ffb38_c1e4a795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-11-05T04:07:20Z",
+      "side": 1,
+      "message": "I don\u0027t think we should duplicate the error logic for the profiler package users. This is a leak of implementation detail that might change: we might use (aarch64 AND kernel version \u003c\u003d some known good kernel AND it records the full call stack (perf record -g)) as a more subtle condition for disabling the profiler functionality.\n\nInstead what we need for the profiler package user is handling different types of errors:\n* If the profiler really failed to start, let the package user handle the error: either fail the test if it\u0027s a must or proceed with a warning.\n* If the profiler is disabled or unsupported. Just proceed the test with an optional warning.\n\nError handling here:\nswitch err.(type) {\ncase *profiler.UnsupportedPlatform:\n  // Not supported on this platform. Warn and proceed.\n  break;\ndefault:\n  // A real error in starting the profiler. Fail the test if the profiler data is mandatory.\n  break;\n}",
+      "revId": "5773be39cf4b97c4e99cbddd8107a277dbd09798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
