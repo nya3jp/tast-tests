@@ -22,6 +22,30 @@
       },
       "revId": "03782c271340f65638cb79b33b550eed01f809d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b2263f_8ee4c107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-11-05T19:29:18Z",
+      "side": 1,
+      "message": "We should play all video in ASCII.",
+      "parentUuid": "df35d971_0525e3f0",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 22
+      },
+      "revId": "03782c271340f65638cb79b33b550eed01f809d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
