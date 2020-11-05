@@ -51,6 +51,24 @@
       "parentUuid": "d2349356_b7b88fc1",
       "revId": "dee6059276b522569c50d60887cc39dabb08e1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a871fe20_43c239eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-05T19:30:32Z",
+      "side": 1,
+      "message": "Check Histogram.String() function. It is the sum of all values inside the bucket. For our case here, we 1739 samples of value 3. So 1739*3 \u003d 5217.\n\nNot really meanful for an enum metric.",
+      "parentUuid": "03b21dd3_2182b83e",
+      "revId": "dee6059276b522569c50d60887cc39dabb08e1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
