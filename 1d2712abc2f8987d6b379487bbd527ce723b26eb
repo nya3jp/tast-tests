@@ -307,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85344ccd_c918e69f",
+        "filename": "src/chromiumos/tast/local/android/ui/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-05T01:31:13Z",
+      "side": 1,
+      "message": "You\u0027re right!",
+      "parentUuid": "4aab288c_20860efd",
+      "range": {
+        "startLine": 108,
+        "startChar": 10,
+        "endLine": 108,
+        "endChar": 13
+      },
+      "revId": "1d2712abc2f8987d6b379487bbd527ce723b26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93ba2686_7b52515b",
