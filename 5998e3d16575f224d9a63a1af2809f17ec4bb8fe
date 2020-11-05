@@ -51,6 +51,46 @@
       "parentUuid": "956f42b9_522ccad3",
       "revId": "5998e3d16575f224d9a63a1af2809f17ec4bb8fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a7db51_4966bc10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-05T10:51:25Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "5998e3d16575f224d9a63a1af2809f17ec4bb8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "003db80d_92d8dc9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-05T10:51:25Z",
+      "side": 1,
+      "message": "I see the same error message here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go;l\u003d298?q\u003dash.WaitForStableShelfBounds\n\nTo be honest this message looks a bit unclear. What location changes you failed to wait?\n\nMaybe replace it by smth like: Failed to wait for stable shelf bounds ?",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 46
+      },
+      "revId": "5998e3d16575f224d9a63a1af2809f17ec4bb8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
