@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a83fcd_c1534b8d",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-11-05T02:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5857e92e_98046b44",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 83
+      },
+      "revId": "af4fe61934fe3974e446e4bb97508503c1151d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2361cf3b_a9a28127",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-04T09:19:40Z",
       "side": 1,
       "message": "If RunHook returns an error, tests are not executed at all. I\u0027m afraid that it might be a bit harsh.\n\nHow about just logging errors with testing.ContextLog, rather than returning it?",
+      "range": {
+        "startLine": 196,
+        "startChar": 14,
+        "endLine": 196,
+        "endChar": 17
+      },
+      "revId": "af4fe61934fe3974e446e4bb97508503c1151d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58fef88f_173a742d",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-11-05T02:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2361cf3b_a9a28127",
       "range": {
         "startLine": 196,
         "startChar": 14,
