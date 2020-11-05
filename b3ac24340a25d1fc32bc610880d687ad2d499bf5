@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "677a85e8_cee7c4ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-05T19:19:12Z",
+      "side": 1,
+      "message": "Should you add a check after this for a ui element as well?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "b3ac24340a25d1fc32bc610880d687ad2d499bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
