@@ -87,6 +87,24 @@
       "parentUuid": "60357e10_45e369fa",
       "revId": "5498f6c4bfd8783178cb10a3d13e83c0208a1ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f9586d_7f869a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_change_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2020-11-05T20:26:10Z",
+      "side": 1,
+      "message": "Ah thanks. Will keep that in mind 😊",
+      "parentUuid": "503ea05d_42bf00f6",
+      "revId": "5498f6c4bfd8783178cb10a3d13e83c0208a1ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
