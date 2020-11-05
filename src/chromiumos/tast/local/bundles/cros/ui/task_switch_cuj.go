@@ -415,11 +415,16 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			if err := kw.Type(launchCtx, app.query); err != nil {
 				return errors.Wrap(err, "failed to type the query")
 			}
-			if err := testing.Sleep(launchCtx, time.Second); err != nil {
-				return errors.Wrap(err, "failed to sleep")
-			}
-			if err := kw.Accel(launchCtx, "enter"); err != nil {
-				return errors.Wrap(err, "failed to type the enter key")
+			// Finds the first search result tile and assume it is the app. Not
+			// searching by name because launcher could append suffix to the app
+			// name. E.g. gmail app has "Gmail, Installed app" as its name. The
+			// suffix is for chromevox and could change.
+			if err := chromeui.StableFindAndClick(ctx, tconn,
+				chromeui.FindParams{
+					ClassName: "SearchResultTileItemView",
+				},
+				&testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+				return errors.Wrapf(err, "failed to find and click app tile: %s", app.query)
 			}
 			if err := ash.WaitForVisible(launchCtx, tconn, app.packageName); err != nil {
 				return errors.Wrapf(err, "failed to wait for the new window of %s", app.packageName)
