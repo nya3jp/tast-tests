@@ -20,11 +20,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        GBBFlags,
-		Desc:        "Verifies GBB flags state can be obtained and manipulated on the DUT",
-		Contacts:    []string{"cros-fw-engprod@google.com", "aluo@google.com"},
-		ServiceDeps: []string{"tast.cros.firmware.BiosService"},
-		Attr:        []string{"group:mainline", "informational"},
+		Func:         GBBFlags,
+		Desc:         "Verifies GBB flags state can be obtained and manipulated on the DUT",
+		Contacts:     []string{"cros-fw-engprod@google.com", "aluo@google.com"},
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"flashrom"},
 	})
 }
 
