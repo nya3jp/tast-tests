@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae7b45c_8dd2d868",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-05T09:00:35Z",
+      "side": 1,
+      "message": "wifi.BeaconInterval is just getting stable after 13563.0.0 (after crrev.com/c/2506859 landed), so we might want to monitor it longer?",
+      "revId": "c3739cf668d8062a297af516a6c9c49fa19310d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
