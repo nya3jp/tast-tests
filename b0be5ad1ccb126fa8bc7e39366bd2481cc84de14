@@ -845,6 +845,30 @@
       },
       "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86e1926_8f2c3b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-05T04:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be58fac2_5260d72b",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "b0be5ad1ccb126fa8bc7e39366bd2481cc84de14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
