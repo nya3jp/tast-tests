@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69bb5731_a73615b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-05T07:06:23Z",
+      "side": 1,
+      "message": "Besides tablet mode issues, I think there\u0027s an animation issue here as well. In a lot of the failure screenshots, I\u0027m noticing that Chrome is open which is unexpected (it doesn\u0027t open by default). I also found an example where the Chrome shelf icon is in the middle of being clicked: https://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-4faeabf45c6f4e10/autoserv_test/tast/results/tests/ui.LauncherSearchBuiltInApps/\n\nMy guess is the current OpenLauncher function isn\u0027t waiting for the launcher animation to complete. Since it slides up from the shelf, the launcher search box position might initially overlap with the shelf, and the Chrome icon ends up receiving the click.",
+      "revId": "2d23c6d73f8a0be1e17187e78df477644507c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec92ffd1_2dcbeda1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-05T07:06:23Z",
+      "side": 1,
+      "message": "For clamshell mode, maybe instead of just calling this we can do something like\n  if err :\u003d ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelSearch); err !\u003d nil {\n    return errors.Wrap(...)\n  }\n  if err :\u003d ash.WaitForLauncherState(ctx, tconn, ash.Peeking); err !\u003d nil {\n    return errors.Wrap(...)\n  }\n\nto keep the functionality the same.",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "2d23c6d73f8a0be1e17187e78df477644507c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45da954_c6140c0a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-05T07:06:23Z",
+      "side": 1,
+      "message": "Following this up with searchBox.WaitLocationStable will fix a lot of the flakes I think. The launcher animation isn\u0027t being accounted for anywhere else from what I can see.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 10
+      },
+      "revId": "2d23c6d73f8a0be1e17187e78df477644507c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
