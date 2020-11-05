@@ -91,23 +91,27 @@ func SafeBrowsingProtectionLevel(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			// Find the toggle button node.
-			tbNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeRadioButton,
-				Name: param.selectedOption,
-			}, 15*time.Second)
+			// Find the radio group node.
+			rgNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeRadioGroup}, 15*time.Second)
 			if err != nil {
-				s.Fatal("Finding toggle button failed: ", err)
+				s.Fatal("Finding radio group failed: ", err)
 			}
-			defer tbNode.Release(ctx)
+			defer rgNode.Release(ctx)
 
-			isRestricted := tbNode.HTMLAttributes["aria-disabled"]
+			// Find the selected radio button under the radio group.
+			srbNode, err := rgNode.FindSelectedRadioButton(ctx)
+			if err != nil {
+				s.Fatal("Finding the selected radio button failed: ", err)
+			}
+			defer srbNode.Release(ctx)
+
+			isRestricted := srbNode.HTMLAttributes["aria-disabled"]
 			if isRestricted != param.wantRestricted {
 				s.Errorf("Failed to verify restriction behavior; got %s, want %s", isRestricted, param.wantRestricted)
 			}
 
-			if tbNode.Checked == ui.CheckedStateFalse {
-				s.Error("Selected safety level is wrong")
+			if srbNode.Name != param.selectedOption {
+				s.Errorf("Failed to verify selected safety level behavior; got %s, want %s", srbNode.Name, param.selectedOption)
 			}
 		})
 	}

@@ -665,3 +665,24 @@ func LogRootDebugInfo(ctx context.Context, tconn *chrome.TestConn, filename stri
 	}
 	return ioutil.WriteFile(filename, []byte(debugInfo), 0644)
 }
+
+// FindSelectedRadioButton finds the selected radio button under a radio group node.
+// If no active radio button is selected, an error is returned.
+func (n *Node) FindSelectedRadioButton(ctx context.Context) (*Node, error) {
+	if n.Role != RoleTypeRadioGroup {
+		return nil, errors.New("the current node is not a radio group")
+	}
+	rbs, err := n.Descendants(ctx, FindParams{Role: RoleTypeRadioButton})
+	if err != nil {
+		return nil, errors.Wrap(err, "couldn't find radio buttons")
+	}
+	if len(rbs) == 0 {
+		return nil, errors.New("the radio group is empty, no radio buttons under it")
+	}
+	for _, rb := range rbs {
+		if rb.Checked == CheckedStateTrue {
+			return rb, nil
+		}
+	}
+	return nil, errors.New("no active radio button is selected")
+}
