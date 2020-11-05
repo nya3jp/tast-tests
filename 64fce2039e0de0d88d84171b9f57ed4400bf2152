@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25ff7572_8f383be0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-05T05:36:25Z",
+      "side": 1,
+      "message": "I\u0027d like to capture the raw logs on success as well. One specific case that this would be useful is in the case of skipped tests. It would be useful to inspect the logs to see which ones were skipped (and why). The summary is good for a quick glance in stainless or the test log, but the raw logs may be needed to dig further.",
+      "parentUuid": "3fded1d1_c04a0fe4",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82d14671_c350e10f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 4
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "*I wouldn\u0027t bother separating the \u0027failure to run\u0027 case from the \u0027failure while running\u0027 case.",
       "parentUuid": "82d14671_c350e10f",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ca7239_0fdb8dd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-05T05:36:25Z",
+      "side": 1,
+      "message": "\u003e Is it correct that you expect this program to always return a non-zero exit code if any tests failed? Alternatively, would it be better to check that results.failed is actually 0?\nYes, I expect a non-zero exit code if a tests fails. But it seems reasonable to check for FAIL in the logs (as is being done as of this CL). By checking `if results.passed+results.failed+results.skipped \u003e 0` as you suggest, it makes the exceptional case of \"no tests run\" an error, which may not have been the case before. This is probably a good thing.\n\nOne thing I don\u0027t like about having multiple `s.Errorf` is that each one generates a stack trace, which reduces the snr of the log. Is there a way to suppress the stack trace generation?",
+      "parentUuid": "9fc20336_567cefc6",
       "range": {
         "startLine": 116,
         "startChar": 3,
