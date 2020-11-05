@@ -48,12 +48,12 @@ func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open the Settings App from Quick Settings: ", err)
 	}
 
-	// Confirm that the Settings app is open by checking for the "Settings" heading.
+	// Confirm that the Settings app is open by checking for the search box.
 	params := ui.FindParams{
-		Role: ui.RoleTypeHeading,
-		Name: "Settings",
+		Role: ui.RoleTypeSearchBox,
+		Name: "Search settings",
 	}
 	if err := ui.WaitUntilExists(ctx, tconn, params, 30*time.Second); err != nil {
-		s.Fatal("Waiting for Settings app heading failed: ", err)
+		s.Fatal("Waiting for Settings app search box failed: ", err)
 	}
 }
