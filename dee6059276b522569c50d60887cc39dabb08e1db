@@ -16,6 +16,23 @@
       "message": "+xiyuan as mukai is on leave.\ncc\u0027ing dcastagna@",
       "revId": "dee6059276b522569c50d60887cc39dabb08e1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2349356_b7b88fc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-05T19:06:17Z",
+      "side": 1,
+      "message": "metrics.Run() returns the list of captured Histogram struct [1] during the run. Histogram.String [2] dumps the buckets inside a Histogram.\n\nThe \"[3,4)\" is the bucket\u0027s range. This is a typical bucket for enum UMA and holds samples for enum value \"3\", which is kSingleOnTop [3]. The \"1739\" num follows is are the number of samples inside this bucket.\n\nSo basically, this means that during the metrics.Run(), \"Viz.DisplayCompositor.OverlayStrategy\" is recorded 1739 times as kSingleOnTop.\n\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/metrics/histogram.go;l\u003d34\n\n[2] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/metrics/histogram.go;l\u003d118\n\n[3] https://source.chromium.org/chromium/chromium/src/+/master:components/viz/common/display/overlay_strategy.h;l\u003d21;drc\u003d1066e389d45dd39f22f2daf582fc56948d5cc480",
+      "revId": "dee6059276b522569c50d60887cc39dabb08e1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
