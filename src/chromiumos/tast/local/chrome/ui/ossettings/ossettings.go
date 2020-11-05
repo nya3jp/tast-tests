@@ -140,3 +140,13 @@ func LaunchWhatsNew(ctx context.Context, tconn *chrome.TestConn) error {
 		Role: ui.RoleTypeLink,
 	}, defaultOSSettingsPollOptions)
 }
+
+// WaitForSearchBox waits for the search box to appear.
+// Useful for checking that some content has loaded and Settings is ready to use.
+func WaitForSearchBox(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
+	params := ui.FindParams{
+		Role: ui.RoleTypeSearchBox,
+		Name: "Search settings",
+	}
+	return ui.WaitUntilExists(ctx, tconn, params, timeout)
+}
