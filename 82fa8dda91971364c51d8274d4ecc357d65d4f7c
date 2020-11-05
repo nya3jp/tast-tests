@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "348740a2_e74454b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-05T05:03:29Z",
+      "side": 1,
+      "message": "Done with a simpler message.",
+      "parentUuid": "dbecb030_d15bd98d",
+      "range": {
+        "startLine": 74,
+        "startChar": 37,
+        "endLine": 74,
+        "endChar": 58
+      },
+      "revId": "82fa8dda91971364c51d8274d4ecc357d65d4f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a185629b_1e110a11",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-05T04:01:45Z",
       "side": 1,
       "message": "I guess these two lines are not necessary.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "82fa8dda91971364c51d8274d4ecc357d65d4f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c43d72e_07f30ae4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/optional_dhcp_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-05T05:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a185629b_1e110a11",
       "range": {
         "startLine": 111,
         "startChar": 0,
