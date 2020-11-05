@@ -16,6 +16,29 @@
       "message": "shengjun@: PTAL for input related tests. Thank you.\nejcaruso@: PTAL again. Thank you.\n",
       "revId": "10e7fc09e424697be1299b499fb2222ab3675a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ccfdec1_d81ddd02",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-05T05:15:22Z",
+      "side": 1,
+      "message": "Instead of getting all installed input methods. How about GetCurrentInputMethod. Just curious if we know the build is Chrome or Chromium from infra? It should be a one time execution, not every time.",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "10e7fc09e424697be1299b499fb2222ab3675a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
