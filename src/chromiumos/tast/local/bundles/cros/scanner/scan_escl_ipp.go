@@ -79,6 +79,10 @@ func findScanner(ctx context.Context, devInfo usbprinter.DevInfo) (bus, device s
 	return tokens[1], tokens[3], nil
 }
 
+func keepAlivePath(devInfo usbprinter.DevInfo) string {
+	return fmt.Sprintf("/run/ippusb/%s-%s_keep_alive.sock", devInfo.VID, devInfo.PID)
+}
+
 func killIPPUSBBridge(ctx context.Context, devInfo usbprinter.DevInfo) error {
 	ps, err := process.Processes()
 	if err != nil {
@@ -90,6 +94,7 @@ func killIPPUSBBridge(ctx context.Context, devInfo usbprinter.DevInfo) error {
 			continue
 		}
 
+		testing.ContextLog(ctx, "Killing ippusb_bridge with pid ", p.Pid)
 		if err := syscall.Kill(int(p.Pid), syscall.SIGINT); err != nil && err != syscall.ESRCH {
 			return errors.Wrap(err, "failed to kill ippusb_bridge")
 		}
@@ -108,7 +113,7 @@ func killIPPUSBBridge(ctx context.Context, devInfo usbprinter.DevInfo) error {
 		if err := os.Remove(fmt.Sprintf("/run/ippusb/%s-%s.sock", devInfo.VID, devInfo.PID)); err != nil && !os.IsNotExist(err) {
 			return errors.Wrap(err, "failed to remove ippusb_bridge socket")
 		}
-		if err := os.Remove(fmt.Sprintf("/run/ippusb/%s-%s_keep_alive.sock", devInfo.VID, devInfo.PID)); err != nil && !os.IsNotExist(err) {
+		if err := os.Remove(keepAlivePath(devInfo)); err != nil && !os.IsNotExist(err) {
 			return errors.Wrap(err, "failed to remove ippusb_bridge keepalive socket")
 		}
 	}
@@ -149,7 +154,9 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
 	defer func() {
-		usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
+		if printer != nil {
+			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
+		}
 	}()
 
 	var deviceName string
@@ -162,15 +169,12 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Setting up ipp-usb connection")
-		ippusbBridge := testexec.CommandContext(ctx, "ippusb_bridge", "--bus-device", fmt.Sprintf("%s:%s", bus, device))
+		ippusbBridge := testexec.CommandContext(ctx, "ippusb_bridge", "--bus-device", fmt.Sprintf("%s:%s", bus, device), "--keep-alive", keepAlivePath(devInfo))
 
 		if err := ippusbBridge.Start(); err != nil {
 			s.Fatal("Failed to connect to printer with ippusb_bridge: ", err)
 		}
-		defer func() {
-			ippusbBridge.Kill()
-			ippusbBridge.Wait()
-		}()
+		defer killIPPUSBBridge(cleanupCtx, devInfo)
 
 		// Defined in src/platform2/ippusb_bridge/src/main.rs
 		const port = 60000
@@ -265,4 +269,10 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		s.Error("Scanned file differed from golden image: ", err)
 		diff.DumpLog(ctx)
 	}
+
+	// Intentionally stop the printer early to trigger shutdown in ippusb_bridge.
+	// Without this, cleanup may have to wait for other processes to finish using
+	// the printer (e.g. CUPS background probing).
+	usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
+	printer = nil
 }
