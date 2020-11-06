@@ -241,6 +241,24 @@
       "parentUuid": "3643a657_5400003b",
       "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6153a60_ba98fff1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-06T03:56:03Z",
+      "side": 1,
+      "message": "To respond to what Alan said, increasing the timeout wouldn\u0027t mask rogue processes keeping the utilization high, as they\u0027d still cause WaitUntilIdle to fail.\n\nI\u0027m not opposed to increasing the timeout. However, I do think Alan raises a good point that increasing the deadline here would cause problems with the test context timing out. There definitely are occasional flakes due to \"CPU not idle\", but I don\u0027t think they\u0027re common enough that it actually causes problem with our metrics. And since the error message is clear, the test failures are easy to just ignore. I think if we want to increase the timeout here, we do need to add something like the cpu.IdleTimeout you mentioned earlier to prevent introducing tests with vague failure messages.",
+      "parentUuid": "98d3e087_ebbd7e83",
+      "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
