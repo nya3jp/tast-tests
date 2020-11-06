@@ -22,6 +22,30 @@
       },
       "revId": "23be6af598fde9a0063998deed279b1ceb9a0e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1668db9_190fcd1d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-06T23:42:01Z",
+      "side": 1,
+      "message": "Sure i\u0027ll do it.",
+      "parentUuid": "18ebe84f_6a0e799b",
+      "range": {
+        "startLine": 1548,
+        "startChar": 47,
+        "endLine": 1548,
+        "endChar": 57
+      },
+      "revId": "23be6af598fde9a0063998deed279b1ceb9a0e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
