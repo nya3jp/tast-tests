@@ -25,7 +25,7 @@ func init() {
 			"cros-containers-dev@google.com",
 			"chromeos-wilco@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"}, // crbug.com/1139749
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"vm_host", "wilco"},
 	})
 }
