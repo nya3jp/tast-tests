@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6db282c1_c428d309",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T05:32:59Z",
+      "side": 1,
+      "message": "\u003e How much value is this actually adding? Does this extra check actually do anything meaningful?\n\nI doubt this adds much value... I didn\u0027t find the original \"bug\" so I cannot really reproduce the problem to verify, but from my observation in the first comment, I think asserting no disconnect already covers this case and we can drop this check. WDYT? (removed the check in latest PS)\n\n\u003e I don\u0027t really know much about what a \"card reset\" does so take this with a gain of salt, but we don\u0027t check for this in most (all?) of our other tests that expect not to see a disconnect. Is there a good reason for this one to be different?\n\nIn crbug.com/498018, which added this test, the description mentioned that the malformed probe request would cause card reset so I think that\u0027s why this test is specifically checking \"no card reset\" instead of just no disconnect.",
+      "parentUuid": "4aac6794_17829e72",
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32b519e8_d0237769",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
         "patchSetId": 1
