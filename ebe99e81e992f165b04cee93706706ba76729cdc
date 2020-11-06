@@ -69,6 +69,24 @@
       "message": "can you please resolve the merge conflict as some of these were already marked informational",
       "revId": "ebe99e81e992f165b04cee93706706ba76729cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "170b3f9b_5a8d310f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-06T00:18:05Z",
+      "side": 1,
+      "message": "I\u0027ll upload a new CL which resolves the merge conflicts.\n\nI do think we still need to demote crostini.NoSharedFolder.artifact to informational until it can be stabilized.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2515323 \n\nmay have helped, but it\u0027s still showing false positives with a new signature:\n\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket.appspot.com/8864509514418445728/+/steps/test_results/0/steps/tast.crostini.NoSharedFolder.artifact/0/logs/summary/0\n\nHere is a query which may help find occurances:\n\nhttps://chromium-review.googlesource.com/q/%2522%255Btast.crostini.NoSharedFolder.artifact%255D%2522+status:merged",
+      "parentUuid": "77ec176b_0ee8edce",
+      "revId": "ebe99e81e992f165b04cee93706706ba76729cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
