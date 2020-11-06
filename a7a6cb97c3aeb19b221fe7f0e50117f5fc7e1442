@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e5274fb_c3859535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T11:02:23Z",
+      "side": 1,
+      "message": "I guess these are for another CL. ;)",
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b23f19f5_4bc47520",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T11:02:23Z",
+      "side": 1,
+      "message": "I guess you have this as struct because there might be more fields in the future, so, maybe disReasonParam?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 14
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2676740_1447adeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T11:02:23Z",
+      "side": 1,
+      "message": "I think these are from wpa_supplicant? If so, might be better to define then in wpasupplicant package.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a4ba18_2f714c26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T11:02:23Z",
+      "side": 1,
+      "message": "nit: Perhaps some comment for this or in its defer above so that future reader can easily understand.",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ccd6a23_8e44ce45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T11:02:23Z",
+      "side": 1,
+      "message": "This case is a little too long, maybe you can:\n1. wrap these into a function\n2. move powersave setup outside the switch? even before connection? (Either for all cases or in a \"if dtAPSendChannelSwitch\")\n\nWDYT?",
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04d5e7c5_50e48852",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T11:02:23Z",
+      "side": 1,
+      "message": "I think the CL is merged so can rebase now. :)",
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
