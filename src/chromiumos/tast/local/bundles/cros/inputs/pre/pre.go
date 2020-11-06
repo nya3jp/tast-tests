@@ -205,8 +205,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 
 	if p.dm == clamshellMode {
-		// Disable a11y virtual keyboard.
-		if err := p.tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.a11y.virtual_keyboard", true); err != nil {
+		// Enable a11y virtual keyboard.
+		if err := vkb.EnableA11yVirtualKeyboard(ctx, p.tconn, true); err != nil {
 			return errors.Wrap(err, "failed to enable a11y virtual keyboard")
 		}
 	}
