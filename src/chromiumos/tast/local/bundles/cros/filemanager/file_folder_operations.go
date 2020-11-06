@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -55,13 +54,6 @@ func FileFolderOperations(ctx context.Context, s *testing.State) {
 	}
 	defer files.Release(ctx)
 
-	// Get a handle to the input keyboard
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get keyboard handle: ", err)
-	}
-	defer kb.Close()
-
 	// If test fails dump UI tree and take a screenshot.
 	// Always attempt to remove any leftover files even if successful.
 	var createdFileOrFolderPaths []string
@@ -93,7 +85,7 @@ func FileFolderOperations(ctx context.Context, s *testing.State) {
 		}
 
 		// Create a subfolder.
-		if err := files.CreateFolder(ctx, testFolderName, kb); err != nil {
+		if err := files.CreateFolder(ctx, testFolderName); err != nil {
 			s.Fatalf("Failed creating a folder %q inside %q: %v", testFolderName, folder.path, err)
 		}
 		testFolderLocation := filepath.Join(folder.path, testFolderName)
