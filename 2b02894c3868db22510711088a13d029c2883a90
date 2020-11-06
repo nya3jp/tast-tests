@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc697c50_e97dd214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-06T22:54:42Z",
+      "side": 1,
+      "message": "IIUC the capabilities yaml is confusing like that, i.e. a given\ncapability X can be;\n- present, so that it\u0027s supported.\n- Not present, meaning it\u0027s not supported.\n- Negated \"no X\", meaning it\u0027s disabled.\n\nE.g. TGL doesn\u0027t support VP8 enco/deco, so it\u0027s just not\npresent in its capabilities file in the overlay [1], but\nCML has VP9 hw encoding disabled because of iHD [2]\nnot supporting it.\n\nI\u0027m just concerned that as it is formulated here, e.g.\nHWEncodeVP9_odd_dimension is an option over another\ncapability, HWEncodeVP9 but that\u0027s not obvious and \nwould be the only capability to be parsed so.\n\nMaybe hiroh@ that created these capabilities files can\nchime in as to the intended way...?\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-tgl/chromeos-base/autotest-capability-chipset-tgl/files/15-chipset-tgl-capabilities.yaml\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-cml/chromeos-base/autotest-capability-chipset-cml/files/15-chipset-cml-capabilities.yaml;l\u003d25?q\u003dfile:%5C.yaml%20%22no%20%22\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Foverlays%2F\u0026start\u003d1",
+      "parentUuid": "b62a35e0_1578ee58",
+      "range": {
+        "startLine": 301,
+        "startChar": 49,
+        "endLine": 301,
+        "endChar": 69
+      },
+      "revId": "2b02894c3868db22510711088a13d029c2883a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ce7b46_f7f869b9",
         "filename": "src/chromiumos/tast/local/media/caps/caps.go",
         "patchSetId": 2
