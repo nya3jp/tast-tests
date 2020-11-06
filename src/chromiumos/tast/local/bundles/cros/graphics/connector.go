@@ -61,7 +61,7 @@ func init() {
 			"pwang@chromium.org",
 			"chromeos-gfx@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{
 			{
 				Name:              "",
@@ -69,6 +69,7 @@ func init() {
 			}, {
 				Name:              "bad_bios",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(dpPlusModels...)),
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
