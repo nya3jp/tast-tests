@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6595066_b416779c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T17:30:25Z",
+      "side": 1,
+      "message": "Yes, they will. That is why I want to put it behind a var to make it default off but could opt-in by devs. \n\nIf we want to turn this on, we are creating a fair amount of additional data. We probably should touch base with infra guys to make sure it could be handled properly.",
+      "parentUuid": "af5f6f64_b1fb2a63",
+      "revId": "c73f8ed241fa0eb9a95f7d47cd391f6d663b6303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e67963d1_65ac2511",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 5
