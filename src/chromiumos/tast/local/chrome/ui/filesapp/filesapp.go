@@ -351,7 +351,7 @@ func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuN
 }
 
 // CreateFolder creates a new folder named |dirName| in the current directory.
-func (f *FilesApp) CreateFolder(ctx context.Context, dirName string, keyboard *input.KeyboardEventWriter) error {
+func (f *FilesApp) CreateFolder(ctx context.Context, dirName string) error {
 	listBox, err := f.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, uiTimeout)
 	defer listBox.Release(ctx)
 	if err != nil {
@@ -360,6 +360,12 @@ func (f *FilesApp) CreateFolder(ctx context.Context, dirName string, keyboard *i
 	if err := listBox.FocusAndWait(ctx, uiTimeout); err != nil {
 		return errors.Wrap(err, "failed to focus on listbox")
 	}
+
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create keyboard")
+	}
+	defer keyboard.Close()
 
 	// Press Ctrl+E to create a new folder.
 	if err := keyboard.Accel(ctx, "Ctrl+E"); err != nil {
@@ -487,15 +493,27 @@ func (f *FilesApp) CheckFileDoesNotExist(ctx context.Context, title, fileName st
 
 // RenameFile renames a file in a path.
 // Parameter path should be a path to the file, e.g, Downloads > testfolder1 > subfolder > ...
-func (f *FilesApp) RenameFile(ctx context.Context, keyboard *input.KeyboardEventWriter, title, oldName, newName string, path ...string) error {
+func (f *FilesApp) RenameFile(ctx context.Context, title, oldName, newName string, path ...string) error {
 	// Open the directory in the navigation tree.
 	if err := f.OpenPath(ctx, title, path...); err != nil {
 		return errors.Wrapf(err, "failed to open %s", strings.Join(path, ">"))
 	}
 
-	if err := f.SelectFile(ctx, oldName); err != nil {
-		return errors.Wrapf(err, "failed to select %s", oldName)
+	params := ui.FindParams{
+		Name: oldName,
+		Role: ui.RoleTypeStaticText,
 	}
+
+	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}
+	if err := ui.StableFindAndClick(ctx, f.tconn, params, &opts); err != nil {
+		return errors.Wrapf(err, "failed to find and click %s", oldName)
+	}
+
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create keyboard")
+	}
+	defer keyboard.Close()
 
 	// Press Ctrl+Enter.
 	if err := keyboard.Accel(ctx, "Ctrl+Enter"); err != nil {
