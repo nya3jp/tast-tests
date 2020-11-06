@@ -902,7 +902,6 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 			"CHROME_HEADLESS=",
 			"BREAKPAD_DUMP_LOCATION=/home/chronos/crash") // Write crash dumps outside cryptohome.
 	}
-
 	// Wait for a browser to start since session_manager can take a while to start it.
 	var oldPID int
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -1545,27 +1544,27 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 	testing.ContextLogf(ctx, "Clicking button that matches parent email: %q", normalizedParentUser)
 	buttonTextQuery := `
 		(function() {
-			const buttons = document.querySelectorAll('[role="button"]');
+			const buttons = document.querySelectorAll('[data-email]');
 			if (buttons === null){
 				throw new Error('no buttons found on screen');
 			}
 			return [...buttons].map(button=>button.textContent);
-		})();
-	`
-	clickButtonQuery := `
-		(function() {
-			const buttons = document.querySelectorAll('[role="button"]');
-			if (buttons === null){
-				throw new Error('no buttons found on screen');
-			}
-			for (const button of buttons) {
-				if (button.textContent.indexOf(%[1]q) !== -1) {
-					button.click();
-					return;
-				}
-			}
-			throw new Error(%[1]q+' button not found');
 		})();`
+
+	clickButtonQuery := `
+                (function() {
+                        const buttons = document.querySelectorAll('%[1]s');
+                        if (buttons === null){
+                                throw new Error('no buttons found on screen');
+                        }
+                        for (const button of buttons) {
+                                if (button.textContent.indexOf(%[2]q) !== -1) {
+                                        button.click();
+                                        return;
+                                }
+                        }
+                        throw new Error(%[2]q + ' button not found');
+                })();`
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var buttons []string
 		if err := gaiaConn.Eval(ctx, buttonTextQuery, &buttons); err != nil {
@@ -1579,7 +1578,6 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 			// The end of button text contains the email.
 			// Trim email to be the same length as normalizedParentUser.
 			potentialEmail := button[len(button)-len(normalizedParentUser):]
-
 			// Compare email to parent.
 			for i := range normalizedParentUser {
 				// Ignore wildcards.
@@ -1592,7 +1590,7 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 			}
 
 			// Button matches. Click it.
-			return gaiaConn.Exec(ctx, fmt.Sprintf(clickButtonQuery, button))
+			return gaiaConn.Exec(ctx, fmt.Sprintf(clickButtonQuery, "[data-email]", button))
 		}
 		return errors.New("no button matches email")
 	}, loginPollOpts); err != nil {
@@ -1608,7 +1606,7 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 	}
 
 	testing.ContextLog(ctx, "Accepting Unicorn permissions")
-	clickAgreeQuery := fmt.Sprintf(clickButtonQuery, "agree")
+	clickAgreeQuery := fmt.Sprintf(clickButtonQuery, "button", "agree")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return gaiaConn.Exec(ctx, clickAgreeQuery)
 	}, loginPollOpts); err != nil {
