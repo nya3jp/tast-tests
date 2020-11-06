@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "740e0fc4_0ff6e5a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T16:31:18Z",
+      "side": 1,
+      "message": "Move mukai@ to cc so that we could use tast-owners to find another owner.",
+      "revId": "c73f8ed241fa0eb9a95f7d47cd391f6d663b6303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d48f9e15_e63bb109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T16:31:18Z",
+      "side": 1,
+      "message": "Could we put this behind a runtime var to make it optional to devs ?\n\nSomething like the \"mute\" var of TabSwitchCUJ [1]. We could use a var named \"record\" to control this part.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go;l\u003d26",
+      "revId": "c73f8ed241fa0eb9a95f7d47cd391f6d663b6303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67963d1_65ac2511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T16:31:18Z",
+      "side": 1,
+      "message": "Are we enforcing only text files could be saved to output dir? Otherwise, a \".webm\" file is easier to view.",
+      "range": {
+        "startLine": 174,
+        "startChar": 19,
+        "endLine": 174,
+        "endChar": 31
+      },
+      "revId": "c73f8ed241fa0eb9a95f7d47cd391f6d663b6303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
