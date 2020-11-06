@@ -2,15 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package lacros tests lacros-chrome running on ChromeOS.
-package lacros
+// Package gpucuj tests GPU CUJ tests on lacros Chrome and Chrome OS Chrome.
+package gpucuj
 
 import (
 	"context"
-	"fmt"
 	"math"
 	"path/filepath"
-	"sort"
 	"strings"
 	"time"
 
@@ -22,7 +20,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
@@ -34,25 +31,31 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
-type testType string
+// TestType describes the type of GpuCUJ test to run.
+type TestType string
+
+// TestParams holds parameters describing how to run a GpuCUJ test.
+type TestParams struct {
+	TestType TestType
+	Rot90    bool // Whether to rotate the screen 90 or not.
+}
 
 const (
-	// Simple test of performance with a maximized window opening various web content.
+	// TestTypeMaximized is a simple test of performance with a maximized window opening various web content.
 	// This is useful for tracking the performance w.r.t hardware overlay forwarding of video or WebGL content.
-	testTypeMaximized testType = "maximized"
-	// Test of performance while showing the three-dot context menu. This is intended to track the
+	TestTypeMaximized TestType = "maximized"
+	// TestTypeThreeDot is a test of performance while showing the three-dot context menu. This is intended to track the
 	// performance impact of potential double composition of the context menu and hardware overlay usage.
-	testTypeThreeDot testType = "threedot"
-	// Test of performance during a drag-resize operation.
-	testTypeResize testType = "resize"
-	// Test of performance of gradual occlusion via drag-move of web content. This is useful for tracking impact
+	TestTypeThreeDot TestType = "threedot"
+	// TestTypeResize is a test of performance during a drag-resize operation.
+	TestTypeResize TestType = "resize"
+	// TestTypeMoveOcclusion is a test of performance of gradual occlusion via drag-move of web content. This is useful for tracking impact
 	// of hardware overlay forwarding and clipping (due to occlusion) of tiles optimisations.
-	testTypeMoveOcclusion testType = "moveocclusion"
-	// Test similar to testTypeMoveOcclusion but always occludes using a ChromeOS chrome window.
-	testTypeMoveOcclusionWithCrosWindow testType = "moveocclusion_withcroswindow"
+	TestTypeMoveOcclusion TestType = "moveocclusion"
+	// TestTypeMoveOcclusionWithCrosWindow is a test similar to TestTypeMoveOcclusion but always occludes using a ChromeOS chrome window.
+	TestTypeMoveOcclusionWithCrosWindow TestType = "moveocclusion_withcroswindow"
 
 	// testDuration indicates how long histograms should be sampled for during performance tests.
 	testDuration time.Duration = 20 * time.Second
@@ -117,131 +120,6 @@ var pageSet = []page{
 		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
 		url:  "https://en.wikipedia.org/wiki/Cat",
 	},
-}
-
-type gpuCUJTestParams struct {
-	testType testType
-	rot90    bool // Whether to rotate the screen 90 or not.
-}
-
-func init() {
-	testing.AddTest(&testing.Test{
-		Func:         GpuCUJ,
-		Desc:         "Lacros GPU performance CUJ tests",
-		Contacts:     []string{"edcourtney@chromium.org", "hidehiko@chromium.org", "lacros-team@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome"},
-		// TODO(crbug.com/1140407): Run on all lacros devices after removing live video streaming test.
-		HardwareDeps: hwdep.D(hwdep.Model("eve")),
-		Timeout:      120 * time.Minute,
-		Data:         []string{launcher.DataArtifact},
-		Params: []testing.Param{{
-			Name: "maximized",
-			Val: gpuCUJTestParams{
-				testType: testTypeMaximized,
-				rot90:    false,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "maximized_rot90",
-			Val: gpuCUJTestParams{
-				testType: testTypeMaximized,
-				rot90:    true,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "maximized_composited",
-			Val: gpuCUJTestParams{
-				testType: testTypeMaximized,
-				rot90:    false,
-			},
-			Pre: launcher.StartedByDataForceComposition(),
-		}, {
-			Name: "threedot",
-			Val: gpuCUJTestParams{
-				testType: testTypeThreeDot,
-				rot90:    false,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "threedot_rot90",
-			Val: gpuCUJTestParams{
-				testType: testTypeThreeDot,
-				rot90:    true,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "threedot_composited",
-			Val: gpuCUJTestParams{
-				testType: testTypeThreeDot,
-				rot90:    false,
-			},
-			Pre: launcher.StartedByDataForceComposition(),
-		}, {
-			Name: "resize",
-			Val: gpuCUJTestParams{
-				testType: testTypeResize,
-				rot90:    false,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "resize_rot90",
-			Val: gpuCUJTestParams{
-				testType: testTypeResize,
-				rot90:    true,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "resize_composited",
-			Val: gpuCUJTestParams{
-				testType: testTypeResize,
-				rot90:    false,
-			},
-			Pre: launcher.StartedByDataForceComposition(),
-		}, {
-			Name: "moveocclusion",
-			Val: gpuCUJTestParams{
-				testType: testTypeMoveOcclusion,
-				rot90:    false,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "moveocclusion_rot90",
-			Val: gpuCUJTestParams{
-				testType: testTypeMoveOcclusion,
-				rot90:    true,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "moveocclusion_composited",
-			Val: gpuCUJTestParams{
-				testType: testTypeMoveOcclusion,
-				rot90:    false,
-			},
-			Pre: launcher.StartedByDataForceComposition(),
-		}, {
-			Name: "moveocclusion_withcroswindow",
-			Val: gpuCUJTestParams{
-				testType: testTypeMoveOcclusionWithCrosWindow,
-				rot90:    false,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "moveocclusion_withcroswindow_rot90",
-			Val: gpuCUJTestParams{
-				testType: testTypeMoveOcclusionWithCrosWindow,
-				rot90:    true,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "moveocclusion_withcroswindow_composited",
-			Val: gpuCUJTestParams{
-				testType: testTypeMoveOcclusionWithCrosWindow,
-				rot90:    false,
-			},
-			Pre: launcher.StartedByDataForceComposition(),
-		}},
-	})
 }
 
 // This test deals with both ChromeOS chrome and lacros chrome. In order to reduce confusion,
@@ -329,247 +207,12 @@ func setWindowBounds(ctx context.Context, ctconn *chrome.TestConn, windowID int,
 	return nil
 }
 
-var metricMap = map[string]struct {
-	unit      string
-	direction perf.Direction
-	uma       bool
-}{
-	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Universal": {
-		unit:      "percent",
-		direction: perf.SmallerIsBetter,
-		uma:       true,
-	},
-	"Graphics.Smoothness.PercentDroppedFrames.MainThread.Universal": {
-		unit:      "percent",
-		direction: perf.SmallerIsBetter,
-		uma:       true,
-	},
-	"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.Universal": {
-		unit:      "percent",
-		direction: perf.SmallerIsBetter,
-		uma:       true,
-	},
-	"Graphics.Smoothness.PercentDroppedFrames.AllSequences": {
-		unit:      "percent",
-		direction: perf.SmallerIsBetter,
-		uma:       true,
-	},
-	"Compositing.Display.DrawToSwapUs": {
-		unit:      "us",
-		direction: perf.SmallerIsBetter,
-		uma:       true,
-	},
-	"total_power": {
-		unit:      "joules",
-		direction: perf.SmallerIsBetter,
-		uma:       false,
-	},
-	"gpu_power": {
-		unit:      "joules",
-		direction: perf.SmallerIsBetter,
-		uma:       false,
-	},
-	"nongpu_power": {
-		unit:      "joules",
-		direction: perf.SmallerIsBetter,
-		uma:       false,
-	},
-	"cpu_power": {
-		unit:      "joules",
-		direction: perf.SmallerIsBetter,
-		uma:       false,
-	},
-	"dram_power": {
-		unit:      "joules",
-		direction: perf.SmallerIsBetter,
-		uma:       false,
-	},
-}
-
-// These are the default categories for 'UI Rendering' in chrome://tracing plus 'exo' and 'wayland'.
-var tracingCategories = []string{"benchmark", "cc", "exo", "gpu", "input", "toplevel", "ui", "views", "viz", "wayland"}
-
-type statType string
-
-const (
-	meanStat  = "mean"
-	valueStat = "value"
-)
-
-type statBucketKey struct {
-	metric string
-	stat   statType
-	crt    lacros.ChromeType
-}
-
-type metricsRecorder struct {
-	buckets map[statBucketKey][]float64
-}
-
-func (m *metricsRecorder) record(ctx context.Context, invoc *testInvocation, key statBucketKey, value float64) error {
-	minfo, ok := metricMap[key.metric]
-	if !ok {
-		return errors.Errorf("failed to lookup metric info: %s", key.metric)
-	}
-
-	name := fmt.Sprintf("%s.%s.%s.%s", invoc.page.name, key.metric, string(key.stat), string(key.crt))
-	testing.ContextLog(ctx, name, ": ", value, " ", minfo.unit)
-
-	invoc.pv.Set(perf.Metric{
-		Name:      name,
-		Unit:      minfo.unit,
-		Direction: minfo.direction,
-	}, value)
-	m.buckets[key] = append(m.buckets[key], value)
-	return nil
-}
-
-func (m *metricsRecorder) recordHistogram(ctx context.Context, invoc *testInvocation, h *metrics.Histogram) error {
-	// Ignore empty histograms. It's hard to define what the mean should be in this case.
-	if h.TotalCount() == 0 {
-		return nil
-	}
-
-	mean, err := h.Mean()
-	if err != nil {
-		return errors.Wrapf(err, "failed to get mean for histogram: %s", h.Name)
-	}
-
-	testing.ContextLog(ctx, h)
-
-	return m.record(ctx, invoc, statBucketKey{
-		metric: h.Name,
-		stat:   meanStat,
-		crt:    invoc.crt,
-	}, mean)
-}
-
-func (m *metricsRecorder) recordValue(ctx context.Context, invoc *testInvocation, name string, value float64) error {
-	return m.record(ctx, invoc, statBucketKey{
-		metric: name,
-		stat:   valueStat,
-		crt:    invoc.crt,
-	}, value)
-}
-
-func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values) error {
-	// Collect means and standard deviations for each bucket. Each bucket contains results from several different pages.
-	// We define the population as the set of all pages (another option would be to define the population as the
-	// metric itself). For histograms (meanStat), we take a single sample which contains the means for each page.
-	// For single values (valueStat), we take as single sample which just consists of those values.
-	// We estimate the following quantities:
-	// page_mean:
-	//   Meaning: The mean for all pages. (e.g. mean of histogram means)
-	//   Estimator: sample mean
-	// page_stddev:
-	//   Meaning: Variance over all pages. (e.g. variance of histogram means)
-	//   Estimator: unbiased sample variance
-	// N.B. we report standard deviation not variance so even though we use Bessel's correction the standard deviation
-	// is still biased.
-	// TODO: Consider extending this to also provide data where the population is the metric itself.
-	//   e.g. metric_stddev, metric_mean - statistics on the metric overall not per-page.
-	var logs []string
-	for k, bucket := range m.buckets {
-		minfo, ok := metricMap[k.metric]
-		if !ok {
-			return errors.Errorf("failed to lookup metric info: %s", k.metric)
-		}
-
-		var sum float64
-		for _, value := range bucket {
-			sum += value
-		}
-		n := float64(len(bucket))
-		mean := sum / n
-		var variance float64
-		for _, value := range bucket {
-			variance += (value - mean) * (value - mean)
-		}
-		variance /= float64(len(bucket) - 1) // Bessel's correction.
-		stddev := math.Sqrt(variance)
-
-		m := perf.Metric{
-			Name:      fmt.Sprintf("all.%s.%s.%s", k.metric, "page_mean", string(k.crt)),
-			Unit:      minfo.unit,
-			Direction: minfo.direction,
-		}
-		s := perf.Metric{
-			Name:      fmt.Sprintf("all.%s.%s.%s", k.metric, "page_stddev", string(k.crt)),
-			Unit:      minfo.unit,
-			Direction: perf.SmallerIsBetter, // In general, it's better if standard deviation is less.
-		}
-		logs = append(logs, fmt.Sprint(m.Name, ": ", mean, " ", m.Unit), fmt.Sprint(s.Name, ": ", stddev, " ", s.Unit))
-		pv.Set(m, mean)
-		pv.Set(s, stddev)
-	}
-
-	// Print logs in order.
-	sort.Strings(logs)
-	for _, log := range logs {
-		testing.ContextLog(ctx, log)
-	}
-	return nil
-}
-
-func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvocation, perfFn func(ctx context.Context) error) error {
-	var keys []string
-	for k, v := range metricMap {
-		if v.uma {
-			keys = append(keys, k)
-		}
-	}
-	sort.Strings(keys)
-
-	rapl, err := power.NewRAPLSnapshot()
-	if err != nil {
-		return errors.Wrap(err, "failed to get RAPL snapshot")
-	}
-
-	histograms, err := metrics.Run(ctx, tconn, perfFn, keys...)
-	if err != nil {
-		return errors.Wrap(err, "failed to get histograms")
-	}
-
-	raplv, err := rapl.DiffWithCurrentRAPL()
-	if err != nil {
-		return errors.Wrap(err, "failed to compute RAPL diffs")
-	}
-
-	// Store metrics in the form: Scenario.PageSet.UMA metric name.statistic.{chromeos, lacros}.
-	// For example, maximized.Compositing.Display.DrawToSwapUs.mean.chromeos. In crosbolt, for each
-	// scenario (e.g. three-dot menu), we can then easily compare between chromeos and lacros
-	// for the same metric, in the same scenario.
-	for _, h := range histograms {
-		if err := invoc.metrics.recordHistogram(ctx, invoc, h); err != nil {
-			return err
-		}
-	}
-
-	nongpuPower := raplv.Total() - raplv.Uncore()
-	if err := invoc.metrics.recordValue(ctx, invoc, "total_power", raplv.Total()); err != nil {
-		return err
-	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "nongpu_power", nongpuPower); err != nil {
-		return err
-	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "cpu_power", raplv.Core()); err != nil {
-		return err
-	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "dram_power", raplv.DRAM()); err != nil {
-		return err
-	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "gpu_power", raplv.Uncore()); err != nil {
-		return err
-	}
-	return nil
-}
-
 // testInvocation describes a particular test run. A test run involves running a particular scenario
 // (e.g. moveocclusion) with a particular type of Chrome (ChromeOS or Lacros) on a particular page.
 // This structure holds the necessary data to do this.
 type testInvocation struct {
 	pv       *perf.Values
-	scenario testType
+	scenario TestType
 	page     page
 	crt      lacros.ChromeType
 	metrics  *metricsRecorder
@@ -602,7 +245,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 	perfFn := func(ctx context.Context) error {
 		return testing.Sleep(ctx, testDuration)
 	}
-	if invoc.scenario == testTypeResize {
+	if invoc.scenario == TestTypeResize {
 		// Restore window.
 		if err := ash.SetWindowStateAndWait(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore non-blank window")
@@ -625,7 +268,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 			}
 			return nil
 		}
-	} else if invoc.scenario == testTypeMoveOcclusion || invoc.scenario == testTypeMoveOcclusionWithCrosWindow {
+	} else if invoc.scenario == TestTypeMoveOcclusion || invoc.scenario == TestTypeMoveOcclusionWithCrosWindow {
 		wb, err := findFirstBlankWindow(ctx, ctconn)
 		if err != nil {
 			return err
@@ -677,7 +320,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 
 	// Open the threedot menu if indicated.
 	// TODO(edcourtney): Sometimes the accessibility tree isn't populated for lacros chrome, which causes this code to fail.
-	if invoc.scenario == testTypeThreeDot {
+	if invoc.scenario == TestTypeThreeDot {
 		clickFn := func(n *ui.Node) error { return n.LeftClick(ctx) }
 		if invoc.crt == lacros.ChromeTypeLacros {
 			clickFn = func(n *ui.Node) error { return leftClickLacros(ctx, ctconn, w.ID, n) }
@@ -778,7 +421,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 	}
 
 	// Setup extra window for multi-window tests.
-	if invoc.scenario == testTypeMoveOcclusion {
+	if invoc.scenario == TestTypeMoveOcclusion {
 		connBlank, err := l.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
@@ -786,7 +429,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 		defer connBlank.Close()
 		defer connBlank.CloseTarget(ctx)
 
-	} else if invoc.scenario == testTypeMoveOcclusionWithCrosWindow {
+	} else if invoc.scenario == TestTypeMoveOcclusionWithCrosWindow {
 		connBlank, err := pd.Chrome.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
@@ -822,7 +465,7 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation
 	}
 
 	// Setup extra window for multi-window tests.
-	if invoc.scenario == testTypeMoveOcclusion || invoc.scenario == testTypeMoveOcclusionWithCrosWindow {
+	if invoc.scenario == TestTypeMoveOcclusion || invoc.scenario == TestTypeMoveOcclusionWithCrosWindow {
 		connBlank, err := pd.Chrome.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
@@ -834,88 +477,85 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation
 	return runTest(ctx, ctconn, pd, pd.Chrome, invoc)
 }
 
-func GpuCUJ(ctx context.Context, s *testing.State) {
-	tconn, err := s.PreValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
+type cleanupCallback func(context.Context) error
 
+func noCleanup(context.Context) error { return nil }
+
+func combineCleanup(ctx context.Context, existing, new func(context.Context) error, msg string) cleanupCallback {
+	return func(context.Context) error {
+		if err := new(ctx); err != nil {
+			return errors.Wrap(err, msg)
+		}
+		return existing(ctx)
+	}
+}
+
+// RunGpuCUJ runs a GpuCUJ test according to the given parameters.
+func RunGpuCUJ(ctx context.Context, pd launcher.PreData, params TestParams) (*perf.Values, cleanupCallback, error) {
 	// Set-up environment to be more consistent:
 	sup, supCleanup := setup.New("lacros.GpuCUJ")
-	defer func() {
-		if err := supCleanup(ctx); err != nil {
-			s.Fatal("Failed to cleanup after creating test: ", err)
-		}
-	}()
+	cleanup := combineCleanup(ctx, noCleanup, supCleanup, "failed to cleanup after creating test")
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{Wifi: setup.DoNotChangeWifiInterfaces}))
+	sup.Add(setup.PowerTest(ctx, pd.TestAPIConn, setup.PowerTestOptions{Wifi: setup.DoNotChangeWifiInterfaces}))
 
 	if err := sup.Check(ctx); err != nil {
-		s.Fatal("Failed to setup GpuCUJ power test environment: ", err)
+		return nil, cleanup, errors.Wrap(err, "failed to setup GpuCUJ power test environment")
 	}
 
-	if err := quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, true); err != nil {
-		s.Fatal("Failed to disable notifications: ", err)
+	if err := quicksettings.ToggleSetting(ctx, pd.TestAPIConn, quicksettings.SettingPodDoNotDisturb, true); err != nil {
+		return nil, cleanup, errors.Wrap(err, "failed to disable notifications")
 	}
-	defer func() {
-		if err := quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, false); err != nil {
-			s.Fatal("Failed to re-enable notifications: ", err)
-		}
-	}()
+	cleanup = combineCleanup(ctx, cleanup, func(ctx context.Context) error {
+		return quicksettings.ToggleSetting(ctx, pd.TestAPIConn, quicksettings.SettingPodDoNotDisturb, false)
+	}, "failed to re-enable notifications")
 
-	params := s.Param().(gpuCUJTestParams)
-
-	if params.rot90 {
-		infos, err := display.GetInfo(ctx, tconn)
+	if params.Rot90 {
+		infos, err := display.GetInfo(ctx, pd.TestAPIConn)
 		if err != nil {
-			s.Fatal("Failed to get display info: ", err)
+			return nil, cleanup, errors.Wrap(err, "failed to get display info")
 		}
 
 		if len(infos) != 1 {
-			s.Fatal("Failed to find unique display")
+			return nil, cleanup, errors.New("failed to find unique display")
 		}
 
 		rot := 90
-		if err := display.SetDisplayProperties(ctx, tconn, infos[0].ID, display.DisplayProperties{Rotation: &rot}); err != nil {
-			s.Fatal("Failed to rotate display: ", err)
+		if err := display.SetDisplayProperties(ctx, pd.TestAPIConn, infos[0].ID, display.DisplayProperties{Rotation: &rot}); err != nil {
+			return nil, cleanup, errors.Wrap(err, "failed to rotate display")
 		}
 		// Restore the initial rotation.
-		defer func() {
-			if err := display.SetDisplayProperties(ctx, tconn, infos[0].ID, display.DisplayProperties{Rotation: &infos[0].Rotation}); err != nil {
-				s.Fatal("Failed to restore the initial display rotation: ", err)
-			}
-		}()
+		cleanup = combineCleanup(ctx, cleanup, func(ctx context.Context) error {
+			return display.SetDisplayProperties(ctx, pd.TestAPIConn, infos[0].ID, display.DisplayProperties{Rotation: &infos[0].Rotation})
+		}, "failed to restore the initial display rotation")
 	}
 
 	pv := perf.NewValues()
 	m := metricsRecorder{buckets: make(map[statBucketKey][]float64)}
 	for _, page := range pageSet {
-		if err := runLacrosTest(ctx, s.PreValue().(launcher.PreData), &testInvocation{
+		if err := runLacrosTest(ctx, pd, &testInvocation{
 			pv:       pv,
-			scenario: params.testType,
+			scenario: params.TestType,
 			page:     page,
 			crt:      lacros.ChromeTypeLacros,
 			metrics:  &m,
 		}); err != nil {
-			s.Fatal("Failed to run lacros test: ", err)
+			return nil, cleanup, errors.Wrap(err, "failed to run lacros test")
 		}
 
-		if err := runCrosTest(ctx, s.PreValue().(launcher.PreData), &testInvocation{
+		if err := runCrosTest(ctx, pd, &testInvocation{
 			pv:       pv,
-			scenario: params.testType,
+			scenario: params.TestType,
 			page:     page,
 			crt:      lacros.ChromeTypeChromeOS,
 			metrics:  &m,
 		}); err != nil {
-			s.Fatal("Failed to run cros test: ", err)
+			return nil, cleanup, errors.Wrap(err, "failed to run cros test")
 		}
 	}
 
 	if err := m.computeStatistics(ctx, pv); err != nil {
-		s.Fatal("Could not compute derived statistics: ", err)
+		return nil, cleanup, errors.Wrap(err, "could not compute derived statistics")
 	}
 
-	if err := pv.Save(s.OutDir()); err != nil {
-		s.Error("Cannot save perf data: ", err)
-	}
+	return pv, cleanup, nil
 }
