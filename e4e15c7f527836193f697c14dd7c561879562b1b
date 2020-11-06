@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80c7093_e61aaa7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-06T10:03:11Z",
+      "side": 1,
+      "message": "Not sure if that is the right way to fix this, changing shared code should not break tests.",
+      "parentUuid": "69d1cf81_e01edae4",
+      "range": {
+        "startLine": 19,
+        "startChar": 49,
+        "endLine": 19,
+        "endChar": 65
+      },
+      "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "72abccaf_d6508925",
