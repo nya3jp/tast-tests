@@ -22,6 +22,30 @@
       },
       "revId": "5c47475ed3b37aaa7753d6eeb08c10158ca083b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6410e40_034f2dda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-06T03:29:57Z",
+      "side": 1,
+      "message": "The old comment is wrong :)",
+      "parentUuid": "20f83978_c39126a4",
+      "range": {
+        "startLine": 204,
+        "startChar": 16,
+        "endLine": 204,
+        "endChar": 41
+      },
+      "revId": "5c47475ed3b37aaa7753d6eeb08c10158ca083b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
