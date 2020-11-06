@@ -68,6 +68,24 @@
       "message": "Let\u0027s avoid double negation. How about EnableStartupWindow?",
       "revId": "3b1638bce4611548b0434889fe459d6f39051ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33745ba9_584f32e5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-06T17:57:53Z",
+      "side": 1,
+      "message": "Every other test that uses chrome operated with the flag enabled so I\u0027d have to add an enabled setting to every other test. Is this ok?",
+      "parentUuid": "af8dce8f_0ef59b43",
+      "revId": "3b1638bce4611548b0434889fe459d6f39051ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
