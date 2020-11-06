@@ -16,6 +16,52 @@
       "message": "PTAL",
       "revId": "dda832ec69a05d3de95a12303ce51a24f49e7417",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2d2fdd_48c02477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/remove_ok.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-06T04:36:41Z",
+      "side": 1,
+      "message": "This is going to fail on tablet devices.  Please test these on a device in tablet mode.",
+      "range": {
+        "startLine": 86,
+        "startChar": 147,
+        "endLine": 86,
+        "endChar": 148
+      },
+      "revId": "dda832ec69a05d3de95a12303ce51a24f49e7417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17df5bad_52614a4a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-06T04:36:41Z",
+      "side": 1,
+      "message": "itemNameRegexp",
+      "range": {
+        "startLine": 89,
+        "startChar": 63,
+        "endLine": 89,
+        "endChar": 71
+      },
+      "revId": "dda832ec69a05d3de95a12303ce51a24f49e7417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
