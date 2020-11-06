@@ -122,9 +122,19 @@ func ChromeConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
 	if err != nil {
 		return nil, err
 	}
+	// Wait for the page to fully load before adding the tast library.
+	if err := settingsConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for settings to load")
+	}
+
+	// Add tast library to gain access to tast.promisify for simpler JS evaluation.
 	if err := chrome.AddTastLibrary(ctx, settingsConn); err != nil {
 		settingsConn.Close()
 		return nil, errors.Wrap(err, "failed to introduce tast library")
+	}
+	// Ensure tast library is loaded before returning.
+	if err := settingsConn.WaitForExpr(ctx, `tast !== undefined`); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for tast library to load")
 	}
 	return settingsConn, nil
 }
