@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d491c3be_73c440c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-06T02:25:54Z",
+      "side": 1,
+      "message": "Sure. will do.",
+      "parentUuid": "6f8b18a5_db308d28",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 75
+      },
+      "revId": "15701b275c457a29284a2b8aeaecb2e177baef34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06918063_4679228b",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-06T02:17:00Z",
       "side": 1,
       "message": "Q: Can\u0027t use the var args directly?",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 36
+      },
+      "revId": "15701b275c457a29284a2b8aeaecb2e177baef34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886d2d1f_a73e0078",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-06T02:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06918063_4679228b",
       "range": {
         "startLine": 243,
         "startChar": 1,
