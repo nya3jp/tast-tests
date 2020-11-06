@@ -16,6 +16,24 @@
       "message": "The flag that this cl toggles allows this cl https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2500407 to work. Without this change, I\u0027m not able to toggle a user preference setting properly. I\u0027m not sure how this flag is relevant, but it\u0027s the minimal change I need for the other cl to work.\n\nThanks!",
       "revId": "c25a4fd4b391159a1353a366c9bbd157de437283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "268ea432_ba5f055f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-06T10:09:17Z",
+      "side": 1,
+      "message": "That\u0027s strange. Startup window is known to make tests flaky, so it\u0027s nice if we can avoid it. Is it difficult to investigate why the flag is relevant to bluetooth preference?",
+      "parentUuid": "cc1712df_d461d91a",
+      "revId": "c25a4fd4b391159a1353a366c9bbd157de437283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
