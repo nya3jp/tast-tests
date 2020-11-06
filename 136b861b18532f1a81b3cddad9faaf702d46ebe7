@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d9f5c35_ca972e63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-06T20:51:27Z",
+      "side": 1,
+      "message": "LGTM to me.",
+      "revId": "136b861b18532f1a81b3cddad9faaf702d46ebe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd3fd6e_e6449a49",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-06T20:51:27Z",
+      "side": 1,
+      "message": "how about, `Does not automatically open a browser window on startup`?\nI don\u0027t think explicitly mentioned the underlying flag is needed here",
+      "range": {
+        "startLine": 332,
+        "startChar": 34,
+        "endLine": 332,
+        "endChar": 69
+      },
+      "revId": "136b861b18532f1a81b3cddad9faaf702d46ebe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
