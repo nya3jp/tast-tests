@@ -6,6 +6,7 @@ package ash
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -159,4 +160,29 @@ func WaitForNotification(ctx context.Context, tconn *chrome.TestConn, timeout ti
 		return nil, errors.Wrap(err, "failed to wait for notification")
 	}
 	return result, nil
+}
+
+// CreateTestNotification creates a notification with a custom title and message.
+// iconUrl is a required field to the chrome.notifiations.create() call so I've hardcoded a 1px transparent data-url
+func CreateTestNotification(ctx context.Context, tconn *chrome.TestConn, title, message string) (string, error) {
+	var id string
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+                        chrome.notifications.create({
+                                type: 'basic',
+                                title: '%[1]s',
+                                message: "'%[2]s'",
+                                iconUrl: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                        }, function(behavior) {
+                                if (chrome.runtime.lastError) {
+                                        reject(new Error(chrome.runtime.lastError.message));
+                                } else {
+                                        resolve(behavior);
+                                }
+                        });
+                })`, title, message)
+	if err := tconn.EvalPromise(ctx, expr, &id); err != nil {
+		return "", errors.Wrap(err, "failed to create test notification")
+	}
+	return id, nil
 }
