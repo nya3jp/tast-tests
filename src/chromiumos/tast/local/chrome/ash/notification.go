@@ -160,3 +160,24 @@ func WaitForNotification(ctx context.Context, tconn *chrome.TestConn, timeout ti
 	}
 	return result, nil
 }
+
+// CreateTestNotification creates a notification with a custom title and message.
+// iconUrl is a required field to the chrome.notifiations.create() call so a 1px transparent data-url is hardcoded.
+func CreateTestNotification(ctx context.Context, tconn *chrome.TestConn, notificationType, title, message string) (string, error) {
+	var id string
+	if err := tconn.Call(ctx, &id,
+		`async (notificationType, title, message, iconUrl) =>
+		tast.promisify(chrome.notifications.create)({
+			type: notificationType,
+			title: title,
+			message: message,
+			iconUrl: iconUrl
+		})`,
+		notificationType,
+		title,
+		message,
+		"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="); err != nil {
+		return "", errors.Wrap(err, "failed to create notification")
+	}
+	return id, nil
+}
