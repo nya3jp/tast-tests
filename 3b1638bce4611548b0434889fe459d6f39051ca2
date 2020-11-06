@@ -104,6 +104,24 @@
       "parentUuid": "33745ba9_584f32e5",
       "revId": "3b1638bce4611548b0434889fe459d6f39051ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce25d93f_5a88cce1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-06T20:41:09Z",
+      "side": 1,
+      "message": "Oh, I think I misunderstood nya\u0027s suggestion. I initially interpreted it as a semantic change rather than a wording one. You\u0027re correct Po-Hsien, I just need to rename my function.",
+      "parentUuid": "fd67124f_f051a8da",
+      "revId": "3b1638bce4611548b0434889fe459d6f39051ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
