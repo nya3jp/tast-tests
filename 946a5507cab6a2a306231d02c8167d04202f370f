@@ -33,6 +33,23 @@
       "message": "Mukai-san, friendly-ping?",
       "revId": "946a5507cab6a2a306231d02c8167d04202f370f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5187951c_899942b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-06T01:36:09Z",
+      "side": 1,
+      "message": "Oh, Mukai-san is on leave now.\nBrendan, would you mind taking a look at this as you first authored chrome/ui/constants.go?",
+      "revId": "946a5507cab6a2a306231d02c8167d04202f370f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
