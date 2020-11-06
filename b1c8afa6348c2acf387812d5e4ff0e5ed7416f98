@@ -362,6 +362,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76577240_07e45423",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T11:02:23Z",
+      "side": 1,
+      "message": "LGTM % a nit in another comment. I originally think string might be easier for printing logs but test name already has it so it should be enough. Keep the thread open to see if others have suggestions.",
+      "parentUuid": "24b796ed_a82fa73e",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db94fe65_e7fbb4c7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -1013,6 +1037,30 @@
       "side": 1,
       "message": "The autotest is not verifing that. This is the bug and CL for adding the test:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d510173\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/288964/\n\nI think that should be added. Otherwise, the test is only verifying that a disconnection happens in the above scenarios and just reporting the reason. WDYT?",
       "parentUuid": "5e5ed0a0_cf065087",
+      "range": {
+        "startLine": 196,
+        "startChar": 58,
+        "endLine": 196,
+        "endChar": 64
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c1c02c_42e12d04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T11:02:23Z",
+      "side": 1,
+      "message": "One thing I\u0027m not sure: is the reason code platform independent? Or we can see if it is after merged?",
+      "parentUuid": "c3f7dd9b_ccea43ea",
       "range": {
         "startLine": 196,
         "startChar": 58,
