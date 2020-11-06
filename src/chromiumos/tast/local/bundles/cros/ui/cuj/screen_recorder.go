@@ -151,8 +151,8 @@ func (r *ScreenRecorder) Stop(ctx context.Context) error {
 	return nil
 }
 
-// Save saves the latest encoded string into a file.
-func (r *ScreenRecorder) Save(ctx context.Context, filepath string) error {
+// SaveAsBinary saves the latest encoded string into a binary file.
+func (r *ScreenRecorder) SaveAsBinary(ctx context.Context, filepath string) error {
 	result := strings.Split(r.result, ",")[1]
 	// Decode base64 string into binary.
 	reader := base64.NewDecoder(base64.StdEncoding, strings.NewReader(result))
@@ -162,6 +162,15 @@ func (r *ScreenRecorder) Save(ctx context.Context, filepath string) error {
 	}
 	if err := ioutil.WriteFile(filepath, buf.Bytes(), 0644); err != nil {
 		return errors.Wrapf(err, "failed to dump binary to %s", filepath)
+	}
+	return nil
+}
+
+// SaveAsString saves the latest encoded string into a string file.
+func (r *ScreenRecorder) SaveAsString(ctx context.Context, filepath string) error {
+	result := r.result
+	if err := ioutil.WriteFile(filepath, []byte(result), 0644); err != nil {
+		return errors.Wrapf(err, "failed to dump string to %s", filepath)
 	}
 	return nil
 }
