@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3cbfe81_8cf9e734",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-06T06:00:20Z",
+      "side": 1,
+      "message": "Hi matthewmwang@, does this bug still exist? I tried remove this part and run this test on the host you mentioned in the bug link for 20 times and there was no failure.",
+      "range": {
+        "startLine": 83,
+        "startChar": 7,
+        "endLine": 83,
+        "endChar": 29
+      },
+      "revId": "123304e4155a554e766ff0e56875e939e5f4446e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
