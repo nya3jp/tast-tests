@@ -237,6 +237,42 @@ func TapKeys(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
 	return nil
 }
 
+// WaitForKeysExist waits for a list of keys to appear on virtual keyboard.
+// Note: Should not use FindKeyNode in a loop to implement this function, because it waits for each key within a timeout.
+func WaitForKeysExist(ctx context.Context, tconn *chrome.TestConn, keysToCheck ...string) error {
+	var keys []string
+	keys = append(keys, keysToCheck...)
+
+	vk, err := VirtualKeyboard(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to find virtual keyboard automation node")
+	}
+	defer vk.Release(ctx)
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		var notFoundKeys []string
+		for _, key := range keys {
+			keyParams := ui.FindParams{
+				Role: ui.RoleTypeButton,
+				Name: key,
+			}
+
+			keyExists, err := vk.DescendantExists(ctx, keyParams)
+			if err != nil {
+				return errors.Wrapf(err, "failed to find key node %s", key)
+			}
+
+			if !keyExists {
+				notFoundKeys = append(notFoundKeys, key)
+			}
+		}
+		if len(notFoundKeys) > 0 {
+			return errors.Errorf("these keys are not found: %v", notFoundKeys)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second})
+}
+
 // TapKeysJS simulates tap events on the middle of the specified sequence of keys via javascript.
 // Each keys can be any letter of the alphabet, "space" or "backspace".
 func TapKeysJS(ctx context.Context, kconn *chrome.Conn, keys []string) error {
