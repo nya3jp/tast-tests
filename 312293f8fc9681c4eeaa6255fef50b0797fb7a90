@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e966238c_a0291045",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T10:45:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5da085ff_a76cd428",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86a4624f_48311735",
