@@ -16,6 +16,24 @@
       "message": "I\u0027m assuming that the SAR tables found at SSDT1 have the same format as those found at SSDT?",
       "revId": "124570a5e6c6a18292762e084a75c726a5a89b54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d025601_f6622d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-11-06T20:34:57Z",
+      "side": 1,
+      "message": "Apparently so. I didn\u0027t look super closely, but the test passes, and my understanding of ACPI says the ASL must look the same, if the driver is treating it the same.",
+      "parentUuid": "9bac230a_323f1b21",
+      "revId": "124570a5e6c6a18292762e084a75c726a5a89b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
