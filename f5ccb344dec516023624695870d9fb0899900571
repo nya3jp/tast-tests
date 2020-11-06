@@ -16,6 +16,23 @@
       "message": "Owners, please approve. Thanks.",
       "revId": "f5ccb344dec516023624695870d9fb0899900571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b7df2d_71bf2b92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T20:47:42Z",
+      "side": 1,
+      "message": "Thank you for the review.",
+      "revId": "f5ccb344dec516023624695870d9fb0899900571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
