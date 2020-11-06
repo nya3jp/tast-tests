@@ -18,7 +18,8 @@ func ChromeVideo() testing.Precondition { return chromeVideoPre }
 var chromeVideoPre = chrome.NewPrecondition("video",
 	chromeVModuleArgs,
 	chromeUseHwDecoderForSmallResolutions,
-	chromeBypassPermissionsArgs)
+	chromeBypassPermissionsArgs,
+	chromeSuppressNotificationsArgs)
 
 // ChromeAlternateVideoDecoder returns a precondition with flags selecting the
 // alternate hardware accelerated video decoder implementation. Chrome has two
@@ -32,6 +33,7 @@ func ChromeAlternateVideoDecoder() testing.Precondition { return chromeAlternate
 var chromeAlternateVideoDecoderPre = chrome.NewPrecondition("alternateVideoDecoder",
 	chromeVModuleArgs,
 	chromeUseHwDecoderForSmallResolutions,
+	chromeSuppressNotificationsArgs,
 	chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"))
 
 // ChromeVideoWithGuestLogin returns a precondition equal to ChromeVideo but
@@ -42,6 +44,7 @@ func ChromeVideoWithGuestLogin() testing.Precondition { return chromeVideoWithGu
 var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin",
 	chromeVModuleArgs,
 	chromeUseHwDecoderForSmallResolutions,
+	chromeSuppressNotificationsArgs,
 	chrome.GuestLogin())
 
 // ChromeVideoWithHDRScreen returns a precondition equal to ChromeVideo but
@@ -52,6 +55,7 @@ func ChromeVideoWithHDRScreen() testing.Precondition { return chromeVideoWithHDR
 var chromeVideoWithHDRScreenPre = chrome.NewPrecondition("videoWithHDRScreen",
 	chromeVModuleArgs,
 	chromeUseHwDecoderForSmallResolutions,
+	chromeSuppressNotificationsArgs,
 	chrome.EnableFeatures("UseHDRTransferFunction"))
 
 // ChromeCompositedVideo returns a precondition equal to ChromeVideo but also
@@ -61,6 +65,7 @@ func ChromeCompositedVideo() testing.Precondition { return chromeCompositedVideo
 var chromeCompositedVideoPre = chrome.NewPrecondition("compositedVideo",
 	chromeVModuleArgs,
 	chromeUseHwDecoderForSmallResolutions,
+	chromeSuppressNotificationsArgs,
 	chrome.ExtraArgs("--enable-hardware-overlays=\"\""))
 
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
@@ -71,6 +76,7 @@ func ChromeVideoWithFakeWebcam() testing.Precondition { return chromeVideoWithFa
 var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam",
 	chromeVModuleArgs,
 	chromeUseHwDecoderForSmallResolutions,
+	chromeSuppressNotificationsArgs,
 	chromeFakeWebcamArgs)
 
 // ChromeVideoWithFakeWebcamAndAlternateVideoDecoder returns a precondition
@@ -83,6 +89,7 @@ func ChromeVideoWithFakeWebcamAndAlternateVideoDecoder() testing.Precondition {
 var chromeVideoWithFakeWebcamAndAlternateVideoDecoderPre = chrome.NewPrecondition("videoWithFakeWebcamAndAlternateVideoDecoder",
 	chromeVModuleArgs,
 	chromeUseHwDecoderForSmallResolutions,
+	chromeSuppressNotificationsArgs,
 	chromeFakeWebcamArgs,
 	chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"))
 
@@ -94,7 +101,7 @@ func ChromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers() testing.Precondit
 
 var chromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers = chrome.NewPrecondition(
 	"VideoWithFakeWebcamAndForceVP9ThreeTemporalLayers",
-	chromeVModuleArgs, chromeFakeWebcamArgs,
+	chromeVModuleArgs, chromeFakeWebcamArgs, chromeSuppressNotificationsArgs,
 	chrome.ExtraArgs("--force-fieldtrials=WebRTC-SupportVP9SVC/EnabledByFlag_1SL3TL/"))
 
 // ChromeVideoWithFakeWebcamAndSWDecoding returns a precondition equal to
@@ -103,7 +110,7 @@ func ChromeVideoWithFakeWebcamAndSWDecoding() testing.Precondition {
 	return chromeVideoWithFakeWebcamAndSWDecoding
 }
 
-var chromeVideoWithFakeWebcamAndSWDecoding = chrome.NewPrecondition("videoWithFakeWebcamAndSWDecoding", chromeVModuleArgs, chromeFakeWebcamArgs, chrome.ExtraArgs("--disable-accelerated-video-decode"))
+var chromeVideoWithFakeWebcamAndSWDecoding = chrome.NewPrecondition("videoWithFakeWebcamAndSWDecoding", chromeVModuleArgs, chromeSuppressNotificationsArgs, chromeFakeWebcamArgs, chrome.ExtraArgs("--disable-accelerated-video-decode"))
 
 // ChromeVideoWithFakeWebcamAndSWEncoding returns a precondition equal to
 // ChromeVideoWithFakeWebcam and with hardware encoding disabled.
@@ -111,13 +118,14 @@ func ChromeVideoWithFakeWebcamAndSWEncoding() testing.Precondition {
 	return chromeVideoWithFakeWebcamAndSWEncoding
 }
 
-var chromeVideoWithFakeWebcamAndSWEncoding = chrome.NewPrecondition("videoWithFakeWebcamAndSWEncoding", chromeVModuleArgs, chromeFakeWebcamArgs, chrome.ExtraArgs("--disable-accelerated-video-encode"))
+var chromeVideoWithFakeWebcamAndSWEncoding = chrome.NewPrecondition("videoWithFakeWebcamAndSWEncoding", chromeVModuleArgs, chromeSuppressNotificationsArgs, chromeFakeWebcamArgs, chrome.ExtraArgs("--disable-accelerated-video-encode"))
 
 // ChromeScreenCapture returns a precondition so that Chrome always picks
 // the entire screen for getDisplayMedia(), bypassing the picker UI.
 func ChromeScreenCapture() testing.Precondition { return chromeScreenCapturePre }
 
 var chromeScreenCapturePre = chrome.NewPrecondition("screenCapturePre",
+	chromeSuppressNotificationsArgs,
 	chrome.ExtraArgs(`--auto-select-desktop-capture-source=display`))
 
 // ChromeWindowCapture returns a precondition so that Chrome always picks
@@ -125,6 +133,7 @@ var chromeScreenCapturePre = chrome.NewPrecondition("screenCapturePre",
 func ChromeWindowCapture() testing.Precondition { return chromeWindowCapturePre }
 
 var chromeWindowCapturePre = chrome.NewPrecondition("windowCapturePre",
+	chromeSuppressNotificationsArgs,
 	chrome.ExtraArgs(`--auto-select-desktop-capture-source=Chrome`))
 
 // ChromeVideoWithSWDecoding returns a precondition similar to ChromeVideo,
@@ -133,6 +142,7 @@ var chromeWindowCapturePre = chrome.NewPrecondition("windowCapturePre",
 func ChromeVideoWithSWDecoding() testing.Precondition { return chromeVideoWithSWDecoding }
 
 var chromeVideoWithSWDecoding = chrome.NewPrecondition("videoWithSWDecoding", chromeVModuleArgs,
+	chromeSuppressNotificationsArgs,
 	chrome.ExtraArgs("--disable-accelerated-video-decode"))
 
 // ChromeVideoWithSWDecodingAndLibGAV1 returns a precondition similar to
@@ -142,7 +152,7 @@ func ChromeVideoWithSWDecodingAndLibGAV1() testing.Precondition {
 	return chromeVideoWithSWDecodingAndLibGAV1
 }
 
-var chromeVideoWithSWDecodingAndLibGAV1 = chrome.NewPrecondition("videoWithSWDecodingAndLibGAV1", chromeVModuleArgs,
+var chromeVideoWithSWDecodingAndLibGAV1 = chrome.NewPrecondition("videoWithSWDecodingAndLibGAV1", chromeVModuleArgs, chromeSuppressNotificationsArgs,
 	chrome.ExtraArgs("--disable-accelerated-video-decode", "--enable-features=Gav1VideoDecoder"))
 
 // ChromeVideoWithSWDecodingAndHDRScreen returns a precondition similar to
@@ -154,7 +164,7 @@ func ChromeVideoWithSWDecodingAndHDRScreen() testing.Precondition {
 	return chromeVideoWithSWDecodingAndHDRScreen
 }
 
-var chromeVideoWithSWDecodingAndHDRScreen = chrome.NewPrecondition("videoWithSWDecodingAndHDRScreen", chromeVModuleArgs,
+var chromeVideoWithSWDecodingAndHDRScreen = chrome.NewPrecondition("videoWithSWDecodingAndHDRScreen", chromeVModuleArgs, chromeSuppressNotificationsArgs,
 	chrome.ExtraArgs("--disable-accelerated-video-decode"), chrome.EnableFeatures("UseHDRTransferFunction"))
 
 var chromeVModuleArgs = chrome.ExtraArgs(
@@ -181,7 +191,7 @@ var chromeFakeWebcamArgs = chrome.ExtraArgs(
 // performance. This precondition should be used only for performance tests.
 func ChromeCameraPerf() testing.Precondition { return chromeCameraPerfPre }
 
-var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf", chromeBypassPermissionsArgs)
+var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf", chromeBypassPermissionsArgs, chromeSuppressNotificationsArgs)
 
 // ChromeFakeCameraPerf returns a precondition for Chrome to be started using
 // the fake video/audio capture device (a.k.a. "fake webcam", see
@@ -190,8 +200,12 @@ var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf", chromeBypassPermi
 // used only used for performance tests.
 func ChromeFakeCameraPerf() testing.Precondition { return chromeFakeCameraPerfPre }
 
-var chromeFakeCameraPerfPre = chrome.NewPrecondition("fakeCameraPerf", chromeFakeWebcamArgs)
+var chromeFakeCameraPerfPre = chrome.NewPrecondition("fakeCameraPerf", chromeFakeWebcamArgs, chromeSuppressNotificationsArgs)
 
 var chromeBypassPermissionsArgs = chrome.ExtraArgs(
 	// Avoid the need to grant camera/microphone permissions.
 	"--use-fake-ui-for-media-stream")
+
+var chromeSuppressNotificationsArgs = chrome.ExtraArgs(
+	// Do not show message center notifications.
+	"--suppress-message-center-popups")
