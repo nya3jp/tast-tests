@@ -22,6 +22,30 @@
       },
       "revId": "b6e71472584136e2c6a0fa55134ca095bc70b607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db0b7776_76880464",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T05:32:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "439aad05_3f681c68",
+      "range": {
+        "startLine": 38,
+        "startChar": 33,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "b6e71472584136e2c6a0fa55134ca095bc70b607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
