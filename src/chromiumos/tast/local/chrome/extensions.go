@@ -136,6 +136,7 @@ func writeTestExtension(dir, key string) (id string, err error) {
     "languageSettingsPrivate",
     "management",
     "metricsPrivate",
+    "notifications",
     "processes",
     "proxy",
     "settingsPrivate",
