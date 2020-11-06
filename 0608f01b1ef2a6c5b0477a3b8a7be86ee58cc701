@@ -46,6 +46,30 @@
       },
       "revId": "0608f01b1ef2a6c5b0477a3b8a7be86ee58cc701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbcfa385_be112813",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-06T04:38:13Z",
+      "side": 0,
+      "message": "ok for this CL, something to think about though.",
+      "parentUuid": "81e49509_0f1103a7",
+      "range": {
+        "startLine": 496,
+        "startChar": 13,
+        "endLine": 496,
+        "endChar": 23
+      },
+      "revId": "0608f01b1ef2a6c5b0477a3b8a7be86ee58cc701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
