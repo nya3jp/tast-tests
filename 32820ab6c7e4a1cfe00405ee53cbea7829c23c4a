@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41f225b7_0a735164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T18:27:43Z",
+      "side": 1,
+      "message": "lgtm\n\nAnd let\u0027s get approval from tast-owners.",
+      "revId": "32820ab6c7e4a1cfe00405ee53cbea7829c23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
