@@ -45,6 +45,30 @@
       },
       "revId": "3ae7125d7d113270c6c2e5daca1019c6e7ba78a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af4d8959_d1d409cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-06T10:10:03Z",
+      "side": 1,
+      "message": "Oops. Thanks for catching this. Removed",
+      "parentUuid": "80961c16_1e20b8a0",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 63
+      },
+      "revId": "3ae7125d7d113270c6c2e5daca1019c6e7ba78a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
