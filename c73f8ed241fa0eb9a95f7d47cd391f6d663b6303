@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c9302a5_511c1499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T17:39:34Z",
+      "side": 1,
+      "message": "We would need changes here to do the recording.\n\nRight now, devs needs to do this manually for the test they want to poke. So I don\u0027t mind you to put one inside MeetCUJ and behind a var.",
+      "parentUuid": "22114e62_0b3419ab",
+      "revId": "c73f8ed241fa0eb9a95f7d47cd391f6d663b6303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e67963d1_65ac2511",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 5
