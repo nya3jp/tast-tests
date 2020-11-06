@@ -6,6 +6,9 @@ package ui
 
 import (
 	"context"
+	"fmt"
+	"os"
+	"path/filepath"
 	"regexp"
 	"time"
 
@@ -58,6 +61,7 @@ func init() {
 		Pre:          cuj.LoggedInToCUJUser(),
 		Vars: []string{
 			"mute",
+			"record",
 			"ui.MeetCUJ.bond_credentials",
 			"ui.cuj_username",
 			"ui.cuj_password",
@@ -156,6 +160,26 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
+	}
+
+	if _, ok := s.Var("record"); ok {
+		screenRecorder, err := cuj.NewScreenRecorder(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create ScreenRecorder: ", err)
+		}
+		defer func() {
+			screenRecorder.Stop(ctx)
+			dir, ok := testing.ContextOutDir(ctx)
+			if ok && dir != "" {
+				if _, err := os.Stat(dir); err == nil {
+					testing.ContextLogf(ctx, "Saving screen record to %s", dir)
+					screenRecorder.SaveAsString(ctx, filepath.Join(dir, "screen_record.txt"))
+					screenRecorder.SaveAsBinary(ctx, filepath.Join(dir, "screen_record.webm"))
+				}
+			}
+			screenRecorder.Release(ctx)
+		}()
+		screenRecorder.Start(ctx)
 	}
 
 	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
@@ -419,62 +443,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to hide visible notifications")
 		}
-		// Select and click the more options button.
-		// TODO(crbug/1137568): use hrTelemetryApi once it supports changing the number of the maximum tiles.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			var focus string
-			if err := meetConn.Eval(ctx, "document.activeElement.getAttribute('aria-label')", &focus); err != nil {
-				return errors.Wrap(err, "failed to get the active element")
-			}
-			if focus != "More options" {
-				if err := kw.Accel(ctx, "Shift+Tab"); err != nil {
-					return errors.Wrap(err, "failed to hit shift-tab")
-				}
-				return errors.New("more options button is not active")
-			}
-			// More options button is focused.
-			if err = kw.Accel(ctx, "Enter"); err != nil {
-				return errors.Wrap(err, "failed to hit enter")
-			}
-			return nil
-		}, &pollOpts); err != nil {
-			return errors.Wrap(err, "failed to click more options button")
-		}
-		changeLayout, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Change layout", Role: ui.RoleTypeMenuItem}, timeout)
-		if err != nil {
-			return errors.Wrap(err, "failed to find the change-layout item")
-		}
-		defer changeLayout.Release(closeCtx)
-		if err := changeLayout.StableLeftClick(ctx, &pollOpts); err != nil {
-			return errors.Wrap(err, "failed to click the change-layout button")
-		}
-		layout, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: string(meet.layout), Role: ui.RoleTypeRadioButton}, timeout)
-		if err != nil {
-			return errors.Wrap(err, "failed to find the layout button")
-		}
-		defer layout.Release(closeCtx)
-		if err := layout.StableLeftClick(ctx, &pollOpts); err != nil {
-			return errors.Wrap(err, "failed to click the layout button")
-		}
-		if meet.layout == meetLayoutAuto || meet.layout == meetLayoutTiled {
-			if err := kw.Accel(ctx, "Tab"); err != nil {
-				return errors.Wrap(err, "failed to hit the tab key")
-			}
-			// Max up the number of the maximum tiles to display.
-			for i := 0; i < 5; i++ {
-				if err := kw.Accel(ctx, "Right"); err != nil {
-					return errors.Wrap(err, "failed to hit the right key")
-				}
-			}
-		}
-		// Close the layout change view.
-		closeButton, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Close", Role: ui.RoleTypeButton}, timeout)
-		if err != nil {
-			return errors.Wrap(err, "failed to find the close button")
-		}
-		defer closeButton.Release(closeCtx)
-		if err := closeButton.StableLeftClick(ctx, &pollOpts); err != nil {
-			return errors.Wrap(err, "failed to click the close button")
+		if err := meetConn.Eval(ctx, fmt.Sprintf("hrTelemetryApi.set%sLayout()", string(meet.layout)), nil); err != nil {
+			return errors.Wrapf(err, "failed to set %s layout", string(meet.layout))
 		}
 
 		if meet.present {
@@ -482,28 +452,20 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				return errors.New("need a Google Docs tab to present")
 			}
 			// Start presenting the Google Docs tab.
-			// TODO(crbug/1137568): use hrTelemetryApi once it supports starting presentation.
-			present, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Present now", Role: ui.RoleTypePopUpButton}, timeout)
-			if err != nil {
-				return errors.Wrap(err, "failed to find the present button")
-			}
-			defer present.Release(closeCtx)
-			if err := present.LeftClickUntil(ctx,
-				func(ctx context.Context) (bool, error) {
-					return ui.Exists(ctx, tconn, ui.FindParams{Name: "A Chrome tab"})
-				}, &pollOpts); err != nil {
-				return errors.Wrap(err, "failed to click the present button")
-			}
-			presentTab, err := webview.DescendantWithTimeout(ctx, ui.FindParams{Name: "A Chrome tab"}, timeout)
-			if err != nil {
-				return errors.Wrap(err, "failed to find the present-a-chrome-tab button")
-			}
-			defer presentTab.Release(closeCtx)
-			if err := presentTab.LeftClickUntil(ctx,
-				func(ctx context.Context) (bool, error) {
-					return ui.Exists(ctx, tconn, ui.FindParams{Name: "Meet - " + meetingCode, Role: ui.RoleTypeCell})
-				}, &pollOpts); err != nil {
-				return errors.Wrap(err, "failed to click the present-a-chrome-tab button")
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				exists, err := ui.Exists(ctx, tconn, ui.FindParams{Name: "Chrome Tab", Role: ui.RoleTypeListGrid})
+				if err != nil {
+					return errors.Wrap(err, "failed to find the list of tabs")
+				}
+				if exists {
+					return nil
+				}
+				if err := meetConn.Eval(ctx, "hrTelemetryApi.presentation.presentTab()", nil); err != nil {
+					return errors.Wrap(err, "failed to start to present a tab")
+				}
+				return errors.New("presentation hasn't started yet")
+			}, &pollOpts); err != nil {
+				return errors.Wrap(err, "failed to start presentation")
 			}
 			tabs, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Chrome Tab", Role: ui.RoleTypeListGrid}, timeout)
 			if err != nil {

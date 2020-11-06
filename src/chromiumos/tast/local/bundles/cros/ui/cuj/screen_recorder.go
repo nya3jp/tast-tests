@@ -60,6 +60,13 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 				return new Promise((resolve, reject) => {
 					this.recorder.onstop = function() {
 						let blob = new Blob(this.chunks, {'type': 'video/webm'});
+
+						var url = window.URL.createObjectURL(blob);
+						var a = document.createElement('a');
+						a.href = url;
+						a.download = 'test.webm';
+						a.click();
+
 						var reader = new FileReader();
 						reader.onload = () => {
 							resolve(reader.result);
@@ -151,8 +158,8 @@ func (r *ScreenRecorder) Stop(ctx context.Context) error {
 	return nil
 }
 
-// Save saves the latest encoded string into a file.
-func (r *ScreenRecorder) Save(ctx context.Context, filepath string) error {
+// SaveAsBinary saves the latest encoded string into a binary file.
+func (r *ScreenRecorder) SaveAsBinary(ctx context.Context, filepath string) error {
 	result := strings.Split(r.result, ",")[1]
 	// Decode base64 string into binary.
 	reader := base64.NewDecoder(base64.StdEncoding, strings.NewReader(result))
@@ -162,6 +169,15 @@ func (r *ScreenRecorder) Save(ctx context.Context, filepath string) error {
 	}
 	if err := ioutil.WriteFile(filepath, buf.Bytes(), 0644); err != nil {
 		return errors.Wrapf(err, "failed to dump binary to %s", filepath)
+	}
+	return nil
+}
+
+// SaveAsString saves the latest encoded string into a string file.
+func (r *ScreenRecorder) SaveAsString(ctx context.Context, filepath string) error {
+	result := strings.Split(r.result, ",")[1]
+	if err := ioutil.WriteFile(filepath, []byte(result), 0644); err != nil {
+		return errors.Wrapf(err, "failed to dump string to %s", filepath)
 	}
 	return nil
 }
