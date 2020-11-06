@@ -33,6 +33,24 @@
       "message": "Can you try with --silent-launch to see if that works with your test? I found both flags have similar behavior to prevent the doodle from launching.",
       "revId": "3b1638bce4611548b0434889fe459d6f39051ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80cd5531_35159fdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-06T01:38:22Z",
+      "side": 1,
+      "message": "In my test, I need --no-startup-window to be disabled for correct functionality. From my testing of the flag, it looks like --silent-launch has no effect on my test even though both settings seem to affect the doodle equally. The test passes if I have --no-startup-window disabled regardless of the state of --silent-launch and fails with --no-startup-window enabled regardless of the state of --silent-launch.\n\nThis is pretty interesting as it seems like --no-startup-window does a bit more than disable doodles.",
+      "parentUuid": "088423e9_77d3e00b",
+      "revId": "3b1638bce4611548b0434889fe459d6f39051ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
