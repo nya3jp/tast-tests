@@ -213,6 +213,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaf986cf_224c7e83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-11-06T23:35:48Z",
+      "side": 1,
+      "message": "I see. Yeah, I\u0027m okay just removing it.",
+      "parentUuid": "6db282c1_c428d309",
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32b519e8_d0237769",
