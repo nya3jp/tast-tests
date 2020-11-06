@@ -33,6 +33,23 @@
       "message": "Ping for review from test authors.",
       "revId": "7c972c7c7d1b822f54749d5bd4566b2e8d2db0f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "411c9f47_eed21c80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-11-06T00:27:08Z",
+      "side": 1,
+      "message": "The fix is already patched but now the test is failing with a different error. \n\nb/issues/159956557#comment6\n\nVaibhav, can you take a look and decided if this this test needs to be disabled ?",
+      "revId": "7c972c7c7d1b822f54749d5bd4566b2e8d2db0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
