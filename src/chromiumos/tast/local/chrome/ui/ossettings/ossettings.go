@@ -113,7 +113,7 @@ func LaunchAtPageURL(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 			return errors.New("failed to match condition after changing page location in javascript")
 		}
 		return nil
-	}, defaultOSSettingsPollOptions)
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second})
 }
 
 // ChromeConn returns a Chrome connection to the Settings app.
