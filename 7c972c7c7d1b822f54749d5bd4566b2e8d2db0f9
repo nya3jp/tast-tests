@@ -16,6 +16,23 @@
       "message": "Approving for Tast reviews, please wait for test authors.\n",
       "revId": "7c972c7c7d1b822f54749d5bd4566b2e8d2db0f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff51e21_450cf131",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-06T00:05:21Z",
+      "side": 1,
+      "message": "Ping for review from test authors.",
+      "revId": "7c972c7c7d1b822f54749d5bd4566b2e8d2db0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
