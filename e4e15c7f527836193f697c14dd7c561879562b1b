@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d1cf81_e01edae4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-11-06T02:37:24Z",
+      "side": 1,
+      "message": "There are a lot of tests using WaitUntilIdle and it\u0027s not clear how much time would need to be added to each, so it might be better to just fix whenever it\u0027s clear a test requires a longer timeout.",
+      "parentUuid": "7790b200_969e1077",
+      "range": {
+        "startLine": 19,
+        "startChar": 49,
+        "endLine": 19,
+        "endChar": 65
+      },
+      "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "72abccaf_d6508925",
@@ -197,6 +221,24 @@
       "side": 1,
       "message": "Confirmed via revert on suspect CL for arc-adbd error (http://b/172519824) fixes the high CPU utilization errors in arc.AppLoadingPerf.vm. \n\nIn this case, cpu.WaitUntilIdle() is doing its job by helping to find issues where rogue processes are keeping %CPU high.  Again, changing the timeout to be arbitrarily high will mask the high CPU utilization error on tasts and hiding real bugs that can affect users. The cpu package is working as expected and flaky tests should be fixed instead.\n\nI suggest we abandon this CL don\u0027t make any further arbitrary changes to cpu.IdleTimeout unless there is a good reason to.",
       "parentUuid": "4299064a_46728b8a",
+      "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d3e087_ebbd7e83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-11-06T02:37:24Z",
+      "side": 1,
+      "message": "There has been more flakiness in general related to cpu.WaitUntilIdle(), so giving a bit more time to wait for the CPU to stabilize on ARCVM wouldn\u0027t be a bad thing. The error would still be \"CPU not idle: got 44.4%; want \u003c 20.0%\", but might be temporary masked with a context timeout error until tests increase their runtime. This CL might still be useful to increase performance test resilience while ARCVM is being developed.\n\nstevensd@: What do you think?",
+      "parentUuid": "3643a657_5400003b",
       "revId": "e4e15c7f527836193f697c14dd7c561879562b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
