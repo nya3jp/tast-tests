@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c802a093_914b8332",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-06T05:37:31Z",
+      "side": 1,
+      "message": "perhaps start with unstable? (same for RoamDiagnostics)",
+      "range": {
+        "startLine": 83,
+        "startChar": 67,
+        "endLine": 83,
+        "endChar": 68
+      },
+      "revId": "7119f79a3d89c21330b104e90d93a5472a9b9529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
