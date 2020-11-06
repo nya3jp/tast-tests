@@ -22,6 +22,70 @@
       },
       "revId": "838aed7fe6440edc0820096358e1835ffa097651",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8020d59d_d0cf798d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-06T07:23:01Z",
+      "side": 1,
+      "message": "I think CL:2444875 is easiest.\n\nHow about saying that CL:2444875 fixed TODO in this test, but the test has not been updated? This makes clear the relationship of CLs.",
+      "parentUuid": "a8aae5c8_a4b1a54c",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "838aed7fe6440edc0820096358e1835ffa097651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794d4100_ecdd29ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-06T07:23:01Z",
+      "side": 1,
+      "message": "lgtm after resolving the comments. Thanks!",
+      "revId": "838aed7fe6440edc0820096358e1835ffa097651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86d5e073_ec14c966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-06T07:23:01Z",
+      "side": 1,
+      "message": "Delete these two lines?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 35
+      },
+      "revId": "838aed7fe6440edc0820096358e1835ffa097651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
