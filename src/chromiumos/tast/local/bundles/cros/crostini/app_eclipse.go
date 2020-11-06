@@ -56,7 +56,7 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 		// Restart Crostini in the end because it is not possible to control the Crostini app.
 		// TODO(jinrongwu): modify this once it is possible to control Eclipse.
 		if err := terminalApp.RestartCrostini(cleanupCtx, keyboard, cont, cr.User()); err != nil {
-			s.Fatal("Failed to restart Crostini: ", err)
+			s.Log("Failed to restart Crostini: ", err)
 		}
 	}()
 
