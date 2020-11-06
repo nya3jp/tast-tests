@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd3a1fa5_6f94ad6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-06T18:24:51Z",
+      "side": 1,
+      "message": "oh no..",
+      "parentUuid": "38e42c19_58e1b5ac",
+      "revId": "7474062518e4988c84cf9e34b5881ce96935387e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f127caa_daa4b1ca",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-06T18:10:10Z",
       "side": 1,
       "message": "Do we still need this?",
+      "revId": "7474062518e4988c84cf9e34b5881ce96935387e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fab307c_b04c0be4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-06T18:24:51Z",
+      "side": 1,
+      "message": "in case the webm file is broken somehow...im a bit worried...",
+      "parentUuid": "5f127caa_daa4b1ca",
       "revId": "7474062518e4988c84cf9e34b5881ce96935387e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
