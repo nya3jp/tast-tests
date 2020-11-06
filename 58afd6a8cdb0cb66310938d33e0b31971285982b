@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b59571b_e2ec6ca2",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-06T21:06:01Z",
+      "side": 1,
+      "message": "oops.",
+      "range": {
+        "startLine": 52,
+        "startChar": 53,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "58afd6a8cdb0cb66310938d33e0b31971285982b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
