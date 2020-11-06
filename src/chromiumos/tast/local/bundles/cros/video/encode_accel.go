@@ -228,7 +228,7 @@ func init() {
 				Params:      encode.Crowd361P,
 				PixelFormat: videotype.I420,
 				InputMode:   encoding.SharedMemory},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, caps.HWEncodeVP8_odd_dimension},
 			ExtraData:         []string{encode.Crowd361P.Name},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 		}, {
@@ -298,7 +298,7 @@ func init() {
 				Params:      encode.Crowd361P,
 				PixelFormat: videotype.I420,
 				InputMode:   encoding.SharedMemory},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, caps.HWEncodeVP9_odd_dimension},
 			ExtraData:         []string{encode.Crowd361P.Name},
 			// Disabled because the Intel encoder driver always aligns visible size by 16.
 			// TODO(b/139846661): Enable once the Intel encoder driver issue is fixed.
