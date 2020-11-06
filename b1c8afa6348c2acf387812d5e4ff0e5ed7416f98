@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac88ee3c_ee801974",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1953,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bb6ac95_83578c68",
+      "range": {
+        "startLine": 1953,
+        "startChar": 58,
+        "endLine": 1953,
+        "endChar": 72
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "052f96ca_a0838887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1953,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9da49964_04de0572",
+      "range": {
+        "startLine": 1953,
+        "startChar": 45,
+        "endLine": 1953,
+        "endChar": 49
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd203166_da91af84",
@@ -77,6 +125,24 @@
       "writtenOn": "2020-11-04T12:33:32Z",
       "side": 1,
       "message": "To notify the caller that it is ready, it sends an empty response after the signal watcher is initialized.",
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "116a9923_6029d39d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd203166_da91af84",
       "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9022673c_264ed608",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1992,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0b64c7b_281dcc97",
+      "range": {
+        "startLine": 1992,
+        "startChar": 9,
+        "endLine": 1992,
+        "endChar": 10
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0ea7ca8_0892516b",
@@ -117,6 +207,30 @@
       "writtenOn": "2020-11-05T08:24:57Z",
       "side": 1,
       "message": "How about \"if name !\u003d wpasupplicant.DBusInterfaceSignalPropertiesChanged\" to handle the unexpected case here, so we don\u0027t need to indent the normal case?",
+      "range": {
+        "startLine": 1994,
+        "startChar": 3,
+        "endLine": 1994,
+        "endChar": 66
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e279221_fa34dc07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0ea7ca8_0892516b",
       "range": {
         "startLine": 1994,
         "startChar": 3,
@@ -224,6 +338,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24b796ed_a82fa73e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "I am okay with all these solutions. However, I changed the code to use an enum of disconnectTrigger and a struct \"disReason\" with the var dt. And matched the value of the enum with the code. I think this is more readabel than just using int values. WDYT?",
+      "parentUuid": "a20a21a6_99cbf593",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db94fe65_e7fbb4c7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -235,6 +373,30 @@
       "writtenOn": "2020-11-03T10:13:06Z",
       "side": 1,
       "message": "start with unstable? in case some unexpected flakes can harm CQ.",
+      "range": {
+        "startLine": 30,
+        "startChar": 72,
+        "endLine": 30,
+        "endChar": 73
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "291ddf9e_cb4b3b29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db94fe65_e7fbb4c7",
       "range": {
         "startLine": 30,
         "startChar": 72,
@@ -345,6 +507,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58121838_0133120d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bad57673_4a3c56a5",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30f66ed8_7c21932b",
@@ -414,6 +600,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ad5bb70_d527bc1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c7d69a2_178c041c",
+      "range": {
+        "startLine": 100,
+        "startChar": 31,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb3a7dd9_440bd945",
@@ -427,6 +637,30 @@
       "writtenOn": "2020-11-04T12:33:32Z",
       "side": 1,
       "message": "reasonRecv or reasonReceiver",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a5a147_e79af144",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb3a7dd9_440bd945",
       "range": {
         "startLine": 124,
         "startChar": 1,
@@ -460,6 +694,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "490e2ea4_6f6150cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad67ea6_e3dcecf4",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 11
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a5a5e0b_cec763a0",
@@ -473,6 +731,30 @@
       "writtenOn": "2020-11-04T05:18:37Z",
       "side": 1,
       "message": "Looks like other \"disconnect triggers\" go Fatal directly. Any reason for this Error?",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 10
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72740876_90a5a309",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "I think this should be Fatal. I fixed it.",
+      "parentUuid": "8a5a5e0b_cec763a0",
       "range": {
         "startLine": 132,
         "startChar": 5,
@@ -506,6 +788,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7cbfae_3692c0c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d36cc3c4_83e5fe74",
+      "range": {
+        "startLine": 139,
+        "startChar": 13,
+        "endLine": 139,
+        "endChar": 17
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc9d7e58_9a2be551",
@@ -523,6 +829,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4533be19_5ea25fe7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc9d7e58_9a2be551",
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a21a7ac3_f08726ba",
@@ -536,6 +860,24 @@
       "writtenOn": "2020-11-03T10:13:06Z",
       "side": 1,
       "message": "there\u0027s some chance that DUT can miss the frame, so might need to send more than once. Also, power save setting will be an issue. (as the case in wifi.*CSA* tests)",
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db8869a5_3e157ffb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a21a7ac3_f08726ba",
       "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -563,6 +905,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab743bd_d5f53d91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c83371f_4e7c0d2c",
+      "range": {
+        "startLine": 155,
+        "startChar": 22,
+        "endLine": 155,
+        "endChar": 37
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a3293c1_c94a8f70",
@@ -576,6 +942,30 @@
       "writtenOn": "2020-11-04T05:18:37Z",
       "side": 1,
       "message": "Hmm... a little redundant as we already schedule one deferred disconnect above. I guess your intention for this is to Error on disconnect error specifically on this case? If so, perhaps we can have a flag like \"var expectDisconnectErr bool\" to branch in the previous disconnect?\n\n(One missed cleanup might be that profile entry of AP2 might not be removed, but as Reinit will clean it for us, I\u0027m not too worried about the case.)",
+      "range": {
+        "startLine": 185,
+        "startChar": 16,
+        "endLine": 185,
+        "endChar": 35
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79da5171_a9df9745",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3293c1_c94a8f70",
       "range": {
         "startLine": 185,
         "startChar": 16,
@@ -611,6 +1001,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3f7dd9b_ccea43ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "The autotest is not verifing that. This is the bug and CL for adding the test:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d510173\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/288964/\n\nI think that should be added. Otherwise, the test is only verifying that a disconnection happens in the above scenarios and just reporting the reason. WDYT?",
+      "parentUuid": "5e5ed0a0_cf065087",
+      "range": {
+        "startLine": 196,
+        "startChar": 58,
+        "endLine": 196,
+        "endChar": 64
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92225b9a_cb30c453",
         "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
         "patchSetId": 3
@@ -622,6 +1036,24 @@
       "writtenOn": "2020-11-04T12:33:32Z",
       "side": 1,
       "message": "Please refer to the comments in wifi_service.go",
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6632887e_d10326df",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-06T08:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92225b9a_cb30c453",
       "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
