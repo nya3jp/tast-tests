@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "36408bc8_24672b09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-11-06T07:20:21Z",
+      "side": 1,
+      "message": "The both issues are closed.\nWill you create a new issue or reopen either one for tracking the kernel crash issue (and to remove this tentative workaround)?",
+      "revId": "b7c55eea289c521be452067fc9bc4eeb102a58c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "351cdcc8_5afa3a1a",
