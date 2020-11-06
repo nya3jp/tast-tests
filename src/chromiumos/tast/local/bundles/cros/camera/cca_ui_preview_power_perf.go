@@ -159,7 +159,7 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	}
 	useSWA := s.Param().(ccaUIPreviewPowerPerfParams).appType == testutil.SWA
 
-	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
