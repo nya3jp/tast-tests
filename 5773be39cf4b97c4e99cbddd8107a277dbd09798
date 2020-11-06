@@ -51,6 +51,24 @@
       "parentUuid": "986ffb38_c1e4a795",
       "revId": "5773be39cf4b97c4e99cbddd8107a277dbd09798",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ca77dc_7f118f8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-11-06T05:45:55Z",
+      "side": 1,
+      "message": "It doesn\u0027t sound like profile.Start can take 1 min if it will return an error of unsupported platform: it only runs uname to check what platform it\u0027s on.\n\nEven the full example takes \u003c 4 sec on my local test on coral. Failing with an error shouldn\u0027t take that long as 1 min. Please be sure to find something else",
+      "parentUuid": "8a9ab474_33a2c57a",
+      "revId": "5773be39cf4b97c4e99cbddd8107a277dbd09798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
