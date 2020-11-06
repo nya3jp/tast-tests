@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b62a35e0_1578ee58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2020-11-06T20:12:53Z",
+      "side": 1,
+      "message": "\u003e I think |caps.HWEncodeVP9_odd| implies |caps.HWEncodeVP9|, correct?\nNo.  If I create a board and it doesn\u0027t have vp9 hw, I would add\n- no hw_dec_vp9_1080_30\nbut then the odd_dimension test would still run.\nI would need to add:\n- no hw_dec_vp9_1080_30\n- no hw_dec_vp9_odd_dimension",
+      "parentUuid": "9ab2430d_5a69c1eb",
+      "range": {
+        "startLine": 301,
+        "startChar": 49,
+        "endLine": 301,
+        "endChar": 69
+      },
+      "revId": "2b02894c3868db22510711088a13d029c2883a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ce7b46_f7f869b9",
         "filename": "src/chromiumos/tast/local/media/caps/caps.go",
         "patchSetId": 2
@@ -71,6 +95,24 @@
       "writtenOn": "2020-11-06T15:13:20Z",
       "side": 1,
       "message": "nit: Can we add here e.g.\n\n  // TODO: add here HWEncodeH264_odd when video.EncodeAccel has a test\n  // exercising odd-dimension encoding.\n\nor some such? Just as a note for future readers.",
+      "revId": "2b02894c3868db22510711088a13d029c2883a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27dcd684_3262505a",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2020-11-06T20:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ce7b46_f7f869b9",
       "revId": "2b02894c3868db22510711088a13d029c2883a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +130,30 @@
       "writtenOn": "2020-11-06T15:13:20Z",
       "side": 1,
       "message": "micronit: playing devil\u0027s advocate here, \"_odd\" could be misunderstood \nto mean \"strange\" or \"different\" (ISO \"uneven\" which is the meaning \nintended here). Perhaps we  could make it verbose by \ns/HWEncodeVP9_odd/HWEncodeVP9_odd_dimensions/ ? Just a thought.",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "2b02894c3868db22510711088a13d029c2883a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cffb0465_6526b51e",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2020-11-06T20:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d387c4f_250f1f69",
       "range": {
         "startLine": 50,
         "startChar": 12,
