@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6898ad92_d5665623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-06T09:40:42Z",
+      "side": 1,
+      "message": "Thanks for adding this.",
+      "revId": "69c80c360c5822f300cb1c8af8125d49ce8a7e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67e488f_636f9fcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-06T09:40:42Z",
+      "side": 1,
+      "message": "nit: I\u0027d write \"Unexpected selected safety level\" to be more in line with similar errors in other tests.",
+      "range": {
+        "startLine": 114,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 61
+      },
+      "revId": "69c80c360c5822f300cb1c8af8125d49ce8a7e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e035bc_be94fc12",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-06T09:40:42Z",
+      "side": 1,
+      "message": "I think it would be more stable if you use DescendantWithTimeout.",
+      "range": {
+        "startLine": 675,
+        "startChar": 15,
+        "endLine": 675,
+        "endChar": 26
+      },
+      "revId": "69c80c360c5822f300cb1c8af8125d49ce8a7e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
