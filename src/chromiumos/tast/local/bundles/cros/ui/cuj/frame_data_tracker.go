@@ -96,6 +96,22 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, float64(t.dsData.JankCount)/float64(t.dsData.FramesExpected)*100)
+
+	pv.Set(perf.Metric{
+		Name:      "TPS.Display.FramesExpected",
+		Unit:      "count",
+		Direction: perf.BiggerIsBetter,
+	}, float64(t.dsData.FramesExpected))
+	pv.Set(perf.Metric{
+		Name:      "TPS.Display.FramesProduced",
+		Unit:      "count",
+		Direction: perf.BiggerIsBetter,
+	}, float64(t.dsData.FramesProduced))
+	pv.Set(perf.Metric{
+		Name:      "TPS.Display.JankCount",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}, float64(t.dsData.JankCount))
 }
 
 // NewFrameDataTracker creates a new instance for FrameDataTracker.
