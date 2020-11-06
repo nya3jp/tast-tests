@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5994c5cd_7539d7e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-06T07:39:26Z",
+      "side": 1,
+      "message": "Good point about a crash. If we got a few passes (and no fails) and then the program crashed, we\u0027d want to recognize that as an error.",
+      "parentUuid": "c5eedc1f_6d503b01",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af425ed6_0a7b5b76",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 4
