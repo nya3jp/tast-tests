@@ -142,6 +142,11 @@ service WifiService {
 
   // SuspendAssertConnect suspends the DUT and waits for connection after resuming.
   rpc SuspendAssertConnect(SuspendAssertConnectRequest) returns (SuspendAssertConnectResponse) {}
+
+  // WaitForReconnect waits for the DUT to reconnect to a service within timeout
+  // (in nanoseconds). Active scans are trigger when the service is still idle
+  // (i.e. not yet reconnecting) if specified in request.
+  rpc WaitForReconnect(WaitForReconnectRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -419,4 +424,10 @@ message SuspendAssertConnectRequest {
 
 message SuspendAssertConnectResponse {
   int64 reconnect_time = 1;
+}
+
+message WaitForReconnectRequest {
+  string service_path = 1;
+  int64 timeout = 2;
+  bool scan = 3;
 }
