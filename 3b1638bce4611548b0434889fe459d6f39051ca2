@@ -86,6 +86,24 @@
       "parentUuid": "af8dce8f_0ef59b43",
       "revId": "3b1638bce4611548b0434889fe459d6f39051ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd67124f_f051a8da",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-06T18:15:02Z",
+      "side": 1,
+      "message": "One way around is that default to no-startup-window. And your test explicitly calls EnableStartupWindow. \nSuch that you don\u0027t have to touch every other test. WDYT?",
+      "parentUuid": "33745ba9_584f32e5",
+      "revId": "3b1638bce4611548b0434889fe459d6f39051ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
