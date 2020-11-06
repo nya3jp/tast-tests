@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67589d51_d93edbf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-06T19:48:15Z",
+      "side": 1,
+      "message": "Ack. Will do, if this check is still necessary pending resolution of other threads.",
+      "parentUuid": "ef822778_d3b12fd5",
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34786cd5_540a7cb9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 4
@@ -119,6 +137,30 @@
       "writtenOn": "2020-11-05T20:11:38Z",
       "side": 1,
       "message": "Failures [during] run? Just a formulation.\n\nNotice the way this is set up we get the name of the executable indirectly from the tast name as there is a 1:1 mapping. But I don\u0027t mind putting it here for easy recognition.",
+      "range": {
+        "startLine": 114,
+        "startChar": 13,
+        "endLine": 114,
+        "endChar": 26
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cdd56c3_09af5d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-06T19:48:15Z",
+      "side": 1,
+      "message": "It\u0027s easy enough to remove this if we find it\u0027s too verbose. I\u0027ll leave it as is for now.",
+      "parentUuid": "34786cd5_540a7cb9",
       "range": {
         "startLine": 114,
         "startChar": 13,
@@ -261,6 +303,30 @@
       "writtenOn": "2020-11-04T23:16:27Z",
       "side": 1,
       "message": "Shouldn\u0027t this say \"Failed to run\" and the other one \"Error running\"? (the former sounds to me more like a failure to start, the latter sounds like a failure while running). Ignore if eliminating this case due to comment above.",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20ff0272_a1d55f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-06T19:48:15Z",
+      "side": 1,
+      "message": "Yes, that does sound better. I\u0027ll switch this around pending resolution of other threads.",
+      "parentUuid": "af425ed6_0a7b5b76",
       "range": {
         "startLine": 119,
         "startChar": 12,
