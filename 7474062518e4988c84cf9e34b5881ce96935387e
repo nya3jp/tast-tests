@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e42c19_58e1b5ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T18:10:10Z",
+      "side": 1,
+      "message": "Debugging code?",
+      "revId": "7474062518e4988c84cf9e34b5881ce96935387e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f127caa_daa4b1ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T18:10:10Z",
+      "side": 1,
+      "message": "Do we still need this?",
+      "revId": "7474062518e4988c84cf9e34b5881ce96935387e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
