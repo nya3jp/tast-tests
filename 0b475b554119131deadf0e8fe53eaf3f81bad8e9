@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a0df57_0c17a19a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2020-11-06T23:25:04Z",
+      "side": 1,
+      "message": "hiroh@ - question about intended behavior of stacking capabilities",
+      "revId": "0b475b554119131deadf0e8fe53eaf3f81bad8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
