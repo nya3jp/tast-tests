@@ -22,6 +22,30 @@
       },
       "revId": "95f24806d28181e3d436fac2e9a35c49ca22c632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebec3efd_dbfac6dd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-06T22:25:50Z",
+      "side": 1,
+      "message": "I don\u0027t think the later check is actually important so I got rid of it, but I think this one should come before adding tast. Also moved it to AddTastLibrary.",
+      "parentUuid": "f2e041ad_fb6ec7db",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "95f24806d28181e3d436fac2e9a35c49ca22c632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
