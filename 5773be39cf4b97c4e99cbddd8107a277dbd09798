@@ -69,6 +69,24 @@
       "parentUuid": "8a9ab474_33a2c57a",
       "revId": "5773be39cf4b97c4e99cbddd8107a277dbd09798",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "621233f4_0285d1ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T17:12:13Z",
+      "side": 1,
+      "message": "You are right. That 1min is not caused by profiler. Reverted the 1 min addition.",
+      "parentUuid": "e0ca77dc_7f118f8b",
+      "revId": "5773be39cf4b97c4e99cbddd8107a277dbd09798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

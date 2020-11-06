@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8a8fb7f6_520a851f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T17:12:13Z",
+      "side": 1,
+      "message": "I thought chromium:996728 is temporary and would revert when kernel crash is fixed. But since we introduce the new error, this CL would stay.\n\nI have created a new bug for the test error.",
+      "parentUuid": "36408bc8_24672b09",
+      "revId": "b7c55eea289c521be452067fc9bc4eeb102a58c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "351cdcc8_5afa3a1a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-06T05:45:55Z",
       "side": 1,
       "message": "Looks good to me. We still need tast-owners to take a look.\n\nWould you also update src/chromiumos/tast/local/bundles/cros/example/profiler.go to with this new error? Thanks.",
+      "revId": "b7c55eea289c521be452067fc9bc4eeb102a58c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aaa8197_c815119c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-06T17:12:13Z",
+      "side": 1,
+      "message": "I thought about that but example/profiler.go is different. It has multiple \"profiler.Perf\" and only conditionally remove \"profiler.PerfStat\". We return the error in Profiler.Start and does not quite fit this use case.",
+      "parentUuid": "351cdcc8_5afa3a1a",
       "revId": "b7c55eea289c521be452067fc9bc4eeb102a58c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
