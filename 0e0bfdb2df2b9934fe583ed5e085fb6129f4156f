@@ -16,6 +16,75 @@
       "message": "Now this test works.\nTODO: check whether dmesg-ramoops-0 is removed.",
       "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a4b5cca_5dab84d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-06T23:54:02Z",
+      "side": 1,
+      "message": "please use a precondition for this; they enable tast to open chrome / start ARC once and run multiple tests with it. See https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/app_crash.go;l\u003d26?q\u003df:arc%2Fapp_crash.go\u0026ss\u003dchromiumos for example.",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 48
+      },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df476a85_f08e4e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-06T23:54:02Z",
+      "side": 1,
+      "message": "Do we really need it to be 123, specifically, or just nonzero?",
+      "range": {
+        "startLine": 85,
+        "startChar": 36,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea634722_54a5d9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-06T23:54:02Z",
+      "side": 1,
+      "message": "Please use crash.GetCrashDir(user) (see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/crash/crash.go;l\u003d163?q\u003df:tast%20f:crash.go\u0026ss\u003dchromiumos)",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 40
+      },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
