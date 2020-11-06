@@ -58,6 +58,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a534b88_8db5e007",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-06T22:15:56Z",
+      "side": 1,
+      "message": "Updated, but really I rolled the changes from here into https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2495487. I\u0027m going to abandon this change and do everything in the other one.  I\u0027ll keep this one alive until I submit the other to preserve comment history.",
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8121feb9_2df3fbf9",
@@ -81,6 +98,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31827dd_815752aa",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-06T22:15:56Z",
+      "side": 1,
+      "message": "Originally, I had a lot of helper functions and structure inside here for sending things to all the peers for a test simultaneously, but as I built more of this structure, everything fell away. I\u0027m removing the entire struct until I find a reason to put it back.",
+      "parentUuid": "8121feb9_2df3fbf9",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 1
+      },
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28df9a86_5d4105dc",
@@ -94,6 +135,30 @@
       "writtenOn": "2020-10-29T19:18:34Z",
       "side": 1,
       "message": "This probably shouldn\u0027t be a method on WifiPeer. I assume this is more suited as a method that returns a WifiPeer.",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a77811f_374c15d2",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-06T22:15:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28df9a86_5d4105dc",
       "range": {
         "startLine": 21,
         "startChar": 5,
@@ -152,6 +217,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5932285b_5a89948d",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-06T22:15:56Z",
+      "side": 1,
+      "message": "Count is determined by the test.  Some tests will need only one peer, others might need 6. But that setup is done outside code, so here our function just uses whatever number the test needs. I agree this is confusing, but don\u0027t know of a better way to do it, without forcing all tests to have 6 peers, or creating a hard-coded list of DUTs and number of peers they have. that seems unnecessarily restrictive, but I could be convinced otherwise if someone feels it\u0027d be clearer. Then we\u0027d have a full list of DUTs that have peers, and their amount in a struct, and any infra change to add/remote peers would require a CL submission.",
+      "parentUuid": "24fc6ef4_86ad1a79",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82530b20_8d84d5b4",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-06T22:15:56Z",
+      "side": 1,
+      "message": "YAY! Go is now my favorite language! Done.",
+      "parentUuid": "f02038b3_221e67f8",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14bdb2ff_72081b6f",
         "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
         "patchSetId": 2
@@ -163,6 +276,30 @@
       "writtenOn": "2020-10-29T19:18:34Z",
       "side": 1,
       "message": "This should at a minimum have proper clean up and closing of ssh connections if it fails to get a peer. Also, please resolve that TODO before trying to submit.",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 72
+      },
+      "revId": "08a76f079d81263f482cf1708421220b988bbf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea81c48f_7cd30ee7",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-06T22:15:56Z",
+      "side": 1,
+      "message": "Yes. The TODO was TOBEDONE before submitting, I just wanted to get the structure of this out for review early, since I\u0027m building a lot of other CLs on this design. Added error generation and handling and removed TODO.",
+      "parentUuid": "14bdb2ff_72081b6f",
       "range": {
         "startLine": 23,
         "startChar": 1,
