@@ -383,9 +383,6 @@ func verifyTable(decodedSSDT []byte, tableType sarTableType, geoTables []geoSART
 
 func WifiCheckIntelSARTable(ctx context.Context, s *testing.State) {
 	const (
-		// SSDT (Secondary System Description Table) contains SAR data
-		// in encoded binary format.
-		pathToSSDT = "/sys/firmware/acpi/tables/SSDT"
 		// Vendor ID for Intel WiFi.
 		intelVendorID = "0x8086"
 	)
@@ -406,6 +403,25 @@ func WifiCheckIntelSARTable(ctx context.Context, s *testing.State) {
 		s.Fatal("Wrong Vendor: This test only runs on devices which use Intel WiFi")
 	}
 
+	var pathToSSDT string
+	for _, path := range []string{
+		// SSDT (Secondary System Description Table) contains SAR data
+		// in encoded binary format. May show up at different paths
+		// depending on the platform.
+		"/sys/firmware/acpi/tables/SSDT",
+		"/sys/firmware/acpi/tables/SSDT1",
+	} {
+		if _, err := os.Stat(path); err == nil {
+			s.Log("Found SSDT at: ", path)
+			pathToSSDT = path
+			break
+		} else if !os.IsNotExist(err) {
+			s.Fatalf("Stat(%q) failed: %v", path, err)
+		}
+	}
+	if pathToSSDT == "" {
+		s.Fatal("Failed to find SSDT path")
+	}
 	SSDTRaw, err := ioutil.ReadFile(pathToSSDT)
 	if err != nil {
 		s.Fatal("Could not read SSDT data: ", err)
