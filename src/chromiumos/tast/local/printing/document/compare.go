@@ -60,7 +60,7 @@ var cleanPdfRegex = regexp.MustCompile("(?m)" +
 //   <</BaseFont/WDZDNS+Symbola/FontDescriptor 23 0 R/Type/Font
 //   The "WDZDNS" ID will be removed.
 var cleanBaseFontRegex = regexp.MustCompile(
-	`(\/BaseFont\/)([A-Z]{6}\+)([a-zA-Z]+\/FontDescriptor)`)
+	`(/BaseFont/)([A-Z]{6}\+)([a-zA-Z,]+/FontDescriptor)`)
 
 // cleanFontNameRegex is the same as cleanBaseFontRegex except it matches a
 // different form of the FontDescriptor fields.
@@ -69,7 +69,7 @@ var cleanBaseFontRegex = regexp.MustCompile(
 //   <</Type/FontDescriptor/FontName/ZQPAHQ+Webdings/FontBBox[0 -200 1000 799]/Flags 4
 //   The "ZQPAHQ" ID will be removed.
 var cleanFontNameRegex = regexp.MustCompile(
-	`(\/FontName\/)([A-Z]{6}\+)([a-zA-Z]+\/FontBBox)`)
+	`(/FontName/)([A-Z]{6}\+)([a-zA-Z,]+/FontBBox)`)
 
 func cleanFontDescriptors(contents string, re *regexp.Regexp) string {
 	return re.ReplaceAllStringFunc(contents,
