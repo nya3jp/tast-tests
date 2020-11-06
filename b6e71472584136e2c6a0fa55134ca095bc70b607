@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "439aad05_3f681c68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-11-06T04:49:02Z",
+      "side": 1,
+      "message": "nit: sp",
+      "range": {
+        "startLine": 38,
+        "startChar": 33,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "b6e71472584136e2c6a0fa55134ca095bc70b607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -179,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4aac6794_17829e72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-11-06T04:49:02Z",
+      "side": 1,
+      "message": "How much value is this actually adding? Does this extra check actually do anything meaningful? I don\u0027t really know much about what a \"card reset\" does so take this with a gain of salt, but we don\u0027t check for this in most (all?) of our other tests that expect not to see a disconnect. Is there a good reason for this one to be different?",
+      "parentUuid": "8665c76a_444bfa60",
+      "revId": "adc0363060605b7d1e3016e78995da8f2f34da5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32b519e8_d0237769",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/malformed_probe_resp.go",
         "patchSetId": 1
