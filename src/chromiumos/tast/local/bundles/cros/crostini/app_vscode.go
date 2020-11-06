@@ -62,7 +62,7 @@ func AppVscode(ctx context.Context, s *testing.State) {
 		// This also closes the Terminal window.
 		if restartIfError {
 			if err := terminalApp.RestartCrostini(cleanupCtx, keyboard, cont, cr.User()); err != nil {
-				s.Fatal("Failed to restart Crostini: ", err)
+				s.Log("Failed to restart Crostini: ", err)
 			}
 		} else {
 			terminalApp.Exit(cleanupCtx, keyboard)

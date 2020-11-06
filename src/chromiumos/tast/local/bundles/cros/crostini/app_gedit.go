@@ -61,7 +61,7 @@ func AppGedit(ctx context.Context, s *testing.State) {
 		// This also closes the Terminal window.
 		if restartIfError {
 			if err := terminalApp.RestartCrostini(cleanupCtx, keyboard, cont, cr.User()); err != nil {
-				s.Fatal("Failed to restart crostini: ", err)
+				s.Log("Failed to restart crostini: ", err)
 			}
 		}
 	}()
