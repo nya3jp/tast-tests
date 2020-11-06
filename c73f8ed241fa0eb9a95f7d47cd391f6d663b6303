@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af5f6f64_b1fb2a63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-06T17:22:00Z",
+      "side": 1,
+      "message": "Will devices in labs run the test with screenrecorder if we add it?",
+      "parentUuid": "d48f9e15_e63bb109",
+      "revId": "c73f8ed241fa0eb9a95f7d47cd391f6d663b6303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e67963d1_65ac2511",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 5
