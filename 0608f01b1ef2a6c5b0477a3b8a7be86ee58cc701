@@ -22,6 +22,30 @@
       },
       "revId": "0608f01b1ef2a6c5b0477a3b8a7be86ee58cc701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e49509_0f1103a7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-06T02:12:45Z",
+      "side": 0,
+      "message": "SelectFile finds the file within Files app and is widely used. StableFindAndClick finds on the desktop. Changing it might introduce flakiness.\n\nI was thinking of creating a method node.StableFindAndClick. However, it is a bit complicated if the location of the node itself changes. Any idea?",
+      "parentUuid": "25770d5a_5b67ddb4",
+      "range": {
+        "startLine": 496,
+        "startChar": 13,
+        "endLine": 496,
+        "endChar": 23
+      },
+      "revId": "0608f01b1ef2a6c5b0477a3b8a7be86ee58cc701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
