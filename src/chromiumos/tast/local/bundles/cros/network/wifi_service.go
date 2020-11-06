@@ -2035,3 +2035,46 @@ func (s *WifiService) SuspendAssertConnect(ctx context.Context, req *network.Sus
 
 	return &network.SuspendAssertConnectResponse{ReconnectTime: time.Since(resumeStartTime).Nanoseconds()}, nil
 }
+
+// WaitForReconnect waits for the DUT to reconnect to a service within timout
+// (in nanoseconds). Active scans are trigger when the service is still idle
+// (i.e. not yet reconnecting) if specified in request.
+func (s *WifiService) WaitForReconnect(ctx context.Context, req *network.WaitForReconnectRequest) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill Manager object")
+	}
+	service, err := shill.NewService(ctx, dbus.ObjectPath(req.ServicePath))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill Service object")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		props, err := service.GetProperties(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get service properties"))
+		}
+		state, err := props.GetString(shillconst.ServicePropertyState)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get service state"))
+		}
+		if shillconst.IsConnectedState(state) {
+			return nil
+		}
+		if state == shillconst.ServiceStateIdle && req.Scan {
+			// Not yet reconnecting, possibly not yet see the service.
+			// Trigger scan if specified.
+			if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to request scan"))
+			}
+		}
+		return errors.Errorf("not yet connected, state=%s", state)
+	}, &testing.PollOptions{
+		Timeout:  time.Duration(req.Timeout),
+		Interval: 200 * time.Millisecond,
+	}); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for DUT to reconnect")
+	}
+
+	return &empty.Empty{}, nil
+}
