@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbeeb436_04710e4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-06T00:30:37Z",
+      "side": 1,
+      "message": "This CL broke /fast_build.sh -T:\n\n[ zwisler@ravnica ~/trunk/src/platform/tast ((5cd8f66...)) ]\n$ ./fast_build.sh -T\nok  \tchromiumos/tast/autocaps\t(cached)\nok  \tchromiumos/tast/bundle\t(cached)\nok  \tchromiumos/tast/caller\t(cached)\n# chromiumos/tast/local/bundles/crosint/enterprise\n../tast-tests-private/src/chromiumos/tast/local/bundles/crosint/enterprise/arc_provisioning.go:143:15: not enough arguments in call to d.Close\n\thave ()\n\twant (context.Context)\n# chromiumos/tast/local/bundles/crosint/graphics\n../tast-tests-private/src/chromiumos/tast/local/bundles/crosint/graphics/gfxbench.go:348:15: not enough arguments in call to d.Close\n\thave ()\n\twant (context.Context)\n# chromiumos/tast/local/bundles/crosint/arc\n../tast-tests-private/src/chromiumos/tast/local/bundles/crosint/arc/linpack.go:58:15: not enough arguments in call to d.Close\n\thave ()\n\twant (context.Context)\nok  \tchromiumos/tast/cmd/tast\t(cached)\n\nThis same command complete successfully at this CL\u0027s parent commit.",
+      "revId": "d0c05f37e71d8ce91515503faf8c4e05ed7867eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
