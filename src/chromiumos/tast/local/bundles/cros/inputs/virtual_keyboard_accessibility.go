@@ -57,10 +57,7 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 
 	// Check that the keyboard has modifier and tab keys.
 	keys := []string{"ctrl", "alt", "caps lock", "tab"}
-
-	for _, key := range keys {
-		if err := vkb.TapKey(ctx, tconn, key); err != nil {
-			s.Errorf("Failed to tap %q: %v", key, err)
-		}
+	if err := vkb.WaitForKeysExist(ctx, tconn, keys); err != nil {
+		s.Fatal("Failed to wait for keys to be shown: ", err)
 	}
 }
