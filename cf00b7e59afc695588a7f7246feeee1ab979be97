@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ab798e_db94d8dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-06T02:28:10Z",
+      "side": 1,
+      "message": "No issue in the code change. It would be nice to discuss with Matthew if it is already fixed or still required to demote.",
+      "revId": "cf00b7e59afc695588a7f7246feeee1ab979be97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
