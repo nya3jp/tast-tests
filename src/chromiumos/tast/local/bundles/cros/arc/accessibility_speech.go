@@ -54,7 +54,7 @@ func init() {
 				CheckBox: []string{
 					// Currently, ChromeVox reads "Not checked" twice on R.
 					// TODO: b/154433831#comment23
-					"CheckBox", "Check box", "Not checked", "not checked", "Press Search+Space to toggle",
+					"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle",
 				},
 				SeekBar: []string{
 					"seekBar", "Slider", "25%", "Min 0", "Max 100",
