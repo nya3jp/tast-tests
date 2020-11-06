@@ -22,6 +22,30 @@
       },
       "revId": "7119f79a3d89c21330b104e90d93a5472a9b9529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116a69a4_a307645e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_natural.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-11-06T09:18:59Z",
+      "side": 1,
+      "message": "Not sure if we need it here. There is nothing to compare against during a stabilization period, as the original tests are not run periodically.",
+      "parentUuid": "c802a093_914b8332",
+      "range": {
+        "startLine": 83,
+        "startChar": 67,
+        "endLine": 83,
+        "endChar": 68
+      },
+      "revId": "7119f79a3d89c21330b104e90d93a5472a9b9529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
