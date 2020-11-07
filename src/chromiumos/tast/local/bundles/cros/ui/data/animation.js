@@ -91,8 +91,15 @@ function main() {
 
   var vs_t = gl.getUniformLocation(program, "vs_t");
   var last_time = 0;
+  var skip = true;
 
 function update(time){
+  skip = !skip;
+  if (skip){
+    requestAnimationFrame(update);
+    return;
+  }
+
   last_time = time;
 
   if (0 != canvas.height)
