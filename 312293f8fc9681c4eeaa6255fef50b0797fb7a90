@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a9653d0f_fc3e8da6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-11-07T00:04:54Z",
+      "side": 1,
+      "message": "Okay, fair enough, thanks for figuring this out.",
+      "parentUuid": "0378c810_f018d8c4",
+      "revId": "312293f8fc9681c4eeaa6255fef50b0797fb7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b39b7a09_1641819b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
