@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee227907_e2c94632",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-07T00:02:36Z",
+      "side": 1,
+      "message": "Adding support for boot modes in this cl, the next one will add support for gbb flags.",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
