@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449e7d68_16813d0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoclick_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-07T19:20:16Z",
+      "side": 1,
+      "message": "There is a stNode.Location.CenterPoint() function that return with this value, like in the click function:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/automation.go;l\u003d251\nI think this mouseover/hover would be nice to include in UI automation.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 4
+      },
+      "revId": "73ea8cbc609dba984f8c0155ac42a782806ab974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
