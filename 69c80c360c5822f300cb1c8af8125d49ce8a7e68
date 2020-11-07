@@ -62,6 +62,47 @@
       },
       "revId": "69c80c360c5822f300cb1c8af8125d49ce8a7e68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eed9e50_30d85812",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-07T19:30:01Z",
+      "side": 1,
+      "message": "If the radio group exists, the radio buttons should be there as well.",
+      "parentUuid": "17e035bc_be94fc12",
+      "range": {
+        "startLine": 675,
+        "startChar": 15,
+        "endLine": 675,
+        "endChar": 26
+      },
+      "revId": "69c80c360c5822f300cb1c8af8125d49ce8a7e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d1f5f2_517c366f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-07T19:30:01Z",
+      "side": 1,
+      "message": "You should name this error and the next one before the function, e.g.:\n\u003e  var ErrNoRadioButton \u003d Errors.New(\"no radio buttons in this radio group\")",
+      "revId": "69c80c360c5822f300cb1c8af8125d49ce8a7e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
