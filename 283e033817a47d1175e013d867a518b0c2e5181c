@@ -16,6 +16,29 @@
       "message": "I see Matthew asking on the RoamFT CL about the problems in Autotest version and what is fixed. Maybe also include to take a look at this CL?",
       "revId": "283e033817a47d1175e013d867a518b0c2e5181c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bea72cf_f1bfb179",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-11-07T00:01:42Z",
+      "side": 1,
+      "message": "Is there a way to do this by restarting shill with blocked_devices set?",
+      "range": {
+        "startLine": 792,
+        "startChar": 1,
+        "endLine": 793,
+        "endChar": 104
+      },
+      "revId": "283e033817a47d1175e013d867a518b0c2e5181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
