@@ -22,6 +22,30 @@
       },
       "revId": "123304e4155a554e766ff0e56875e939e5f4446e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5079eacc_dd378196",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-11-07T00:04:54Z",
+      "side": 1,
+      "message": "Oh interesting. I never actually got a chance to investigate that bug, but I can no longer repro so I closed it. Feel free to remove this comment and one of the certs.",
+      "parentUuid": "c3cbfe81_8cf9e734",
+      "range": {
+        "startLine": 83,
+        "startChar": 7,
+        "endLine": 83,
+        "endChar": 29
+      },
+      "revId": "123304e4155a554e766ff0e56875e939e5f4446e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
