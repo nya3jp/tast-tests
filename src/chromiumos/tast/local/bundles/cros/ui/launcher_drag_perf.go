@@ -39,8 +39,8 @@ func init() {
 		Params: []testing.Param{{
 			Pre: ash.LoggedInWith100FakeApps(),
 		}, {
-			Name:              "skia_renderer",
-			Pre:               ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
+			Name: "skia_renderer",
+			Pre:  ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
 		}},
 	})
 }
@@ -86,32 +86,42 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("No primary display is found")
 	}
 
+	shelfInfo, err := ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{})
+	if err != nil {
+		s.Fatal("Failed to fetch scrollable shelf info: ", err)
+	}
+
+	if len(shelfInfo.IconsBoundsInScreen) == 0 {
+		s.Fatal("No icons found in shelf")
+	}
+
 	// Points for dragging to open/close the launchers.
 	// - X of bottom: should be the background of the shelf (not on app
 	//   icons). If there's only one icon, X position is slightly right of the icon. If there
 	//   are multiple icons, pick up the middle point between the first and the
-	//   second icon.
+	//   second *visible* icon.
 	// - X of top: about 1/4 of the screen to avoid the scroll indicator at the
 	//   center of the screen.
 	// - Y of bottom: in the middle of shelf (bottom of workarea + half of the
 	//   shelf, which equals to the average of workarea height and display height)
 	// - Y of top: 10px from the top of the screen; this is just like almost top
 	//   of the screen.
-	appIcons, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{ClassName: "ash/ShelfAppButton"})
-	if err != nil {
-		s.Fatal("Failed to find the app icons: ", err)
-	}
-	if len(appIcons) == 0 {
-		// At least there must be one icon for Chrome itself.
-		s.Fatal("No app icons are in the shelf")
-	}
-	defer appIcons.Release(ctx)
+	appIcons := shelfInfo.IconsBoundsInScreen
 	var xPosition int
 	if len(appIcons) == 1 {
-		xPosition = appIcons[0].Location.Left + appIcons[0].Location.Width + 1
+		xPosition = appIcons[0].Right() + 1
 	} else {
-		xPosition = ((appIcons[0].Location.Left + appIcons[0].Location.Width) + appIcons[1].Location.Left) / 2
+		// Find the first visible icon.
+		firstVisibleIconIndex := 0
+		for i, iconBounds := range appIcons {
+			if iconBounds.Left > shelfInfo.LeftArrowBounds.Right() {
+				firstVisibleIconIndex = i
+				break
+			}
+		}
+		xPosition = (appIcons[firstVisibleIconIndex].Right() + appIcons[firstVisibleIconIndex+1].Left) / 2
 	}
+
 	bottom := coords.NewPoint(xPosition, primaryBounds.Top+(primaryBounds.Height+primaryWorkArea.Height)/2)
 	top := coords.NewPoint(primaryBounds.Left+primaryBounds.Width/4, primaryBounds.Top+10)
 
