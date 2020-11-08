@@ -129,7 +129,7 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 		s.Fatal("Failed to read output file: ", err)
 	}
 	if diff := diff.Diff(lpprint.CleanPSContents(string(goldenData)), lpprint.CleanPSContents(string(output))); diff != "" {
-		const diffFile = "diff.txt"
+		const diffFile = "diff.bin"
 		outFile := filepath.Base(golden)
 		path := filepath.Join(s.OutDir(), diffFile)
 		if err := ioutil.WriteFile(path, []byte(diff), 0644); err != nil {

@@ -45,8 +45,8 @@ func AddStarPrinter(ctx context.Context, s *testing.State) {
 	const (
 		// diffFile is the name of the file containing the diff between
 		// the golden data and actual request in case of failure.
-		starDiffFile   = "star.diff"
-		starlmDiffFile = "starlm.diff"
+		starDiffFile   = "star.bin"
+		starlmDiffFile = "starlm.bin"
 	)
 
 	// Tests printing using the rastertostar filter.

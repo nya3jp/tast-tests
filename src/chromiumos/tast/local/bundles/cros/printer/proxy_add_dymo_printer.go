@@ -45,8 +45,8 @@ func ProxyAddDymoPrinter(ctx context.Context, s *testing.State) {
 	const (
 		// diffFile is the name of the file containing the diff between
 		// the golden data and actual request in case of failure.
-		dymolwDiffFile = "dymolw.diff"
-		dymolmDiffFile = "dymolm.diff"
+		dymolwDiffFile = "dymolw.bin"
+		dymolmDiffFile = "dymolm.bin"
 	)
 
 	// Tests printing with the old Ink PPDs.

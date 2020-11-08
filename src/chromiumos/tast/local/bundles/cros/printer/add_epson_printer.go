@@ -47,9 +47,9 @@ func AddEpsonPrinter(ctx context.Context, s *testing.State) {
 	const (
 		// diffFile is the name of the file containing the diff between
 		// the golden data and actual request in case of failure.
-		diffFile           = "printer_add_epson_printer_diff.txt"
-		colorDiffFile      = "color.diff"
-		monochromeDiffFile = "monochrome.diff"
+		diffFile           = "printer_add_epson_printer_diff.bin"
+		colorDiffFile      = "color.bin"
+		monochromeDiffFile = "monochrome.bin"
 	)
 
 	// Tests printing with the old Ink PPDs.
