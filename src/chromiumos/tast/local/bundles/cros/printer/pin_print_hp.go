@@ -33,7 +33,6 @@ func init() {
 				PpdFile:      "printer_HP.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_hp_no_pin_golden.ps",
-				OutDiffFile:  "no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_hp_no_pin_golden.ps"},
 		}, {
@@ -42,7 +41,6 @@ func init() {
 				PpdFile:      "printer_HP.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_hp_pin_golden.ps",
-				OutDiffFile:  "pin_diff.txt",
 				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_hp_pin_golden.ps"},

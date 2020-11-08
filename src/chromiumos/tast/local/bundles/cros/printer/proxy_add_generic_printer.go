@@ -39,9 +39,5 @@ const (
 )
 
 func ProxyAddGenericPrinter(ctx context.Context, s *testing.State) {
-	// diffFile is the name of the file containing the diff between the
-	// golden data and actual request in case of failure.
-	const diffFile = "printer_add_generic_printer_diff.txt"
-
-	proxylpprint.Run(ctx, s, proxyGenericPPDFile, proxyGenericToPrintFile, proxyGenericGoldenFile, diffFile)
+	proxylpprint.Run(ctx, s, proxyGenericPPDFile, proxyGenericToPrintFile, proxyGenericGoldenFile)
 }
