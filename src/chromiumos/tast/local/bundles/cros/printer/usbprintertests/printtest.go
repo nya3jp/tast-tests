@@ -14,8 +14,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/kylelemons/godebug/diff"
-
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/printer/lpprint"
@@ -128,17 +126,12 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	if err != nil {
 		s.Fatal("Failed to read output file: ", err)
 	}
-	if diff := diff.Diff(lpprint.CleanPSContents(string(goldenData)), lpprint.CleanPSContents(string(output))); diff != "" {
-		const diffFile = "diff.txt"
+	if lpprint.CleanPSContents(string(goldenData)) != lpprint.CleanPSContents(string(output)) {
 		outFile := filepath.Base(golden)
-		path := filepath.Join(s.OutDir(), diffFile)
-		if err := ioutil.WriteFile(path, []byte(diff), 0644); err != nil {
-			s.Error("Failed to dump diff: ", err)
-		}
 		outPath := filepath.Join(s.OutDir(), outFile)
 		if err := ioutil.WriteFile(outPath, output, 0644); err != nil {
 			s.Error("Failed to dump output: ", err)
 		}
-		s.Errorf("Printer output differs from expected: diff saved to %q (-want +got), output to %q", diffFile, outFile)
+		s.Errorf("Printer output differs from expected: output saved to %q", outFile)
 	}
 }

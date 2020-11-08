@@ -34,7 +34,6 @@ func init() {
 				PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_unsupported_golden.ps",
-				OutDiffFile:  "no-pin_diff.txt",
 			},
 			ExtraData: []string{},
 		}, {
@@ -43,7 +42,6 @@ func init() {
 				PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_unsupported_golden.ps",
-				OutDiffFile:  "pin_diff.txt",
 				Options:      []proxyippprint.Option{proxyippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{},

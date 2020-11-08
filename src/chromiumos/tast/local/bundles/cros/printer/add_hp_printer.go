@@ -36,12 +36,6 @@ const (
 )
 
 func AddHpPrinter(ctx context.Context, s *testing.State) {
-	const (
-		// diffFile is the name of the file containing the diff between
-		// the golden data and actual request in case of failure.
-		pclmDiffFile = "pclm.diff"
-	)
-
 	// Test PCLm PDL.
-	lpprint.Run(ctx, s, hpPclmPpd, hpToPrintFile, hpPclmGoldenFile, pclmDiffFile)
+	lpprint.Run(ctx, s, hpPclmPpd, hpToPrintFile, hpPclmGoldenFile)
 }

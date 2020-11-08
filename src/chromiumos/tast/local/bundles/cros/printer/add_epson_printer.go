@@ -44,18 +44,10 @@ const (
 )
 
 func AddEpsonPrinter(ctx context.Context, s *testing.State) {
-	const (
-		// diffFile is the name of the file containing the diff between
-		// the golden data and actual request in case of failure.
-		diffFile           = "printer_add_epson_printer_diff.txt"
-		colorDiffFile      = "color.diff"
-		monochromeDiffFile = "monochrome.diff"
-	)
-
 	// Tests printing with the old Ink PPDs.
-	lpprint.Run(ctx, s, epsonPPDFile, epsonToPrintFile, epsonGoldenFile, diffFile)
+	lpprint.Run(ctx, s, epsonPPDFile, epsonToPrintFile, epsonGoldenFile)
 
 	// Tests printing with the modified ColorModel PPD in color and monochrome.
-	lpprint.RunWithOptions(ctx, s, epsonModPPD, epsonToPrintFile, epsonColorGoldenFile, colorDiffFile, "print-color-mode=color")
-	lpprint.RunWithOptions(ctx, s, epsonModPPD, epsonToPrintFile, epsonMonochromeGoldenFile, monochromeDiffFile, "print-color-mode=monochrome")
+	lpprint.RunWithOptions(ctx, s, epsonModPPD, epsonToPrintFile, epsonColorGoldenFile, "print-color-mode=color")
+	lpprint.RunWithOptions(ctx, s, epsonModPPD, epsonToPrintFile, epsonMonochromeGoldenFile, "print-color-mode=monochrome")
 }

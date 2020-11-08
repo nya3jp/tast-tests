@@ -22,7 +22,6 @@ type Params struct {
 	PpdFile      string   // Name of the ppd used to print the job.
 	PrintFile    string   // PS file to print.
 	ExpectedFile string   // PS file output should be compared to.
-	OutDiffFile  string   // Name of file errors should be written to.
 	Options      []Option // Options to be passed to the filter to change output.
 }
 
@@ -47,5 +46,5 @@ func optionsToString(options []Option) string {
 
 // Run executes the main test logic with |p.Options| included in the lp command.
 func Run(ctx context.Context, s *testing.State, p *Params) {
-	lpprint.RunWithOptions(ctx, s, p.PpdFile, p.PrintFile, p.ExpectedFile, p.OutDiffFile, optionsToString(p.Options))
+	lpprint.RunWithOptions(ctx, s, p.PpdFile, p.PrintFile, p.ExpectedFile, optionsToString(p.Options))
 }

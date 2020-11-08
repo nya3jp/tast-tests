@@ -33,7 +33,6 @@ func init() {
 				PpdFile:      "printer_Sharp.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_sharp_no_pin_golden.ps",
-				OutDiffFile:  "no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_sharp_no_pin_golden.ps"},
 		}, {
@@ -42,7 +41,6 @@ func init() {
 				PpdFile:      "printer_Sharp.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_sharp_pin_golden.ps",
-				OutDiffFile:  "pin_diff.txt",
 				Options:      []proxyippprint.Option{proxyippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_sharp_pin_golden.ps"},
