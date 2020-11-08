@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a5d938_85b01a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-08T12:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d67e488f_636f9fcc",
+      "range": {
+        "startLine": 114,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 61
+      },
+      "revId": "69c80c360c5822f300cb1c8af8125d49ce8a7e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17e035bc_be94fc12",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb8082c3_ad23a746",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-08T12:09:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7eed9e50_30d85812",
+      "range": {
+        "startLine": 675,
+        "startChar": 15,
+        "endLine": 675,
+        "endChar": 26
+      },
+      "revId": "69c80c360c5822f300cb1c8af8125d49ce8a7e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8d1f5f2_517c366f",
@@ -101,6 +149,24 @@
       "writtenOn": "2020-11-07T19:30:01Z",
       "side": 1,
       "message": "You should name this error and the next one before the function, e.g.:\n\u003e  var ErrNoRadioButton \u003d Errors.New(\"no radio buttons in this radio group\")",
+      "revId": "69c80c360c5822f300cb1c8af8125d49ce8a7e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61efa4f2_0452e990",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-08T12:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d1f5f2_517c366f",
       "revId": "69c80c360c5822f300cb1c8af8125d49ce8a7e68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
