@@ -42,14 +42,8 @@ const (
 )
 
 func AddDymoPrinter(ctx context.Context, s *testing.State) {
-	const (
-		// diffFile is the name of the file containing the diff between
-		// the golden data and actual request in case of failure.
-		dymolwDiffFile = "dymolw.diff"
-		dymolmDiffFile = "dymolm.diff"
-	)
 
 	// Tests printing with the old Ink PPDs.
-	lpprint.Run(ctx, s, dymolwPPD, dymoToPrintFile, dymolwGoldenFile, dymolwDiffFile)
-	lpprint.Run(ctx, s, dymolmPPD, dymoToPrintFile, dymolmGoldenFile, dymolmDiffFile)
+	lpprint.Run(ctx, s, dymolwPPD, dymoToPrintFile, dymolwGoldenFile)
+	lpprint.Run(ctx, s, dymolmPPD, dymoToPrintFile, dymolmGoldenFile)
 }
