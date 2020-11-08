@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35ed9645_37fa739c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-08T22:49:52Z",
+      "side": 1,
+      "message": "+2 for Tast Owners Review % a few path -\u003e path/filepath replacements that should still occur.",
+      "revId": "d0d58d77596bdefe015810dd84814bbafdec5894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "276d22a5_300052d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-08T22:49:52Z",
+      "side": 1,
+      "message": "This should use filepath too.",
+      "range": {
+        "startLine": 73,
+        "startChar": 22,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "d0d58d77596bdefe015810dd84814bbafdec5894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e691afa1_06c9ee1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-08T22:49:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 13
+      },
+      "revId": "d0d58d77596bdefe015810dd84814bbafdec5894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2749ad72_d70a0881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-08T22:49:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 83,
+        "startChar": 10,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "d0d58d77596bdefe015810dd84814bbafdec5894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056b9862_28f49b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-08T22:49:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 181,
+        "startChar": 32,
+        "endLine": 181,
+        "endChar": 36
+      },
+      "revId": "d0d58d77596bdefe015810dd84814bbafdec5894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

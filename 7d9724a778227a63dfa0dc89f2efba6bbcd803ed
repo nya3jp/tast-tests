@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15cce540_7a0c57fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-08T22:49:52Z",
+      "side": 1,
+      "message": "filepath is designed to model the semantics of a file system path, whereas path is designed for URLs and the like. See comment on: https://golang.org/pkg/path/",
+      "parentUuid": "c3eae044_976eaab7",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e02faa81_0cb701cd",
