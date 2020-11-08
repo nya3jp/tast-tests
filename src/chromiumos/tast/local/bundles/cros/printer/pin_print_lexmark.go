@@ -34,7 +34,7 @@ func init() {
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_lexmark_no_pin_golden.ps",
-				OutDiffFile:  "no-pin_diff.txt",
+				OutDiffFile:  "no-pin_diff.bin",
 			},
 			ExtraData: []string{"printer_pin_print_lexmark_no_pin_golden.ps"},
 		}, {
@@ -43,7 +43,7 @@ func init() {
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_lexmark_pin_golden.ps",
-				OutDiffFile:  "pin_diff.txt",
+				OutDiffFile:  "pin_diff.bin",
 				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_lexmark_pin_golden.ps"},

@@ -41,7 +41,7 @@ const (
 func AddGenericPrinter(ctx context.Context, s *testing.State) {
 	// diffFile is the name of the file containing the diff between the
 	// golden data and actual request in case of failure.
-	const diffFile = "printer_add_generic_printer_diff.txt"
+	const diffFile = "printer_add_generic_printer_diff.bin"
 
 	lpprint.Run(ctx, s, genericPPDFile, genericToPrintFile, genericGoldenFile, diffFile)
 }

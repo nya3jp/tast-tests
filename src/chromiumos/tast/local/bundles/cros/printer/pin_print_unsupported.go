@@ -34,7 +34,7 @@ func init() {
 				PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_unsupported_golden.ps",
-				OutDiffFile:  "no-pin_diff.txt",
+				OutDiffFile:  "no-pin_diff.bin",
 			},
 			ExtraData: []string{},
 		}, {
@@ -43,7 +43,7 @@ func init() {
 				PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_unsupported_golden.ps",
-				OutDiffFile:  "pin_diff.txt",
+				OutDiffFile:  "pin_diff.bin",
 				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{},

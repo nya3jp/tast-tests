@@ -65,7 +65,7 @@ func RunTest(ctx context.Context, s *testing.State, gsFilter, input, golden, env
 
 	if diff := diff.Diff(lpprint.CleanPSContents(string(goldenBytes)), lpprint.CleanPSContents(string(output))); diff != "" {
 		cmd.DumpLog(ctx)
-		const diffFile = "diff.txt"
+		const diffFile = "diff.bin"
 		diffPath := filepath.Join(s.OutDir(), diffFile)
 		if err := ioutil.WriteFile(diffPath, []byte(diff), 0644); err != nil {
 			s.Error("Failed to dump diff: ", err)
