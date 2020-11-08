@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2135f0d1_be834610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-08T23:54:47Z",
+      "side": 1,
+      "message": "Got it. Thanks!",
+      "parentUuid": "15cce540_7a0c57fb",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "7d9724a778227a63dfa0dc89f2efba6bbcd803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e02faa81_0cb701cd",
