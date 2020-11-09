@@ -76,3 +76,13 @@ func (c *TpmManagerBinary) GetDAInfo(ctx context.Context) ([]byte, error) {
 func (c *TpmManagerBinary) ResetDALock(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "reset_da_lock")
 }
+
+// TakeOwnership calls "tpm_manager_client take_ownership".
+func (c *TpmManagerBinary) TakeOwnership(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "take_ownership")
+}
+
+// Status calls "tpm_manager_client status".
+func (c *TpmManagerBinary) Status(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "status")
+}

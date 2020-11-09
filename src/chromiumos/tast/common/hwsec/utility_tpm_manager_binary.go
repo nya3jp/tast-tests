@@ -42,8 +42,8 @@ func NewUtilityTpmManagerBinary(r CmdRunner) (*UtilityTpmManagerBinary, error) {
 	return &UtilityTpmManagerBinary{binary}, nil
 }
 
-// checkNVRAMCommandAndReturn is a simple helper that checks if binaryMsg returned from NVRAM related command is successfully, and returns the corresponding message and error.
-func checkNVRAMCommandAndReturn(ctx context.Context, binaryMsg []byte, err error, command string) (string, error) {
+// checkCommandAndReturn is a simple helper that checks if binaryMsg returned is successful, and returns the corresponding message and error.
+func checkCommandAndReturn(ctx context.Context, binaryMsg []byte, err error, command, successMsg string) (string, error) {
 	// Convert msg first because it's still used when there's an error.
 	msg := ""
 	if binaryMsg != nil {
@@ -57,11 +57,21 @@ func checkNVRAMCommandAndReturn(ctx context.Context, binaryMsg []byte, err error
 	}
 
 	// Check if the message make sense.
-	if !strings.Contains(msg, tpmManagerNVRAMSuccessMessage) {
-		return msg, errors.Errorf("calling %s failed due to unexpected stdout %q", command, msg)
+	if !strings.Contains(msg, successMsg) {
+		return msg, errors.Errorf("calling %s failed due to missing wanted context %q in stdout %q", command, successMsg, msg)
 	}
 
 	return msg, nil
+}
+
+// checkNVRAMCommandAndReturn is a simple helper that checks if binaryMsg returned from NVRAM related command is successful, and returns the corresponding message and error.
+func checkNVRAMCommandAndReturn(ctx context.Context, binaryMsg []byte, err error, command string) (string, error) {
+	return checkCommandAndReturn(ctx, binaryMsg, err, command, tpmManagerNVRAMSuccessMessage)
+}
+
+// checkStatusCommandAndReturn is a simple helper that checks if binaryMsg returned from status related command is successful, and returns the corresponding message and error.
+func checkStatusCommandAndReturn(ctx context.Context, binaryMsg []byte, err error, command string) (string, error) {
+	return checkCommandAndReturn(ctx, binaryMsg, err, command, tpmManagerStatusSuccessMessage)
 }
 
 // DefineSpace defines (creates) an NVRAM space at index, of size size, with attributes attributes and password password, and the NVRAM space will be bound to PCR0 if bindToPCR0 is true.
@@ -94,6 +104,20 @@ func (u *UtilityTpmManagerBinary) ReadSpaceToFile(ctx context.Context, index, ou
 	binaryMsg, err := u.binary.ReadSpace(ctx, index, outputFile, password)
 
 	return checkNVRAMCommandAndReturn(ctx, binaryMsg, err, "ReadSpace")
+}
+
+// TakeOwnership takes the TPM ownership.
+func (u *UtilityTpmManagerBinary) TakeOwnership(ctx context.Context) (string, error) {
+	binaryMsg, err := u.binary.TakeOwnership(ctx)
+
+	return checkStatusCommandAndReturn(ctx, binaryMsg, err, "TakeOwnership")
+}
+
+// Status returns the status string.
+func (u *UtilityTpmManagerBinary) Status(ctx context.Context) (string, error) {
+	binaryMsg, err := u.binary.Status(ctx)
+
+	return checkStatusCommandAndReturn(ctx, binaryMsg, err, "Status")
 }
 
 // DAInfo contains the dictionary attack related information.
