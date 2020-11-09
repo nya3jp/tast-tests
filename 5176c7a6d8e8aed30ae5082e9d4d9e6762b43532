@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46e7d12a_ad984bbc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-09T20:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df13306c_b36a54b4",
+      "range": {
+        "startLine": 681,
+        "startChar": 1,
+        "endLine": 681,
+        "endChar": 4
+      },
+      "revId": "5176c7a6d8e8aed30ae5082e9d4d9e6762b43532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "473c7845_3c7e9fe8",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-09T19:40:08Z",
       "side": 1,
       "message": "Instead of this loop, would it be possible to use n.Descendent above with a more specific FindParams. Something like:\n FindParams{\n   Attributes: map[string]interface{}{\n     \"checked\": CheckedStateTrue,\n   }\n }.",
+      "range": {
+        "startLine": 688,
+        "startChar": 1,
+        "endLine": 692,
+        "endChar": 2
+      },
+      "revId": "5176c7a6d8e8aed30ae5082e9d4d9e6762b43532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e872ddf9_a307c5d5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-09T20:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "473c7845_3c7e9fe8",
       "range": {
         "startLine": 688,
         "startChar": 1,
