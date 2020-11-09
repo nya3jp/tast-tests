@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "041f3e4c_4e95632f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-09T20:09:10Z",
+      "side": 1,
+      "message": "Ah good reminder. Screenshots will dismiss to Tote soon. I\u0027ve had a little look at that API I\u0027ll try do something with it if it is easy",
+      "parentUuid": "cb1cf709_5a7e5bc0",
+      "revId": "a372bcc3227df8cd0a90cc61de03714f6240a8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e62db8a5_ac78dab5",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-07T00:44:48Z",
       "side": 1,
       "message": "This is taking longer than 10 seconds in the Chromium CQ (crbug/1142644), so you may want to extend the timeout for when we promote this.",
+      "range": {
+        "startLine": 64,
+        "startChar": 50,
+        "endLine": 64,
+        "endChar": 64
+      },
+      "revId": "a372bcc3227df8cd0a90cc61de03714f6240a8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e3551e5_ecf8ccc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-09T20:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e62db8a5_ac78dab5",
       "range": {
         "startLine": 64,
         "startChar": 50,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f02622c_0fe7734c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-09T20:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "917ada6d_7ef3e2ec",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "a372bcc3227df8cd0a90cc61de03714f6240a8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfe871e3_2a047808",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-11-07T00:44:48Z",
       "side": 1,
       "message": "It\u0027s best to defer this after Show in case the test fails while closing the notification, since the UI reset doesn\u0027t close QS between tests. You\u0027ll want to wrap everything from quicksettings.Show in a function to get the defer to fire at the right time.\n  func () {\n    if err:\u003d quicksettings.Show(ctx, tconn); err !\u003d nil {\n      s.Fatal(...)\n    }\n    defer quicksettings.Hide(ctx, tconn)\n    \n    // code for closing the notification\n  }\n\n  s.Log(\"Taking another screenshot\")\n  ...",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 31
+      },
+      "revId": "a372bcc3227df8cd0a90cc61de03714f6240a8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1047b03_8d219f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-09T20:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfe871e3_2a047808",
       "range": {
         "startLine": 86,
         "startChar": 1,
