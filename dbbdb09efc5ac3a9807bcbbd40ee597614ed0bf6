@@ -51,6 +51,23 @@
       "message": "Code LGTM. Defer to Joel for decision to disable the tests.",
       "revId": "dbbdb09efc5ac3a9807bcbbd40ee597614ed0bf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec991ed_584daa6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-11-09T03:27:54Z",
+      "side": 1,
+      "message": "I\u0027ve got an octopus board being delivered to me this week so I will hopefully have a fix.\n\nKeeping this test is valuable. Just today it was able to detect a breakage and allow a quick fix in crrev.com/c/2524811",
+      "revId": "dbbdb09efc5ac3a9807bcbbd40ee597614ed0bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
