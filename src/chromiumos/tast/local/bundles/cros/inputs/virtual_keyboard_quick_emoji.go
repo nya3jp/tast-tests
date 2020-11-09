@@ -27,7 +27,7 @@ func init() {
 		Func:         VirtualKeyboardQuickEmoji,
 		Desc:         "Checks that right click input field and select emoji will trigger virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:essential-inputs"},
+		Attr:         []string{"group:mainline", "group:essential-inputs", "group:essential-inputs-rapid"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Params: []testing.Param{{
 			Name:              "stable",
