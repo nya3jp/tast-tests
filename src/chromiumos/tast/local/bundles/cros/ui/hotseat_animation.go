@@ -150,12 +150,6 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	// Changing tablet mode may change the shelf/hotseat bounds. Make sure the bounds
-	// stabilize before starting tests.
-	if err := ash.WaitForStableShelfBounds(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for stable shelf bouds: ", err)
-	}
-
 	// Prepare the touch screen as this test requires touch scroll events.
 	tsw, err := input.Touchscreen(ctx)
 	if err != nil {
@@ -179,34 +173,51 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Changing tablet mode may change the shelf/hotseat bounds. Make sure the bounds
+	// stabilize before starting tests.
+	if err := ash.WaitForStableShelfBounds(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for stable shelf bouds: ", err)
+	}
+
 	runner := perfutil.NewRunner(cr)
 
 	// Collect metrics data from hiding hotseat by window creation.
 	histogramsName := []string{
 		hiddenHotseatHistogram,
-		hiddenHotseatWidgetHistogram}
+		hiddenHotseatWidgetHistogram,
+		shownHotseatHistogram,
+		shownHotseatWidgetHistogram}
 	if s.Param().(hotseatTestType) == showNavigationWidget {
 		histogramsName = append(histogramsName,
 			hiddenBackButtonHistogram,
 			hiddenHomeButtonHistogram,
-			hiddenWidgetHistogram)
+			hiddenWidgetHistogram,
+			shownBackButtonHistogram,
+			shownHomeButtonHistogram,
+			shownWidgetHistogram)
 	}
 	runner.RunMultiple(ctx, s, "WindowCreation", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		sctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
+
 		conn, err := cr.NewConn(sctx, "", cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open browser window")
 		}
 		defer func() {
-			if err := conn.CloseTarget(ctx); err != nil {
-				s.Error("Failed to close a target: ", err)
-			}
 			if err := conn.Close(); err != nil {
 				s.Error("Failed to close a connection: ", err)
 			}
 		}()
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
+			return err
+		}
+
+		if err := conn.CloseTarget(ctx); err != nil {
+			return errors.Wrap(err, "failed to close a target")
+		}
+
+		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
 			return err
 		}
 
