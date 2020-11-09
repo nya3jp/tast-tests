@@ -33,6 +33,23 @@
       "message": "Ping for owners review.",
       "revId": "3729787a903a6fc474155e75c6d9521b43558b9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92fcccec_eb645c7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T02:16:24Z",
+      "side": 1,
+      "message": "Sorry for delay. Back from OOO.",
+      "revId": "3729787a903a6fc474155e75c6d9521b43558b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
