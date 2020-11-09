@@ -33,6 +33,23 @@
       "message": "Thank you.",
       "revId": "839a87a158fc020dc0660c0a9d91b36bcb05b8ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3139c402_2eeae935",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T05:22:25Z",
+      "side": 1,
+      "message": "Thanks for merge this fix back to R87.",
+      "revId": "839a87a158fc020dc0660c0a9d91b36bcb05b8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
