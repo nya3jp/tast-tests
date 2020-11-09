@@ -22,6 +22,30 @@
       },
       "revId": "86bb9513ec19d04b93bb286d24630d5a54ac0638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d747c6_8517f1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2020-11-09T04:54:58Z",
+      "side": 1,
+      "message": "Should I leave room for possibly adding more diverged properties in the future?",
+      "parentUuid": "85b950a1_c9353560",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 2
+      },
+      "revId": "86bb9513ec19d04b93bb286d24630d5a54ac0638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
