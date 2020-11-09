@@ -50,6 +50,23 @@
       "message": "Friendly ping for review :) ",
       "revId": "2de2834350f8aa56845bf712e527e353d9e6d1c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f008d6cd_d7e5b146",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T10:16:22Z",
+      "side": 1,
+      "message": "LGTM.\n\n# Sorry for delay. I was OOO last week. Katherine is assigned, but does not seem to review yet, so let me jump back into this to move forward.",
+      "revId": "2de2834350f8aa56845bf712e527e353d9e6d1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
