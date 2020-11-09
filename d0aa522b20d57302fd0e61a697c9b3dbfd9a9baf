@@ -16,6 +16,23 @@
       "message": "I\u0027ll wait for 2-3 days then add tast-owner@ to reviewer.",
       "revId": "d0aa522b20d57302fd0e61a697c9b3dbfd9a9baf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5d0c8d_0448fa48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-11-09T20:37:39Z",
+      "side": 1,
+      "message": "Nice and green!\n\nCan we make the bad_bios test green by reversing the failure logic? Otherwise I am afraid it will be removed at some point in the future.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2020-11-03\u0026last_date\u003d2020-11-09\u0026test\u003dgraphics.Connector\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "revId": "d0aa522b20d57302fd0e61a697c9b3dbfd9a9baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
