@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -281,8 +282,6 @@ func RestartApp(ctx context.Context, a *arc.ARC, d *ui.Device) error {
 
 // setUpDevice sets up the test environment, including starting UIAutomator server and launching GCA.
 func setUpDevice(ctx context.Context, a *arc.ARC, apkPath string) (*ui.Device, error) {
-	var permissions = []string{"ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION", "CAMERA", "RECORD_AUDIO", "WRITE_EXTERNAL_STORAGE"}
-
 	success := false
 	var d *ui.Device
 	defer func() {
@@ -307,16 +306,8 @@ func setUpDevice(ctx context.Context, a *arc.ARC, apkPath string) (*ui.Device, e
 	}
 
 	testing.ContextLog(ctx, "Installing app")
-	if err := a.Install(ctx, apkPath); err != nil {
+	if err := a.Install(ctx, apkPath, adb.InstallOptionGrantPermissions); err != nil {
 		return nil, errors.Wrap(err, "failed to install app")
-	}
-
-	// GCA would ask for location permission during startup. We need to dismiss the dialog before we can use the app.
-	testing.ContextLog(ctx, "Granting all needed permissions (e.g., location) to GCA")
-	for _, permission := range permissions {
-		if err := a.Command(ctx, "pm", "grant", pkg, "android.permission."+permission).Run(testexec.DumpLogOnError); err != nil {
-			return nil, errors.Wrapf(err, "failed to grant %s permission to GCA", permission)
-		}
 	}
 
 	// Launch GCA.
