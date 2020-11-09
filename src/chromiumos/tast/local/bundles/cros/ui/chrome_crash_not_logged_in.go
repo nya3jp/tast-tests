@@ -51,6 +51,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.RealConsent,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
 		}, {
 			Name: "browser_crashpad_mock_consent",
@@ -84,6 +85,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.RealConsent,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
 		}, {
 			Name: "gpu_process_crashpad_mock_consent",
@@ -127,6 +129,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.MockConsent,
 			},
+			ExtraAttr: []string{"informational"},
 			// If the gpu process is not sandboxed, it will not create a broker.
 			ExtraSoftwareDeps: []string{"crashpad", "gpu_sandboxing"},
 		}},

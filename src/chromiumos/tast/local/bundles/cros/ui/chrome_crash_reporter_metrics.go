@@ -76,6 +76,7 @@ func init() {
 		}, {
 			Name:              "miss_crashpad",
 			ExtraSoftwareDeps: []string{"crashpad"},
+			ExtraAttr:         []string{"informational"},
 			Val: chromeCrashReporterMetricsParams{
 				handler:       chromecrash.Crashpad,
 				chromeOptions: []chrome.Option{chrome.CrashNormalMode()},
