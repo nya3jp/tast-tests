@@ -133,6 +133,24 @@
       "parentUuid": "b6cc6933_1a3cdccd",
       "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5407d15c_9e960b46",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T05:20:18Z",
+      "side": 1,
+      "message": "SGTM. Let\u0027s add comment on option struct {}:\n\n// Groups option flags here as the options started to grow.",
+      "parentUuid": "66d3f420_5a80fee1",
+      "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
