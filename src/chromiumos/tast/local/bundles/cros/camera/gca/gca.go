@@ -97,6 +97,16 @@ func (facing Facing) String() string {
 	}
 }
 
+// isARCVM returns true if the test software dependencies include "android_vm".
+func isARCVM(softwareDeps []string) bool {
+	for _, dep := range softwareDeps {
+		if dep == "android_vm" {
+			return true
+		}
+	}
+	return false
+}
+
 // GetFacing returns the direction the current camera is facing.
 func GetFacing(ctx context.Context, d *ui.Device) (Facing, error) {
 	const viewfinderID = idBase + "viewfinder_frame"
@@ -280,8 +290,11 @@ func RestartApp(ctx context.Context, a *arc.ARC, d *ui.Device) error {
 }
 
 // setUpDevice sets up the test environment, including starting UIAutomator server and launching GCA.
-func setUpDevice(ctx context.Context, a *arc.ARC, apkPath string) (*ui.Device, error) {
+func setUpDevice(ctx context.Context, a *arc.ARC, apkPath string, isARCVM bool) (*ui.Device, error) {
 	var permissions = []string{"ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION", "CAMERA", "RECORD_AUDIO", "WRITE_EXTERNAL_STORAGE"}
+	if isARCVM {
+		permissions = append(permissions, "ACCESS_BACKGROUND_LOCATION")
+	}
 
 	success := false
 	var d *ui.Device
@@ -358,7 +371,7 @@ func tearDownDevice(ctx context.Context, a *arc.ARC, d *ui.Device) error {
 func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 	// Setup device.
 	a := s.PreValue().(arc.PreData).ARC
-	d, err := setUpDevice(ctx, a, s.DataPath(Apk))
+	d, err := setUpDevice(ctx, a, s.DataPath(Apk), isARCVM(s.SoftwareDeps()))
 	if err != nil {
 		s.Fatal("Failed to set up device: ", err)
 	}
