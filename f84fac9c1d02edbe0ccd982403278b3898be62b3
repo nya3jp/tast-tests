@@ -16,6 +16,314 @@
       "message": "Adding support for boot modes in this cl, the next one will add support for gbb flags.",
       "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d6afe1_340ee9a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "Mostly style nits",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eeb1e8f_54e84ecc",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "nit/typo: Recover",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a456aaea_c0e08191",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "Reduce duplicated logic with a NewPrecondition function:\n\n    func NewPrecondition(mode *common.BootMode) testing.Precondition {\n        return \u0026impl{\n            v: \u0026Value{\n                BootMode: mode,\n            },\n            timeout: prepareTimeout\n        }\n    }\n\n    var (\n        normalMode \u003d NewPrecondition(\u0026common.BootModeNormal)\n        devMode \u003d NewPrecondition(\u0026common.BootModeDev)\n        recMode \u003d NewPrecondition(\u0026common.BootModeRec)\n    )\n\nLater, as different tests require different combinations of preconditions rather than just bootMode, we might use the Options pattern, as we see in tast-tests/src/chromiumos/tast/local/chrome/pre.go.",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46071e5b_0ca2bd5d",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "My opinion is that we should log only when necessary. Logging every if/else branch makes the code more complex and makes the logs harder to read.\n\nAdditionally, RebootToMode already includes logs at some critical times, such as before and after reboots, so some logs here are redundant. For example, \"Successfully prepared DUT to be in boot mode\" is redundant with https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/boot_mode.go;l\u003d129\n\nWDYT about the following reduction?\n\n    if mode !\u003d i.v.BootMode {\n        if err :\u003d i.setAndCheckBootMode(ctx, i.v.BootMode); err !\u003d nil {\n            s.Fatalf(\"Failed to reboot to mode %q: %v\", i.v.BootMode, err)\n        }\n    }\n    return i.v",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf62a781_4d5aeca4",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "nit/typo: Successfully",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452fcfa5_26a0771a",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "Can you clarify this comment? What does it mean for the helper to be down?",
+      "range": {
+        "startLine": 90,
+        "startChar": 41,
+        "endLine": 90,
+        "endChar": 45
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8415f40e_d9056ec8",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "From https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow:\n\n    Try to keep the normal code path at a minimal indentation ... This improves the readability of the code by permitting visually scanning the normal path quickly.\n\nHere, the \"normal code path\" is where we restore the boot mode (L99), which is inside multiple levels of indented conditionals. OTOH it makes sense, because there are multiple reasons why we wouldn\u0027t need to restore boot mode.\n\nI think the solution here is to invert several of the conditions. We\u0027ll want to abort the process based on several of these conditions, so I think a helper function will be the cleanest way.\n\n    // Close restores the boot mode before the first Prepare().\n    func (i *impl) Close(ctx context.Context, s *testing.PreState) {\n        // Don\u0027t reuse the Helper, as it may be down.\n        i.initHelper(ctx, s)\n        \n        // restoreOrigMode restore the original boot mode, if known.\n        func restoreOrigMode() error {\n            if i.origBootMode \u003d\u003d nil {\n                s.Log(\"Original boot mode unknown, skipping restore\")\n                return nil\n            }\n            mode, err :\u003d i.v.Helper.Reporter.CurrentBootMode(ctx)\n            if err !\u003d nil {\n                return errors.Wrap(err, \"could not get boot mode\")\n            }\n            if *i.origBootMode \u003d\u003d mode {\n                s.Logf(\"Boot mode %q is same as original, skipping restore\", mode)\n                return\n            }\n            s.Logf(\"Restoring boot mode from %q to %q\", mode, *i.origBootMode)\n            if err :\u003d i.setAndCheckBootMode(ctx, *i.origBootMode); err !\u003d nil {\n                return err\n            }\n            return nil\n        }\n    \n        if err :\u003d restoreOrigMode(); err !\u003d nil {\n            s.Fatal(\"restoring original boot mode\")\n        }\n        \n        i.destroyHelper(ctx)\n        i.origBootMode \u003d nil\n    }\n\nIt might even make more sense for restoreOrigMode not to return an error, and to instead directly call s.Error and s.Fatal, so that you have finer control over which errors are fatal. The key advantage of functionalizing is that it allows us to exit early while keeping the control flow linear.\n\nIt might also be cleaner to define this as an impl.method outside the scope of Close, rather than as an internal function.\n\nFinally, it might be easier to keep the function anonymous:\n\n    // Restore the original boot mode, if known.\n    if err :\u003d func() err {\n        ...\n    }; err !\u003d nil {\n        s.Fatal(\"restoring original boot mode\")\n    }\n\nLots of options over a style consideration! Happy to GVC/Chat to hash this one out.",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2719c5bd_e3f0cf9b",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "My logging opinion from L75 applies here too.",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80871f91_5e98e75c",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "\"mode\" is a confusing variable name here, since we\u0027re working with two different modes. Here, you use \"mode\" to refer to the *current* boot mode, but later in setAndCheckBootMode, you use \"mode\" to refer to the *expected* boot mode.\n\nI recommend changing this \"mode\" to \"curr\", for consistency.",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84a05c3a_4bfd24be",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "As elsewhere, prefer to keep the normal code flow at a minimum indentation, per https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow:\n\n    func (i *impl) destroyHelper(ctx context.Context) {\n        if i.v.Helper \u003d\u003d nil {\n            return\n        }\n        i.v.Helper.Close(ctx)\n        i.v.Helper \u003d nil\n    }",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0786fdc_0fb1812c",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "Helper.Close returns an error. Let\u0027s capture and log it.\n\n    func (i *impl) destroyHelper(ctx context.Context) error {\n        if i.v.Helper !\u003d nil {\n            if err :\u003d i.v.Helper.Close(ctx); err !\u003d nil {\n                return errors.Wrap(err, \"closing helper\")\n            }\n            i.v.Helper \u003d nil\n        }\n    }",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370cbc8a_63241a67",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "This function is redundant, since RebootToMode already checks the boot mode and returns an error if it booted to the wrong mode. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/boot_mode.go;drc\u003d5db97b62e11ea718d9153996869fb70417ae2e0d;l\u003d123",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a17566_c695b1c5",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "nit/style: remove newline",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08273c8e_57c122a4",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "\"mode\" is a confusing variable name here, since we\u0027re working with two different modes. Here, you use \"mode\" to refer to the *expected* boot mode, but earlier in Close, you use \"mode\" to refer to the *current* boot mode.\n\nI recommend changing this \"mode\" to \"newMode\".",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 15
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4d136e_cab74c82",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "nit/style: The conventional order in Go is \"actual !\u003d expected\", in both the condition and the log. So, please switch this to:\n\n    else if curr !\u003d mode {\n        return errors.Errorf(\"boot mode is unexpected: got %s; want %s\", curr, mode)\n    }",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae41d5cc_cd169d9a",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T20:11:08Z",
+      "side": 1,
+      "message": "nit/style: Returned errors should not start with a capital letter. https://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 150,
+        "startChar": 24,
+        "endLine": 150,
+        "endChar": 25
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
