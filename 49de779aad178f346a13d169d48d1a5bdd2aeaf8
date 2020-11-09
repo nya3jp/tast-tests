@@ -35,6 +35,92 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c2f6ec_08e0b895",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-11-09T23:32:16Z",
+      "side": 1,
+      "message": "Sorry for the delay here. Just small nits, LGTM.",
+      "revId": "49de779aad178f346a13d169d48d1a5bdd2aeaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c82b3292_453a233c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-11-09T23:32:16Z",
+      "side": 1,
+      "message": "Have you considered using Filesapp.SelectFile()?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go;l\u003d208;drc\u003db90921fc9ea885dba7a966427305dadbd7222e33",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 59
+      },
+      "revId": "49de779aad178f346a13d169d48d1a5bdd2aeaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c23ee39_2742e565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-11-09T23:32:16Z",
+      "side": 1,
+      "message": "nit: fgURL and extID is a bit ambiguous because it could be referring to the Files app itself.\n\nMaybe something like these:\ndropTargetURL and dropTargetExtID",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 41
+      },
+      "revId": "49de779aad178f346a13d169d48d1a5bdd2aeaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e295a8e6_28ce1a55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-11-09T23:32:16Z",
+      "side": 1,
+      "message": "neat!",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 106
+      },
+      "revId": "49de779aad178f346a13d169d48d1a5bdd2aeaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74314510_9fddb3a0",
