@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83b423aa_86dbb8fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T16:47:05Z",
+      "side": 1,
+      "message": "crrev.com/c/2525237 should fix the issue?\nI\u0027d recommend not to workaround by extension.",
+      "revId": "a4792c02a4313cdf1656c585c8912dd50946299a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
