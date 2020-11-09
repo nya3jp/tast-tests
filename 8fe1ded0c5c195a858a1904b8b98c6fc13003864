@@ -230,6 +230,24 @@
       "parentUuid": "75d68b38_39282e91",
       "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde07bfa_50fce955",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T13:43:01Z",
+      "side": 1,
+      "message": "I carefully re-read the code and I got your point and I found some of my misread.\n\nHere\u0027s recommendation:\n- Could you avoid using \"Matches[0]\" hardcoded? The order of returned array is not deterministic. To keep the consistency at maximum, could you select determined one? Same comment for kernel_crash.go (I\u0027m ok if you\u0027d like to address kernel_crash.go in another CL). L144-145 is what it does.\n\n- (Probably it is out of the scope of this CL, but...) the API RemoveAllFilesRequest looks not simple enough. It needs to pass Regex, but it is simply ignored. Probably, regex should be removed, or making it possible to pass regexp pattern to remove (so that Matches does not need to be used).",
+      "parentUuid": "1f20bd39_239c4199",
+      "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
