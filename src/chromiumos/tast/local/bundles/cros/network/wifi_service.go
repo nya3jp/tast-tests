@@ -1135,8 +1135,8 @@ func (s *WifiService) wifiDev(ctx context.Context) (*shill.Manager, *shill.Devic
 	return m, dev, nil
 }
 
-func (s *WifiService) GetBgscanConfig(ctx context.Context, e *empty.Empty) (*network.GetBgscanConfigResponse, error) {
-	ctx, st := timing.Start(ctx, "wifi_service.GetBgscan")
+func (s *WifiService) GetScanConfig(ctx context.Context, e *empty.Empty) (*network.GetScanConfigResponse, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.GetScanConfig")
 	defer st.End()
 
 	_, dev, err := s.wifiDev(ctx)
@@ -1160,17 +1160,17 @@ func (s *WifiService) GetBgscanConfig(ctx context.Context, e *empty.Empty) (*net
 	if err != nil {
 		return nil, err
 	}
-	return &network.GetBgscanConfigResponse{
-		Config: &network.BgscanConfig{
-			Method:        method,
-			LongInterval:  uint32(interval),
-			ShortInterval: uint32(shortInterval),
+	return &network.GetScanConfigResponse{
+		Config: &network.ScanConfig{
+			BgscanMethod:        method,
+			BgscanShortInterval: uint32(shortInterval),
+			ScanInterval:        uint32(interval),
 		},
 	}, nil
 }
 
-func (s *WifiService) SetBgscanConfig(ctx context.Context, req *network.SetBgscanConfigRequest) (*empty.Empty, error) {
-	ctx, st := timing.Start(ctx, "wifi_service.SetBgscan")
+func (s *WifiService) SetScanConfig(ctx context.Context, req *network.SetScanConfigRequest) (*empty.Empty, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.SetScanConfig")
 	defer st.End()
 
 	_, dev, err := s.wifiDev(ctx)
@@ -1185,13 +1185,13 @@ func (s *WifiService) SetBgscanConfig(ctx context.Context, req *network.SetBgsca
 		return nil
 	}
 
-	if err := setProp(ctx, shillconst.DevicePropertyWiFiBgscanMethod, req.Config.Method); err != nil {
+	if err := setProp(ctx, shillconst.DevicePropertyWiFiBgscanMethod, req.Config.BgscanMethod); err != nil {
 		return nil, err
 	}
-	if err := setProp(ctx, shillconst.DevicePropertyWiFiScanInterval, uint16(req.Config.LongInterval)); err != nil {
+	if err := setProp(ctx, shillconst.DevicePropertyWiFiScanInterval, uint16(req.Config.ScanInterval)); err != nil {
 		return nil, err
 	}
-	if err := setProp(ctx, shillconst.DevicePropertyWiFiBgscanShortInterval, uint16(req.Config.ShortInterval)); err != nil {
+	if err := setProp(ctx, shillconst.DevicePropertyWiFiBgscanShortInterval, uint16(req.Config.BgscanShortInterval)); err != nil {
 		return nil, err
 	}
 	return &empty.Empty{}, nil

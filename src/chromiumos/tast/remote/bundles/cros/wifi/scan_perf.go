@@ -141,23 +141,23 @@ func ScanPerf(ctx context.Context, s *testing.State) {
 	// Background full scan, which means the scan is performed with a established connection.
 	// Disable background scan mode first.
 	s.Log("Disable the DUT's WiFi background scan")
-	bgscanResp, err := tf.WifiClient().GetBgscanConfig(ctx, &empty.Empty{})
+	bgscanResp, err := tf.WifiClient().GetScanConfig(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatal("Unable to get the DUT's WiFi bgscan method: ", err)
 	}
 	originalBgscanConfig := bgscanResp.Config
-	noBgscanReq := &network.SetBgscanConfigRequest{
-		Config: &network.BgscanConfig{},
+	noBgscanReq := &network.SetScanConfigRequest{
+		Config: &network.ScanConfig{},
 	}
 	// Make a shallow copy as we'll change bgscan method to "none".
 	*noBgscanReq.Config = *originalBgscanConfig
-	noBgscanReq.Config.Method = shillconst.DeviceBgscanMethodNone
-	if _, err := tf.WifiClient().SetBgscanConfig(ctx, noBgscanReq); err != nil {
+	noBgscanReq.Config.BgscanMethod = shillconst.DeviceBgscanMethodNone
+	if _, err := tf.WifiClient().SetScanConfig(ctx, noBgscanReq); err != nil {
 		s.Fatal("Unable to stop the DUT's WiFi bgscan: ", err)
 	}
 	defer func(ctx context.Context) {
 		s.Log("Restore the DUT's WiFi background scan to ", originalBgscanConfig)
-		if _, err := tf.WifiClient().SetBgscanConfig(ctx, &network.SetBgscanConfigRequest{Config: originalBgscanConfig}); err != nil {
+		if _, err := tf.WifiClient().SetScanConfig(ctx, &network.SetScanConfigRequest{Config: originalBgscanConfig}); err != nil {
 			s.Errorf("Failed to restore the DUT's bgscan to %v: %v", bgscanResp.Config, err)
 		}
 	}(ctx)
