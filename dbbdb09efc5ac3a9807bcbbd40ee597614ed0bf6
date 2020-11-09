@@ -68,6 +68,24 @@
       "message": "I\u0027ve got an octopus board being delivered to me this week so I will hopefully have a fix.\n\nKeeping this test is valuable. Just today it was able to detect a breakage and allow a quick fix in crrev.com/c/2524811",
       "revId": "dbbdb09efc5ac3a9807bcbbd40ee597614ed0bf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a9a568_f26ee15e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-09T16:53:44Z",
+      "side": 1,
+      "message": "Great, I\u0027d much rather have this test fixed.  Our goal is to have all tests passing with less than a 10% flake rate across all boards, so it\u0027d be great if we can get this test above that mark.\n\nhttp://go/cros-green-stainless-goals",
+      "parentUuid": "5ec991ed_584daa6b",
+      "revId": "dbbdb09efc5ac3a9807bcbbd40ee597614ed0bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
