@@ -16,6 +16,75 @@
       "message": "This is a dependent change for ChannelHop test, but if not yet sure if the implementation of changing scan interval will be used, so add reviewers to cc for reference.",
       "revId": "c4cc53175f56a2a13a8e13c0524c9dc992b0190c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ee707a_680abbce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T17:36:00Z",
+      "side": 1,
+      "message": "scanConfigResp",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 11
+      },
+      "revId": "c4cc53175f56a2a13a8e13c0524c9dc992b0190c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69776057_1f8c6eb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T17:36:00Z",
+      "side": 1,
+      "message": "originalScanConfig",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "c4cc53175f56a2a13a8e13c0524c9dc992b0190c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8902fbfc_2de01a10",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T17:36:00Z",
+      "side": 1,
+      "message": "Shall we adjust the unit to nanosecond to align with other timeout/duration fields in the proto file?",
+      "range": {
+        "startLine": 263,
+        "startChar": 9,
+        "endLine": 263,
+        "endChar": 30
+      },
+      "revId": "c4cc53175f56a2a13a8e13c0524c9dc992b0190c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
