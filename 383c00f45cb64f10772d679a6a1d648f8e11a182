@@ -56,6 +56,30 @@
       },
       "revId": "383c00f45cb64f10772d679a6a1d648f8e11a182",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f3221c_1d2ebfcf",
+        "filename": "src/chromiumos/tast/local/lacros/data/lacros_binary.tar.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-09T02:43:00Z",
+      "side": 1,
+      "message": "tyty",
+      "parentUuid": "91d50633_e4b08b1d",
+      "range": {
+        "startLine": 4,
+        "startChar": 10,
+        "endLine": 4,
+        "endChar": 18
+      },
+      "revId": "383c00f45cb64f10772d679a6a1d648f8e11a182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
