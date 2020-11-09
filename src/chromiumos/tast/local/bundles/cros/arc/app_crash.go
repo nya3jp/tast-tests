@@ -21,7 +21,7 @@ func init() {
 		Func:         AppCrash,
 		Desc:         "Test handling of a local app crash",
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
