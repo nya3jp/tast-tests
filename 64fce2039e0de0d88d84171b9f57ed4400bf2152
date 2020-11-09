@@ -292,6 +292,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95b2df5d_ce6a4ec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-09T00:59:24Z",
+      "side": 1,
+      "message": "\u003e Is there a way to suppress the stack trace generation?\nThe error message which gets displayed on Tastboard/Stainless doesn\u0027t include the stack trace; the stack trace is only shown when you look at the detailed log output. I wouldn\u0027t worry about suppressing the stack trace from the logs.\n\nRe-reading my original comment, I think my suggestion may have been a little unclear. My suggestion is to deal with any non-zero exit code from igt-gpu-tools separately from parsing the test results from the command output, and if necessary, to raise two errors.\n\nThe two errors will be concatenated one after the other in stainless/tastboard; which is basically the same as your manual concatenation on line 114.",
+      "parentUuid": "5994c5cd_7539d7e6",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "64fce2039e0de0d88d84171b9f57ed4400bf2152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af425ed6_0a7b5b76",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 4
