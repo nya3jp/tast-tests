@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -91,7 +92,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 				s.Fatal("Preview is inactive after switch to video mode: ", err)
 			}
 
-			if err := app.RunThroughCameras(ctx, func(facing cca.Facing) error {
+			if err := app.RunThroughCameras(ctx, func(_ cca.Facing) error {
 				if err := app.SetTimerOption(ctx, tc.timer); err != nil {
 					return errors.Wrapf(err, "failed to set timer option %v", tc.timer)
 				}
@@ -103,6 +104,13 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to run tests through all cameras: ", err)
 			}
 		})
+	}
+
+	// Skip confirm dialog test for platform app since it does not support it.
+	if useSWA {
+		if err := testConfirmDialog(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA); err != nil {
+			s.Error("Failed for confirm dialog test: ", err)
+		}
 	}
 }
 
@@ -323,4 +331,95 @@ func testPauseResume(ctx context.Context, app *cca.App) error {
 	}
 
 	return stopRecordWithDuration(ctx, app, startTime, 2*time.Second)
+}
+
+func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge, useSWA bool) error {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
+	defer cancel()
+
+	app, err := cca.New(ctx, cr, scriptPaths, outDir, tb, useSWA)
+	if err != nil {
+		return err
+	}
+	shouldCloseApp := true
+
+	defer (func(ctx context.Context) {
+		if !shouldCloseApp {
+			return
+		}
+
+		if err := app.Close(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to close app: ", err)
+		}
+	})(cleanupCtx)
+
+	testing.ContextLog(ctx, "Switch to video mode")
+	if err := app.SwitchMode(ctx, cca.Video); err != nil {
+		return err
+	}
+	if err := app.WaitForVideoActive(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Start Recording")
+	startTime := time.Now()
+	if err := startRecording(ctx, app); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Try to close camera app")
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		return err
+	}
+	defer keyboard.Close()
+
+	// Try to close the camera app.
+	if err := keyboard.Accel(ctx, "ctrl+W"); err != nil {
+		return err
+	}
+
+	// It is expected that the camera app is not closed.
+	testing.Sleep(ctx, 3*time.Second)
+	appExist, err := app.InstanceExists(ctx, true)
+	if err != nil {
+		return err
+	}
+	if !appExist {
+		return errors.New("CCA is unexpectedly closed")
+	}
+
+	// Dismiss the confirm dialog.
+	if err := keyboard.Accel(ctx, "esc"); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Stop recording")
+	if _, err := app.StopRecording(ctx, cca.TimerOff, startTime); err != nil {
+		return errors.Wrap(err, "failed to stop recording")
+	}
+
+	testing.ContextLog(ctx, "Try to close camera app")
+	// Try to close the camera app again.
+	if err := keyboard.Accel(ctx, "ctrl+W"); err != nil {
+		return err
+	}
+
+	// Now the camera app is closable.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		appExist, err := app.InstanceExists(ctx, true)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if appExist {
+			return errors.New("CCA is not closed")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
+		return err
+	}
+
+	shouldCloseApp = false
+	return nil
 }
