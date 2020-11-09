@@ -29,11 +29,14 @@ func init() {
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
 		Attr:    []string{"group:mainline"},
+		// Val is the property representing ARC boot type, which is different for container/VM.
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               "ro.vendor.arc_boot_type",
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               "vendor.arc.boot_type",
 		}},
 	})
 }
@@ -63,7 +66,6 @@ func createPropertiesMatcher(s *testing.State, allProperties map[string]bool, pa
 
 func BuildProperties(ctx context.Context, s *testing.State) {
 	const (
-		propertyBootType      = "ro.vendor.arc_boot_type"
 		propertyBoard         = "ro.product.board"
 		propertyDevice        = "ro.product.device"
 		propertyFirstAPILevel = "ro.product.first_api_level"
@@ -112,6 +114,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	// On each ARC boot, ARC detects its boot type (first boot, first boot after
 	// OTA, or regular boot) and sets the results as a property. Check that the
 	// property is actually set.
+	propertyBootType := s.Param().(string)
 	bootType := getProperty(propertyBootType)
 	// '3' is from the ArcBootType enum in platform2/arc/setup/arc_setup.h (ARC container) and
 	// device/google/bertha/arc-boot-type-detector/main.cc (ARCVM).
