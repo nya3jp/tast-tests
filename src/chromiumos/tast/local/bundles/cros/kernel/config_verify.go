@@ -345,6 +345,8 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		// (Clang only).
 		builtin = append(builtin, "INIT_STACK_ALL")
 		if arch != "armv7l" {
+			// Security; randomizes the virtual address at which the kernel image is loaded.
+			builtin = append(builtin, "RANDOMIZE_BASE")
 			// Security; virtually map the kernel stack to better defend against overflows.
 			builtin = append(builtin, "VMAP_STACK")
 		}
@@ -376,7 +378,6 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 
 		// Kernel hardening.
 		builtin = append(builtin, "PAGE_TABLE_ISOLATION")
-		builtin = append(builtin, "RANDOMIZE_BASE")
 		// builtin = append(builtin, "RANDOMIZE_MEMORY")
 
 		// Retpoline is a Spectre v2 mitigation.
