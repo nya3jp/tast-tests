@@ -178,12 +178,17 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	// Collect metrics data from hiding hotseat by window creation.
 	histogramsName := []string{
 		hiddenHotseatHistogram,
-		hiddenHotseatWidgetHistogram}
+		hiddenHotseatWidgetHistogram,
+		shownHotseatHistogram,
+		shownHotseatWidgetHistogram}
 	if s.Param().(hotseatTestType) == showNavigationWidget {
 		histogramsName = append(histogramsName,
 			hiddenBackButtonHistogram,
 			hiddenHomeButtonHistogram,
-			hiddenWidgetHistogram)
+			hiddenWidgetHistogram,
+			shownBackButtonHistogram,
+			shownHomeButtonHistogram,
+			shownWidgetHistogram)
 	}
 	runner.RunMultiple(ctx, s, "WindowCreation", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		sctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -193,14 +198,19 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to open browser window")
 		}
 		defer func() {
-			if err := conn.CloseTarget(ctx); err != nil {
-				s.Error("Failed to close a target: ", err)
-			}
 			if err := conn.Close(); err != nil {
 				s.Error("Failed to close a connection: ", err)
 			}
 		}()
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
+			return err
+		}
+
+		if err := conn.CloseTarget(ctx); err != nil {
+			return errors.Wrap(err, "failed to close a target")
+		}
+
+		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
 			return err
 		}
 
