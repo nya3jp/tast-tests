@@ -39,6 +39,30 @@
       },
       "revId": "283e033817a47d1175e013d867a518b0c2e5181c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "872fd1d2_846d291a",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-09T04:45:53Z",
+      "side": 1,
+      "message": "That should work. But IIUC, I guess that\u0027s not a good idea because BLOCKED_DEVICES does not accept wildcard, that is, we are not able to block all the interfaces with prefix \"br\" by a command like `restart shill BLOCKED_DEVICES\u003d\u0027br*\u0027`. We will need to restart shill for several times (each time we attempt to create a bridge) when running RoamFT test, and I am worried about if it would effect our ssh connection...",
+      "parentUuid": "8bea72cf_f1bfb179",
+      "range": {
+        "startLine": 792,
+        "startChar": 1,
+        "endLine": 793,
+        "endChar": 104
+      },
+      "revId": "283e033817a47d1175e013d867a518b0c2e5181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
