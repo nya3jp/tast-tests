@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e31d4b_201e72e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T17:21:54Z",
+      "side": 1,
+      "message": "I tested this on a coral/nasher device, which should have the Chrome EC. But, the test skips, claiming that the device has no Chrome EC.",
+      "revId": "5bd9fd99d29577f3bdc97ab8c86fcb15e0d06b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
