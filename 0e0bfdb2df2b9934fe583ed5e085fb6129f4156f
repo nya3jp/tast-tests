@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd1adfee_24f03b4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-11-09T07:54:42Z",
+      "side": 1,
+      "message": "Please make it clear this is the VM kernel, not the host kernel.",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a4b5cca_5dab84d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
         "patchSetId": 2
@@ -111,6 +134,23 @@
       "writtenOn": "2020-11-09T04:36:05Z",
       "side": 1,
       "message": "Could you handle error?\nOr, if it is intended to ignore, could you clarify the reason?",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2702e179_2019b165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-11-09T07:54:42Z",
+      "side": 1,
+      "message": "Please add a comment to describe why you need to wait for the new VM to receive a VM kernel crash.",
       "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
