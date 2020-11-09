@@ -52,6 +52,24 @@
       "parentUuid": "268ea432_ba5f055f",
       "revId": "c25a4fd4b391159a1353a366c9bbd157de437283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d3c31e_ee01a844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T08:40:14Z",
+      "side": 1,
+      "message": "I see. Please make sure to add a TODO comment in your code that calls EnableStartupWindow that we need the option to have bluetooth work and the reason is still unknown.",
+      "parentUuid": "146645da_50f77c35",
+      "revId": "c25a4fd4b391159a1353a366c9bbd157de437283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
