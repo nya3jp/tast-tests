@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf35304_f6523219",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T08:35:19Z",
+      "side": 1,
+      "message": "it does not disable power save on purpose.",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20815ede_a001e407",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T08:35:19Z",
+      "side": 1,
+      "message": "DUT takes longer time to discover the new AP and reconnect",
+      "range": {
+        "startLine": 12,
+        "startChar": 54,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c37b96c_4c844706",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T08:35:19Z",
+      "side": 1,
+      "message": "Please append the reference.",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 64
+      },
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e7cb6a_a7e27e68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T08:35:19Z",
+      "side": 1,
+      "message": "be",
+      "range": {
+        "startLine": 54,
+        "startChar": 68,
+        "endLine": 54,
+        "endChar": 70
+      },
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4b94a1_4ee650ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T08:35:19Z",
+      "side": 1,
+      "message": "How about reusing \nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/util.go?l\u003d18",
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b079f1e_4590bfcf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T08:35:19Z",
+      "side": 1,
+      "message": "Sets up AP with connection verification; then deconfigures the AP.",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 28
+      },
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8b06c21_5bf92f7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T08:35:19Z",
+      "side": 1,
+      "message": "// Wait for the WiFi service to become idle, which is expected after DeconfigAP() is called in the defer function below.",
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b957347_8d6a451a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T08:35:19Z",
+      "side": 1,
+      "message": "How about having:\ntype ChanHopTestCase struct {\n  desc string\n  options []hostapd.Option\n}\n\nSo that we can log AP setting in human readable way here:\n\n\"Trying #%d AP setting: %s\", i+1, t.desc",
+      "range": {
+        "startLine": 193,
+        "startChar": 21,
+        "endLine": 193,
+        "endChar": 35
+      },
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7c36c0_ba891779",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T08:35:19Z",
+      "side": 1,
+      "message": "triggered",
+      "range": {
+        "startLine": 147,
+        "startChar": 40,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
