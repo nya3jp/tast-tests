@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a628e0df_7deb1af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-11-09T03:07:43Z",
+      "side": 1,
+      "message": "ARC Container P is still using ro.vendor.arc_boot_type",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "d377dde17e21959ce37d4df049874614468d89a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
