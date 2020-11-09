@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46d61d17_e35c210c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-09T09:17:19Z",
+      "side": 1,
+      "message": "Hmm... after some trials, it looks like UI only triggers scans when the detailed view is shown, so my assumption might not be true. Perhaps no scan is a more general case. I\u0027ll change the behavior back and give it a longer timeout.",
+      "parentUuid": "9c37b96c_4c844706",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 64
+      },
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26e7cb6a_a7e27e68",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
         "patchSetId": 2
@@ -106,6 +130,24 @@
       "writtenOn": "2020-11-09T08:35:19Z",
       "side": 1,
       "message": "How about reusing \nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/util.go?l\u003d18",
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4621f963_fc4f1be4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-09T09:17:19Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to use the function because in tests, the caller name is usually inaccurate as we usually call it in an defer. (sometime, a defer in a anonymous function) This makes the function hard to generalize so I kind of prefer having each test to define this for their needs.",
+      "parentUuid": "7f4b94a1_4ee650ba",
       "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
