@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "322db612_29e1fac4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-09T21:52:02Z",
+      "side": 1,
+      "message": "Let\u0027s keep these tests disabled for now, because switching boot-mode is unstable and has caused failures in *other* tests. Here\u0027s a bit more info: http://b/169704069",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9eeb1e8f_54e84ecc",
         "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
         "patchSetId": 1
