@@ -33,6 +33,23 @@
       "message": "hidehiko@ PTAL",
       "revId": "256a9f38bd79393b2450162f4ba5156bd55451d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49304993_ed046c61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T02:53:16Z",
+      "side": 1,
+      "message": "# Sorry for delay. Back from OOO.",
+      "revId": "256a9f38bd79393b2450162f4ba5156bd55451d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
