@@ -16,6 +16,24 @@
       "message": "Judy, this has broken crostini.OpenWithTerminal.\n\nOpenWithTerminal does right click on \u0027Downloads\u0027 in the file list (main files list area on right side) and then clicks \u0027Open with Terminal\u0027.\n\nAfter this change, it is doing a right click on \u0027Downloads\u0027 in the tree list (left side), and the \u0027Open with Terminal\u0027 option is not shown in the context menu.",
       "revId": "4212bf0f312746d0f5a5e858c16436e32edc3d56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "814f32db_33bcb326",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-09T01:58:26Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2524811",
+      "parentUuid": "8a2a5ae8_8a8c3c30",
+      "revId": "4212bf0f312746d0f5a5e858c16436e32edc3d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
