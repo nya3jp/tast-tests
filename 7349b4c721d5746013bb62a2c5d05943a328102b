@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb7e00c_13f5eacb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-09T20:00:33Z",
+      "side": 1,
+      "message": "\u003e \"slighly\" is a possible misspelling of \"slightly\".\n\nPlease fix.",
+      "parentUuid": "022cc5a9_5e6e8060",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "7349b4c721d5746013bb62a2c5d05943a328102b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
