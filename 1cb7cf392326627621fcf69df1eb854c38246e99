@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc3c23a0_c40f7dbc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1438489
+      },
+      "writtenOn": "2020-11-09T03:59:26Z",
+      "side": 1,
+      "message": "From line 1469-1497:\n\nI think this should be under conditional for `if c.contact !\u003d \"\" {`.\n\nThis command can be used for : \n\n\n1. tast run -var\u003duser\u003d\u003cusername\u003e -var\u003dcontact\u003d\u003ccontact\u003e \u003cDUT\u003e dev.RemoteDesktop\n- On normal accounts with new OTA flow \n\n2. tast run -var\u003duser\u003d\u003cusername\u003e -var\u003dcontact\u003d\u003ccontact\u003e \u003cDUT\u003e dev.RemoteDesktop\n- On unblocked accounts with original workflow\n\n\nThe current code directs to waiting for g.co verification even if it is the second case. Please let me know if the intended use case was otherwise.",
+      "range": {
+        "startLine": 1469,
+        "startChar": 1,
+        "endLine": 1469,
+        "endChar": 2
+      },
+      "revId": "1cb7cf392326627621fcf69df1eb854c38246e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b38d05c_d070e120",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
