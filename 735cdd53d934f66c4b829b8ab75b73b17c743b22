@@ -107,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85d36e26_3684c12c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-09T11:28:49Z",
+      "side": 1,
+      "message": "Another option is removing the cache entirely. The difference between 20 and 40 seconds is not very much. The main reason I added it is back when the code was single threaded it was necessary for the test to finish in time.",
+      "parentUuid": "5d0455d0_2b71253f",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be5b3188_f08c122b",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
         "patchSetId": 12
