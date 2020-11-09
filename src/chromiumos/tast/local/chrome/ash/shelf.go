@@ -728,8 +728,13 @@ func WaitForStableShelfBounds(ctx context.Context, tc *chrome.TestConn) error {
 			lastIconBounds = newLastIconBounds
 			return errors.New("Shelf bounds location still changing")
 		}
+
+		if info.IsAnimating || info.IsShelfWidgetAnimating {
+			return errors.New("Shelf is animating")
+		}
+
 		return nil
-	}, &testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
 		return errors.Wrap(err, "Shelf bounds unstable")
 	}
 
