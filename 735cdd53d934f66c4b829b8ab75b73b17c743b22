@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ab2ea67_e32268b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/ppds_all.tar.xz.external",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T12:42:34Z",
+      "side": 1,
+      "message": "FYI: the top directory (ppds_all) has permission 0644, thus non-root users can\u0027t access files under the directory. It works, but sounds weird...",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 87
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b011253_fc8f6874",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
         "patchSetId": 12
@@ -119,6 +142,30 @@
       "side": 1,
       "message": "Another option is removing the cache entirely. The difference between 20 and 40 seconds is not very much. The main reason I added it is back when the code was single threaded it was necessary for the test to finish in time.",
       "parentUuid": "5d0455d0_2b71253f",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed580801_16f5a59f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T12:42:34Z",
+      "side": 1,
+      "message": "I think halving the runtime would be a good reason to have a cache. Both sync.Map and custom map type sound good to me.",
+      "parentUuid": "85d36e26_3684c12c",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -222,6 +269,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6094cb0c_c801276b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T12:42:34Z",
+      "side": 1,
+      "message": "I see. Local tests run on the DUT, some of which may have very limited storage like 3-4GB. So it\u0027s nice to minimize the disk usage.\n\nI thought about using .zip which allows random access (thus we don\u0027t need to extract all files at the beginning). But zip has lower compression ratio.\n\nSo I now agree that putting .gz in .tar.xz is good in this case.",
+      "parentUuid": "348680ec_faf82435",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eab3cdf2_4240a2e5",
@@ -259,6 +330,30 @@
       "side": 1,
       "message": "All PPDs should be selected exactly once as the stride (a power of 2) is coprime to n (odd), the number of PPDs.",
       "parentUuid": "eab3cdf2_4240a2e5",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46865317_17768186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T12:42:34Z",
+      "side": 1,
+      "message": "Ah you\u0027re right. Is it a common trick? I thought just using a prime number stride is easier...",
+      "parentUuid": "f94fa2b7_2ffe8bcc",
       "range": {
         "startLine": 138,
         "startChar": 0,
