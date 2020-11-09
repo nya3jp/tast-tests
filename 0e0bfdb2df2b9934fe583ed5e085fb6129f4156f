@@ -43,6 +43,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5b63a5f_24b69820",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T04:36:05Z",
+      "side": 1,
+      "message": "Could you use adb.ShellCommand?",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22ee029c_d32af035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T04:36:05Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d cmd.Run(); err \u003d\u003d nil {\n  s.Fatal(\"... unexpected 0 ...\")\n} else if cmd.ProcessState.ExitCode() !\u003d 123 {\n  s.Fatal(...)\n}\n\nto flatten the statement.",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df476a85_f08e4e67",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
         "patchSetId": 2
@@ -66,6 +100,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8754fae_f13fcc7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T04:36:05Z",
+      "side": 1,
+      "message": "Could you handle error?\nOr, if it is intended to ignore, could you clarify the reason?",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea634722_54a5d9bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
         "patchSetId": 2
@@ -83,6 +134,40 @@
         "endLine": 116,
         "endChar": 40
       },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4eead9_1dd61ae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T04:36:05Z",
+      "side": 1,
+      "message": "Could you handle error?",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84012bc2_0be99a5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T04:36:05Z",
+      "side": 1,
+      "message": "Could you handle error?",
       "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
