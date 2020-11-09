@@ -46,6 +46,29 @@
       },
       "revId": "5c47475ed3b37aaa7753d6eeb08c10158ca083b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8238dfff_9c940ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T03:04:38Z",
+      "side": 1,
+      "message": "off topic:\n\nSetA11yVirtualKeyboardEnabled(..., true) may be clearer?  Specifically, EnableA11yVirtualKeyboard(..., false) disables VK, despite of its name.",
+      "range": {
+        "startLine": 204,
+        "startChar": 12,
+        "endLine": 204,
+        "endChar": 41
+      },
+      "revId": "5c47475ed3b37aaa7753d6eeb08c10158ca083b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
