@@ -107,6 +107,156 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de382be4_76cc5e27",
+        "filename": "src/chromiumos/tast/remote/network/cmd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "CmdPath as Golang avoid using \"Get\" in function name unless it is a proto derived function.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e64be4_8054496f",
+        "filename": "src/chromiumos/tast/remote/network/cmd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "Is it necessary? I mean, if `which` can find cmd, then running it directly has the same effect. The function rely on the PATH environment SSH runs on.\n\nThey should be equivalent, don\u0027t they? SSH runs `iptables ...` or `/usr/sbin/iptables`",
+      "parentUuid": "480d89d1_0a4250c2",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ddd70ed_66058e85",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "an enum type describing network layer 4 protocol.",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba9b466_a997a707",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "an enum",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3540af63_3323907d",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "\"ActionType\" as I\u0027m afraid that \"Action\" is too common and can have overlap on further naming.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f3b2e7_35c97a28",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "Adds/deletes an iptables rule",
+      "range": {
+        "startLine": 44,
+        "startChar": 14,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eae67eb_f174bbfe",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "See my comment in cmd/util.go",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce00f187_a36a1456",
         "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
         "patchSetId": 4
@@ -567,6 +717,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40c9fb32_99d30fbe",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "567f08b5_af94b76e",
         "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
         "patchSetId": 4
@@ -778,6 +951,24 @@
       "side": 1,
       "message": "That\u0027s how it\u0027s handled in autotest, so I assume it\u0027s due to empirical experience.\nPerhaps I need to comment that more.",
       "parentUuid": "12cdb503_30a0b0c1",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef9e916b_f6174d5c",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#Sleep",
+      "parentUuid": "2f841f1f_4d690d1f",
       "revId": "ca79829180e24616d128b96fe6065530f099d37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

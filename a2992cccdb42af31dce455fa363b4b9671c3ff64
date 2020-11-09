@@ -3,6 +3,161 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f26ce61e_89fa10cd",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "ActionAppend as -A means append. Another command for adding rules is -I (insert).",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279c1c21_d7f4dcea",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "How about design the interface this way:\n\nfunc AppendAcceptRule(ctx, conn, chain, ruleOpt)\nfunc DeleteAcceptRule(ctx, conn, chain, ruleOpt)\n\nThe reason why we use ruleOpt is that most of the arguments specifying an iptable rule are optional.",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb8a01a_0fb29d77",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "The match module \u0027tcp\u0027 or \u0027utp\u0027 is auto loaded when -p is specified. For other modules, we don\u0027t guarantee that they share the same name. Let\u0027s not adding -m argument here.\n\n\"tcp\nThese extensions are loaded if \u0027--protocol tcp\u0027 is specified.\"\nhttps://linux.die.net/man/8/iptables",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 43
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdbdbbfa_2d3a2c7e",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "type TargetType string\nconst (\n  TargetAccept TargetType \u003d \"ACCEPT\"\n)",
+      "range": {
+        "startLine": 55,
+        "startChar": 41,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eeee967_56ffd0e2",
+        "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "Consider shorten prefix \"TestType\" to \"TT\" or \"Test\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8945ea07_9e034ab2",
+        "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "Like TCP_STREAM, except it measures stream\u0027s bitrate in opposite direction: from the netperf server to the client.",
+      "range": {
+        "startLine": 18,
+        "startChar": 52,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3267812_7c20f45f",
+        "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "readableTags",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 17
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4826a617_6ebfe392",
         "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
         "patchSetId": 8
@@ -31,6 +186,40 @@
       "writtenOn": "2020-11-04T07:34:50Z",
       "side": 1,
       "message": "please add some comments for this.",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac71ffd8_c3edfb42",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "We may extract it into some common place, say tast/testutil, to avoid duplicate.\n\nExisting one:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/util.go?l\u003d18",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b73729_a043ad36",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T03:39:09Z",
+      "side": 1,
+      "message": "In Golang we accept longer line so we wrap line less.",
       "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
