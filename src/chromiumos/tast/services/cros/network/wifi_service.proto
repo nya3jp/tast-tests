@@ -45,11 +45,11 @@ service WifiService {
   // ExpectWifiFrequencies checks if the device discovers the given SSID on the specific frequencies.
   rpc ExpectWifiFrequencies(ExpectWifiFrequenciesRequest) returns (google.protobuf.Empty) {}
 
-  // GetBgscanConfig returns the bgscan configuration the device's WiFi module currently uses.
-  rpc GetBgscanConfig(google.protobuf.Empty) returns (GetBgscanConfigResponse) {}
+  // GetScanConfig returns the bgscan configuration the device's WiFi module currently uses.
+  rpc GetScanConfig(google.protobuf.Empty) returns (GetScanConfigResponse) {}
 
-  // SetBgscanConfig sets the device's WiFi module's bgscan configuration.
-  rpc SetBgscanConfig(SetBgscanConfigRequest) returns (google.protobuf.Empty) {}
+  // SetScanConfig sets the device's WiFi module's bgscan configuration.
+  rpc SetScanConfig(SetScanConfigRequest) returns (google.protobuf.Empty) {}
 
   // AssureDisconnect assures that the WiFi service has disconnected within timeout (nanoseconds).
   rpc AssureDisconnect(AssureDisconnectRequest) returns (google.protobuf.Empty) {}
@@ -257,20 +257,21 @@ message ExpectWifiFrequenciesRequest {
   repeated uint32 frequencies = 2;
 }
 
-message BgscanConfig {
-  string method = 1;
-  // ShortInterval time in seconds, only value in uint16 range is valid as dbus property type is uint16.
-  uint32 short_interval = 2;
-  // LongInterval time in seconds, only value in uint16 range is valid as dbus property type is uint16.
-  uint32 long_interval = 3;
+message ScanConfig {
+  string bgscan_method = 1;
+  // BgscanShortInterval time in seconds, only value in uint16 range is valid as dbus property type is uint16.
+  uint32 bgscan_short_interval = 2;
+  // ScanInterval time in seconds, only value in uint16 range is valid as dbus property type is uint16.
+  // This config is shared for foreground scan interval and background scan long interval.
+  uint32 scan_interval = 3;
 }
 
-message GetBgscanConfigResponse {
-  BgscanConfig config = 1;
+message GetScanConfigResponse {
+  ScanConfig config = 1;
 }
 
-message SetBgscanConfigRequest {
-  BgscanConfig config = 1;
+message SetScanConfigRequest {
+  ScanConfig config = 1;
 }
 
 message AssureDisconnectRequest {

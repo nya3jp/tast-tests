@@ -163,31 +163,31 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		s.Log("Configuring background scan")
-		bgscanResp, err := tf.WifiClient().GetBgscanConfig(ctx, &empty.Empty{})
+		bgscanResp, err := tf.WifiClient().GetScanConfig(ctx, &empty.Empty{})
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get background scan config")
 		}
 		oldConfig := bgscanResp.Config
-		var config network.BgscanConfig
+		var config network.ScanConfig
 		if bgscan {
-			config = network.BgscanConfig{
-				Method:        shillconst.DeviceBgscanMethodSimple,
-				LongInterval:  bgscanInterval,
-				ShortInterval: bgscanInterval,
+			config = network.ScanConfig{
+				BgscanMethod:        shillconst.DeviceBgscanMethodSimple,
+				BgscanShortInterval: bgscanInterval,
+				ScanInterval:        bgscanInterval,
 			}
 		} else {
 			config = *bgscanResp.Config
-			config.Method = shillconst.DeviceBgscanMethodNone
+			config.BgscanMethod = shillconst.DeviceBgscanMethodNone
 		}
-		if _, err := tf.WifiClient().SetBgscanConfig(ctx, &network.SetBgscanConfigRequest{Config: &config}); err != nil {
+		if _, err := tf.WifiClient().SetScanConfig(ctx, &network.SetScanConfigRequest{Config: &config}); err != nil {
 			return nil, errors.Wrap(err, "failed to set background scan config")
 		}
 		defer func(ctx context.Context) {
 			s.Log("Restoring bgscan config: ", oldConfig)
-			req := &network.SetBgscanConfigRequest{
+			req := &network.SetScanConfigRequest{
 				Config: oldConfig,
 			}
-			if _, err := tf.WifiClient().SetBgscanConfig(ctx, req); err != nil {
+			if _, err := tf.WifiClient().SetScanConfig(ctx, req); err != nil {
 				collectErr(errors.Wrap(err, "failed to set background scan config"))
 			}
 		}(ctx)
