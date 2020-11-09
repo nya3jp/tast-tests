@@ -214,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17998c9c_d5cac8ff",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T08:36:45Z",
+      "side": 1,
+      "message": "Thanks, I sent out crrev.com/c/2525961.",
+      "parentUuid": "d012f821_8040b9bf",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 7
+      },
+      "revId": "0d78fb235a778c00ff669411cfab6e62ad85eb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7114f10_38dd4d26",
