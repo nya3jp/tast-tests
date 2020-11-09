@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93f833b9_1f446c5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T10:15:32Z",
+      "side": 1,
+      "message": "Cool!",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c6defb_26d26ae4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T10:15:32Z",
+      "side": 1,
+      "message": "Oh it\u0027s much more complex now!",
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b011253_fc8f6874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T10:15:32Z",
+      "side": 1,
+      "message": "General comment: This test is getting complicated, so I recommend defining more functions with proper signatures for readability.\n\nI want functions for each of these bullet items at least:\n\n - Extracting ppds_all.tar.xz to a directory\n - Running tests for all PPDs in parallel\n - Running tests for PPDs on a goroutine\n - Running a test for a single PPD",
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c6ccd2_ad86b199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T10:15:32Z",
+      "side": 1,
+      "message": "Let\u0027s avoid mutable global variables. Can you define a type that encapsulates map and mutex, and construct it in the test?\n\nAlso I couldn\u0027t understand what this caches. Code comments about the background is appreciated.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be5b3188_f08c122b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T10:15:32Z",
+      "side": 1,
+      "message": "I don\u0027t recommend calling testing.State.Fatal on goroutines since it behaves differently (it terminates the current goroutine without aborting the test).\n\nI also don\u0027t recommend calling testing.State.Error either because the error message won\u0027t be deterministic and difficult to compare in reporting UI.\n\nMy recommendation is to define a result type and sending it back to the main goroutine by a channel.",
+      "range": {
+        "startLine": 46,
+        "startChar": 35,
+        "endLine": 46,
+        "endChar": 51
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc385131_97b05b7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T10:15:32Z",
+      "side": 1,
+      "message": "Can you introduce a separate function that processes a single file for better readability?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 26
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "843755d4_2481270d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T10:15:32Z",
+      "side": 1,
+      "message": "Handling .gz here makes the logic more complicated. Is it possible to put uncompressed PPD files in the archive? I believe putting .gz files in .tar.xz is not useful anyway.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab3cdf2_4240a2e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-09T10:15:32Z",
+      "side": 1,
+      "message": "This selection would introduce bias (i.e. some PPDs are selected more frequently than others).\n\nHow about just picking a stride of a prime number? Then bias should be minimal regardless what n is.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
