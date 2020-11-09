@@ -66,6 +66,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41513770_f9fef6a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-09T07:28:33Z",
+      "side": 1,
+      "message": "It is not being used now.",
+      "range": {
+        "startLine": 101,
+        "startChar": 31,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c13772_b2556144",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-09T07:28:33Z",
+      "side": 1,
+      "message": "return tf.DeconfigAP(ctx, ap)",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65e2302b_6a5dedd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-09T07:28:33Z",
+      "side": 1,
+      "message": "How about moving this to disReason struct as a field?",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85a4ba18_2f714c26",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 4
