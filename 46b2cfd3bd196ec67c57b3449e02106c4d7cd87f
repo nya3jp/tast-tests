@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2fb9e58_85f03140",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-11-09T10:29:35Z",
+      "side": 1,
+      "message": "lgtm\nfyi, this does work for the Chromium CQ because it uses internal repo for the extension key.",
+      "revId": "46b2cfd3bd196ec67c57b3449e02106c4d7cd87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
