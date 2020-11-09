@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "736d7ce8_2518ad77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-09T05:00:32Z",
+      "side": 1,
+      "message": "As this is derived from crrev.com/c/2500407, let me reuse its bug id.",
+      "parentUuid": "47cf38eb_b8e98784",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "82c590b6_b39c8c0e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcbb4e27_c4601806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-09T05:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce8b6ff9_c9cf263e",
+      "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6cc6933_1a3cdccd",
@@ -71,6 +113,24 @@
       "writtenOn": "2020-11-09T04:40:07Z",
       "side": 1,
       "message": "Why is this option special? Other TFOption properties are stored under tf, but this is stored in tf.option.",
+      "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66d3f420_5a80fee1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-09T05:00:32Z",
+      "side": 1,
+      "message": "As the options started to grow, I\u0027m thinking gathering some simple options together, e.g. packetCapture can be moved into the option struct next. (include the change for packetCapture in latest PS)\n\nHowever, some options that can interact with other members e.g. router, pcapHost. In this case, I think putting related fields together might be better. (e.g. having pcapHost next to pcap will be easier to understand)\n\nWDYT?",
+      "parentUuid": "b6cc6933_1a3cdccd",
       "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
