@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5457694b_f451085c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-09T10:38:29Z",
+      "side": 1,
+      "message": "This is a dependent change for ChannelHop test, but if not yet sure if the implementation of changing scan interval will be used, so add reviewers to cc for reference.",
+      "revId": "c4cc53175f56a2a13a8e13c0524c9dc992b0190c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

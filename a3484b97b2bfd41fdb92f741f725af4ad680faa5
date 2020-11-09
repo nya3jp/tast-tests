@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d2a3ee_a69d2b6e",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-09T10:38:29Z",
+      "side": 1,
+      "message": "\u003e \"backgorund\" is a possible misspelling of \"background\".\n\nFixed.",
+      "parentUuid": "901bf367_bea6bfe1",
+      "range": {
+        "startLine": 1055,
+        "startChar": 59,
+        "endLine": 1055,
+        "endChar": 69
+      },
+      "revId": "a3484b97b2bfd41fdb92f741f725af4ad680faa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84c5223_fc9e43ba",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-09T10:38:29Z",
+      "side": 1,
+      "message": "\u003e \"backgorund\" is a possible misspelling of \"background\".\n\nFixed.",
+      "parentUuid": "4e8bb11c_f64fc4b5",
+      "range": {
+        "startLine": 265,
+        "startChar": 60,
+        "endLine": 265,
+        "endChar": 70
+      },
+      "revId": "a3484b97b2bfd41fdb92f741f725af4ad680faa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
