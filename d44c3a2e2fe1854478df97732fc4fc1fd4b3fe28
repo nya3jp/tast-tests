@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d148610_71b0c722",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-09T18:21:51Z",
+      "side": 1,
+      "message": "nit: describe it further. what\u0027s \"manual\"?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "d44c3a2e2fe1854478df97732fc4fc1fd4b3fe28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2f0a12_5979bf42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-09T18:21:51Z",
+      "side": 1,
+      "message": "+2 % comments",
+      "revId": "d44c3a2e2fe1854478df97732fc4fc1fd4b3fe28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7279b82_2e20d2ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/animation.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-09T18:21:51Z",
+      "side": 1,
+      "message": "nit:\nalthough it is described in the commit-description, add a comment here as well describing why this is done every-other frame.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 15
+      },
+      "revId": "d44c3a2e2fe1854478df97732fc4fc1fd4b3fe28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
