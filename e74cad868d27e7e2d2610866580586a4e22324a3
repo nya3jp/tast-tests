@@ -62,6 +62,345 @@
       },
       "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f497c6f_ac2a1f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "+1 the later. The former should be \"URL\".",
+      "parentUuid": "0babf6c5_0d069598",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "986c5eea_787bab6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "You can put into one const block, e.g.:\n\u003e  // Constants needed to check if already bookmarked pages can be accessed after applying policy.\n\u003e  const (\n\u003e      nameOfInitialBookmark           \u003d \"Alphabet\"        // displayed on the bookmarks bar\n\u003e      urlOfInitialBookmark            \u003d \"https://abc.xyz\" // used for navigation\n\u003e      visibleAddressOfInitialBookmark \u003d \"abc.xyz\"         // used in validation\n\u003e  )",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cdcad8a_6714a060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "It might be better to move it closer where you use it. It might be defined multiple times in the Run(), but it is not an expensive thing.",
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77916d1d_5cb2c75d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "Please add error handling. This is really important here.",
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73c63396_42aeee90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "nit: wantAllowed",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29dad448_35ff7bd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "nit: allowed\nsame for the ones below",
+      "range": {
+        "startLine": 122,
+        "startChar": 6,
+        "endLine": 122,
+        "endChar": 12
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90e7e8e_d8763d6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "It might be nicer to add a check into the AddCUrrentTabAsBookmark() function.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 17
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be9c1ff_bcacd3e8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "You can put into one if, else if check.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d11356f_48b7393d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "It might be better to copy the code from Toggle here, and return the result of the ui.WaitUntilExists() function (to make sure the BookmarkBar is visible).",
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f89087_e9e723ce",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "I don\u0027t think there is a need to add different strategies. The easiest should be used, unless there is a specific need to use it from the menu (and it should be implemented only at that time).",
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5515fee7_007b2a75",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "Instead of Toggle(), a Hide() and Refresh() would be better. A user of this package should know if the want to make the BookmarksBar visible, or they want to hide it. Unlike in Toggle(), it is easy to add confirmations to these.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e3fd8d_d0d91835",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "Add a release, as you don\u0027t return with the node.",
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3103564b_6ba5b342",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "It is enough to make this clarification only in the comment.",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b431bcb1_94d294c9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "If you don\u0027t need the node, use ui.WaitUntilExists() instead.",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b15cfaa_18e138ec",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "nit: BookmarkCurrentTab",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd002d41_7c85134b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-09T14:56:10Z",
+      "side": 1,
+      "message": "You can omit the Is. Same for the other fucntions starting with Is.",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
