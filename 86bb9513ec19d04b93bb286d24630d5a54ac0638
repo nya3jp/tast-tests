@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b950a1_c9353560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T04:51:57Z",
+      "side": 1,
+      "message": "instead, let\u0027s use Param\u0027s Value.\n\nParams: []testing.Param{{\n\t\t\tExtraSoftwareDeps: []string{\"android_p\"},\n                        Value: \"ro.vendor.arc_boot_type\",\n\t\t}, {\n\t\t\tName:              \"vm\",\n\t\t\tExtraSoftwareDeps: []string{\"android_vm\"},\n                        Value: \"vendor.arc.boot_type\",\n\t\t}},\n\nin init(). Then\n\npropertyBootType :\u003d s.Param().(string)\nbootType :\u003d getProperty(propertyBootType)\n...\n\nhere.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 2
+      },
+      "revId": "86bb9513ec19d04b93bb286d24630d5a54ac0638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
