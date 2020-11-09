@@ -22,6 +22,30 @@
       },
       "revId": "4fed759225a49a2be8572126e5850176da20e664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e075b131_2eb2b41c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-09T04:50:53Z",
+      "side": 1,
+      "message": "Good point. Do you have any suggestion for the new name?",
+      "parentUuid": "ac8eda2c_999c5111",
+      "range": {
+        "startLine": 31,
+        "startChar": 75,
+        "endLine": 31,
+        "endChar": 80
+      },
+      "revId": "4fed759225a49a2be8572126e5850176da20e664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
