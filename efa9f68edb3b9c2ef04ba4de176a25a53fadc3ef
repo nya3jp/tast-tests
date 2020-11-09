@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a9bb215_caf9abae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-09T06:37:58Z",
+      "side": 1,
+      "message": "Removed the walkaround mentioned in http://b/172209970. Changed bug id.",
+      "revId": "efa9f68edb3b9c2ef04ba4de176a25a53fadc3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
