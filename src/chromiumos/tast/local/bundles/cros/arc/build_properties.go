@@ -63,7 +63,7 @@ func createPropertiesMatcher(s *testing.State, allProperties map[string]bool, pa
 
 func BuildProperties(ctx context.Context, s *testing.State) {
 	const (
-		propertyBootType      = "ro.vendor.arc_boot_type"
+		propertyBootType      = "vendor.arc.boot_type"
 		propertyBoard         = "ro.product.board"
 		propertyDevice        = "ro.product.device"
 		propertyFirstAPILevel = "ro.product.first_api_level"
