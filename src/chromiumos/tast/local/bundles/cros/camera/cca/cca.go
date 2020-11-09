@@ -286,7 +286,7 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir st
 }
 
 // InstanceExists checks if there is any running CCA instance.
-func InstanceExists(ctx context.Context, cr *chrome.Chrome, useSWA bool) (bool, error) {
+func (a *App) InstanceExists(ctx context.Context, useSWA bool) (bool, error) {
 	checkPrefix := func(t *target.Info) bool {
 		url := fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
 		if useSWA {
@@ -294,7 +294,7 @@ func InstanceExists(ctx context.Context, cr *chrome.Chrome, useSWA bool) (bool, 
 		}
 		return strings.HasPrefix(t.URL, url)
 	}
-	return cr.IsTargetAvailable(ctx, checkPrefix)
+	return a.cr.IsTargetAvailable(ctx, checkPrefix)
 }
 
 // ClosingItself checks if CCA intends to close itself.
