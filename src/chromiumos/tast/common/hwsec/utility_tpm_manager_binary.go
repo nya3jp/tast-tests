@@ -64,6 +64,28 @@ func checkNVRAMCommandAndReturn(ctx context.Context, binaryMsg []byte, err error
 	return msg, nil
 }
 
+// checkStatusAndReturn is a simple helper that checks if binaryMsg returned is successfully, and returns the corresponding message and error.
+func checkStatusAndReturn(ctx context.Context, binaryMsg []byte, err error, command string) (string, error) {
+	// Convert msg first because it's still used when there's an error.
+	msg := ""
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+
+	// Check if the command succeeds.
+	if err != nil {
+		// Command failed.
+		return msg, errors.Wrapf(err, "calling %s failed with message %q", command, msg)
+	}
+
+	// Check if the message make sense.
+	if !strings.Contains(msg, tpmManagerStatusSuccessMessage) {
+		return msg, errors.Errorf("calling %s failed due to unexpected stdout %q", command, msg)
+	}
+
+	return msg, nil
+}
+
 // DefineSpace defines (creates) an NVRAM space at index, of size size, with attributes attributes and password password, and the NVRAM space will be bound to PCR0 if bindToPCR0 is true.
 // If password is "", it'll not be passed to the command. attributes should be a slice that contains only the const NVRAMAttribute*.
 // Will return nil for error iff the operation completes successfully. The string returned, msg, is the message from the command line, if any.
@@ -94,6 +116,20 @@ func (u *UtilityTpmManagerBinary) ReadSpaceToFile(ctx context.Context, index, ou
 	binaryMsg, err := u.binary.ReadSpace(ctx, index, outputFile, password)
 
 	return checkNVRAMCommandAndReturn(ctx, binaryMsg, err, "ReadSpace")
+}
+
+// TakeOwnership takes the TPM ownership.
+func (u *UtilityTpmManagerBinary) TakeOwnership(ctx context.Context) (string, error) {
+	binaryMsg, err := u.binary.TakeOwnership(ctx)
+
+	return checkStatusAndReturn(ctx, binaryMsg, err, "TakeOwnership")
+}
+
+// Status returns the status string.
+func (u *UtilityTpmManagerBinary) Status(ctx context.Context) (string, error) {
+	binaryMsg, err := u.binary.Status(ctx)
+
+	return checkStatusAndReturn(ctx, binaryMsg, err, "Status")
 }
 
 // DAInfo contains the dictionary attack related information.
