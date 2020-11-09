@@ -248,6 +248,24 @@
       "parentUuid": "1f20bd39_239c4199",
       "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa969df_8e561b0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-11-09T23:22:03Z",
+      "side": 1,
+      "message": "\u003e Could you avoid using \"Matches[0]\" hardcoded?\n\nAre you saying to iterate over the matches here similar to how we iterate over it in L144?",
+      "parentUuid": "bde07bfa_50fce955",
+      "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
