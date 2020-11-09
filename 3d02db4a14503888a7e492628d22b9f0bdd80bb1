@@ -151,6 +151,24 @@
       "parentUuid": "66d3f420_5a80fee1",
       "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e08b04_940d2399",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-09T05:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5407d15c_9e960b46",
+      "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
