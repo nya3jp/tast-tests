@@ -338,6 +338,8 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 	}
 
 	if ver.isOrLater(4, 14) {
+		// Security; randomizes the virtual address at which the kernel image is loaded.
+		builtin = append(builtin, "RANDOMIZE_BASE")
 		// Security; harden the SLAB/SLUB allocators against common freelist exploit methods.
 		builtin = append(builtin, "SLAB_FREELIST_RANDOM")
 		builtin = append(builtin, "SLAB_FREELIST_HARDENED")
@@ -376,7 +378,6 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 
 		// Kernel hardening.
 		builtin = append(builtin, "PAGE_TABLE_ISOLATION")
-		builtin = append(builtin, "RANDOMIZE_BASE")
 		// builtin = append(builtin, "RANDOMIZE_MEMORY")
 
 		// Retpoline is a Spectre v2 mitigation.
