@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "806f7294_3d9c8bb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-09T19:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e5274fb_c3859535",
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b23f19f5_4bc47520",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-06T11:02:23Z",
       "side": 1,
       "message": "I guess you have this as struct because there might be more fields in the future, so, maybe disReasonParam?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 14
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f85b1b5_6a40548c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-09T19:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b23f19f5_4bc47520",
       "range": {
         "startLine": 23,
         "startChar": 5,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "344a3396_9e4185ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-09T19:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2676740_1447adeb",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41513770_f9fef6a9",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-11-09T07:28:33Z",
       "side": 1,
       "message": "It is not being used now.",
+      "range": {
+        "startLine": 101,
+        "startChar": 31,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c10196e_ae9c5b12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-09T19:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41513770_f9fef6a9",
       "range": {
         "startLine": 101,
         "startChar": 31,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "283e870c_d79beaed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-09T19:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54c13772_b2556144",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65e2302b_6a5dedd5",
@@ -123,6 +237,30 @@
       "writtenOn": "2020-11-09T07:28:33Z",
       "side": 1,
       "message": "How about moving this to disReason struct as a field?",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f6e678_89a5d7ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-09T19:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65e2302b_6a5dedd5",
       "range": {
         "startLine": 169,
         "startChar": 5,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03d158a_5bec3eb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-09T19:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a4ba18_2f714c26",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ccd6a23_8e44ce45",
@@ -173,6 +335,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b5129a_1b128b5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-09T19:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ccd6a23_8e44ce45",
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04d5e7c5_50e48852",
@@ -186,6 +366,24 @@
       "writtenOn": "2020-11-06T11:02:23Z",
       "side": 1,
       "message": "I think the CL is merged so can rebase now. :)",
+      "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e77f0e7f_55b73d5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-09T19:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04d5e7c5_50e48852",
       "revId": "a7a6cb97c3aeb19b221fe7f0e50117f5fc7e1442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
