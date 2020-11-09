@@ -63,12 +63,13 @@ func createPropertiesMatcher(s *testing.State, allProperties map[string]bool, pa
 
 func BuildProperties(ctx context.Context, s *testing.State) {
 	const (
-		propertyBootType      = "ro.vendor.arc_boot_type"
-		propertyBoard         = "ro.product.board"
-		propertyDevice        = "ro.product.device"
-		propertyFirstAPILevel = "ro.product.first_api_level"
-		propertyModel         = "ro.product.model"
-		propertySDKVersion    = "ro.build.version.sdk"
+		propertyBootTypeContainer = "ro.vendor.arc_boot_type"
+		propertyBootTypeVM        = "vendor.arc.boot_type"
+		propertyBoard             = "ro.product.board"
+		propertyDevice            = "ro.product.device"
+		propertyFirstAPILevel     = "ro.product.first_api_level"
+		propertyModel             = "ro.product.model"
+		propertySDKVersion        = "ro.build.version.sdk"
 	)
 
 	a := s.PreValue().(arc.PreData).ARC
@@ -112,12 +113,23 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	// On each ARC boot, ARC detects its boot type (first boot, first boot after
 	// OTA, or regular boot) and sets the results as a property. Check that the
 	// property is actually set.
-	bootType := getProperty(propertyBootType)
-	// '3' is from the ArcBootType enum in platform2/arc/setup/arc_setup.h (ARC container) and
-	// device/google/bertha/arc-boot-type-detector/main.cc (ARCVM).
-	if bootTypeInt, err := strconv.Atoi(bootType); err != nil || bootTypeInt <= 0 || bootTypeInt > 3 {
-		s.Errorf("%v property is %q; should contain an ArcBootType enum number",
-			propertyBootType, bootType)
+	// Container/VM use different properties for boot type, determine which one to use.
+	if vmEnabled, err := arc.VMEnabled(); err == nil {
+		var propertyBootType string
+		if vmEnabled {
+			propertyBootType = propertyBootTypeVM
+		} else {
+			propertyBootType = propertyBootTypeContainer
+		}
+		bootType := getProperty(propertyBootType)
+		// '3' is from the ArcBootType enum in platform2/arc/setup/arc_setup.h (ARC container) and
+		// device/google/bertha/arc-boot-type-detector/main.cc (ARCVM).
+		if bootTypeInt, err := strconv.Atoi(bootType); err != nil || bootTypeInt <= 0 || bootTypeInt > 3 {
+			s.Errorf("%v property is %q; should contain an ArcBootType enum number",
+				propertyBootType, bootType)
+		}
+	} else {
+		s.Error("Failed to determine if ARCVM is enabled: ", err)
 	}
 
 	// On unibuild boards, system.raw.img's build.prop contains some template
