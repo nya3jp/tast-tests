@@ -22,6 +22,30 @@
       },
       "revId": "d377dde17e21959ce37d4df049874614468d89a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5949ea98_e7cee1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2020-11-09T03:32:28Z",
+      "side": 1,
+      "message": "Done, PTAL",
+      "parentUuid": "a628e0df_7deb1af7",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "d377dde17e21959ce37d4df049874614468d89a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
