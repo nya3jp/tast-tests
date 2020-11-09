@@ -25,13 +25,11 @@ import (
 )
 
 const (
-	// Enable to cache the extracted raw video to speed up the test.
-	pvepCacheExtractedVideo = false
-	pvepIterationCount      = 30
-	pvepIterationDuration   = 10 * time.Second
-	pvepWarmupDuration      = 10 * time.Second
-	pvepTestSlack           = 5 * time.Minute
-	pvepPowerTestDuration   = pvepIterationCount*pvepIterationDuration + pvepWarmupDuration + pvepTestSlack
+	pvepIterationCount    = 30
+	pvepIterationDuration = 10 * time.Second
+	pvepWarmupDuration    = 10 * time.Second
+	pvepTestSlack         = 5 * time.Minute
+	pvepPowerTestDuration = pvepIterationCount*pvepIterationDuration + pvepWarmupDuration + pvepTestSlack
 )
 
 func init() {
@@ -100,9 +98,7 @@ func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
-	if !pvepCacheExtractedVideo {
-		defer os.Remove(rawVideoPath)
-	}
+	defer os.Remove(rawVideoPath)
 
 	// Set up device for measuring power drain.
 	sup, cleanup := setup.New("video power")

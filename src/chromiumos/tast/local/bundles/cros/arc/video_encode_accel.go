@@ -18,13 +18,6 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-const (
-	// Enable to cache the extracted raw video to speed up the test.
-	veaCacheExtractedVideo = false
-	// Enable to download the video file encoded by the test.
-	veaPullEncodedVideo = false
-)
-
 // deviceBlocklist is the list of devices we want to disable these tests on.
 var deviceBlocklist = []string{
 	// The ARC++ HW encoder is not enabled on MT8173: b/142514178
@@ -124,6 +117,8 @@ func init() {
 }
 
 func VideoEncodeAccel(ctx context.Context, s *testing.State) {
+	// Enable to download the video file encoded by the test.
+	const pullEncodedVideo = false
 	video.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC,
-		s.Param().(encoding.TestOptions), veaPullEncodedVideo, veaCacheExtractedVideo)
+		s.Param().(encoding.TestOptions), pullEncodedVideo)
 }
