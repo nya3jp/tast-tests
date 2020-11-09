@@ -16,6 +16,46 @@
       "message": "PTAL.",
       "revId": "49de779aad178f346a13d169d48d1a5bdd2aeaf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54345672_96ce03be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-09T22:25:46Z",
+      "side": 1,
+      "message": "+2 for tast style.",
+      "revId": "49de779aad178f346a13d169d48d1a5bdd2aeaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74314510_9fddb3a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-09T22:25:46Z",
+      "side": 1,
+      "message": "super nit. You can just pass file.Location.CenterPoint() here.",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 16
+      },
+      "revId": "49de779aad178f346a13d169d48d1a5bdd2aeaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
