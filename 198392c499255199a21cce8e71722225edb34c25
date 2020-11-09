@@ -16,6 +16,23 @@
       "message": "LGTM on tastboard.",
       "revId": "198392c499255199a21cce8e71722225edb34c25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73be3954_15f4453d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T02:56:12Z",
+      "side": 1,
+      "message": "# Sorry for delay. Back from OOO.",
+      "revId": "198392c499255199a21cce8e71722225edb34c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
