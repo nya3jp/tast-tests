@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "47cf38eb_b8e98784",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T04:40:07Z",
+      "side": 1,
+      "message": "Associate with an issue.",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "82c590b6_b39c8c0e",
@@ -14,6 +37,40 @@
       "writtenOn": "2020-11-09T02:54:36Z",
       "side": 1,
       "message": "CL for the suggestion in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2500407/2..6/src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go#b104. PTAL. \n",
+      "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce8b6ff9_c9cf263e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T04:40:07Z",
+      "side": 1,
+      "message": "If req.WithUi, we shall ensure ui is up and running.",
+      "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6cc6933_1a3cdccd",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T04:40:07Z",
+      "side": 1,
+      "message": "Why is this option special? Other TFOption properties are stored under tf, but this is stored in tf.option.",
       "revId": "3d02db4a14503888a7e492628d22b9f0bdd80bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
