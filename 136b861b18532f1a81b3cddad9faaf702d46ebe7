@@ -39,6 +39,30 @@
       },
       "revId": "136b861b18532f1a81b3cddad9faaf702d46ebe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4834cb2f_45e81a87",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-09T21:45:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd3fd6e_e6449a49",
+      "range": {
+        "startLine": 332,
+        "startChar": 34,
+        "endLine": 332,
+        "endChar": 69
+      },
+      "revId": "136b861b18532f1a81b3cddad9faaf702d46ebe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
