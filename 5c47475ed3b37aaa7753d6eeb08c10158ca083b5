@@ -69,6 +69,30 @@
       },
       "revId": "5c47475ed3b37aaa7753d6eeb08c10158ca083b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8491e213_2d64d9ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-09T03:09:58Z",
+      "side": 1,
+      "message": "Good point. I did not create this function. So maybe just remain the name atm. I will discuss with the function creator and do it separately.",
+      "parentUuid": "8238dfff_9c940ad6",
+      "range": {
+        "startLine": 204,
+        "startChar": 12,
+        "endLine": 204,
+        "endChar": 41
+      },
+      "revId": "5c47475ed3b37aaa7753d6eeb08c10158ca083b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
