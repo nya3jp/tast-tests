@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d0455d0_2b71253f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-09T11:21:07Z",
+      "side": 1,
+      "message": "I\u0027m tempted to use sync.Map which is optimized for the use case of a cache that only grows, the only drawback being the lack of type safety, instead of defining a custom type. How does that sound?",
+      "parentUuid": "11c6ccd2_ad86b199",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be5b3188_f08c122b",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
         "patchSetId": 12
@@ -140,6 +164,30 @@
       "writtenOn": "2020-11-09T10:15:32Z",
       "side": 1,
       "message": "Handling .gz here makes the logic more complicated. Is it possible to put uncompressed PPD files in the archive? I believe putting .gz files in .tar.xz is not useful anyway.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "348680ec_faf82435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-09T11:21:07Z",
+      "side": 1,
+      "message": "The PPD files are plain text and decompressing them uses up a ton of disk space. The main advantage of putting gz files in a tar.xz archive is so that they can be decompressed one by one as in the code below in order to save disk space. That said, if the try bots have plenty of available disk space and you think it would be a good idea, I can definitely put uncompressed PPD files into archive.",
+      "parentUuid": "843755d4_2481270d",
       "range": {
         "startLine": 57,
         "startChar": 0,
