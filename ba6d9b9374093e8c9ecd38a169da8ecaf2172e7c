@@ -316,6 +316,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b16e5c4d_5c32e65c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-11-09T21:24:51Z",
+      "side": 1,
+      "message": "niwa@ or khmel@, any advice here?",
+      "parentUuid": "7aa7b769_a686499d",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d9fdccb_2b98d98d",
         "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
         "patchSetId": 6
