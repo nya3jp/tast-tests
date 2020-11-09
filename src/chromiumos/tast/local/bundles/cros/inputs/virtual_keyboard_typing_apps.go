@@ -24,7 +24,7 @@ func init() {
 		Func:         VirtualKeyboardTypingApps,
 		Desc:         "Checks that the virtual keyboard works in apps",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:essential-inputs"},
+		Attr:         []string{"group:essential-inputs", "group:essential-inputs-rapid"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
