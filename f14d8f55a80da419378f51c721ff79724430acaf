@@ -16,6 +16,41 @@
       "message": "Not very sure but according to the status on Gerrit mukai@ is OOO these days.\nnya@, could you help to review this CL? Thanks.",
       "revId": "f14d8f55a80da419378f51c721ff79724430acaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe2b75c8_1abceac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-09T05:40:28Z",
+      "side": 1,
+      "message": "F",
+      "revId": "f14d8f55a80da419378f51c721ff79724430acaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30633e0_4f007e45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-09T05:40:28Z",
+      "side": 1,
+      "message": "Friendly ping, the test is 100% failing now :Q\n\nhttps://tastboard.corp.google.com/test/camera.CCAUIPreviewPowerPerf.noarc_swa",
+      "parentUuid": "2867bbea_e956be41",
+      "revId": "f14d8f55a80da419378f51c721ff79724430acaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
