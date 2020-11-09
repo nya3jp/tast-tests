@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c0c30b4_a70bb0ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T07:30:27Z",
+      "side": 1,
+      "message": "the first router, ap0,",
+      "range": {
+        "startLine": 16,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "efa9f68edb3b9c2ef04ba4de176a25a53fadc3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702958f4_d242ab43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T07:30:27Z",
+      "side": 1,
+      "message": "Append: Done in router.NewBridge() in https://crrev.com/c/2498621",
+      "revId": "efa9f68edb3b9c2ef04ba4de176a25a53fadc3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5a9bb215_caf9abae",
@@ -14,6 +54,63 @@
       "writtenOn": "2020-11-09T06:37:58Z",
       "side": 1,
       "message": "Removed the walkaround mentioned in http://b/172209970. Changed bug id.",
+      "revId": "efa9f68edb3b9c2ef04ba4de176a25a53fadc3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba84b2ad_17b0bf78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T07:30:27Z",
+      "side": 1,
+      "message": "Two nits and two suggesting action items.",
+      "revId": "efa9f68edb3b9c2ef04ba4de176a25a53fadc3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9995e6_f8df1449",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T07:30:27Z",
+      "side": 1,
+      "message": "The function is a big lengthy. Perhaps we can move out some logical blocks out to make it easier to read. We may improve it later to avoid super long CL review.",
+      "revId": "efa9f68edb3b9c2ef04ba4de176a25a53fadc3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50eb500b_4d0fcc92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-09T07:30:27Z",
+      "side": 1,
+      "message": "May we de-duplicate the logic already existed in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/scan_perf.go?l\u003d144 ?",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 2
+      },
       "revId": "efa9f68edb3b9c2ef04ba4de176a25a53fadc3ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
