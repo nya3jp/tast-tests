@@ -16,6 +16,52 @@
       "message": "lgtm\n\nAnd let\u0027s get approval from tast-owners.",
       "revId": "32820ab6c7e4a1cfe00405ee53cbea7829c23c4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86828952_a3727c10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/screen_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T05:54:18Z",
+      "side": 1,
+      "message": "in precise, this saves base64 (\u003dtext) file, rather than Binary.\n\nMaybe SaveInBase64?",
+      "range": {
+        "startLine": 155,
+        "startChar": 29,
+        "endLine": 155,
+        "endChar": 37
+      },
+      "revId": "32820ab6c7e4a1cfe00405ee53cbea7829c23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c50c6e38_e74c8002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-09T05:54:18Z",
+      "side": 1,
+      "message": "could you handle errors?",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 0
+      },
+      "revId": "32820ab6c7e4a1cfe00405ee53cbea7829c23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
