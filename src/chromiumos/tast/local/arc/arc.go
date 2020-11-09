@@ -36,7 +36,8 @@ const (
 
 	intentHelperTimeout = 20 * time.Second
 
-	logcatName = "logcat.txt"
+	arcvmConsoleName = "arcvm-console.txt"
+	logcatName       = "logcat.txt"
 
 	//ARCPath is the path where the container images are installed in the rootfs.
 	ARCPath = "/opt/google/containers/android"
@@ -104,10 +105,13 @@ func Type() (t InstallType, ok bool) {
 // ARC holds resources related to an active ARC session. Call Close to release
 // those resources.
 type ARC struct {
-	device       *adb.Device   // ADB device to communicate with ARC
-	logcatCmd    *testexec.Cmd // process saving Android logs
-	logcatWriter dynamicWriter // writes output from logcatCmd to logcatFile
-	logcatFile   *os.File      // file currently being written to
+	device             *adb.Device   // ADB device to communicate with ARC
+	arcvmConsoleCmd    *testexec.Cmd // process saving ARCVM console output
+	arcvmConsoleWriter dynamicWriter // writes output from arcvmConsoleWriter to arcvmConsoleFile
+	arcvmConsoleFile   *os.File      // file currently being written to
+	logcatCmd          *testexec.Cmd // process saving Android logs
+	logcatWriter       dynamicWriter // writes output from logcatCmd to logcatFile
+	logcatFile         *os.File      // file currently being written to
 }
 
 // Close releases testing-related resources associated with ARC.
@@ -116,16 +120,36 @@ func (a *ARC) Close() error {
 	if locked {
 		panic("Do not call Close while precondition is being used")
 	}
-	var err error
+
+	var errs []error
+
 	if a.logcatCmd != nil {
 		a.logcatCmd.Kill()
 		a.logcatCmd.Wait()
 	}
 	if a.logcatFile != nil {
 		a.logcatWriter.setDest(nil)
-		err = a.logcatFile.Close()
+		if err := a.logcatFile.Close(); err != nil {
+			errs = append(errs, errors.Wrap(err, "failed to save logcat logfile"))
+		}
 	}
-	return err
+
+	if a.arcvmConsoleCmd != nil {
+		if err := a.arcvmConsoleCmd.Run(); err != nil {
+			errs = append(errs, errors.Wrap(err, "failed to exec the command to save console output logfile"))
+		}
+	}
+	if a.arcvmConsoleFile != nil {
+		a.arcvmConsoleWriter.setDest(nil)
+		if err := a.arcvmConsoleFile.Close(); err != nil {
+			errs = append(errs, errors.Wrap(err, "failed to close console output logfile"))
+		}
+	}
+
+	if errs != nil {
+		return errors.New(fmt.Sprint("failed to save logfiles: ", errs))
+	}
+	return nil
 }
 
 // New waits for Android to finish booting.
@@ -162,15 +186,25 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	toClose := arc
 	defer func() {
 		if toClose != nil {
-			toClose.Close()
+			if err := toClose.Close(); err != nil {
+				testing.ContextLog(ctx, "Failed to close ARC connection: ", err)
+			}
 		}
 	}()
 
 	testing.ContextLog(ctx, "Waiting for Android boot")
 
+	// Prepare Cmd object for ARCVM console output.
+	arcvmConsolePath := filepath.Join(outDir, arcvmConsoleName)
+	// context.Background() is used because arc.Close() may be called after ctx is cancelled.
+	if err := arc.setARCVMConsoleCommand(context.Background(), arcvmConsolePath); err != nil { // NOLINT
+		return nil, errors.Wrap(err, "failed to create output file for ARCVM console output")
+	}
+
 	// Prepare logcat file, it may be empty if early boot fails.
 	logcatPath := filepath.Join(outDir, logcatName)
-	if err := arc.setLogcatFile(logcatPath); err != nil {
+	var err error
+	if arc.setLogcatFile(logcatPath); err != nil {
 		return nil, errors.Wrap(err, "failed to create logcat output file")
 	}
 
@@ -269,34 +303,56 @@ func checkSoftwareDeps(ctx context.Context) error {
 	return errors.Errorf("test must declare at least one of Android software dependencies %v", androidDeps)
 }
 
-// setLogcatFile creates a new logcat output file at p and opens it as a.logcatFile.
-// a.logcatWriter is updated to write to the new file, and explanatory messages are
+// createNewARCLogFile creates a new output file at path, opens it, and returns it.
+// writer is updated to write to the new file, and explanatory messages are
 // written to both the new file and old file (if there was a previous file).
-func (a *ARC) setLogcatFile(p string) error {
-	oldFile := a.logcatFile
-
-	var createErr error
-	a.logcatFile, createErr = os.Create(p)
+func createNewARCLogFile(path string, oldFile *os.File, writer *dynamicWriter) (*os.File, error) {
+	newFile, createErr := os.Create(path)
 	if createErr == nil && oldFile != nil {
 		// Make the new file start with a line pointing at the old file.
-		if rel, err := filepath.Rel(filepath.Dir(a.logcatFile.Name()), oldFile.Name()); err == nil {
-			fmt.Fprintf(a.logcatFile, "[output continued from %v]\n", rel)
+		if rel, err := filepath.Rel(filepath.Dir(newFile.Name()), oldFile.Name()); err == nil {
+			fmt.Fprintf(newFile, "[output continued from %v]\n", rel)
 		}
 	}
 	// If the create failed, we'll just drop the new logs.
-	a.logcatWriter.setDest(a.logcatFile)
+	writer.setDest(newFile)
 
 	if oldFile != nil {
-		if a.logcatFile != nil {
+		if newFile != nil {
 			// Make the old file end with a line pointing at the new file.
-			if rel, err := filepath.Rel(filepath.Dir(oldFile.Name()), a.logcatFile.Name()); err == nil {
+			if rel, err := filepath.Rel(filepath.Dir(oldFile.Name()), newFile.Name()); err == nil {
 				fmt.Fprintf(oldFile, "[output continued in %v]\n", rel)
 			}
 		}
 		oldFile.Close()
 	}
 
-	return createErr
+	return newFile, createErr
+}
+
+func (a *ARC) setLogcatFile(p string) error {
+	var err error
+	a.logcatFile, err = createNewARCLogFile(p, a.logcatFile, &a.logcatWriter)
+	return err
+}
+
+// setARCVMConsoleCommand prepare the command to dump the console output of ARCVM Kernel using vm_pstore_dump command.
+func (a *ARC) setARCVMConsoleCommand(ctx context.Context, path string) error {
+	// Do nothing for ARC++. The console output is already captured for ARC++.
+	isVMEnabled, err := VMEnabled()
+	if err != nil {
+		return err
+	}
+	if !isVMEnabled {
+		return nil
+	}
+
+	if a.arcvmConsoleFile, err = createNewARCLogFile(path, a.arcvmConsoleFile, &a.arcvmConsoleWriter); err != nil {
+		return err
+	}
+	a.arcvmConsoleCmd = testexec.CommandContext(ctx, "/usr/bin/vm_pstore_dump")
+	a.arcvmConsoleCmd.Stdout = &a.arcvmConsoleWriter
+	return nil
 }
 
 // VMEnabled returns true if Chrome OS is running ARCVM.
