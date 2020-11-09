@@ -25,21 +25,6 @@ var metricMap = map[string]struct {
 	direction perf.Direction
 	uma       bool
 }{
-	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Universal": {
-		unit:      "percent",
-		direction: perf.SmallerIsBetter,
-		uma:       true,
-	},
-	"Graphics.Smoothness.PercentDroppedFrames.MainThread.Universal": {
-		unit:      "percent",
-		direction: perf.SmallerIsBetter,
-		uma:       true,
-	},
-	"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.Universal": {
-		unit:      "percent",
-		direction: perf.SmallerIsBetter,
-		uma:       true,
-	},
 	"Graphics.Smoothness.PercentDroppedFrames.AllSequences": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
