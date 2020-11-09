@@ -171,6 +171,30 @@
       },
       "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f94fa2b7_2ffe8bcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-09T11:04:25Z",
+      "side": 1,
+      "message": "All PPDs should be selected exactly once as the stride (a power of 2) is coprime to n (odd), the number of PPDs.",
+      "parentUuid": "eab3cdf2_4240a2e5",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
