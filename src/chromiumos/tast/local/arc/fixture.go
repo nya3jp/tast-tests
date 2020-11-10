@@ -25,7 +25,7 @@ func init() {
 type bootedFixture struct {
 	cr   *chrome.Chrome
 	arc  *ARC
-	init *snapshot
+	init *Snapshot
 }
 
 func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -51,7 +51,7 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 		}
 	}()
 
-	init, err := newSnapshot(ctx, arc)
+	init, err := NewSnapshot(ctx, arc)
 	if err != nil {
 		s.Fatal("Failed to take ARC state snapshot: ", err)
 	}

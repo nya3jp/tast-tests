@@ -124,7 +124,7 @@ type preImpl struct {
 	cr  *chrome.Chrome
 	arc *ARC
 
-	init *snapshot
+	init *Snapshot
 }
 
 func (p *preImpl) String() string         { return p.name }
@@ -216,7 +216,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		if p.arc, err = New(ctx, s.OutDir()); err != nil {
 			s.Fatal("Failed to start ARC: ", err)
 		}
-		if p.init, err = newSnapshot(ctx, p.arc); err != nil {
+		if p.init, err = NewSnapshot(ctx, p.arc); err != nil {
 			s.Fatal("Failed to get initial ARC state snapshot: ", err)
 		}
 	}()
