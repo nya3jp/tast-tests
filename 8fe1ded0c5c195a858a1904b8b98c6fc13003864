@@ -266,6 +266,24 @@
       "parentUuid": "bde07bfa_50fce955",
       "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddb2bce_95a6645a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-10T09:49:54Z",
+      "side": 1,
+      "message": "yes. There\u0027s no guarantee what is contained in Matches[0]. It may be ones for .kcrash, or ones for .meta, or ones for .log.\nIn precise, my suggestion is something like:\n\nfor _, m :\u003d range res.Matches {\n  if !strings.HasSuffix(m.Regex, \".log\") {  // or .kcrash or .meta\n    continue\n  }\n  ... \u003d append(...)\n}\n\nfor better stability and maintainability.\n\nOr, alternatively I\u0027m also fine if you\u0027d like to stabilize the order of Matches in callee to match with the order in the given argument. In the case, Matches[0] will stably corresponding to .kcrash. To be clearer, it\u0027d be nice to have brief comment there, too, like:\n\n// List .bios_log files by replacing extensions of found .kcrash files.",
+      "parentUuid": "efa969df_8e561b0e",
+      "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
