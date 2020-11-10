@@ -59,7 +59,7 @@ func KillProcess(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get window info: ", err)
 	}
 
-	// Sanity check: the process must exist after creating the activity.
+	// Validity check: the process must exist after creating the activity.
 	if exist, err := processExist(ctx, a, packageName); err != nil {
 		s.Fatal("Failed to verify whether process exist: ", err)
 	} else if !exist {

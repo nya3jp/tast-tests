@@ -16,7 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Sanity,
+		Func: Validity,
 		Desc: "Set baseline expectations for hosting Chrome OS VM images",
 		Contacts: []string{
 			"pwang@chromium.org", // Original test author
@@ -30,7 +30,7 @@ func init() {
 	})
 }
 
-func Sanity(ctx context.Context, s *testing.State) {
+func Validity(ctx context.Context, s *testing.State) {
 	// Test the CPU configuration.
 	infos, err := cpu.Info()
 	if err != nil {

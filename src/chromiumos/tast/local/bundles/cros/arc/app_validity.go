@@ -15,8 +15,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AppSanity,
-		Desc:         "Sanity check to start a simple app",
+		Func:         AppValidity,
+		Desc:         "Validity check of starting a simple app",
 		Contacts:     []string{"oka@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
@@ -31,7 +31,7 @@ func init() {
 	})
 }
 
-func AppSanity(ctx context.Context, s *testing.State) {
+func AppValidity(ctx context.Context, s *testing.State) {
 	const (
 		// This is a plain hello world app.
 		apk = "ArcAppSanityTest.apk"

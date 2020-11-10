@@ -86,7 +86,7 @@ func checkCannotWriteOnCopy(ctx context.Context, s *testing.State, pkcs11Util *p
 func checkKey(ctx context.Context, s *testing.State, pkcs11Util *pkcs11.Chaps, k *pkcs11.KeyInfo) {
 	const IssuerTestValue = "AABBCC"
 
-	// Sanity test that whatever that should be writable and readable should be so. CKA_ISSUER is used here.
+	// Validity test that whatever that should be writable and readable should be so. CKA_ISSUER is used here.
 	if err := pkcs11Util.SetObjectAttribute(ctx, k, "privkey", "CKA_ISSUER", IssuerTestValue); err != nil {
 		s.Fatal("Unable to set CKA_ISSUER attribute: ", err)
 	}

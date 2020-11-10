@@ -265,7 +265,7 @@ func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
 }
 
 // verifyAndGetGeoTables checks the Geo SAR tables contained within decodedSSDT and
-// returns an array of geoSARTable structs. This function performs a sanity check
+// returns an array of geoSARTable structs. This function performs a validity check
 // to ensure that none of the "max power" fields of the tables is below the minimum
 // allowable power. If the Geo SAR tables don't exist, this function logs that fact
 // and returns nil. If there is an error parsing the Geo SAR tables, this function
@@ -292,7 +292,7 @@ func verifyAndGetGeoTables(decodedSSDT []byte, s *testing.State) []geoSARTable {
 }
 
 // verifyTable checks the table of type sarTableType contained within decodedSSDT
-// against a set of SAR limits. These limits serve as a sanity check for the SAR
+// against a set of SAR limits. These limits serve as a validity check for the SAR
 // and are not based on a true regulatory standard. The test will fail if the SSDT
 // provided does not contain SAR tables.
 func verifyTable(decodedSSDT []byte, tableType sarTableType, geoTables []geoSARTable, s *testing.State) {

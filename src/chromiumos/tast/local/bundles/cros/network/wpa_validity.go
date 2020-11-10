@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WPASanity,
+		Func:         WPAValidity,
 		Desc:         "Verifies wpa_supplicant is up and running",
 		Contacts:     []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline"},
@@ -27,7 +27,7 @@ func init() {
 	})
 }
 
-func WPASanity(ctx context.Context, s *testing.State) {
+func WPAValidity(ctx context.Context, s *testing.State) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
