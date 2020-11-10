@@ -33,6 +33,69 @@
       "message": "wow speedy!\nLGTM from hwsec team perspective.",
       "revId": "1eb817cd166430859289c62111be3905b620a3e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60a83f7_a99097b2",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-10T06:04:51Z",
+      "side": 1,
+      "message": "successful",
+      "range": {
+        "startLine": 67,
+        "startChar": 80,
+        "endLine": 67,
+        "endChar": 92
+      },
+      "revId": "1eb817cd166430859289c62111be3905b620a3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe13169c_7ac4c016",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-10T06:04:51Z",
+      "side": 1,
+      "message": "Let\u0027s avoid code duplicate:\n\nRetrieve the logic from checkNVRAMCommandAndReturn:\nfunc checkNVRAMCommandAndReturn(...) (string, error) {\n  return checkCommandAndReturn(ctx, binaryMsg, err, command, tpmManagerNVRAMSuccessMessage)\n}\n\nfunc checkStatusCommandAndReturn(...) (string, error) {\n  return checkCommandAndReturn(ctx, binaryMsg, err, command, tpmManagerStatusSuccessMessage)\n}",
+      "revId": "1eb817cd166430859289c62111be3905b620a3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092e3729_39aedfe4",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-10T06:04:51Z",
+      "side": 1,
+      "message": "due to missing wanted context %q in stdout %q",
+      "range": {
+        "startLine": 83,
+        "startChar": 47,
+        "endLine": 83,
+        "endChar": 74
+      },
+      "revId": "1eb817cd166430859289c62111be3905b620a3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
