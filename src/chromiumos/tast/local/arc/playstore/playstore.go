@@ -28,8 +28,8 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		cantDownloadText = "Can.t download.*"
 		versionText      = "Your device isn.t compatible with this version."
 		compatibleText   = "Your device is not compatible with this item."
-		acceptButtonID   = "com.android.vending:id/continue_button"
 
+		acceptButtonText   = "accept"
 		continueButtonText = "continue"
 		installButtonText  = "install"
 		openButtonText     = "open"
@@ -126,7 +126,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		// Grant permissions if necessary.
 		if err := d.Object(ui.Text(permissionsText)).Exists(ctx); err == nil {
 			testing.ContextLog(ctx, "Accepting app permissions")
-			acceptButton := d.Object(ui.ID(acceptButtonID))
+			acceptButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+acceptButtonText))
 			if err := acceptButton.WaitForExists(ctx, defaultUITimeout); err != nil {
 				return testing.PollBreak(err)
 			}
