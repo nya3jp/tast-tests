@@ -141,7 +141,7 @@ func RunOnExistingUsers(ctx context.Context) error {
 
 	if freeSpace, err := disk.FreeSpace(UserHome); err != nil {
 		return errors.Wrap(err, "failed get free space")
-	} else if freeSpace < CleanupTarget { // Sanity check
+	} else if freeSpace < CleanupTarget { // Validity check
 		return errors.Errorf("too little free space is available: %d", freeSpace)
 	} else {
 		testing.ContextLogf(ctx, "%d bytes available after automatic cleanup", freeSpace)

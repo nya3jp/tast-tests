@@ -87,7 +87,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		s.Error("Get available routines test failed: ", err)
 	}
 
-	type sanityCheckFn func() error
+	type validityCheckFn func() error
 
 	// testRoutineExecution sends the request in rrRequest, executing the routine,
 	// and checks the result against expectedStatus. Some routines would not get
@@ -96,7 +96,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	testRoutineExecution := func(ctx context.Context,
 		rrRequest dtcpb.RunRoutineRequest,
 		expectedStatus wilco.DiagnosticRoutineStatus,
-		postRoutineSanityCheck sanityCheckFn) error {
+		postRoutineValidityCheck validityCheckFn) error {
 
 		ctx, cancel := context.WithTimeout(ctx, 35*time.Second)
 		defer cancel()
@@ -114,9 +114,9 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to cancel routine")
 			}
 
-			if postRoutineSanityCheck != nil {
-				if err := postRoutineSanityCheck(); err != nil {
-					return errors.Wrap(err, "post routine sanity check failed")
+			if postRoutineValidityCheck != nil {
+				if err := postRoutineValidityCheck(); err != nil {
+					return errors.Wrap(err, "post routine validity check failed")
 				}
 			}
 			return nil
@@ -137,10 +137,10 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	}
 
 	for _, param := range []struct {
-		name                string
-		request             dtcpb.RunRoutineRequest
-		expectedStatus      wilco.DiagnosticRoutineStatus
-		sanityCheckFunction sanityCheckFn
+		name                  string
+		request               dtcpb.RunRoutineRequest
+		expectedStatus        wilco.DiagnosticRoutineStatus
+		validityCheckFunction validityCheckFn
 	}{
 		{
 			name: "urandom",
@@ -364,7 +364,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 			// disk read test routine will create a test file
 			// ensure it is deleted after cancellation
-			sanityCheckFunction: func() error {
+			validityCheckFunction: func() error {
 				const testFile = "/var/cache/diagnostics_disk_read_routine_data/fio-test-file"
 				if _, err := os.Stat(testFile); os.IsNotExist(err) {
 					return nil
@@ -375,7 +375,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := testRoutineExecution(ctx, param.request, param.expectedStatus, param.sanityCheckFunction); err != nil {
+			if err := testRoutineExecution(ctx, param.request, param.expectedStatus, param.validityCheckFunction); err != nil {
 				s.Error("Routine test failed: ", err)
 			}
 		})

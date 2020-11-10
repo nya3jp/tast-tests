@@ -291,7 +291,7 @@ func (u *UtilityCryptohomeBinary) getKeyStatus(
 		return "", "", errors.Wrap(err, "failed to get key status")
 	}
 	arr := strings.Split(out, "\n")
-	// Sanity check on output format
+	// Validity check on output format
 	if len(arr) < 5 || arr[0] != "Public Key:" || arr[3] != "Certificate:" {
 		return "", "", errors.New("ill-formed output string format")
 	}

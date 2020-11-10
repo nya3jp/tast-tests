@@ -20,14 +20,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// RunAccelVideoSanityTest runs the FlushAtEndOfStream test in the
+// RunAccelVideoValidityTest runs the FlushAtEndOfStream test in the
 // video_decode_accelerator_tests. The test only fails if the test binary
 // crashes or the video decoder's kernel driver crashes.
-// The motivation of the sanity test: on certain devices, when playing VP9
+// The motivation of the validity test: on certain devices, when playing VP9
 // profile 1 or 3, the kernel crashed. Though the profile was not supported
 // by the decoder, kernel driver should not crash in any circumstances.
 // Refer to https://crbug.com/951189 for more detail.
-func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, filename string) {
+func RunAccelVideoValidityTest(ctx context.Context, s *testing.State, filename string) {
 	const cleanupTime = 10 * time.Second
 
 	vl, err := logging.NewVideoLogger()
@@ -79,6 +79,6 @@ func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, filename str
 		if waitStatus.ExitStatus() != 1 {
 			s.Fatalf("Failed to run %v: %v", exec, err)
 		}
-		testing.ContextLog(ctx, "No crashes detected, running video sanity test successful")
+		testing.ContextLog(ctx, "No crashes detected, running video validity test successful")
 	}
 }

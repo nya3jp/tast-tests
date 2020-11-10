@@ -36,14 +36,14 @@ func init() {
 
 		Params: []testing.Param{
 			{
-				Name: "sanity",
+				Name: "validity",
 				// Keep this test list short, as it can take a while to run many modules.
 				Val: []string{
 					"module_wpa_supplicant", // unit tests for wpa_supplicant
 					"module_hostapd",        // unit tests for hostapd
 					"scan_random_mac",       // example scanning test
 				},
-				// Only target the 'sanity' list for mainline, as anything more can take a
+				// Only target the 'validity' list for mainline, as anything more can take a
 				// long time.
 				ExtraAttr: []string{"group:mainline"},
 			},

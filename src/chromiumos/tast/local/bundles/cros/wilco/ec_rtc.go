@@ -83,7 +83,7 @@ func ECRTC(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Sanity check before we do more complicated testing.
+	// Validity check before we do more complicated testing.
 	readECRTC()
 
 	// Stop the upstart job that keeps the EC RTC in sync with local time.

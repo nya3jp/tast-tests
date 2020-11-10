@@ -14,7 +14,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     HWDeps,
-		Desc:     "Sanity check and demonstration of hardware deps feature",
+		Desc:     "Validity check and demonstration of hardware deps feature",
 		Contacts: []string{"hidehiko@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{

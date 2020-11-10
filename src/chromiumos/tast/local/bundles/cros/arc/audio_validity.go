@@ -15,8 +15,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AudioSanity,
-		Desc: "Audio sanity test for arc",
+		Func: AudioValidity,
+		Desc: "Audio validity test for arc",
 		Contacts: []string{
 			"chromeos-audio-bugs@google.com", // Media team
 			"cychiang@chromium.org",          // Media team
@@ -62,8 +62,8 @@ func init() {
 	})
 }
 
-// AudioSanity runs audio sanity tests.
-func AudioSanity(ctx context.Context, s *testing.State) {
+// AudioValidity runs audio validity tests.
+func AudioValidity(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
 	param := s.Param().(audio.TestParameters)
