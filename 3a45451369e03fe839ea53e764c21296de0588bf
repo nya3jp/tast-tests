@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d52ec3c8_46b690ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T20:20:40Z",
+      "side": 1,
+      "message": "FYI, I added 1 line of logging before the rebootToMode call in Prepare in PS3 since this will help us to manually check if a previous test caused the precondition to be violated (Dossym raised a good point about this).",
+      "revId": "3a45451369e03fe839ea53e764c21296de0588bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
