@@ -20,8 +20,8 @@ func init() {
 		Func: UbertrayOpenSettings,
 		Desc: "Checks that settings can be opened from Quick Settings",
 		Contacts: []string{
-			"bhansknecht@chromium.org",
-			"kyleshima@chromium.org",
+			"chromeos-sw-engprod@google.com",
+			"amehfooz@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
