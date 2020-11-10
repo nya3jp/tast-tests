@@ -86,6 +86,26 @@ func init() {
 				split:   true,
 				cam:     true,
 			},
+		}, {
+			Name: "big_meeting",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    false,
+				split:   false,
+				cam:     true,
+			},
+		}, {
+			Name: "big_meeting_with_notes",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   false,
+				cam:     true,
+			},
 		}},
 	})
 }
@@ -518,6 +538,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		// Simulate notes input.
 		if meet.docs {
+			if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
+				return errors.Wrap(err, "failed to hit alt-tab and focus on Docs tab")
+			}
 			docsTextfield, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Document content", Role: ui.RoleTypeTextField}, timeout)
 			if err != nil {
 				return errors.Wrap(err, "failed to find the docs text field")
