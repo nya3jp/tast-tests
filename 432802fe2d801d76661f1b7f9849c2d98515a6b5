@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d0d5fc3_9d25c171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-10T11:10:02Z",
+      "side": 1,
+      "message": "Looks like fixtures were just committed for arc.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2509450\n\n\nI can re-use arc.snapshot, and then not have to make any changes to arc specific code, which should simplify the review.\n\nI should be able to finish the refactor tomorrow.",
+      "revId": "432802fe2d801d76661f1b7f9849c2d98515a6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
