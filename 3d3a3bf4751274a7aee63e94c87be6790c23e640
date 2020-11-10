@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b5cc951_c2d58378",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-11-10T22:10:36Z",
+      "side": 1,
+      "message": "Is this the only test that\u0027s failing on kodama and kefka? Otherwise please consider excluding these boards from all inputs tests.",
+      "revId": "3d3a3bf4751274a7aee63e94c87be6790c23e640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
