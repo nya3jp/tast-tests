@@ -23,9 +23,8 @@ func init() {
 		Func: QuickSettingsLockScreen,
 		Desc: "Checks that the screen can be locked from Quick Settings",
 		Contacts: []string{
-			"kyleshima@chromium.org",
-			"bhansknecht@chromium.org",
-			"dhaddock@chromium.org",
+			"chromeos-sw-engprod@google.com",
+			"amehfooz@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
