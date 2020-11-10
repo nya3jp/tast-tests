@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401741ee_ebf5a119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-11-10T16:53:22Z",
+      "side": 1,
+      "message": "Oops I still need to drop this since it\u0027s no longer needed.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "a9882daf9b29056c75f573cd2d070ff3e57834c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
