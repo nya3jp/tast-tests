@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa8c4e5_d00e2d8f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "gotcha.",
+      "parentUuid": "322db612_29e1fac4",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eeb1e8f_54e84ecc",
@@ -65,6 +83,30 @@
       "writtenOn": "2020-11-09T20:11:08Z",
       "side": 1,
       "message": "nit/typo: Recover",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69dc8afb_e0f23150",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eeb1e8f_54e84ecc",
       "range": {
         "startLine": 41,
         "startChar": 20,
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c2d51fb_f44d1e36",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a456aaea_c0e08191",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46071e5b_0ca2bd5d",
@@ -109,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85308210_3fd14873",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46071e5b_0ca2bd5d",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf62a781_4d5aeca4",
@@ -122,6 +200,30 @@
       "writtenOn": "2020-11-09T20:11:08Z",
       "side": 1,
       "message": "nit/typo: Successfully",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "181f05ed_e2bddde3",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf62a781_4d5aeca4",
       "range": {
         "startLine": 79,
         "startChar": 11,
@@ -155,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec879d1_ff0a5f78",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "I mean the rpc connection, clarified.",
+      "parentUuid": "452fcfa5_26a0771a",
+      "range": {
+        "startLine": 90,
+        "startChar": 41,
+        "endLine": 90,
+        "endChar": 45
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8415f40e_d9056ec8",
@@ -172,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03ab635b_7c9ae703",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "I see your point about the normal code path, but the implementation seems a bit long.  I deferred the last 2 lines to help with things.",
+      "parentUuid": "8415f40e_d9056ec8",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2719c5bd_e3f0cf9b",
@@ -185,6 +329,24 @@
       "writtenOn": "2020-11-09T20:11:08Z",
       "side": 1,
       "message": "My logging opinion from L75 applies here too.",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b78eca35_a828176b",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2719c5bd_e3f0cf9b",
       "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +374,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f128f0e_489f9a94",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "but setAndCheckBootMode is another function with it\u0027s own set of local variables.  Here there\u0027s i.origBootMode to distinguish from mode, in setAndCheckBootMode, mode was already used by the param so had to use curr.",
+      "parentUuid": "80871f91_5e98e75c",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84a05c3a_4bfd24be",
@@ -225,6 +411,24 @@
       "writtenOn": "2020-11-09T20:11:08Z",
       "side": 1,
       "message": "As elsewhere, prefer to keep the normal code flow at a minimum indentation, per https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow:\n\n    func (i *impl) destroyHelper(ctx context.Context) {\n        if i.v.Helper \u003d\u003d nil {\n            return\n        }\n        i.v.Helper.Close(ctx)\n        i.v.Helper \u003d nil\n    }",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eddf8a6_8bf41e69",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84a05c3a_4bfd24be",
       "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -246,6 +450,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0293dbb_3670a4c8",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0786fdc_0fb1812c",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "370cbc8a_63241a67",
@@ -263,6 +485,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "162b1677_43c5ec97",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "Well that\u0027s nice!  Simplified method and renamed to rebootToMode.",
+      "parentUuid": "370cbc8a_63241a67",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0a17566_c695b1c5",
@@ -276,6 +516,24 @@
       "writtenOn": "2020-11-09T20:11:08Z",
       "side": 1,
       "message": "nit/style: remove newline",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "310b57ca_0f76f712",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0a17566_c695b1c5",
       "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -320,6 +578,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08cc2cf_cf19b06d",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "code is deleted now that I know the mode switcher checks the boot mode.",
+      "parentUuid": "8e4d136e_cab74c82",
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76cbd618_4612634e",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "See my reply to the previous comment.",
+      "parentUuid": "08273c8e_57c122a4",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 15
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae41d5cc_cd169d9a",
@@ -333,6 +633,30 @@
       "writtenOn": "2020-11-09T20:11:08Z",
       "side": 1,
       "message": "nit/style: Returned errors should not start with a capital letter. https://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 150,
+        "startChar": 24,
+        "endLine": 150,
+        "endChar": 25
+      },
+      "revId": "f84fac9c1d02edbe0ccd982403278b3898be62b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c48fe2a8_7acdd91d",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-11-10T01:08:41Z",
+      "side": 1,
+      "message": "code is deleted now that I know the mode switcher checks the boot mode.",
+      "parentUuid": "ae41d5cc_cd169d9a",
       "range": {
         "startLine": 150,
         "startChar": 24,
