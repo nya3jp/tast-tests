@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b8b81d_bba13eac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-10T18:55:28Z",
+      "side": 1,
+      "message": "I think it\u0027s preferred not to pass the State into helper functions, but instead have it return an error and handle that here. Not sure if that\u0027s codified in a style guide somewhere, but I remember one of the Tast owners making that comment on a different CL.",
+      "revId": "7e6a2e079abd15401d73b9d9a27107bcc542acc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d49e4f6d_9e658677",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-10T18:55:28Z",
+      "side": 1,
+      "message": "Maybe this can be made cleaner with tast.promisify and tconn.Call, something like http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go?l\u003d148\u0026rcl\u003d1ac850f31488cdbfa99ad549d99c36a1f5583401",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 58
+      },
+      "revId": "7e6a2e079abd15401d73b9d9a27107bcc542acc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
