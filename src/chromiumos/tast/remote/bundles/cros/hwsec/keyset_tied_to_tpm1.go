@@ -26,7 +26,7 @@ func init() {
 			"zuan@chromium.org",
 		},
 		SoftwareDeps: []string{"tpm1"},
-		Attr:         []string{"informational", "group:mainline"},
+		Attr:         []string{"group:hwsec_destructive_func"},
 	})
 }
 
