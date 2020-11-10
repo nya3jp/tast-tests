@@ -377,6 +377,10 @@ public class Camera2VideoFragment extends Fragment {
                 CameraCharacteristics.SENSOR_INFO_TIMESTAMP_SOURCE);
     }
 
+    public CameraCharacteristics getCameraCharacteristics() {
+        return mCameraCharacteristics;
+    }
+
     // Open the camera device.
     private void openCamera(int width, int height) {
         final Activity activity = getActivity();
