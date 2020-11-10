@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ea5bec_ccca502c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-10T23:44:20Z",
+      "side": 1,
+      "message": "Please wait for review from Leo before putting to CQ.",
+      "revId": "7050b5813ae7adfeb14268255c105681572d0fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
