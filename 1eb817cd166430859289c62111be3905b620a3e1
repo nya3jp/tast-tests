@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad314a39_8482b151",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-11-10T07:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e60a83f7_a99097b2",
+      "range": {
+        "startLine": 67,
+        "startChar": 80,
+        "endLine": 67,
+        "endChar": 92
+      },
+      "revId": "1eb817cd166430859289c62111be3905b620a3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe13169c_7ac4c016",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c08133_ff60712b",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-11-10T07:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe13169c_7ac4c016",
+      "revId": "1eb817cd166430859289c62111be3905b620a3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "092e3729_39aedfe4",
@@ -88,6 +130,30 @@
       "writtenOn": "2020-11-10T06:04:51Z",
       "side": 1,
       "message": "due to missing wanted context %q in stdout %q",
+      "range": {
+        "startLine": 83,
+        "startChar": 47,
+        "endLine": 83,
+        "endChar": 74
+      },
+      "revId": "1eb817cd166430859289c62111be3905b620a3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a2ea1b6_00b00018",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-11-10T07:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "092e3729_39aedfe4",
       "range": {
         "startLine": 83,
         "startChar": 47,
