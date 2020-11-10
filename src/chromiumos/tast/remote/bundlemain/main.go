@@ -13,10 +13,12 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/bundle"
+	"chromiumos/tast/dut"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/baserpc"
 	"chromiumos/tast/ssh/linuxssh"
@@ -81,9 +83,29 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 	}
 }
 
+func beforeReboot(ctx context.Context, d *dut.DUT) error {
+	// Copy logs before reboot. Ignore errors on failure.
+	testOutDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		// TODO(crbug.com/1097657): Return error after making sure existing tests does not get flaky by this check.
+		return nil
+	}
+	dateString := time.Now().Format(time.RFC3339)
+	outDir := filepath.Join(testOutDir, "reboots", dateString)
+
+	if err := os.MkdirAll(outDir, 0755); err != nil {
+		testing.ContextLog(ctx, "Failed to make output subdirectory: ", err)
+	}
+	if err := d.GetFile(ctx, "/var/log/messages", filepath.Join(outDir, "messages")); err != nil {
+		testing.ContextLog(ctx, "Failed to copy syslog: ", err)
+	}
+	return nil
+}
+
 // RunRemote is an entry point function for remote bundles.
 func RunRemote() {
 	os.Exit(bundle.RemoteDefault(bundle.RemoteDelegate{
-		TestHook: testHookRemote,
+		TestHook:     testHookRemote,
+		BeforeReboot: beforeReboot,
 	}))
 }
