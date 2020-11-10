@@ -6,9 +6,11 @@
 package chrome
 
 import (
+	"bytes"
 	"compress/gzip"
 	"context"
 	"fmt"
+	"image/png"
 	"io/ioutil"
 	"net/url"
 	"os"
@@ -20,6 +22,7 @@ import (
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 	"github.com/golang/protobuf/proto"
 	"github.com/mafredri/cdp/protocol/target"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
@@ -29,6 +32,7 @@ import (
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -322,6 +326,10 @@ func LoadSigninProfileExtension(key string) Option {
 	return func(c *Chrome) { c.signinExtKey = key }
 }
 
+func RecordScreen(path string) Option {
+	return func(c *Chrome) { c.recordScreen = path }
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
@@ -362,6 +370,9 @@ type Chrome struct {
 
 	tracingStarted bool // true when tracing is started
 
+	recordScreen string
+	ffmpeg       *testexec.Cmd
+
 	watcher       *browserWatcher   // tries to catch Chrome restarts
 	logAggregator *jslog.Aggregator // collects JS console output
 }
@@ -382,12 +393,40 @@ func (c *Chrome) DebugAddrPort() string {
 	return c.devsess.DebugAddrPort()
 }
 
+type loggingWriter struct {
+	logger *testing.Logger
+	buf bytes.Buffer
+}
+
+func newLoggingWriter(ctx context.Context) (*loggingWriter, error) {
+	logger, ok := testing.ContextLogger(ctx)
+	if !ok {
+		return nil, errors.New("context is not associated with logger")
+	}
+	return &loggingWriter{logger: logger}, nil
+}
+
+func (w *loggingWriter) Write(p []byte) (int, error) {
+	w.buf.Write(p)
+	for {
+		line, err := w.buf.ReadString('\n')
+		if err != nil {
+			w.buf.WriteString(line)
+			break
+		}
+		w.logger.Print(strings.TrimRight(line, "\n"))
+	}
+	return len(p), nil
+}
+
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
 func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	if locked {
 		panic("Cannot create Chrome instance while precondition is being used")
 	}
+
+	bgCtx := ctx
 
 	ctx, st := timing.Start(ctx, "chrome_new")
 	defer st.End()
@@ -472,6 +511,51 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		return nil, errors.Wrapf(c.chromeErr(err), "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
 
+	if c.recordScreen != "" {
+		if _, err := os.Stat("/usr/lib64/va/drivers/iHD_drv_video.so"); err != nil {
+			return nil, errors.Wrap(err, "screen recording prerequisite missing")
+		}
+
+		tf, err := ioutil.TempFile("", "")
+		if err != nil {
+			return nil, err
+		}
+		defer os.Remove(tf.Name())
+
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return testexec.CommandContext(ctx, "screenshot", "--internal", tf.Name()).Run()
+		}, &testing.PollOptions{Timeout: 10*time.Second}); err != nil {
+			return nil, errors.Wrap(err, "failed waiting for screen")
+		}
+
+		im, err := png.DecodeConfig(tf)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to determine the screen size")
+		}
+
+		cmd := testexec.CommandContext(
+			bgCtx,
+			"ffmpeg",
+			"-hwaccel_device", "/dev/dri/renderD128",
+			"-framerate", "60",
+			"-f", "kmsgrab",
+			"-i", "-",
+			"-vf", fmt.Sprintf("hwmap=derive_device=vaapi,scale_vaapi=w=%d:h=%d:format=nv12", im.Width, im.Height),
+			"-c:v", "h264_vaapi",
+			c.recordScreen)
+		lw, err := newLoggingWriter(ctx)
+		if err != nil {
+			return nil, err
+		}
+		cmd.Stdout = lw
+		cmd.Stderr = lw
+		cmd.Env = append(os.Environ(), "LD_LIBRARY_PATH=/usr/local/lib64", "LIBVA_DRIVER_NAME=iHD", "LIBVA_DRIVERS_PATH=/usr/lib64/va/drivers")
+		if err := cmd.Start(); err != nil {
+			return nil, errors.Wrapf(err, "failed to start ffmpeg")
+		}
+		c.ffmpeg = cmd
+	}
+
 	if c.loginMode != noLogin && !c.keepState {
 		if err := cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
 			return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", c.normalizedUser)
@@ -552,6 +636,11 @@ func checkStateful() error {
 func (c *Chrome) Close(ctx context.Context) error {
 	if locked {
 		panic("Do not call Close while precondition is being used")
+	}
+
+	if c.ffmpeg != nil {
+		c.ffmpeg.Signal(unix.SIGINT)
+		c.ffmpeg.Wait()
 	}
 
 	if c.testExtConn != nil {
@@ -893,6 +982,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 
 	if len(c.disableFeatures) != 0 {
 		args = append(args, "--disable-features="+strings.Join(c.disableFeatures, ","))
+	}
+	if c.recordScreen != "" {
+		args = append(args, "--enable-hardware-overlays=single-fullscreen")
 	}
 
 	args = append(args, c.extraArgs...)
