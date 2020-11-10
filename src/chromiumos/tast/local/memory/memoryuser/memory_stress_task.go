@@ -50,7 +50,7 @@ func (st *MemoryStressTask) Run(ctx context.Context, testEnv *TestEnv) error {
 		return nil
 	}
 	// Limit has been provided, wait until we are not limited.
-	if err := testing.Poll(ctx, st.limit.AssertNotReached, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
+	if err := testing.Poll(ctx, st.limit.AssertNotReached, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 30 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for ChromeOS memory to not be above limit")
 	}
 	return nil
