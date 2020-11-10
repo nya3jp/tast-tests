@@ -33,6 +33,24 @@
       "message": "question: when we got error here, in the old code flow, we\u0027ll CloseTarget in defer but not in the new code flow. Is this expected/harmless?",
       "revId": "1614dde2fead30744e1970c0d6183d20e62e1096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a13b85fd_799dfea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2020-11-10T17:29:33Z",
+      "side": 1,
+      "message": "I think that general test tear down will close windows opened by the test (at least I remember being told this), so we should probably be fine either way. Though, I think it\u0027s better to clean up properly here (thanks for catching this).\n\nptal",
+      "parentUuid": "db94cca1_16c738b3",
+      "revId": "1614dde2fead30744e1970c0d6183d20e62e1096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
