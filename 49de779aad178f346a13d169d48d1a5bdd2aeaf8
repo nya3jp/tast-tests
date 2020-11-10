@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "215649f2_d6fc04b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-10T00:50:27Z",
+      "side": 1,
+      "message": "nit. Do you mind adding some comment to explain why we need a dedicate function here?",
+      "parentUuid": "6683120d_891f7f8f",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 59
+      },
+      "revId": "49de779aad178f346a13d169d48d1a5bdd2aeaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c23ee39_2742e565",
