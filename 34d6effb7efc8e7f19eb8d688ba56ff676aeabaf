@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1f93ad_7d6aa05d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-11-10T10:36:53Z",
+      "side": 1,
+      "message": "Looks good to me, but I\u0027d like to ask another review to yenlinlai@, who seems to have been reviewing this component in the past revisions.",
+      "revId": "34d6effb7efc8e7f19eb8d688ba56ff676aeabaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
