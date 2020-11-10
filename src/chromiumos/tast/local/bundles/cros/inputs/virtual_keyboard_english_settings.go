@@ -31,7 +31,7 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
-			ExtraAttr:         []string{"group:mainline", "group:essential-inputs", "informational"},
+			ExtraAttr:         []string{"group:mainline", "group:input-tools", "informational"},
 			ExtraHardwareDeps: pre.InputsStableModels,
 		}, {
 			Name:              "unstable",
