@@ -11,6 +11,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.hardware.camera2.CameraCharacteristics;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Size;
@@ -25,6 +26,14 @@ public class CameraActivity extends Activity {
             "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_CLOSE_TIME";
     private static final String ACTION_GET_CAMERA_OPEN_TIME =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_OPEN_TIME";
+    private static final String ACTION_GET_CC_AVAILABLE_CAPTURE_REQUEST_KEYS =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_CC_AVAILABLE_CAPTURE_REQUEST_KEYS";
+    private static final String ACTION_GET_CC_AVAILABLE_CAPTURE_RESULT_KEYS =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_CC_AVAILABLE_CAPTURE_RESULT_KEYS";
+    private static final String ACTION_GET_CC_KEYS =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_CC_KEYS";
+    private static final String ACTION_GET_CC_SENSOR_INFO_EXPOSURE_TIME_RANGE =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_CC_SENSOR_INFO_EXPOSURE_TIME_RANGE";
     private static final String ACTION_GET_HISTOGRAM =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_HISTOGRAM";
     private static final String ACTION_GET_HISTOGRAM_SENSOR =
@@ -96,6 +105,23 @@ public class CameraActivity extends Activity {
                                 break;
                             case ACTION_GET_CAMERA_OPEN_TIME:
                                 setResultData(Long.toString(mCameraFragment.getCameraOpenTime()));
+                                break;
+                            case ACTION_GET_CC_AVAILABLE_CAPTURE_REQUEST_KEYS:
+                                setResultData(mCameraFragment.getCameraCharacteristics()
+                                        .getAvailableCaptureRequestKeys().toString());
+                                break;
+                            case ACTION_GET_CC_AVAILABLE_CAPTURE_RESULT_KEYS:
+                                setResultData(mCameraFragment.getCameraCharacteristics()
+                                        .getAvailableCaptureResultKeys().toString());
+                                break;
+                            case ACTION_GET_CC_KEYS:
+                                setResultData(mCameraFragment.getCameraCharacteristics()
+                                        .getKeys().toString());
+                                break;
+                            case ACTION_GET_CC_SENSOR_INFO_EXPOSURE_TIME_RANGE:
+                                setResultData(mCameraFragment.getCameraCharacteristics()
+                                        .get(CameraCharacteristics.SENSOR_INFO_EXPOSURE_TIME_RANGE)
+                                                .toString());
                                 break;
                             case ACTION_GET_HISTOGRAM:
                                 setResultData(mHistogram.getHistogramJavaString());
@@ -193,6 +219,10 @@ public class CameraActivity extends Activity {
         filter.addAction(ACTION_GET_AVG_SNAPSHOT_TIME);
         filter.addAction(ACTION_GET_CAMERA_CLOSE_TIME);
         filter.addAction(ACTION_GET_CAMERA_OPEN_TIME);
+        filter.addAction(ACTION_GET_CC_AVAILABLE_CAPTURE_REQUEST_KEYS);
+        filter.addAction(ACTION_GET_CC_AVAILABLE_CAPTURE_RESULT_KEYS);
+        filter.addAction(ACTION_GET_CC_KEYS);
+        filter.addAction(ACTION_GET_CC_SENSOR_INFO_EXPOSURE_TIME_RANGE);
         filter.addAction(ACTION_GET_HISTOGRAM);
         filter.addAction(ACTION_GET_HISTOGRAM_SENSOR);
         filter.addAction(ACTION_GET_LAST_SNAPSHOT_TIME);
