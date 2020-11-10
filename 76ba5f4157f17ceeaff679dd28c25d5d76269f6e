@@ -33,6 +33,24 @@
       "message": "Is there anything else I need to get this committed?\n\n@Yusuke, do the arc/pre.go changes look OK?\n@Matthew, do the Crostini changes look OK?",
       "revId": "76ba5f4157f17ceeaff679dd28c25d5d76269f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b1a47f_b30c4fb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-11-10T21:57:21Z",
+      "side": 1,
+      "message": "so, is \"crostini_arc\" variant a no-go? or is it eventually implemented? I think I got lost.",
+      "parentUuid": "a6da1de5_ce3ceca6",
+      "revId": "76ba5f4157f17ceeaff679dd28c25d5d76269f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
