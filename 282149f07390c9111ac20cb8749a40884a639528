@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "330080d8_f44e71a2",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/run_succeeded_metric_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-10T07:32:54Z",
+      "side": 1,
+      "message": "I\u0027ve removed SilentFailTask from newer versions, since I don\u0027t need it now that I\u0027ve got ChromeOS to successfully launch Android apps.",
+      "parentUuid": "4b837ad2_0f5d73ac",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "282149f07390c9111ac20cb8749a40884a639528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8045ceed_96d69d2f",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-04T06:20:35Z",
       "side": 1,
       "message": "nit, gives",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "282149f07390c9111ac20cb8749a40884a639528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bbb3321_e9b96f81",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/run_succeeded_metric_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-10T07:32:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8045ceed_96d69d2f",
       "range": {
         "startLine": 52,
         "startChar": 10,
