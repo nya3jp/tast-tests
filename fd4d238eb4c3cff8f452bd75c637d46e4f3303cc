@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaa9738e_fb0a2ae7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-10T07:34:50Z",
+      "side": 1,
+      "message": "I had to add the DONE intent back in, because parsing logcat for allocation completion turned out to be unreliable.",
+      "revId": "fd4d238eb4c3cff8f452bd75c637d46e4f3303cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
