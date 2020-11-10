@@ -148,7 +148,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to wait for top window animation")
 		}
 
-		// Sanity check to ensure the window is maximized at the end. Otherwise, the test results are not very
+		// Validity check to ensure the window is maximized at the end. Otherwise, the test results are not very
 		// useful.
 		windows, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil {

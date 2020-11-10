@@ -24,8 +24,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Sanity,
-		Desc: "Quick sanity check for GL/GLES2",
+		Func: Smoke,
+		Desc: "Quick smoke check for GL/GLES2",
 		Contacts: []string{
 			"vsuley@chromium.org",
 			"hidehiko@chromium.org", // Tast port author
@@ -37,7 +37,7 @@ func init() {
 	})
 }
 
-func Sanity(ctx context.Context, s *testing.State) {
+func Smoke(ctx context.Context, s *testing.State) {
 	number, err := graphics.NumberOfOutputsConnected(ctx)
 	if err != nil {
 		s.Fatal("Failed to get current connected monitors: ", err)

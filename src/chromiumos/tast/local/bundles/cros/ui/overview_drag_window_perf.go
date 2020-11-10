@@ -84,7 +84,7 @@ func normalDrag(ctx context.Context, tsw *input.TouchscreenEventWriter,
 		return errors.Wrap(err, "failed to long press")
 	}
 
-	// Sanity check to ensure there is one dragging item.
+	// Validity check to ensure there is one dragging item.
 	_, err := ash.DraggedWindowInOverview(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get dragged overview item")
@@ -143,7 +143,7 @@ func dragToSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 		return errors.Wrap(err, "failed to long press")
 	}
 
-	// Sanity check to ensure there is one dragging item.
+	// Validity check to ensure there is one dragging item.
 	_, err := ash.DraggedWindowInOverview(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get dragged overview item")
@@ -164,7 +164,7 @@ func dragToSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 		return errors.Wrap(err, "failed to release touch")
 	}
 
-	// Sanity check to ensure one left snapped window.
+	// Validity check to ensure one left snapped window.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		snapped, err := ash.SnappedWindows(ctx, tconn)
 		if err != nil {
@@ -222,7 +222,7 @@ func clearSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 		return errors.Wrap(err, "failed to release touch")
 	}
 
-	// Sanity check that there is no longer snapped windows.
+	// Validity check that there is no longer snapped windows.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		snapped, err = ash.SnappedWindows(ctx, tconn)
 		if err != nil {
@@ -267,7 +267,7 @@ func dragToClose(ctx context.Context, tsw *input.TouchscreenEventWriter,
 		return errors.Wrap(err, "failed to wait")
 	}
 
-	// Sanity check that a window is closed.
+	// Validity check that a window is closed.
 	newWindows, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get all windows")

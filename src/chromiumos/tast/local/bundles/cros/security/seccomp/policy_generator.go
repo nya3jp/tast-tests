@@ -132,7 +132,7 @@ func (m *PolicyGenerator) AddStraceLog(logFile string, filter Filter) (rerr erro
 			continue
 		}
 		syscall, args := g[1], g[2]
-		// Sanity check that should never fail.
+		// Validity check that should never fail.
 		if len(syscall) == 0 {
 			return errors.New("got empty syscall during parsing")
 		}

@@ -147,7 +147,7 @@ func attachUSBIPDevice(ctx context.Context, devInfo DevInfo) error {
 		return errors.Wrap(ctx.Err(), "didn't get udev event")
 	}
 
-	// Run lsusb to sanity check that that the device is actually connected.
+	// Run lsusb to validity check that that the device is actually connected.
 	id := fmt.Sprintf("%s:%s", devInfo.VID, devInfo.PID)
 	checkAttached := testexec.CommandContext(ctx, "lsusb", "-d", id)
 	if err := checkAttached.Run(); err != nil {

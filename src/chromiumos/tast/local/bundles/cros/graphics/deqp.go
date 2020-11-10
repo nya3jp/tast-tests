@@ -182,7 +182,7 @@ func runSingleTest(ctx context.Context, s *testing.State, test string, env []str
 		return "parsefailed"
 	}
 
-	// Do some sanity checks on the parsing results.
+	// Do some validity checks on the parsing results.
 	if len(stats) != 1 {
 		s.Fatalf("Unexpected parsing result for %v: got %v stats; want 1", logFile, len(stats))
 	}

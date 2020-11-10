@@ -99,7 +99,7 @@ func (d *deqpParser) handleTermResult() error {
 	return errors.Errorf("missing cause for %v", termResult)
 }
 
-// handleXML parses the XML present in d.rawXML and performs some sanity checks.
+// handleXML parses the XML present in d.rawXML and performs some smoke checks.
 func (d *deqpParser) handleXML() error {
 	// Structure to parse the XML into. Note that it's necessary to capitalize
 	// the first letter of each field so that xml.Unmarshal works.
@@ -111,7 +111,7 @@ func (d *deqpParser) handleXML() error {
 		}
 	}{}
 
-	// Parse and perform sanity checks.
+	// Parse and perform smoke checks.
 	if err := xml.Unmarshal([]byte(d.rawXML.String()), &r); err != nil {
 		return err
 	}

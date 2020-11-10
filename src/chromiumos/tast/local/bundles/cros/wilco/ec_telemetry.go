@@ -36,7 +36,7 @@ func init() {
 // to be read from the same file. You must keep the file descriptor open
 // between the read and write for the response to be kept. This test
 // checks for end-to-end communication with the EC, and checks that the
-// driver performs some basic filtering and sanity checks. Since the
+// driver performs some basic filtering and validity checks. Since the
 // responses are variable and opaque binary data, it's impractical to
 // actually check the values of the responses.
 //

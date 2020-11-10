@@ -51,7 +51,7 @@ func APIGetSysfsData(ctx context.Context, s *testing.State) {
 				s.Errorf("File %s does not have prefix %s", dump.Path, expectedPrefix)
 			}
 
-			// Sanity check, this should not happen
+			// Validity check, this should not happen
 			if dump.CanonicalPath == "" {
 				s.Errorf("File %s has an empty cannonical path", dump.Path)
 			}

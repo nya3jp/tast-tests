@@ -23,12 +23,12 @@ type Config interface {
 	Class() string
 	// HostapdConfig returns the hostapd config of the WiFi service.
 	// Note that InstallRouterCredentials() may update the router config so that it should be
-	// called before HostapdConfig(). Also, the implementation shall perform sanity check.
+	// called before HostapdConfig(). Also, the implementation shall perform validity check.
 	HostapdConfig() (map[string]string, error)
 	// ShillServiceProperties returns the shill properties that the DUT should set in
 	// order to connect to the WiFi service configured by HostapdConfig.
 	// Note that InstallClientCredentials() may update the client config so that it should be
-	// called before ShillServiceProperties(). Also, the implementation shall perform sanity check.
+	// called before ShillServiceProperties(). Also, the implementation shall perform validity check.
 	ShillServiceProperties() (map[string]interface{}, error)
 	// NeedsNetCertStore tells if the security config needs a NetCertStore.
 	NeedsNetCertStore() bool

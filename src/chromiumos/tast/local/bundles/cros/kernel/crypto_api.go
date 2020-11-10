@@ -78,7 +78,7 @@ func readModuleDeps(ctx context.Context) (map[string][]string, error) {
 		return nil, errors.Wrap(err, "failed to read modules")
 	}
 	mods := strings.Split(strings.TrimSpace(string(b)), "\n")
-	// Sanity check.
+	// Validity check.
 	if !strings.HasPrefix(mods[0], "Module ") {
 		return nil, errors.Errorf("unexpected header %q", mods[0])
 	}
