@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe19062_c58622a3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-10T13:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c297ec9_48787f39",
+      "range": {
+        "startLine": 682,
+        "startChar": 1,
+        "endLine": 682,
+        "endChar": 9
+      },
+      "revId": "c0a0eea2f54969b3cef56a6274f3a086443a9891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d68683be_d3c8c27a",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-10T12:51:03Z",
       "side": 1,
       "message": "nit: selectedExists",
+      "range": {
+        "startLine": 690,
+        "startChar": 1,
+        "endLine": 690,
+        "endChar": 10
+      },
+      "revId": "c0a0eea2f54969b3cef56a6274f3a086443a9891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc98c17_b196b844",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-10T13:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d68683be_d3c8c27a",
       "range": {
         "startLine": 690,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e174d6a_155880e7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-10T13:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "792da9b4_9747d8c3",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 2
+      },
+      "revId": "c0a0eea2f54969b3cef56a6274f3a086443a9891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8714ebc5_d575bbb0",
@@ -83,6 +155,24 @@
       "writtenOn": "2020-11-10T12:51:03Z",
       "side": 1,
       "message": "You could return with n.Descendant().",
+      "revId": "c0a0eea2f54969b3cef56a6274f3a086443a9891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d073c2_ff7f00cb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-10T13:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8714ebc5_d575bbb0",
       "revId": "c0a0eea2f54969b3cef56a6274f3a086443a9891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3db965e_097d859c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-10T13:15:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ed95f96_69a4ec14",
+      "revId": "c0a0eea2f54969b3cef56a6274f3a086443a9891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8893467c_68c9438e",
@@ -117,6 +225,24 @@
       "writtenOn": "2020-11-10T12:51:03Z",
       "side": 1,
       "message": "You should not release this.",
+      "revId": "c0a0eea2f54969b3cef56a6274f3a086443a9891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c22fa19_3e55c50e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-11-10T13:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8893467c_68c9438e",
       "revId": "c0a0eea2f54969b3cef56a6274f3a086443a9891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
