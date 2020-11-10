@@ -39,11 +39,19 @@ func init() {
 		Desc:         "Test all ARC++ companion library",
 		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Data:         []string{"ArcCompanionLibDemo.apk", "white_wallpaper.jpg"},
 		Pre:          arc.Booted(),
-		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			// Use the android_p dep for running on android P of the container.
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			// Use the android_vm dep for running on android P and R of the vm.
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+		Timeout: 5 * time.Minute,
 	})
 }
 
@@ -52,6 +60,12 @@ const companionLibDemoPkg = "org.chromium.arc.companionlibdemo"
 // Default value for arc app window minimize limits (DP).
 // See default_minimal_size_resizable_task in //device/google/cheets2/overlay/frameworks/base/core/res/res/values/dimens.xml
 const defaultMinimalSizeResizableTask = 412
+
+type companionLibTestEntry struct {
+	name    string
+	actName string
+	fn      func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.TestConn, *arc.Activity, *ui.Device) error
+}
 
 type companionLibMessage struct {
 	MessageID int    `json:"mid"`
@@ -129,24 +143,36 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Error("Failed to set wallpaper: ", err)
 	}
 
-	for _, tc := range []struct {
-		name    string
-		actName string
-		fn      func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.TestConn, *arc.Activity, *ui.Device) error
-	}{
-		{"Window State", mainActivity, testWindowState},
-		{"Workspace Insets", mainActivity, testWorkspaceInsets},
-		{"Caption Button", mainActivity, testCaptionButton},
-		{"Device Mode", mainActivity, testDeviceMode},
-		{"Caption Height", mainActivity, testCaptionHeight},
+	var generalTests = []companionLibTestEntry{
+		// {"Window State", mainActivity, testWindowState},
+		// {"Workspace Insets", mainActivity, testWorkspaceInsets},
+		// {"Caption Button", mainActivity, testCaptionButton},
+		// {"Device Mode", mainActivity, testDeviceMode},
+		// {"Caption Height", mainActivity, testCaptionHeight},
 		{"Window Bound", mainActivity, testWindowBounds},
 		{"Window Bound for Unresizable Activity", unresizableMainActivity, testWindowBounds},
 		{"Maximize App-controlled Window", mainActivity, testMaximize},
 		{"Always on Top Window State", mainActivity, testAlwaysOnTop},
+		{"Move and Resize Window", resizeActivity, testResizeWindow},
+	}
+
+	// Feature not fully support after ARC R.
+	var specTests = []companionLibTestEntry{
 		{"Popup Window", mainActivity, testPopupWindow},
 		{"Window shadow", shadowActivity, testWindowShadow},
-		{"Move and Resize Window", resizeActivity, testResizeWindow},
-	} {
+	}
+
+	version, err := arc.SDKVersion()
+	if err != nil {
+		s.Fatal("Failed to get ARC version: ", err)
+	}
+	var testSet = generalTests
+	if version < arc.SDKR {
+		testing.ContextLog(ctx, "Using full test set")
+		testSet = append(testSet, specTests...)
+	}
+
+	for _, tc := range testSet {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			act, err := arc.NewActivity(a, companionLibDemoPkg, tc.actName)
 			if err != nil {
@@ -1238,7 +1264,7 @@ func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 			chromeBounds.Top += captionHeight
 			chromeBounds.Height -= captionHeight
 			if !isSimilarRect(chromeBounds, test.expectedBound, epsilon) {
-				return errors.Errorf("Chrome bounds are different: got %v, want %v", chromeBounds, test.expectedBound)
+				return errors.Errorf("Chrome bounds are different on subtest %v: got %v, want %v", test.name, chromeBounds, test.expectedBound)
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
@@ -1250,13 +1276,13 @@ func testWindowBounds(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *
 			return errors.Wrap(err, "failed to get window bound from UI message")
 		}
 		if !isSimilarRect(coords.Rect(bound), coords.Rect(test.expectedBound), epsilon) {
-			return errors.Errorf("wrong window bound, set %v: got %v, want %v", test.settingBound, bound, test.expectedBound)
+			return errors.Errorf("wrong window bound on subtest %v, set %v: got %v, want %v", test.name, test.settingBound, bound, test.expectedBound)
 		}
 
 		if ashWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, companionLibDemoPkg); err != nil {
 			return errors.Wrap(err, "failed to get window info")
 		} else if ashWindow.CanResize != initAshWindow.CanResize {
-			return errors.Errorf("unexpectedly changed window resizeability: got %t, want %t", ashWindow.CanResize, initAshWindow.CanResize)
+			return errors.Errorf("unexpectedly changed window resizeability on subtest %v: got %t, want %t", test.name, ashWindow.CanResize, initAshWindow.CanResize)
 		}
 	}
 
