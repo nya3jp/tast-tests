@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7312a779_38e0e1b1",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/supplicant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-10T06:39:02Z",
+      "side": 1,
+      "message": "It would be nice to add prefix to these constants.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aea880f_04ca84da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-10T06:39:02Z",
+      "side": 1,
+      "message": "I guess it\u0027s better to set a timeout for it?",
+      "range": {
+        "startLine": 194,
+        "startChar": 40,
+        "endLine": 194,
+        "endChar": 43
+      },
+      "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34813f42_45caf4ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-10T06:39:02Z",
+      "side": 1,
+      "message": "How about moving these code into TestFixture and share with CSA tests?\n\nAnd also power saving part.",
+      "range": {
+        "startLine": 266,
+        "startChar": 5,
+        "endLine": 266,
+        "endChar": 34
+      },
+      "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
