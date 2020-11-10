@@ -33,6 +33,24 @@
       "message": "LGTM from a Tast perspective.\n\nYou\u0027re probably already thinking about this, but it might make sense for certain routines to require passing, while others permit failing.",
       "revId": "d3d34c7df54b22f3addcf23246e6664f6874b03b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b291d3bc_bcdfdd26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-11-10T18:48:43Z",
+      "side": 1,
+      "message": "Yeah we are still thinking on it. We don\u0027t want to be in the situation where we are validating the test fleet\u0027s hardware. Our main goal is to make sure the tests can run on each device without errors.",
+      "parentUuid": "5a771921_1bd8ec59",
+      "revId": "d3d34c7df54b22f3addcf23246e6664f6874b03b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
