@@ -111,6 +111,30 @@
       },
       "revId": "283e033817a47d1175e013d867a518b0c2e5181c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d715105_477555c8",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-10T03:00:38Z",
+      "side": 1,
+      "message": "Those test scripts are not on the current router image, and it would take some time to add them. Let\u0027s use dbus-send and leave TODO for now.",
+      "parentUuid": "6baeffa5_77a291c6",
+      "range": {
+        "startLine": 792,
+        "startChar": 1,
+        "endLine": 793,
+        "endChar": 104
+      },
+      "revId": "283e033817a47d1175e013d867a518b0c2e5181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
