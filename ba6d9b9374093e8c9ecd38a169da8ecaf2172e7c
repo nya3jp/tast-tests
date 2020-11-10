@@ -334,6 +334,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7adc92e8_5857c174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-11-10T03:21:39Z",
+      "side": 1,
+      "message": "\u003e run_with_arc.go passes chrome.ARCEnabled() to chrome.New, so I don\u0027t think it goes through the opt-in path.\n\nThat\u0027s right. There is currently no test for \"crostini starts -\u003e opt-in to ARC\".\nYou can refer to play_store.go for implementing \"opt-in to ARC\" code.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/play_store.go?l\u003d57\u0026rcl\u003dd0c05f37e71d8ce91515503faf8c4e05ed7867eb\n\n(Optin to Play Store \u003d\u003d Optin to ARC)",
+      "parentUuid": "b16e5c4d_5c32e65c",
+      "revId": "ba6d9b9374093e8c9ecd38a169da8ecaf2172e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d9fdccb_2b98d98d",
         "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
         "patchSetId": 6
