@@ -53,6 +53,12 @@ const companionLibDemoPkg = "org.chromium.arc.companionlibdemo"
 // See default_minimal_size_resizable_task in //device/google/cheets2/overlay/frameworks/base/core/res/res/values/dimens.xml
 const defaultMinimalSizeResizableTask = 412
 
+type companionLibTestEntry struct {
+	name    string
+	actName string
+	fn      func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.TestConn, *arc.Activity, *ui.Device) error
+}
+
 type companionLibMessage struct {
 	MessageID int    `json:"mid"`
 	Type      string `json:"type"`
@@ -129,11 +135,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Error("Failed to set wallpaper: ", err)
 	}
 
-	for _, tc := range []struct {
-		name    string
-		actName string
-		fn      func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.TestConn, *arc.Activity, *ui.Device) error
-	}{
+	var generalTests = []companionLibTestEntry{
 		{"Window State", mainActivity, testWindowState},
 		{"Workspace Insets", mainActivity, testWorkspaceInsets},
 		{"Caption Button", mainActivity, testCaptionButton},
@@ -143,10 +145,26 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Window Bound for Unresizable Activity", unresizableMainActivity, testWindowBounds},
 		{"Maximize App-controlled Window", mainActivity, testMaximize},
 		{"Always on Top Window State", mainActivity, testAlwaysOnTop},
+		{"Move and Resize Window", resizeActivity, testResizeWindow},
+	}
+
+	// Feature not fully support after ARC R.
+	var specTests = []companionLibTestEntry{
 		{"Popup Window", mainActivity, testPopupWindow},
 		{"Window shadow", shadowActivity, testWindowShadow},
-		{"Move and Resize Window", resizeActivity, testResizeWindow},
-	} {
+	}
+
+	version, err := arc.SDKVersion()
+	if err != nil {
+		s.Fatal("Failed to get ARC version: ", err)
+	}
+	var testSet = generalTests
+	if version < arc.SDKR {
+		testing.ContextLog(ctx, "Using full test set")
+		testSet = append(testSet, specTests...)
+	}
+
+	for _, tc := range testSet {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			act, err := arc.NewActivity(a, companionLibDemoPkg, tc.actName)
 			if err != nil {
