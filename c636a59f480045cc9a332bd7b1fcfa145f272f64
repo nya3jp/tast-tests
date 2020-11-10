@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cc232ac_7fa7fe12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-10T19:26:36Z",
+      "side": 1,
+      "message": "Why do we need this now? And how would we know for sure that alt-tab would activate the doc window?",
+      "revId": "c636a59f480045cc9a332bd7b1fcfa145f272f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
