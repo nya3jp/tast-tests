@@ -12,15 +12,18 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OpenSettings,
-		Desc:         "Tests opening the Settings app using an Assistant query",
-		Contacts:     []string{"kyleshima@chromium.org", "bhansknecht@chromium.org", "meilinw@chromium.org"},
+		Func: OpenSettings,
+		Desc: "Tests opening the Settings app using an Assistant query",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+			"meilinw@chromium.org",
+		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          assistant.VerboseLoggingEnabled(),
@@ -55,12 +58,8 @@ func OpenSettings(ctx context.Context, s *testing.State) {
 		s.Fatalf("Settings app did not appear in the shelf: %v. Last assistant.SendTextQuery error: %v", err, assistErr)
 	}
 
-	// Confirm that the Settings app is open by checking for the "Settings" heading.
-	params := ui.FindParams{
-		Role: ui.RoleTypeHeading,
-		Name: "Settings",
-	}
-	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
-		s.Fatal("Waiting for Settings app heading failed: ", err)
+	// Confirm that the Settings app is open by checking for the search box.
+	if err := ossettings.WaitForSearchBox(ctx, tconn, 30*time.Second); err != nil {
+		s.Fatal("Waiting for Settings app search box failed: ", err)
 	}
 }
