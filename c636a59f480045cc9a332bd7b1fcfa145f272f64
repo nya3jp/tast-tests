@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ccb988a_e5b01b29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-10T19:45:05Z",
+      "side": 1,
+      "message": "lgtm\n\nOwners, please take a look. Thanks.",
+      "revId": "c636a59f480045cc9a332bd7b1fcfa145f272f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cc232ac_7fa7fe12",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "Because big_meeting_with_notes wants to input notes without split-screen mode so we need to switch to Docs first (Docs is behind Meet window and is not visible). If it\u0027s not in split screen and doc window is not activated somehow, RoleTypeTextField won\u0027t be visible and ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: \"Document content\", Role: ui.RoleTypeTextField}, timeout) would fail; if it\u0027s in split screen, as long as the RoleTypeTextField is visible it\u0027s fine.",
       "parentUuid": "3cc232ac_7fa7fe12",
+      "revId": "c636a59f480045cc9a332bd7b1fcfa145f272f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8caa6a8_a6b8aa7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-10T19:45:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4ed095c_4a586936",
       "revId": "c636a59f480045cc9a332bd7b1fcfa145f272f64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
