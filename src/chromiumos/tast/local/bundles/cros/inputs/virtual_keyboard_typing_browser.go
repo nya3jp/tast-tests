@@ -22,7 +22,7 @@ func init() {
 		Func:         VirtualKeyboardTypingBrowser,
 		Desc:         "Checks that the virtual keyboard works in Chrome browser",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:essential-inputs"},
+		Attr:         []string{"group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
