@@ -35,8 +35,17 @@ func init() {
 func Smoke(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	// Setup the test file.
 	const textFile = "test.txt"
+
+	// Ensure the Downloads directory is mounted.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := os.Stat(filesapp.DownloadPath)
+		return err
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for the Downloads folder to exist: ", err)
+	}
+
+	// Setup the test file.
 	testFileLocation := filepath.Join(filesapp.DownloadPath, textFile)
 	if err := ioutil.WriteFile(testFileLocation, []byte("blahblah"), 0644); err != nil {
 		s.Fatalf("Creating file %s failed: %s", testFileLocation, err)
