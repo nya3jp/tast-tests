@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee6f1cf5_2acafd04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-11-10T00:33:58Z",
+      "side": 1,
+      "message": "Moved all the reviewers to cc instead 👍 thanks lucmult@ and pwang@",
+      "revId": "1e6f726360806fb3755843d4483723a396035fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
