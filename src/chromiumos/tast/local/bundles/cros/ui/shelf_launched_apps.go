@@ -20,7 +20,8 @@ func init() {
 		Func: ShelfLaunchedApps,
 		Desc: "Checks that launched apps appear in the shelf",
 		Contacts: []string{
-			"dhaddock@chromium.org",
+			"chromeos-sw-engprod@google.com",
+			"tbarzic@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
