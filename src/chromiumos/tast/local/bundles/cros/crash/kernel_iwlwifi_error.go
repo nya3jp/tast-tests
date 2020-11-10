@@ -37,10 +37,7 @@ func init() {
 		Desc:         "Verify kernel iwlwifi errors are logged as expected",
 		Contacts:     []string{"arowa@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"wifi"},
-		// TODO(crbug.com/1070299): Remove the below hard-coded devices
-		// and use Intel WiFi dependency when wifi hardware
-		// dependencies are implemented.
+		SoftwareDeps: []string{"wifi", "intel_wifi_chip"},
 		// NB: These exclusions are somewhat overly broad; some
 		// (but not all) blooglet, ezkinil, and trembyle devices have
 		// WiFi chips that would work for this test. However, for now
@@ -48,30 +45,7 @@ func init() {
 		// parameters needed for this test. (See linked bug.)
 		// TODO(crbug.com/1115620): remove "Elm" and "Hana" after
 		// unibuild migration completed.
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob",
-			"elm",
-			"grunt",
-			"hana",
-			"jacuzzi",
-			"kevin",
-			"kukui",
-			"oak",
-			"scarlet",
-			"trogdor",
-			"veyron_fievel",
-			"veyron_mickey",
-			"veyron_tiger",
-			// TODO(https://crbug.com/1121243): cros_config gives the above four boards the below platform IDs.
-			// Once it gives them their proper names, remove these.
-			"gru",
-			"fievel",
-			"mickey",
-			"tiger",
-			"trogdor",
-			// Volteer is normally using Intel WiFi (HrP2), but the devices in the lab are incorrectly equipped with Realtek RTL8822 chips.
-			// This test should skip volteer devices until this is fixed (see b:171754540).
-			"volteer",
-		), hwdep.SkipOnModel("blooglet", "dalboz", "ezkinil", "trembyle")),
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("blooglet", "dalboz", "ezkinil", "trembyle")),
 	})
 }
 
