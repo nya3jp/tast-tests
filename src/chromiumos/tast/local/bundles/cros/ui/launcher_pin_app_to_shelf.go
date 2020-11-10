@@ -27,7 +27,8 @@ func init() {
 		Desc: "Using Launcher To Pin Application to Shelf",
 		Contacts: []string{
 			"seewaifu@chromium.org",
-			"kyleshima@chromium.org",
+			"chromeos-sw-engprod@google.com",
+			"tbarzic@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

@@ -23,8 +23,8 @@ func init() {
 		Func: LauncherSearchAndroidApps,
 		Desc: "Launches an Android app through the launcher",
 		Contacts: []string{
-			"bhansknecht@chromium.org",
-			"dhaddock@chromium.org",
+			"chromeos-sw-engprod@google.com",
+			"tbarzic@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
