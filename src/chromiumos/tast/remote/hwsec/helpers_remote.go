@@ -125,6 +125,10 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	if err != nil {
 		return errors.Wrap(err, "failed to check whether TPM was reset")
 	} else if isReady {
+		// Sometime TPM1.2 devices would failed to clear TPM ownership without removing files, remove files and try again.
+		if !removeFiles {
+			return h.ensureTPMIsReset(ctx, true)
+		}
 		// If the TPM is ready, the reset was not successful
 		return errors.New("ineffective reset of TPM")
 	}
