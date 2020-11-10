@@ -14,16 +14,16 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// snapshot represents a snapshot of ARC state. Fixtures and preconditions can
-// use a snapshot to revert ARC state to the original one after running a test.
-type snapshot struct {
+// Snapshot represents a Snapshot of ARC state. Fixtures and preconditions can
+// use a Snapshot to revert ARC state to the original one after running a test.
+type Snapshot struct {
 	initPID       int32               // PID (outside container) of ARC init process
 	installedPkgs map[string]struct{} // installed packages
 	runningPkgs   map[string]struct{} // running packages
 }
 
-// newSnapshot captures an ARC state snapshot.
-func newSnapshot(ctx context.Context, a *ARC) (*snapshot, error) {
+// NewSnapshot captures an ARC state snapshot.
+func NewSnapshot(ctx context.Context, a *ARC) (*Snapshot, error) {
 	initPID, err := InitPID()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get init PID")
@@ -39,7 +39,7 @@ func newSnapshot(ctx context.Context, a *ARC) (*snapshot, error) {
 		return nil, errors.Wrap(err, "failed to list running packages")
 	}
 
-	return &snapshot{
+	return &Snapshot{
 		initPID:       initPID,
 		installedPkgs: installedPkgs,
 		runningPkgs:   runningPkgs,
@@ -47,8 +47,8 @@ func newSnapshot(ctx context.Context, a *ARC) (*snapshot, error) {
 }
 
 // Restore restores the ARC state to the snapshot state.
-func (s *snapshot) Restore(ctx context.Context, a *ARC) error {
-	cur, err := newSnapshot(ctx, a)
+func (s *Snapshot) Restore(ctx context.Context, a *ARC) error {
+	cur, err := NewSnapshot(ctx, a)
 	if err != nil {
 		return err
 	}
@@ -61,7 +61,7 @@ func (s *snapshot) Restore(ctx context.Context, a *ARC) error {
 	return nil
 }
 
-func (s *snapshot) checkUsable(ctx context.Context, a *ARC, cur *snapshot) error {
+func (s *Snapshot) checkUsable(ctx context.Context, a *ARC, cur *Snapshot) error {
 	ctx, st := timing.Start(ctx, "check_arc")
 	defer st.End()
 
@@ -87,7 +87,7 @@ func (s *snapshot) checkUsable(ctx context.Context, a *ARC, cur *snapshot) error
 	return nil
 }
 
-func (s *snapshot) restorePackages(ctx context.Context, a *ARC, cur *snapshot) error {
+func (s *Snapshot) restorePackages(ctx context.Context, a *ARC, cur *Snapshot) error {
 	ctx, st := timing.Start(ctx, "restore_packages")
 	defer st.End()
 
