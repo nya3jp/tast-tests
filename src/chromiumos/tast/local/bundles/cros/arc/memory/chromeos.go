@@ -142,10 +142,7 @@ func (c *ChromeOSAllocator) AllocateUntil(
 	}
 	// Use NewPageReclaimLimit to avoid the Linux OOM killer. Once page reclaim
 	// starts, we are quite close to a Zone's min watermark.
-	nearOOM, err := memory.NewPageReclaimLimit()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to make page reclaim Limit")
-	}
+	nearOOM := memory.NewPageReclaimLimit()
 	limit := memory.NewCompositeLimit(crosCrit, nearOOM)
 
 	allocated := make([]uint, attempts)

@@ -14,7 +14,7 @@ import (
 
 const zoneInfoFile = "/proc/zoneinfo"
 
-var zoneInfoRE = regexp.MustCompile(`(?m)^Node +\d+, +zone +([^ ])+
+var zoneInfoRE = regexp.MustCompile(`(?m)^Node +\d+, +zone +([^ ]+)
 (?:(?: +pages free +(\d+)
  +min +(\d+)
  +low +(\d+)
@@ -30,16 +30,11 @@ type ZoneInfo struct {
 	Min  uint64
 }
 
-// ReadZoneInfo parses /proc/zoneinfo into a slice of ZoneInfo structures.
-func ReadZoneInfo() ([]ZoneInfo, error) {
-	data, err := ioutil.ReadFile(zoneInfoFile)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to open zoneinfo")
-	}
-
-	matches := zoneInfoRE.FindAllStringSubmatch(string(data), -1)
+// ParseZoneInfo converts the contents of /proc/zoneinfo into a []ZoneInfo.
+func ParseZoneInfo(data string) ([]ZoneInfo, error) {
+	matches := zoneInfoRE.FindAllStringSubmatch(data, -1)
 	if matches == nil {
-		return nil, errors.Wrap(err, "failed to parse zoneinfo")
+		return nil, errors.Errorf("failed to parse zoneinfo %q", data)
 	}
 
 	var infos []ZoneInfo
@@ -64,4 +59,13 @@ func ReadZoneInfo() ([]ZoneInfo, error) {
 		})
 	}
 	return infos, nil
+}
+
+// ReadZoneInfo parses /proc/zoneinfo into a slice of ZoneInfo structures.
+func ReadZoneInfo() ([]ZoneInfo, error) {
+	data, err := ioutil.ReadFile(zoneInfoFile)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open zoneinfo")
+	}
+	return ParseZoneInfo(string(data))
 }
