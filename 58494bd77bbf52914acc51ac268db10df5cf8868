@@ -33,6 +33,24 @@
       "message": "Why not change the callers that depend on this behavior to call EnsureTPMIsResetAndPowerwash on TPM 1.2 devices?\n\nChanging the call to remove files when the test does not request it, is very unexpected.",
       "revId": "58494bd77bbf52914acc51ac268db10df5cf8868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1216a890_8d7e4ae8",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-11-10T10:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ac3f9d6_9842808b",
+      "revId": "58494bd77bbf52914acc51ac268db10df5cf8868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
