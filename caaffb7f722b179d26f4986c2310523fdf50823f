@@ -33,6 +33,41 @@
       "message": "LGTM\n\nI think this flag is to exclude chromevox devices as they don\u0027t have an internal display.\nJFYI, another approach is to get primary display when no internal display is found. e.g., http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go?l\u003d284\u0026rcl\u003dda33d88c89a9f2852a1dd2ac85dc8a2fd989f91c",
       "revId": "caaffb7f722b179d26f4986c2310523fdf50823f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fdd2a27_197046f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-10T04:43:21Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "25af746d_61ad069d",
+      "revId": "caaffb7f722b179d26f4986c2310523fdf50823f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68402c92_ce4209dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-10T04:43:21Z",
+      "side": 1,
+      "message": "Thanks.",
+      "revId": "caaffb7f722b179d26f4986c2310523fdf50823f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
