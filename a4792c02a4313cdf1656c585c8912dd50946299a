@@ -34,6 +34,24 @@
       "parentUuid": "83b423aa_86dbb8fc",
       "revId": "a4792c02a4313cdf1656c585c8912dd50946299a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dae7509_57735aa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-10T14:57:26Z",
+      "side": 1,
+      "message": "The approach SGTM. Thank you for explanation and taking care of details of disk consumption!",
+      "parentUuid": "23e590ad_39af34f9",
+      "revId": "a4792c02a4313cdf1656c585c8912dd50946299a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
