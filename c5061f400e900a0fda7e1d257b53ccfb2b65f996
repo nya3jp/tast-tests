@@ -33,6 +33,46 @@
       "message": "LGTM",
       "revId": "c5061f400e900a0fda7e1d257b53ccfb2b65f996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "743bb85d_29da218f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-10T12:39:50Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "c5061f400e900a0fda7e1d257b53ccfb2b65f996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2a2490_c3542ac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_auto_install.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-10T12:39:50Z",
+      "side": 1,
+      "message": "If it not a temporary disabling, it should be deleted instead of just commenting it out.",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 31
+      },
+      "revId": "c5061f400e900a0fda7e1d257b53ccfb2b65f996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
