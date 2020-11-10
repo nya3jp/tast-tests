@@ -46,10 +46,7 @@ func init() {
 
 func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
 	// Construct memory.Limit that will throttle tab creation.
-	nearOOM, err := memory.NewPageReclaimLimit()
-	if err != nil {
-		s.Fatal("Failed to make page reclaim Limit: ", err)
-	}
+	nearOOM := memory.NewPageReclaimLimit()
 	crosCrit, err := memory.NewAvailableCriticalLimit()
 	if err != nil {
 		s.Fatal("Failed to make ChromeOS available Limit: ", err)
