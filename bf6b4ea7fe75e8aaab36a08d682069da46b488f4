@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "939ac0ee_5f0d9110",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-10T21:40:57Z",
+      "side": 1,
+      "message": "It is very weird as the failure of quick emoji only happens on kukui. I am raising a cl now to exclude it. \n\nBtw, I have been on it for a couple of days, I can not reproduce it in manual testing. ",
+      "revId": "bf6b4ea7fe75e8aaab36a08d682069da46b488f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
