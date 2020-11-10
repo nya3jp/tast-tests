@@ -350,7 +350,7 @@ func testPIPGravityQuickSettings(ctx context.Context, tconn *chrome.TestConn, a 
 	collisionWindowWorkAreaInsetsPX := int(math.Round(collisionWindowWorkAreaInsetsDP * dispMode.DeviceScaleFactor))
 	testing.ContextLog(ctx, "Using: collisionWindowWorkAreaInsetsPX = ", collisionWindowWorkAreaInsetsPX)
 
-	// 0) Sanity check. Verify that PIP window is in the expected initial position and that Quick Settings is hidden.
+	// 0) Validity check. Verify that PIP window is in the expected initial position and that Quick Settings is hidden.
 
 	if err := waitForPIPWindow(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to wait for PIP window")

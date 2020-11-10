@@ -50,7 +50,7 @@ func ExecStack(ctx context.Context, s *testing.State) {
 				return errors.Errorf("unparsable map line %q", line)
 			} else if perms := parts[1]; len(perms) != 4 { // "rwxp"
 				return errors.Errorf("bad perm field in %q (want e.g. \"rwxp\")", line)
-			} else if !strings.Contains(perms, "w") { // sanity check
+			} else if !strings.Contains(perms, "w") { // validity check
 				return errors.Errorf("non-writable stack (%q)", line)
 			} else if strings.Contains(perms, "x") {
 				return errors.Errorf("executable stack (%q)", line)

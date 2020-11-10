@@ -170,7 +170,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		regexp.MustCompile(`^.*_PARTITION$`),
 	}
 	builtin := []string{
-		// Sanity checks; should be present in builds as builtins.
+		// Validity checks; should be present in builds as builtins.
 		"INET",
 		"MMU",
 		"MODULES",
@@ -221,7 +221,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		// CONFIG_INIT_ON_ALLOC_DEFAULT_ON=y (since v5.3)
 	}
 	module := []string{
-		// Sanity checks; should be present in builds as modules.
+		// Validity checks; should be present in builds as modules.
 		"BLK_DEV_SR",
 		"BT",
 		"TUN",
@@ -278,17 +278,17 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		"FW_LOADER_USER_HELPER",
 		"FW_LOADER_USER_HELPER_FALLBACK",
 
-		// Sanity checks (binfmt); one disabled, one does not exist.
+		// Validity checks (binfmt); one disabled, one does not exist.
 		"BINFMT_AOUT",
 		"BINFMT_IMPOSSIBLE",
 
-		// Sanity checks (fs); ones disabled, one does not exist.
+		// Validity checks (fs); ones disabled, one does not exist.
 		"EXT2_FS",
 		"EXT3_FS",
 		"XFS_FS",
 		"IMPOSSIBLE_FS",
 
-		// Sanity checks (partition); one disabled, one does not exist.
+		// Validity checks (partition); one disabled, one does not exist.
 		"LDM_PARTITION",
 		"IMPOSSIBLE_PARTITION",
 	}

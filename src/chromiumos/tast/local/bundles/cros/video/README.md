@@ -90,15 +90,15 @@ the current ones. To run all VD video decoder performance tests run:
 
     tast run $HOST video.DecodeAccelVDPerf.*
 
-### Video decoder sanity checks
+### Video decoder smoke checks
 
 These tests use the [video_decode_accelerator_tests] to decode a video stream
 with unsupported features. This is done by playing VP9 profile1-3 videos while
 the decoder is incorrectly configured for profile0. The tests verify whether a
-decoder is able to handle unexpected errors gracefully. To run all sanity checks
+decoder is able to handle unexpected errors gracefully. To run all smoke checks
 use:
 
-    tast run $HOST video.DecodeAccelSanity.*
+    tast run $HOST video.DecodeAccelSmoke.*
 
 ## Video encoder integration tests (`video.EncodeAccel`)
 

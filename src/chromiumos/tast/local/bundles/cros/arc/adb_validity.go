@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ADBSanity,
+		Func:         ADBValidity,
 		Desc:         "Verifies adb communication works as intended",
 		Contacts:     []string{"hidehiko@chromium.org", "tast-owners@google.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -32,7 +32,7 @@ func init() {
 	})
 }
 
-func ADBSanity(ctx context.Context, s *testing.State) {
+func ADBValidity(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 	testADBCommandStatus(ctx, s, a)
 

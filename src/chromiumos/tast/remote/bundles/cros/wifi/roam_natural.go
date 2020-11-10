@@ -78,7 +78,7 @@ var roamNaturalAP36Opts = []hostapd.Option{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:        RoamNatural,
-		Desc:        "This test is used to sanity check that 'normal' roaming behavior is not broken by any roaming algorithm changes",
+		Desc:        "This test is used to validity check that 'normal' roaming behavior is not broken by any roaming algorithm changes",
 		Contacts:    []string{"jakobczyk@google.com"},
 		Attr:        []string{"group:wificell_roam", "wificell_roam_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
@@ -393,7 +393,7 @@ func dumpRoamNaturalStats(ctx context.Context, s *testing.State, roamStats *roam
 // every time we expected one. Realistically, RSSI can vary quite widely, and
 // we can't expect to see a good roam signal on every scan even where there
 // should be one.
-// This test is used to sanity check that "normal" roaming behavior is not
+// This test is used to validity check that "normal" roaming behavior is not
 // broken by any roaming algorithm changes. A couple failed associations is
 // acceptable, but any more than that is a good indication that roaming has
 // become too sticky.

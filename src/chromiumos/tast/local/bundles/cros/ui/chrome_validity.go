@@ -20,8 +20,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeSanity,
-		Desc: "Sanity tests for the chrome support library",
+		Func: ChromeValidity,
+		Desc: "Validity tests for the chrome support library",
 		Contacts: []string{
 			"nya@chromium.org",
 			"tast-owners@google.com",
@@ -33,7 +33,7 @@ func init() {
 	})
 }
 
-func ChromeSanity(ctx context.Context, s *testing.State) {
+func ChromeValidity(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
 	testConcurrentTabs(ctx, s, cr)

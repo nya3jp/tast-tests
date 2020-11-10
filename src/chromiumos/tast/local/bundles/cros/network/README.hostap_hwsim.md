@@ -31,8 +31,8 @@ export BOARD=betty
 # Start the VM.
 cros_vm --start --board=${BOARD}
 
-# Run the sanity test.
-tast -verbose run localhost:9222 network.HostapHwsim.sanity
+# Run the validity test.
+tast -verbose run localhost:9222 network.HostapHwsim.validity
 
 # Make modifications.
 ## Find the appropriate src/third_party/wpa_supplicant-*/
@@ -46,8 +46,8 @@ tast -verbose run localhost:9222 network.HostapHwsim.sanity
 cros_workon-${BOARD} start hostap-test
 emerge-${BOARD} hostap-test && cros deploy --root=/usr/local localhost:9222 hostap-test
 
-# Rerun sanity tests.
-tast -verbose run localhost:9222 network.HostapHwsim.sanity
+# Rerun validity tests.
+tast -verbose run localhost:9222 network.HostapHwsim.validity
 
 # Run a specific module, the 'ap_roam' module.
 tast -verbose run -var=network.HostapHwsim.runArgs='-f ap_roam' \

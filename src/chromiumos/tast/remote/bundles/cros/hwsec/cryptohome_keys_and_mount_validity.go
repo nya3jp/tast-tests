@@ -18,7 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CryptohomeKeysAndMountSanity,
+		Func: CryptohomeKeysAndMountValidity,
 		Desc: "Checks that the mount and keys related APIs works",
 		Contacts: []string{
 			"zuan@chromium.org", // Test author
@@ -312,10 +312,10 @@ func checkUserVault(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary)
 	return nil
 }
 
-// CryptohomeKeysAndMountSanity exercizes and tests the correctness of
+// CryptohomeKeysAndMountValidity exercizes and tests the correctness of
 // cryptohome's key and vault related APIs when the DUT goes through
 // various states (ownership not taken, ownership taken, after reboot).
-func CryptohomeKeysAndMountSanity(ctx context.Context, s *testing.State) {
+func CryptohomeKeysAndMountValidity(ctx context.Context, s *testing.State) {
 	r, err := hwsecremote.NewCmdRunner(s.DUT())
 	if err != nil {
 		s.Fatal("CmdRunner creation error: ", err)

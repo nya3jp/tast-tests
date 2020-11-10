@@ -14,7 +14,7 @@ import (
 	dtcpb "chromiumos/wilco_dtc"
 )
 
-// CallRunRoutine executes a RunRoutine call and does sanity checks on the
+// CallRunRoutine executes a RunRoutine call and does validity checks on the
 // result.
 func CallRunRoutine(ctx context.Context, request dtcpb.RunRoutineRequest, response *dtcpb.RunRoutineResponse) error {
 	if err := wilco.DPSLSendMessage(ctx, "RunRoutine", &request, response); err != nil {

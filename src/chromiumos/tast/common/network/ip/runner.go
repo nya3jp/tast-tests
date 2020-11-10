@@ -71,7 +71,7 @@ func (r *Runner) Flags(ctx context.Context, iface string) ([]string, error) {
 	return flags, nil
 }
 
-// showLink runs `ip -br link show <iface>` then splits and sanity-checks the output.
+// showLink runs `ip -br link show <iface>` then splits and validity-checks the output.
 func (r *Runner) showLink(ctx context.Context, iface string) ([]string, error) {
 	// Let ip print brief output so that we can have less assumption on
 	// the output format.
