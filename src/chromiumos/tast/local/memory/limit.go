@@ -105,51 +105,58 @@ func NewAvailableCriticalLimit() (*AvailableLimit, error) {
 	}, nil
 }
 
-// PageReclaimLimit is a Limit that uses /proc/zoneinfo to allow tests to
+// ZoneInfoLimit is a Limit that uses /proc/zoneinfo to allow tests to
 // allocate enough memory to trigger page reclaim, but not so much memory that
 // they OOM.
-type PageReclaimLimit struct {
-	largeZones map[string]bool
+type ZoneInfoLimit struct {
+	readZoneInfo func(context.Context) ([]ZoneInfo, error)
+	// lowZones is the set of zones we won't allow to get low.
+	lowZones map[string]bool
 }
 
 // PageReclaimLimit conforms to Limit interface.
-var _ Limit = (*PageReclaimLimit)(nil)
+var _ Limit = (*ZoneInfoLimit)(nil)
 
-// Distance returns the smallest distance from a zone's free counter to half-way
-// between its min and low watermark. If <= 0, this means that page reclaim has
-// started and we are at risk of the Linux OOM Killer waking up.
-func (l *PageReclaimLimit) Distance(_ context.Context) (int64, error) {
-	infos, err := ReadZoneInfo()
+// Distance computes how far away from OOMing we are. For each zone, compute
+// zoneDistance := (min+low)/2. If any zoneDistance in l.lowZones is negative,
+// return the lowest zoneDistance to keep any lowZone away from its min
+// watermark.
+// If no l.lowZones is negative, return the sum of all zoneDistance to indicate
+// how many free pages there are in total before we start getting close to the
+// min watermark in any of l.lowZones.
+func (l *ZoneInfoLimit) Distance(ctx context.Context) (int64, error) {
+	infos, err := l.readZoneInfo(ctx)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to read zone counters")
 	}
 	var minDistance int64 = math.MaxInt64
+	var sumDistance int64
 	for _, info := range infos {
-		if _, ok := l.largeZones[info.Name]; !ok {
-			// Zone is not a large zone.
-			continue
-		}
-		distance := int64(info.Free) - int64((info.Low+info.Min)/2)
-		if distance < minDistance {
-			minDistance = distance
+		zoneDistance := int64(info.Free) - int64((info.Low+info.Min)/2)
+		sumDistance += zoneDistance
+		if _, ok := l.lowZones[info.Name]; ok && zoneDistance < minDistance {
+			minDistance = zoneDistance
 		}
 	}
 	if minDistance == math.MaxInt64 {
-		return 0, errors.New("no large zones found")
+		return 0, errors.New("no matching zones found")
 	}
-	return minDistance, nil
+	if minDistance < 0 {
+		return minDistance, nil
+	}
+	return sumDistance, nil
 }
 
 // AssertNotReached checks that no zone has its free pages counter below
 // (min+low)/2.
-func (l *PageReclaimLimit) AssertNotReached(_ context.Context) error {
-	infos, err := ReadZoneInfo()
+func (l *ZoneInfoLimit) AssertNotReached(ctx context.Context) error {
+	infos, err := l.readZoneInfo(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to read zone counters")
 	}
 	for _, info := range infos {
-		if _, ok := l.largeZones[info.Name]; !ok {
-			// Zone is not a large zone.
+		if _, ok := l.lowZones[info.Name]; !ok {
+			// We don't care about this zone.
 			continue
 		}
 		distance := int64(info.Free) - int64((info.Low+info.Min)/2)
@@ -160,27 +167,25 @@ func (l *PageReclaimLimit) AssertNotReached(_ context.Context) error {
 	return nil
 }
 
-// NewPageReclaimLimit creates a Limit that measures how far away ChromeOS is
-// from any Linux memory zone's free pages being half-way between the min and
-// low watermarks. The intent is to trigger page reclaim by being below the low
-// watermark, but keep away from the low watermark to avoid invoking the Linux
-// OOM killer.
-func NewPageReclaimLimit() (*PageReclaimLimit, error) {
-	infos, err := ReadZoneInfo()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read zone counters")
-	}
-	const largeZoneMinMin = 4 * MiB
-	largeZones := make(map[string]bool)
-	for _, info := range infos {
-		if info.Min > largeZoneMinMin {
-			largeZones[info.Name] = true
-		}
-	}
-	if len(largeZones) == 0 {
-		return nil, errors.New("no large zones found")
-	}
-	return &PageReclaimLimit{largeZones}, nil
+// NewPageReclaimLimit creates a Limit that returns Distance 0 when Linux is
+// reclaiming memory and is close to OOMing.
+func NewPageReclaimLimit() *ZoneInfoLimit {
+	// NB: We only look at zones DMA and DMA32 because there is probably never
+	// going to be a Normal specific page allocation, and if Normal is low but
+	// there are still plenty of DMA and DMA32 pages, we're not actually close
+	// to OOMing because we'll just fetch pages from the other zones first.
+	return NewZoneInfoLimit(
+		func(_ context.Context) ([]ZoneInfo, error) { return ReadZoneInfo() },
+		map[string]bool{
+			"DMA":   true,
+			"DMA32": true,
+		},
+	)
+}
+
+// NewZoneInfoLimit creates a limit the returns
+func NewZoneInfoLimit(readZoneInfo func(context.Context) ([]ZoneInfo, error), zones map[string]bool) *ZoneInfoLimit {
+	return &ZoneInfoLimit{readZoneInfo, zones}
 }
 
 // CompositeLimit combines a set of Limits.
