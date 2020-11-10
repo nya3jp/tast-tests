@@ -39,7 +39,7 @@ func init() {
 		Contacts: []string{"sstan@google.com", "arc-framework+tast@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		// TODO(sstan): Remove display_backlight once crbug.com/950346 support hardware dependency.
-		SoftwareDeps: []string{"android_p", "chrome", "display_backlight"},
+		SoftwareDeps: []string{"arc", "chrome", "display_backlight"},
 		Data:         []string{"ArcCompanionLibDemo.apk", "white_wallpaper.jpg"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
@@ -51,6 +51,12 @@ const companionLibDemoPkg = "org.chromium.arc.companionlibdemo"
 // Default value for arc app window minimize limits (DP).
 // See default_minimal_size_resizable_task in //device/google/cheets2/overlay/frameworks/base/core/res/res/values/dimens.xml
 const defaultMinimalSizeResizableTask = 412
+
+type _testEntry struct {
+	name    string
+	actName string
+	fn      func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.TestConn, *arc.Activity, *ui.Device) error
+}
 
 type companionLibMessage struct {
 	MessageID int    `json:"mid"`
@@ -128,11 +134,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Error("Failed to set wallpaper: ", err)
 	}
 
-	for _, tc := range []struct {
-		name    string
-		actName string
-		fn      func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.TestConn, *arc.Activity, *ui.Device) error
-	}{
+	var generalTests = []_testEntry{
 		{"Window State", mainActivity, testWindowState},
 		{"Workspace Insets", mainActivity, testWorkspaceInsets},
 		{"Caption Button", mainActivity, testCaptionButton},
@@ -142,10 +144,26 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Window Bound for Unresizable Activity", unresizableMainActivity, testWindowBounds},
 		{"Maximize App-controlled Window", mainActivity, testMaximize},
 		{"Always on Top Window State", mainActivity, testAlwaysOnTop},
+		{"Move and Resize Window", resizeActivity, testResizeWindow},
+	}
+
+	// Feature not fully support after ARC R.
+	var specTests = []_testEntry{
 		{"Popup Window", mainActivity, testPopupWindow},
 		{"Window shadow", shadowActivity, testWindowShadow},
-		{"Move and Resize Window", resizeActivity, testResizeWindow},
-	} {
+	}
+
+	version, err := arc.SDKVersion()
+	if err != nil {
+		s.Fatal("Failed to get ARC version: ", err)
+	}
+	var testSet = generalTests
+	if version < arc.SDKR {
+		testing.ContextLog(ctx, "Using full test set")
+		testSet = append(testSet, specTests...)
+	}
+
+	for _, tc := range testSet {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			act, err := arc.NewActivity(a, companionLibDemoPkg, tc.actName)
 			if err != nil {
