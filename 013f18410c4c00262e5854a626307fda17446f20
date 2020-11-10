@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae86b09_a72bd245",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-10T02:55:16Z",
+      "side": 1,
+      "message": "The CQ fails at arc.AppCrash.mock_consent on novato-arc64-cq.tast_vm.direct_tast_vm, with the following error message.\n\n```\ntimed out while waiting for crash files: no file matched com_android_settings(?:_[[:alnum:]]+)*.\\d{8}.\\d{6}.\\d+.log, com_android_settings(?:_[[:alnum:]]+)*.\\d{8}.\\d{6}.\\d+.meta, com_android_settings(?:_[[:alnum:]]+)*.\\d{8}.\\d{6}.\\d+.info (found /home/user/1ef3c4d4e9105119067bbbbca147bc66ee30c435/crash/org_chromium_arc_gms.20201109.012227.489355.info, /home/user/1ef3c4d4e9105119067bbbbca147bc66ee30c435/crash/org_chromium_arc_gms.20201109.012227.489355.log, /home/user/1ef3c4d4e9105119067bbbbca147bc66ee30c435/crash/org_chromium_arc_gms.20201109.012227.489355.meta, /home/user/1ef3c4d4e9105119067bbbbca147bc66ee30c435/crash/org_chromium_arc_gms.20201109.012237.458631.info, /home/user/1ef3c4d4e9105119067bbbbca147bc66ee30c435/crash/org_chromium_arc_gms.20201109.012237.458631.log, /home/user/1ef3c4d4e9105119067bbbbca147bc66ee30c435/crash/org_chromium_arc_gms.20201109.012237.458631.meta)\n```\n\nIt seems a platform issue because something unrelated to our tests crashes.\nBTW, \"novato\" is not on Tastboard. why?",
+      "revId": "013f18410c4c00262e5854a626307fda17446f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
