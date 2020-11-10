@@ -1,6 +1,30 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fac340_036796ab",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/supplicant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-10T19:44:33Z",
+      "side": 1,
+      "message": "\u003e \"Disconnet\" is a possible misspelling of \"Disconnect\".\n\nPlease fix.",
+      "parentUuid": "0e838446_1ba4db5e",
+      "range": {
+        "startLine": 20,
+        "startChar": 66,
+        "endLine": 20,
+        "endChar": 75
+      },
+      "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7312a779_38e0e1b1",
@@ -14,6 +38,30 @@
       "writtenOn": "2020-11-10T06:39:02Z",
       "side": 1,
       "message": "It would be nice to add prefix to these constants.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e0831fd_8ffbe355",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/supplicant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-10T19:44:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7312a779_38e0e1b1",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -47,6 +95,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db81765f_9fdb1190",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-10T19:44:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aea880f_04ca84da",
+      "range": {
+        "startLine": 194,
+        "startChar": 40,
+        "endLine": 194,
+        "endChar": 43
+      },
+      "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ffd700c_d353b3a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-10T19:44:33Z",
+      "side": 1,
+      "message": "\u003e \"defered\" is a possible misspelling of \"deferred\".\n\nPlease fix.",
+      "parentUuid": "54511ff7_9a164b42",
+      "range": {
+        "startLine": 204,
+        "startChar": 79,
+        "endLine": 204,
+        "endChar": 86
+      },
+      "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a864e81_a3099dfe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-10T19:44:33Z",
+      "side": 1,
+      "message": "\u003e \"Diconnection\" is a possible misspelling of \"Disconnection\".\n\nPlease fix.",
+      "parentUuid": "87f7a600_7cfa430c",
+      "range": {
+        "startLine": 265,
+        "startChar": 72,
+        "endLine": 265,
+        "endChar": 84
+      },
+      "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34813f42_45caf4ab",
@@ -60,6 +180,30 @@
       "writtenOn": "2020-11-10T06:39:02Z",
       "side": 1,
       "message": "How about moving these code into TestFixture and share with CSA tests?\n\nAnd also power saving part.",
+      "range": {
+        "startLine": 266,
+        "startChar": 5,
+        "endLine": 266,
+        "endChar": 34
+      },
+      "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc01b72f_7f22b46a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-10T19:44:33Z",
+      "side": 1,
+      "message": "I moved the code for both (Power saving and sending channel switch) to TestFixture. I will edit the other tests in another CL:\n\u003ecsa_leave_channel.go\n\u003efunctional_after_csa.go\n\u003epower_save.go\n\u003ebgscan_backoff.go\n\u003eoverlapping_bss_scan.go\n\nWDYT?",
+      "parentUuid": "34813f42_45caf4ab",
       "range": {
         "startLine": 266,
         "startChar": 5,
