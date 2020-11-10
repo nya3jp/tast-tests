@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d650dcf_0b4d3dc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/ppds_all.tar.xz.external",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-10T10:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ab2ea67_e32268b9",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 87
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b011253_fc8f6874",
@@ -77,6 +101,24 @@
       "writtenOn": "2020-11-09T10:15:32Z",
       "side": 1,
       "message": "General comment: This test is getting complicated, so I recommend defining more functions with proper signatures for readability.\n\nI want functions for each of these bullet items at least:\n\n - Extracting ppds_all.tar.xz to a directory\n - Running tests for all PPDs in parallel\n - Running tests for PPDs on a goroutine\n - Running a test for a single PPD",
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a655d2_30ec5034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-10T10:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b011253_fc8f6874",
       "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -176,6 +218,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13649fe5_4db6d4ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-10T10:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed580801_16f5a59f",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be5b3188_f08c122b",
@@ -199,6 +265,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c1617b2_bb5ac87a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-10T10:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be5b3188_f08c122b",
+      "range": {
+        "startLine": 46,
+        "startChar": 35,
+        "endLine": 46,
+        "endChar": 51
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc385131_97b05b7e",
@@ -212,6 +302,30 @@
       "writtenOn": "2020-11-09T10:15:32Z",
       "side": 1,
       "message": "Can you introduce a separate function that processes a single file for better readability?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 26
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "567ba2e7_0f80f2ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-10T10:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc385131_97b05b7e",
       "range": {
         "startLine": 52,
         "startChar": 1,
@@ -354,6 +468,30 @@
       "side": 1,
       "message": "Ah you\u0027re right. Is it a common trick? I thought just using a prime number stride is easier...",
       "parentUuid": "f94fa2b7_2ffe8bcc",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "735cdd53d934f66c4b829b8ab75b73b17c743b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f89dd98_aff5f620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-10T10:13:30Z",
+      "side": 1,
+      "message": "They\u0027re both pretty similar, but using a power of 2 instead of a prime makes it a bit easier to adjust the stride to eg 128 or 32 without having to lookup the closest prime to these numbers.",
+      "parentUuid": "46865317_17768186",
       "range": {
         "startLine": 138,
         "startChar": 0,
