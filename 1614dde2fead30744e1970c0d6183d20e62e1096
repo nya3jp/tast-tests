@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8368b869_6ff04245",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-10T07:08:09Z",
+      "side": 1,
+      "message": "LGTM for tast style % one question.",
+      "revId": "1614dde2fead30744e1970c0d6183d20e62e1096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db94cca1_16c738b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-10T07:08:09Z",
+      "side": 1,
+      "message": "question: when we got error here, in the old code flow, we\u0027ll CloseTarget in defer but not in the new code flow. Is this expected/harmless?",
+      "revId": "1614dde2fead30744e1970c0d6183d20e62e1096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
