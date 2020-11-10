@@ -56,7 +56,6 @@ func init() {
 
 func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	const (
-		searchIconID         = "com.android.vending:id/search_bar"
 		playStorePackageName = "com.android.vending"
 		gmailPackageName     = "com.google.android.gm"
 		timeout              = 10 * time.Second
