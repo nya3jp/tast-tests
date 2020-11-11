@@ -16,6 +16,23 @@
       "message": "Thank you Po-Hsien, skipping revert in favor of landing this fix.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2527562",
       "revId": "2b6e5f775274208e68f4eaf5bc2ddee532ae33a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dc20871_62775556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-11-11T01:39:58Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "2b6e5f775274208e68f4eaf5bc2ddee532ae33a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
