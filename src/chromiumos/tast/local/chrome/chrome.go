@@ -172,6 +172,7 @@ func Auth(user, pass, gaiaID string) Option {
 		c.user = user
 		c.pass = pass
 		c.gaiaID = gaiaID
+
 	}
 }
 
@@ -591,6 +592,11 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	testing.ContextLog(ctx, "Resetting Chrome's state")
 	ctx, st := timing.Start(ctx, "reset_chrome")
 	defer st.End()
+
+	// Ensure Downloads folder exists.
+	if _, err := os.Stat("/home/chronos/user/Downloads/"); err != nil {
+		errors.Wrap(err, "oh no, downloads is gone")
+	}
 
 	// Try to close all "normal" pages and apps.
 	targetFilter := func(t *target.Info) bool {
