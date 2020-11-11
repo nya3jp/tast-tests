@@ -72,31 +72,13 @@ func ExtensionInstallForceList(ctx context.Context, s *testing.State) {
 	}
 	defer sconn.Close()
 
-	// If the extension is installed, the Remove button will be present.
-	removeButtonParams := ui.FindParams{
+	// If the extension is installed, the Installed button will be present which is not clickable.
+	installedButtonParams := ui.FindParams{
 		Role: ui.RoleTypeButton,
-		Name: "Remove from Chrome",
-	}
-	// Find the toggle button node.
-	node, err := ui.FindWithTimeout(ctx, tconn, removeButtonParams, 15*time.Second)
-	if err != nil {
-		s.Fatal("Finding button node failed: ", err)
-	}
-	defer node.Release(cleanupCtx)
-
-	// Try clicking the Remove from Chrome button.
-	// We need to focus the button first so it will be clickable.
-	if err := node.FocusAndWait(ctx, 5*time.Second); err != nil {
-		s.Fatal("Failed to call focus() on the Advanced button: ", err)
+		Name: "Installed",
 	}
 
-	if err := node.LeftClick(ctx); err != nil {
-		s.Fatal("Failed to click the Remove from Chrome button: ", err)
-	}
-
-	// The extension should not be removed after clicking on the button as it is force installed.
-	// Find the button node.
-	node, err = ui.FindWithTimeout(ctx, tconn, removeButtonParams, 15*time.Second)
+	node, err := ui.FindWithTimeout(ctx, tconn, installedButtonParams, 15*time.Second)
 	if err != nil {
 		s.Fatal("Finding button node failed: ", err)
 	}
