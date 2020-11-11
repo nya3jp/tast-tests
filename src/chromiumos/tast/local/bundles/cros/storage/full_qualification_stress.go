@@ -49,7 +49,7 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         stress.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
-		Vars:         []string{"tast_disk_size_gb", "storage.slcQual"},
+		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual"},
 		Params: []testing.Param{{
 			Name:    "setup_benchmarks",
 			Val:     setupBenchmarks,
@@ -474,7 +474,7 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	start := time.Now()
 
 	slcConfig := slcQualConfig{}
-	if val, ok := s.Var("storage.slcQual"); ok {
+	if val, ok := s.Var("tast_storage_slc_qual"); ok {
 		var err error
 		if slcConfig.enabled, err = strconv.ParseBool(val); err != nil {
 			s.Fatal("Cannot parse argumet 'storage.QuickStress.slcQual' of type bool: ", err)
