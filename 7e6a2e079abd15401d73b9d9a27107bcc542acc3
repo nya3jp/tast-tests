@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d832152b_df8fbef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T19:26:20Z",
+      "side": 1,
+      "message": "It is fine within the same test file. It is technically also fine within local packages, but still in general it is better style to just avoid it and make refactoring easier later.",
+      "parentUuid": "143b0547_9ea79ba3",
+      "revId": "7e6a2e079abd15401d73b9d9a27107bcc542acc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d49e4f6d_9e658677",

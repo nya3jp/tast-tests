@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124be473_8ce08f57",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T19:26:20Z",
+      "side": 1,
+      "message": "should notification types be defined as a list of constants somewhere? Do we know which ones are possible?",
+      "range": {
+        "startLine": 166,
+        "startChar": 73,
+        "endLine": 166,
+        "endChar": 89
+      },
+      "revId": "f6fc2da2287193c903aa5d4a71aebbfe7fafb104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "defc7c5c_cba077c2",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T19:26:20Z",
+      "side": 1,
+      "message": "Just noticed this. Is this magic string always the same? If not, anyway for someone to know what to pass to this?",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 85
+      },
+      "revId": "f6fc2da2287193c903aa5d4a71aebbfe7fafb104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
