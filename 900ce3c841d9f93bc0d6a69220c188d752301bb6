@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36606177_47faa14d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Go routines are super lightweight and the performance hit from creating more go routines than is strictly necessary is minimal. Furthermore as a bunch of blocking IO calls are involved, there can actually be performance gains from creating more threads than the number of CPUs so that some can run while others are waiting for IO to finish. The main reasons why we can\u0027t just spawn a goroutine per PPD file are 1) a limited number of file handles are available per program in linux 2) each routine uses extra memory and disk space to store a decompessed PPD file.\n\nAll things considered, 16 seems a reasonable compromise between these factors and benchmarks well on my cloudtop in the sense higher numbers do not improve performance much while lower numbers degrade it. Another option (at the risk of added complexity) it to set this to two times the number of CPUs.",
+      "parentUuid": "de568f9a_bea74141",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a359fd70_88fd70ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
         "patchSetId": 13
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-11T04:17:34Z",
       "side": 1,
       "message": "Can you construct this value in a test and pass it as a function argument, rather than making it global?\n\nMutable global variables are really tricky to use. Search web by [mutable global variables] for plenty of references...",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "372d2306_6b7976e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a359fd70_88fd70ee",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e6e773_38c5aca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c73caae_ea7a56f3",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 82
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ccf80d_6de5ac3e",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-11T04:17:34Z",
       "side": 1,
       "message": "Is it okay to skip unmatched PPD files silently?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3008d331_d38d5f7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Not all PPD files use the foomatic-rip print filter. Files that do not use this filter need not be validated against it. (There is a more comprehensive and slower to run autotest that tests printing for all PPD files, not just the foomatic-rip ones. There are also several other Tast tests for individual printer models / print filters. As the *FoomaticRIPCommandLine field in PPD files can contain arbitrary shell commands which are not validated by cupstestppd but may be blocked by the platform2 foomatic shell, it makes sense to check that that is valid by running foomatic-rip in addition to running cupstestppd to check the validity of the PPD file).",
+      "parentUuid": "f7ccf80d_6de5ac3e",
       "range": {
         "startLine": 87,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be68ee0_8c6b0041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19859f25_adac9f29",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 23
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fa3c272_6466d7e7",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-11-11T04:17:34Z",
       "side": 1,
       "message": "This can be done without using pipes and starting a goroutine:\n\n cmd.Stdin \u003d bytes.NewBuffer(pdf)",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 4
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b0fcd7c_49f89cf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fa3c272_6466d7e7",
       "range": {
         "startLine": 111,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9098b93_2bd59e87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4893f744_56adddca",
+      "range": {
+        "startLine": 128,
+        "startChar": 37,
+        "endLine": 128,
+        "endChar": 40
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c3fbfd_f479b5ad",
@@ -175,6 +343,30 @@
       "writtenOn": "2020-11-11T04:17:34Z",
       "side": 1,
       "message": "While this should work fine, I\u0027m afraid it\u0027s a bit fragile to use the same name \"err\" for this variable and \"err\" from buf.Close in the inner scope. I recommend naming it differently, e.g.\n\n ppd, readErr :\u003d ioutil.ReadAll(buf)",
+      "range": {
+        "startLine": 139,
+        "startChar": 6,
+        "endLine": 139,
+        "endChar": 9
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba1776a6_c2cdb512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c3fbfd_f479b5ad",
       "range": {
         "startLine": 139,
         "startChar": 6,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb7b475b_5fa38848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d856e1bd_ad4faf8c",
+      "range": {
+        "startLine": 151,
+        "startChar": 46,
+        "endLine": 151,
+        "endChar": 89
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ac464f9_a29f81f9",
@@ -221,6 +437,30 @@
       "writtenOn": "2020-11-11T04:17:34Z",
       "side": 1,
       "message": "IIUC this is len(\".gz\"). Can you define a constant and avoid this magic number?\n\n const gzExt \u003d \".gz\"\n\n if filepath.Ext(file) \u003d\u003d gzExt {\n   ...\n   file \u003d file[:len(file)-len(gzExt)]\n }",
+      "range": {
+        "startLine": 158,
+        "startChar": 26,
+        "endLine": 158,
+        "endChar": 27
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37876004_b9ec51c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac464f9_a29f81f9",
       "range": {
         "startLine": 158,
         "startChar": 26,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf1c1ad_dccde288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140eb8c7_bde6948a",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 3
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "180cfaa2_afeb72a4",
@@ -267,6 +531,30 @@
       "writtenOn": "2020-11-11T04:17:34Z",
       "side": 1,
       "message": "I recommend setting the channel capacity to len(files) so that sending values to them never block.\n\n make(chan string, len(files))\n\nditto for errors.",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 27
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67d5266_30c0c986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "180cfaa2_afeb72a4",
       "range": {
         "startLine": 189,
         "startChar": 1,
@@ -323,6 +611,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4c5209_83b1fc2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "710ae263_3e67e31b",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 22
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f5093d3_d3d8320c",
@@ -336,6 +648,30 @@
       "writtenOn": "2020-11-11T04:17:34Z",
       "side": 1,
       "message": "What\u0027s the reason of this check? How did you decide the number 100?\n\nSuch magic numbers must be explained for someone (likely not you) has to rewrite this test in the future.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30104e78_f43a358b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f5093d3_d3d8320c",
       "range": {
         "startLine": 197,
         "startChar": 1,
@@ -369,6 +705,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a77a2939_5d60ed33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e249cc3e_ede7eacb",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 20
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a0a8d25_741bf816",
@@ -382,6 +742,30 @@
       "writtenOn": "2020-11-11T04:17:34Z",
       "side": 1,
       "message": "Please use the name \"err\" for error values only. In Go err is too famous for error values.",
+      "range": {
+        "startLine": 219,
+        "startChar": 8,
+        "endLine": 219,
+        "endChar": 11
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a882058_8c580d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-11T06:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a0a8d25_741bf816",
       "range": {
         "startLine": 219,
         "startChar": 8,
