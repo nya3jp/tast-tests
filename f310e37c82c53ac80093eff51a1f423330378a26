@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30aab16e_63fefe67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-11T08:31:06Z",
+      "side": 1,
+      "message": "I would say it\u0027s a very weird to have a single field just for distinguish the |shouldRunThroughCameras \u003d\u003d false| case.\nCan you come up with a better way to integrate this new test?\nMay be try not to integrate the test in the loop here and spawn the subtest separately somewhere else?",
+      "parentUuid": "bdb9b7b9_7c536087",
+      "range": {
+        "startLine": 66,
+        "startChar": 86,
+        "endLine": 66,
+        "endChar": 114
+      },
+      "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1dd81112_fe65c4e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
         "patchSetId": 1
