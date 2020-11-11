@@ -161,6 +161,11 @@ func (h *APIface) DeauthenticateClient(ctx context.Context, clientMAC string) er
 	return h.hostapd.DeauthClient(ctx, clientMAC)
 }
 
+// SendBSSTMRequest sends a BSS Transition Management Request to the specified client.
+func (h *APIface) SendBSSTMRequest(ctx context.Context, clientMAC string, neighbors ...string) error {
+	return h.hostapd.SendBSSTMRequest(ctx, clientMAC, neighbors)
+}
+
 // configureIface configures the interface which we're providing services on.
 func (h *APIface) configureIface(ctx context.Context) error {
 	var retErr error
