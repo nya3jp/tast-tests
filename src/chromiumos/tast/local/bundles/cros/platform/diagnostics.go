@@ -113,8 +113,8 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		if status != "Passed" && status != "Failed" {
-			s.Fatalf("%q routine has status %q; want \"Passed\" or \"Failed\"", routine, status)
+		if status != "Passed" && status != "Failed" && status != "Failed to start" {
+			s.Fatalf("%q routine has status %q; want \"Passed\", \"Failed\", or \"Failed to start\"", routine, status)
 		}
 
 		if progress != 100 {
