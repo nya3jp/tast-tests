@@ -162,7 +162,7 @@ func testUnicodeFilenamesInArchives(ctx context.Context, s *testing.State, cd *c
 func testMacOSUTF8InArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
 	expectedContent := DirectoryContents{
 		"ファイル.dat": {1541735375, []byte("This is a file.\n")},
-		"日本語フォルタ/新しいテキストドキュメント.txt": {1541735341, []byte("新しいテキストドキュメントです。\n")},
+		"日本語フォルダ/新しいテキストドキュメント.txt": {1541735341, []byte("新しいテキストドキュメントです。\n")},
 	}
 	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "MacOS UTF-8 Bug 903664.zip"), "", expectedContent); err != nil {
 		s.Error("Test failed: ", err)
