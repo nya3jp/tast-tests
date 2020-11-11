@@ -56,6 +56,30 @@
       },
       "revId": "1f934c89da8ee07bb9a7653ecac27b4f8d0f8d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8cd550_ab7ab5ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_android_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T00:31:13Z",
+      "side": 1,
+      "message": "I don\u0027t know who would own this integration with launcher. If we want to keep things simple, we can add rohit and he can find the right person to reach out to on the arc side if this test breaks.",
+      "parentUuid": "47b33db6_504e589b",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "1f934c89da8ee07bb9a7653ecac27b4f8d0f8d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
