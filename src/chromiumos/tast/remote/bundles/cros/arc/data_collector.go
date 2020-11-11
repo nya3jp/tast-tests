@@ -297,6 +297,8 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		targetDir := filepath.Join(dataDir, ureadAheadPack)
+		// Cleanup in case of retry.
+		os.RemoveAll(targetDir)
 		if err = os.Mkdir(targetDir, 0744); err != nil {
 			s.Fatalf("Failed to create %q: %v", targetDir, err)
 		}
