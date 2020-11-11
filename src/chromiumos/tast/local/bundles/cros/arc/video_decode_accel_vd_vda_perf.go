@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Measures performance of hardware decode acceleration performance using media::VideoDecoder through the VDA interface, by running the video_decode_accelerator_perf_tests binary (see go/vd-migration)",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"arc", "chrome", "cros_video_decoder"},
+		SoftwareDeps: []string{"arc", "chrome", "video_decoder_direct"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "h264_1080p_30fps",

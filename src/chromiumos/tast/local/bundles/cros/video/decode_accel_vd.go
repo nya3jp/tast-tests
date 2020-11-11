@@ -17,7 +17,7 @@ func init() {
 		Func:         DecodeAccelVD,
 		Desc:         "Verifies hardware decode acceleration of media::VideoDecoders by running the video_decode_accelerator_tests binary (see go/vd-migration)",
 		Contacts:     []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		SoftwareDeps: []string{"chrome", "cros_video_decoder"},
+		SoftwareDeps: []string{"chrome", "video_decoder_direct"},
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               "test-25fps.h264",
