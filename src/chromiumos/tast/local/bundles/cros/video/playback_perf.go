@@ -486,7 +486,7 @@ func init() {
 				fileName:    "1080p_60fps_600frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "legacy_video_decoder", "proprietary_codecs"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
@@ -496,7 +496,7 @@ func init() {
 				decoderType: playback.Hardware,
 			},
 			ExtraData:         []string{"1080p_60fps_600frames.vp8.webm"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60, "legacy_video_decoder"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name: "vp9_1080p_60fps_hw_alt",
@@ -505,7 +505,7 @@ func init() {
 				decoderType: playback.Hardware,
 			},
 			ExtraData:         []string{"1080p_60fps_600frames.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "legacy_video_decoder"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name: "vp9_2160p_60fps_hw_alt",
@@ -514,7 +514,7 @@ func init() {
 				decoderType: playback.Hardware,
 			},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "legacy_video_decoder"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}},
 	})
