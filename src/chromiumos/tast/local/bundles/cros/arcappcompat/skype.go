@@ -83,17 +83,20 @@ func Skype(ctx context.Context, s *testing.State) {
 // verify Skype reached main activity page of the app.
 func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		allowButtonText     = "ALLOW"
-		continueButtonDes   = "Continue"
-		letsGoDes           = "Let's go"
-		enterEmailAddressID = "i0116"
-		profileClassName    = "android.widget.Button"
-		profileDes          = "My info"
-		nextButtonText      = "Next"
-		passwordID          = "i0118"
-		signInClassName     = "android.widget.Button"
-		signInText          = "Sign in"
-		signInOrCreateDes   = "Sign in or create"
+		allowButtonText             = "ALLOW"
+		continueButtonDes           = "Continue"
+		letsGoDes                   = "Let's go"
+		enterEmailAddressID         = "i0116"
+		profileClassName            = "android.widget.Button"
+		profileDes                  = "My info"
+		nextButtonText              = "Next"
+		notNowID                    = "android:id/autofill_save_no"
+		passwordID                  = "i0118"
+		signInClassName             = "android.widget.Button"
+		signInText                  = "Sign in"
+		signInOrCreateDes           = "Sign in or create"
+		whileUsingThisAppButtonText = "WHILE USING THE APP"
+		mediumUITimeout             = 30 * time.Second
 	)
 	// Click on letsGo button.
 	letsGoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(letsGoDes))
@@ -109,6 +112,19 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Error("signInButton doesn't exists: ", err)
 	}
 
+	// Press until KEYCODE_TAB until login button is focused.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if loginBtnFocused, err := signInButton.IsFocused(ctx); err != nil {
+			return errors.New("login button not focused yet")
+		} else if !loginBtnFocused {
+			d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0)
+			return errors.New("login button not focused yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: mediumUITimeout}); err != nil {
+		s.Log("Failed to focus login button: ", err)
+	}
+
 	// click on signin button until allow button exists.
 	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowButtonText))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -117,7 +133,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
 		s.Log("Allow button doesn't exists: ", err)
 	} else if err := allowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on allowButton: ", err)
@@ -140,7 +156,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 			return errors.New("email text field not focused yet")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
 		s.Fatal("Failed to focus EmailId: ", err)
 	}
 	kb, err := input.Keyboard(ctx)
@@ -180,7 +196,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 			return errors.New("password text field not focused yet")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
 		s.Fatal("Failed to focus password: ", err)
 	}
 
@@ -194,13 +210,26 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("SignInButton doesn't exists: ", err)
-	} else if err := signInButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on signInButton: ", err)
+	}
+
+	// Click on signIn Button until not now button exist.
+	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
+	notNowButton := d.Object(ui.ID(notNowID))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := notNowButton.Exists(ctx); err != nil {
+			signInButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
+		s.Log("notNowButton doesn't exist: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
 	}
 
 	// Click on continue button.
 	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(continueButtonDes))
-	if err := continueButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("Continue Button doesn't exists: ", err)
 	} else if err := continueButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on continueButton: ", err)
@@ -220,7 +249,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
 		s.Log("allowButton doesn't exist: ", err)
 	} else if err := allowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on allowButton: ", err)
@@ -231,6 +260,22 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		s.Log("Allow Button doesn't exists: ", err)
 	} else if err := allowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on allowButton: ", err)
+	}
+
+	// Click on allow while using this app button to record audio.
+	clickOnWhileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+	if err = clickOnWhileUsingThisAppButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnWhileUsingThisApp Button doesn't exists: ", err)
+	} else if err := clickOnWhileUsingThisAppButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnWhileUsingThisApp Button: ", err)
+	}
+
+	// Click on allow while using this app button to record video.
+	clickOnWhileUsingThisAppButton = d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+	if err = clickOnWhileUsingThisAppButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnWhileUsingThisApp Button doesn't exists: ", err)
+	} else if err := clickOnWhileUsingThisAppButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnWhileUsingThisApp Button: ", err)
 	}
 
 	// Check for profileIcon on homePage.
