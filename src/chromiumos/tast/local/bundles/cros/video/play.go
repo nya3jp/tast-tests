@@ -121,7 +121,7 @@ func init() {
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
 			// VP9 Profile 2 is only supported by the direct Video Decoder.
-			ExtraSoftwareDeps: []string{"cros_video_decoder", caps.HWDecodeVP9_2},
+			ExtraSoftwareDeps: []string{"video_decoder_direct", caps.HWDecodeVP9_2},
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:      "vp9_hw_hdr",
@@ -183,21 +183,21 @@ func init() {
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_legacy_decoder_only", "proprietary_codecs"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "vp8_hw_alt",
 			Val:               playParams{fileName: "bear-320x240.vp8.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp8.webm"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_legacy_decoder_only"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:              "vp9_hw_alt",
 			Val:               playParams{fileName: "bear-320x240.vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_legacy_decoder_only"},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}, {
 			Name:      "vp9_2_hw_alt",
@@ -207,7 +207,7 @@ func init() {
 			// VP9 Profile 2 is only supported by the direct Video Decoder so we only
 			// want to run this case if that is not enabled by default, i.e. if the
 			// platform is configured to use the legacy video decoder by default.
-			ExtraSoftwareDeps: []string{"legacy_video_decoder", caps.HWDecodeVP9_2},
+			ExtraSoftwareDeps: []string{"video_legacy_decoder", "video_legacy_decoder_only", caps.HWDecodeVP9_2},
 			Pre:               pre.ChromeAlternateVideoDecoder(),
 		}},
 	})
