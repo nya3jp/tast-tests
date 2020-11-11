@@ -19,7 +19,7 @@ func init() {
 		Attr:     []string{"group:mainline", "informational"},
 		Contacts: []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		// Intentionally dependent on "chrome" so we can verify if the test is working in informational-chrome suite.
-		SoftwareDeps: []string{"chrome", "tpm"},
+		SoftwareDeps: []string{"chrome", "tpm", "endorsement"},
 	})
 }
 
