@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "869f746a_d5b96fdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-11T00:53:20Z",
+      "side": 1,
+      "message": "This was a fairly straightforward translation of the network_WiFi_BSSTMReq.py logic, copying from roam_dbus.go for the \"detect when roaming happens\" logic.\n\nPart of the test logic involves getting into a state where the DUT has no knowledge of the second AP it will be roaming to. I chose to use the wpa_supplicant \"FlushBSS\" method (the same behavior that Autotest was invoking via `wpa_cli bss_flush`) to start with. Is that the best option or is there a Shill equivalent I should use instead?",
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
