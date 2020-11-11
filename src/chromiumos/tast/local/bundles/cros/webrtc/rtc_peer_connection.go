@@ -114,17 +114,17 @@ func init() {
 		}, {
 			Name:              "vp8_dec_alt",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP8", simulcast: false},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
 			Pre:               pre.ChromeVideoWithFakeWebcamAndAlternateVideoDecoder(),
 		}, {
 			Name:              "vp9_dec_alt",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP9", simulcast: false},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
 			Pre:               pre.ChromeVideoWithFakeWebcamAndAlternateVideoDecoder(),
 		}, {
 			Name:              "h264_dec_alt",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "H264", simulcast: false},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcamAndAlternateVideoDecoder(),
 		}},
 	})
