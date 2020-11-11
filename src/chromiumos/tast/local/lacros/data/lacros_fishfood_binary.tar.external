@@ -1,0 +1,6 @@
+
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/lacros/fishfood/lacros_fishfood_binary_20201111.tar",
+  "size": 334653440,
+  "sha256sum": "a08d91dc2bcde24d0846c9248966913fb542a45f39039d20974481a7e7d951ba"
+}
