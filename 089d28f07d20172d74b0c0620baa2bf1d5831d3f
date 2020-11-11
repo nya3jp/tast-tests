@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f21ebf_3d727691",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-11-11T07:54:53Z",
+      "side": 1,
+      "message": "This will define another entity with the new value enclosed in this if-block and the outside var `verificationSpecPath` will remain unchanged.\nref: https://golang.org/ref/spec#Declarations_and_scope\n\u003e An identifier declared in a block may be redeclared in an inner block. While the identifier of the inner declaration is in scope, it denotes the entity declared by the inner declaration.",
+      "range": {
+        "startLine": 121,
+        "startChar": 23,
+        "endLine": 121,
+        "endChar": 25
+      },
+      "revId": "089d28f07d20172d74b0c0620baa2bf1d5831d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
