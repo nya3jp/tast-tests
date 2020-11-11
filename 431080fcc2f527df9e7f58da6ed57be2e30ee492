@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69fbdf2e_0449fcae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-11-11T22:11:18Z",
+      "side": 1,
+      "message": "There were repeated failures for this test on specific boards.\n\nhttps://tastboard.corp.google.com/test/assistant.SuggestionChipAnimationPerf\n\nIt was a timing issue that caused assistant suggestion chips to be visible and selected by |ui.FindWithTimeout|, but animated off screen and replaced with a new one before being clicked on.\n\nWaiting for a card element to animate in and then finding and clicking on the assistant suggestion chip makes this more reliable.",
+      "revId": "431080fcc2f527df9e7f58da6ed57be2e30ee492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
