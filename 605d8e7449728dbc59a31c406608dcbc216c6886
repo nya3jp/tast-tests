@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea98a3ba_3ffb5f88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-11T13:45:06Z",
+      "side": 1,
+      "message": "nit: Remove",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "605d8e7449728dbc59a31c406608dcbc216c6886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c4d4be3_3a1ba59a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-11T13:45:06Z",
+      "side": 1,
+      "message": "please specify how did you verify your CL",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "605d8e7449728dbc59a31c406608dcbc216c6886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dda06a24_6352ba76",
@@ -14,6 +60,46 @@
       "writtenOn": "2020-11-10T18:32:36Z",
       "side": 1,
       "message": "Oleh, can you please take a look",
+      "revId": "605d8e7449728dbc59a31c406608dcbc216c6886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "027722a7_0a744b59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-11T13:45:06Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "605d8e7449728dbc59a31c406608dcbc216c6886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af3dea86_60511246",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-11T13:45:06Z",
+      "side": 1,
+      "message": "shouldn\u0027t they be sorted?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 31
+      },
       "revId": "605d8e7449728dbc59a31c406608dcbc216c6886",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
