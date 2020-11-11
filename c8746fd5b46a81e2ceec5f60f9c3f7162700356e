@@ -16,6 +16,23 @@
       "message": "xiyuan: Could you help review? Thank you!",
       "revId": "c8746fd5b46a81e2ceec5f60f9c3f7162700356e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51263a5_0b4cb83f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-11T18:12:30Z",
+      "side": 1,
+      "message": "lgtm\n\nThanks you for fixing. Please wait for tast-owners.",
+      "revId": "c8746fd5b46a81e2ceec5f60f9c3f7162700356e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
