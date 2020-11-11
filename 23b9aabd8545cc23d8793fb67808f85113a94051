@@ -22,6 +22,30 @@
       },
       "revId": "23b9aabd8545cc23d8793fb67808f85113a94051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40253072_3fc542de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-11-11T21:22:05Z",
+      "side": 1,
+      "message": "FWIU, there was an issue with the copy-and-paste operation of some text editor, which somehow changed the string when copying it. A ダ/ had been turned into a タ/.\n\nIn the end, Sergei had to use Vim to fix the issue and paste the correct string.",
+      "parentUuid": "e2a42709_eb3fd1bd",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "23b9aabd8545cc23d8793fb67808f85113a94051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
