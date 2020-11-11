@@ -9,6 +9,7 @@ import (
 	"context"
 	"encoding/binary"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 
 	"github.com/golang/protobuf/proto"
@@ -69,6 +70,15 @@ func Serializer(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to add a fake minidump crash: ", err)
 	}
+	// Explicitly clean up created files, since the serializer won't.
+	defer func() {
+		if err := os.Remove(exp.MetadataPath); err != nil && !os.IsNotExist(err) {
+			s.Errorf("Failed to remove %s: %s", exp.MetadataPath, err)
+		}
+		if err := os.Remove(exp.PayloadPath); err != nil && !os.IsNotExist(err) {
+			s.Errorf("Failed to remove %s: %s", exp.PayloadPath, err)
+		}
+	}()
 
 	coreName := filepath.Join(crash.SystemCrashDir, basename+".core")
 	addCore := s.Param().(bool)
@@ -76,6 +86,11 @@ func Serializer(ctx context.Context, s *testing.State) {
 		if err := crash.CreateRandomFile(coreName, coreBytes); err != nil {
 			s.Fatal("Failed to add a coredump: ", err)
 		}
+		defer func() {
+			if err := os.Remove(coreName); err != nil && !os.IsNotExist(err) {
+				s.Errorf("Failed to remove %s: %s", coreName, err)
+			}
+		}()
 	}
 
 	s.Log("Running crash_serializer")
