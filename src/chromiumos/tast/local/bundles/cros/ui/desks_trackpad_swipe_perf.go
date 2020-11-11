@@ -47,18 +47,15 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	// Add three desks for a total of four. Remove them at the end of the test.
-	const numDesks = 3
-	for i := 0; i < numDesks; i++ {
-		if err = ash.CreateNewDesk(ctx, tconn); err != nil {
-			s.Error("Failed to create a new desk: ", err)
-		}
-		defer func() {
-			if err = ash.RemoveActiveDesk(ctx, tconn); err != nil {
-				s.Error("Failed to remove the active desk: ", err)
-			}
-		}()
+	// Add a extra desk and remove it at the end of the test.
+	if err = ash.CreateNewDesk(ctx, tconn); err != nil {
+		s.Error("Failed to create a new desk: ", err)
 	}
+	defer func() {
+		if err = ash.RemoveActiveDesk(ctx, tconn); err != nil {
+			s.Error("Failed to remove the active desk: ", err)
+		}
+	}()
 
 	// Create a virtual trackpad.
 	tpw, err := input.Trackpad(ctx)
@@ -88,8 +85,8 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 	fingerDistance := fingerSpacing * 4
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		// Do a big swipe going left. This will continuously shift the desks to the last desk.
-		if err := doTrackpadFourFingerSwipeScroll(ctx, tpw.Width()-fingerDistance, 0); err != nil {
+		// Do a big swipe going right. This will continuously shift to the next desk on the right.
+		if err := doTrackpadFourFingerSwipeScroll(ctx, 0, tpw.Width()-fingerDistance); err != nil {
 			return errors.Wrap(err, "failed to perform four finger scroll")
 		}
 
