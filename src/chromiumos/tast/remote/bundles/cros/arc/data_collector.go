@@ -270,7 +270,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	genUreadaheadPack := func() error {
+	genUreadaheadPack := func() (retErr error) {
 		service := arc.NewUreadaheadPackServiceClient(cl.Conn)
 		// First boot is needed to be initial boot with removing all user data.
 		request := arcpb.UreadaheadPackRequest{
@@ -297,6 +297,12 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 
 		targetDir := filepath.Join(dataDir, ureadAheadPack)
+		defer func() {
+			// Cleanup in case of failure. Might be needed for next retry passes.
+			if retErr != nil {
+				os.RemoveAll(targetDir)
+			}
+		}()
 		if err = os.Mkdir(targetDir, 0744); err != nil {
 			s.Fatalf("Failed to create %q: %v", targetDir, err)
 		}
