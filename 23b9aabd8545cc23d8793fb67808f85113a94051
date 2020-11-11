@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2a42709_eb3fd1bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T19:35:01Z",
+      "side": 1,
+      "message": "Was the issue a non-ASCII character or just a typo? From what I see this was just a typo in the Japanese word for folder?\n\nBut it is hard to see what exactly changed since gerrit isn\u0027t highlighting it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "23b9aabd8545cc23d8793fb67808f85113a94051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
