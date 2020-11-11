@@ -16,6 +16,23 @@
       "message": "Defer to Yichen.",
       "revId": "17b5284c761a451c74aca156e25dada20ca240a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b12c673_386bfa19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-11T16:42:58Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "17b5284c761a451c74aca156e25dada20ca240a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
