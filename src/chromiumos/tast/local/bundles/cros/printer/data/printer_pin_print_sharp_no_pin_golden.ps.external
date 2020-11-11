@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_pin_print_sharp_no_pin_golden_20201027.ps",
-  "size": 183409,
-  "sha256sum": "d67d37fa9575ebd7b37695054a6d92b672a6ac22e47ff1b1c9bb1beddf7f137c"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_pin_print_sharp_no_pin_golden_20201111.ps",
+  "size": 183842,
+  "sha256sum": "aa272814a938aca81ced194bcc209e9df405ce9e079a415a1ff3ca988d604383"
 }
