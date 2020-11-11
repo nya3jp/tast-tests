@@ -26,7 +26,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"chromeos-files-syd@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
@@ -38,6 +38,14 @@ func Smoke(ctx context.Context, s *testing.State) {
 	// Setup the test file.
 	const textFile = "test.txt"
 	testFileLocation := filepath.Join(filesapp.DownloadPath, textFile)
+	// Ensure Downloads folder exists.
+	if _, err := os.Stat("/home/chronos/user/Downloads/"); err != nil {
+		s.Error("oh no, Downloads is gone in test: ", err)
+	}
+	if _, err := os.Stat("/home/chronos/user/MyFiles/Downloads/"); err != nil {
+		s.Error("oh no, MyFiles/Downloads is gone in test: ", err)
+	}
+
 	if err := ioutil.WriteFile(testFileLocation, []byte("blahblah"), 0644); err != nil {
 		s.Fatalf("Creating file %s failed: %s", testFileLocation, err)
 	}

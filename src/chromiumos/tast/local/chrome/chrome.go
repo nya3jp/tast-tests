@@ -172,6 +172,7 @@ func Auth(user, pass, gaiaID string) Option {
 		c.user = user
 		c.pass = pass
 		c.gaiaID = gaiaID
+
 	}
 }
 
@@ -592,6 +593,14 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "reset_chrome")
 	defer st.End()
 
+	// Ensure Downloads folder exists.
+	if _, err := os.Stat("/home/chronos/user/Downloads/"); err != nil {
+		errors.Wrap(err, "oh no, Downloads is gone before reset")
+	}
+	if _, err := os.Stat("/home/chronos/user/MyFiles/Downloads/"); err != nil {
+		errors.Wrap(err, "oh no, MyFiles/Downloads is gone before reset")
+	}
+
 	// Try to close all "normal" pages and apps.
 	targetFilter := func(t *target.Info) bool {
 		return t.Type == "page" || t.Type == "app"
@@ -718,6 +727,14 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	if err := tconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "failed to wait for the ready state")
 	}
+	// Ensure Downloads folder exists.
+	if _, err := os.Stat("/home/chronos/user/Downloads/"); err != nil {
+		errors.Wrap(err, "oh no, Downloads is gone after reset")
+	}
+	if _, err := os.Stat("/home/chronos/user/MyFiles/Downloads/"); err != nil {
+		errors.Wrap(err, "oh no, MyFiles/Downloads is gone after reset")
+	}
+
 	return nil
 }
 
