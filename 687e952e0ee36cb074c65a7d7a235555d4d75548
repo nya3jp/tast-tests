@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bdc90d2_bd16dbc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/starz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T18:48:14Z",
+      "side": 1,
+      "message": "Why does this have to be done with they keypad?",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "687e952e0ee36cb074c65a7d7a235555d4d75548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
