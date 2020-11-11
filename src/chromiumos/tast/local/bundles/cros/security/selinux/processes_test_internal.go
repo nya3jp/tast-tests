@@ -6,6 +6,7 @@ package selinux
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strings"
 
@@ -23,23 +24,32 @@ const (
 	Unstable
 )
 
-const domainIsolationErrorMessage = "every daemon must have its own domain. Please follow step 1~3 of https://chromium.googlesource.com/chromiumos/docs/+/master/security/selinux.md#Practice-in-Examples to create a permissive domain for your daemons."
+const domainIsolationErrorMessage = "every daemon must have its own domain. Please follow steps 1~3 of https://chromium.googlesource.com/chromiumos/docs/+/master/security/selinux.md#Practice-in-Examples to create a permissive domain for your daemon."
 
 // ProcessesTestInternal runs the test suite for SELinuxProcesses(Experimental|Informational)?
 func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector []ProcessTestCaseSelector) {
-	assertContext := func(processes []Process, expected *regexp.Regexp, errorMsg string) {
+	assertContext := func(processes []Process, expected *regexp.Regexp, printExpected bool, errorMsg string) {
 		for _, proc := range processes {
 			if !expected.MatchString(proc.SEContext) {
-				if errorMsg != "" {
-					s.Errorf("Process %+v has context %q; want %q; %v", proc, proc.SEContext, expected, errorMsg)
+				var errorLine strings.Builder
+				fmt.Fprintf(&errorLine, "Process %+v has context %q", proc, proc.SEContext)
+
+				if printExpected {
+					fmt.Fprintf(&errorLine, "; want %q", expected)
 				} else {
-					s.Errorf("Process %+v has context %q; want %q", proc, proc.SEContext, expected)
+					errorLine.WriteString("; want any other context")
 				}
+
+				if errorMsg != "" {
+					fmt.Fprintf(&errorLine, "; %v", errorMsg)
+				}
+
+				s.Error(errorLine.String())
 			}
 		}
 	}
-	// noStr returns a regular expression to match all strings that's not equal to s.
-	// Golang regexp doesn't support lookahead, so we can't simply implement not in regexp.
+	// noStr returns a regular expression to match all strings that are not equal to s.
+	// Golang regexp doesn't support lookahead, so we can't simply implement "not" in regexp.
 	// e.g. notStr("abc") => "(([^a].*)?|a([^b].*)?|ab([^c].*)?|abc.+)"
 	notStr := func(s string) string {
 		l := len(s)
@@ -183,16 +193,21 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 
 	for _, testCase := range testCases {
 		var p []Process
+		var printExpected bool
 		var err error
 		switch testCase.field {
 		case exe:
 			p, err = FindProcessesByExe(ps, testCase.query, false)
+			printExpected = true
 		case notExe:
 			p, err = FindProcessesByExe(ps, testCase.query, true)
+			printExpected = false
 		case cmdline:
 			p, err = FindProcessesByCmdline(ps, testCase.query, false)
+			printExpected = true
 		case notCmdline:
 			p, err = FindProcessesByCmdline(ps, testCase.query, true)
+			printExpected = false
 		default:
 			err = errors.Errorf("%+v has invalid searchType %d", testCase, int(testCase.field))
 		}
@@ -211,6 +226,6 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 			s.Errorf("Failed to compile expected context %q: %v", testCase.context, err)
 			continue
 		}
-		assertContext(p, expected, testCase.errorMsg)
+		assertContext(p, expected, printExpected, testCase.errorMsg)
 	}
 }
