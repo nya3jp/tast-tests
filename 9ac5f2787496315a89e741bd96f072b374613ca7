@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ee2657c_d4b2eb49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T23:38:10Z",
+      "side": 1,
+      "message": "What is the actual issue that makes us need keycodes?",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "9ac5f2787496315a89e741bd96f072b374613ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
