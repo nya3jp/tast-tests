@@ -16,6 +16,63 @@
       "message": "Betül, what do you think of this?",
       "revId": "45663c41a06b13a6e38f49d0609cb9f6775a0c4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a821a166_7f894cdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-11T22:47:24Z",
+      "side": 1,
+      "message": "Maybe it would be cleaner if the expect-no-match was noted in testCaseType and checked directly in assertContext than building a regex that matches the complement? Especially since strings are used as regexps in the test table and it\u0027s not clear that notStr doesn\u0027t work on regexps for one, but also because it looks like you duplicate this information in the type and context regexp for each test case except one (which this patch unfortunately does not fix the issue for either).",
+      "revId": "45663c41a06b13a6e38f49d0609cb9f6775a0c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a593901_59d9d635",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-11T22:47:24Z",
+      "side": 1,
+      "message": "nit: already existing typo but this should be notStr",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "45663c41a06b13a6e38f49d0609cb9f6775a0c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec50870_2c6192a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-11T22:47:24Z",
+      "side": 1,
+      "message": "This case will still print the no-match regexp.",
+      "revId": "45663c41a06b13a6e38f49d0609cb9f6775a0c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
