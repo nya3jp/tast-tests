@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a8f317_20322541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T23:28:18Z",
+      "side": 1,
+      "message": "Can we just add this code to the end of the play store test instead of making a new test?",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "60126d019775ff62d66cf736e8c47c77711d2d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
