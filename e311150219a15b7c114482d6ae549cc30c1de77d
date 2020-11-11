@@ -16,6 +16,24 @@
       "message": "Maybe add some logs indicating there is no config under stateful partition before trying rootfs  for debugging in the future.",
       "revId": "e311150219a15b7c114482d6ae549cc30c1de77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9509e0ee_e68edfcc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2020-11-11T07:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d042acca_d6cc7d25",
+      "revId": "e311150219a15b7c114482d6ae549cc30c1de77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
