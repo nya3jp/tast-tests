@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b359a826_c86b9204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-11-11T14:22:08Z",
+      "side": 1,
+      "message": "lgtm Please rebase",
+      "revId": "f7932423667700fae6e4dc445bbf1a02902ef745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "622777b6_1e649e9e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-11-11T14:22:08Z",
+      "side": 1,
+      "message": "let\u0027s not remove it :)",
+      "range": {
+        "startLine": 785,
+        "startChar": 0,
+        "endLine": 785,
+        "endChar": 73
+      },
+      "revId": "f7932423667700fae6e4dc445bbf1a02902ef745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
