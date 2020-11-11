@@ -150,6 +150,19 @@ func (its *InputsTestServer) Clear(ctx context.Context, inputField InputField) e
 	return its.conn.Eval(ctx, fmt.Sprintf(`document.querySelector("*[aria-label='%s']").value=''`, string(inputField)), nil)
 }
 
+// WaitForFieldToBeActive waits for certain input field to be the active element.
+func (its *InputsTestServer) WaitForFieldToBeActive(ctx context.Context, inputField InputField) error {
+	return its.conn.WaitForExpr(ctx, fmt.Sprintf(`!!document.activeElement && document.querySelector("*[aria-label='%s']")===document.activeElement`, string(inputField)))
+}
+
+// ClickFieldAndWaitForActive clicks the input field and waits for it to be active.
+func (its *InputsTestServer) ClickFieldAndWaitForActive(ctx context.Context, tconn *chrome.TestConn, inputField InputField) error {
+	if err := inputField.Click(ctx, tconn); err != nil {
+		return errors.Wrapf(err, "failed to click %s", string(inputField))
+	}
+	return its.WaitForFieldToBeActive(ctx, inputField)
+}
+
 // Click clicks the input field.
 func (inputField InputField) Click(ctx context.Context, tconn *chrome.TestConn) error {
 	actionFunc := func(node *ui.Node) error {
