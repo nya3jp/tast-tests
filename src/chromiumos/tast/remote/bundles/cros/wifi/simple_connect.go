@@ -355,8 +355,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to an AP in WPA2/WPA3 mixed mode. WiFi alliance suggests PMF in this mode.
-				Name:      "wpa3mixed",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "wpa3mixed",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{
