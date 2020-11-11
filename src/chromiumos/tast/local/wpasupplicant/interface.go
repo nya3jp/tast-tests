@@ -16,6 +16,7 @@ import (
 
 const (
 	dbusInterfaceInterface      = "fi.w1.wpa_supplicant1.Interface"
+	dbusInterfaceMethodFlushBSS = "FlushBSS"
 	dbusInterfaceMethodReattach = "Reattach"
 	dbusInterfacePropBSSs       = "BSSs"
 	// DBusInterfaceSignalBSSAdded Interface became awaere of a new BSS.
@@ -147,4 +148,9 @@ func SignalName(s *dbus.Signal) string {
 		return ""
 	}
 	return parts[len(parts)-1]
+}
+
+// FlushBSS calls the FlushBSS method of the interface to flush BSS entries from the cache.
+func (iface *Interface) FlushBSS(ctx context.Context, age uint32) error {
+	return iface.dbus.Call(ctx, dbusInterfaceMethodFlushBSS, age).Err
 }

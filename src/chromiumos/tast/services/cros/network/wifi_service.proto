@@ -148,6 +148,9 @@ service WifiService {
 
   // SetGlobalFTProperty set the WiFi.GlobalFTEnabled manager property value.
   rpc SetGlobalFTProperty(SetGlobalFTPropertyRequest) returns (google.protobuf.Empty) {}
+
+  // FlushBSS flushes BSS entries over the specified age from wpa_supplicant's cache.
+  rpc FlushBSS(FlushBSSRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -437,4 +440,9 @@ message SetGlobalFTPropertyRequest {
 
 message InitDUTRequest {
   bool with_ui = 1;
+}
+
+message FlushBSSRequest {
+  string interface_name = 1;
+  int64 age = 2;
 }
