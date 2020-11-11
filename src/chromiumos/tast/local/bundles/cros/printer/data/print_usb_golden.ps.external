@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/print_usb_golden_20201027.ps",
-  "size": 381258,
-  "sha256sum": "26a2e53cce30d8695ba4ff9d8240b16ce3877d88db346b1aacb2d2c16868ac6f"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/print_usb_golden_20201111.ps",
+  "size": 381691,
+  "sha256sum": "73cf2949f2b668429d9d814f666219542c581498ad5d10600953ab5eb61d9259"
 }
