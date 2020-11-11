@@ -16,6 +16,23 @@
       "message": "Thanks for reviewing!",
       "revId": "788f2bfc38fa51bb16aff0dcdce65b7f2a4db264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23339cd6_de09489d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-11T16:53:47Z",
+      "side": 1,
+      "message": "LGTM % question\nCan this verbose enrollment be useful in the future as well? If so it might worth considering to add simething like a c.verboseEnrollment variable, and if that is set, do this verbose logging.",
+      "revId": "788f2bfc38fa51bb16aff0dcdce65b7f2a4db264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
