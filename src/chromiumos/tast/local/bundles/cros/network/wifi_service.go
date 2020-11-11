@@ -2035,3 +2035,19 @@ func (s *WifiService) SuspendAssertConnect(ctx context.Context, req *network.Sus
 
 	return &network.SuspendAssertConnectResponse{ReconnectTime: time.Since(resumeStartTime).Nanoseconds()}, nil
 }
+
+// FlushBSS flushes BSS entries over the specified age from wpa_supplicant's cache.
+func (s *WifiService) FlushBSS(ctx context.Context, req *network.FlushBSSRequest) (*empty.Empty, error) {
+	supplicant, err := wpasupplicant.NewSupplicant(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
+	}
+	iface, err := supplicant.GetInterface(ctx, req.InterfaceName)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get interface object paths")
+	}
+	if err := iface.FlushBSS(ctx, req.Age); err != nil {
+		return nil, errors.Wrap(err, "failed to call FlushBSS method")
+	}
+	return &empty.Empty{}, nil
+}
