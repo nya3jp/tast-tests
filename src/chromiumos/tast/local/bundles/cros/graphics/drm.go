@@ -35,7 +35,7 @@ func init() {
 			Name: "atomic_test",
 			Val: drmTest{
 				command: []string{"atomictest", "-a", "-t", "all"},
-				timeout: 5 * time.Minute,
+				timeout: 20 * time.Minute,
 			},
 			ExtraSoftwareDeps: []string{"display_backlight", "drm_atomic"},
 			ExtraAttr:         []string{"informational"},
@@ -69,7 +69,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"display_backlight", "vulkan"},
 			ExtraAttr:         []string{"informational"},
 		}},
-		Timeout: 5 * time.Minute,
+		Timeout: 20 * time.Minute,
 		Attr:    []string{"group:mainline"},
 	})
 }
