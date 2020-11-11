@@ -121,6 +121,30 @@
       },
       "revId": "1628d1c49613110dc5959393dfe41f83dc215cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73b439c_e0647c37",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2020-11-11T14:13:22Z",
+      "side": 1,
+      "message": "Thanks for this insight! I have moved the code there.",
+      "parentUuid": "17b4a209_c24e5cfb",
+      "range": {
+        "startLine": 192,
+        "startChar": 16,
+        "endLine": 192,
+        "endChar": 25
+      },
+      "revId": "1628d1c49613110dc5959393dfe41f83dc215cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
