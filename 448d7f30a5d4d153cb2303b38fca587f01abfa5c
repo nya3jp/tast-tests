@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f9c971_a9acc9a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-11T09:06:28Z",
+      "side": 1,
+      "message": "minor nit: link to the CL",
+      "revId": "448d7f30a5d4d153cb2303b38fca587f01abfa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cdbb155_43f13d4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-11T09:06:28Z",
+      "side": 1,
+      "message": "LGTM % nit/questions, but I am not a java reviewer.",
+      "revId": "448d7f30a5d4d153cb2303b38fca587f01abfa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7400a25_26996893",
+        "filename": "android/ArcLifecycleTest/BUILD.gn",
+        "patchSetId": 18
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-11T09:06:28Z",
+      "side": 1,
+      "message": "How long does it take to build all these apks? When are they built?",
+      "revId": "448d7f30a5d4d153cb2303b38fca587f01abfa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49143088_07e9343b",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-11T09:06:28Z",
+      "side": 1,
+      "message": "nit: finish the sentence",
+      "revId": "448d7f30a5d4d153cb2303b38fca587f01abfa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
