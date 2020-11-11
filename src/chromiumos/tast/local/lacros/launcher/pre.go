@@ -27,6 +27,9 @@ const (
 	// binary. When using the StartedByData precondition, you must list this as one
 	// of the data dependencies of your test.
 	DataArtifact = "lacros_binary.tar"
+
+	// DataArtifactFishfood holds the tarball for the current fishfood release of lacros-chrome binary.
+	DataArtifactFishfood = "lacros_fishfood_binary.tar"
 )
 
 // The PreData object is made available to users of this precondition via:
@@ -45,13 +48,27 @@ type PreData struct {
 // lacros.DataArtifact as a data dependency.
 func StartedByData() testing.Precondition { return startedByDataPre }
 
+// StartedByDataByName uses a pre-built image downloaded from cloud storage as a
+// data-dependency. You specify the artifact you want and a suffix to the precondition name.
+// You must have the artifact you want as a data dependency e.g lacros.DataArtifactFishfood.
+func StartedByDataByName(artifact, name string) testing.Precondition {
+	return &preImpl{
+		name:     "lacros_started_by_artifact_" + name,
+		timeout:  chrome.LoginTimeout + 7*time.Minute,
+		mode:     download,
+		opts:     []chrome.Option{chrome.ExtraArgs("--lacros-mojo-socket-for-testing=" + mojoSocketPath)},
+		artifact: artifact,
+	}
+}
+
 // startedByDataWithChromeOSChromeOptions is the same as StartedByData but allows passing of Options to Chrome.
 func startedByDataWithChromeOSChromeOptions(suffix string, opts ...chrome.Option) testing.Precondition {
 	return &preImpl{
-		name:    "lacros_started_by_artifact_" + suffix,
-		timeout: chrome.LoginTimeout + 7*time.Minute,
-		mode:    download,
-		opts:    append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+mojoSocketPath)),
+		name:     "lacros_started_by_artifact_" + suffix,
+		timeout:  chrome.LoginTimeout + 7*time.Minute,
+		mode:     download,
+		opts:     append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+mojoSocketPath)),
+		artifact: DataArtifact,
 	}
 }
 
@@ -75,10 +92,11 @@ const (
 const LacrosTestPath = "/mnt/stateful_partition/lacros_test_artifacts"
 
 var startedByDataPre = &preImpl{
-	name:    "lacros_started_by_artifact",
-	timeout: chrome.LoginTimeout + 7*time.Minute,
-	mode:    download,
-	opts:    []chrome.Option{chrome.ExtraArgs("--lacros-mojo-socket-for-testing=" + mojoSocketPath)},
+	name:     "lacros_started_by_artifact",
+	timeout:  chrome.LoginTimeout + 7*time.Minute,
+	mode:     download,
+	opts:     []chrome.Option{chrome.ExtraArgs("--lacros-mojo-socket-for-testing=" + mojoSocketPath)},
+	artifact: DataArtifact,
 }
 
 var startedByDataForceCompositionPre = &preImpl{
@@ -88,6 +106,7 @@ var startedByDataForceCompositionPre = &preImpl{
 	opts: []chrome.Option{chrome.ExtraArgs(
 		"--lacros-mojo-socket-for-testing="+mojoSocketPath,
 		"--enable-hardware-overlays=\"\"")}, // Force composition.
+	artifact: DataArtifact,
 }
 
 var startedByDataWith100FakeAppsPre = ash.NewFakeAppPrecondition("fake_apps", 100, startedByDataWithChromeOSChromeOptions, false)
@@ -101,6 +120,7 @@ type preImpl struct {
 	tconn    *chrome.TestConn // Test-connection for CrOS-chrome.
 	prepared bool             // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
 	opts     []chrome.Option  // Options to be run for CrOS-chrome.
+	artifact string           // The Lacros binary artifact to use.
 }
 
 // Interface methods for a testing.Precondition.
@@ -129,8 +149,7 @@ func (p *preImpl) prepareLacrosChromeBinary(ctx context.Context, s *testing.PreS
 	if err := os.MkdirAll(LacrosTestPath, os.ModeDir); err != nil {
 		return errors.Wrap(err, "failed to make new test artifacts directory")
 	}
-
-	artifactPath := s.DataPath(DataArtifact)
+	artifactPath := s.DataPath(p.artifact)
 	tarCmd := testexec.CommandContext(ctx, "tar", "-xvf", artifactPath, "-C", LacrosTestPath)
 	if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to untar test artifacts")

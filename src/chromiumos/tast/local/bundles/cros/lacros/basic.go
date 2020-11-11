@@ -20,9 +20,17 @@ func init() {
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Pre:          launcher.StartedByData(),
 		Timeout:      7 * time.Minute,
-		Data:         []string{launcher.DataArtifact},
+		Params: []testing.Param{
+			{
+				Pre:       launcher.StartedByData(),
+				ExtraData: []string{launcher.DataArtifact},
+			},
+			{
+				Name:      "fishfood",
+				Pre:       launcher.StartedByDataByName(launcher.DataArtifactFishfood, "fishfood"),
+				ExtraData: []string{launcher.DataArtifactFishfood},
+			}},
 	})
 }
 
@@ -33,7 +41,7 @@ func Basic(ctx context.Context, s *testing.State) {
 	}
 	defer l.Close(ctx)
 
-	if _, err = l.Devsess.CreateTarget(ctx, "about:blank"); err != nil {
+	if _, err = l.Devsess.CreateTarget(ctx, "chrome://version"); err != nil {
 		s.Fatal("Failed to open new tab: ", err)
 	}
 }
