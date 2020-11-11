@@ -110,10 +110,15 @@ func CrosHardwareVerifier(ctx context.Context, s *testing.State) {
 // runtime_probe will remove fields that are not allowed so that it would
 // be identical with other sources.
 func requiredFields(ctx context.Context, dut *dut.DUT) (requiredFieldSet, error) {
+	const payloadPath = "etc/hardware_verifier/hw_verification_spec.prototxt"
 	fieldsMapping := make(requiredFieldSet)
-	output, err := dut.Command("cat", "/etc/hardware_verifier/hw_verification_spec.prototxt").Output(ctx)
+	// We assume that cros_debug is always enabled on testing DUTs.
+	output, err := dut.Command("cat", "/usr/local/"+payloadPath).Output(ctx)
 	if err != nil {
-		return nil, err
+		output, err = dut.Command("cat", "/"+payloadPath).Output(ctx)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	message := &hvpb.HwVerificationSpec{}
