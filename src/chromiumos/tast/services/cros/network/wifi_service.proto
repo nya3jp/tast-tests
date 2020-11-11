@@ -154,6 +154,9 @@ service WifiService {
   // To notify the caller that it is ready, it sends an empty response after
   // the signal watcher is initialized.
   rpc DisconnectReason(google.protobuf.Empty) returns (stream DisconnectReasonResponse) {}
+
+  // FlushBSS flushes BSS entries over the specified age from wpa_supplicant's cache.
+  rpc FlushBSS(FlushBSSRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -447,4 +450,9 @@ message SetGlobalFTPropertyRequest {
 
 message InitDUTRequest {
   bool with_ui = 1;
+}
+
+message FlushBSSRequest {
+  string interface_name = 1;
+  int64 age = 2;
 }

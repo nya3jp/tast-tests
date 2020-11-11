@@ -16,6 +16,7 @@ import (
 
 const (
 	dbusInterfaceInterface      = "fi.w1.wpa_supplicant1.Interface"
+	dbusInterfaceMethodFlushBSS = "FlushBSS"
 	dbusInterfaceMethodReattach = "Reattach"
 	dbusInterfacePropBSSs       = "BSSs"
 	// DBusInterfacePropDisconnectReason the most recent IEEE802.11 reason code for disconnect. Negative value indicates locally generated disconnect.
@@ -149,4 +150,9 @@ func SignalName(s *dbus.Signal) string {
 		return ""
 	}
 	return parts[len(parts)-1]
+}
+
+// FlushBSS calls the FlushBSS method of the interface to flush BSS entries from the cache.
+func (iface *Interface) FlushBSS(ctx context.Context, age uint32) error {
+	return iface.dbus.Call(ctx, dbusInterfaceMethodFlushBSS, age).Err
 }

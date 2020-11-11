@@ -685,6 +685,16 @@ func (tf *TestFixture) Reassociate(ctx context.Context, iface string, timeout ti
 	return err
 }
 
+// FlushBSS flushes BSS entries over the specified age from wpa_supplicant's cache.
+func (tf *TestFixture) FlushBSS(ctx context.Context, iface string, age time.Duration) error {
+	req := &network.FlushBSSRequest{
+		InterfaceName: iface,
+		Age:           age.Nanoseconds(),
+	}
+	_, err := tf.wifiClient.FlushBSS(ctx, req)
+	return err
+}
+
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
 func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...ConnOption) (*network.ConnectResponse, error) {
 	conf := ap.Config()
