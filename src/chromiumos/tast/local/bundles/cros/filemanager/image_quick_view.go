@@ -26,7 +26,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"chromeos-files-syd@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"files_app_test.png"},
 		Pre:          chrome.LoggedIn(),
@@ -42,6 +42,11 @@ func ImageQuickView(ctx context.Context, s *testing.State) {
 		previewImageDimensions = "100 x 100"
 	)
 	imageFileLocation := filepath.Join(filesapp.DownloadPath, previewImageFile)
+	// Ensure Downloads folder exists.
+	if _, err := os.Stat("/home/chronos/user/Downloads/"); err != nil {
+		s.Fatal("oh no, downloads is gone in test: ", err)
+	}
+
 	if err := fsutil.CopyFile(s.DataPath(previewImageFile), imageFileLocation); err != nil {
 		s.Fatalf("Failed to copy the test image to %s: %s", imageFileLocation, err)
 	}
