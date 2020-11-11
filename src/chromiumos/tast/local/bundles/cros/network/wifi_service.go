@@ -2131,3 +2131,20 @@ func (s *WifiService) SetGlobalFTProperty(ctx context.Context, req *network.SetG
 	}
 	return &empty.Empty{}, nil
 }
+
+// FlushBSS flushes BSS entries over the specified age from wpa_supplicant's cache.
+func (s *WifiService) FlushBSS(ctx context.Context, req *network.FlushBSSRequest) (*empty.Empty, error) {
+	supplicant, err := wpasupplicant.NewSupplicant(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to wpa_supplicant")
+	}
+	iface, err := supplicant.GetInterface(ctx, req.InterfaceName)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get interface object paths")
+	}
+	ageThreshold := uint32(time.Duration(req.Age).Seconds())
+	if err := iface.FlushBSS(ctx, ageThreshold); err != nil {
+		return nil, errors.Wrap(err, "failed to call FlushBSS method")
+	}
+	return &empty.Empty{}, nil
+}

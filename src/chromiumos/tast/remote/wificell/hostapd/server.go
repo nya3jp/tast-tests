@@ -248,6 +248,23 @@ func (s *Server) DeauthClient(ctx context.Context, clientMAC string) error {
 	return nil
 }
 
+// SendBSSTMRequest sends a BSS Transition Management Request to the specified client.
+func (s *Server) SendBSSTMRequest(ctx context.Context, clientMAC string, neighbors []string) error {
+	// Construct the arguments for:
+	//   `hostapd_cli -p${ctrlPath} BSS_TM_REQ ${clientMAC} neighbor=${n},0,0,0,0 pref=1`
+	args := []string{"-p" + s.ctrlPath(), "BSS_TM_REQ", clientMAC}
+	for _, n := range neighbors {
+		args = append(args, fmt.Sprintf("neighbor=%s,0,0,0,0", n))
+	}
+	args = append(args, "pref=1")
+
+	// Run the command
+	if err := s.host.Command(hostapdCLI, args...).Run(ctx); err != nil {
+		return errors.Wrapf(err, "failed to send BSS TM request to client %s", clientMAC)
+	}
+	return nil
+}
+
 // Interface returns the interface used by the hostapd.
 func (s *Server) Interface() string {
 	return s.iface

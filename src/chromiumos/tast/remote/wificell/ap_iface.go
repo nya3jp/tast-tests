@@ -240,3 +240,8 @@ func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
 func (h *APIface) StartChannelSwitch(ctx context.Context, count, channel int, opts ...hostapd.CSOption) error {
 	return h.hostapd.StartChannelSwitch(ctx, count, channel, opts...)
 }
+
+// SendBSSTMRequest sends a BSS Transition Management Request to the specified client.
+func (h *APIface) SendBSSTMRequest(ctx context.Context, clientMAC string, neighbors ...string) error {
+	return h.hostapd.SendBSSTMRequest(ctx, clientMAC, neighbors)
+}
