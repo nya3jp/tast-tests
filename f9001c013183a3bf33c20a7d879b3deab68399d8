@@ -39,6 +39,75 @@
       },
       "revId": "f9001c013183a3bf33c20a7d879b3deab68399d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff621fec_86de9574",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T00:24:07Z",
+      "side": 1,
+      "message": "super nit: ErrNoRadioButtons",
+      "range": {
+        "startLine": 670,
+        "startChar": 4,
+        "endLine": 670,
+        "endChar": 20
+      },
+      "revId": "f9001c013183a3bf33c20a7d879b3deab68399d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9754d5_4857e156",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T00:24:07Z",
+      "side": 1,
+      "message": "This is more a failed to run javascript to check if radio buttons exist, so you may want change the error message",
+      "range": {
+        "startLine": 683,
+        "startChar": 32,
+        "endLine": 683,
+        "endChar": 59
+      },
+      "revId": "f9001c013183a3bf33c20a7d879b3deab68399d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba379a2_1c59a638",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T00:24:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 692,
+        "startChar": 33,
+        "endLine": 692,
+        "endChar": 68
+      },
+      "revId": "f9001c013183a3bf33c20a7d879b3deab68399d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
