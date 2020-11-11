@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d1b7f7_d5d4a3ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-11T03:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8478f611_1b53e1a7",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "7e6a2e079abd15401d73b9d9a27107bcc542acc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37b8b81d_bba13eac",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-10T18:55:28Z",
       "side": 1,
       "message": "I think it\u0027s preferred not to pass the State into helper functions, but instead have it return an error and handle that here. Not sure if that\u0027s codified in a style guide somewhere, but I remember one of the Tast owners making that comment on a different CL.",
+      "revId": "7e6a2e079abd15401d73b9d9a27107bcc542acc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143b0547_9ea79ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-11T03:40:19Z",
+      "side": 1,
+      "message": "Yeh i read that, I thought it might be ok to do within the same test file. I\u0027ll change",
+      "parentUuid": "37b8b81d_bba13eac",
       "revId": "7e6a2e079abd15401d73b9d9a27107bcc542acc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -78,6 +120,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "d49e4f6d_9e658677",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 58
+      },
+      "revId": "7e6a2e079abd15401d73b9d9a27107bcc542acc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c94d8b40_8ea93f95",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-11T03:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a88d85b_8d1a45eb",
       "range": {
         "startLine": 170,
         "startChar": 0,
