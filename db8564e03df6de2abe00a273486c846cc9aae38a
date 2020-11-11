@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d9f436a_0dfbf24b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-11T03:54:50Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027m not very familiar with this package either. The CLs I reviewed are structure refactor which contains little behavior change.\n\nAs this one has some behavior change in the calculation of Distance, Charles@, can you also add your team members to review this CL?",
+      "revId": "db8564e03df6de2abe00a273486c846cc9aae38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
