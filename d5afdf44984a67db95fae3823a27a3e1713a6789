@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71fb586c_717c80ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-11T18:26:07Z",
+      "side": 1,
+      "message": "It\u0027s a bit unfortuante that we are passing the testing.State around just for Log(), but I guess it is what it is.",
+      "revId": "d5afdf44984a67db95fae3823a27a3e1713a6789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
