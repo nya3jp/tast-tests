@@ -67,6 +67,29 @@
       "message": "nit: finish the sentence",
       "revId": "448d7f30a5d4d153cb2303b38fca587f01abfa5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb52f870_ee82dd90",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T19:06:28Z",
+      "side": 1,
+      "message": "nit: This else case shouldn\u0027t be needed. The default for a new byte should be zero",
+      "range": {
+        "startLine": 120,
+        "startChar": 24,
+        "endLine": 120,
+        "endChar": 38
+      },
+      "revId": "448d7f30a5d4d153cb2303b38fca587f01abfa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
