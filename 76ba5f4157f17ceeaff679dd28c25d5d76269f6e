@@ -51,6 +51,24 @@
       "parentUuid": "a6da1de5_ce3ceca6",
       "revId": "76ba5f4157f17ceeaff679dd28c25d5d76269f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89868987_a4060bbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-11T03:16:57Z",
+      "side": 1,
+      "message": "If you need to specify ordering of VM startup because it is important to the test, e.g. start arc after crostini, then you would use the Crostini precondition and then start arc in your test using something like what play_store.go uses.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/play_store.go;l\u003d57;rcl\u003dd0c05f37e71d8ce91515503faf8c4e05ed7867eb\n\nIs that plan OK?",
+      "parentUuid": "d0b1a47f_b30c4fb9",
+      "revId": "76ba5f4157f17ceeaff679dd28c25d5d76269f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
