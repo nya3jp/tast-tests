@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc84898_a3b5332f",
+        "filename": "src/chromiumos/tast/local/printing/document/compare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-11T23:16:29Z",
+      "side": 0,
+      "message": "any reason why the \"groups\" was removed? If they are not needed, could you add a note in the commit description?",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "a1f608c262d3feca9bf2d2ccd599ecdf69a24146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
