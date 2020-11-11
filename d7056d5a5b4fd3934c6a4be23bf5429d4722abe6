@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db3d5ccf_2878be2f",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-11T01:45:39Z",
+      "side": 1,
+      "message": "My understanding is we\u0027re handling special cases here:\n1. using pcap as one router\n2. parameters passed by Var\nand \"defaults\" are in NewTestFixture? From a maintenance point of view, I think duplicating the same logic is kind of bad idea as they can get out of sync in the future. WDYT?",
+      "parentUuid": "712d48a8_5904a434",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 3
+      },
+      "revId": "d7056d5a5b4fd3934c6a4be23bf5429d4722abe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b58ddc3a_061a2e51",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 3
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "For some reason .cros is not in search domains when searched by tast net.LookupIP().\nAnyway, that\u0027s also the name format of hostnames in attenuator_hosts.go.",
       "parentUuid": "b58ddc3a_061a2e51",
+      "range": {
+        "startLine": 147,
+        "startChar": 29,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "d7056d5a5b4fd3934c6a4be23bf5429d4722abe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "882b5173_dc032708",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-11T01:45:39Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t notice it was changed from the Autotest version. I should have raised this earlier, sorry.\n\nIt looks like some DNS (or /etc/hosts) setup problem and I\u0027m not sure how you connect to the lab DUT. But I think this change is introducing some unnecessary complexity (a special case for the companion devices). It should work well without \".cros\" in lab.\n\nFor the access from outside of lab, from my personal use experience, I usually use \u0027.cros\u0027 hostname provided by the corp network DNS for accessing DUT/router in lab. (e.g. `ping chromeos15-row3-rack8-host3.cros`) So, I\u0027ll expect the attenuator hostname is already with \u0027.cros\u0027 domain. Then, the only missing thing is that it does not match the name in attenuator_hosts, but this can be mitigated by getting strings.SplitN(hostname, \".\", 2)[0] as the key to HostFixedAttenuations.\n\nDo you think this works for your usage/setup?",
+      "parentUuid": "7df4c488_bde24057",
       "range": {
         "startLine": 147,
         "startChar": 29,
