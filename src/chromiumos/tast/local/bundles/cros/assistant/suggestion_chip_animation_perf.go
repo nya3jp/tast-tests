@@ -22,6 +22,8 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+var uiPollOptions = testing.PollOptions{Timeout: 5 * time.Second}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SuggestionChipAnimationPerf,
@@ -99,18 +101,30 @@ func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
 }
 
 func selectAndClickSuggestion(ctx context.Context, tconn *chrome.TestConn) error {
-	suggestionChip, err := chromeUi.FindWithTimeout(
+	if err := chromeUi.StableFindAndClick(
 		ctx,
 		tconn,
 		chromeUi.FindParams{ClassName: "SuggestionChipView"},
-		1*time.Second,
-	)
-	if err != nil {
-		return errors.Wrap(err, "failed to find assistant suggestion chip")
+		&uiPollOptions,
+	); err != nil {
+		return errors.Wrap(err, "failed to find and click assistant suggestion chip")
 	}
 
-	if err := suggestionChip.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on assistant suggestion chip")
+	return nil
+}
+
+func runQueryAndWaitForCard(ctx context.Context, tconn *chrome.TestConn, query string) error {
+	if _, err := assistant.SendTextQuery(ctx, tconn, query); err != nil {
+		return errors.Wrapf(err, "unable to run query %s", query)
+	}
+
+	if _, err := chromeUi.StableFind(
+		ctx,
+		tconn,
+		chromeUi.FindParams{ClassName: "AssistantCardElementView"},
+		&uiPollOptions,
+	); err != nil {
+		return errors.Wrap(err, "timed out waiting for assistant card")
 	}
 
 	return nil
@@ -121,12 +135,16 @@ func runQueriesAndClickSuggestions(ctx context.Context, tconn *chrome.TestConn) 
 		return errors.Wrap(err, "failed to open the assistant UI")
 	}
 
-	if err := selectAndClickSuggestion(ctx, tconn); err != nil {
+	if err := runQueryAndWaitForCard(ctx, tconn, "Mount Kilimanjaro"); err != nil {
 		return err
 	}
 
-	if _, err := assistant.SendTextQuery(ctx, tconn, "Mount Everest"); err != nil {
-		return errors.Wrap(err, "failed to query for Mount Everest")
+	if err := selectAndClickSuggestion(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to run query and wait")
+	}
+
+	if err := runQueryAndWaitForCard(ctx, tconn, "Mount Everest"); err != nil {
+		return errors.Wrap(err, "failed to run query and wait")
 	}
 
 	if err := selectAndClickSuggestion(ctx, tconn); err != nil {
