@@ -68,7 +68,7 @@ func init() {
 // different sources: hardware_verifier, GenericDeviceInfo in verification
 // report, and probe result of runtime_probe.
 func CrosHardwareVerifier(ctx context.Context, s *testing.State) {
-	fieldsMapping, err := requiredFields(ctx, s.DUT())
+	fieldsMapping, err := requiredFields(ctx, s, s.DUT())
 	if err != nil {
 		s.Fatal("Cannot get GenericComponentValueAllowlists: ", err)
 	}
@@ -109,12 +109,20 @@ func CrosHardwareVerifier(ctx context.Context, s *testing.State) {
 // /etc/hardware_verifier/hw_verification_spec.prototxt.  Probed results from
 // runtime_probe will remove fields that are not allowed so that it would
 // be identical with other sources.
-func requiredFields(ctx context.Context, dut *dut.DUT) (requiredFieldSet, error) {
+func requiredFields(ctx context.Context, s *testing.State, dut *dut.DUT) (requiredFieldSet, error) {
+	const verificationSpecRelPath = "etc/hardware_verifier/hw_verification_spec.prototxt"
 	fieldsMapping := make(requiredFieldSet)
-	output, err := dut.Command("cat", "/etc/hardware_verifier/hw_verification_spec.prototxt").Output(ctx)
+	// We assume that cros_debug is always enabled on testing DUTs.
+	verificationSpecPath := "/usr/local/" + verificationSpecRelPath
+	output, err := dut.Command("cat", verificationSpecPath).Output(ctx)
 	if err != nil {
-		return nil, err
+		verificationSpecPath := "/" + verificationSpecRelPath
+		output, err = dut.Command("cat", verificationSpecPath).Output(ctx)
+		if err != nil {
+			return nil, err
+		}
 	}
+	s.Log("Verification spec path: ", verificationSpecPath)
 
 	message := &hvpb.HwVerificationSpec{}
 	if err := proto.UnmarshalText(string(output), message); err != nil {
