@@ -136,6 +136,12 @@ var WebStore = App{
 	Name: "Web Store",
 }
 
+// Photos has details about the Photos app.
+var Photos = App{
+	ID:   "fdbkkojdbojonckghlanfaopfakedeca",
+	Name: "Photos",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
