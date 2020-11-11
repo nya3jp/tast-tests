@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Verifies attestation-related functionality",
 		Attr:         []string{"group:mainline", "informational"},
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
-		SoftwareDeps: []string{"tpm"},
+		SoftwareDeps: []string{"tpm", "endorsement"},
 		Timeout:      4 * time.Minute,
 	})
 }
