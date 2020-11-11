@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3fd305_ff615e48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-11T20:57:59Z",
+      "side": 1,
+      "message": "nit: don\u0027t use period in commit message subject",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "c8746fd5b46a81e2ceec5f60f9c3f7162700356e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3ecf4b_0116706c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-11T20:57:59Z",
+      "side": 1,
+      "message": "nit: colon?",
+      "range": {
+        "startLine": 9,
+        "startChar": 49,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "c8746fd5b46a81e2ceec5f60f9c3f7162700356e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570fe0cb_8068c3a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-11T20:57:59Z",
+      "side": 1,
+      "message": "nit: verbose?",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "c8746fd5b46a81e2ceec5f60f9c3f7162700356e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ff9be54e_49ef486b",
@@ -31,6 +100,69 @@
       "writtenOn": "2020-11-11T18:12:30Z",
       "side": 1,
       "message": "lgtm\n\nThanks you for fixing. Please wait for tast-owners.",
+      "revId": "c8746fd5b46a81e2ceec5f60f9c3f7162700356e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b6647f_ef762fe3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-11T20:57:59Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "c8746fd5b46a81e2ceec5f60f9c3f7162700356e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97d7a86_e46a269c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_trackpad_swipe_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-11T20:57:59Z",
+      "side": 1,
+      "message": "With error you will continue test and fail at the end. Looks like Fatal makes more sense here.",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "c8746fd5b46a81e2ceec5f60f9c3f7162700356e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd3cd13_a75ebb93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_trackpad_swipe_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-11T20:57:59Z",
+      "side": 1,
+      "message": "Don\u0027t bind context by reference, always pass by value, e.g.\n\ndefer func(ctx context.Context) {\n  ..\n}(ctx)",
+      "range": {
+        "startLine": 55,
+        "startChar": 32,
+        "endLine": 55,
+        "endChar": 35
+      },
       "revId": "c8746fd5b46a81e2ceec5f60f9c3f7162700356e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
