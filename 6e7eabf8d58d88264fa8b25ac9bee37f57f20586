@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37774d94_8edc8fce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-11T03:11:19Z",
+      "side": 1,
+      "message": "Thanks for writing the arc.snapshot helper, it made writing the multivm precondition much easier.\n\nIn order to use it in the multivm package, I need to make some things public.",
+      "revId": "6e7eabf8d58d88264fa8b25ac9bee37f57f20586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
