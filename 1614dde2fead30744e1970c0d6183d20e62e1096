@@ -51,6 +51,24 @@
       "parentUuid": "db94cca1_16c738b3",
       "revId": "1614dde2fead30744e1970c0d6183d20e62e1096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17cb9767_1fae8ffc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-11T00:58:10Z",
+      "side": 1,
+      "message": "Ack. Not sure if the error there is helpful for debugging and can be logged, but as it looks like a best effort cleanup, I\u0027m also OK with ignoring it.",
+      "parentUuid": "a13b85fd_799dfea3",
+      "revId": "1614dde2fead30744e1970c0d6183d20e62e1096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
