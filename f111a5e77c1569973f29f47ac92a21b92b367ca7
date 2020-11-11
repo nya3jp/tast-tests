@@ -212,6 +212,30 @@
       },
       "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c01822c_9da7f40d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-11T03:30:50Z",
+      "side": 1,
+      "message": "That sounds good. Thanks!",
+      "parentUuid": "cc01b72f_7f22b46a",
+      "range": {
+        "startLine": 266,
+        "startChar": 5,
+        "endLine": 266,
+        "endChar": 34
+      },
+      "revId": "f111a5e77c1569973f29f47ac92a21b92b367ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
