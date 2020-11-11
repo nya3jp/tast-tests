@@ -33,6 +33,46 @@
       "message": "The binary needs to finish running. The only thing around it is we could do smaller combinatorics?",
       "revId": "fcd28d0deb28f3873f48be5d397f1ae8fdfc7374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3f407e_641badaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-11T22:50:44Z",
+      "side": 1,
+      "message": "LGTM % the comment",
+      "revId": "fcd28d0deb28f3873f48be5d397f1ae8fdfc7374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c32de23d_a76e5551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-11T22:50:44Z",
+      "side": 1,
+      "message": "You need to change the test timeout to 20 minutes as well.",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 12
+      },
+      "revId": "fcd28d0deb28f3873f48be5d397f1ae8fdfc7374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
