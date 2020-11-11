@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1eb33ea_188fad69",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-11T16:21:00Z",
+      "side": 1,
+      "message": "Is there a reason to export these at all if we never reference them outside of FindSelectedRadioButton?",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 673,
+        "endChar": 77
+      },
+      "revId": "8f1ca9b4853045e5c4be71f09c7153f09314b76c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
