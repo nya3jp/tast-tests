@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4e0a39aa_c145cd1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-11-11T20:07:37Z",
+      "side": 1,
+      "message": "Got it. Thanks for submitting the credentials.",
+      "parentUuid": "1a5b3ca9_446322b9",
+      "revId": "bbd87ac4500e6ff6f21b2dd1e391b7f66aaa031c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "647a22fc_84fa1d6f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
