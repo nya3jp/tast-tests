@@ -16,6 +16,52 @@
       "message": "Hi Brendan,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "83b844c5cb6024e351d61e7b39965d54a73aef06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c59a639_0957bc90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_outlook.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T18:45:36Z",
+      "side": 1,
+      "message": "Should this be fatal? If not, is this even needed, the polling below should end up failing until this button exists anyway.",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 7
+      },
+      "revId": "83b844c5cb6024e351d61e7b39965d54a73aef06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c49a544_2a8cbea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_outlook.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-11T18:45:36Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 350,
+        "startChar": 4,
+        "endLine": 350,
+        "endChar": 7
+      },
+      "revId": "83b844c5cb6024e351d61e7b39965d54a73aef06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
