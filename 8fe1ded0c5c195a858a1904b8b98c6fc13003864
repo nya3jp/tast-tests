@@ -284,6 +284,24 @@
       "parentUuid": "efa969df_8e561b0e",
       "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9239273d_df464bff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-11-11T07:38:02Z",
+      "side": 1,
+      "message": "\u003e There\u0027s no guarantee what is contained in Matches[0]. It may be ones for .kcrash, or ones for .meta, or ones for .log.\n\nAh ok. The code doesn\u0027t care about this either because the same prefix will have a .kcrash, .log, and .meta file associated with it. Like kernel.12345678.123456.bios_log. So picking any of them works. I can stabilize it to be the .meta file to match the logic on L144. Is that good?",
+      "parentUuid": "5ddb2bce_95a6645a",
+      "revId": "8fe1ded0c5c195a858a1904b8b98c6fc13003864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
