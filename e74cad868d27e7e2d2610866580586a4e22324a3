@@ -394,6 +394,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2c684af_5c559d05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-12T15:09:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a8a84e1_d94b0ae4",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 17
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8be9c1ff_bcacd3e8",
@@ -493,6 +517,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bf4e677_22487a0f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-12T15:09:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "71c8290c_58dc7d98",
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5515fee7_007b2a75",
@@ -530,6 +572,30 @@
       "side": 1,
       "message": "I added Hide(), however Refresh() is a side effect of it. There is no \u0027refresh\u0027 operation that user could do on the bookmarks bar.",
       "parentUuid": "5515fee7_007b2a75",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "567b8b1f_b037f8ab",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-12T15:09:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "492ca6eb_ef8d54ba",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -612,6 +678,30 @@
       "side": 1,
       "message": "Changed the name. However, I can imagine having function that does not wait for the dialog to open and then we would have two the same functions doing different things.",
       "parentUuid": "3103564b_6ba5b342",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "882a7d49_11a138ec",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-12T15:09:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff938e68_f5bb24b1",
       "range": {
         "startLine": 34,
         "startChar": 23,
@@ -753,6 +843,30 @@
       "side": 1,
       "message": "As discussed Is* remains in the function\u0027s name.",
       "parentUuid": "cd002d41_7c85134b",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "562bd11d_dc0248b6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-12T15:09:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "13a647e8_9d805b4e",
       "range": {
         "startLine": 65,
         "startChar": 5,
