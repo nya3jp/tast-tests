@@ -17,6 +17,7 @@ func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
 var chromeVideoPre = chrome.NewPrecondition("video",
 	chromeVModuleArgs,
+	chromeEnableVaapiAV1Decoder,
 	chromeUseHwDecoderForSmallResolutions,
 	chromeBypassPermissionsArgs)
 
@@ -31,6 +32,7 @@ func ChromeAlternateVideoDecoder() testing.Precondition { return chromeAlternate
 
 var chromeAlternateVideoDecoderPre = chrome.NewPrecondition("alternateVideoDecoder",
 	chromeVModuleArgs,
+	chromeEnableVaapiAV1Decoder,
 	chromeUseHwDecoderForSmallResolutions,
 	chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"))
 
@@ -41,6 +43,7 @@ func ChromeVideoWithGuestLogin() testing.Precondition { return chromeVideoWithGu
 
 var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin",
 	chromeVModuleArgs,
+	chromeEnableVaapiAV1Decoder,
 	chromeUseHwDecoderForSmallResolutions,
 	chrome.GuestLogin())
 
@@ -51,6 +54,7 @@ func ChromeVideoWithHDRScreen() testing.Precondition { return chromeVideoWithHDR
 
 var chromeVideoWithHDRScreenPre = chrome.NewPrecondition("videoWithHDRScreen",
 	chromeVModuleArgs,
+	chromeEnableVaapiAV1Decoder,
 	chromeUseHwDecoderForSmallResolutions,
 	chrome.EnableFeatures("UseHDRTransferFunction"))
 
@@ -60,6 +64,7 @@ func ChromeCompositedVideo() testing.Precondition { return chromeCompositedVideo
 
 var chromeCompositedVideoPre = chrome.NewPrecondition("compositedVideo",
 	chromeVModuleArgs,
+	chromeEnableVaapiAV1Decoder,
 	chromeUseHwDecoderForSmallResolutions,
 	chrome.ExtraArgs("--enable-hardware-overlays=\"\""))
 
@@ -70,6 +75,7 @@ func ChromeVideoWithFakeWebcam() testing.Precondition { return chromeVideoWithFa
 
 var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam",
 	chromeVModuleArgs,
+	chromeEnableVaapiAV1Decoder,
 	chromeUseHwDecoderForSmallResolutions,
 	chromeFakeWebcamArgs)
 
@@ -82,6 +88,7 @@ func ChromeVideoWithFakeWebcamAndAlternateVideoDecoder() testing.Precondition {
 
 var chromeVideoWithFakeWebcamAndAlternateVideoDecoderPre = chrome.NewPrecondition("videoWithFakeWebcamAndAlternateVideoDecoder",
 	chromeVModuleArgs,
+	chromeEnableVaapiAV1Decoder,
 	chromeUseHwDecoderForSmallResolutions,
 	chromeFakeWebcamArgs,
 	chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"))
@@ -163,6 +170,11 @@ var chromeVModuleArgs = chrome.ExtraArgs(
 		"*/media/gpu/chromeos/*=2",
 		"*/media/gpu/vaapi/*=2",
 		"*/media/gpu/v4l2/*=2"}, ","))
+
+var chromeEnableVaapiAV1Decoder = chrome.ExtraArgs(
+	// Enable VA-API hardware av1 decoder.
+	// TODO(b/172217032): Remove this once the feature is enabled by default.
+	"--enable-features=VaapiAV1Decoder")
 
 var chromeUseHwDecoderForSmallResolutions = chrome.ExtraArgs(
 	// The Renderer video stack might have a policy of not using hardware
