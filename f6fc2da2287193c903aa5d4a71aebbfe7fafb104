@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c046a78_2d4335e5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-12T20:12:31Z",
+      "side": 1,
+      "message": "Thanks added",
+      "parentUuid": "f35e7d43_0ef5b4a3",
+      "range": {
+        "startLine": 166,
+        "startChar": 73,
+        "endLine": 166,
+        "endChar": 89
+      },
+      "revId": "f6fc2da2287193c903aa5d4a71aebbfe7fafb104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "defc7c5c_cba077c2",
         "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
         "patchSetId": 5
