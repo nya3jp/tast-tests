@@ -16,6 +16,24 @@
       "message": "Hi Pranav,\n\nPinPrintUnsupported are a bit strange. I rebased my patches once again on TOT and still get:\n```\n2020/11/12 07:23:42 --------------------------------------------------------------------------------\n2020/11/12 07:23:42 printer.PinPrintUnsupported.no_pin  [ PASS ]\n2020/11/12 07:23:42 printer.PinPrintUnsupported.pin     [ PASS ]\n2020/11/12 07:23:42 --------------------------------------------------------------------------------\n```\nMy DUT is caroline-kernelnext. Could you please give it a quick try locally in your setup?\n\nThanks,\nMarcin",
       "revId": "08a6cbca7e190612be8fccb55308193b63f70775",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5419e1bb_a82acac1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-12T08:50:09Z",
+      "side": 1,
+      "message": "Hi Marcin,\n\nIt looks like two files were uploaded to the cloud bucket (printer_pin_print_unsupported_golden_20201111.ps#1605090743094613, \nprinter_pin_print_unsupported_golden_20201111.ps#1605104217654592; use gsutil ls -a to list file versions) and the external file in the CL refers to the older one that is no longer served by default.\n\nThe test is probably passing on your DUT due to caching the external files; try clearing /usr/local/share/tast on the DUT and it should start failing.\n\nTo fix this you can either update the hash in the external file to match the currently served file or download and reupload the earlier version of the file.\n\nBest,\nPranav",
+      "parentUuid": "68671953_c4f6aab5",
+      "revId": "08a6cbca7e190612be8fccb55308193b63f70775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
