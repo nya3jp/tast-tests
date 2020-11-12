@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49cac675_e1e11ae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2020-11-12T02:25:17Z",
+      "side": 1,
+      "message": "It turns out |legacy_video_decoder| exits.  This makes sense to gate the rest of the _alt tests with that.",
+      "revId": "fd9b9d25f1f70932f14c2e61174230d3d940998a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
