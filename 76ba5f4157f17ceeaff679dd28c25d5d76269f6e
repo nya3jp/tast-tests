@@ -69,6 +69,24 @@
       "parentUuid": "d0b1a47f_b30c4fb9",
       "revId": "76ba5f4157f17ceeaff679dd28c25d5d76269f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452d642f_e6b5ad60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-11-12T05:48:46Z",
+      "side": 1,
+      "message": "Then what is this test for / capable of? Try to start a subset of available VMs in an arbitrary order, then verify if all of them successfully start?\n\nCan you clearly mention goals and non-goals (and reasons behind the decision) in the CL description?",
+      "parentUuid": "89868987_a4060bbf",
+      "revId": "76ba5f4157f17ceeaff679dd28c25d5d76269f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
