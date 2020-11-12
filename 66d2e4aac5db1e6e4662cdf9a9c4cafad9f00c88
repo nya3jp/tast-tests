@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943273cc_8e1fc305",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-12T00:03:37Z",
+      "side": 1,
+      "message": "This CL fixes video.Seek, but there\u0027s also _alt in video.Play and\nvideo.PlaybackPerf.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "66d2e4aac5db1e6e4662cdf9a9c4cafad9f00c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9197fd5_b865e7a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-12T00:03:37Z",
+      "side": 1,
+      "message": "+2 modulo also sed\u0027ing the other two files.",
+      "revId": "66d2e4aac5db1e6e4662cdf9a9c4cafad9f00c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
