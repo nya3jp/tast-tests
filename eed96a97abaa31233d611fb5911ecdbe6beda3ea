@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6236aa15_484fde58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T08:49:21Z",
+      "side": 1,
+      "message": "LGTM assuming the answer for my question below is \"yes\".\nIf not, could you fix, and ping me?",
+      "revId": "eed96a97abaa31233d611fb5911ecdbe6beda3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf5b6d4_22a7d59f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T08:49:21Z",
+      "side": 1,
+      "message": "If .meta matches two or more files unexpectedly, this will keep .bios_log file, while .meta file is removed.\n\nIs it intentional?",
+      "revId": "eed96a97abaa31233d611fb5911ecdbe6beda3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
