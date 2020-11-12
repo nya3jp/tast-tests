@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20600194_900aade7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-12T17:07:55Z",
+      "side": 1,
+      "message": "Sounds good.  Please make sure that the test has at least a 90% pass rate across all boards when it is reenabled.",
+      "revId": "7afde58a603cca33f1bece1a8bef0f62ce15a62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
