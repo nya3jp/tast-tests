@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df1df4c2_3d74956f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-12T21:34:00Z",
+      "side": 1,
+      "message": "Can we set this to a reasonable limit, like 3? Generally we don\u0027t want to hit playstore too much.",
+      "range": {
+        "startLine": 81,
+        "startChar": 52,
+        "endLine": 81,
+        "endChar": 54
+      },
+      "revId": "60126d019775ff62d66cf736e8c47c77711d2d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0a8f317_20322541",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
         "patchSetId": 1
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "Sure we can. But going forward, I wanted to append 2 more minor tests to this same Launcher test. That would unnecessarily complicate the PlayStore Test.",
       "parentUuid": "a0a8f317_20322541",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "60126d019775ff62d66cf736e8c47c77711d2d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b930caa_edbf7b2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-12T21:34:00Z",
+      "side": 1,
+      "message": "ahh, if you are planning to add more subtests to this test, I think it is fine being separate from playstore.",
+      "parentUuid": "4e5016bf_d4a9bd14",
       "range": {
         "startLine": 85,
         "startChar": 1,
