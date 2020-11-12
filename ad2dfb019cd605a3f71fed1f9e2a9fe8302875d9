@@ -16,6 +16,23 @@
       "message": "PTAL~!",
       "revId": "ad2dfb019cd605a3f71fed1f9e2a9fe8302875d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "930ae5d6_e017b226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T08:25:28Z",
+      "side": 1,
+      "message": "optional/nit: \"GPUCUJ\" is the style in Go. (I know it comes from original CL, which I reviewed ...).\n\nBTW, any reasons to rename the file? \"GPU\" \"CUJ\" are terms to be split, so gpu_cuj.go is the preferred name I thought.",
+      "revId": "ad2dfb019cd605a3f71fed1f9e2a9fe8302875d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
