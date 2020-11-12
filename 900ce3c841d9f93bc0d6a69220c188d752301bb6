@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb6fe13_d6bf02d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-12T07:00:47Z",
+      "side": 1,
+      "message": "I changed it to use numCPUs + 1 goroutines. This extra routine is so that just in case one of the routines running on a thread is blocked waiting for an IO call to finish, the thread can be assigned this routine.",
+      "parentUuid": "6962764b_72dbef0a",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a359fd70_88fd70ee",
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "Ah I overlooked that we have to convert ppdContents to string if we want to use FindAllString... and it\u0027s likely less efficient than converting the result (a short substring of the original data) to a string. Please feel free to revert this change.",
       "parentUuid": "2be68ee0_8c6b0041",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 23
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa380821_96c79cf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-12T07:00:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f734d9fe_72904fe5",
       "range": {
         "startLine": 90,
         "startChar": 16,
