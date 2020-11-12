@@ -44,18 +44,10 @@ const (
 )
 
 func ProxyAddEpsonPrinter(ctx context.Context, s *testing.State) {
-	const (
-		// diffFile is the name of the file containing the diff between
-		// the golden data and actual request in case of failure.
-		diffFile           = "printer_add_epson_printer_diff.txt"
-		colorDiffFile      = "color.diff"
-		monochromeDiffFile = "monochrome.diff"
-	)
-
 	// Tests printing with the old Ink PPDs.
-	proxylpprint.Run(ctx, s, proxyEpsonPPDFile, proxyEpsonToPrintFile, proxyEpsonGoldenFile, diffFile)
+	proxylpprint.Run(ctx, s, proxyEpsonPPDFile, proxyEpsonToPrintFile, proxyEpsonGoldenFile)
 
 	// Tests printing with the modified ColorModel PPD in color and monochrome.
-	proxylpprint.RunWithOptions(ctx, s, proxyEpsonModPPD, proxyEpsonToPrintFile, proxyEpsonColorGoldenFile, colorDiffFile, "print-color-mode=color")
-	proxylpprint.RunWithOptions(ctx, s, proxyEpsonModPPD, proxyEpsonToPrintFile, proxyEpsonMonochromeGoldenFile, monochromeDiffFile, "print-color-mode=monochrome")
+	proxylpprint.RunWithOptions(ctx, s, proxyEpsonModPPD, proxyEpsonToPrintFile, proxyEpsonColorGoldenFile, "print-color-mode=color")
+	proxylpprint.RunWithOptions(ctx, s, proxyEpsonModPPD, proxyEpsonToPrintFile, proxyEpsonMonochromeGoldenFile, "print-color-mode=monochrome")
 }

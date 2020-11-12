@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/lpprint"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,9 +20,8 @@ func init() {
 			"cros-printing-dev@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{dymolwPPD, dymolmPPD, dymoToPrintFile, dymolwGoldenFile, dymolmGoldenFile},
-		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -42,14 +40,8 @@ const (
 )
 
 func AddDymoPrinter(ctx context.Context, s *testing.State) {
-	const (
-		// diffFile is the name of the file containing the diff between
-		// the golden data and actual request in case of failure.
-		dymolwDiffFile = "dymolw.diff"
-		dymolmDiffFile = "dymolm.diff"
-	)
 
 	// Tests printing with the old Ink PPDs.
-	lpprint.Run(ctx, s, dymolwPPD, dymoToPrintFile, dymolwGoldenFile, dymolwDiffFile)
-	lpprint.Run(ctx, s, dymolmPPD, dymoToPrintFile, dymolmGoldenFile, dymolmDiffFile)
+	lpprint.Run(ctx, s, dymolwPPD, dymoToPrintFile, dymolwGoldenFile)
+	lpprint.Run(ctx, s, dymolmPPD, dymoToPrintFile, dymolmGoldenFile)
 }

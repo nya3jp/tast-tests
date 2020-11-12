@@ -7,6 +7,7 @@ package testserver
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -30,17 +31,18 @@ const (
 	PasswordInputField InputField = "passwordInputField"
 	// PasswordTextField is not an editable input.
 	// It is used for sync password value for visual testing.
-	PasswordTextField     InputField = "passwordTextField"
-	NumberInputField      InputField = "numberInputField"
-	EmailInputField       InputField = "emailInputField"
-	URLInputField         InputField = "urlInputField"
-	TelInputField         InputField = "telInputField"
-	DateInputField        InputField = "dateInputField"
-	MonthInputField       InputField = "monthInputField"
-	WeekInputField        InputField = "weekInputField"
-	TimeInputField        InputField = "timeInputField"
-	DateTimeInputField    InputField = "dateTimeInputField"
-	TextInputNumericField InputField = "textInputNumericField"
+	PasswordTextField              InputField = "passwordTextField"
+	NumberInputField               InputField = "numberInputField"
+	EmailInputField                InputField = "emailInputField"
+	URLInputField                  InputField = "urlInputField"
+	TelInputField                  InputField = "telInputField"
+	DateInputField                 InputField = "dateInputField"
+	MonthInputField                InputField = "monthInputField"
+	WeekInputField                 InputField = "weekInputField"
+	TimeInputField                 InputField = "timeInputField"
+	DateTimeInputField             InputField = "dateTimeInputField"
+	TextInputNumericField          InputField = "textInputNumericField"
+	TextAreaNoCorrectionInputField InputField = "textArea disabled autocomplete, autocorrect, autocapitalize"
 
 	// pageTitle is also the rootWebArea name in A11y to identify the scope of the page.
 	pageTitle = "E14s test page"
@@ -69,7 +71,7 @@ const html = `<!DOCTYPE html>
 <input type="number" id="numberInput" aria-label="numberInputField" style="width: 100%" />
 <br /><br />
 <pre>No autocomplete</pre>
-<textarea autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width: 100%"></textarea>
+<textarea aria-label="textArea disabled autocomplete, autocorrect, autocapitalize" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width: 100%"></textarea>
 <br /><br />
 <pre>No spellcheck (should have no autocorrect)</pre>
 <textarea spellcheck="false" style="width:100%"></textarea>
@@ -143,6 +145,11 @@ func (its *InputsTestServer) Close() {
 	its.server.Close()
 }
 
+// Clear clears given input field by setting value to empty string via javascript.
+func (its *InputsTestServer) Clear(ctx context.Context, inputField InputField) error {
+	return its.conn.Eval(ctx, fmt.Sprintf(`document.querySelector("*[aria-label='%s']").value=''`, string(inputField)), nil)
+}
+
 // Click clicks the input field.
 func (inputField InputField) Click(ctx context.Context, tconn *chrome.TestConn) error {
 	actionFunc := func(node *ui.Node) error {
@@ -196,8 +203,8 @@ func (inputField InputField) WaitForValueToBe(ctx context.Context, tconn *chrome
 	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second})
 }
 
-// findNode only locates ui node inside the test page, which avoids any conflicts with external targets.
-func (inputField InputField) findNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
+// GetNode returns the a11y node of the input field.
+func (inputField InputField) GetNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
 	pageRoot, err := pageRootNode(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find page root node")
@@ -212,7 +219,7 @@ func (inputField InputField) findNode(ctx context.Context, tconn *chrome.TestCon
 }
 
 func (inputField InputField) action(ctx context.Context, tconn *chrome.TestConn, f func(node *ui.Node) error) error {
-	node, err := inputField.findNode(ctx, tconn)
+	node, err := inputField.GetNode(ctx, tconn)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find input field: %s", string(inputField))
 	}

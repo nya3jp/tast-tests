@@ -21,13 +21,13 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: SanitizedUsernameAndSalt,
-		Desc: "Verifies that sanitized username is the same across various ways to calculate it, and check that system salt is sane",
+		Desc: "Verifies that sanitized username is the same across various ways to calculate it, and check that system salt is valid",
 		Contacts: []string{
 			"cros-hwsec@chromium.org",
 			"zuan@chromium.org",
 		},
 		SoftwareDeps: []string{"tpm"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

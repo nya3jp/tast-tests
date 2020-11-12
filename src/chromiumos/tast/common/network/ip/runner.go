@@ -27,6 +27,31 @@ func NewRunner(cmd cmd.Runner) *Runner {
 	}
 }
 
+// LinkState is the type for the interface state from ip command.
+type LinkState string
+
+// Possible link states from ip command.
+const (
+	LinkStateUp      LinkState = "UP"
+	LinkStateDown    LinkState = "DOWN"
+	LinkStateUnknown LinkState = "UNKNOWN"
+)
+
+// State returns the operation state of the interface.
+func (r *Runner) State(ctx context.Context, iface string) (LinkState, error) {
+	fields, err := r.showLink(ctx, iface)
+	if err != nil {
+		return "", err
+	}
+	switch state := LinkState(fields[1]); state {
+	case LinkStateUp, LinkStateDown, LinkStateUnknown:
+		// Expected state.
+		return state, nil
+	default:
+		return "", errors.Errorf("unexpected link state: %q", state)
+	}
+}
+
 // MAC returns the MAC address of the interface.
 func (r *Runner) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
 	fields, err := r.showLink(ctx, iface)
@@ -128,7 +153,7 @@ func (r *Runner) FlushIP(ctx context.Context, iface string) error {
 // SetLinkUp brings iface up.
 func (r *Runner) SetLinkUp(ctx context.Context, iface string) error {
 	if err := r.cmd.Run(ctx, "ip", "link", "set", iface, "up"); err != nil {
-		err = errors.Wrapf(err, "failed to set %s up", iface)
+		return errors.Wrapf(err, "failed to set %s up", iface)
 	}
 	return nil
 }
@@ -150,7 +175,7 @@ func (r *Runner) IsLinkUp(ctx context.Context, iface string) (bool, error) {
 // SetLinkDown brings iface down.
 func (r *Runner) SetLinkDown(ctx context.Context, iface string) error {
 	if err := r.cmd.Run(ctx, "ip", "link", "set", iface, "down"); err != nil {
-		err = errors.Wrapf(err, "failed to set %s down", iface)
+		return errors.Wrapf(err, "failed to set %s down", iface)
 	}
 	return nil
 }
@@ -171,4 +196,40 @@ func (r *Runner) DeleteLink(ctx context.Context, name string) error {
 		return errors.Wrapf(err, "failed to delete link %s", name)
 	}
 	return nil
+}
+
+// SetBridge adds the device into the bridge.
+func (r *Runner) SetBridge(ctx context.Context, dev, br string) error {
+	if err := r.cmd.Run(ctx, "ip", "link", "set", dev, "master", br); err != nil {
+		return errors.Wrapf(err, "failed to set %s master %s", dev, br)
+	}
+	return nil
+}
+
+// UnsetBridge unsets the bridge of the device.
+func (r *Runner) UnsetBridge(ctx context.Context, dev string) error {
+	if err := r.cmd.Run(ctx, "ip", "link", "set", dev, "nomaster"); err != nil {
+		return errors.Wrapf(err, "failed to set %s nomaster", dev)
+	}
+	return nil
+}
+
+// LinkWithPrefix shows the device names that start with prefix.
+func (r *Runner) LinkWithPrefix(ctx context.Context, prefix string) ([]string, error) {
+	output, err := r.cmd.Output(ctx, "ip", "-brief", "link", "show")
+	if err != nil {
+		return nil, errors.Wrap(err, `failed to run "ip -brief link show"`)
+	}
+	content := strings.TrimSpace(string(output))
+	var ret []string
+	for _, line := range strings.Split(content, "\n") {
+		fields := strings.Fields(line)
+		if len(fields) == 0 {
+			return nil, errors.New(`failed to parse the output of "ip -brief link show": unexpected empty line`)
+		}
+		if strings.HasPrefix(fields[0], prefix) {
+			ret = append(ret, fields[0])
+		}
+	}
+	return ret, nil
 }

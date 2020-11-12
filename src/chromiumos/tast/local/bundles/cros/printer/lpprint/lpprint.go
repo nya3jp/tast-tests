@@ -13,8 +13,6 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/kylelemons/godebug/diff"
-
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/printing/document"
@@ -67,12 +65,12 @@ func CleanPSContents(content string) string {
 }
 
 // Run executes the main test logic with given parameters.
-func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile string) {
-	RunWithOptions(ctx, s, ppdFile, toPrintFile, goldenFile, diffFile, "")
+func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile string) {
+	RunWithOptions(ctx, s, ppdFile, toPrintFile, goldenFile, "")
 }
 
 // RunWithOptions executes the main test logic with options included in the lp command.
-func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile, options string) {
+func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, options string) {
 	const printerID = "FakePrinterID"
 
 	ppd, err := ioutil.ReadFile(s.DataPath(ppdFile))
@@ -127,16 +125,11 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 		s.Fatal("Fake printer didn't receive a request: ", err)
 	}
 
-	if diff := diff.Diff(CleanPSContents(string(expect)), CleanPSContents(string(request))); diff != "" {
-		path := filepath.Join(s.OutDir(), diffFile)
-		if err := ioutil.WriteFile(path, []byte(diff), 0644); err != nil {
-			s.Error("Failed to dump diff: ", err)
-		}
+	if CleanPSContents(string(expect)) != CleanPSContents(string(request)) {
 		outPath := filepath.Join(s.OutDir(), goldenFile)
 		if err := ioutil.WriteFile(outPath, request, 0644); err != nil {
 			s.Error("Failed to dump output: ", err)
 		}
-
-		s.Errorf("Printer output differs from expected: diff saved to %q (-want +got), output to %q", diffFile, goldenFile)
+		s.Errorf("Printer output differs from expected: output saved to %q", goldenFile)
 	}
 }

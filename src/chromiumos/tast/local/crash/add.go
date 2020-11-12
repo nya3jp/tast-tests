@@ -42,7 +42,7 @@ func addFakeCrash(ctx context.Context, basename, payloadExt, payloadKind string)
 	// Create a payload file with random bytes. Since crash_sender counts bytes
 	// for the rate limit after compressing the payload, we won't hit the rate
 	// limit with naive zeroed files.
-	if err := createRandomFile(payloadPath, payloadSize); err != nil {
+	if err := CreateRandomFile(payloadPath, payloadSize); err != nil {
 		return nil, err
 	}
 	meta := fmt.Sprintf("exec_name=%s\nver=%s\npayload=%s\ndone=1\n", executable, version, filepath.Base(payloadPath))
@@ -52,7 +52,8 @@ func addFakeCrash(ctx context.Context, basename, payloadExt, payloadKind string)
 	return expectedSendData(ctx, metaPath, payloadPath, payloadKind, version, executable)
 }
 
-func createRandomFile(path string, size int64) error {
+// CreateRandomFile creates a file at the given path, of |size| bytes and random contents.
+func CreateRandomFile(path string, size int64) error {
 	f, err := os.Create(path)
 	if err != nil {
 		return err

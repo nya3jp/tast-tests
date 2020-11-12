@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/ippprint"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,21 +19,19 @@ func init() {
 			"bmalcolm@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome", "cros_internal", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data: []string{
 			"printer_Lexmark.ppd",
 			"to_print.pdf",
 		},
 		// TODO(crbug.com/1131304): Mark as informational until the test can be fixed.
 		Attr: []string{"group:mainline", "informational"},
-		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "no_pin",
 			Val: &ippprint.Params{
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_lexmark_no_pin_golden.ps",
-				OutDiffFile:  "no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_lexmark_no_pin_golden.ps"},
 		}, {
@@ -43,7 +40,6 @@ func init() {
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_lexmark_pin_golden.ps",
-				OutDiffFile:  "pin_diff.txt",
 				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_lexmark_pin_golden.ps"},

@@ -185,18 +185,21 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 					s.Fatal("Invalid metric value: ", err)
 				}
 
+				// Convert KB to bytes.
+				valueBytes := valueInt * 1000
+
 				if memName == "MemFree" {
-					valMemFree = valueInt
+					valMemFree = valueBytes
 				} else if memName == "MemTotal" {
-					valMemTotal = valueInt
+					valMemTotal = valueBytes
 				}
 
-				memMetric := perf.Metric{Name: "arc_mem_" + metricName, Unit: "kB", Direction: perf.SmallerIsBetter}
-				p.Set(memMetric, float64(valueInt))
+				memMetric := perf.Metric{Name: "arc_mem_" + metricName, Unit: "bytes", Direction: perf.SmallerIsBetter}
+				p.Set(memMetric, float64(valueBytes))
 			}
 
 			// TotalUsage = MemTotal - MemFree
-			memMetric := perf.Metric{Name: "arc_mem_TotalUsage", Unit: "kB", Direction: perf.SmallerIsBetter}
+			memMetric := perf.Metric{Name: "arc_mem_TotalUsage", Unit: "bytes", Direction: perf.SmallerIsBetter}
 			valMemUsage := valMemTotal - valMemFree
 			if valMemUsage <= 0 {
 				s.Fatalf("Invalid total memory usage: total = %d, free = %d", valMemTotal, valMemFree)

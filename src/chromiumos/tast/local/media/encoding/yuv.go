@@ -26,14 +26,21 @@ import (
 // These values are listed for the safety check to ensure we are always testing the same raw streams for result consistency.
 var md5OfYUV = map[string]string{
 	"bear-320x192.i420.yuv":    "14c9ac6f98573ab27a7ed28da8a909c0",
+	"bear-320x192.nv12.yuv":    "8aedc0da37b7e6f15255375f57eb3241",
 	"crowd-1920x1080.i420.yuv": "96f60dd6ff87ba8b129301a0f36efc58",
+	"crowd-1920x1080.nv12.yuv": "0d1933e69f932519794586f81b133bb8",
 	"tulip2-1280x720.i420.yuv": "1b95123232922fe0067869c74e19cd09",
+	"tulip2-1280x720.nv12.yuv": "898a3e1bb3b8d2bdd137f92067d42106",
 	"tulip2-640x360.i420.yuv":  "094bd827de18ca196a83cc6442b7b02f",
+	"tulip2-640x360.nv12.yuv":  "750a9d254415858f821b8df06a5f3d48",
 	"tulip2-320x180.i420.yuv":  "55be7124b3aec1b72bfb57f433297193",
+	"tulip2-320x180.nv12.yuv":  "7899814a845a5342c6b4a6da7e494cc0",
 	"vidyo1-1280x720.i420.yuv": "b8601dd181bb2921fffce3fbb896351e",
+	"vidyo1-1280x720.nv12.yuv": "1c9bb2a27b76c35280412e7fa1b08fc2",
 	"crowd-3840x2160.i420.yuv": "c0cf5576391ec6e2439a8d0fc7207662",
+	"crowd-3840x2160.nv12.yuv": "9e0baa401565324a54c3dc67479b1470",
 	"crowd-641x361.i420.yuv":   "124d3e29ea68eaba0dc35243b4dfc27b",
-	// TODO(hiroh): Add md5sum for NV12.
+	"crowd-641x361.nv12.yuv":   "f2eabbe28eae5bfcf5f8aa0b50bf9119",
 }
 
 // PrepareYUV decodes webMFile and creates the associated YUV file for test whose pixel format is pixelFormat.
@@ -58,19 +65,13 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 	yuvName := filepath.Base(yuvFile)
 
 	// If the raw video file already exists and the hash matches the expected value we can skip extraction.
-    hasher := md5.New()
-    if _, err := os.Stat(yuvFile); !os.IsNotExist(err) {
-		f, err := os.Open(yuvFile)
+	if _, err := os.Stat(yuvFile); !os.IsNotExist(err) {
+		yuvHash, err := calculateHash(yuvFile)
 		if err != nil {
-			return "", errors.Wrap(err, "failed to open YUV file")
-		}
-		defer f.Close()
-
-		if _, err := io.Copy(hasher, f); err != nil {
-			return "", errors.Wrap(err, "failed to read YUV file")
+			return "", err
 		}
 
-		if hash, found := md5OfYUV[yuvName]; found && hex.EncodeToString(hasher.Sum(nil)) == hash {
+		if hash, found := md5OfYUV[yuvName]; found && yuvHash == hash {
 			testing.ContextLogf(ctx, "Skipping extraction of %s: %s already exists", webMName, yuvName)
 			return yuvFile, nil
 		}
@@ -89,19 +90,11 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 	}()
 
 	testing.ContextLogf(ctx, "Executing vpxdec %s to prepare YUV data %s", webMName, yuvName)
-	hasher.Reset()
 	// TODO(hiroh): When YV12 test case is added, try generate YV12 yuv here by passing "--yv12" instead of "--i420".
-	cmd := testexec.CommandContext(ctx, "vpxdec", webMFile, "--codec=vp9", "--i420", "-o", "-")
-	cmd.Stdout = io.MultiWriter(hasher, tf)
+	cmd := testexec.CommandContext(ctx, "vpxdec", webMFile, "-o", yuvFile, "--codec=vp9", "--i420")
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		return "", errors.Wrap(err, "vpxdec failed")
-	}
-
-	// This guarantees that the generated yuv file (i.e. input of VEA test) is the same on all platforms.
-	hash := hex.EncodeToString(hasher.Sum(nil))
-	if hash != md5OfYUV[yuvName] {
-		return "", errors.Errorf("unexpected MD5 value of %s (got %s, want %s)", yuvName, hash, md5OfYUV[yuvName])
 	}
 
 	// If pixelFormat is NV12, conversion from I420 to NV12 is performed.
@@ -129,6 +122,15 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 		if err := os.Rename(cf.Name(), yuvFile); err != nil {
 			return "", errors.Wrap(err, "failed to rename YUV file")
 		}
+	}
+
+	// This guarantees that the generated yuv file (i.e. input of VEA test) is the same on all platforms.
+	yuvHash, err := calculateHash(yuvFile)
+	if err != nil {
+		return "", err
+	}
+	if yuvHash != md5OfYUV[yuvName] {
+		return "", errors.Errorf("unexpected MD5 value of %s (got %s, want %s)", yuvName, yuvHash, md5OfYUV[yuvName])
 	}
 
 	keep = true
@@ -194,4 +196,20 @@ func convertI420ToNV12(w io.Writer, r io.Reader, size coords.Size) error {
 		}
 	}
 	return nil
+}
+
+// calculateHash calculates the MD5 hash of the specified file.
+func calculateHash(filepath string) (string, error) {
+	f, err := os.Open(filepath)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to open YUV file")
+	}
+	defer f.Close()
+
+	hasher := md5.New()
+	if _, err := io.Copy(hasher, f); err != nil {
+		return "", errors.Wrap(err, "failed to read YUV file")
+	}
+
+	return hex.EncodeToString(hasher.Sum(nil)), nil
 }

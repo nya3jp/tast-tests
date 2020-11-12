@@ -72,7 +72,7 @@ func init() {
 func AmazonKindle(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.amazon.kindle"
-		appActivity = ".UpgradePage"
+		appActivity = ".ThirdPartyUpgradePage"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)

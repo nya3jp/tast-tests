@@ -28,7 +28,7 @@ func init() {
 			"pmoy@google.com",
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"cros_config", "diagnostics"},
+		SoftwareDeps: []string{"diagnostics"},
 	})
 }
 
@@ -74,7 +74,7 @@ func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
 	// "Acer Chromebook Spin 11 (CP311-H1/CP311-1HN)"
 	// TODO(crbug/1135261): Remove these explicit values checks from the test
 	marketingNameRaw, err := crosconfig.Get(ctx, arcBuildPropertiesPath, marketingNameProperty)
-	if err != nil {
+	if err != nil && !crosconfig.IsNotFound(err) {
 		s.Fatal("Unable to get marketing name from cros_config: ", err)
 	}
 	marketingName := strings.ReplaceAll(marketingNameRaw, ", ", "/")

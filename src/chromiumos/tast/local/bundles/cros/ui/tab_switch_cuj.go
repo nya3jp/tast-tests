@@ -22,7 +22,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{tabswitchcuj.WPRArchiveName},
-		Timeout:      15 * time.Minute,
+		Timeout:      22 * time.Minute,
 		Vars:         []string{"mute"},
 		Pre:          wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 	})

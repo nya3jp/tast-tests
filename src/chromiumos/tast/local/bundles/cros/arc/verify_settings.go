@@ -32,14 +32,14 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: chrome.LoginTimeout + arc.BootTimeout + 120*time.Second,
-		Vars:    []string{"arc.VerifySettings.username", "arc.VerifySettings.password"},
+		Vars:    []string{"arc.user", "arc.password"},
 	})
 }
 
 func VerifySettings(ctx context.Context, s *testing.State) {
 
-	username := s.RequiredVar("arc.VerifySettings.username")
-	password := s.RequiredVar("arc.VerifySettings.password")
+	username := s.RequiredVar("arc.user")
+	password := s.RequiredVar("arc.password")
 
 	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
