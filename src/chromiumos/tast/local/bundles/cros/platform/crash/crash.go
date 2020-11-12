@@ -31,8 +31,9 @@ const (
 	// CrasherPath is the full path for crasher.
 	CrasherPath = "/usr/local/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
 
-	crashReporterLogFormat = "[user] Received crash notification for %s[%d] sig 11, user %s group %s (%s)"
-	crashSenderRateDir     = "/var/lib/crash_sender"
+	crashReporterLogFormat          = "[user] Received crash notification for %s[%d] sig 11, user %s group %s (handling)"
+	crashReporterNoConsentLogFormat = "No consent. Not handling invocation: /sbin/crash_reporter --user=%d:11:%s:%s:%s"
+	crashSenderRateDir              = "/var/lib/crash_sender"
 )
 
 var pidRegex = regexp.MustCompile(`(?m)^pid=(\d+)$`)
@@ -241,13 +242,12 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to lookup username %s", opts.Username)
 	}
-	var reason string
+	var crashCaughtMessage string
 	if opts.Consent {
-		reason = "handling"
+		crashCaughtMessage = fmt.Sprintf(crashReporterLogFormat, basename, pid, usr.Uid, usr.Gid)
 	} else {
-		reason = "ignoring - no consent"
+		crashCaughtMessage = fmt.Sprintf(crashReporterNoConsentLogFormat, pid, usr.Uid, usr.Gid, basename)
 	}
-	crashCaughtMessage := fmt.Sprintf(crashReporterLogFormat, basename, pid, usr.Uid, usr.Gid, reason)
 
 	// Wait until no crash_reporter is running.
 	if err := waitForProcessEnd(ctx, "crash_reporter"); err != nil {
