@@ -34,12 +34,17 @@ const (
 	HWDecodeVP9_2_4K   = Prefix + "hw_dec_vp9-2_2160_30"
 	HWDecodeVP9_2_4K60 = Prefix + "hw_dec_vp9-2_2160_60"
 
+	HWDecodeAV1      = Prefix + "hw_dec_av1_1080_30"
+	HWDecodeAV1_60   = Prefix + "hw_dec_av1_1080_60"
+	HWDecodeAV1_4K   = Prefix + "hw_dec_av1_2160_30"
+	HWDecodeAV1_4K60 = Prefix + "hw_dec_av1_2160_60"
+
 	// JPEG Decoding
 	HWDecodeJPEG = Prefix + "hw_dec_jpeg"
 
 	// Video Encoding
-	HWEncodeH264              = Prefix + "hw_enc_h264_1080_30"
-	HWEncodeH264_4K           = Prefix + "hw_enc_h264_2160_30"
+	HWEncodeH264    = Prefix + "hw_enc_h264_1080_30"
+	HWEncodeH264_4K = Prefix + "hw_enc_h264_2160_30"
 	// TODO: add here HWEncodeH264_odd_dimension when video.EncodeAccel has a test
 	// exercising odd-dimension encoding.
 
@@ -50,7 +55,6 @@ const (
 	HWEncodeVP9               = Prefix + "hw_enc_vp9_1080_30"
 	HWEncodeVP9_4K            = Prefix + "hw_enc_vp9_2160_30"
 	HWEncodeVP9_odd_dimension = Prefix + "hw_enc_vp9_odd_dimension"
-
 
 	// JPEG Encoding
 	HWEncodeJPEG = Prefix + "hw_enc_jpeg"
