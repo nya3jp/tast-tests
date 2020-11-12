@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab571719_dd21bceb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-11-12T20:26:42Z",
+      "side": 1,
+      "message": "go/tast-board shows this test as stable with a only 3 failures. These failures were during runs with many other test failures suggesting that something broader was wrong with the system.",
+      "revId": "d11834606321206f66aadbf9cfa2574f185587dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
