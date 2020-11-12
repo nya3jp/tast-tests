@@ -14,10 +14,10 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SigninProfileExtension,
-		Desc:         "Check private signin profile extension load",
-		Contacts:     []string{"cros-oac@google.com"},
+		Desc:         "Check private signin profile extension loads",
+		Contacts:     []string{"cros-oac@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 	})
 }

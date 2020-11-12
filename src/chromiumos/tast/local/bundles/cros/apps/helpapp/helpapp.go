@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/testing"
 )
 
@@ -130,28 +129,6 @@ func ClickTab(ctx context.Context, tconn *chrome.TestConn, tabParams tabFindPara
 // HelpRootNode returns the root ui node of Help app.
 func HelpRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
 	return ui.FindWithTimeout(ctx, tconn, helpRootNodeParams, 20*time.Second)
-}
-
-// LaunchFromThreeDotMenu launches Help app from three dot menu.
-func LaunchFromThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) error {
-	steps := uig.Steps(
-		uig.FindWithTimeout(ui.FindParams{
-			Role:      ui.RoleTypePopUpButton,
-			ClassName: "BrowserAppMenuButton",
-		}, 10*time.Second).LeftClick(),
-		uig.FindWithTimeout(ui.FindParams{
-			Name:      "Help",
-			ClassName: "MenuItemView",
-		}, 10*time.Second).LeftClick(),
-		uig.FindWithTimeout(ui.FindParams{
-			Name:      "Get Help",
-			ClassName: "MenuItemView",
-		}, 10*time.Second).LeftClick())
-	if err := uig.Do(ctx, tconn, steps); err != nil {
-		return errors.Wrap(err, "failed to launch from 3 dot menu")
-	}
-
-	return WaitForApp(ctx, tconn)
 }
 
 // WaitWhatsNewTabRendered waits for What's New tab to be rendered.

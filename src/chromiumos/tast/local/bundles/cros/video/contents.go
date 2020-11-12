@@ -23,7 +23,7 @@ type contentsParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Contents,
-		Desc: "Verifies that a screenshot of a full screen is sane",
+		Desc: "Verifies that a screenshot of a full screen is valid",
 		Contacts: []string{
 			"andrescj@chromium.org",
 			"chromeos-gfx-video@google.com",

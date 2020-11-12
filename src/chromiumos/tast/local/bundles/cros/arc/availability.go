@@ -38,19 +38,19 @@ func init() {
 	})
 }
 
-// isPlayStoreOpen checks that the Play Store icon is visible and that the table of contents is active.
+// isPlayStoreOpen checks that the Play Store icon is visible and that the apps search bar is available.
 func isPlayStoreOpen(ctx context.Context, s *testing.State, d *ui.Device, tconn *chrome.TestConn) {
 	if err := ash.WaitForApp(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Fatal("Play Store failed to open: ", err)
 	}
-	noThanks := d.Object(ui.ResourceIDMatches("com.android.vending:id/no_thanks_button"))
-	toc := d.Object(ui.ResourceIDMatches("com.android.vending:id/(play_card|mini_blurb)"))
+	noThanksButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)No thanks"))
+	searchBar := d.Object(ui.TextStartsWith("Search for apps"))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Click no thanks to close the pop-up if it exists.
-		if err := noThanks.Exists(ctx); err == nil {
-			noThanks.Click(ctx)
+		if err := noThanksButton.Exists(ctx); err == nil {
+			noThanksButton.Click(ctx)
 		}
-		return toc.Exists(ctx)
+		return searchBar.Exists(ctx)
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		s.Fatal("Timed waiting for Play Store table of contents: ", err)
 	}

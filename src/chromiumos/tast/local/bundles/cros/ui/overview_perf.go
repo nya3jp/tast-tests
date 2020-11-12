@@ -41,12 +41,11 @@ func init() {
 			Val:  lacros.ChromeTypeChromeOS,
 			Pre:  ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
 		}, {
-			Name:      "lacros",
-			Val:       lacros.ChromeTypeLacros,
-			Pre:       launcher.StartedByData(),
-			ExtraData: []string{launcher.DataArtifact},
-			// TODO(crbug.com/1082608): Use ExtraSoftwareDeps here instead.
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
+			Name:              "lacros",
+			Val:               lacros.ChromeTypeLacros,
+			Pre:               launcher.StartedByData(),
+			ExtraData:         []string{launcher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 		Data: []string{"animation.html", "animation.js"},
 	})

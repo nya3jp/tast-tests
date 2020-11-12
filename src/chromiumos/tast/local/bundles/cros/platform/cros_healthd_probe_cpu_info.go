@@ -195,7 +195,7 @@ func CrosHealthdProbeCPUInfo(ctx context.Context, s *testing.State) {
 	// test will fail verifying the first physical CPU, so it's a safe
 	// assumption. Don't verify the temperature channels, because they are
 	// optional.
-	for start, i := 2, 3; i <= len(lines); i++ {
+	for start, i := 2, 3; i < len(lines); i++ {
 		line := lines[i]
 		if i == len(lines) || line == "Physical CPU:" || line == "Temperature Channels:" {
 			err := verifyPhysicalCPU(lines[start:i])

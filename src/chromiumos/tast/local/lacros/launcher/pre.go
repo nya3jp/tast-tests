@@ -51,7 +51,7 @@ func startedByDataWithChromeOSChromeOptions(suffix string, opts ...chrome.Option
 		name:    "lacros_started_by_artifact_" + suffix,
 		timeout: chrome.LoginTimeout + 7*time.Minute,
 		mode:    download,
-		opts:    opts,
+		opts:    append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+mojoSocketPath)),
 	}
 }
 

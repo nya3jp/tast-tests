@@ -24,7 +24,7 @@ func init() {
 			"dlunev@chromium.org", // Test author
 			"cros-hwsec@google.com",
 		},
-		Attr:         []string{"group:hwsec_destructive_func"},
+		Attr:         []string{"group:crosbolt", "group:hwsec_destructive_func"},
 		SoftwareDeps: []string{"tpm", "reboot"},
 		Vars:         []string{"hwsec.CheckKeyPerf.iterations"},
 	})
@@ -47,7 +47,7 @@ func CheckKeyPerf(ctx context.Context, s *testing.State) {
 
 	// Reset TPM
 	s.Log("Start resetting TPM if needed")
-	if err := helper.EnsureTPMIsReset(ctx); err != nil {
+	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 	s.Log("TPM is confirmed to be reset")

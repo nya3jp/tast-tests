@@ -76,7 +76,7 @@ func init() {
 		Func:        RoamDiagnostics,
 		Desc:        "Bring up two APs and attenuate them around several values to observe and assess roam stickiness",
 		Contacts:    []string{"jakobczyk@google.com"},
-		Attr:        []string{"group:wificell", "wificell_unstable"}, // TODO(b/171949862): add proper attribute once available
+		Attr:        []string{"group:wificell_roam", "wificell_roam_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithFeatures(wificell.TFFeaturesRouters | wificell.TFFeaturesAttenuator),
 		Timeout:     time.Minute * 90,

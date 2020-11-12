@@ -23,7 +23,7 @@ func init() {
 			"pmoy@google.com",
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"cros_config", "diagnostics"},
+		SoftwareDeps: []string{"diagnostics"},
 	})
 }
 

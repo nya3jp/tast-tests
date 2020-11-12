@@ -240,7 +240,7 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 	s.Log("Start resetting TPM if needed")
-	if err := helper.EnsureTPMIsReset(ctx); err != nil {
+	if err := helper.EnsureTPMIsResetAndPowerwash(ctx); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 	s.Log("TPM is confirmed to be reset")

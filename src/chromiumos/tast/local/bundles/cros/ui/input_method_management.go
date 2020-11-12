@@ -30,7 +30,7 @@ func init() {
 func InputMethodManagement(ctx context.Context, s *testing.State) {
 	const (
 		searchKeyword   = "japanese"                                           // Keyword used to search input method.
-		inputMethodName = "Japanese input (for US keyboard)"                   // Input method should be displayed after search.
+		inputMethodName = "Japanese with US keyboard"                          // Input method should be displayed after search.
 		inputMethdCode  = ime.IMEPrefix + string(ime.INPUTMETHOD_NACL_MOZC_US) // Input method code of the input method.
 	)
 

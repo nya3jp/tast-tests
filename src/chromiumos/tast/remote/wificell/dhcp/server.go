@@ -178,3 +178,8 @@ func (d *Server) Close(ctx context.Context) error {
 	}
 	return nil
 }
+
+// Interface returns the interface where DHCP server is running on.
+func (d *Server) Interface() string {
+	return d.iface
+}

@@ -8,11 +8,12 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -47,41 +48,27 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	// Launch the apps for the test.
-	checkApps := []apps.App{apps.Chrome, apps.Files, apps.Settings}
-	for _, app := range checkApps {
-		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
-			s.Fatalf("Failed to launch %v app: %v", app.Name, err)
-		}
-		if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
-			s.Fatalf("Failed waiting for %v app: %v", app.Name, err)
-		}
+	// Launch the apps for the test. Different launch functions are used for Settings and Files,
+	// since they include additional waiting for UI elements to load. This prevents the window
+	// order from changing while cycling. If a window has not completely loaded, it may appear on
+	// top once it finishes loading. If this happens while cycling windows, the test will likely fail.
+	const numApps = 3
+	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
+		s.Fatal("Failed to launch Chrome: ", err)
 	}
 
-	// Wait for all windows to be open and stop animating.
-	// This ensures that the order of the apps is finalized before we begin alt+tabbing.
-	// Without doing so, the window order may change unexpectedly due to windows loading
-	// at different rates, causing the actual window focused by alt+tab to be different
-	// than what the test expects.
-	// Note: the combination of apps.Launch and ash.WaitForApp does not guarantee the
-	// app window will be open and finalized, so this poll is needed.
-	if testing.Poll(ctx, func(ctx context.Context) error {
-		windows, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			testing.PollBreak(err)
-		}
-		if len(windows) != len(checkApps) {
-			return errors.New("new window not yet found")
-		}
-		for _, w := range windows {
-			if w.IsAnimating {
-				return errors.New("window still animating")
-			}
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Fatal("Expected windows did not open and finish animating: ", err)
+	if err := ossettings.Launch(ctx, tconn); err != nil {
+		s.Fatal("Failed to launch Settings: ", err)
 	}
+	if err := ossettings.WaitForSearchBox(ctx, tconn, 30*time.Second); err != nil {
+		s.Fatal("Failed waiting for Settings to load: ", err)
+	}
+
+	f, err := filesapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch Files app: ", err)
+	}
+	defer f.Release(ctx)
 
 	// GetAllWindows returns windows in the order of most recent, matching the order they will appear in the cycle window.
 	// We'll use this slice to find the expected window that should be brought to the top after each Alt+Tab cycle,
@@ -90,6 +77,9 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 	windows, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get windows: ", err)
+	}
+	if len(windows) != numApps {
+		s.Fatalf("Unexpected number of windows open; wanted %v, got %v", numApps, len(windows))
 	}
 
 	// Get the keyboard

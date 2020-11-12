@@ -324,11 +324,12 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 	return nil
 }
 
-// SelectContextMenu right clicks and selects a context menu for a file.
+// SelectContextMenu right clicks and selects a context menu for a file in the file list.
+// This method will not select context menu for items in the navigation tree.
 func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuNames ...string) error {
 	params := ui.FindParams{
 		Name: fileName,
-		Role: ui.RoleTypeStaticText,
+		Role: ui.RoleTypeListBoxOption,
 	}
 
 	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}

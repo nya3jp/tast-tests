@@ -24,7 +24,7 @@ func init() {
 		Func:         VirtualKeyboardChangeInput,
 		Desc:         "Checks that changing input method in different ways",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:essential-inputs"},
+		Attr:         []string{"group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
@@ -69,7 +69,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 
 	ts, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer ts.Close()
 

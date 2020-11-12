@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/ippprint"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,20 +20,18 @@ func init() {
 			"bmalcolm@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome", "cros_internal", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data: []string{
 			"to_print.pdf",
 			"printer_Lexmark.ppd",
 		},
 		Attr: []string{"group:mainline"},
-		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "default_resolution",
 			Val: &ippprint.Params{
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_resolution_lexmark_default_golden.ps",
-				OutDiffFile:  "printer_resolution_default_diff.txt",
 			},
 			ExtraData: []string{"printer_resolution_lexmark_default_golden.ps"},
 			ExtraAttr: []string{"informational"},
@@ -44,7 +41,6 @@ func init() {
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_resolution_lexmark_600dpi_golden.ps",
-				OutDiffFile:  "printer_resolution_600dpi_diff.txt",
 				Options:      []ippprint.Option{ippprint.WithResolution("600dpi")},
 			},
 			ExtraData: []string{"printer_resolution_lexmark_600dpi_golden.ps"},
@@ -55,7 +51,6 @@ func init() {
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_resolution_lexmark_1200dpi_golden.ps",
-				OutDiffFile:  "printer_resolution_1200dpi_diff.txt",
 				Options:      []ippprint.Option{ippprint.WithResolution("1200dpi")},
 			},
 			ExtraData: []string{"printer_resolution_lexmark_1200dpi_golden.ps"},
@@ -66,7 +61,6 @@ func init() {
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_resolution_lexmark_2400x600dpi_golden.ps",
-				OutDiffFile:  "printer_resolution_2400x600dpi_diff.txt",
 				Options:      []ippprint.Option{ippprint.WithResolution("2400x600dpi")},
 			},
 			ExtraData: []string{"printer_resolution_lexmark_2400x600dpi_golden.ps"},

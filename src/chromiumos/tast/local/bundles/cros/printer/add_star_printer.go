@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/lpprint"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,9 +20,8 @@ func init() {
 			"cros-printing-dev@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{starPPD, starlmPPD, starToPrintFile, starGoldenFile, starlmGoldenFile},
-		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -42,15 +40,8 @@ const (
 )
 
 func AddStarPrinter(ctx context.Context, s *testing.State) {
-	const (
-		// diffFile is the name of the file containing the diff between
-		// the golden data and actual request in case of failure.
-		starDiffFile   = "star.diff"
-		starlmDiffFile = "starlm.diff"
-	)
-
 	// Tests printing using the rastertostar filter.
-	lpprint.Run(ctx, s, starPPD, starToPrintFile, starGoldenFile, starDiffFile)
+	lpprint.Run(ctx, s, starPPD, starToPrintFile, starGoldenFile)
 	// Tests printing using the rastertostarlm filter.
-	lpprint.Run(ctx, s, starlmPPD, starToPrintFile, starlmGoldenFile, starlmDiffFile)
+	lpprint.Run(ctx, s, starlmPPD, starToPrintFile, starlmGoldenFile)
 }
