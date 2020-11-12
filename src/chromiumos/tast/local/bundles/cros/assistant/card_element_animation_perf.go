@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
+	chromeUi "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -83,8 +84,6 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 			},
 			// Card element opacity fade in / out.
 			"Ash.Assistant.AnimationSmoothness.CardElement",
-			// Launcher expanding to half when the first card element appears.
-			"Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode",
 		)
 		if err != nil {
 			s.Fatal("Failed to collect histograms: ", err)
@@ -102,11 +101,30 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 // runCardQueries performs two card queries in order to test the animate in
 // and animate out behavior of the first card.
 func runCardQueries(ctx context.Context, tconn *chrome.TestConn) error {
-	if _, err := assistant.SendTextQuery(ctx, tconn, "Mount Everest"); err != nil {
-		return errors.Wrap(err, "could not send query: \"Mount Everest\"")
+	for _, q := range []string{"Mount Everest", "Weather"} {
+		if err := runCardQuery(ctx, tconn, q); err != nil {
+			return err
+		}
 	}
-	if _, err := assistant.SendTextQuery(ctx, tconn, "Weather"); err != nil {
-		return errors.Wrap(err, "could not send query: \"Weather\"")
+
+	return nil
+}
+
+// runCardQuery is a helper function for running an Assistant query and waiting
+// for a card result.
+func runCardQuery(ctx context.Context, tconn *chrome.TestConn, query string) error {
+	if _, err := assistant.SendTextQuery(ctx, tconn, query); err != nil {
+		return errors.Wrapf(err, "could not send query: %s", query)
 	}
+
+	if _, err := chromeUi.StableFind(
+		ctx,
+		tconn,
+		chromeUi.FindParams{ClassName: "AssistantCardElementView"},
+		&testing.PollOptions{Timeout: 5 * time.Second},
+	); err != nil {
+		return errors.Wrapf(err, "query results not shown for query %s within timeout", query)
+	}
+
 	return nil
 }
