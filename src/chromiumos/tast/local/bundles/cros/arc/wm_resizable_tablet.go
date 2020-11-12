@@ -8,12 +8,24 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+)
+
+const (
+	extraPkgName              = "org.chromium.arc.testapp.windowmanager24.inmaximizedlist"
+	extraApkPath              = "ArcWMTestApp_24_InMaximizedList.apk"
+	timeReservedForStop       = 500 * time.Millisecond
+	rotationAnimationDuration = 750 * time.Millisecond
 )
 
 func init() {
@@ -54,6 +66,11 @@ func WMResizableTablet(ctx context.Context, s *testing.State) {
 			// resizable/tablet: font size change
 			Name: "RT_font_size_change",
 			Func: wmRT17,
+		},
+		wm.TestCase{
+			// resizable/tablet: split screen
+			Name: "RT_split_screen",
+			Func: wmRT22,
 		},
 	})
 }
@@ -182,4 +199,293 @@ func wmRT17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return wm.TabletFontSizeChangeHelper(ctx, tconn, a, d, acts)
+}
+
+// wmRT22 covers resizable/tablet: split screen.
+// Expected behavior is defined in: go/arc-wm-r RT22: resizable/tablet: split screen.
+func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) (retErr error) {
+	// Test Steps:
+	// This test starts at landscape mode.
+	// 1- Start the first activity - Under activity.
+	// 2- Start the second activity - over activity.
+	// 3- Snap the over activity to the left:
+	//   3-1- Swipe the over activity from top-center to the middle of the screen.
+	//   3-2- Continue swiping the over activity from the middle of the screen to the top-left corner.
+	//   3-3- Make sure the over activity is snapped to the left.
+	// 4- Snap the under activity to the right:
+	//   4-1- Touch the middle of the right half of the screen.
+	//   4-2- Make sure the under activity is snapped to the right.
+	// 5- Get app window info for assertions:
+	//   5-1- Over activity must be snapped to the left.
+	//   5-2- Under activity must be snapped to the right.
+	// 6- Rotate the screen by 270 degrees - to portrait mode.
+	// 7- Get app window info for assertions:
+	//   7-1- Over activity must be snapped to the top.
+	//   7-2- Under activity must be snapped to the bottom.
+	// 8- Rotate the screen to 0 degrees - Back to landscape mode.
+	// 9- Get app window info for assertions:
+	//   9-1- Over activity must be snapped to the left.
+	//   9-2- Under activity must be snapped to the right.
+
+	ctxForStopOverActivity := ctx
+	ctx, cancelForStopOverActivity := ctxutil.Shorten(ctx, timeReservedForStop)
+	defer cancelForStopOverActivity()
+
+	ctxForStopUnderActivity := ctx
+	ctx, cancelForStopUnderActivity := ctxutil.Shorten(ctx, timeReservedForStop)
+	defer cancelForStopUnderActivity()
+
+	underActivity, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "failed to create under activity")
+	}
+	defer underActivity.Close()
+
+	// 1- Start the first activity - Under activity.
+	if err := underActivity.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start under activity")
+	}
+	defer func() {
+		if err := underActivity.Stop(ctxForStopUnderActivity, tconn); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to stop under activity")
+			} else {
+				testing.ContextLog(ctx, "Failed to stop under activity: ", err)
+			}
+		}
+	}()
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, underActivity, d); err != nil {
+		return errors.Wrap(err, "failed to wait until under activity is ready")
+	}
+	if err := a.Install(ctx, arc.APKPath(extraApkPath)); err != nil {
+		return errors.Wrap(err, "failed to install extra APK")
+	}
+	overActivity, err := arc.NewActivity(a, extraPkgName, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return err
+	}
+	defer overActivity.Close()
+
+	// 2- Start the second activity - over activity.
+	if err := overActivity.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start over activity")
+	}
+	defer func() {
+		if err := overActivity.Stop(ctxForStopOverActivity, tconn); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to stop over activity")
+			} else {
+				testing.ContextLog(ctx, "Failed to stop over activity: ", err)
+			}
+		}
+	}()
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, overActivity, d); err != nil {
+		return errors.Wrap(err, "failed to wait until over activity is ready")
+	}
+
+	pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if pdInfo == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	tew, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create touch screen event writer")
+	}
+	defer tew.Close()
+
+	stw, err := tew.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "failed to create single touch screen writer")
+	}
+	defer stw.Close()
+
+	tcc := tew.NewTouchCoordConverter(pdInfo.Bounds.Size())
+
+	// 3- Snap the over activity to the left - Start.
+	from := coords.NewPoint(pdInfo.WorkArea.Width/2, 0)
+	to := coords.NewPoint(pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height/2)
+
+	x0, y0 := tcc.ConvertLocation(from)
+	x1, y1 := tcc.ConvertLocation(to)
+
+	//   3-1- Swipe the over activity from top-center to the middle of the screen.
+	if err := stw.Swipe(ctx, x0, y0, x1, y1, 500*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to swipe")
+	}
+
+	//   3-2- Continue swiping the over activity from the middle of the screen to the top-left corner.
+	to = coords.NewPoint(1, 1)
+	x2, y2 := tcc.ConvertLocation(to)
+
+	if err := stw.Swipe(ctx, x1, y1, x2, y2, 500*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to swipe")
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to finish the swipe gesture")
+	}
+
+	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, extraPkgName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for over activity")
+	}
+
+	//   3-3- Make sure the over activity is snapped to the left.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, extraPkgName)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get arc app window info for over activity"))
+		}
+
+		if overActivityWInfo.State != ash.WindowStateLeftSnapped {
+			return errors.Errorf("invalid window state, got: %q, want: LeftSnapped", overActivityWInfo.State)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+	// 3- Snap the over activity to the left - End.
+
+	// 4- Snap the under activity to the right - Start.
+	overActivityWInfo, err = ash.GetARCAppWindowInfo(ctx, tconn, extraPkgName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for over activity")
+	}
+
+	mid := coords.NewPoint(pdInfo.WorkArea.Width*3/4, pdInfo.WorkArea.Height/2)
+	x, y := tcc.ConvertLocation(mid)
+
+	//   4-1- Touch the middle of the right half of the screen.
+	if err := stw.Move(x, y); err != nil {
+		return errors.Wrap(err, "failed to move touch")
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to end touch")
+	}
+
+	//   4-2- Make sure the under activity is snapped to the right.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		underActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get arc app window info for under activity"))
+		}
+
+		if underActivityWInfo.State != ash.WindowStateRightSnapped {
+			return errors.Errorf("invalid window state, got: %q, want: RightSnapped", overActivityWInfo.State)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+	// 4- Snap the under activity to the right - End.
+
+	// 5- Get app window info for assertions. Over activity must be snapped to the left and under activity to the right.
+	if err := checkVerticalSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+		return errors.Wrap(err, "failed to assert vertical split window bounds before rotation")
+	}
+
+	// 6- Rotate the screen by 270 degrees - to portrait mode.
+	cleanupRotation, err := wm.RotateDisplay(ctx, tconn, display.Rotate270)
+	if err != nil {
+		return err
+	}
+	defer cleanupRotation()
+
+	if err := testing.Sleep(ctx, rotationAnimationDuration); err != nil {
+		return errors.Wrap(err, "failed to sleep for rotation to portrait animation to finish")
+	}
+
+	// 7- Get app window info for assertions. Over activity must be snapped to the top and under activity to the bottom.
+	if err := checkHorizontalSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+		return errors.Wrap(err, "failed to assert horizontal split window bounds in portrait mode")
+	}
+
+	// 8- Rotate the screen to 0 degrees - Back to landscape mode.
+	cleanupRotation, err = wm.RotateDisplay(ctx, tconn, display.Rotate0)
+	if err != nil {
+		return err
+	}
+	defer cleanupRotation()
+
+	if err := testing.Sleep(ctx, rotationAnimationDuration); err != nil {
+		return errors.Wrap(err, "failed to sleep for rotation to landscape animation to finish")
+	}
+
+	// 9- Get app window info for assertions. Over activity must be snapped to the left and under activity to the right.
+	if err := checkVerticalSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+		return errors.Wrap(err, "failed to assert vertical split window bounds after rotation")
+	}
+
+	return nil
+}
+
+// checkVerticalSplit helps to assert window bounds in vertical split mode.
+func checkVerticalSplit(ctx context.Context, tconn *chrome.TestConn, displayWorkArea coords.Rect) error {
+	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, extraPkgName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for over activity")
+	}
+	underActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for under activity")
+	}
+	// Over activity must be snapped to the left.
+	if overActivityWInfo.BoundsInRoot.Left != 0 ||
+		overActivityWInfo.BoundsInRoot.Top != 0 ||
+		overActivityWInfo.BoundsInRoot.Width >= displayWorkArea.Width/2 ||
+		overActivityWInfo.BoundsInRoot.Height != displayWorkArea.Height {
+		return errors.Errorf("invalid snapped to the left activity bounds, got: Left = %d, Top = %d, Width = %d, Height = %d; want: Left = 0, Top = 0, Width < %d, Height = %d",
+			overActivityWInfo.BoundsInRoot.Left, overActivityWInfo.BoundsInRoot.Top, overActivityWInfo.BoundsInRoot.Width, overActivityWInfo.BoundsInRoot.Height, displayWorkArea.Width/2, displayWorkArea.Height)
+	}
+	// Under activity must be snapped to the right.
+	if underActivityWInfo.BoundsInRoot.Left <= displayWorkArea.Width/2 ||
+		underActivityWInfo.BoundsInRoot.Top != 0 ||
+		underActivityWInfo.BoundsInRoot.Width >= displayWorkArea.Width/2 ||
+		underActivityWInfo.BoundsInRoot.Height != displayWorkArea.Height ||
+		underActivityWInfo.BoundsInRoot.Left+underActivityWInfo.BoundsInRoot.Width != displayWorkArea.Width {
+		return errors.Errorf("invalid snapped to the right activity bounds, got: Left = %d, Top = %d, Width = %d, Height = %d, Right = %d; want: Left > %d, Top = 0, Width < %d, Height = %d, Right = %d",
+			underActivityWInfo.BoundsInRoot.Left, underActivityWInfo.BoundsInRoot.Top, underActivityWInfo.BoundsInRoot.Width, underActivityWInfo.BoundsInRoot.Height,
+			underActivityWInfo.BoundsInRoot.Left+underActivityWInfo.BoundsInRoot.Width, displayWorkArea.Width/2, displayWorkArea.Width/2, displayWorkArea.Height, displayWorkArea.Width)
+	}
+
+	return nil
+}
+
+// checkHorizontalSplit helps to assert window bounds in horizontal split mode.
+func checkHorizontalSplit(ctx context.Context, tconn *chrome.TestConn, displayWorkArea coords.Rect) error {
+	underActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for under activity")
+	}
+	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, extraPkgName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for over activity")
+	}
+
+	// Over activity must be snapped to the top.
+	if overActivityWInfo.BoundsInRoot.Left != 0 ||
+		overActivityWInfo.BoundsInRoot.Top != 0 ||
+		overActivityWInfo.BoundsInRoot.Width != displayWorkArea.Width ||
+		overActivityWInfo.BoundsInRoot.Height >= displayWorkArea.Height/2 {
+		return errors.Errorf("invalid snapped to the top activity bounds, got: Left = %d, Top = %d, Width = %d, Height = %d; want: Left = 0, Top = 0, Width = %d, Height < %d",
+			overActivityWInfo.BoundsInRoot.Left, overActivityWInfo.BoundsInRoot.Top, overActivityWInfo.BoundsInRoot.Width, overActivityWInfo.BoundsInRoot.Height,
+			displayWorkArea.Width, displayWorkArea.Height/2)
+	}
+	// Under activity must be snapped to the bottom.
+	if underActivityWInfo.BoundsInRoot.Left != 0 ||
+		underActivityWInfo.BoundsInRoot.Top <= displayWorkArea.Height/2 ||
+		underActivityWInfo.BoundsInRoot.Width != displayWorkArea.Width ||
+		underActivityWInfo.BoundsInRoot.Height >= displayWorkArea.Height/2 ||
+		underActivityWInfo.BoundsInRoot.Top+underActivityWInfo.BoundsInRoot.Height != displayWorkArea.Height {
+		return errors.Errorf("invalid snapped to the bottom activity bounds, got: Left = %d, Top = %d, Width = %d, Height = %d; want: Left = 0, Top > %d, Width = %d, Height < %d",
+			underActivityWInfo.BoundsInRoot.Left, underActivityWInfo.BoundsInRoot.Top, underActivityWInfo.BoundsInRoot.Width, underActivityWInfo.BoundsInRoot.Height,
+			displayWorkArea.Height/2, displayWorkArea.Width, displayWorkArea.Height/2)
+	}
+
+	return nil
 }
