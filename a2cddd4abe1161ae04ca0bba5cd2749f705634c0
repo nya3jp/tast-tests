@@ -16,6 +16,115 @@
       "message": "Ready for review",
       "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89b2aee4_2cc2b0ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-12T06:25:12Z",
+      "side": 1,
+      "message": "channel switching?",
+      "range": {
+        "startLine": 116,
+        "startChar": 45,
+        "endLine": 116,
+        "endChar": 52
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db792b6d_92b042ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-12T06:25:12Z",
+      "side": 1,
+      "message": "Is there expected reasons that VerifyConnection can fail here? I think both AP and DUT already move to the new channel at this point so the connection should be good?",
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad005453_da904b9e",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-12T06:25:12Z",
+      "side": 1,
+      "message": "This is not that accurate, as hostapd will move to the new channel as well.",
+      "range": {
+        "startLine": 239,
+        "startChar": 17,
+        "endLine": 239,
+        "endChar": 35
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2ff2ab_aedd1637",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-12T06:25:12Z",
+      "side": 1,
+      "message": "similar to the one of APIface.",
+      "range": {
+        "startLine": 261,
+        "startChar": 17,
+        "endLine": 261,
+        "endChar": 35
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8177fb88_1a63b92c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-12T06:25:12Z",
+      "side": 1,
+      "message": "This does not look correct. I think the information should be from router instead of DUT?\n\nAlso, I wonder if we could just change the content of Config.Channel in hostapd after a successfull call of ChannelSwitch.  One concern for the change is that hostapd is keeping the *Config pointer from caller, and might cause problem if caller assume it\u0027s read-only. However, we can still mitigate it by copying once in hostapd.StartServer.",
+      "range": {
+        "startLine": 958,
+        "startChar": 27,
+        "endLine": 958,
+        "endChar": 40
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
