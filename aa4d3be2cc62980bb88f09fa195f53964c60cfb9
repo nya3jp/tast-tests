@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d09a2b1_9b86ca67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T08:32:27Z",
+      "side": 0,
+      "message": "no longer used?",
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
