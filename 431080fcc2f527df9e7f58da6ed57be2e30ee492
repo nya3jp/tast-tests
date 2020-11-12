@@ -79,6 +79,54 @@
       },
       "revId": "431080fcc2f527df9e7f58da6ed57be2e30ee492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb8441a3_83afd691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-11-12T18:51:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76d5bb0e_a8f5b09f",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "431080fcc2f527df9e7f58da6ed57be2e30ee492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2daaa325_e70b0155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-11-12T18:51:39Z",
+      "side": 1,
+      "message": "const isn\u0027t allowed here.\n\ngot a compiler error: `const initializer testing.PollOptions literal is not a constant`",
+      "parentUuid": "81dc7c3a_74f1a941",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "431080fcc2f527df9e7f58da6ed57be2e30ee492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
