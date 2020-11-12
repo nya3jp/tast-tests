@@ -22,6 +22,30 @@
       },
       "revId": "401ad883500b63a9ec577e92c61e43906e70c24c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e471ebc3_c676be0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/octane.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-12T10:30:50Z",
+      "side": 1,
+      "message": "Good idea, thanks.",
+      "parentUuid": "e0c494ed_d180902f",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "401ad883500b63a9ec577e92c61e43906e70c24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
