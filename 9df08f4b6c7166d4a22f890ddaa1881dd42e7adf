@@ -33,6 +33,24 @@
       "message": "nit: in order not to leak the runner, could you wrap this by a function?",
       "revId": "9df08f4b6c7166d4a22f890ddaa1881dd42e7adf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "194be33d_315b265b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/speedometer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-12T10:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb0f54e3_2604a64b",
+      "revId": "9df08f4b6c7166d4a22f890ddaa1881dd42e7adf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
