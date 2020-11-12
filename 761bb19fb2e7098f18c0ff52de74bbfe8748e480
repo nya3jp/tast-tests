@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb0a0c4_e95ef3b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-12T07:53:26Z",
+      "side": 1,
+      "message": "Please add me to the attention set when you get a CR+2 permission. Thanks!",
+      "revId": "761bb19fb2e7098f18c0ff52de74bbfe8748e480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
