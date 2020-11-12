@@ -16,6 +16,46 @@
       "message": "Thanks for the feedback Shuhei!",
       "revId": "dfdbabf4869f897a7877b1afe916a923e3ff01f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fafd9dc_5a364b26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-12T05:24:16Z",
+      "side": 1,
+      "message": "LGTM with relatively minor comments. Thanks!\n",
+      "revId": "dfdbabf4869f897a7877b1afe916a923e3ff01f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3958fa_204e4721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-12T05:24:16Z",
+      "side": 1,
+      "message": "Optional: You can define these constants in functions locally. Go allows defining constants in local scopes. Defining constants near where they\u0027re used is easier to read IMO...",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "dfdbabf4869f897a7877b1afe916a923e3ff01f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
