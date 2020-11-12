@@ -33,6 +33,24 @@
       "message": "If .meta matches two or more files unexpectedly, this will keep .bios_log file, while .meta file is removed.\n\nIs it intentional?",
       "revId": "eed96a97abaa31233d611fb5911ecdbe6beda3ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff61ec9_0a96943e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-11-12T16:23:51Z",
+      "side": 1,
+      "message": "No. I can iterate all the meta files and delete them if there is a multi-match.",
+      "parentUuid": "5cf5b6d4_22a7d59f",
+      "revId": "eed96a97abaa31233d611fb5911ecdbe6beda3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
