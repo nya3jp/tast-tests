@@ -53,3 +53,7 @@ func (f *loggedInFixture) Reset(ctx context.Context) error {
 	}
 	return nil
 }
+
+func (f *loggedInFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+
+func (f *loggedInFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
