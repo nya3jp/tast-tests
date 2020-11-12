@@ -39,6 +39,30 @@
       },
       "revId": "f78af8505bd8898f8040be41f1d819527857bf2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea22268_265d4ae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/cpu_vulnerability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-11-12T22:14:07Z",
+      "side": 1,
+      "message": "Ack. I was wondering if I could do metrics via crosbolt for this freeform string.",
+      "parentUuid": "24fe9f0a_6e929562",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 29
+      },
+      "revId": "f78af8505bd8898f8040be41f1d819527857bf2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
