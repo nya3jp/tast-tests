@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6962764b_72dbef0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-12T05:24:16Z",
+      "side": 1,
+      "message": "I didn\u0027t intend to say we don\u0027t need to limit parallelism. Each goroutine starts subprocesses, and it\u0027s obviously too much to start 100+ external programs at once. We definitely should limit parallelism.\n\nRegarding experimentation, please let me remind that this program runs on Chrome OS devices, not on Linux hosts. So this program may run on low-end Chromebook devices with limited computational capacity.\n\nThat said, I think it\u0027s okay to use the fixed number 16 as long as it runs fine on single core devices. On higher-end devices we might be able to increase parallelism further, but 16 should be enough number to use all cores (I haven\u0027t heard of super high-end Chromebook with 16+ cores), and anyway the test should run very fast on such high-end devices.",
+      "parentUuid": "36606177_47faa14d",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a359fd70_88fd70ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
         "patchSetId": 13
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "19859f25_adac9f29",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 23
+      },
+      "revId": "900ce3c841d9f93bc0d6a69220c188d752301bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f734d9fe_72904fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-12T05:24:16Z",
+      "side": 1,
+      "message": "Ah I overlooked that we have to convert ppdContents to string if we want to use FindAllString... and it\u0027s likely less efficient than converting the result (a short substring of the original data) to a string. Please feel free to revert this change.",
+      "parentUuid": "2be68ee0_8c6b0041",
       "range": {
         "startLine": 90,
         "startChar": 16,
