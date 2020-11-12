@@ -22,6 +22,30 @@
       },
       "revId": "48f27574203071850142490c675b0abd0dcb99cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73f82e2f_8d30e6f2",
+        "filename": "src/chromiumos/tast/local/printing/document/compare.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-12T06:07:05Z",
+      "side": 1,
+      "message": "for (i \u003d 0; i \u003c size; ++i) {\n        byte ch \u003d str[i];\n\n        if (ch \u003d\u003d 0 || ch \u003e\u003d 127)\n            added +\u003d 3;\n        else if (strchr(\"()\\\\\\n\\r\\t\\b\\f\", ch) !\u003d 0)\n            ++added;\n        else if (ch \u003c 32)\n            added +\u003d 3;\n    }\nseems to suggest that brackets (91, 93) are not escaped so it\u0027s probably better to opt for the larger match.",
+      "parentUuid": "f64461de_b01fa456",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "48f27574203071850142490c675b0abd0dcb99cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
