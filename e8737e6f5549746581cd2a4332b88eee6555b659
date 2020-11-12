@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4110e9ab_105c13bd",
+        "filename": "src/chromiumos/tast/local/printing/printer/reset_cups_state.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-12T11:26:25Z",
+      "side": 1,
+      "message": "/run/cups/stamp is deleted by cups-clear-state.sh when it starts running and (re)created when it finishes.\ncups-clear-state.sh is only run by cups-clear-state.conf on session change if the disable file does not exist.\ncups-clear-state stops cups and clears some cache folders; it shouldn\u0027t take long to run but I\u0027ll increase the timeout to 10s just in case.",
+      "parentUuid": "287cd909_90e78000",
+      "range": {
+        "startLine": 33,
+        "startChar": 34,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "e8737e6f5549746581cd2a4332b88eee6555b659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c0e2910_08c140ab",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-12T08:12:16Z",
       "side": 1,
       "message": "I recommend including err in the error message for better diagnosis (though it\u0027s highly likely it\u0027s \"file does not exist\")",
+      "range": {
+        "startLine": 34,
+        "startChar": 44,
+        "endLine": 34,
+        "endChar": 54
+      },
+      "revId": "e8737e6f5549746581cd2a4332b88eee6555b659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "015d3b1e_1301f31c",
+        "filename": "src/chromiumos/tast/local/printing/printer/reset_cups_state.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-12T11:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0e2910_08c140ab",
       "range": {
         "startLine": 34,
         "startChar": 44,
