@@ -69,6 +69,24 @@
       "message": "Code looks ok.  As discussed, many of the issue have been already fixed.  I will leave it up to you as to whether to submit this or not.",
       "revId": "cf00b7e59afc695588a7f7246feeee1ab979be97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fae7afa8_8a40d4aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-12T20:38:57Z",
+      "side": 1,
+      "message": "From poking around at recent CL runs (http://go/croscl/q/crostini.NoSharedFolder.artifact+status:merged) these false positives don\u0027t seem to be happening.  Thanks for fixing the test, I\u0027ll abandon this CL.",
+      "parentUuid": "d8a81b29_58252370",
+      "revId": "cf00b7e59afc695588a7f7246feeee1ab979be97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
