@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77076fb6_56cafd4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-12T07:50:17Z",
+      "side": 1,
+      "message": "I guess it\u0027s not necessary to use type switch. How about:\n  if x, ok :\u003d v.(uint16); ok {\n    v \u003d uint32(x)\n  }",
+      "range": {
+        "startLine": 1382,
+        "startChar": 0,
+        "endLine": 1385,
+        "endChar": 4
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "202051c2_f1d72b08",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-12T07:50:17Z",
+      "side": 1,
+      "message": "This should be before calling ConnectWifiAP.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 15
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89b2aee4_2cc2b0ac",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
         "patchSetId": 13
@@ -99,6 +145,29 @@
         "startChar": 17,
         "endLine": 261,
         "endChar": 35
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e380f53_86e08c9d",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-12T07:50:17Z",
+      "side": 1,
+      "message": "strconv.Itoa might be faster then fmt.Sprintf(\"%d\").",
+      "range": {
+        "startLine": 263,
+        "startChar": 88,
+        "endLine": 263,
+        "endChar": 139
       },
       "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
