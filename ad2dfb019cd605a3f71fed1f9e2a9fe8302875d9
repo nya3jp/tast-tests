@@ -33,6 +33,24 @@
       "message": "optional/nit: \"GPUCUJ\" is the style in Go. (I know it comes from original CL, which I reviewed ...).\n\nBTW, any reasons to rename the file? \"GPU\" \"CUJ\" are terms to be split, so gpu_cuj.go is the preferred name I thought.",
       "revId": "ad2dfb019cd605a3f71fed1f9e2a9fe8302875d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b28675_675e73a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-12T10:30:21Z",
+      "side": 1,
+      "message": "It wouldn\u0027t let me create a package called gpu_cuj, so I switched to gpucuj. I changed this one too to be consistent.\n\nUnfortunately if we rename GpuCUJ to GPUCUJ it will change the name in crosbolt which will be very annoying for looking at metrics...\n\nIf okay I would like to avoid changing it.",
+      "parentUuid": "930ae5d6_e017b226",
+      "revId": "ad2dfb019cd605a3f71fed1f9e2a9fe8302875d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

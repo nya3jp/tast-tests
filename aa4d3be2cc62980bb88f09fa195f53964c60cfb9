@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87c8b39f_725fb91b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-12T10:30:21Z",
+      "side": 1,
+      "message": "Thank you so much for catching this.",
+      "parentUuid": "358f7e6a_efed9d38",
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eb5cd10_cdf46749",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-11-12T08:25:28Z",
       "side": 1,
       "message": "nit/style:\nfunc noCleanup(contxt.Context) error { return nil }",
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c9feec_b7d6e11a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-12T10:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eb5cd10_cdf46749",
       "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1926594_a5ea1a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-12T10:30:21Z",
+      "side": 1,
+      "message": "The behaviour with defer is to run even if there\u0027s an error and this is trying to replicate defer, so I think it should.\n\nWDYT?",
+      "parentUuid": "d2f2ae1b_2a6fd48d",
+      "range": {
+        "startLine": 480,
+        "startChar": 9,
+        "endLine": 480,
+        "endChar": 22
+      },
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cc5d0bf_649764b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
         "patchSetId": 4
@@ -88,6 +148,24 @@
       "writtenOn": "2020-11-12T08:25:28Z",
       "side": 1,
       "message": "In case of error, cleanup should be called before returning.\nActually, you did so in the caller, so I guess it\u0027s the design.",
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c9c2ec4_cb048a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-12T10:30:21Z",
+      "side": 1,
+      "message": "Yee~ I can change it if you think the design is not good",
+      "parentUuid": "2cc5d0bf_649764b3",
       "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
