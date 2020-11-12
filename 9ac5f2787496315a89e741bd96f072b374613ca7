@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06151fb8_c3580d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-12T20:38:01Z",
+      "side": 1,
+      "message": "Can we make this press tab slower, maybe every half second: Interval 500*time.MiliSecond",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 59
+      },
+      "revId": "9ac5f2787496315a89e741bd96f072b374613ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ee2657c_d4b2eb49",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
         "patchSetId": 2
