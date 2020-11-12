@@ -16,6 +16,41 @@
       "message": "I think this is still a good improvement for this test. Could we submit this now?",
       "revId": "cf8e459dae2922baf721971ee21779eec2b3fc97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e6eb857_1806b17c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-11-12T03:29:16Z",
+      "side": 1,
+      "message": "Sorry, I thought it was submitted long time ago.\n\nTry again.",
+      "parentUuid": "4bbb3554_6fadd415",
+      "revId": "cf8e459dae2922baf721971ee21779eec2b3fc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "822fe8f5_213953bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-11-12T03:29:16Z",
+      "side": 1,
+      "message": "repatch and resubmit soon",
+      "revId": "cf8e459dae2922baf721971ee21779eec2b3fc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
