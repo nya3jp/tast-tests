@@ -103,6 +103,7 @@ type measuredValues struct {
 	checkinTime        float64
 	networkWaitTime    float64
 	signInTime         float64
+	bootTime           float64
 	energyUsage        *power.RAPLValues
 }
 
@@ -143,6 +144,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	var checkinTimes []float64
 	var networkWaitTimes []float64
 	var signInTimes []float64
+	var bootTimes []float64
 	var energyUsage []*power.RAPLValues
 
 	for len(playStoreShownTimes) < successBootCount {
@@ -158,7 +160,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 			logcatName = fmt.Sprintf("logcat_error_%d.log", errorCount)
 		}
 		logcatFilePath := filepath.Join(s.OutDir(), logcatName)
-		if err := dumpLogcat(ctx, logcatFilePath); err != nil {
+		if err := dumpLogcat(ctx, s, logcatFilePath); err != nil {
 			s.Log("Failed to dump logcat: ", err)
 		}
 		if err != nil {
@@ -177,6 +179,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 		checkinTimes = append(checkinTimes, v.checkinTime)
 		networkWaitTimes = append(networkWaitTimes, v.networkWaitTime)
 		signInTimes = append(signInTimes, v.signInTime)
+		bootTimes = append(bootTimes, v.bootTime)
 		if v.energyUsage != nil {
 			energyUsage = append(energyUsage, v.energyUsage)
 		}
@@ -226,6 +229,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	reportResult("checkin_time", checkinTimes)
 	reportResult("network_wait_time", networkWaitTimes)
 	reportResult("sign_in_time", signInTimes)
+	reportResult("boot_time", bootTimes)
 
 	for _, rapl := range energyUsage {
 		rapl.ReportPerfMetrics(perfValues, "power_")
@@ -241,8 +245,8 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 }
 
 // readResultProp reads the system property set by ARC to save provisioning flow step result.
-func readResultProp(ctx context.Context, propName string) (float64, error) {
-	out, err := arc.BootstrapCommand(ctx, "/system/bin/getprop", propName).Output(testexec.DumpLogOnError)
+func readResultProp(ctx context.Context, a *arc.ARC, propName string) (float64, error) {
+	out, err := a.Command(ctx, "getprop", propName).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return 0, errors.Wrapf(err, "failed to get the result property %q", propName)
 	}
@@ -312,20 +316,60 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 		}
 	}
 
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		return v, errors.Wrap(err, "failed to connect ARC")
+	}
+	defer a.Close()
+
 	// Read sign-in results via properties.
-	if v.signInTime, err = readResultProp(ctx, "dev.arc.accountsignin.result"); err != nil {
+	if v.signInTime, err = readResultProp(ctx, a, "dev.arc.accountsignin.result"); err != nil {
 		return v, err
 	}
-	if v.accountCheckTime, err = readResultProp(ctx, "dev.arc.accountcheck.result"); err != nil {
+	if v.accountCheckTime, err = readResultProp(ctx, a, "dev.arc.accountcheck.result"); err != nil {
 		return v, err
 	}
-	if v.networkWaitTime, err = readResultProp(ctx, "dev.arc.networkwait.result"); err != nil {
+	if v.networkWaitTime, err = readResultProp(ctx, a, "dev.arc.networkwait.result"); err != nil {
 		return v, err
 	}
-	if v.checkinTime, err = readResultProp(ctx, "dev.arc.accountcheckin.result"); err != nil {
+	if v.checkinTime, err = readResultProp(ctx, a, "dev.arc.accountcheckin.result"); err != nil {
 		return v, err
 	}
 
+	// Calculate
+	//   * kernel boot time as a difference init process started and preStartTime.
+	var ret struct {
+		Provisioned bool `json:"provisioned"`
+		TOSNeeded   bool `json:"tosNeeded"`
+		// mini-ARC started
+		PreStartTime float64 `json:"preStartTime"`
+		// ARC started.
+		StartTime float64 `json:"startTime"`
+	}
+
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.getArcState)()", &ret); err != nil {
+		return v, errors.Wrap(err, "failed to run getArcState()")
+	}
+	if ret.PreStartTime == 0 {
+		return v, errors.New("cannot get ARC pre-start time")
+	}
+
+	output, err := a.Command(ctx, "stat", "-c", "%z", "/proc/1").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return v, errors.Wrap(err, "failed to get init process start time")
+	}
+	timeStr := strings.TrimSpace(string(output))
+	testing.ContextLogf(ctx, "ARC pre-start time: %f UNIX ms, and /init proc time %q", ret.PreStartTime, timeStr)
+	preStartTimeNS := (int64)(ret.PreStartTime * 1000000.0)
+	tPreStart := time.Unix(preStartTimeNS/1000000000, preStartTimeNS%1000000000)
+	tInit, err := time.Parse("2006-01-02 15:04:05.999999999 -0700", timeStr)
+	if err != nil {
+		tInit, err = time.ParseInLocation("2006-01-02 15:04:05.999999999", timeStr, time.Local)
+	}
+	if err != nil {
+		return v, errors.Wrap(err, "failed to parse time")
+	}
+	v.bootTime = float64(tInit.Sub(tPreStart).Milliseconds())
 	return v, nil
 }
 
@@ -373,14 +417,19 @@ func chromeOSVersion() (string, error) {
 }
 
 // dumpLogcat dumps logcat output to a log file in the test result directory.
-func dumpLogcat(ctx context.Context, filePath string) error {
+func dumpLogcat(ctx context.Context, s *testing.State, filePath string) error {
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		return errors.Wrap(err, "failed to connect ARC")
+	}
+	defer a.Close()
+
 	logFile, err := os.Create(filePath)
 	if err != nil {
 		return errors.Wrap(err, "failed to create log file")
 	}
 	defer logFile.Close()
-
-	cmd := testexec.CommandContext(ctx, "android-sh", "-c", "logcat -d")
+	cmd := a.Command(ctx, "logcat", "-d")
 	cmd.Stdout = logFile
 	cmd.Stderr = logFile
 	return cmd.Run()
