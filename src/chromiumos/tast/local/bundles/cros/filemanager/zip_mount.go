@@ -401,20 +401,14 @@ func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *
 		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[0], err)
 	}
 
-	// Check that the password field is prefilled with the last entered password.
+	// Check that "Invalid password" displays on the UI.
 	params = ui.FindParams{
-		Name:  "•••••••••••••",
-		Role:  ui.RoleTypeStaticText,
-		State: map[ui.StateType]bool{ui.StateTypeEditable: true},
+		Name: "Invalid password",
+		Role: ui.RoleTypeStaticText,
 	}
 
 	if err := files.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
-		s.Fatal("Cannot find last entered password: ", err)
-	}
-
-	// Press Backspace.
-	if err := ew.Accel(ctx, "Backspace"); err != nil {
-		s.Fatal("Cannot press 'Backspace': ", err)
+		s.Fatal("Cannot find 'Invalid password': ", err)
 	}
 
 	// Enter right password.
@@ -430,11 +424,6 @@ func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *
 	// Check that the password dialog is active for the second encrypted ZIP archive.
 	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[1]); err != nil {
 		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[1], err)
-	}
-
-	// Press Backspace.
-	if err := ew.Accel(ctx, "Backspace"); err != nil {
-		s.Fatal("Cannot press 'Backspace': ", err)
 	}
 
 	// Enter right password.
