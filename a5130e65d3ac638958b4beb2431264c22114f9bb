@@ -16,6 +16,69 @@
       "message": "Checked as well that if tests fail before removing bookmarked page they results are still ok. ",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89681c8a_26805d38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-12T15:09:24Z",
+      "side": 1,
+      "message": "LGTM % comments\nI think now you can add a reviewer from the stability team, and one who works with UI packages.",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16e69c65_488f2916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-12T15:09:24Z",
+      "side": 1,
+      "message": "nit: there is no need for period for these sentece parts.",
+      "range": {
+        "startLine": 22,
+        "startChar": 86,
+        "endLine": 22,
+        "endChar": 87
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c36f8da_6a39a5df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-12T15:09:24Z",
+      "side": 1,
+      "message": "\u003e  s.Fatal(\"Encountered error when adding initial bookmark: \", err)",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 74
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
