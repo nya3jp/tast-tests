@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8efc27aa_9c0889fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-11-12T00:38:32Z",
+      "side": 1,
+      "message": "I wonder if it would be better to have a map of routines to allowable \"extra\" statuses - that way we could fail if something like urandom came back with kFailedToStart, for example.",
+      "revId": "e61510d2a8ad34cb2b3b3baa3409414cd0241527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
