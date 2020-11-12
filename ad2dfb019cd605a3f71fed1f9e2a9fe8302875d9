@@ -51,6 +51,24 @@
       "parentUuid": "930ae5d6_e017b226",
       "revId": "ad2dfb019cd605a3f71fed1f9e2a9fe8302875d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a72eb787_50c37324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T14:42:38Z",
+      "side": 1,
+      "message": "Keeping GpuCUJ for consistency is ok for now, but still gpu_cuj.go is preferred while the package should be gpucuj.\nWe have similar examples in other tests. e.g. src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/",
+      "parentUuid": "c8b28675_675e73a9",
+      "revId": "ad2dfb019cd605a3f71fed1f9e2a9fe8302875d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

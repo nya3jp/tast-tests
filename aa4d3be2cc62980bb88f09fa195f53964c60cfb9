@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be107455_05b3c5d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T14:42:38Z",
+      "side": 1,
+      "message": "Sorry for unclear comment.\n\n\u003e WDYT?\n\nAgreed, and my point was that the code looks not so. Could you update the code to run the existing callback, even if the new one fails?",
+      "parentUuid": "b1926594_a5ea1a85",
+      "range": {
+        "startLine": 480,
+        "startChar": 9,
+        "endLine": 480,
+        "endChar": 22
+      },
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cc5d0bf_649764b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
         "patchSetId": 4
@@ -166,6 +190,24 @@
       "side": 1,
       "message": "Yee~ I can change it if you think the design is not good",
       "parentUuid": "2cc5d0bf_649764b3",
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60ee6d2_1d756faa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T14:42:38Z",
+      "side": 1,
+      "message": "I think it is better to call the clean up call on failure inside the function.\nAFAIK, it is rare that a function returns something which needs to be teared-down in the caller\u0027s responsibility even if err is non-nil.\nIt\u0027d be better to follow the common practice: if the function returns an error, the function looks no-op from the caller. It\u0027d be best-practice rather than strict requirement. But, this case can be changed to it.",
+      "parentUuid": "5c9c2ec4_cb048a97",
       "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
