@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287cd909_90e78000",
+        "filename": "src/chromiumos/tast/local/printing/printer/reset_cups_state.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-12T08:12:16Z",
+      "side": 1,
+      "message": "Is /run/cups/stamp created by cups after checking /run/cups/disable? If so 1-second timeout sounds too short for overloaded lower-end devices. I usually recommend using timeouts of 5-30 seconds.",
+      "range": {
+        "startLine": 33,
+        "startChar": 34,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "e8737e6f5549746581cd2a4332b88eee6555b659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0e2910_08c140ab",
+        "filename": "src/chromiumos/tast/local/printing/printer/reset_cups_state.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-12T08:12:16Z",
+      "side": 1,
+      "message": "I recommend including err in the error message for better diagnosis (though it\u0027s highly likely it\u0027s \"file does not exist\")",
+      "range": {
+        "startLine": 34,
+        "startChar": 44,
+        "endLine": 34,
+        "endChar": 54
+      },
+      "revId": "e8737e6f5549746581cd2a4332b88eee6555b659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
