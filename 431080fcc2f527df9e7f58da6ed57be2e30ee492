@@ -16,6 +16,69 @@
       "message": "There were repeated failures for this test on specific boards.\n\nhttps://tastboard.corp.google.com/test/assistant.SuggestionChipAnimationPerf\n\nIt was a timing issue that caused assistant suggestion chips to be visible and selected by |ui.FindWithTimeout|, but animated off screen and replaced with a new one before being clicked on.\n\nWaiting for a card element to animate in and then finding and clicking on the assistant suggestion chip makes this more reliable.",
       "revId": "431080fcc2f527df9e7f58da6ed57be2e30ee492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9203c7a8_6ec2bd10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-12T08:29:08Z",
+      "side": 1,
+      "message": "LGTM for style % nits",
+      "revId": "431080fcc2f527df9e7f58da6ed57be2e30ee492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d5bb0e_a8f5b09f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-12T08:29:08Z",
+      "side": 1,
+      "message": "nit: use a more descriptive name, maybe uiPollOptions?",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "431080fcc2f527df9e7f58da6ed57be2e30ee492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81dc7c3a_74f1a941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/suggestion_chip_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-12T08:29:08Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "431080fcc2f527df9e7f58da6ed57be2e30ee492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
