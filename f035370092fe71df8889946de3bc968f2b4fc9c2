@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08bcc17c_c0bff3bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-12T18:35:43Z",
+      "side": 1,
+      "message": "Change introduced in:\n\nhttps://chromium-review.googlesource.com/c/chromium/src/+/2507771",
+      "revId": "f035370092fe71df8889946de3bc968f2b4fc9c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
