@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a3fe73_1d420487",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-11-12T12:06:14Z",
+      "side": 1,
+      "message": "Just to be clear, is this a suggestion or a +2 requirement?",
+      "parentUuid": "a821a166_7f894cdb",
+      "revId": "45663c41a06b13a6e38f49d0609cb9f6775a0c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a593901_59d9d635",
