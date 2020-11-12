@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3108bb41_783d38dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-12T18:22:29Z",
+      "side": 1,
+      "message": "\"elm\" and \"hana\" are in the intel_wifi_chip dependency now, I think. I meant we should leave the earlier TODO, because once we have a proper intel wifi hwdep we won\u0027t need any hardwaredeps.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "5410280f481f17547125b7869b69a3fd09bee551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
