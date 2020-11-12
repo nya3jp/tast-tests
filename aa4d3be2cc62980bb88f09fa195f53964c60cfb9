@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce649a5_e6991164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T08:25:28Z",
+      "side": 1,
+      "message": "Sorry for delay.",
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358f7e6a_efed9d38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T08:25:28Z",
+      "side": 1,
+      "message": "sleep(3) is missing here. Is it an intentional change?",
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb5cd10_cdf46749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T08:25:28Z",
+      "side": 1,
+      "message": "nit/style:\nfunc noCleanup(contxt.Context) error { return nil }",
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f2ae1b_2a6fd48d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T08:25:28Z",
+      "side": 1,
+      "message": "Should this run even if new() fails?",
+      "range": {
+        "startLine": 480,
+        "startChar": 9,
+        "endLine": 480,
+        "endChar": 22
+      },
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc5d0bf_649764b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T08:25:28Z",
+      "side": 1,
+      "message": "In case of error, cleanup should be called before returning.\nActually, you did so in the caller, so I guess it\u0027s the design.",
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
