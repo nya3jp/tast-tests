@@ -34,6 +34,24 @@
       "parentUuid": "68671953_c4f6aab5",
       "revId": "08a6cbca7e190612be8fccb55308193b63f70775",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d82b4e0e_8853cf17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2020-11-12T08:53:21Z",
+      "side": 1,
+      "message": "Thanks Pranav,\n\nWill check that.\nUnfortunately I don\u0027t have permissions accessing the cloud storage via gsutil, I have to do everything manually - anyway, I\u0027ll check on the clean setup.\n\nBest regards,\nMarcin",
+      "parentUuid": "5419e1bb_a82acac1",
+      "revId": "08a6cbca7e190612be8fccb55308193b63f70775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
