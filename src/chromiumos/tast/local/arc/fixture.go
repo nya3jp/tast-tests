@@ -90,5 +90,12 @@ func (f *bootedFixture) Reset(ctx context.Context) error {
 	return f.init.Restore(ctx, f.arc)
 }
 
-// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
-// hooks in fixtures.
+func (f *bootedFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
+	// hooks in fixtures.
+}
+
+func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
+	// hooks in fixtures.
+}
