@@ -56,6 +56,30 @@
       },
       "revId": "dfdbabf4869f897a7877b1afe916a923e3ff01f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7b852a_d9b4fbaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-11-12T07:00:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b3958fa_204e4721",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "dfdbabf4869f897a7877b1afe916a923e3ff01f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
