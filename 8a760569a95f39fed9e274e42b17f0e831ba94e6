@@ -16,6 +16,24 @@
       "message": "cleanup needs to be called on error in this function.\nDitto for below.",
       "revId": "8a760569a95f39fed9e274e42b17f0e831ba94e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beae0aa4_6a5570a4",
+        "filename": "src/chromiumos/tast/local/lacros/perftest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-12T10:30:37Z",
+      "side": 1,
+      "message": "As on one of the other CLs, the design is that the caller should call the cleanup function.\n\nHope this is okay.",
+      "parentUuid": "f25ff1cf_a1761740",
+      "revId": "8a760569a95f39fed9e274e42b17f0e831ba94e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
