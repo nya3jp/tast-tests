@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f29ffb7_c99bea8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-12T21:29:50Z",
+      "side": 1,
+      "message": "Eliot, I guess you did some optimization magic last time to get the binary smaller?\n\nLet me know if it is a simple process",
+      "revId": "9ef3b3dc8eb8d5b658da27ad564f1918198e74f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
