@@ -22,6 +22,30 @@
       },
       "revId": "60126d019775ff62d66cf736e8c47c77711d2d74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e5016bf_d4a9bd14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-11-12T03:47:10Z",
+      "side": 1,
+      "message": "Sure we can. But going forward, I wanted to append 2 more minor tests to this same Launcher test. That would unnecessarily complicate the PlayStore Test.",
+      "parentUuid": "a0a8f317_20322541",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "60126d019775ff62d66cf736e8c47c77711d2d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
