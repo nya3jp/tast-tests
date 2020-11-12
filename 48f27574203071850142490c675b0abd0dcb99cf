@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64461de_b01fa456",
+        "filename": "src/chromiumos/tast/local/printing/document/compare.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-12T05:06:39Z",
+      "side": 1,
+      "message": "optional: \".*?\" may be safer? (neither is perfect, though).",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "48f27574203071850142490c675b0abd0dcb99cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
