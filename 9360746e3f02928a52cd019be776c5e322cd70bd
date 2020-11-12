@@ -16,6 +16,23 @@
       "message": "LGTM, please also get code review from your team members before submission.",
       "revId": "9360746e3f02928a52cd019be776c5e322cd70bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e7fae15_81ea136e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-12T07:50:54Z",
+      "side": 1,
+      "message": "Hi Victor, please take a look if this looks okay.",
+      "revId": "9360746e3f02928a52cd019be776c5e322cd70bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
