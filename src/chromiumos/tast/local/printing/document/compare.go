@@ -27,9 +27,15 @@ import (
 // fields have no bearing on the actual content of the document, so it is safe
 // to clear them away.
 var cleanPDFRegex = regexp.MustCompile("(?m)" +
-	// matches the "ID" embedded in the PDF file which uniquely
-	// identifies the document.
-	`/ID \[<[a-fA-F0-9]+><[a-fA-F0-9]+>\]` +
+	// The ID tag contains two md5 hashes which uniquely identify the document.
+	// It is usually stored in the folowing form:
+	// [<81b14aafa313db63dbd6f981e49f94f4><81b14aafa313db63dbd6f981e49f94f4>].
+	// However, occasionally when storing it as a string with escape sequences saves
+	// space, Ghostscript (s_write_ps_string() in base/spsdf.c) will store it as follows:
+	// [(\271\022'7\220\243~!~W8i'7\334#)(\271\022'7\220\243~!~W8i'7\334#)].
+	// See https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/PDF32000_2008.pdf
+	// section 7.5.5 File Trailer and section 7.3.4.2 Literal Strings for more information.
+	`/ID \[.*\]` +
 	// matches the "CreationDate" field embedded in the PDF file.
 	`|/CreationDate\(D:[0-9]{14}[-+Z][0-9]{2}'[0-9]{2}'\)` +
 	// matches the "ModDate" field embedded in the PDF file.
