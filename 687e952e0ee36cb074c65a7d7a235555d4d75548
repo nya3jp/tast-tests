@@ -22,6 +22,30 @@
       },
       "revId": "687e952e0ee36cb074c65a7d7a235555d4d75548",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dea3a78_a6ce9394",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/starz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-12T01:21:11Z",
+      "side": 1,
+      "message": "App UI looks like this, \"Already have an account?Log in\", in that \"Log in\" is only clickable but it does not have separate UiObject ID. So use of keypad is needed here. Thanks.",
+      "parentUuid": "1bdc90d2_bd16dbc8",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "687e952e0ee36cb074c65a7d7a235555d4d75548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
