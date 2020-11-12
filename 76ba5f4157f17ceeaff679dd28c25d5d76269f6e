@@ -87,6 +87,24 @@
       "parentUuid": "89868987_a4060bbf",
       "revId": "76ba5f4157f17ceeaff679dd28c25d5d76269f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587617d6_925ced84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-12T23:38:58Z",
+      "side": 1,
+      "message": "The primary purpose of the CL is to provide a precondition. The multivm.Login test is just there as a simple test for the precondition.\n\nIf the precondition allows arbitrary ordering, and a test doesn\u0027t care about order, just that the VMs are running, then having multiple permutations will get rid of the advantage of using a precondition: amortizing common setup tasks across tests.\n\nIf you feel strongly about the precondition being able to launch VMs in an arbitrary order, I can refactor the precondition to support this. I just thought that if a specific order is required, then that would be better left to test code.\n\nSee the multivm.Lifecycle test implemented in the 4 commits stacked on top for a more involved test that uses.",
+      "parentUuid": "452d642f_e6b5ad60",
+      "revId": "76ba5f4157f17ceeaff679dd28c25d5d76269f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
