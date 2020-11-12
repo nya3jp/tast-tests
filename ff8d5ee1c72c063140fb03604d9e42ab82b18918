@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5803f90_5066e29c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-12T17:59:56Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "9ab18ddd_08da74e2",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "ff8d5ee1c72c063140fb03604d9e42ab82b18918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "262fbd3c_fb4e25fd",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-10T23:03:13Z",
       "side": 0,
       "message": "Here as well.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "ff8d5ee1c72c063140fb03604d9e42ab82b18918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e414974c_286f8e8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-12T17:59:56Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "262fbd3c_fb4e25fd",
       "range": {
         "startLine": 44,
         "startChar": 0,
