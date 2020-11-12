@@ -16,6 +16,24 @@
       "message": "It turns out |legacy_video_decoder| exits.  This makes sense to gate the rest of the _alt tests with that.",
       "revId": "fd9b9d25f1f70932f14c2e61174230d3d940998a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08babe6a_a8d33859",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-12T05:36:49Z",
+      "side": 1,
+      "message": "Yes and no: |legacy_video_decoder| is \u003d\u003d |disable_cros_video_decoder|,\nwhich is added to the overlay of platforms/boards where the new VD is\nnot working for some reason -- those platforms _only_ support the \nlegacy VDA and don\u0027t support the new direct VD.\n\nBut we want to run _alt versions on platforms where the new direct \nVD is enabled because until now, we were based on the assumption \nthat wherever the direct VD is enabled, there\u0027s a legacy VDA. That\nassumptions holds everywhere until Trogdor:\n\n                                      VD  VDA\n  disable_cros_video_decoder\u003d\u003dtrue    no  yes\n  disable_cros_video_decoder\u003d\u003dfalse  yes  yes\n  Trogdor                            yes   no\n\n(IOW if we were to use |legacy_video_decoder| as Sw precondition for \nthe _alt tests, we would not run them on e.g. Intel platforms, where \nwe have a legacy VDA that we want to maintain, and a direct VD.)\n\nSo we\u0027ll still need a new flag to define that a given platform has\nno legacy VDA to fall back to. So PS1 way of adding a new flag was \nthe way to go, although with the current naming it\u0027d be a bit \nconfusing, perhaps we can consolidate the current [1]: \n\n \"cros_video_decoder\":      \"!disable_cros_video_decoder\",\n \"legacy_video_decoder\":    \"disable_cros_video_decoder\",\n\ninto:\n  \n \"video_decoder_direct_and_legacy\":   \"!disable_cros_video_decoder\",\n \"video_decoder_legacy_only\":         \"disable_cros_video_decoder\",\n \"video_decoder_legacy_supported\":    \"!board:trogdor\",\n\nAnd then add \"video_decoder_legacy_supported\" to all the _alt tests.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/cmd/local_test_runner/main.go?q\u003ddisable_cros_video_decoder%20main.go",
+      "parentUuid": "49cac675_e1e11ae8",
+      "revId": "fd9b9d25f1f70932f14c2e61174230d3d940998a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
