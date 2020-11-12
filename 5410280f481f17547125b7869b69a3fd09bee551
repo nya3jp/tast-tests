@@ -22,6 +22,30 @@
       },
       "revId": "5410280f481f17547125b7869b69a3fd09bee551",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c9b8e4_73a5f60a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-12T19:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3108bb41_783d38dc",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "5410280f481f17547125b7869b69a3fd09bee551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
