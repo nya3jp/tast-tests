@@ -9,6 +9,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -26,11 +27,11 @@ func ResetCups(ctx context.Context) error {
 	// Wait for the stamp file to prevent race conditions, in case the script
 	// is currently running.
 	testing.ContextLog(ctx, "Waiting for stamp file")
-	if err := testing.Poll(ctx, func(context.Context) error {
+	if testing.Poll(ctx, func(context.Context) error {
 		_, err := os.Stat("/run/cups/stamp")
 		return err
-	}, nil); err != nil {
-		return err
+	}, &testing.PollOptions{Timeout: time.Second, Interval: 100 * time.Millisecond}) != nil {
+		testing.ContextLog(ctx, "Could not find stamp file")
 	}
 	return testexec.CommandContext(ctx, "/usr/share/cros/init/cups-clear-state.sh").Run(testexec.DumpLogOnError)
 }
