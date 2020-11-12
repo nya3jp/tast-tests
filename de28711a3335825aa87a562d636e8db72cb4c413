@@ -111,6 +111,30 @@
       },
       "revId": "de28711a3335825aa87a562d636e8db72cb4c413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94f356f_0b956763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/security_cpu_vulnerability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-11-12T18:58:26Z",
+      "side": 1,
+      "message": "Ok. Do I need to keep around the testing.Param stuff for each different image? I don\u0027t think it really matters what image I use so having those different options seems useless.",
+      "parentUuid": "b336fb58_a07a50fa",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "de28711a3335825aa87a562d636e8db72cb4c413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
