@@ -73,6 +73,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "595f2dbc_6124d4ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-12T19:57:14Z",
+      "side": 1,
+      "message": "I mean, I think that duplicating expectations makes this code harder to read and more fragile, and using this suggestion would fix both of those issues.\n\nIs there some time pressure under which this can\u0027t be changed?",
+      "parentUuid": "59584a5e_415d01f0",
+      "revId": "45663c41a06b13a6e38f49d0609cb9f6775a0c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "248b028b_5694a8c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-12T19:57:14Z",
+      "side": 1,
+      "message": "You marked something done but it looks like you forgot to reupload.",
+      "revId": "45663c41a06b13a6e38f49d0609cb9f6775a0c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a593901_59d9d635",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
         "patchSetId": 1
