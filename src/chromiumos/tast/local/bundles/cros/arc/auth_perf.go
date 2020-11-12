@@ -103,6 +103,7 @@ type measuredValues struct {
 	checkinTime        float64
 	networkWaitTime    float64
 	signInTime         float64
+	bootTime           float64
 	energyUsage        *power.RAPLValues
 }
 
@@ -143,6 +144,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	var checkinTimes []float64
 	var networkWaitTimes []float64
 	var signInTimes []float64
+	var bootTimes []float64
 	var energyUsage []*power.RAPLValues
 
 	for len(playStoreShownTimes) < successBootCount {
@@ -177,6 +179,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 		checkinTimes = append(checkinTimes, v.checkinTime)
 		networkWaitTimes = append(networkWaitTimes, v.networkWaitTime)
 		signInTimes = append(signInTimes, v.signInTime)
+		bootTimes = append(bootTimes, v.bootTime)
 		if v.energyUsage != nil {
 			energyUsage = append(energyUsage, v.energyUsage)
 		}
@@ -226,6 +229,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	reportResult("checkin_time", checkinTimes)
 	reportResult("network_wait_time", networkWaitTimes)
 	reportResult("sign_in_time", signInTimes)
+	reportResult("boot_time", bootTimes)
 
 	for _, rapl := range energyUsage {
 		rapl.ReportPerfMetrics(perfValues, "power_")
@@ -325,6 +329,30 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 	if v.checkinTime, err = readResultProp(ctx, "dev.arc.accountcheckin.result"); err != nil {
 		return v, err
 	}
+
+	// Calculate kernel boot delay as a time difference when ARC was enabled and root Android
+	// init process was started.
+	var enabledTimeMS float64
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.getArcEnabledTime)()", &enabledTimeMS); err != nil {
+		return v, errors.Wrap(err, "failed to run getArcEnabledTime()")
+	}
+
+	output, err := testexec.CommandContext(ctx, "android-sh", "-c", "stat -c %z /proc/1").CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		return v, errors.Wrap(err, "failed to get init process start time")
+	}
+	timeStr := strings.TrimSpace(string(output))
+	testing.ContextLogf(ctx, "Got ARC enabled time: %f UNIX ms and /init proc time %q", enabledTimeMS, timeStr)
+	enabledTimeNS := (int64)(enabledTimeMS * 1000000.0)
+	t1 := time.Unix(enabledTimeNS/1000000000, enabledTimeNS%1000000000)
+	t2, err := time.Parse("2006-01-02 15:04:05.999999999 -0700", timeStr)
+	if err != nil {
+		t2, err = time.ParseInLocation("2006-01-02 15:04:05.999999999", timeStr, time.Now().Location())
+	}
+	if err != nil {
+		return v, errors.Wrap(err, "failed to parse time")
+	}
+	v.bootTime = float64(t2.Sub(t1).Milliseconds())
 
 	return v, nil
 }
