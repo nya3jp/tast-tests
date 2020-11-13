@@ -18,7 +18,7 @@ import (
 // Requires s.PreValue() to return *wificell.TextFixture.
 // Calls s.Fatal in case of any error during setup.
 func ConfigureAP(ctx context.Context, s *testing.State, apParams []hostapd.Option, routerIdx int,
-	secConfFac security.ConfigFactory) (ap *wificell.APIface, freq int, deconfig func(context.Context, *wificell.APIface) error) {
+	secConfFac security.ConfigFactory) (ap wificell.APIface, freq int, deconfig func(context.Context, wificell.APIface) error) {
 
 	tf := s.PreValue().(*wificell.TestFixture)
 
@@ -28,7 +28,7 @@ func ConfigureAP(ctx context.Context, s *testing.State, apParams []hostapd.Optio
 	}
 	s.Logf("AP%d setup done", routerIdx)
 
-	deconfig = func(ctx context.Context, ap *wificell.APIface) error {
+	deconfig = func(ctx context.Context, ap wificell.APIface) error {
 		if err := tf.DeconfigAP(ctx, ap); err != nil {
 			s.Errorf("Failed to deconfig AP, err: %s", err)
 			return err
@@ -50,7 +50,7 @@ func ConfigureAP(ctx context.Context, s *testing.State, apParams []hostapd.Optio
 // handles errors and returns disconnect function.
 // Requires s.PreValue() to return *wificell.TextFixture.
 // Calls s.Fatal in case of any error during connect.
-func ConnectAP(ctx context.Context, s *testing.State, ap *wificell.APIface, apIdx int) (disconnect func(context.Context)) {
+func ConnectAP(ctx context.Context, s *testing.State, ap wificell.APIface, apIdx int) (disconnect func(context.Context)) {
 	tf := s.PreValue().(*wificell.TestFixture)
 
 	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {

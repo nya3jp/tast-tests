@@ -58,7 +58,7 @@ func PMKSACaching(ctx context.Context, s *testing.State) {
 	)
 	ssid := hostapd.RandomSSID("TAST_TEST_")
 
-	configureAP := func(ctx context.Context, channel int, bssid string) (*wificell.APIface, error) {
+	configureAP := func(ctx context.Context, channel int, bssid string) (wificell.APIface, error) {
 		apOps := []hostapd.Option{
 			hostapd.SSID(ssid), hostapd.BSSID(bssid), hostapd.Mode(hostapd.Mode80211nPure),
 			hostapd.Channel(channel), hostapd.HTCaps(hostapd.HTCapHT20),

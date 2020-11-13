@@ -30,6 +30,7 @@ import (
 	"chromiumos/tast/remote/network/cmd"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
+	"chromiumos/tast/remote/wificell/ap/cisco"
 	"chromiumos/tast/remote/wificell/attenuator"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -83,6 +84,13 @@ func TFAttenuator(target string) TFOption {
 	}
 }
 
+// TFCiscoCtrl sets the Cisco controller hostname to use in the test fixture.
+func TFCiscoCtrl(target string) TFOption {
+	return func(tf *TestFixture) {
+		tf.ciscoCtrlTarget = target
+	}
+}
+
 // TFWithUI sets if the test fixture should not skip stopping UI.
 // This option is useful for tests with UI settings + basic WiFi functionality,
 // where the interference of UI (e.g. trigger scans) does not matter much.
@@ -100,6 +108,13 @@ type routerData struct {
 	host   *ssh.Conn
 	object *Router
 }
+
+type apType int
+
+const (
+	hostapdAP apType = iota
+	ciscoAP
+)
 
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
@@ -123,13 +138,17 @@ type TestFixture struct {
 	}
 
 	apID      int
-	capturers map[*APIface]*pcap.Capturer
+	capturers map[APIface]*pcap.Capturer
 
 	// aps is a set of APs useful for deconfiguring all APs, which some tests require.
-	aps map[*APIface]struct{}
+	aps map[APIface]struct{}
 
 	// netCertStore is initialized lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests need it.
 	netCertStore *netcertstore.Store
+
+	ciscoCtrlTarget string
+	ciscoCtrl       *cisco.Controller
+	ciscoAPs        map[int]*cisco.AccessPoint
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
@@ -187,8 +206,8 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 
 	tf := &TestFixture{
 		dut:       d,
-		capturers: make(map[*APIface]*pcap.Capturer),
-		aps:       make(map[*APIface]struct{}),
+		capturers: make(map[APIface]*pcap.Capturer),
+		aps:       make(map[APIface]struct{}),
 	}
 	for _, op := range ops {
 		op(tf)
@@ -230,7 +249,13 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		testing.ContextLogf(ctx, "Adding router %s", router.target)
 		routerHost, err := tf.connectCompanion(ctx, router.target)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to connect to the router %s", router.target)
+			if tf.ciscoCtrlTarget != "" {
+				// fallback to Cisco controller, will fail later if also not available
+				testing.ContextLog(ctx, "Router not available, fallback to Cisco APs")
+				continue
+			} else {
+				return nil, errors.Wrapf(err, "failed to connect to the router %s", router.target)
+			}
 		}
 		router.host = routerHost
 		routerObj, err := NewRouter(ctx, daemonCtx, router.host,
@@ -297,11 +322,37 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 
 	if tf.attenuatorTarget != "" {
 		testing.ContextLog(ctx, "Opening Attenuator: ", tf.attenuatorTarget)
-		// Router #0 should always be present, thus we use it as a proxy.
-		tf.attenuator, err = attenuator.Open(ctx, tf.attenuatorTarget, tf.routers[0].host)
+		// Use router #0 as a proxy, if not available then use DUT
+		var proxy *ssh.Conn
+		if tf.routers[0].host != nil {
+			proxy = tf.routers[0].host
+		} else {
+			proxy = tf.dut.Conn()
+		}
+		tf.attenuator, err = attenuator.Open(ctx, tf.attenuatorTarget, proxy)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to open attenuator")
 		}
+	}
+
+	if tf.ciscoCtrlTarget != "" {
+		testing.ContextLog(ctx, "Initializing Cisco controller: ", tf.ciscoCtrlTarget)
+		// Use DUT as a proxy, nothing else is commonly available
+		splitTarget := strings.Split(tf.ciscoCtrlTarget, ":")
+		if len(splitTarget) != 3 {
+			return nil, errors.New("invalid ciscoctrl parameter format, should be user:passwd:host")
+		}
+		tf.ciscoCtrl, err = cisco.InitCiscoController(ctx, tf.dut.Conn(),
+			splitTarget[2], splitTarget[0], splitTarget[1])
+		if err != nil {
+			if len(tf.routers) > 0 && tf.routers[0].object != nil {
+				// Do not fail if the controller is not available, the test will run on non-cisco APs
+				testing.ContextLog(ctx, "Cisco controller not available")
+			} else {
+				return nil, errors.New("failed to init Cisco controller, no other APs available")
+			}
+		}
+		tf.ciscoAPs = map[int]*cisco.AccessPoint{}
 	}
 
 	// Seed the random as we have some randomization. e.g. default SSID.
@@ -422,10 +473,45 @@ func (tf *TestFixture) getUniqueAPName() string {
 	return id
 }
 
-// ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to chose router
-// to establish the AP on.
-func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
-	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
+func (tf *TestFixture) getAPType(ctx context.Context, idx int) apType {
+	if tf.ciscoCtrl != nil {
+		return ciscoAP
+	}
+	return hostapdAP
+}
+
+func (tf *TestFixture) configureCiscoAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret APIface, retErr error) {
+	ctx, st := timing.Start(ctx, "tf.configureCiscoAPOnRouterID")
+	defer st.End()
+
+	name := tf.getUniqueAPName()
+
+	if fac != nil {
+		// Defer the securityConfig generation from test's init() to here because the step may emit error and that's not allowed in test init().
+		securityConfig, err := fac.Gen()
+		if err != nil {
+			return nil, err
+		}
+		ops = append([]hostapd.Option{hostapd.SecurityConfig(securityConfig)}, ops...)
+	}
+
+	config, err := hostapd.NewConfig(ops...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed creating new AP config")
+	}
+
+	ap, err := cisco.StartCiscoAP(ctx, tf.ciscoCtrl, name, config)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start Cisco AP")
+	}
+
+	tf.ciscoAPs[idx] = ap
+
+	return ap, nil
+}
+
+func (tf *TestFixture) configureHostapdAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret APIface, retErr error) {
+	ctx, st := timing.Start(ctx, "tf.configureHostapdAPOnRouterID")
 	defer st.End()
 
 	name := tf.getUniqueAPName()
@@ -464,7 +550,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		}()
 	}
 
-	ap, err := StartAPIface(ctx, tf.routers[idx].object, name, config)
+	ap, err := StartHostapdAP(ctx, tf.routers[idx].object, name, config)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
 	}
@@ -477,15 +563,27 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 	return ap, nil
 }
 
+// ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to chose router
+// to establish the AP on.
+func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret APIface, retErr error) {
+	switch tf.getAPType(ctx, idx) {
+	case hostapdAP:
+		return tf.configureHostapdAPOnRouterID(ctx, idx, ops, fac)
+	case ciscoAP:
+		return tf.configureCiscoAPOnRouterID(ctx, idx, ops, fac)
+	}
+	return nil, errors.Errorf("unknown type of router %d", idx)
+}
+
 // ConfigureAP configures the router to provide a WiFi service with the options specified.
 // Note that after getting an APIface, ap, the caller should defer tf.DeconfigAP(ctx, ap) and
 // use tf.ReserveForClose(ctx, ap) to reserve time for the deferred call.
-func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
+func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fac security.ConfigFactory) (ret APIface, retErr error) {
 	return tf.ConfigureAPOnRouterID(ctx, 0, ops, fac)
 }
 
 // ReserveForDeconfigAP returns a shorter ctx and cancel function for tf.DeconfigAP().
-func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, ap *APIface) (context.Context, context.CancelFunc) {
+func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, ap APIface) (context.Context, context.CancelFunc) {
 	if len(tf.routers) == 0 {
 		return ctx, func() {}
 	}
@@ -500,7 +598,7 @@ func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, ap *APIface) (c
 }
 
 // DeconfigAP stops the WiFi service on router.
-func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
+func (tf *TestFixture) DeconfigAP(ctx context.Context, ap APIface) error {
 	ctx, st := timing.Start(ctx, "tf.DeconfigAP")
 	defer st.End()
 
@@ -554,7 +652,7 @@ func (tf *TestFixture) StartWPAMonitor(ctx context.Context) (wpaMonitor *WPAMoni
 }
 
 // Capturer returns the auto-spawned Capturer for the APIface instance.
-func (tf *TestFixture) Capturer(ap *APIface) (*pcap.Capturer, bool) {
+func (tf *TestFixture) Capturer(ap APIface) (*pcap.Capturer, bool) {
 	capturer, ok := tf.capturers[ap]
 	return capturer, ok
 }
@@ -686,7 +784,7 @@ func (tf *TestFixture) Reassociate(ctx context.Context, iface string, timeout ti
 }
 
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
-func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...ConnOption) (*network.ConnectResponse, error) {
+func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap APIface, options ...ConnOption) (*network.ConnectResponse, error) {
 	conf := ap.Config()
 	opts := append([]ConnOption{ConnHidden(conf.Hidden), ConnSecurity(conf.SecurityConfig)}, options...)
 	return tf.ConnectWifi(ctx, conf.SSID, opts...)
@@ -968,7 +1066,7 @@ func (tf *TestFixture) DefaultOpenNetworkAPOptions() []hostapd.Option {
 }
 
 // DefaultOpenNetworkAP configures the router to provide an 802.11n open network.
-func (tf *TestFixture) DefaultOpenNetworkAP(ctx context.Context) (*APIface, error) {
+func (tf *TestFixture) DefaultOpenNetworkAP(ctx context.Context) (APIface, error) {
 	return tf.ConfigureAP(ctx, tf.DefaultOpenNetworkAPOptions(), nil)
 }
 
@@ -982,7 +1080,7 @@ func (tf *TestFixture) ClientInterface(ctx context.Context) (string, error) {
 }
 
 // VerifyConnection verifies that the AP is reachable by pinging, and we have the same frequency and subnet as AP's.
-func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error {
+func (tf *TestFixture) VerifyConnection(ctx context.Context, ap APIface) error {
 	iface, err := tf.ClientInterface(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get interface from the DUT")
@@ -1267,7 +1365,7 @@ func (tf *TestFixture) TurnOffBgscan(ctx context.Context) (context.Context, func
 }
 
 // SendChannelSwitchAnnouncement sends a CSA frame and waits for Client_Disconnection, or Channel_Switch event.
-func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, ap *APIface, maxRetry, alternateChannel int) error {
+func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, ap APIface, maxRetry, alternateChannel int) error {
 	ctxForCloseFrameSender := ctx
 	ctx, cancel := tf.Router().ReserveForCloseFrameSender(ctx)
 	defer cancel()

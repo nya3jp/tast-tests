@@ -55,7 +55,7 @@ func ProfileGUID(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 
-	configureAPWithPassword := func(ctx context.Context, password string) (*wificell.APIface, error) {
+	configureAPWithPassword := func(ctx context.Context, password string) (wificell.APIface, error) {
 		apOps := []hostapd.Option{
 			hostapd.SSID(ssid),
 			hostapd.Mode(hostapd.Mode80211b),
