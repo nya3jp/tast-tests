@@ -91,6 +91,13 @@ type routerData struct {
 	object *Router
 }
 
+type apType int
+
+const (
+	hostapdAP apType = iota
+	ciscoAP
+)
+
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
 	dut        *dut.DUT
@@ -382,9 +389,16 @@ func (tf *TestFixture) getUniqueAPName() string {
 	return id
 }
 
-// ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to chose router
-// to establish the AP on.
-func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
+func (tf *TestFixture) getAPType(ctx context.Context, idx int) apType {
+	return hostapdAP // TODO design how to extend/refactor TextFixture.routers and use this logic here
+}
+
+func (tf *TestFixture) configureCiscoAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret APIface, retErr error) {
+	// TODO add CiscoAP implementing APIface, similarly to HostapdAP
+	return nil, errors.New("Cisco AP not supported yet")
+}
+
+func (tf *TestFixture) configureHostapdAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
 
@@ -424,7 +438,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		}()
 	}
 
-	ap, err := StartAPIface(ctx, tf.routers[idx].object, name, config)
+	ap, err := StartHostapdAP(ctx, tf.routers[idx].object, name, config)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
 	}
@@ -435,6 +449,18 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 	}
 
 	return ap, nil
+}
+
+// ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to chose router
+// to establish the AP on.
+func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret APIface, retErr error) {
+	switch tf.getAPType(ctx, idx) {
+	case hostapdAP:
+		return tf.configureHostapdAPOnRouterID(ctx, idx, ops, fac)
+	case ciscoAP:
+		return tf.configureCiscoAPOnRouterID(ctx, idx, ops, fac)
+	}
+	return nil, errors.Errorf("unknown type of router %d", idx)
 }
 
 // ConfigureAP configures the router to provide a WiFi service with the options specified.
