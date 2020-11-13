@@ -16,6 +16,80 @@
       "message": "Port network_WiFi_WMM to tast.",
       "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbfebe2f_0b5c5877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-13T20:09:07Z",
+      "side": 1,
+      "message": "Some nits. Hands off to WiFi reviewers.",
+      "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "022dd94f_b6a84a1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wmm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-13T20:09:07Z",
+      "side": 1,
+      "message": "QoS",
+      "range": {
+        "startLine": 19,
+        "startChar": 73,
+        "endLine": 19,
+        "endChar": 76
+      },
+      "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f33326a7_d4864f3f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wmm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-13T20:09:07Z",
+      "side": 1,
+      "message": "Can be fit into one line. Golang has no strict line width limitation.",
+      "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c15e86d6_317e97e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wmm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-13T20:09:07Z",
+      "side": 1,
+      "message": "If there\u0027s no special need, you may consider using tf.DefaultOpenNetworkAP() to set up AP (802.11n, channel 48, HT20).",
+      "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
