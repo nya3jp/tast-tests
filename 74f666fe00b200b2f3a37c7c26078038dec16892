@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e31a3b_5e3e45b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-13T02:55:54Z",
+      "side": 1,
+      "message": "That\u0027s mainly because I have not submitted CL for the log to powerd. And, actually I have some small changes to submit for this.",
+      "parentUuid": "dbfae78c_9082d057",
+      "revId": "74f666fe00b200b2f3a37c7c26078038dec16892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80f6a26c_4f868ae3",
