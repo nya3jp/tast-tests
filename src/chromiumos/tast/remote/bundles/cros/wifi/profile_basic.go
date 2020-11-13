@@ -37,7 +37,7 @@ func ProfileBasic(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
-	var aps []*wificell.APIface
+	var aps []wificell.APIface
 	// It is restricted to configure multiple APs on the same phy, so start the APs on the different channels.
 	for i, ch := range []int{1, 48} {
 		ap, err := tf.ConfigureAP(ctx,
@@ -47,7 +47,7 @@ func ProfileBasic(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatalf("Failed to start AP%d: %v", i, err)
 		}
-		defer func(ctx context.Context, ap *wificell.APIface) {
+		defer func(ctx context.Context, ap wificell.APIface) {
 			if err := tf.DeconfigAP(ctx, ap); err != nil {
 				s.Error("Failed to deconfig ap, err: ", err)
 			}
@@ -58,7 +58,7 @@ func ProfileBasic(ctx context.Context, s *testing.State) {
 	}
 	s.Log("APs setup done; start running test body")
 
-	genShillProps := func(ap *wificell.APIface) protoutil.ShillValMap {
+	genShillProps := func(ap wificell.APIface) protoutil.ShillValMap {
 		props, err := ap.Config().SecurityConfig.ShillServiceProperties()
 		if err != nil {
 			s.Fatal("Failed to generate shill properties: ", err)
@@ -70,7 +70,7 @@ func ProfileBasic(ctx context.Context, s *testing.State) {
 		return propsProto
 	}
 
-	genRequestConfig := func(ap *wificell.APIface) *network.ProfileBasicTestRequest_Config {
+	genRequestConfig := func(ap wificell.APIface) *network.ProfileBasicTestRequest_Config {
 		return &network.ProfileBasicTestRequest_Config{
 			Ssid:       []byte(ap.Config().SSID),
 			Security:   ap.Config().SecurityConfig.Class(),
