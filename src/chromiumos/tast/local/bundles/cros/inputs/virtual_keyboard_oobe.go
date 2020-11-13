@@ -10,8 +10,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mafredri/cdp/protocol/target"
-
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
@@ -57,18 +55,13 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect OOBE: ", err)
 	}
 
-	// User lands on GAIA login page afterwards.
-	if err := oobeConn.Eval(ctx, "Oobe.skipToLoginForTesting()", nil); err != nil {
-		s.Fatal("Failed to skip to login: ", err)
+	if err := cr.SkipToLoginForTesting(ctx, oobeConn); err != nil {
+		s.Fatal("Failed to skip to GAIA login: ", err)
 	}
 
-	isGAIAWebView := func(t *target.Info) bool {
-		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
-	}
-
-	gaiaConn, err := cr.NewConnForTarget(ctx, isGAIAWebView)
+	gaiaConn, err := cr.WaitForGAIALoginConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to GAIA webview: ", err)
+		s.Fatal("Failed to connect to GAIA webview")
 	}
 	defer gaiaConn.Close()
 

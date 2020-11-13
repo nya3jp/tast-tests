@@ -1423,10 +1423,9 @@ func (c *Chrome) loginUser(ctx context.Context) error {
 	return nil
 }
 
-// performGAIALogin waits for and interacts with the GAIA webview to perform login.
-// This function is heavily based on NavigateGaiaLogin() in Catapult's
-// telemetry/telemetry/internal/backends/chrome/oobe.py.
-func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
+// SkipToLoginForTesting skips the welcome and early setup steps to navigate to Gaia login page.
+// When use this function, it is assumed user just started device and landed on welcome page.
+func (c *Chrome) SkipToLoginForTesting(ctx context.Context, oobeConn *Conn) error {
 	if err := oobeConn.Exec(ctx, "Oobe.skipToLoginForTesting()"); err != nil {
 		return err
 	}
@@ -1445,7 +1444,11 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 			return err
 		}
 	}
+	return nil
+}
 
+// WaitForGAIALoginConn waits for Gaia login page and returns the connection instance.
+func (c *Chrome) WaitForGAIALoginConn(ctx context.Context) (*Conn, error) {
 	isGAIAWebView := func(t *target.Info) bool {
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
@@ -1462,10 +1465,21 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 			return nil
 		}
 	}, loginPollOpts); err != nil {
-		return errors.Wrap(c.chromeErr(err), "GAIA webview not found")
+		return nil, errors.Wrap(c.chromeErr(err), "GAIA webview not found")
 	}
 
-	gaiaConn, err := c.newConnInternal(ctx, target.TargetID, target.URL)
+	return c.newConnInternal(ctx, target.TargetID, target.URL)
+}
+
+// performGAIALogin waits for and interacts with the GAIA webview to perform login.
+// This function is heavily based on NavigateGaiaLogin() in Catapult's
+// telemetry/telemetry/internal/backends/chrome/oobe.py.
+func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
+	if err := c.SkipToLoginForTesting(ctx, oobeConn); err != nil {
+		return errors.Wrap(c.chromeErr(err), "failed to skip to GAIA login")
+	}
+
+	gaiaConn, err := c.WaitForGAIALoginConn(ctx)
 	if err != nil {
 		return errors.Wrap(c.chromeErr(err), "failed to connect to GAIA webview")
 	}
