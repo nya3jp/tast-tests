@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07e6f2b_7c0717b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-13T01:31:13Z",
+      "side": 1,
+      "message": "Port network_WiFi_WMM to tast.",
+      "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
