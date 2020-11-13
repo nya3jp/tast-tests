@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f262085c_d13d0901",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-11-13T19:35:00Z",
+      "side": 1,
+      "message": "Alright, this is ready for a re-review.\n\nThe diff is unfortunately a bit larger but most of it is a mechanical search+replace.\n\nNow the testCase object knows how to match SELinux contexts so the information is kept in only one place, and all the test cases can be properly matched.",
+      "revId": "42b2934f836539bf3a8c0a098467323c10dd04dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
