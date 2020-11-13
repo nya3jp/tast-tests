@@ -13,7 +13,9 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -42,6 +44,11 @@ func NotificationCentreSmoke(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	// Move mouse cursor to top left corner so it doesn't interfere with notification dismissal.
+	if err := mouse.Click(ctx, tconn, coords.NewPoint(0, 0), mouse.LeftButton); err != nil {
+		s.Fatal("Failed to move mouse to top left hand corner: ", err)
+	}
+
 	s.Log("Creating notification")
 	if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeBasic, "TestNotification1", "blahhh"); err != nil {
 		s.Fatal("Failed to create test notification: ", err)
@@ -52,11 +59,11 @@ func NotificationCentreSmoke(ctx context.Context, s *testing.State) {
 		ClassName: "ash/message_center/MessagePopup",
 	}
 	if err := ui.WaitUntilExists(ctx, tconn, params, uiTimeout); err != nil {
-		s.Fatal("Failed to find notification center: ", err)
+		s.Fatal("Failed to find notification popup: ", err)
 	}
 	s.Log("Waiting for notification to auto-dismiss")
 	if err := ui.WaitUntilGone(ctx, tconn, params, uiTimeout); err != nil {
-		s.Fatal("Failed to find notification center: ", err)
+		s.Fatal("Failed waiting for notification to auto-dismiss: ", err)
 	}
 	s.Log("Open quick settings")
 	if err := quicksettings.Show(ctx, tconn); err != nil {
