@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"math"
 	"regexp"
 	"strconv"
 
@@ -17,6 +18,8 @@ import (
 const (
 	// DefaultDisplayID represents the display ID for the internal display.
 	DefaultDisplayID = 0
+	// CaptionHeightR represents the caption height in DP which defined on ArcSystemUIConstants
+	CaptionHeightR = 32
 )
 
 // Display holds resources related to an ARC display.
@@ -44,29 +47,44 @@ func (d *Display) Close() {
 // CaptionHeight returns the caption height in pixels.
 func (d *Display) CaptionHeight(ctx context.Context) (h int, err error) {
 	cmd := d.a.Command(ctx, "dumpsys", "display")
-	output, err := cmd.Output(testexec.DumpLogOnError)
+	version, err := SDKVersion()
 	if err != nil {
-		return -1, errors.Wrap(err, "failed to execute 'dumpsys display'")
+		return -1, err
 	}
+	switch version {
+	case SDKP:
+		output, err := cmd.Output(testexec.DumpLogOnError)
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to execute 'dumpsys display'")
+		}
 
-	// Looking for:
-	// ARC Display Configuration
-	//  primaryDisplayId=0
-	//  layoutMode=clamshell
-	//  captionHeight=72
-	re := regexp.MustCompile(`(?m)` + // Enable multiline.
-		`^ARC Display Configuration\n` + // Match ARC Display section.
-		`(?:\s+.*$)*` + // Skip entire lines...
-		`\s*captionHeight=(\w*)`) // ...until captionHeight is matched.
-	groups := re.FindStringSubmatch(string(output))
-	if len(groups) != 2 {
-		return -1, errors.New("failed to parse 'dumpsys display'")
+		// Looking for:
+		// ARC Display Configuration
+		//  primaryDisplayId=0
+		//  layoutMode=clamshell
+		//  captionHeight=72
+		re := regexp.MustCompile(`(?m)` + // Enable multiline.
+			`^ARC Display Configuration\n` + // Match ARC Display section.
+			`(?:\s+.*$)*` + // Skip entire lines...
+			`\s*captionHeight=(\w*)`) // ...until captionHeight is matched.
+		groups := re.FindStringSubmatch(string(output))
+		if len(groups) != 2 {
+			return -1, errors.New("failed to parse 'dumpsys display'")
+		}
+		i, err := strconv.Atoi(groups[1])
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to parse captionHeight value")
+		}
+		return i, nil
+	case SDKR:
+		density, err := d.PhysicalDensity(ctx)
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to get display density")
+		}
+		return int(math.Round(CaptionHeightR * density)), nil
+	default:
+		return -1, errors.Errorf("unsupported Android version %d", sdkVersion)
 	}
-	i, err := strconv.Atoi(groups[1])
-	if err != nil {
-		return -1, errors.Wrap(err, "failed to parse captionHeight value")
-	}
-	return i, nil
 }
 
 func scrapeDensity(output []byte, sdkVersion int) (density float64, err error) {
