@@ -22,6 +22,30 @@
       },
       "revId": "aaa01a636d0aa3597890ddf57c95b5099afec5ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a448d1_8f1ae0a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-13T21:10:58Z",
+      "side": 1,
+      "message": "Not really. Clicking is what spoke to me :P",
+      "parentUuid": "fa09543d_aea55594",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "aaa01a636d0aa3597890ddf57c95b5099afec5ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
