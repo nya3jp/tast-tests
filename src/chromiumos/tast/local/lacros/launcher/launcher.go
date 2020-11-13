@@ -243,7 +243,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	}
 
 	debuggingPortPath := userDataDir + "/DevToolsActivePort"
-	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath); err != nil {
+	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath, cdputil.WaitPort); err != nil {
 		l.Close(ctx)
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}

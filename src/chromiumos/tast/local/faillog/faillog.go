@@ -83,7 +83,7 @@ func saveScreenshotBuiltIn(ctx context.Context, dir string) error {
 
 // saveScreenshotCDP saves a screenshot by using Chrome API.
 func saveScreenshotCDP(ctx context.Context, dir string) error {
-	sm, err := cdputil.NewSession(ctx, cdputil.DebuggingPortPath)
+	sm, err := cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.NoWaitPort)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a new Chrome Devtools Protocol session")
 	}

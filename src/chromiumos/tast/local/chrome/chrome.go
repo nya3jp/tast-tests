@@ -468,7 +468,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		return nil, errors.Wrap(err, "failed to restart chrome for testing")
 	}
 	var err error
-	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
+	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort); err != nil {
 		return nil, errors.Wrapf(c.chromeErr(err), "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
 
@@ -1664,7 +1664,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	c.watcher = newBrowserWatcher()
 
 	// Then, get the possibly-changed debugging port and establish a new WebSocket connection.
-	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
+	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort); err != nil {
 		return c.chromeErr(err)
 	}
 
