@@ -380,6 +380,30 @@
       },
       "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cb2e48d_8165b6cb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-13T07:47:45Z",
+      "side": 1,
+      "message": "Hmm..., I think the \"update config.Channel\" part probably shouldn\u0027t belong to this function. It sounds weird to me that VerifyConnection can change the config in ap object. (Note that the object returned by Config() is expected to be read-only)\n\nI think maybe you can update this right after a successful \"hostapd_cli chan_switch\" call? although it is just \"starting to\" move to the new channel.\n\nIf you want to be more accurate, I think it also makes some sense to wait (polling) for RadioConfig changing in ChannelSwitch call.\n\nIf config.Channel is updated in ChannelSwitch, you can drop iwr.RadioConfig here as ap.Config().Channel will be the channel we expect.",
+      "parentUuid": "e61078af_952395ae",
+      "range": {
+        "startLine": 958,
+        "startChar": 27,
+        "endLine": 958,
+        "endChar": 40
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
