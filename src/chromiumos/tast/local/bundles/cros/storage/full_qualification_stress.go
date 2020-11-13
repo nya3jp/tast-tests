@@ -203,10 +203,11 @@ func retentionTestBlock(ctx context.Context, s *testing.State, rw *stress.FioRes
 }
 
 // runContinuousStorageStress is a storage stress that is periodically interrupted by a power suspend.
-func runContinuousStorageStress(ctx context.Context, job string, rw *stress.FioResultWriter, path string) {
+func runContinuousStorageStress(ctx context.Context, job, jobFile string, rw *stress.FioResultWriter, path string) {
 	testConfig := stress.TestConfig{
 		Path:         path,
 		Job:          job,
+		JobFile:      jobFile,
 		ResultWriter: rw,
 	}
 	// Running write stress continuously, until timeout.
@@ -242,7 +243,7 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResul
 
 	tasks := []func(context.Context){
 		func(ctx context.Context) {
-			runContinuousStorageStress(ctx, "write_stress", rw, stress.BootDeviceFioPath)
+			runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, stress.BootDeviceFioPath)
 		},
 		runPeriodicPowerSuspend,
 	}
@@ -250,7 +251,7 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResul
 	if slcConfig.enabled {
 		tasks = append(tasks,
 			func(ctx context.Context) {
-				runContinuousStorageStress(ctx, "4k_write", rw, slcConfig.device)
+				runContinuousStorageStress(ctx, "4k_write", s.DataPath("4k_write"), rw, slcConfig.device)
 			})
 	}
 
