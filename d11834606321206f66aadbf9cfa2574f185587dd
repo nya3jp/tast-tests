@@ -33,6 +33,23 @@
       "message": "Fabulous",
       "revId": "d11834606321206f66aadbf9cfa2574f185587dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f882ed6b_de1171f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-13T00:06:50Z",
+      "side": 1,
+      "message": "I\u0027m seeing three failures in the past 20 builds, all with the error message \"Could not find any lines of network info\". Do you know why that might occur? Is there a way we can prevent that error?",
+      "revId": "d11834606321206f66aadbf9cfa2574f185587dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
