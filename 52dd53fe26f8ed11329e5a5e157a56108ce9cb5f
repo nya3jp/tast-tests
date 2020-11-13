@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed981e1_4a9f412d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-13T08:41:51Z",
+      "side": 1,
+      "message": "What\u0027s the todo item here? If the behavior is expected, then having a longer timeout is the reasonable choice.",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "52dd53fe26f8ed11329e5a5e157a56108ce9cb5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
