@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7775b4a9_5b1ab4c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-13T22:05:04Z",
+      "side": 1,
+      "message": "Hi Archana, In the commit message, could you add Cq-Depend:chrome-internal:XXXXXX. Thanks.",
+      "revId": "993b2df266d29f47ad41ffb26b61476065f6b3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
