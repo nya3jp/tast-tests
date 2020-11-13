@@ -16,6 +16,23 @@
       "message": "Hi Archana, In the commit message, could you add Cq-Depend:chrome-internal:XXXXXX. Thanks.",
       "revId": "993b2df266d29f47ad41ffb26b61476065f6b3b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9452fa2_08307763",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-13T22:13:32Z",
+      "side": 1,
+      "message": "You can refer this CL: crrev.com/c/2415084",
+      "revId": "993b2df266d29f47ad41ffb26b61476065f6b3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
