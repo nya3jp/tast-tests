@@ -33,6 +33,23 @@
       "message": "Big ping for owner review.  I\u0027ve pushed tast-owners@ to be a reviewer twice now, and so far haven\u0027t gotten a review.",
       "revId": "35565793be2982dd3cc3b7784e047f41ca4bd2c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9beccb6_d8aa6c57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-13T20:05:03Z",
+      "side": 1,
+      "message": "LGTM as long as the contact, yichenz@, is fine with the change.",
+      "revId": "35565793be2982dd3cc3b7784e047f41ca4bd2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
