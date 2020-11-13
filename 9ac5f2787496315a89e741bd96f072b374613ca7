@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f35c2243_df45887d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-13T00:43:19Z",
+      "side": 1,
+      "message": "ok. Let me check if this change affect ARC-R runs. Thanks.",
+      "parentUuid": "06151fb8_c3580d54",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 59
+      },
+      "revId": "9ac5f2787496315a89e741bd96f072b374613ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ee2657c_d4b2eb49",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
         "patchSetId": 2
