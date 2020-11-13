@@ -33,6 +33,23 @@
       "message": "This has auto-submit so CR -1\nThis failure has recent history and proper fix requires investigation and fix rather than disabling. \nI\u0027ve created b/172297817 to track new issue. Will try to address soon.\nThanks!",
       "revId": "c110b739d63021a2b02757913fb26e071906360b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a1ab4b_ac0a5df9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-13T19:43:49Z",
+      "side": 1,
+      "message": "This test is still running and failing on almost all runs.\n\nLet\u0027s stop it from running on our infra so we don\u0027t waste lab resources, and reenable it when it\u0027s fixed.",
+      "revId": "c110b739d63021a2b02757913fb26e071906360b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
