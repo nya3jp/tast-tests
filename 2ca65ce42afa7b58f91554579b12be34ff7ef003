@@ -192,6 +192,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b7e17ed1_c562817d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-13T08:10:32Z",
+      "side": 1,
+      "message": "I\u0027m ambivalent about if we should turn off PS in the test now. In the original test (which is removed in [1]), it expected the DUT to receive the DEAUTH, so disabling PS might fit the purpose more. But PS on might be closer to the real use case.\n\nFor now, I set a longer timeout and add a TODO for explaining the case.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/62237/2/server/site_tests/network_WiFiRoaming/000ChannelHopBSS",
+      "parentUuid": "b6d52e42_f953b9a4",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 64
+      },
+      "revId": "2ca65ce42afa7b58f91554579b12be34ff7ef003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f3e99794_d8862b6d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
