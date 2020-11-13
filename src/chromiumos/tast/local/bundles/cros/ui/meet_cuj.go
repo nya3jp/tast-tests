@@ -312,7 +312,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer container.Release(closeCtx)
 		for i := 0; i < 5; i++ {
-			bubble, err := container.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "BubbleDialogDelegateView"}, timeout)
+			bubble, err := container.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "BubbleDialogDelegateView"}, 20*time.Second)
 			if err != nil {
 				// It is fine not finding the bubble.
 				return nil
