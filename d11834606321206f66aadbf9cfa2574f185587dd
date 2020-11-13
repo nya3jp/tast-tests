@@ -50,6 +50,24 @@
       "message": "I\u0027m seeing three failures in the past 20 builds, all with the error message \"Could not find any lines of network info\". Do you know why that might occur? Is there a way we can prevent that error?",
       "revId": "d11834606321206f66aadbf9cfa2574f185587dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dfe13d6_1bb67f41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-11-13T18:26:20Z",
+      "side": 1,
+      "message": "The output of the command says that the Network Health Service from Chrome is unavailable. This test requires that Chrome be in a good state. Based on the number of other failures in all of these runs, I would guess it was not. Poking around some of the other failing tests, there are failures about losing mojo connections to the browser, which would also fail this test.\n\nBased on this, I think these are genuine failures and not flakes.",
+      "parentUuid": "f882ed6b_de1171f0",
+      "revId": "d11834606321206f66aadbf9cfa2574f185587dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
