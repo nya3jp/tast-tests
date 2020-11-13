@@ -176,7 +176,7 @@ func DescendantNode(ctx context.Context, tconn *chrome.TestConn, params ui.FindP
 	}
 	defer vk.Release(ctx)
 
-	node, err := vk.DescendantWithTimeout(ctx, params, 5*time.Second)
+	node, err := vk.DescendantWithTimeout(ctx, params, 10*time.Second)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to find descendant node with %v", params)
 	}
