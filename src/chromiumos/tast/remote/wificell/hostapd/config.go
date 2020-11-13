@@ -4,6 +4,8 @@
 
 package hostapd
 
+// TODO change to package ap
+
 import (
 	"encoding/hex"
 	"fmt"

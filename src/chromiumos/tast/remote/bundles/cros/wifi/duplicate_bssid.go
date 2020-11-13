@@ -37,7 +37,7 @@ func DuplicateBSSID(ctx context.Context, s *testing.State) {
 	// Configure an AP on the specific channel with given SSID. It returns a shortened
 	// ctx, the channel's mapping frequency, a callback to deconfigure the AP and an
 	// error object. Note that it directly uses s and tf from the outer scope.
-	configureAP := func(ctx context.Context, channel int) (context.Context, *wificell.APIface, func(context.Context), error) {
+	configureAP := func(ctx context.Context, channel int) (context.Context, wificell.APIface, func(context.Context), error) {
 		s.Logf("Setting up the AP on channel %d", channel)
 		options := []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(channel), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID("00:11:22:33:44:55")}
 		ap, err := tf.ConfigureAP(ctx, options, nil)
@@ -61,7 +61,7 @@ func DuplicateBSSID(ctx context.Context, s *testing.State) {
 	// meant to emulate situations that occur with some types of APs
 	// which broadcast or respond with more than one (non-empty) SSID.
 	channels := []int{1, 36}
-	var aps []*wificell.APIface
+	var aps []wificell.APIface
 	for _, ch := range channels {
 		sCtx, ap, deconfig, err := configureAP(ctx, ch)
 		if err != nil {

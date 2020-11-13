@@ -4,6 +4,8 @@
 
 package wificell
 
+// TODO change to package ap in wificell
+
 import (
 	"context"
 	"net"
@@ -36,10 +38,28 @@ func freeSubnetIdx(i byte) {
 	delete(busySubnet, i)
 }
 
-// APIface is the handle object of an instance of hostapd service managed by Router.
+// APIface defines functions of a generic AccessPoint
+type APIface interface {
+	Config() *hostapd.Config
+	ServerIP() net.IP
+	ServerSubnet() *net.IPNet
+	DeauthenticateClient(ctx context.Context, clientMAC string) error
+	ChangeSSID(ctx context.Context, ssid string) error
+	ChangeSubnetIdx(ctx context.Context) (retErr error)
+	ReserveForStop(ctx context.Context) (context.Context, context.CancelFunc)
+	Stop(ctx context.Context) error
+	StartChannelSwitch(ctx context.Context, count, channel int, opts ...hostapd.CSOption) error
+
+	// TODO remove this method as it does not apply to a generic AP API.
+	// All existing callers have to be changed to depend on HostapdAP
+	Interface() string
+}
+
+// HostapdAP is the handle object of an instance of hostapd service managed by Router.
 // It is comprised of a hostapd and a dhcpd. The DHCP server is assigned with the subnet
 // 192.168.$subnetIdx.0/24.
-type APIface struct {
+// TODO move the struct and functions to a separate file in hostapd package
+type HostapdAP struct {
 	router    *Router
 	name      string
 	iface     string
@@ -53,50 +73,50 @@ type APIface struct {
 
 // Config returns the config of hostapd.
 // NOTE: Caller should not modify the returned object.
-func (h *APIface) Config() *hostapd.Config {
+func (h *HostapdAP) Config() *hostapd.Config {
 	return h.hostapd.Config()
 }
 
 // subnetIP returns 192.168.$subnetIdx.$suffix IP.
-func (h *APIface) subnetIP(suffix byte) net.IP {
+func (h *HostapdAP) subnetIP(suffix byte) net.IP {
 	return net.IPv4(192, 168, h.subnetIdx, suffix)
 }
 
 // mask returns the mask of the working subnet.
-func (h *APIface) mask() net.IPMask {
+func (h *HostapdAP) mask() net.IPMask {
 	return net.IPv4Mask(255, 255, 255, 0)
 }
 
 // broadcastIP returns the broadcast IP of working subnet.
-func (h *APIface) broadcastIP() net.IP {
+func (h *HostapdAP) broadcastIP() net.IP {
 	return h.subnetIP(255)
 }
 
 // ServerIP returns the IP of router in the subnet of WiFi.
-func (h *APIface) ServerIP() net.IP {
+func (h *HostapdAP) ServerIP() net.IP {
 	return h.subnetIP(254)
 }
 
 // Interface returns the interface the service runs on.
-func (h *APIface) Interface() string {
+func (h *HostapdAP) Interface() string {
 	return h.iface
 }
 
 // ServerSubnet returns the subnet whose ip has been masked.
-func (h *APIface) ServerSubnet() *net.IPNet {
+func (h *HostapdAP) ServerSubnet() *net.IPNet {
 	mask := h.mask()
 	ip := h.ServerIP().Mask(mask)
 	return &net.IPNet{IP: ip, Mask: mask}
 }
 
-// StartAPIface starts the service.
+// StartHostapdAP starts the service.
 // After started, the caller should call h.Stop() at the end, and use the shortened ctx
 // (provided by h.ReserveForStop()) before h.Stop() to reserve time for h.Stop() to run.
-func StartAPIface(ctx context.Context, r *Router, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
-	ctx, st := timing.Start(ctx, "StartAPIface")
+func StartHostapdAP(ctx context.Context, r *Router, name string, conf *hostapd.Config) (_ APIface, retErr error) {
+	ctx, st := timing.Start(ctx, "StartHostapdAP")
 	defer st.End()
 
-	var h APIface
+	var h HostapdAP
 	var err error
 
 	h.router = r
@@ -108,7 +128,7 @@ func StartAPIface(ctx context.Context, r *Router, name string, conf *hostapd.Con
 	defer func(ctx context.Context) {
 		if retErr != nil {
 			if err := h.hostapd.Close(ctx); err != nil {
-				testing.ContextLog(ctx, "Failed to stop hostapd server while StartAPIface has failed: ", err)
+				testing.ContextLog(ctx, "Failed to stop hostapd server while StartHostapdAP has failed: ", err)
 			}
 		}
 	}(ctx)
@@ -135,7 +155,7 @@ func StartAPIface(ctx context.Context, r *Router, name string, conf *hostapd.Con
 
 // ReserveForStop returns a shortened ctx with its cancel function.
 // The shortened ctx is used for running things before h.Stop() to reserve time for it to run.
-func (h *APIface) ReserveForStop(ctx context.Context) (context.Context, context.CancelFunc) {
+func (h *HostapdAP) ReserveForStop(ctx context.Context) (context.Context, context.CancelFunc) {
 	// We only need to call cancel of the first shorten context because the shorten context's
 	// Done channel is closed when the parent context's Done channel is closed.
 	// https://golang.org/pkg/context/#WithDeadline.
@@ -156,8 +176,8 @@ func (h *APIface) ReserveForStop(ctx context.Context) (context.Context, context.
 }
 
 // Stop stops the service.
-func (h *APIface) Stop(ctx context.Context) error {
-	ctx, st := timing.Start(ctx, "APIface.Stop")
+func (h *HostapdAP) Stop(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "HostapdAP.Stop")
 	defer st.End()
 
 	if h.stopped {
@@ -180,14 +200,14 @@ func (h *APIface) Stop(ctx context.Context) error {
 }
 
 // DeauthenticateClient deauthenticates client with specified MAC address.
-func (h *APIface) DeauthenticateClient(ctx context.Context, clientMAC string) error {
+func (h *HostapdAP) DeauthenticateClient(ctx context.Context, clientMAC string) error {
 	return h.hostapd.DeauthClient(ctx, clientMAC)
 }
 
 // ChangeSubnetIdx restarts the dhcp server with a different subnet index.
-// On failure, the APIface object will keep holding the old index, but the states of the
+// On failure, the HostapdAP object will keep holding the old index, but the states of the
 // dhcp server and WiFi interface are not guaranteed and a call of Stop is still needed.
-func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
+func (h *HostapdAP) ChangeSubnetIdx(ctx context.Context) (retErr error) {
 	if h.dhcpd != nil {
 		if err := h.router.StopDHCP(ctx, h.dhcpd); err != nil {
 			return errors.Wrap(err, "failed to stop dhcp server")
@@ -221,7 +241,7 @@ func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
 
 // ChangeSSID changes the SSID without changing other settings, such as IP address and interface.
 // On failure, a call of stop is still needed to deconfigure the dhcp server and the WiFi interface.
-func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
+func (h *HostapdAP) ChangeSSID(ctx context.Context, ssid string) error {
 	if h.stopped || h.hostapd == nil {
 		return errors.New("hostapd is not running")
 	}
@@ -237,6 +257,6 @@ func (h *APIface) ChangeSSID(ctx context.Context, ssid string) error {
 }
 
 // StartChannelSwitch initiates a channel switch in the AP.
-func (h *APIface) StartChannelSwitch(ctx context.Context, count, channel int, opts ...hostapd.CSOption) error {
+func (h *HostapdAP) StartChannelSwitch(ctx context.Context, count, channel int, opts ...hostapd.CSOption) error {
 	return h.hostapd.StartChannelSwitch(ctx, count, channel, opts...)
 }

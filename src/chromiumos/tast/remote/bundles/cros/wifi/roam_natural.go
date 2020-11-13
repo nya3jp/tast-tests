@@ -82,9 +82,9 @@ func init() {
 		Contacts:    []string{"jakobczyk@google.com"},
 		Attr:        []string{"group:wificell_roam", "wificell_roam_perf"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePreWithFeatures(wificell.TFFeaturesRouters | wificell.TFFeaturesAttenuator),
+		Pre:         wificell.TestFixturePreWithFeatures(wificell.TFFeaturesAttenuator | wificell.TFFeaturesRouters | wificell.TFFeaturesCiscoController),
 		Timeout:     time.Minute * 60,
-		Vars:        []string{"routers", "pcap", "attenuator"},
+		Vars:        []string{"routers", "pcap", "attenuator", "ciscoctrl"},
 		Params: []testing.Param{
 			{
 				Val: []roamNaturalTestcase{
@@ -98,7 +98,7 @@ func init() {
 
 func rnDebug(s *testing.State, args ...interface{}) {
 	if rnDebugEnabled {
-		s.Log(args...)
+		s.Log(args)
 	}
 }
 
@@ -331,7 +331,7 @@ func executeRoamNaturalTest(ctx context.Context, s *testing.State, apAllParams [
 				}
 
 				// bring back the AP that was stopped earlier
-				var ap *wificell.APIface
+				var ap wificell.APIface
 				if offsetRangeIdx == 0 {
 					rnDebug(s, "bringing back AP 0")
 					ap0, freq0, deconfig0 = wifiutil.ConfigureAP(ctx, s, apAllParams[0], 0, secConfFac)

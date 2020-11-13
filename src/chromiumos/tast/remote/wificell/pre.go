@@ -27,6 +27,8 @@ const (
 	TFFeaturesRouters
 	// TFFeaturesAttenuator feature facilitates attenuator handling.
 	TFFeaturesAttenuator
+	// TFFeaturesCiscoController enables use of Cisco controller and access points.
+	TFFeaturesCiscoController
 )
 
 // String returns name component corresponding to enum value(s).
@@ -47,6 +49,10 @@ func (enum TFFeatures) String() string {
 	if enum&TFFeaturesAttenuator != 0 {
 		ret = append(ret, "attenuator")
 		enum ^= TFFeaturesAttenuator
+	}
+	if enum&TFFeaturesCiscoController != 0 {
+		ret = append(ret, "cisco")
+		enum ^= TFFeaturesCiscoController
 	}
 	// Catch weird cases. Like when somebody extends enum, but forgets to extend this.
 	if enum != 0 {
@@ -151,6 +157,18 @@ func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.PreState) i
 		}
 		s.Log("attenuator: ", atten)
 		ops = append(ops, TFAttenuator(atten))
+	}
+	// Read ciscoctrl variable.
+	if p.features&TFFeaturesCiscoController != 0 {
+		cisco, ok := s.Var("ciscoctrl")
+		if !ok || cisco == "" {
+			// Only one setup currently, no naming scheme to be used
+			cisco = "user:passwd:chromeos1-ap-controller"
+		}
+		// log only hostname without user/password
+		split := strings.Split(cisco, "@")
+		s.Log("ciscoctrl: ", split[len(split)-1])
+		ops = append(ops, TFCiscoCtrl(cisco))
 	}
 	// Enable capturing.
 	if p.features&TFFeaturesCapture != 0 {
