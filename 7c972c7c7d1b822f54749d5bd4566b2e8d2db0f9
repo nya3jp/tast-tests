@@ -85,6 +85,24 @@
       "message": "Unfortunately the test was hitting the recent test account OTA related authentication problems.\n\nWe fixed the test credentials. \n\nCan we wait for a couple of more days?",
       "revId": "7c972c7c7d1b822f54749d5bd4566b2e8d2db0f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d93d5ae_22927bd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-13T19:31:21Z",
+      "side": 1,
+      "message": "Okay, I\u0027m fine with that since there is a fix in flight.",
+      "parentUuid": "40ca9f50_6cdbb4dd",
+      "revId": "7c972c7c7d1b822f54749d5bd4566b2e8d2db0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
