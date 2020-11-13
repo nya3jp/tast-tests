@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac9e86b4_2cf4f10f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-13T04:54:46Z",
+      "side": 1,
+      "message": "+cylai for hwsec change.",
+      "revId": "50bb6a79dde4a5016266146a4bd34748d1c85e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f470208_967bd468",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-13T04:54:46Z",
+      "side": 1,
+      "message": "style: Let\u0027s return early when outDir is not available.\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nI also wondered if we should return an error when outDir is unavailable because we would lose system logs silently. But I\u0027m afraid it\u0027s risky change (some existing tests may start to fail by that change), so even if we were to do it I believe we want to do it in a separate CL.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 50
+      },
+      "revId": "50bb6a79dde4a5016266146a4bd34748d1c85e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44c59d5_a739522f",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-13T04:54:46Z",
+      "side": 1,
+      "message": "What do you think about creating a directory under outDir to isolate them from output files created by tests?\n\ne.g. $outDir/reboots/$date/{messages,chrome}",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "50bb6a79dde4a5016266146a4bd34748d1c85e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
