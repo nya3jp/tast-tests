@@ -103,6 +103,24 @@
       "parentUuid": "43545160_9c44a096",
       "revId": "9ef3b3dc8eb8d5b658da27ad564f1918198e74f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae870b1_83f2310b",
+        "filename": "src/chromiumos/tast/local/lacros/data/lacros_binary.tar.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-13T16:58:09Z",
+      "side": 1,
+      "message": "Oh, I see. Thanks for pointer and your explanation.",
+      "parentUuid": "296898a3_8c5bfec4",
+      "revId": "9ef3b3dc8eb8d5b658da27ad564f1918198e74f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
