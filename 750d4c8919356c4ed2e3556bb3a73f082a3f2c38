@@ -16,6 +16,24 @@
       "message": "Just so that we\u0027re all on the same page, who is going to own removing the \"informational\" attribute?",
       "revId": "750d4c8919356c4ed2e3556bb3a73f082a3f2c38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64f92c8_3144dd3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-11-13T19:00:55Z",
+      "side": 1,
+      "message": "Filed b/173225016 for this",
+      "parentUuid": "9c980a88_f2093a90",
+      "revId": "750d4c8919356c4ed2e3556bb3a73f082a3f2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
