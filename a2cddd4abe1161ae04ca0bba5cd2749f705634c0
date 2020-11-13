@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "877524a5_b7b2da38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T07:27:29Z",
+      "side": 1,
+      "message": "I actually used the type switch, because I think there are more types are not supported by protoutils. However, it could be changed later if needed.",
+      "parentUuid": "77076fb6_56cafd4b",
+      "range": {
+        "startLine": 1382,
+        "startChar": 0,
+        "endLine": 1385,
+        "endChar": 4
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "202051c2_f1d72b08",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
         "patchSetId": 13
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-12T07:50:17Z",
       "side": 1,
       "message": "This should be before calling ConnectWifiAP.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 15
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b478438_d67f27ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T07:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "202051c2_f1d72b08",
       "range": {
         "startLine": 76,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7015166a_cee5a65f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T07:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89b2aee4_2cc2b0ac",
+      "range": {
+        "startLine": 116,
+        "startChar": 45,
+        "endLine": 116,
+        "endChar": 52
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db792b6d_92b042ec",
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7c2c588_cd93f457",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T07:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db792b6d_92b042ec",
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad005453_da904b9e",
@@ -117,6 +207,30 @@
       "writtenOn": "2020-11-12T06:25:12Z",
       "side": 1,
       "message": "This is not that accurate, as hostapd will move to the new channel as well.",
+      "range": {
+        "startLine": 239,
+        "startChar": 17,
+        "endLine": 239,
+        "endChar": 35
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e80adc_b2f638db",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T07:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad005453_da904b9e",
       "range": {
         "startLine": 239,
         "startChar": 17,
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27876565_2782bc58",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T07:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a2ff2ab_aedd1637",
+      "range": {
+        "startLine": 261,
+        "startChar": 17,
+        "endLine": 261,
+        "endChar": 35
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e380f53_86e08c9d",
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bbbe613_4f6a851a",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T07:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e380f53_86e08c9d",
+      "range": {
+        "startLine": 263,
+        "startChar": 88,
+        "endLine": 263,
+        "endChar": 139
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8177fb88_1a63b92c",
@@ -186,6 +348,30 @@
       "writtenOn": "2020-11-12T06:25:12Z",
       "side": 1,
       "message": "This does not look correct. I think the information should be from router instead of DUT?\n\nAlso, I wonder if we could just change the content of Config.Channel in hostapd after a successfull call of ChannelSwitch.  One concern for the change is that hostapd is keeping the *Config pointer from caller, and might cause problem if caller assume it\u0027s read-only. However, we can still mitigate it by copying once in hostapd.StartServer.",
+      "range": {
+        "startLine": 958,
+        "startChar": 27,
+        "endLine": 958,
+        "endChar": 40
+      },
+      "revId": "a2cddd4abe1161ae04ca0bba5cd2749f705634c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e61078af_952395ae",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T07:27:29Z",
+      "side": 1,
+      "message": "That\u0027s true I changed that to (tf.routers[0].Interface())\n\nAlso, I updated the Config.Channel and copied the caller struct in hostapd.StartServer.",
+      "parentUuid": "8177fb88_1a63b92c",
       "range": {
         "startLine": 958,
         "startChar": 27,
