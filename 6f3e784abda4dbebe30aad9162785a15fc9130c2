@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f3d9d35_e3fd5778",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-13T11:04:35Z",
+      "side": 1,
+      "message": "nit: maybe it makes sense to add bug for context?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "6f3e784abda4dbebe30aad9162785a15fc9130c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0d4f7f90_ad6c4f2b",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-11-13T09:56:02Z",
       "side": 1,
       "message": "Thanks for the fix!",
+      "revId": "6f3e784abda4dbebe30aad9162785a15fc9130c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2560a97_b4267a8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-13T11:04:35Z",
+      "side": 1,
+      "message": "LGTM % nit, thanks!",
       "revId": "6f3e784abda4dbebe30aad9162785a15fc9130c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
