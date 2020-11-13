@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1011611d_cb228cb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-13T01:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98f9c971_a9acc9a0",
+      "revId": "448d7f30a5d4d153cb2303b38fca587f01abfa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7cdbb155_43f13d4b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 18
@@ -86,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "325521f1_61641ab0",
+        "filename": "android/ArcLifecycleTest/BUILD.gn",
+        "patchSetId": 18
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-13T01:38:18Z",
+      "side": 1,
+      "message": "I believe they will be built with the board image, as part of:\n```\nemerge-${BOARD} chromeos-base/tast-local-apks-cros\n```\nThe above build takes about 45s, but a lot of that is spent in warning spew from other APKs.\n\nThe build is not done during Tast tests.",
+      "parentUuid": "d7400a25_26996893",
+      "revId": "448d7f30a5d4d153cb2303b38fca587f01abfa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49143088_07e9343b",
@@ -103,6 +139,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad588217_d0140a93",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-13T01:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49143088_07e9343b",
+      "revId": "448d7f30a5d4d153cb2303b38fca587f01abfa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb52f870_ee82dd90",
@@ -116,6 +170,30 @@
       "writtenOn": "2020-11-11T19:06:28Z",
       "side": 1,
       "message": "nit: This else case shouldn\u0027t be needed. The default for a new byte should be zero",
+      "range": {
+        "startLine": 120,
+        "startChar": 24,
+        "endLine": 120,
+        "endChar": 38
+      },
+      "revId": "448d7f30a5d4d153cb2303b38fca587f01abfa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c729ea69_0041d04a",
+        "filename": "android/ArcLifecycleTest/src/org/chromium/arc/testapp/lifecycle/MainActivity.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-13T01:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb52f870_ee82dd90",
       "range": {
         "startLine": 120,
         "startChar": 24,
