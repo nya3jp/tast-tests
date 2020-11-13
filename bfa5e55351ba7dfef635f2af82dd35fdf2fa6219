@@ -55,6 +55,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d675205_56280929",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T23:34:02Z",
+      "side": 1,
+      "message": "nit: make this a constant, same for line #45. just for ease of reading.",
+      "range": {
+        "startLine": 46,
+        "startChar": 103,
+        "endLine": 46,
+        "endChar": 105
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3673667_ba3145db",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
         "patchSetId": 2
@@ -193,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b391a4c0_400e7a7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T23:34:02Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "bbc287c3_a021eb28",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 63
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cff9e418_b8075baf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
         "patchSetId": 2
@@ -267,6 +314,24 @@
       "writtenOn": "2020-11-12T07:58:54Z",
       "side": 1,
       "message": "nit: Not sure if we should early return when we already got error in the first runTest. e.g. for some reason we can\u0027t CleanDisconnect? If so, maybe we can also consider running the two cases as sub-tests with s.Run. SimpleConnect is an example of running sub-test (when iterating multiple option sets under one Param)",
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "644c253c_e74f6f84",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-13T23:34:02Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "31c68411_11fa759e",
       "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
