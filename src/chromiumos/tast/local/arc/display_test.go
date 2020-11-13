@@ -62,6 +62,17 @@ func TestDumpsysDisplayStableSizeR(t *testing.T) {
 	}
 }
 
+func TestDumpsysScaleFactorR(t *testing.T) {
+	got, err := scrapeScaleFactor([]byte(dumpsysWaylandR()), `local:21536137753913600`)
+	if err != nil {
+		t.Fatal("scrapeScaleFactor failed: ", err)
+	}
+	const want = 2.666
+	if got != want {
+		t.Fatalf("scrapeScaleFactor() = %v; want %v", got, want)
+	}
+}
+
 func dumpsysDisplayP() string {
 	return `Display Devices: size=1
   DisplayDeviceInfo{"Built-in Screen": uniqueId="local:0", 2400 x 1600, modeId 1, defaultModeId 1, supportedModes [{id=1, width=2400, height=1600, fps=60.000004}], colorMode 0, supportedColorModes [0], HdrCapabilities android.view.Display$HdrCapabilities@40f16308, density 300, 300.295 x 301.037 dpi, appVsyncOff 1000000, presDeadline 5666666, touch INTERNAL, rotation 0, type BUILT_IN, state ON, FLAG_DEFAULT_DISPLAY, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS}
@@ -196,4 +207,48 @@ mDisplayId=0
     mBaseDisplayInfo=DisplayInfo{"HDMI Screen", displayId 2, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_PRESENTATION, FLAG_TRUSTED, real 1920 x 1080, largest app 1920 x 1080, smallest app 1920 x 1080, appVsyncOff 7500000, presDeadline 12666666, mode 3, defaultMode 3, modes [{id=3, width=1920, height=1080, fps=60.000004}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=500.0, mMaxAverageLuminance=500.0, mMinLuminance=0.0}, minimalPostProcessingSupported false, rotation 0, state OFF, type EXTERNAL, uniqueId "local:1886094531531010", app 1920 x 1080, density 213 (143.435 x 143.623) dpi, layerStack 2, colorMode 0, supportedColorModes [0], address {port=2, model=0x6b3649a9091}, deviceProductInfo DeviceProductInfo{name=ASUS MB16AMT, manufacturerPnpId=AUS, productId=5729, modelYear=null, manufactureDate=ManufactureDate{week=41, year=2019}, relativeAddress=[1, 0, 0, 0]}, removeMode 0}
     mOverrideDisplayInfo=DisplayInfo{"HDMI Screen", displayId 2, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_PRESENTATION, FLAG_TRUSTED, real 1920 x 1080, largest app 1920 x 1920, smallest app 1080 x 1080, appVsyncOff 7500000, presDeadline 12666666, mode 3, defaultMode 3, modes [{id=3, width=1920, height=1080, fps=60.000004}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=500.0, mMaxAverageLuminance=500.0, mMinLuminance=0.0}, minimalPostProcessingSupported false, rotation 0, state ON, type EXTERNAL, uniqueId "local:1886094531531010", app 1920 x 1080, density 213 (143.435 x 143.623) dpi, layerStack 2, colorMode 0, supportedColorModes [0], address {port=2, model=0x6b3649a9091}, deviceProductInfo DeviceProductInfo{name=ASUS MB16AMT, manufacturerPnpId=AUS, productId=5729, modelYear=null, manufactureDate=ManufactureDate{week=41, year=2019}, relativeAddress=[1, 0, 0, 0]}, removeMode 0}
     mRequestedMinimalPostProcessing=false`
+}
+
+func dumpsysWaylandR() string {
+	return `WaylandGlobals
+  Interfaces used by client:
+      wl_compositor, version: 3
+      wl_data_device_manager, version: 3
+      wl_output, version: 3
+      wl_seat, version: 6
+      wl_shm, version: 1
+      wl_subcompositor, version: 1
+      wp_viewporter, version: 1
+      zaura_shell, version: 8
+      zwp_pointer_gestures_v1, version: 1
+      zwp_pointer_constraints_v1, version: 1
+      zwp_relative_pointer_manager_v1, version: 1
+      zcr_alpha_compositing_v1, version: 1
+      zcr_gaming_input_v2, version: 2
+      zcr_keyboard_configuration_v1, version: 2
+      zcr_keyboard_extension_v1, version: 1
+      zcr_cursor_shapes_v1, version: 1
+      zcr_remote_shell_v1, version: 30
+      zcr_secure_output_v1, version: 1
+      zcr_stylus_v2, version: 2
+      zcr_stylus_tools_v1, version: 1
+      zcr_vsync_feedback_v1, version: 1
+      zwp_linux_dmabuf_v1, version: 2
+      zwp_linux_explicit_synchronization_v1, version: 1
+  Client will not use explicit-sync protocol
+  Display Layout
+    Display 21536134253248512 (SF display 21536137753913600, default scale 2.666, zoom factor 1) [primary]
+    Display 1885867361823490 (SF display 1886094531531010, default scale 1, zoom factor 1)
+  WaylandLayerManager
+    Ignored Tasks
+      7 
+    External Containers
+      Container 0x7989e8dcc2c0
+        stylus tool: 0       0 layers: [ ]
+        0 visible layers: [ ]
+      System Container 0x7989f8cd8bd0 (modal false)
+        stylus tool: 0       0 layers: [ ]
+        0 visible layers: [ ]
+    Tracing state: disabled
+      number of entries: 0 (0.00MB / 0.00MB)`
 }

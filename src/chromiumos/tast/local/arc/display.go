@@ -7,8 +7,10 @@ package arc
 import (
 	"context"
 	"fmt"
+	"math"
 	"regexp"
 	"strconv"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/coords"
@@ -19,6 +21,9 @@ import (
 const (
 	// DefaultDisplayID represents the display ID for the internal display.
 	DefaultDisplayID = 0
+	// CaptionHeightR represents the caption height in ChromeDP which is defined in ArcSystemUIConstants.
+	// TODO: Replace hard code caption height by getting from ash.
+	CaptionHeightR = 32
 )
 
 // Display holds resources related to an ARC display.
@@ -112,24 +117,75 @@ func (d *Display) CaptionHeight(ctx context.Context) (h int, err error) {
 		return -1, errors.Wrap(err, "failed to execute 'dumpsys display'")
 	}
 
-	// Looking for:
-	// ARC Display Configuration
-	//  primaryDisplayId=0
-	//  layoutMode=clamshell
-	//  captionHeight=72
-	re := regexp.MustCompile(`(?m)` + // Enable multiline.
-		`^ARC Display Configuration\n` + // Match ARC Display section.
-		`(?:\s+.*$)*` + // Skip entire lines...
-		`\s*captionHeight=(\w*)`) // ...until captionHeight is matched.
-	groups := re.FindStringSubmatch(string(output))
-	if len(groups) != 2 {
-		return -1, errors.New("failed to parse 'dumpsys display'")
-	}
-	i, err := strconv.Atoi(groups[1])
+	version, err := SDKVersion()
 	if err != nil {
-		return -1, errors.Wrap(err, "failed to parse captionHeight value")
+		return -1, err
 	}
-	return i, nil
+	switch version {
+	case SDKP:
+		// Looking for:
+		// ARC Display Configuration
+		//  primaryDisplayId=0
+		//  layoutMode=clamshell
+		//  captionHeight=72
+		re := regexp.MustCompile(`(?m)` + // Enable multiline.
+			`^ARC Display Configuration\n` + // Match ARC Display section.
+			`(?:\s+.*$)*` + // Skip entire lines...
+			`\s*captionHeight=(\w*)`) // ...until captionHeight is matched.
+		groups := re.FindStringSubmatch(string(output))
+		if len(groups) != 2 {
+			return -1, errors.New("failed to parse 'dumpsys display'")
+		}
+		i, err := strconv.Atoi(groups[1])
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to parse captionHeight value")
+		}
+		return i, nil
+	case SDKR:
+		uniqueID, err := scrapeUniqueID(output, d.DisplayID)
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to parse display unique id")
+		}
+		waylandCmd := d.a.Command(ctx, "dumpsys", "Wayland")
+		waylandOutput, err := waylandCmd.Output(testexec.DumpLogOnError)
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to execute 'dumpsys Wayland'")
+		}
+		scaleFactor, err := scrapeScaleFactor(waylandOutput, uniqueID)
+		return int(math.Round(CaptionHeightR * scaleFactor)), nil
+	default:
+		return -1, errors.Errorf("unsupported Android version %d", version)
+	}
+}
+
+// scrapeScaleFactor returns the scale factor from `dumpsys Wayland`.
+// Only works for ARC R and later version.
+func scrapeScaleFactor(output []byte, uniqueDisplayID string) (scaleFactor float64, err error) {
+	uniqueDisplayIDWithoutPrefix := strings.TrimPrefix(uniqueDisplayID, "local:")
+	// Looking for:
+	// Display Layout
+	//  ...
+	//  Display ... (SF display 21536137753913600, default scale 2.666, zoom factor 1) ...
+	s := fmt.Sprintf(`(?m)`+ // Enable multiline.
+		`Display Layout`+ // Match Display Layout section.
+		`(?:\s+.*$)*`+ // Skip entries lines...
+		`\s*.+SF display %s`+ // ...until matched corresponding display unique id.
+		`, default scale (\d+\.?\d*)`+ // Gather default scale.
+		`, zoom factor (\d+\.?\d*)`, uniqueDisplayIDWithoutPrefix) // Gather zoom factor.
+	re := regexp.MustCompile(s)
+	groups := re.FindStringSubmatch(string(output))
+	if len(groups) != 3 {
+		return 0, errors.Errorf("failed to parse 'dumpsys Wayland' %v", groups)
+	}
+	defaultScale, err := strconv.ParseFloat(groups[1], 64)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to parse default scale value")
+	}
+	zoomFactor, err := strconv.ParseFloat(groups[2], 64)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to parse zoom factor value")
+	}
+	return defaultScale * zoomFactor, nil
 }
 
 func scrapeDensity(output []byte, displayID, sdkVersion int) (density float64, err error) {
@@ -146,7 +202,7 @@ func scrapeDensity(output []byte, displayID, sdkVersion int) (density float64, e
 			`(?:\s+.*$)*` + // Skip entire lines...
 			`\s*PhysicalDisplayInfo{.*density (\d\.\d+)?`) // ...until density is matched.
 	case SDKR:
-		uniqueID, err := scrapeUniqueID(output, displayID, sdkVersion)
+		uniqueID, err := scrapeUniqueID(output, displayID)
 		if err != nil {
 			return -1, err
 		}
@@ -296,7 +352,9 @@ func scrapeDisplaySize(output []byte, isStableSize bool, displayID, sdkVersion i
 	return coords.NewSize(width, height), nil
 }
 
-func scrapeUniqueID(output []byte, displayID, sdkVersion int) (string, error) {
+// scrapeUniqueID returns unique id by display id.
+// Only works for ARC R and later version.
+func scrapeUniqueID(output []byte, displayID int) (string, error) {
 	// Looking for:
 	//   mDisplayId=...
 	//   ...
