@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "257af5da_825f1c5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-11-13T20:03:54Z",
+      "side": 1,
+      "message": "I have little idea about the actual change, but happy to rubber stamp it. I\u0027m assuming this needs to be chumped?",
+      "revId": "319ef64e6a7a19f932e05477b186523534a0671d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
