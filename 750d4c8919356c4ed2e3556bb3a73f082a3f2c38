@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fc7b23_b1a24858",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-13T19:21:46Z",
+      "side": 1,
+      "message": "Please file a bug for tracking purposes",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "750d4c8919356c4ed2e3556bb3a73f082a3f2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9c980a88_f2093a90",
@@ -32,6 +55,46 @@
       "side": 1,
       "message": "Filed b/173225016 for this",
       "parentUuid": "9c980a88_f2093a90",
+      "revId": "750d4c8919356c4ed2e3556bb3a73f082a3f2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de93b63_450a58ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/cpu_vulnerabilities.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-13T19:21:46Z",
+      "side": 1,
+      "message": "nit/style: It would be more direct, and more memory-efficient, to operate on the byte-array contents directly. The functions you call here from the strings library can all be replaced with functions from the bytes library:\n\n    contents, err :\u003d ioutil.ReadFile(filepath.Join(vulnDir, fName))\n    if err !\u003d nil {\n        s.Fatal(\"Can\u0027t read vulnerability file: \", err)\n    }\n    contents \u003d bytes.TrimSpace(contents)\n    s.Logf(\"%s: %s\", fName, contents\n    if bytes.equalFold(contents, []byte(\"vulnerable)) {\n        vulnerable \u003d append(vulnerable, fName)\n    }",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "750d4c8919356c4ed2e3556bb3a73f082a3f2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c591a4_0df87961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/cpu_vulnerabilities.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-13T19:21:46Z",
+      "side": 1,
+      "message": "Rather than logging all the vulnerabilities and reporting at the end, you can simplify the test logic by reporting the errors (non-fatally via s.Error) during the for-loop:\n\n    if strings.EqualFold(contents, \"vulnerable\") {\n        s.Error(\"File %s has CPU vulnerabilities\", fName)\n    }\n\nThis would allow you to remove the \"vulnerable\" slice.",
       "revId": "750d4c8919356c4ed2e3556bb3a73f082a3f2c38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
