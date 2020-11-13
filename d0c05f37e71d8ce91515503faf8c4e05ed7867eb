@@ -34,6 +34,24 @@
       "parentUuid": "fbeeb436_04710e4c",
       "revId": "d0c05f37e71d8ce91515503faf8c4e05ed7867eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f6f9edc_813a6417",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-13T17:51:07Z",
+      "side": 1,
+      "message": "Ah, nope, I hadn\u0027t.  Thanks for the note.",
+      "parentUuid": "2f2b2317_bb10e354",
+      "revId": "d0c05f37e71d8ce91515503faf8c4e05ed7867eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
