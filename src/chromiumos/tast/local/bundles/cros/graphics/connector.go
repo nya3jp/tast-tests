@@ -26,7 +26,7 @@ var dpPlusModels = []string{
 	"drallion", "drallion360",
 	// TODO(b:161190931): Unmark dedede once it is fixed.
 	// dedede family
-	"drawlat", "drawman",
+	"drawcia", "drawlat", "drawman",
 	// fizz family
 	"fizz", "jax", "kench", "sion", "teemo",
 	"guado",
