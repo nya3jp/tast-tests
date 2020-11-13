@@ -31,42 +31,51 @@ func init() {
 				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
 				ExtraHardwareDeps: pre.InputsStableModels,
-			}, {
+			},
+			{
 				Name:              "us_en_unstable",
 				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-			}, {
+			},
+			{
 				Name:              "us_en_mojo",
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
 				ExtraHardwareDeps: pre.InputsMojoModels,
-			}, {
-				Name:              "jp_us_stable",
-				Pre:               pre.VKEnabledTablet(),
-				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraHardwareDeps: pre.InputsStableModels,
-			}, {
-				Name:              "jp_us_unstable",
-				Pre:               pre.VKEnabledTablet(),
-				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraHardwareDeps: pre.InputsUnstableModels,
-			}, {
-				Name:              "jp_us_mojo",
-				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
-				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraHardwareDeps: pre.InputsMojoModels,
-			}, {
+			},
+			// TODO(b/172861453): Revert jp IME test once b/172861453 fixed.
+			// {
+			// 	Name:              "jp_us_stable",
+			// 	Pre:               pre.VKEnabledTablet(),
+			// 	Val:               ime.INPUTMETHOD_NACL_MOZC_US,
+			// 	ExtraHardwareDeps: pre.InputsStableModels,
+			// },
+			// {
+			// 	Name:              "jp_us_unstable",
+			// 	Pre:               pre.VKEnabledTablet(),
+			// 	Val:               ime.INPUTMETHOD_NACL_MOZC_US,
+			// 	ExtraHardwareDeps: pre.InputsUnstableModels,
+			// },
+			// {
+			// 	Name:              "jp_us_mojo",
+			// 	Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+			// 	Val:               ime.INPUTMETHOD_NACL_MOZC_US,
+			// 	ExtraHardwareDeps: pre.InputsMojoModels,
+			// },
+			{
 				Name:              "zh_pinyin_stable",
 				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				ExtraHardwareDeps: pre.InputsStableModels,
-			}, {
+			},
+			{
 				Name:              "zh_pinyin_unstable",
 				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-			}, {
+			},
+			{
 				Name:              "zh_pinyin_mojo",
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
