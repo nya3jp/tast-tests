@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2df8850_8f2a24e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wmm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-13T21:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "022dd94f_b6a84a1f",
+      "range": {
+        "startLine": 19,
+        "startChar": 73,
+        "endLine": 19,
+        "endChar": 76
+      },
+      "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f33326a7_d4864f3f",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b2bc9b_b2281502",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wmm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-13T21:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f33326a7_d4864f3f",
+      "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c15e86d6_317e97e3",
@@ -88,6 +130,24 @@
       "writtenOn": "2020-11-13T20:09:07Z",
       "side": 1,
       "message": "If there\u0027s no special need, you may consider using tf.DefaultOpenNetworkAP() to set up AP (802.11n, channel 48, HT20).",
+      "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e8f29a_c14275bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wmm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-13T21:58:19Z",
+      "side": 1,
+      "message": "I\u0027m using the current configuration as a faithful port of the original test. I don\u0027t think there\u0027s anything special about the configuration though (802.11g, channel 6), so I can swap to DefaultOpenNetworkAP() if it\u0027s recommended. I wasn\u0027t able to find the context for this test on buganizer or monorail, so I don\u0027t know why the current configuration was chosen.",
+      "parentUuid": "c15e86d6_317e97e3",
       "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
