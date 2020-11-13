@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87842d3b_cbe1fc34",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-13T06:48:23Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is necessary, will test putting it back to 10.",
+      "revId": "8a932baf79997eb4dc485e75d3e49f564acca1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
