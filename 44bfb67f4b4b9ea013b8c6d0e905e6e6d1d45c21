@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "518ad9f6_3207fcac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-11-13T08:50:32Z",
+      "side": 1,
+      "message": "it\u0027s not syscall.ESRCH\nit\u0027s a PathError with {\"read\", path, err }\nAnd the underlying error seems still wrapped.\n\nSince it\u0027s hard to repro locally for this case. i would like to keep a safer fix.",
+      "parentUuid": "18df89d4_b720f94f",
+      "range": {
+        "startLine": 65,
+        "startChar": 25,
+        "endLine": 65,
+        "endChar": 76
+      },
+      "revId": "44bfb67f4b4b9ea013b8c6d0e905e6e6d1d45c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a52e696c_098ca345",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-13T08:39:21Z",
       "side": 1,
       "message": "nit/style: else is unneeded.",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "44bfb67f4b4b9ea013b8c6d0e905e6e6d1d45c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cdc66ac_afcbed70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-11-13T08:50:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a52e696c_098ca345",
       "range": {
         "startLine": 67,
         "startChar": 5,
