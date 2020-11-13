@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8faae7f_a029dc48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-11-13T06:58:24Z",
+      "side": 1,
+      "message": "+Ricardo, since he added it initially.\n",
+      "revId": "c59e3273233430c66392a526da475a6a5a36b5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3afbba6_443c5808",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-11-13T06:58:24Z",
+      "side": 1,
+      "message": "Since the source of truth for caption height is in Chrome, we should also mention that this value comes from Chrome. It would be best if you could find the source, thanks!",
+      "range": {
+        "startLine": 21,
+        "startChar": 49,
+        "endLine": 21,
+        "endChar": 92
+      },
+      "revId": "c59e3273233430c66392a526da475a6a5a36b5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea65f93_f9d9a265",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-11-13T06:58:24Z",
+      "side": 1,
+      "message": "(see other comment first)\nIf we go with the temporary solution, we should add a comment that this returns the expected caption size in R.",
+      "revId": "c59e3273233430c66392a526da475a6a5a36b5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb340251_a959e391",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-11-13T06:58:24Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the same calculation we do for caption height on the Android side. In ArcSystemUI, we use the deviceScaleFactor of the display [1] to determine the caption height in pixels.\n\nThe density value obtained from d.PhysicalDensity(ctx) is determined from the density DPI that we set in Android. It is calculated like so:\n  density \u003d densityDpi / DENSITY_DEFAULT\n\nwhere DENSITY_DEFAULT is always 160 in Android. This density is not very useful when comparing to deviceScaleFactor set in Chrome, because there are board-specific variances.\n\nThe proper thing to do here would be to get a dump of the current calculated caption height from ArcSystemUI, but I don\u0027t think we have a way to do that right now.\n\nSince we don\u0027t have a way to dump the current caption height or the current deviceScaleFactor used by Android in R, we could temporarily use the actual caption height that Chrome sets. \nThe caption height calculated in arc.CompantionLibrary [2] is correct, so we could use something like that for now:\n  CaptionHeightR * displayMode.DeviceScaleFactor\n\n\n[1]: http://cs/android/vendor/google_arc/packages/system/ArcSystemUI/src/org/chromium/arc/systemui/wm/ArcInsetsHandler.java?l\u003d259\u0026rcl\u003d934fbaaba824a5f15339b7f019cda77c32ca97e7\n\n[2]: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/companion_library.go?l\u003d328\u0026rcl\u003d214df54cfa78401e50cd477cb6a8de65f19bc903",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "c59e3273233430c66392a526da475a6a5a36b5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
