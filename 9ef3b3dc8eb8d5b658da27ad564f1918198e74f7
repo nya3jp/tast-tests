@@ -85,6 +85,24 @@
       "message": "This increased the size a lot.\nWhat happened here?",
       "revId": "9ef3b3dc8eb8d5b658da27ad564f1918198e74f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "296898a3_8c5bfec4",
+        "filename": "src/chromiumos/tast/local/lacros/data/lacros_binary.tar.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-13T13:21:17Z",
+      "side": 1,
+      "message": "See our comments somewhere else on the CL, but this is the regular size. To make it smaller just have to compress with xz.",
+      "parentUuid": "43545160_9c44a096",
+      "revId": "9ef3b3dc8eb8d5b658da27ad564f1918198e74f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
