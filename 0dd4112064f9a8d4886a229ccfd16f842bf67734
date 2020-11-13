@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37da9985_8473477b",
+        "filename": "src/chromiumos/tast/local/lacros/data/lacros_fishfood_binary.tar.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-13T17:11:48Z",
+      "side": 1,
+      "message": "nit: could you remove unneeded empty line?",
+      "revId": "0dd4112064f9a8d4886a229ccfd16f842bf67734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3654bda0_6392d716",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-13T17:11:48Z",
+      "side": 1,
+      "message": "my understanding is, now lacros_binary.tar and lacros_fishfood_binary.tar point to the same. How those will be diverged?",
+      "revId": "0dd4112064f9a8d4886a229ccfd16f842bf67734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8d3dca_9d3595fa",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-13T17:11:48Z",
+      "side": 1,
+      "message": "Could you make this private?\nPre\u0027s comparison is based on instance, not name, so even if both name and artifact are same, they\u0027ll be recognized as different.\nInstead, could you introduce global var and return it?\n\nAlso, could you comment the uniqueness of artifact and name?",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "0dd4112064f9a8d4886a229ccfd16f842bf67734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
