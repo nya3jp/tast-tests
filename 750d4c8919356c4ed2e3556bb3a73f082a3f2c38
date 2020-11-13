@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c13c184_05dd5ba7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-11-13T20:23:13Z",
+      "side": 1,
+      "message": "I will use b/173225016 unless that is a problem.",
+      "parentUuid": "44fc7b23_b1a24858",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "750d4c8919356c4ed2e3556bb3a73f082a3f2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9c980a88_f2093a90",
@@ -82,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b00cee_bc436392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/cpu_vulnerabilities.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-11-13T20:23:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4de93b63_450a58ba",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "750d4c8919356c4ed2e3556bb3a73f082a3f2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88c591a4_0df87961",
@@ -95,6 +143,24 @@
       "writtenOn": "2020-11-13T19:21:46Z",
       "side": 1,
       "message": "Rather than logging all the vulnerabilities and reporting at the end, you can simplify the test logic by reporting the errors (non-fatally via s.Error) during the for-loop:\n\n    if strings.EqualFold(contents, \"vulnerable\") {\n        s.Error(\"File %s has CPU vulnerabilities\", fName)\n    }\n\nThis would allow you to remove the \"vulnerable\" slice.",
+      "revId": "750d4c8919356c4ed2e3556bb3a73f082a3f2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "491546b3_d2f729db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/cpu_vulnerabilities.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-11-13T20:23:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88c591a4_0df87961",
       "revId": "750d4c8919356c4ed2e3556bb3a73f082a3f2c38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
