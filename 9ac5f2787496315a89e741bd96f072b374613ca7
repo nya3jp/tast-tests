@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a9fa873_8ca355f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-13T01:03:37Z",
+      "side": 1,
+      "message": "In hatch-arc-r and eve-arc-r for Skype app, while using LongUITimeout in the place of DefaultUITimeout, observed that for ClamshellLaunchTest if the UIObject does not exists, the test is getting failed due to \"context deadline exceeded\" and not checking further UIObjects. So need to check if the increase in time interval affects the tests. Thanks.",
+      "parentUuid": "f35c2243_df45887d",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 59
+      },
+      "revId": "9ac5f2787496315a89e741bd96f072b374613ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ee2657c_d4b2eb49",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
         "patchSetId": 2
