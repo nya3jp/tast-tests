@@ -33,6 +33,29 @@
       "message": "graphics/video LGTM",
       "revId": "7c28845846f158e112655a23c0616b9e316c0619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2017c33_caa7efe4",
+        "filename": "src/chromiumos/tast/local/graphics/deqp_parser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-13T20:25:56Z",
+      "side": 1,
+      "message": "validity",
+      "range": {
+        "startLine": 102,
+        "startChar": 66,
+        "endLine": 102,
+        "endChar": 73
+      },
+      "revId": "7c28845846f158e112655a23c0616b9e316c0619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
