@@ -50,6 +50,23 @@
       "message": "Sorry for delay. Back from OOO.",
       "revId": "3729787a903a6fc474155e75c6d9521b43558b9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da316d4_5c00a4ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-11-13T20:07:30Z",
+      "side": 1,
+      "message": "Hi Ross, a potential fix has in, so perhaps we could put this CL on hold for a bit? I\u0027ll keep a close eye on its running status, and we can go ahead disable it if it\u0027s still somehow failing. WDYT? thanks!\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2481627",
+      "revId": "3729787a903a6fc474155e75c6d9521b43558b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
