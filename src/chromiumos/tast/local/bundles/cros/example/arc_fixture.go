@@ -13,11 +13,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ARCFixture,
-		Desc:     "Demonstrates ARC fixture",
-		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Fixture:  "arcBooted",
+		Func:         ARCFixture,
+		Desc:         "Demonstrates ARC fixture",
+		Contacts:     []string{"nya@chromium.org", "tast-owners@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "android_p"},
+		Fixture:      "arcBooted",
 	})
 }
 
