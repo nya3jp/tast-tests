@@ -16,11 +16,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ChromeFixture,
-		Desc:     "Demonstrates Chrome fixture",
-		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Fixture:  "chromeLoggedIn",
+		Func:         ChromeFixture,
+		Desc:         "Demonstrates Chrome fixture",
+		Contacts:     []string{"nya@chromium.org", "tast-owners@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
