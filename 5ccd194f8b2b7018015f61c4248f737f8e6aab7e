@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "256e51a5_b3fccfdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-13T00:04:05Z",
+      "side": 1,
+      "message": "I don\u0027t see where the IME is reverted in teardown. Is it missing?",
+      "range": {
+        "startLine": 51,
+        "startChar": 52,
+        "endLine": 51,
+        "endChar": 84
+      },
+      "revId": "5ccd194f8b2b7018015f61c4248f737f8e6aab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "396f76c8_764acdfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-13T00:04:05Z",
+      "side": 1,
+      "message": "nit/typo: Tast usually considers \"subtests\" to be one word, so the variable name should not have a capital T. This applies also to \"subTest\"-\u003e\"subtest\" in the for-loop, L101.",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "5ccd194f8b2b7018015f61c4248f737f8e6aab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956658b4_bacfcd84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-13T00:04:05Z",
+      "side": 1,
+      "message": "This test is heavily abstracted, as it is currently written. go/golang-style/guide instructs us to avoid unnecessary abstraction, under both Simplicity and Concision. I don\u0027t know what other plans you have for expanding this test, but it seems like we could make the following changes:\n\n1. Remove the parameterization, since there is only one parameter.\n2. Simplify the values of subTests, because they are almost identical. Namely, inputFunc and expectedText can be condensed into a single string, inputText. Then L71-99 would look like this:\n\n    type testData struct {\n        inputField testserver.InputField\n        inputText  string\n    }\n    subTests :\u003d []testData{\n        {\n            inputField: testserver.TextAreaInputField,\n            inputText: `1234567890-\u003d!@#$%^\u0026*()_+[]{};\u0027\\:\"|,./\u003c\u003e?~`,\n        }, {\n            inputField: testserver.TextInputField,\n            inputText:  \"qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM\",\n    }\n\n    L110 could be a more direct call to keyboard.Type(ctx, subTest.inputText), and L112 would replace subTest.expectedText with subTest.inputText.\n\nWDYT, would this work given your intentions for this test?",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "5ccd194f8b2b7018015f61c4248f737f8e6aab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39905905_555e0fce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-13T00:04:05Z",
+      "side": 1,
+      "message": "No need to cast inputField to a string, since it is already a string type.",
+      "range": {
+        "startLine": 161,
+        "startChar": 56,
+        "endLine": 161,
+        "endChar": 66
+      },
+      "revId": "5ccd194f8b2b7018015f61c4248f737f8e6aab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
