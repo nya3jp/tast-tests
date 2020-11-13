@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bc503ea_6c4a2427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-11-13T17:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ad5723_85786da1",
+      "range": {
+        "startLine": 65,
+        "startChar": 25,
+        "endLine": 65,
+        "endChar": 76
+      },
+      "revId": "44bfb67f4b4b9ea013b8c6d0e905e6e6d1d45c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a52e696c_098ca345",
