@@ -50,6 +50,23 @@
       "message": "This test is still running and failing on almost all runs.\n\nLet\u0027s stop it from running on our infra so we don\u0027t waste lab resources, and reenable it when it\u0027s fixed.",
       "revId": "c110b739d63021a2b02757913fb26e071906360b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38643481_0dd84afa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2020-11-13T21:32:01Z",
+      "side": 1,
+      "message": "@ khmel@ any thoughts on if we should await update on b/172297817, or land this as suggested a bit earlier?",
+      "revId": "c110b739d63021a2b02757913fb26e071906360b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
