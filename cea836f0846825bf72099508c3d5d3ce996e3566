@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "963cb376_ff0bee97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-13T17:05:21Z",
+      "side": 1,
+      "message": "\"tast/tests: only run (arc|video|webrtc).*_alt where\u0027s there\u0027s a VDA decoder\"\n?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "cea836f0846825bf72099508c3d5d3ce996e3566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
