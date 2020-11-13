@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e01abf12_a608f98d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2020-11-13T19:30:53Z",
+      "side": 1,
+      "message": "Talked to Sheriff to merge this change before M88 branch today, and got their +1.\n\nRationale - this CL addresses var name change made in the other credential CL.",
+      "revId": "a839c14507cec5b414515cb931ac7cf2cca15271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
