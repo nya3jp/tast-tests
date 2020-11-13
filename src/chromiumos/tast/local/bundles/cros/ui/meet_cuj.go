@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
@@ -301,38 +302,35 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to hit the enter key: ", err)
 	}
 
-	if err := func() error {
-		// Meet will ask the permission: wait for the permission bubble to appear.
-		// Note that there may be some other bubbles, so find only within the main
-		// container -- which should be named as "Desk_Container_A", the primary
-		// desk.
+	// Check and grant permissions.
+	for {
+		needPermission, err := needToGrantPermission(ctx, meetConn)
+		if err != nil {
+			s.Fatal("Failed to check if it needs to grant permissions:", err)
+		}
+		if !needPermission {
+			break
+		}
 		container, err := ui.Find(ctx, tconn, ui.FindParams{ClassName: "Desk_Container_A"})
 		if err != nil {
-			return errors.Wrap(err, "failed to find the container")
+			s.Fatal("Failed to find the container:", err)
 		}
-		defer container.Release(closeCtx)
-		for i := 0; i < 5; i++ {
-			bubble, err := container.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "BubbleDialogDelegateView"}, timeout)
-			if err != nil {
-				// It is fine not finding the bubble.
-				return nil
-			}
-			defer bubble.Release(closeCtx)
-			allowButton, err := bubble.Descendant(ctx, ui.FindParams{Name: "Allow", Role: ui.RoleTypeButton})
-			if err != nil {
-				return errors.Wrap(err, "failed to find the allow button")
-			}
-			defer allowButton.Release(closeCtx)
-			if err := allowButton.StableLeftClick(ctx, &pollOpts); err != nil {
-				return errors.Wrap(err, "failed to click the allow button")
-			}
-			if err := testing.Sleep(ctx, time.Second); err != nil {
-				return errors.Wrap(err, "failed to wait for the next cycle of permission")
-			}
+		bubble, err := container.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "BubbleDialogDelegateView"}, 20*time.Second)
+		if err != nil {
+			s.Fatal("Failed to find permission bubble:", err)
 		}
-		return errors.New("too many permission requests")
-	}(); err != nil {
-		s.Fatal("Failed to skip the permission requests: ", err)
+		defer bubble.Release(closeCtx)
+		allowButton, err := bubble.Descendant(ctx, ui.FindParams{Name: "Allow", Role: ui.RoleTypeButton})
+		if err != nil {
+			s.Fatal("Failed to find the allow button:", err)
+		}
+		defer allowButton.Release(closeCtx)
+		if err := allowButton.StableLeftClick(ctx, &pollOpts); err != nil {
+			s.Fatal("Failed to click the allow button:", err)
+		}
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			s.Fatal("Failed to wait for the next cycle of permission:", err)
+		}
 	}
 
 	defer func() {
@@ -591,4 +589,30 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
 	}
+}
+
+// needToGrantPermission checks if we need to grant permission before joining meetings.
+// If camera/microphone/notifications permissions are not granted, we need to skip
+// the permission bubbles later.
+func needToGrantPermission(ctx context.Context, conn *chrome.Conn) (bool, error) {
+	perms := []string{"microphone", "camera", "notifications"}
+	for _, perm := range perms {
+		var state string
+		if err := conn.Eval(ctx, fmt.Sprintf(
+			`new Promise(function(resolve, reject) {
+				navigator.permissions.query({name: '%v'})
+				.then((permission) => {
+					resolve(permission.state);
+				})
+				.catch((error) => {
+					reject(error);
+				});
+			 })`, perm), &state); err != nil {
+			return true, errors.Errorf("failed to query %v permission", perm)
+		}
+		if state != "granted" {
+			return true, nil
+		}
+	}
+	return false, nil
 }
