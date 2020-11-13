@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bad050f0_e8acff1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-13T07:47:45Z",
+      "side": 1,
+      "message": "Mostly look good, only some minor comments.",
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "439c9da3_b5bd8647",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-13T07:47:45Z",
+      "side": 1,
+      "message": "IIUC, CSA is \"Channel Switch Announcement\" and we\u0027re doing a real channel switch here (which includes sending the announcement), I guess maybe just \"CS\" instead of \"CSA\"? WDYT?",
+      "range": {
+        "startLine": 267,
+        "startChar": 5,
+        "endLine": 267,
+        "endChar": 8
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bfa2bd_7911998e",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-13T07:47:45Z",
+      "side": 1,
+      "message": "\u003e \"configration\" is a possible misspelling of \"configuration\".\n\nPlease fix.",
+      "parentUuid": "50a4dc49_85b1b74b",
+      "range": {
+        "startLine": 290,
+        "startChar": 20,
+        "endLine": 290,
+        "endChar": 32
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb671cb_493f9017",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-13T07:47:45Z",
+      "side": 1,
+      "message": "nit: maybe just \"channel switch\"?",
+      "range": {
+        "startLine": 297,
+        "startChar": 34,
+        "endLine": 297,
+        "endChar": 37
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
