@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce1e6b2_0199fed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-13T01:15:34Z",
+      "side": 1,
+      "message": "Rephrased the comment. IME revertion will be managed in precondition.",
+      "parentUuid": "256e51a5_b3fccfdf",
+      "range": {
+        "startLine": 51,
+        "startChar": 52,
+        "endLine": 51,
+        "endChar": 84
+      },
+      "revId": "5ccd194f8b2b7018015f61c4248f737f8e6aab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "396f76c8_764acdfc",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-13T00:04:05Z",
       "side": 1,
       "message": "nit/typo: Tast usually considers \"subtests\" to be one word, so the variable name should not have a capital T. This applies also to \"subTest\"-\u003e\"subtest\" in the for-loop, L101.",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "5ccd194f8b2b7018015f61c4248f737f8e6aab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "716672c9_9bcd6b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-13T01:15:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "396f76c8_764acdfc",
       "range": {
         "startLine": 77,
         "startChar": 5,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "631e8c15_e6f62cd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-13T01:15:34Z",
+      "side": 1,
+      "message": "1. Using parameter is to keep the test small. The intention is to verify one language per test. Type input method is exactlly the same, So I have not separate them into different files.\n\n2. This test is to create a data driven test framework for physical keyboard inputs. The intention is to suppport more complicated input scenarios, such as http://sheets/1Np2NT-CY1MlDHSKFC9A_MnLR5b6sjDWGtogmKHCL1Qw#gid\u003d0\n\nThat is why I used function instead of single string. e.g. In future, it will add keyboard.Accel() and keyboard.SendEvent() for unsupported keyboard.\n\nAppreciated it if you have good suggstions.",
+      "parentUuid": "956658b4_bacfcd84",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "5ccd194f8b2b7018015f61c4248f737f8e6aab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39905905_555e0fce",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-13T00:04:05Z",
       "side": 1,
       "message": "No need to cast inputField to a string, since it is already a string type.",
+      "range": {
+        "startLine": 161,
+        "startChar": 56,
+        "endLine": 161,
+        "endChar": 66
+      },
+      "revId": "5ccd194f8b2b7018015f61c4248f737f8e6aab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0abf05e3_7c7f810a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-13T01:15:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39905905_555e0fce",
       "range": {
         "startLine": 161,
         "startChar": 56,
