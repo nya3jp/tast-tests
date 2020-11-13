@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5aef91e4_83a06acf",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-13T09:03:16Z",
+      "side": 1,
+      "message": "Since you use `:\u003d` at line#64, I guess the behavior is correct. Please remove this line.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36be5d0e_b6250bcc",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-13T09:03:16Z",
+      "side": 1,
+      "message": "A \"Str\" suffix looks like it is a raw string data of hastapdConfig... but it isn\u0027t.\n\nI guess \"configCopy\" may be better. Also please add some description about copying it.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "439c9da3_b5bd8647",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
         "patchSetId": 14
@@ -36,6 +82,29 @@
         "startChar": 5,
         "endLine": 267,
         "endChar": 8
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b36cf6_e458eec6",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-13T09:03:16Z",
+      "side": 1,
+      "message": "I guess it makes more sense to let frequency be a required parameter.",
+      "range": {
+        "startLine": 277,
+        "startChar": 5,
+        "endLine": 277,
+        "endChar": 17
       },
       "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -83,6 +152,75 @@
         "startChar": 34,
         "endLine": 297,
         "endChar": 37
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8238e047_8f4781b2",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-13T09:03:16Z",
+      "side": 1,
+      "message": "Better set a default value for count here, or let count be a required parameter.",
+      "range": {
+        "startLine": 299,
+        "startChar": 8,
+        "endLine": 299,
+        "endChar": 20
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9193167d_12a5bf01",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-13T09:03:16Z",
+      "side": 1,
+      "message": "mode is an optional parameter of chan_switch. I guess it would be nice to check if it is \"\" before appending.",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 30
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb6c1760_921e2d4b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-13T09:03:16Z",
+      "side": 1,
+      "message": "This piece of code used to be at line#946. Is there any any reason to move it here?",
+      "range": {
+        "startLine": 970,
+        "startChar": 0,
+        "endLine": 974,
+        "endChar": 0
       },
       "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
