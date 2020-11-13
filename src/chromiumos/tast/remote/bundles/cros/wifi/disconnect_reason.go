@@ -112,7 +112,7 @@ func DisconnectReason(ctx context.Context, s *testing.State) {
 	)
 
 	// Configure an AP and returns a callback to deconfigure the AP and an error object.
-	configureAP := func(ctx context.Context) (*wificell.APIface, func() error, error) {
+	configureAP := func(ctx context.Context) (wificell.APIface, func() error, error) {
 		options := []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(initialChannel), hostapd.HTCaps(hostapd.HTCapHT20)}
 		ap, err := tf.ConfigureAP(ctx, options, nil)
 		if err != nil {

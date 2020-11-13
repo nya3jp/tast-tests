@@ -37,7 +37,7 @@ func ConnectionIdentifier(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// getConnectionID connects to the AP, and gets the connection identifier, then disconnects.
-	getConnectionID := func(ctx context.Context, ap *wificell.APIface) int32 {
+	getConnectionID := func(ctx context.Context, ap wificell.APIface) int32 {
 		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
 			s.Fatal("Failed to connect to WiFi: ", err)
 		}
@@ -78,7 +78,7 @@ func ConnectionIdentifier(ctx context.Context, s *testing.State) {
 	)
 
 	// Start two APs simultaneously so they would have different IP addresses.
-	aps := make([]*wificell.APIface, 2)
+	aps := make([]wificell.APIface, 2)
 	for i, ch := range []int{1, 48} {
 		s.Log("Setting up AP", i)
 		ap, err := tf.ConfigureAP(ctx, []hostapd.Option{
