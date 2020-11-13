@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35dab11_3307244b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-13T20:30:34Z",
+      "side": 1,
+      "message": "I wonder whether we could make this more robust by checking whether we would have a permission bubble. It looks like we could use \"navigator.permissions\" api [1] [2] to do that. [2] has a example to check \"camera\" permission. If permission.state is \"prompt\", there would be a permission bubble and we should wait. If it is \"granted\", we could skip the wait.\n\nnavigator.permissions.query might give you a non-json friendly JS object. So if tast.promisify does not work (empty result value), we might need to use \"new Promise\" and manually convert the permission.state to call resolve like [3].\n\n[1] https://developer.mozilla.org/en-US/docs/Web/API/Navigator/permissions\n[2] https://stackoverflow.com/questions/53552484/how-can-i-get-user-media-permissionscamera-and-microphone-of-firefox-browser-t\n\n[3] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/settings/settings.go;l\u003d29",
+      "revId": "6a92c1f88ac00670afdba8c93560cc25f69ba6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
