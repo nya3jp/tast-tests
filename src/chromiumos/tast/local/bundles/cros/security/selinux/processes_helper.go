@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"regexp"
+	"strings"
 
 	"github.com/shirou/gopsutil/process"
 
@@ -59,7 +60,8 @@ func GetProcesses() ([]Process, error) {
 			proc.Comm = string(comm)
 		}
 
-		if secontext, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/attr/current", proc.PID)); os.IsNotExist(err) {
+		// ESRCH 3 No such process is returned for syscall read, if process dies after open succeeds.
+		if secontext, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/attr/current", proc.PID)); os.IsNotExist(err) || strings.Contains(err.Error(), "no such process") {
 			continue
 		} else if err != nil {
 			return nil, err
