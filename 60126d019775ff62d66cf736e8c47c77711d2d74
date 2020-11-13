@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "751db6ec_03df3e53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-11-13T04:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df1df4c2_3d74956f",
+      "range": {
+        "startLine": 81,
+        "startChar": 52,
+        "endLine": 81,
+        "endChar": 54
+      },
+      "revId": "60126d019775ff62d66cf736e8c47c77711d2d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0a8f317_20322541",
@@ -84,6 +108,30 @@
       "writtenOn": "2020-11-12T21:34:00Z",
       "side": 1,
       "message": "ahh, if you are planning to add more subtests to this test, I think it is fine being separate from playstore.",
+      "parentUuid": "4e5016bf_d4a9bd14",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "60126d019775ff62d66cf736e8c47c77711d2d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c308da47_c1b622b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1396691
+      },
+      "writtenOn": "2020-11-13T04:20:20Z",
+      "side": 1,
+      "message": "Thanks",
       "parentUuid": "4e5016bf_d4a9bd14",
       "range": {
         "startLine": 85,
