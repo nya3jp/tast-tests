@@ -258,26 +258,36 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResul
 	runTasksInParallel(ctx, suspendBlockTimeout, tasks)
 }
 
-// trimTestBlock performs data integrity trim test on an unmounted partition.
+// trimTestBlock is a dispatcher function to start trim test on the boot device
+// and on the slc.
+func trimTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+	bootDevPartition, err := stress.RootPartitionForTrim(ctx)
+	if err != nil {
+		s.Fatal("Failed to select partition for trim stress: ", err)
+	}
+	trimTestBlockImpl(ctx, s, bootDevPartition, rw)
+
+	if slcConfig.enabled {
+		trimTestBlockImpl(ctx, s, slcConfig.device, rw)
+	}
+}
+
+// trimTestBlockImpl performs data integrity trim test on an unmounted partition.
 // This test will write 1 GB of data and verify that trimmed data are gone and untrimmed data are unaffected.
 // The verification will be run in 5 passes with 0%, 25%, 50%, 75%, and 100% of data trimmed.
 // Also, perform 4K random read QD32 before and after trim. We should see some speed / latency difference
 // if the device firmware trim data properly.
-func trimTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
-	filename, err := stress.RootPartitionForTrim(ctx)
-	if err != nil {
-		s.Fatal("Failed to select partition for trim stress: ", err)
-	}
-	filesize, err := stress.PartitionSize(ctx, filename)
+func trimTestBlockImpl(ctx context.Context, s *testing.State, trimPath string, rw *stress.FioResultWriter) {
+	filesize, err := stress.PartitionSize(ctx, trimPath)
 	if err != nil {
 		s.Fatal("Failed to acquire size for partition: ", err)
 	}
 	// Make file size multiple of 4 * chunk size to account for all passes,
 	// i.e. 25% = 1/4, 75% = 3/4.
 	filesize = filesize - filesize%(4*stress.TrimChunkSize)
-	s.Logf("Filename: %s, filesize: %d", filename, filesize)
+	s.Logf("Filename: %s, filesize: %d", trimPath, filesize)
 
-	f, err := os.OpenFile(filename, os.O_RDWR, 0666)
+	f, err := os.OpenFile(trimPath, os.O_RDWR, 0666)
 	if err != nil {
 		s.Fatal("Failed to open device: ", err)
 	}
@@ -292,13 +302,13 @@ func trimTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWr
 	chunkCount := filesize / stress.TrimChunkSize
 
 	// Write random data to disk
-	s.Log("Writing random data to disk: ", filename)
-	if err := stress.WriteRandomData(filename, chunkCount); err != nil {
+	s.Log("Writing random data to disk: ", trimPath)
+	if err := stress.WriteRandomData(trimPath, chunkCount); err != nil {
 		s.Fatal("Error writing random data to disk: ", err)
 	}
 
 	s.Log("Calculating initial hash values for all chunks")
-	initialHash, err := stress.CalculateCurrentHashes(filename, chunkCount)
+	initialHash, err := stress.CalculateCurrentHashes(trimPath, chunkCount)
 	if err != nil {
 		s.Fatal("Error calculating hashes: ", err)
 	}
@@ -307,7 +317,7 @@ func trimTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWr
 	resultWriter := &stress.FioResultWriter{}
 	defer resultWriter.Save(ctx, s.OutDir())
 
-	testConfig := &stress.TestConfig{ResultWriter: resultWriter, Path: stress.BootDeviceFioPath}
+	testConfig := &stress.TestConfig{ResultWriter: resultWriter, Path: trimPath}
 	if err := runFioStress(ctx, s, testConfig.WithJob("4k_read_qd32")); err != nil {
 		s.Fatal("Timeout while running disk i/o stress: ", err)
 	}
@@ -331,7 +341,7 @@ func trimTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWr
 			}
 		}
 
-		currHashes, err := stress.CalculateCurrentHashes(filename, chunkCount)
+		currHashes, err := stress.CalculateCurrentHashes(trimPath, chunkCount)
 		if err != nil {
 			s.Fatal("Error calculating current hashes: ", err)
 		}
