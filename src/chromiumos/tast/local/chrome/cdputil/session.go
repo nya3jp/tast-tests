@@ -43,11 +43,30 @@ type Session struct {
 	manager *session.Manager // manages connections to multiple targets over wsConn
 }
 
+// PortWaitOption controls whether the NewSession should wait for the port file
+// to be created.
+type PortWaitOption bool
+
+const (
+	// NoWaitPort does not wait for the port file, so if missing it will
+	// fail immediately.
+	NoWaitPort PortWaitOption = false
+
+	// WaitPort waits for the port file to be created.
+	WaitPort PortWaitOption = true
+)
+
 // NewSession establishes a Chrome DevTools Protocol WebSocket connection to the browser.
 // This assumes that Chrome listens the debugging port, which means Chrome needs to be
 // restarted with a --remote-debugging-port flag.
-func NewSession(ctx context.Context, debuggingPortPath string) (sess *Session, retErr error) {
-	port, err := waitForDebuggingPort(ctx, debuggingPortPath)
+func NewSession(ctx context.Context, debuggingPortPath string, portWait PortWaitOption) (sess *Session, retErr error) {
+	var port int
+	var err error
+	if portWait == WaitPort {
+		port, err = waitForDebuggingPort(ctx, debuggingPortPath)
+	} else {
+		port, err = readDebuggingPort(debuggingPortPath)
+	}
 	if err != nil {
 		return nil, err
 	}
