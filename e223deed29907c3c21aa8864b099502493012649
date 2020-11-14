@@ -16,6 +16,286 @@
       "message": "Quoting comment by Matthew for increased visibility:\n\u003e As a note to anyone else, this is bringing some standalone intern code into tast with minimal conversion",
       "revId": "e223deed29907c3c21aa8864b099502493012649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f20ba48_e196f396",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "Merge into one line.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e92dcaf_da9c811c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "Please note that Golang has no file scoped const: they shared within the package. Please define the consts inside the function or if you insist defining them globally, at least add a prefix, e.g. \"slKeyToPress\" to avoid possible collision. \n\nhttps://stackoverflow.com/questions/45253939/global-variable-private-to-file",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a6aeab7_a1a9bf33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "Same for type definition. Are they intent to be used by other tests? If not, at least add a prefix to avoid collision.\n\nAnother idea avoid collision is to move the main logic of the test to sub-directory, say \"screenlatency\".",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6024b270_862c1f05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "Doesn\u0027t it need to map to a JSON field?",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ba53fc_2bc4de5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "Avoid log flooding. Let\u0027s consolidate them into one line:\n\ntesting.ContextLog(ctx, \"Listening on address: \", ln.Addr())\n\nSame below.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e52e58_53af6e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "The code is self-explanatory.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0086c7ca_1a567b95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "Line 98, 100 and 102 can be removed.",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f0c2f3_ecfcbdea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "if err :\u003d ...; err !\u003d nil {\n  testing.ContextLog(...)\n}\n\nIf Decode() returns an error, in addition to log it, shall we loop again or fail the test?",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 48
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f333683_66b0a93c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "Prefer\n\nfor i, ts :\u003d range(timestamps) {\n  ...\n}\n\nSame below for other for-loops that iterate arrays.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de212737_c4aa7fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "Please describe what does ocrData, specifically FramesMetaData array look like.\n\nAlso, do we need to visit ocrData.FramesMetaData each time for i-th keypress? I thought that elements in FramesMetaData are sorted by time.",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ff0267_d0a0dc16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "In Golang we use VideoFPS instead of VideoFps.",
+      "range": {
+        "startLine": 128,
+        "startChar": 102,
+        "endLine": 128,
+        "endChar": 110
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34feb402_1d6a3cf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "In Golang we have time.Duration type. It is suitable to represent time duration. With it, you unify the duration unit to nanosecond and time package provides some handy functions to calculate duration.",
+      "range": {
+        "startLine": 144,
+        "startChar": 23,
+        "endLine": 144,
+        "endChar": 54
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c4b94a_03298d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "Please explain why you need the sleep.",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01fbf5e5_f62d45ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T15:44:41Z",
+      "side": 1,
+      "message": "Shall we make the timestamp before or after keyboard.Type()? Please elaborate the reason.",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
