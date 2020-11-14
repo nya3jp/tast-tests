@@ -20,7 +20,7 @@ func init() {
 			"batrapranav@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "plugin_vm"},
 		Data:         []string{proxyStarPPD, proxyStarlmPPD, proxyStarToPrintFile, proxyStarGoldenFile, proxyStarlmGoldenFile},
 		Pre:          chrome.LoggedIn(),
