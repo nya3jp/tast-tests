@@ -23,7 +23,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "plugin_vm"},
 		Data:         []string{proxyGenericPPDFile, proxyGenericToPrintFile, proxyGenericGoldenFile},
 		Pre:          chrome.LoggedIn(),
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

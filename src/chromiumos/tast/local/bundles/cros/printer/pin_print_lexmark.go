@@ -24,8 +24,7 @@ func init() {
 			"printer_Lexmark.ppd",
 			"to_print.pdf",
 		},
-		// TODO(crbug.com/1131304): Mark as informational until the test can be fixed.
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name: "no_pin",
 			Val: &ippprint.Params{

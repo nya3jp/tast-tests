@@ -16,7 +16,7 @@ func init() {
 		Func:         Gstopdf,
 		Desc:         "Tests that the gstopdf CUPS filter produces expected output",
 		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{"gstopdf_input.ps", "gstopdf_golden.pdf"},
 	})
