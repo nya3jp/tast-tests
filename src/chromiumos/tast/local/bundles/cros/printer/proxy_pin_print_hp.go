@@ -25,7 +25,7 @@ func init() {
 			"printer_HP.ppd",
 			"to_print.pdf",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "no_pin",

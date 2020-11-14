@@ -27,7 +27,7 @@ func init() {
 			"printer_Ricoh_LockedPrintPassword.ppd",
 			"printer_Ricoh_password.ppd",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "jobpassword_no_pin",
