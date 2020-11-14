@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b326cf8_2ea24ba4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-11-14T00:59:39Z",
+      "side": 1,
+      "message": "did you intend to use your new TFWithUI (CL:2509531)?",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "b4ab146da5cfa1ceb1ae33cd849ac532e3f0b335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29400d9_0ee1b5e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-11-14T00:59:39Z",
+      "side": 1,
+      "message": "nit: (take it or leave it) you could share this with the options at L56, just declare it once at the start of the test",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "b4ab146da5cfa1ceb1ae33cd849ac532e3f0b335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
