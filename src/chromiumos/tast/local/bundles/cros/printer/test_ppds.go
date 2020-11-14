@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,8 +30,10 @@ func init() {
 			"batrapranav@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"cros_internal", "cups"},
+		// TODO(b/174612982): Remove once the test works on kefka-kernelnext.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kefka")),
 		Data:         []string{ppdsAll},
 	})
 }
