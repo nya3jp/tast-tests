@@ -25,7 +25,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{httpTestPpdFile},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

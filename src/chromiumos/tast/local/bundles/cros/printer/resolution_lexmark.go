@@ -25,7 +25,7 @@ func init() {
 			"to_print.pdf",
 			"printer_Lexmark.ppd",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name: "600dpi",
 			Val: &ippprint.Params{
