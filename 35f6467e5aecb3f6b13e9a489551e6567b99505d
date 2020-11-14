@@ -150,6 +150,24 @@
       "parentUuid": "c15e86d6_317e97e3",
       "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51241a77_79b602de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wmm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-14T16:22:19Z",
+      "side": 1,
+      "message": "It is based on the discussion here: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d827829#c24\n\nAlso, choose 11n instead of 11ac is because at that time, UMA shows that 11n is the most popular phy mode: https://uma.googleplex.com/p/chrome/histograms/?sid\u003d0027f52a8eb3b343d3d76d3bf9bc9621",
+      "parentUuid": "c2e8f29a_c14275bd",
+      "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
