@@ -26,7 +26,7 @@ func init() {
 			"to_print.pdf",
 			"printer_pin_print_unsupported_golden.ps",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "no_pin",

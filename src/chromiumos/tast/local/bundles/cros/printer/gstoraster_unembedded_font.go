@@ -16,7 +16,7 @@ func init() {
 		Func:         GstorasterUnembeddedFont,
 		Desc:         "Tests that the gstoraster CUPS filter handles unembedded PDF fonts",
 		Contacts:     []string{"batrapranav@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{fontFile, fontGoldenFile},
 	})
