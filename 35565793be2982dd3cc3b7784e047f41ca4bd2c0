@@ -85,6 +85,24 @@
       "parentUuid": "91565bf9_1524d877",
       "revId": "35565793be2982dd3cc3b7784e047f41ca4bd2c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a423e16_6204aadd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-14T00:11:03Z",
+      "side": 1,
+      "message": "weird... perhaps you got unlucky (?), but usually the response time is pretty good. feel free to ping the reviewer.",
+      "parentUuid": "c6a6aebe_7a0fd7ee",
+      "revId": "35565793be2982dd3cc3b7784e047f41ca4bd2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
