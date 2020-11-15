@@ -7,16 +7,13 @@ package inputs
 import (
 	"context"
 	"fmt"
-	"io"
-	"net/http"
-	"net/http/httptest"
+	"strings"
 	"time"
 
-	"chromiumos/tast/errors"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -26,9 +23,9 @@ func init() {
 		Func:         VirtualKeyboardEnglishSettings,
 		Desc:         "Checks that the input settings works in Chrome",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:essential-inputs", "informational"},
+		Attr:         []string{"group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          pre.VKEnabled(),
+		Pre:          pre.VKEnabledTablet(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
@@ -41,103 +38,87 @@ func init() {
 }
 
 func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
-	var typingKeys = []string{"space", "g", "o", "."}
-	const expectedTypingResult = " Go. go."
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
-	tconn, err := cr.TestAPIConn(ctx)
+	// Revert settings to default after testing.
+	defer func() {
+		if err := tconn.Eval(cleanupCtx, `chrome.inputMethodPrivate.setSettings(
+			"xkb:us::eng",
+			{"virtualKeyboardEnableCapitalization": false,
+			"virtualKeyboardAutoCorrectionLevel": 1})`, nil); err != nil {
+			s.Log("Failed to revert language settings")
+		}
+	}()
+
+	its, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
-	if err != nil {
-		s.Fatal("Failed to ensure in tablet mode: ", err)
-	}
-	defer cleanup(ctx)
+	defer its.Close()
 
-	s.Log("Start a local server to test chrome")
-	const identifier = "e14s-inputbox"
-	html := fmt.Sprintf(`<input type="text" id="text" autocorrect="off" aria-label=%q/>`, identifier)
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
-	}))
-	defer server.Close()
+	// Use text input field as testing target.
+	inputField := testserver.TextInputField
 
-	conn, err := cr.NewConn(ctx, server.URL)
-	if err != nil {
-		s.Fatal("Creating renderer for test page failed: ", err)
-	}
-	defer conn.Close()
-
-	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
-	if err != nil {
-		s.Fatalf("Failed to find input element %s: %v", identifier, err)
-	}
-	defer element.Release(ctx)
-
-	hideAndShowVirtualKeyboard := func() {
-		if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
-			s.Fatal("Failed to hide virtual keyboard: ", err)
-		}
-
-		if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for vk hidden: ", err)
-		}
-
-		s.Log("Click input to trigger virtual keyboard")
-		if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
-			s.Fatal("Failed to click the input and wait for vk shown: ", err)
-		}
+	type testData struct {
+		name                  string
+		capitalizationEnabled bool
+		keySeq                []string
+		expectedText          string
 	}
 
-	s.Log("Wait for decoder running")
-	if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
+	subTests := []testData{
+		{
+			name:                  "capitalizationEnabled",
+			capitalizationEnabled: true,
+			keySeq:                strings.Split("Hello", ""),
+			expectedText:          "Hello",
+		}, {
+			name:                  "capitalizationDisabled",
+			capitalizationEnabled: false,
+			keySeq:                strings.Split("hello", ""),
+			expectedText:          "hello",
+		},
 	}
 
-	// TODO(jiwan): Change settings via Chrome OS settings page after we migrate settings to there.
-	if err := tconn.Eval(ctx, `chrome.inputMethodPrivate.setSettings(
-		"xkb:us::eng",
-		{"virtualKeyboardEnableCapitalization": true,
-		"virtualKeyboardAutoCorrectionLevel": 1})`, nil); err != nil {
-		s.Fatal("Failed to set settings: ", err)
-	}
+	for _, subTest := range subTests {
+		s.Run(ctx, subTest.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Click input to trigger virtual keyboard")
-	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
-		s.Fatal("Failed to click the input and wait for vk shown: ", err)
-	}
+			// TODO(b/172498469): Change settings via Chrome OS settings page after we migrate settings to there.
+			if err := tconn.Eval(ctx, fmt.Sprintf(`chrome.inputMethodPrivate.setSettings(
+				"xkb:us::eng",
+				{"virtualKeyboardEnableCapitalization": %t,
+				"virtualKeyboardAutoCorrectionLevel": 1})`, subTest.capitalizationEnabled), nil); err != nil {
+				s.Fatal("Failed to set settings: ", err)
+			}
 
-	if err := vkb.TapKeys(ctx, tconn, typingKeys); err != nil {
-		s.Fatal("Failed to input with virtual keyboard: ", err)
-	}
+			s.Log("Wait for decoder running")
+			if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
+				s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
+			}
 
-	if err := tconn.Eval(ctx, `chrome.inputMethodPrivate.setSettings(
-		"xkb:us::eng",
-		{"virtualKeyboardEnableCapitalization": false,
-		"virtualKeyboardAutoCorrectionLevel": 1})`, nil); err != nil {
-		s.Fatal("Failed to set settings: ", err)
-	}
+			// Clear text before starting input.
+			if err := its.Clear(ctx, inputField); err != nil {
+				s.Fatal("Failed to clear input field: ", err)
+			}
 
-	hideAndShowVirtualKeyboard()
+			if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+				s.Fatal("Failed to click input field to show virtual keyboard: ", err)
+			}
+			defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	if err := vkb.TapKeys(ctx, tconn, typingKeys); err != nil {
-		s.Fatal("Failed to input with virtual keyboard: ", err)
-	}
+			if err := vkb.TapKeys(ctx, tconn, subTest.keySeq); err != nil {
+				s.Fatal("Failed to input with virtual keyboard: ", err)
+			}
 
-	// Value change can be a bit delayed after input.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, 2*time.Second)
-		if err != nil {
-			return err
-		}
-		if inputValueElement.Name != expectedTypingResult {
-			return errors.Errorf("failed to input with virtual keyboard; got: %s, want: %s", inputValueElement.Name, expectedTypingResult)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Error("Failed to input with virtual keyboard: ", err)
+			if err := inputField.WaitForValueToBe(ctx, tconn, subTest.expectedText); err != nil {
+				s.Fatal("Failed to verify input: ", err)
+			}
+		})
 	}
 }

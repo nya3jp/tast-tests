@@ -232,7 +232,7 @@ func validateResult(ctx context.Context, a *arc.ARC, expectations []Expectation)
 	if err != nil {
 		return errors.Wrap(err, "failed initializing UI Automator")
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	for _, e := range expectations {
 		if err := validateLabel(ctx, d, e); err != nil {

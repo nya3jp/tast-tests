@@ -171,38 +171,17 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			request: dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_BATTERY,
 				Parameters: &dtcpb.RunRoutineRequest_BatteryParams{
-					BatteryParams: &dtcpb.BatteryRoutineParameters{
-						LowMah:  1000,
-						HighMah: 10000,
-					},
+					BatteryParams: &dtcpb.BatteryRoutineParameters{},
 				},
 			},
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
-		},
-		{
-			name: "battery_fail",
-			request: dtcpb.RunRoutineRequest{
-				Routine: dtcpb.DiagnosticRoutine_ROUTINE_BATTERY,
-				Parameters: &dtcpb.RunRoutineRequest_BatteryParams{
-					BatteryParams: &dtcpb.BatteryRoutineParameters{
-						LowMah:  10,
-						HighMah: 100,
-					},
-				},
-			},
-			// HighMah is 100 (all devices should have a battery larger than
-			// this).
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
 		},
 		{
 			name: "battery_sysfs",
 			request: dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_BATTERY_SYSFS,
 				Parameters: &dtcpb.RunRoutineRequest_BatterySysfsParams{
-					BatterySysfsParams: &dtcpb.BatterySysfsRoutineParameters{
-						MaximumCycleCount:         5000,
-						PercentBatteryWearAllowed: 50,
-					},
+					BatterySysfsParams: &dtcpb.BatterySysfsRoutineParameters{},
 				},
 			},
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,

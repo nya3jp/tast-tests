@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -27,7 +28,7 @@ func init() {
 			"springerm@chromium.org",
 			"arcvm-eng@google.com",
 		},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Pre:          arc.BootedWithDisableSyncFlags(),
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
@@ -91,7 +92,8 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 	}()
 
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
-	sup.Add(setup.PowerTest(ctx, tconn, batteryMode))
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+		Wifi: setup.DisableWifiInterfaces, Battery: batteryMode}))
 
 	// Install camera testing app.
 	a := s.PreValue().(arc.PreData).ARC

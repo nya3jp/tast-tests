@@ -96,6 +96,8 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/lib/bluetooth"), users("bluetooth"), chk.NotMode(027)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/bootlockbox"), users("bootlockboxd"), groups("bootlockboxd"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/chaps"), users("chaps"), groups("chronos-access"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/lib/cras"), users("cras"), groups("cras"), chk.Mode(0755)),                     // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/lib/cras"), users("cras"), groups("cras"), chk.Mode(0644), chk.SkipChildren()), // children
 		chk.NewPattern(chk.Tree("encrypted/var/lib/chaps/database"), users("chaps"), groups("chronos-access"), chk.NotMode(027)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/dhcpcd"), users("dhcp"), groups("dhcp"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("encrypted/var/lib/gentoo"), users("root"), chk.NotMode(022), chk.SkipChildren()),

@@ -18,7 +18,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -33,6 +32,7 @@ import (
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -131,6 +131,7 @@ func init() {
 		Contacts:     []string{"edcourtney@chromium.org", "hidehiko@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		// TODO(crbug.com/1140407): Run on all lacros devices after removing live video streaming test.
 		HardwareDeps: hwdep.D(hwdep.Model("eve")),
 		Timeout:      120 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
@@ -373,6 +374,16 @@ var metricMap = map[string]struct {
 		direction: perf.SmallerIsBetter,
 		uma:       false,
 	},
+	"cpu_power": {
+		unit:      "joules",
+		direction: perf.SmallerIsBetter,
+		uma:       false,
+	},
+	"dram_power": {
+		unit:      "joules",
+		direction: perf.SmallerIsBetter,
+		uma:       false,
+	},
 }
 
 // These are the default categories for 'UI Rendering' in chrome://tracing plus 'exo' and 'wayland'.
@@ -541,6 +552,12 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvoca
 	if err := invoc.metrics.recordValue(ctx, invoc, "nongpu_power", nongpuPower); err != nil {
 		return err
 	}
+	if err := invoc.metrics.recordValue(ctx, invoc, "cpu_power", raplv.Core()); err != nil {
+		return err
+	}
+	if err := invoc.metrics.recordValue(ctx, invoc, "dram_power", raplv.DRAM()); err != nil {
+		return err
+	}
 	if err := invoc.metrics.recordValue(ctx, invoc, "gpu_power", raplv.Uncore()); err != nil {
 		return err
 	}
@@ -688,12 +705,21 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 				return err
 			}
 			filename := filepath.Join(invoc.traceDir, string(invoc.crt)+"-"+invoc.page.name+"-trace.data")
-			if err := chrome.SaveTraceToFile(tr, filename); err != nil {
+			if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
 				return err
 			}
 			return nil
 		}
 	}
+
+	// Sleep for three seconds after loading pages / setting up the environment.
+	// Loading a page can cause some transient spikes in activity or similar
+	// 'unstable' state. Unfortunately there's no clear condition to wait for like
+	// there is before the test starts (CPU activity and temperature). Wait three
+	// seconds before measuring performance stats to try to reduce the variance.
+	// Three seconds seems to work for most of the pages we're using (checked via
+	// manual inspection).
+	testing.Sleep(ctx, 3*time.Second)
 
 	return runHistogram(ctx, tconn, invoc, perfFn)
 }
@@ -814,10 +840,19 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	if err := crastestclient.Mute(ctx); err != nil {
-		s.Fatal("Failed to mute audio: ", err)
+	// Set-up environment to be more consistent:
+	sup, supCleanup := setup.New("lacros.GpuCUJ")
+	defer func() {
+		if err := supCleanup(ctx); err != nil {
+			s.Fatal("Failed to cleanup after creating test: ", err)
+		}
+	}()
+
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{Wifi: setup.DoNotChangeWifiInterfaces}))
+
+	if err := sup.Check(ctx); err != nil {
+		s.Fatal("Failed to setup GpuCUJ power test environment: ", err)
 	}
-	defer crastestclient.Unmute(ctx)
 
 	if err := quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, true); err != nil {
 		s.Fatal("Failed to disable notifications: ", err)

@@ -23,7 +23,7 @@ func init() {
 			"chromeos-runtime-probe@google.com",
 		},
 		Attr:         []string{"group:runtime_probe"},
-		SoftwareDeps: []string{"wilco"},
+		SoftwareDeps: []string{"racc"},
 		Vars:         []string{"autotest_host_info_labels"},
 	})
 }

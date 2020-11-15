@@ -13,10 +13,9 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/kylelemons/godebug/diff"
-
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/debugd"
+	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -26,9 +25,21 @@ import (
 // diff.
 func CleanPSContents(content string) string {
 	r := regexp.MustCompile(
-		// Matches the embedded poppler version in the PS file. This gets
-		// outdated on every poppler uprev, so we strip it out.
-		`(?m)(^(.*poppler.*version:.*` +
+		// Matches the embedded ghostscript version in the PS file.
+		// This gets outdated on every gs uprev, so we strip it out.
+		`(?m)(^(%%Creator: GPL Ghostscript .*` +
+			// Removes the postscript creation date.
+			`|%%CreationDate: D:.*` +
+			// Removes the ghostscript invocation command.
+			`|%%Invocation: .*` +
+			// Removes additional lines of the ghostscript invocation command.
+			`|%%\+ .*` +
+			// Removes time metadata for PCLm Jobs.
+			`|% *job-start-time: .*` +
+			// Removes PDF xref objects (they contain byte offsets).
+			`|\d{10} \d{5} [fn] *` +
+			// Removes the byte offset of a PDF xref object.
+			`|startxref[\r\n]+\d+[\r\n]+%%EOF` +
 			// For Brother jobs, jobtime and printlog item 2 contain
 			// time-specific values.
 			`|@PJL SET JOBTIME = .*` +
@@ -41,27 +52,25 @@ func CleanPSContents(content string) string {
 			`|@PJL SET DATE=".*` +
 			`|@PJL SET TIME=".*)[\r\n])` +
 			// For Ricoh jobs, the /ID tag is time-specific.
-			`|(\/ID \[<.*>\])` +
+			`|\/ID \[<.*>\]` +
 			// For Ricoh jobs, "usercode (\d+)" contains the date
 			// and time of the print job.
-			`|(usrcode \(\d+\))` +
+			`|usrcode \(\d+\)` +
 			// For Ricoh PS jobs, the time is contained here.
-			`|(/Time \(\d+\))` +
+			`|/Time \(\d+\)` +
 			// For Ricoh jobs, "(\d+) lppswd" contains the date
 			// and time of the print job.
-			`|(\(\d+\)) lppswd` +
-			// Remove time metadata for PCLm Jobs
-			`|% *job-start-time: .*[\r\n]`)
-	return r.ReplaceAllLiteralString(content, "")
+			`|\(\d+\) lppswd`)
+	return r.ReplaceAllLiteralString(document.CleanPDFContents(content), "")
 }
 
 // Run executes the main test logic with given parameters.
-func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile string) {
-	RunWithOptions(ctx, s, ppdFile, toPrintFile, goldenFile, diffFile, "")
+func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile string) {
+	RunWithOptions(ctx, s, ppdFile, toPrintFile, goldenFile, "")
 }
 
 // RunWithOptions executes the main test logic with options included in the lp command.
-func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile, options string) {
+func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, options string) {
 	const printerID = "FakePrinterID"
 
 	ppd, err := ioutil.ReadFile(s.DataPath(ppdFile))
@@ -116,16 +125,11 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 		s.Fatal("Fake printer didn't receive a request: ", err)
 	}
 
-	if diff := diff.Diff(CleanPSContents(string(expect)), CleanPSContents(string(request))); diff != "" {
-		path := filepath.Join(s.OutDir(), diffFile)
-		if err := ioutil.WriteFile(path, []byte(diff), 0644); err != nil {
-			s.Error("Failed to dump diff: ", err)
-		}
+	if CleanPSContents(string(expect)) != CleanPSContents(string(request)) {
 		outPath := filepath.Join(s.OutDir(), goldenFile)
 		if err := ioutil.WriteFile(outPath, request, 0644); err != nil {
 			s.Error("Failed to dump output: ", err)
 		}
-
-		s.Errorf("Printer output differs from expected: diff saved to %q (-want +got), output to %q", diffFile, goldenFile)
+		s.Errorf("Printer output differs from expected: output saved to %q", goldenFile)
 	}
 }

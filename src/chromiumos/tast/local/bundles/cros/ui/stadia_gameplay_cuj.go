@@ -15,15 +15,17 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StadiaGameplayCUJ,
-		Desc:         "Measures the performance of critical user journey for game playing on Stadia",
-		Contacts:     []string{"yichenz@chromium.org"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:     StadiaGameplayCUJ,
+		Desc:     "Measures the performance of critical user journey for game playing on Stadia",
+		Contacts: []string{"yichenz@chromium.org"},
+		// TODO(http://b/172070475): Test is disabled until it can be fixed
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		Timeout:      10 * time.Minute,
 		Vars: []string{
@@ -41,6 +43,11 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		timeout  = 10 * time.Second
 		gameName = "Mortal Kombat 11"
 	)
+
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx

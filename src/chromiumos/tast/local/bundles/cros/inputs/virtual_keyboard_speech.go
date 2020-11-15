@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/vkb"
@@ -30,10 +29,11 @@ func init() {
 		Func:         VirtualKeyboardSpeech,
 		Desc:         "Tests that user can input in speech on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{enTestFile},
-		Pre:          pre.VKEnabled(),
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		// This test is a technical experiment. It is very flaky at the moment.
+		// Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
+		Data: []string{enTestFile},
+		Pre:  pre.VKEnabledTablet(),
 	})
 }
 
@@ -43,11 +43,8 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	ctx, shortCancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer shortCancel()
 
-	cr := s.PreValue().(*chrome.Chrome)
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
@@ -67,7 +64,7 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	// Launch inputs test web server.
 	ts, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer ts.Close()
 
@@ -82,10 +79,6 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 			s.Log("Failed to hide virtual keyboard: ", err)
 		}
 	}()
-
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard shown and locationed: ", err)
-	}
 
 	vkb.SwitchToVoiceInput(ctx, tconn)
 

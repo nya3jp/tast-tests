@@ -129,7 +129,8 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	}()
 
 	// Add the default power test configuration.
-	sup.Add(setup.PowerTest(ctx, tconn, config.BatteryDischargeMode))
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+		Wifi: setup.DisableWifiInterfaces, Battery: config.BatteryDischargeMode}))
 	if err := sup.Check(ctx); err != nil {
 		return 0, errors.Wrap(err, "failed to setup power test")
 	}
@@ -153,7 +154,7 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 
 	testing.ContextLog(ctx, "Waiting until CPU is cool down")
 	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
-		return 0, errors.Wrap(err, "failed to wait until CPI is cool down")
+		return 0, errors.Wrap(err, "failed to wait until CPU is cool down")
 	}
 
 	testing.ContextLog(ctx, "Running test")

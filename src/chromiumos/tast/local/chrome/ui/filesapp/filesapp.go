@@ -33,7 +33,7 @@ var defaultStablePollOpts = testing.PollOptions{Interval: 100 * time.Millisecond
 // Context menu items for a file.
 const (
 	Open         = "Open"
-	OpenWith     = "Open with\\.\\.\\."
+	OpenWith     = "Open with..."
 	Cut          = "Cut"
 	Copy         = "Copy"
 	Paste        = "Paste"
@@ -41,7 +41,7 @@ const (
 	Rename       = "Rename"
 	Delete       = "Delete"
 	ZipSelection = "Zip select"
-	NewFolder    = "New folder.*"
+	NewFolder    = "New folder"
 )
 
 // Directory names.
@@ -324,15 +324,17 @@ func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) er
 	return nil
 }
 
-// SelectContextMenu right clicks and selects a context menu for a file.
+// SelectContextMenu right clicks and selects a context menu for a file in the file list.
+// This method will not select context menu for items in the navigation tree.
 func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuNames ...string) error {
-	file, err := f.file(ctx, fileName, 15*time.Second)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find %s", fileName)
+	params := ui.FindParams{
+		Name: fileName,
+		Role: ui.RoleTypeListBoxOption,
 	}
-	defer file.Release(ctx)
-	if err := file.StableRightClick(ctx, f.stablePollOpts); err != nil {
-		return errors.Wrapf(err, "failed to right click on %s", fileName)
+
+	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}
+	if err := ui.StableFindAndRightClick(ctx, f.tconn, params, &opts); err != nil {
+		return errors.Wrapf(err, "failed to find and right click %s", fileName)
 	}
 
 	// Wait location.
@@ -350,7 +352,7 @@ func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuN
 }
 
 // CreateFolder creates a new folder named |dirName| in the current directory.
-func (f *FilesApp) CreateFolder(ctx context.Context, dirName string, keyboard *input.KeyboardEventWriter) error {
+func (f *FilesApp) CreateFolder(ctx context.Context, dirName string) error {
 	listBox, err := f.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, uiTimeout)
 	defer listBox.Release(ctx)
 	if err != nil {
@@ -359,18 +361,16 @@ func (f *FilesApp) CreateFolder(ctx context.Context, dirName string, keyboard *i
 	if err := listBox.FocusAndWait(ctx, uiTimeout); err != nil {
 		return errors.Wrap(err, "failed to focus on listbox")
 	}
-	if err := listBox.RightClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to open listbox context menu")
-	}
 
-	// Wait location.
-	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for animation finished")
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create keyboard")
 	}
+	defer keyboard.Close()
 
-	// Left click menuItem.
-	if err := f.LeftClickItem(ctx, NewFolder, ui.RoleTypeMenuItem); err != nil {
-		return errors.Wrapf(err, "failed to click %s in context menu", NewFolder)
+	// Press Ctrl+E to create a new folder.
+	if err := keyboard.Accel(ctx, "Ctrl+E"); err != nil {
+		return errors.Wrap(err, "failed to press Ctrl+E")
 	}
 
 	// Wait for rename text field.
@@ -389,7 +389,11 @@ func (f *FilesApp) CreateFolder(ctx context.Context, dirName string, keyboard *i
 
 	// Press Enter.
 	if err := keyboard.Accel(ctx, "Enter"); err != nil {
-		return errors.Wrapf(err, "failed validating the name of file %s: ", dirName)
+		return errors.Wrapf(err, "failed validating the name of file %s", dirName)
+	}
+
+	if err := f.WaitForFile(ctx, dirName, uiTimeout); err != nil {
+		return errors.Wrapf(err, "failed to find the newly created folder %s", dirName)
 	}
 
 	return nil
@@ -419,9 +423,8 @@ func (f *FilesApp) OpenPath(ctx context.Context, title string, path ...string) e
 // An error is returned if the target item can't be found.
 func (f *FilesApp) LeftClickItem(ctx context.Context, itemName string, role ui.RoleType) error {
 	params := ui.FindParams{
+		Name: itemName,
 		Role: role,
-		// TODO(jinrongwu): change this back once https://chromium-review.googlesource.com/c/chromium/src/+/2440849 is merged.
-		Attributes: map[string]interface{}{"name": regexp.MustCompile(itemName)},
 	}
 	item, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
 	if err != nil {
@@ -491,24 +494,31 @@ func (f *FilesApp) CheckFileDoesNotExist(ctx context.Context, title, fileName st
 
 // RenameFile renames a file in a path.
 // Parameter path should be a path to the file, e.g, Downloads > testfolder1 > subfolder > ...
-func (f *FilesApp) RenameFile(ctx context.Context, keyboard *input.KeyboardEventWriter, title, oldName, newName string, path ...string) error {
+func (f *FilesApp) RenameFile(ctx context.Context, title, oldName, newName string, path ...string) error {
 	// Open the directory in the navigation tree.
 	if err := f.OpenPath(ctx, title, path...); err != nil {
 		return errors.Wrapf(err, "failed to open %s", strings.Join(path, ">"))
 	}
 
-	// Right click and select rename.
-	if err := f.SelectContextMenu(ctx, oldName, Rename); err != nil {
-		return errors.Wrapf(err, "failed to select Rename in context menu for file %s in Linux files", oldName)
+	params := ui.FindParams{
+		Name: oldName,
+		Role: ui.RoleTypeStaticText,
 	}
 
-	// Wait for rename text field.
-	params := ui.FindParams{
-		Role:  ui.RoleTypeTextField,
-		State: map[ui.StateType]bool{ui.StateTypeEditable: true, ui.StateTypeFocusable: true, ui.StateTypeFocused: true},
+	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}
+	if err := ui.StableFindAndClick(ctx, f.tconn, params, &opts); err != nil {
+		return errors.Wrapf(err, "failed to find and click %s", oldName)
 	}
-	if err := f.Root.WaitUntilDescendantExists(ctx, params, uiTimeout); err != nil {
-		return errors.Wrap(err, "failed finding rename input text field")
+
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create keyboard")
+	}
+	defer keyboard.Close()
+
+	// Press Ctrl+Enter.
+	if err := keyboard.Accel(ctx, "Ctrl+Enter"); err != nil {
+		return errors.Wrap(err, "failed press Ctrl+Enter")
 	}
 
 	// Type the new name.

@@ -25,6 +25,7 @@ import (
 	"context"
 	"fmt"
 	"reflect"
+	"regexp"
 	"strings"
 	"time"
 
@@ -478,12 +479,15 @@ func PageObject(pg interface{}) {
 		fieldStruct := v.Type().Field(i)
 		fieldValue := v.FieldByName(fieldStruct.Name)
 		if fieldValue.IsValid() && fieldValue.CanSet() && fieldStruct.Type == reflect.TypeOf(&Action{}) {
-			params := ui.FindParams{}
+			params := ui.FindParams{Attributes: map[string]interface{}{}}
 			hasParams := false
 
 			// Find tag name.
 			if name, ok := fieldStruct.Tag.Lookup("name"); ok && name != "" {
 				params.Name = name
+				hasParams = true
+			} else if nameRegex, ok := fieldStruct.Tag.Lookup("nameRegex"); ok && name != "" {
+				params.Attributes["name"] = regexp.MustCompile(nameRegex)
 				hasParams = true
 			}
 

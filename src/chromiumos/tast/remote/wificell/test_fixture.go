@@ -17,7 +17,9 @@ import (
 	"chromiumos/tast/common/network/arping"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
+	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/pkcs11/netcertstore"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/ctxutil"
@@ -25,6 +27,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/hwsec"
 	remotearping "chromiumos/tast/remote/network/arping"
+	"chromiumos/tast/remote/network/cmd"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/attenuator"
@@ -68,7 +71,7 @@ func TFPcap(target string) TFOption {
 // TFCapture sets if the test fixture should spawn packet capturer in ConfigureAP.
 func TFCapture(b bool) TFOption {
 	return func(tf *TestFixture) {
-		tf.packetCapture = b
+		tf.option.packetCapture = b
 	}
 }
 
@@ -76,6 +79,15 @@ func TFCapture(b bool) TFOption {
 func TFAttenuator(target string) TFOption {
 	return func(tf *TestFixture) {
 		tf.attenuatorTarget = target
+	}
+}
+
+// TFWithUI sets if the test fixture should not skip stopping UI.
+// This option is useful for tests with UI settings + basic WiFi functionality,
+// where the interference of UI (e.g. trigger scans) does not matter much.
+func TFWithUI() TFOption {
+	return func(tf *TestFixture) {
+		tf.option.withUI = true
 	}
 }
 
@@ -96,23 +108,24 @@ type TestFixture struct {
 
 	routers []routerData
 
-	pcapTarget    string
-	pcapHost      *ssh.Conn
-	pcap          *Router
-	packetCapture bool
+	pcapTarget string
+	pcapHost   *ssh.Conn
+	pcap       *Router
 
 	attenuatorTarget string
 	attenuator       *attenuator.Attenuator
 
+	// Group simple option flags here as they started to grow.
+	option struct {
+		packetCapture bool
+		withUI        bool
+	}
+
 	apID      int
 	capturers map[*APIface]*pcap.Capturer
 
-	// apRouterIDs is reverse map for router identification for two purposes:
-	// 1) We need to know which router the APIface belongs to deconfigure
-	//    AP on correct device;
-	// 2) We need to know (?) a complete list of APIfaces to deconfigure all APs,
-	//    which some tests require.
-	apRouterIDs map[*APIface]int
+	// aps is a set of APs useful for deconfiguring all APs, which some tests require.
+	aps map[*APIface]struct{}
 
 	// netCertStore is initialized lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests need it.
 	netCertStore *netcertstore.Store
@@ -172,9 +185,9 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	defer st.End()
 
 	tf := &TestFixture{
-		dut:         d,
-		capturers:   make(map[*APIface]*pcap.Capturer),
-		apRouterIDs: make(map[*APIface]int),
+		dut:       d,
+		capturers: make(map[*APIface]*pcap.Capturer),
+		aps:       make(map[*APIface]struct{}),
 	}
 	for _, op := range ops {
 		op(tf)
@@ -197,7 +210,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	tf.wifiClient = network.NewWifiServiceClient(tf.rpc.Conn)
 
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
-	if _, err := tf.wifiClient.InitDUT(ctx, &empty.Empty{}); err != nil {
+	if _, err := tf.wifiClient.InitDUT(ctx, &network.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
 		return nil, errors.Wrap(err, "failed to InitDUT")
 	}
 
@@ -313,6 +326,9 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "tf.Close")
 	defer st.End()
 
+	ctx, cancel := context.WithTimeout(ctx, 20*time.Second)
+	defer cancel()
+
 	var firstErr error
 
 	if err := tf.resetNetCertStore(ctx); err != nil {
@@ -363,6 +379,9 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 // Reinit reinitialize the TestFixture. This can be used in precondition or between
 // testcases to guarantee a cleaner state.
 func (tf *TestFixture) Reinit(ctx context.Context) error {
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+
 	if _, err := tf.WifiClient().ReinitTestState(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "failed to reinit DUT")
 	}
@@ -402,13 +421,8 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		return nil, errors.Errorf("Router index (%d) out of range [0, %d)", idx, len(tf.routers))
 	}
 
-	if err := config.SecurityConfig.InstallRouterCredentials(ctx, tf.routers[idx].host,
-		tf.routers[idx].object.workDir()); err != nil {
-		return nil, err
-	}
-
 	var capturer *pcap.Capturer
-	if tf.packetCapture {
+	if tf.option.packetCapture {
 		freqOps, err := config.PcapFreqOptions()
 		if err != nil {
 			return nil, err
@@ -424,11 +438,11 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		}()
 	}
 
-	ap, err := tf.routers[idx].object.StartAPIface(ctx, name, config)
+	ap, err := StartAPIface(ctx, tf.routers[idx].object, name, config)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
 	}
-	tf.apRouterIDs[ap] = idx
+	tf.aps[ap] = struct{}{}
 
 	if capturer != nil {
 		tf.capturers[ap] = capturer
@@ -449,7 +463,7 @@ func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, ap *APIface) (c
 	if len(tf.routers) == 0 {
 		return ctx, func() {}
 	}
-	ctx, cancel := tf.routers[tf.apRouterIDs[ap]].object.ReserveForStopAPIface(ctx, ap)
+	ctx, cancel := ap.ReserveForStop(ctx)
 	if capturer, ok := tf.capturers[ap]; ok {
 		// Also reserve time for stopping the capturer if it exists.
 		// Noted that CancelFunc returned here is dropped as we rely on its
@@ -468,7 +482,7 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 
 	capturer := tf.capturers[ap]
 	delete(tf.capturers, ap)
-	if err := tf.routers[tf.apRouterIDs[ap]].object.StopAPIface(ctx, ap); err != nil {
+	if err := ap.Stop(ctx); err != nil {
 		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop APIface"))
 	}
 	if capturer != nil {
@@ -476,7 +490,7 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 		}
 	}
-	delete(tf.apRouterIDs, ap)
+	delete(tf.aps, ap)
 	return firstErr
 }
 
@@ -484,12 +498,33 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 // this test fixture.
 func (tf *TestFixture) DeconfigAllAPs(ctx context.Context) error {
 	var firstErr error
-	for ap := range tf.apRouterIDs {
+	for ap := range tf.aps {
 		if err := tf.DeconfigAP(ctx, ap); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to deconfig AP"))
 		}
 	}
 	return firstErr
+}
+
+const wpaMonitorStopTimeout = 10 * time.Second
+
+// StartWPAMonitor configures and starts wpa_supplicant events monitor
+// newCtx is ctx shortened for the stop function, which should be deferred by the caller.
+func (tf *TestFixture) StartWPAMonitor(ctx context.Context) (wpaMonitor *WPAMonitor, stop func(), newCtx context.Context, retErr error) {
+	wpaMonitor = new(WPAMonitor)
+	if err := wpaMonitor.Start(ctx, tf.dut.Conn()); err != nil {
+		return nil, nil, ctx, err
+	}
+	sCtx, sCancel := ctxutil.Shorten(ctx, wpaMonitorStopTimeout)
+	return wpaMonitor, func() {
+		sCancel()
+		timeoutCtx, cancel := context.WithTimeout(ctx, wpaMonitorStopTimeout)
+		defer cancel()
+		if err := wpaMonitor.Stop(timeoutCtx); err != nil {
+			testing.ContextLog(ctx, "Failed to wait for wpa monitor stop: ", err)
+		}
+		testing.ContextLog(ctx, "Wpa monitor stopped")
+	}, sCtx, nil
 }
 
 // Capturer returns the auto-spawned Capturer for the APIface instance.
@@ -980,6 +1015,19 @@ func (tf *TestFixture) CurrentClientTime(ctx context.Context) (time.Time, error)
 	return currentTime, nil
 }
 
+// ClearBlacklistDUT runs "wpa_cli blacklist clear" command on DUT
+// TODO(b/161915905): replace "blacklist" with more inclusive term once wpa_supplicant updated.
+func (tf *TestFixture) ClearBlacklistDUT(ctx context.Context) error {
+	wpa := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: tf.dut.Conn()})
+
+	err := wpa.ClearBlacklist(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to clear WPA blacklist")
+	}
+
+	return nil
+}
+
 // ShillProperty holds a shill service property with it's expected and unexpected values.
 type ShillProperty struct {
 	Property         string
@@ -1100,4 +1148,72 @@ func (tf *TestFixture) SuspendAssertConnect(ctx context.Context, wakeUpTimeout t
 		return 0, errors.Wrap(err, "failed to suspend and assert connection")
 	}
 	return time.Duration(resp.ReconnectTime), nil
+}
+
+// DisableMACRandomize disables MAC randomization on DUT if supported, this
+// is useful for tests verifying probe requests from DUT.
+// On success, a shortened context and cleanup function is returned.
+func (tf *TestFixture) DisableMACRandomize(ctx context.Context) (shortenCtx context.Context, cleanupFunc func() error, retErr error) {
+	// If MAC randomization setting is supported, disable MAC randomization
+	// as we're filtering the packets with MAC address.
+	if supResp, err := tf.WifiClient().MACRandomizeSupport(ctx, &empty.Empty{}); err != nil {
+		return ctx, nil, errors.Wrap(err, "failed to get if MAC randomization is supported")
+	} else if supResp.Supported {
+		resp, err := tf.WifiClient().GetMACRandomize(ctx, &empty.Empty{})
+		if err != nil {
+			return ctx, nil, errors.Wrap(err, "failed to get MAC randomization setting")
+		}
+		if resp.Enabled {
+			ctxRestore := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+			_, err := tf.WifiClient().SetMACRandomize(ctx, &network.SetMACRandomizeRequest{Enable: false})
+			if err != nil {
+				return ctx, nil, errors.Wrap(err, "failed to disable MAC randomization")
+			}
+			// Restore the setting when exiting.
+			restore := func() error {
+				cancel()
+				if _, err := tf.WifiClient().SetMACRandomize(ctxRestore, &network.SetMACRandomizeRequest{Enable: true}); err != nil {
+					return errors.Wrap(err, "failed to re-enable MAC randomization")
+				}
+				return nil
+			}
+			return ctx, restore, nil
+		}
+	}
+	// Not supported or not enabled. No-op for these cases.
+	return ctx, func() error { return nil }, nil
+}
+
+// SetWifiEnabled persistently enables/disables Wifi via shill.
+func (tf *TestFixture) SetWifiEnabled(ctx context.Context, enabled bool) error {
+	req := &network.SetWifiEnabledRequest{Enabled: enabled}
+	_, err := tf.WifiClient().SetWifiEnabled(ctx, req)
+	return err
+}
+
+// TurnOffBgscan turns off the DUT's background scan, and returns a shortened ctx and a restoring function.
+func (tf *TestFixture) TurnOffBgscan(ctx context.Context) (context.Context, func() error, error) {
+	ctxForRestoreBgConfig := ctx
+	ctx, cancel := ctxutil.Shorten(ctxForRestoreBgConfig, 2*time.Second)
+
+	testing.ContextLog(ctx, "Disable the DUT's background scan")
+	bgscanResp, err := tf.wifiClient.GetBgscanConfig(ctx, &empty.Empty{})
+	if err != nil {
+		return ctxForRestoreBgConfig, nil, err
+	}
+	oldBgConfig := bgscanResp.Config
+
+	turnOffBgConfig := *bgscanResp.Config
+	turnOffBgConfig.Method = shillconst.DeviceBgscanMethodNone
+	if _, err := tf.wifiClient.SetBgscanConfig(ctx, &network.SetBgscanConfigRequest{Config: &turnOffBgConfig}); err != nil {
+		return ctxForRestoreBgConfig, nil, err
+	}
+
+	return ctx, func() error {
+		cancel()
+		testing.ContextLog(ctxForRestoreBgConfig, "Restore the DUT's background scan config: ", oldBgConfig)
+		_, err := tf.wifiClient.SetBgscanConfig(ctxForRestoreBgConfig, &network.SetBgscanConfigRequest{Config: oldBgConfig})
+		return err
+	}, nil
 }

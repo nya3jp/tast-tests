@@ -19,15 +19,19 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ImePrefix is the prefix of IME chrome extension
-const ImePrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
-
-// ShowVirtualKeyboard forces the virtual keyboard to open.
+// ShowVirtualKeyboard forces the virtual keyboard show up via Chrome API.
+// It is not recommended to use on testing a real user input through the virtual keyboard.
+// Virtual keyboard should be normally triggered by focusing an input field.
+// Usage: It can be used to test Layout and UI interaction in a quick way.
+// For example, testing switch layout.
 func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.Eval(ctx, `tast.promisify(chrome.inputMethodPrivate.showInputView)()`, nil)
 }
 
-// HideVirtualKeyboard forces the virtual keyboard to be hidden.
+// HideVirtualKeyboard forces the virtual keyboard to be hidden via Chrome API.
+// It is not recommended to use on testing a real user input through the virtual keyboard.
+// Virtual keyboard should be normally triggered by defocusing an input field.
+// Usage: It can be used in test cleanup.
 func HideVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := tconn.Eval(ctx, `tast.promisify(chrome.inputMethodPrivate.hideInputView)()`, nil); err != nil {
 		return errors.Wrap(err, "failed to call hide inputview api")
@@ -44,37 +48,6 @@ func VirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, err
 	return ui.FindWithTimeout(ctx, tconn, params, 30*time.Second)
 }
 
-// SetCurrentInputMethod sets the current input method used by the virtual
-// keyboard.
-func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, inputMethod string) error {
-	if err := tconn.Call(ctx, nil, `async (ime) => {
-		await tast.promisify(chrome.autotestPrivate.setWhitelistedPref)(
-		    'settings.language.preload_engines', ime);
-		await tast.promisify(chrome.inputMethodPrivate.setCurrentInputMethod)(ime);
-	}`, ImePrefix+inputMethod); err != nil {
-		return errors.Wrapf(err, "failed to set current input method: %q", inputMethod)
-	}
-
-	// Change language via tconn requiring a few seconds to install.
-	// TODO(b/157686038): Use API to identify completion of changing language
-	testing.Sleep(ctx, 3*time.Second)
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to wait for animation finished")
-	}
-	return nil
-}
-
-// GetCurrentInputMethod returns the current input method id used by the virtual
-// keyboard.
-func GetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn) (string, error) {
-	var id string
-	if err := tconn.Call(ctx, &id, `tast.promisify(chrome.inputMethodPrivate.getCurrentInputMethod)`); err != nil {
-		return "", errors.Wrap(err, "failed to get current input method")
-	}
-
-	return strings.TrimPrefix(id, ImePrefix), nil
-}
-
 // IsShown checks if the virtual keyboard is currently shown. It checks whether
 // there is a visible DOM element with an accessibility role of "keyboard".
 func IsShown(ctx context.Context, tconn *chrome.TestConn) (shown bool, err error) {
@@ -85,8 +58,8 @@ func IsShown(ctx context.Context, tconn *chrome.TestConn) (shown bool, err error
 	return ui.Exists(ctx, tconn, params)
 }
 
-// WaitUntilShown waits for the virtual keyboard to appear. It waits keyboard appears in A11y tree and locationed.
-func WaitUntilShown(ctx context.Context, tconn *chrome.TestConn) error {
+// WaitLocationStable waits for the virtual keyboard to appear and have a stable location.
+func WaitLocationStable(ctx context.Context, tconn *chrome.TestConn) error {
 	keyboard, err := VirtualKeyboard(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "fail to wait for virtual keyboard shown")
@@ -170,15 +143,14 @@ func BackgroundConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error)
 	return bconn, nil
 }
 
-// TODO(b/159657128): Investigate why TapKey does not work very well consistently.
-
-// TapKey simulates a tap event on the middle of the specified key via touch event. The key can
+// TapKey simulates a mouse click event on the middle of the specified key via touch event. The key can
 // be any letter of the alphabet, "space" or "backspace".
 func TapKey(ctx context.Context, tconn *chrome.TestConn, keyName string) error {
 	key, err := FindKeyNode(ctx, tconn, keyName)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find key: %s", keyName)
 	}
+	defer key.Release(ctx)
 
 	if err := key.LeftClick(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click key %s", keyName)
@@ -196,11 +168,11 @@ func FindKeyNode(ctx context.Context, tconn *chrome.TestConn, keyName string) (*
 	return DescendantNode(ctx, tconn, keyParams)
 }
 
-// DescendantNode returns the first descendant node matches given FindParams.
+// DescendantNode returns the first descendant node in virtual keyboard matches given FindParams.
 func DescendantNode(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) (*ui.Node, error) {
 	vk, err := VirtualKeyboard(ctx, tconn)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to find virtual keyboad automation node")
+		return nil, errors.Wrap(err, "failed to find virtual keyboard automation node")
 	}
 	defer vk.Release(ctx)
 
@@ -236,7 +208,7 @@ func TapKeyJS(ctx context.Context, kconn *chrome.Conn, key string) error {
 	}`, key)
 }
 
-// SetFloatingMode changes virtual keyboard to floating/dock layout.
+// SetFloatingMode changes the virtual keyboard to floating/dock layout via private javascript function.
 func SetFloatingMode(ctx context.Context, cr *chrome.Chrome, enable bool) error {
 	bconn, err := BackgroundConn(ctx, cr)
 	if err != nil {
@@ -253,23 +225,8 @@ func SetFloatingMode(ctx context.Context, cr *chrome.Chrome, enable bool) error 
 	return nil
 }
 
-// SwitchToVoiceInput changes virtual keyboard to voice input layout.
-func SwitchToVoiceInput(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := TapKey(ctx, tconn, "Voice"); err != nil {
-		return errors.Wrap(err, "failed to tap voice input button")
-	}
-
-	params := ui.FindParams{
-		Role:      ui.RoleTypeButton,
-		Name:      "Got it",
-		ClassName: "voice-got-it",
-	}
-	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
-	return ui.StableFindAndClick(ctx, tconn, params, &opts)
-}
-
-// TapKeys simulates tap events on the middle of the specified sequence of keys via touch event.
-// Each keys can be any letter of the alphabet, "space" or "backspace".
+// TapKeys simulates tap events in the middle of the specified sequence of keys via touch event.
+// Each key can be any letter of the alphabet, "space" or "backspace".
 func TapKeys(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
 	for _, key := range keys {
 		if err := TapKey(ctx, tconn, key); err != nil {
@@ -278,6 +235,39 @@ func TapKeys(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
 		testing.Sleep(ctx, 100*time.Millisecond)
 	}
 	return nil
+}
+
+// WaitForKeysExist waits for a list of keys to appear on virtual keyboard.
+// Note: Should not use FindKeyNode in a loop to implement this function, because it waits for each key within a timeout.
+func WaitForKeysExist(ctx context.Context, tconn *chrome.TestConn, keys []string) error {
+	vk, err := VirtualKeyboard(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to find virtual keyboard automation node")
+	}
+	defer vk.Release(ctx)
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		var notFoundKeys []string
+		for _, key := range keys {
+			keyParams := ui.FindParams{
+				Role: ui.RoleTypeButton,
+				Name: key,
+			}
+
+			keyExists, err := vk.DescendantExists(ctx, keyParams)
+			if err != nil {
+				return errors.Wrapf(err, "failed to find key node %s", key)
+			}
+
+			if !keyExists {
+				notFoundKeys = append(notFoundKeys, key)
+			}
+		}
+		if len(notFoundKeys) > 0 {
+			return errors.Errorf("these keys are not found: %v", notFoundKeys)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second})
 }
 
 // TapKeysJS simulates tap events on the middle of the specified sequence of keys via javascript.
@@ -307,22 +297,10 @@ func GetSuggestions(ctx context.Context, kconn *chrome.Conn) ([]string, error) {
 
 // WaitForDecoderEnabled waits for decoder to be enabled or disabled.
 func WaitForDecoderEnabled(ctx context.Context, cr *chrome.Chrome, enabled bool) error {
-	bconn, err := BackgroundConn(ctx, cr)
-	if err != nil {
-		return errors.Wrap(err, "failed to create IME background connection")
-	}
-	defer bconn.Close()
-
 	// TODO(b/157686038) A better solution to identify decoder status.
 	// Decoder works async in returning status to frontend IME and self loading.
-	// So sleep is still required to wait for decoder warming up.
-	if err := bconn.WaitForExpr(ctx, fmt.Sprintf("background.inputviewLoader_.controller_.currentInputBundle_.ime_.shouldUseDecoder()===%t", enabled)); err != nil {
-		return errors.Wrapf(err, "failed wait for decoder enabled to be %t: %v", enabled, err)
-	}
-
-	if enabled {
-		return testing.Sleep(ctx, 3*time.Second)
-	}
+	// Using sleep temporarily before a reliable evaluation api provided in cl/339837443.
+	testing.Sleep(ctx, 10*time.Second)
 	return nil
 }
 
@@ -337,7 +315,7 @@ func ClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, node *ui.Nod
 	if err := node.LeftClickUntil(ctx, condition, &opts); err != nil {
 		return errors.Wrapf(err, "failed to click %v until vk shown", node)
 	}
-	return nil
+	return WaitLocationStable(ctx, tconn)
 }
 
 // FindAndClickUntilVKShown is similar to ClickUntilVKShown.
@@ -354,11 +332,26 @@ func FindAndClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, param
 // WaitForVKReady waits for virtual keyboard shown, completely positioned and decoder ready for use.
 // Similar to document.readyState === 'complete' in DOM, Virtual keyboard's readiness needs to be ensured before using it.
 func WaitForVKReady(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
-	if err := WaitUntilShown(ctx, tconn); err != nil {
+	if err := WaitLocationStable(ctx, tconn); err != nil {
 		return err
 	}
 
 	return WaitForDecoderEnabled(ctx, cr, true)
+}
+
+// SwitchToVoiceInput changes virtual keyboard to voice input layout.
+func SwitchToVoiceInput(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := TapKey(ctx, tconn, "Voice"); err != nil {
+		return errors.Wrap(err, "failed to tap voice input button")
+	}
+
+	params := ui.FindParams{
+		Role:      ui.RoleTypeButton,
+		Name:      "Got it",
+		ClassName: "voice-got-it",
+	}
+	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
+	return ui.StableFindAndClick(ctx, tconn, params, &opts)
 }
 
 // EnableA11yVirtualKeyboard enables or disables accessibility mode of the

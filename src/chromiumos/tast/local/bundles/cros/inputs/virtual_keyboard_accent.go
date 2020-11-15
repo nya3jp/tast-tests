@@ -6,15 +6,12 @@ package inputs
 
 import (
 	"context"
-	"fmt"
-	"io"
-	"net/http"
-	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -28,63 +25,38 @@ func init() {
 		Func:         VirtualKeyboardAccent,
 		Desc:         "Checks that long pressing keys pop up accent window",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:essential-inputs"},
+		Attr:         []string{"group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
+			Pre:               pre.VKEnabledTablet(),
 			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraAttr:         []string{"group:mainline"},
 		}, {
 			Name:              "unstable",
+			Pre:               pre.VKEnabledTablet(),
 			ExtraHardwareDeps: pre.InputsUnstableModels,
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+		}, {
+			Name:              "mojo",
+			Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+			ExtraHardwareDeps: pre.InputsMojoModels,
 		}},
 	})
 }
 
 func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Start a local server to test chrome")
-	const identifier = "e14s-inputbox"
-	html := fmt.Sprintf(`<input type="text" id="text" autocorrect="off" aria-label=%q/>`, identifier)
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
-	}))
-	defer server.Close()
-
-	conn, err := cr.NewConn(ctx, server.URL)
+	its, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Creating renderer for test page failed: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer conn.Close()
-
-	element, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
-	if err != nil {
-		s.Fatalf("Failed to find input element %s: %v", identifier, err)
-	}
-	defer element.Release(ctx)
-
-	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
-		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
-	}
-
-	s.Log("Waiting for the virtual keyboard to render buttons")
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
+	defer its.Close()
 
 	kconn, err := vkb.UIConn(ctx, cr)
 	if err != nil {
@@ -95,14 +67,20 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	// The input method ID is from:
 	// src/chrome/browser/resources/chromeos/input_method/google_xkb_manifest.json
 	const (
-		inputMethodID = "xkb:fr::fra"
+		inputMethodID = string(ime.INPUTMETHOD_XKB_FR_FRA)
 		keyName       = "e"
 		accentKeyName = "é"
 		languageLabel = "FR"
 	)
 
-	if err := vkb.SetCurrentInputMethod(ctx, tconn, inputMethodID); err != nil {
+	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.IMEPrefix+inputMethodID); err != nil {
 		s.Fatal("Failed to set input method: ", err)
+	}
+
+	inputField := testserver.TextInputField
+
+	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 	}
 
 	params := ui.FindParams{
@@ -186,19 +164,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to release mouse click: ", err)
 	}
 
-	s.Log("Verify value in input field")
-	// Value change can be a bit delayed after input.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		inputValueElement, err := element.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeStaticText}, time.Second)
-		if err != nil {
-			return err
-		}
-		defer inputValueElement.Release(ctx)
-		if inputValueElement.Name != accentKeyName {
-			return errors.Errorf("failed to input with virtual keyboard. Got: %s; Want: %s", inputValueElement.Name, accentKeyName)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
-		s.Error("Failed to input with virtual keyboard: ", err)
+	if err := inputField.WaitForValueToBe(ctx, tconn, accentKeyName); err != nil {
+		s.Fatal("Failed to verify input: ", err)
 	}
 }

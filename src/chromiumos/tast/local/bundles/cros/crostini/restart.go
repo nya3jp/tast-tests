@@ -23,7 +23,7 @@ func init() {
 		Func:         Restart,
 		Desc:         "Tests that we can shut down and restart crostini (where the VM image is a build artifact)",
 		Contacts:     []string{"hollingum@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Vars:         []string{"crostini.Restart.numRestarts", "keepState"},
 		Params: []testing.Param{

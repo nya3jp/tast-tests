@@ -28,11 +28,20 @@ type latencyPercentiles struct {
 	Percentile99 int `json:"99"`
 }
 
+type metric struct {
+	Name                 string    `json:"name"`
+	Units                string    `json:"units"`
+	ImprovementDirection string    `json:"improvement_direction"`
+	Cardinality          string    `json:"cardinality"`
+	Values               []float64 `json:"values"`
+}
+
 type benchmarkResults struct {
 	LatenciesUS    latencyPercentiles `json:"percentile_latencies_in_us"`
 	ResultsMessage string             `json:"results_message"`
 	Status         int                `json:"status"`
 	TotalAccuracy  float64            `json:"total_accuracy"`
+	Metrics        []metric           `json:"metrics"`
 }
 
 func addLatencyMetric(p *perf.Values, name string, latencyMS float64) {
@@ -61,6 +70,24 @@ func processOutputFile(scenario, outDir, outputFilename string) error {
 	}
 
 	p := perf.NewValues()
+
+	for _, m := range results.Metrics {
+		var direction perf.Direction
+		switch m.ImprovementDirection {
+		case "smaller_is_better":
+			direction = perf.SmallerIsBetter
+		case "bigger_is_better":
+			direction = perf.BiggerIsBetter
+		default:
+			return errors.Wrapf(err, "unhandled ImprovementDirection %s", m.ImprovementDirection)
+		}
+
+		p.Set(perf.Metric{
+			Name:      scenario + "_" + m.Name,
+			Unit:      m.Units,
+			Direction: direction,
+			Multiple:  m.Cardinality == "multiple"}, m.Values...)
+	}
 
 	if results.LatenciesUS.Percentile50 != 0 {
 		addLatencyMetric(p, scenario+"_50th_perc_latency", float64(results.LatenciesUS.Percentile50/1000))

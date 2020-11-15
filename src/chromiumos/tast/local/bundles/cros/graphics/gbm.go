@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: GBM,
-		Desc: "Exercises the GBM (Graphics Buffer Management) implementation via native tests",
+		Desc: "Exercises the GBM (Graphics Buffer Management) implementation via built-in tests",
 		Contacts: []string{
 			"marcheu@chromium.org",
 			"hidehiko@chromium.org", // Tast port author.

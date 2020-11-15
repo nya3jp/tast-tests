@@ -84,7 +84,7 @@ func launchAppForGooglePhotos(ctx context.Context, s *testing.State, tconn *chro
 		confirmButtonText = "Confirm"
 		skipButtonID      = "com.google.android.apps.photos:id/welcomescreens_skip_button"
 		turnOnBackUpText  = "Turn on Backup"
-		photosIconID      = "com.google.android.apps.photos:id/tab_layout"
+		photosIconID      = "com.google.android.apps.photos:id/tab_photos"
 	)
 
 	// Click on allow button to access your photos, media and files.

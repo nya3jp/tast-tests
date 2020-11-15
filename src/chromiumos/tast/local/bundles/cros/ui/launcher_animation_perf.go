@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/lacros"
 	lacroslauncher "chromiumos/tast/local/lacros/launcher"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -39,16 +40,15 @@ func init() {
 			Val: lacros.ChromeTypeChromeOS,
 			Pre: ash.LoggedInWith100FakeApps(),
 		}, {
-			Name:              "skia_renderer",
-			Val:               lacros.ChromeTypeChromeOS,
-			Pre:               ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
+			Name: "skia_renderer",
+			Val:  lacros.ChromeTypeChromeOS,
+			Pre:  ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
 		}, {
-			Name:      "lacros",
-			Val:       lacros.ChromeTypeLacros,
-			Pre:       lacroslauncher.StartedByDataWith100FakeApps(),
-			ExtraData: []string{lacroslauncher.DataArtifact},
-			// TODO(crbug.com/1082608): Use ExtraSoftwareDeps here instead.
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
+			Name:              "lacros",
+			Val:               lacros.ChromeTypeLacros,
+			Pre:               lacroslauncher.StartedByDataWith100FakeApps(),
+			ExtraData:         []string{lacroslauncher.DataArtifact},
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
 }
@@ -108,6 +108,11 @@ func runLauncherAnimation(ctx context.Context, tconn *chrome.TestConn, kb *input
 }
 
 func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
+
 	cr, l, cs, err := lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)

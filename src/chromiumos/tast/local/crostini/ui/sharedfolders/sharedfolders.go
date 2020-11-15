@@ -21,7 +21,7 @@ import (
 // Folder sharing strings.
 const (
 	ManageLinuxSharing     = "Manage Linux sharing"
-	ShareWithLinux         = `Share with Linux.*`
+	ShareWithLinux         = `Share with Linux`
 	DialogName             = "Share folder with Linux"
 	MountPath              = "/mnt/chromeos"
 	MountFolderMyFiles     = "MyFiles"
@@ -35,8 +35,8 @@ const (
 
 // Strings for sharing My files.
 const (
-	MyFilesMsg      = "Give Linux apps permission to modify files in the My files folder"
-	DriveMsg        = "Give Linux apps permission to modify files in your Google Drive. Changes will sync to your other devices."
+	MyFilesMsg      = "Give Linux apps permission to access files in the My files folder"
+	DriveMsg        = "Give Linux apps permission to access files in your Google Drive. Changes will sync to your other devices."
 	MyFiles         = "My files"
 	SharedDownloads = MyFiles + " › " + filesapp.Downloads
 

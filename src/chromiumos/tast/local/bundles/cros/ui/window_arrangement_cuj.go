@@ -24,15 +24,17 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WindowArrangementCUJ,
-		Desc:         "Measures the performance of critical user journey for window arrangements",
-		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:     WindowArrangementCUJ,
+		Desc:     "Measures the performance of critical user journey for window arrangements",
+		Contacts: []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
+		// TODO(http://b/172069842): Test is disabled until it can be fixed
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
 		Timeout:      10 * time.Minute,
 		Vars: []string{
@@ -60,6 +62,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		timeout  = 10 * time.Second
 		duration = 2 * time.Second
 	)
+
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx

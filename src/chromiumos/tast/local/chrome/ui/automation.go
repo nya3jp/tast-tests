@@ -77,7 +77,7 @@ func (params *FindParams) rawAttributes() ([]byte, error) {
 			buf.WriteByte(',')
 		}
 		switch v := v.(type) {
-		case string, RoleType:
+		case string, RoleType, CheckedState, RestrictionState:
 			fmt.Fprintf(&buf, "%q:%q", k, v)
 		case int, float32, float64, bool:
 			fmt.Fprintf(&buf, "%q:%v", k, v)
@@ -335,6 +335,16 @@ func StableFindAndClick(ctx context.Context, tconn *chrome.TestConn, params Find
 	}
 	defer node.Release(ctx)
 	return node.LeftClick(ctx)
+}
+
+// StableFindAndRightClick waits for the first matching stable node and then right clicks it.
+func StableFindAndRightClick(ctx context.Context, tconn *chrome.TestConn, params FindParams, opts *testing.PollOptions) error {
+	node, err := StableFind(ctx, tconn, params, opts)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find stable node with %v", params)
+	}
+	defer node.Release(ctx)
+	return node.RightClick(ctx)
 }
 
 // FocusAndWait calls the focus() Javascript method of the AutomationNode.
@@ -654,4 +664,38 @@ func LogRootDebugInfo(ctx context.Context, tconn *chrome.TestConn, filename stri
 		return err
 	}
 	return ioutil.WriteFile(filename, []byte(debugInfo), 0644)
+}
+
+// ErrNoRadioButtons is returned when there are no radio buttons under the radio group.
+var ErrNoRadioButtons = errors.New("no radio buttons in this radio group")
+
+// ErrNoActiveRadioButton is returned when no active radio group is selected.
+var ErrNoActiveRadioButton = errors.New("no active radio button is selected")
+
+// FindSelectedRadioButton finds the selected radio button under a radio group node.
+// If no active radio button is selected, an error is returned.
+func (n *Node) FindSelectedRadioButton(ctx context.Context) (*Node, error) {
+	if n.Role != RoleTypeRadioGroup {
+		return nil, errors.New("the current node is not a radio group")
+	}
+
+	if rbExists, err := n.DescendantExists(ctx, FindParams{Role: RoleTypeRadioButton}); err != nil {
+		return nil, errors.Wrap(err, "failed to run javascript to check if radio buttons exist")
+	} else if rbExists == false {
+		return nil, ErrNoRadioButtons
+	}
+
+	if selectedExists, err := n.DescendantExists(ctx, FindParams{
+		Role:       RoleTypeRadioButton,
+		Attributes: map[string]interface{}{"checked": CheckedStateTrue},
+	}); err != nil {
+		return nil, errors.Wrap(err, "failed to run javascript to check if a selected radio button exist")
+	} else if selectedExists == false {
+		return nil, ErrNoActiveRadioButton
+	}
+
+	return n.Descendant(ctx, FindParams{
+		Role:       RoleTypeRadioButton,
+		Attributes: map[string]interface{}{"checked": CheckedStateTrue},
+	})
 }

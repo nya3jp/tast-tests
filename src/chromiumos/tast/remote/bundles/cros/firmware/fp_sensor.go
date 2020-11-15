@@ -11,10 +11,13 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/lsbrelease"
+	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -26,6 +29,7 @@ const (
 	// See go/cros-fingerprint-firmware-branching-and-signing.
 	fingerprintBoardNameSuffix  = "_fp"
 	fingerprintFirmwarePathBase = "/opt/google/biod/fw/"
+	waitForBiodToStartTimeout   = 30 * time.Second
 )
 
 func init() {
@@ -40,6 +44,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
+		ServiceDeps:  []string{"tast.cros.platform.UpstartService"},
 	})
 }
 
@@ -140,6 +145,25 @@ func FpSensor(ctx context.Context, s *testing.State) {
 		if err := flashFpFirmware(ctx, d); err != nil {
 			s.Error("Failed to flash FP firmware: ", err)
 		}
+	}
+
+	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctx)
+
+	upstartService := platform.NewUpstartServiceClient(cl.Conn)
+
+	// The seed is only set after bio_crypto_init runs. biod will only start after
+	// bio_crypto_init runs, so waiting for biod to be running is sufficient.
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := upstartService.CheckJob(ctx, &platform.CheckJobRequest{JobName: "biod"})
+		return err
+	}, &testing.PollOptions{Timeout: waitForBiodToStartTimeout})
+
+	if err != nil {
+		s.Fatal("Timed out waiting for biod to start: ", err)
 	}
 
 	fpencstatusCmd := []string{"ectool", "--name=cros_fp", "fpencstatus"}

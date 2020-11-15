@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -29,7 +30,7 @@ func init() {
 		Contacts: []string{
 			"essential-inputs-team@google.com",
 		},
-		Attr:         []string{"group:mainline", "group:essential-inputs"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
@@ -37,7 +38,7 @@ func init() {
 				ExtraHardwareDeps: pre.InputsStableModels,
 				Val: testParameters{
 					regionCode:             "es",
-					defaultInputMethodID:   "xkb:es::spa",
+					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_ES_SPA),
 					defaultInputMethodName: "abrir menú de teclado", // label displayed as ES
 				},
 			}, {
@@ -46,7 +47,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:             "es",
-					defaultInputMethodID:   "xkb:es::spa",
+					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_ES_SPA),
 					defaultInputMethodName: "abrir menú de teclado", // label displayed as ES
 				},
 			}, {
@@ -54,7 +55,7 @@ func init() {
 				ExtraHardwareDeps: pre.InputsStableModels,
 				Val: testParameters{
 					regionCode:             "fr",
-					defaultInputMethodID:   "xkb:fr::fra",
+					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_FR_FRA),
 					defaultInputMethodName: "ouvrir le menu du clavier", // label displayed as FR
 				},
 			}, {
@@ -63,7 +64,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:             "fr",
-					defaultInputMethodID:   "xkb:fr::fra",
+					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_FR_FRA),
 					defaultInputMethodName: "ouvrir le menu du clavier", // label displayed as FR
 				},
 			}, {
@@ -71,7 +72,7 @@ func init() {
 				ExtraHardwareDeps: pre.InputsStableModels,
 				Val: testParameters{
 					regionCode:             "jp",
-					defaultInputMethodID:   "xkb:jp::jpn",
+					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_JP_JPN),
 					defaultInputMethodName: "キーボード メニューを開く", // label displayed as JA
 				},
 			}, {
@@ -80,7 +81,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					regionCode:             "jp",
-					defaultInputMethodID:   "xkb:jp::jpn",
+					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_JP_JPN),
 					defaultInputMethodName: "キーボード メニューを開く", //label displayed as JA
 				},
 			},
@@ -90,7 +91,7 @@ func init() {
 
 func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	regionCode := s.Param().(testParameters).regionCode
-	defaultInputMethodID := s.Param().(testParameters).defaultInputMethodID
+	defaultInputMethodID := ime.IMEPrefix + s.Param().(testParameters).defaultInputMethodID
 	defaultInputMethodName := s.Param().(testParameters).defaultInputMethodName
 
 	cr, err := chrome.New(ctx, chrome.Region(regionCode), chrome.VKEnabled())
@@ -107,7 +108,7 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Verify default input method
-	currentInputMethodID, err := vkb.GetCurrentInputMethod(ctx, tconn)
+	currentInputMethodID, err := ime.GetCurrentInputMethod(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get current input method: ", err)
 	}
@@ -121,7 +122,7 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 

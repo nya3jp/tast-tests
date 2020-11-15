@@ -57,6 +57,7 @@ func init() {
 			"kukui",
 			"oak",
 			"scarlet",
+			"trogdor",
 			"veyron_fievel",
 			"veyron_mickey",
 			"veyron_tiger",
@@ -66,6 +67,10 @@ func init() {
 			"fievel",
 			"mickey",
 			"tiger",
+			"trogdor",
+			// Volteer is normally using Intel WiFi (HrP2), but the devices in the lab are incorrectly equipped with Realtek RTL8822 chips.
+			// This test should skip volteer devices until this is fixed (see b:171754540).
+			"volteer",
 		), hwdep.SkipOnModel("blooglet", "dalboz", "ezkinil", "trembyle")),
 	})
 }

@@ -80,9 +80,12 @@ func GooglePlayGames(ctx context.Context, s *testing.State) {
 // verify GooglePlayGames reached main activity page of the app.
 func launchAppForGooglePlayGames(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		homeID     = "com.google.android.play.games:id/games__navigation__bottom_navigation_view"
-		createText = "Create"
-		gotItText  = "Got it"
+		homeID                 = "com.google.android.play.games:id/games__navigation__bottom_navigation_view"
+		createText             = "Create"
+		gotItText              = "Got it"
+		updateText             = "Update"
+		updatePlayServicesText = "Update"
+		deactivateText         = "Deactivate"
 	)
 	// Click on create button.
 	clickOnCreateButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(createText))
@@ -98,6 +101,37 @@ func launchAppForGooglePlayGames(ctx context.Context, s *testing.State, tconn *c
 		s.Log("clickOnGotItButton doesn't exist: ", err)
 	} else if err := clickOnGotItButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnGotItButton: ", err)
+	}
+
+	// Click on update button.
+	clickOnUpdateButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(updateText))
+	if err := clickOnUpdateButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnUpdateButton doesn't exist: ", err)
+	} else if err := clickOnUpdateButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnUpdateButton: ", err)
+	}
+
+	// Click on update the google play services.
+	clickOnUpdateGooglePlayServices := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+updateText))
+	if err := clickOnUpdateGooglePlayServices.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnUpdateGooglePlayServices doesn't exist: ", err)
+	} else if err := clickOnUpdateGooglePlayServices.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnUpdateGooglePlayServices: ", err)
+	}
+
+	// Wait until deactivate button is enabled.
+	checkForDeactivateButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+deactivateText), ui.Enabled(true))
+	if err := checkForDeactivateButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("checkForDeactivateButton does not exists: ", err)
+	}
+
+	// Launch the Google play games app.
+	act, err := arc.NewActivity(a, appPkgName, appActivity)
+	if err != nil {
+		s.Fatal("Failed to create new app activity: ", err)
+	}
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed to start Google Play Games: ", err)
 	}
 
 	// Check for home icon.

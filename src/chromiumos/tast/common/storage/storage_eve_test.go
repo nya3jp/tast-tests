@@ -61,7 +61,7 @@ Critical Warning:                       0x00
 Temperature:                            36 Celsius
 Available Spare:                        100%
 Available Spare Threshold:              10%
-Percentage Used:                        0%
+Percentage Used:                        3%
 Data Units Read:                        31,116,214 [15.9 TB]
 Data Units Written:                     34,486,615 [17.6 TB]
 Host Read Commands:                     41,112,741
@@ -87,9 +87,10 @@ No Errors Logged
 	}
 
 	exp := &Info{
-		Name:   "S3VBNY0J708174",
-		Device: NVMe,
-		Status: Healthy,
+		Name:           "S3VBNY0J708174",
+		Device:         NVMe,
+		Status:         Healthy,
+		PercentageUsed: 3,
 	}
 
 	if !reflect.DeepEqual(info, exp) {

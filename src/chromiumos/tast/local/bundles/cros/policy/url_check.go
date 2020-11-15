@@ -198,7 +198,7 @@ func URLCheck(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.policies); err != nil {
+			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, tc.policies); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 

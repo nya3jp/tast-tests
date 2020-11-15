@@ -21,8 +21,9 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type config struct {
-	BatteryMode setup.BatteryDischargeMode
+type ccaUIPreviewPowerPerfParams struct {
+	batteryMode setup.BatteryDischargeMode
+	appType     testutil.CCAAppType
 }
 
 func init() {
@@ -36,37 +37,107 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Params: []testing.Param{{
 			Name:              "noarc",
-			Pre:               chrome.LoggedIn(),
+			Pre:               testutil.ChromeWithPlatformApp(),
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val:               setup.ForceBatteryDischarge,
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.ForceBatteryDischarge,
+				appType:     testutil.PlatformApp,
+			},
 		}, {
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
+			Pre:               testutil.ARCWithPlatformApp(),
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val:               setup.ForceBatteryDischarge,
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.ForceBatteryDischarge,
+				appType:     testutil.PlatformApp,
+			},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.Booted(),
+			Pre:               testutil.ARCWithPlatformApp(),
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val:               setup.ForceBatteryDischarge,
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.ForceBatteryDischarge,
+				appType:     testutil.PlatformApp,
+			},
 		}, {
 			Name:              "noarc_nobatterymetrics",
-			Pre:               chrome.LoggedIn(),
+			Pre:               testutil.ChromeWithPlatformApp(),
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val:               setup.NoBatteryDischarge,
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.NoBatteryDischarge,
+				appType:     testutil.PlatformApp,
+			},
 		}, {
 			Name:              "nobatterymetrics",
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
+			Pre:               testutil.ARCWithPlatformApp(),
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val:               setup.NoBatteryDischarge,
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.NoBatteryDischarge,
+				appType:     testutil.PlatformApp,
+			},
 		}, {
 			Name:              "vm_nobatterymetrics",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.Booted(),
+			Pre:               testutil.ARCWithPlatformApp(),
 			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val:               setup.NoBatteryDischarge,
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.NoBatteryDischarge,
+				appType:     testutil.PlatformApp,
+			},
+		}, {
+			Name:              "noarc_swa",
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Pre:               testutil.ChromeWithSWA(),
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.ForceBatteryDischarge,
+				appType:     testutil.SWA,
+			},
+		}, {
+			Name:              "swa",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Pre:               testutil.ARCWithSWA(),
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.ForceBatteryDischarge,
+				appType:     testutil.SWA,
+			},
+		}, {
+			Name:              "vm_swa",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Pre:               testutil.ARCWithSWA(),
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.ForceBatteryDischarge,
+				appType:     testutil.SWA,
+			},
+		}, {
+			Name:              "noarc_nobatterymetrics_swa",
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Pre:               testutil.ChromeWithSWA(),
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.NoBatteryDischarge,
+				appType:     testutil.SWA,
+			},
+		}, {
+			Name:              "nobatterymetrics_swa",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Pre:               testutil.ARCWithSWA(),
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.NoBatteryDischarge,
+				appType:     testutil.SWA,
+			},
+		}, {
+			Name:              "vm_nobatterymetrics_swa",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Pre:               testutil.ARCWithSWA(),
+			Val: ccaUIPreviewPowerPerfParams{
+				batteryMode: setup.NoBatteryDischarge,
+				appType:     testutil.SWA,
+			},
 		}},
 		Timeout: 5 * time.Minute,
 	})
@@ -74,7 +145,7 @@ func init() {
 
 // CCAUIPreviewPowerPerf measures battery drain during CCA preview.
 // To allow for a fair comparison with arc.PowerCameraPreviewPerf, ARCVM is running
-// in the background in the vm subtest. (But CCA is a native ChromeOS application.)
+// in the background in the vm subtest. (But CCA is a built-in ChromeOS application.)
 func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
 	// deadline.
@@ -86,7 +157,9 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	if !ok {
 		cr = s.PreValue().(arc.PreData).Chrome
 	}
-	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	useSWA := s.Param().(ccaUIPreviewPowerPerfParams).appType == testutil.SWA
+
+	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -109,8 +182,9 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	batteryMode := s.Param().(setup.BatteryDischargeMode)
-	sup.Add(setup.PowerTest(ctx, tconn, batteryMode))
+	batteryMode := s.Param().(ccaUIPreviewPowerPerfParams).batteryMode
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+		Wifi: setup.DisableWifiInterfaces, Battery: batteryMode}))
 
 	const (
 		iterationCount          = 30
@@ -140,7 +214,7 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Start Chrome Camera App (CCA).
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}

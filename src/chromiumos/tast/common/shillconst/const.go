@@ -69,6 +69,7 @@ const (
 	ManagerPropertyProhibitedTechnologies = "ProhibitedTechnologies"
 	ManagerPropertyServices               = "Services"
 	ManagerPropertyServiceCompleteList    = "ServiceCompleteList"
+	ManagerPropertyGlobalFTEnabled        = "WiFi.GlobalFTEnabled"
 )
 
 // Service property names defined in dbus-constants.h .

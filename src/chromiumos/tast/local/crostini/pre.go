@@ -128,6 +128,11 @@ var CrostiniStable = hwdep.D(hwdep.SkipOnModel(UnstableModels...))
 // models that are known to be flaky when running Crostini tests.
 var CrostiniUnstable = hwdep.D(hwdep.Model(UnstableModels...))
 
+// CrostiniAppTest is a hardware dependency limiting the boards on which app testing is run.
+// App testing uses a large container which needs large space. Many DUTs in the lab do not have enough space.
+// The boards listed have enough space.
+var CrostiniAppTest = hwdep.D(hwdep.Platform("hatch", "eve", "atlas", "nami"))
+
 // ImageArtifact holds the name of the artifact which will be used to
 // boot crostini. When using the StartedByArtifact precondition, you
 // must list this as one of the data dependencies of your test.
@@ -184,11 +189,18 @@ func StartedByDownloadBusterWithGaiaLogin() testing.Precondition {
 	return startedByDownloadBusterWithGaiaLoginPre
 }
 
+// StartedByDownloadBusterLargeContainer is similar to StartedByDownloadBuster,
+// but will download the large container which has apps (Gedit, Emacs, Eclipse, Android Studio, and Visual Studio) installed.
+func StartedByDownloadBusterLargeContainer() testing.Precondition {
+	return startedByDownloadBusterLargeContainerPre
+}
+
 type setupMode int
 
 const (
 	artifact setupMode = iota
 	download
+	downloadLargeContainer
 )
 
 type loginType int
@@ -245,6 +257,13 @@ var startedByDownloadBusterWithGaiaLoginPre = &preImpl{
 	mode:          download,
 	debianVersion: vm.DebianBuster,
 	loginType:     loginGaia,
+}
+
+var startedByDownloadBusterLargeContainerPre = &preImpl{
+	name:          "crostini_started_by_download_buster_large_container",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	mode:          downloadLargeContainer,
+	debianVersion: vm.DebianBuster,
 }
 
 // Implementation of crostini's precondition.
@@ -398,11 +417,14 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			MinDiskSize:   p.minDiskSize,
 			DebianVersion: p.debianVersion,
 		}
+		if p.mode == downloadLargeContainer {
+			iOptions.Mode = cui.DownloadLargeContainer
+		}
 		if p.mode == artifact {
 			iOptions.Mode = cui.Artifact
 			iOptions.ImageArtifactPath = s.DataPath(ImageArtifact)
 		}
-		if err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
+		if _, err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}
 	}

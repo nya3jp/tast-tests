@@ -6,6 +6,7 @@
 package chrome
 
 import (
+	"compress/gzip"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -92,6 +93,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/policyutil/pre",
 	"chromiumos/tast/local/bundles/cros/camera/testutil",
 	"chromiumos/tast/local/bundles/cros/ui/cuj",
+	"chromiumos/tast/local/bundles/cros/inputs/pre",
 	"chromiumos/tast/local/bundles/crosint/pita/pre",
 	"chromiumos/tast/local/bundles/pita/pita/pre",
 	"chromiumos/tast/local/chrome",
@@ -307,6 +309,11 @@ func EnableFeatures(features ...string) Option {
 	return func(c *Chrome) { c.enableFeatures = append(c.enableFeatures, features...) }
 }
 
+// DisableFeatures returns an Option that can be passed to New to disable specific features in Chrome.
+func DisableFeatures(features ...string) Option {
+	return func(c *Chrome) { c.disableFeatures = append(c.disableFeatures, features...) }
+}
+
 // UnpackedExtension returns an Option that can be passed to New to make Chrome load an unpacked
 // extension in the supplied directory.
 // Ownership of the extension directory and its contents may be modified by New.
@@ -347,6 +354,7 @@ type Chrome struct {
 	breakpadTestMode bool
 	extraArgs        []string
 	enableFeatures   []string
+	disableFeatures  []string
 
 	extDirs     []string // directories containing all unpacked extensions to load
 	testExtID   string   // ID for test extension exposing APIs
@@ -890,6 +898,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 
 	if len(c.enableFeatures) != 0 {
 		args = append(args, "--enable-features="+strings.Join(c.enableFeatures, ","))
+	}
+
+	if len(c.disableFeatures) != 0 {
+		args = append(args, "--disable-features="+strings.Join(c.disableFeatures, ","))
 	}
 
 	args = append(args, c.extraArgs...)
@@ -1542,30 +1554,30 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 	testing.ContextLogf(ctx, "Clicking button that matches parent email: %q", normalizedParentUser)
 	buttonTextQuery := `
 		(function() {
-			const buttons = document.querySelectorAll('[role="button"]');
+			const buttons = document.querySelectorAll('%[1]s');
 			if (buttons === null){
 				throw new Error('no buttons found on screen');
 			}
 			return [...buttons].map(button=>button.textContent);
-		})();
-	`
-	clickButtonQuery := `
-		(function() {
-			const buttons = document.querySelectorAll('[role="button"]');
-			if (buttons === null){
-				throw new Error('no buttons found on screen');
-			}
-			for (const button of buttons) {
-				if (button.textContent.indexOf(%[1]q) !== -1) {
-					button.click();
-					return;
-				}
-			}
-			throw new Error(%[1]q+' button not found');
 		})();`
+
+	clickButtonQuery := `
+                (function() {
+                        const buttons = document.querySelectorAll('%[1]s');
+                        if (buttons === null){
+                                throw new Error('no buttons found on screen');
+                        }
+                        for (const button of buttons) {
+                                if (button.textContent.indexOf(%[2]q) !== -1) {
+                                        button.click();
+                                        return;
+                                }
+                        }
+                        throw new Error(%[2]q + ' button not found');
+                })();`
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var buttons []string
-		if err := gaiaConn.Eval(ctx, buttonTextQuery, &buttons); err != nil {
+		if err := gaiaConn.Eval(ctx, fmt.Sprintf(buttonTextQuery, "[data-email]"), &buttons); err != nil {
 			return err
 		}
 	NextButton:
@@ -1589,7 +1601,7 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 			}
 
 			// Button matches. Click it.
-			return gaiaConn.Exec(ctx, fmt.Sprintf(clickButtonQuery, button))
+			return gaiaConn.Exec(ctx, fmt.Sprintf(clickButtonQuery, "[data-email]", button))
 		}
 		return errors.New("no button matches email")
 	}, loginPollOpts); err != nil {
@@ -1605,7 +1617,7 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 	}
 
 	testing.ContextLog(ctx, "Accepting Unicorn permissions")
-	clickAgreeQuery := fmt.Sprintf(clickButtonQuery, "agree")
+	clickAgreeQuery := fmt.Sprintf(clickButtonQuery, "button", "agree")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return gaiaConn.Exec(ctx, clickAgreeQuery)
 	}, loginPollOpts); err != nil {
@@ -1680,6 +1692,9 @@ func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool,
 // StartTracing starts trace events collection for the selected categories. Android
 // categories must be prefixed with "disabled-by-default-android ", e.g. for the
 // gfx category, use "disabled-by-default-android gfx", including the space.
+// Note: StopTracing should be called even if StartTracing returns an error.
+// Sometimes, the request to start tracing reaches the browser process, but there
+// is a timeout while waiting for the reply.
 func (c *Chrome) StartTracing(ctx context.Context, categories []string) error {
 	// Note: even when StartTracing fails, it might be due to the case that the
 	// StartTracing request is successfully sent to the browser and tracing
@@ -1700,15 +1715,37 @@ func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
 }
 
 // SaveTraceToFile marshals the given trace into a binary protobuf and saves it
-// at the specified path.
-func SaveTraceToFile(trace *trace.Trace, path string) error {
+// to a gzip archive at the specified path.
+func SaveTraceToFile(ctx context.Context, trace *trace.Trace, path string) error {
 	data, err := proto.Marshal(trace)
 	if err != nil {
 		return errors.Wrap(err, "could not marshal trace to binary")
 	}
 
-	if err := ioutil.WriteFile(path, data, 0666); err != nil {
-		return errors.Wrap(err, "could not save trace to file")
+	file, err := os.OpenFile(path, os.O_CREATE|os.O_RDWR, 0644)
+	if err != nil {
+		return errors.Wrap(err, "could not open file")
 	}
+	defer func() {
+		if err := file.Close(); err != nil {
+			testing.ContextLog(ctx, "Failed to close file: ", err)
+		}
+	}()
+
+	writer := gzip.NewWriter(file)
+	defer func() {
+		if err := writer.Close(); err != nil {
+			testing.ContextLog(ctx, "Failed to close gzip writer: ", err)
+		}
+	}()
+
+	if _, err := writer.Write(data); err != nil {
+		return errors.Wrap(err, "could not write the data")
+	}
+
+	if err := writer.Flush(); err != nil {
+		return errors.Wrap(err, "could not flush the gzip writer")
+	}
+
 	return nil
 }

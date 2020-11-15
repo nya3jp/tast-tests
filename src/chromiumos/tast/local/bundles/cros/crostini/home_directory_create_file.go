@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -60,7 +59,6 @@ func init() {
 func HomeDirectoryCreateFile(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
-	keyboard := s.PreValue().(crostini.PreData).Keyboard
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
@@ -79,7 +77,7 @@ func HomeDirectoryCreateFile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Linux files: ", err)
 	}
 
-	if err := testCreateFolderFromLinuxFiles(ctx, filesApp, cont, keyboard); err != nil {
+	if err := testCreateFolderFromLinuxFiles(ctx, filesApp, cont); err != nil {
 		s.Fatal("Failed to test creating files in Linux files: ", err)
 	}
 
@@ -88,18 +86,18 @@ func HomeDirectoryCreateFile(ctx context.Context, s *testing.State) {
 	}
 }
 
-func testCreateFolderFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container, keyboard *input.KeyboardEventWriter) error {
+func testCreateFolderFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container) error {
 	const dirName = "test_folder"
 
 	// Files app doesn't have a way to directly create a file, but
 	// we can create a folder, which is just as good.
-	if err := filesApp.CreateFolder(ctx, dirName, keyboard); err != nil {
+	if err := filesApp.CreateFolder(ctx, dirName); err != nil {
 		return errors.Wrapf(err, "failed to create new folder %q", dirName)
 	}
 
 	// Check that the file now exists in the container.
 	if err := cont.CheckFilesExistInDir(ctx, ".", dirName); err != nil {
-		return errors.Wrapf(err, "creation of folder %q did not propogate to container", dirName)
+		return errors.Wrapf(err, "creation of folder %q did not propagate to container", dirName)
 	}
 	return nil
 }

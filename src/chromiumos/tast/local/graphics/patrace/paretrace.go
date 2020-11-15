@@ -61,7 +61,8 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	}()
 
 	// Add the default power test configuration.
-	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge))
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+		Wifi: setup.DisableWifiInterfaces, Battery: setup.ForceBatteryDischarge}))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
@@ -104,7 +105,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(tPowerSnapshotInterval))
 	if err != nil {

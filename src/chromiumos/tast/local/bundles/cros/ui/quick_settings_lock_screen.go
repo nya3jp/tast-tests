@@ -23,9 +23,8 @@ func init() {
 		Func: QuickSettingsLockScreen,
 		Desc: "Checks that the screen can be locked from Quick Settings",
 		Contacts: []string{
-			"kyleshima@chromium.org",
-			"bhansknecht@chromium.org",
-			"dhaddock@chromium.org",
+			"chromeos-sw-engprod@google.com",
+			"amehfooz@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
@@ -71,7 +70,7 @@ func QuickSettingsLockScreen(ctx context.Context, s *testing.State) {
 		ClassName: "ash/message_center/MessagePopup",
 	}
 
-	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, params, 30*time.Second); err != nil {
 		s.Fatal("Failed to find notification center: ", err)
 	}
 

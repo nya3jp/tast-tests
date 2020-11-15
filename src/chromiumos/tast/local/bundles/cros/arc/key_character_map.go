@@ -74,7 +74,7 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -94,7 +94,10 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	const imePrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
+	var imePrefix string
+	if imePrefix, err = ime.GetIMEPrefix(ctx, tconn); err != nil {
+		s.Fatal("Failed to get ime prefix: ", err)
+	}
 
 	switchInputMethod := func(ctx context.Context, language, layout string) {
 		if err := ime.EnableLanguage(ctx, tconn, language); err != nil {

@@ -15,6 +15,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Enable to cache the extracted raw video to speed up the test.
+const ecCacheExtractedVideo = false
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EncodeAccel,
@@ -228,7 +231,7 @@ func init() {
 				Params:      encode.Crowd361P,
 				PixelFormat: videotype.I420,
 				InputMode:   encoding.SharedMemory},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8_odd_dimension},
 			ExtraData:         []string{encode.Crowd361P.Name},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 		}, {
@@ -298,7 +301,7 @@ func init() {
 				Params:      encode.Crowd361P,
 				PixelFormat: videotype.I420,
 				InputMode:   encoding.SharedMemory},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9_odd_dimension},
 			ExtraData:         []string{encode.Crowd361P.Name},
 			// Disabled because the Intel encoder driver always aligns visible size by 16.
 			// TODO(b/139846661): Enable once the Intel encoder driver issue is fixed.
@@ -307,5 +310,5 @@ func init() {
 }
 
 func EncodeAccel(ctx context.Context, s *testing.State) {
-	encode.RunAllAccelVideoTests(ctx, s, s.Param().(encoding.TestOptions))
+	encode.RunAllAccelVideoTests(ctx, s, s.Param().(encoding.TestOptions), ecCacheExtractedVideo)
 }

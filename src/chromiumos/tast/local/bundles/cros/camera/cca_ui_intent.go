@@ -7,6 +7,7 @@ package camera
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"time"
 
@@ -50,14 +51,14 @@ const (
 	testPhotoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
 	// TODO(https://crbug.com/1058325): Change all mkv to mp4 once the migration is done.
 	// The content of test.mkv might be mp4 during the mkv to mp4 migration period.
-	testVideoURI         = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
-	defaultArcCameraPath = "/run/arc/sdcard/write/emulated/0/DCIM/Camera"
-	testAppAPK           = "ArcCameraIntentTest.apk"
-	testAppPkg           = "org.chromium.arc.testapp.cameraintent"
-	testAppActivity      = "org.chromium.arc.testapp.cameraintent.MainActivity"
-	testAppTextFieldID   = "org.chromium.arc.testapp.cameraintent:id/text"
-	resultOK             = "-1"
-	resultCanceled       = "0"
+	testVideoURI        = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
+	arcCameraFolderPath = "data/media/0/DCIM/Camera"
+	testAppAPK          = "ArcCameraIntentTest.apk"
+	testAppPkg          = "org.chromium.arc.testapp.cameraintent"
+	testAppActivity     = "org.chromium.arc.testapp.cameraintent.MainActivity"
+	testAppTextFieldID  = "org.chromium.arc.testapp.cameraintent:id/text"
+	resultOK            = "-1"
+	resultCanceled      = "0"
 )
 
 var (
@@ -92,12 +93,26 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
-		Pre:          arc.Booted(),
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               testutil.ARCWithPlatformApp(),
+			Val:               testutil.PlatformApp,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               testutil.ARCWithPlatformApp(),
+			Val:               testutil.PlatformApp,
+		}, {
+			Name:              "swa",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               testutil.ARCWithSWA(),
+			Val:               testutil.SWA,
+		}, {
+			Name:              "vm_swa",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               testutil.ARCWithSWA(),
+			Val:               testutil.SWA,
 		}},
 	})
 }
@@ -106,7 +121,8 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
-	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
+	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -120,6 +136,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
+	defer uiDevice.Close(ctx)
 
 	s.Log("Installing camera intent testing app")
 	if err := a.Install(ctx, s.DataPath(testAppAPK)); err != nil {
@@ -134,6 +151,13 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 
 	scripts := []string{s.DataPath("cca_ui.js")}
 	outDir := s.OutDir()
+
+	androidDataDir, err := arc.AndroidDataDir(cr.User())
+	if err != nil {
+		s.Fatal("Failed to get Android data dir: ", err)
+	}
+	arcCameraFolderPathOnChromeOS := filepath.Join(androidDataDir, arcCameraFolderPath)
+
 	for _, tc := range []struct {
 		Name          string
 		IntentOptions intentOptions
@@ -187,7 +211,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 				Mode:         cca.Video,
 				TestBehavior: captureConfirmAndDone,
 				ResultInfo: resultInfo{
-					Dir:         defaultArcCameraPath,
+					Dir:         arcCameraFolderPathOnChromeOS,
 					FilePattern: cca.VideoPattern,
 				},
 			},
@@ -221,14 +245,14 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.Name, func(ctx context.Context, s *testing.State) {
-			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb, false); err != nil {
+			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb, useSWA); err != nil {
 				s.Error("Failed when checking intent behavior: ", err)
 			}
 		})
 	}
 
 	s.Run(ctx, "instances coexistanece test", func(ctx context.Context, s *testing.State) {
-		if err := checkInstancesCoexistence(ctx, cr, a, scripts, outDir, tb, false); err != nil {
+		if err := checkInstancesCoexistence(ctx, cr, a, scripts, outDir, tb, useSWA); err != nil {
 			s.Error("Failed for instances coexistence test: ", err)
 		}
 	})
@@ -501,6 +525,12 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 		return errors.Wrap(err, "failed to close intent instance")
 	}
 
+	// In SWA, we don't automatically show the original window back.
+	if useSWA {
+		if err := regularApp.Focus(ctx); err != nil {
+			return errors.Wrap(err, "failed to focus the original window")
+		}
+	}
 	// Check if the regular CCA is automatically resumed.
 	if err := regularApp.WaitForState(ctx, "suspend", false); err != nil {
 		return errors.Wrap(err, "regular app instance does not resume after closing intent instance")

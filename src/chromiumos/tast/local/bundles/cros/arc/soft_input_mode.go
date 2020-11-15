@@ -48,7 +48,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	s.Log("Installing app")
 	const apk = "ArcSoftInputModeTest.apk"
@@ -151,12 +151,10 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		if err := field.Click(ctx); err != nil {
 			s.Fatal("Failed to click the field: ", err)
 		}
-		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 		}
-		if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-		}
+
 		if err := field.Exists(ctx); err != nil {
 			s.Fatal("Could not find the field; probably hidden by the virtual keyboard?")
 		}

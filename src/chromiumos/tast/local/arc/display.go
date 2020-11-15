@@ -69,24 +69,32 @@ func (d *Display) CaptionHeight(ctx context.Context) (h int, err error) {
 	return i, nil
 }
 
-// PhysicalDensity returns the density value in PhysicalDisplayInfo.
-func (d *Display) PhysicalDensity(ctx context.Context) (density float64, err error) {
-	output, err := d.a.Command(ctx, "dumpsys", "display").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return -1, errors.Wrap(err, "failed to execute 'dumpsys display'")
+func scrapeDensity(output []byte, sdkVersion int) (density float64, err error) {
+	var re *regexp.Regexp
+	switch sdkVersion {
+	case SDKP:
+		// In Android P, we are looking for:
+		// Display Devices: size=1
+		//  DisplayDeviceInfo
+		//   mDisplayInfos=
+		//    PhysicalDisplayInfo{..., density 1.5, ...}
+		re = regexp.MustCompile(`(?m)` + // Enable multiline.
+			`^Display Devices: size=1\n` + // Match Display Devices section.
+			`(?:\s+.*$)*` + // Skip entire lines...
+			`\s*PhysicalDisplayInfo{.*density (\d\.\d+)?`) // ...until density is matched.
+	case SDKR:
+		// In Android R, we are looking for:
+		// Display Devices: size=2
+		//   DisplayDeviceInfo
+		//     mDisplayInfo=DisplayInfo{..., density=2.0, ...}
+		re = regexp.MustCompile(`(?m)` + // Enable multiline.
+			`^Display Devices: size=2\n` + // Match Display Devices section.
+			`(?:\s+.*$)*` + // Skip entire lines...
+			`\s*mDisplayInfo.*{.*density=(\d\.\d+)?`) // ...until density is matched.
+	default:
+		return -1, errors.Errorf("unsupported Android version %d", sdkVersion)
 	}
 
-	// TODO(sstan): Test it on Android Q/R.
-	// This regexp works on Android P.
-	// Looking for:
-	// Display Devices: size=1
-	//  DisplayDeviceInfo
-	//   mDisplayInfos=
-	//    PhysicalDisplayInfo{..., density 1.5, ...}
-	re := regexp.MustCompile(`(?m)` + // Enable multiline.
-		`^Display Devices: size=1\n` + // Match Display Devices section.
-		`(?:\s+.*$)*` + // Skip entire lines...
-		`\s*PhysicalDisplayInfo{.*density (\d\.\d+)?`) // ...until density is matched.
 	groups := re.FindStringSubmatch(string(output))
 	if len(groups) != 2 {
 		return -1, errors.New("failed to parse 'dumpsys display'")
@@ -96,6 +104,19 @@ func (d *Display) PhysicalDensity(ctx context.Context) (density float64, err err
 		return -1, errors.Wrap(err, "failed to parse Physical Display Info density value")
 	}
 	return f, nil
+}
+
+// PhysicalDensity returns the density value in PhysicalDisplayInfo.
+func (d *Display) PhysicalDensity(ctx context.Context) (density float64, err error) {
+	output, err := d.a.Command(ctx, "dumpsys", "display").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to execute 'dumpsys display'")
+	}
+	n, err := SDKVersion()
+	if err != nil {
+		return -1, err
+	}
+	return scrapeDensity(output, n)
 }
 
 // Size returns the display size. Takes into account possible orientation changes.

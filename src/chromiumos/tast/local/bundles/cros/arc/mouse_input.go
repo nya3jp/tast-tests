@@ -47,7 +47,7 @@ func MouseInput(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	if err := a.Install(ctx, arc.APKPath(motioninput.APK)); err != nil {
 		s.Fatal("Failed installing ", motioninput.APK, ": ", err)

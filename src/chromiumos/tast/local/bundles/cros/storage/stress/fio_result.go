@@ -37,10 +37,17 @@ type fioResultReport struct {
 	result *fioResult
 }
 
+// fioDiskUsageReport is a report of disk lifetime usage.
+type fioDiskUsageReport struct {
+	name           string
+	percentageUsed int64
+}
+
 // FioResultWriter is a serial processor of fio results.
 type FioResultWriter struct {
 	resultLock sync.Mutex
 	results    []fioResultReport
+	diskUsages []fioDiskUsageReport
 }
 
 // Save processes and saves reported results.
@@ -53,6 +60,10 @@ func (f *FioResultWriter) Save(ctx context.Context, path string) {
 	for _, report := range f.results {
 		reportResults(ctx, report.result, report.group, perfValues)
 	}
+
+	for _, disk := range f.diskUsages {
+		reportDiskPercentageUsed(ctx, disk, perfValues)
+	}
 	perfValues.Save(path)
 
 	f.results = nil
@@ -63,6 +74,27 @@ func (f *FioResultWriter) Report(group string, result *fioResult) {
 	f.resultLock.Lock()
 	defer f.resultLock.Unlock()
 	f.results = append(f.results, fioResultReport{group, result})
+}
+
+// ReportDiskUsage records the disk usage percents to report it at save time.
+func (f *FioResultWriter) ReportDiskUsage(diskName string, percentageUsed int64) {
+	if len(diskName) == 0 || percentageUsed == -1 {
+		return // No reporting of empty or wrong disk usage.
+	}
+
+	f.resultLock.Lock()
+	defer f.resultLock.Unlock()
+	f.diskUsages = append(f.diskUsages, fioDiskUsageReport{diskName, percentageUsed})
+}
+
+func reportDiskPercentageUsed(ctx context.Context, diskUsage fioDiskUsageReport, perfValues *perf.Values) {
+	perfValues.Set(perf.Metric{
+		Name:      "disk_percentage_used",
+		Variant:   diskUsage.name,
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, float64(diskUsage.percentageUsed))
 }
 
 // reportJobRWResult appends metrics for latency and bandwidth from the current test results

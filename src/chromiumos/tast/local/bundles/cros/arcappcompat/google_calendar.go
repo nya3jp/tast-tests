@@ -88,7 +88,7 @@ func launchAppForGoogleCalendar(ctx context.Context, s *testing.State, tconn *ch
 		gotItButtonText          = "Got it"
 		hamburgerIconClassName   = "android.widget.ImageButton"
 		hamburgerIconDescription = "Show Calendar List and Settings drawer"
-		nextIconID               = "com.google.android.calendar:id/next_arrow_touch"
+		nextIconID               = "com.google.android.calendar:id/next_arrow"
 		openButtonClassName      = "android.widget.Button"
 		openButtonRegex          = "Open|OPEN"
 		userNameID               = "com.google.android.calendar:id/tile"
@@ -96,7 +96,11 @@ func launchAppForGoogleCalendar(ctx context.Context, s *testing.State, tconn *ch
 
 	// Keep clicking next icon until the got it button exists.
 	nextIcon := d.Object(ui.ID(nextIconID))
-	gotItButton := d.Object(ui.ClassName(androidButtonClassName), ui.Text(gotItButtonText))
+	if err := nextIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("nextIcon doesn't exists: ", err)
+	}
+
+	gotItButton := d.Object(ui.ClassName(androidButtonClassName), ui.TextMatches("(?i)"+gotItButtonText))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := gotItButton.Exists(ctx); err != nil {
 			nextIcon.Click(ctx)
@@ -115,7 +119,7 @@ func launchAppForGoogleCalendar(ctx context.Context, s *testing.State, tconn *ch
 
 	// Keep clicking allow button until hamburgerIcon exists.
 	hamburgerIcon := d.Object(ui.ClassName(hamburgerIconClassName), ui.DescriptionContains(hamburgerIconDescription))
-	allowButton := d.Object(ui.ClassName(androidButtonClassName), ui.Text(allowButtonText))
+	allowButton := d.Object(ui.ClassName(androidButtonClassName), ui.TextMatches("(?i)"+allowButtonText))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := hamburgerIcon.Exists(ctx); err != nil {
 			allowButton.Click(ctx)

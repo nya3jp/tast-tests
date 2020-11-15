@@ -7,16 +7,22 @@ package framesender
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
+	"os"
 	"path"
 	"path/filepath"
 	"strconv"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
+
+const cmdSendManagementFrame = "send_management_frame"
 
 // Sender sends management frame with send_management_frame tool provided by
 // wifi-testbed package on test router.
@@ -24,6 +30,8 @@ type Sender struct {
 	host    *ssh.Conn
 	iface   string
 	workDir string
+	curCmd  *ssh.Cmd
+	logFile *os.File
 }
 
 // Type is the enum type of frame type.
@@ -57,6 +65,13 @@ type Option func(*config)
 func Count(count int) Option {
 	return func(c *config) {
 		c.count = count
+	}
+}
+
+// SSIDPrefix returns an Option which sets the SSID prefix.
+func SSIDPrefix(p string) Option {
+	return func(c *config) {
+		c.ssidPrefix = p
 	}
 }
 
@@ -100,6 +115,18 @@ func New(host *ssh.Conn, iface, workDir string) *Sender {
 // Send executes send_management_frame tool to send management frames with type t
 // on iface and ch channel with given options.
 func (s *Sender) Send(ctx context.Context, t Type, ch int, ops ...Option) error {
+	if err := s.Start(ctx, t, ch, ops...); err != nil {
+		return err
+	}
+	return s.wait(ctx)
+}
+
+// Start runs send_management_frame tool in background to send management
+// frames with type t on iface and ch channel with given options.
+func (s *Sender) Start(ctx context.Context, t Type, ch int, ops ...Option) error {
+	if s.curCmd != nil {
+		return errors.New("already running")
+	}
 	c := &config{
 		t:     t,
 		ch:    ch,
@@ -122,16 +149,45 @@ func (s *Sender) Send(ctx context.Context, t Type, ch int, ops ...Option) error 
 	if err != nil {
 		return errors.Wrap(err, "failed to create log file for frame_sender")
 	}
-	defer f.Close()
 	testing.ContextLogf(ctx, "Logging send_management_frame output to %q", filepath.Base(f.Name()))
 
-	cmd := s.host.Command("send_management_frame", args...)
+	cmd := s.host.Command(cmdSendManagementFrame, args...)
 	// Collect combined output to f.
 	cmd.Stdout = f
 	cmd.Stderr = f
-	if err := cmd.Run(ctx); err != nil {
-		return errors.Wrap(err, "send_management_frame failed")
+	if err := cmd.Start(ctx); err != nil {
+		f.Close()
+		return errors.Wrap(err, "failed to start send_management_frame")
 	}
+	s.curCmd = cmd
+	s.logFile = f
+	return nil
+}
+
+// wait waits the current running command to end and free related resources.
+func (s *Sender) wait(ctx context.Context) error {
+	err := s.curCmd.Wait(ctx)
+	s.logFile.Close()
+	s.curCmd = nil
+	s.logFile = nil
+	return err
+}
+
+// ReserveForStop reserves time in context for cleaning up in Stop.
+func (s Sender) ReserveForStop(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 3*time.Second)
+}
+
+// Stop aborts current running command spawned by previous Start call.
+func (s *Sender) Stop(ctx context.Context) error {
+	if s.curCmd == nil {
+		return errors.New("no running command")
+	}
+	// TODO(crbug.com/1030635): Abort might not work, use pkill to ensure the daemon is killed.
+	s.host.Command("pkill", "-f", fmt.Sprintf("^%s.*%s", cmdSendManagementFrame, s.Interface())).Run(ctx)
+	s.curCmd.Abort()
+	// Ignore the error from wait, as aborted cmd will always fail.
+	s.wait(ctx)
 	return nil
 }
 

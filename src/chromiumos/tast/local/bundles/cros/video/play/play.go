@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/screenshot"
@@ -203,12 +204,15 @@ func colorDistance(a, b color.Color) int {
 		abs(int(aA>>8)-int(bA>>8)))
 }
 
-// isBlack returns true if c corresponds to opaque black. Returns false otherwise.
-func isBlack(c color.Color) bool {
-	// Note that the RGBA method returns components in the range [0, 0xFFFF] corresponding to
-	// the 8-bit values multiplied by 0x101 (https://blog.golang.org/image).
-	cR, cG, cB, cA := c.RGBA()
-	return cR == 0 && cG == 0 && cB == 0 && cA == 0xFFFF
+// isVideoPadding returns true iff c corresponds to the expected color of the padding that a
+// video gets when in full screen so that it appears centered. This color is black within a
+// certain tolerance.
+func isVideoPadding(c color.Color) bool {
+	black := color.RGBA{0, 0, 0, 255}
+	// The tolerance was picked empirically. For example, on kukui, the first padding row below
+	// the video has a color of (20, 1, 22, 255).
+	tolerance := 25
+	return colorDistance(c, black) < tolerance
 }
 
 // TestPlay checks that the video file named filename can be played using Chrome.
@@ -314,6 +318,36 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 		return errors.Wrapf(err, "failed to open %v", url)
 	}
 	defer conn.Close()
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to test API")
+	}
+	defer tconn.Close()
+
+	// For consistency across test runs, ensure that the device is in landscape-primary orientation.
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get internal display info")
+	}
+	orient, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the display orientation")
+	}
+	s.Logf("Original display orientation = %q", orient.Type)
+	if orient.Type != display.OrientationLandscapePrimary {
+		s.Log("Rotating the display to get to 'landscape-primary'")
+		if err := display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, display.Rotate270); err != nil {
+			return errors.Wrap(err, "failed to rotate display")
+		}
+		// Make sure that the rotation worked.
+		orient, err = display.GetOrientation(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the display orientation")
+		}
+		if orient.Type != display.OrientationLandscapePrimary {
+			return errors.New("the display is not in the expected landscape-primary orientation")
+		}
+	}
 
 	// Make the video go to full screen mode by pressing 'f': requestFullScreen() needs a user gesture.
 	ew, err := input.Keyboard(ctx)
@@ -357,7 +391,7 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 		return errors.Wrapf(err, "could not decode %v", sshotPath)
 	}
 	if img.Bounds().Dx() < img.Bounds().Dy() {
-		s.Log("The screen is rotated; rotating the screenshot")
+		s.Log("The screenshot is in portrait orientation; rotating it")
 		rotImg := image.NewRGBA(image.Rectangle{image.Point{}, image.Point{img.Bounds().Max.Y, img.Bounds().Max.X}})
 		for dstY := 0; dstY < rotImg.Bounds().Dy(); dstY++ {
 			for dstX := 0; dstX < rotImg.Bounds().Dx(); dstX++ {
@@ -381,13 +415,13 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	yMiddle := img.Bounds().Dy() / 2
 	top := 0
 	for ; top < img.Bounds().Dy(); top++ {
-		if !isBlack(img.At(xMiddle, top)) {
+		if !isVideoPadding(img.At(xMiddle, top)) {
 			break
 		}
 	}
 	bottom := img.Bounds().Dy() - 1
 	for ; bottom >= 0; bottom-- {
-		if !isBlack(img.At(xMiddle, bottom)) {
+		if !isVideoPadding(img.At(xMiddle, bottom)) {
 			break
 		}
 	}
@@ -396,13 +430,13 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	}
 	left := 0
 	for ; left < img.Bounds().Dx(); left++ {
-		if !isBlack(img.At(left, yMiddle)) {
+		if !isVideoPadding(img.At(left, yMiddle)) {
 			break
 		}
 	}
 	right := img.Bounds().Dx() - 1
 	for ; right >= 0; right-- {
-		if !isBlack(img.At(right, yMiddle)) {
+		if !isVideoPadding(img.At(right, yMiddle)) {
 			break
 		}
 	}
@@ -446,31 +480,46 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	// helps us detect undesired stretching/shifting/rotation/mirroring. The
 	// naming convention for each point of a stencil is as follows:
 	//
-	//   _00: top-left corner of the stencil.
-	//   _10: top-right corner of the stencil.
-	//   _11: bottom-right corner of the stencil.
-	//   _01: bottom-left corner of the stencil.
-	edgeOffset := 7
-	stencilW := 2
+	//   inner_Y_X_00: the corner of the stencil closest to the Y-X corner of the video.
+	//   inner_Y_X_01: the corner of the stencil that's in the interior X border of the video.
+	//   inner_Y_X_10: the corner of the stencil that's in the interior Y border of the video.
+	//   inner_Y_X_11: the only corner of the stencil that's not on the border strip.
+	//
+	// For example, the top-right corner of the video looks like this:
+	//
+	//   MMMMMMMMMMMMMMMM
+	//   MMMMMMMMMM2MMM0M
+	//   MMMMMMMMMMMMMMMM
+	//             3  M1M
+	//                MMM
+	//
+	// So the names of each of the points 0, 1, 2, 3 are:
+	//
+	//   0: inner_top_right_00
+	//   1: inner_top_right_01
+	//   2: inner_top_right_10
+	//   3: inner_top_right_11
+	edgeOffset := 5
+	stencilW := 5
 	innerCorners := map[string]struct {
 		x, y int
 	}{
 		"inner_top_left_00":     {edgeOffset, edgeOffset},
+		"inner_top_left_01":     {edgeOffset, edgeOffset + stencilW},
 		"inner_top_left_10":     {edgeOffset + stencilW, edgeOffset},
 		"inner_top_left_11":     {edgeOffset + stencilW, edgeOffset + stencilW},
-		"inner_top_left_01":     {edgeOffset, edgeOffset + stencilW},
-		"inner_top_right_00":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset},
-		"inner_top_right_10":    {(videoW - 1) - edgeOffset, edgeOffset},
-		"inner_top_right_11":    {(videoW - 1) - edgeOffset, edgeOffset + stencilW},
-		"inner_top_right_01":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset + stencilW},
-		"inner_bottom_right_00": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_right_10": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_right_11": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset},
-		"inner_bottom_right_01": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset},
-		"inner_bottom_left_00":  {edgeOffset, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_left_10":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset - stencilW},
-		"inner_bottom_left_11":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset},
-		"inner_bottom_left_01":  {edgeOffset, (videoH - 1) - edgeOffset},
+		"inner_top_right_00":    {(videoW - 1) - edgeOffset, edgeOffset},
+		"inner_top_right_01":    {(videoW - 1) - edgeOffset, edgeOffset + stencilW},
+		"inner_top_right_10":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset},
+		"inner_top_right_11":    {(videoW - 1) - edgeOffset - stencilW, edgeOffset + stencilW},
+		"inner_bottom_right_00": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset},
+		"inner_bottom_right_01": {(videoW - 1) - edgeOffset, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_right_10": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset},
+		"inner_bottom_right_11": {(videoW - 1) - edgeOffset - stencilW, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_left_00":  {edgeOffset, (videoH - 1) - edgeOffset},
+		"inner_bottom_left_01":  {edgeOffset, (videoH - 1) - edgeOffset - stencilW},
+		"inner_bottom_left_10":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset},
+		"inner_bottom_left_11":  {edgeOffset + stencilW, (videoH - 1) - edgeOffset - stencilW},
 	}
 	samples := map[string]struct {
 		x, y int

@@ -93,9 +93,9 @@ func APISendMessageToUI(ctx context.Context, s *testing.State) { // NOLINT
 	}
 	defer pc.StopChromeAndFakeDMS(ctx, &empty.Empty{})
 
-	nm, err := wilcoextension.NewNativeMessaging(ctx, pc)
+	nm, err := wilcoextension.NewBuiltInMessaging(ctx, pc)
 	if err != nil {
-		s.Fatal("Failed to start native messaging: ", err)
+		s.Fatal("Failed to start built-in messaging: ", err)
 	}
 
 	if err := nm.StartListener(ctx); err != nil {

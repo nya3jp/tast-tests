@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -25,17 +24,23 @@ func init() {
 		Func:         VirtualKeyboardTypingApps,
 		Desc:         "Checks that the virtual keyboard works in apps",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:essential-inputs"},
+		Attr:         []string{"group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          pre.VKEnabled(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
+			Pre:               pre.VKEnabledTablet(),
 			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
 			Name:              "unstable",
+			Pre:               pre.VKEnabledTablet(),
 			ExtraHardwareDeps: pre.InputsUnstableModels,
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+		}, {
+			Name:              "mojo",
+			Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+			ExtraHardwareDeps: pre.InputsMojoModels,
 		}}})
 }
 
@@ -43,18 +48,8 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 	// typingKeys indicates a key series that tapped on virtual keyboard.
 	const typingKeys = "go"
 
-	cr := s.PreValue().(*chrome.Chrome)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
-
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
-	if err != nil {
-		s.Fatal("Failed to ensure in tablet mode: ", err)
-	}
-	defer cleanup(ctx)
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 

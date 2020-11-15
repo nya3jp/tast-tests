@@ -44,6 +44,7 @@ func init() {
 			"kevin",
 			"kukui",
 			"oak",
+			"trogdor",
 			"scarlet",
 			"veyron_fievel",
 			"veyron_mickey",

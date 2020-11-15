@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -24,7 +25,7 @@ func init() {
 		Func:         VirtualKeyboardJapaneseInputs,
 		Desc:         "Checks switching between Romaji and Kana mode for Japanese inputs",
 		Contacts:     []string{"myy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
+		Attr:         []string{"group:mainline", "informational", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
@@ -50,7 +51,8 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := vkb.SetCurrentInputMethod(ctx, tconn, "nacl_mozc_jp"); err != nil {
+	imeCode := ime.IMEPrefix + string(ime.INPUTMETHOD_NACL_MOZC_JP)
+	if err := ime.SetCurrentInputMethod(ctx, tconn, imeCode); err != nil {
 		s.Fatal("Failed to set input method: ", err)
 	}
 
@@ -89,11 +91,6 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 
 		if err := vkb.FindAndClickUntilVKShown(ctx, tconn, params); err != nil {
 			s.Fatal("Failed to click the omnibox and wait for vk shown: ", err)
-		}
-
-		// Wait until vk fully displayed and positioned.
-		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-			s.Fatal("Failed to wait for virtual keyboard positioned: ", err)
 		}
 
 		if err := vkb.TapKey(ctx, tconn, mode.typeKey); err != nil {

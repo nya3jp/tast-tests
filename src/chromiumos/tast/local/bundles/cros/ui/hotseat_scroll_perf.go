@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -261,6 +262,11 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 
 // HotseatScrollPerf records the animation smoothness for shelf scroll animation.
 func HotseatScrollPerf(ctx context.Context, s *testing.State) {
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
+
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -284,6 +290,13 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to ensure the tablet-mode enabled status to %v: %v", s.Param().(bool), err)
 	}
 	defer cleanup(ctx)
+
+	// Tests close all notification as part of the test state reset, which impacts shelf bounds.
+	// Wait for shelf/hotseat animations to complete to ensure shelf bounds are stable when the test
+	// starts.
+	if err := ash.WaitForStableShelfBounds(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for stable shelf bounds: ", err)
+	}
 
 	type testSetting struct {
 		state uiState

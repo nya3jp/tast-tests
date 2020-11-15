@@ -25,7 +25,7 @@ func init() {
 		Func:         CertProvisionNoDatabase,
 		Desc:         "Verifies cert provision is still working without attestation database",
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
-		SoftwareDeps: []string{"tpm"},
+		SoftwareDeps: []string{"cert_provision", "tpm"},
 	})
 }
 

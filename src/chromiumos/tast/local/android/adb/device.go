@@ -6,7 +6,9 @@ package adb
 
 import (
 	"context"
+	"fmt"
 	"regexp"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -138,9 +140,11 @@ func Connect(ctx context.Context, addr string, timeout time.Duration) (*Device, 
 
 // Command creates an ADB command on the specified device.
 func (d *Device) Command(ctx context.Context, args ...string) *testexec.Cmd {
-	if d.TransportID != "" {
-		return Command(ctx, append([]string{"-t", d.TransportID}, args...)...)
-	}
+	// ADB has an issue where if there are multiple devices connected and you try to forward a port with TransportID,
+	// it will fail with "error: unknown host service". Until this is fixed, disable TransportID.
+	// if d.TransportID != "" {
+	//	return Command(ctx, append([]string{"-t", d.TransportID}, args...)...)
+	// }
 	// Use Serial as a backup if TransportID is empty.
 	return Command(ctx, append([]string{"-s", d.Serial}, args...)...)
 }
@@ -196,6 +200,16 @@ func (d *Device) WaitForState(ctx context.Context, want State, timeout time.Dura
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second, Timeout: timeout})
+}
+
+// IsConnected checks if the device is connected.
+func (d *Device) IsConnected(ctx context.Context) error {
+	if state, err := d.State(ctx); err != nil {
+		return errors.Wrap(err, "failed to get the ADB device state")
+	} else if state != StateDevice {
+		return errors.New("ADB device not connected")
+	}
+	return nil
 }
 
 // InstallOption defines possible options to pass to "adb install".
@@ -288,4 +302,18 @@ func (d *Device) Uninstall(ctx context.Context, pkg string) error {
 		return errors.Errorf("failed to uninstall %v %q", pkg, string(out))
 	}
 	return nil
+}
+
+// ForwardTCP forwards the ADB device local port specified to a host port and returns that host port.
+func (d *Device) ForwardTCP(ctx context.Context, androidPort int) (int, error) {
+	out, err := d.Command(ctx, "forward", "tcp:0", fmt.Sprintf("tcp:%d", androidPort)).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return -1, err
+	}
+	return strconv.Atoi(strings.TrimSpace(string(out)))
+}
+
+// RemoveForwardTCP removes the forwarding from an ADB device local port to the specified host port.
+func (d *Device) RemoveForwardTCP(ctx context.Context, hostPort int) error {
+	return d.Command(ctx, "forward", "--remove", fmt.Sprintf("tcp:%d", hostPort)).Run(testexec.DumpLogOnError)
 }

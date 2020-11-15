@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/ossettings"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
@@ -82,6 +82,8 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name+".txt")
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -92,32 +94,15 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Launch os-settings at People page.
-			if err := ossettings.LaunchAtPage(ctx, tconn, ui.FindParams{
-				Name: "People",
-				Role: ui.RoleTypeLink,
-			}); err != nil {
-				s.Fatal("Failed to launch Settings: ", err)
-			}
-
-			// At People page find and click on Security and sign-in.
-			nodeSSI, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeLink,
-				Name: "Security and sign-in",
-			}, 15*time.Second)
+			// Open the Lockscreen page where we can set a PIN.
+			conn, err := cr.NewConn(ctx, "chrome://os-settings/lockScreen")
 			if err != nil {
-				s.Fatal("Failed to find Security and sign-in option: ", err)
+				s.Fatal("Failed to connect to the settings page: ", err)
 			}
-			defer nodeSSI.Release(ctx)
-			if err := nodeSSI.StableLeftClick(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 15 * time.Second}); err != nil {
-				s.Fatal("Failed to open the Security and sign-in option: ", err)
-			}
+			defer conn.Close()
 
 			// Find and enter the password in the pop up window.
-			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeTextField,
-				Name: "Password",
-			}, 15*time.Second); err != nil {
+			if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Name: "Password"}, 15*time.Second); err != nil {
 				s.Fatal("Could not find the password field: ", err)
 			}
 			if err := kb.Type(ctx, pre.Password+"\n"); err != nil {

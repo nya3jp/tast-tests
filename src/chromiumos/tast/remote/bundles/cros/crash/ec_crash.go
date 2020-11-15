@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,57 +25,12 @@ func init() {
 		Contacts: []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		// no_qemu because the servo is not available in VMs, and tast does
-		// not (yet) support skipping tests if required vars are empty.
+		// not (yet) support skipping tests if required vars are not provided.
 		// TODO(crbug.com/967901): Remove no_qemu dep once servo var is sufficient.
-		SoftwareDeps: []string{"pstore", "reboot", "no_qemu"},
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel(
-			// The below models have buggy EC firmware and cannot capture
-			// crash reports. See https://crbug.com/1123191
-			"asuka",
-			"banon",
-			"caroline",
-			"cave",
-			// TODO(https://crbug.com/1124372): 'celes' sometimes
-			// shows up with model name "r", so it runs despite this
-			// SkipOnModel.
-			"celes",
-			"chell",
-			"cyan",
-			"edgar",
-			"kefka",
-			"reks",
-			"relm",
-			"sabin", // a model name for some kefka DUTs
-			"sentry",
-			"terra",
-			"terra2",
-			"ultima",
-			"wizpig",
-			// The below models do not support the "crash" EC command.
-			// See https://crbug.com/1123716
-			"arcada",
-			"arcada_signed",
-			"drallion",
-			"drallion_signed",
-			"drallion360",
-			"drallion360_signed",
-			"sarien",
-			"sarien_signed",
-			// The below models do not have an EC.
-			// See https://crbug.com/1123716
-			// TODO(https://crbug.com/1124554): When tast has one, use a separate "EC" hwdep
-			// rather than listing models.
-			"fievel", // veyron_fievel
-			"tiger",  // veyron_tiger
-			"tidus",
-			// The below model sporadically captures panics.
-			// TODO(https://crbug.com/1135798): Re-enable this test
-			// when bug is fixed.
-			"nocturne",
-		)),
-		ServiceDeps: []string{"tast.cros.crash.FixtureService"},
-		Timeout:     10 * time.Minute,
-		Vars:        []string{"servo"},
+		SoftwareDeps: []string{"device_crash", "ec_crash", "pstore", "reboot", "no_qemu"},
+		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
+		Timeout:      10 * time.Minute,
+		Vars:         []string{"servo"},
 	})
 }
 

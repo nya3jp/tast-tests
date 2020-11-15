@@ -1,0 +1,21 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.platform;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/platform";
+
+// UpstartService provides RPC methods for interacting with upstart.
+service UpstartService {
+  // Check that the given upstart job is running.
+  rpc CheckJob(CheckJobRequest) returns (google.protobuf.Empty) {}
+}
+
+message CheckJobRequest {
+  string job_name = 1;
+}

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package example
+package dev
 
 import (
 	"context"
@@ -17,6 +17,8 @@ import (
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+const crdURL = "https://remotedesktop.google.com/support"
 
 // Do not poll things too fast to prevent triggering weird UI behaviors. The
 // share button will not work if we keep clicking it.
@@ -138,7 +140,8 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 }
 
 func launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (*chrome.Conn, error) {
-	conn, err := cr.NewConn(ctx, "https://remotedesktop.google.com/support?hl=en")
+	// Use english version to avoid i18n differences of HTML element attributes.
+	conn, err := cr.NewConn(ctx, crdURL+"?hl=en")
 	if err != nil {
 		return nil, err
 	}
@@ -320,6 +323,7 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to getAccessCode: ", err)
 	}
 	s.Log("Access code: ", accessCode)
+	s.Log("Please paste the code to \"Give Support\" section on ", crdURL)
 
 	if vars.wait {
 		s.Log("Waiting connection")

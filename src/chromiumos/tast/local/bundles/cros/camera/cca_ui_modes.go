@@ -20,24 +20,25 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIModes,
 		Desc:         "Opens CCA and verifies the use cases of mode selector and portrait, square modes",
-		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_ui.js", "human_face.y4m"},
+		Data:         []string{"cca_ui.js"},
+		Params: []testing.Param{{
+			Pre: testutil.ChromeWithPlatformAppAndFakeCamera(),
+			Val: testutil.PlatformApp,
+		}, {
+			Name: "swa",
+			Pre:  testutil.ChromeWithSWAAndFakeCamera(),
+			Val:  testutil.SWA,
+		}},
 	})
 }
 
 func CCAUIModes(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(
-		"--use-fake-ui-for-media-stream",
-		"--use-fake-device-for-media-stream",
-		"--use-file-for-fake-video-capture="+s.DataPath("human_face.y4m")))
-	if err != nil {
-		s.Fatal("Failed to open chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	cr := s.PreValue().(*chrome.Chrome)
+	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
+	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -47,7 +48,7 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}

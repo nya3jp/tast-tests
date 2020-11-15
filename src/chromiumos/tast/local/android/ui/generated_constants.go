@@ -9,7 +9,7 @@ package ui
 // Do not change the above line; see https://golang.org/pkg/cmd/go/internal/generate/
 //
 // This file contains constants from core/java/android/view/KeyEvent.java
-// in the Android frameworks/base repository at revision e99aa91e87a8aa794a87e8d6ab0d049063c6de9c.
+// in the Android frameworks/base repository at revision 3a91c7518431602f8bb29f4100a39cdd263a9c6c.
 // Run "go generate" to regenerate it.
 
 // Assumes that Android repo is checked out at same folder level as Chrome OS. e.g: If Chrome OS sources are in:

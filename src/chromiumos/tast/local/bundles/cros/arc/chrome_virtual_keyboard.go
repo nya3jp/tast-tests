@@ -37,6 +37,7 @@ var unstableVkTests = []vkTestParams{
 	{"Focus change", chromeVirtualKeyboardFocusChangeTest},
 	{"Floating mode", chromeVirtualKeyboardFloatingTest},
 	{"Rotation", chromeVirtualKeyboardRotationTest},
+	{"Password editing", chromeVirtualKeyboardPasswordEditingTest},
 }
 
 const virtualKeyboardTestAppPkg = "org.chromium.arc.testapp.keyboard"
@@ -105,12 +106,10 @@ func chromeVirtualKeyboardBasicEditingTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
+
 	if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
 		s.Fatal("Failed to wait for the IME decoder is ready: ", err)
 	}
@@ -204,11 +203,8 @@ func chromeVirtualKeyboardFocusChangeTest(
 	}
 
 	s.Log("Waiting for the virtual keyboard to be ready")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
 	// The virtual keyboard should keep showing when the focus is moved between the text fields programmatically.
@@ -243,12 +239,10 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := field1.Click(ctx); err != nil {
 		s.Fatal("Failed to click the field: ", err)
 	}
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
-	}
+
 	s.Log("Clicking the button to hide the virtual keyboard")
 	button3 := d.Object(ui.ID(buttonID3))
 	if err := button3.Click(ctx); err != nil {
@@ -301,11 +295,8 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 
 	// No need to wait for decoder enabled because the decoder won't be enabled on TYPE_NULL field.
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
 	keyDownLabel := d.Object(ui.ID(lastKeyDownLabelID))
@@ -371,11 +362,8 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	s.Log("Waiting for the virtual keyboard to be ready")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
 	// Showing the normal virtual keyboard should push up the view.
@@ -460,11 +448,8 @@ func chromeVirtualKeyboardRotationTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
 	// Chrome OS virtual keyboard is shown and ready. Let's rotate the device.
@@ -515,6 +500,76 @@ func chromeVirtualKeyboardRotationTest(
 	}
 }
 
+// chromeVirtualKeyboardPasswordEditingTest tests editing on a password field on an ARC app by Chrome's virtual keyboard.
+func chromeVirtualKeyboardPasswordEditingTest(
+	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
+	const (
+		activityName = ".MainActivity"
+
+		passwordFieldID = virtualKeyboardTestAppPkg + ":id/password"
+	)
+	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	if err != nil {
+		s.Fatalf("Failed to create a new activity %q", activityName)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatalf("Failed to start the activity %q", activityName)
+	}
+	defer act.Stop(ctx, tconn)
+
+	field := d.Object(ui.ID(passwordFieldID))
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find field: ", err)
+	}
+	if err := field.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
+	if err := field.SetText(ctx, ""); err != nil {
+		s.Fatal("Failed to empty field: ", err)
+	}
+
+	if err := d.Object(ui.ID(passwordFieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to focus a text field: ", err)
+	}
+
+	s.Log("Waiting for virtual keyboard to be ready")
+	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	}
+	// We should not wait for the decoder because it is not enabled on the password field.
+
+	// Press a sequence of keys.
+	keys := []string{"p", "a", "s", "s", "w", "o", "r", "d", "backspace", "backspace"}
+
+	expected := ""
+
+	for _, key := range keys {
+		if err := vkb.TapKey(ctx, tconn, key); err != nil {
+			s.Fatalf("Failed to tap %q: %v", key, err)
+		}
+
+		if key == "backspace" {
+			expected = expected[:len(expected)-1]
+		} else {
+			expected += key
+		}
+
+		// Check the input field after each keystroke to avoid flakiness. https://crbug.com/945729
+		// In order to use GetText() after timeout, we should have shorter timeout than ctx.
+		if err := field.WaitForText(ctx, expected, 30*time.Second); err != nil {
+			if actual, err := field.GetText(ctx); err != nil {
+				s.Fatal("Failed to get text: ", err)
+			} else {
+				s.Fatalf("Got %q from text field; want %q", actual, expected)
+			}
+		}
+	}
+}
+
 func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	p := s.PreValue().(arc.PreData)
 	a := p.ARC
@@ -529,7 +584,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	const apk = "ArcKeyboardTest.apk"
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {

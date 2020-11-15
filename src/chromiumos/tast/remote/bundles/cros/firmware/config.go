@@ -13,11 +13,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Config,
-		Desc:     "Verifies that remote tests can load fw-testing-configs properly",
-		Contacts: []string{"cros-fw-engprod@google.com"},
-		Data:     []string{firmware.ConfigFile},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         Config,
+		Desc:         "Verifies that remote tests can load fw-testing-configs properly",
+		Contacts:     []string{"cros-fw-engprod@google.com"},
+		Data:         []string{firmware.ConfigFile},
+		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"crossystem"},
 	})
 }
 

@@ -6,10 +6,9 @@ package storage
 
 import (
 	"context"
-	"encoding/json"
-	"io/ioutil"
 	"math"
 	"math/rand"
+	"os"
 	"path/filepath"
 	"strconv"
 	"sync"
@@ -50,7 +49,7 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         stress.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
-		Vars:         []string{"tast_disk_size_gb", "storage.slcQual"},
+		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual"},
 		Params: []testing.Param{{
 			Name:    "setup_benchmarks",
 			Val:     setupBenchmarks,
@@ -258,6 +257,129 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResul
 	runTasksInParallel(ctx, suspendBlockTimeout, tasks)
 }
 
+// trimTestBlock performs data integrity trim test on an unmounted partition.
+// This test will write 1 GB of data and verify that trimmed data are gone and untrimmed data are unaffected.
+// The verification will be run in 5 passes with 0%, 25%, 50%, 75%, and 100% of data trimmed.
+// Also, perform 4K random read QD32 before and after trim. We should see some speed / latency difference
+// if the device firmware trim data properly.
+func trimTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+	filename, err := stress.RootPartitionForTrim(ctx)
+	if err != nil {
+		s.Fatal("Failed to select partition for trim stress: ", err)
+	}
+	filesize, err := stress.PartitionSize(ctx, filename)
+	if err != nil {
+		s.Fatal("Failed to acquire size for partition: ", err)
+	}
+	// Make file size multiple of 4 * chunk size to account for all passes,
+	// i.e. 25% = 1/4, 75% = 3/4.
+	filesize = filesize - filesize%(4*stress.TrimChunkSize)
+	s.Logf("Filename: %s, filesize: %d", filename, filesize)
+
+	f, err := os.OpenFile(filename, os.O_RDWR, 0666)
+	if err != nil {
+		s.Fatal("Failed to open device: ", err)
+	}
+	defer f.Close()
+
+	if err := stress.RunTrim(f, 0, filesize); err != nil {
+		s.Fatal("Error running trim command: ", err)
+	}
+
+	zeroHash := stress.ZeroHash()
+	oneHash := stress.OneHash()
+	chunkCount := filesize / stress.TrimChunkSize
+
+	// Write random data to disk
+	s.Log("Writing random data to disk: ", filename)
+	if err := stress.WriteRandomData(filename, chunkCount); err != nil {
+		s.Fatal("Error writing random data to disk: ", err)
+	}
+
+	s.Log("Calculating initial hash values for all chunks")
+	initialHash, err := stress.CalculateCurrentHashes(filename, chunkCount)
+	if err != nil {
+		s.Fatal("Error calculating hashes: ", err)
+	}
+
+	// Check read bandwidth/latency when reading real data.
+	resultWriter := &stress.FioResultWriter{}
+	defer resultWriter.Save(ctx, s.OutDir())
+
+	testConfig := &stress.TestConfig{ResultWriter: resultWriter, Path: stress.BootDeviceFioPath}
+	if err := runFioStress(ctx, s, testConfig.WithJob("4k_read_qd32")); err != nil {
+		s.Fatal("Timeout while running disk i/o stress: ", err)
+	}
+
+	dataVerifyCount := 0
+	dataVerifyMatch := 0
+	trimVerifyCount := 0
+	trimVerifyZero := 0
+	trimVerifyOne := 0
+	trimVerifyNonDelete := 0
+
+	for _, ratio := range []float64{0, 0.25, 0.5, 0.75, 1} {
+		trimmed := make([]bool, chunkCount)
+		for i := uint64(0); i < chunkCount; i++ {
+			if float64(i%4)/4 < ratio {
+				if err := stress.RunTrim(f, i, stress.TrimChunkSize); err != nil {
+					s.Fatal("Error running trim command: ", err)
+				}
+				trimmed[i] = true
+				trimVerifyCount++
+			}
+		}
+
+		currHashes, err := stress.CalculateCurrentHashes(filename, chunkCount)
+		if err != nil {
+			s.Fatal("Error calculating current hashes: ", err)
+		}
+
+		dataVerifyCount = dataVerifyCount + int(chunkCount) - trimVerifyCount
+
+		for i := uint64(0); i < chunkCount; i++ {
+			if trimmed[i] {
+				if currHashes[i] == zeroHash {
+					trimVerifyZero++
+				} else if currHashes[i] == oneHash {
+					trimVerifyOne++
+				} else if currHashes[i] == initialHash[i] {
+					trimVerifyNonDelete++
+				}
+			} else {
+				if currHashes[i] == initialHash[i] {
+					dataVerifyMatch++
+				}
+			}
+		}
+	}
+
+	// Check final (trimmed) read bandwidth/latency.
+	if err := runFioStress(ctx, s, testConfig.WithJob("4k_read_qd32")); err != nil {
+		s.Fatal("Timeout while running disk i/o stress")
+	}
+
+	// Write out all metrics to an external keyval file.
+	if err := stress.WriteKeyVals(s.OutDir(), map[string]int{
+		"dataVerifyCount":     dataVerifyCount,
+		"dataVerifyMatch":     dataVerifyMatch,
+		"trimVerifyCount":     trimVerifyCount,
+		"trimVerifyZero":      trimVerifyZero,
+		"trimVerifyOne":       trimVerifyOne,
+		"trimVerifyNonDelete": trimVerifyNonDelete,
+	}); err != nil {
+		s.Fatal("Error writing trim counters: ", err)
+	}
+
+	if dataVerifyMatch < dataVerifyCount {
+		s.Fatal("Fail to verify untrimmed data")
+	}
+
+	if trimVerifyZero < trimVerifyCount {
+		s.Fatal("Trimmed data is not zeroed")
+	}
+}
+
 // slcDevice returns an Slc device path for dual-namespace AVL.
 func slcDevice(ctx context.Context) (string, error) {
 	info, err := stress.ReadDiskInfo(ctx)
@@ -296,30 +418,6 @@ func runTasksInParallel(ctx context.Context, timeout time.Duration, tasks []func
 	testing.ContextLog(ctx, "Finished parallel tasks at: ", time.Now())
 }
 
-// writeTestStatusFile writes test status JSON file to test's output folder.
-// Status file contains start/end times and final test status (passed/failed).
-func writeTestStatusFile(ctx context.Context, outDir string, passed bool, startTimestamp time.Time) error {
-	statusFileStruct := struct {
-		Started  string `json:"started"`
-		Finished string `json:"finished"`
-		Passed   bool   `json:"passed"`
-	}{
-		Started:  startTimestamp.Format(time.RFC3339),
-		Finished: time.Now().Format(time.RFC3339),
-		Passed:   passed,
-	}
-
-	file, err := json.MarshalIndent(statusFileStruct, "", " ")
-	if err != nil {
-		return errors.Wrap(err, "failed marshalling test status to JSON")
-	}
-	filename := filepath.Join(outDir, "status.json")
-	if err := ioutil.WriteFile(filename, file, 0644); err != nil {
-		return errors.Wrap(err, "failed saving test status to file")
-	}
-	return nil
-}
-
 // runFioStress runs an fio job:
 // If fio returns an error, this function will fail the Tast test.
 func runFioStress(ctx context.Context, s *testing.State, testConfig stress.TestConfig) error {
@@ -352,6 +450,10 @@ func stressRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWri
 			name:     "retention",
 			function: subTestFunc(retentionTestBlock),
 		},
+		{
+			name:     "trim",
+			function: subTestFunc(trimTestBlock),
+		},
 	} {
 		for retries := 0; retries < maxSubtestRetry; retries++ {
 			s.Logf("Subtest: %s, retry: %d of %d", tc.name, retries+1, maxSubtestRetry)
@@ -372,7 +474,7 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	start := time.Now()
 
 	slcConfig := slcQualConfig{}
-	if val, ok := s.Var("storage.slcQual"); ok {
+	if val, ok := s.Var("tast_storage_slc_qual"); ok {
 		var err error
 		if slcConfig.enabled, err = strconv.ParseBool(val); err != nil {
 			s.Fatal("Cannot parse argumet 'storage.QuickStress.slcQual' of type bool: ", err)
@@ -396,7 +498,7 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 			subtest(ctx, s, resultWriter, slcConfig)
 		})
 	}
-	if err := writeTestStatusFile(ctx, s.OutDir(), passed, start); err != nil {
+	if err := stress.WriteTestStatusFile(ctx, s.OutDir(), passed, start); err != nil {
 		s.Fatal("Error writing status file: ", err)
 	}
 }

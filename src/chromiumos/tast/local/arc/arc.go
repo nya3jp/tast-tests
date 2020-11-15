@@ -59,8 +59,20 @@ const (
 	VM
 )
 
-// locked is set to true while a precondition is active to prevent tests from calling New or Close.
+// locked is a flag that makes New and Close fail unconditionally.
 var locked = false
+
+// lock sets a flag that makes New and Close fail unconditionally.
+// Preconditions and fixtures should call this function on setup to prevent
+// tests from invalidating an ARC object by a mistake.
+func lock() {
+	locked = true
+}
+
+// unlock resets the flag set by lock.
+func unlock() {
+	locked = false
+}
 
 // TODO(b/134144418): Consolidate ARC and ARCVM diverged code once ADB issues are resolved.
 

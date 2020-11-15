@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/ippprint"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,21 +19,19 @@ func init() {
 			"bmalcolm@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data: []string{
 			"printer_unsupported_GenericPostScript.ppd.gz",
 			"to_print.pdf",
 			"printer_pin_print_unsupported_golden.ps",
 		},
 		Attr: []string{"group:mainline"},
-		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "no_pin",
 			Val: &ippprint.Params{
 				PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_unsupported_golden.ps",
-				OutDiffFile:  "no-pin_diff.txt",
 			},
 			ExtraData: []string{},
 		}, {
@@ -43,7 +40,6 @@ func init() {
 				PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_unsupported_golden.ps",
-				OutDiffFile:  "pin_diff.txt",
 				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{},

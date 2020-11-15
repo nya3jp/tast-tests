@@ -15,6 +15,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui/sharedfolders"
+	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -23,8 +26,8 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NoAccessToDownloads,
 		Desc:         "Run a test to make sure Linux does not have access to downloads on Chrome using a pre-built crostini image",
-		Contacts:     []string{"jinrong@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline"},
+		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
@@ -59,38 +62,61 @@ func init() {
 
 func NoAccessToDownloads(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
+	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	s.Log("Test home directory in container is empty by default")
 	if err := checkHomeDirInContainerEmpty(ctx, cont); err != nil {
 		s.Fatal("Home directory in container is not empty by default: ", err)
 	}
-	s.Log("Test MyFiles are not in the container by default")
-	const (
-		myFiles = "MyFiles"
-		mntPath = "/mnt/chromeos"
-	)
-	if err := cont.CheckFileDoesNotExistInDir(ctx, mntPath, myFiles); err != nil {
+
+	if err := cont.CheckFileDoesNotExistInDir(ctx, sharedfolders.MountPath, sharedfolders.MountFolderMyFiles); err != nil {
 		s.Fatal("MyFiles is unexpectedly listed in /mnt/chromeos in container by default: ", err)
 	}
 
 	// Create a file in Downloads.
-	const filename = "test.txt"
-	if err := ioutil.WriteFile(filepath.Join(filesapp.DownloadPath, filename), []byte("teststring"), 0644); err != nil {
+	const fileName = "test.txt"
+	ownerID, err := cryptohome.UserHash(ctx, cr.User())
+	if err != nil {
+		s.Fatal("Failed to get user hash: ", err)
+	}
+	filePath := filepath.Join("/home/user", ownerID, "Downloads", fileName)
+	if err := ioutil.WriteFile(filePath, []byte("teststring"), 0644); err != nil {
+		for _, dir := range []string{"/home/user", filepath.Join("/home/user", ownerID), filepath.Join("/home/user", ownerID, "Downloads")} {
+			if stat, err := os.Stat(dir); err == nil && stat.IsDir() {
+				s.Logf("%s exists", dir)
+			} else {
+				s.Logf("%s does not exist", dir)
+				result, err := testexec.CommandContext(ctx, "mount").Output(testexec.DumpLogOnError)
+				if err != nil {
+					s.Fatal("Failed to run command mount")
+				}
+				s.Logf("Result of command mount is: %s", string(result))
+				// Open Files app.
+				filesApp, err := filesapp.Launch(ctx, tconn)
+				if err != nil {
+					s.Fatal("Failed to open Files app: ", err)
+				}
+				defer filesApp.Close(ctx)
+				if err := filesApp.OpenDownloads(ctx); err != nil {
+					s.Fatal("Failed to open Downloads: ", err)
+				}
+				break
+			}
+		}
 		s.Fatal("Failed to create a file in Downloads: ", err)
 	}
-	defer os.Remove(filepath.Join(filesapp.DownloadPath, filename))
+	defer os.Remove(filePath)
 
-	s.Log("Test home directory in container is empty after creating a file in Downloads in Chrome")
 	if err := checkHomeDirInContainerEmpty(ctx, cont); err != nil {
 		s.Fatal("Home directory in container is not empty after creating a file in Downloads in Chrome: ", err)
 	}
-	s.Log("Test MyFiles are not in the container after creating a file in Downloads in Chrome")
-	if err := cont.CheckFileDoesNotExistInDir(ctx, mntPath, myFiles); err != nil {
+
+	if err := cont.CheckFileDoesNotExistInDir(ctx, sharedfolders.MountPath, sharedfolders.MountFolderMyFiles); err != nil {
 		s.Fatal("MyFiles is unexpectedly listed in /mnt/chromeos in container: ", err)
 	}
 }

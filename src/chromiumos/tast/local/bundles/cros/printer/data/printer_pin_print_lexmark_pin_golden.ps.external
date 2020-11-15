@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_pin_print_lexmark_pin_golden_20200629.ps",
-  "size": 80479,
-  "sha256sum": "63f162e7c0c58c92f27b9bb47976bde2ed1f77a90afe3539b1ec402cd4224aa6"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_pin_print_lexmark_pin_golden_20201111.ps",
+  "size": 176162,
+  "sha256sum": "46491315a666378c87584e21122c9ae08211ffcee1feea2f085a7486d35aab2b"
 }

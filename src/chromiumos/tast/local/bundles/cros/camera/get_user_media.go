@@ -22,10 +22,27 @@ func init() {
 		Func:         GetUserMedia,
 		Desc:         "Verifies that getUserMedia captures video",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
-		Pre:          pre.ChromeVideoWithFakeWebcam(),
+		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
+		Params: []testing.Param{
+			{
+				Name:              "real",
+				Pre:               pre.ChromeVideo(),
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{caps.BuiltinCamera, "camera_720p"},
+			},
+			{
+				Name:              "vivid",
+				Pre:               pre.ChromeVideo(),
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{caps.VividCamera},
+			},
+			{
+				Name: "fake",
+				Pre:  pre.ChromeVideoWithFakeWebcam(),
+			},
+		},
 	})
 }
 
@@ -36,10 +53,6 @@ func init() {
 // GetUserMedia performs video capturing for 3 seconds with 480p and 720p.
 // (It's 10 seconds in case it runs under QEMU.) This a short version of
 // camera.GetUserMediaPerf.
-//
-// This test uses the real webcam unless it is running under QEMU. Under QEMU,
-// it uses "vivid" instead, which is the virtual video test driver and can be
-// used as an external USB camera. In this case, the time limit is 10 seconds.
 func GetUserMedia(ctx context.Context, s *testing.State) {
 	duration := 3 * time.Second
 	// Since we use vivid on VM and it's slower than real cameras,

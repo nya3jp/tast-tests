@@ -30,16 +30,17 @@ import (
 	"chromiumos/tast/local/input"
 	screenshotCR "chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     CompanionLibrary,
-		Desc:     "Test all ARC++ companion library",
-		Contacts: []string{"sstan@google.com", "arc-framework+tast@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		// TODO(sstan): Remove display_backlight once crbug.com/950346 support hardware dependency.
-		SoftwareDeps: []string{"android_p", "chrome", "display_backlight"},
+		Func:         CompanionLibrary,
+		Desc:         "Test all ARC++ companion library",
+		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"android_p", "chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Data:         []string{"ArcCompanionLibDemo.apk", "white_wallpaper.jpg"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
@@ -116,7 +117,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get device: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	// Using HTTP server to provide image for wallpaper setting, because this chrome API don't support local file and gs file.
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
@@ -1328,7 +1329,7 @@ func windowBounds(ctx context.Context, d *ui.Device) (coords.Rect, error) {
 	const getWindowBoundsButtonID = companionLibDemoPkg + ":id/get_window_bounds_button"
 
 	parseBoundFromMsg := func(msg *companionLibMessage) (coords.Rect, error) {
-		// Parse Rect short string to rectangle format with native pixel size.
+		// Parse Rect short string to rectangle format with built-in pixel size.
 		var left, top, right, bottom int
 		if msg.WindowBoundMsg == nil {
 			return coords.Rect{}, errors.New("not a window bound message")

@@ -99,7 +99,9 @@ func launchAppForFacebook(ctx context.Context, s *testing.State, tconn *chrome.T
 	// Check for login page.
 	checkForloginPage := d.Object(ui.ClassName(loginPageClassName), ui.Description(loginPageDes))
 	if err := checkForloginPage.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("checkForloginButtonPage does exist")
+		s.Log("checkForloginButtonPage does not exist: ", err)
+	} else {
+		s.Log("checkForloginButtonPage in web view does exist")
 		return
 	}
 	// Enter email address.

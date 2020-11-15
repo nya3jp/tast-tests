@@ -11,12 +11,10 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net"
-	"os"
 	"reflect"
 	"sort"
 	"strconv"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -28,6 +26,7 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	local_network "chromiumos/tast/local/network"
 	"chromiumos/tast/local/network/cmd"
 	"chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
@@ -61,10 +60,16 @@ type WifiService struct {
 }
 
 // InitDUT properly initializes the DUT for WiFi tests.
-func (s *WifiService) InitDUT(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
-	// Stop UI to avoid interference from UI (e.g. request scan).
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		return nil, errors.Wrap(err, "failed to stop ui")
+func (s *WifiService) InitDUT(ctx context.Context, req *network.InitDUTRequest) (*empty.Empty, error) {
+	if !req.WithUi {
+		// Stop UI to avoid interference from UI (e.g. request scan).
+		if err := upstart.StopJob(ctx, "ui"); err != nil {
+			return nil, errors.Wrap(err, "failed to stop ui")
+		}
+	} else {
+		if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
+			return nil, errors.Wrap(err, "failed to start ui")
+		}
 	}
 
 	m, dev, err := s.wifiDev(ctx)
@@ -1960,15 +1965,11 @@ func suspend(ctx context.Context, wakeUpTimeout time.Duration) error {
 		pauseEthernetHookPath = "/run/autotest_pause_ethernet_hook"
 	)
 
-	// FLock the pauseEthernetHookPath to prevent check_ethernet.hook from initiating the recovery actions during test.
-	f, err := os.OpenFile(pauseEthernetHookPath, os.O_WRONLY|os.O_CREATE, 0644)
+	unlock, err := local_network.LockCheckNetworkHook(ctx)
 	if err != nil {
-		return errors.Wrapf(err, "failed to get the fd of %s", pauseEthernetHookPath)
+		return errors.Wrap(err, "failed to lock the check network hook")
 	}
-	defer f.Close()
-	if err := syscall.Flock(int(f.Fd()), syscall.LOCK_EX); err != nil {
-		return errors.Wrapf(err, "failed to lock the %s", pauseEthernetHookPath)
-	}
+	defer unlock()
 
 	rtcTimeSeconds := func() (int, error) {
 		b, err := ioutil.ReadFile(rtcPath)
@@ -2039,4 +2040,34 @@ func (s *WifiService) SuspendAssertConnect(ctx context.Context, req *network.Sus
 	}
 
 	return &network.SuspendAssertConnectResponse{ReconnectTime: time.Since(resumeStartTime).Nanoseconds()}, nil
+}
+
+// GetGlobalFTProperty returns the WiFi.GlobalFTEnabled manager property value.
+func (s *WifiService) GetGlobalFTProperty(ctx context.Context, _ *empty.Empty) (*network.GetGlobalFTPropertyResponse, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a shill manager")
+	}
+
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the shill manager properties")
+	}
+	enabled, err := props.GetBool(shillconst.ManagerPropertyGlobalFTEnabled)
+	if err != nil {
+		return nil, err
+	}
+	return &network.GetGlobalFTPropertyResponse{Enabled: enabled}, nil
+}
+
+// SetGlobalFTProperty set the WiFi.GlobalFTEnabled manager property value.
+func (s *WifiService) SetGlobalFTProperty(ctx context.Context, req *network.SetGlobalFTPropertyRequest) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a shill manager")
+	}
+	if err := m.SetProperty(ctx, shillconst.ManagerPropertyGlobalFTEnabled, req.Enabled); err != nil {
+		return nil, errors.Wrapf(err, "failed to set the shill manager property %s with value %v", shillconst.ManagerPropertyGlobalFTEnabled, req.Enabled)
+	}
+	return &empty.Empty{}, nil
 }

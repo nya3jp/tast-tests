@@ -19,11 +19,10 @@ func init() {
 		Func: QuickSettingsMicGainSlider,
 		Desc: "Checks that the Quick Settings mic gain slider can be adjusted",
 		Contacts: []string{
-			"kyleshima@chromium.org",
-			"bhansknecht@chromium.org",
-			"dhaddock@chromium.org",
+			"chromeos-sw-engprod@google.com",
+			"amehfooz@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "audio_record"},
 		Pre:          chrome.LoggedIn(),
 	})

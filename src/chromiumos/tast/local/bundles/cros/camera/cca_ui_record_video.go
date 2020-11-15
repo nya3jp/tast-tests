@@ -29,7 +29,14 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      5 * time.Minute,
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Pre: testutil.ChromeWithPlatformApp(),
+			Val: testutil.PlatformApp,
+		}, {
+			Name: "swa",
+			Pre:  testutil.ChromeWithSWA(),
+			Val:  testutil.SWA,
+		}},
 	})
 }
 
@@ -38,7 +45,8 @@ const durationTolerance = 300 * time.Millisecond
 
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	tb, err := testutil.NewTestBridge(ctx, cr, false)
+	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
+	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -65,7 +73,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 			ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 			defer cancel()
 
-			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, false)
+			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
 			if err != nil {
 				s.Fatal("Failed to open CCA: ", err)
 			}
@@ -229,13 +237,35 @@ func videoDuration(ctx context.Context, app *cca.App, info os.FileInfo) (time.Du
 
 	fraInfo, err := mp4.ProbeFra(f)
 	if err != nil {
-		return 0, errors.Wrapf(err, "failed to parse fmp4 file %v", path)
+		return 0, errors.Wrapf(err, "failed to probe fragments from %v", path)
 	}
 
 	duration := 0.0
-	for _, s := range fraInfo.Segments {
-		duration += float64(s.Duration) / float64(fraInfo.Tracks[s.TrackID-1].Timescale)
+	if len(fraInfo.Segments) == 0 {
+		// Regular MP4
+		boxes, err := mp4.ExtractBoxWithPayload(f, nil, mp4.BoxPath{mp4.BoxTypeMoov(), mp4.BoxTypeMvhd()})
+		if err != nil {
+			return 0, errors.Wrapf(err, "failed to parse mp4 header from %v", path)
+		}
+		if len(boxes) == 0 {
+			return 0, errors.New("no mvhd box found")
+		}
+		mvhd, ok := boxes[0].Payload.(*mp4.Mvhd)
+		if !ok {
+			return 0, errors.New("got invalid mvhd box")
+		}
+		duration = float64(mvhd.DurationV0) / float64(mvhd.TimescaleV0)
+		// TODO(crbug.com/1140852): Remove the logging once we fully migrated to regular mp4.
+		testing.ContextLogf(ctx, "Found a regular mp4 with duration %.2fs", duration)
+	} else {
+		// Fragmented MP4
+		// TODO(crbug.com/1140852): Remove fmp4 code path once we fully migrated to regular mp4.
+		for _, s := range fraInfo.Segments {
+			duration += float64(s.Duration) / float64(fraInfo.Tracks[s.TrackID-1].Timescale)
+		}
+		testing.ContextLogf(ctx, "Found a fragmented mp4 with duration %.2fs", duration)
 	}
+
 	return time.Duration(duration * float64(time.Second)), nil
 }
 

@@ -193,12 +193,17 @@ func CrosHealthdProbeCPUInfo(ctx context.Context, s *testing.State) {
 	// Verify the output for each physical CPU. Start on the third line, because
 	// that should always be the first line of "Physical CPU:". If it isn't, the
 	// test will fail verifying the first physical CPU, so it's a safe
-	// assumption.
-	for start, i := 2, 3; i <= len(lines); i++ {
-		if i == len(lines) || lines[i] == "Physical CPU:" {
+	// assumption. Don't verify the temperature channels, because they are
+	// optional.
+	for start, i := 2, 3; i < len(lines); i++ {
+		line := lines[i]
+		if i == len(lines) || line == "Physical CPU:" || line == "Temperature Channels:" {
 			err := verifyPhysicalCPU(lines[start:i])
 			if err != nil {
 				s.Error("Failed to verify physical CPU: ", err)
+			}
+			if line == "Temperature Channels:" {
+				break
 			}
 			start = i
 		}

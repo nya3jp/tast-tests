@@ -91,8 +91,18 @@ function main() {
 
   var vs_t = gl.getUniformLocation(program, "vs_t");
   var last_time = 0;
+  var skip = true;
 
 function update(time){
+  // Skipping every other frames so that update is at half rate. This is to
+  // lower the computational cost so low-end devices can have reasonable
+  // results for performance tast tests.
+  skip = !skip;
+  if (skip){
+    requestAnimationFrame(update);
+    return;
+  }
+
   last_time = time;
 
   if (0 != canvas.height)

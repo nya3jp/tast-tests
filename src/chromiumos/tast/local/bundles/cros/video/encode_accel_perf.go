@@ -15,6 +15,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Enable to cache the extracted raw video to speed up the test.
+const eapCacheExtractedVideo = false
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EncodeAccelPerf,
@@ -149,5 +152,5 @@ func init() {
 }
 
 func EncodeAccelPerf(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoPerfTest(ctx, s, s.Param().(encoding.TestOptions))
+	encode.RunAccelVideoPerfTest(ctx, s, s.Param().(encoding.TestOptions), eapCacheExtractedVideo)
 }

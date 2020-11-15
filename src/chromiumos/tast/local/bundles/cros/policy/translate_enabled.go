@@ -41,15 +41,15 @@ func TranslateEnabled(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*pre.PreData).Chrome
 	fdms := s.PreValue().(*pre.PreData).FakeDMS
 
-	// Setup and start webserver (implicitly provides data form above)
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer server.Close()
-
-	// Connect to Test API to use it with the ui library.
+	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	// Setup and start webserver (implicitly provides data form above)
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
 
 	for _, param := range []struct {
 		// name is the subtest name.
@@ -75,6 +75,8 @@ func TranslateEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name+".txt")
+
 			// Setup Chrome and enable policy
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {

@@ -9,10 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -24,82 +22,73 @@ func init() {
 		Func:         VirtualKeyboardInputFields,
 		Desc:         "Checks that virtual keyboard works on different input fields",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
+		Attr:         []string{"group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Pre:          pre.VKEnabled(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "us_en_stable",
+				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "us_en_unstable",
+				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-			},
-			{
+			}, {
+				Name:              "us_en_mojo",
+				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+				Val:               ime.INPUTMETHOD_XKB_US_ENG,
+				ExtraHardwareDeps: pre.InputsMojoModels,
+			}, {
 				Name:              "jp_us_stable",
+				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "jp_us_unstable",
+				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-			},
-			{
+			}, {
+				Name:              "jp_us_mojo",
+				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
+				ExtraHardwareDeps: pre.InputsMojoModels,
+			}, {
 				Name:              "zh_pinyin_stable",
+				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "zh_pinyin_unstable",
+				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
+			}, {
+				Name:              "zh_pinyin_mojo",
+				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
+				ExtraHardwareDeps: pre.InputsMojoModels,
 			},
 		},
 	})
 }
 
 func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
-
-	// Get current input method. Change IME for testing and revert it back in teardown.
-	imeCode := string(s.Param().(ime.InputMethodCode))
-	originalInputMethod, err := vkb.GetCurrentInputMethod(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get current input method: ", err)
-	} else if originalInputMethod != imeCode {
-		cleanupCtx := ctx
-		var cancel func()
-		ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
-		defer cancel()
-
-		defer func(ctx context.Context) {
-			s.Logf("Changing back input method to: %s", originalInputMethod)
-			if err := vkb.SetCurrentInputMethod(ctx, tconn, originalInputMethod); err != nil {
-				s.Logf("Failed to set input method to %s: %v", originalInputMethod, err)
-			}
-		}(cleanupCtx)
-
-		s.Logf("Set current input method to: %s", imeCode)
-		if err := vkb.SetCurrentInputMethod(ctx, tconn, imeCode); err != nil {
-			s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
-		}
-
-		// To install a new input method, it requires downloading and installing resources, it can take up to 10s.
-		// TODO(b/157686038): A better solution to identify decoder status.
-		// Decoder works async in returning status to frontend IME and self loading.
-		testing.Sleep(ctx, 10*time.Second)
+	imeCode := ime.IMEPrefix + string(s.Param().(ime.InputMethodCode))
+	s.Logf("Set current input method to: %s", imeCode)
+	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
+		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
 	}
 
 	its, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
 
@@ -261,10 +250,6 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 					s.Log("Failed to hide virtual keyboard: ", err)
 				}
 			}()
-
-			if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
-				s.Fatal("Failed to wait for virtual keyboard shown and locationed: ", err)
-			}
 
 			if err := vkb.TapKeys(ctx, tconn, subtest.keySeq); err != nil {
 				s.Fatalf("Failed to tap keys %v: %v", subtest.keySeq, err)

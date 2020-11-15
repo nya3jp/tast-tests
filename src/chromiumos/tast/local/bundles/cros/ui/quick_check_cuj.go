@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -25,7 +26,7 @@ func init() {
 		Func:         QuickCheckCUJ,
 		Desc:         "Measures the smoothess of screen unlock and open an gmail thread",
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          cuj.LoggedInToCUJUser(),
@@ -43,6 +44,11 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		goodAuthTimeout = 30 * time.Second
 		gmailTimeout    = 30 * time.Second
 	)
+
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx

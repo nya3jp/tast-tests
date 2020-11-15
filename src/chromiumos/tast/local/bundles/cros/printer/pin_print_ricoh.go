@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/ippprint"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,7 +19,7 @@ func init() {
 			"bmalcolm@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data: []string{
 			"to_print.pdf",
 			"printer_Ricoh_JobPassword.ppd",
@@ -28,14 +27,12 @@ func init() {
 			"printer_Ricoh_password.ppd",
 		},
 		Attr: []string{"group:mainline"},
-		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "jobpassword_no_pin",
 			Val: &ippprint.Params{
 				PpdFile:      "printer_Ricoh_JobPassword.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_ricoh_JobPassword_no_pin_golden.ps",
-				OutDiffFile:  "jobpassword_no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_JobPassword_no_pin_golden.ps"},
 		}, {
@@ -44,7 +41,6 @@ func init() {
 				PpdFile:      "printer_Ricoh_JobPassword.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_ricoh_JobPassword_pin_golden.ps",
-				OutDiffFile:  "jobpassword_pin_diff.txt",
 				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_JobPassword_pin_golden.ps"},
@@ -54,7 +50,6 @@ func init() {
 				PpdFile:      "printer_Ricoh_LockedPrintPassword.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_ricoh_LockedPrintPassword_no_pin_golden.ps",
-				OutDiffFile:  "lockedprintpassword_no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_LockedPrintPassword_no_pin_golden.ps"},
 		}, {
@@ -63,7 +58,6 @@ func init() {
 				PpdFile:      "printer_Ricoh_LockedPrintPassword.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_ricoh_LockedPrintPassword_pin_golden.ps",
-				OutDiffFile:  "lockedprintpassword_pin_diff.txt",
 				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_LockedPrintPassword_pin_golden.ps"},
@@ -73,7 +67,6 @@ func init() {
 				PpdFile:      "printer_Ricoh_password.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_ricoh_password_no_pin_golden.ps",
-				OutDiffFile:  "password_no-pin_diff.txt",
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_password_no_pin_golden.ps"},
 		}, {
@@ -82,7 +75,6 @@ func init() {
 				PpdFile:      "printer_Ricoh_password.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_ricoh_password_pin_golden.ps",
-				OutDiffFile:  "password_pin_diff.txt",
 				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{"printer_pin_print_ricoh_password_pin_golden.ps"},

@@ -9,13 +9,14 @@ package usbprintertests
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/printing/document"
+	"chromiumos/tast/local/bundles/cros/printer/lpprint"
 	"chromiumos/tast/local/printing/lp"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/printing/usbprinter"
@@ -117,9 +118,20 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	}, nil); err != nil {
 		s.Fatal("Print job didn't complete: ", err)
 	}
-
-	diffPath := filepath.Join(s.OutDir(), "diff.txt")
-	if err := document.CompareFiles(ctx, record, golden, diffPath); err != nil {
-		s.Error("Printed file differs from golden file: ", err)
+	goldenData, err := ioutil.ReadFile(golden)
+	if err != nil {
+		s.Fatal("Failed to read golden file: ", err)
+	}
+	output, err := ioutil.ReadFile(record)
+	if err != nil {
+		s.Fatal("Failed to read output file: ", err)
+	}
+	if lpprint.CleanPSContents(string(goldenData)) != lpprint.CleanPSContents(string(output)) {
+		outFile := filepath.Base(golden)
+		outPath := filepath.Join(s.OutDir(), outFile)
+		if err := ioutil.WriteFile(outPath, output, 0644); err != nil {
+			s.Error("Failed to dump output: ", err)
+		}
+		s.Errorf("Printer output differs from expected: output saved to %q", outFile)
 	}
 }

@@ -701,3 +701,42 @@ func WaitForHotseatAnimationToFinish(ctx context.Context, tc *chrome.TestConn) e
 
 	return nil
 }
+
+// WaitForStableShelfBounds waits for the shelf location to be the same for a single iteration of polling.
+func WaitForStableShelfBounds(ctx context.Context, tc *chrome.TestConn) error {
+	// The shelf info does not provide the shelf bounds themselves, but shelf icon bounds can be used as
+	// a proxy for the shelf position.
+	var firstIconBounds, lastIconBounds coords.Rect
+	var newFirstIconBounds, newLastIconBounds coords.Rect
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		shelfInfo, err := fetchShelfInfoForState(ctx, tc, &ShelfState{})
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to fetch scrollable shelf info"))
+		}
+
+		info := shelfInfo.ScrollableShelfInfo
+		if len(info.IconsBoundsInScreen) == 0 {
+			return testing.PollBreak(errors.New("no icons found"))
+		}
+
+		newFirstIconBounds = *info.IconsBoundsInScreen[0]
+		newLastIconBounds = *info.IconsBoundsInScreen[len(info.IconsBoundsInScreen)-1]
+
+		if firstIconBounds != newFirstIconBounds || lastIconBounds != newLastIconBounds {
+			firstIconBounds = newFirstIconBounds
+			lastIconBounds = newLastIconBounds
+			return errors.New("Shelf bounds location still changing")
+		}
+
+		if info.IsAnimating || info.IsShelfWidgetAnimating {
+			return errors.New("Shelf is animating")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
+		return errors.Wrap(err, "Shelf bounds unstable")
+	}
+
+	return nil
+}

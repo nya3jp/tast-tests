@@ -7,6 +7,9 @@ package arc
 import (
 	"context"
 	"strings"
+
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -51,4 +54,28 @@ func NetworkInterfaceNames(ctx context.Context) ([]string, error) {
 	}
 
 	return ifnames, nil
+}
+
+// BlockOutbound blocks all outbound traffic from ARC.
+func (a *ARC) BlockOutbound(ctx context.Context) error {
+	testing.ContextLog(ctx, "Blocking ARC outbound traffic")
+	if err := BootstrapCommand(ctx, "/system/bin/ip6tables", "-w", "-I", "OUTPUT", "-j", "REJECT").Run(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+	if err := BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-I", "OUTPUT", "-j", "REJECT").Run(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+	return BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-I", "OUTPUT", "-d", "localhost", "-j", "ACCEPT").Run(testexec.DumpLogOnError)
+}
+
+// UnblockOutbound unblocks all outbound traffic from ARC.
+func (a *ARC) UnblockOutbound(ctx context.Context) error {
+	testing.ContextLog(ctx, "Unblocking ARC outbound traffic")
+	if err := BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-D", "OUTPUT", "-d", "localhost", "-j", "ACCEPT").Run(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+	if err := BootstrapCommand(ctx, "/system/bin/iptables", "-w", "-D", "OUTPUT", "-j", "REJECT").Run(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+	return BootstrapCommand(ctx, "/system/bin/ip6tables", "-w", "-D", "OUTPUT", "-j", "REJECT").Run(testexec.DumpLogOnError)
 }

@@ -6,20 +6,18 @@ package inputs
 
 import (
 	"context"
-	"fmt"
-	"io"
-	"net/http"
-	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,11 +25,12 @@ func init() {
 		Func:         VirtualKeyboardQuickEmoji,
 		Desc:         "Checks that right click input field and select emoji will trigger virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:essential-inputs"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name:              "stable",
-			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kodama", "kefka")),
 		}, {
 			Name:              "unstable",
 			ExtraHardwareDeps: pre.InputsUnstableModels,
@@ -40,11 +39,7 @@ func init() {
 }
 
 func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -53,28 +48,21 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Start a local server to test chrome")
-	const identifier = "e14s-inputbox"
-	html := fmt.Sprintf(`<input type="text" id="text" autocorrect="off" aria-label=%q/>`, identifier)
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
-	}))
-	defer server.Close()
-
-	conn, err := cr.NewConn(ctx, server.URL)
+	its, err := testserver.Launch(ctx, cr)
 	if err != nil {
-		s.Fatal("Creating renderer for test page failed: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer conn.Close()
+	defer its.Close()
 
-	inputElement, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: identifier}, 5*time.Second)
+	inputField := testserver.TextInputField
+
+	inputFieldNode, err := inputField.GetNode(ctx, tconn)
 	if err != nil {
-		s.Fatalf("Failed to find input element %s: %v", identifier, err)
+		s.Fatal("Failed to find input field: ", err)
 	}
-	defer inputElement.Release(ctx)
+	defer inputFieldNode.Release(ctx)
 
-	if err := inputElement.RightClick(ctx); err != nil {
+	if err := inputFieldNode.RightClick(ctx); err != nil {
 		s.Fatal("Failed to right click the input element: ", err)
 	}
 
@@ -88,21 +76,26 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the input element: ", err)
 	}
 
-	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+	if _, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "emoji keyboard shown"}, 20*time.Second); err != nil {
+		s.Fatal("Failed to wait for emoji panel shown: ", err)
+	}
+
+	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for virtual keyboard shown: ", err)
 	}
 
-	if _, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "emoji keyboard shown"}, 20*time.Second); err != nil {
-		s.Fatal("Failed to wait for emoji panel shown: ", err)
+	const emojiChar = "😂"
+	if err := vkb.TapKey(ctx, tconn, emojiChar); err != nil {
+		s.Fatalf("Failed to tap key %s: %v", emojiChar, err)
+	}
+
+	if err := inputField.WaitForValueToBe(ctx, tconn, emojiChar); err != nil {
+		s.Fatal("Failed to verify input: ", err)
 	}
 
 	// Hide virtual keyboard and click input field again should not trigger vk.
 	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
 		s.Fatal("Failed to hide virtual keyboard: ", err)
-	}
-
-	if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard hidden: ", err)
 	}
 
 	// Verify virtual keyboard status is not persisted on clamshell.
@@ -114,7 +107,7 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 	}
 
 	if !tabletModeEnabled {
-		if err := inputElement.LeftClick(ctx); err != nil {
+		if err := inputField.Click(ctx, tconn); err != nil {
 			s.Fatal("Failed to click the input element: ", err)
 		}
 

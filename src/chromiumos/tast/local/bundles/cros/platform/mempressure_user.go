@@ -21,8 +21,9 @@ func init() {
 		Func:     MempressureUser,
 		Desc:     "Tests video loading times after creating memory pressure",
 		Contacts: []string{"asavery@chromium.org", "chromeos-storage@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_memory_nightly"},
-		Timeout:  180 * time.Minute,
+		// TODO(http://b/172074282): Test is disabled until it can be fixed
+		// Attr:     []string{"group:crosbolt", "crosbolt_memory_nightly"},
+		Timeout: 180 * time.Minute,
 		Data: []string{
 			mempressure.CompressibleData,
 			mempressure.WPRArchiveName,
@@ -59,7 +60,7 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed initializing UI Automator: ", err)
 		}
-		defer device.Close()
+		defer device.Close(ctx)
 		// Mute the DUT
 		cmd := testexec.CommandContext(ctx, "cras_test_client", "--mute", "1")
 		if err := cmd.Run(); err != nil {

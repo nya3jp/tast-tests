@@ -47,6 +47,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not initialize UI Automator: ", err)
 	}
+	defer d.Close(ctx)
 
 	s.Log("Creating virtual mouse")
 	m, err := input.Mouse(ctx)
@@ -131,11 +132,22 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear UI: ", err)
 	}
 
-	// When left-clicking on mouse, it injects ACTION_DOWN, ACTION_BUTTON_PRESS, ACTION_UP and ACTION_BUTTON_RELEASE events.
-	// Check latency for these four actions.
 	s.Log("Injecting mouse left-click events")
 	eventTimes = make([]int64, 0, numEvents)
-	for i := 0; i < numEvents; i += 4 {
+	ver, err := arc.SDKVersion()
+	if err != nil {
+		s.Fatal("Failed to get SDK version: ", err)
+	}
+	// When left-clicking on mouse, it injects ACTION_DOWN, ACTION_BUTTON_PRESS, ACTION_UP, and ACTION_BUTTON_RELEASE.
+	// On R, the framework also injects ACTION_HOVER_MOVE.
+	// Check latency for these actions.
+	var leftClickNumEvents int
+	if ver >= arc.SDKR {
+		leftClickNumEvents = 5
+	} else {
+		leftClickNumEvents = 4
+	}
+	for i := 0; i < numEvents; i += leftClickNumEvents {
 		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
@@ -148,8 +160,11 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
 			s.Fatal("Failed to generate event time: ", err)
 		}
-		// ACTION_UP and ACTION_BUTTON_RELEASE are generated together.
+		// ACTION_UP, ACTION_BUTTON_RELEASE, and ACTION_HOVER_MOVE are generated together.
 		eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
+		if leftClickNumEvents == 5 {
+			eventTimes = append(eventTimes, eventTimes[len(eventTimes)-1])
+		}
 		if err := m.Release(); err != nil {
 			s.Fatal("Unable to inject Release mouse event: ", err)
 		}

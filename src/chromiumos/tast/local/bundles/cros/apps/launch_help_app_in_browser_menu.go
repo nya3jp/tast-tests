@@ -6,10 +6,12 @@ package apps
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/testing"
 )
@@ -54,7 +56,30 @@ func LaunchHelpAppInBrowserMenu(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	if err := helpapp.LaunchFromThreeDotMenu(ctx, tconn); err != nil {
-		s.Fatal("Failed to launch Help app from chrome three dot menu: ", err)
+	opts := &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}
+
+	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
+		Role:      ui.RoleTypePopUpButton,
+		ClassName: "BrowserAppMenuButton",
+	}, opts); err != nil {
+		s.Fatal("Failed to click Chrome browser menu button")
+	}
+
+	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
+		Name:      "Help",
+		ClassName: "MenuItemView",
+	}, opts); err != nil {
+		s.Fatal("Failed to click Help item in browser menu options")
+	}
+
+	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
+		Name:      "Get Help",
+		ClassName: "MenuItemView",
+	}, opts); err != nil {
+		s.Fatal("Failed to click Get Help under Help sub menu")
+	}
+
+	if err := helpapp.WaitForApp(ctx, tconn); err != nil {
+		s.Fatal("Failed to launch or render Help app from Chrome browser menu: ", err)
 	}
 }

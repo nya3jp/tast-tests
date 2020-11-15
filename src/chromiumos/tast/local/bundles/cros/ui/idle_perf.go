@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/ui"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -20,9 +20,8 @@ func init() {
 		Func:         IdlePerf,
 		Desc:         "Measures the CPU usage while the desktop is idle",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      3 * time.Minute,
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -34,6 +33,11 @@ func init() {
 }
 
 func IdlePerf(ctx context.Context, s *testing.State) {
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
+
 	cr := s.PreValue().(arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -48,19 +52,9 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 
-	conn, err := cr.NewConn(ctx, ui.PerftestURL)
-	if err != nil {
-		s.Fatal("Failed to open the new tab page: ", err)
-	}
-	// No need to control the browser window, so it's safe to close the connection
-	// now.
-	if err = conn.Close(); err != nil {
-		s.Fatal("Failed to close the connection: ", err)
-	}
-
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		s.Log("Just wait for 20 seconds to check the load of idle status")
-		return testing.Sleep(ctx, 20*time.Second)
+		s.Log("Just wait for 30 seconds to check the load of idle status")
+		return testing.Sleep(ctx, 30*time.Second)
 	}); err != nil {
 		s.Fatal("Failed to run the test scenario: ", err)
 	}

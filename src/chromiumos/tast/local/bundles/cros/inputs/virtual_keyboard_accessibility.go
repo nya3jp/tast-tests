@@ -9,7 +9,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
@@ -19,33 +18,30 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardAccessibility,
 		Desc:         "Checks that the accessibility keyboard displays correctly",
-		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:essential-inputs"},
+		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
+		Attr:         []string{"group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Params: []testing.Param{{
 			Name:              "stable",
+			Pre:               pre.VKEnabledClamshell(),
 			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraAttr:         []string{"group:mainline"},
 		}, {
 			Name:              "unstable",
+			Pre:               pre.VKEnabledClamshell(),
 			ExtraHardwareDeps: pre.InputsUnstableModels,
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+		}, {
+			Name:              "mojo",
+			Pre:               pre.IMEServiceEnabled(pre.VKEnabledClamshell()),
+			ExtraHardwareDeps: pre.InputsMojoModels,
 		}},
 	})
 }
 
 func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
-	// Do not use --enable-virtual-keyboard as it will be enabled via
-	// accessibility prefs.
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
@@ -55,11 +51,6 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 	}
 	if shown {
 		s.Fatal("Virtual keyboard is shown, but expected it to be hidden")
-	}
-
-	s.Log("Enabling the accessibility keyboard")
-	if err := vkb.EnableA11yVirtualKeyboard(ctx, tconn, true); err != nil {
-		s.Fatal("Failed to enable the accessibility keyboard: ", err)
 	}
 
 	if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
@@ -72,10 +63,7 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 
 	// Check that the keyboard has modifier and tab keys.
 	keys := []string{"ctrl", "alt", "caps lock", "tab"}
-
-	for _, key := range keys {
-		if err := vkb.TapKey(ctx, tconn, key); err != nil {
-			s.Errorf("Failed to tap %q: %v", key, err)
-		}
+	if err := vkb.WaitForKeysExist(ctx, tconn, keys); err != nil {
+		s.Fatal("Failed to wait for keys to be shown: ", err)
 	}
 }

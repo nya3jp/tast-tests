@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -18,15 +19,20 @@ func init() {
 		Func:         TabSwitchCUJ,
 		Desc:         "Measures the performance of tab-switching CUJ",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{tabswitchcuj.WPRArchiveName},
-		Timeout:      15 * time.Minute,
+		Timeout:      22 * time.Minute,
 		Vars:         []string{"mute"},
 		Pre:          wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 	})
 }
 
 func TabSwitchCUJ(ctx context.Context, s *testing.State) {
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
+
 	tabswitchcuj.Run(ctx, s)
 }

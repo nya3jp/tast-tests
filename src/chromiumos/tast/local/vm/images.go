@@ -138,7 +138,7 @@ func DownloadStagingTermina(ctx context.Context) (string, error) {
 }
 
 // DownloadStagingContainer downloads the current staging container images from Google Storage.
-func DownloadStagingContainer(ctx context.Context, debianVersion ContainerDebianVersion) (string, error) {
+func DownloadStagingContainer(ctx context.Context, debianVersion ContainerDebianVersion, largeContainer bool) (string, error) {
 	if err := os.MkdirAll(imageDir, 0755); err != nil {
 		return "", errors.Wrap(err, "failed to mkdir for container image")
 	}
@@ -158,7 +158,11 @@ func DownloadStagingContainer(ctx context.Context, debianVersion ContainerDebian
 		debianVersionString = "stretch"
 	}
 
-	pathRe, err := regexp.Compile(fmt.Sprintf("images/debian/%s/%s/test/[^\\/]*/([^\\/\"]*)", debianVersionString, componentArch))
+	folderName := "test"
+	if largeContainer {
+		folderName = "app_test"
+	}
+	pathRe, err := regexp.Compile(fmt.Sprintf("images/debian/%s/%s/%s/[^\\/]*/([^\\/\"]*)", debianVersionString, componentArch, folderName))
 	if err != nil {
 		return "", errors.Wrap(err, "unable to compile staging container path regexp")
 	}
@@ -170,6 +174,9 @@ func DownloadStagingContainer(ctx context.Context, debianVersion ContainerDebian
 	}
 
 	allPaths := pathRe.FindAllStringSubmatch(imagesJSON.String(), -1)
+	if len(allPaths) == 0 {
+		return "", errors.Errorf("no container matching %q to download", pathRe)
+	}
 	urlPrefix := fmt.Sprintf("https://storage.googleapis.com/cros-containers-staging/%d/", milestone)
 	for _, matches := range allPaths {
 		imagePath := matches[0]

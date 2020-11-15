@@ -49,9 +49,10 @@ const (
 
 // find params for fixed items.
 var (
-	linuxBetaButton       = ui.FindParams{Name: "Linux (Beta)", Role: ui.RoleTypeButton}
+	developersButton      = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Developers|Linux.*`)}, Role: ui.RoleTypeButton}
 	nextButton            = ui.FindParams{Name: "Next", Role: ui.RoleTypeButton}
 	settingsHeading       = ui.FindParams{Name: "Settings", Role: ui.RoleTypeHeading}
+	settingsWindow        = ui.FindParams{Name: "Settings", Role: ui.RoleTypeWindow}
 	linuxSettings         = ui.FindParams{Name: PageNameLinux, Role: ui.RoleTypeRootWebArea}
 	emptySharedFoldersMsg = ui.FindParams{Name: "Shared folders will appear here", Role: ui.RoleTypeStaticText}
 	sharedFoldersList     = ui.FindParams{Name: "Shared folders", Role: ui.RoleTypeList}
@@ -79,6 +80,15 @@ func Open(ctx context.Context, tconn *chrome.TestConn) (*Settings, error) {
 	return s, nil
 }
 
+func navigateToDevelopers(ctx context.Context, tconn *chrome.TestConn) error {
+	// Navigate to Developers page or Linux settings page.
+	return uig.Do(ctx, tconn, uig.Retry(2,
+		uig.FindWithTimeout(settingsWindow, uiTimeout).
+			FindWithTimeout(developersButton, uiTimeout).
+			FocusAndWait(uiTimeout).
+			LeftClick()).WithNamef("navigateToDevelopers()"))
+}
+
 // OpenLinuxSettings open finds or launches Settings app and navigate to Linux Settings and its sub settings if any.
 // Returns a Settings instance.
 func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, subSettings ...string) (s *Settings, err error) {
@@ -87,13 +97,13 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, subSettings 
 		return nil, errors.Wrap(err, "failed to open the Settings app")
 	}
 	defer func() {
-		if err != nil {
+		if err != nil && s != nil {
 			s.Close(ctx)
 		}
 	}()
 
-	// Navigate to Linux settings page.
-	if err = uig.Do(ctx, tconn, uig.Retry(2, uig.FindWithTimeout(linuxBetaButton, uiTimeout).FocusAndWait(uiTimeout).LeftClick())); err != nil {
+	// Navigate to Developers settings page.
+	if err = navigateToDevelopers(ctx, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to open Linux settings")
 	}
 
@@ -143,9 +153,11 @@ func (s *Settings) OpenInstaller(ctx context.Context) error {
 	if err := s.ensureOpen(ctx); err != nil {
 		return errors.Wrap(err, "error in OpenInstaller()")
 	}
+	if err := navigateToDevelopers(ctx, s.tconn); err != nil {
+		return errors.Wrap(err, "error in OpenInstaller()")
+	}
 	return uig.Do(ctx, s.tconn,
 		uig.Steps(
-			uig.Retry(2, uig.FindWithTimeout(linuxBetaButton, uiTimeout).FocusAndWait(uiTimeout).LeftClick()),
 			uig.FindWithTimeout(nextButton, uiTimeout).LeftClick()).WithNamef("OpenInstaller()"))
 }
 
@@ -240,7 +252,7 @@ func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 
 // RemoveConfirmDialog represents the confirm dialog of removing Crostini.
 type RemoveConfirmDialog struct {
-	Self   *uig.Action `name:"Delete Linux (Beta)" role:"dialog"`
+	Self   *uig.Action `nameRegex:"Remove|Delete" role:"dialog"`
 	Delete *uig.Action `name:"Delete" role:"button"`
 	Cancel *uig.Action `name:"Cancel" role:"button"`
 }
@@ -251,7 +263,7 @@ func (s *Settings) ClickRemove(ctx context.Context, tconn *chrome.TestConn) (*Re
 	uig.PageObject(dialog)
 
 	if err := uig.Do(ctx, tconn,
-		uig.FindWithTimeout(linuxSettings, uiTimeout).FindWithTimeout(removeLinuxButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
+		uig.FindWithTimeout(removeLinuxButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
 		dialog.Self); err != nil {
 		return nil, errors.Wrap(err, "failed to find the delete dialog")
 	}
@@ -261,7 +273,7 @@ func (s *Settings) ClickRemove(ctx context.Context, tconn *chrome.TestConn) (*Re
 
 // ResizeDiskDialog represents the Resize Linux disk dialog.
 type ResizeDiskDialog struct {
-	Self   *uig.Action `name:"Resize Linux disk" role:"dialog"`
+	Self   *uig.Action `name:"Resize Linux disk" role:"genericContainer"`
 	Slider *uig.Action `role:"slider"`
 	Resize *uig.Action `name:"Resize" role:"button"`
 	Cancel *uig.Action `name:"Cancel" role:"button"`
@@ -303,14 +315,18 @@ func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *uig.Action
 		return 0, errors.Wrap(err, "error getting disk size setting")
 	}
 	defer node.Release(ctx)
+	return ParseDiskSize(node.Name)
+}
 
-	parts := strings.Split(node.Name, " ")
+// ParseDiskSize parses disk size from a string like "xx.x GB" to a uint64 value in bytes.
+func ParseDiskSize(sizeString string) (uint64, error) {
+	parts := strings.Split(sizeString, " ")
 	if len(parts) != 2 {
-		return 0, errors.Errorf("failed to parse disk size from %s: does not have exactly 2 space separated parts", node.Name)
+		return 0, errors.Errorf("failed to parse disk size from %s: does not have exactly 2 space separated parts", sizeString)
 	}
 	num, err := strconv.ParseFloat(parts[0], 64)
 	if err != nil {
-		return 0, errors.Wrapf(err, "failed to parse disk size from %s", node.Name)
+		return 0, errors.Wrapf(err, "failed to parse disk size from %s", sizeString)
 	}
 	unitMap := map[string]float64{
 		"B":  SizeB,
@@ -321,7 +337,7 @@ func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *uig.Action
 	}
 	units, ok := unitMap[parts[1]]
 	if !ok {
-		return 0, errors.Errorf("failed to parse disk size from %s: does not have a recognized units string", node.Name)
+		return 0, errors.Errorf("failed to parse disk size from %s: does not have a recognized units string", sizeString)
 	}
 	return uint64(num * units), nil
 }

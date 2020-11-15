@@ -6,9 +6,11 @@ package crostini
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/crostini/vmc"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/crostini"
@@ -81,10 +83,26 @@ func RemoveOk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click Delete button on remove Linux dialog: ", err)
 	}
 
-	turnOn, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, Name: "Linux (Beta)"}, 15*time.Second)
+	var developersButton = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Developers|Linux \(Beta\)`)}, Role: ui.RoleTypeButton}
+	turnOn, err := ui.FindWithTimeout(ctx, tconn, developersButton, 30*time.Second)
 	if err != nil {
 		s.Fatal("Failed to find turn on button after removing Linux: ", err)
 	}
 
 	turnOn.Release(ctx)
+
+	// Verify "vmc list" outputs 0.
+	hash, err := vmc.UserIDHash(ctx)
+	if err != nil {
+		s.Fatal("Failed to get CROS_USER_ID_HASH: ", err)
+	}
+	result, err := vmc.Command(ctx, hash, "list").Output()
+	if err != nil {
+		s.Fatal("Failed to run 'vmc list': ", err)
+	}
+
+	const expectedResult = "Total Size (bytes): 0\n"
+	if string(result) != expectedResult {
+		s.Fatalf("Failed to verify the result of 'vmc list', got %s, want %s", string(result), expectedResult)
+	}
 }

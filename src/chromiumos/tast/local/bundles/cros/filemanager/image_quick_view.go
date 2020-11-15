@@ -23,8 +23,7 @@ func init() {
 		Func: ImageQuickView,
 		Desc: "Tests image QuickView within the Files app",
 		Contacts: []string{
-			"bhansknecht@chromium.org",
-			"dhaddock@chromium.org",
+			"chromeos-sw-engprod@google.com",
 			"chromeos-files-syd@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
