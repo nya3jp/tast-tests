@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"net"
 	"os"
+	"path/filepath"
 	"strings"
 	"syscall"
 	"time"
@@ -30,7 +31,7 @@ import (
 )
 
 // BinaryPath is the root directory for lacros-chrome related binaries.
-const BinaryPath = LacrosTestPath + "/lacros_binary"
+var BinaryPath = LacrosTestPath + "/lacros_binary"
 
 // LacrosChrome contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
@@ -178,14 +179,35 @@ func receiveMojoFile(ctx context.Context) (*os.File, error) {
 
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
 func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
+	userDataDir := BinaryPath
+	// When launched by Omaha we need to wait several seconds after signing in for lacros to be launchable.
+	// It is ready when the image loader path is created with the chrome executable.
+	if p.Mode == omaha {
+		testing.ContextLog(ctx, "Waiting for Lacros to initialize")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var matches []string
+			if matches, _ = filepath.Glob("/run/imageloader/lacros-fishfood/*/chrome"); len(matches) == 0 {
+				return errors.New("BinaryPath does not exist yet")
+			}
+			BinaryPath = filepath.Dir(matches[0])
+			return nil
+		}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 5 * time.Second}); err != nil {
+			return nil, errors.Wrap(err, "failed to find lacros binary")
+		}
+		// Imageloader path is not writable so we use a different dir for user-data-dir.
+		// It will be cleared automatically when the test user is signed out.
+		userDataDir = "/home/chronos/user/lacrostast"
+		if err := os.MkdirAll(userDataDir, os.ModeDir); err != nil {
+			return nil, errors.Wrap(err, "failed to make user data directory")
+		}
+	}
+
 	killLacrosChrome(ctx)
 
-	// Create a new temporary directory for user data dir. We don't bother
-	// clearing it on shutdown, since it's a subdirectory of the binary
-	// path, which is cleared by pre.go. We need to use a new temporary
-	// directory for each invocation so that successive calls to
+	// Create a new temporary directory for user data dir.
+	// We need to use a new temporary directory for each invocation so that successive calls to
 	// LaunchLacrosChrome don't interfere with each other.
-	userDataDir, err := ioutil.TempDir(BinaryPath, "")
+	userDataDir, err := ioutil.TempDir(userDataDir, "")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create temp dir")
 	}
@@ -202,7 +224,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		"--no-first-run",                            // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--user-data-dir=" + userDataDir,            // Specify a --user-data-dir, which holds on-disk state for Chrome.
 		"--lang=en-US",                              // Language
-		"--breakpad-dump-location=" + BinaryPath,    // Specify location for breakpad dump files.
+		"--breakpad-dump-location=" + userDataDir,   // Specify location for breakpad dump files.
 		"--window-size=800,600",
 		"--log-file=" + userDataDir + "/logfile",     // Specify log file location for debugging.
 		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
@@ -230,7 +252,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	// to lacros as file descriptor #3. Be careful about this when adding more ExtraFiles.
 	l.cmd.Cmd.ExtraFiles = append(l.cmd.Cmd.ExtraFiles, f)
 
-	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
+	testing.ContextLog(ctx, "Starting lacros-chrome: ", strings.Join(args, " "))
 	if err := l.cmd.Cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}
