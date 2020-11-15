@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f3b2150_9f2c6ecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-11-15T23:47:02Z",
+      "side": 1,
+      "message": "Stress should run on the same partition as the trim. In case of main device, it\u0027s the same 4GB extra partition used for trim.",
+      "range": {
+        "startLine": 268,
+        "startChar": 45,
+        "endLine": 268,
+        "endChar": 69
+      },
+      "revId": "de0ec6497b07064e00abf529953cf604fab0f9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
