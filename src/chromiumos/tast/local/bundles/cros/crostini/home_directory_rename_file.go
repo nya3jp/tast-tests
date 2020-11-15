@@ -123,13 +123,18 @@ func testRenameFileFromContainer(ctx context.Context, filesApp *filesapp.FilesAp
 		return errors.Wrapf(err, "failed to rename file %s in container", fileName)
 	}
 
-	// The old file should not exist in Linux files.
-	if err := filesApp.CheckFileDoesNotExist(ctx, linuxfiles.Title, fileName, linuxfiles.DirName); err != nil {
-		return errors.Wrapf(err, "renamed file %s still exists in Linux files", fileName)
-	}
-	// The new file should exist in Linux files.
-	if err := filesApp.WaitForFile(ctx, newFileName, 10*time.Second); err != nil {
-		return errors.Wrapf(err, "file %s is not renamed in Linux files: ", fileName)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// The old file should not exist in Linux files.
+		if err := filesApp.CheckFileDoesNotExist(ctx, linuxfiles.Title, fileName, linuxfiles.DirName); err != nil {
+			return errors.Wrapf(err, "renamed file %s still exists in Linux files", fileName)
+		}
+		// The new file should exist in Linux files.
+		if err := filesApp.WaitForFile(ctx, newFileName, 10*time.Second); err != nil {
+			return errors.Wrapf(err, "file %s is not renamed in Linux files: ", fileName)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
 	}
 	return nil
 }
