@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "be962be9_e66474c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-15T22:35:05Z",
+      "side": 1,
+      "message": "Sure. I will create a separate cl to remove jp test",
+      "parentUuid": "dcbdc682_2e7c5b27",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "9bf7399dcb52553a79d056791df091ac099130ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "da6d126e_c3736a54",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b8f026_b923f0e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-15T22:35:05Z",
+      "side": 1,
+      "message": "Not for this case. UI automation is very flaky sometimes. When scroll element into viewport, it might stuck and not handle click event. That\u0027s why increased it to 1s interval.",
+      "parentUuid": "0e2fe343_5fefd9c2",
+      "range": {
+        "startLine": 159,
+        "startChar": 62,
+        "endLine": 159,
+        "endChar": 87
+      },
+      "revId": "9bf7399dcb52553a79d056791df091ac099130ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c55eeb01_20be5aff",
@@ -94,6 +142,30 @@
       "writtenOn": "2020-11-13T12:05:15Z",
       "side": 1,
       "message": "There is no need to touch these lines",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 4
+      },
+      "revId": "9bf7399dcb52553a79d056791df091ac099130ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51171243_9b86db89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-15T22:35:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c55eeb01_20be5aff",
       "range": {
         "startLine": 34,
         "startChar": 2,
@@ -141,6 +213,30 @@
       "side": 1,
       "message": "I think it\u0027s better to just remove tests or update attributes to don\u0027t run in input-tools group",
       "parentUuid": "a13506a1_251baa7a",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 8
+      },
+      "revId": "9bf7399dcb52553a79d056791df091ac099130ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8e3099_0c101b1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-15T22:35:05Z",
+      "side": 1,
+      "message": "I will do this in another cl.",
+      "parentUuid": "f09be525_c8ce18b6",
       "range": {
         "startLine": 47,
         "startChar": 3,
