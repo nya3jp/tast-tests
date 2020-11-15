@@ -53,6 +53,7 @@ var defaultChromeOptions = []chrome.Option{
 type PreData struct {
 	Chrome      *chrome.Chrome   // The CrOS-chrome instance.
 	TestAPIConn *chrome.TestConn // The CrOS-chrome connection.
+	Mode        setupMode
 }
 
 // StartedByData uses a pre-built image downloaded from cloud storage as a
@@ -79,10 +80,16 @@ func StartedByDataWith100FakeApps() testing.Precondition {
 // StartedByDataForceComposition is the same as StartedByData but forces composition for ChromeOS-chrome.
 func StartedByDataForceComposition() testing.Precondition { return startedByDataForceCompositionPre }
 
+// StartedByFlag is a precondition to enable Lacros by feature flag in Chrome.
+// This does not require downloading a binary from Google Storage before the test.
+// It will use the currently available fishfood release of Lacros from omaha.
+func StartedByFlag() testing.Precondition { return startedByFlagPre }
+
 type setupMode int
 
 const (
 	download setupMode = iota
+	omaha
 )
 
 var startedByDataPre = &preImpl{
@@ -100,6 +107,13 @@ var startedByDataForceCompositionPre = &preImpl{
 }
 
 var startedByDataWith100FakeAppsPre = ash.NewFakeAppPrecondition("fake_apps", 100, startedByDataWithChromeOSChromeOptions, false)
+
+var startedByFlagPre = &preImpl{
+	name:    "lacros_started_by_flag",
+	timeout: chrome.LoginTimeout + 7*time.Minute,
+	mode:    omaha,
+	opts:    []chrome.Option{chrome.EnableFeatures("LacrosSupport"), chrome.ExtraArgs("--lacros-mojo-socket-for-testing=" + mojoSocketPath)},
+}
 
 // Implementation of lacros's precondition.
 type preImpl struct {
@@ -196,6 +210,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		if err := p.prepareLacrosChromeBinary(ctx, s); err != nil {
 			s.Fatal("Failed to download and prepare lacros-chrome, err")
 		}
+	case omaha:
+		// No setup required.
 	default:
 		s.Fatal("Unrecognized mode: ", p.mode)
 	}
@@ -239,5 +255,5 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.tconn}
+	return PreData{p.cr, p.tconn, p.mode}
 }
