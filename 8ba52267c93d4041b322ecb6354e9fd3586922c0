@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db66a2c_fdee8632",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-15T22:28:13Z",
+      "side": 1,
+      "message": "+2 for Tast Owners.\n\nJust wanted to note that if this does not work, I have experienced bits shown on the screen missing from the accessibility tree, where waiting longer does not resolve the problem (see b/159074662). If you find this being the case, it would be good to catch up as there may be a bug in the way we generate the accessibility tree.",
+      "revId": "8ba52267c93d4041b322ecb6354e9fd3586922c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
