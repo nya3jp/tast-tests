@@ -130,7 +130,7 @@ func measureProcesses(ctx context.Context, path string) (int, int, error) {
 
 // measureBothChrome measures the current memory usage of both lacros-chrome and
 // chromeos-chrome. Returns (pmf, pss) in bytes.
-func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
+func measureBothChrome(ctx context.Context, s *testing.State, l *launcher.LacrosChrome) (int, int) {
 	// As a rule of thumb, we wait 60 seconds before taking any
 	// measurements. This gives time for previous operations to finish and
 	// the system to quiesce. In particular, both lacros-chrome and
@@ -138,9 +138,13 @@ func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 	// processes, but most will go away after 60 seconds.
 	testing.Sleep(ctx, 60*time.Second)
 
-	pmf, pss, err := measureProcesses(ctx, launcher.BinaryPath)
-	if err != nil {
-		s.Fatal("Failed to measure memory of lacros-chrome: ", err)
+	var pmf, pss int
+	if l != nil {
+		var err error
+		pmf, pss, err = measureProcesses(ctx, l.BinaryPath)
+		if err != nil {
+			s.Fatal("Failed to measure memory of lacros-chrome: ", err)
+		}
 	}
 	chromeosChromePath := "/opt/google/chrome"
 	pmf1, pss1, err := measureProcesses(ctx, chromeosChromePath)
@@ -163,7 +167,7 @@ func Memory(ctx context.Context, s *testing.State) {
 	url := params.url
 	for i := 0; i < 10; i++ {
 		// Measure memory before launching lacros-chrome.
-		pmf1, pss1 := measureBothChrome(ctx, s)
+		pmf1, pss1 := measureBothChrome(ctx, s, nil)
 
 		// We currently rely on the assumption that the launcher
 		// creates a windows that is 800x600 in size.
@@ -183,14 +187,14 @@ func Memory(ctx context.Context, s *testing.State) {
 		}
 
 		// Measure memory after launching lacros-chrome.
-		pmf2, pss2 := measureBothChrome(ctx, s)
+		pmf2, pss2 := measureBothChrome(ctx, s, l)
 		testing.ContextLogf(ctx, "lacros-chrome RssAnon + VmSwap (MB): %v. Pss (MB): %v ", (pmf2-pmf1)/1024/1024, (pss2-pss1)/1024/1024)
 
 		// Close lacros-chrome
 		l.Close(ctx)
 
 		// Measure memory before launching chromeos-chrome.
-		pmf3, pss3 := measureBothChrome(ctx, s)
+		pmf3, pss3 := measureBothChrome(ctx, s, nil)
 
 		var conns []*chrome.Conn
 		if params.mode == openTabMode {
@@ -223,7 +227,7 @@ func Memory(ctx context.Context, s *testing.State) {
 		}
 
 		// Measure memory after launching chromeos-chrome.
-		pmf4, pss4 := measureBothChrome(ctx, s)
+		pmf4, pss4 := measureBothChrome(ctx, s, l)
 		testing.ContextLogf(ctx, "chromeos-chrome RssAnon + VmSwap (MB): %v. Pss (MB): %v ", (pmf4-pmf3)/1024/1024, (pss4-pss3)/1024/1024)
 
 		// Close chromeos-chrome

@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -20,9 +21,17 @@ func init() {
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Pre:          launcher.StartedByData(),
 		Timeout:      7 * time.Minute,
-		Data:         []string{launcher.DataArtifact},
+		Params: []testing.Param{
+			{
+				Pre:       launcher.StartedByData(),
+				ExtraData: []string{launcher.DataArtifact},
+			},
+			{
+				Name:              "omaha",
+				Pre:               launcher.StartedByFlag(),
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("enguarde", "samus", "sparky")),
+			}},
 	})
 }
 
