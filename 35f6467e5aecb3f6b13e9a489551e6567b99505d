@@ -168,6 +168,24 @@
       "parentUuid": "c2e8f29a_c14275bd",
       "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a95972_57803c26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wmm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-15T19:12:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51241a77_79b602de",
+      "revId": "35f6467e5aecb3f6b13e9a489551e6567b99505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
