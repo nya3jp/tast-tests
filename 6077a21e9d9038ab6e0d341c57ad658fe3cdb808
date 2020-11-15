@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "921770e8_91ddf2c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-15T23:27:35Z",
+      "side": 1,
+      "message": "@nya It looks to me like Jun was the assigned reviewer from Tast Owners for the CL, but is OOO. Hence Ross did not get a response. Can we stop the script from assigning OOO reviewers?\n\nRoss -- as a pragmatic step, my suggestion if this recurs would be to manually assign the CL to another reviewer from tast-owners. But there probably isn\u0027t a need to add all of us at once as it produces a lot of email spam for folks.",
+      "revId": "6077a21e9d9038ab6e0d341c57ad658fe3cdb808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
