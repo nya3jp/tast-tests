@@ -169,6 +169,9 @@ func (inputField InputField) Click(ctx context.Context, tconn *chrome.TestConn) 
 		if err := node.MakeVisible(ctx); err != nil {
 			return errors.Wrapf(err, "failed to make the %s input field visible", string(inputField))
 		}
+		if err := node.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
+			return errors.Wrapf(err, "failed to wait for %s input field location stable", inputField)
+		}
 		return node.LeftClick(ctx)
 	}
 	return inputField.action(ctx, tconn, actionFunc)
@@ -179,6 +182,9 @@ func (inputField InputField) ClickUntilVKShown(ctx context.Context, tconn *chrom
 	actionFunc := func(node *ui.Node) error {
 		if err := node.MakeVisible(ctx); err != nil {
 			return errors.Wrapf(err, "failed to make the %s input field visible", string(inputField))
+		}
+		if err := node.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
+			return errors.Wrapf(err, "failed to wait for %s input field location stable", inputField)
 		}
 		return vkb.ClickUntilVKShown(ctx, tconn, node)
 	}
