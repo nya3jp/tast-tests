@@ -135,6 +135,24 @@
       "message": "I fixed the problem in CL:2530176 on trunk after R88-13593.0.0.\n\nDo we need the fix in M87?",
       "revId": "c5c910a8af8bd11ca2535841901f6dd312c15e61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1fbe8aa_181dea3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-16T21:29:14Z",
+      "side": 1,
+      "message": "I think that M87 is too close to stable to receive testing fixes for informational tests.  This fix went in before M88 branched so both M88 and M89 are green, so I think we\u0027re good to go.",
+      "parentUuid": "c11fecca_cfc4dff1",
+      "revId": "c5c910a8af8bd11ca2535841901f6dd312c15e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
