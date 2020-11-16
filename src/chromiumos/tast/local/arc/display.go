@@ -23,16 +23,13 @@ const (
 // For the moment only the default display (internal display) is supported.
 type Display struct {
 	a         *ARC // Close is not called here
-	displayID int
+	DisplayID int
 }
 
 // NewDisplay returns a new Display instance.
 // The caller is responsible for closing a.
 // Returned Display instance must be closed when the test is finished.
 func NewDisplay(a *ARC, displayID int) (*Display, error) {
-	if displayID != DefaultDisplayID {
-		return nil, errors.New("only displayID 0 is supported at the moment")
-	}
 	return &Display{a, displayID}, nil
 }
 
