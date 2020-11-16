@@ -16,6 +16,23 @@
       "message": "Adding Alexis because she knows memoryuser best.",
       "revId": "3d8ee569d010e5fa2bcc509bda790923bfd64522",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9232bd3d_a2b919af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "Can you add a group alias here as a backup?",
+      "revId": "3d8ee569d010e5fa2bcc509bda790923bfd64522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
