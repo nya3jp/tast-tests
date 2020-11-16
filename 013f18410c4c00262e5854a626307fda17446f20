@@ -87,6 +87,24 @@
       "parentUuid": "ce928d1a_6327c9bd",
       "revId": "013f18410c4c00262e5854a626307fda17446f20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e53589a_5bd571d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-16T17:48:39Z",
+      "side": 1,
+      "message": "\"couldn\u0027t enable metrics consent\" is a real, recurring issue we\u0027ve known about for a while on .real_consent variants. We\u0027ve been treating it as a blocker for updating to critical. Perhaps we can just make the mock_Consent variants critical for now?",
+      "parentUuid": "e6bda5a1_5a2c613c",
+      "revId": "013f18410c4c00262e5854a626307fda17446f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
