@@ -1,0 +1,179 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package policy
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/testing"
+)
+
+type extensionInstallPolicyTestTable struct {
+	name         string          // name is the subtest name.
+	allowInstall bool            // whether the extension should be allowed to be installed or not.
+	policies     []policy.Policy // policies is a list of ExtensionInstallAllowlist, ExtensionInstallBlocklist policies.
+}
+
+// Test API extension
+const testAPIExtensionId = "behllobkkfkfnphdnhnkndlbkcpglgmj"
+
+// Google keep chrome extension.
+const extensionId = "lpcaedmchfhocbbapmcbpinfpgnhiddi"
+const url = "https://chrome.google.com/webstore/detail/" + extensionId
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: ExtensionInstallPolicyCheck,
+		Desc: "Checks the behavior of ExtensionInstallAllowlist, ExtensionInstallBlocklist policies",
+		Contacts: []string{
+			"swapnilgupta@google.com", //Test Author
+			"chromeos-commercial-stability@google.com",
+		},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline"},
+		Pre:          pre.User,
+		Timeout:      4 * time.Minute, // There is a longer wait when installing the extension.
+		Params: []testing.Param{
+			{
+				Name: "blocklist_wildcard",
+				Val: []extensionInstallPolicyTestTable{
+					{
+						name:         "allowlist_set",
+						allowInstall: true,
+						policies: []policy.Policy{
+							// Test API extension should be specified in allow list, otherwise it would get disable automatically.
+							&policy.ExtensionInstallAllowlist{Val: []string{extensionId, testAPIExtensionId}},
+							&policy.ExtensionInstallBlocklist{Val: []string{"*"}},
+						},
+					},
+					{
+						name:         "allowlist_set_with_test_api_extension",
+						allowInstall: false,
+						policies: []policy.Policy{
+							&policy.ExtensionInstallAllowlist{Val: []string{testAPIExtensionId}},
+							&policy.ExtensionInstallBlocklist{Val: []string{"*"}},
+						},
+					},
+				},
+			},
+			{
+				Name: "blocklist_unset",
+				Val: []extensionInstallPolicyTestTable{
+					{
+						name:         "allowlist_set",
+						allowInstall: true,
+						policies: []policy.Policy{
+							&policy.ExtensionInstallAllowlist{Val: []string{extensionId}},
+						},
+					},
+					{
+						name:         "allowlist_unset",
+						allowInstall: true,
+						policies:     []policy.Policy{},
+					},
+				},
+			},
+			{
+				Name: "blocklist_set",
+				Val: []extensionInstallPolicyTestTable{
+					{
+						name:         "allowlist_set",
+						allowInstall: false,
+						policies: []policy.Policy{
+							&policy.ExtensionInstallAllowlist{Val: []string{extensionId}},
+							&policy.ExtensionInstallBlocklist{Val: []string{extensionId}},
+						},
+					},
+					{
+						name:         "allowlist_unset",
+						allowInstall: false,
+						policies: []policy.Policy{
+							&policy.ExtensionInstallBlocklist{Val: []string{extensionId}},
+						},
+					},
+				},
+			},
+		},
+	})
+}
+
+func ExtensionInstallPolicyCheck(ctx context.Context, s *testing.State) {
+	cr := s.PreValue().(*pre.PreData).Chrome
+	fdms := s.PreValue().(*pre.PreData).FakeDMS
+
+	// Connect to Test API to use it with the UI library.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	tcs, ok := s.Param().([]extensionInstallPolicyTestTable)
+	if !ok {
+		s.Fatal("Failed to convert test cases to the desired type")
+	}
+
+	for _, tc := range tcs {
+		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+tc.name+".txt")
+
+			// Perform cleanup.
+			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+				s.Fatal("Failed to clean up: ", err)
+			}
+
+			// Update policies.
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.policies); err != nil {
+				s.Fatal("Failed to update policies: ", err)
+			}
+
+			if err := canInstallExtension(ctx, tconn, cr, tc.allowInstall); err != nil {
+				s.Fatal("Failed to check if extension is allowed to be installed: ", err)
+			}
+		})
+	}
+
+}
+
+// Verifies whether the extension should be allowed to install or not.
+func canInstallExtension(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, allowInstall bool) error {
+	addParam := ui.FindParams{
+		Role: ui.RoleTypeButton,
+		Name: "Add to Chrome",
+	}
+	blockedParam := ui.FindParams{
+		Role: ui.RoleTypeButton,
+		Name: "Blocked by admin",
+	}
+
+	// Open the Chrome Web Store page of the extension.
+	conn, err := cr.NewConn(ctx, url)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to chrome")
+	}
+	defer conn.Close()
+
+	if allowInstall {
+		// For allowed extensions, there should be a button to add them.
+		if err := ui.WaitUntilExists(ctx, tconn, addParam, 15*time.Second); err != nil {
+			return errors.Wrap(err, "failed to find Add to Chrome button")
+		}
+	} else {
+		// For blocked extensions, there should be a blocked button.
+		if err := ui.WaitUntilExists(ctx, tconn, blockedParam, 15*time.Second); err != nil {
+			return errors.Wrap(err, "Failed to find Blocked by admin button")
+		}
+	}
+
+	return nil
+}
