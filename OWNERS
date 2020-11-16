@@ -7,6 +7,7 @@ set noparent
 # allows the owners to distribute code review loads.
 tast-owners@google.com
 
+# Tast reviewers
 bhansknecht@chromium.org
 deanliao@chromium.org
 ejcaruso@chromium.org
@@ -24,3 +25,11 @@ ricardoq@chromium.org
 vsavu@google.com
 yamaguchi@chromium.org
 yenlinlai@google.com
+
+# Green Stainless team
+# They frequently send changes to demote/disable flaky tests. Those changes are
+# exempted from Tast reviews since they are trivial test attribute changes
+# where Tast reviews have limited value. They have to be still approved by test
+# authors in the Contacts field.
+geohsu@chromium.org
+zwisler@google.com
