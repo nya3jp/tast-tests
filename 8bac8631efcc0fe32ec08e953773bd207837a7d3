@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1dccc27_a802fee9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-11-16T05:58:02Z",
+      "side": 1,
+      "message": "Let me add nya@ as a reviewer.\nnya@, is there any process on exporting functions in basic libraries like chrome.go ?\n",
+      "revId": "8bac8631efcc0fe32ec08e953773bd207837a7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b035bde3_e441f1bd",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-11-16T05:58:02Z",
+      "side": 1,
+      "message": "It seems this function doesn\u0027t use c.\nHow about removing the receiver (c *Chrome) ?",
+      "range": {
+        "startLine": 1428,
+        "startChar": 17,
+        "endLine": 1428,
+        "endChar": 38
+      },
+      "revId": "8bac8631efcc0fe32ec08e953773bd207837a7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
