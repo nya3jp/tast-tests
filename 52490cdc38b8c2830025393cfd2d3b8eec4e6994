@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4fae02b_48a19868",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2020-11-16T14:04:04Z",
+      "side": 1,
+      "message": "Please take a look. The logging is now permanent and off by default.\nUntil the problem is solved, the newly added Option is being called for all test in the New() method.\nOnce the issue is solved, we will remove this call and let users decide when to enable verbose logging for their tests.",
+      "revId": "52490cdc38b8c2830025393cfd2d3b8eec4e6994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
