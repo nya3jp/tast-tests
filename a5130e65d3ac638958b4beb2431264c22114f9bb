@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb9acec_aedde23d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T09:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16e69c65_488f2916",
+      "range": {
+        "startLine": 22,
+        "startChar": 86,
+        "endLine": 22,
+        "endChar": 87
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c36f8da_6a39a5df",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-11-12T15:09:24Z",
       "side": 1,
       "message": "\u003e  s.Fatal(\"Encountered error when adding initial bookmark: \", err)",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 74
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "075d2402_d4dd6c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T09:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c36f8da_6a39a5df",
       "range": {
         "startLine": 57,
         "startChar": 2,
