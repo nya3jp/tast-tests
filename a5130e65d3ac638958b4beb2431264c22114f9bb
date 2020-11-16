@@ -332,6 +332,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46d2d3c7_a679ffa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T15:19:41Z",
+      "side": 1,
+      "message": "Talked with Victor, changing the implementation.",
+      "parentUuid": "006f50c6_e780e7fc",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 82
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d96b2a5_d9b167ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 12
@@ -572,6 +596,24 @@
       "writtenOn": "2020-11-16T15:17:49Z",
       "side": 1,
       "message": "Tast has guidelines for logging:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\nYou can and should log more in the error case, but not in the normal case.",
+      "parentUuid": "9f47ded6_14ccc8b7",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b25ccb2_4122ad05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T15:19:41Z",
+      "side": 1,
+      "message": "Talked with Victor, changing the implementation.",
       "parentUuid": "9f47ded6_14ccc8b7",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -1140,6 +1182,24 @@
       "side": 1,
       "message": "We discussed it with Gabor.\n\nI try to follow BOT style api. We wanted to have just one package exposing all the possible actions - in this case browser. Test interacts with API exposed by browser package and here delegation to other packages modelling different parts of the browser window happens (applying some flavor of Page Object design pattern).\n\nWe were considering inheritance by composition to have something like:\nbrowser.bookmarksBar.Show()\n\nbut we ended up with proxying. It is not ideal, and I am open to adjust it to make it more coherent.",
       "parentUuid": "d0e1065d_21561854",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2bfc790_bc918921",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T15:19:41Z",
+      "side": 1,
+      "message": "Talked with Victor, changing the implementation.",
+      "parentUuid": "8b6aad3e_64f813c9",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
