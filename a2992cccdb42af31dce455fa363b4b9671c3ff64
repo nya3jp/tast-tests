@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38174b34_0ee94118",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26ce61e_89fa10cd",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "279c1c21_d7f4dcea",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-11-09T03:39:09Z",
       "side": 1,
       "message": "How about design the interface this way:\n\nfunc AppendAcceptRule(ctx, conn, chain, ruleOpt)\nfunc DeleteAcceptRule(ctx, conn, chain, ruleOpt)\n\nThe reason why we use ruleOpt is that most of the arguments specifying an iptable rule are optional.",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e2c20b_273fab02",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Well, adding separate functions to do 90% similar thing would be code duplication.\n\nThat being said, I like the notion of ruleOpt and its potential for extensibility.\nThus I\u0027d rather prefer AcceptRule(ctx, conn, ruleOpt).",
+      "parentUuid": "279c1c21_d7f4dcea",
       "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e62d232_c9f94c73",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbb8a01a_0fb29d77",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 43
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdbdbbfa_2d3a2c7e",
@@ -94,6 +160,30 @@
       "writtenOn": "2020-11-09T03:39:09Z",
       "side": 1,
       "message": "type TargetType string\nconst (\n  TargetAccept TargetType \u003d \"ACCEPT\"\n)",
+      "range": {
+        "startLine": 55,
+        "startChar": 41,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e40cbb33_2578bd52",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdbdbbfa_2d3a2c7e",
       "range": {
         "startLine": 55,
         "startChar": 41,
@@ -129,6 +219,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcbc5d0f_4076f38a",
+        "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "I prefer to have a full enum type name as a part of the name, either prefix or suffix.",
+      "parentUuid": "6eeee967_56ffd0e2",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8945ea07_9e034ab2",
         "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
         "patchSetId": 8
@@ -140,6 +254,30 @@
       "writtenOn": "2020-11-09T03:39:09Z",
       "side": 1,
       "message": "Like TCP_STREAM, except it measures stream\u0027s bitrate in opposite direction: from the netperf server to the client.",
+      "range": {
+        "startLine": 18,
+        "startChar": 52,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "746c06f0_56ba7744",
+        "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "It\u0027s longer, but well, anyways, whatever you like.",
+      "parentUuid": "8945ea07_9e034ab2",
       "range": {
         "startLine": 18,
         "startChar": 52,
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30169f8b_359a6b15",
+        "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3267812_7c20f45f",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 17
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4826a617_6ebfe392",
@@ -190,6 +352,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88ec785f_7bbe73ee",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4826a617_6ebfe392",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "864feb57_33da5107",
@@ -203,6 +383,24 @@
       "writtenOn": "2020-11-04T07:34:50Z",
       "side": 1,
       "message": "please add some comments for this.",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88eb9f54_ae5df57e",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "864feb57_33da5107",
       "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -226,6 +424,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24c30303_0a27aff8",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "That\u0027s where it\u0027s copied from. Except it\u0027s not: it does not log. I think that logging all errors after the first one is pointless, as it will likely be the same one or a consequence of the first one. And in my case it clutters console horribly in case we might expect some errors (like when we stop server \"just in case\" but it\u0027s actually not running).",
+      "parentUuid": "ac71ffd8_c3edfb42",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5b73729_a043ad36",
         "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
         "patchSetId": 8
@@ -237,6 +453,24 @@
       "writtenOn": "2020-11-09T03:39:09Z",
       "side": 1,
       "message": "In Golang we accept longer line so we wrap line less.",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5539859d_e5ed6ffc",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5b73729_a043ad36",
       "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -264,6 +498,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6497d95e_765d7e8f",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Yes and no. Running any command requires a runner (conn, command path, etc). I can create a degraded runner just for running initial stopNetServ() and call it separately from session.",
+      "parentUuid": "a2d42658_4a76bbbd",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2954ec7_1fa092e4",
@@ -277,6 +535,24 @@
       "writtenOn": "2020-11-04T07:34:50Z",
       "side": 1,
       "message": "maybe still log the error here?",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f5298fd_6c270ad6",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Do you mean log in case this fails? That would (mostly) print error in each test run, which would be misleading - this behaviour is (mostly) expected, not error; this is just to automatically recover after random disconnects (mainly: gcert timing out). I can leave some log, though.\n\nAnyway, no longer relevant due to refactor.",
+      "parentUuid": "e2954ec7_1fa092e4",
       "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -298,6 +574,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56c6ea3_3a7846c4",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b642959_8f104160",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f287eb95_8639cf47",
@@ -311,6 +605,30 @@
       "writtenOn": "2020-11-04T07:34:50Z",
       "side": 1,
       "message": "nit: combine into \"if err :\u003d r.startNewserv(ctx); err !\u003d nil {\"",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 16
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b837c5a3_dc124aa5",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f287eb95_8639cf47",
       "range": {
         "startLine": 147,
         "startChar": 1,
@@ -346,6 +664,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "386002c1_51039d8b",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Yes, it is set inside the `for` loop and returned outside it.",
+      "parentUuid": "29f81daa_603974bf",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 14
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bbed2082_08124d94",
         "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
         "patchSetId": 8
@@ -357,6 +699,30 @@
       "writtenOn": "2020-11-04T07:34:50Z",
       "side": 1,
       "message": "You can omit these if we don\u0027t care the err.",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 6
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05320982_2deaf6cb",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "I use it to signal I do ignore result on purpose, not by sloppiness.",
+      "parentUuid": "bbed2082_08124d94",
       "range": {
         "startLine": 193,
         "startChar": 2,
@@ -413,6 +779,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8217e0e9_336cf3f9",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc3819d8_9b463691",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 10
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af9debeb_521b07e2",
@@ -426,6 +816,30 @@
       "writtenOn": "2020-11-04T07:34:50Z",
       "side": 1,
       "message": "nit: maybe errCount is more accurate?",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fde9d0f_8dcca575",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "OK. The autotest version was getting empty result sometimes, perhaps that\u0027s the name origin.",
+      "parentUuid": "af9debeb_521b07e2",
       "range": {
         "startLine": 85,
         "startChar": 5,
@@ -453,6 +867,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e7c9d4_e1dc9967",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3be1a8e_eb90f552",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8a0f6fc_f7baa3fa",
@@ -466,6 +898,30 @@
       "writtenOn": "2020-11-04T07:34:50Z",
       "side": 1,
       "message": "I see runner.run already has some retry mechanism. Any reason that we need another one here? (I didn\u0027t see retry here in Autotest version?)",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 3
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d507d4d_b0f9b2da",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "You\u0027re right that\u0027s overzealous.",
+      "parentUuid": "d8a0f6fc_f7baa3fa",
       "range": {
         "startLine": 148,
         "startChar": 2,

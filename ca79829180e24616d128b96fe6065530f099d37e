@@ -148,6 +148,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72432c4c_22af3a6f",
+        "filename": "src/chromiumos/tast/remote/network/cmd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Reiterating: it works for now, but I\u0027prefer to have it wrapped, as we\u0027re likely about to use other devices and might need to do some more crawling. Having it wrapped will limit the scope of necessary changes then.",
+      "parentUuid": "43e64be4_8054496f",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8237eba2_ab749cbd",
+        "filename": "src/chromiumos/tast/remote/network/cmd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "It\u0027s not a member getter by definition, but I tend to not argue about names.",
+      "parentUuid": "de382be4_76cc5e27",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9ddd70ed_66058e85",
         "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
         "patchSetId": 4
@@ -159,6 +201,30 @@
       "writtenOn": "2020-11-09T03:39:09Z",
       "side": 1,
       "message": "an enum type describing network layer 4 protocol.",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "052a8fb3_08c68f0a",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Network is layer 3, but I get what you mean.",
+      "parentUuid": "9ddd70ed_66058e85",
       "range": {
         "startLine": 16,
         "startChar": 14,
@@ -182,6 +248,30 @@
       "writtenOn": "2020-11-09T03:39:09Z",
       "side": 1,
       "message": "an enum",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4822c834_114f3ff8",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dba9b466_a997a707",
       "range": {
         "startLine": 26,
         "startChar": 13,
@@ -217,6 +307,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a3cf6f5_ac2a7b85",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "It is a very small package, I wouldn\u0027t be worried about overlapping, that\u0027s what we have namespaces enforced by packages for.",
+      "parentUuid": "3540af63_3323907d",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5f3b2e7_35c97a28",
         "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
         "patchSetId": 4
@@ -228,6 +342,30 @@
       "writtenOn": "2020-11-09T03:39:09Z",
       "side": 1,
       "message": "Adds/deletes an iptables rule",
+      "range": {
+        "startLine": 44,
+        "startChar": 14,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3064ea8_b14d5fb3",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5f3b2e7_35c97a28",
       "range": {
         "startLine": 44,
         "startChar": 14,
@@ -251,6 +389,24 @@
       "writtenOn": "2020-11-09T03:39:09Z",
       "side": 1,
       "message": "See my comment in cmd/util.go",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc155557_14c8bc29",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "See my comment there as well.",
+      "parentUuid": "8eae67eb_f174bbfe",
       "revId": "ca79829180e24616d128b96fe6065530f099d37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -740,6 +896,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53fa2f72_472be7c8",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Could you elaborate more? This is removed code.",
+      "parentUuid": "40c9fb32_99d30fbe",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "567f08b5_af94b76e",
         "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
         "patchSetId": 4
@@ -969,6 +1149,24 @@
       "side": 1,
       "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#Sleep",
       "parentUuid": "2f841f1f_4d690d1f",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24fe772_f43a32d1",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:04:47Z",
+      "side": 1,
+      "message": "Yes, I\u0027m aware of that recommendation. However I can seen no other way, as I cannot find anything to poll for checking if server is up.",
+      "parentUuid": "ef9e916b_f6174d5c",
       "revId": "ca79829180e24616d128b96fe6065530f099d37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
