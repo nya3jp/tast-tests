@@ -368,6 +368,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cc97b04_9d967429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-16T06:13:05Z",
+      "side": 1,
+      "message": "That\u0027s right. But if the app is closed in 1 second. You do not need to wait for another 2 seconds.",
+      "parentUuid": "10361f71_b2692ebe",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 370,
+        "endChar": 34
+      },
+      "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5682738c_a08c65bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
         "patchSetId": 1
