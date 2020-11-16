@@ -46,6 +46,30 @@
       },
       "revId": "aaa01a636d0aa3597890ddf57c95b5099afec5ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c26acf_55493b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-16T21:43:58Z",
+      "side": 1,
+      "message": "This is when one day they add a feature that activates when the mouse is moved/clicked in the corner and the test breaks.",
+      "parentUuid": "77a448d1_8f1ae0a6",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "aaa01a636d0aa3597890ddf57c95b5099afec5ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
