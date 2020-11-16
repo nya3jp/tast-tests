@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71bfff98_8304188c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-16T15:09:56Z",
+      "side": 1,
+      "message": "Do we need to wait for page to load before calling \u0027conn.Eval\u0027 ?",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 4
+      },
+      "revId": "bcb151c7925d728f85ed39e745b68e9ade93eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
