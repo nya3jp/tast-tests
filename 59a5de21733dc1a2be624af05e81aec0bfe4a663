@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d599ab7_c640bc1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-16T20:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52b4a987_983cf184",
+      "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a477d6d8_6d8e20d9",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-11-16T19:58:23Z",
       "side": 1,
       "message": "nit: Indent since this is body of the \"then\" function.",
+      "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "872c687e_03ee5ef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-16T20:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a477d6d8_6d8e20d9",
       "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0f73a1_03c5c5a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-16T20:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb14f598_7d6e4459",
+      "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8403ed23_4a18d87c",
@@ -82,6 +136,24 @@
       "writtenOn": "2020-11-16T19:58:23Z",
       "side": 1,
       "message": "nit: End with \u0027;\u0027",
+      "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4318460d_5de374d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-16T20:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8403ed23_4a18d87c",
       "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
