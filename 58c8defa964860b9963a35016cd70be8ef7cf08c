@@ -146,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8377b71c_5583f6e4",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d70f224_7d0ed9d9",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 94
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98ff173f_cdd6ea37",
@@ -183,6 +207,30 @@
       "side": 1,
       "message": "OK, I can handle it in the caller function.",
       "parentUuid": "98ff173f_cdd6ea37",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 46
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1a78f1_2a235b3a",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ed33e86_684d360f",
       "range": {
         "startLine": 716,
         "startChar": 0,
@@ -239,6 +287,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "950667c8_5830ca22",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Or the other way around.",
+      "parentUuid": "6e59d184_759d8074",
+      "range": {
+        "startLine": 58,
+        "startChar": 60,
+        "endLine": 58,
+        "endChar": 77
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aaee908_f85c0a17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ebdebb3_c4487bca",
+      "range": {
+        "startLine": 58,
+        "startChar": 43,
+        "endLine": 58,
+        "endChar": 56
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9a79c1b_b52803c1",
@@ -252,6 +348,30 @@
       "writtenOn": "2020-11-03T05:58:15Z",
       "side": 1,
       "message": "Is this valid?",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "943b7060_b13b52ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Probably a Copy-Paste method\u0027s error.",
+      "parentUuid": "a9a79c1b_b52803c1",
       "range": {
         "startLine": 59,
         "startChar": 24,
@@ -309,6 +429,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4404a080_304adc8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5569ac72_dd6820b3",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "076477ea_2072b705",
@@ -322,6 +466,24 @@
       "writtenOn": "2020-11-03T05:58:15Z",
       "side": 1,
       "message": "The testcases seem to be different from the ones in Autotest, any reason for this change?",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73e3b38f_bd9fe698",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "You\u0027re right, I will add autotest ones.",
+      "parentUuid": "076477ea_2072b705",
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -343,6 +505,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e912c5_e5b3355a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7614632a_f34f1e0e",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17245887_a2f0c566",
@@ -356,6 +536,24 @@
       "writtenOn": "2020-10-30T15:50:47Z",
       "side": 1,
       "message": "Some description for this (and below) might be handy.",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90082d0e_04af1678",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17245887_a2f0c566",
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -377,6 +575,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0e9a50_eacdb826",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32ab83dd_c9171d61",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77461dfc_efb8da6f",
@@ -390,6 +606,30 @@
       "writtenOn": "2020-11-03T05:58:15Z",
       "side": 1,
       "message": "I think sharing these with global variable is kind of bad, esp., it will be in package scope. Can we pass these with function parameters instead?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae93d8ad_01c3b6d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Even better, they are used only in writeThroughputTSVFiles(), so I can also read them there.",
+      "parentUuid": "77461dfc_efb8da6f",
       "range": {
         "startLine": 120,
         "startChar": 0,
@@ -423,6 +663,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae19d4a_1007d4ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Covfefe ;)",
+      "parentUuid": "4fbc540e_f850af42",
+      "range": {
+        "startLine": 139,
+        "startChar": 46,
+        "endLine": 139,
+        "endChar": 56
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a00dafe_7ebb08c8",
@@ -436,6 +700,24 @@
       "writtenOn": "2020-11-03T05:58:15Z",
       "side": 1,
       "message": "I think you are probably doing \"grep\" here? (I guess my old code in router.go also needs the fix).",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d3463bb_4d29be44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "I wouldn\u0027t dare to change your code ;) Besides, to catch all corner cases I cannot change too much.",
+      "parentUuid": "5a00dafe_7ebb08c8",
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -487,6 +769,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe38c29_2e9a29e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f777cd5_f2ec6465",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 13
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d4a8985_603d4c4b",
@@ -500,6 +806,30 @@
       "writtenOn": "2020-11-04T07:34:11Z",
       "side": 1,
       "message": "This seems exactly the same as the ContextLogf above. Do we need another copy in log? (in case of file write error?) If so, perhaps fmt.Sprintf once and use it in the two places?",
+      "range": {
+        "startLine": 230,
+        "startChar": 30,
+        "endLine": 232,
+        "endChar": 46
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc98212f_ddf5883e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "No, this is my laziness for checking test output without bothering to look for files. I mean to remove it before sending to CQ.",
+      "parentUuid": "3d4a8985_603d4c4b",
       "range": {
         "startLine": 230,
         "startChar": 30,
@@ -527,6 +857,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb711ae_fc36b832",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5cdfd6b_c13cbb23",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d08db010_c601a2ef",
@@ -540,6 +888,24 @@
       "writtenOn": "2020-10-30T15:50:47Z",
       "side": 1,
       "message": "Frequency should be derived from channel.",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220bf77e_f9142f03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d08db010_c601a2ef",
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -591,6 +957,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a05e3b_ec8973b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f957845c_16bf55b1",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 0
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "987a367e_e65efed1",
@@ -604,6 +994,24 @@
       "writtenOn": "2020-10-30T15:50:47Z",
       "side": 1,
       "message": "There\u0027s no need to override freq.",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "036a2dba_c5099aa2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "987a367e_e65efed1",
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -631,6 +1039,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f425692e_9bce3bd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "We don\u0027t expect fails, right. I\u0027ll adjust the comment.\n\nThat being said, Fatal ends with runtime.Goexit(), not panic, so all defer()s are called.",
+      "parentUuid": "9d34e95a_91088f36",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 59
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7f11802_8dca4ee8",
@@ -644,6 +1076,30 @@
       "writtenOn": "2020-11-04T07:34:11Z",
       "side": 1,
       "message": "nit: merge into \"if _, err :\u003d tf.ConnectWifiAP(ctx, ap); err !\u003d nil {\" ?",
+      "range": {
+        "startLine": 326,
+        "startChar": 2,
+        "endLine": 327,
+        "endChar": 17
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "918887c0_22d1571c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f11802_8dca4ee8",
       "range": {
         "startLine": 326,
         "startChar": 2,
@@ -727,6 +1183,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "519203cb_527d9721",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Due to the nature of Attenuator calls (HTTP/wget requests over SSH), I don\u0027t think we need to worry too much about races. However, I like the notion of handling any expected errors in TF itself. Though, I\u0027d rather refactor it to two functions, otherwise it won\u0027t be `Clean` disconnect. WDYT?",
+      "parentUuid": "5da4f438_9ea8c07d",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 23
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ab0be9c_046d4b87",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 2
@@ -791,6 +1271,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f156f8a_b71d5e21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Dunno. netperf starts test from TCP connection to server to establish test parameters and (surprisingly) sometimes succeeds. If not, it times out. I will think about it.",
+      "parentUuid": "ca917ef6_c2723f27",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fa78df2_a1f2d35d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9fc5d41_015b7339",
+      "range": {
+        "startLine": 380,
+        "startChar": 3,
+        "endLine": 380,
+        "endChar": 14
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd82c850_b026f858",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 2
@@ -824,6 +1346,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c58ad1_0a660a3d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cf5a893_d8eb5e3a",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbcfc7aa_7120e93a",
@@ -847,6 +1387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe18a02_7b0bcad2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbcfc7aa_7120e93a",
+      "range": {
+        "startLine": 400,
+        "startChar": 25,
+        "endLine": 400,
+        "endChar": 29
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06497d92_195731df",
@@ -860,6 +1424,24 @@
       "writtenOn": "2020-11-03T05:58:15Z",
       "side": 1,
       "message": "remove this line?",
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d03c457_aa18f492",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-16T22:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06497d92_195731df",
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
