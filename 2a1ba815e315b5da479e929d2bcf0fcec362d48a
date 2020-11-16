@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daf14df5_a9f2c024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-11-16T23:17:42Z",
+      "side": 1,
+      "message": "I\u0027ll take another look once you\u0027ve addressed Miguel\u0027s comments.",
+      "revId": "2a1ba815e315b5da479e929d2bcf0fcec362d48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93a9a6ce_a1de08a3",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-11-16T23:17:42Z",
+      "side": 1,
+      "message": "failed for",
+      "range": {
+        "startLine": 132,
+        "startChar": 43,
+        "endLine": 132,
+        "endChar": 49
+      },
+      "revId": "2a1ba815e315b5da479e929d2bcf0fcec362d48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
