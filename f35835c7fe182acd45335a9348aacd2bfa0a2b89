@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95bf37d1_439c9eaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "not used? Do you mind add it back once this is implemented?",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc7557f_a350a778",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "Looks like you don\u0027t need to export this? Am I missing something?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde57514_35b09864",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "MainActivity",
+      "range": {
+        "startLine": 40,
+        "startChar": 82,
+        "endLine": 40,
+        "endChar": 87
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70371f02_9654f3f7",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "t.packageName()",
+      "range": {
+        "startLine": 41,
+        "startChar": 46,
+        "endLine": 41,
+        "endChar": 71
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc9a1d9_f122f160",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "t.packageName()",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 58
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79511c1f_698faa7b",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "Move to line 91.",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d1d1a8b_0cb00c24",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "done :\u003d t.StillAlive(ctx, testEnv)",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b013f3d_3df95df6",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "No strong opinion but I feel t.packageName() can be used for the string representation as well.",
+      "range": {
+        "startLine": 110,
+        "startChar": 35,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d9f98f_2fe7fd04",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "How do you distinguish an error or the app is still running?",
+      "range": {
+        "startLine": 119,
+        "startChar": 77,
+        "endLine": 119,
+        "endChar": 81
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5b3535_5b407e05",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "num",
+      "range": {
+        "startLine": 147,
+        "startChar": 66,
+        "endLine": 147,
+        "endChar": 73
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f326665_54c4569d",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T19:51:20Z",
+      "side": 1,
+      "message": "can you implement this in this patch? Otherwise, other tests using the same precondition would likely fails.",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 20
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
