@@ -16,6 +16,23 @@
       "message": "Please include a link to a failling run so that the owners can start to debug it.",
       "revId": "3f4282c96aeb406247344cd4129c874533bc8da2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f807a12c_1bc93a7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308805
+      },
+      "writtenOn": "2020-11-16T00:15:32Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "3f4282c96aeb406247344cd4129c874533bc8da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
