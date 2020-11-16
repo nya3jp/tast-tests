@@ -69,7 +69,7 @@ func DisableScreenshots(ctx context.Context, s *testing.State) {
 			name:             "true",
 			value:            []policy.Policy{&policy.DisableScreenshots{Val: true}},
 			wantAllowed:      false,
-			wantNotification: "Screenshots disabled",
+			wantNotification: "Screenshot is blocked",
 		},
 		{
 			name:             "false",
