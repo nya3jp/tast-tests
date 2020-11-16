@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39c2e364_938c3b9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T21:05:32Z",
+      "side": 1,
+      "message": "Woops I jumped the gun :-)",
+      "revId": "92a109b3b8ff3242d6be3e4e0cd13288fb29e9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c504da_7e936125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T21:05:32Z",
+      "side": 1,
+      "message": "l.110/l.152 use the other convention, so here it should read \"av1_sw_hdr\".",
+      "range": {
+        "startLine": 79,
+        "startChar": 15,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "92a109b3b8ff3242d6be3e4e0cd13288fb29e9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
