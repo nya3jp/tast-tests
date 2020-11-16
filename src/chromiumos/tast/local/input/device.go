@@ -61,8 +61,8 @@ func (di *devInfo) String() string {
 		di.path, di.name, di.bustype, di.vendor, di.product, di.version)
 }
 
-// isKeyboard returns true if this appears to be a keyboard device.
-func (di *devInfo) isKeyboard() bool {
+// IsKeyboard returns true if this appears to be a keyboard device.
+func (di *devInfo) IsKeyboard() bool {
 	// Just check some arbitrary keys. The choice of 1, Q, Space and
 	// VolumeDown from:
 	// https://chromeos.google.com/partner/dlm/docs/hardware-specs/keyboardspec.html
@@ -71,8 +71,8 @@ func (di *devInfo) isKeyboard() bool {
 		di.hasBit(keyGroup, uint16(KEY_SPACE)) && di.hasBit(keyGroup, uint16(KEY_VOLUMEDOWN))
 }
 
-// isTouchscreen returns true if this appears to be a touchscreen device.
-func (di *devInfo) isTouchscreen() bool {
+// IsTouchscreen returns true if this appears to be a touchscreen device.
+func (di *devInfo) IsTouchscreen() bool {
 	// Touchscreen reports values in absolute coordinates, and should have the BTN_TOUCH bit set.
 	// Multitouch (bit ABS_MT_SLOT) is required to differentiate itself from some stylus devices.
 	// Some touchpad devices (like in Kevin) implement all the features needed for a touchscreen

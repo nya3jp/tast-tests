@@ -72,8 +72,8 @@ B: ABS=e61800001000003`,
 	expectations := []struct {
 		*devInfo
 		bits  map[string]string // map from group name, e.g. "KEY", to hex bitfield
-		kb    bool              // should isKeyboard return true?
-		touch bool              // should isTouchscreen return true?
+		kb    bool              // should IsKeyboard return true?
+		touch bool              // should IsTouchscreen return true?
 	}{
 		{
 			devInfo: &devInfo{
@@ -138,11 +138,11 @@ B: ABS=e61800001000003`,
 				}
 			}
 		}
-		if kb := info.isKeyboard(); kb != exp.kb {
-			t.Errorf("device %d isKeyboard() = %v; want %v", i, kb, exp.kb)
+		if kb := info.IsKeyboard(); kb != exp.kb {
+			t.Errorf("device %d IsKeyboard() = %v; want %v", i, kb, exp.kb)
 		}
-		if touch := info.isTouchscreen(); touch != exp.touch {
-			t.Errorf("device %d isTouchscreen() = %v; want %v", i, touch, exp.touch)
+		if touch := info.IsTouchscreen(); touch != exp.touch {
+			t.Errorf("device %d IsTouchscreen() = %v; want %v", i, touch, exp.touch)
 		}
 
 		info.bits = nil // can't compare *big.Int
