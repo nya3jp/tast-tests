@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d8fdd3_b09d4df3",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-11-16T23:59:00Z",
+      "side": 1,
+      "message": "*marking resolved*",
+      "parentUuid": "4012bf2e_b81286b6",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "8e97c6807f53a27a7382b67de27e4f5a17a33562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1ed8d2a_fcbb2eee",

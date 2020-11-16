@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f38ca8_e103602e",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-11-16T23:59:00Z",
+      "side": 1,
+      "message": "Hint: I already made similar comments. It\u0027s a good idea to go through all unresolved comments (Gerrit will count them, separately from resolved comments) and reply / mark-resolved.",
+      "parentUuid": "fe95802c_cd0a011f",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "5349bf6372b9765395714d084bdb06cd1123f4a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4571821f_9b06cce0",
