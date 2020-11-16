@@ -39,6 +39,30 @@
       },
       "revId": "7d6d1eba189e739672953df2b1394ba011208cab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3baeb6f_c702f384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/card_element_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2020-11-16T16:34:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3a009c0_3455bab1",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "7d6d1eba189e739672953df2b1394ba011208cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
