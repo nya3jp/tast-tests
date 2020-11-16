@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdf2d29e_e7e51a0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-16T21:54:44Z",
+      "side": 1,
+      "message": "Thanks for the quick review.",
+      "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d494438c_069dc215",
@@ -96,6 +113,30 @@
       "side": 1,
       "message": "Ack. Consistency is important!\n\nInteresting to see allowlist/whitelist/blocklist/blacklist in those tests. To me, I can\u0027t tell the difference between some of them lol (maybe off the topic here)",
       "parentUuid": "ff9c5b18_04ce553c",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d6548c_9a1d78a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-16T21:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2432b037_a8f1ca0f",
       "range": {
         "startLine": 39,
         "startChar": 4,
