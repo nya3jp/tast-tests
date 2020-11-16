@@ -130,9 +130,30 @@ func NewActivity(a *ARC, pkgName, activityName string) (*Activity, error) {
 	}, nil
 }
 
+// NewActivityOnDisplay returns a new Activity instance on specific display.
+// The caller is responsible for closing a.
+// Returned Activity instance must be closed when the test is finished.
+func NewActivityOnDisplay(ctx context.Context, a *ARC, pkgName, activityName string, displayID int) (*Activity, error) {
+	if isAvailableDisplay, err := IsAvailableDisplayID(ctx, a, displayID); err != nil {
+		return nil, errors.Wrap(err, "could not get display id list from ARC")
+	} else if !isAvailableDisplay {
+		return nil, errors.Wrap(err, "not an available display id")
+	}
+	disp, err := NewDisplay(a, displayID)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not create a new Display")
+	}
+	return &Activity{
+		a:            a,
+		pkgName:      pkgName,
+		activityName: activityName,
+		disp:         disp,
+	}, nil
+}
+
 // Start starts the activity by invoking "am start" and waits for it to be visible on the Chrome side.
 func (ac *Activity) Start(ctx context.Context, tconn *chrome.TestConn) error {
-	cmd := ac.a.Command(ctx, "am", "start", "-W", ac.pkgName+"/"+ac.activityName)
+	cmd := ac.a.Command(ctx, "am", "start", "--display", strconv.Itoa(ac.disp.DisplayID), "-W", ac.pkgName+"/"+ac.activityName)
 	return ac.startHelper(ctx, tconn, cmd)
 }
 

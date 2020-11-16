@@ -23,22 +23,68 @@ const (
 // For the moment only the default display (internal display) is supported.
 type Display struct {
 	a         *ARC // Close is not called here
-	displayID int
+	DisplayID int
 }
 
 // NewDisplay returns a new Display instance.
 // The caller is responsible for closing a.
 // Returned Display instance must be closed when the test is finished.
 func NewDisplay(a *ARC, displayID int) (*Display, error) {
-	if displayID != DefaultDisplayID {
-		return nil, errors.New("only displayID 0 is supported at the moment")
-	}
 	return &Display{a, displayID}, nil
 }
 
 // Close closes resources related to the Display instance.
 func (d *Display) Close() {
 	// Blank on purpose. Function added for forward-compatibility.
+}
+
+// IsAvailableDisplayID checks if a display id existed in ARC.
+func IsAvailableDisplayID(ctx context.Context, a *ARC, displayID int) (bool, error) {
+	displayIDs, err := AvailableDisplayID(ctx, a)
+	if err != nil {
+		return false, err
+	}
+	for _, id := range displayIDs {
+		if displayID == id {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+// AvailableDisplayID returns available ARC display id array.
+func AvailableDisplayID(ctx context.Context, a *ARC) ([]int, error) {
+	cmd := a.Command(ctx, "dumpsys", "display")
+	output, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to execute 'dumpsys display'")
+	}
+
+	// Looking for:
+	// mDisplayId=0
+	// ...
+	// mDisplayId=1
+	// ...
+	// mDisplayId=...
+	re := regexp.MustCompile(`(?m)` + // Enable multiline.
+		`mDisplayId=(\d+)`) // Gather displayId number.
+	groups := re.FindAllStringSubmatch(string(output), -1)
+	if len(groups) == 0 {
+		return nil, errors.New("failed to parse display from dumpsys output")
+	}
+
+	var displayIDs []int
+	for _, group := range groups {
+		if len(group) != 2 {
+			return nil, errors.New("failed to parse displays from dumpsys output")
+		}
+		id, err := strconv.Atoi(group[1])
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to parse display id")
+		}
+		displayIDs = append(displayIDs, id)
+	}
+	return displayIDs, nil
 }
 
 // CaptionHeight returns the caption height in pixels.
