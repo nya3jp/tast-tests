@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/crostini/lxd"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/input"
@@ -69,6 +70,17 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 	window := uig.FindWithTimeout(installWindowFindParams, uiTimeout)
 	radioGroup := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRadioGroup}, uiTimeout)
 	slider := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeSlider}, uiTimeout)
+
+	// Check whether the virtual keyboard is shown.
+	virtualkb, err := vkb.IsShown(ctx, p.tconn)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to check whether virtual keyboard is shown")
+	} else if virtualkb {
+		// Hide virtual keyboard.
+		if err := vkb.HideVirtualKeyboard(ctx, p.tconn); err != nil {
+			return 0, errors.Wrap(err, "failed to hide virtual keyboard")
+		}
+	}
 
 	if err := uig.Do(ctx, p.tconn, uig.Steps(
 		radioGroup.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "Custom"}, uiTimeout).LeftClick(),
