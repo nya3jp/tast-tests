@@ -308,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ad635b4_56c31bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T15:17:49Z",
+      "side": 1,
+      "message": "I think the negatives outweigh the positives in this case. It\u0027s hard to read the current code.",
+      "parentUuid": "006f50c6_e780e7fc",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 82
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d96b2a5_d9b167ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 12
@@ -384,6 +408,24 @@
       "side": 1,
       "message": "Policy documentation says about editing and removing too.\nhttps://cloud.google.com/docs/chrome-enterprise/policies/?policy\u003dEditBookmarksEnabled",
       "parentUuid": "ef05fcd4_c4a9914d",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33e51ddd_2f6178c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T15:17:49Z",
+      "side": 1,
+      "message": "Do we want to test all features of the policy in this test?",
+      "parentUuid": "5298144d_7fc32fd9",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -513,6 +555,24 @@
       "side": 1,
       "message": "We had this discussion already. It seems like we have different understanding and use cases for logging. Me personally, having experience with UI and API testing, logs provide steps that if followed everyone should understand what test attempted to execute. In a manner that one wouldn\u0027t even take a look at the test case code to understand a failure when it happens.\n\nThat is also the reason why all log messages I formatted are in imperative mood. Those are instructions for human reading them, how to follow.\n\nI happy to adjust that here and get on the same page.",
       "parentUuid": "cf96c373_d6c0124a",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97efeca2_f07d8f20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T15:17:49Z",
+      "side": 1,
+      "message": "Tast has guidelines for logging:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\nYou can and should log more in the error case, but not in the normal case.",
+      "parentUuid": "9f47ded6_14ccc8b7",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1027,6 +1087,24 @@
       "side": 1,
       "message": "it does. However, it leaves the UI with the bookmark dialog/menu open. Enter or Escape dismiss the bookmark dialog.",
       "parentUuid": "40a8b19f_bb771540",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1629cb56_a0f7f419",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T15:17:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "084ecee2_b57cd675",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
