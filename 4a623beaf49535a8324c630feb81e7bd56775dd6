@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "58300fa4_b1637986",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T16:56:05Z",
+      "side": 1,
+      "message": "nit: This CL is technically doing two different things. I don\u0027t mind,\nbut Tast owners might.",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "4a623beaf49535a8324c630feb81e7bd56775dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f962cd49_5c1d6970",
@@ -14,6 +37,29 @@
       "writtenOn": "2020-11-14T13:48:34Z",
       "side": 1,
       "message": "PTAL.",
+      "revId": "4a623beaf49535a8324c630feb81e7bd56775dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2160331_fc9aa05f",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T16:56:05Z",
+      "side": 1,
+      "message": "You don\u0027t need this nor l.91, because they are used only for webrtc\nrelated tests and those have no AV1 variants:\nhttps://source.chromium.org/search?q\u003dchromeVideoWithFakeWebcam\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\n\nIn fact you don\u0027t need to modify either:\n\n- |chromeCompositedVideoPre| either in l. 65 because of the same reason:\nhttps://source.chromium.org/search?q\u003dChromeCompositedVideo\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\n\n- |chromeVideoWithHDRScreenPre| in l.57 (and I don\u0027t see an av1_hdr\nvariant being introduced.\n\n- |chromeAlternateVideoDecoderPre| in l.35 because there\u0027s no _alt\ntest variant supporting AV1 (VDA doesn\u0027t support AV1 hw decoding).\n\nSo this file\u0027s modifications can be restricted to |chromeVideoPre| and\n|chromeVideoWithGuestLoginPre|. And then, it\u0027s a bit surprising to see\nthat this CL enables AV1 unconditionally in the larger Precondtions,\nit\u0027s more common to add a precondition during bringup, e.g.\n  \n  // ChromeVideoWithAV1Decoding...\n  // TODO(b/...): Remove when AV1 is fully launched.\n  func ChromeVideoWithAV1Decoding() testing.Precondition { return chromeVideoWithAV1DecodingPre }\n\nLike we did for VP9 for example or l.148.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 28
+      },
       "revId": "4a623beaf49535a8324c630feb81e7bd56775dd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
