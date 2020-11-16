@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "955d4fdd_bdda5797",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-16T06:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f66a20_8f6d4ea8",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "52dd53fe26f8ed11329e5a5e157a56108ce9cb5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "667eadf2_c8fbe3d1",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-14T01:35:43Z",
       "side": 1,
       "message": "are you intending to keep the first non-nil error, or the last? b/c by name, it sounds like this should be \"\u003d\u003d\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 14,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "52dd53fe26f8ed11329e5a5e157a56108ce9cb5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7629e476_4b167a70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-16T06:03:39Z",
+      "side": 1,
+      "message": "Thanks for catching this! This should be \"*firstErr \u003d\u003d nil\".",
+      "parentUuid": "667eadf2_c8fbe3d1",
       "range": {
         "startLine": 88,
         "startChar": 14,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a270f1_2b4ee95c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-16T06:03:39Z",
+      "side": 1,
+      "message": "I created a new FR bug for this and modify the TODO to contain possible next step.",
+      "parentUuid": "65812b22_cec89f39",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "52dd53fe26f8ed11329e5a5e157a56108ce9cb5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f083d305_d6aff7d0",
@@ -107,6 +179,30 @@
       "writtenOn": "2020-11-14T01:35:43Z",
       "side": 1,
       "message": "nit: delete space",
+      "range": {
+        "startLine": 173,
+        "startChar": 18,
+        "endLine": 173,
+        "endChar": 19
+      },
+      "revId": "52dd53fe26f8ed11329e5a5e157a56108ce9cb5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38293fb2_b0dea43a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-16T06:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f083d305_d6aff7d0",
       "range": {
         "startLine": 173,
         "startChar": 18,
