@@ -80,6 +80,30 @@
       },
       "revId": "8e97c6807f53a27a7382b67de27e4f5a17a33562",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7571988_d96e4ec4",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-16T17:42:57Z",
+      "side": 1,
+      "message": "Oh snap. Good catch. I went with i \u003c\u003dcount instead. That\u0027s what I was going for. I can\u0027t believe my tests didn\u0027t catch this. That worries me.\n\nDo you think the code is clearer if I keep a standard 0-based loop but add one to i in the peer hostname calculation?  This all happened becasue I wanted to stick with the 1-based naming convention of the rest of the lap peripherals.",
+      "parentUuid": "a1ed8d2a_fcbb2eee",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "8e97c6807f53a27a7382b67de27e4f5a17a33562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
