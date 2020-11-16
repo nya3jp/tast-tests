@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada2bbc3_93303794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-16T06:03:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30aab16e_63fefe67",
+      "range": {
+        "startLine": 66,
+        "startChar": 86,
+        "endLine": 66,
+        "endChar": 114
+      },
+      "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dd81112_fe65c4e2",
@@ -61,6 +85,24 @@
       "writtenOn": "2020-11-10T22:46:20Z",
       "side": 1,
       "message": "Here and L90, there is a special exception based on the test name. This is prone to error by typo or by the test-name changing, and it also does not precisely describe why this scenario is different. Is there some underlying reason that makes testConfirmDialog different? Would it make sense to capture that in a separate variable? It looks like testConfirmDialog is the only one with shouldRunThroughCameras\u003dfalse; would it make sense to change this condition to \"if !useSWA \u0026\u0026 !shouldRunThroughCameras\"?",
+      "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "606c29ea_ecfb3782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-16T06:03:47Z",
+      "side": 1,
+      "message": "Removed such check",
+      "parentUuid": "1dd81112_fe65c4e2",
       "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7266fdc6_a8f88603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-16T06:03:47Z",
+      "side": 1,
+      "message": "Removed such check",
+      "parentUuid": "c45ac42f_9e23976f",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 5
+      },
+      "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9192d5d_e6d8ff5d",
@@ -101,6 +167,30 @@
       "writtenOn": "2020-11-10T22:46:20Z",
       "side": 1,
       "message": "If this param is unused in the function body (which I think it is), then cleaner to leave it unnamed with _:\n\n    if err :\u003d app.RunThroughCameras(ctx, func(_ cca.Facing) error {\n        return runTest()\n    }); err !\u003d nil {",
+      "range": {
+        "startLine": 116,
+        "startChar": 46,
+        "endLine": 116,
+        "endChar": 52
+      },
+      "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395c6898_1320d43e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-16T06:03:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9192d5d_e6d8ff5d",
       "range": {
         "startLine": 116,
         "startChar": 46,
@@ -158,6 +248,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "585fbdfe_ce2c684b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-16T06:03:47Z",
+      "side": 1,
+      "message": "Refactored a bit and removed this term",
+      "parentUuid": "b4c1cc3e_15e990db",
+      "range": {
+        "startLine": 122,
+        "startChar": 14,
+        "endLine": 122,
+        "endChar": 21
+      },
+      "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b964c0bd_91cbb002",
@@ -171,6 +285,30 @@
       "writtenOn": "2020-11-10T22:46:20Z",
       "side": 1,
       "message": "nit/style: \"Try\"",
+      "range": {
+        "startLine": 364,
+        "startChar": 4,
+        "endLine": 364,
+        "endChar": 9
+      },
+      "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58bb72a4_f3f3c6e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-16T06:03:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b964c0bd_91cbb002",
       "range": {
         "startLine": 364,
         "startChar": 4,
@@ -206,6 +344,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10361f71_b2692ebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-16T06:03:47Z",
+      "side": 1,
+      "message": "The goal here is to make sure that the app is not closed within a given time. Therefore we use sleep instead of polling here. For opposite usage, we use polling to wait for the closing for the app.",
+      "parentUuid": "fa829bc5_070c5c1e",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 370,
+        "endChar": 34
+      },
+      "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5682738c_a08c65bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
         "patchSetId": 1
@@ -217,6 +379,30 @@
       "writtenOn": "2020-11-10T22:46:20Z",
       "side": 1,
       "message": "nit/style: \"Try\"",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 390,
+        "endChar": 9
+      },
+      "revId": "f310e37c82c53ac80093eff51a1f423330378a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fab3956_41dce136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-16T06:03:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5682738c_a08c65bf",
       "range": {
         "startLine": 390,
         "startChar": 4,
