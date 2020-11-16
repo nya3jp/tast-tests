@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "783a2ad4_dfa2e034",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-16T20:50:52Z",
+      "side": 1,
+      "message": "Thanks for taking a look.",
+      "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d494438c_069dc215",
@@ -31,6 +48,30 @@
       "writtenOn": "2020-11-16T20:06:29Z",
       "side": 1,
       "message": "Not sure I like the mixture of precondition and table-driven test here. \n\"When multiple scenarios with very slight differences should be tested, the most common pattern is to write table-driven tests. \"\nAny reason for you to use the mixture here instead of 100% table-driven/parameterized tests?",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9c5b18_04ce553c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-16T20:50:52Z",
+      "side": 1,
+      "message": "The behaviour of HomepageLocation policy is dependent on the HomepageIsNewTabPage policy value. I used this approach because as I understand, we have multiple existing tests for similar conditions when more than one policy is involved. [1] [2] I am just trying to be consistent here.\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/url_check.go\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+      "parentUuid": "d494438c_069dc215",
       "range": {
         "startLine": 39,
         "startChar": 4,
