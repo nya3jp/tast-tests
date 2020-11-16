@@ -117,6 +117,30 @@
       },
       "revId": "9ac5f2787496315a89e741bd96f072b374613ca7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c63145f9_f39bf60d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-16T23:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e490f4ef_6a051802",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "9ac5f2787496315a89e741bd96f072b374613ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
