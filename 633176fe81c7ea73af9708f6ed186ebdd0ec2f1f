@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19228602_85a41789",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-16T08:52:18Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "633176fe81c7ea73af9708f6ed186ebdd0ec2f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a2d906c_d3d7b80c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-16T08:52:18Z",
+      "side": 1,
+      "message": "nit: you can reorder it to be only 1 lvl deep. if #tests \u003d\u003d 0; else if err !\u003d nil; else",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "633176fe81c7ea73af9708f6ed186ebdd0ec2f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
