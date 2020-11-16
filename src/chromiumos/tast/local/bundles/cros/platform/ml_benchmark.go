@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/platform/mlbenchmark"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type benchmarkParams struct {
@@ -42,11 +43,74 @@ func init() {
 				},
 			},
 			{
+				Name:              "soda_no_nnapi_goldmont",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("octopus")),
+				Val: benchmarkParams{
+					driver:     "libsoda_benchmark_driver.so",
+					configFile: "soda-scenario-1-goldmont.config",
+					scenario:   "soda_no_nnapi_goldmont",
+				},
+			},
+			{
+				Name:              "soda_no_nnapi_tigerlake",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+				Val: benchmarkParams{
+					driver:     "libsoda_benchmark_driver.so",
+					configFile: "soda-scenario-1-tigerlake.config",
+					scenario:   "soda_no_nnapi_tigerlake",
+				},
+			},
+			{
+				Name:              "soda_no_nnapi_armv8",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("kukui")),
+				Val: benchmarkParams{
+					driver:     "libsoda_benchmark_driver.so",
+					configFile: "soda-scenario-1-armv8-a.config",
+					scenario:   "soda_no_nnapi_armv8",
+				},
+			},
+			{
 				Name: "handwriting_no_nnapi",
 				Val: benchmarkParams{
 					driver:     "libhandwriting_benchmark.so",
 					configFile: "handwriting-scenario-1.config",
 					scenario:   "handwriting_no_nnapi",
+				},
+			},
+			{
+				Name:              "handwriting_no_nnapi_goldmont",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("octopus")),
+				Val: benchmarkParams{
+					driver:     "libhandwriting_benchmark-goldmont.so",
+					configFile: "handwriting-scenario-1.config",
+					scenario:   "handwriting_no_nnapi_goldmont",
+				},
+			},
+			{
+				Name:              "handwriting_no_nnapi_tigerlake",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer")),
+				Val: benchmarkParams{
+					driver:     "libhandwriting_benchmark-tigerlake.so",
+					configFile: "handwriting-scenario-1.config",
+					scenario:   "handwriting_no_nnapi_tigerlake",
+				},
+			},
+			{
+				Name:              "handwriting_no_nnapi_armv8",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("kukui")),
+				Val: benchmarkParams{
+					driver:     "libhandwriting_benchmark-armv8-a.so",
+					configFile: "handwriting-scenario-1.config",
+					scenario:   "handwriting_no_nnapi_armv8",
+				},
+			},
+			{
+				Name: "smartdim_no_nnapi",
+				Val: benchmarkParams{
+					// This driver isn't installed in the standard lib dir.
+					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so ",
+					configFile: "ml_benchmark_smartdim_drivers_20201021.config",
+					scenario:   "smartdim_no_nnapi",
 				},
 			},
 		},
