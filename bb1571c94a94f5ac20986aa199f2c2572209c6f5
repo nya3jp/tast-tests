@@ -16,6 +16,40 @@
       "message": "lgtm Thanks.\n\nOwners, please approve.",
       "revId": "bb1571c94a94f5ac20986aa199f2c2572209c6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "401e60e1_944f59be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-16T21:58:45Z",
+      "side": 1,
+      "message": "Mostly looks good.",
+      "revId": "bb1571c94a94f5ac20986aa199f2c2572209c6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf71820_8adf83c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-16T21:58:45Z",
+      "side": 1,
+      "message": "I think this is probably a good use case for testing.Poll, especially since there\u0027s no overarching timeout here -- if there\u0027s some issue where permissions need to be granted, but clicking the button on L328 doesn\u0027t do anything for some reason (e.g. regression in Chrome perhaps), we might be stuck in this loop.",
+      "revId": "bb1571c94a94f5ac20986aa199f2c2572209c6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
