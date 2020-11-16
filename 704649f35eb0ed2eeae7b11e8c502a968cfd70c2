@@ -160,6 +160,29 @@
       },
       "revId": "704649f35eb0ed2eeae7b11e8c502a968cfd70c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c96a2d_8eb1ce16",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-16T21:37:29Z",
+      "side": 1,
+      "message": "Can you rebase on top of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2522582 and then add the following to each precondition for consistency?\n\n  chromeSuppressNotificationsArgs\n\nThat CL should be landing shortly.",
+      "range": {
+        "startLine": 164,
+        "startChar": 54,
+        "endLine": 164,
+        "endChar": 55
+      },
+      "revId": "704649f35eb0ed2eeae7b11e8c502a968cfd70c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
