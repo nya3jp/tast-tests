@@ -16,6 +16,24 @@
       "message": "This LGTM, thanks! Do you know if any other tast tests need to be updated?",
       "revId": "b1be4fddb6a5c833e7c26ab79fe41fc418b66454",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47ba051_8cff1d49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2020-11-16T03:39:58Z",
+      "side": 1,
+      "message": "This test is the only one which showed up in the trybot that was linked in the revert: https://ci.chromium.org/p/chromium/builders/ci/chromeos-amd64-generic-rel/47952",
+      "parentUuid": "500e637c_41705e17",
+      "revId": "b1be4fddb6a5c833e7c26ab79fe41fc418b66454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
