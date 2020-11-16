@@ -16,6 +16,46 @@
       "message": "Thanks for reviewing!",
       "revId": "dd89829b326cfaff149db35bf5bba78b81f2999c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f495b8_76a3e936",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-16T16:39:07Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "dd89829b326cfaff149db35bf5bba78b81f2999c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bdd251a_f6e77ee6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-16T16:39:07Z",
+      "side": 1,
+      "message": "It\u0027s a bit confusing that these two names are so similar, yet different. (EnableVerboseLogsForLogin vs. enableLoginVerboseLogs). I suggest making any one out of these three changes for consistency:\n\n1. Rename the Chrome field to \"enableVerboseLogsForLogin\"\n2. Rename the Chrome field to \"verboseLogsForLogin\"\n3. Rename the function to \"EnableLoginVerboseLogs\"\n\nFor a bit more context on setter naming conventions, please see go/effective-go#Getters. This isn\u0027t *quite* a setter function, but it\u0027s similar. The underlying principle is that setters should nearly match the name of the field they set.",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "dd89829b326cfaff149db35bf5bba78b81f2999c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
