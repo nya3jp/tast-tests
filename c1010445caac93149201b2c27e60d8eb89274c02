@@ -33,6 +33,24 @@
       "message": "Is this a log line for debugging or are you leaving this in? (Should probably change to s.Logf if you\u0027re leaving it)",
       "revId": "c1010445caac93149201b2c27e60d8eb89274c02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fe7b2bb_dadbe8b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-11-16T18:29:57Z",
+      "side": 1,
+      "message": "Well it\u0027s nice for this to be a single log line, with the appends happening below. The entire line gets printed below on lines 77 or 85.\n\nPutting this as s.Logf would prevent folks from seeing the actual context of the process in the test error message.",
+      "parentUuid": "bef513dd_ebeebe0e",
+      "revId": "c1010445caac93149201b2c27e60d8eb89274c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
