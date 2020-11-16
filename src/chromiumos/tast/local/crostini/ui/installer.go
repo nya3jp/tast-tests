@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/crostini/lxd"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/input"
@@ -65,10 +66,21 @@ func New(tconn *chrome.TestConn) *Installer {
 // SetDiskSize uses the slider on the Installer options pane to set the disk
 // size to the smallest slider increment larger than the specified disk size.
 // If minDiskSize is smaller than the possible minimum disk size, disk size will be the smallest size.
-func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftMinimum bool) (uint64, error) {
+func (p *Installer) SetDiskSize(ctx context.Context, tconn *chrome.TestConn, minDiskSize uint64, IsSoftMinimum bool) (uint64, error) {
 	window := uig.FindWithTimeout(installWindowFindParams, uiTimeout)
 	radioGroup := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeRadioGroup}, uiTimeout)
 	slider := window.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeSlider}, uiTimeout)
+
+	// Check whether the virtual keyboard is shown.
+	virtualkb, err := vkb.IsShown(ctx, tconn)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to check whether virtual keyboard is shown")
+	} else if virtualkb {
+		// Hide virtual keyboard.
+		if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+			return 0, errors.Wrap(err, "failed to hide virtual keyboard")
+		}
+	}
 
 	if err := uig.Do(ctx, p.tconn, uig.Steps(
 		radioGroup.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "Custom"}, uiTimeout).LeftClick(),
@@ -274,7 +286,7 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 	installer := New(tconn)
 	var resultDiskSize uint64
 	if iOptions.MinDiskSize != 0 {
-		resultDiskSize, err = installer.SetDiskSize(ctx, iOptions.MinDiskSize, iOptions.IsSoftMinimum)
+		resultDiskSize, err = installer.SetDiskSize(ctx, tconn, iOptions.MinDiskSize, iOptions.IsSoftMinimum)
 		if err != nil {
 			return 0, errors.Wrap(err, "failed to set disk size in installation dialog")
 		}
