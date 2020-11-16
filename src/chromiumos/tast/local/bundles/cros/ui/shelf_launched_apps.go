@@ -37,13 +37,15 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// At login, we should have just Chrome in the Shelf.
+	// At login, we should have just Chrome and maybe Files in the Shelf.
 	shelfItems, err := ash.ShelfItems(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get shelf items: ", err)
 	}
 	if len(shelfItems) != 1 {
-		s.Fatal("Unexpected apps in the shelf. Expected only Chrome: ", shelfItems)
+		if len(shelfItems) != 2 || shelfItems[1].AppID != apps.Files.ID {
+			s.Fatal("Unexpected apps in the shelf. Expected only Chrome and Files: ", shelfItems)
+		}
 	}
 
 	// Chrome must be first because it is automatically opened upon login.
