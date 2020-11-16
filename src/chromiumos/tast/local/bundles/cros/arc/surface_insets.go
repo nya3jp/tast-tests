@@ -80,7 +80,7 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, pkg, cls)
+	act, err := arc.NewActivity(ctx, a, pkg, cls)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

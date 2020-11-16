@@ -181,7 +181,7 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.TestConn, a *
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, wm.Pkg24, test.act)
+			act, err := arc.NewActivity(ctx, a, wm.Pkg24, test.act)
 			if err != nil {
 				return err
 			}
@@ -223,7 +223,7 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.TestConn, a *
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, wm.Pkg23, test.act)
+			act, err := arc.NewActivity(ctx, a, wm.Pkg23, test.act)
 			if err != nil {
 				return err
 			}
@@ -266,7 +266,7 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.TestConn, a
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, wm.Pkg24, test.act)
+			act, err := arc.NewActivity(ctx, a, wm.Pkg24, test.act)
 			if err != nil {
 				return err
 			}
@@ -316,7 +316,7 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, wm.Pkg23, test.act)
+			act, err := arc.NewActivity(ctx, a, wm.Pkg23, test.act)
 			if err != nil {
 				return err
 			}
@@ -401,7 +401,7 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui
 				if err := a.Command(ctx, "am", "broadcast", "-a", "android.intent.action.arc.cleartaskstate").Run(); err != nil {
 					return errors.Wrap(err, "failed to clear WM state")
 				}
-				act, err := arc.NewActivity(a, test.pkgName, test.act)
+				act, err := arc.NewActivity(ctx, a, test.pkgName, test.act)
 				if err != nil {
 					return err
 				}
@@ -491,7 +491,7 @@ func wmSpringboard(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *u
 				if err := a.Command(ctx, "am", "broadcast", "-a", "android.intent.action.arc.cleartaskstate").Run(); err != nil {
 					return errors.Wrap(err, "failed to clear WM state")
 				}
-				act, err := arc.NewActivity(a, test.pkgName, test.act)
+				act, err := arc.NewActivity(ctx, a, test.pkgName, test.act)
 				if err != nil {
 					return err
 				}
@@ -559,7 +559,7 @@ func wmSpringboard(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *u
 func wmLightsOutIn(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Slides #19 and #20 describe this scenario with "Landscape" activities. But using "unspecified" since
 	// a tablet in portrait mode (like Dru) + keyboard means that we have a clamshell device in portrait mode.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -647,7 +647,7 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, test.pkg, test.activity)
+			act, err := arc.NewActivity(ctx, a, test.pkg, test.activity)
 			if err != nil {
 				return err
 			}
@@ -692,7 +692,7 @@ func wmPIP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device
 	// 1) Launch a PIP-ready activity in non-PIP mode.
 	testing.ContextLog(ctx, "Launching PIP activity")
 	const pkgName = "org.chromium.arc.testapp.pictureinpicture"
-	actPIP, err := arc.NewActivity(a, pkgName, ".MainActivity")
+	actPIP, err := arc.NewActivity(ctx, a, pkgName, ".MainActivity")
 	if err != nil {
 		return err
 	}
@@ -712,7 +712,7 @@ func wmPIP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device
 
 	// 2) Launch a maximized application to make sure that it occludes the previous activity.
 	testing.ContextLog(ctx, "Launching maximized activity")
-	actOther, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
+	actOther, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -729,7 +729,7 @@ func wmPIP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device
 // wmFreeformResize verifies that a window can be resized as defined in:
 // go/arc-wm-p "Clamshell: freeform resize" (slide #26)
 func wmFreeformResize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -794,7 +794,7 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 	}
 	defer kb.Close()
 
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -846,7 +846,7 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 // wmDisplayResolution verifies that the Android resolution gets updated as defined in:
 // go/arc-wm-p "Clamshell: display resolution change" (slides #28-#29).
 func wmDisplayResolution(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -946,7 +946,7 @@ func wmDisplayResolution(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 // wmPageZoom verifies that the Android zoom level gets updated as defined in:
 // go/arc-wm-p "Clamshell: Page/content zoom" (slides #30-#31).
 func wmPageZoom(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
 	}

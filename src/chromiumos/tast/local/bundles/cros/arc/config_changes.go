@@ -85,7 +85,7 @@ func ConfigChanges(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting app")
-	act, err := arc.NewActivity(a, pkg, cls)
+	act, err := arc.NewActivity(ctx, a, pkg, cls)
 	if err != nil {
 		s.Fatal("Failed starting app: ", err)
 	}

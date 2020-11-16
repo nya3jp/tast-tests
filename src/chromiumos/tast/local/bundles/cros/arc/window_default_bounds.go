@@ -115,7 +115,7 @@ func wmSystemDefaultHandling(ctx context.Context, tconn *chrome.TestConn, a *arc
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			act, err := arc.NewActivity(a, wm.Pkg24, test.act)
+			act, err := arc.NewActivity(ctx, a, wm.Pkg24, test.act)
 			if err != nil {
 				return err
 			}
@@ -231,7 +231,7 @@ func wmSpecifiedSizeHandling(ctx context.Context, tconn *chrome.TestConn, a *arc
 		epsilon                 = 2 // used to compare obtained bounds size and expected size in DP.
 	)
 
-	act, err := arc.NewActivity(a, wm.Pkg24, wmSizeSpecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wmSizeSpecifiedActivity)
 	if err != nil {
 		return err
 	}

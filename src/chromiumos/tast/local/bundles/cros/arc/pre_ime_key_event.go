@@ -51,7 +51,7 @@ func testPreIMEKeyEvent(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 		startConsumingButtonID = pkg + ":id/start_consuming_events"
 	)
 
-	act, err := arc.NewActivity(a, pkg, activityName)
+	act, err := arc.NewActivity(ctx, a, pkg, activityName)
 	if err != nil {
 		s.Fatalf("Failed to create a new activity %q", activityName)
 	}

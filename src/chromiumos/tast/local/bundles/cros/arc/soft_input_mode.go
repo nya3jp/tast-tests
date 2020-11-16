@@ -76,7 +76,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 
 	waitForRotation := func(expectLandscape bool) error {
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+			disp, err := arc.NewDisplay(ctx, a, arc.DefaultDisplayID)
 			if err != nil {
 				return testing.PollBreak(err)
 			}
@@ -112,7 +112,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for rotation: ", err)
 		}
 
-		firstAct, err := arc.NewActivity(a, "com.android.settings", ".Settings")
+		firstAct, err := arc.NewActivity(ctx, a, "com.android.settings", ".Settings")
 		if err != nil {
 			s.Fatal("Failed to create a new activity: ", err)
 		}
@@ -124,7 +124,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		defer firstAct.Stop(ctx, tconn)
 
 		const pkg = "org.chromium.arc.testapp.softinputmode"
-		secondAct, err := arc.NewActivity(a, pkg, activityName)
+		secondAct, err := arc.NewActivity(ctx, a, pkg, activityName)
 		if err != nil {
 			s.Fatal("Failed to create a new activity: ", err)
 		}

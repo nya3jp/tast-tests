@@ -54,7 +54,7 @@ func AshWindowState(ctx context.Context, s *testing.State) {
 
 	// Start the Settings app.
 	const pkg = "com.android.settings"
-	act, err := arc.NewActivity(a, pkg, ".Settings")
+	act, err := arc.NewActivity(ctx, a, pkg, ".Settings")
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

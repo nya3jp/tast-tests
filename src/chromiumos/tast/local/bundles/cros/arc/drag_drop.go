@@ -106,7 +106,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting app")
-	act, err := arc.NewActivity(a, pkg, startupActivity)
+	act, err := arc.NewActivity(ctx, a, pkg, startupActivity)
 	if err != nil {
 		s.Fatal("Failed to create a new activity: ", err)
 	}

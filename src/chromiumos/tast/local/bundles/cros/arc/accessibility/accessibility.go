@@ -240,7 +240,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 				s.Fatal("Timed out waiting for touch mode: ", err)
 			}
 
-			act, err := arc.NewActivity(a, packageName, activity.Name)
+			act, err := arc.NewActivity(ctx, a, packageName, activity.Name)
 			if err != nil {
 				s.Fatal("Failed to create new activity: ", err)
 			}

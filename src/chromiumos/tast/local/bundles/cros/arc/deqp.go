@@ -67,7 +67,7 @@ func runSingleDEQPTest(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, 
 	fileName := filepath.Join("/sdcard/testcases", name)
 	testing.ContextLog(ctx, "Starting dEQP app for ", fileName)
 
-	act, err := arc.NewActivity(a, packageName, activityName)
+	act, err := arc.NewActivity(ctx, a, packageName, activityName)
 	if err != nil {
 		return errors.Wrapf(err, "failed to create new activity for %v", name)
 	}

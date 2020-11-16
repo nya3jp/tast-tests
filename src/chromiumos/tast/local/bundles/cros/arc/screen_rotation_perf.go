@@ -74,7 +74,7 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 		pkgName = "com.google.samples.apps.sunflower"
 		actName = ".GardenActivity"
 	)
-	act, err := arc.NewActivity(a, pkgName, actName)
+	act, err := arc.NewActivity(ctx, a, pkgName, actName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

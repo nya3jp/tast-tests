@@ -88,7 +88,7 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to install app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, pkgName, "."+activityName)
+	act, err := arc.NewActivity(ctx, a, pkgName, "."+activityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

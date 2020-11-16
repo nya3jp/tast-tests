@@ -145,7 +145,7 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to install ArcPrintTest app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, pkgName, "."+activityName)
+	act, err := arc.NewActivity(ctx, a, pkgName, "."+activityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

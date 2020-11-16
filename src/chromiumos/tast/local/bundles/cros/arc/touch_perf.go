@@ -76,7 +76,7 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Logf("Launching %s/%s", appName, activityName)
-	act, err := arc.NewActivity(a, appName, activityName)
+	act, err := arc.NewActivity(ctx, a, appName, activityName)
 	if err != nil {
 		s.Fatalf("Unable to create new activity %s/%s: %v", appName, activityName, err)
 	}

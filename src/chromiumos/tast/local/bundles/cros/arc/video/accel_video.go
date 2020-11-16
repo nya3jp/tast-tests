@@ -165,7 +165,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 	outputXMLFileName := fmt.Sprintf("output_%s.xml", nowStr)
 
 	s.Log("Starting APK main activity")
-	act, err := arc.NewActivity(a, c2e2etest.Pkg, c2e2etest.ActivityName)
+	act, err := arc.NewActivity(ctx, a, c2e2etest.Pkg, c2e2etest.ActivityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

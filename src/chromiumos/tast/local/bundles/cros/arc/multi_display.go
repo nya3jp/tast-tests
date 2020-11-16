@@ -204,7 +204,7 @@ func launchActivityOnExternalDisplay(ctx context.Context, s *testing.State, cr *
 		{"Launch unresizeable activity on the external display", wm.NonResizableUnspecifiedActivity},
 	} {
 		runOrFatal(ctx, s, test.name, func(ctx context.Context, s *testing.State) error {
-			act, err := arc.NewActivity(a, wm.Pkg24, test.actName)
+			act, err := arc.NewActivity(ctx, a, wm.Pkg24, test.actName)
 			if err != nil {
 				return err
 			}
@@ -230,7 +230,7 @@ func maximizeVisibility(ctx context.Context, s *testing.State, cr *chrome.Chrome
 	}
 
 	// Start settings activity and set it to normal window state.
-	settingsAct, err := arc.NewActivity(a, settingsPkgMD, settingsActMD)
+	settingsAct, err := arc.NewActivity(ctx, a, settingsPkgMD, settingsActMD)
 	if err != nil {
 		return err
 	}
@@ -246,7 +246,7 @@ func maximizeVisibility(ctx context.Context, s *testing.State, cr *chrome.Chrome
 	}
 
 	// Start WM activity on the external display and set it to normal window state.
-	wmAct, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	wmAct, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -342,7 +342,7 @@ func relayoutDisplays(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	}
 
 	// Start settings Activity on internal display.
-	settingsAct, err := arc.NewActivity(a, settingsPkgMD, settingsActMD)
+	settingsAct, err := arc.NewActivity(ctx, a, settingsPkgMD, settingsActMD)
 	if err != nil {
 		return err
 	}
@@ -357,7 +357,7 @@ func relayoutDisplays(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	}
 
 	// Start wm Activity on external display.
-	wmAct, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	wmAct, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -440,7 +440,7 @@ func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	extDispInfo := info.external
 
 	// Start settings Activity on internal display.
-	settingsAct, err := arc.NewActivity(a, settingsPkgMD, settingsActMD)
+	settingsAct, err := arc.NewActivity(ctx, a, settingsPkgMD, settingsActMD)
 	if err != nil {
 		return err
 	}
@@ -455,7 +455,7 @@ func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	}
 
 	// Start wm Activity on external display.
-	wmAct, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	wmAct, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -1368,7 +1368,7 @@ func testActivitySimpleName(res resizeability, cc configChangeHandling) string {
 
 // launch issues commands to launch an activity, then wait until launch completes.
 func (act *testappActivity) launch(displayID androidDisplayID) error {
-	innerAct, err := arc.NewActivity(act.a, dispPkg, act.activityName())
+	innerAct, err := arc.NewActivity(act.ctx, act.a, dispPkg, act.activityName())
 	if err != nil {
 		return err
 	}

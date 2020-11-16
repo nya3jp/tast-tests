@@ -171,7 +171,7 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
 	}
 	// ReLaunch the app to skip save password dialog box.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
+	act, err := arc.NewActivity(ctx, a, appPkgName, appActivity)
 	if err != nil {
 		s.Fatal("Failed to create new app activity: ", err)
 	}

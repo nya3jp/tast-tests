@@ -22,18 +22,78 @@ const (
 // Display holds resources related to an ARC display.
 // For the moment only the default display (internal display) is supported.
 type Display struct {
-	a         *ARC // Close is not called here
-	displayID int
+	a    *ARC // Close is not called here
+	info LogicalDisplay
+}
+
+// LogicalDisplay holds information about an ARC display parsed from dumpsys.
+type LogicalDisplay struct {
+	displayID          int
+	rawBaseDisplayInfo string
+}
+
+func getLogicalDisplay(ctx context.Context, a *ARC) ([]LogicalDisplay, error) {
+	cmd := a.Command(ctx, "dumpsys", "display")
+	output, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to execute 'dumpsys display'")
+	}
+
+	// Looking for:
+	// mDisplayId=0
+	// ...
+	// mBaseDisplayInfo=DisplayInfo{"Built-in Screen", displayId ... null}, removeMode 0}
+	re := regexp.MustCompile(`(?m)` + // Enable multiline.
+		`mDisplayId=(\d+)` + // Gather displayId number.
+		`(?:\s+.*$)*?` + // Skip entire lines...
+		`\s+mBaseDisplayInfo=([\W\w]+?$)`) // Gather raw display info (until EOL).
+	groups := re.FindAllStringSubmatch(string(output), -1)
+	if len(groups) == 0 {
+		return nil, errors.New("failed to parse display from dumpsys output")
+	}
+
+	var result []LogicalDisplay
+	for _, group := range groups {
+		if len(group) != 3 {
+			return nil, errors.New("failed to parse display from dumpsys output")
+		}
+		id, err := strconv.Atoi(group[1])
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to parse display id")
+		}
+		result = append(result, LogicalDisplay{id, group[2]})
+	}
+	return result, nil
 }
 
 // NewDisplay returns a new Display instance.
 // The caller is responsible for closing a.
 // Returned Display instance must be closed when the test is finished.
-func NewDisplay(a *ARC, displayID int) (*Display, error) {
-	if displayID != DefaultDisplayID {
-		return nil, errors.New("only displayID 0 is supported at the moment")
+func NewDisplay(ctx context.Context, a *ARC, displayID int) (*Display, error) {
+	sdkVersion, err := SDKVersion()
+	if err != nil {
+		return nil, err
 	}
-	return &Display{a, displayID}, nil
+	switch sdkVersion {
+	case SDKP:
+		if displayID != DefaultDisplayID {
+			return nil, errors.New("only displayID 0 is supported at the moment")
+		}
+		return &Display{a, LogicalDisplay{displayID, ""}}, nil
+	case SDKR:
+		displays, err := getLogicalDisplay(ctx, a)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get display info")
+		}
+		for _, disp := range displays {
+			if displayID == disp.displayID {
+				return &Display{a, disp}, nil
+			}
+		}
+		return nil, errors.New("failed to find display by id")
+	default:
+		return nil, errors.Errorf("unsupported Android version %d", sdkVersion)
+	}
 }
 
 // Close closes resources related to the Display instance.

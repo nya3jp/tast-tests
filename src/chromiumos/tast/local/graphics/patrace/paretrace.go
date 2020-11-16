@@ -95,7 +95,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 		s.Fatalf("Failed to install %s: %v", s.DataPath(apkFile), err)
 	}
 
-	act, err := arc.NewActivity(a, pkgName, activityName)
+	act, err := arc.NewActivity(ctx, a, pkgName, activityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

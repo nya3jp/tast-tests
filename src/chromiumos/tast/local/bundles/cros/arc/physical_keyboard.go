@@ -64,7 +64,7 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 	}
 
 	testTextField := func(activityName, keystrokes, expectedResult string) error {
-		act, err := arc.NewActivity(a, pkg, activityName)
+		act, err := arc.NewActivity(ctx, a, pkg, activityName)
 		if err != nil {
 			return errors.Wrapf(err, "failed to create a new activity %q", activityName)
 		}

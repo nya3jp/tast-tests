@@ -126,7 +126,7 @@ func launchAppForGooglePlayGames(ctx context.Context, s *testing.State, tconn *c
 	}
 
 	// Launch the Google play games app.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
+	act, err := arc.NewActivity(ctx, a, appPkgName, appActivity)
 	if err != nil {
 		s.Fatal("Failed to create new app activity: ", err)
 	}

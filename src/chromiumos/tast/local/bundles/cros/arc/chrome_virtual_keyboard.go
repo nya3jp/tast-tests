@@ -79,7 +79,7 @@ func chromeVirtualKeyboardBasicEditingTest(
 	)
 	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	act, err := arc.NewActivity(ctx, a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
 		s.Fatalf("Failed to create a new activity %q", activityName)
 	}
@@ -155,7 +155,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	)
 	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	act, err := arc.NewActivity(ctx, a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
 		s.Fatalf("Failed to create a new activity %q", activityName)
 	}
@@ -267,7 +267,7 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 	)
 	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	act, err := arc.NewActivity(ctx, a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
 		s.Fatalf("Failed to create a new activity %q", activityName)
 	}
@@ -335,7 +335,7 @@ func chromeVirtualKeyboardFloatingTest(
 	)
 	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	act, err := arc.NewActivity(ctx, a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
 		s.Fatalf("Failed to create a new activity %q", activityName)
 	}
@@ -421,7 +421,7 @@ func chromeVirtualKeyboardRotationTest(
 	)
 	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	act, err := arc.NewActivity(ctx, a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
 		s.Fatalf("Failed to create a new activity %q", activityName)
 	}
@@ -510,7 +510,7 @@ func chromeVirtualKeyboardPasswordEditingTest(
 	)
 	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	act, err := arc.NewActivity(ctx, a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
 		s.Fatalf("Failed to create a new activity %q", activityName)
 	}

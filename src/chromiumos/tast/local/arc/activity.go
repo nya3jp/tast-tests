@@ -117,8 +117,8 @@ const (
 // NewActivity returns a new Activity instance.
 // The caller is responsible for closing a.
 // Returned Activity instance must be closed when the test is finished.
-func NewActivity(a *ARC, pkgName, activityName string) (*Activity, error) {
-	disp, err := NewDisplay(a, DefaultDisplayID)
+func NewActivity(ctx context.Context, a *ARC, pkgName, activityName string) (*Activity, error) {
+	disp, err := NewDisplay(ctx, a, DefaultDisplayID)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not create a new Display")
 	}

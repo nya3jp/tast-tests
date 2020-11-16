@@ -51,7 +51,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	cr, tconn, a := SetUpDevice(ctx, s, appPkgName, appActivity)
 
 	// Ensure app launches before test cases.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
+	act, err := arc.NewActivity(ctx, a, appPkgName, appActivity)
 	if err != nil {
 		s.Fatal("Failed to create new app activity: ", err)
 	}
@@ -323,7 +323,7 @@ func isNApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *ar
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
 func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	// Create an activity handle.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
+	act, err := arc.NewActivity(ctx, a, appPkgName, appActivity)
 	if err != nil {
 		s.Fatal("Failed to create new app activity: ", err)
 	}

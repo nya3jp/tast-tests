@@ -127,13 +127,13 @@ func PIP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	pipAct, err := arc.NewActivity(a, pipTestPkgName, ".PipActivity")
+	pipAct, err := arc.NewActivity(ctx, a, pipTestPkgName, ".PipActivity")
 	if err != nil {
 		s.Fatal("Failed to create PIP activity: ", err)
 	}
 	defer pipAct.Close()
 
-	maPIPBaseAct, err := arc.NewActivity(a, pipTestPkgName, ".MaPipBaseActivity")
+	maPIPBaseAct, err := arc.NewActivity(ctx, a, pipTestPkgName, ".MaPipBaseActivity")
 	if err != nil {
 		s.Fatal("Failed to create multi activity PIP base activity: ", err)
 	}
@@ -555,7 +555,7 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.TestConn,
 		settingActName = ".Settings"
 	)
 
-	settingAct, err := arc.NewActivity(a, settingPkgName, settingActName)
+	settingAct, err := arc.NewActivity(ctx, a, settingPkgName, settingActName)
 	if err != nil {
 		return errors.Wrap(err, "could not create Settings Activity")
 	}

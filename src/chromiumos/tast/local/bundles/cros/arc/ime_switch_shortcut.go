@@ -63,7 +63,7 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, pkg, ".MainActivity")
+	act, err := arc.NewActivity(ctx, a, pkg, ".MainActivity")
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

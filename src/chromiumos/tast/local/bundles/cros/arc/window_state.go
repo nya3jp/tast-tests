@@ -162,7 +162,7 @@ func WindowState(ctx context.Context, s *testing.State) {
 		s.Log("Testing ", test.name)
 		if err := func() error {
 			// Start the Settings app.
-			act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
+			act, err := arc.NewActivity(ctx, a, "com.android.settings", ".Settings")
 			if err != nil {
 				return errors.Wrap(err, "failed to create new activity")
 			}

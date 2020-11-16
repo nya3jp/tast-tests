@@ -106,7 +106,7 @@ func RunTestWithWMParams(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to get effective device scale factor: ", err)
 	}
 
-	act, err := arc.NewActivity(a, Package, EventReportingActivity)
+	act, err := arc.NewActivity(ctx, a, Package, EventReportingActivity)
 	if err != nil {
 		s.Fatal("Failed to create an activity: ", err)
 	}

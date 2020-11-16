@@ -59,7 +59,7 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, pkg, activityName)
+	act, err := arc.NewActivity(ctx, a, pkg, activityName)
 	if err != nil {
 		s.Fatal("Failed to create an activity: ", err)
 	}

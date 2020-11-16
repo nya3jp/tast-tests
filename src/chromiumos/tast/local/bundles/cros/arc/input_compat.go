@@ -145,7 +145,7 @@ func InputCompat(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed installing %s: %v", settings.Apk, err)
 		}
 
-		act, err := arc.NewActivity(a, pkg, cls)
+		act, err := arc.NewActivity(ctx, a, pkg, cls)
 		if err != nil {
 			s.Fatal("Failed to create an activity: ", err)
 		}

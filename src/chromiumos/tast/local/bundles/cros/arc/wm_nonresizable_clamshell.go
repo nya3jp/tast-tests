@@ -91,7 +91,7 @@ func wmNC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		wm.NonResizableLandscapeActivity,
 	} {
 		if err := func() error {
-			act, err := arc.NewActivity(a, wm.Pkg24, activityName)
+			act, err := arc.NewActivity(ctx, a, wm.Pkg24, activityName)
 			if err != nil {
 				return err
 			}
@@ -138,7 +138,7 @@ func wmNC05(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r NC07: non-resizable/clamshell: immerse via API from maximized.
 func wmNC07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizablePortraitActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.NonResizablePortraitActivity)
 	if err != nil {
 		return err
 	}
@@ -206,7 +206,7 @@ func wmNC07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r NC09: resizable/clamshell: new activity follows root activity.
 func wmNC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Start the activity
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -256,7 +256,7 @@ func wmNC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r NC10: non-resizable/clamshell: new activity replaces root activity.
 func wmNC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Start the activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -308,7 +308,7 @@ func wmNC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // wmNC12 covers non-resizable/clamshell: hide shelf when app maximized.
 // Expected behavior is defined in: go/arc-wm-r NC12: non-resizable/clamshell: hide shelf when app maximized.
 func wmNC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -436,7 +436,7 @@ func wmNC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	defer cancelForCleanup()
 
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
 	if err != nil {
 		return errors.Wrap(err, "unable to create new activity")
 	}
@@ -505,7 +505,7 @@ func wmNC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 func ncDisplaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
 	const roundingErrorDecimal = 0.01
 
-	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, activityName)
 	if err != nil {
 		return err
 	}
@@ -630,7 +630,7 @@ func intAbs(v int) int {
 // checkMaxActivityToFullscreen creates a new activity, lunches it and toggles to fullscreen and checks for validity of window info.
 func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
 	// Start the activity
-	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, activityName)
 	if err != nil {
 		return err
 	}

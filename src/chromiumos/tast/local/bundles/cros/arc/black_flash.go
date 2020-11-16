@@ -78,7 +78,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, pkgName, "."+activityName)
+	act, err := arc.NewActivity(ctx, a, pkgName, "."+activityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
@@ -102,7 +102,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set the activity to Maximized: ", err)
 	}
 
-	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+	disp, err := arc.NewDisplay(ctx, a, arc.DefaultDisplayID)
 	if err != nil {
 		s.Fatal("Failed to obtain a default display: ", err)
 	}

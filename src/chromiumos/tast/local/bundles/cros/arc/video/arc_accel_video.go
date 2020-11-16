@@ -177,7 +177,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	}
 
 	s.Log("Starting APK main activity")
-	act, err := arc.NewActivity(a, c2e2etest.Pkg, c2e2etest.ActivityName)
+	act, err := arc.NewActivity(ctx, a, c2e2etest.Pkg, c2e2etest.ActivityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
@@ -234,7 +234,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	}
 
 	s.Log("Starting APK main activity")
-	act, err := arc.NewActivity(a, c2e2etest.Pkg, c2e2etest.ActivityName)
+	act, err := arc.NewActivity(ctx, a, c2e2etest.Pkg, c2e2etest.ActivityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

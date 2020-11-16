@@ -84,7 +84,7 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	defer tconn.Close()
 
 	// TODO(sonnyrao): Try to figure out how to use the app launcher to do this.
-	act, err := arc.NewActivity(a, pkgName, ".Settings")
+	act, err := arc.NewActivity(ctx, a, pkgName, ".Settings")
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

@@ -77,7 +77,7 @@ func wmNV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	// 6-2- Activity bounds should be equal to the original bounds.
 
 	// 1- Start an unspecified activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -231,7 +231,7 @@ func runNVConversionByOrientation(ctx context.Context, tconn *chrome.TestConn, a
 	}
 
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, actName)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, actName)
 	if err != nil {
 		return err
 	}

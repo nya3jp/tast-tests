@@ -45,7 +45,7 @@ func Playability(ctx context.Context, s *testing.State) {
 	}
 	defer a.Uninstall(cleanupCtx, motioninput.Package)
 
-	act, err := arc.NewActivity(a, motioninput.Package, motioninput.EventReportingActivity)
+	act, err := arc.NewActivity(ctx, a, motioninput.Package, motioninput.EventReportingActivity)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

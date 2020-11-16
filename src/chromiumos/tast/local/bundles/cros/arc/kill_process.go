@@ -42,7 +42,7 @@ func KillProcess(ctx context.Context, s *testing.State) {
 	}
 
 	const packageName = "com.android.settings"
-	act, err := arc.NewActivity(a, packageName, ".Settings")
+	act, err := arc.NewActivity(ctx, a, packageName, ".Settings")
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

@@ -60,7 +60,7 @@ func PointerCapture(ctx context.Context, s *testing.State) {
 	runSubtest := func(ctx context.Context, s *testing.State, subtestFunc pointerCaptureSubtestFunc) {
 		test := pointerCaptureSubtestState{}
 
-		act, err := arc.NewActivity(a, motioninput.Package, motioninput.PointerCaptureActivity)
+		act, err := arc.NewActivity(ctx, a, motioninput.Package, motioninput.PointerCaptureActivity)
 		if err != nil {
 			s.Fatal("Failed to create an activity: ", err)
 		}

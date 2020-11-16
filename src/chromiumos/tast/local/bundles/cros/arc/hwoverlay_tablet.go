@@ -60,7 +60,7 @@ func HWOverlayTablet(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 
 	// Any ARC++ activity could be used for this test. Using one that is already installed.
-	act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
+	act, err := arc.NewActivity(ctx, a, "com.android.settings", ".Settings")
 	if err != nil {
 		s.Fatal("Failed to create Settings activity: ", err)
 	}

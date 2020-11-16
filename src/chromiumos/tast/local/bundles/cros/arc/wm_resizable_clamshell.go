@@ -124,7 +124,7 @@ func wmRC01(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		wm.ResizableLandscapeActivity: wm.Landscape,
 	} {
 		if err := func() error {
-			act, err := arc.NewActivity(a, wm.Pkg24, activityName)
+			act, err := arc.NewActivity(ctx, a, wm.Pkg24, activityName)
 			if err != nil {
 				return err
 			}
@@ -231,7 +231,7 @@ func wmRC05(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r RC06: resizable/clamshell: immerse via API ignored if windowed.
 func wmRC06(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizablePortraitActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizablePortraitActivity)
 	if err != nil {
 		return err
 	}
@@ -297,7 +297,7 @@ func wmRC08(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r RC09: resizable/clamshell: new activity follows root activity.
 func wmRC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Start the activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizablePortraitActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizablePortraitActivity)
 	if err != nil {
 		return err
 	}
@@ -351,7 +351,7 @@ func wmRC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 func wmRC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	timeReservedForStop := 750 * time.Millisecond
 	// Start the activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return errors.Wrap(err, "unable to create new activity")
 	}
@@ -429,7 +429,7 @@ func wmRC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// Start the activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -506,7 +506,7 @@ func wmRC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r RC13: resizable/clamshell: freeform resize.
 func wmRC13(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return errors.Wrap(err, "failed to create new activity")
 	}
@@ -616,7 +616,7 @@ func wmRC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	const fsc = 1.2
 
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return errors.Wrap(err, "unable to create new activity")
 	}
@@ -670,7 +670,7 @@ func wmRC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // or by dragging the activity (dragTheActivity = true) to the top left (isLeft = true) or right (isLeft = false) corner of the screen.
 func snapToHalfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, dragTheActivity, isLeft bool) error {
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return errors.Wrap(err, "failed to create new activity")
 	}
@@ -737,7 +737,7 @@ func snapToHalfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d
 // rcDisplaySizeChangeTestsHelper is used for Tast-tests that are testing resolution change and its effects on an activity.
 func rcDisplaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, activityName)
 	if err != nil {
 		return err
 	}
@@ -839,7 +839,7 @@ func rcDisplaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn,
 // immerseViaAPIHelper used to run immerse via API from maximized by activity name.
 func immerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string) error {
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, actName)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, actName)
 	if err != nil {
 		return err
 	}
@@ -929,7 +929,7 @@ func immerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 // checkRestoreActivityToFullscreen creates a new activity, lunches it and toggles to fullscreen and checks for validity of window info.
 func checkRestoreActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityName string) error {
 	// Start the activity
-	act, err := arc.NewActivity(a, wm.Pkg24, activityName)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, activityName)
 	if err != nil {
 		return err
 	}
@@ -1078,7 +1078,7 @@ func leftClickDragSource(ctx context.Context, tconn *chrome.TestConn, source coo
 
 // rcMaxRestoreTestHelper performs RC02 test either by left clicking or touching the caption button.
 func rcMaxRestoreTestHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, actName string, etFunc func(context.Context, *chrome.TestConn, string) error) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, actName)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, actName)
 	if err != nil {
 		return err
 	}

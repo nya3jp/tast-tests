@@ -135,7 +135,7 @@ func (t *ARCAudioTast) startActivity(ctx context.Context, param TestParameters) 
 		}
 	}
 
-	act, err := arc.NewActivity(t.arc, Pkg, param.Class)
+	act, err := arc.NewActivity(ctx, t.arc, Pkg, param.Class)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create activity")
 	}

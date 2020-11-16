@@ -79,7 +79,7 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Launching ", cls)
-	act, err := arc.NewActivity(a, pkg, cls)
+	act, err := arc.NewActivity(ctx, a, pkg, cls)
 	if err != nil {
 		s.Fatal("Failed to create activity: ", err)
 	}

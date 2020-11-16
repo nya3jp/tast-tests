@@ -53,7 +53,7 @@ func WMResizableConversion(ctx context.Context, s *testing.State) {
 // wmRV19 covers resizable/conversion behavior in landscape mode.
 // Expected behavior is defined in: go/arc-wm-r RV19 resizable/conversion: landscape.
 func wmRV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableLandscapeActivity)
 	if err != nil {
 		return err
 	}
@@ -155,7 +155,7 @@ func wmRV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// Start a new activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizablePortraitActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizablePortraitActivity)
 	if err != nil {
 		return err
 	}
@@ -270,7 +270,7 @@ func wmRV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // Expected behavior is defined in: go/arc-wm-r RV21 resizable/conversion: undefined orientation.
 func wmRV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Start an unspecified activity.
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return errors.Wrap(err, "failed to create new activity")
 	}

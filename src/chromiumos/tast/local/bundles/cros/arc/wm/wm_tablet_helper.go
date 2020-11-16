@@ -50,7 +50,7 @@ func TabletDefaultLaunchHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 			}()
 
 			// Start the activity.
-			act, newActivityErr := arc.NewActivity(a, Pkg24, tc.ActivityName)
+			act, newActivityErr := arc.NewActivity(ctx, a, Pkg24, tc.ActivityName)
 			if newActivityErr != nil {
 				return newActivityErr
 			}
@@ -197,7 +197,7 @@ func tabletFontScaleChangeHelper(ctx context.Context, tconn *chrome.TestConn, a 
 	const fsc = 1.2
 
 	// Start a new activity.
-	act, err := arc.NewActivity(a, Pkg24, actInfo.ActivityName)
+	act, err := arc.NewActivity(ctx, a, Pkg24, actInfo.ActivityName)
 	if err != nil {
 		return errors.Wrap(err, "unable to create new activity")
 	}
@@ -264,7 +264,7 @@ func tabletFontScaleChangeHelper(ctx context.Context, tconn *chrome.TestConn, a 
 // tabletImmerseViaAPIHelper clicks on immersive button on the activity and switch it back to normal and assert window bounds accordingly.
 func tabletImmerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo) error {
 	// Start a new activity.
-	act, err := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
+	act, err := arc.NewActivity(ctx, a, Pkg24, activityInfo.ActivityName)
 	if err != nil {
 		return err
 	}
@@ -352,7 +352,7 @@ func tabletImmerseViaAPIHelper(ctx context.Context, tconn *chrome.TestConn, a *a
 // displaySizeChangeHelper runs display size change scenarios in tablet mode.
 func displaySizeChangeHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, activityInfo TabletLaunchActivityInfo) (err error) {
 	// Start a new activity.
-	act, newActivityErr := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
+	act, newActivityErr := arc.NewActivity(ctx, a, Pkg24, activityInfo.ActivityName)
 	if newActivityErr != nil {
 		return newActivityErr
 	}
@@ -475,7 +475,7 @@ func showHideShelfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 	}()
 
 	// Start the activity.
-	act, newActivityErr := arc.NewActivity(a, Pkg24, activityInfo.ActivityName)
+	act, newActivityErr := arc.NewActivity(ctx, a, Pkg24, activityInfo.ActivityName)
 	if newActivityErr != nil {
 		return newActivityErr
 	}
@@ -593,7 +593,7 @@ func checkUnspecifiedActivityInTabletMode(ctx context.Context, tconn *chrome.Tes
 	}()
 
 	// Start undefined activity.
-	act, err := arc.NewActivity(a, Pkg24, unActName)
+	act, err := arc.NewActivity(ctx, a, Pkg24, unActName)
 	if err != nil {
 		return err
 	}

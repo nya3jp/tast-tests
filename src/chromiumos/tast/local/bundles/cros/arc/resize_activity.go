@@ -84,7 +84,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 
 	a := s.PreValue().(arc.PreData).ARC
 
-	act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
+	act, err := arc.NewActivity(ctx, a, "com.android.settings", ".Settings")
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
@@ -114,7 +114,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get activity bounds: ", err)
 	}
 
-	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+	disp, err := arc.NewDisplay(ctx, a, arc.DefaultDisplayID)
 	if err != nil {
 		s.Fatal("Failed to obtain a default display: ", err)
 	}

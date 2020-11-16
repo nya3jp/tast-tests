@@ -88,7 +88,7 @@ func MeasureDisplayDensity(ctx context.Context, a *arc.ARC) (float64, error) {
 	// To obtain the size of the expected black rectangle, it's necessary to obtain the dimensions of the rectangle
 	// as drawn on the screen. After changing the density, we then need to multiply by the square of the new scale
 	// factor (in order to account for changes to both width and height).
-	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+	disp, err := arc.NewDisplay(ctx, a, arc.DefaultDisplayID)
 	if err != nil {
 		return -1, errors.Wrap(err, "failed to create new display")
 	}
@@ -115,7 +115,7 @@ func SetUpApk(ctx context.Context, a *arc.ARC, apk string) error {
 // StartActivityWithWindowState starts the view activity with the specified window state.
 // It is the responsibility of the caller to close the activity.
 func StartActivityWithWindowState(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, windowState arc.WindowState, activity string) (*arc.Activity, error) {
-	act, err := arc.NewActivity(a, PackageName, activity)
+	act, err := arc.NewActivity(ctx, a, PackageName, activity)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create new activity")
 	}
@@ -202,7 +202,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 	}
 	defer ew.Close()
 
-	act, err := arc.NewActivity(a, packageName, activity)
+	act, err := arc.NewActivity(ctx, a, packageName, activity)
 	if err != nil {
 		return errors.Wrap(err, "failed to create new activity")
 	}

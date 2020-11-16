@@ -109,7 +109,7 @@ func waitForWindowStates(ctx context.Context, tconn *chrome.TestConn, expectatio
 
 // showActivityForSplitViewTest starts an activity and waits for it to be idle.
 func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkgName, activityName string) (*arc.Activity, error) {
-	act, err := arc.NewActivity(a, pkgName, activityName)
+	act, err := arc.NewActivity(ctx, a, pkgName, activityName)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a new activity")
 	}

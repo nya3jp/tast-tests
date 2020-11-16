@@ -77,7 +77,7 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 	// serves as the lower bound of launch bounds.
 	launchBoundsThreshold, err := func() (coords.Rect, error) {
 		// Launch a resizable portrait app first to use the bounds as the lower bound of phone size.
-		act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizablePortraitActivity)
+		act, err := arc.NewActivity(ctx, a, wm.Pkg24, wm.ResizablePortraitActivity)
 		if err != nil {
 			return coords.Rect{}, errors.Wrap(err, "failed to create the non-allowlisted activity")
 		}
@@ -205,7 +205,7 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 			}
 			defer a.Uninstall(ctx, pkgName)
 
-			act, err := arc.NewActivity(a, pkgName, wm.ResizableUnspecifiedActivity)
+			act, err := arc.NewActivity(ctx, a, pkgName, wm.ResizableUnspecifiedActivity)
 			if err != nil {
 				return err
 			}

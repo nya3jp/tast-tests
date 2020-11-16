@@ -100,7 +100,7 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 		exampleActivity = "com.android.vending.AssetBrowserActivity"
 	)
 	s.Log("Launching ", exampleApp)
-	act, err := arc.NewActivity(a, exampleApp, exampleActivity)
+	act, err := arc.NewActivity(ctx, a, exampleApp, exampleActivity)
 	if err != nil {
 		s.Fatalf("Could not launch %v: %v", exampleApp, err)
 	}

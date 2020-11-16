@@ -85,7 +85,7 @@ func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg,
 	}
 
 	testing.ContextLogf(ctx, "Starting activity %s/%s", pkg, activityName)
-	activity, err := arc.NewActivity(a, pkg, activityName)
+	activity, err := arc.NewActivity(ctx, a, pkg, activityName)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to create activity %q in package %q", activityName, pkg)
 	}

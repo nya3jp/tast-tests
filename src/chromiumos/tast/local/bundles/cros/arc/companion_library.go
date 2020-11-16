@@ -148,7 +148,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Move and Resize Window", resizeActivity, testResizeWindow},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			act, err := arc.NewActivity(a, companionLibDemoPkg, tc.actName)
+			act, err := arc.NewActivity(ctx, a, companionLibDemoPkg, tc.actName)
 			if err != nil {
 				s.Fatal("Failed to create new activity: ", err)
 			}
@@ -900,7 +900,7 @@ func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 		return errors.Wrap(err, "could not get screen shot before active other window")
 	}
 
-	settingAct, err := arc.NewActivity(a, settingPkgName, settingActName)
+	settingAct, err := arc.NewActivity(ctx, a, settingPkgName, settingActName)
 	if err != nil {
 		return errors.Wrap(err, "could not create Settings Activity")
 	}

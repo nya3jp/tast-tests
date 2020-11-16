@@ -88,7 +88,7 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	s.Log("Starting the android settings app")
 
 	// Create a Settings activity handle.
-	act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
+	act, err := arc.NewActivity(ctx, a, "com.android.settings", ".Settings")
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}

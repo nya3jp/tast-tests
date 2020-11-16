@@ -115,7 +115,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 
 	params := s.Param().(arcPIPEnergyAndPowerTestParams)
-	act, err := arc.NewActivity(a, "org.chromium.arc.testapp.pictureinpicturevideo", params.activityName)
+	act, err := arc.NewActivity(ctx, a, "org.chromium.arc.testapp.pictureinpicturevideo", params.activityName)
 	if err != nil {
 		s.Fatal("Failed to create activity: ", err)
 	}
