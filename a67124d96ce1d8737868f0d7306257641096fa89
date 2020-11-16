@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d3d59b2_b54cf520",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-11-16T22:11:17Z",
+      "side": 1,
+      "message": "LGTM % a couple of minor comments",
+      "revId": "a67124d96ce1d8737868f0d7306257641096fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cff36e1_c19c62a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-11-16T22:11:17Z",
+      "side": 1,
+      "message": "2160p_30fps_300frames.av1.mp4",
+      "range": {
+        "startLine": 480,
+        "startChar": 24,
+        "endLine": 480,
+        "endChar": 53
+      },
+      "revId": "a67124d96ce1d8737868f0d7306257641096fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
