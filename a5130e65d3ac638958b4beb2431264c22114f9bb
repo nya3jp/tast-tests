@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15bb9228_5bf9de3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Should have marked as acknowledged. My bad.",
+      "parentUuid": "84d61930_3b4fe64f",
+      "range": {
+        "startLine": 22,
+        "startChar": 86,
+        "endLine": 22,
+        "endChar": 87
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e4a53b2_8b212737",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 12
@@ -119,6 +143,24 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "minor nit: newline above",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5cc9954_6d9e5f3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e4a53b2_8b212737",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -136,6 +178,30 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "nit: precondition means something else in tast. Maybe use \"setup\"?",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d8299e_cbff6a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1183b5ae_802c4d9e",
       "range": {
         "startLine": 50,
         "startChar": 32,
@@ -218,6 +284,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "006f50c6_e780e7fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "When I was changing the error message I needed to do it in 5 places. Whether it make sense. I see proc and cons\n+ it highlights that all the test steps use the very same notion of error and assertion message\n+ adjustments in cont would be reflected in all places\n\n-- while reading code one has to most likely jumps back to see what error and assertion messages are\n-- if one of the test steps would need a slightly different message then it has to be added and it wouldn\u0027t be as consistent any more",
+      "parentUuid": "9b5526c1_6b0433fb",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 82
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d96b2a5_d9b167ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 12
@@ -229,6 +319,30 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "nit: variable name seems confusing. Maybe testStep?",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 13
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc358687_0b6a8a63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d96b2a5_d9b167ee",
       "range": {
         "startLine": 118,
         "startChar": 3,
@@ -258,6 +372,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5298144d_7fc32fd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Policy documentation says about editing and removing too.\nhttps://cloud.google.com/docs/chrome-enterprise/policies/?policy\u003dEditBookmarksEnabled",
+      "parentUuid": "ef05fcd4_c4a9914d",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "408bc2ac_2993c099",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 12
@@ -269,6 +401,30 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "nit: use a shorter name with a comment describing what it does. Maybe canAddBookmark?",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 31
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44d4445c_56a4cb15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408bc2ac_2993c099",
       "range": {
         "startLine": 169,
         "startChar": 5,
@@ -321,6 +477,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24d91486_6ed7ee99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "As per below comment:\nThe reason why all log messages I formatted are in imperative mood. Those are instructions for human reading them, how to follow.",
+      "parentUuid": "99829e32_00abaad6",
+      "range": {
+        "startLine": 170,
+        "startChar": 26,
+        "endLine": 170,
+        "endChar": 31
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f47ded6_14ccc8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "We had this discussion already. It seems like we have different understanding and use cases for logging. Me personally, having experience with UI and API testing, logs provide steps that if followed everyone should understand what test attempted to execute. In a manner that one wouldn\u0027t even take a look at the test case code to understand a failure when it happens.\n\nThat is also the reason why all log messages I formatted are in imperative mood. Those are instructions for human reading them, how to follow.\n\nI happy to adjust that here and get on the same page.",
+      "parentUuid": "cf96c373_d6c0124a",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a718ed39_5e46ac08",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 12
@@ -332,6 +530,24 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "Same as above",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "934fb30a_e9a29a59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a718ed39_5e46ac08",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -353,6 +569,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea95a11_65b338f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5baa48be_b830c3f6",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e82f6c82_810cc373",
@@ -366,6 +600,24 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "nit: either move adding this new functionality to a new CL or mention it in the description.",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27080ab_1af0272a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e82f6c82_810cc373",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -389,6 +641,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55efeef7_382f02b6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "It is not when everything works okay and passes. But may be crucial when investigating test failures. In ui testing it is considered a good practice to log \u0027else\u0027 statements. \nConsider someone calling this function twice - the second call would do nothing, no interaction with the ui nor log about what happened.",
+      "parentUuid": "a8e51681_e0d635ae",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9742ea87_8de26ef2",
         "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
         "patchSetId": 12
@@ -400,6 +670,24 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "nit: use the Toggle function here",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfaf2969_543f2dfa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9742ea87_8de26ef2",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -421,6 +709,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b90885d_d58ef333",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0c7c1442_dca88584",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e3115c2_cc96586a",
@@ -434,6 +740,24 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "nit: use the toggle function here",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6a928d_de9d35fd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e3115c2_cc96586a",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -455,6 +779,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2fd117a_565ee382",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9f25e8a_c4cbf36c",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dff6dcc_6c8eb346",
@@ -468,6 +810,24 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "nit: Is this log useful?",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb06e2c8_10ef440c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6dff6dcc_6c8eb346",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -489,6 +849,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd4601c_08c33d99",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de481ff6_ef61e32f",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7168fc6b_4968eb64",
@@ -502,6 +880,30 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "nit: name is misleading, maybe omiboxItem?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42693041_6f1f9066",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7168fc6b_4968eb64",
       "range": {
         "startLine": 22,
         "startChar": 1,
@@ -554,6 +956,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceccc899_51b02609",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "I renamed the function.",
+      "parentUuid": "d0117126_a909ce3e",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d7edbd_0ecf4166",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3db343c_a83a934e",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40a8b19f_bb771540",
         "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
         "patchSetId": 12
@@ -571,6 +1015,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "084ecee2_b57cd675",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "it does. However, it leaves the UI with the bookmark dialog/menu open. Enter or Escape dismiss the bookmark dialog.",
+      "parentUuid": "40a8b19f_bb771540",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0e1065d_21561854",
         "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
         "patchSetId": 12
@@ -582,6 +1044,24 @@
       "writtenOn": "2020-11-16T12:00:37Z",
       "side": 1,
       "message": "Why are you exposing the functions from the other packages here? Either move everything to one package, or use the functions directly from the other package.",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6aad3e_64f813c9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T14:09:14Z",
+      "side": 1,
+      "message": "We discussed it with Gabor.\n\nI try to follow BOT style api. We wanted to have just one package exposing all the possible actions - in this case browser. Test interacts with API exposed by browser package and here delegation to other packages modelling different parts of the browser window happens (applying some flavor of Page Object design pattern).\n\nWe were considering inheritance by composition to have something like:\nbrowser.bookmarksBar.Show()\n\nbut we ended up with proxying. It is not ideal, and I am open to adjust it to make it more coherent.",
+      "parentUuid": "d0e1065d_21561854",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
