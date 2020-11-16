@@ -56,6 +56,30 @@
       },
       "revId": "dd89829b326cfaff149db35bf5bba78b81f2999c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03cc296b_813635f4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2020-11-16T17:03:46Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ve made the changes to the function.",
+      "parentUuid": "6bdd251a_f6e77ee6",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "dd89829b326cfaff149db35bf5bba78b81f2999c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
