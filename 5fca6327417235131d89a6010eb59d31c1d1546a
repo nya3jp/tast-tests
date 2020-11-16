@@ -22,6 +22,30 @@
       },
       "revId": "5fca6327417235131d89a6010eb59d31c1d1546a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ecfaf6a_ce9359d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-11-16T03:59:26Z",
+      "side": 1,
+      "message": "We don\u0027t have any data we need to preserve on it in the test. Probably we shall make sure we disable the swapping in the test, but that is a separate CL though. In general, any fio on the slc is destructive for whatever was on the device, so this one is no different.",
+      "parentUuid": "9f202bab_022041a2",
+      "range": {
+        "startLine": 271,
+        "startChar": 28,
+        "endLine": 271,
+        "endChar": 44
+      },
+      "revId": "5fca6327417235131d89a6010eb59d31c1d1546a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
