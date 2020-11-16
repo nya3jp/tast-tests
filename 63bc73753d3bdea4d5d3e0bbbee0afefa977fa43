@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b69622_0b7100c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-16T03:05:06Z",
+      "side": 1,
+      "message": "Brendan/Kyle: PTAL before I send for review by Lacros team :) ",
+      "revId": "63bc73753d3bdea4d5d3e0bbbee0afefa977fa43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
