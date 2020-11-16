@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3782ff7e_4aa76d9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-11-16T04:23:00Z",
+      "side": 1,
+      "message": "Yuichrio, is it normal to break the generic board tests due to the arc testing?\nhttps://ci.chromium.org/p/chromeos/builders/vmtest/amd64-generic-direct-tast-vm/b8863856971910813488?",
+      "revId": "d6084d65cd7e22ca555467e7793e14d14892c681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
