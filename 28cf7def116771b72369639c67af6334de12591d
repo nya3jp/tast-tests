@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0df11f7_cf1a9eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-16T16:46:10Z",
+      "side": 1,
+      "message": "nit: permission -\u003e needPermission",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 11
+      },
+      "revId": "28cf7def116771b72369639c67af6334de12591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c22c21b5_358df379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-16T16:46:10Z",
+      "side": 1,
+      "message": "Refactor this a bit since we have needToGrantPermission now.\ne.g.\n\n  for {\n    needPermission, err :\u003d needToGrantPermission(ctx, meetConn)\n    if err !\u003d nil {\n      return errors.Wrap(err, \"failed to check permission\")\n    }\n    if !needPermission {\n      break\n    }\n\n    bubble, err :\u003d container.DescendantWithTimeout(ctx, ui.FindParams{ClassName: \"BubbleDialogDelegateView\"}, 20*time.Second)\n    if err !\u003d nil {\n      // This is now an error.\n      return errors.Wrap(err, \"failed to find permission bubble\")\n    }\n\n    ...\n  }",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 5
+      },
+      "revId": "28cf7def116771b72369639c67af6334de12591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56eecbf4_1838c09b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-16T16:46:10Z",
+      "side": 1,
+      "message": "Let\u0027s make a loop to reduce dup code.\ne.g.\n\n  perms :\u003d []string{\"microphone\", \"camera\", \"notifications\"}\n  for _, perm :\u003d range perms { \n    var state string\n    if err :\u003d conn.Eval(ctx, fmt.sprintf(\n      `new Promise(function(resolve, reject) {\n         navigator.permissions.query({name: %v})\n         .then((permission) \u003d\u003e {\n           resolve(permission.state);\n         }).catch((error) \u003d\u003e {\n           reject(error);\n         })\n       })`, perm), \u0026state); err !\u003d nil {\n      return true, errors.Errorf(\"failed to query %v permission\", perm)\n    }\n    if state !\u003d \"granted\" {\n      return true, nil\n    }\n  }\n\n  return false, nil",
+      "revId": "28cf7def116771b72369639c67af6334de12591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
