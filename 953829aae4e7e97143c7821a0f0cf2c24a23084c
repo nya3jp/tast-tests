@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "042eb779_13198960",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-11-16T22:24:40Z",
+      "side": 1,
+      "message": "LGTM % Miguel\u0027s question",
+      "revId": "953829aae4e7e97143c7821a0f0cf2c24a23084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
