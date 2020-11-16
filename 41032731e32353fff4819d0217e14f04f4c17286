@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "81acb524_3db29b38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-16T22:57:12Z",
+      "side": 1,
+      "message": "Thanks for the comment, Oleh. I also wonder if this is right approach to solve the problem. The intention of this change is to judge whether virtual keyboard should be shown on different physical device conditions. New patch shows the idea how I want to use it. The code is not tested yet, just want your suggestion if any better approach to do it.",
+      "parentUuid": "c55fb6a8_ecda3b4b",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 111
+      },
+      "revId": "41032731e32353fff4819d0217e14f04f4c17286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b1ba174e_4dd3bd0a",
