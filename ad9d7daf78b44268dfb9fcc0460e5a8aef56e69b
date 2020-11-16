@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e27681_73b1f8ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T17:35:03Z",
+      "side": 1,
+      "message": "+jchinlee@ since we talk about acceptance test vectors.\n\n",
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61cd82a3_d226faca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T17:35:03Z",
+      "side": 1,
+      "message": "Why not do it in this CL?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c2b7ffd_84c1a7ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T17:35:03Z",
+      "side": 1,
+      "message": "nit: s/getIVFFiles/listIVFFile/ ?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eea59c6_2e7c24fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T17:35:03Z",
+      "side": 1,
+      "message": "Please add a sub-subsection in the README.md:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/README.md;l\u003d52\n\nAlso mention where you got this test files from, i.e. in this case the\nAOM test vectors repo?\n\nAbout the test name, we were thinking about running the test vectors\nprovided by the sw reference implementations, i.e. [1]. Since we\u0027re\ntesting here hw and/or driver, the actual name should be either \n\"bitstream\" or \"compliance\" testing (the former is more for sw, the\nlatter for hardware\" [2]). With that, and keeping in mind that these \ntests are/will also be run by external contributors (e.g. OEMS), we \ncould call this test based on what it verifies, and not based on the \ntool it uses to do that, e.g. WDYT about:\n\n  Bitstream.av1_test_vectors \n\nor perhaps\n\n  Compliance.av1_test_vectors\n  Acceptance.av1_test_vectors\n\n? I personally prefer \"Compliance\".\n\n(there could be in due time Bitstream.av1_error_vectors etc).\n\nFinally, test vectors are supposed to be MD5SUM accurate, can we have that\nextra check now or later?\n\n[1] https://www.webmproject.org/vp9/levels/#test-bitstreams\n[2] https://aomedia.org/hardware/",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab59ba13_3ddb2139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T17:35:03Z",
+      "side": 1,
+      "message": "Please use (also) chromeos-gfx-video@google.com.",
+      "range": {
+        "startLine": 55,
+        "startChar": 48,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "301207c3_713baf11",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T17:35:03Z",
+      "side": 1,
+      "message": "s/To/With/",
+      "range": {
+        "startLine": 97,
+        "startChar": 22,
+        "endLine": 97,
+        "endChar": 24
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e96066_c8a8e030",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T17:35:03Z",
+      "side": 1,
+      "message": "s/filepaths/testVectors/? Otherwise there seems to be a disconnect\nbetween the function name name and the arguments.",
+      "range": {
+        "startLine": 97,
+        "startChar": 72,
+        "endLine": 97,
+        "endChar": 81
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9833a894_ed370e54",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T17:35:03Z",
+      "side": 1,
+      "message": "These lines are the same as l.66-73, l.162-168, extract them to a common \nfunction?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 42
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
