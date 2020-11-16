@@ -145,6 +145,30 @@ func ChromeVideoWithSWDecodingAndLibGAV1() testing.Precondition {
 var chromeVideoWithSWDecodingAndLibGAV1 = chrome.NewPrecondition("videoWithSWDecodingAndLibGAV1", chromeVModuleArgs,
 	chrome.ExtraArgs("--disable-accelerated-video-decode", "--enable-features=Gav1VideoDecoder"))
 
+// ChromeVideoWithHwAV1Decoding returns a precindition similar to ChromeVideo,
+// specified above, and enabling hardware accelerated av1 decoding.
+// TODO(b/172217032): Remove these *HwAV1Decoding preconditions once the hardware av1 decoder feature is enabled by default.
+func ChromeVideoWithHwAV1Decoding() testing.Precondition {
+	return chromeVideoWithHwAV1Decoding
+}
+
+// ChromeVideoWithGuestLoginAndHwAV1Decoding returns a precindition similar to
+// ChromeVideoWithGuestLogin, specified above, and enabling hardware accelerated av1 decoding.
+func ChromeVideoWithGuestLoginAndHwAV1Decoding() testing.Precondition {
+	return chromeVideoWithGuestLoginAndHwAV1Decoding
+}
+
+var chromeVideoWithHwAV1Decoding = chrome.NewPrecondition("chromeVideoWithHwAV1Decoding",
+	chromeVModuleArgs,
+	chromeUseHwDecoderForSmallResolutions,
+	chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"))
+
+var chromeVideoWithGuestLoginAndHwAV1Decoding = chrome.NewPrecondition("chromeVideoWithGuestLoginAndHwAV1Decoding",
+	chromeVModuleArgs,
+	chromeUseHwDecoderForSmallResolutions,
+	chrome.GuestLogin(),
+	chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"))
+
 // ChromeVideoWithSWDecodingAndHDRScreen returns a precondition similar to
 // ChromeVideoWithSWDecoding, specified above, and also enabling the HDR screen
 // if present.
