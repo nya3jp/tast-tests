@@ -34,6 +34,23 @@
       "parentUuid": "cae86b09_a72bd245",
       "revId": "013f18410c4c00262e5854a626307fda17446f20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d81bd742_fe42d251",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T09:15:29Z",
+      "side": 1,
+      "message": "Hi, I\u0027m seeing 10 failures in https://tastboard.corp.google.com/test/arc.AppCrash.real_consent. Is this expected?",
+      "revId": "013f18410c4c00262e5854a626307fda17446f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
