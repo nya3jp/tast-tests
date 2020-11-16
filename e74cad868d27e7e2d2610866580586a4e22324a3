@@ -482,6 +482,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6991f1cd_f0cd520a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-11-16T16:31:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d11356f_48b7393d",
+      "revId": "e74cad868d27e7e2d2610866580586a4e22324a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56f89087_e9e723ce",
