@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9088936c_b5d7090c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-16T22:59:33Z",
+      "side": 1,
+      "message": "LGTM % nit for Tast Owners Review\n\nSorry for the back and forth -- it\u0027s looking very neat and tidy now! :)",
+      "revId": "633176fe81c7ea73af9708f6ed186ebdd0ec2f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b498ec5_72002832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-16T22:59:33Z",
+      "side": 1,
+      "message": "nit: handling this error doesn\u0027t depend upon generation of the summary above, I think it would be tidier to move this to line 103 (just below err \u003d cmd.Run())?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "633176fe81c7ea73af9708f6ed186ebdd0ec2f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a2d906c_d3d7b80c",
