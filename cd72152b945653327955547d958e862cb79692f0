@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58be1d4_b23c4121",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-11-16T02:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "147194ce_f4f61e9d",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "cd72152b945653327955547d958e862cb79692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4100e82f_7dc859d9",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-16T01:01:10Z",
       "side": 1,
       "message": "optional: This is a lot of parameters to get in the right order.  Why not just pass the struct in?  For a small amount of code at the call site it will be much more obvious what the arguments mean.",
+      "range": {
+        "startLine": 206,
+        "startChar": 53,
+        "endLine": 206,
+        "endChar": 72
+      },
+      "revId": "cd72152b945653327955547d958e862cb79692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "680b4c2c_3b34576d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-11-16T02:45:27Z",
+      "side": 1,
+      "message": "May be, but let us do it some other time.",
+      "parentUuid": "4100e82f_7dc859d9",
       "range": {
         "startLine": 206,
         "startChar": 53,
