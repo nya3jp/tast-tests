@@ -33,6 +33,41 @@
       "message": "@hinton, would you like to also take a glance at the CL?",
       "revId": "c3739cf668d8062a297af516a6c9c49fa19310d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5bbf48_3b017696",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-16T19:47:01Z",
+      "side": 1,
+      "message": "The passrates I\u0027m seeing for these two tests is 97% for BeaconInterval and 96% for SecChange. We want the Passrate for CQ tests to be 99% in the last 30 days before promoting.  (see https://docs.google.com/spreadsheets/d/16qXhkx6tJLBm6S1jj4aGiRa3o2_jOzvr8Ap21Wizvvw/edit?usp\u003dsharing).\n\nBut also, once we have 99% passrate, go ahead and remove the autotest versions from the CQ in the same CL. No need to have both if we trust that the Tast versions are working.",
+      "parentUuid": "1cf010ab_100b32c9",
+      "revId": "c3739cf668d8062a297af516a6c9c49fa19310d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb1fa7f_264a9f84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-16T19:47:01Z",
+      "side": 1,
+      "message": "LGTM, once we get verify these pass over 99% of the time in the last 30 days.",
+      "revId": "c3739cf668d8062a297af516a6c9c49fa19310d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
