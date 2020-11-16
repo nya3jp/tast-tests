@@ -104,6 +104,30 @@
       },
       "revId": "8e97c6807f53a27a7382b67de27e4f5a17a33562",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f23e228_da44cd5f",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-11-16T19:03:54Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion; any of these (correct) options works for me.",
+      "parentUuid": "f7571988_d96e4ec4",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "8e97c6807f53a27a7382b67de27e4f5a17a33562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
