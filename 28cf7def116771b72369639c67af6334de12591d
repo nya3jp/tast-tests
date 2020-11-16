@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2029add5_e22ac8fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-16T19:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0df11f7_cf1a9eec",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 11
+      },
+      "revId": "28cf7def116771b72369639c67af6334de12591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c22c21b5_358df379",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e9c821_e771d3a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-16T19:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c22c21b5_358df379",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 5
+      },
+      "revId": "28cf7def116771b72369639c67af6334de12591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56eecbf4_1838c09b",
@@ -60,6 +108,24 @@
       "writtenOn": "2020-11-16T16:46:10Z",
       "side": 1,
       "message": "Let\u0027s make a loop to reduce dup code.\ne.g.\n\n  perms :\u003d []string{\"microphone\", \"camera\", \"notifications\"}\n  for _, perm :\u003d range perms { \n    var state string\n    if err :\u003d conn.Eval(ctx, fmt.sprintf(\n      `new Promise(function(resolve, reject) {\n         navigator.permissions.query({name: %v})\n         .then((permission) \u003d\u003e {\n           resolve(permission.state);\n         }).catch((error) \u003d\u003e {\n           reject(error);\n         })\n       })`, perm), \u0026state); err !\u003d nil {\n      return true, errors.Errorf(\"failed to query %v permission\", perm)\n    }\n    if state !\u003d \"granted\" {\n      return true, nil\n    }\n  }\n\n  return false, nil",
+      "revId": "28cf7def116771b72369639c67af6334de12591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63864673_13ac2d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-16T19:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56eecbf4_1838c09b",
       "revId": "28cf7def116771b72369639c67af6334de12591d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
