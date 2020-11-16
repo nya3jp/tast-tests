@@ -39,6 +39,23 @@
       "message": "+2 % see comment",
       "revId": "5a098c1ca78991c756c16f39b1892025af2cca54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c5e6b5_eae45c8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-16T11:24:25Z",
+      "side": 1,
+      "message": "mukai@ is on leave, unassigning.",
+      "revId": "5a098c1ca78991c756c16f39b1892025af2cca54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
