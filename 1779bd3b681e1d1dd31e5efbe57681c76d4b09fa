@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "045cdead_4bab8724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_basic.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-11-16T09:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3cb9313_93544cc3",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "1779bd3b681e1d1dd31e5efbe57681c76d4b09fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cc26419_72ad82cd",
@@ -71,6 +95,24 @@
       "writtenOn": "2020-10-14T05:17:34Z",
       "side": 1,
       "message": "I\u0027d rather see GetArtifactPath etc functions that take named placeholders and return a string, instead of a pattern that the caller needs to Sprintf. More self-documenting.",
+      "revId": "1779bd3b681e1d1dd31e5efbe57681c76d4b09fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72d4540_aca06d5f",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-11-16T09:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cc26419_72ad82cd",
       "revId": "1779bd3b681e1d1dd31e5efbe57681c76d4b09fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d394496_d79a04e4",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-11-16T09:28:21Z",
+      "side": 1,
+      "message": "I\u0027ll think about how to rename them later, but we are going to have a new kind of test when I add testing for DLC",
+      "parentUuid": "0861f3d6_5f4f1951",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 22
+      },
+      "revId": "1779bd3b681e1d1dd31e5efbe57681c76d4b09fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b30658c8_40fe46f1",
@@ -115,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83cc7e9a_70170bb5",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-11-16T09:28:21Z",
+      "side": 1,
+      "message": "We now need this for the app_test container",
+      "parentUuid": "b30658c8_40fe46f1",
+      "revId": "1779bd3b681e1d1dd31e5efbe57681c76d4b09fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e659381_a7d86232",
@@ -128,6 +212,30 @@
       "writtenOn": "2020-10-15T04:31:22Z",
       "side": 1,
       "message": "Is this used anymore?",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 29
+      },
+      "revId": "1779bd3b681e1d1dd31e5efbe57681c76d4b09fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3be2eb_5f75fd26",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-11-16T09:28:21Z",
+      "side": 1,
+      "message": "No, removed",
+      "parentUuid": "7e659381_a7d86232",
       "range": {
         "startLine": 109,
         "startChar": 5,
