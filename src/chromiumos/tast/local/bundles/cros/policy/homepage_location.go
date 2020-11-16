@@ -1,0 +1,137 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package policy
+
+import (
+	"context"
+
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/testing"
+)
+
+type homepageSettingTestTable struct {
+	name         string          // name is the subtest name.
+	wantHomepage bool            // wantHomepage is whether the homepage is expected to be the one set in the HomepageLocation policy.
+	policies     []policy.Policy // policies is a list of HomepageLocation and HomepageIsNewTabPage policies to update before checking the homepage.
+}
+
+const homepageURL = "chrome://policy/"
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: HomepageLocation,
+		Desc: "Behavior of the HomepageLocation policy",
+		Contacts: []string{
+			"snijhara@google.com", // Test author
+			"chromeos-commercial-stability@google.com",
+		},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
+		Pre:          pre.User,
+		Params: []testing.Param{
+			{
+				Name: "not_new_tab_page",
+				Val: []homepageSettingTestTable{
+					{
+						name:         "homepage_set_new_tab_page_false",
+						wantHomepage: true,
+						policies: []policy.Policy{
+							&policy.HomepageLocation{Val: homepageURL},
+							&policy.HomepageIsNewTabPage{Val: false},
+						},
+					},
+				},
+			},
+			{
+				Name: "new_tab_page",
+				Val: []homepageSettingTestTable{
+					{
+						name:         "homepage_unset_new_tab_page_false",
+						wantHomepage: false,
+						policies: []policy.Policy{
+							&policy.HomepageLocation{Stat: policy.StatusUnset},
+							&policy.HomepageIsNewTabPage{Val: false},
+						},
+					},
+					{
+						name:         "homepage_set_new_tab_page_true",
+						wantHomepage: false,
+						policies: []policy.Policy{
+							&policy.HomepageLocation{Val: "https://google.com/"},
+							&policy.HomepageIsNewTabPage{Val: true},
+						},
+					},
+					{
+						name:         "homepage_set_new_tab_page_unset",
+						wantHomepage: false,
+						policies: []policy.Policy{
+							&policy.HomepageLocation{Val: "https://google.com/"},
+							&policy.HomepageIsNewTabPage{Stat: policy.StatusUnset},
+						},
+					},
+				},
+			},
+		},
+	})
+}
+
+func HomepageLocation(ctx context.Context, s *testing.State) {
+	cr := s.PreValue().(*pre.PreData).Chrome
+	fdms := s.PreValue().(*pre.PreData).FakeDMS
+
+	tcs, ok := s.Param().([]homepageSettingTestTable)
+	if !ok {
+		s.Fatal("Failed to convert test cases to the desired type")
+	}
+	// If the HomepageLocation policy is set and HomepageIsNewTabPage is set to false,
+	// when the current page is navigated to the home page, the configured page in the
+	// HomepageLocation policy should be loaded. Otherwise, the new tab page is loaded.
+	for _, tc := range tcs {
+		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+				s.Fatal("Failed to clean up: ", err)
+			}
+
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.policies); err != nil {
+				s.Fatal("Failed to update policies: ", err)
+			}
+
+			conn, err := cr.NewConn(ctx, "chrome://newtab/")
+			if err != nil {
+				s.Fatal("Failed to connect to chrome: ", err)
+			}
+			defer conn.Close()
+
+			kb, err := input.Keyboard(ctx)
+			if err != nil {
+				s.Fatal("Failed to get the keyboard: ", err)
+			}
+			defer kb.Close()
+
+			// Navigate to the home page using the hotkey.
+			if err := kb.Accel(ctx, "alt+home"); err != nil {
+				s.Fatal("Failed to navigate to homepage using hotkey: ", err)
+			}
+
+			// Get the current page URL and verify whether it's according to the policy.
+			var url string
+			if err := conn.Eval(ctx, `document.URL`, &url); err != nil {
+				s.Fatal("Could not read URL: ", err)
+			}
+
+			if tc.wantHomepage {
+				if url != homepageURL {
+					s.Errorf("New tab navigated to %s, expected %s", url, homepageURL)
+				}
+				// Depending on test flags the new tab page url might be one of the following.
+			} else if url != "chrome://new-tab-page/" && url != "chrome://newtab/" && url != "chrome-search://local-ntp/local-ntp.html" {
+				s.Errorf("New tab navigated to %s, expected the new tab page", url)
+			}
+		})
+	}
+}
