@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fa04ebc_4cc5aa57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-16T19:58:23Z",
+      "side": 1,
+      "message": "Just nits.",
+      "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b4a987_983cf184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-16T19:58:23Z",
+      "side": 1,
+      "message": "nit: Indent since this is the body of the function.",
+      "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a477d6d8_6d8e20d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-16T19:58:23Z",
+      "side": 1,
+      "message": "nit: Indent since this is body of the \"then\" function.",
+      "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb14f598_7d6e4459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-16T19:58:23Z",
+      "side": 1,
+      "message": "nit: ditto, indent.",
+      "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8403ed23_4a18d87c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-16T19:58:23Z",
+      "side": 1,
+      "message": "nit: End with \u0027;\u0027",
+      "revId": "59a5de21733dc1a2be624af05e81aec0bfe4a663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
