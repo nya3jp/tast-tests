@@ -16,6 +16,29 @@
       "message": "Hi,\n\nCan you please have a look at this CL ?\n\nThanks",
       "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d494438c_069dc215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-16T20:06:29Z",
+      "side": 1,
+      "message": "Not sure I like the mixture of precondition and table-driven test here. \n\"When multiple scenarios with very slight differences should be tested, the most common pattern is to write table-driven tests. \"\nAny reason for you to use the mixture here instead of 100% table-driven/parameterized tests?",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
