@@ -51,6 +51,24 @@
       "message": "Hi, I\u0027m seeing 10 failures in https://tastboard.corp.google.com/test/arc.AppCrash.real_consent. Is this expected?",
       "revId": "013f18410c4c00262e5854a626307fda17446f20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce928d1a_6327c9bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-16T10:23:38Z",
+      "side": 1,
+      "message": "Yes. I think it\u0027s Okay because they are not failures specific to this test.\n\n`[Precondition failure] Failed to start ARC` (6 of 10 failures) is a boot failure. We should ignore this because almost all tests fail at such situation. Please compare to https://tastboard.corp.google.com/test/arc.Boot.\n\nFor `Couldn\u0027t set up crash test: couldn\u0027t enable metrics consent: autotestPrivate.setMetricsEnabled: ...` (remaining, 4 of 10 failures), this is more specific to this test than simple boot failures. It seems other critical tests don\u0027t fail the same builds. This is not good, but I this is think acceptable. Only 4 failures (ignoring Precondition failures) is not so large amount for a test about ARC.",
+      "parentUuid": "d81bd742_fe42d251",
+      "revId": "013f18410c4c00262e5854a626307fda17446f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
