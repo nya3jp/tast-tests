@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f87074d5_cb4ba65b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-16T06:11:34Z",
+      "side": 1,
+      "message": "Sounds good. Happy to follow any guidance.",
+      "parentUuid": "a1dccc27_a802fee9",
+      "revId": "8bac8631efcc0fe32ec08e953773bd207837a7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b035bde3_e441f1bd",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-16T05:58:02Z",
       "side": 1,
       "message": "It seems this function doesn\u0027t use c.\nHow about removing the receiver (c *Chrome) ?",
+      "range": {
+        "startLine": 1428,
+        "startChar": 17,
+        "endLine": 1428,
+        "endChar": 38
+      },
+      "revId": "8bac8631efcc0fe32ec08e953773bd207837a7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "108bd2be_b45b903c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-16T06:11:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b035bde3_e441f1bd",
       "range": {
         "startLine": 1428,
         "startChar": 17,
