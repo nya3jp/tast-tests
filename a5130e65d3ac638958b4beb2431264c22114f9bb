@@ -84,6 +84,70 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84d61930_3b4fe64f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "Did you upload the latest code?",
+      "parentUuid": "7bb9acec_aedde23d",
+      "range": {
+        "startLine": 22,
+        "startChar": 86,
+        "endLine": 22,
+        "endChar": 87
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e4a53b2_8b212737",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "minor nit: newline above",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1183b5ae_802c4d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: precondition means something else in tast. Maybe use \"setup\"?",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c36f8da_6a39a5df",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 12
@@ -125,6 +189,399 @@
         "endLine": 57,
         "endChar": 74
       },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5526c1_6b0433fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: I\u0027m not convinced that using a constant for the error message makes sense here. Just hardcode the strings below.",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 82
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d96b2a5_d9b167ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: variable name seems confusing. Maybe testStep?",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 13
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef05fcd4_c4a9914d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "Do we need editing/removing as part of this policy test? Is it enough to just try to add the bookmark?",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408bc2ac_2993c099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: use a shorter name with a comment describing what it does. Maybe canAddBookmark?",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 31
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf96c373_d6c0124a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "Does this log provide any value? The operations below should not take too long and errors  contain the failing step.",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99829e32_00abaad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: Checking",
+      "range": {
+        "startLine": 170,
+        "startChar": 26,
+        "endLine": 170,
+        "endChar": 31
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a718ed39_5e46ac08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5baa48be_b830c3f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82f6c82_810cc373",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: either move adding this new functionality to a new CL or mention it in the description.",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e51681_e0d635ae",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "Is this log useful?",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9742ea87_8de26ef2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: use the Toggle function here",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c7c1442_dca88584",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "Is this log useful?",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3115c2_cc96586a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: use the toggle function here",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f25e8a_c4cbf36c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: move this into the Toggle function",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dff6dcc_6c8eb346",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: Is this log useful?",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de481ff6_ef61e32f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: either move adding this new functionality to a new CL or mention it in the description.",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7168fc6b_4968eb64",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: name is misleading, maybe omiboxItem?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0117126_a909ce3e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "Ctrl+d creates a bookmark, the function name is misleading or you need to find another way to open the dialog.",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3db343c_a83a934e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "nit: check for existing visibility",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a8b19f_bb771540",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "Not sure it is needed. Ctrl+d already creates a bookmark.",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e1065d_21561854",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T12:00:37Z",
+      "side": 1,
+      "message": "Why are you exposing the functions from the other packages here? Either move everything to one package, or use the functions directly from the other package.",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
