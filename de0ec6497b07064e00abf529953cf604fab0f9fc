@@ -22,6 +22,30 @@
       },
       "revId": "de0ec6497b07064e00abf529953cf604fab0f9fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ab2a15_ac49cf86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2020-11-16T02:49:34Z",
+      "side": 1,
+      "message": "Unless I am reading it wrong, it was not the way it was implemented - in the original code:\nYou run trim on \u0027f\u0027, which is os.OpenFile(filename... , which is filename \u003d stress.RootPartitionForTrim\nbut stress is run on testConfig{Path:stress.BootDeviceFioPath}\nSo I have preserved the behaviour, if that wasn\u0027t intentional, I can change that.",
+      "parentUuid": "1f3b2150_9f2c6ecb",
+      "range": {
+        "startLine": 268,
+        "startChar": 45,
+        "endLine": 268,
+        "endChar": 69
+      },
+      "revId": "de0ec6497b07064e00abf529953cf604fab0f9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
