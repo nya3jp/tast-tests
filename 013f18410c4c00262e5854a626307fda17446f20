@@ -69,6 +69,24 @@
       "parentUuid": "d81bd742_fe42d251",
       "revId": "013f18410c4c00262e5854a626307fda17446f20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6bda5a1_5a2c613c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-16T11:40:46Z",
+      "side": 1,
+      "message": "https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/master/doc/tast_add_test.md\n\nI\u0027m ok with the Precondition failures but can you investigate the 4 other failures? It seems to be the same issue and related to the test.",
+      "parentUuid": "ce928d1a_6327c9bd",
+      "revId": "013f18410c4c00262e5854a626307fda17446f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
