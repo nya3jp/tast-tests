@@ -34,14 +34,14 @@ type TerminalApp struct {
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	// Launch the Terminal App.
 	if err := apps.Launch(ctx, tconn, apps.Terminal.ID); err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to launch the Terminal App through package apps")
 	}
 	ta, err := Find(ctx, tconn)
 	if err != nil {
 		if closeErr := apps.Close(ctx, tconn, apps.Terminal.ID); closeErr != nil {
 			testing.ContextLog(ctx, "Error closing terminal app: ", closeErr)
 		}
-		return nil, err
+		return nil, errors.Wrap(err, "failed to find the Terminal App")
 	}
 	return ta, nil
 }
@@ -54,10 +54,17 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 		ClassName:  "BrowserFrame",
 	}
 
-	app, err := ui.FindWithTimeout(ctx, tconn, rootFindParams, time.Minute)
+	opts := testing.PollOptions{Timeout: 2 * time.Minute, Interval: 500 * time.Millisecond}
+	app, err := ui.StableFind(ctx, tconn, rootFindParams, &opts)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to find the Terminal App window")
 	}
+
+	cash, err := ui.StableFind(ctx, tconn, ui.FindParams{Role: ui.RoleTypeStaticText, Name: "$ "}, &opts)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find input area in the Terminal App window")
+	}
+	defer cash.Release(ctx)
 
 	// Check Terminal is on shelf.
 	if err := ash.WaitForApp(ctx, tconn, apps.Terminal.ID); err != nil {
@@ -65,24 +72,7 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 		return nil, errors.Wrap(err, "failed to find Terminal icon on shelf")
 	}
 
-	terminalApp := &TerminalApp{tconn: tconn, Root: app}
-	if err := terminalApp.waitForPrompt(ctx); err != nil {
-		app.Release(ctx)
-		return nil, errors.Wrap(err, "failed to wait for terminal prompt")
-	}
-
-	return terminalApp, nil
-}
-
-func (ta *TerminalApp) waitForPrompt(ctx context.Context) error {
-	parentParams := ui.FindParams{
-		Role:       ui.RoleTypeRootWebArea,
-		Attributes: map[string]interface{}{"name": regexp.MustCompile(`\@penguin\: `)},
-	}
-	waitForPrompt := uig.FindWithTimeout(parentParams, uiTimeout).
-		FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "$ "}, 90*time.Second).
-		WithNamef("Terminal.waitForPrompt()")
-	return uig.Do(ctx, ta.tconn, waitForPrompt)
+	return &TerminalApp{tconn: tconn, Root: app}, nil
 }
 
 // clickShelfMenuItem shuts down crostini by right clicking on the terminal app shelf icon.
