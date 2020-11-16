@@ -22,7 +22,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"no_qemu"},
+		SoftwareDeps: []string{"cpu_vuln_sysfs", "no_qemu"},
 	})
 }
 
