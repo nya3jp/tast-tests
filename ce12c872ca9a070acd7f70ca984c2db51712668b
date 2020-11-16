@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5236a9_2d647c60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-16T16:59:19Z",
+      "side": 1,
+      "message": "Is this file comparable in length (10s) with the others e.g. 720_vp8.webm\n(used in l. 98). Just to make sure we remove a source of potential\nvariations.",
+      "range": {
+        "startLine": 90,
+        "startChar": 32,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "ce12c872ca9a070acd7f70ca984c2db51712668b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
