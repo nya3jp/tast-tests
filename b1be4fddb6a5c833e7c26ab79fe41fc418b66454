@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "500e637c_41705e17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186534
+      },
+      "writtenOn": "2020-11-16T03:16:52Z",
+      "side": 1,
+      "message": "This LGTM, thanks! Do you know if any other tast tests need to be updated?",
+      "revId": "b1be4fddb6a5c833e7c26ab79fe41fc418b66454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
