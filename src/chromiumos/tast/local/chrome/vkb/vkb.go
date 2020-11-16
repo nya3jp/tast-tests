@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -371,4 +372,27 @@ func SelectFromSuggestion(ctx context.Context, tconn *chrome.TestConn, candidate
 
 	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
 	return ui.StableFindAndClick(ctx, tconn, candidateFindParams, &opts)
+}
+
+// IsA11yVirtualKeyboardEnabled returns whether the a11y virtual keyboard is enabled.
+func IsA11yVirtualKeyboardEnabled(tconn *chrome.TestConn) (bool, error) {
+	var isA11yVKEnabled bool
+	if err := tconn.Call(ctx, isA11yVKEnabled, `tast.promisify(chrome.accessibilityFeatures.virtualKeyboard)`, "{}", "func(res){return res.value}"); err != nil {
+		return false, errors.Wrap(err, "failed to get a11y virtual keyboard status")
+	}
+	return isA11yVKEnabled, nil
+}
+
+// IsVirtualKeyboardActive returns if virtual keyboard should be activated once focusing on an input field.
+func IsVirtualKeyboardActive(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	// Returns true if A11y virtual keyboard is enabled in OS A11y settings.
+	if isA11yVKEnabled, err := IsA11yVirtualKeyboardEnabled(tconn); err != nil {
+		return false, err
+	} else if isA11yVKEnabled {
+		return true, nil
+	}
+
+	// Virtual keyboard should be active if touch screen && no attached keyboard.
+	devInfo := input.NewDevInfo()
+	return devInfo.IsTouchscreen && !devInfo.IsKeyboard, nil
 }

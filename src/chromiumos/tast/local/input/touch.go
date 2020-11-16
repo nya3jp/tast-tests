@@ -63,7 +63,7 @@ func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 		return nil, errors.Wrap(err, "failed to read devices")
 	}
 	for _, info := range infos {
-		if !info.isTouchscreen() {
+		if !info.IsTouchscreen() {
 			continue
 		}
 		testing.ContextLogf(ctx, "Opening touchscreen device %+v", info)

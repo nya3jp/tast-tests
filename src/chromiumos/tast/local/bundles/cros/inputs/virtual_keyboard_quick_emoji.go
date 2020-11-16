@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -98,15 +97,15 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to hide virtual keyboard: ", err)
 	}
 
-	// Verify virtual keyboard status is not persisted on clamshell.
+	// Verify virtual keyboard status is not persisted.
 	// Should not test it on tablet devices. It depends on the physical conditions of the running device.
 	// For more details, refer to b/169527206.
-	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	isVirtualKeyboardActive, err := vkb.IsVirtualKeyboardActive(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
+		s.Fatal("Failed to check virtual keyboard settings: ", err)
 	}
 
-	if !tabletModeEnabled {
+	if !isVirtualKeyboardActive {
 		if err := inputField.Click(ctx, tconn); err != nil {
 			s.Fatal("Failed to click the input element: ", err)
 		}

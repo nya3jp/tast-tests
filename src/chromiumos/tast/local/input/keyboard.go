@@ -42,7 +42,7 @@ func Keyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 			return nil, errors.Wrap(err, "failed to read devices")
 		}
 		for _, info := range infos {
-			if info.isKeyboard() && info.phys != "" {
+			if info.IsKeyboard() && info.phys != "" {
 				testing.ContextLogf(ctx, "Using existing keyboard device %+v", info)
 
 				rw, err := Device(ctx, info.path)
