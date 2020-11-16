@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe95802c_cd0a011f",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-16T23:52:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e2b0856_7c23ed13",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "5349bf6372b9765395714d084bdb06cd1123f4a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4571821f_9b06cce0",
@@ -77,6 +101,30 @@
       "writtenOn": "2020-11-16T22:57:55Z",
       "side": 1,
       "message": "If you want to add more information to the returned error. You can do something like:\nerrors.Wrapf(err, \"failed to connet to the %dth peer\", i)",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "5349bf6372b9765395714d084bdb06cd1123f4a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d65d75_8b72c928",
+        "filename": "src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-16T23:52:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4571821f_9b06cce0",
       "range": {
         "startLine": 29,
         "startChar": 15,
