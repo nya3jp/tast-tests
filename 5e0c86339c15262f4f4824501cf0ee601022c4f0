@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2998b3fb_2a5710ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-17T08:31:31Z",
+      "side": 1,
+      "message": "Contacted Ross via email and waiting a reply...\n",
+      "revId": "5e0c86339c15262f4f4824501cf0ee601022c4f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
