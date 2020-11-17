@@ -46,6 +46,30 @@
       },
       "revId": "b486247544d6de1b7ccbcb589bd5d736341c7c7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c597d4b_77c0e969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-17T09:55:36Z",
+      "side": 1,
+      "message": "Oh! This doesn\u0027t seem to be 100% enforced throughout the Tast codebase, but the overall trend is to use the commas.",
+      "parentUuid": "df2435eb_71d4f7ca",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 59
+      },
+      "revId": "b486247544d6de1b7ccbcb589bd5d736341c7c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
