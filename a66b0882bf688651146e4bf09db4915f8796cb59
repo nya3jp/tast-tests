@@ -16,6 +16,23 @@
       "message": "Most of the fixes..",
       "revId": "a66b0882bf688651146e4bf09db4915f8796cb59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bca8149_d358d6d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T03:34:24Z",
+      "side": 1,
+      "message": "Quick reply to comments. I\u0027ll take another look later today.",
+      "revId": "a66b0882bf688651146e4bf09db4915f8796cb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
