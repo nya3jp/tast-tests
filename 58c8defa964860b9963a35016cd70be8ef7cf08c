@@ -842,6 +842,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab46de90_3cc331a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T03:34:24Z",
+      "side": 1,
+      "message": "Ack, but not resolved. Please feel free to resolve the comment after it is removed.",
+      "parentUuid": "dc98212f_ddf5883e",
+      "range": {
+        "startLine": 230,
+        "startChar": 30,
+        "endLine": 232,
+        "endChar": 46
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5cdfd6b_c13cbb23",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 2
@@ -1195,6 +1219,30 @@
       "side": 1,
       "message": "Due to the nature of Attenuator calls (HTTP/wget requests over SSH), I don\u0027t think we need to worry too much about races. However, I like the notion of handling any expected errors in TF itself. Though, I\u0027d rather refactor it to two functions, otherwise it won\u0027t be `Clean` disconnect. WDYT?",
       "parentUuid": "5da4f438_9ea8c07d",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 23
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39ad696_6fbf9daf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T03:34:24Z",
+      "side": 1,
+      "message": "You mean disconnect and remove profile? If so, yes, we already did something similar in missing_beacon.go. DeleteEntriesForSSID is currently provided with raw gRPC on WifiClient. (I initially think this might be a rare case so don\u0027t have it wrapped) It also LGTM if you wrap it as a function of tf.",
+      "parentUuid": "519203cb_527d9721",
       "range": {
         "startLine": 340,
         "startChar": 0,
