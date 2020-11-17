@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dda7e73_f94e6dc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-17T03:13:30Z",
+      "side": 1,
+      "message": "Made it so if the new callback fails, its error is returned (seems more useful - maybe existing callback will fail if the new one fails to begin with), and existing is called.",
+      "parentUuid": "be107455_05b3c5d1",
+      "range": {
+        "startLine": 480,
+        "startChar": 9,
+        "endLine": 480,
+        "endChar": 22
+      },
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cc5d0bf_649764b3",
@@ -208,6 +232,24 @@
       "side": 1,
       "message": "I think it is better to call the clean up call on failure inside the function.\nAFAIK, it is rare that a function returns something which needs to be teared-down in the caller\u0027s responsibility even if err is non-nil.\nIt\u0027d be better to follow the common practice: if the function returns an error, the function looks no-op from the caller. It\u0027d be best-practice rather than strict requirement. But, this case can be changed to it.",
       "parentUuid": "5c9c2ec4_cb048a97",
+      "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbcc2950_9a033d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpucuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-17T03:13:30Z",
+      "side": 1,
+      "message": "Makes sense. Done.",
+      "parentUuid": "e60ee6d2_1d756faa",
       "revId": "aa4d3be2cc62980bb88f09fa195f53964c60cfb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
