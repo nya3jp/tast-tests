@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35260f9_6fa6118e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-17T08:11:55Z",
+      "side": 1,
+      "message": "I really hope chrome.New is the only function that encapsulates details of Chrome login. This patch attempts to export these functions to be called by some tests that want to replicate what chrome.New does partially. This means that Chrome login details are now scattered to multiple places, which sounds a bit harder to maintain.\n\nWhat do you think about introducing a new chrome.Option that instructs chrome.New to proceed to GAIA login screen and return?",
+      "range": {
+        "startLine": 1428,
+        "startChar": 5,
+        "endLine": 1428,
+        "endChar": 26
+      },
+      "revId": "8b2899b2e4ce5c8595cf732249af863e6e9d3fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
