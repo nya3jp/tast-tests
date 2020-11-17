@@ -51,6 +51,114 @@
       "message": "Arthur, can you please take a quick look? Eric wants someone who knows the logic of the test also review this. ",
       "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13f4f3b_9d86a73e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-11-17T18:11:35Z",
+      "side": 1,
+      "message": "This is a very long test. Please add some comments to clarify how this test will validate RT22. I don\u0027t think it\u0027s easy for future maintainers to understand your intention here.",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94aec3fe_5c16323b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-11-17T18:11:35Z",
+      "side": 1,
+      "message": "Swipe which activity? You have two here.",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 9
+      },
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b75b1b_ceef2588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-11-17T18:11:35Z",
+      "side": 1,
+      "message": "Drag which activity? You have two here.",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2db8c17_a19f82e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-11-17T18:11:35Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right condition. A wrongly docked right pane can still satisfy this.",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0096b11d_984696fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-11-17T18:11:35Z",
+      "side": 1,
+      "message": "Code duplication. You\u0027re rotating 270 degrees so the comparison should be identical to line 361. Use a same file helper instead.",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc7f115_0e0e8501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-11-17T18:11:35Z",
+      "side": 1,
+      "message": "Again, rotate back, same comparison.",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
