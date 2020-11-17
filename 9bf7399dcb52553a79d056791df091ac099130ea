@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43bb1c02_a55998df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-17T04:26:18Z",
+      "side": 1,
+      "message": "I did see a similar case before using the same function MakeVisible, UI stuck on rolling page on low-end devices from time to time. That\u0027s why I used long interval here.",
+      "parentUuid": "7e9bfae6_91015a2e",
+      "range": {
+        "startLine": 159,
+        "startChar": 62,
+        "endLine": 159,
+        "endChar": 87
+      },
+      "revId": "9bf7399dcb52553a79d056791df091ac099130ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c55eeb01_20be5aff",
