@@ -51,6 +51,69 @@
       "message": "Hi Sergey, please review the following. Thanks.",
       "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec72ac98_6d962110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T09:50:25Z",
+      "side": 1,
+      "message": "nit: \"extension.\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8da4efa_1e1a1822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T09:50:25Z",
+      "side": 1,
+      "message": "nit: testAPIExtensionID, as ID is an acronym.",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80510f25_7d37b9bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T09:50:25Z",
+      "side": 1,
+      "message": "This should return with a bool, depending on whether the extensension can be installed or not, and check the return value against tc.allowInstall.\nIt can be done with a poll in the helper funcion, like in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go;l\u003d125",
+      "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
