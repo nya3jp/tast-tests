@@ -68,6 +68,24 @@
       "message": "LGTM, once we get verify these pass over 99% of the time in the last 30 days.",
       "revId": "c3739cf668d8062a297af516a6c9c49fa19310d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "681d7098_6c116953",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T02:15:45Z",
+      "side": 1,
+      "message": "Thanks for the info. I took a look at the failures in stainless and I think most failures are fixed on master so it should converge soon. I\u0027ll wait for the passrate to reach the standard before merging.\n\nOne side question: Does the number in the doc counts only master or include other branches? The total runs number seems to be all branches. Currently, I usually don\u0027t cherry-pick test fixes, if it is considered in the criteria of wificell-cq, I probably should start picking these fixes.",
+      "parentUuid": "3c5bbf48_3b017696",
+      "revId": "c3739cf668d8062a297af516a6c9c49fa19310d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
