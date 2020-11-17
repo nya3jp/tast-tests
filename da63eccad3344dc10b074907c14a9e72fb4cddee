@@ -125,6 +125,30 @@
       },
       "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1108df4_4d75b673",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-17T03:10:27Z",
+      "side": 1,
+      "message": "Also if you choose to do the first option, I would include a message to explain the context go/java-practices/exceptions#chaining. But RuntimeException is  generic type, I think the second option (annotating the method throw CameraAccessException) looks better to me.",
+      "parentUuid": "ad1ceb20_5187d593",
+      "range": {
+        "startLine": 273,
+        "startChar": 9,
+        "endLine": 275,
+        "endChar": 9
+      },
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
