@@ -94,6 +94,30 @@
       },
       "revId": "b486247544d6de1b7ccbcb589bd5d736341c7c7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4fbdbf_7c1f1d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-11-17T09:59:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c597d4b_77c0e969",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 59
+      },
+      "revId": "b486247544d6de1b7ccbcb589bd5d736341c7c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
