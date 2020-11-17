@@ -50,6 +50,24 @@
       "message": "I think this is probably a good use case for testing.Poll, especially since there\u0027s no overarching timeout here -- if there\u0027s some issue where permissions need to be granted, but clicking the button on L328 doesn\u0027t do anything for some reason (e.g. regression in Chrome perhaps), we might be stuck in this loop.",
       "revId": "bb1571c94a94f5ac20986aa199f2c2572209c6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e484e33e_44c085a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-17T16:21:18Z",
+      "side": 1,
+      "message": "It is tricky to convert this to tesintg.Poll because there are a few permissions bubbles to dismiss and we do need to loop.\n\nTo address the infinite loop concern, let\u0027s put back the limited loop \"for i :\u003d 0; i \u003c 5; i++ {\".",
+      "parentUuid": "baf71820_8adf83c8",
+      "revId": "bb1571c94a94f5ac20986aa199f2c2572209c6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
