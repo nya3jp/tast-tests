@@ -6,6 +6,7 @@ package power
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"path"
 	"path/filepath"
@@ -45,10 +46,12 @@ type RAPLValues struct {
 	duration time.Duration
 	// joules contains the joules from RAPL
 	joules map[string]float64
+	// Long term package-0 power constraint, in watts.
+	package0PowerConstraint float64
 }
 
 func newRAPLValues() *RAPLValues {
-	return &RAPLValues{0, make(map[string]float64)}
+	return &RAPLValues{0, make(map[string]float64), 0.}
 }
 
 // ReportPerfMetrics appends to perfValues all the RAPL values.
@@ -150,7 +153,7 @@ func NewRAPLSnapshot() (*RAPLSnapshot, error) {
 
 	// It is safe to read max joules from the first directory, and reuse it for all the RAPL values.
 	maxJoulesPath := path.Join(rapl.dirsToParse[0], raplMaxEnergyFile)
-	rapl.maxJoules, err = readRAPLEnergy(maxJoulesPath)
+	rapl.maxJoules, err = readRAPLValue(maxJoulesPath)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not parse")
 	}
@@ -177,6 +180,7 @@ func (r *RAPLSnapshot) diffWithCurrentRAPL(resetStart bool) (*RAPLValues, error)
 		ret.joules[name] = diffJoules(startValue, end.joules[name], r.maxJoules)
 	}
 	ret.duration = endTime.Sub(r.startTime)
+	ret.package0PowerConstraint = end.package0PowerConstraint
 
 	if resetStart {
 		r.start, r.startTime = end, endTime
@@ -220,14 +224,23 @@ func readRAPLValues(dirsToParse []string) (*RAPLValues, time.Time, error) {
 			return nil, time.Time{}, err
 		}
 
-		e, err := readRAPLEnergy(path.Join(dir, raplEnergyFile))
+		e, err := readRAPLValue(path.Join(dir, raplEnergyFile))
 		if err != nil {
 			return nil, time.Time{}, err
 		}
+
 		if !isZoneExpected[name] {
 			return nil, time.Time{}, errors.Errorf("unexpected RAPL name: %q", name)
 		}
 		rapl.joules[name] = e
+
+		if name == package0 {
+			c, err := readRAPLPowerConstraint(dir)
+			if err != nil {
+				return nil, time.Time{}, err
+			}
+			rapl.package0PowerConstraint = c
+		}
 	}
 	return rapl, time.Now(), nil
 }
@@ -249,19 +262,43 @@ func readRAPLFile(filepath string) (string, error) {
 	return strings.TrimSpace(l), nil
 }
 
-// readRAPLEnergy returns energy value, in joules units, contained in filepath.
-func readRAPLEnergy(filepath string) (float64, error) {
+// readRAPLValue returns the float representation contained in the filepath.
+// RAPL values in micro-X units, which can be hard to read, so this function
+// converts to X units.
+func readRAPLValue(filepath string) (float64, error) {
 	s, err := readRAPLFile(filepath)
 	if err != nil {
 		return 0, err
 	}
-	uj, err := strconv.ParseUint(s, 10, 64)
+	v, err := strconv.ParseUint(s, 10, 64)
+	if err != nil {
+		return 0, err
+	}
+	return float64(v) / 1000000., nil
+}
+
+// readRAPLPowerConstraint returns the long term power constraint (in W)
+func readRAPLPowerConstraint(dir string) (float64, error) {
+	const (
+		limitFileTemplate = "constraint_%d_power_limit_uw"
+		timeFileTemplate  = "constraint_%d_time_window_us"
+	)
+
+	pl0Time, err := readRAPLValue(path.Join(dir, fmt.Sprintf(timeFileTemplate, 0)))
 	if err != nil {
 		return 0, err
 	}
 
-	// RAPL reports energy in micro joules. Micro joules gives us too much resolution,
-	// and can make it a bit difficult to read. We use joules instead, gaining readability
-	// the cost of losing some precision that we don't need.
-	return float64(uj) / 1000000., nil
+	pl1Time, err := readRAPLValue(path.Join(dir, fmt.Sprintf(timeFileTemplate, 1)))
+	if err != nil {
+		return 0, err
+	}
+
+	// The constraint with the larger time window is the long term constraint
+	idx := 0
+	if pl1Time > pl0Time {
+		idx = 1
+	}
+
+	return readRAPLValue(path.Join(dir, fmt.Sprintf(limitFileTemplate, idx)))
 }
