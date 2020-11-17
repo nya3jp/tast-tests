@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfdf0300_73cec6ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-11-17T19:20:35Z",
+      "side": 1,
+      "message": "Please upload a new snapshot before replying.",
+      "parentUuid": "cf62dc10_82b4ad4f",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94aec3fe_5c16323b",
@@ -301,6 +319,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64d7999a_c432507b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-11-17T19:20:35Z",
+      "side": 1,
+      "message": "Right will be the right of display, combined with width close to half of display width you\u0027ll have a solid test.",
+      "parentUuid": "433e29d1_7c402e54",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0096b11d_984696fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
         "patchSetId": 1
@@ -336,6 +372,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4659399d_46a6b547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-11-17T19:20:35Z",
+      "side": 1,
+      "message": "I see, then two helpers will be more readable than what\u0027s shown here\n\ncheckVerticalSplit\ncheckHorizontalSplit",
+      "parentUuid": "2fcc8e4d_5d102441",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6cc7f115_0e0e8501",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
         "patchSetId": 1
@@ -365,6 +419,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "6cc7f115_0e0e8501",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f65acc1_84f05c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-11-17T19:20:35Z",
+      "side": 1,
+      "message": "So this comparison is the duplicate of first one if I understand correctly, how is this done?",
+      "parentUuid": "a8caa862_66d94896",
       "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
