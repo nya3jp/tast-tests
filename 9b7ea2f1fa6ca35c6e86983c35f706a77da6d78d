@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83e95ed_82bcc026",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-17T03:36:49Z",
+      "side": 1,
+      "message": "Before putting the poll on the json file, I tried adding sleeps. 2 situations occur without some sleeping:\n\n1: I fail the \"Assert Bluetooth is down.\" check as the device actually doesn\u0027t go down.\n2: The device boot setting does not persist even if I explicitly read the preference and check to make sure it\u0027s off.\n\nI found the test to be very consistent with 40 seconds of sleep, and I put in the polling so that the test can terminate early.",
+      "parentUuid": "91c0a865_73326ddf",
+      "revId": "9b7ea2f1fa6ca35c6e86983c35f706a77da6d78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "646a4cd5_161a8287",
