@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4f407b_576745d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blocklist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-11-17T20:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f045a6c_02f6f283",
+      "revId": "787dba4ef5b5f34ff73a2aca537fd707d5091154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74c9bc6b_165f4b57",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-17T16:01:47Z",
       "side": 1,
       "message": "could you use unix.Mount, instead?",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "787dba4ef5b5f34ff73a2aca537fd707d5091154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f5f0b5_49ecd1cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blocklist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-11-17T20:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74c9bc6b_165f4b57",
       "range": {
         "startLine": 57,
         "startChar": 2,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f444dd8_786eff6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blocklist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-11-17T20:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54974759_c76bb0bd",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "787dba4ef5b5f34ff73a2aca537fd707d5091154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1a09b0a_002cfc61",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-11-17T16:01:47Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "787dba4ef5b5f34ff73a2aca537fd707d5091154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d799a32_5a0351fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blocklist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-11-17T20:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1a09b0a_002cfc61",
       "range": {
         "startLine": 105,
         "startChar": 2,
