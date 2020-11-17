@@ -22,7 +22,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Data:         []string{"capybara.jpg"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
