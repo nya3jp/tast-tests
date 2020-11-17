@@ -104,7 +104,7 @@ func EarlyCrash(ctx context.Context, s *testing.State) {
 	}
 	fs = crash_service.NewFixtureServiceClient(cl.Conn)
 
-	base := `coreutils\.\d{8}\.\d{6}\.\d{1,4}`
+	base := `coreutils\.\d{8}\.\d{6}\.\d+\.\d+`
 	waitReq := &crash_service.WaitForCrashFilesRequest{
 		Dirs: []string{systemCrashDir},
 		Regexes: []string{base + `\.dmp`, base + `\.meta`,

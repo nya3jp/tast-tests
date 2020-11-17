@@ -61,7 +61,7 @@ func Serializer(ctx context.Context, s *testing.State) {
 	defer crash.TearDownCrashTest(ctx)
 
 	const (
-		basename = "some_program.1.2.3"
+		basename = "some_program.1.2.3.4"
 		// Coredump should be large enough to need to split into multiple messages
 		coreBytes  = 3 * 1024 * 1024
 		coreChunks = 3

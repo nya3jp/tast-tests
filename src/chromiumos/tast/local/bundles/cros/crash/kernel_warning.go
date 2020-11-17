@@ -64,7 +64,7 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 	s.Log("Waiting for files")
 	const (
 		funcName = `[a-zA-Z0-9_]*(?:lkdtm|breakme|direct_entry)[a-zA-Z0-9_]*`
-		baseName = `kernel_warning_` + funcName + `\.\d{8}\.\d{6}\.0`
+		baseName = `kernel_warning_` + funcName + `\.\d{8}\.\d{6}\.\d+\.0`
 		metaName = baseName + `\.meta`
 	)
 	expectedRegexes := []string{baseName + `\.kcrash`,
