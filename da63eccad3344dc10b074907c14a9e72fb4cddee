@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a89876c_0e239241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-17T02:55:59Z",
+      "side": 1,
+      "message": "FYI, when it\u0027s only Android java change, you can ask one of android/OWNERS instead of tast-owners.\nhttp://cs/chromeos_public/src/platform/tast-tests/android/OWNERS",
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3ab04d_c514c5bf",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-17T02:55:59Z",
+      "side": 1,
+      "message": "Isn\u0027t it nullable?",
+      "range": {
+        "startLine": 259,
+        "startChar": 26,
+        "endLine": 259,
+        "endChar": 33
+      },
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60915f0d_e95c1fd6",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-17T02:55:59Z",
+      "side": 1,
+      "message": "nit: you can simply do sb.append(i)\nhttps://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html#append-int-",
+      "range": {
+        "startLine": 266,
+        "startChar": 16,
+        "endLine": 266,
+        "endChar": 47
+      },
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f70fcea2_3df05856",
@@ -36,6 +99,29 @@
         "startChar": 12,
         "endLine": 271,
         "endChar": 27
+      },
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad1ceb20_5187d593",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-17T02:55:59Z",
+      "side": 1,
+      "message": "I think this Exception can be thrown only by manager.getCameraIdList(). In general, it\u0027s preferred to limit the amount of code inside a try block.\ngo/java-practices/exceptions#keep-try-blocks-focused\n\nThus, I would do:\n\nfinal CameraManager manager \u003d ...\nfinal String[] ids;\ntry {\n  ids \u003d manager.getCameraIdList();\n} catch catch (CameraAccessException e) {\n  throw new RuntimeException(e);\n}\nfinal StringBuilder sb \u003d new StringBuilder();\n...\n\n\nOr, instead, as this just rethrows the exception, how about annotating this method to throw CameraAccessException? It\u0027s already caught by the caller.",
+      "range": {
+        "startLine": 273,
+        "startChar": 9,
+        "endLine": 275,
+        "endChar": 9
       },
       "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
