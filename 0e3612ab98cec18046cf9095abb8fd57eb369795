@@ -50,6 +50,24 @@
       "message": "This should probably be wrapped by PollBreak since I assume you want to fail immediately if you can\u0027t check this.",
       "revId": "0e3612ab98cec18046cf9095abb8fd57eb369795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13dd343_2fbdc9b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2020-11-17T19:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e5b6ab2_ef8c3a87",
+      "revId": "0e3612ab98cec18046cf9095abb8fd57eb369795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
