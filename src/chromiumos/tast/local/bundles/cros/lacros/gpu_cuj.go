@@ -734,7 +734,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 	defer connURL.CloseTarget(ctx)
 
 	// Close the initial "about:blank" tab present at startup.
-	if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
+	if err := lacros.CloseAboutBlank(ctx, ctconn, l.Devsess, 0); err != nil {
 		return errors.Wrap(err, "failed to close about:blank tab")
 	}
 
