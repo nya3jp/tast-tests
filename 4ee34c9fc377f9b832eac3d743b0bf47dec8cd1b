@@ -16,6 +16,29 @@
       "message": "Thanks Gabor.\nUpdated the test, PTAL.",
       "revId": "4ee34c9fc377f9b832eac3d743b0bf47dec8cd1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "903f6abb_69294bfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-17T20:20:05Z",
+      "side": 1,
+      "message": "I feel the test name, policy.HomePage, quite explains itself.",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "4ee34c9fc377f9b832eac3d743b0bf47dec8cd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
