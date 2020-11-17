@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c0d19d2_767d88da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-17T11:39:19Z",
+      "side": 1,
+      "message": "Thanks for giving example!\n\nI think you might be interested in using TouchScreen() hardware deps:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d162?q\u003dhwdep.D\n\nUnfortunately, AFAIK, there is no hardware deps like Keyboard() / NoKeyboard() yet. Hidehiko, IIRC, you was working on hardware deps for Tast, how easy it will be to add new hardware deps?\n\n\nAt least we can start with using TouchScreen() deps and/or allowlist only on some model which satisfy requirements.",
+      "parentUuid": "81acb524_3db29b38",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 111
+      },
+      "revId": "41032731e32353fff4819d0217e14f04f4c17286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b1ba174e_4dd3bd0a",

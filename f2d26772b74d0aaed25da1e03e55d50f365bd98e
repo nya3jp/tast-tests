@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e620c6c_c0d7c39a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_quick_emoji.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-17T11:39:19Z",
+      "side": 1,
+      "message": "It definitely shouldn\u0027t be like that and we should fail if it\u0027s not active",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 28
+      },
+      "revId": "f2d26772b74d0aaed25da1e03e55d50f365bd98e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd94732_ff0ab2ec",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-17T11:39:19Z",
+      "side": 1,
+      "message": "no attached keyboard or not active keyboard?",
+      "range": {
+        "startLine": 395,
+        "startChar": 57,
+        "endLine": 395,
+        "endChar": 77
+      },
+      "revId": "f2d26772b74d0aaed25da1e03e55d50f365bd98e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
