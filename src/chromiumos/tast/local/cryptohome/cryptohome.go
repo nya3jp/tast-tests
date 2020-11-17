@@ -52,9 +52,10 @@ const (
 // hashRegexp extracts the hash from a cryptohome dir's path.
 var hashRegexp *regexp.Regexp
 
-var shadowRegexp *regexp.Regexp  // matches a path to vault under /home/shadow.
-var devRegexp *regexp.Regexp     // matches a path to /dev/*.
-var devLoopRegexp *regexp.Regexp // matches a path to /dev/loop\d+.
+var shadowRegexp *regexp.Regexp        // matches a path to vault under /home/shadow.
+var devRegexp *regexp.Regexp           // matches a path to /dev/*.
+var devLoopRegexp *regexp.Regexp       // matches a path to /dev/loop\d+.
+var authSessionIDRegexp *regexp.Regexp // matches auth_session_id:*
 
 const shadowRoot = "/home/.shadow"               // is a root directory of vault.
 const mountNsPath = "/run/namespaces/mnt_chrome" // is the user session mount namespace path.
@@ -68,6 +69,7 @@ func init() {
 	shadowRegexp = regexp.MustCompile(`^/home/\.shadow/[^/]*/vault$`)
 	devRegexp = regexp.MustCompile(`^/dev(/[^/]*){1,2}$`)
 	devLoopRegexp = regexp.MustCompile(`^/dev/loop[0-9]+$`)
+	authSessionIDRegexp = regexp.MustCompile(`(auth_session_id:)(.+)(\n)`)
 }
 
 // UserHash returns user's cryptohome hash.
@@ -476,4 +478,64 @@ func CheckDeps(ctx context.Context) (errs []error) {
 	}
 
 	return errs
+}
+
+// StartAuthSession starts an |AuthSession| for a given user.
+func StartAuthSession(ctx context.Context, user string) (string, error) {
+	testing.ContextLogf(ctx, "Creating AuthSession for user %q", user)
+	out, err := testexec.CommandContext(
+		ctx, "cryptohome", "--action=start_auth_session",
+		"--user="+user).Output()
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to create AuthSession for %q", user)
+	}
+	authSessionID := authSessionIDRegexp.FindSubmatch(out)[2]
+	return string(authSessionID), nil
+}
+
+// AuthenticateAuthSession authenticates an AuthSession with a given authSessionID.
+func AuthenticateAuthSession(ctx context.Context, password, authSessionID string) error {
+	testing.ContextLog(ctx, "Authenticating AugitthSession")
+	cmd := testexec.CommandContext(
+		ctx, "cryptohome", "--action=authenticate_auth_session",
+		"--auth_session_id="+authSessionID, "--password="+password)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrap(err, "failed to authenticate AuthSession")
+	}
+	return nil
+}
+
+// AddCredentialsWithAuthSession creates the credentials for the user with given password.
+func AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string) error {
+	testing.ContextLogf(ctx, "Creating new credentials for with AuthSession id: %q", authSessionID)
+
+	cmd := testexec.CommandContext(
+		ctx, "cryptohome", "--action=add_credentials",
+		"--auth_session_id="+authSessionID, "--password="+password)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to create new credentials for %s", user)
+	}
+	hash, err := UserHash(ctx, user)
+	if err != nil {
+		return err
+	}
+
+	if _, err := os.Stat(filepath.Join(shadowRoot, hash)); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MountWithAuthSession mounts user with AuthSessionID.
+func MountWithAuthSession(ctx context.Context, authSessionID string) error {
+	testing.ContextLogf(ctx, "Trying to mount user vault with AuthSession id: %q", authSessionID)
+
+	cmd := testexec.CommandContext(
+		ctx, "cryptohome", "--action=mount_ex",
+		"--auth_session_id="+authSessionID)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to mount vault")
+	}
+	return nil
 }
