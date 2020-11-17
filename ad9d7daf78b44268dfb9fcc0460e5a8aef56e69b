@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71eb1d3c_8c7870c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-17T16:45:46Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "c5e2505e_51d33239",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c2b7ffd_84c1a7ba",
@@ -159,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "025b81b7_4b605fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-17T16:45:46Z",
+      "side": 1,
+      "message": "\u003e Done. I named DecodeCompliance.av1_test_vectors.\n\u003e \n\u003e Re MD5sum accurateness check, I will add a unittest in follow-up CL.",
+      "parentUuid": "438a8f1b_c142c6eb",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab59ba13_3ddb2139",
@@ -196,6 +244,30 @@
       "side": 1,
       "message": "Okay, replaced chromeos-video-eng@ with chromeos-gfx-video@ rather than adding.",
       "parentUuid": "ab59ba13_3ddb2139",
+      "range": {
+        "startLine": 55,
+        "startChar": 48,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835fb677_7474696d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-17T16:45:46Z",
+      "side": 1,
+      "message": "Not changed in RHS.",
+      "parentUuid": "f36b746c_311bbb7f",
       "range": {
         "startLine": 55,
         "startChar": 48,

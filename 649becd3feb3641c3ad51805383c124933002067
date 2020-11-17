@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1309c10_f2ea52d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-17T16:45:46Z",
+      "side": 1,
+      "message": "LGTM % nits and follow ups.",
+      "revId": "649becd3feb3641c3ad51805383c124933002067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f024cd4_ba098de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-17T16:45:46Z",
+      "side": 1,
+      "message": "nit: s/to/with/",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "649becd3feb3641c3ad51805383c124933002067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
