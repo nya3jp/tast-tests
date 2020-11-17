@@ -1185,6 +1185,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "069cdc81_96fc8f92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T05:23:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9038f084_503f556c",
+      "range": {
+        "startLine": 196,
+        "startChar": 58,
+        "endLine": 196,
+        "endChar": 64
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92225b9a_cb30c453",

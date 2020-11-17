@@ -16,6 +16,125 @@
       "message": "Ready for review",
       "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c0b803_143e6acf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T05:23:53Z",
+      "side": 1,
+      "message": "only nit-picks",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8899dba4_6cc58600",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/supplicant.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T05:23:53Z",
+      "side": 1,
+      "message": "nit: If you want a comment for this group of constants, you may consider having an independent \"const ()\" block for them.",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5a8e56_955d1fbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T05:23:53Z",
+      "side": 1,
+      "message": "nit: might be nice to keep the TODO to explain the purpose of this.",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9dcefc_b09bfb3d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T05:23:53Z",
+      "side": 1,
+      "message": "nit: would be nice to comment the purpose for this, i.e. we might early deconfig the AP below.",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f9c502_e6bbe5f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T05:23:53Z",
+      "side": 1,
+      "message": "nit: I think this if is not needed? as no other code will deconfigAP2.",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9cac95d_c942dc27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T05:23:53Z",
+      "side": 1,
+      "message": "nit: maybe remove this empty line?",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca3eb744_601a0fad",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T05:23:53Z",
+      "side": 1,
+      "message": "nit: current design LGTM. but I\u0027m thinking if it might be simpler to separate reason code and \"local generated\" boolean. (feel free to close this directly if you think this is an overkill)",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
