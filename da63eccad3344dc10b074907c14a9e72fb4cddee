@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70fcea2_3df05856",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-17T02:08:10Z",
+      "side": 1,
+      "message": "Is the last \",\" in the string expected?",
+      "range": {
+        "startLine": 264,
+        "startChar": 12,
+        "endLine": 271,
+        "endChar": 27
+      },
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
