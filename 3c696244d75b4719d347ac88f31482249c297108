@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2387f1a1_b117b4f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T15:13:21Z",
+      "side": 1,
+      "message": "It is enough to get this once, before the for cycle.",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 4
+      },
+      "revId": "3c696244d75b4719d347ac88f31482249c297108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

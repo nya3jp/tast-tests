@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e199542b_766527d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T15:13:21Z",
+      "side": 1,
+      "message": "nit: please add \"Add\" into the title.\nIf you like it, you can use something like:\n\u003e  policy: Add KeyboardDefaultToFunctionKeys",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "9ffa972f9b55bae5dd2776faadc665008e626a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f004817d_db0f05f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T15:13:21Z",
+      "side": 1,
+      "message": "Please add a little more verbose description.",
+      "revId": "9ffa972f9b55bae5dd2776faadc665008e626a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3b4c6b_e5bc4900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T15:13:21Z",
+      "side": 1,
+      "message": "The keyboard should be opened once, before the for cycle.",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "9ffa972f9b55bae5dd2776faadc665008e626a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
