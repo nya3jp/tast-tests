@@ -39,6 +39,30 @@
       },
       "revId": "2a1ba815e315b5da479e929d2bcf0fcec362d48a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4650a3b1_96fee4fa",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-17T09:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93a9a6ce_a1de08a3",
+      "range": {
+        "startLine": 132,
+        "startChar": 43,
+        "endLine": 132,
+        "endChar": 49
+      },
+      "revId": "2a1ba815e315b5da479e929d2bcf0fcec362d48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

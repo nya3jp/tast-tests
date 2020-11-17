@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e2505e_51d33239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-17T09:43:17Z",
+      "side": 1,
+      "message": "I tried doing this automatically but couldn\u0027t find a good way.\nI asked nya@ this morning and was told there was no way of doing it today.\nI leave TODO with crbug link.",
+      "parentUuid": "61cd82a3_d226faca",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c2b7ffd_84c1a7ba",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-16T17:35:03Z",
       "side": 1,
       "message": "nit: s/getIVFFiles/listIVFFile/ ?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd181bb_c4023550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-17T09:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c2b7ffd_84c1a7ba",
       "range": {
         "startLine": 40,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "438a8f1b_c142c6eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-17T09:43:17Z",
+      "side": 1,
+      "message": "Done. I named DecodeCompliance.av1_test_vectors.\n\nRe MD5sum accurateness check, I will add a unittest in follow-up CL.",
+      "parentUuid": "8eea59c6_2e7c24fa",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab59ba13_3ddb2139",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-16T17:35:03Z",
       "side": 1,
       "message": "Please use (also) chromeos-gfx-video@google.com.",
+      "range": {
+        "startLine": 55,
+        "startChar": 48,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36b746c_311bbb7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-17T09:43:17Z",
+      "side": 1,
+      "message": "Okay, replaced chromeos-video-eng@ with chromeos-gfx-video@ rather than adding.",
+      "parentUuid": "ab59ba13_3ddb2139",
       "range": {
         "startLine": 55,
         "startChar": 48,
@@ -151,6 +247,54 @@
         "startChar": 72,
         "endLine": 97,
         "endChar": 81
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13378965_476dd33f",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-17T09:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e96066_c8a8e030",
+      "range": {
+        "startLine": 97,
+        "startChar": 72,
+        "endLine": 97,
+        "endChar": 81
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e16d5af_dfaf8a70",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-17T09:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "301207c3_713baf11",
+      "range": {
+        "startLine": 97,
+        "startChar": 22,
+        "endLine": 97,
+        "endChar": 24
       },
       "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
