@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27ab70f0_01070a47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T10:09:24Z",
+      "side": 1,
+      "message": "Can this homepageURL as well? (same question for the next test case)",
+      "range": {
+        "startLine": 65,
+        "startChar": 37,
+        "endLine": 65,
+        "endChar": 58
+      },
+      "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d494438c_069dc215",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage_location.go",
         "patchSetId": 1
@@ -142,6 +165,53 @@
         "startChar": 4,
         "endLine": 77,
         "endChar": 6
+      },
+      "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "836dbcb7_3946c80b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T10:09:24Z",
+      "side": 1,
+      "message": "For the linked tests, the underlying is that each testing param is responsible to test one policy. They are in the same file, as the method to check the funcionlity is the same. And in some cases (like allowlist) it cannot be set/tested without setting the blocklist.\n\nIn this case it would mean that the test name is Homepage, and the params are \"location\" and \"is_new_tab_page\", and both test the given policy, while setting the other one as needed.\n\nFor the off topic question: allowlist and whitelist are the same. As we are changing to more inclusive language, the allowlist was introduced. For a while there is a need to support the whitelist policy as well, but it will be deprecated soon.",
+      "parentUuid": "60d6548c_9a1d78a7",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "298d01c8_6f9d9449",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T10:09:24Z",
+      "side": 1,
+      "message": "nit: getting the keyboard once, before the for cycle is enough.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 19
       },
       "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
