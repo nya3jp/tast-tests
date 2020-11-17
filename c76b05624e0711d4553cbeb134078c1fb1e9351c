@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc04c96_e0c1bc4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-17T09:26:13Z",
+      "side": 1,
+      "message": "LGTM, don\u0027t wait shadow since change is trivial",
+      "revId": "c76b05624e0711d4553cbeb134078c1fb1e9351c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
