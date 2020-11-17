@@ -16,6 +16,64 @@
       "message": "I debugged the --no-start-window flag with Ryan Hansberry, and we found out that toggling the bluetooth preference via settingsPrivate was sufficient to also toggle the bluetooth adapter. However, the change to the bluetooth adapter is asynchronous and could take on the order of 30 seconds to go through. I have removed the chrome flag and modified how I set the adapter state (I no longer use dbus to turn off the adapter), and now the test works.\n\nWe still don\u0027t know why the flag worked in the first place, but we suspect the way I was toggling bluetooth was in undefined territory.\n\n",
       "revId": "9b7ea2f1fa6ca35c6e86983c35f706a77da6d78d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c0a865_73326ddf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T03:14:56Z",
+      "side": 1,
+      "message": "It sounds a little strange to me that setting preference may take ~30s. Does this mean that if we toggle BT setting on UI and shutdown in 30s, the setting will not persist?",
+      "parentUuid": "c684d3c6_ca7a0eb7",
+      "revId": "9b7ea2f1fa6ca35c6e86983c35f706a77da6d78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fff03b2_9bb1232d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T03:14:56Z",
+      "side": 1,
+      "message": "one comment on the new check.",
+      "revId": "9b7ea2f1fa6ca35c6e86983c35f706a77da6d78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "646a4cd5_161a8287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T03:14:56Z",
+      "side": 1,
+      "message": "This looks fragile, e.g. may break when some keys are added. golang has native json library and should not be hard to use. (The only downside is much more lines needed) You may consider using it.\nOr, if you don\u0027t want to parse json in go code. Perhaps you can do something like executing \"jq .ash.system.bluetooth.adapter_enabled \u0027/home/chronos/Local State\u0027\" instead?",
+      "range": {
+        "startLine": 76,
+        "startChar": 36,
+        "endLine": 76,
+        "endChar": 101
+      },
+      "revId": "9b7ea2f1fa6ca35c6e86983c35f706a77da6d78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
