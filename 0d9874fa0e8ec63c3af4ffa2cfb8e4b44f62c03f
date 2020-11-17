@@ -112,6 +112,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b76d315b_0298631e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-17T18:24:43Z",
+      "side": 1,
+      "message": "I think we drop the error here if this doesn\u0027t succeed; we should probably return it if we get one instead of continuing on.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 51
+      },
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c0a3f32_08d14326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-17T18:24:43Z",
+      "side": 1,
+      "message": "ditto re: dropping the error",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 51
+      },
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2db8c17_a19f82e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
         "patchSetId": 1
