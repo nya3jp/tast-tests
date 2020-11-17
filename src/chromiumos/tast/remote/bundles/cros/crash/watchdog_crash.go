@@ -125,7 +125,7 @@ func WatchdogCrash(ctx context.Context, s *testing.State) {
 	}
 	fs = crash_service.NewFixtureServiceClient(cl.Conn)
 
-	base := `kernel\.\d{8}\.\d{6}\.0`
+	base := `kernel\.\d{8}\.\d{6}\.\d+\.0`
 	biosLogMatches := &crash_service.RegexMatch{
 		Regex: base + `\.bios_log`,
 		Files: nil,

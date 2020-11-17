@@ -22,7 +22,7 @@ const (
 	iwlwifiPath   = "/sys/kernel/debug/iwlwifi"
 	fwnmiPath     = "/iwlmvm/fw_nmi"
 	funcName      = `(NMI_INTERRUPT_UNKNOWN|ADVANCED_SYSASSERT)`
-	crashBaseName = `kernel_iwlwifi_error_` + funcName + `\.\d{8}\.\d{6}\.0`
+	crashBaseName = `kernel_iwlwifi_error_` + funcName + `\.\d{8}\.\d{6}\.\d+\.0`
 )
 
 var (
