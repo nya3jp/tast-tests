@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c328a93f_7c0edd70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-17T19:50:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ef29928_76478d59",
+      "range": {
+        "startLine": 34,
+        "startChar": 57,
+        "endLine": 34,
+        "endChar": 58
+      },
+      "revId": "22e0ef8e954c1cf8375f5e21acfac0729e8309e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "618f6cb2_2a16bbbe",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-17T08:19:52Z",
       "side": 1,
       "message": "Should we run in graphics suites to prevent others from impacting device state?",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "22e0ef8e954c1cf8375f5e21acfac0729e8309e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd344cf_f666e7c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-17T19:50:06Z",
+      "side": 1,
+      "message": "let\u0027s do both.",
+      "parentUuid": "618f6cb2_2a16bbbe",
       "range": {
         "startLine": 56,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a31ba87e_88994f8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-17T19:50:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b380e5d_40b48db1",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 59
+      },
+      "revId": "22e0ef8e954c1cf8375f5e21acfac0729e8309e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfc1d5ff_9017bda5",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-17T08:19:52Z",
       "side": 1,
       "message": "Are we still going to run the test and report the data before failing?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 77
+      },
+      "revId": "22e0ef8e954c1cf8375f5e21acfac0729e8309e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f23e28_10b6450a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-17T19:50:06Z",
+      "side": 1,
+      "message": "Error() will proceed but marks the test as failure in the end.",
+      "parentUuid": "cfc1d5ff_9017bda5",
       "range": {
         "startLine": 85,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e65576e_558831e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-17T19:50:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cc00be6_f207d3a1",
+      "range": {
+        "startLine": 114,
+        "startChar": 10,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "22e0ef8e954c1cf8375f5e21acfac0729e8309e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3234d66_743333c7",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-11-17T08:19:52Z",
       "side": 1,
       "message": "Failed",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 19
+      },
+      "revId": "22e0ef8e954c1cf8375f5e21acfac0729e8309e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ca0c05_0dce7085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-17T19:50:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3234d66_743333c7",
       "range": {
         "startLine": 119,
         "startChar": 13,
