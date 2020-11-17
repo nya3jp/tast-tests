@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec6221a_b37a7855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-17T17:41:21Z",
+      "side": 1,
+      "message": "It could take 10+s for the page to trigger the 1st permission bubble and we have 3 to go, 30s is a bit on the edge. Let\u0027s make this longer, 1 min or even 2 min are all good to me.",
+      "range": {
+        "startLine": 332,
+        "startChar": 57,
+        "endLine": 332,
+        "endChar": 73
+      },
+      "revId": "6a88fa50e7ab4f9f2116db9bc46cd6f2396d65a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
