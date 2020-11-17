@@ -69,6 +69,24 @@
       "parentUuid": "c8b28675_675e73a9",
       "revId": "ad2dfb019cd605a3f71fed1f9e2a9fe8302875d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29eab561_b9176345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-17T03:13:30Z",
+      "side": 1,
+      "message": "Ah okay, that\u0027s interesting. Done.",
+      "parentUuid": "a72eb787_50c37324",
+      "revId": "ad2dfb019cd605a3f71fed1f9e2a9fe8302875d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
