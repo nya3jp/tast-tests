@@ -13,20 +13,17 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     RoamDbus,
-		Desc:     "Tests an intentional client-driven roam between APs",
-		Contacts: []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:     []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		// These boards have Broadcom WiFi chip which doesn't support supplicant-based roaming.
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("veyron_mickey"), hwdep.SkipOnPlatform("veyron_speedy")),
-		ServiceDeps:  []string{wificell.TFServiceName},
-		Pre:          wificell.TestFixturePre(),
-		Vars:         []string{"router", "pcap"},
+		Func:        RoamDbus,
+		Desc:        "Tests an intentional client-driven roam between APs",
+		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
+		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePre(),
+		Vars:        []string{"router", "pcap"},
 	})
 }
 
