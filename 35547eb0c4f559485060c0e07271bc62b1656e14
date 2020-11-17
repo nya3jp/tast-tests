@@ -16,6 +16,57 @@
       "message": "PTAL~",
       "revId": "35547eb0c4f559485060c0e07271bc62b1656e14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4a1599_70d46950",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-17T15:40:08Z",
+      "side": 1,
+      "message": "Tast LGTM.",
+      "revId": "35547eb0c4f559485060c0e07271bc62b1656e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537b26f0_f81c2dfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/bbb_1080p60_yuv.vp9.webm.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-17T15:40:08Z",
+      "side": 1,
+      "message": "nit: could you remove unneeded empty line?",
+      "revId": "35547eb0c4f559485060c0e07271bc62b1656e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ecb5695_48e3dfb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-17T15:40:08Z",
+      "side": 1,
+      "message": "url has more complex semantic now. Could you document it?",
+      "revId": "35547eb0c4f559485060c0e07271bc62b1656e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
