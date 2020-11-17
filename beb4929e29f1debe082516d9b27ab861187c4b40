@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7852df2a_08d385c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-11-17T23:28:53Z",
+      "side": 1,
+      "message": "\\d{5} ?",
+      "range": {
+        "startLine": 79,
+        "startChar": 86,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "beb4929e29f1debe082516d9b27ab861187c4b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398a0926_23671708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/built_in_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-11-17T23:28:53Z",
+      "side": 1,
+      "message": "\\d{5} ?",
+      "range": {
+        "startLine": 81,
+        "startChar": 34,
+        "endLine": 81,
+        "endChar": 37
+      },
+      "revId": "beb4929e29f1debe082516d9b27ab861187c4b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c17adb6_cffa2471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-11-17T23:28:53Z",
+      "side": 1,
+      "message": "\\d{5} ? (And all the other places)",
+      "range": {
+        "startLine": 94,
+        "startChar": 47,
+        "endLine": 94,
+        "endChar": 50
+      },
+      "revId": "beb4929e29f1debe082516d9b27ab861187c4b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
