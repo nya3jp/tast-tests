@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/lacros/bbb_1080p60_yuv_20201117.vp9.webm",
+  "size": 46031487,
+  "sha256sum": "83bd969b1feb65736bf9888b388bad4a28ef8fb47c2859933dd3d102df7d0ed8"
+}
