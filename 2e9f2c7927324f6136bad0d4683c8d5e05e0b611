@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93595775_e8a4a397",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-11-17T01:29:55Z",
+      "side": 1,
+      "message": "[1] landed in 13503.0.0\n[2] started in 13546.0.0\n\nI don\u0027t mind this change, but I think it is a noop. The main difference between \"chrome_internal\" and \"proprietary_codecs\" is for external developers or on the Chromium waterfall. In the ChromeOS lab we use only chrome_internal, which has proprietary_codecs. But if you want to give it a try, no problem.",
+      "revId": "2e9f2c7927324f6136bad0d4683c8d5e05e0b611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
