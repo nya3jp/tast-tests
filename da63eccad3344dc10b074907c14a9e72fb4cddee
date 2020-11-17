@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c3d3e6_cd402b86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-17T02:12:43Z",
+      "side": 1,
+      "message": "RSLGTM % Judy\u0027s comment. I\u0027m not very familiar with Android Java, please wait for Hiroki\u0027s approval.\n",
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f70fcea2_3df05856",
