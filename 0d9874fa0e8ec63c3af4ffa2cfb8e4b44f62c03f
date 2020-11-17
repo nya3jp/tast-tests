@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf62dc10_82b4ad4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-17T19:14:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b13f4f3b_9d86a73e",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94aec3fe_5c16323b",
@@ -93,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20728c5_1f05f7b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-17T19:14:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94aec3fe_5c16323b",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 9
+      },
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06b75b1b_ceef2588",
@@ -106,6 +148,24 @@
       "writtenOn": "2020-11-17T18:11:35Z",
       "side": 1,
       "message": "Drag which activity? You have two here.",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc5b891_0aed6efb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-17T19:14:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06b75b1b_ceef2588",
       "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -175,6 +235,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "433e29d1_7c402e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-17T19:14:26Z",
+      "side": 1,
+      "message": "Should I get the width of the bar that splits snapped activities and calculate the exact bounds based on that? Is there a way to get that splitter\u0027s info?",
+      "parentUuid": "a2db8c17_a19f82e8",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0096b11d_984696fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
         "patchSetId": 1
@@ -192,6 +270,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fcc8e4d_5d102441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-17T19:14:26Z",
+      "side": 1,
+      "message": "They are not identical, in portrait mode, activities must have the same width as the display, whereas in clamshell mode (line 361), activities\u0027 width is a little less than half of the display\u0027s width. Same goes to their heights.",
+      "parentUuid": "0096b11d_984696fb",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6cc7f115_0e0e8501",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
         "patchSetId": 1
@@ -203,6 +299,24 @@
       "writtenOn": "2020-11-17T18:11:35Z",
       "side": 1,
       "message": "Again, rotate back, same comparison.",
+      "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8caa862_66d94896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-17T19:14:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cc7f115_0e0e8501",
       "revId": "0d9874fa0e8ec63c3af4ffa2cfb8e4b44f62c03f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
