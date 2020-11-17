@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9587d305_27c8e495",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-11-17T01:00:35Z",
+      "side": 1,
+      "message": "This is only for manual debugging. There\u0027s no meaningful test that I could add. I had a few issues in the last days where it was useful to have these extra Android intents, thus I added them to this app.",
+      "parentUuid": "4073b23a_3b5a1f20",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "5a098c1ca78991c756c16f39b1892025af2cca54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ef213538_fc578528",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,23 @@
       "writtenOn": "2020-11-16T11:24:25Z",
       "side": 1,
       "message": "mukai@ is on leave, unassigning.",
+      "revId": "5a098c1ca78991c756c16f39b1892025af2cca54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05f90c0c_42b54048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-11-17T01:00:35Z",
+      "side": 1,
+      "message": "Thanks for the review",
       "revId": "5a098c1ca78991c756c16f39b1892025af2cca54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
