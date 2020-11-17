@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "56e2d51b_c882db3e",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Some initial comments. I think the test will need different test flow from wifi.CSA as the mechanism of FrameSender and \"hostapd_cli chan_switch\" is quite different.",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e1cde9a0_f2d268ed",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -37,10 +38,10 @@
         "endChar": 103
       },
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "6862c34b_42146c2e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -61,10 +62,10 @@
         "endChar": 103
       },
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ce538657_889cf7de",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -84,10 +85,10 @@
         "endChar": 34
       },
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4a432d80_8dbeb12e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -108,10 +109,10 @@
         "endChar": 34
       },
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "87aff75c_2358f976",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -131,10 +132,10 @@
         "endChar": 65
       },
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "eab5dc20_84f7f261",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -155,10 +156,34 @@
         "endChar": 65
       },
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a08886_7e5dc46f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eab5dc20_84f7f261",
+      "range": {
+        "startLine": 32,
+        "startChar": 60,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "22ef2de7_38dae31c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -172,10 +197,10 @@
       "side": 1,
       "message": "This is invalid in the test.",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4c0a81dc_d117acf9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -190,10 +215,10 @@
       "message": "Done",
       "parentUuid": "22ef2de7_38dae31c",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e1f139d4_88e8ae9f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -207,10 +232,10 @@
       "side": 1,
       "message": "This is not true for this test. And, did you try without this? I think it would probably work, like, when you have the \"cs_count\" larger than DTIM interval as the client will wake up for receiving a beacon and then see the channel switch announcement.",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9d28b38c_3bcb4269",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -225,10 +250,28 @@
       "message": "I increased the cs_count to 8 and I checked the DTIM period and it was 2. I can add code to set the DTIM period to a low value in case the default value is high.",
       "parentUuid": "e1f139d4_88e8ae9f",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6275727_15b21358",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "WDYT?",
+      "parentUuid": "9d28b38c_3bcb4269",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "ce720fcc_46c22adf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -242,10 +285,10 @@
       "side": 1,
       "message": "The reason here is also not valid now as you\u0027re only testing with DUTs which support CSA.",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "e1cc5b0f_aa248c27",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -260,10 +303,10 @@
       "message": "Done",
       "parentUuid": "ce720fcc_46c22adf",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7eccf864_c7fb17e7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -277,10 +320,28 @@
       "side": 1,
       "message": "Hmm..., as we already know a race condition for \"iw event\", I\u0027m thinking if we can use something like the gRPC property watcher here? e.g. never reached some disconnected states and expect frequency property updated. \n\nI guess it might not fit the current sequential wait interface, but still some food for thought.",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04122bea_7d3a7539",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eccf864_c7fb17e7",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "4cb81978_d4c8df77",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -294,10 +355,10 @@
       "side": 1,
       "message": "I\u0027m not sure if we need retry here. After one chan_switch call, hostapd will later work on alterChannel, and if you do the operation again, I guess it will probably fail or no-op.\n\nTo provide better tolerance here, I guess increase cs_count might be the \"retry\" you want (more beacons containing CSA).",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5df42400_4a99f87c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -312,10 +373,28 @@
       "message": "That\u0027s true, I increased the cs_count and verified that by checking the pcap.",
       "parentUuid": "4cb81978_d4c8df77",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e763a46b_17264115",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5df42400_4a99f87c",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "d887254e_5094e039",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -329,10 +408,10 @@
       "side": 1,
       "message": "You\u0027re only waiting channel switch event here so this can be removed.",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "091a9208_dae30205",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
@@ -347,10 +426,10 @@
       "message": "Done",
       "parentUuid": "d887254e_5094e039",
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "56487f2c_65d67192",
         "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
@@ -370,8 +449,31 @@
         "endChar": 25
       },
       "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4522c2f3_70b76ed9",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56487f2c_65d67192",
+      "range": {
+        "startLine": 254,
+        "startChar": 18,
+        "endLine": 254,
+        "endChar": 25
+      },
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
