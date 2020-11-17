@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a5dd40_1d02f048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-17T03:26:44Z",
+      "side": 1,
+      "message": "Yes. We\u0027ll keep both since the binary way allows us to easily update the version of lacros for local testing and allows us to test against newer lacros versions than the fishfood release",
+      "parentUuid": "5ba5cad1_e650689e",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "63bc73753d3bdea4d5d3e0bbbee0afefa977fa43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "578783b9_4ec61bdd",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a17c956_a231bc39",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-17T03:26:44Z",
+      "side": 1,
+      "message": "OK done. But had to update a separate test that was reading this value",
+      "parentUuid": "578783b9_4ec61bdd",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "63bc73753d3bdea4d5d3e0bbbee0afefa977fa43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e67968a_ebf91d9c",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-11-16T23:07:34Z",
       "side": 1,
       "message": "Can we just always use this path as the userDataDir and not use the binary dir in other cases?",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 47
+      },
+      "revId": "63bc73753d3bdea4d5d3e0bbbee0afefa977fa43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8ff5f5a_61edc44d",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-17T03:26:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e67968a_ebf91d9c",
       "range": {
         "startLine": 199,
         "startChar": 2,
