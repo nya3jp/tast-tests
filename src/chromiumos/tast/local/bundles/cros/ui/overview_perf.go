@@ -102,15 +102,17 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	// - change the number of browser windows, 2 or 8
 	// - the window system status; clamshell mode with maximized windows or
 	//   tablet mode.
-	for _, windows := range []int{2, 8} {
+	// If these window number values are changed, make sure to check lacros about:blank pages are closed correctly.
+	for i, windows := range []int{2, 8} {
 		conns, err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows)
 		if err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}
 		defer conns.Close()
 
-		if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-			if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
+		// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.
+		if i == 0 && s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+			if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
 				s.Fatal("Failed to close about:blank: ", err)
 			}
 		}

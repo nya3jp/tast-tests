@@ -80,15 +80,17 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 	numExistingWindows := 0
 
 	runner := perfutil.NewRunner(cr)
-	for _, numWindows := range []int{2, 8} {
+	// If these window number values are changed, make sure to check lacros about:blank pages are closed correctly.
+	for i, numWindows := range []int{2, 8} {
 		conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, numWindows-numExistingWindows)
 		if err != nil {
 			s.Fatal("Failed to open browser windows: ", err)
 		}
 		conns.Close()
 
-		if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-			if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
+		// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.
+		if i == 0 && s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+			if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
 				s.Fatal("Failed to close about:blank: ", err)
 			}
 		}
