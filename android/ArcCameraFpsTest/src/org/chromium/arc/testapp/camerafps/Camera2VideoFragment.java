@@ -102,6 +102,8 @@ public class Camera2VideoFragment extends Fragment {
     private CameraCharacteristics mCameraCharacteristics;
     // Contains supported configurations such as supported resolutions.
     private StreamConfigurationMap mStreamConfigurationMap;
+    // Some devices have multiple cameras. Specifies which one should be used.
+    private int mCameraId = 0;
 
     // Select the largest resolution among all choices. If a specific target resolution was
     // requested, use that resolution instead if it is supported. If the requested resolution
@@ -175,6 +177,10 @@ public class Camera2VideoFragment extends Fragment {
         mTargetResolution = targetResolution;
     }
 
+    public void setCameraId(int id) {
+        mCameraId = id;
+    }
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -241,6 +247,34 @@ public class Camera2VideoFragment extends Fragment {
             getActivity().finish();
             throw new RuntimeException(e);
         }
+    }
+
+    public String getCameraIds() {
+        final Activity activity = getActivity();
+        if (null == activity || activity.isFinishing()) {
+            throw new RuntimeException("Activity not running");
+        }
+
+        CameraManager manager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
+        String[] ids;
+
+        try {
+            ids = manager.getCameraIdList();
+        } catch (CameraAccessException e) {
+            // Rethrow exception, so the error is reported in the intent return value.
+            throw new RuntimeException(e);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < ids.length; i++) {
+            sb.append(i);
+            sb.append(": ");
+            sb.append(ids[i]);
+            sb.append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
     }
 
     public String getSnapshotResolutions() {
@@ -385,11 +419,18 @@ public class Camera2VideoFragment extends Fragment {
         }
         mCameraStartTime = SystemClock.elapsedRealtime();
         CameraManager manager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
+
         try {
+            if (mCameraId >= manager.getCameraIdList().length) {
+                throw new RuntimeException("Requested camera " + mCameraId + " but device"
+                        + " has only " + manager.getCameraIdList().length + " cameras.");
+            }
+
             if (!mCameraOpenCloseLock.tryAcquire(2500, TimeUnit.MILLISECONDS)) {
                 throw new RuntimeException("Time out waiting to lock camera opening.");
             }
-            String cameraId = manager.getCameraIdList()[0];
+            String cameraId = manager.getCameraIdList()[mCameraId];
+            Log.i(TAG, "Using camera " + mCameraId + " : " + cameraId);
 
             // Choose the sizes for camera preview and video recording
             mCameraCharacteristics = manager.getCameraCharacteristics(cameraId);
