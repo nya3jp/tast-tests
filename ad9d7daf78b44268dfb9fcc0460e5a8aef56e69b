@@ -278,6 +278,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce9d8ff_322209c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_test_vectors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-17T18:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "835fb677_7474696d",
+      "range": {
+        "startLine": 55,
+        "startChar": 48,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "ad9d7daf78b44268dfb9fcc0460e5a8aef56e69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "301207c3_713baf11",
