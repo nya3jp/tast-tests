@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5ea6f3cf_ab3a6b45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T09:35:23Z",
+      "side": 1,
+      "message": "The title can also be:\n\u003e  policy: Add BookmarkBarEnabled\nWhichever you prefer.",
+      "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a053606f_768e18ad",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -14,6 +31,23 @@
       "writtenOn": "2020-11-16T15:39:50Z",
       "side": 1,
       "message": "Thanks for the quick review Gabor.",
+      "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d2c9451_415aa898",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T09:35:23Z",
+      "side": 1,
+      "message": "Adding back my +1, and a little comment.",
       "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
