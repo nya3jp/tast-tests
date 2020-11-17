@@ -18,8 +18,12 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosdisks"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
+
+// The user which operates on files.
+const chronos = "chronos"
 
 // mount is a convenience wrapper for mounting with CrosDisks.
 func mount(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType, options string) (m crosdisks.MountCompleted, err error) {
@@ -186,6 +190,15 @@ func verifyDirectoryContents(ctx context.Context, dir string, expectedContent Di
 				return errors.Errorf("content of file %q does not match expected one", k)
 			}
 		}
+	}
+	return nil
+}
+
+// execAsUser runs a command as the |user|.
+func execAsUser(ctx context.Context, user string, command []string) error {
+	args := append([]string{"-u", user}, command...)
+	if err := testexec.CommandContext(ctx, "sudo", args...).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "could not run %q as user %q", strings.Join(command, " "), user)
 	}
 	return nil
 }
