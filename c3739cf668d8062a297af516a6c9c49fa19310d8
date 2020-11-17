@@ -86,6 +86,23 @@
       "parentUuid": "3c5bbf48_3b017696",
       "revId": "c3739cf668d8062a297af516a6c9c49fa19310d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa0a671_bfcac3ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112100
+      },
+      "writtenOn": "2020-11-17T18:36:59Z",
+      "side": 1,
+      "message": "Just replying to your question on branches.",
+      "revId": "c3739cf668d8062a297af516a6c9c49fa19310d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
