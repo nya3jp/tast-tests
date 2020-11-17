@@ -16,6 +16,40 @@
       "message": "lgtm\n\nThanks. Let\u0027s see what Eric thinks.",
       "revId": "0e3612ab98cec18046cf9095abb8fd57eb369795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4a32a48_6005428c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-17T19:09:20Z",
+      "side": 1,
+      "message": "LGTM % you may want to use testing.PollBreak in at least one case to fail fast if something serious goes wrong in the polling loop.",
+      "revId": "0e3612ab98cec18046cf9095abb8fd57eb369795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e5b6ab2_ef8c3a87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-17T19:09:20Z",
+      "side": 1,
+      "message": "This should probably be wrapped by PollBreak since I assume you want to fail immediately if you can\u0027t check this.",
+      "revId": "0e3612ab98cec18046cf9095abb8fd57eb369795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
