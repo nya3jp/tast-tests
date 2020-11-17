@@ -41,4 +41,9 @@ func RegularSession(ctx context.Context, s *testing.State) {
 	if err := cryptohome.UnmountVault(ctx, testUser); err != nil {
 		s.Error("Failed to unmount user vault: ", err)
 	}
+
+	// Unmount user vault directory and daemon-store directories.
+	if err := cryptohome.StartAuthSession(ctx, testUser); err != nil {
+		s.Error("Failed to start auth session: ", err)
+	}
 }

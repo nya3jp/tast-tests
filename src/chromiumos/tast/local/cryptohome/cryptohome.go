@@ -449,3 +449,17 @@ func CheckDeps(ctx context.Context) (errs []error) {
 
 	return errs
 }
+
+// StartAuthSession starts an authsessionfor a given user
+func StartAuthSession(ctx context.Context, user string) error {
+	testing.ContextLogf(ctx, "Creating authsessionfor user %q", user)
+
+	cmd := testexec.CommandContext(
+		ctx, "cryptohome", "--action=start_auth_session",
+		"--user="+user)
+	if err := cmd.Run(); err != nil {
+		return errors.Wrapf(err, "failed to create vault for %s", user)
+	}
+	cmd.DumpLog(ctx)
+	return nil
+}
