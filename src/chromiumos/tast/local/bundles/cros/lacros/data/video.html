@@ -1,0 +1,20 @@
+<html>
+
+<body>
+  <video id='video' name='media' controls autoplay muted loop>
+    <source src="/"
+  </video>
+</body>
+
+<script type="text/javascript">
+
+  async function playRepeatedly(videoSourcePath) {
+    let video = document.getElementById('video');
+    video.loop = true;
+    video.src = videoSourcePath;
+    await video.play();
+  }
+
+</script>
+
+</html>
