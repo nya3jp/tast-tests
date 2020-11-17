@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d4e3f2_d1b140ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lpprint/lpprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-11-17T00:42:12Z",
+      "side": 1,
+      "message": "Please include a TODO to figure out the root cause for this and remove it.  TODO(b/xxxxx): Remove when fixed.",
+      "revId": "2b97f29545878d0a6c51e9f291759b59428009ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
