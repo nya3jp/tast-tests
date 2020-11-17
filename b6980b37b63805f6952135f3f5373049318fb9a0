@@ -39,6 +39,30 @@
       },
       "revId": "b6980b37b63805f6952135f3f5373049318fb9a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0e1d43_ae4edd28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/kahoot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-17T22:41:28Z",
+      "side": 1,
+      "message": "App UI looks like this, \"Already have an account?Log in\", in that \"Log in\" is only clickable but it does not have separate UiObject ID. So use of keypad is needed here. Thanks.",
+      "parentUuid": "eaebbe28_ded98a79",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "b6980b37b63805f6952135f3f5373049318fb9a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
