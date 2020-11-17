@@ -37,6 +37,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5068e78_6b0fab19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-17T16:36:00Z",
+      "side": 1,
+      "message": "Add a little in the description what the test is actually doing, i.e.:\n\"Behavior of DefaultSearchProviderEnabled policy: check if a search provider is being automatically used\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 56
+      },
+      "revId": "bcb151c7925d728f85ed39e745b68e9ade93eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a12882_b425dcfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-17T16:36:00Z",
+      "side": 1,
+      "message": "remove as it is not used",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 84
+      },
+      "revId": "bcb151c7925d728f85ed39e745b68e9ade93eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c38cb53_148c95df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-17T16:36:00Z",
+      "side": 1,
+      "message": "nit: write this and the two following comments inline with the variable definition.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "bcb151c7925d728f85ed39e745b68e9ade93eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f97030c1_91124883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-17T16:36:00Z",
+      "side": 1,
+      "message": "You need to clear the browser history, otherwise the previous search results can interfere with the test.\nYou can do it with these lines:\n\n// Clear the browser history.\nif err :\u003d tconn.Eval(ctx, `tast.promisify(chrome.browsingData.removeHistory({\"since\": 0}))`, nil); err !\u003d nil {\n\ts.Fatal(\"Failed to clear browsing history: \", err)\n}",
+      "revId": "bcb151c7925d728f85ed39e745b68e9ade93eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71bfff98_8304188c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
         "patchSetId": 2
@@ -53,6 +139,53 @@
         "startChar": 3,
         "endLine": 109,
         "endChar": 4
+      },
+      "revId": "bcb151c7925d728f85ed39e745b68e9ade93eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29bd4e1d_dd20523c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-17T16:36:00Z",
+      "side": 1,
+      "message": "Yes, we need to wait for the load as we have a race condition here. You can do it with this function:\n\nif err :\u003d ui.WaitForLocationChangeCompleted(ctx, tconn); err !\u003d nil {\n\ts.Fatal(\"Failed to wait for location change: \", err)\n}",
+      "parentUuid": "71bfff98_8304188c",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 4
+      },
+      "revId": "bcb151c7925d728f85ed39e745b68e9ade93eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e355f1_6d28dc97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-17T16:36:00Z",
+      "side": 1,
+      "message": "Fatalf is needed here to use formatting directives.",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 11
       },
       "revId": "bcb151c7925d728f85ed39e745b68e9ade93eeca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
