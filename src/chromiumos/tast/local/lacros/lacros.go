@@ -7,10 +7,12 @@ package lacros
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/testing"
 )
 
 // ChromeType indicates which type of Chrome browser to be used.
@@ -30,7 +32,19 @@ func CloseAboutBlank(ctx context.Context, ds *cdputil.Session) error {
 		return errors.Wrap(err, "failed to query for about:blank pages")
 	}
 	for _, info := range targets {
-		ds.CloseTarget(ctx, info.TargetID)
+		if err := ds.CloseTarget(ctx, info.TargetID); err != nil {
+			return err
+		}
 	}
+	testing.Poll(ctx, func(ctx context.Context) error {
+		targets, err := ds.FindTargets(ctx, chrome.MatchTargetURL(chrome.BlankURL))
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if len(targets) != 0 {
+			return errors.New("not all about:blank targets were closed")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute})
 	return nil
 }
