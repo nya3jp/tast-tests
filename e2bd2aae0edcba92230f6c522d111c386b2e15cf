@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ce61ae_f2414c94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-17T02:45:19Z",
+      "side": 1,
+      "message": "- *-kernelnext failures can be ignored because they\u0027re experimental boards\n- \"Failed to start Chrome\" is not specific to this test (b/153516375); in any case promoting this test won\u0027t increase overall flakiness caused by this issue since the test uses a precondition.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "e2bd2aae0edcba92230f6c522d111c386b2e15cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
