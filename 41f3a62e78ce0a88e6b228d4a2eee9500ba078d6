@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88083411_86782314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-17T10:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5490e2ae_af325de3",
+      "range": {
+        "startLine": 80,
+        "startChar": 48,
+        "endLine": 80,
+        "endChar": 52
+      },
+      "revId": "41f3a62e78ce0a88e6b228d4a2eee9500ba078d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dea3826_c36d6edc",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "113c5a9c_083e5792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-17T10:52:24Z",
+      "side": 1,
+      "message": "The whole filesystem image is destroyed afterwards.",
+      "parentUuid": "4dea3826_c36d6edc",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "41f3a62e78ce0a88e6b228d4a2eee9500ba078d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4446f77_44b22209",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-17T08:18:58Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 84,
+        "startChar": 47,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "41f3a62e78ce0a88e6b228d4a2eee9500ba078d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36592b2b_985db8d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-17T10:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4446f77_44b22209",
       "range": {
         "startLine": 84,
         "startChar": 47,
