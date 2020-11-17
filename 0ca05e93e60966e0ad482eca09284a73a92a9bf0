@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "792f43bb_a4530269",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aef91e4_83a06acf",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36be5d0e_b6250bcc",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-13T09:03:16Z",
       "side": 1,
       "message": "A \"Str\" suffix looks like it is a raw string data of hastapdConfig... but it isn\u0027t.\n\nI guess \"configCopy\" may be better. Also please add some description about copying it.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1afdeb8_abebba13",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36be5d0e_b6250bcc",
       "range": {
         "startLine": 64,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d3a8987_683a47a0",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "439c9da3_b5bd8647",
+      "range": {
+        "startLine": 267,
+        "startChar": 5,
+        "endLine": 267,
+        "endChar": 8
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65b36cf6_e458eec6",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-13T09:03:16Z",
       "side": 1,
       "message": "I guess it makes more sense to let frequency be a required parameter.",
+      "range": {
+        "startLine": 277,
+        "startChar": 5,
+        "endLine": 277,
+        "endChar": 17
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd298409_27ef8e20",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b36cf6_e458eec6",
       "range": {
         "startLine": 277,
         "startChar": 5,
@@ -134,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c31721f_9afb1fce",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47bfa2bd_7911998e",
+      "range": {
+        "startLine": 290,
+        "startChar": 20,
+        "endLine": 290,
+        "endChar": 32
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eb671cb_493f9017",
@@ -147,6 +267,30 @@
       "writtenOn": "2020-11-13T07:47:45Z",
       "side": 1,
       "message": "nit: maybe just \"channel switch\"?",
+      "range": {
+        "startLine": 297,
+        "startChar": 34,
+        "endLine": 297,
+        "endChar": 37
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bfbc3c0_fbd8b424",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eb671cb_493f9017",
       "range": {
         "startLine": 297,
         "startChar": 34,
@@ -180,6 +324,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40cdb5a0_686cc5f1",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8238e047_8f4781b2",
+      "range": {
+        "startLine": 299,
+        "startChar": 8,
+        "endLine": 299,
+        "endChar": 20
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9193167d_12a5bf01",
@@ -203,6 +371,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc98a94b_2f13bf92",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9193167d_12a5bf01",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 30
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb6c1760_921e2d4b",
@@ -216,6 +408,30 @@
       "writtenOn": "2020-11-13T09:03:16Z",
       "side": 1,
       "message": "This piece of code used to be at line#946. Is there any any reason to move it here?",
+      "range": {
+        "startLine": 970,
+        "startChar": 0,
+        "endLine": 974,
+        "endChar": 0
+      },
+      "revId": "0ca05e93e60966e0ad482eca09284a73a92a9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f1a43d9_06013c14",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T19:47:43Z",
+      "side": 1,
+      "message": "The only reason is that \"iface\" is not used in the code before, so I moved it  right before where it is used.\n\nHowever, I changed it back to the original way since the update of the channel is moved to the function call \"StartChannelSwitch()\"",
+      "parentUuid": "eb6c1760_921e2d4b",
       "range": {
         "startLine": 970,
         "startChar": 0,
