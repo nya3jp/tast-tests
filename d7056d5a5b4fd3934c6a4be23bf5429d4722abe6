@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d9dd4af_cc91bfed",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-17T16:42:42Z",
+      "side": 1,
+      "message": "From my point of view, I cannot get away from doing it here for multiple routers and attenuator, so then logic is split between two files - I guess there is no ideal solution. I yield anyway, it\u0027s high time it gets through.",
+      "parentUuid": "db3d5ccf_2878be2f",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 3
+      },
+      "revId": "d7056d5a5b4fd3934c6a4be23bf5429d4722abe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b58ddc3a_061a2e51",
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "Oh, I didn\u0027t notice it was changed from the Autotest version. I should have raised this earlier, sorry.\n\nIt looks like some DNS (or /etc/hosts) setup problem and I\u0027m not sure how you connect to the lab DUT. But I think this change is introducing some unnecessary complexity (a special case for the companion devices). It should work well without \".cros\" in lab.\n\nFor the access from outside of lab, from my personal use experience, I usually use \u0027.cros\u0027 hostname provided by the corp network DNS for accessing DUT/router in lab. (e.g. `ping chromeos15-row3-rack8-host3.cros`) So, I\u0027ll expect the attenuator hostname is already with \u0027.cros\u0027 domain. Then, the only missing thing is that it does not match the name in attenuator_hosts, but this can be mitigated by getting strings.SplitN(hostname, \".\", 2)[0] as the key to HostFixedAttenuations.\n\nDo you think this works for your usage/setup?",
       "parentUuid": "7df4c488_bde24057",
+      "range": {
+        "startLine": 147,
+        "startChar": 29,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "d7056d5a5b4fd3934c6a4be23bf5429d4722abe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2f795a_323ffc90",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-17T16:42:42Z",
+      "side": 1,
+      "message": "I don\u0027t get why corp /etc/resolv.conf comes without .cros in search domains. But we need to live with that, I guess.\nBetter solution would be to use hostnames without .cros and repeat IP lookup with suffix in case the first one fails. That\u0027s rather trivial change (though, it will generate larger diff).",
+      "parentUuid": "882b5173_dc032708",
       "range": {
         "startLine": 147,
         "startChar": 29,
