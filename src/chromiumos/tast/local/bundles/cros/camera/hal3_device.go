@@ -19,7 +19,7 @@ func init() {
 		Func:         HAL3Device,
 		Desc:         "Verifies camera device function with HAL3 interface",
 		Contacts:     []string{"hywu@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      4 * time.Minute,
