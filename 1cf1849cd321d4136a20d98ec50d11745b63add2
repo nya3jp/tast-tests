@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1702080e_4741bbe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-17T03:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0a8feca_8c3dac4a",
+      "range": {
+        "startLine": 347,
+        "startChar": 7,
+        "endLine": 347,
+        "endChar": 8
+      },
+      "revId": "1cf1849cd321d4136a20d98ec50d11745b63add2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29f5407f_14d805a8",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-11-16T16:18:48Z",
       "side": 1,
       "message": "This error should present as an actual test failure. It\u0027s a little tricky to return an error during a deferred block; the usual way to do it is with named return values.\n\n    func testConfirmDialog(...) (retErr error) {\n        ...\n        defer func(ctx context.Context) {\n            if !shouldCloseApp {\n                return\n            }\n            if err :\u003d app.Close(ctx); err !\u003d nil \u0026\u0026 retErr \u003d\u003d nil {\n                retErr \u003d errors.Wrap(err, \"failed to close app\")\n            }\n        }(cleanupCtx)\n        ...\n    }\n\nThis way, if the function is returning an error, then the deferred function will not overwrite the existing error; and if the function is returning nil, then the deferred function will set the returned error value.",
+      "revId": "1cf1849cd321d4136a20d98ec50d11745b63add2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5875e2_2a5c8a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-17T03:28:57Z",
+      "side": 1,
+      "message": "I have thought to report such error at the beginning. But on second thought, the |shouldCloseApp| is expected to be false if the test pass. As a result, if it needs to close the app in defer function, it means there must be some errors in |retErr|. Therefore, I think we can just log it if it fails to close the app, and return the actual error to the caller.",
+      "parentUuid": "29f5407f_14d805a8",
       "revId": "1cf1849cd321d4136a20d98ec50d11745b63add2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
