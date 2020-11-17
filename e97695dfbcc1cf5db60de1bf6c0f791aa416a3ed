@@ -16,6 +16,23 @@
       "message": "Thanks Gabor.\nUpdated the patch, PTAL.",
       "revId": "e97695dfbcc1cf5db60de1bf6c0f791aa416a3ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d21bc3a_5ea36c72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T12:18:52Z",
+      "side": 1,
+      "message": "I reopened the thread of Po-Hsien, as I also thing that the testing table needs some restructuring.\nDo you plan to test both policies, or just the HomapageLocation, and you set the HomepageIsNewTabPage as needed?",
+      "revId": "e97695dfbcc1cf5db60de1bf6c0f791aa416a3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
