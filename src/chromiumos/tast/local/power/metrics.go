@@ -12,6 +12,7 @@ import (
 // tests.
 func TestMetrics() []perf.TimelineDatasource {
 	return []perf.TimelineDatasource{
+		NewCpuidleStateMetrics(),
 		NewRAPLPowerMetrics(),
 		NewSysfsBatteryMetrics(),
 		NewSysfsThermalMetrics(),
