@@ -16,6 +16,24 @@
       "message": "Before entering the detailed review, updated the bug, because I\u0027m still concerned the downloading data.\nI\u0027ll revisit here when it\u0027s done.\n\nBTW, could you split the CL into two? One to use the omaha, and another to use Shelf UI to launch Lacros?",
       "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0a8e2b_e4fc24e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-17T20:12:44Z",
+      "side": 1,
+      "message": "Replied to your comment :) \n\nI am planning to add a separate CL to launch via shelf too:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1149233\n\nBut I think it is valuable for test writers to be able to launch omaha-lacros by command line OR using the UI.\n\nWDYT?",
+      "parentUuid": "fe70894a_fa2dc922",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
