@@ -16,6 +16,23 @@
       "message": "PTAL~!",
       "revId": "c4bc367316c697947d3a725a98497e050c5b372d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50edd384_6bcb0752",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-17T11:29:09Z",
+      "side": 1,
+      "message": "Still thinking a bit about this - this will average all the same metrics (e.g. all PercentFramesDropped.CompositorThread.PinchZoom will have their mean and stddev taken), but if we wanted to get one overall perf number, the numbers we should average would be different for each test (e.g. .Video for video test, .RAF for WebGL).\n\nlmk if any suggestions",
+      "revId": "c4bc367316c697947d3a725a98497e050c5b372d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
