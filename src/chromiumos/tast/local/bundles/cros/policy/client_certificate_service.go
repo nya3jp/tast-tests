@@ -41,7 +41,7 @@ func (c *ClientCertificateService) TestClientCertificateIsInstalled(ctx context.
 
 		// The argument --slot is for the system slot which will have
 		// the certificate.
-		out, err := testexec.CommandContext(ctx, "pkcs11-tool", "--module", "/usr/lib64/libchaps.so", "--slot", strconv.Itoa(int(req.Slot)), "--list-objects").Output()
+		out, err := testexec.CommandContext(ctx, "pkcs11-tool", "--module", "libchaps.so", "--slot", strconv.Itoa(int(req.Slot)), "--list-objects").Output()
 		if err != nil {
 			return errors.Wrap(err, "failed to get certificate list")
 		}
