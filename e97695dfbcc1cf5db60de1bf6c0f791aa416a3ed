@@ -33,6 +33,41 @@
       "message": "I reopened the thread of Po-Hsien, as I also thing that the testing table needs some restructuring.\nDo you plan to test both policies, or just the HomapageLocation, and you set the HomepageIsNewTabPage as needed?",
       "revId": "e97695dfbcc1cf5db60de1bf6c0f791aa416a3ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e411d322_07a9ba0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-17T13:43:19Z",
+      "side": 1,
+      "message": "Thanks Gabor.",
+      "revId": "e97695dfbcc1cf5db60de1bf6c0f791aa416a3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "923886ff_c7b3a06f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-17T13:43:19Z",
+      "side": 1,
+      "message": "I had initially started with just testing HomapageLocation, but it looks like it is dependent on HomepageIsNewTabPage as HomapageLocation is only applied if HomepageIsNewTabPage is set to false.\nI could just hardcode HomepageIsNewTabPage to false and test HomepageIsNewTabPage policy. But I think it is also important to test the behaviour of HomapageLocation in other cases as well, like HomepageIsNewTabPage set to true/unset.\n\nSo, I am not sure if we can test HomapageLocation alone.\nWDYT ?",
+      "parentUuid": "3d21bc3a_5ea36c72",
+      "revId": "e97695dfbcc1cf5db60de1bf6c0f791aa416a3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
