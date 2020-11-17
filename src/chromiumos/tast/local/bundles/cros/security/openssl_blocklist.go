@@ -7,9 +7,10 @@ package security
 import (
 	"context"
 	"fmt"
-	"os"
 	"path/filepath"
 	"strconv"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -37,11 +38,14 @@ func init() {
 }
 
 func OpenSSLBlocklist(ctx context.Context, s *testing.State) {
+	const (
+		blocklistPath = "/etc/ssl/blocklist"
+		nullBlocklist = "/dev/null"
+	)
 	var (
 		caPEM          = s.DataPath("openssl_blocklist_ca.pem")
 		certKey        = s.DataPath("openssl_blocklist_cert.key")
 		certPEM        = s.DataPath("openssl_blocklist_cert.pem")
-		nullBlocklist  = "/dev/null"
 		bogusBlocklist = s.DataPath("openssl_blocklist_bogus_blocklist")
 	)
 	blocklists := []string{
@@ -52,8 +56,12 @@ func OpenSSLBlocklist(ctx context.Context, s *testing.State) {
 
 	// verify runs "openssl verify" against the cert while using the supplied blocklist.
 	verify := func(blocklist string, dumpOnFail bool) error {
+		if err := unix.Mount(blocklist, blocklistPath, "none", unix.MS_BIND, ""); err != nil {
+			return err
+		}
+		defer unix.Unmount(blocklistPath, unix.MNT_DETACH)
+
 		cmd := testexec.CommandContext(ctx, "openssl", "verify", "-CAfile", caPEM, certPEM)
-		cmd.Env = append(os.Environ(), "OPENSSL_BLOCKLIST_PATH="+blocklist)
 		err := cmd.Run()
 		if err != nil && dumpOnFail {
 			cmd.DumpLog(ctx)
@@ -89,9 +97,13 @@ func OpenSSLBlocklist(ctx context.Context, s *testing.State) {
 
 	// fetch uses curl with the blocklist at the supplied path to connect to the server.
 	fetch := func(ctx context.Context, blocklist string) error {
+		if err := unix.Mount(blocklist, blocklistPath, "none", unix.MS_BIND, ""); err != nil {
+			return err
+		}
+		defer unix.Unmount(blocklistPath, unix.MNT_DETACH)
+
 		cmd := testexec.CommandContext(ctx, "curl", "--cacert", caPEM,
 			fmt.Sprintf("https://127.0.0.1:%d/", port), "-o", "/dev/null")
-		cmd.Env = []string{"OPENSSL_BLOCKLIST_PATH=" + blocklist}
 		return cmd.Run()
 	}
 
