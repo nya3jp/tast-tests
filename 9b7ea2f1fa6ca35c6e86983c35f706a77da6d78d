@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "829612fa_cfe50bab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T05:51:35Z",
+      "side": 1,
+      "message": "Yeah, I see you already have a read after write so I believe your finding is correct. Just wonder why this behaves this way, and I don\u0027t have better suggestion for this either.",
+      "parentUuid": "f83e95ed_82bcc026",
+      "revId": "9b7ea2f1fa6ca35c6e86983c35f706a77da6d78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "646a4cd5_161a8287",
