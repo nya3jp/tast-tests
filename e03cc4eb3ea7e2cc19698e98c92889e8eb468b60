@@ -16,6 +16,57 @@
       "message": "PTAL~",
       "revId": "e03cc4eb3ea7e2cc19698e98c92889e8eb468b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "303a4035_6aafbfdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-17T09:00:31Z",
+      "side": 1,
+      "message": "The direction LG.",
+      "revId": "e03cc4eb3ea7e2cc19698e98c92889e8eb468b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f8932f0_238cf47c",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-17T09:00:31Z",
+      "side": 1,
+      "message": "Could you update the comment a bit? \"... triggers to close them, and wait they are gone.\"",
+      "revId": "e03cc4eb3ea7e2cc19698e98c92889e8eb468b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7741df_a00ded38",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-17T09:00:31Z",
+      "side": 1,
+      "message": "could you handle the error?",
+      "revId": "e03cc4eb3ea7e2cc19698e98c92889e8eb468b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
