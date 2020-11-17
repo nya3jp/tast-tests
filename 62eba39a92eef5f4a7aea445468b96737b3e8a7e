@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a808430_9152cffa",
+        "filename": "src/chromiumos/tast/local/wpasupplicant/supplicant.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T22:46:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8899dba4_6cc58600",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f5a8e56_955d1fbf",
@@ -86,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca542007_6fe47598",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T22:46:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f5a8e56_955d1fbf",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd9dcefc_b09bfb3d",
@@ -99,6 +135,24 @@
       "writtenOn": "2020-11-17T05:23:53Z",
       "side": 1,
       "message": "nit: would be nice to comment the purpose for this, i.e. we might early deconfig the AP below.",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e25ef2d2_97ad6d9b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T22:46:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd9dcefc_b09bfb3d",
       "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +180,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1254d0c_35926380",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T22:46:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b40d25a_1abb6902",
+      "range": {
+        "startLine": 198,
+        "startChar": 16,
+        "endLine": 198,
+        "endChar": 18
+      },
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64f9c502_e6bbe5f4",
@@ -143,6 +221,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aae03ad_6a43eee2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T22:46:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64f9c502_e6bbe5f4",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9cac95d_c942dc27",
@@ -156,6 +252,24 @@
       "writtenOn": "2020-11-17T05:23:53Z",
       "side": 1,
       "message": "nit: maybe remove this empty line?",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "291e2478_70576ae9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T22:46:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9cac95d_c942dc27",
       "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +297,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a73fae_af8db144",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T22:46:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecc7123b_317df63f",
+      "range": {
+        "startLine": 1328,
+        "startChar": 8,
+        "endLine": 1328,
+        "endChar": 11
+      },
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca3eb744_601a0fad",
@@ -196,6 +334,24 @@
       "writtenOn": "2020-11-17T05:23:53Z",
       "side": 1,
       "message": "nit: current design LGTM. but I\u0027m thinking if it might be simpler to separate reason code and \"local generated\" boolean. (feel free to close this directly if you think this is an overkill)",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d0b1a4f_869f3c64",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T22:46:05Z",
+      "side": 1,
+      "message": "I actually think it\u0027s an overkill. The negative value indicates that the disconnection is locally generated.",
+      "parentUuid": "ca3eb744_601a0fad",
       "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
