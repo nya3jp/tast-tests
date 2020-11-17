@@ -386,6 +386,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a79980f_24900fa2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T05:04:41Z",
+      "side": 1,
+      "message": "Any suggestions? @chharry @deanliao",
+      "parentUuid": "76577240_07e45423",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db94fe65_e7fbb4c7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 3
@@ -480,6 +504,24 @@
       "side": 1,
       "message": "Since the guide now recommends reserving time before starting service, I think the constructors of daemon-like objects should have responsibilities to reserve time for Deconfig/Stop the daemon, especially in this case we don\u0027t know the accurate reserving time while tf.ConfigureAP do. (Or perhaps we can reserve time in the Start*/Configure* methods in TestFixture instead of the constructors so we can share some logics.)\n\nFor now, I guess we can just follow the old style. The current usage looks good to me except the \"ap !\u003d nil\" part.",
       "parentUuid": "19f24c86_a0986aae",
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a0cb33_3006e9ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T05:04:41Z",
+      "side": 1,
+      "message": "I agree with @chharry, WDYT? @deanliao",
+      "parentUuid": "62be57f6_d36b0ff7",
       "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -596,6 +638,54 @@
         "startChar": 9,
         "endLine": 80,
         "endChar": 11
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28384ef6_ada013ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T05:04:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deafe5d7_c3554f6d",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 80,
+        "endChar": 11
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f48b36de_ac7954e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T05:04:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30f66ed8_7c21932b",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 8
       },
       "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -1061,6 +1151,30 @@
       "side": 1,
       "message": "One thing I\u0027m not sure: is the reason code platform independent? Or we can see if it is after merged?",
       "parentUuid": "c3f7dd9b_ccea43ea",
+      "range": {
+        "startLine": 196,
+        "startChar": 58,
+        "endLine": 196,
+        "endChar": 64
+      },
+      "revId": "b1c8afa6348c2acf387812d5e4ff0e5ed7416f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9038f084_503f556c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T05:04:41Z",
+      "side": 1,
+      "message": "tbh, I am not sure as well. I think we can merge it and monitor the results.",
+      "parentUuid": "11c1c02c_42e12d04",
       "range": {
         "startLine": 196,
         "startChar": 58,
