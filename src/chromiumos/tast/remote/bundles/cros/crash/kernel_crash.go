@@ -134,7 +134,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	}
 	fs = crash_service.NewFixtureServiceClient(cl.Conn)
 
-	base := `kernel\.\d{8}\.\d{6}\.0`
+	base := `kernel\.\d{8}\.\d{6}\.\d+\.0`
 	waitReq := &crash_service.WaitForCrashFilesRequest{
 		Dirs:    []string{systemCrashDir},
 		Regexes: []string{base + `\.kcrash`, base + `\.meta`, base + `\.log`},
