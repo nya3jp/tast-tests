@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a2fd91_3a6a7af0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-17T06:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b498ec5_72002832",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "633176fe81c7ea73af9708f6ed186ebdd0ec2f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a2d906c_d3d7b80c",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-11-16T08:52:18Z",
       "side": 1,
       "message": "nit: you can reorder it to be only 1 lvl deep. if #tests \u003d\u003d 0; else if err !\u003d nil; else",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "633176fe81c7ea73af9708f6ed186ebdd0ec2f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec02613_2216e877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-11-17T06:33:47Z",
+      "side": 1,
+      "message": "Yep, good catch. Thanks.",
+      "parentUuid": "3a2d906c_d3d7b80c",
       "range": {
         "startLine": 114,
         "startChar": 0,
