@@ -24,6 +24,8 @@ public class CameraActivity extends Activity {
             "org.chromium.arc.testapp.camerafps.ACTION_GET_AVG_SNAPSHOT_TIME";
     private static final String ACTION_GET_CAMERA_CLOSE_TIME =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_CLOSE_TIME";
+    private static final String ACTION_GET_CAMERA_IDS =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_IDS";
     private static final String ACTION_GET_CAMERA_OPEN_TIME =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_OPEN_TIME";
     private static final String ACTION_GET_CC_AVAILABLE_CAPTURE_REQUEST_KEYS =
@@ -66,6 +68,8 @@ public class CameraActivity extends Activity {
             "org.chromium.arc.testapp.camerafps.ACTION_RESET_CAMERA";
     private static final String ACTION_RESET_HISTOGRAM =
             "org.chromium.arc.testapp.camerafps.ACTION_RESET_HISTOGRAM";
+    private static final String ACTION_SET_CAMERA_ID =
+            "org.chromium.arc.testapp.camerafps.ACTION_SET_CAMERA_ID";
     private static final String ACTION_SET_TARGET_FPS =
             "org.chromium.arc.testapp.camerafps.ACTION_SET_TARGET_FPS";
     private static final String ACTION_SET_TARGET_RESOLUTION =
@@ -77,6 +81,8 @@ public class CameraActivity extends Activity {
     private static final String ACTION_TAKE_PHOTO =
             "org.chromium.arc.testapp.camerafps.ACTION_TAKE_PHOTO";
 
+    private static final String KEY_CAMERA_ID = "id";
+    private static final int DEFAULT_CAMERA_ID = 0;
     private static final String KEY_FPS = "fps";
     private static final int DEFAULT_FPS = 30;
 
@@ -102,6 +108,9 @@ public class CameraActivity extends Activity {
                                 break;
                             case ACTION_GET_CAMERA_CLOSE_TIME:
                                 setResultData(Long.toString(mCameraFragment.getCameraCloseTime()));
+                                break;
+                            case ACTION_GET_CAMERA_IDS:
+                                setResultData(mCameraFragment.getCameraIds());
                                 break;
                             case ACTION_GET_CAMERA_OPEN_TIME:
                                 setResultData(Long.toString(mCameraFragment.getCameraOpenTime()));
@@ -175,6 +184,12 @@ public class CameraActivity extends Activity {
                                 mCameraFragment.onResume();
                                 mHistogram.resetHistogram();
                                 break;
+                            case ACTION_SET_CAMERA_ID:
+                                int id = intent.getIntExtra(KEY_CAMERA_ID, DEFAULT_CAMERA_ID);
+                                mCameraFragment.setCameraId(id);
+                                mCameraFragment.onPause();
+                                mCameraFragment.onResume();
+                                break;
                             case ACTION_SET_TARGET_FPS:
                                 int fps = intent.getIntExtra(KEY_FPS, DEFAULT_FPS);
                                 mHistogram.setTargetFrameDuration((int) (1000.0 / fps));
@@ -218,6 +233,7 @@ public class CameraActivity extends Activity {
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_GET_AVG_SNAPSHOT_TIME);
         filter.addAction(ACTION_GET_CAMERA_CLOSE_TIME);
+        filter.addAction(ACTION_GET_CAMERA_IDS);
         filter.addAction(ACTION_GET_CAMERA_OPEN_TIME);
         filter.addAction(ACTION_GET_CC_AVAILABLE_CAPTURE_REQUEST_KEYS);
         filter.addAction(ACTION_GET_CC_AVAILABLE_CAPTURE_RESULT_KEYS);
@@ -236,6 +252,7 @@ public class CameraActivity extends Activity {
         filter.addAction(ACTION_GET_RECORDING_SIZE);
         filter.addAction(ACTION_RESET_CAMERA);
         filter.addAction(ACTION_RESET_HISTOGRAM);
+        filter.addAction(ACTION_SET_CAMERA_ID);
         filter.addAction(ACTION_SET_TARGET_FPS);
         filter.addAction(ACTION_SET_TARGET_RESOLUTION);
         filter.addAction(ACTION_GET_SENSOR_TIMESTAMP_SOURCE);
