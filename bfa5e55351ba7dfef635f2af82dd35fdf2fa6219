@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22078d08_e5e47de7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "I\u0027m also unconvinced that FlushBSS is doing anything useful -- the second AP is only created *after* the initial AP connection, and immediately after it\u0027s created we start the actual transition process. Even if there *was* some background scanning going on, it seems like `StartAP; FlushBSS; Transition` would be just as race-prone as `StartAP; Transition` would be.\n\nBut as you said, it clearly doesn\u0027t hurt to FlushBSS. I favor keeping it just so the new test is as similar as possible to the old one.",
+      "parentUuid": "6f5d50d8_19038deb",
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d675205_56280929",
@@ -66,6 +84,30 @@
       "writtenOn": "2020-11-13T23:34:02Z",
       "side": 1,
       "message": "nit: make this a constant, same for line #45. just for ease of reading.",
+      "range": {
+        "startLine": 46,
+        "startChar": 103,
+        "endLine": 46,
+        "endChar": 105
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbcc4f08_2334fcb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Unfortunately the options lists cannot be made actual constants (both because individual options like `hostapd.Channel(1)` are function calls, and because slices are always mutable so you can\u0027t have a constant whose value is a slice). That\u0027s why I just sort of put them next to the actual constants.\n\nI could pull out the individual channel and mode settings as constants, but that seems less clear than just having a single line that concisely describes each AP configuration.",
+      "parentUuid": "8d675205_56280929",
       "range": {
         "startLine": 46,
         "startChar": 103,
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c7e2297_b13f1fc1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Done.\n\nShort imperative phrases without a subject feel more like sentence fragments [1] to me rather than complete sentences, but I suppose that\u0027s debatable since there\u0027s an implied subject of \"the DUT\" or \"the test\".\n\n[1] https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#comment-sentences",
+      "parentUuid": "b3673667_ba3145db",
+      "range": {
+        "startLine": 49,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ce4b84b_0e0d770d",
@@ -112,6 +178,30 @@
       "writtenOn": "2020-11-13T19:38:29Z",
       "side": 1,
       "message": "Set up",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 10
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199866ff_ea060d05",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ce4b84b_0e0d770d",
       "range": {
         "startLine": 83,
         "startChar": 5,
@@ -145,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f17262_4a8b3a2d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed7ab647_b0c87b76",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a526019c_ba5253f7",
@@ -168,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d14411_7e54b80f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a526019c_ba5253f7",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 84
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97113714_1f7171cf",
@@ -181,6 +319,30 @@
       "writtenOn": "2020-11-13T19:38:29Z",
       "side": 1,
       "message": "Waiting for roamBSSID: %s",
+      "range": {
+        "startLine": 121,
+        "startChar": 11,
+        "endLine": 121,
+        "endChar": 24
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60aa96b_c4ea7942",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97113714_1f7171cf",
       "range": {
         "startLine": 121,
         "startChar": 11,
@@ -238,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ba7b4f_daf768b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b391a4c0_400e7a7b",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 63
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cff9e418_b8075baf",
@@ -251,6 +437,30 @@
       "writtenOn": "2020-11-13T19:38:29Z",
       "side": 1,
       "message": "roaming",
+      "range": {
+        "startLine": 151,
+        "startChar": 21,
+        "endLine": 151,
+        "endChar": 25
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01aaf9b0_c35fff3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cff9e418_b8075baf",
       "range": {
         "startLine": 151,
         "startChar": 21,
@@ -278,6 +488,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fcdc812_93363f03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Done. I put the TODO up by ExpectShillProperty for symmetry with RoamFT, but I can move it down here if you\u0027d prefer.",
+      "parentUuid": "98dcbe2d_45f9c63f",
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b6e261c_90c632de",
@@ -291,6 +519,30 @@
       "writtenOn": "2020-11-13T19:38:29Z",
       "side": 1,
       "message": "request",
+      "range": {
+        "startLine": 165,
+        "startChar": 30,
+        "endLine": 165,
+        "endChar": 37
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae47eaa_9806663f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b6e261c_90c632de",
       "range": {
         "startLine": 165,
         "startChar": 30,
@@ -336,6 +588,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63337b16_6a149943",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Done.\n\nI wasn\u0027t sure how best to name the two subtests, there doesn\u0027t appear to be much of a strong convention for those. If there\u0027s an alternative naming convention you like better please let me know.",
+      "parentUuid": "644c253c_e74f6f84",
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8854faef_34cdb31e",
@@ -349,6 +619,24 @@
       "writtenOn": "2020-11-13T19:38:29Z",
       "side": 1,
       "message": "Like other timeout fields above, we prefer the duration-type field uses golang\u0027s time.Duration, i.e. representing duration in nanosecond.",
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b562ebed_eb0b1731",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1374711
+      },
+      "writtenOn": "2020-11-17T00:13:52Z",
+      "side": 1,
+      "message": "Ah, I wasn\u0027t sure if that was still the case when the actual operation only had 1-second granularity. The only age actually used by the current code is 0, so I suppose the granularity doesn\u0027t really matter though.\n\nDone.",
+      "parentUuid": "8854faef_34cdb31e",
       "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
