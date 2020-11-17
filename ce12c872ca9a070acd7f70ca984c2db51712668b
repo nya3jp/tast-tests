@@ -70,6 +70,30 @@
       },
       "revId": "ce12c872ca9a070acd7f70ca984c2db51712668b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eacb1598_da5210b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-17T02:20:26Z",
+      "side": 1,
+      "message": "Well, actually I meant this one is 10s indeed, but what about the\nothers? I checked 720_vp8.webm and is 20s\n\nhttps://pantheon.corp.google.com/storage/browser/_details/chromiumos-test-assets-public/tast/cros/video/720_vp8_20190626.webm\n\nWe\u0027ll need to reconcile those lengths (by making the AV1 longer)\nwither in this CL on immediately after.",
+      "parentUuid": "170c12bc_244e699b",
+      "range": {
+        "startLine": 90,
+        "startChar": 32,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "ce12c872ca9a070acd7f70ca984c2db51712668b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
