@@ -113,11 +113,10 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr, l, cs, err := lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+	cr, err := lacrostest.GetChrome(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
-	defer lacrostest.CloseLacrosChrome(ctx, l)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -146,62 +145,65 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// - change the number of browser windows, 0 or 2.
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
 	for _, windows := range []int{0, 2} {
-		// Call Setup again in case the previous test closed all Lacros windows.
-		cr, l, cs, err = lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
-		if err != nil {
-			s.Fatal("Failed to initialize test: ", err)
-		}
-		conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows)
-		if err != nil {
-			s.Fatal("Failed to create browser windows: ", err)
-		}
-		// Maximize all windows to ensure a consistent state.
-		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal)
-		}); err != nil {
-			s.Fatal("Failed to maximize windows: ", err)
-		}
-
-		if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-			if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
-				s.Fatal("Failed to close about:blank: ", err)
+		func() {
+			_, l, cs, err := lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to setup lacrostest: ", err)
 			}
-		}
-		if err := conns.Close(); err != nil {
-			s.Error("Failed to close the connection to chrome")
-		}
-		currentWindows = windows
+			defer lacrostest.CloseLacrosChrome(ctx, l)
 
-		for _, at := range []launcherAnimationType{animationTypePeeking, animationTypeHalf, animationTypeFullscreenSearch, animationTypeFullscreenAllApps} {
-			// Wait for 1 seconds to stabilize the result. Note that this doesn't
-			// have to be cpu.WaitUntilIdle(). It may wait too much.
-			// TODO(mukai): find the way to wait more properly on the idleness of Ash.
-			// https://crbug.com/1001314.
-			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
-				s.Fatal("Failed to wait: ", err)
+			conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows)
+			if err != nil {
+				s.Fatal("Failed to create browser windows: ", err)
+			}
+			// Maximize all windows to ensure a consistent state.
+			if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+				return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal)
+			}); err != nil {
+				s.Fatal("Failed to maximize windows: ", err)
 			}
 
-			var suffix string
-			switch at {
-			case animationTypePeeking:
-				suffix = "Peeking.ClamshellMode"
-			case animationTypeFullscreenAllApps:
-				suffix = "FullscreenAllApps.ClamshellMode"
-			case animationTypeFullscreenSearch:
-				suffix = "FullscreenSearch.ClamshellMode"
-			case animationTypeHalf:
-				suffix = "Half.ClamshellMode"
+			if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+				if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
+					s.Fatal("Failed to close about:blank: ", err)
+				}
 			}
-			histograms := []string{
-				"Apps.StateTransition.AnimationSmoothness." + suffix,
-				"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
+			if err := conns.Close(); err != nil {
+				s.Error("Failed to close the connection to chrome")
 			}
+			currentWindows = windows
 
-			runner.RunMultiple(ctx, s, fmt.Sprintf("%s.%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-				return runLauncherAnimation(ctx, tconn, kb, at)
-			}, histograms...),
-				perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", currentWindows)))
-		}
+			for _, at := range []launcherAnimationType{animationTypePeeking, animationTypeHalf, animationTypeFullscreenSearch, animationTypeFullscreenAllApps} {
+				// Wait for 1 seconds to stabilize the result. Note that this doesn't
+				// have to be cpu.WaitUntilIdle(). It may wait too much.
+				// TODO(mukai): find the way to wait more properly on the idleness of Ash.
+				// https://crbug.com/1001314.
+				if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+					s.Fatal("Failed to wait: ", err)
+				}
+
+				var suffix string
+				switch at {
+				case animationTypePeeking:
+					suffix = "Peeking.ClamshellMode"
+				case animationTypeFullscreenAllApps:
+					suffix = "FullscreenAllApps.ClamshellMode"
+				case animationTypeFullscreenSearch:
+					suffix = "FullscreenSearch.ClamshellMode"
+				case animationTypeHalf:
+					suffix = "Half.ClamshellMode"
+				}
+				histograms := []string{
+					"Apps.StateTransition.AnimationSmoothness." + suffix,
+					"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
+				}
+
+				runner.RunMultiple(ctx, s, fmt.Sprintf("%s.%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+					return runLauncherAnimation(ctx, tconn, kb, at)
+				}, histograms...),
+					perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", currentWindows)))
+			}
+		}()
 	}
 	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)

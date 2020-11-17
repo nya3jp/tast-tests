@@ -34,6 +34,18 @@ func Setup(ctx context.Context, pd interface{}, crt lacros.ChromeType) (*chrome.
 	}
 }
 
+// GetChrome gets the *chrome.Chrome object given some PreData, which may be lacros launcher.PreData.
+func GetChrome(ctx context.Context, pd interface{}, crt lacros.ChromeType) (*chrome.Chrome, error) {
+	switch crt {
+	case lacros.ChromeTypeChromeOS:
+		return pd.(*chrome.Chrome), nil
+	case lacros.ChromeTypeLacros:
+		return pd.(launcher.PreData).Chrome, nil
+	default:
+		return nil, errors.Errorf("unrecognized Chrome type %s", string(crt))
+	}
+}
+
 // CloseLacrosChrome closes the given lacros-chrome, if it is non-nil. Otherwise, it does nothing.
 func CloseLacrosChrome(ctx context.Context, l *launcher.LacrosChrome) {
 	if l != nil {
