@@ -25,7 +25,112 @@ var metricMap = map[string]struct {
 	direction perf.Direction
 	uma       bool
 }{
+	"Graphics.Smoothness.PercentDroppedFrames.AllAnimations": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.AllInteractions": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
 	"Graphics.Smoothness.PercentDroppedFrames.AllSequences": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.CompositorAnimation": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.MainThreadAnimation": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.PinchZoom": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.RAF": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.ScrollbarScroll": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.TouchScroll": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.WheelScroll": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.CanvasAnimation": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.CompositorAnimation": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.JSAnimation": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.MainThreadAnimation": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.PinchZoom": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.RAF": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.ScrollbarScroll": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.TouchScroll": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.Video": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.WheelScroll": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+		uma:       true,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.PinchZoom": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
 		uma:       true,
