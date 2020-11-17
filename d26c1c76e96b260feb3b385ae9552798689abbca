@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee59d09_9991bf28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-17T10:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27ab70f0_01070a47",
+      "range": {
+        "startLine": 65,
+        "startChar": 37,
+        "endLine": 65,
+        "endChar": 58
+      },
+      "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d494438c_069dc215",
@@ -207,6 +231,30 @@
       "writtenOn": "2020-11-17T10:09:24Z",
       "side": 1,
       "message": "nit: getting the keyboard once, before the for cycle is enough.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "d26c1c76e96b260feb3b385ae9552798689abbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "350a3a4d_214e1713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-17T10:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "298d01c8_6f9d9449",
       "range": {
         "startLine": 110,
         "startChar": 0,
