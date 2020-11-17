@@ -53,7 +53,7 @@ func OpenSSLBlocklist(ctx context.Context, s *testing.State) {
 	// verify runs "openssl verify" against the cert while using the supplied blocklist.
 	verify := func(blocklist string, dumpOnFail bool) error {
 		cmd := testexec.CommandContext(ctx, "openssl", "verify", "-CAfile", caPEM, certPEM)
-		cmd.Env = append(os.Environ(), "OPENSSL_BLACKLIST_PATH="+blocklist)
+		cmd.Env = append(os.Environ(), "OPENSSL_BLOCKLIST_PATH="+blocklist)
 		err := cmd.Run()
 		if err != nil && dumpOnFail {
 			cmd.DumpLog(ctx)
@@ -91,7 +91,7 @@ func OpenSSLBlocklist(ctx context.Context, s *testing.State) {
 	fetch := func(ctx context.Context, blocklist string) error {
 		cmd := testexec.CommandContext(ctx, "curl", "--cacert", caPEM,
 			fmt.Sprintf("https://127.0.0.1:%d/", port), "-o", "/dev/null")
-		cmd.Env = []string{"OPENSSL_BLACKLIST_PATH=" + blocklist}
+		cmd.Env = []string{"OPENSSL_BLOCKLIST_PATH=" + blocklist}
 		return cmd.Run()
 	}
 
