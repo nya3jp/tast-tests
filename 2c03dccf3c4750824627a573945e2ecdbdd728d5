@@ -16,6 +16,23 @@
       "message": "PTAL - is this error message better? :-) or can you think of something even better?",
       "revId": "2c03dccf3c4750824627a573945e2ecdbdd728d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ca3812_8c2eee47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-17T16:57:10Z",
+      "side": 1,
+      "message": "Yes, that is more clear.",
+      "revId": "2c03dccf3c4750824627a573945e2ecdbdd728d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
