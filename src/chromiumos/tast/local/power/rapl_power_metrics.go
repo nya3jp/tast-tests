@@ -11,6 +11,8 @@ import (
 	"chromiumos/tast/errors"
 )
 
+const package0PowerConstraintName = "package-0-pl"
+
 // RAPLPowerMetrics records the power consumption in Watt of the DUT.
 type RAPLPowerMetrics struct {
 	snapshot *RAPLSnapshot
@@ -54,6 +56,7 @@ func (r *RAPLPowerMetrics) Start(_ context.Context) error {
 		r.metrics[name] = perf.Metric{Name: r.prefix + name, Unit: "W",
 			Direction: perf.SmallerIsBetter, Multiple: true}
 	}
+	r.metrics[package0PowerConstraintName] = perf.Metric{Name: r.prefix + package0PowerConstraintName, Unit: "W", Direction: perf.SmallerIsBetter, Multiple: true}
 	return nil
 }
 
@@ -69,8 +72,12 @@ func (r *RAPLPowerMetrics) Snapshot(_ context.Context, values *perf.Values) erro
 		return errors.Wrap(err, "failed to collect initial RAPL metrics")
 	}
 	for name := range r.metrics {
-		// Report Converted values from Joules to Watt
-		values.Append(r.metrics[name], energy.joules[name]/energy.duration.Seconds())
+		if name == package0PowerConstraintName {
+			values.Append(r.metrics[package0PowerConstraintName], energy.package0PowerConstraint)
+		} else {
+			// Report Converted values from Joules to Watt
+			values.Append(r.metrics[name], energy.joules[name]/energy.duration.Seconds())
+		}
 	}
 	return nil
 }
