@@ -281,7 +281,12 @@ func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values
 		}
 		logs = append(logs, fmt.Sprint(m.Name, ": ", mean, " ", m.Unit), fmt.Sprint(s.Name, ": ", stddev, " ", s.Unit))
 		pv.Set(m, mean)
-		pv.Set(s, stddev)
+
+		// Standard deviation can be NaN if there weren't enough points to properly calculate it,
+		// including Bessel's correction. Don't report it in this case.
+		if !math.IsNaN(stddev) && !math.IsInf(stddev, 0) {
+			pv.Set(s, stddev)
+		}
 	}
 
 	// Print logs in order.
