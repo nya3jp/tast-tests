@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe4ffc3a_5c613685",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-17T01:21:52Z",
+      "side": 1,
+      "message": "I found that the way I was toggling the bluetooth device was causing undefined behavior regarding the boot preference. After changing my methodology, this flag is no longer needed.",
+      "revId": "676063d0600cc69fce510c81e681ddab9bc97eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
