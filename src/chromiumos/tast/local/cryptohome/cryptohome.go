@@ -49,9 +49,10 @@ const (
 // hashRegexp extracts the hash from a cryptohome dir's path.
 var hashRegexp *regexp.Regexp
 
-var shadowRegexp *regexp.Regexp  // matches a path to vault under /home/shadow.
-var devRegexp *regexp.Regexp     // matches a path to /dev/*.
-var devLoopRegexp *regexp.Regexp // matches a path to /dev/loop\d+.
+var shadowRegexp *regexp.Regexp        // matches a path to vault under /home/shadow.
+var devRegexp *regexp.Regexp           // matches a path to /dev/*.
+var devLoopRegexp *regexp.Regexp       // matches a path to /dev/loop\d+.
+var authSessionIDRegexp *regexp.Regexp // matches auth_session_id:"*"
 
 const shadowRoot = "/home/.shadow" // is a root directory of vault.
 
@@ -61,6 +62,7 @@ func init() {
 	shadowRegexp = regexp.MustCompile(`^/home/\.shadow/[^/]*/vault$`)
 	devRegexp = regexp.MustCompile(`^/dev/[^/]*$`)
 	devLoopRegexp = regexp.MustCompile(`^/dev/loop[0-9]+$`)
+	authSessionIDRegexp = regexp.MustCompile(`(auth_sesion_id:)(.+)(\n)`)
 }
 
 // UserHash returns user's cryptohome hash.
@@ -448,4 +450,31 @@ func CheckDeps(ctx context.Context) (errs []error) {
 	}
 
 	return errs
+}
+
+// StartAuthSession starts an |AuthSession for a given user
+func StartAuthSession(ctx context.Context, user string) (string, error) {
+	testing.ContextLogf(ctx, "Creating AuthSession for user %q", user)
+	out, err := testexec.CommandContext(
+		ctx, "cryptohome", "--action=start_auth_session",
+		"--user="+user).Output()
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to create Auth session for %s", user)
+	}
+	authSessionID := authSessionIDRegexp.FindSubmatch(out)[2]
+	testing.ContextLogf(ctx, "Auth session id %q", authSessionID)
+	return string(authSessionID), nil
+}
+
+// AuthenticateAuthSession authenticates an |AuthSession for a given authSessionID
+func AuthenticateAuthSession(ctx context.Context, authSessionID string) (bool, error) {
+	testing.ContextLog(ctx, "Authenticating AuthSession")
+	cmd := testexec.CommandContext(
+		ctx, "cryptohome", "--action=authenticate_auth_session",
+		"--auth_session_id="+authSessionID)
+	if err := cmd.Run(); err == nil {
+		cmd.DumpLog(ctx)
+		return false, errors.Wrap(err, "failed to run authenticate AuthSession API")
+	}
+	return true, nil
 }
