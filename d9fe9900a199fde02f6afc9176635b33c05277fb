@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe70894a_fa2dc922",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-17T15:30:02Z",
+      "side": 1,
+      "message": "Before entering the detailed review, updated the bug, because I\u0027m still concerned the downloading data.\nI\u0027ll revisit here when it\u0027s done.\n\nBTW, could you split the CL into two? One to use the omaha, and another to use Shelf UI to launch Lacros?",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
