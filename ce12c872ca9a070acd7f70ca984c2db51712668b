@@ -94,6 +94,30 @@
       },
       "revId": "ce12c872ca9a070acd7f70ca984c2db51712668b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db79bab4_560fc746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-17T09:43:09Z",
+      "side": 1,
+      "message": "Ah, I see. I should create a new file for this test.",
+      "parentUuid": "eacb1598_da5210b2",
+      "range": {
+        "startLine": 90,
+        "startChar": 32,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "ce12c872ca9a070acd7f70ca984c2db51712668b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
