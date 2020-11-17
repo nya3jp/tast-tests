@@ -8,7 +8,6 @@ package crosdisks
 
 import (
 	"context"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -77,12 +76,16 @@ func testMountFilesystem(ctx context.Context, cd *crosdisks.CrosDisks, ld *crosd
 		}
 		// Test writes.
 		dir := filepath.Join(mountPath, "mydir")
-		if err := os.Mkdir(dir, 0777); err != nil {
-			return errors.Wrapf(err, "failed to create a test directory %q", dir)
+		if err := execAsUser(ctx, chronos, []string{"mkdir", dir}); err != nil {
+			return errors.Wrapf(err, "failed to create a test directory %q as chronos", dir)
 		}
 		file := filepath.Join(dir, "test.txt")
-		if err := ioutil.WriteFile(file, []byte("some text\n"), 0666); err != nil {
-			return errors.Wrapf(err, "failed to write a test file in %q", file)
+		if err := execAsUser(ctx, chronos, []string{"touch", file}); err != nil {
+			return errors.Wrapf(err, "failed to write a test file in %q as chronos", file)
+		}
+		// Check that file is actually there.
+		if _, err := os.Stat(file); err != nil {
+			return errors.Wrapf(err, "failed to stat a test file %q", file)
 		}
 		return nil
 	})
