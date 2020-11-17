@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f5b3ed_bc301ccd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-17T10:22:19Z",
+      "side": 1,
+      "message": "sorry, more complication again to handle the case where closing all lacros windows will destroy the dev session",
+      "revId": "67b1455b8960fd5e40fc5bf7a0b52010cb8eaec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
