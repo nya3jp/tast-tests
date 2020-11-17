@@ -9,6 +9,8 @@ import (
 	"context"
 	"fmt"
 	"math"
+	"net/http"
+	"net/http/httptest"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -26,7 +28,6 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
-	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
@@ -61,38 +62,11 @@ const (
 	// insetSlopDP indicates how much to inset the work area (display area) to avoid window snapping to the
 	// edges of the screen interfering with drag-move and drag-resize of windows.
 	insetSlopDP int = 40
-
-	// youtubeVideoDx and youtubeVideoDy are found manually by checking where the Youtube video appears relative
-	// to the top left corner of the browser window. These coordinates let us click on the Youtube video area
-	// if the video does not appear. This makes sure the video plays.
-	// See crbug.com/1085355.
-	youtubeVideoDx = 200.0
-	youtubeVideoDy = 250.0
 )
 
-func ensureYoutubeVideo(ctx context.Context, ctconn *chrome.TestConn, conn *chrome.Conn) error {
-	if err := webutil.WaitForYoutubeVideo(ctx, conn, 10*time.Second); err != nil {
-		// TODO(crbug.com/1085355): Sometimes, lacros-chrome does not autoplay the Youtube video. Programmatic methods
-		// for forcing the video to load and play don't seem to work, so manually click on the video via Ash.
-		w, err := findFirstNonBlankWindow(ctx, ctconn)
-		if err != nil {
-			return err
-		}
-		loc := w.BoundsInRoot.TopLeft().Add(coords.NewPoint(youtubeVideoDx, youtubeVideoDy))
-		if err := mouse.Click(ctx, ctconn, loc, mouse.LeftButton); err != nil {
-			return err
-		}
-
-		return webutil.WaitForYoutubeVideo(ctx, conn, 100*time.Second)
-	}
-
-	return nil
-}
-
 type page struct {
-	name     string
-	url      string
-	finalize func(ctx context.Context, ctconn *chrome.TestConn, conn *chrome.Conn) error
+	name string
+	url  string
 }
 
 var pageSet = []page{
@@ -109,9 +83,8 @@ var pageSet = []page{
 		url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
 	},
 	{
-		name:     "youtube", // YouTube. This page is for testing video playback.
-		url:      "https://www.youtube.com/watch?v=aqz-KE-bpKQ?autoplay=1",
-		finalize: ensureYoutubeVideo,
+		name: "video", // Static video. This page is for testing video playback.
+		url:  "/video.html",
 	},
 	{
 		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
@@ -134,7 +107,7 @@ func init() {
 		// TODO(crbug.com/1140407): Run on all lacros devices after removing live video streaming test.
 		HardwareDeps: hwdep.D(hwdep.Model("eve")),
 		Timeout:      120 * time.Minute,
-		Data:         []string{launcher.DataArtifact},
+		Data:         []string{launcher.DataArtifact, "video.html", "bbb_1080p60_yuv.vp9.webm"},
 		Params: []testing.Param{{
 			Name: "maximized",
 			Val: gpuCUJTestParams{
@@ -738,11 +711,6 @@ func waitForStableEnvironment(ctx context.Context) error {
 }
 
 func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
-	ctconn, err := pd.Chrome.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to test API")
-	}
-
 	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
 	l, err := launcher.LaunchLacrosChrome(ctx, pd)
 	if err != nil {
@@ -769,12 +737,6 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 	// Close the initial "about:blank" tab present at startup.
 	if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
 		return errors.Wrap(err, "failed to close about:blank tab")
-	}
-
-	if invoc.page.finalize != nil {
-		if err := invoc.page.finalize(ctx, ctconn, connURL); err != nil {
-			return err
-		}
 	}
 
 	// Setup extra window for multi-window tests.
@@ -814,12 +776,6 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation
 	}
 	defer connURL.Close()
 	defer connURL.CloseTarget(ctx)
-
-	if invoc.page.finalize != nil {
-		if err := invoc.page.finalize(ctx, ctconn, connURL); err != nil {
-			return err
-		}
-	}
 
 	// Setup extra window for multi-window tests.
 	if invoc.scenario == testTypeMoveOcclusion || invoc.scenario == testTypeMoveOcclusionWithCrosWindow {
@@ -887,9 +843,17 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 		}()
 	}
 
+	// Setup server to serve video file.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+
 	pv := perf.NewValues()
 	m := metricsRecorder{buckets: make(map[statBucketKey][]float64)}
 	for _, page := range pageSet {
+		if page.url[0] == '/' {
+			page.url = server.URL + page.url
+		}
+
 		if err := runLacrosTest(ctx, s.PreValue().(launcher.PreData), &testInvocation{
 			pv:       pv,
 			scenario: params.testType,
