@@ -68,6 +68,41 @@
       "parentUuid": "3d21bc3a_5ea36c72",
       "revId": "e97695dfbcc1cf5db60de1bf6c0f791aa416a3ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1fcf433_0e886e5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T18:50:24Z",
+      "side": 1,
+      "message": "I copy the relevant part here from my other comment:\n\"In this case it would mean that the test name is Homepage, and the params are \"location\" and \"is_new_tab_page\", and both test the given policy, while setting the other one as needed.\"\nIt means  1) a location test, where you keep the HomepageIsNewTabPage to false, and set the HomepageLocation to unset and homepageURL. And 2) a is_new_tab_page test, where you keep the HomepageLocation fixed as homepageURL, and set HomepageIsNewTabPage to its 3 values.",
+      "parentUuid": "923886ff_c7b3a06f",
+      "revId": "e97695dfbcc1cf5db60de1bf6c0f791aa416a3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9496aa0_f29e8338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage_location.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-17T18:50:24Z",
+      "side": 1,
+      "message": "This should be a different page, other than newtab or homepageURL.",
+      "revId": "e97695dfbcc1cf5db60de1bf6c0f791aa416a3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
