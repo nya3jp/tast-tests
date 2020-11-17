@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59510b1d_cdc2f745",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-11-17T04:12:01Z",
+      "side": 1,
+      "message": "I assume that not including chromeBypassPermissionsArgs is intentional, right? (since we\u0027re not going to use this for webrtc tests)",
+      "range": {
+        "startLine": 174,
+        "startChar": 32,
+        "endLine": 174,
+        "endChar": 33
+      },
+      "revId": "dd7c2ad0521a91ed1d3232fcb713df861bd062d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
