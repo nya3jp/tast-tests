@@ -16,6 +16,24 @@
       "message": "Why are you inlining this in the other function?",
       "revId": "d55c4c05ed9e082520181d37648e934b8e5c46a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23b34bbf_f5c5e50a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-17T08:43:53Z",
+      "side": 0,
+      "message": "Changed back.",
+      "parentUuid": "e19f20a4_db18372c",
+      "revId": "d55c4c05ed9e082520181d37648e934b8e5c46a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
