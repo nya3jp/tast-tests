@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bddd91ff_fe65298f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-11-17T18:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eae742b_4642fb1c",
+      "revId": "83f8cd89e76f4ac1ac7d7172db6712c7fc1487dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33416fb2_9edd0e19",
@@ -65,6 +83,24 @@
       "writtenOn": "2020-11-17T04:11:50Z",
       "side": 1,
       "message": "this one too",
+      "revId": "83f8cd89e76f4ac1ac7d7172db6712c7fc1487dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62351df_f3f369f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-11-17T18:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33416fb2_9edd0e19",
       "revId": "83f8cd89e76f4ac1ac7d7172db6712c7fc1487dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
