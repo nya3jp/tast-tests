@@ -113,11 +113,10 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr, l, cs, err := lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+	cr, err := lacrostest.GetChrome(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
-	defer lacrostest.CloseLacrosChrome(ctx, l)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -146,11 +145,12 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// - change the number of browser windows, 0 or 2.
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
 	for _, windows := range []int{0, 2} {
-		// Call Setup again in case the previous test closed all Lacros windows.
-		cr, l, cs, err = lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+		_, l, cs, err := lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
 		if err != nil {
-			s.Fatal("Failed to initialize test: ", err)
+			s.Fatal("Failed to setup lacrostest: ", err)
 		}
+		defer lacrostest.CloseLacrosChrome(ctx, l)
+
 		conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows)
 		if err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
@@ -163,7 +163,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		}
 
 		if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-			if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
+			if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
 				s.Fatal("Failed to close about:blank: ", err)
 			}
 		}
@@ -202,6 +202,8 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			}, histograms...),
 				perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", currentWindows)))
 		}
+
+		lacrostest.CloseLacrosChrome(ctx, l)
 	}
 	if err := runner.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
