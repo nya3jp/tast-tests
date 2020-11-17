@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d7ca676_58cbb524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkbench.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-11-17T08:19:52Z",
+      "side": 1,
+      "message": "Please remove trailing \"/\".",
+      "range": {
+        "startLine": 34,
+        "startChar": 57,
+        "endLine": 34,
+        "endChar": 58
+      },
+      "revId": "3fa73425b8abccc80760bce4480326ebb1e3eee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
