@@ -35,7 +35,6 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type testType string
@@ -103,9 +102,7 @@ func init() {
 		Desc:         "Lacros GPU performance CUJ tests",
 		Contacts:     []string{"edcourtney@chromium.org", "hidehiko@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome"},
-		// TODO(crbug.com/1140407): Run on all lacros devices after removing live video streaming test.
-		HardwareDeps: hwdep.D(hwdep.Model("eve")),
+		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      120 * time.Minute,
 		Data:         []string{launcher.DataArtifact, "video.html", "bbb_1080p60_yuv.vp9.webm"},
 		Params: []testing.Param{{
