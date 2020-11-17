@@ -71,7 +71,7 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 
 	// Check that expected device coredump is copied to crash directory.
 	devCoreFiles, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
-		[]string{`devcoredump_iwlwifi\.[0-9]{8}\.[0-9]{6}\.[0-9]*\.devcore`})
+		[]string{`devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.devcore`})
 	if err != nil {
 		s.Fatal("Failed while polling crash directory: ", err)
 	}

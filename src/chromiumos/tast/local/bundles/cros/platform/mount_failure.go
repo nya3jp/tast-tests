@@ -105,14 +105,14 @@ func reportMountFailures(ctx context.Context) error {
 func expectedFilesRegexes() []string {
 	var res []string
 	for _, mf := range mountFailures {
-		res = append(res, mf.name+`\.\d{8}\.\d{6}\.0\.log`, mf.name+`\.\d{8}\.\d{6}\.0\.meta`)
+		res = append(res, mf.name+`\.\d{8}\.\d{6}\.\d+\.0\.log`, mf.name+`\.\d{8}\.\d{6}\.\d+\.0\.meta`)
 	}
 	return res
 }
 
 func validateCrashLogs(files map[string][]string) error {
 	for _, mf := range mountFailures {
-		logFileRegex := mf.name + `\.\d{8}\.\d{6}\.0\.log`
+		logFileRegex := mf.name + `\.\d{8}\.\d{6}\.\d+\.0\.log`
 
 		if len(files[logFileRegex]) != 1 {
 			return errors.Errorf("multiple log files (%v) within the same regex bucket: %s", files[logFileRegex], mf.name)

@@ -122,8 +122,8 @@ func ReporterCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for crash_reporter failure files")
-	expectedRegexes := []string{`crash_reporter_failure\.\d{8}\.\d{6}\.0\.meta`,
-		`crash_reporter_failure\.\d{8}\.\d{6}\.0\.log`}
+	expectedRegexes := []string{`crash_reporter_failure\.\d{8}\.\d{6}\.\d+\.0\.meta`,
+		`crash_reporter_failure\.\d{8}\.\d{6}\.\d+\.0\.log`}
 
 	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
 	if err != nil {

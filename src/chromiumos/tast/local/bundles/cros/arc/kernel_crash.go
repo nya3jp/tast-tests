@@ -117,8 +117,8 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for crash files to become present")
-	// Wait files like arcvm_kernel.20200420.204845.0.log in crashDir
-	const stem = `arcvm_kernel\.\d{8}\.\d{6}\.\d+`
+	// Wait files like arcvm_kernel.20200420.204845.12345.0.log in crashDir
+	const stem = `arcvm_kernel\.\d{8}\.\d{6}\.\d+\.\d+`
 	metaFileName := stem + crash.MetadataExt
 	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, []string{
 		stem + crash.LogExt, metaFileName,
