@@ -92,6 +92,6 @@ func RequiredClientCertificateForUser(ctx context.Context, s *testing.State) {
 	if _, err := prc.TestClientCertificateIsInstalled(ctx, &ps.TestClientCertificateIsInstalledRequest{
 		Slot: 1,
 	}); err != nil {
-		s.Error("Failed to set RequiredClientCertificateForUser policy: ", err)
+		s.Error("Could not verify that client certificate was installed: ", err)
 	}
 }
