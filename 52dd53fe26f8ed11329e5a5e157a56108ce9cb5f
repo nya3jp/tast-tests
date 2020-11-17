@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aad089b_e083c7bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_hop.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-11-17T18:20:06Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "96a270f1_2b4ee95c",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "52dd53fe26f8ed11329e5a5e157a56108ce9cb5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f083d305_d6aff7d0",
