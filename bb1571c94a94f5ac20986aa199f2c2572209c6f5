@@ -68,6 +68,24 @@
       "parentUuid": "baf71820_8adf83c8",
       "revId": "bb1571c94a94f5ac20986aa199f2c2572209c6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc22b440_49fff8ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-17T16:36:07Z",
+      "side": 1,
+      "message": "You can keep polling until you don\u0027t need permissions anymore, and then break out of the poll there. The global poll timeout can be pretty long here (maybe 2 minutes or so?)",
+      "parentUuid": "e484e33e_44c085a5",
+      "revId": "bb1571c94a94f5ac20986aa199f2c2572209c6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
