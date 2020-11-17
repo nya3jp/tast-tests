@@ -50,6 +50,24 @@
       "message": "can\u0027t check the bug link; can someone cc cylai@google.com in the bug if the reason is being in the security component?\n\nRegardless, CL itself LGTM.",
       "revId": "6c8755179bed8509e80839efa2dfda807f60c8f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f270c40_e52f17e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2020-11-17T21:21:26Z",
+      "side": 1,
+      "message": "We have a Q4 OKR to clean up the flakes, it\u0027s not flakier than any other destructive hwsec tests right now.",
+      "parentUuid": "14f3d40a_f143542c",
+      "revId": "6c8755179bed8509e80839efa2dfda807f60c8f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
