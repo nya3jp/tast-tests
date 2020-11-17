@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad757659_25422ad7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-17T06:11:05Z",
+      "side": 1,
+      "message": "IMO, if you want to associate |InstanceExists| with a specific |App| instance, you need to have a way to locate |App|\u0027s corresponding window and verify if it is existed. Revert this part of change or find a way to locate the associated app window from |App| instance.",
+      "range": {
+        "startLine": 289,
+        "startChar": 5,
+        "endLine": 289,
+        "endChar": 28
+      },
+      "revId": "fac87a7a1685082030dae69225939389c8c7eebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a517a44_be1f1622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-17T06:11:05Z",
+      "side": 1,
+      "message": "Replace with |TriggerConfiguration|:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go;rcl\u003d584e4655d8952d50fcb40e1b54a5850adcb63814;l\u003d331\nIt use |configuring| flag to judge the configuration is finished. Instead of just checking for is preview.",
+      "range": {
+        "startLine": 361,
+        "startChar": 15,
+        "endLine": 361,
+        "endChar": 33
+      },
+      "revId": "fac87a7a1685082030dae69225939389c8c7eebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
