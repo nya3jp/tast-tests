@@ -688,6 +688,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4561365f_36096ad0",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T02:53:24Z",
+      "side": 1,
+      "message": "Hmm..., but looks like the \"ret, err :\u003d\" will shadow this?",
+      "parentUuid": "386002c1_51039d8b",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 14
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bbed2082_08124d94",
         "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
         "patchSetId": 8
@@ -723,6 +747,30 @@
       "side": 1,
       "message": "I use it to signal I do ignore result on purpose, not by sloppiness.",
       "parentUuid": "bbed2082_08124d94",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 6
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f4df49_67a9e14c",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T02:53:24Z",
+      "side": 1,
+      "message": "as long as linter doesn\u0027t complain, I think it\u0027s good.",
+      "parentUuid": "05320982_2deaf6cb",
       "range": {
         "startLine": 193,
         "startChar": 2,
