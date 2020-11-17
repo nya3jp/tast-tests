@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e12ca3_304026f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T05:38:14Z",
+      "side": 1,
+      "message": "Sorry for not being clear, I meant only the channel values, but what you have is good as well.",
+      "parentUuid": "fbcc4f08_2334fcb9",
+      "range": {
+        "startLine": 46,
+        "startChar": 103,
+        "endLine": 46,
+        "endChar": 105
+      },
+      "revId": "bfa5e55351ba7dfef635f2af82dd35fdf2fa6219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3673667_ba3145db",

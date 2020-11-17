@@ -16,6 +16,23 @@
       "message": "Still LGTM. Thanks for the effort.",
       "revId": "6e529acde0f4e9808289a67950539a7090b42b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd0f886_fd1c4246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-17T05:38:14Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6e529acde0f4e9808289a67950539a7090b42b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
