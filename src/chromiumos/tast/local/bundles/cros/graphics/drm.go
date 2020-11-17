@@ -44,11 +44,6 @@ func init() {
 			Val:               drmTest{command: []string{"drm_cursor_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
 		}, {
-			Name:              "dmabuf_test",
-			Val:               drmTest{command: []string{"dmabuf_test"}, timeout: 20 * time.Second},
-			ExtraSoftwareDeps: []string{"display_backlight"},
-			ExtraAttr:         []string{"informational"},
-		}, {
 			Name:              "linear_bo_test",
 			Val:               drmTest{command: []string{"linear_bo_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
@@ -63,6 +58,11 @@ func init() {
 		}, {
 			Name: "swrast_test",
 			Val:  drmTest{command: []string{"swrast_test"}, timeout: 20 * time.Second},
+		}, {
+			Name:              "vgem_test",
+			Val:               drmTest{command: []string{"vgem_test"}, timeout: 20 * time.Second},
+			ExtraSoftwareDeps: []string{"display_backlight"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vk_glow",
 			Val:               drmTest{command: []string{"vk_glow"}, timeout: 20 * time.Second},
