@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a800c0_3936f865",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-11-17T03:18:06Z",
+      "side": 1,
+      "message": "That is good to know",
+      "parentUuid": "2a89876c_0e239241",
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c3ab04d_c514c5bf",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-11-17T02:55:59Z",
       "side": 1,
       "message": "Isn\u0027t it nullable?",
+      "range": {
+        "startLine": 259,
+        "startChar": 26,
+        "endLine": 259,
+        "endChar": 33
+      },
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88293dd8_7dadb332",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-11-17T03:18:06Z",
+      "side": 1,
+      "message": "I can\u0027t think of any case where it would be null. If it is in fact null, something is wrong with the camera or Android, and it would be OK to crash here.",
+      "parentUuid": "3c3ab04d_c514c5bf",
       "range": {
         "startLine": 259,
         "startChar": 26,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03375922_6fdcf245",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-11-17T03:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60915f0d_e95c1fd6",
+      "range": {
+        "startLine": 266,
+        "startChar": 16,
+        "endLine": 266,
+        "endChar": 47
+      },
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f70fcea2_3df05856",
@@ -94,6 +160,30 @@
       "writtenOn": "2020-11-17T02:08:10Z",
       "side": 1,
       "message": "Is the last \",\" in the string expected?",
+      "range": {
+        "startLine": 264,
+        "startChar": 12,
+        "endLine": 271,
+        "endChar": 27
+      },
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "557aabf9_577db9c4",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-11-17T03:18:06Z",
+      "side": 1,
+      "message": "I usually print arrays in that way because the code is simpler. Also, programming languages (e.g., Python, Go) do not care about the extra comma.",
+      "parentUuid": "f70fcea2_3df05856",
       "range": {
         "startLine": 264,
         "startChar": 12,
@@ -140,6 +230,30 @@
       "writtenOn": "2020-11-17T03:10:27Z",
       "side": 1,
       "message": "Also if you choose to do the first option, I would include a message to explain the context go/java-practices/exceptions#chaining. But RuntimeException is  generic type, I think the second option (annotating the method throw CameraAccessException) looks better to me.",
+      "parentUuid": "ad1ceb20_5187d593",
+      "range": {
+        "startLine": 273,
+        "startChar": 9,
+        "endLine": 275,
+        "endChar": 9
+      },
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e96be4f9_0c6085c1",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-11-17T03:18:06Z",
+      "side": 1,
+      "message": "Done. Put the check the around `getCameraIdList` only. The caller `onReceive` in CameraActivity.java does not catch it.",
       "parentUuid": "ad1ceb20_5187d593",
       "range": {
         "startLine": 273,
