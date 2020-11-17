@@ -39,6 +39,30 @@
       },
       "revId": "a67124d96ce1d8737868f0d7306257641096fa89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dcefbfe_4b8e1047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-17T01:55:35Z",
+      "side": 1,
+      "message": "Thanks. Nice catch!",
+      "parentUuid": "1cff36e1_c19c62a9",
+      "range": {
+        "startLine": 480,
+        "startChar": 24,
+        "endLine": 480,
+        "endChar": 53
+      },
+      "revId": "a67124d96ce1d8737868f0d7306257641096fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
