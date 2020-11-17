@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "176b3eba_1d17b50e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-17T10:30:05Z",
+      "side": 1,
+      "message": "LGTM % the comments.",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8899dba4_6cc58600",
@@ -88,6 +105,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b40d25a_1abb6902",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-17T10:30:05Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 198,
+        "startChar": 16,
+        "endLine": 198,
+        "endChar": 18
+      },
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64f9c502_e6bbe5f4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go",
         "patchSetId": 8
@@ -116,6 +156,29 @@
       "writtenOn": "2020-11-17T05:23:53Z",
       "side": 1,
       "message": "nit: maybe remove this empty line?",
+      "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecc7123b_317df63f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-17T10:30:05Z",
+      "side": 1,
+      "message": "I guess we can return ctxForResetingPowersaveMode here since we don\u0027t have to enable powersave in this case.",
+      "range": {
+        "startLine": 1328,
+        "startChar": 8,
+        "endLine": 1328,
+        "endChar": 11
+      },
       "revId": "62eba39a92eef5f4a7aea445468b96737b3e8a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
