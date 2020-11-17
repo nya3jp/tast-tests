@@ -263,6 +263,30 @@
       },
       "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b094b4_758fe5a9",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-17T03:29:37Z",
+      "side": 1,
+      "message": "Thanks!\nThere is a very large try-catch block in onReceive, which catches all exceptions.\nCameraAccessException is a derived class of Exception. I think line 198 can catch it.\nBut it\u0027s okay as it looks like other code in this class does the similar.",
+      "parentUuid": "e96be4f9_0c6085c1",
+      "range": {
+        "startLine": 273,
+        "startChar": 9,
+        "endLine": 275,
+        "endChar": 9
+      },
+      "revId": "da63eccad3344dc10b074907c14a9e72fb4cddee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
