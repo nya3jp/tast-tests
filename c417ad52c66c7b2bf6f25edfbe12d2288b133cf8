@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59cd7e0c_668d3cd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-17T14:04:47Z",
+      "side": 1,
+      "message": "Is there a better way to catch the keyboard events? I also tried the evtest command but that catches the key event before the key is mappend according to the policy.",
+      "revId": "c417ad52c66c7b2bf6f25edfbe12d2288b133cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
