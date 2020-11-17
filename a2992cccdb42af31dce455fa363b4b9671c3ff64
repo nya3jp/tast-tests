@@ -522,6 +522,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6800ce_c8ea62b7",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T08:33:54Z",
+      "side": 1,
+      "message": "Ah, I know what you mean. It also reminds me that killall is taking the proces name which by default is the executable name instead of the full path, IIRC. So it should use \"netserver\" only. After the change, it should only need one ssh.Conn object as input instead of a full Runner.",
+      "parentUuid": "6497d95e_765d7e8f",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2954ec7_1fa092e4",

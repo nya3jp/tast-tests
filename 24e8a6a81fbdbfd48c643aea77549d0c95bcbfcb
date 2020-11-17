@@ -33,6 +33,69 @@
       "message": "Quick reply some comments. I\u0027ll take another look later today.",
       "revId": "24e8a6a81fbdbfd48c643aea77549d0c95bcbfcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ea8f3d_e8fd520c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T08:33:54Z",
+      "side": 1,
+      "message": "Generally looks good. some minor comments.",
+      "revId": "24e8a6a81fbdbfd48c643aea77549d0c95bcbfcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0818f99a_26f9ee11",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T08:33:54Z",
+      "side": 1,
+      "message": "IIUC, killall is using the process name, so I think we should use \"netserver\" here.",
+      "range": {
+        "startLine": 116,
+        "startChar": 43,
+        "endLine": 116,
+        "endChar": 56
+      },
+      "revId": "24e8a6a81fbdbfd48c643aea77549d0c95bcbfcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d5b647_e22a0044",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-17T08:33:54Z",
+      "side": 1,
+      "message": "Do you think this might be more suitable for NewSession? As it seems we don\u0027t expect multiple sessions to exist at the same time, this can be a precondition to ensure in New, I think.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 33
+      },
+      "revId": "24e8a6a81fbdbfd48c643aea77549d0c95bcbfcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
