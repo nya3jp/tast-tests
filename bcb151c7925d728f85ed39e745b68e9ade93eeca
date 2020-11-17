@@ -170,6 +170,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95ed60c5_fd333f56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-17T16:55:46Z",
+      "side": 1,
+      "message": "We cannot assume the DuT to always have a connection to the internet so we need to consider that case too.\nYou can do it by checking whether the location variable is set to chrome-error://chromewebdata/ and if it is you can use the ui tree to check if a the default search provider was used by checking the name of the rootWebArea.\n\n// If we cannot connect to www.google.com the location will be set\n// to \"chrome-error://chromewebdata/\".\n// In that case we have to check the ui tree for the \"rootWebArea\".\nif strings.Contains(location, chrome-error://chromewebdata/) {\n\tparams :\u003d ui.FindParams{\n\t\tRole: \"rootWebArea\",\n\t}\n\tnode, err :\u003d ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to find rootWebArea: \", err)\n\t}\n\tdefer node.Release(ctx)\n\tlocation \u003d node.Name\n}",
+      "revId": "bcb151c7925d728f85ed39e745b68e9ade93eeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94e355f1_6d28dc97",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
         "patchSetId": 2
