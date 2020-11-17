@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba0bec6_8599eead",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-17T06:17:33Z",
+      "side": 1,
+      "message": "Ash has a listener that on the settingsPrivate variable here (https://source.chromium.org/chromium/chromium/src/+/master:ash/system/bluetooth/bluetooth_power_controller.cc;l\u003d96?q\u003dkSystemBluetoothAdapterEnabled)\n\nThe function that is executed when the listener realizes there\u0027s a change in state is defined here (https://source.chromium.org/chromium/chromium/src/+/master:ash/system/bluetooth/bluetooth_power_controller.cc;l\u003d114;drc\u003de6afbf7446c184be48657bef0784fa339b6dbe76?q\u003dkSystemBluetoothAdapterEnabled)\n\nThat function happens to set the bluetooth adapter setting here (https://source.chromium.org/chromium/chromium/src/+/master:ash/system/bluetooth/bluetooth_power_controller.cc;l\u003d250;drc\u003de6afbf7446c184be48657bef0784fa339b6dbe76?q\u003dkSystemBluetoothAdapterEnabled).",
+      "parentUuid": "829612fa_cfe50bab",
+      "revId": "9b7ea2f1fa6ca35c6e86983c35f706a77da6d78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "646a4cd5_161a8287",
