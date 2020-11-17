@@ -101,6 +101,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c3b1a61_febc771d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-17T13:41:13Z",
+      "side": 1,
+      "message": "Added a comment, from whaat I understand we need this extension in tast tests to interact with several other APIs and we would want this installed.",
+      "parentUuid": "149c59de_a9e1e293",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7849690_eb634d60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-17T13:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec72ac98_6d962110",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8da4efa_1e1a1822",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
         "patchSetId": 2
@@ -112,6 +160,30 @@
       "writtenOn": "2020-11-17T09:50:25Z",
       "side": 1,
       "message": "nit: testAPIExtensionID, as ID is an acronym.",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "502d0447_49d27107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-17T13:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8da4efa_1e1a1822",
       "range": {
         "startLine": 28,
         "startChar": 6,
@@ -147,6 +219,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6dba36a_41e43516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-17T13:41:13Z",
+      "side": 1,
+      "message": "We would need Test API extension installed on the device and adding blocklist as * and allowlist as only ExtensionId would cause the test to fail because Test API Extension would get disabled. Hence, I added the case with blocklist as *, and allowlist as both Test API extension and extensionId.",
+      "parentUuid": "39555e83_505f823f",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 8
+      },
+      "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80510f25_7d37b9bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
         "patchSetId": 2
@@ -158,6 +254,24 @@
       "writtenOn": "2020-11-17T09:50:25Z",
       "side": 1,
       "message": "This should return with a bool, depending on whether the extensension can be installed or not, and check the return value against tc.allowInstall.\nIt can be done with a poll in the helper funcion, like in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go;l\u003d125",
+      "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "238d32f4_71a58b96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-17T13:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80510f25_7d37b9bc",
       "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
