@@ -56,6 +56,7 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect OOBE: ", err)
 	}
+	defer oobeConn.Close()
 
 	// User lands on GAIA login page afterwards.
 	if err := oobeConn.Eval(ctx, "Oobe.skipToLoginForTesting()", nil); err != nil {
@@ -66,9 +67,13 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
 
-	gaiaConn, err := cr.NewConnForTarget(ctx, isGAIAWebView)
-	if err != nil {
-		s.Fatal("Failed to connect to GAIA webview: ", err)
+	var gaiaConn *chrome.Conn
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		gaiaConn, err = cr.NewConnForTarget(ctx, isGAIAWebView)
+		return err
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond}); err != nil {
+		s.Fatal("Failed to find GAIA web view: ", err)
 	}
 	defer gaiaConn.Close()
 
