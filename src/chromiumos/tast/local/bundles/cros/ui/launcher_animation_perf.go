@@ -145,7 +145,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// Run the launcher open/close flow for various situations.
 	// - change the number of browser windows, 0 or 2.
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
-	for _, windows := range []int{0, 2} {
+	for i, windows := range []int{0, 2} {
 		// Call Setup again in case the previous test closed all Lacros windows.
 		cr, l, cs, err = lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
 		if err != nil {
@@ -162,8 +162,8 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to maximize windows: ", err)
 		}
 
-		if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-			if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
+		if i == 0 && s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+			if err := lacros.CloseAboutBlank(ctx, tconn, l.Devsess, 1); err != nil {
 				s.Fatal("Failed to close about:blank: ", err)
 			}
 		}

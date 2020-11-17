@@ -7,10 +7,13 @@ package lacros
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/testing"
 )
 
 // ChromeType indicates which type of Chrome browser to be used.
@@ -23,14 +26,41 @@ const (
 	ChromeTypeLacros ChromeType = "lacros"
 )
 
-// CloseAboutBlank finds all targets that are about:blank and closes them.
-func CloseAboutBlank(ctx context.Context, ds *cdputil.Session) error {
+// CloseAboutBlank finds all targets that are about:blank, closes them, then waits until they are gone.
+// windowsExpectedClosed indicates how many windows that we expect to be closed from doing this operation.
+func CloseAboutBlank(ctx context.Context, tconn *chrome.TestConn, ds *cdputil.Session, windowsExpectedClosed int) error {
+	prevWindows, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
 	targets, err := ds.FindTargets(ctx, chrome.MatchTargetURL(chrome.BlankURL))
 	if err != nil {
 		return errors.Wrap(err, "failed to query for about:blank pages")
 	}
 	for _, info := range targets {
-		ds.CloseTarget(ctx, info.TargetID)
+		if err := ds.CloseTarget(ctx, info.TargetID); err != nil {
+			return err
+		}
 	}
-	return nil
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		targets, err := ds.FindTargets(ctx, chrome.MatchTargetURL(chrome.BlankURL))
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if len(targets) != 0 {
+			return errors.New("not all about:blank targets were closed")
+		}
+
+		windows, err := ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if len(prevWindows)-len(windows) != windowsExpectedClosed {
+			return errors.Errorf("expected %d windows to be closed, got %d closed",
+				windowsExpectedClosed, len(prevWindows)-len(windows))
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute})
 }
