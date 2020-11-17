@@ -78,6 +78,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "149c59de_a9e1e293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2020-11-17T10:12:30Z",
+      "side": 1,
+      "message": "Please, describe why this extension is needed and how it affects this test.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8da4efa_1e1a1822",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
         "patchSetId": 2
@@ -94,6 +117,29 @@
         "startChar": 6,
         "endLine": 28,
         "endChar": 24
+      },
+      "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39555e83_505f823f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2020-11-17T10:12:30Z",
+      "side": 1,
+      "message": "Could you add a test with \nExtensionInstallAllowlist \u003d extensionId\nExtensionInstallBlocklist \u003d *\nDoes it make sense?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 8
       },
       "revId": "64de6310aee96c665abcc6d675e4cea3c05d3e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
