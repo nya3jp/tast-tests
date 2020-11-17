@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c684d3c6_ca7a0eb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-11-17T01:28:08Z",
+      "side": 1,
+      "message": "I debugged the --no-start-window flag with Ryan Hansberry, and we found out that toggling the bluetooth preference via settingsPrivate was sufficient to also toggle the bluetooth adapter. However, the change to the bluetooth adapter is asynchronous and could take on the order of 30 seconds to go through. I have removed the chrome flag and modified how I set the adapter state (I no longer use dbus to turn off the adapter), and now the test works.\n\nWe still don\u0027t know why the flag worked in the first place, but we suspect the way I was toggling bluetooth was in undefined territory.\n\n",
+      "revId": "9b7ea2f1fa6ca35c6e86983c35f706a77da6d78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
