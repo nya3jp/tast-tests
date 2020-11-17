@@ -77,8 +77,8 @@ func BuiltInCrash(ctx context.Context, s *testing.State) {
 	crashDir := filepath.Join(path, "/crash")
 
 	s.Log("Waiting for crash files to become present")
-	// Wait files like sh.20200420.204845.664107.dmp in crashDir
-	const stem = `sh\.\d{8}\.\d{6}\.\d+`
+	// Wait files like sh.20200420.204845.12345.664107.dmp in crashDir
+	const stem = `sh\.\d{8}\.\d{6}\.\d+\.\d+`
 	metaFileName := stem + crash.MetadataExt
 	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, []string{
 		stem + crash.MinidumpExt, metaFileName,

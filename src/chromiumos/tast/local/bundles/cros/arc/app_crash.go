@@ -75,8 +75,8 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	crashDir := filepath.Join(path, "/crash")
 
 	s.Log("Waiting for crash files to become present")
-	// Wait files like com_android_settings_foo_bar.20200420.204845.664107.log in crashDir
-	base := strings.ReplaceAll(exampleApp, ".", "_") + `(?:_[[:alnum:]]+)*.\d{8}.\d{6}.\d+`
+	// Wait files like com_android_settings_foo_bar.20200420.204845.12345.664107.log in crashDir
+	base := strings.ReplaceAll(exampleApp, ".", "_") + `(?:_[[:alnum:]]+)*.\d{8}\.\d{6}\.\d+\.\d+`
 	metaFileName := base + crash.MetadataExt
 	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, []string{
 		base + crash.LogExt, metaFileName, base + crash.InfoExt,

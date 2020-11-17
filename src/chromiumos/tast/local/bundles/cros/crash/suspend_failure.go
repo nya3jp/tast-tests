@@ -77,8 +77,8 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 		testexec.CommandContext(ctx, "reboot").Run()
 	}
 
-	expectedRegexes := []string{`suspend_failure\.\d{8}\.\d{6}\.0\.log`,
-		`suspend_failure\.\d{8}\.\d{6}\.0\.meta`}
+	expectedRegexes := []string{`suspend_failure\.\d{8}\.\d{6}\.\d+\.0\.log`,
+		`suspend_failure\.\d{8}\.\d{6}\.\d+\.0\.meta`}
 
 	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes)
 	if err != nil {

@@ -50,7 +50,7 @@ func SenderRateLimit(ctx context.Context, s *testing.State) {
 
 		s.Logf("Iteration #%d", runs)
 
-		basename := fmt.Sprintf("some_program.0.0.%d", runs)
+		basename := fmt.Sprintf("some_program.0.0.0.%d", runs)
 		if _, err := crash.AddFakeMinidumpCrash(ctx, basename); err != nil {
 			s.Fatal("Failed to add a fake minidump crash: ", err)
 		}

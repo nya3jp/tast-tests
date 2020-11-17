@@ -42,7 +42,7 @@ func SenderNoConsent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to revoke consent: ", err)
 	}
 
-	const basename = "some_program.1.2.3"
+	const basename = "some_program.1.2.3.4"
 	if _, err := crash.AddFakeMinidumpCrash(ctx, basename); err != nil {
 		s.Fatal("Failed to add a fake minidump crash: ", err)
 	}
