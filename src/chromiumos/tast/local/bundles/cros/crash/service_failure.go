@@ -116,8 +116,8 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 			// "base" gives the prefix of the expected crash files on disk, which
 			// will use underscores rather than dashes.
 			base := strings.Replace(tt.servicePrefix+"service_failure_"+failingServiceName, "-", "_", -1)
-			logRegex := base + `\.\d{8}\.\d{6}\.0\.log`
-			expectedRegexes := []string{logRegex, base + `\.\d{8}\.\d{6}\.0\.meta`}
+			logRegex := base + `\.\d{8}\.\d{6}\.\d+\.0\.log`
+			expectedRegexes := []string{logRegex, base + `\.\d{8}\.\d{6}\.\d+\.0\.meta`}
 
 			files, err := crash.WaitForCrashFiles(sctx, []string{crash.SystemCrashDir}, expectedRegexes)
 			if err != nil {

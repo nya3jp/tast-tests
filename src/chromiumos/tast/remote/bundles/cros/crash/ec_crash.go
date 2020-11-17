@@ -127,7 +127,7 @@ func ECCrash(ctx context.Context, s *testing.State) {
 	}
 	fs = crash_service.NewFixtureServiceClient(cl.Conn)
 
-	const base = `embedded_controller\.\d{8}\.\d{6}\.0`
+	const base = `embedded_controller\.\d{8}\.\d{6}\.\d+\.0`
 	waitReq := &crash_service.WaitForCrashFilesRequest{
 		Dirs:    []string{systemCrashDir},
 		Regexes: []string{base + `\.eccrash`, base + `\.meta`},

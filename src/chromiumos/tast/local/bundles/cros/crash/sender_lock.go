@@ -34,7 +34,7 @@ func SenderLock(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	const basename = "some_program.1.2.3"
+	const basename = "some_program.1.2.3.4"
 	if _, err := crash.AddFakeMinidumpCrash(ctx, basename); err != nil {
 		s.Fatal("Failed to add a fake minidump crash: ", err)
 	}
