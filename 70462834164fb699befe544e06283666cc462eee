@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5584da_174a24f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2020-11-17T14:07:42Z",
+      "side": 1,
+      "message": "policy lgtm % nit",
+      "revId": "70462834164fb699befe544e06283666cc462eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d57f6f0_4d8eae38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2020-11-17T14:07:42Z",
+      "side": 1,
+      "message": "nit:disabled",
+      "range": {
+        "startLine": 54,
+        "startChar": 87,
+        "endLine": 54,
+        "endChar": 94
+      },
+      "revId": "70462834164fb699befe544e06283666cc462eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
