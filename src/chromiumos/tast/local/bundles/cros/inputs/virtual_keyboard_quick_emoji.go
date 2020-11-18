@@ -8,11 +8,9 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
@@ -91,36 +89,5 @@ func VirtualKeyboardQuickEmoji(ctx context.Context, s *testing.State) {
 
 	if err := inputField.WaitForValueToBe(ctx, tconn, emojiChar); err != nil {
 		s.Fatal("Failed to verify input: ", err)
-	}
-
-	// Hide virtual keyboard and click input field again should not trigger vk.
-	if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
-		s.Fatal("Failed to hide virtual keyboard: ", err)
-	}
-
-	// Verify virtual keyboard status is not persisted on clamshell.
-	// Should not test it on tablet devices. It depends on the physical conditions of the running device.
-	// For more details, refer to b/169527206.
-	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
-	}
-
-	if !tabletModeEnabled {
-		if err := inputField.Click(ctx, tconn); err != nil {
-			s.Fatal("Failed to click the input element: ", err)
-		}
-
-		// Check virtual keyboard is not shown in the following 10 seconds.
-		testing.Poll(ctx, func(pollCtx context.Context) error {
-			// Note: do not use internal pollCtx but use the external context, as the
-			// last iteration it may hit the context deadline exceeded error.
-			if isVKShown, err := vkb.IsShown(ctx, tconn); err != nil {
-				s.Fatal("Failed to check vk visibility: ", err)
-			} else if isVKShown {
-				s.Fatal("Virtual keyboard is still enabled after quick emoji input")
-			}
-			return errors.New("continuously check until timeout")
-		}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 10 * time.Second})
 	}
 }
