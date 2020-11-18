@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "939dbd65_8b6c6248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T13:01:50Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "1d08de1cd4b031f13d5bfff5c7e88bd55fb9de29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1091d39f_ca6b8c53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T13:01:50Z",
+      "side": 1,
+      "message": "nit: add a comment on the false test case, that it is not ehre as it is tested in the ther group.",
+      "revId": "1d08de1cd4b031f13d5bfff5c7e88bd55fb9de29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
