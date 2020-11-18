@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6718b6fd_b115aa3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-18T14:38:14Z",
+      "side": 1,
+      "message": "Is it difficult to actually trigger a notification on a page using javascript and seeing what happens?",
+      "revId": "2476f2666221a99d3556393bfd7ad57bf2209b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
