@@ -33,6 +33,24 @@
       "message": "nit: add a comment on the false test case, that it is not ehre as it is tested in the ther group.",
       "revId": "1d08de1cd4b031f13d5bfff5c7e88bd55fb9de29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8259d25_2063e166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/homepage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-18T14:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1091d39f_ca6b8c53",
+      "revId": "1d08de1cd4b031f13d5bfff5c7e88bd55fb9de29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
