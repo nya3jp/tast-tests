@@ -52,6 +52,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/sched"
 	_ "chromiumos/tast/local/bundles/cros/security"
 	_ "chromiumos/tast/local/bundles/cros/session"
+	_ "chromiumos/tast/local/bundles/cros/shelf"
 	_ "chromiumos/tast/local/bundles/cros/storage"
 	_ "chromiumos/tast/local/bundles/cros/ui"
 	_ "chromiumos/tast/local/bundles/cros/unicorn"
