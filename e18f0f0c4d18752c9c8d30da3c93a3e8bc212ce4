@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d41828d_848bac80",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-18T03:06:33Z",
+      "side": 1,
+      "message": "I think this is more suitable in hostapd.StartChannelSwitch.",
+      "parentUuid": "17279887_cb1e2077",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "e18f0f0c4d18752c9c8d30da3c93a3e8bc212ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48c97a00_c68b2bda",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
         "patchSetId": 15
