@@ -39,6 +39,30 @@
       },
       "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c148159c_9efef325",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-18T07:11:22Z",
+      "side": 1,
+      "message": "It used by initialized a new activity, see my changed file activity.go L137.",
+      "parentUuid": "c28d3074_a8ce0351",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
