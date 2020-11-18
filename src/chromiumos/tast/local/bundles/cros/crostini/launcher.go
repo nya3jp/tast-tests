@@ -554,11 +554,11 @@ func Launcher(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	sizeHighDensity, err := launchAppAndMeasureWindowSize(ctx, s, tconn, keyboard, ownerID, conf.launcherID, conf.windowName, false)
+	sizeHighDensity, err := launchAppAndMeasureWindowSize(ctx, tconn, keyboard, ownerID, conf.launcherID, conf.windowName, false)
 	if err != nil {
 		s.Fatal("Failed getting high density window size: ", err)
 	}
-	sizeLowDensity, err := launchAppAndMeasureWindowSize(ctx, s, tconn, keyboard, ownerID, conf.launcherID, conf.windowName, true)
+	sizeLowDensity, err := launchAppAndMeasureWindowSize(ctx, tconn, keyboard, ownerID, conf.launcherID, conf.windowName, true)
 	if err != nil {
 		s.Fatal("Failed getting low density window size: ", err)
 	}
@@ -569,32 +569,32 @@ func Launcher(ctx context.Context, s *testing.State) {
 }
 
 // launchAppAndMeasureWindowSize is a helper function that sets the app "scaled" property, launches the app and returns its window size.
-func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
+func launchAppAndMeasureWindowSize(ctx context.Context, tconn *chrome.TestConn,
 	ew *input.KeyboardEventWriter, ownerID, appID, windowName string, scaled bool) (coords.Size, error) {
-	s.Log("Setting application property 'scaled' to ", scaled)
+	testing.ContextLog(ctx, "Setting application property 'scaled' to ", scaled)
 	if err := setAppScaled(ctx, tconn, appID, scaled); err != nil {
-		return coords.Size{}, err
+		return coords.Size{}, errors.Wrap(err, "failed to set app scaled")
 	}
 
 	if err := apps.Launch(ctx, tconn, appID); err != nil {
-		return coords.Size{}, err
+		return coords.Size{}, errors.Wrapf(err, "failed to launch app %s", appID)
 	}
 
 	sz, err := crostini.PollWindowSize(ctx, tconn, windowName, 10*time.Second)
 	if err != nil {
-		return coords.Size{}, err
+		return coords.Size{}, errors.Wrap(err, "failed to poll windows size")
 	}
-	s.Log("Window size is ", sz)
+	testing.ContextLogf(ctx, "Window size is %q", sz)
 
 	if visible, err := ash.AppShown(ctx, tconn, appID); err != nil {
-		return coords.Size{}, err
+		return coords.Size{}, errors.Wrapf(err, "failed to show app %s", appID)
 	} else if !visible {
 		return coords.Size{}, errors.New("App was not visible in shelf after opening")
 	}
 
 	// Close the application with a keypress.
 	if err := ew.Accel(ctx, "Enter"); err != nil {
-		s.Error("Failed to type Enter key: ", err)
+		return coords.Size{}, errors.Wrap(err, "failed to close the application through typing Enter key")
 	}
 
 	// This may not happen instantaneously, so poll for it.
@@ -606,7 +606,7 @@ func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn 
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return coords.Size{}, err
+		return coords.Size{}, errors.Wrap(err, "app was still shown after")
 	}
 	return sz, nil
 }
