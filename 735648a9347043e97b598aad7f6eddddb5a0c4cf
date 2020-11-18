@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08bdaecc_0f5e6d6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-18T14:34:51Z",
+      "side": 1,
+      "message": "Thanks for taking a look.\nUpdated the patch.",
+      "revId": "735648a9347043e97b598aad7f6eddddb5a0c4cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
