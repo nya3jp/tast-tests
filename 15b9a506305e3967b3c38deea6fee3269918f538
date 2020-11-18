@@ -60,6 +60,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcdd0ef2_0ced2944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_google_safe_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-18T13:29:52Z",
+      "side": 1,
+      "message": "rather than substring match, let\u0027s find the key-value. Probably\n\nnew URL(document.URL).searchParams.get(\"safe\") \u003d\u003d \"active\"\n\nin JS code?",
+      "range": {
+        "startLine": 76,
+        "startChar": 36,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "15b9a506305e3967b3c38deea6fee3269918f538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbfdab46_6145c170",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_google_safe_search.go",
         "patchSetId": 2
