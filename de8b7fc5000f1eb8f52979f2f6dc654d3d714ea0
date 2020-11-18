@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca1e284_83cb8044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-11-18T01:08:14Z",
+      "side": 1,
+      "message": "this seems to be unused.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a50ceb5e_2a21a90c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-11-18T01:08:14Z",
+      "side": 1,
+      "message": "It might be faster and more reliable to create the folder via fsutil, like used when creating the target extension.\n\nWhat do you think Ben?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b94fb8eb_e9000e16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/drag_drop_window.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-11-18T01:08:14Z",
+      "side": 1,
+      "message": "nit: What about adding some console.error() if the clipboard doesn\u0027t contain the \u0027fs/sources\u0027?\n\n if (!e.clipboardData.types.includes(\u0027fs/sources\u0027) {\n   console.error(\"paste event doesn\u0027t contain \u0027fs/sources\u0027\");\n   return;\n }\n\nI\u0027m not sure if this shows up anywhere, but it\u0027ll probably help debugging this test if it start failing.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 55
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
