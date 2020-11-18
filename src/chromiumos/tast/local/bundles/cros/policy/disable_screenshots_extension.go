@@ -84,11 +84,11 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	tabConn, err := cr.NewConn(ctx, "https://google.com")
+	conn, err := cr.NewConn(ctx, "https://google.com")
 	if err != nil {
 		s.Fatal("Failed to create a tab: ", err)
 	}
-	defer tabConn.Close()
+	defer conn.Close()
 
 	for _, tc := range []struct {
 		name      string
@@ -111,32 +111,34 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 			wantTitle: "screen capture allowed",
 		},
 	} {
-		// Update policies.
-		if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.value); err != nil {
-			s.Fatal("Failed to update policies: ", err)
-		}
+		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			// Update policies.
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.value); err != nil {
+				s.Fatal("Failed to update policies: ", err)
+			}
 
-		// Here we check only `chrome.tabs.captureVisibleTab` extension API.
-		// TODO(crbug.com/839630, crbug.com/817497): check whether DisableScreenshots should affect
-		// `chrome.tabCapture.capture` and `chrome.desktopCapture.chooseDesktopMedia` extension APIs.
-		if err := tabConn.Eval(ctx, `document.title = "captureVisibleTab"`, nil); err != nil {
-			s.Fatal("Failed to execute JS in extension: ", err)
-		}
+			// Here we check only `chrome.tabs.captureVisibleTab` extension API.
+			// TODO(crbug.com/839630, crbug.com/817497): check whether DisableScreenshots should affect
+			// `chrome.tabCapture.capture` and `chrome.desktopCapture.chooseDesktopMedia` extension APIs.
+			if err := conn.Eval(ctx, `document.title = "captureVisibleTab"`, nil); err != nil {
+				s.Fatal("Failed to execute JS in extension: ", err)
+			}
 
-		if err := keyboard.Accel(ctx, "Ctrl+Shift+Y"); err != nil {
-			s.Fatal("Failed to press Ctrl+Shift+Y: ", err)
-		}
+			if err := keyboard.Accel(ctx, "Ctrl+Shift+Y"); err != nil {
+				s.Fatal("Failed to press Ctrl+Shift+Y: ", err)
+			}
 
-		if err := tabConn.WaitForExpr(ctx, `document.title != "captureVisibleTab"`); err != nil {
-			s.Fatal("Failed to execute JS in extension: ", err)
-		}
+			if err := conn.WaitForExpr(ctx, `document.title != "captureVisibleTab"`); err != nil {
+				s.Fatal("Failed to execute JS in extension: ", err)
+			}
 
-		var title string
-		if err := tabConn.Eval(ctx, `document.title`, &title); err != nil {
-			s.Fatal("Failed to execute JS in extension: ", err)
-		}
-		if title != tc.wantTitle {
-			s.Errorf("Unexpected title: get %q; want %q", title, tc.wantTitle)
-		}
+			var title string
+			if err := conn.Eval(ctx, `document.title`, &title); err != nil {
+				s.Fatal("Failed to execute JS in extension: ", err)
+			}
+			if title != tc.wantTitle {
+				s.Errorf("Unexpected title: get %q; want %q", title, tc.wantTitle)
+			}
+		})
 	}
 }
