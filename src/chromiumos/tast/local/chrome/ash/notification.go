@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/testing"
 )
 
@@ -41,44 +40,25 @@ func Notifications(ctx context.Context, tconn *chrome.TestConn) ([]*Notification
 	return ret, nil
 }
 
-// HideVisibleNotifications clicks on the tray button to show and hide the system tray button, which should also hide any visible notification.
+// HideVisibleNotifications shows and hides the system tray, which should also
+// hide any visible notification.
 func HideVisibleNotifications(ctx context.Context, tconn *chrome.TestConn) error {
-	trayButton, err := ui.Find(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "UnifiedSystemTray"})
-	if err != nil {
-		return errors.Wrap(err, "system tray button not found")
-	}
-	defer trayButton.Release(ctx)
-
-	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
-		return errors.Wrap(err, "failed to click the tray button")
+	if err := ShowSystemTray(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to show system tray")
 	}
 
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "SettingBubbleContainer"}, 2*time.Second); err != nil {
-		return errors.Wrap(err, "quick settings does not appear")
+	if err := HideSystemTray(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to hide system tray")
 	}
 
-	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
-		return errors.Wrap(err, "failed to click the tray button")
-	}
 	return nil
 }
 
-// CloseNotifications clicks on the tray button to show the system tray button,
-// clicks close button on each notification and clicks on the tray button
-// to hide the system tray button.
+// CloseNotifications shows the system tray, closes each notification and hides
+// the system tray.
 func CloseNotifications(ctx context.Context, tconn *chrome.TestConn) error {
-	trayButton, err := ui.Find(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "UnifiedSystemTray"})
-	if err != nil {
-		return errors.Wrap(err, "system tray button not found")
-	}
-	defer trayButton.Release(ctx)
-
-	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
-		return errors.Wrap(err, "failed to click the tray button")
-	}
-
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "SettingBubbleContainer"}, 2*time.Second); err != nil {
-		return errors.Wrap(err, "quick settings does not appear")
+	if err := ShowSystemTray(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to show system tray")
 	}
 
 	params := ui.FindParams{
@@ -106,8 +86,8 @@ func CloseNotifications(ctx context.Context, tconn *chrome.TestConn) error {
 		nodes.Release(ctx)
 	}
 
-	if err := mouse.Click(ctx, tconn, trayButton.Location.CenterPoint(), mouse.LeftButton); err != nil {
-		return errors.Wrap(err, "failed to click the tray button")
+	if err := HideSystemTray(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to hide system tray")
 	}
 
 	return nil
