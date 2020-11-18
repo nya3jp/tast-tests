@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c438372b_d99339ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-18T04:19:10Z",
+      "side": 1,
+      "message": "Did you talk to Todd or anyone else on the power team about this?\n\nEverything makes sense, but there\u0027s a lot of details I don\u0027t understand yet.",
+      "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c168e453_6cae34e4",
+        "filename": "src/chromiumos/tast/local/power/package_cstates_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-18T04:19:10Z",
+      "side": 1,
+      "message": "Possible alternative,\n\nYou can put these regexp into multi-line mode mode by putting `(?m)` at the beginning of the pattern. https://golang.org/pkg/regexp/syntax/\n\nI think that simplifies the loop below?\n\nUp to you though.",
+      "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
