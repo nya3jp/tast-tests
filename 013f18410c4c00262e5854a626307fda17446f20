@@ -141,6 +141,24 @@
       "parentUuid": "237e3dbb_872ed1e1",
       "revId": "013f18410c4c00262e5854a626307fda17446f20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da2832ef_130e6870",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T06:39:15Z",
+      "side": 1,
+      "message": "I think it\u0027s fixed now.\narc.AppCrash.vm_mock_consent is constantly succeeding after (and before) the consecutive failures[1]. Also, other critical tests failed on the same builds[2].\n\n[1] https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2020-10-22\u0026last_date\u003d2020-11-18\u0026master_builder_name\u003d%5Emaster-release%24\u0026branch\u003d%5Emaster%24\u0026test\u003d%5Etast%5C.arc%5C.AppCrash%5C.vm_mock_consent%24\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n[2] https://tastboard.corp.google.com/test/arc.Gamepad.vm",
+      "parentUuid": "76a8aef7_0fafccc9",
+      "revId": "013f18410c4c00262e5854a626307fda17446f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
