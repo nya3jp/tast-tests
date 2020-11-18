@@ -33,6 +33,24 @@
       "message": "Why not disable only for amd64-generic?",
       "revId": "5104c47f3e1d45ac95ad713f9af315cf5584dd66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0de9c49_a57f5d7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383354
+      },
+      "writtenOn": "2020-11-18T20:27:51Z",
+      "side": 1,
+      "message": "Good point, I will do that.",
+      "parentUuid": "198932a1_2f6d7b51",
+      "revId": "5104c47f3e1d45ac95ad713f9af315cf5584dd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
