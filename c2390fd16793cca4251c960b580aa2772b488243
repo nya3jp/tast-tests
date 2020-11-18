@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43371cf_9ffdc562",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T13:29:10Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "c2390fd16793cca4251c960b580aa2772b488243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bff5df0_bf1abcf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_keyword.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T13:29:10Z",
+      "side": 1,
+      "message": "Inline comments should also be full sentences that start with a capital letter unless it starts with a variable/function name that starts with a lower case letter.\nSo it should be either:\n// This is used as fake search engine.\nor\n// testSearchEngine is used as fake search engine.\n\nSame for the comments below.",
+      "revId": "c2390fd16793cca4251c960b580aa2772b488243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb5048cb_be3e640e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_keyword.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T13:29:10Z",
+      "side": 1,
+      "message": "It\u0027s better to use ServeAndVerify as that also verifies that the policies are set.",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 39
+      },
+      "revId": "c2390fd16793cca4251c960b580aa2772b488243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
