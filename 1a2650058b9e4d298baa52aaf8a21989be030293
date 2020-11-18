@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f92e30_f6a8d3fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T12:35:50Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb04a3a1_a16d0e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/notifications_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T12:35:50Z",
+      "side": 1,
+      "message": "add a little more to the description how you are testing:\n\"Behavior of NotificationsAllowedForUrls policy: checking if notifications are allowed for a specified url\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 56
+      },
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3576a2_b3ca76c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/notifications_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T12:35:50Z",
+      "side": 1,
+      "message": "inline comments need to be full sentences too:\n// notification_allowed determines whether notifications are allowed in the test case or not.",
+      "range": {
+        "startLine": 56,
+        "startChar": 42,
+        "endLine": 56,
+        "endChar": 86
+      },
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a27acc5a_3eadcad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/notifications_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T12:35:50Z",
+      "side": 1,
+      "message": "Should be a little more descriptive, maybe:\nUnexpected permission for notifications: got %t; want %t\"",
+      "range": {
+        "startLine": 115,
+        "startChar": 14,
+        "endLine": 115,
+        "endChar": 49
+      },
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
