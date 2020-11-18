@@ -84,7 +84,8 @@ func windowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz co
 	}
 	defer appWindow.Release(ctx)
 
-	view, err := ui.Find(ctx, tconn, ui.FindParams{ClassName: "ClientView"})
+	opts := testing.PollOptions{Timeout: 15 * time.Second, Interval: 500 * time.Millisecond}
+	view, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "ClientView"}, &opts)
 	if err != nil {
 		return coords.Size{}, errors.Wrap(err, "failed to find client view")
 	}
