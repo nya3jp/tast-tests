@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e78d04d_bd71fc84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T13:01:50Z",
+      "side": 1,
+      "message": "You are right, there is indeed a common element. Thanks for the change!",
+      "parentUuid": "1e16ec66_2c7c0ee7",
+      "revId": "e97695dfbcc1cf5db60de1bf6c0f791aa416a3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9496aa0_f29e8338",
