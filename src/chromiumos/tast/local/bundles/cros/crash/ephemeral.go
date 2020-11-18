@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package crash
 
 import (
 	"context"
@@ -27,7 +27,7 @@ type ephemeralCollectionParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: EphemeralCrashCollector,
+		Func: Ephemeral,
 		Desc: "Verify ephemeral crash collection worked as expected",
 		Contacts: []string{
 			"sarthakkukreti@google.com",
@@ -165,7 +165,7 @@ func testEphemeralCollection(ctx context.Context, s *testing.State) {
 	}
 }
 
-func EphemeralCrashCollector(ctx context.Context, s *testing.State) {
+func Ephemeral(ctx context.Context, s *testing.State) {
 	// Restart ui to always be in a logged out state before the test to mimic general usage conditions.
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart UI job")

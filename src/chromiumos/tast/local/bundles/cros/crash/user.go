@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package crash
 
 import (
 	"context"
@@ -20,7 +20,7 @@ import (
 	commoncrash "chromiumos/tast/common/crash"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/platform/crash"
+	"chromiumos/tast/local/bundles/cros/crash/crash"
 	"chromiumos/tast/local/chrome"
 	localcrash "chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
@@ -42,7 +42,7 @@ type userCrashParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: UserCrash,
+		Func: User,
 		Desc: "Verifies crash reporting for user processes",
 		Contacts: []string{
 			"domlaskowski@chromium.org", // Original autotest author
@@ -702,7 +702,7 @@ func testMaxEnqueuedCrash(ctx context.Context, cr *chrome.Chrome, s *testing.Sta
 	}
 }
 
-func UserCrash(ctx context.Context, s *testing.State) {
+func User(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart UI job")
 	}
