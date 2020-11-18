@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/security/fscaps"
@@ -24,7 +25,8 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr:    []string{"group:mainline", "informational"},
+		Timeout: 5 * time.Minute,
 	})
 }
 
