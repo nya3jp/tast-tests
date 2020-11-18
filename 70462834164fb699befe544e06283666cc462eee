@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d90f863_e5b325f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-18T00:00:55Z",
+      "side": 1,
+      "message": "please fix nits",
+      "revId": "70462834164fb699befe544e06283666cc462eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed1db86_379c6e55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-18T00:00:55Z",
+      "side": 1,
+      "message": "please remove this and use chrome.TestExtensionID instead.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 61
+      },
+      "revId": "70462834164fb699befe544e06283666cc462eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d57f6f0_4d8eae38",
@@ -53,6 +93,52 @@
         "startChar": 87,
         "endLine": 54,
         "endChar": 94
+      },
+      "revId": "70462834164fb699befe544e06283666cc462eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ee1a58e_4304c974",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-18T00:00:55Z",
+      "side": 1,
+      "message": "just a note, this isn\u0027t needed. you can just do:\ntcs :\u003d s.Param().(...)",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 8
+      },
+      "revId": "70462834164fb699befe544e06283666cc462eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f5a8f6a_11b7ecba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-18T00:00:55Z",
+      "side": 1,
+      "message": "nit: remove default initialization just write: var allowInstall bool",
+      "range": {
+        "startLine": 169,
+        "startChar": 17,
+        "endLine": 169,
+        "endChar": 25
       },
       "revId": "70462834164fb699befe544e06283666cc462eee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
