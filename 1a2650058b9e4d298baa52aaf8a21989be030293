@@ -152,6 +152,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76dc7859_38b4e7c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/notifications_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T13:32:30Z",
+      "side": 1,
+      "message": "// Open the test page.",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 27
+      },
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60584644_482327ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/notifications_allowed_for_urls.go",
         "patchSetId": 2
@@ -168,6 +191,29 @@
         "startChar": 47,
         "endLine": 98,
         "endChar": 74
+      },
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58c27e3b_a1bf8985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/notifications_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T13:32:30Z",
+      "side": 1,
+      "message": "// Check if the notification permission is inline with the expected permission.",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 30
       },
       "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
