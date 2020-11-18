@@ -98,9 +98,7 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for files")
-	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
-	defer cancel()
-	files, err := crash.WaitForCrashFiles(waitCtx, []string{crash.SystemCrashDir}, expectedRegexes)
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, expectedRegexes, crash.Timeout(60*time.Second))
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}
