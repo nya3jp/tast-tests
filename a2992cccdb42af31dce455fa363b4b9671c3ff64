@@ -440,6 +440,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ae968c_f2af39ae",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:16Z",
+      "side": 1,
+      "message": "I decided to resolve errors differently in stopNetserv().",
+      "parentUuid": "24c30303_0a27aff8",
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5b73729_a043ad36",
@@ -734,6 +752,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7449820_5d600abc",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:16Z",
+      "side": 1,
+      "message": "You\u0027re right.",
+      "parentUuid": "4561365f_36096ad0",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 14
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbed2082_08124d94",
@@ -818,6 +860,30 @@
       "writtenOn": "2020-11-04T07:34:50Z",
       "side": 1,
       "message": "I think the error is critical enough to log? e.g. we fail to start netserv for some reason.",
+      "range": {
+        "startLine": 196,
+        "startChar": 3,
+        "endLine": 196,
+        "endChar": 24
+      },
+      "revId": "a2992cccdb42af31dce455fa363b4b9671c3ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f82e5e2_15ceb473",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4f9fed_9be73fab",
       "range": {
         "startLine": 196,
         "startChar": 3,

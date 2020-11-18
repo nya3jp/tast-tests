@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0cc4dab_efad59fb",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:16Z",
+      "side": 1,
+      "message": "`killall` works both ways (just sacrificed my chrome to test it ;) ).\nKilling by fullpath is actually more correct, as per man(killall):\n\"If the command name is not regular expression (option -r) and contains a slash (/), processes executing that particular file will be selected for killing, independent of their name.\" (Process can change its name after start.)",
+      "parentUuid": "0818f99a_26f9ee11",
+      "range": {
+        "startLine": 116,
+        "startChar": 43,
+        "endLine": 116,
+        "endChar": 56
+      },
+      "revId": "24e8a6a81fbdbfd48c643aea77549d0c95bcbfcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85d5b647_e22a0044",
         "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
         "patchSetId": 9
@@ -88,6 +112,30 @@
       "writtenOn": "2020-11-17T08:33:54Z",
       "side": 1,
       "message": "Do you think this might be more suitable for NewSession? As it seems we don\u0027t expect multiple sessions to exist at the same time, this can be a precondition to ensure in New, I think.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 33
+      },
+      "revId": "24e8a6a81fbdbfd48c643aea77549d0c95bcbfcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f9abd42_ff1102f9",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:16Z",
+      "side": 1,
+      "message": "I though about it, but decided against it in order to avoid using ctx in NewSession().\nAs to multiple sessions: yes, we don\u0027t expect two simultaneous sessions running at the same time. However, we might end up meeting leftovers from a broken session in previous run. I can add a runtime lock for the session.",
+      "parentUuid": "85d5b647_e22a0044",
       "range": {
         "startLine": 181,
         "startChar": 0,
