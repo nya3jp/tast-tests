@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a04d55b8_6f74e682",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2020-11-18T11:43:44Z",
+      "side": 1,
+      "message": "It\u0027s a rewrite of http://crrev.com/c/1668351",
+      "revId": "83bb7039433e86147c651661012c1c059a7edc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
