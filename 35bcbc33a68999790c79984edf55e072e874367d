@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "77cd4ac7_024d3338",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-18T00:26:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a38d4641_7e0c17ef",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "35bcbc33a68999790c79984edf55e072e874367d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4d746e_82b9a678",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-18T00:26:05Z",
+      "side": 1,
+      "message": "Yes, I hastily wrote this when trying to upload it to see if build bots would pass.\n\nThanks for the catch.",
+      "parentUuid": "373ef545_0373303e",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "35bcbc33a68999790c79984edf55e072e874367d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a2e3286a_067886ba",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33bfd909_9a5776e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-18T00:26:05Z",
+      "side": 1,
+      "message": "I was originally getting a message that the node location was unstable.  Since then I have ran a repo sync and pushed a new image to my device and it thus far seems to be working.  I think I can remove this TODO.",
+      "parentUuid": "a9748f11_9c50161d",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 57
+      },
+      "revId": "35bcbc33a68999790c79984edf55e072e874367d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43c9dabf_c590f653",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-17T21:18:01Z",
       "side": 1,
       "message": "nit: actuallyPastedFileName",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 26
+      },
+      "revId": "35bcbc33a68999790c79984edf55e072e874367d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "152d3781_c8c7f8f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-18T00:26:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c9dabf_c590f653",
       "range": {
         "startLine": 179,
         "startChar": 5,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1df4eaa7_29a2d6a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-18T00:26:05Z",
+      "side": 1,
+      "message": "Ahh interesting.  This worked on my machine without having the ().  Wonder what happened.  Thanks for finding that!",
+      "parentUuid": "12f83dec_9121be23",
+      "range": {
+        "startLine": 203,
+        "startChar": 101,
+        "endLine": 203,
+        "endChar": 117
+      },
+      "revId": "35bcbc33a68999790c79984edf55e072e874367d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e399126_1508671c",
@@ -146,6 +266,30 @@
       "writtenOn": "2020-11-17T21:18:01Z",
       "side": 1,
       "message": "I\u0027m not sure if checking for this is relevant, the content and the other fields checked above seem to be the important ones.",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 10
+      },
+      "revId": "35bcbc33a68999790c79984edf55e072e874367d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a055b1b7_b0d389c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-18T00:26:05Z",
+      "side": 1,
+      "message": "Yes I agree.  The commented out section was originally intended to verify that copying and pasting folder to folder still worked. Removing...",
+      "parentUuid": "8e399126_1508671c",
       "range": {
         "startLine": 206,
         "startChar": 5,
