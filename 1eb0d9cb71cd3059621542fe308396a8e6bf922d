@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae77dcb5_a71c59f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-18T17:49:35Z",
+      "side": 1,
+      "message": "nit: mention that this is ported from autotest (including the extension)",
+      "revId": "1eb0d9cb71cd3059621542fe308396a8e6bf922d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28e75d3_e66a89bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-18T17:49:35Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "1eb0d9cb71cd3059621542fe308396a8e6bf922d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfcb57c8_0ca7740e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_extension.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-18T17:49:35Z",
+      "side": 1,
+      "message": "very minor nit: inline below",
+      "revId": "1eb0d9cb71cd3059621542fe308396a8e6bf922d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90bc7c0_31c91dbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_extension.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-18T17:49:35Z",
+      "side": 1,
+      "message": "you can also use OutDir in tests, no need for a TempDir",
+      "revId": "1eb0d9cb71cd3059621542fe308396a8e6bf922d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5c7810_ea8cff65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_extension.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-18T17:49:35Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 11
+      },
+      "revId": "1eb0d9cb71cd3059621542fe308396a8e6bf922d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
