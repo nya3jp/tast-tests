@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package shelf
 
 import (
 	"context"
@@ -18,7 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ShelfOpenCloseSwitchApps,
+		Func: OpenCloseSwitchApps,
 		Desc: "Checks basic shelf functionality",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -38,8 +38,8 @@ type appInfo struct {
 	Name        string
 }
 
-// ShelfOpenCloseSwitchApps verifies that we can launch, switch between, and close apps from the shelf.
-func ShelfOpenCloseSwitchApps(ctx context.Context, s *testing.State) {
+// OpenCloseSwitchApps verifies that we can launch, switch between, and close apps from the shelf.
+func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

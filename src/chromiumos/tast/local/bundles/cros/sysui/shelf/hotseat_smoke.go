@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package shelf
 
 import (
 	"context"
@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,6 +25,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
 	})
 }

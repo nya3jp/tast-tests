@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package shelf
 
 import (
 	"context"
@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ShelfLaunchedApps,
+		Func: LaunchedApps,
 		Desc: "Checks that launched apps appear in the shelf",
 		Contacts: []string{
 			"dhaddock@chromium.org",
@@ -28,8 +28,8 @@ func init() {
 	})
 }
 
-// ShelfLaunchedApps tests that apps launched appear in the ChromeOS shelf.
-func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
+// LaunchedApps tests that apps launched appear in the ChromeOS shelf.
+func LaunchedApps(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -37,13 +37,15 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// At login, we should have just Chrome in the Shelf.
+	// At login, we should have just Chrome and maybe Files in the Shelf.
 	shelfItems, err := ash.ShelfItems(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get shelf items: ", err)
 	}
 	if len(shelfItems) != 1 {
-		s.Fatal("Unexpected apps in the shelf. Expected only Chrome: ", shelfItems)
+		if len(shelfItems) != 2 || shelfItems[1].AppID != apps.Files.ID {
+			s.Fatal("Unexpected apps in the shelf. Expected only Chrome and Files: ", shelfItems)
+		}
 	}
 
 	// Chrome must be first because it is automatically opened upon login.
