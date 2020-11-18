@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca162aac_4b9a188a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-18T04:25:21Z",
+      "side": 1,
+      "message": "I hadn\u0027t talked to anyone on the power team about it. I just put these together to try to get more information when looking at video performance and figured I should clean it up/send it out.",
+      "parentUuid": "c438372b_d99339ed",
+      "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c168e453_6cae34e4",
