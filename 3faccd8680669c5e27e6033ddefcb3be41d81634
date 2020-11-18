@@ -16,6 +16,29 @@
       "message": "LGTM.",
       "revId": "3faccd8680669c5e27e6033ddefcb3be41d81634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a17320e8_3bdc195b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_refresh_rate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-18T04:17:37Z",
+      "side": 1,
+      "message": "Optional: How about document.querySelectorAll(\"#status-box-container .refresh-interval\")[1].innerText",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 132
+      },
+      "revId": "3faccd8680669c5e27e6033ddefcb3be41d81634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
