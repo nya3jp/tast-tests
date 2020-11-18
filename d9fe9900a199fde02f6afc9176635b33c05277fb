@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c0b7ca_e5405846",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-18T13:38:50Z",
+      "side": 1,
+      "message": "Could you update the commit message.",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fe70894a_fa2dc922",
@@ -32,6 +49,114 @@
       "side": 1,
       "message": "Replied to your comment :) \n\nI am planning to add a separate CL to launch via shelf too:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1149233\n\nBut I think it is valuable for test writers to be able to launch omaha-lacros by command line OR using the UI.\n\nWDYT?",
       "parentUuid": "fe70894a_fa2dc922",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bd5c29_b5ec6f7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-18T13:38:50Z",
+      "side": 1,
+      "message": "As replied in the bug. I\u0027d like to hear the comment from infra before marking CQ+2.\nWalking through the review in parallel in case it\u0027s ok from lab network perspective.",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650beb39_b29cdb19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-18T13:38:50Z",
+      "side": 1,
+      "message": "Could you move this to L144 to minimize the scope?",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d670f4fb_85218445",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-18T13:38:50Z",
+      "side": 1,
+      "message": "could you check the error, too, and if not nil, please wrap it by the returning error.",
+      "range": {
+        "startLine": 189,
+        "startChar": 15,
+        "endLine": 189,
+        "endChar": 16
+      },
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a6ce57_6815a23c",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-18T13:38:50Z",
+      "side": 1,
+      "message": "testing.PollBreak to stop polling immediately.",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c156a7a_4c61ef6c",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-18T13:38:50Z",
+      "side": 1,
+      "message": "how it is guaranteed? IIUC, there\u0027s no special handling of this dir?",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e0b758_d8533419",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-18T13:38:50Z",
+      "side": 1,
+      "message": "nit: const.",
       "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
