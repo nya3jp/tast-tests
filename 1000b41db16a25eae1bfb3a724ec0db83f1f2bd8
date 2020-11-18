@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4fdac77_ab91b3e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-11-18T00:55:47Z",
+      "side": 1,
+      "message": "Keigo, I might need your owner approval.\nThank you.",
+      "revId": "1000b41db16a25eae1bfb3a724ec0db83f1f2bd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
