@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package launcher
 
 import (
 	"context"
@@ -20,14 +20,13 @@ import (
 
 var shelfAppButton = "ash/ShelfAppButton"
 
-// init adds the test LauncherPinAppToShelf.
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LauncherPinAppToShelf,
+		Func: PinAppToShelf,
 		Desc: "Using Launcher To Pin Application to Shelf",
 		Contacts: []string{
 			"seewaifu@chromium.org",
-			"kyleshima@chromium.org",
+			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
@@ -45,8 +44,8 @@ func init() {
 	})
 }
 
-// LauncherPinAppToShelf tests if pinning application onto shelf behaves correctly.
-func LauncherPinAppToShelf(ctx context.Context, s *testing.State) {
+// PinAppToShelf tests if pinning application onto shelf behaves correctly.
+func PinAppToShelf(ctx context.Context, s *testing.State) {
 	tabletMode := s.Param().(bool)
 
 	// This test needs to use New instead of precondition because this test

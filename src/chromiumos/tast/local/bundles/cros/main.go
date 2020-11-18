@@ -53,6 +53,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/security"
 	_ "chromiumos/tast/local/bundles/cros/session"
 	_ "chromiumos/tast/local/bundles/cros/storage"
+	_ "chromiumos/tast/local/bundles/cros/sysui/launcher"
 	_ "chromiumos/tast/local/bundles/cros/ui"
 	_ "chromiumos/tast/local/bundles/cros/unicorn"
 	_ "chromiumos/tast/local/bundles/cros/video"

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package launcher
 
 import (
 	"context"
@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LauncherSearchBuiltInApps,
+		Func: SearchBuiltInApps,
 		Desc: "Launches a built-in app through the launcher",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -28,7 +28,8 @@ func init() {
 	})
 }
 
-func LauncherSearchBuiltInApps(ctx context.Context, s *testing.State) {
+// SearchBuiltInApps searches for the Settings app in the Launcher.
+func SearchBuiltInApps(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

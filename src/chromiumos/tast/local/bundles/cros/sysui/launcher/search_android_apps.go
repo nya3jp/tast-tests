@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package launcher
 
 import (
 	"context"
@@ -20,11 +20,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LauncherSearchAndroidApps,
+		Func: SearchAndroidApps,
 		Desc: "Launches an Android app through the launcher",
 		Contacts: []string{
-			"bhansknecht@chromium.org",
-			"dhaddock@chromium.org",
+			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
@@ -35,13 +34,14 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Vars: []string{"ui.LauncherSearchAndroidApps.username", "ui.LauncherSearchAndroidApps.password"},
+		Vars: []string{"launcher.SearchAndroidApps.username", "launcher.SearchAndroidApps.password"},
 	})
 }
 
-func LauncherSearchAndroidApps(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("ui.LauncherSearchAndroidApps.username")
-	password := s.RequiredVar("ui.LauncherSearchAndroidApps.password")
+// SearchAndroidApps tests launching an Android app from the Launcher.
+func SearchAndroidApps(ctx context.Context, s *testing.State) {
+	username := s.RequiredVar("launcher.SearchAndroidApps.username")
+	password := s.RequiredVar("launcher.SearchAndroidApps.password")
 
 	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
