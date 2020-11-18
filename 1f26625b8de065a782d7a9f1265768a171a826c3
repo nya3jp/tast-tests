@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "993d5537_00fda788",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T15:48:35Z",
+      "side": 1,
+      "message": "really minor nit: there is no need to put a period at the end of the title.",
+      "range": {
+        "startLine": 7,
+        "startChar": 55,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "1f26625b8de065a782d7a9f1265768a171a826c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2a0b0eeb_3febf00c",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-11-18T00:26:34Z",
       "side": 1,
       "message": "+2 for Tast Owners Review",
+      "revId": "1f26625b8de065a782d7a9f1265768a171a826c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e36b513_eefc7fd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T15:48:35Z",
+      "side": 1,
+      "message": "LGTM",
       "revId": "1f26625b8de065a782d7a9f1265768a171a826c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
