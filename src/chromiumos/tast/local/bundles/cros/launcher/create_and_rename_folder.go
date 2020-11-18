@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package launcher
 
 import (
 	"context"
@@ -19,10 +19,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// init adds the test LauncherCreateAndRenameFolder.
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LauncherCreateAndRenameFolder,
+		Func: CreateAndRenameFolder,
 		Desc: "Renaming Folder In Launcher",
 		Contacts: []string{
 			"seewaifu@chromium.org",
@@ -45,8 +44,8 @@ func init() {
 	})
 }
 
-// LauncherCreateAndRenameFolder tests if launcher handles renaming of folder correctly.
-func LauncherCreateAndRenameFolder(ctx context.Context, s *testing.State) {
+// CreateAndRenameFolder tests if launcher handles renaming of folder correctly.
+func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 	tabletMode := s.Param().(bool)
 
 	cr, err := chrome.New(ctx)

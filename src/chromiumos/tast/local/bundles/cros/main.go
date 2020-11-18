@@ -38,6 +38,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/inputs"
 	_ "chromiumos/tast/local/bundles/cros/kernel"
 	_ "chromiumos/tast/local/bundles/cros/lacros"
+	_ "chromiumos/tast/local/bundles/cros/launcher"
 	_ "chromiumos/tast/local/bundles/cros/logs"
 	_ "chromiumos/tast/local/bundles/cros/meta"
 	_ "chromiumos/tast/local/bundles/cros/network"
