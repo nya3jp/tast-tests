@@ -129,14 +129,19 @@ func testDeleteFileFromContainer(ctx context.Context, filesApp *filesapp.FilesAp
 		return errors.Wrap(err, "failed to open Linux files after creating files in the container")
 	}
 
-	// Click Refresh.
-	if err := filesApp.LeftClickItem(ctx, "Refresh", ui.RoleTypeButton); err != nil {
-		return errors.Wrap(err, "failed to click button Refresh on Files app")
-	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Click Refresh.
+		if err := filesApp.LeftClickItem(ctx, "Refresh", ui.RoleTypeButton); err != nil {
+			return errors.Wrap(err, "failed to click button Refresh on Files app")
+		}
 
-	// Check the newly created file is listed in Linux files.
-	if err := filesApp.WaitForFile(ctx, fileName, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to list the file created from crostini in Files app: ")
+		// Check the newly created file is listed in Linux files.
+		if err := filesApp.WaitForFile(ctx, fileName, 10*time.Second); err != nil {
+			return errors.Wrap(err, "failed to list the file created from crostini in Files app: ")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
 	}
 
 	// Delete the file in container.
@@ -145,7 +150,9 @@ func testDeleteFileFromContainer(ctx context.Context, filesApp *filesapp.FilesAp
 	}
 
 	// Check the file does not exist in Linux files.
-	if err := filesApp.CheckFileDoesNotExist(ctx, linuxfiles.Title, fileName, linuxfiles.DirName); err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return filesApp.CheckFileDoesNotExist(ctx, linuxfiles.Title, fileName, linuxfiles.DirName)
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to delete file %s in Linux files through deleting it from container", fileName)
 	}
 
