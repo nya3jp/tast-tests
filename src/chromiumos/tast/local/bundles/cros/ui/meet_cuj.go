@@ -41,7 +41,7 @@ const (
 	meetLayoutAuto      meetLayoutType = "Auto"
 )
 
-// meetTest specifies the setting of a Hangouts Meet journey.
+// meetTest specifies the setting of a Hangouts Meet journey. More info at go/cros-meet-tests.
 type meetTest struct {
 	num     int            // Number of the participants in the meeting.
 	layout  meetLayoutType // Type of the layout in the meeting.
@@ -68,7 +68,8 @@ func init() {
 			"ui.cuj_password",
 		},
 		Params: []testing.Param{{
-			Name: "base_case",
+			// Base case.
+			Name: "4p",
 			Val: meetTest{
 				num:     4,
 				layout:  meetLayoutTiled,
@@ -78,7 +79,8 @@ func init() {
 				cam:     true,
 			},
 		}, {
-			Name: "worst_case",
+			// Worst case.
+			Name: "4p_present_notes_split",
 			Val: meetTest{
 				num:     4,
 				layout:  meetLayoutTiled,
@@ -88,7 +90,8 @@ func init() {
 				cam:     true,
 			},
 		}, {
-			Name: "big_meeting",
+			// Big meeting.
+			Name: "16p",
 			Val: meetTest{
 				num:     16,
 				layout:  meetLayoutTiled,
@@ -98,7 +101,8 @@ func init() {
 				cam:     true,
 			},
 		}, {
-			Name: "big_meeting_with_notes",
+			// Big meeting with notes.
+			Name: "16p_notes",
 			Val: meetTest{
 				num:     16,
 				layout:  meetLayoutTiled,
