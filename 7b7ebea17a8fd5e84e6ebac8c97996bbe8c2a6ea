@@ -63,6 +63,30 @@
       },
       "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d814ffd_5c4fdb2b",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-11-18T07:25:48Z",
+      "side": 1,
+      "message": "Oops sorry for missing it. It may be OK to accept display ID passed from the caller, without doing this check. We can check if the ID is available at NewDisplay but display sill may get disappeared after creating new Activity.\n\nI think typical multi display test will look like:\n\n1. Test queries display ID for external display.\n2. Test invokes NewActivity with the display ID to launch an Activity on external display.\n3. Test checks if the activity is launched on the external display correctly after Activity.Start().\n\nSo the test is responsible to pass the correct display ID to NewActivity, because it knows there is no operations between NewActivity and Activity.Start() which cause to change display ID for external displays.",
+      "parentUuid": "c148159c_9efef325",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
