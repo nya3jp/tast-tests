@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aad8e5f_9fda110d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T09:40:21Z",
+      "side": 1,
+      "message": "Please write something about the order, and the constrain on the number of elements in it.",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "0a259a05e9916ec4730d2af25da679edbd71a81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd833e4f_00271bd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T09:40:21Z",
+      "side": 1,
+      "message": "It returns with an err, please handle that.\nnit: add a comment on what is the expected function of the pressed key.",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 28
+      },
+      "revId": "0a259a05e9916ec4730d2af25da679edbd71a81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5214f7b_56597549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T09:40:21Z",
+      "side": 1,
+      "message": "nit: s.Error(\"Failed waiting for page: \", err)",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "0a259a05e9916ec4730d2af25da679edbd71a81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5477affa_288bcad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T09:40:21Z",
+      "side": 1,
+      "message": "See above.",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "0a259a05e9916ec4730d2af25da679edbd71a81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7720e2e_2622ab0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T09:40:21Z",
+      "side": 1,
+      "message": "nit: see above.",
+      "revId": "0a259a05e9916ec4730d2af25da679edbd71a81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
