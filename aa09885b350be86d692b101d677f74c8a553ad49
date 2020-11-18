@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fcb0a79_ced30ddc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-18T10:19:46Z",
+      "side": 1,
+      "message": "Thanks for all the input! I also had another look at formatting and replaced %s by %q.",
+      "revId": "aa09885b350be86d692b101d677f74c8a553ad49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
