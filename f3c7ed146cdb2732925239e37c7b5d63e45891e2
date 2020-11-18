@@ -16,6 +16,69 @@
       "message": "Nothing to pick on.",
       "revId": "f3c7ed146cdb2732925239e37c7b5d63e45891e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb19003_af977cb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-18T07:09:54Z",
+      "side": 1,
+      "message": "Don\u0027t have much to add now as I\u0027m not really sure how we\u0027ll control Cisco AP (I never used any before...).\n\nPossibly worth a short design doc for describing/discussing the changes when this takes shape.",
+      "revId": "f3c7ed146cdb2732925239e37c7b5d63e45891e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02470147_06d0cbcf",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-18T07:09:54Z",
+      "side": 1,
+      "message": "Not sure if we\u0027ll need a Router interface too. I think the resource management in Router object will be quite different from the one for Cisco router?",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "f3c7ed146cdb2732925239e37c7b5d63e45891e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a554778b_9b1aac25",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-18T07:09:54Z",
+      "side": 1,
+      "message": "This could possibly become hard to use in Cisco AP case, as the interface is designed to fit the need of hostapd/DUT setup. It might still be possible to switch by type and access the fields directly though.",
+      "range": {
+        "startLine": 396,
+        "startChar": 115,
+        "endLine": 396,
+        "endChar": 128
+      },
+      "revId": "f3c7ed146cdb2732925239e37c7b5d63e45891e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
