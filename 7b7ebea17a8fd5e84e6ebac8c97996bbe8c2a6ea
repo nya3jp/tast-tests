@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6b32ab_dc2cf19f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-18T20:06:22Z",
+      "side": 1,
+      "message": "although mentioned on the commit description, please mention that it was tested both on P and R.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 57
+      },
+      "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "108021fd_e70e7135",
@@ -14,6 +37,75 @@
       "writtenOn": "2020-11-18T06:51:21Z",
       "side": 1,
       "message": "ricardoq@ ruanc@ - could you take a look for tast and multidisplay owner reviews? Thanks!",
+      "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4565d2c5_f194e64a",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-18T20:06:22Z",
+      "side": 1,
+      "message": "nit:\nfor consistency, here and in the comments, use ID instead of id.",
+      "range": {
+        "startLine": 140,
+        "startChar": 57,
+        "endLine": 140,
+        "endChar": 59
+      },
+      "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c6f878_8d344cac",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-18T20:06:22Z",
+      "side": 1,
+      "message": "nit:\nperhaps dumping \"output\" here as well to make it easy to debug. e.g:\n\n  if len(groups) \u003d\u003d 0 {\n    testing.ContextLogf(...\"Dumpsys output: %q\", output)\n    return ...\n  }",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49d92bd_48b85491",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-18T20:06:22Z",
+      "side": 1,
+      "message": "nit:\njust to double check, is this needed?\nPerhaps `if len(groups)\u003d\u003d0` guarantees that all groups have the correct size?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 3
+      },
       "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
