@@ -52,6 +52,24 @@
       "parentUuid": "081caa6b_2ec339ec",
       "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0aa11f2_81ec202e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-18T23:54:20Z",
+      "side": 1,
+      "message": "added, got the same error. The difference is that Crostini has chrome.ExtraArgs(\"--vmodule\u003dcrostini*\u003d1\").",
+      "parentUuid": "ca56f466_b986164d",
+      "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
