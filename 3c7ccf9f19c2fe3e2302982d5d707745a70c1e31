@@ -39,6 +39,29 @@
       },
       "revId": "3c7ccf9f19c2fe3e2302982d5d707745a70c1e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40757971_7db3f12f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-11-18T01:49:45Z",
+      "side": 1,
+      "message": "Remove this comment?\nThis comment is true only on ARC container.",
+      "range": {
+        "startLine": 433,
+        "startChar": 1,
+        "endLine": 433,
+        "endChar": 49
+      },
+      "revId": "3c7ccf9f19c2fe3e2302982d5d707745a70c1e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
