@@ -34,7 +34,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ScanESCLIPP,
 		Desc:         "Tests eSCL scanning via an ipp-over-usb tunnel",
-		Contacts:     []string{"fletcherw@chromium.org", "project-bolton@google.com"},
+		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"virtual_usb_printer"},
 		Data:         []string{sourceImage, goldenImage},
