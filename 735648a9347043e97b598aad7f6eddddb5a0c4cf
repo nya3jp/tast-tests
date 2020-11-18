@@ -16,6 +16,23 @@
       "message": "Thanks for taking a look.\nUpdated the patch.",
       "revId": "735648a9347043e97b598aad7f6eddddb5a0c4cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d5ed00_5c4f4154",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-18T19:07:49Z",
+      "side": 1,
+      "message": "Thanks for the review,",
+      "revId": "735648a9347043e97b598aad7f6eddddb5a0c4cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
