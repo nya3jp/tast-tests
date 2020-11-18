@@ -34,6 +34,24 @@
       "parentUuid": "e8640a5e_40c48878",
       "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca56f466_b986164d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-18T08:53:39Z",
+      "side": 1,
+      "message": "Arc needs to be enabled with play store gaia optin using chrome.ARCSupported().  Does `crostini.StartedARCEnabled()` ensure this?  Seems like this maybe the first crostini test to use optin.Perform() 😊\n\nFrom .../crostini/pre.go, it looks like only ARCEnabled() is set?  http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/crostini/pre.go?l\u003d369\u0026rcl\u003d153084fabd45255e58eb783c35492426b0f28376\n\n```\n// ARCEnabled returns an Option that can be passed to New to enable ARC (without Play Store)\n// for the user session with mock GAIA account.\nfunc ARCEnabled() Option {\n\treturn func(c *Chrome) { c.arcMode \u003d arcEnabled }\n}\n\n// ARCSupported returns an Option that can be passed to New to allow to enable ARC with Play Store gaia opt-in for the user\n// session with real GAIA account.\n// In this case ARC is not launched by default and is required to be launched by user policy or from UI.\nfunc ARCSupported() Option {\n\treturn func(c *Chrome) { c.arcMode \u003d arcSupported }\n}\n```\n\nUsing play_store.go as example, arc.DisableSyncFlags() would also be good to prevent flakiness.\n\n```\ncr, err :\u003d chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, \"gaia-id\"), chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...))\n```\n--arc-disable-app-sync  - prevents syncing installed apps from the previous sessions.\n--arc-disable-play-auto-install - disable PAI flow that downloads and installs apps in the background.\n--arc-disable-locale-sync - don’t propagate locale sync for the account that might cause reconfiguration updates.\n--arc-play-store-auto-update\u003doff - prevents Play Store and GMS Core from third party app update and prevents self-updates and downloadable content. \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/play_store.go;rcl\u003dd0c05f37e71d8ce91515503faf8c4e05ed7867eb;l\u003d46",
+      "parentUuid": "081caa6b_2ec339ec",
+      "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
