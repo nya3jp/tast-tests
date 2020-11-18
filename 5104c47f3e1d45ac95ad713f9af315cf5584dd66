@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4348a175_51f936b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383354
+      },
+      "writtenOn": "2020-11-18T20:16:52Z",
+      "side": 1,
+      "message": "I _believe_ this test is timing out, causing issues with amd64-generic full builders (see https://crbug.com/1149716)",
+      "revId": "5104c47f3e1d45ac95ad713f9af315cf5584dd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
