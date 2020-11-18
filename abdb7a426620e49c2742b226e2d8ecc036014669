@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaf0259d_bac44f28",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-18T10:49:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a454582_e2785a2a",
+      "range": {
+        "startLine": 159,
+        "startChar": 20,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "abdb7a426620e49c2742b226e2d8ecc036014669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22f48487_bc17bab6",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-17T23:49:38Z",
       "side": 1,
       "message": "super nit: but also enables",
+      "range": {
+        "startLine": 166,
+        "startChar": 47,
+        "endLine": 166,
+        "endChar": 59
+      },
+      "revId": "abdb7a426620e49c2742b226e2d8ecc036014669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb4630f8_7eb65925",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-18T10:49:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f48487_bc17bab6",
       "range": {
         "startLine": 166,
         "startChar": 47,
