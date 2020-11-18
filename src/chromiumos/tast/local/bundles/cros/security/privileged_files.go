@@ -24,7 +24,8 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		// TODO(crbug/1033046) Test is disabled until timeout issue can be fixed.
+		// Attr: []string{"group:mainline", "informational"},
 	})
 }
 
