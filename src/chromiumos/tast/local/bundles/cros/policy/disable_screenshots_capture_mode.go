@@ -9,9 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/local/screenshot"
@@ -20,40 +21,47 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DisableScreenshots,
-		// TODO(crbug.com/1125556): check whether screenshot can be taken by extensions APIs.
-		Desc: "Behavior of the DisableScreenshots policy, check whether screenshot can be taken by pressing hotkeys",
+		Func: DisableScreenshotsCaptureMode,
+		Desc: "Behavior of the DisableScreenshots policy, check whether screenshot can be taken from capture mode in quick settings",
 		Contacts: []string{
-			"lamzin@google.com", // Test port author
+			"lamzin@google.com", // Test author
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          pre.User,
 	})
 }
 
-func DisableScreenshots(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*pre.PreData).Chrome
-	fdms := s.PreValue().(*pre.PreData).FakeDMS
-
+func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
 	defer func() {
 		if err := screenshot.RemoveScreenshots(); err != nil {
 			s.Error("Failed to remove screenshots after all tests: ", err)
 		}
 	}()
 
-	// Connect to Test API.
-	tconn, err := cr.TestAPIConn(ctx)
+	fdms, err := fakedms.New(ctx, s.OutDir())
 	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
+		s.Fatal("Failed to start FakeDMS: ", err)
+	}
+	defer fdms.Stop(ctx)
+
+	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
 
-	keyboard, err := input.VirtualKeyboard(ctx)
+	cr, err := chrome.New(ctx,
+		chrome.Auth(pre.Username, pre.Password, pre.GaiaID),
+		chrome.DMSPolicy(fdms.URL),
+		chrome.EnableFeatures("CaptureMode"))
 	if err != nil {
-		s.Fatal("Failed to get keyboard: ", err)
+		s.Fatal("Failed to create Chrome instance: ", err)
 	}
-	defer keyboard.Close()
+	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get test API connection: ", err)
+	}
 
 	for _, tc := range []struct {
 		name             string
@@ -61,35 +69,22 @@ func DisableScreenshots(ctx context.Context, s *testing.State) {
 		wantAllowed      bool
 		wantNotification string
 	}{
-		{
-			name:             "true",
-			value:            []policy.Policy{&policy.DisableScreenshots{Val: true}},
-			wantAllowed:      false,
-			wantNotification: "Screenshot is blocked",
-		},
+		// TODO(crbug.com/1150585): add missing test case when policy value is `True` once CaptureMode will handle DisableScreenshots.
 		{
 			name:             "false",
 			value:            []policy.Policy{&policy.DisableScreenshots{Val: false}},
 			wantAllowed:      true,
-			wantNotification: "Screenshot taken",
+			wantNotification: "Screenshot taken and saved to clipboard",
 		},
 		{
 			name:             "unset",
 			value:            []policy.Policy{},
 			wantAllowed:      true,
-			wantNotification: "Screenshot taken",
+			wantNotification: "Screenshot taken and saved to clipboard",
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-			// Minimum interval between screenshot commands is 1 second, so we
-			// must sleep for 1 seconds to be able to take screenshot,
-			// otherwise hotkey pressing will be ignored.
-			//
-			// Please check kScreenshotMinimumIntervalInMS constant in
-			// ui/snapshot/screenshot_grabber.cc
-			testing.Sleep(ctx, time.Second)
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+tc.name+".txt")
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -109,11 +104,11 @@ func DisableScreenshots(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
-				s.Fatal("Failed to press Ctrl+F5 to take screenshot: ", err)
+			if err := ash.TakeAreaScreenshot(ctx, tconn); err != nil {
+				s.Fatal("Failed to open system tray: ", err)
 			}
 
-			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("screenshot"), ash.WaitTitle(tc.wantNotification)); err != nil {
+			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("capture_mode_notification"), ash.WaitTitle(tc.wantNotification)); err != nil {
 				s.Fatalf("Failed to wait notification with title %q: %v", tc.wantNotification, err)
 			}
 
