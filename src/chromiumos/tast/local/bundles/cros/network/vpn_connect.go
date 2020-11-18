@@ -125,9 +125,18 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	}
 
 	// Prepare virtual ethernet link.
-	if _, err := veth.NewPair(ctx, serverInterfaceName, clientInterfaceName); err != nil {
+	ctxForDeletingVEth := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
+	vEth, err := veth.NewPair(ctx, serverInterfaceName, clientInterfaceName)
+	if err != nil {
 		s.Fatal("Failed to setup veth: ", err)
 	}
+	defer func(ctx context.Context) {
+		if err := vEth.Delete(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to cleanup veth: ", err)
+		}
+	}(ctxForDeletingVEth)
 
 	vpnType := s.Param().(vpnServer).vpnType
 	authType := s.Param().(vpnServer).authType
