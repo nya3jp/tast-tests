@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package shelf
 
 import (
 	"context"
@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ShelfLaunchedApps,
+		Func: LaunchedApps,
 		Desc: "Checks that launched apps appear in the shelf",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -29,8 +29,8 @@ func init() {
 	})
 }
 
-// ShelfLaunchedApps tests that apps launched appear in the ChromeOS shelf.
-func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
+// LaunchedApps tests that apps launched appear in the ChromeOS shelf.
+func LaunchedApps(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
