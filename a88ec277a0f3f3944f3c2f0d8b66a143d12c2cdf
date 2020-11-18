@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf79b7c_27ac5873",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-18T07:54:03Z",
+      "side": 1,
+      "message": "More accurately, the previous change was correct only before the bug fix of CL:2528515. Would you also mention that so that it helps us to understand the CL dependencies.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "a88ec277a0f3f3944f3c2f0d8b66a143d12c2cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "452c4bda_ba170972",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-11-18T07:54:03Z",
+      "side": 1,
+      "message": "LGTM after updating the cl description.",
+      "revId": "a88ec277a0f3f3944f3c2f0d8b66a143d12c2cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
