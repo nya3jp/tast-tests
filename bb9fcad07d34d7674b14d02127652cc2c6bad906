@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a2de283_5659863e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-18T16:04:21Z",
+      "side": 1,
+      "message": "LGTM with nit. Don\u0027t forget to also get CR from a test owner, per go/tast-reviews.",
+      "revId": "bb9fcad07d34d7674b14d02127652cc2c6bad906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d45d5f3_5fe58019",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-18T16:04:21Z",
+      "side": 1,
+      "message": "nit: This regex will allow for 36 or 24. I really don\u0027t expect either of these to ever occur, but (32|64) would be more precise.\n\n    exp :\u003d regexp.MustCompile(`paretrace(32|64)\\s*:.*\u003d+\\sStart\\sTimer.*\u003d+`)",
+      "range": {
+        "startLine": 135,
+        "startChar": 37,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "bb9fcad07d34d7674b14d02127652cc2c6bad906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cffa871b_3aa3d8ac",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-18T16:04:21Z",
+      "side": 1,
+      "message": "Ditto L135 comment",
+      "revId": "bb9fcad07d34d7674b14d02127652cc2c6bad906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
