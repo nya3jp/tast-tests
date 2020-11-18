@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "232102a0_a8c90c2d",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-18T06:08:09Z",
+      "side": 1,
+      "message": "I moved it in hostapd.StartChannelSwitch",
+      "parentUuid": "7d41828d_848bac80",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "e18f0f0c4d18752c9c8d30da3c93a3e8bc212ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48c97a00_c68b2bda",
@@ -61,6 +85,30 @@
       "writtenOn": "2020-11-18T02:25:55Z",
       "side": 1,
       "message": "It should be:\n  cfg :\u003d \u0026csaConfig{\n    count: count,\n    freq:  frequency,\n  }",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 20
+      },
+      "revId": "e18f0f0c4d18752c9c8d30da3c93a3e8bc212ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a1717ea_bdade140",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-18T06:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48c97a00_c68b2bda",
       "range": {
         "startLine": 290,
         "startChar": 1,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fa2104_cee18a74",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-18T06:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1efaba_dcd2c028",
+      "range": {
+        "startLine": 298,
+        "startChar": 34,
+        "endLine": 298,
+        "endChar": 39
+      },
+      "revId": "e18f0f0c4d18752c9c8d30da3c93a3e8bc212ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c7a6d78_2954c5af",
@@ -107,6 +179,30 @@
       "writtenOn": "2020-11-18T02:25:55Z",
       "side": 1,
       "message": "cfg.freq",
+      "range": {
+        "startLine": 299,
+        "startChar": 34,
+        "endLine": 299,
+        "endChar": 43
+      },
+      "revId": "e18f0f0c4d18752c9c8d30da3c93a3e8bc212ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "108bce5f_061c98a4",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-18T06:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c7a6d78_2954c5af",
       "range": {
         "startLine": 299,
         "startChar": 34,
