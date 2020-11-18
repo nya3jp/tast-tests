@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74eb7d6c_cf76135b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-18T05:55:12Z",
+      "side": 1,
+      "message": "also fixed an issue where go named return values didn\u0027t function how I expected (naming the cleanup return var the same as the one in the function means the deferred function calls the return var not the one in the function).",
+      "revId": "7a55e238405ec6b75d50fb6a3699a3cfdeb1c9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
