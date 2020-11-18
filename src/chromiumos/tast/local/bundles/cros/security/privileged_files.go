@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/security/fscaps"
 	"chromiumos/tast/local/moblab"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,6 +26,9 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
+		// This test is failing in amd64-generic full builders.
+		// TODO(crbug/1033046) Remove restriction once timeout issue can be fixed.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("amd64-generic")),
 	})
 }
 
