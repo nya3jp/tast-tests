@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ef8271d_8f4c531a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-11-18T01:48:16Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "3c7ccf9f19c2fe3e2302982d5d707745a70c1e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc631ec_c3bf5592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-11-18T01:48:16Z",
+      "side": 1,
+      "message": "Just \"getprop\" would be fine.\n\nhttps://source.corp.google.com/search?q\u003da.command.*getprop\u0026sq\u003dpackage:chromeos",
+      "range": {
+        "startLine": 249,
+        "startChar": 29,
+        "endLine": 249,
+        "endChar": 48
+      },
+      "revId": "3c7ccf9f19c2fe3e2302982d5d707745a70c1e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
