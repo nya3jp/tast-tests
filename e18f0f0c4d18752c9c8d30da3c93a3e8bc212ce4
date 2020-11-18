@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f11542d1_693d155b",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-18T06:27:50Z",
+      "side": 1,
+      "message": "Ah, sorry that I suggested in a wrong way. Since \"count\" and \"freq\" are not optional arguments anymore, you can omit the two fields in the csaConfig. \"cfg :\u003d \u0026csaConfig{}\" is correct.",
+      "parentUuid": "0a1717ea_bdade140",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 20
+      },
+      "revId": "e18f0f0c4d18752c9c8d30da3c93a3e8bc212ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a1efaba_dcd2c028",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
         "patchSetId": 15
