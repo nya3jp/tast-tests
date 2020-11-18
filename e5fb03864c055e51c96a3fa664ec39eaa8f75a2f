@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fa3dd19_2dd12fed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T13:37:17Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "e5fb03864c055e51c96a3fa664ec39eaa8f75a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3724be94_2dc756f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T13:37:17Z",
+      "side": 1,
+      "message": "Inline comments also need to full sentences, i.e.:\n// This is the default search engine checked in the test.\nor\n// defaultSearchEngine is the search engine checked in the test.\n\nThe same goes for the following comments.",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 81
+      },
+      "revId": "e5fb03864c055e51c96a3fa664ec39eaa8f75a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9247d2b0_3e73cc5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T13:37:17Z",
+      "side": 1,
+      "message": "Use ServeAndVerify.",
+      "range": {
+        "startLine": 87,
+        "startChar": 24,
+        "endLine": 87,
+        "endChar": 39
+      },
+      "revId": "e5fb03864c055e51c96a3fa664ec39eaa8f75a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
