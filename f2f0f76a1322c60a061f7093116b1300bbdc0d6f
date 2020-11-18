@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "711e67a6_27a3bd55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-18T01:53:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42f4aa33_f0adf99a",
+      "revId": "f2f0f76a1322c60a061f7093116b1300bbdc0d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e01dd0a0_a25c64e3",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-17T15:37:37Z",
       "side": 1,
       "message": "Could you add brief comment that this closing needs to be done afte rthe CreateWindows above, in order not to terminate the lacros-chrome?",
+      "revId": "f2f0f76a1322c60a061f7093116b1300bbdc0d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71bb774b_43eb30a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-18T01:53:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e01dd0a0_a25c64e3",
       "revId": "f2f0f76a1322c60a061f7093116b1300bbdc0d6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
