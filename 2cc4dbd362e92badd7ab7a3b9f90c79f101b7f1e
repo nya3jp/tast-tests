@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb96ac2_4e56e787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T14:32:46Z",
+      "side": 1,
+      "message": "It seems like there cannot be 2 function with the same name in a package even in different files, and they are not exported. There is a canInstallExtension() function in the ExtensionAllowedTypes test.",
+      "revId": "2cc4dbd362e92badd7ab7a3b9f90c79f101b7f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102a4270_28fa41f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T14:32:46Z",
+      "side": 1,
+      "message": "It must be informatinal test as well at first.",
+      "revId": "2cc4dbd362e92badd7ab7a3b9f90c79f101b7f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
