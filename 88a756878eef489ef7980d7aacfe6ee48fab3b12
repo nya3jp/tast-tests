@@ -271,6 +271,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "564697f8_5c1a86b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/csa_reconnect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-18T03:06:33Z",
+      "side": 1,
+      "message": "Sorry, I missed the comment. If the default DTIM is 2, I think current version is OK. We can add the set/restore later when we see some problems.",
+      "parentUuid": "f6275727_15b21358",
+      "revId": "88a756878eef489ef7980d7aacfe6ee48fab3b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce720fcc_46c22adf",
