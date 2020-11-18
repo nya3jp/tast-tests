@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "108021fd_e70e7135",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-11-18T06:51:21Z",
+      "side": 1,
+      "message": "ricardoq@ ruanc@ - could you take a look for tast and multidisplay owner reviews? Thanks!",
+      "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28d3074_a8ce0351",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-11-18T06:51:21Z",
+      "side": 1,
+      "message": "Could you add these methods with the same CL where tests start using them?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "7b7ebea17a8fd5e84e6ebac8c97996bbe8c2a6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
