@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea551cff_ae474bc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-18T08:33:38Z",
+      "side": 1,
+      "message": "And remove \"tast-test\"? Because otherwise the title is too long if there is \"add\" in it.",
+      "parentUuid": "e199542b_766527d9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "9ffa972f9b55bae5dd2776faadc665008e626a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f004817d_db0f05f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-17T15:13:21Z",
       "side": 1,
       "message": "Please add a little more verbose description.",
+      "revId": "9ffa972f9b55bae5dd2776faadc665008e626a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62143be_9a309b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-18T08:33:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f004817d_db0f05f8",
       "revId": "9ffa972f9b55bae5dd2776faadc665008e626a5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2020-11-17T15:13:21Z",
       "side": 1,
       "message": "The keyboard should be opened once, before the for cycle.",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "9ffa972f9b55bae5dd2776faadc665008e626a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24b79bbc_16bac1c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-18T08:33:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c3b4c6b_e5bc4900",
       "range": {
         "startLine": 102,
         "startChar": 3,
