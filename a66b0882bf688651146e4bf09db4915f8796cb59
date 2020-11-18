@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54672b5b_d59aafc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:39Z",
+      "side": 1,
+      "message": "Fixed all remaining comments.",
+      "revId": "a66b0882bf688651146e4bf09db4915f8796cb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47eee266_651f2ecf",
@@ -75,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e8c4b64_79970457",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47eee266_651f2ecf",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 2
+      },
+      "revId": "a66b0882bf688651146e4bf09db4915f8796cb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64cd9321_8b921195",
@@ -88,6 +129,24 @@
       "writtenOn": "2020-11-17T08:34:28Z",
       "side": 1,
       "message": "nit: As we only have one AP in the test, this might not be needed if we don\u0027t expect error in CleanDisconnectWifi which will do the similar thing? Or, if we want to tolerate the error in disconnect due to bad signal, we can move this into the same defer as Disconnect.",
+      "revId": "a66b0882bf688651146e4bf09db4915f8796cb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c307110e_d2ea34d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64cd9321_8b921195",
       "revId": "a66b0882bf688651146e4bf09db4915f8796cb59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

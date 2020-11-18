@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3a55f8b5_cb179886",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:39Z",
+      "side": 1,
+      "message": "Added some comment about optional parameters.",
+      "parentUuid": "64a255e9_152eacf5",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 48
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a5b73fbd_789a1a8b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -1253,6 +1277,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a1c9d4_850e830d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:39Z",
+      "side": 1,
+      "message": "Oh, I thought `Clean` means `without throwing errors`.\nI wrapped both into one function.",
+      "parentUuid": "a39ad696_6fbf9daf",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 23
+      },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ab0be9c_046d4b87",
@@ -1355,6 +1403,24 @@
         "endLine": 380,
         "endChar": 14
       },
+      "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0220436d_902f741d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-18T20:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f156f8a_b71d5e21",
       "revId": "58c8defa964860b9963a35016cd70be8ef7cf08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
