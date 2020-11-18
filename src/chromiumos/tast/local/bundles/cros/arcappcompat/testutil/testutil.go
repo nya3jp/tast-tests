@@ -32,6 +32,7 @@ const (
 
 	defaultTestCaseTimeout = 2 * time.Minute
 	DefaultUITimeout       = 20 * time.Second
+	ShortUITimeout         = 30 * time.Second
 	LongUITimeout          = 90 * time.Second
 )
 
@@ -139,10 +140,11 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 
 			// It is ok if the package is currently equal the installer package.
 			// It is also ok if the package is currently equal the play service package.
+			// It is also ok if the package is currently equal the android permission controller package
 			// This happens when you need to accept permissions.
 			if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
 				s.Fatal("Failed to get current app package: ", err)
-			} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" {
+			} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
 				s.Fatalf("Failed to launch app: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 			}
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
@@ -249,7 +251,7 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 	if err != nil {
 		s.Error("Failed to get window info: ", err)
 	}
-
+	s.Logf("App Resize info, info.CanResize %+v", info.CanResize)
 	if !info.CanResize {
 		s.Log("This app is not resizable. Skipping test")
 		return
