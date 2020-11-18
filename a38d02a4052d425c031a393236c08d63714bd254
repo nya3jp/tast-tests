@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d224c0_2c0855be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-11-18T19:40:21Z",
+      "side": 1,
+      "message": "shouldn\u0027t this just go after L139? then you can just overwrite \u0027ctx\u0027 instead of creating a separate new one. The parameter to the deferred function gets evaluated immediately, even if it doesn\u0027t *execute* until later.\n\nhttps://golang.org/ref/spec#Defer_statements\n\n\"Each time a \"defer\" statement executes, the function value and parameters to the call are evaluated as usual and saved anew but the actual function is not invoked.\"",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 15
+      },
+      "revId": "a38d02a4052d425c031a393236c08d63714bd254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
