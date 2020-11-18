@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b12186_bd541603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-11-18T22:09:29Z",
+      "side": 1,
+      "message": "This appears to break M86 build:\n\n# chromiumos/tast/local/bundles/cros/apps                                                                                             src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_whats_new_tab.go:35:24: undefined: \"chromiumos/tast/local/bundles/cros/apps/pre\".AppsStableModels                                                                                                               src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_whats_new_tab.go:38:24: undefined: \"chromiumos/tast/local/bundles/cros/apps/pre\".AppsUnstableModels   ",
+      "revId": "797de2e841f882cdb9519cf49d6f7b6df32fad95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
