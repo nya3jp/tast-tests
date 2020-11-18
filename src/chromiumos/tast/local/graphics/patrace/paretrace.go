@@ -132,7 +132,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 		versionOkButton.Click(ctx)
 	}
 
-	exp := regexp.MustCompile(`paretrace32\s*:.*=+\sStart\stimer.*=+`)
+	exp := regexp.MustCompile(`paretrace(32|64)\s*:.*=+\sStart\stimer.*=+`)
 	if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp)); err != nil {
 		s.Fatal("WaitForLogcat failed: ", err)
 	}
@@ -145,7 +145,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 		s.Fatal("Failed to start recording: ", err)
 	}
 
-	exp = regexp.MustCompile(`paretrace32\s*:.*=+\sEnd\stimer.*=+`)
+	exp = regexp.MustCompile(`paretrace(32|64)\s*:.*=+\sEnd\stimer.*=+`)
 	if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp)); err != nil {
 		s.Fatal("WaitForLogcat failed: ", err)
 	}
