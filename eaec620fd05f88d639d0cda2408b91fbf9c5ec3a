@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16228a5b_76242945",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-18T09:31:25Z",
+      "side": 1,
+      "message": "Nice :)",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "eaec620fd05f88d639d0cda2408b91fbf9c5ec3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47d2951_ecd4cf69",
+        "filename": "src/chromiumos/tast/local/multivm/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-18T09:31:25Z",
+      "side": 1,
+      "message": "Can we avoid embedding StateManager? This makes the StateManager field accessible from other packages. Also, in general, I recommend type embedding when it\u0027s not very necessary. (c.f. https://en.wikipedia.org/wiki/Composition_over_inheritance)",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 13
+      },
+      "revId": "eaec620fd05f88d639d0cda2408b91fbf9c5ec3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c6c188_1f39c45f",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-18T09:31:25Z",
+      "side": 1,
+      "message": "Do we need to export StateManager? IIUC it\u0027s used inside preconditions only.",
+      "revId": "eaec620fd05f88d639d0cda2408b91fbf9c5ec3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
