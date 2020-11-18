@@ -70,6 +70,12 @@ var Gallery = App{
 	Name: "Gallery",
 }
 
+// WhatsNew has details about the What's New app.
+var WhatsNew = App{
+	ID:   "lddhblppcjmenljhdleiahjighahdcje",
+	Name: "What's New",
+}
+
 // Duo has details about the Duo app.
 var Duo = App{
 	ID:   "djkcbcmkefiiphjkonbeknmcgiheajce",
