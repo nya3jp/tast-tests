@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6914ee92_2f12348d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T12:45:11Z",
+      "side": 1,
+      "message": "Additional files for a tast test should be named with the test name as prefix, so the html file should be named i.e. notifications_allowed_for_urls_test_page.html",
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d9fafa_62abcacb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/notification_test_page.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T12:45:11Z",
+      "side": 1,
+      "message": "you can remove that part as we don\u0027t need it.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1847850_d71a71b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/notification_test_page.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T12:45:11Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb04a3a1_a16d0e70",
@@ -43,6 +106,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce174046_2709c79a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/notifications_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T12:45:11Z",
+      "side": 1,
+      "message": "notifications_allowed_for_urls_test_page.html",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c3576a2_b3ca76c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/notifications_allowed_for_urls.go",
         "patchSetId": 2
@@ -59,6 +145,29 @@
         "startChar": 42,
         "endLine": 56,
         "endChar": 86
+      },
+      "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60584644_482327ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/notifications_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-18T12:45:11Z",
+      "side": 1,
+      "message": "notifications_allowed_for_urls_test_page.html",
+      "range": {
+        "startLine": 98,
+        "startChar": 47,
+        "endLine": 98,
+        "endChar": 74
       },
       "revId": "1a2650058b9e4d298baa52aaf8a21989be030293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
