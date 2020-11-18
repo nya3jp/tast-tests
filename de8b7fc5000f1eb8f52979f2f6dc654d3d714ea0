@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b0ec8d_2637538b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-18T23:43:11Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "ab0099c7_230d6940",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "278f2352_674c3877",
@@ -37,6 +61,69 @@
       "writtenOn": "2020-11-18T22:25:48Z",
       "side": 1,
       "message": "Initial thoughts. Also add the tast-owners@ group for tast approval 😊",
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad776d4d_9aff4e46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-18T23:43:11Z",
+      "side": 1,
+      "message": "I think it might be good to split this into two sub-tests, so that you can see the failures from pasting in the files app and from pasting in the browser window separately. Right now, if the first one fails, you won\u0027t even try the second, and that might hide further regressions. (In this circumstance, you could report errors from each sub-test using s.Error or s.Errorf rather than s.Fatal or s.Fatalf.)",
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c8540f_cb55c940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-18T23:43:11Z",
+      "side": 1,
+      "message": "nit: \"creating\"",
+      "range": {
+        "startLine": 43,
+        "startChar": 18,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "133b73bb_b472d8bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-18T23:43:11Z",
+      "side": 1,
+      "message": "nit: \"to setup\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 26
+      },
       "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -176,6 +263,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84b490f1_5f83b2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-18T23:43:11Z",
+      "side": 1,
+      "message": "This check is already included at the end of FilesApp.CreateFolder (with 15 second timeout, similar to what Ben said below).",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e46c4ca8_5e48d02f",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
         "patchSetId": 6
@@ -199,6 +309,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7518aa33_09548c95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-18T23:43:11Z",
+      "side": 1,
+      "message": "where do we get these coordinates from?",
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28fe05ca_b54b07a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
         "patchSetId": 6
@@ -216,6 +343,23 @@
         "endLine": 143,
         "endChar": 47
       },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2bb5a5c_5da15b78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-18T23:43:11Z",
+      "side": 1,
+      "message": "We drop an error here if this fails.",
       "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
