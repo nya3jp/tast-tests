@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc397f6c_716bb645",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-18T14:39:02Z",
+      "side": 1,
+      "message": "Ahh, didn\u0027t know about this. Changed the method name. I was wondering why are the bots failing.",
+      "parentUuid": "5bb96ac2_4e56e787",
+      "revId": "2cc4dbd362e92badd7ab7a3b9f90c79f101b7f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "102a4270_28fa41f3",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-18T14:32:46Z",
       "side": 1,
       "message": "It must be informatinal test as well at first.",
+      "revId": "2cc4dbd362e92badd7ab7a3b9f90c79f101b7f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38cf320c_6d60818e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-18T14:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "102a4270_28fa41f3",
       "revId": "2cc4dbd362e92badd7ab7a3b9f90c79f101b7f1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
