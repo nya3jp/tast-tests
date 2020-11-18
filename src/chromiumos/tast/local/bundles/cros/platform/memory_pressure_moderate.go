@@ -9,10 +9,8 @@ import (
 	"strconv"
 	"time"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/mempressure"
-	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
 
@@ -28,8 +26,13 @@ func init() {
 			mempressure.WPRArchiveName,
 		},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"platform.MemoryPressureModerate.maxTab"},
-		Pre:          wpr.ReplayMode(mempressure.WPRArchiveName),
+		Vars:         []string{"platform.MemoryPressureModerate.maxTab", "platform.MemoryPressureModerate.enableARC"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -67,13 +70,25 @@ func MemoryPressureModerate(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Maximal tab count: ", maxTab)
 
+	enableARC := false
+	if val, ok := s.Var("platform.MemoryPressureModerate.enableARC"); ok && val == "1" {
+		enableARC = true
+	}
+	s.Log("enableARC: ", enableARC)
+
+	testEnv, err := mempressure.NewTestEnv(ctx, s.OutDir(), enableARC, s.DataPath(mempressure.WPRArchiveName))
+	if err != nil {
+		s.Fatal("Failed creating the test environment: ", err)
+	}
+	defer testEnv.Close(ctx)
+
 	p := &mempressure.RunParameters{
 		PageFilePath:             s.DataPath(mempressure.CompressibleData),
 		PageFileCompressionRatio: 0.40,
 		MaxTabCount:              maxTab,
 	}
 
-	if err := mempressure.Run(ctx, s.OutDir(), s.PreValue().(*chrome.Chrome), p); err != nil {
+	if err := mempressure.Run(ctx, s.OutDir(), testEnv.Chrome(), p); err != nil {
 		s.Fatal("Run failed: ", err)
 	}
 }
