@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "60fd6c3d_d220601d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-18T18:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae77dcb5_a71c59f6",
+      "revId": "1eb0d9cb71cd3059621542fe308396a8e6bf922d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d28e75d3_e66a89bd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bb4762_640d28db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_extension.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-18T18:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfcb57c8_0ca7740e",
+      "revId": "1eb0d9cb71cd3059621542fe308396a8e6bf922d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a90bc7c0_31c91dbd",
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b43834_fe0eb699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_extension.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-18T18:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a90bc7c0_31c91dbd",
+      "revId": "1eb0d9cb71cd3059621542fe308396a8e6bf922d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f5c7810_ea8cff65",
@@ -82,6 +136,30 @@
       "writtenOn": "2020-11-18T17:49:35Z",
       "side": 1,
       "message": "Errorf",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 11
+      },
+      "revId": "1eb0d9cb71cd3059621542fe308396a8e6bf922d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f26d82_d494e1ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_extension.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-18T18:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f5c7810_ea8cff65",
       "range": {
         "startLine": 148,
         "startChar": 5,
