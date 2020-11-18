@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63fe48fe_e72681b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-11-18T09:31:25Z",
+      "side": 1,
+      "message": "Cisco APs will be controlled via Cisco controller (another device) and its CLI, I\u0027m currently implementing a PoC for that, a CL with it should make a good \"design doc\", I hope.\nThis CL is just to review and discuss how to extend current framework to support other types of APs, regardless of what they would be.",
+      "parentUuid": "6fb19003_af977cb4",
+      "revId": "f3c7ed146cdb2732925239e37c7b5d63e45891e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02470147_06d0cbcf",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -60,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "824ce0f6_e262296f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-11-18T09:31:25Z",
+      "side": 1,
+      "message": "Yes, this part requires another refactoring, I have noted a TODO on this in line 393.\nIn case of Cisco there will be a struct representing the controller device instead of the Router.",
+      "parentUuid": "02470147_06d0cbcf",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "f3c7ed146cdb2732925239e37c7b5d63e45891e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a554778b_9b1aac25",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -71,6 +113,30 @@
       "writtenOn": "2020-11-18T07:09:54Z",
       "side": 1,
       "message": "This could possibly become hard to use in Cisco AP case, as the interface is designed to fit the need of hostapd/DUT setup. It might still be possible to switch by type and access the fields directly though.",
+      "range": {
+        "startLine": 396,
+        "startChar": 115,
+        "endLine": 396,
+        "endChar": 128
+      },
+      "revId": "f3c7ed146cdb2732925239e37c7b5d63e45891e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d98d137_6b63a4bf",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-11-18T09:31:25Z",
+      "side": 1,
+      "message": "Right, this is probably not needed at all for the Cisco case.",
+      "parentUuid": "a554778b_9b1aac25",
       "range": {
         "startLine": 396,
         "startChar": 115,
