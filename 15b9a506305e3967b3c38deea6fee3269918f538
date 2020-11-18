@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8dcebf_70a2f2b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_google_safe_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-18T14:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6164ad1d_db5e9cb8",
+      "revId": "15b9a506305e3967b3c38deea6fee3269918f538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e03a757f_fd780fb7",
@@ -81,6 +99,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbccc387_1775516b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_google_safe_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-18T14:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcdd0ef2_0ced2944",
+      "range": {
+        "startLine": 76,
+        "startChar": 36,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "15b9a506305e3967b3c38deea6fee3269918f538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36fa0ebc_41d17d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_google_safe_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-18T14:34:51Z",
+      "side": 1,
+      "message": "Removed this line as now we are using searchParams() instead of substring matching.",
+      "parentUuid": "e03a757f_fd780fb7",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 50
+      },
+      "revId": "15b9a506305e3967b3c38deea6fee3269918f538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbfdab46_6145c170",
@@ -94,6 +160,30 @@
       "writtenOn": "2020-11-18T12:47:11Z",
       "side": 1,
       "message": "This should be \"; got %t, want%t\". (It is not fixed in every policy test yet.)",
+      "range": {
+        "startLine": 78,
+        "startChar": 45,
+        "endLine": 78,
+        "endChar": 62
+      },
+      "revId": "15b9a506305e3967b3c38deea6fee3269918f538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c643cdbd_8a9bd311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_google_safe_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-18T14:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbfdab46_6145c170",
       "range": {
         "startLine": 78,
         "startChar": 45,
