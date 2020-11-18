@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54300a71_4c7685ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-18T06:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed1db86_379c6e55",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 61
+      },
+      "revId": "70462834164fb699befe544e06283666cc462eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d57f6f0_4d8eae38",
@@ -88,6 +112,30 @@
       "writtenOn": "2020-11-17T14:07:42Z",
       "side": 1,
       "message": "nit:disabled",
+      "range": {
+        "startLine": 54,
+        "startChar": 87,
+        "endLine": 54,
+        "endChar": 94
+      },
+      "revId": "70462834164fb699befe544e06283666cc462eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "702db147_ed161a3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-18T06:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d57f6f0_4d8eae38",
       "range": {
         "startLine": 54,
         "startChar": 87,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7567881a_ffe9007d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-18T06:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ee1a58e_4304c974",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 8
+      },
+      "revId": "70462834164fb699befe544e06283666cc462eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f5a8f6a_11b7ecba",
@@ -134,6 +206,30 @@
       "writtenOn": "2020-11-18T00:00:55Z",
       "side": 1,
       "message": "nit: remove default initialization just write: var allowInstall bool",
+      "range": {
+        "startLine": 169,
+        "startChar": 17,
+        "endLine": 169,
+        "endChar": 25
+      },
+      "revId": "70462834164fb699befe544e06283666cc462eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab78c055_153599a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-18T06:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f5a8f6a_11b7ecba",
       "range": {
         "startLine": 169,
         "startChar": 17,
