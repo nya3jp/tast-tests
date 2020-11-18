@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ddf5b4_ecc43a95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-18T06:33:21Z",
+      "side": 1,
+      "message": "Still LGTM.",
+      "revId": "d419abd37039fca00c5cd0c7a02569d7c1b21882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd8b3bf_9a8273d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/bluetooth_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-18T06:33:21Z",
+      "side": 1,
+      "message": "minor nit: IMO, the CmdRunner is for sharing command execution in local and remote codes, and it\u0027s less general than testexec package. I personally prefer just expanding testexec.ContextCommand(ctx, command, args...).Output(testexec.DumpLogOnError) here, but I don\u0027t have strong opinion.",
+      "range": {
+        "startLine": 78,
+        "startChar": 17,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "d419abd37039fca00c5cd0c7a02569d7c1b21882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
