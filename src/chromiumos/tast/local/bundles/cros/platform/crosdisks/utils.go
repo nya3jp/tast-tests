@@ -24,6 +24,8 @@ import (
 
 // The user which operates on files.
 const chronos = "chronos"
+const chronosUID = 1000
+const chronosGID = 1000
 
 // mount is a convenience wrapper for mounting with CrosDisks.
 func mount(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType, options string) (m crosdisks.MountCompleted, err error) {
@@ -67,6 +69,13 @@ func withMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType, o
 			testing.ContextLogf(ctxForUnmount, "Failed to unmount %q: status %d", m.MountPath, status)
 			if err == nil {
 				err = errors.Wrapf(e, "failed to unmount %q: status %d", m.MountPath, status)
+			}
+		} else {
+			if _, e := os.Stat(m.MountPath); e == nil {
+				testing.ContextLogf(ctxForUnmount, "Mount point directory %q still present", m.MountPath)
+				if err == nil {
+					err = errors.Errorf("mount point directory %q still present", m.MountPath)
+				}
 			}
 		}
 	}()
