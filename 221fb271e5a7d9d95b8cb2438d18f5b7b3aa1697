@@ -56,6 +56,30 @@
       },
       "revId": "221fb271e5a7d9d95b8cb2438d18f5b7b3aa1697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e068088_dbfd4875",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-18T07:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bdc51f2_c73e72c8",
+      "range": {
+        "startLine": 311,
+        "startChar": 10,
+        "endLine": 311,
+        "endChar": 67
+      },
+      "revId": "221fb271e5a7d9d95b8cb2438d18f5b7b3aa1697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
