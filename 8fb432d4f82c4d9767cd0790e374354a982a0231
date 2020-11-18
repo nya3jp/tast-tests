@@ -16,6 +16,24 @@
       "message": "Optin could take up to 90 seconds (see link below).  Based on offline discussion, context shortened to 30 seconds may cause failures due to context deadline exceeded.  Maybe longer context timeout could allow optin extension page to show to complete provisioning process?\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go;rcl\u003d74b64b01222e9d75568c338d31d7a45582879132;l\u003d295\n\n```\nError at share_movies.go:55: Failed to optin to Play Store: failed to find optin extension page: failed to find chrome-extension://cnbgggchhmkkdmeppjobngjoejnihlei/_generated_background_page.html: context deadline exceeded; last error follows: no targets matched\n2020/11/18 15:49:31 [15:49:31.726] Stack trace:\nFailed to optin to Play Store\n\tat chromiumos/tast/local/bundles/cros/crostini.ShareMovies (share_movies.go:55)\n\tat chromiumos/tast/internal/planner.runTestWithRoot.func3 (run.go:709)\n\tat chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n\tat runtime.goexit (asm_amd64.s:1357)\n```",
       "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "081caa6b_2ec339ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-18T07:47:23Z",
+      "side": 1,
+      "message": "I deleted the 48 ~ 50, got the same error. When put \"chrome-extension://cnbgggchhmkkdmeppjobngjoejnihlei/_generated_background_page.html\" into browser in the DUTs, got \"cnbgggchhmkkdmeppjobngjoejnihlei is blocked\", what blocked it?",
+      "parentUuid": "e8640a5e_40c48878",
+      "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
