@@ -16,6 +16,46 @@
       "message": "LGTM",
       "revId": "221fb271e5a7d9d95b8cb2438d18f5b7b3aa1697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f740ffee_6ed9653c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-18T07:18:20Z",
+      "side": 1,
+      "message": "LGTM, only one minor nit missed in previous review.",
+      "revId": "221fb271e5a7d9d95b8cb2438d18f5b7b3aa1697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bdc51f2_c73e72c8",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-18T07:18:20Z",
+      "side": 1,
+      "message": "minor nit: not sure if we can PollBreak on this case, I think we probably don\u0027t expect this to fail.",
+      "range": {
+        "startLine": 311,
+        "startChar": 10,
+        "endLine": 311,
+        "endChar": 67
+      },
+      "revId": "221fb271e5a7d9d95b8cb2438d18f5b7b3aa1697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
