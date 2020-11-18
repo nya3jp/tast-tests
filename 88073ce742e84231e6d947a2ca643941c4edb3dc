@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ba64b4_619e5ce3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pandora.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-18T21:06:30Z",
+      "side": 1,
+      "message": "can you change this to appActivity \u003d \".LauncherActivity\"",
+      "range": {
+        "startLine": 74,
+        "startChar": 37,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "88073ce742e84231e6d947a2ca643941c4edb3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
