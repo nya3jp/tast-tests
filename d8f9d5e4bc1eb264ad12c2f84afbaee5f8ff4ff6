@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3fbb4d4_456eabdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-18T02:02:14Z",
+      "side": 1,
+      "message": "Will submit since it\u0027s what Dale and I discussed.\n\nDale, lmk if I\u0027ve done something wrong with creating this file.\n\nThanks~!",
+      "revId": "d8f9d5e4bc1eb264ad12c2f84afbaee5f8ff4ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

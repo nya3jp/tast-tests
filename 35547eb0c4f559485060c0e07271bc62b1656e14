@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b716e4_06a813bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/bbb_1080p60_yuv.vp9.webm.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-18T02:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "537b26f0_f81c2dfa",
+      "revId": "35547eb0c4f559485060c0e07271bc62b1656e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ecb5695_48e3dfb2",
@@ -65,6 +83,24 @@
       "writtenOn": "2020-11-17T15:40:08Z",
       "side": 1,
       "message": "url has more complex semantic now. Could you document it?",
+      "revId": "35547eb0c4f559485060c0e07271bc62b1656e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "916f7122_ac1cb287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-18T02:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ecb5695_48e3dfb2",
       "revId": "35547eb0c4f559485060c0e07271bc62b1656e14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
