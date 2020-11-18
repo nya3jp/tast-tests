@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8444f2f_28fffe68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-18T15:20:48Z",
+      "side": 1,
+      "message": "Defer to others.",
+      "revId": "52e7f68dce514aabf18aea8db7c1bd52bfd108b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17879902_2a6a965d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-18T15:20:48Z",
+      "side": 1,
+      "message": "nit: Let\u0027s check more exact condition.\n\nmetaFiles, ok :\u003d files[metaFileName]\nif !ok || len(metaFiles) !\u003d 1 {\n...",
+      "revId": "52e7f68dce514aabf18aea8db7c1bd52bfd108b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
