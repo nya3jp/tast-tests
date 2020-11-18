@@ -52,7 +52,7 @@ func init() {
 			Name: "vm",
 			Val: expectedSpeechLog{
 				CheckBox: []string{
-					"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle",
+					"CheckBox", "Check box", "not checked", "Press Search+Space to toggle",
 				},
 				SeekBar: []string{
 					"seekBar", "Slider", "25%", "Min 0", "Max 100",
@@ -169,7 +169,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 					if writeFileErr := ioutil.WriteFile(diffFilePath, []byte("(-want +got):\n"+diff), 0644); writeFileErr != nil {
 						return errors.Wrapf(err, "failed to write diff to the file; and the previous error is %v", writeFileErr)
 					}
-					return errors.Wrapf(err, "dumped diff to %s", diffFileName)
+					return errors.Wrapf(err, "dumped diff to %s", diffFilePath)
 				}
 				return errors.Wrap(err, "failed to check speech log")
 			}
