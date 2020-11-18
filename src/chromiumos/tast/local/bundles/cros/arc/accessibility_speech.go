@@ -52,7 +52,7 @@ func init() {
 			Name: "vm",
 			Val: expectedSpeechLog{
 				CheckBox: []string{
-					"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle",
+					"CheckBox", "Check box", "not checked", "Press Search+Space to toggle",
 				},
 				SeekBar: []string{
 					"seekBar", "Slider", "25%", "Min 0", "Max 100",
