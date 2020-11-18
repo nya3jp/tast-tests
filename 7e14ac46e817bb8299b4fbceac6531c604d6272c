@@ -16,6 +16,23 @@
       "message": "Hi xiyuan, mike says he wants the test names to be more descriptive.",
       "revId": "7e14ac46e817bb8299b4fbceac6531c604d6272c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ca33cfd_6b5c6572",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-18T01:02:52Z",
+      "side": 1,
+      "message": "lgtm, sending to owners",
+      "revId": "7e14ac46e817bb8299b4fbceac6531c604d6272c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
