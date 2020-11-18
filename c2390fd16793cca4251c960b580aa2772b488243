@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f4e16af_cd86b956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_keyword.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-18T13:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bff5df0_bf1abcf3",
+      "revId": "c2390fd16793cca4251c960b580aa2772b488243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb5048cb_be3e640e",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-11-18T13:29:10Z",
       "side": 1,
       "message": "It\u0027s better to use ServeAndVerify as that also verifies that the policies are set.",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 39
+      },
+      "revId": "c2390fd16793cca4251c960b580aa2772b488243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d33ce21_dd179a8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_keyword.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-18T13:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb5048cb_be3e640e",
       "range": {
         "startLine": 93,
         "startChar": 24,
