@@ -16,6 +16,46 @@
       "message": "Thanks for all the input! I also had another look at formatting and replaced %s by %q.",
       "revId": "aa09885b350be86d692b101d677f74c8a553ad49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d29901f_f857330a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T14:51:29Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "aa09885b350be86d692b101d677f74c8a553ad49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81008b91_87a91d92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/keyboard_default_to_function_keys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-18T14:51:29Z",
+      "side": 1,
+      "message": "nit: \"unexpected URL; got %q, want %q\"",
+      "range": {
+        "startLine": 108,
+        "startChar": 26,
+        "endLine": 108,
+        "endChar": 47
+      },
+      "revId": "aa09885b350be86d692b101d677f74c8a553ad49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
