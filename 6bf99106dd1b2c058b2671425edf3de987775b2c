@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e144512_c7680ff5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-11-18T08:12:14Z",
+      "side": 1,
+      "message": "PTAL.\nThis test has been passing in latest 20+ builds except kefka-kernelnext. We should be able to ignore kefka-kernelnext, as we don\u0027t have it in CQ.\nhttps://tastboard.corp.google.com/test/crostini.VmcStart.artifact",
+      "revId": "6bf99106dd1b2c058b2671425edf3de987775b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
