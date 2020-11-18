@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "2e0956dbe0f12359fa57c9f406f24ef5aba7c30c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc2b2b29_9110813e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-18T23:51:35Z",
+      "side": 1,
+      "message": "I feel like there was a reason to not have nesting here. I don\u0027t remember for sure, but this may lead to bugs/issues. At minimum this still allows someone to make a launcher folder and run into name conflicts. I think this would be better to either just be launcher or something like syslauncher.",
+      "range": {
+        "startLine": 56,
+        "startChar": 39,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "2e0956dbe0f12359fa57c9f406f24ef5aba7c30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
