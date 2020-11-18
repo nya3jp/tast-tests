@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10b685f_31e12654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-18T18:30:47Z",
+      "side": 1,
+      "message": "I\u0027ll land this after the current files app pinning CL lands and settles ",
+      "revId": "0c9ce23974b290538c30dcc0f6ebf3e8968d43ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
