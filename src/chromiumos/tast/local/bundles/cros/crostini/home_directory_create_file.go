@@ -133,7 +133,9 @@ func testCreateFolderFromLinuxFiles(ctx context.Context, filesApp *filesapp.File
 	}
 
 	// Check that the file now exists in the container.
-	if err := cont.CheckFilesExistInDir(ctx, ".", dirName); err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return cont.CheckFilesExistInDir(ctx, ".", dirName)
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return errors.Wrapf(err, "creation of folder %q did not propagate to container", dirName)
 	}
 	return nil
@@ -147,13 +149,18 @@ func testCreateFileFromContainer(ctx context.Context, filesApp *filesapp.FilesAp
 		return errors.Wrap(err, "failed to create test file in the container")
 	}
 
-	// Click Refresh.
-	if err := filesApp.LeftClickItem(ctx, "Refresh", ui.RoleTypeButton); err != nil {
-		return errors.Wrap(err, "failed to click button Refresh on Files app")
-	}
-	// Check that the file now exists in the Files app.
-	if err := filesApp.WaitForFile(ctx, fileName, 10*time.Second); err != nil {
-		return errors.Wrap(err, "file creation did not propogare to Files app")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Click Refresh.
+		if err := filesApp.LeftClickItem(ctx, "Refresh", ui.RoleTypeButton); err != nil {
+			return errors.Wrap(err, "failed to click button Refresh on Files app")
+		}
+		// Check that the file now exists in the Files app.
+		if err := filesApp.WaitForFile(ctx, fileName, 10*time.Second); err != nil {
+			return errors.Wrap(err, "file creation did not propogare to Files app")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
 	}
 	return nil
 
