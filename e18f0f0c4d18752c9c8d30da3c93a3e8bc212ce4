@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17279887_cb1e2077",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-18T02:25:55Z",
+      "side": 1,
+      "message": "I think these logic should belong to hostapd package for two reasons: 1) config.Channel should not be modified by the other packages. 2) Exporting hostapd.host breaks encapsulation, especially APIface is now a top level user of the other components.\n\nMoving them into either hostapd.StartChannelSwitch or a new hostapd method seems better to me.\n\n@Yenlin WDYT?",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "e18f0f0c4d18752c9c8d30da3c93a3e8bc212ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c97a00_c68b2bda",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-18T02:25:55Z",
+      "side": 1,
+      "message": "It should be:\n  cfg :\u003d \u0026csaConfig{\n    count: count,\n    freq:  frequency,\n  }",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 20
+      },
+      "revId": "e18f0f0c4d18752c9c8d30da3c93a3e8bc212ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1efaba_dcd2c028",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-18T02:25:55Z",
+      "side": 1,
+      "message": "cfg.count",
+      "range": {
+        "startLine": 298,
+        "startChar": 34,
+        "endLine": 298,
+        "endChar": 39
+      },
+      "revId": "e18f0f0c4d18752c9c8d30da3c93a3e8bc212ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7a6d78_2954c5af",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-18T02:25:55Z",
+      "side": 1,
+      "message": "cfg.freq",
+      "range": {
+        "startLine": 299,
+        "startChar": 34,
+        "endLine": 299,
+        "endChar": 43
+      },
+      "revId": "e18f0f0c4d18752c9c8d30da3c93a3e8bc212ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
