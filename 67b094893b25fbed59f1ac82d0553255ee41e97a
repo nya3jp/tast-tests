@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ba2390_2d5d515f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-18T07:01:09Z",
+      "side": 1,
+      "message": "Hi reviewers,\nI catch some bugs like \"redundant |Prepare()| call on test precondition\". Still the adb failed problem happen sometimes. I doubt that it\u0027s something to do with my glinux. Is possible to test it in lab\u0027s test host? Or we can just land this test first to see how\u0027s run on scheduled test host?",
+      "revId": "67b094893b25fbed59f1ac82d0553255ee41e97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
