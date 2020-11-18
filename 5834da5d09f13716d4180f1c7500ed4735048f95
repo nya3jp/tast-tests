@@ -16,6 +16,69 @@
       "message": "TY!",
       "revId": "5834da5d09f13716d4180f1c7500ed4735048f95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d30b33_953af694",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-18T09:41:41Z",
+      "side": 1,
+      "message": "LGTM with minor comments.",
+      "revId": "5834da5d09f13716d4180f1c7500ed4735048f95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49f47145_85a4e94c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-18T09:41:41Z",
+      "side": 1,
+      "message": "Can you use Output instead?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#CombinedOutput",
+      "range": {
+        "startLine": 357,
+        "startChar": 62,
+        "endLine": 357,
+        "endChar": 76
+      },
+      "revId": "5834da5d09f13716d4180f1c7500ed4735048f95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "113dbe30_60c8a2c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-18T09:41:41Z",
+      "side": 1,
+      "message": "nit: You can use time.Local\nhttps://godoc.org/time#Location",
+      "range": {
+        "startLine": 367,
+        "startChar": 78,
+        "endLine": 367,
+        "endChar": 99
+      },
+      "revId": "5834da5d09f13716d4180f1c7500ed4735048f95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
