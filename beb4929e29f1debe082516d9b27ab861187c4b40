@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb31eee_b2d4787d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-18T18:36:08Z",
+      "side": 1,
+      "message": "I think I\u0027d rather keep it flexible, in case we later decide (for example) that a 6-digit number is better.",
+      "parentUuid": "7852df2a_08d385c7",
+      "range": {
+        "startLine": 79,
+        "startChar": 86,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "beb4929e29f1debe082516d9b27ab861187c4b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "398a0926_23671708",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7f41b1_5510f914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/built_in_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-18T18:36:08Z",
+      "side": 1,
+      "message": "See app_crash.go comment.",
+      "parentUuid": "398a0926_23671708",
+      "range": {
+        "startLine": 81,
+        "startChar": 34,
+        "endLine": 81,
+        "endChar": 37
+      },
+      "revId": "beb4929e29f1debe082516d9b27ab861187c4b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c17adb6_cffa2471",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-17T23:28:53Z",
       "side": 1,
       "message": "\\d{5} ? (And all the other places)",
+      "range": {
+        "startLine": 94,
+        "startChar": 47,
+        "endLine": 94,
+        "endChar": 50
+      },
+      "revId": "beb4929e29f1debe082516d9b27ab861187c4b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c688b45b_e26b2ee1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-18T18:36:08Z",
+      "side": 1,
+      "message": "See app_crash.go comment.",
+      "parentUuid": "8c17adb6_cffa2471",
       "range": {
         "startLine": 94,
         "startChar": 47,
