@@ -18,6 +18,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/webutil"
@@ -788,4 +789,73 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, p *RunParameters
 		return errors.Wrap(err, "cannot save perf data")
 	}
 	return nil
+}
+
+// TestEnv is a struct containing the common setup data for memory pressure tests.
+type TestEnv struct {
+	arc *arc.ARC
+	cr  *chrome.Chrome
+	wpr *wpr.WPR
+}
+
+// NewTestEnv creates a new TestEnv, creating new WPR, Chrome, and ARC instances to use.
+func NewTestEnv(ctx context.Context, outDir string, enableARC bool, archive string) (*TestEnv, error) {
+	te := &TestEnv{}
+
+	success := false
+	defer func() {
+		if !success {
+			te.Close(ctx)
+		}
+	}()
+
+	var opts []chrome.Option
+	var err error
+
+	te.wpr, err = wpr.New(ctx, wpr.Replay, archive)
+	if err != nil {
+		return nil, errors.Wrap(err, "cannot start WPR")
+	}
+
+	opts = append(opts, te.wpr.ChromeOptions...)
+
+	if enableARC {
+		opts = append(opts, chrome.ARCEnabled())
+	}
+
+	te.cr, err = chrome.New(ctx, opts...)
+	if err != nil {
+		return nil, errors.Wrap(err, "cannot start chrome")
+	}
+
+	if enableARC {
+		te.arc, err = arc.New(ctx, outDir)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to start ARC")
+		}
+	}
+
+	success = true
+	return te, nil
+}
+
+// Close closes the Chrome, ARC, and WPR instances used in the TestEnv.
+func (te *TestEnv) Close(ctx context.Context) {
+	if te.arc != nil {
+		te.arc.Close()
+		te.arc = nil
+	}
+	if te.cr != nil {
+		te.cr.Close(ctx)
+		te.cr = nil
+	}
+	if te.wpr != nil {
+		te.wpr.Close(ctx)
+		te.wpr = nil
+	}
+}
+
+// Chrome returns the initialized Chrome object in TestEnv.
+func (te *TestEnv) Chrome() *chrome.Chrome {
+	return te.cr
 }
