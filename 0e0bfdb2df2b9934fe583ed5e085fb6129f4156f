@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15762d07_a218cf97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T09:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1adfee_24f03b4b",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a4b5cca_5dab84d2",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-06T23:54:02Z",
       "side": 1,
       "message": "please use a precondition for this; they enable tast to open chrome / start ARC once and run multiple tests with it. See https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/app_crash.go;l\u003d26?q\u003df:arc%2Fapp_crash.go\u0026ss\u003dchromiumos for example.",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 48
+      },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c005264c_58873190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T09:55:14Z",
+      "side": 1,
+      "message": "This test reboots ARCVM, and calls arc.New after it rebooted. However arc.New fails with \"Cannot create ARC instance while precondition is being used\" when we use the precondition. So we cannot use it. \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/arc.go;rcl\u003d859d3312bd349823c9d0e3112a358fdfd2b64410;l\u003d130-136\n\nThis is the same to arc.Reboot test.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/reboot.go;rcl\u003df6bf6986eb880b135684afde4d13a9198209d7cb",
+      "parentUuid": "0a4b5cca_5dab84d2",
       "range": {
         "startLine": 45,
         "startChar": 12,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21195572_cb80bc69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T09:55:14Z",
+      "side": 1,
+      "message": "Probably, No.\n/proc/sysrq-trigger is a file of root, but `adb shell` uses shell user.",
+      "parentUuid": "d5b63a5f_24b69820",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22ee029c_d32af035",
@@ -94,6 +160,24 @@
       "writtenOn": "2020-11-09T04:36:05Z",
       "side": 1,
       "message": "nit/style:\n\nif err :\u003d cmd.Run(); err \u003d\u003d nil {\n  s.Fatal(\"... unexpected 0 ...\")\n} else if cmd.ProcessState.ExitCode() !\u003d 123 {\n  s.Fatal(...)\n}\n\nto flatten the statement.",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e41108_2688d587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T09:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22ee029c_d32af035",
       "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c828e3ac_6b2d43b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T09:55:14Z",
+      "side": 1,
+      "message": "Added a comment.\n\nAllowing only 123 may be too strict, but I think just nonzero is too loose. android-sh returns nonzero status when the command simply fails (e.g. Permission denied for /proc/sysrq-trigger).\nMaking errors for ExitCode \u003e\u003d 2 may be a good choice?",
+      "parentUuid": "df476a85_f08e4e67",
+      "range": {
+        "startLine": 85,
+        "startChar": 36,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8754fae_f13fcc7f",
@@ -138,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4284f7a8_fc7e9fd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T09:55:14Z",
+      "side": 1,
+      "message": "Handled this error.",
+      "parentUuid": "f8754fae_f13fcc7f",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2702e179_2019b165",
@@ -151,6 +277,24 @@
       "writtenOn": "2020-11-09T07:54:42Z",
       "side": 1,
       "message": "Please add a comment to describe why you need to wait for the new VM to receive a VM kernel crash.",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "618bb285_f5ba517f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T09:55:14Z",
+      "side": 1,
+      "message": "\u003e Rebooting of ARCVM is slow and the timeout of `crash.WaitForCrashFiles` is relatively too short. So, you need to wait the new ARCVM process explicitly.\n\nI think this comment is enough.",
+      "parentUuid": "2702e179_2019b165",
       "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +322,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17923939_8bf95125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T09:55:14Z",
+      "side": 1,
+      "message": "I used GetCrashDir.",
+      "parentUuid": "ea634722_54a5d9bd",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 40
+      },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd4eead9_1dd61ae4",
@@ -195,6 +363,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eddc4365_6b869d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T09:55:14Z",
+      "side": 1,
+      "message": "I handled this.",
+      "parentUuid": "dd4eead9_1dd61ae4",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84012bc2_0be99a5f",
@@ -208,6 +394,24 @@
       "writtenOn": "2020-11-09T04:36:05Z",
       "side": 1,
       "message": "Could you handle error?",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "510561e3_766130a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-18T09:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84012bc2_0be99a5f",
       "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
