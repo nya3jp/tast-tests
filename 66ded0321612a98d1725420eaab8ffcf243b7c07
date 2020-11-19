@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6148e8d3_83abb2fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/java_script_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-19T07:09:09Z",
+      "side": 1,
+      "message": "Those calls and errors are the same in all policy tests, so I\u0027d keep them even though I agree with your comment.",
+      "parentUuid": "3511c91c_a2bee8b2",
+      "range": {
+        "startLine": 69,
+        "startChar": 23,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "66ded0321612a98d1725420eaab8ffcf243b7c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7709fb48_2b07f64b",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-18T20:57:45Z",
       "side": 1,
       "message": "nit:  ditto above, perhaps \"to serve and verify\" ?",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "66ded0321612a98d1725420eaab8ffcf243b7c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e07e549_709ee3c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/java_script_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-19T07:09:09Z",
+      "side": 1,
+      "message": "Those calls and errors are the same in all policy tests, so I\u0027d keep them even though I agree with your comment.",
+      "parentUuid": "7709fb48_2b07f64b",
       "range": {
         "startLine": 73,
         "startChar": 23,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef3201c_f38ced2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/java_script_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-19T07:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7b8a4fe_e2af3ac9",
+      "range": {
+        "startLine": 83,
+        "startChar": 37,
+        "endLine": 83,
+        "endChar": 47
+      },
+      "revId": "66ded0321612a98d1725420eaab8ffcf243b7c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b5d5f14_2edde694",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-18T20:57:45Z",
       "side": 1,
       "message": "nit: you can \"Fatal\" here since it seems that no other error could occur",
+      "range": {
+        "startLine": 85,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 11
+      },
+      "revId": "66ded0321612a98d1725420eaab8ffcf243b7c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ae80ab_e557bc8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/java_script_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-19T07:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5d5f14_2edde694",
       "range": {
         "startLine": 85,
         "startChar": 6,
@@ -146,6 +242,54 @@
       "writtenOn": "2020-11-18T20:57:45Z",
       "side": 1,
       "message": "huge nit:\n\"Unexpected jsAlllow value, got: %v, want: %v\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 15,
+        "endLine": 88,
+        "endChar": 26
+      },
+      "revId": "66ded0321612a98d1725420eaab8ffcf243b7c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13809fe2_b6f2f838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/java_script_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-19T07:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a8a9541_3ad5ed25",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 13
+      },
+      "revId": "66ded0321612a98d1725420eaab8ffcf243b7c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1f23b0_29ebdfd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/java_script_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-19T07:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46a91654_880a1963",
       "range": {
         "startLine": 88,
         "startChar": 15,
