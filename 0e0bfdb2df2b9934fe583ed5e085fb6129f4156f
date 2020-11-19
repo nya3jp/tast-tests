@@ -349,6 +349,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b446f08_0d0dbfe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-11-19T08:56:35Z",
+      "side": 1,
+      "message": "Sorry for being unclear.\nFor people who are not familiar with how the guest kernel crash handling works, it\u0027s not clear why we need to wait for the VM restart (i.e. there can be an alternative implementation which directly handles the guest kernel crash in the host, but we are not doing that).\n\nI wanted you to make it clear that we need a new VM running to see a new crash report because we rely on a process running inside the VM which sends the crash report via mojo.",
+      "parentUuid": "618bb285_f5ba517f",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea634722_54a5d9bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
         "patchSetId": 2
