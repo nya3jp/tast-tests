@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ec264e_2508176d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T17:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f70d961_14a22595",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 7
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c01ed572_5e2ed8ab",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-19T16:57:46Z",
       "side": 1,
       "message": "interesting... maybe I should also reopen system tray in my utils?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 4
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e1a732_73e17723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T17:30:31Z",
+      "side": 1,
+      "message": "Adding a toggle should be enough. I can call it twice, I don\u0027t expect many tests to need this.",
+      "parentUuid": "c01ed572_5e2ed8ab",
       "range": {
         "startLine": 98,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b6a155_0ad9903c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T17:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00d79b74_20455f4e",
+      "range": {
+        "startLine": 117,
+        "startChar": 35,
+        "endLine": 117,
+        "endChar": 38
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7d16d63_fa2da458",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-19T16:57:46Z",
       "side": 1,
       "message": "nit: remove",
+      "range": {
+        "startLine": 122,
+        "startChar": 35,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d4a0e60_15518699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T17:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7d16d63_fa2da458",
       "range": {
         "startLine": 122,
         "startChar": 35,
@@ -135,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acadd99e_c20f3bf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T17:30:31Z",
+      "side": 1,
+      "message": "This seems easier and more readable, but I can change it if you don\u0027t agree.",
+      "parentUuid": "b97f2abb_687ff987",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fca9680_7cfe01a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
         "patchSetId": 1
@@ -146,6 +266,30 @@
       "writtenOn": "2020-11-19T16:57:46Z",
       "side": 1,
       "message": "nit: update message",
+      "range": {
+        "startLine": 128,
+        "startChar": 14,
+        "endLine": 128,
+        "endChar": 42
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "594a9b1f_b7b85cd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T17:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fca9680_7cfe01a1",
       "range": {
         "startLine": 128,
         "startChar": 14,
@@ -204,6 +348,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "009d55f5_1cfc7e7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T17:30:31Z",
+      "side": 1,
+      "message": "Added sleep.",
+      "parentUuid": "511ee4dd_a735faa9",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 105
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84faa90_7e10f587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T17:30:31Z",
+      "side": 1,
+      "message": "It should not change.",
+      "parentUuid": "2a653dae_c4095d09",
+      "range": {
+        "startLine": 132,
+        "startChar": 14,
+        "endLine": 132,
+        "endChar": 38
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "daf5888c_60238c67",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
         "patchSetId": 1
@@ -238,6 +430,54 @@
       "writtenOn": "2020-11-19T16:57:46Z",
       "side": 1,
       "message": "nit: remove",
+      "range": {
+        "startLine": 133,
+        "startChar": 32,
+        "endLine": 133,
+        "endChar": 35
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b95ea972_b0848d99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T17:30:31Z",
+      "side": 1,
+      "message": "Added",
+      "parentUuid": "daf5888c_60238c67",
+      "range": {
+        "startLine": 133,
+        "startChar": 14,
+        "endLine": 133,
+        "endChar": 59
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87b9b03a_d48db17a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T17:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8587f3d3_24b97209",
       "range": {
         "startLine": 133,
         "startChar": 32,
