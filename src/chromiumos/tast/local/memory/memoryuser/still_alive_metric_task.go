@@ -19,8 +19,9 @@ type KillableTask interface {
 // StillAliveMetricTask is a MemoryTask that counts how many of a set of
 // KillableTask are still alive, and records it as a perf.Metric.
 type StillAliveMetricTask struct {
-	tasks []KillableTask
-	name  string
+	tasks      []KillableTask
+	name       string
+	stillAlive int
 }
 
 // StillAliveMetricTask is a MemoryTask.
@@ -28,18 +29,18 @@ var _ MemoryTask = (*StillAliveMetricTask)(nil)
 
 // Run actually computes the metric.
 func (t *StillAliveMetricTask) Run(ctx context.Context, testEnv *TestEnv) error {
-	var stillAlive float64
+	t.stillAlive = 0
 	for _, sa := range t.tasks {
 		if sa.StillAlive(ctx, testEnv) {
-			stillAlive += 1.0
+			t.stillAlive++
 		}
 	}
-	testing.ContextLogf(ctx, "Still alive metric %q: %f", t.name, stillAlive)
+	testing.ContextLogf(ctx, "Still alive metric %q: %d", t.name, t.stillAlive)
 	testEnv.p.Set(perf.Metric{
 		Name:      t.name,
 		Unit:      "count",
 		Direction: perf.BiggerIsBetter,
-	}, stillAlive)
+	}, float64(t.stillAlive))
 	return nil
 }
 
@@ -57,8 +58,14 @@ func (t *StillAliveMetricTask) NeedVM() bool {
 	return false
 }
 
+// StillAlive returns how many tasks were rerported to be still alive. Returns
+// -1 if this task hasn't run yet.
+func (t *StillAliveMetricTask) StillAlive() int {
+	return t.stillAlive
+}
+
 // NewStillAliveMetricTask creates a new MemoryTask that records a perf.Metric
 // for how many of a set of tasks are still alive.
 func NewStillAliveMetricTask(tasks []KillableTask, name string) *StillAliveMetricTask {
-	return &StillAliveMetricTask{tasks, name}
+	return &StillAliveMetricTask{tasks, name, -1}
 }
