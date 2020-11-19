@@ -81,7 +81,7 @@ func DisableScreenshots(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+tc.name+".txt")
 
 			// Minimum interval between screenshot commands is 1 second, so we
 			// must sleep for 1 seconds to be able to take screenshot,
