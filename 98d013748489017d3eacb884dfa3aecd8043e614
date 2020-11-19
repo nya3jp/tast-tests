@@ -16,6 +16,115 @@
       "message": "Addressed Oleh\u0027s comments.\n",
       "revId": "98d013748489017d3eacb884dfa3aecd8043e614",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2601af46_f53aea99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T17:13:11Z",
+      "side": 1,
+      "message": "LGTM % nits, also please wait Victor and Alexander to review one more time.\n\nThanks!",
+      "revId": "98d013748489017d3eacb884dfa3aecd8043e614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58243fa4_5634b9c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T17:13:11Z",
+      "side": 1,
+      "message": "nit: maybe 10/15 seconds will be better? 30 looks too much",
+      "range": {
+        "startLine": 91,
+        "startChar": 36,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "98d013748489017d3eacb884dfa3aecd8043e614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e70946a_55355b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T17:13:11Z",
+      "side": 1,
+      "message": "maybe 10 seconds will be enough?\n\nVictor, Alexander WDYT?",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 37
+      },
+      "revId": "98d013748489017d3eacb884dfa3aecd8043e614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae506dfa_852a5eb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T17:13:11Z",
+      "side": 1,
+      "message": "Please add comment why do we need to sleep here",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "98d013748489017d3eacb884dfa3aecd8043e614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3474e5ba_ce171134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T17:13:11Z",
+      "side": 1,
+      "message": "nit: remove extra space",
+      "range": {
+        "startLine": 99,
+        "startChar": 32,
+        "endLine": 99,
+        "endChar": 33
+      },
+      "revId": "98d013748489017d3eacb884dfa3aecd8043e614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
