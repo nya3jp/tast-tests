@@ -17,6 +17,9 @@ import (
 )
 
 func TestSmbParams(t *testing.T) {
-	params := crostini.MakeTestParams(t)
+	params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+		MinimalSet:       true,
+		OnlyStableBoards: true,
+	}})
 	genparams.Ensure(t, "smb.go", params)
 }
