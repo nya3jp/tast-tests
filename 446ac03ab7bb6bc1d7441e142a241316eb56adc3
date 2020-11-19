@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a742e4_599e3d74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-19T22:08:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb81ef2a_27dc278f",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66bf3c70_56843d8b",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-19T16:54:34Z",
       "side": 1,
       "message": "nit: it is recommended to list command you used. tast run ...",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "258e50e8_08d6b40d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-19T22:08:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66bf3c70_56843d8b",
       "range": {
         "startLine": 12,
         "startChar": 5,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3654c70_3bd85312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-19T22:08:18Z",
+      "side": 1,
+      "message": "Delete this. Alan mentioned that optin needs longer timeout.",
+      "parentUuid": "62c0d714_b9ef19c7",
+      "range": {
+        "startLine": 56,
+        "startChar": 37,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaa4593d_44808eed",
@@ -117,6 +189,30 @@
       "writtenOn": "2020-11-19T16:59:28Z",
       "side": 1,
       "message": "Do you really need this optin?\nIt performs actual user sign-in. For majority test it is easier to add \"arc\" into preconditions that would automatically start ARC however without actual user provisioning. I feel it might be sufficient for your case.\n\n...\nSoftwareDeps: []string{\"arc\", \"selinux\", \"chrome\"},\n...\na :\u003d s.PreValue().(arc.PreData).ARC\n...\n\nTogether with \"arc\" we have more preconditions if you need further refine.\n// androidDeps contains Android-related software features (see testing.Test.SoftwareDeps).\n// At least one of them must be declared to call New.\nvar androidDeps \u003d []string{\n\t\"android_vm\",\n\t\"android_vm_r\",\n\t\"android_p\",\n\t\"arc\",\n}",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc3481a_ec3ba4ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-19T22:08:18Z",
+      "side": 1,
+      "message": "I tried without optin and use \"arc\" as one software dep. It fails to find Play files in Files app.",
+      "parentUuid": "eaa4593d_44808eed",
       "range": {
         "startLine": 59,
         "startChar": 0,
