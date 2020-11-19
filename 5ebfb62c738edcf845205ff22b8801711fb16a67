@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51cb7bbc_df8d34cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-19T09:11:50Z",
+      "side": 1,
+      "message": "This must be landed before chromium change (crrev.com/c/2549161) is landed.",
+      "revId": "5ebfb62c738edcf845205ff22b8801711fb16a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
