@@ -44,6 +44,129 @@ func init() {
 // durationTolerance is the tolerate difference when comparing video duration.
 const durationTolerance = 300 * time.Millisecond
 
+type videoState string
+
+const (
+	// videoStateEmpty is the state before video start recording.
+	videoStateEmpty videoState = "empty"
+	// videoStateRecording is the state when video is recording.
+	videoStateRecording = "recording"
+	// videoStatePaused is the state when video is paused.
+	videoStatePaused = "paused"
+	// videoStateStopped is the state when video is finished recording.
+	videoStateStopped = "stopped"
+)
+
+func checkState(actual videoState, expecteds ...videoState) error {
+	found := false
+	for _, expected := range expecteds {
+		if actual == expected {
+			found = true
+			break
+		}
+	}
+	if !found {
+		return errors.Errorf("Assert video in %v state(s); get %v state", expecteds, actual)
+	}
+	return nil
+}
+
+// video tracks the expected video state across multiple CCA video operations.
+type video struct {
+	// state is the current recording state of video.
+	state videoState
+	// last is the last timing of toggling |state|.
+	last time.Time
+	// d aggregates expected duration of all finished video clips.
+	d time.Duration
+}
+
+func newVideo() *video {
+	return &video{state: videoStateEmpty}
+}
+
+func (v *video) start(ctx context.Context, app *cca.App) error {
+	if err := checkState(v.state, videoStateEmpty); err != nil {
+		return err
+	}
+	t, err := app.TriggerStateChange(ctx, "recording", true, func() error {
+		return app.ClickShutter(ctx)
+	})
+	if err != nil {
+		return err
+	}
+	v.state = videoStateRecording
+	v.last = t
+	v.d = time.Duration(0)
+	return nil
+}
+
+func (v *video) pause(ctx context.Context, app *cca.App) error {
+	if err := checkState(v.state, videoStateRecording); err != nil {
+		return err
+	}
+	t, err := app.TriggerStateChange(ctx, "recording-paused", true, func() error {
+		if err := app.Click(ctx, cca.VideoPauseResumeButton); err != nil {
+			return errors.Wrap(err, "failed to pause recording")
+		}
+		return nil
+	})
+	if err != nil {
+		return err
+	}
+	v.d += t.Sub(v.last)
+	v.state = videoStatePaused
+	v.last = t
+	return nil
+}
+
+func (v *video) resume(ctx context.Context, app *cca.App) error {
+	if err := checkState(v.state, videoStatePaused); err != nil {
+		return err
+	}
+	t, err := app.TriggerStateChange(ctx, "recording-paused", false, func() error {
+		if err := app.Click(ctx, cca.VideoPauseResumeButton); err != nil {
+			return errors.Wrap(err, "failed to resume recording")
+		}
+		return nil
+	})
+	if err != nil {
+		return err
+	}
+	v.state = videoStateRecording
+	v.last = t
+	return nil
+}
+
+func (v *video) stop(ctx context.Context, app *cca.App) error {
+	if err := checkState(v.state, videoStateRecording, videoStatePaused); err != nil {
+		return err
+	}
+	info, t, err := app.StopRecording(ctx, cca.TimerOff, v.last)
+	if err != nil {
+		return errors.Wrap(err, "failed to stop recording")
+	}
+	if v.state == videoStateRecording {
+		v.d += t.Sub(v.last)
+	}
+	v.state = videoStateStopped
+	v.last = t
+
+	// Check duration from result video file with expected duration.
+	path, err := app.FilePathInSavedDirs(ctx, info.Name())
+	if err != nil {
+		return errors.Wrap(err, "failed to get file path in saved path")
+	}
+	duration, err := videoDuration(ctx, path)
+	if err != nil {
+		return err
+	}
+	if duration > v.d+durationTolerance || duration < v.d-durationTolerance {
+		return errors.Errorf("incorrect result video duration get %v; want %v with tolerance %v", duration, v.d, durationTolerance)
+	}
+	return nil
+}
+
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
@@ -179,20 +302,14 @@ func testRecordCancelTimer(ctx context.Context, app *cca.App) error {
 	return nil
 }
 
-func startRecording(ctx context.Context, app *cca.App) error {
+func testVideoSnapshot(ctx context.Context, app *cca.App) error {
+	testing.ContextLog(ctx, "Click on start shutter")
+	startTime := time.Now()
 	if err := app.ClickShutter(ctx); err != nil {
 		return err
 	}
 	if err := app.WaitForState(ctx, "recording", true); err != nil {
 		return errors.Wrap(err, "recording is not started")
-	}
-	return nil
-}
-
-func testVideoSnapshot(ctx context.Context, app *cca.App) error {
-	startTime := time.Now()
-	if err := startRecording(ctx, app); err != nil {
-		return err
 	}
 
 	// Take a video snapshot.
@@ -207,36 +324,28 @@ func testVideoSnapshot(ctx context.Context, app *cca.App) error {
 		return errors.Wrap(err, "failed find saved video snapshot file")
 	}
 
-	if _, err := app.StopRecording(ctx, cca.TimerOff, startTime); err != nil {
+	if _, _, err := app.StopRecording(ctx, cca.TimerOff, startTime); err != nil {
 		return errors.Wrap(err, "failed to stop recording")
 	}
 	return nil
 }
 
-// startRecordAndPause starts recording for 1 second and pause the recording.
-func startRecordAndPause(ctx context.Context, app *cca.App) error {
-	if err := startRecording(ctx, app); err != nil {
-		return err
+// startRecordAndPause starts recording for 1 second and pauses the recording.
+func startRecordAndPause(ctx context.Context, app *cca.App) (*video, error) {
+	v := newVideo()
+	if err := v.start(ctx, app); err != nil {
+		return nil, err
 	}
-
 	if err := testing.Sleep(ctx, time.Second); err != nil {
-		return err
+		return nil, err
 	}
-
-	if err := app.Click(ctx, cca.VideoPauseResumeButton); err != nil {
-		return errors.Wrap(err, "failed to pause recording")
+	if err := v.pause(ctx, app); err != nil {
+		return nil, err
 	}
-	if err := app.WaitForState(ctx, "recording-paused", true); err != nil {
-		return errors.Wrap(err, "failed to resume recording")
-	}
-	return nil
+	return v, nil
 }
 
-func videoDuration(ctx context.Context, app *cca.App, info os.FileInfo) (time.Duration, error) {
-	path, err := app.FilePathInSavedDirs(ctx, info.Name())
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to get file path in saved path")
-	}
+func videoDuration(ctx context.Context, path string) (time.Duration, error) {
 	f, err := os.Open(path)
 	if err != nil {
 		return 0, errors.Wrapf(err, "failed to open file %v", path)
@@ -277,27 +386,9 @@ func videoDuration(ctx context.Context, app *cca.App, info os.FileInfo) (time.Du
 	return time.Duration(duration * float64(time.Second)), nil
 }
 
-// stopRecordWithDuration stops recording and checks the result video with expected duration.
-func stopRecordWithDuration(ctx context.Context, app *cca.App, startTime time.Time, expected time.Duration) error {
-	info, err := app.StopRecording(ctx, cca.TimerOff, startTime)
-	if err != nil {
-		return errors.Wrap(err, "failed to stop recording")
-	}
-	duration, err := videoDuration(ctx, app, info)
-	if err != nil {
-		return errors.Wrap(err, "failed to get video duration")
-	}
-
-	if duration > expected+durationTolerance || duration < expected-durationTolerance {
-		return errors.Errorf("incorrect result video duration get %v; want %v with tolerance %v",
-			duration, expected, durationTolerance)
-	}
-	return nil
-}
-
 func testStopInPause(ctx context.Context, app *cca.App) error {
-	startTime := time.Now()
-	if err := startRecordAndPause(ctx, app); err != nil {
+	v, err := startRecordAndPause(ctx, app)
+	if err != nil {
 		return errors.Wrap(err, "failed to start and pause recording")
 	}
 
@@ -305,32 +396,25 @@ func testStopInPause(ctx context.Context, app *cca.App) error {
 		return err
 	}
 
-	return stopRecordWithDuration(ctx, app, startTime, time.Second)
+	return v.stop(ctx, app)
 }
 
 func testPauseResume(ctx context.Context, app *cca.App) error {
-	startTime := time.Now()
-	if err := startRecordAndPause(ctx, app); err != nil {
+	v, err := startRecordAndPause(ctx, app)
+	if err != nil {
 		return errors.Wrap(err, "failed to start and pause recording")
 	}
-
 	if err := testing.Sleep(ctx, time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep 1 second in pausing state")
+	}
+	if err := v.resume(ctx, app); err != nil {
 		return err
 	}
-
-	// Resume recording.
-	if err := app.Click(ctx, cca.VideoPauseResumeButton); err != nil {
-		return errors.Wrap(err, "failed to resume recording")
-	}
-	if err := app.WaitForState(ctx, "recording-paused", false); err != nil {
-		return errors.Wrap(err, "failed to wait for resume recording state")
-	}
-
 	if err := testing.Sleep(ctx, time.Second); err != nil {
-		return err
+		return errors.Wrap(err, "failed to sleep 1 second after resuming")
 	}
 
-	return stopRecordWithDuration(ctx, app, startTime, 2*time.Second)
+	return v.stop(ctx, app)
 }
 
 func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge, useSWA bool) error {
@@ -369,8 +453,11 @@ func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 
 	testing.ContextLog(ctx, "Start Recording")
 	startTime := time.Now()
-	if err := startRecording(ctx, app); err != nil {
+	if err := app.ClickShutter(ctx); err != nil {
 		return err
+	}
+	if err := app.WaitForState(ctx, "recording", true); err != nil {
+		return errors.Wrap(err, "recording is not started")
 	}
 
 	testing.ContextLog(ctx, "Try to close camera app")
@@ -406,7 +493,7 @@ func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 	}
 
 	testing.ContextLog(ctx, "Stop recording")
-	if _, err := app.StopRecording(ctx, cca.TimerOff, startTime); err != nil {
+	if _, _, err := app.StopRecording(ctx, cca.TimerOff, startTime); err != nil {
 		return errors.Wrap(err, "failed to stop recording")
 	}
 
