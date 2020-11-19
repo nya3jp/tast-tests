@@ -16,6 +16,57 @@
       "message": "LGTM",
       "revId": "18388daf73e05e2f2dd5b5adbae92e2cb0861b9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc99b43_b0d63d40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/high_contrast_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-19T18:42:47Z",
+      "side": 1,
+      "message": "WDYT about using the \"Parameterized Tests\" pattern? http://go/tast-writing#Parameterized-tests\n\nUsing parameterized tests would give each sub-test separate results. It would also allow you to promote some sub-tests to critical but not others, if only some are flaky. If you don\u0027t need these advantages, then the table-driven pattern SGTM.",
+      "revId": "18388daf73e05e2f2dd5b5adbae92e2cb0861b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156ccbf5_75b0316f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/high_contrast_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-19T18:42:47Z",
+      "side": 1,
+      "message": "\"value\" is an unclear name: it doesn\u0027t describe the variable, and it\u0027s confusing right next to highContrastValue. How about param.policy?\n\nIn the comment, \"the policy value\" is not very descriptive. Could you please update to briefly describe what the policy is used for?",
+      "revId": "18388daf73e05e2f2dd5b5adbae92e2cb0861b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001ef5d3_c73fda93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/high_contrast_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-19T18:42:47Z",
+      "side": 1,
+      "message": "nit: The prescribed ordering is actual !\u003d expected, as you have in L83. Please switch the ordering in L82:\n\n    if highContrastValue !\u003d param.enabled {",
+      "revId": "18388daf73e05e2f2dd5b5adbae92e2cb0861b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
