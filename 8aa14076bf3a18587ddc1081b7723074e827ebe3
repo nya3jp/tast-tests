@@ -33,6 +33,29 @@
       "message": "LGTM",
       "revId": "8aa14076bf3a18587ddc1081b7723074e827ebe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59332698_a85cb142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-11-19T19:25:47Z",
+      "side": 1,
+      "message": "nit: Could you make it a proper sentence?",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 112
+      },
+      "revId": "8aa14076bf3a18587ddc1081b7723074e827ebe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
