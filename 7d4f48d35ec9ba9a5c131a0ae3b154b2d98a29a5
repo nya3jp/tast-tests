@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c45b848_5b7b1071",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-19T06:58:38Z",
+      "side": 1,
+      "message": "I wonder if it would be better to stop checking the subsection titles, and instead just check that the # of sections increases/decreases when you click the advanced button. We wouldn\u0027t have to worry about keeping up with string changes, although I suppose it\u0027ll be easier once this is in CQ.",
+      "revId": "7d4f48d35ec9ba9a5c131a0ae3b154b2d98a29a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
