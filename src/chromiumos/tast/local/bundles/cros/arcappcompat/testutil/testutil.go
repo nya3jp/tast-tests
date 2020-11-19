@@ -32,6 +32,7 @@ const (
 
 	defaultTestCaseTimeout = 2 * time.Minute
 	DefaultUITimeout       = 20 * time.Second
+	ShortUITimeout         = 30 * time.Second
 	LongUITimeout          = 90 * time.Second
 )
 
