@@ -70,6 +70,30 @@
       },
       "revId": "a38d02a4052d425c031a393236c08d63714bd254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc1a8de_0c0916e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-11-19T19:13:01Z",
+      "side": 1,
+      "message": "Huh, that\u0027s a new bit of documentation, and it\u0027s subtle, but it makes sense, even if it makes everything that much more verbose. Thanks for pointing at it.",
+      "parentUuid": "3dd98993_853eea91",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 15
+      },
+      "revId": "a38d02a4052d425c031a393236c08d63714bd254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
