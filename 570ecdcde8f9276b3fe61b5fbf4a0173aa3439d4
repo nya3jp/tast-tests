@@ -16,6 +16,24 @@
       "message": "lgtm\n\nCould you attach some example output?",
       "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f600cee_8c9db46c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-19T23:59:01Z",
+      "side": 1,
+      "message": "Here\u0027s tast output that includes these metrics: https://paste.googleplex.com/6579291874656256?raw",
+      "parentUuid": "ec54c537_d3b7318f",
+      "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
