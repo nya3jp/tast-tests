@@ -113,6 +113,11 @@ func WMResizableClamshell(ctx context.Context, s *testing.State) {
 			Name: "RC17_font_size_change",
 			Func: wmRC17,
 		},
+		wm.TestCase{
+			// resizable/clamshell: snap to half screen
+			Name: "RC22_split_screen",
+			Func: wmRC22,
+		},
 	})
 }
 
@@ -349,7 +354,6 @@ func wmRC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // wmRC10 covers resizable/clamshell: new activity replaces root activity (springboard).
 // Expected behavior is defined in: go/arc-wm-r NC10: resizable/clamshell: new activity replaces root activity (springboard).
 func wmRC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	timeReservedForStop := 750 * time.Millisecond
 	// Start the activity.
 	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
@@ -363,7 +367,7 @@ func wmRC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	defer func(ctx context.Context) {
 		act.Stop(ctx, tconn)
 	}(ctx)
-	ctx, cancel := ctxutil.Shorten(ctx, timeReservedForStop)
+	ctx, cancel := ctxutil.Shorten(ctx, wm.TimeReservedForStop)
 	defer cancel()
 
 	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
@@ -572,11 +576,11 @@ func wmRC13(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 // wmRC14 covers resizable/clamshell: snap to half screen
 // Expected behavior is defined in: go/arc-wm-r RC14: resizable/clamshell: snap to half screen.
 func wmRC14(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-
 	// Snap to half by long pressing on the maximize caption button and drag to the right.
 	if err := snapToHalfHelper(ctx, tconn, a, d, false, false); err != nil {
 		return errors.Wrap(err, "snap to half by long pressing on the maximize caption button and drag to the right failed")
 	}
+
 	// Snap to half by long pressing on the maximize caption button and drag to the left.
 	if err := snapToHalfHelper(ctx, tconn, a, d, false, true); err != nil {
 		return errors.Wrap(err, "snap to half by long pressing on the maximize caption button and drag to the left failed")
@@ -663,6 +667,140 @@ func wmRC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	return nil
+}
+
+// wmRC22 covers resizable/clamshell: snap to half screen
+// Expected behavior is defined in: go/arc-wm-r RC22: resizable/clamshell: split screen
+func wmRC22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) (retErr error) {
+	ctxForStopLeftActivity := ctx
+	ctx, cancelForStopLeftActivity := ctxutil.Shorten(ctx, wm.TimeReservedForStop)
+	defer cancelForStopLeftActivity()
+
+	ctxForStopRightActivity := ctx
+	ctx, cancelForStopRightActivity := ctxutil.Shorten(ctx, wm.TimeReservedForStop)
+	defer cancelForStopRightActivity()
+
+	leftActivity, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "failed to create left activity")
+	}
+	defer leftActivity.Close()
+
+	if err := leftActivity.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start left activity")
+	}
+	defer func() {
+		if err := leftActivity.Stop(ctxForStopLeftActivity, tconn); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to stop left activity")
+			} else {
+				testing.ContextLog(ctx, "Failed to stop left activity: ", err)
+			}
+		}
+	}()
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, leftActivity, d); err != nil {
+		return errors.Wrap(err, "failed to wait until left activity is ready")
+	}
+
+	// Snap the activty to the left.
+	if err := leftClickDragCaptionButton(ctx, tconn, "Maximize", true); err != nil {
+		return errors.New("failed to left click and drag Maximize caption button")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		leftActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get arc app window info for left activity"))
+		}
+
+		if leftActivityWInfo.State != ash.WindowStateLeftSnapped {
+			return errors.Errorf("invalid window state, got: %q, want: LeftSnapped", leftActivityWInfo.State)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+
+	if err := a.Install(ctx, arc.APKPath(wm.ExtraApkPath)); err != nil {
+		return errors.Wrap(err, "failed to install extra APK")
+	}
+	rightActivity, err := arc.NewActivity(a, wm.ExtraPkgName, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return err
+	}
+	defer rightActivity.Close()
+
+	if err := rightActivity.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start right activity")
+	}
+	defer func() {
+		if err := rightActivity.Stop(ctxForStopRightActivity, tconn); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to stop right activity")
+			} else {
+				testing.ContextLog(ctx, "Failed to stop right activity: ", err)
+			}
+		}
+	}()
+
+	// The second activty will be automatically snapped to the right.
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, rightActivity, d); err != nil {
+		return errors.Wrap(err, "failed to wait until right activity is ready")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		rightActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.ExtraPkgName)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get arc app window info for right activity"))
+		}
+
+		if rightActivityWInfo.State != ash.WindowStateRightSnapped {
+			return errors.Errorf("invalid window state, got: %q, want: RightSnapped", rightActivityWInfo.State)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+
+	pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if pdInfo == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	leftActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for left activity")
+	}
+
+	rightActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.ExtraPkgName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for right activity")
+	}
+
+	if leftActivityWInfo.BoundsInRoot.Left != 0 ||
+		leftActivityWInfo.BoundsInRoot.Top != 0 ||
+		leftActivityWInfo.BoundsInRoot.Width != pdInfo.WorkArea.Width/2 ||
+		leftActivityWInfo.BoundsInRoot.Height != pdInfo.WorkArea.Height {
+		return errors.Errorf("invalid snapped to the left activity bounds, got: Left = %d, Top = %d, Width = %d, Height = %d; want: Left = 0, Top = 0, Width = %d, Height = %d",
+			leftActivityWInfo.BoundsInRoot.Left, leftActivityWInfo.BoundsInRoot.Top, leftActivityWInfo.BoundsInRoot.Width, leftActivityWInfo.BoundsInRoot.Height,
+			pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
+	}
+
+	if rightActivityWInfo.BoundsInRoot.Left != pdInfo.WorkArea.Width/2 ||
+		rightActivityWInfo.BoundsInRoot.Top != 0 ||
+		rightActivityWInfo.BoundsInRoot.Width != pdInfo.WorkArea.Width/2 ||
+		rightActivityWInfo.BoundsInRoot.Height != pdInfo.WorkArea.Height {
+		return errors.Errorf("invalid snapped to the right activity bounds, got: Left = %d, Top = %d, Width = %d, Height = %d; want: Left = %d, Top = 0, Width = %d, Height = %d",
+			rightActivityWInfo.BoundsInRoot.Left, rightActivityWInfo.BoundsInRoot.Top, rightActivityWInfo.BoundsInRoot.Width, rightActivityWInfo.BoundsInRoot.Height,
+			pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
+	}
+
+	return nil
+
 }
 
 // snapToHalfHelper runs snap to half test cases by either
