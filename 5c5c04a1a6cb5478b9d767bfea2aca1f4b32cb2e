@@ -16,6 +16,80 @@
       "message": "PTAL.\n\nThis is my first TAST test: any feedback will be super welcome 😊",
       "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0696b9ca_47193c56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T14:51:50Z",
+      "side": 1,
+      "message": "LGTM. Good work on your first tast test!",
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91ce7db2_00ac9f6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T14:51:50Z",
+      "side": 1,
+      "message": "ServeAndVerify",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d05f6f_5e1846c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T14:51:50Z",
+      "side": 1,
+      "message": "fyi: you can also use cr.NewConn to create a new tab and it waits for it to be ready, but it makes no difference for this test.",
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea5f3372_f011eb57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T14:51:50Z",
+      "side": 1,
+      "message": "ServeAndVerify does this automatically if you change it above.",
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
