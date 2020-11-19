@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84c5268f_a774c53e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-19T22:14:32Z",
+      "side": 1,
+      "message": "Please address the comment by Meenakshi",
+      "revId": "88073ce742e84231e6d947a2ca643941c4edb3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19ba64b4_619e5ce3",
