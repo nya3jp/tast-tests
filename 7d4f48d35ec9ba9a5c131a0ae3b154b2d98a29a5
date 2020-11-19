@@ -39,6 +39,30 @@
       },
       "revId": "7d4f48d35ec9ba9a5c131a0ae3b154b2d98a29a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c8cadc_62ba787a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-19T18:32:25Z",
+      "side": 1,
+      "message": "That\u0027s a good point, I was wondering about that too haha. It might not be intentional on the OS side, it looks like they changed some strings for Chrome: https://chromium-review.googlesource.com/c/chromium/src/+/2531656 and the Settings app pulls in those strings for the headings I think. I\u0027ll double check before I submit this",
+      "parentUuid": "659a2d70_c1a7e05b",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "7d4f48d35ec9ba9a5c131a0ae3b154b2d98a29a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
