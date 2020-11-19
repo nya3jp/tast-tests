@@ -22,6 +22,30 @@
       },
       "revId": "196ab8b3d14424b71b93991ff04ef82c4e6c190f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4122bb37_4399cc82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-19T23:34:09Z",
+      "side": 1,
+      "message": "yes, it uses half second only. Thanks.",
+      "parentUuid": "ac0809ed_d030c54a",
+      "range": {
+        "startLine": 124,
+        "startChar": 25,
+        "endLine": 124,
+        "endChar": 49
+      },
+      "revId": "196ab8b3d14424b71b93991ff04ef82c4e6c190f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
