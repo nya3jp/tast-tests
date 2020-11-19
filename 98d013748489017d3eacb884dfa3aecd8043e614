@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5db3d5c3_5930f0cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T17:15:17Z",
+      "side": 1,
+      "message": "since you are working with UI, it makes sense to add \n\n```\ndefer faillog.DumpUITreeOnErrorToFile(\n      ctx, s.OutDir(), s.HasError, tconn, \"ui_tree_\"+param.name+\".txt\")\n```\n\nas first line in the function, so you will have UI tree dumps you can use in the future to debug.",
+      "revId": "98d013748489017d3eacb884dfa3aecd8043e614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58243fa4_5634b9c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
         "patchSetId": 3
