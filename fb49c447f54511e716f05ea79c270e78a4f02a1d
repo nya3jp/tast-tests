@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8805f1_8fa31f6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-19T23:58:31Z",
+      "side": 1,
+      "message": "Here\u0027s tast output that includes these metrics: https://paste.googleplex.com/6579291874656256?raw",
+      "parentUuid": "32b3e90f_04ef7664",
+      "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c168e453_6cae34e4",
