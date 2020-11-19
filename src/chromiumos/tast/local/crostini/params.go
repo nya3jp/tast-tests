@@ -136,6 +136,10 @@ type Param struct {
 	// container, or a larger container with more applications
 	// pre-installed.
 	UseLargeContainer bool
+
+	// OnlyStable controls whether to only use the stable board
+	// variants and exclude all the unstable variants.
+	OnlyStableBoards bool
 }
 
 type generatedParam struct {
@@ -190,6 +194,11 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 		}
 
+		stableBoards := []bool{true}
+		if !testCase.OnlyStableBoards {
+			stableBoards = append(stableBoards, false)
+		}
+
 		for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
 			if testCase.MinimalSet && debianVersion != vm.DebianBuster {
 				continue
@@ -197,7 +206,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 
 			for _, arch := range []string{"amd64", "arm"} {
 
-				for _, stable := range []bool{true, false} {
+				for _, stable := range stableBoards {
 					if !stable && testCase.IsNotMainline {
 						// The stable/unstable distinction is only important for mainline tests
 						continue
