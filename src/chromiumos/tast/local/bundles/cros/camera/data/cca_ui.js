@@ -358,5 +358,30 @@ window.Tast = class Tast {
       state.addObserver(CAMERA_CONFIGURING, observer);
     });
   }
+
+  /**
+   * Observes state change event for |name| state changing from |!expected| to
+   * |expected|.
+   * @param {string} name
+   * @param {boolean} expected
+   * @return {!Promise<number>} Promise resolved to the millisecond unix
+   *     timestamp of when the change happen.
+   */
+  static async observeStateChange(name, expected) {
+    const s = state.assertState(name);
+    if (state.get(s) !== !expected) {
+      throw new Error(`The current "${s}" state is not ${!expected}`);
+    }
+    return new Promise((resolve, reject) => {
+      const onChange = (changed) => {
+        state.removeObserver(s, onChange);
+        if (changed !== expected) {
+          reject(new Error(`The changed "${s}" state is not ${expected}`));
+        }
+        resolve(Date.now());
+      };
+      state.addObserver(s, onChange);
+    });
+  }
 };
 })();
