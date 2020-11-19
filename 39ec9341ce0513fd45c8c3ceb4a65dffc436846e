@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e758ee_faf42686",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-19T15:11:38Z",
+      "side": 1,
+      "message": "LGTM % nit\nThanks for adding the test.",
+      "revId": "39ec9341ce0513fd45c8c3ceb4a65dffc436846e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe5aec08_1c0dab81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_magnifier_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-19T15:11:38Z",
+      "side": 1,
+      "message": "nit: make the error a little bit more descriptive i.e.:\ns.Fatalf(\"Failed to retrieve %s enabled value: %q\", item.name, err)",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 28
+      },
+      "revId": "39ec9341ce0513fd45c8c3ceb4a65dffc436846e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
