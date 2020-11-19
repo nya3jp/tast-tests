@@ -33,6 +33,29 @@
       "message": "This CL is dependent on Chrome up\u0027rev to include crrev/c/2527055.\nI\u0027ve cherry-picked and verified these OOBE helper functions in my local build.",
       "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc792c4_4b2491d0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1001299
+      },
+      "writtenOn": "2020-11-19T12:53:08Z",
+      "side": 1,
+      "message": "one note here: you would need to add extra waiter that would check the existence of OobeAPI object before starting further testing (in addition to checking for Oobe.readyForTesting value)",
+      "range": {
+        "startLine": 849,
+        "startChar": 22,
+        "endLine": 849,
+        "endChar": 25
+      },
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
