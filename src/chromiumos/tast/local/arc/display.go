@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -26,6 +27,19 @@ type Display struct {
 	DisplayID int
 }
 
+// DisplayType represents corresponding ARC display type string from dumpsys display.
+type DisplayType string
+
+// DisplayType available on R and above versions.
+const (
+	// Internal display.
+	InternalDisplay DisplayType = "INTERNAL"
+	// Virtual display.
+	VirtualDisplay DisplayType = "VIRTUAL"
+	// External display.
+	ExternalDisplay DisplayType = "EXTERNAL"
+)
+
 // NewDisplay returns a new Display instance.
 // The caller is responsible for closing a.
 // Returned Display instance must be closed when the test is finished.
@@ -36,6 +50,57 @@ func NewDisplay(a *ARC, displayID int) (*Display, error) {
 // Close closes resources related to the Display instance.
 func (d *Display) Close() {
 	// Blank on purpose. Function added for forward-compatibility.
+}
+
+// FirstDisplayIDByType returns first ARC display id for specific display type.
+func FirstDisplayIDByType(ctx context.Context, a *ARC, displayType DisplayType) (int, error) {
+	sdkVersion, err := SDKVersion()
+
+	// Return default value of displayID for old ARC version.
+	if sdkVersion == SDKP {
+		switch displayType {
+		case InternalDisplay:
+			return 0, nil
+		case ExternalDisplay:
+			return 1, nil
+		case VirtualDisplay:
+		default:
+			return -1, errors.Errorf("not supported display type %q", displayType)
+		}
+	}
+
+	// Parse from dumpsys for ARC R and above.
+	cmd := a.Command(ctx, "dumpsys", "display")
+	output, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to execute 'dumpsys display'")
+	}
+
+	// Looking for:
+	// mDisplayId=...
+	// ...
+	// mBaseDisplayInfo=DisplayInfo{... type EXTERNAL, ...}
+	re := regexp.MustCompile(`(?m)` + // Enable multiline.
+		`mDisplayId=(\d+)` + // Gather displayId number.
+		`(?:\s+.*$)*?\s+` + // Skip lines and words.
+		`mBaseDisplayInfo=[\W\w]+?type ` + // Locate to type string.
+		`([\W\w]+?),`) // Gather type string.
+	groups := re.FindAllStringSubmatch(string(output), -1)
+	if len(groups) == 0 {
+		testing.ContextLogf(ctx, "Failed to parse display info from dumpsys output: %q", output)
+		return -1, errors.New("failed to find any display from `dumpsys display`")
+	}
+
+	for _, group := range groups {
+		id, err := strconv.Atoi(group[1])
+		if err != nil {
+			return -1, errors.Wrapf(err, "failed to parse display id: %q", group[1])
+		}
+		if group[2] == string(displayType) {
+			return id, nil
+		}
+	}
+	return -1, errors.Errorf("failed to find display with type %q", displayType)
 }
 
 // CaptionHeight returns the caption height in pixels.
