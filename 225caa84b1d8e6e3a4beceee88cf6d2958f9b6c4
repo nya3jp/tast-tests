@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "207239c7_31201fb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T14:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54af90df_f3b6405c",
+      "revId": "225caa84b1d8e6e3a4beceee88cf6d2958f9b6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "084c7875_7e69fefa",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-19T08:51:02Z",
       "side": 1,
       "message": "Create a parametric test with the cases that work and those that don\u0027t. It will be easier to track when the feature is actually working as expected.",
+      "revId": "225caa84b1d8e6e3a4beceee88cf6d2958f9b6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f2e873d_87abdc42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_capture_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T14:52:46Z",
+      "side": 1,
+      "message": "I think I cannot do it, because I don\u0027t know what is expected behaviour if screenshots are not allowed.\n\nFor example, will I be able to enter capture mode or not? will I be able to press \"capture\" button? will I get some notifications that this feature is blocked? or will I even see capture mode in quick settings?",
+      "parentUuid": "084c7875_7e69fefa",
       "revId": "225caa84b1d8e6e3a4beceee88cf6d2958f9b6c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71449403_66c6fdbf",
+        "filename": "src/chromiumos/tast/local/chrome/ash/capture_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T14:52:46Z",
+      "side": 1,
+      "message": "As I mentioned in the comment above, capture mode doesn\u0027t support accessibility at the moment, so \"Name\" attribute is just empty. It will change in the future.",
+      "parentUuid": "5a926c18_a5d2e430",
+      "revId": "225caa84b1d8e6e3a4beceee88cf6d2958f9b6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f80e1ff_fc07aa8b",
@@ -65,6 +119,24 @@
       "writtenOn": "2020-11-19T08:51:02Z",
       "side": 1,
       "message": "Maybe use StableFindAndClick to simplify the code?",
+      "revId": "225caa84b1d8e6e3a4beceee88cf6d2958f9b6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee9e26f_05d3fbc1",
+        "filename": "src/chromiumos/tast/local/chrome/ash/capture_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T14:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f80e1ff_fc07aa8b",
       "revId": "225caa84b1d8e6e3a4beceee88cf6d2958f9b6c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
