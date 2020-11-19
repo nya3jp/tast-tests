@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd0f6ff_6cf9b1ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T15:26:08Z",
+      "side": 1,
+      "message": "nit: mention the file handling utilities",
+      "revId": "6aaf43d58d1882bd6b221dc878038af5848fd1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
