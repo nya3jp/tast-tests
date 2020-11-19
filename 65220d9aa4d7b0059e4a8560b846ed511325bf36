@@ -16,6 +16,195 @@
       "message": "Hi Victor,\n\nPTAL :) \n\nThanks",
       "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f8e14c8_6cc73c4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T08:39:40Z",
+      "side": 1,
+      "message": "LGTM, adding Brendan as UI code author.",
+      "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "467ff5d9_be135fd3",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T08:39:40Z",
+      "side": 1,
+      "message": "nit: the",
+      "range": {
+        "startLine": 43,
+        "startChar": 43,
+        "endLine": 43,
+        "endChar": 44
+      },
+      "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8186033d_6656b8cb",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T08:39:40Z",
+      "side": 1,
+      "message": "closes",
+      "range": {
+        "startLine": 57,
+        "startChar": 45,
+        "endLine": 57,
+        "endChar": 67
+      },
+      "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c96d8289_518c8da2",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T08:39:40Z",
+      "side": 1,
+      "message": "Maybe also add a ToggleSystemTray function that is called by the other two functions. Could also be useful for tests.",
+      "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a4690e_72913387",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T08:39:40Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ec7337_d0bdc69e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T08:39:40Z",
+      "side": 1,
+      "message": "nit: rename to ShowSystemTray\n\nNot sure if the longer name is more helpful.",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479033f7_91d352be",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T08:39:40Z",
+      "side": 1,
+      "message": "nit: 10\n\n2 might be too low if something else is loading the system.",
+      "range": {
+        "startLine": 41,
+        "startChar": 64,
+        "endLine": 41,
+        "endChar": 65
+      },
+      "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69dcf801_d80b19f4",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T08:39:40Z",
+      "side": 1,
+      "message": "nit: HideSystemTray",
+      "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81b08e04_f87c3f8b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T08:39:40Z",
+      "side": 1,
+      "message": "nit: 5",
+      "range": {
+        "startLine": 67,
+        "startChar": 62,
+        "endLine": 67,
+        "endChar": 63
+      },
+      "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
