@@ -6,19 +6,15 @@ package policy
 
 import (
 	"context"
-	"os"
-	"path/filepath"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -42,7 +38,7 @@ func DisableScreenshots(ctx context.Context, s *testing.State) {
 	fdms := s.PreValue().(*pre.PreData).FakeDMS
 
 	defer func() {
-		if err := removeScreenshots(); err != nil {
+		if err := screenshot.RemoveScreenshots(); err != nil {
 			s.Error("Failed to remove screenshots after all tests: ", err)
 		}
 	}()
@@ -104,7 +100,7 @@ func DisableScreenshots(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to close notifications: ", err)
 			}
 
-			if err := removeScreenshots(); err != nil {
+			if err := screenshot.RemoveScreenshots(); err != nil {
 				s.Fatal("Failed to remove screenshots: ", err)
 			}
 
@@ -121,47 +117,13 @@ func DisableScreenshots(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to wait notification with title %q: %v", tc.wantNotification, err)
 			}
 
-			paths, err := screenshots()
+			has, err := screenshot.HasScreenshots()
 			if err != nil {
 				s.Fatal("Failed to check whether screenshot is present")
 			}
-			if has := len(paths) > 0; has != tc.wantAllowed {
+			if has != tc.wantAllowed {
 				s.Errorf("Unexpected screenshot allowed: get %t; want %t", has, tc.wantAllowed)
 			}
 		})
 	}
-}
-
-func screenshots() ([]string, error) {
-	re := regexp.MustCompile(`Screenshot.*png`)
-	var paths []string
-
-	if err := filepath.Walk(filesapp.DownloadPath, func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			return errors.Wrap(err, "failed to walk through files in Downloads folder")
-		}
-		if re.FindString(info.Name()) != "" {
-			paths = append(paths, path)
-		}
-		return nil
-	}); err != nil {
-		return nil, err
-	}
-
-	return paths, nil
-}
-
-func removeScreenshots() error {
-	paths, err := screenshots()
-	if err != nil {
-		return errors.Wrap(err, "failed to get list of screenshots")
-	}
-
-	for _, path := range paths {
-		if err := os.Remove(path); err != nil {
-			return errors.Wrapf(err, "failed to remove %q file", path)
-		}
-	}
-
-	return nil
 }
