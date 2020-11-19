@@ -21,13 +21,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	extraPkgName              = "org.chromium.arc.testapp.windowmanager24.inmaximizedlist"
-	extraApkPath              = "ArcWMTestApp_24_InMaximizedList.apk"
-	timeReservedForStop       = 500 * time.Millisecond
-	rotationAnimationDuration = 750 * time.Millisecond
-)
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WMResizableTablet,
@@ -228,11 +221,11 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	//   9-2- Under activity must be snapped to the right.
 
 	ctxForStopOverActivity := ctx
-	ctx, cancelForStopOverActivity := ctxutil.Shorten(ctx, timeReservedForStop)
+	ctx, cancelForStopOverActivity := ctxutil.Shorten(ctx, wm.TimeReservedForStop)
 	defer cancelForStopOverActivity()
 
 	ctxForStopUnderActivity := ctx
-	ctx, cancelForStopUnderActivity := ctxutil.Shorten(ctx, timeReservedForStop)
+	ctx, cancelForStopUnderActivity := ctxutil.Shorten(ctx, wm.TimeReservedForStop)
 	defer cancelForStopUnderActivity()
 
 	underActivity, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
@@ -258,10 +251,10 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	if err := wm.WaitUntilActivityIsReady(ctx, tconn, underActivity, d); err != nil {
 		return errors.Wrap(err, "failed to wait until under activity is ready")
 	}
-	if err := a.Install(ctx, arc.APKPath(extraApkPath)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24Secondary)); err != nil {
 		return errors.Wrap(err, "failed to install extra APK")
 	}
-	overActivity, err := arc.NewActivity(a, extraPkgName, wm.ResizableUnspecifiedActivity)
+	overActivity, err := arc.NewActivity(a, wm.Pkg24Secondary, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -330,14 +323,14 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to finish the swipe gesture")
 	}
 
-	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, extraPkgName)
+	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
 	if err != nil {
 		return errors.Wrap(err, "failed to get arc app window info for over activity")
 	}
 
 	//   3-3- Make sure the over activity is snapped to the left.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, extraPkgName)
+		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get arc app window info for over activity"))
 		}
@@ -352,7 +345,7 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	// 3- Snap the over activity to the left - End.
 
 	// 4- Snap the under activity to the right - Start.
-	overActivityWInfo, err = ash.GetARCAppWindowInfo(ctx, tconn, extraPkgName)
+	overActivityWInfo, err = ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
 	if err != nil {
 		return errors.Wrap(err, "failed to get arc app window info for over activity")
 	}
@@ -396,7 +389,7 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	defer cleanupRotation()
 
-	if err := testing.Sleep(ctx, rotationAnimationDuration); err != nil {
+	if err := testing.Sleep(ctx, wm.RotationAnimationDuration); err != nil {
 		return errors.Wrap(err, "failed to sleep for rotation to portrait animation to finish")
 	}
 
@@ -412,7 +405,7 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	defer cleanupRotation()
 
-	if err := testing.Sleep(ctx, rotationAnimationDuration); err != nil {
+	if err := testing.Sleep(ctx, wm.RotationAnimationDuration); err != nil {
 		return errors.Wrap(err, "failed to sleep for rotation to landscape animation to finish")
 	}
 
@@ -426,7 +419,7 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 
 // checkVerticalSplit helps to assert window bounds in vertical split mode.
 func checkVerticalSplit(ctx context.Context, tconn *chrome.TestConn, displayWorkArea coords.Rect) error {
-	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, extraPkgName)
+	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
 	if err != nil {
 		return errors.Wrap(err, "failed to get arc app window info for over activity")
 	}
@@ -462,7 +455,7 @@ func checkHorizontalSplit(ctx context.Context, tconn *chrome.TestConn, displayWo
 	if err != nil {
 		return errors.Wrap(err, "failed to get arc app window info for under activity")
 	}
-	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, extraPkgName)
+	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
 	if err != nil {
 		return errors.Wrap(err, "failed to get arc app window info for over activity")
 	}
