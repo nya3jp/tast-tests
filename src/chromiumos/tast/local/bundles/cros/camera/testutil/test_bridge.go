@@ -37,7 +37,7 @@ func setUpTestBridge(ctx context.Context, cr *chrome.Chrome, useSWA bool) (*chro
 	var pageConn *chrome.Conn
 	var err error
 	if useSWA {
-		pageConn, err = cr.NewConn(ctx, "chrome://camera-app/views/test.html")
+		pageConn, err = cr.NewConn(ctx, "chrome://camera-app/test/test.html")
 	} else {
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
@@ -85,7 +85,7 @@ func tearDownBridgePageConnection(ctx context.Context, cr *chrome.Chrome, conn *
 	// For platform app, it does not make sense to close background page.
 	if useSWA {
 		checkTestPage := func(t *target.Info) bool {
-			return t.URL == "chrome://camera-app/views/test.html"
+			return t.URL == "chrome://camera-app/test/test.html"
 		}
 		if testPageAlive, err := cr.IsTargetAvailable(ctx, checkTestPage); err == nil {
 			if testPageAlive {
