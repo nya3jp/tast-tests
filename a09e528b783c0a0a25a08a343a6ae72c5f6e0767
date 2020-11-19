@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b80dd49b_dce3b9fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-19T18:19:28Z",
+      "side": 1,
+      "message": "Build failures are real.\n\ntast-remote-tests-cros-0.0.1-r4466: src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go:737:40: undefined: ctconn",
+      "range": {
+        "startLine": 737,
+        "startChar": 39,
+        "endLine": 737,
+        "endChar": 45
+      },
+      "revId": "a09e528b783c0a0a25a08a343a6ae72c5f6e0767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
