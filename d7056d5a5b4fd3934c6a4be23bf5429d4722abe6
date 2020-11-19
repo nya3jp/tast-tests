@@ -255,6 +255,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de44af93_a3d19bab",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-19T07:04:37Z",
+      "side": 1,
+      "message": "LGTM to retry with .cros for ease of use in some environment.",
+      "parentUuid": "7d2f795a_323ffc90",
+      "range": {
+        "startLine": 147,
+        "startChar": 29,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "d7056d5a5b4fd3934c6a4be23bf5429d4722abe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f4969c2_f01b94f8",
