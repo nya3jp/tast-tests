@@ -403,6 +403,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa71cc34_fb003431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:12:54Z",
+      "side": 1,
+      "message": "typo:\n\nThis function just checks that such UI item does not exist, if so it just exits.",
+      "parentUuid": "c2e85aa8_47b863bd",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea5f3372_f011eb57",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
         "patchSetId": 1
