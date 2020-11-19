@@ -46,6 +46,30 @@
       },
       "revId": "a38d02a4052d425c031a393236c08d63714bd254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd98993_853eea91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-11-19T07:50:25Z",
+      "side": 1,
+      "message": "I also think so. A shortened context needs to be created here because Line 131 (veth.NewPair) should be run with the shortened context deadline.",
+      "parentUuid": "e63bfaf5_3ad98b76",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 15
+      },
+      "revId": "a38d02a4052d425c031a393236c08d63714bd254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
