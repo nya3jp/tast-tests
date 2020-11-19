@@ -113,20 +113,18 @@ func leftClickLacros(ctx context.Context, ctconn *chrome.TestConn, windowID int,
 }
 
 func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn, clickFn func(*ui.Node) error) error {
-	// Find and click the three dot menu via UI.
-	params := ui.FindParams{
-		Role:      ui.RoleTypePopUpButton,
-		ClassName: "BrowserAppMenuButton",
-	}
-	menu, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	// Open the three-dot menu via keyboard shortcut.
+	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to find the three dot menu")
+		return err
 	}
-	defer menu.Release(ctx)
+	defer kb.Close()
 
-	if err := clickFn(menu); err != nil {
-		return errors.Wrap(err, "failed to click three dot menu")
+	// Press Alt+F to open three-dot menu.
+	if err := kb.Accel(ctx, "Alt+F"); err != nil {
+		return err
 	}
+
 	return nil
 }
 
