@@ -143,7 +143,7 @@ func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *Ap
 	}
 
 	if isRecording {
-		if _, err := app.StopRecording(ctx, false, recordingStartTime); err != nil {
+		if _, _, err := app.StopRecording(ctx, false, recordingStartTime); err != nil {
 			return errors.Wrap(err, "failed to stop recording for performance measurement")
 		}
 	}
