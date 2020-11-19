@@ -16,6 +16,23 @@
       "message": "I added you two again since this one is almost identical to https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2544892. I hope that\u0027s okay. \n\nThere will be one more test regarding javascript execution, I will upload it in a minute.",
       "revId": "d6b29983766c813843406ef53209e801bd55a5b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f07494c_525a360a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-19T15:03:49Z",
+      "side": 1,
+      "message": "LGTM, thanks for adding the test.",
+      "revId": "d6b29983766c813843406ef53209e801bd55a5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
