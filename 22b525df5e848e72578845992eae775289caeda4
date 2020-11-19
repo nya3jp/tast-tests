@@ -16,6 +16,276 @@
       "message": "LGTM, thanks for adding the test.",
       "revId": "22b525df5e848e72578845992eae775289caeda4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf0a6d44_b84ffe2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "this actually used only once, maybe we can just inline it?",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 21
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "910c72da_5c3f9461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "maybe rename to fakeURL?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6d39ea_ffd75ab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "maybe just searchTerm?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1678911e_93f627a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "nit: add blank line before",
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15b46e3_3e0011cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "Can we move it inside s.Run function? It isn\u0027t smth like keyboard that might be expensive to init",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b27372_30bb710a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "Please use VirtualKeyboard, because Keyboard may not work for tablets.",
+      "range": {
+        "startLine": 56,
+        "startChar": 18,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b389a91b_d357aedf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "it\u0027s a bit unclear what \"enabled\" means. You don\u0027t use this term in test name and in the policy. I think once we\u0027ll add `wantURL` field we can drop enabled field",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 104
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec194e49_1c73116d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "Maybe we should add one more test case when we provide only DefaultSearchProviderEnabled?\n\nso, we will have 3 cases:\n1. URL set to fake\n2. URL unset\n3. URL policy unspecified",
+      "range": {
+        "startLine": 76,
+        "startChar": 12,
+        "endLine": 76,
+        "endChar": 76
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ed85ec_58392f5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "Why do we need to clear browser history? Please explain in comment if need to keep it",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1eaf15b_6080ede3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "Do we really need to wait until page will be loaded? or you wait until address bar value will be updated?\n\nIIUC, WaitForLocationChangeCompleted wait until location of all UI elements will be stable. We want to wait until address bar value will have new value. Maybe instead we should poll until address bar value will be different from search term?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 4
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f611afb_4e4ab515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "nit: add blank line before, not sure it you will need a separate variable once remove complicated logic below",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 31
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50a0c55b_14d59147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:47:03Z",
+      "side": 1,
+      "message": "this logic looks too complicated, maybe instead just put \"location\" prefix you want into test case parameters?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 4
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
