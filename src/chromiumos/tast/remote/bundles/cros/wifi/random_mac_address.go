@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/network/ip"
 	"chromiumos/tast/remote/wificell"
+	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
@@ -65,7 +66,12 @@ func RandomMACAddress(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
-	ap, err := tf.DefaultOpenNetworkAP(ctx)
+	apOps := []hostapd.Option{
+		hostapd.Mode(hostapd.Mode80211nPure),
+		hostapd.Channel(1),
+		hostapd.HTCaps(hostapd.HTCapHT20),
+	}
+	ap, err := tf.ConfigureAP(ctx, apOps, nil)
 	if err != nil {
 		s.Fatal("Failed to configure the AP: ", err)
 	}
