@@ -39,6 +39,30 @@
       },
       "revId": "8f3f388c787fe734cea416b7028c3d976de1455a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac154b67_49b22cf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_refresh_rate.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-19T10:34:16Z",
+      "side": 1,
+      "message": "Sure, I will add a CL to fix this sometime today or tomorrow.",
+      "parentUuid": "1c613216_51c4c3f1",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "8f3f388c787fe734cea416b7028c3d976de1455a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
