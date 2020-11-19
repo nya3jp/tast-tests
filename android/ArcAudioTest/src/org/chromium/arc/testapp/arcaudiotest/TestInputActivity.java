@@ -10,7 +10,7 @@ import android.util.Log;
 import java.io.File;
 
 /**
- * Activity for Chrome OS ARC++/ARCVM audio sanity tast.
+ * Activity for Chrome OS ARC++/ARCVM audio validity tast.
  */
 public class TestInputActivity extends MainActivity {
 
