@@ -58,7 +58,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
-		Timeout:      3 * time.Minute,
+		Timeout:      4 * time.Minute,
 		Pre:          cuj.LoggedInToCUJUser(),
 		Vars: []string{
 			"mute",
@@ -154,7 +154,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
@@ -229,7 +229,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
-	defer recorder.Close(closeCtx)
+	defer func() {
+		if err := recorder.Close(closeCtx); err != nil {
+			s.Error("Failed to stop recorder: ", err)
+		}
+	}()
 
 	meetConn, err := cr.NewConn(ctx, "https://meet.google.com/", cdputil.WithNewWindow())
 	if err != nil {

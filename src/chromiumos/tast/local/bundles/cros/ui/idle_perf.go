@@ -51,6 +51,11 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+	defer func() {
+		if err := recorder.Close(ctx); err != nil {
+			s.Error("Failed to stop recorder: ", err)
+		}
+	}()
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		s.Log("Just wait for 30 seconds to check the load of idle status")
