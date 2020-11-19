@@ -33,6 +33,69 @@
       "message": "LGTM, thanks for adding the test.",
       "revId": "d6b29983766c813843406ef53209e801bd55a5b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad598904_2c4e44bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-19T20:30:30Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "d6b29983766c813843406ef53209e801bd55a5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af530c0_57f886ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/java_script_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-19T20:30:30Z",
+      "side": 1,
+      "message": "ditto previous CL",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 31
+      },
+      "revId": "d6b29983766c813843406ef53209e801bd55a5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc60b17_795c9ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/java_script_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-19T20:30:30Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 40
+      },
+      "revId": "d6b29983766c813843406ef53209e801bd55a5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
