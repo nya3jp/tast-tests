@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e5374c_a64fd714",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-19T20:22:03Z",
+      "side": 1,
+      "message": "The quicksettings wrapper is looking for the \u0027BubbleFrameView\u0027 to determine if the tray is visible, but if SystemTrayContainer is a better choice then that could be updated as well:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go?l\u003d11",
+      "range": {
+        "startLine": 12,
+        "startChar": 40,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "7245bee48465ce643f5c51b31556a3e7432d217b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2178d6f4_27ff18c4",
