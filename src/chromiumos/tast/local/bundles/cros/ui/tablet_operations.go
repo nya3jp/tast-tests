@@ -174,6 +174,10 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 				}
 			}
 		}()
+		// Make sure the shelf bounds is stable before dragging.
+		if err := ash.WaitForStableShelfBounds(ctx, tconn); err != nil {
+			s.Fatal("Failed to wait for stable shelf bouds: ", err)
+		}
 		if err := ash.DragToShowHomescreen(ctx, tsew.Width(), tsew.Height(), stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to show homescreen")
 		}
@@ -280,7 +284,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		}
 
 		// Swipe on the splitview divider to exit splitview.
-		if err := stw.Swipe(ctx, centerX, centerY, rightX, centerY, 300*time.Millisecond); err != nil {
+		if err := stw.Swipe(ctx, centerX, centerY, rightX, centerY, 750*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to swipe to right")
 		}
 		if err := stw.End(); err != nil {
