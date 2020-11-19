@@ -16,6 +16,23 @@
       "message": "This is the last JavaScript policy test.",
       "revId": "cf21e1b9ae13688fde4bea4cbbf836429fd6c370",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a4767e_23566a2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-19T15:00:38Z",
+      "side": 1,
+      "message": "LGTM, thanks for adding the test.",
+      "revId": "cf21e1b9ae13688fde4bea4cbbf836429fd6c370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
