@@ -16,6 +16,24 @@
       "message": "The change LGTM, but there are still veyron_mickey devices in lab: https://chromeos-swarming.appspot.com/botlist?c\u003did\u0026c\u003dtask\u0026c\u003dos\u0026c\u003dstatus\u0026d\u003dasc\u0026f\u003dlabel-board%3Aveyron_mickey\u0026f\u003dlabel-pool%3Awificell\u0026k\u003dlabel-pool\u0026s\u003did. So maybe submit this after they are removed.",
       "revId": "294155236b1eb52a8ee075f1d918342a83d2332e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88eca1c2_05e2e0fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-19T19:29:59Z",
+      "side": 1,
+      "message": "Okay, I will wait until the veyron_mickey is removed from the lab.",
+      "parentUuid": "55f87e2e_6967441b",
+      "revId": "294155236b1eb52a8ee075f1d918342a83d2332e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
