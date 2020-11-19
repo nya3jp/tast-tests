@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88dd4943_03956422",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-19T15:15:06Z",
+      "side": 1,
+      "message": "LGTM nit\nThanks for adding the test",
+      "revId": "a1ff8b95433b7a39f83ecc484489b5bcd6691027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff628cd_678aa5bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/large_cursor_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-19T15:15:06Z",
+      "side": 1,
+      "message": "nit: make the error a little bit more descriptive, i.e.:\ns.Fatal(\"Failed to retrieve largeCursor enabled value: \", err)",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 36
+      },
+      "revId": "a1ff8b95433b7a39f83ecc484489b5bcd6691027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
