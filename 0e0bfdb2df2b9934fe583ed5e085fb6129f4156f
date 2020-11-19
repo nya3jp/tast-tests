@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dcbbb6d_4baf8191",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-19T08:56:54Z",
+      "side": 1,
+      "message": "I added a comment about this.",
+      "parentUuid": "9b86c9e3_4259755b",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 48
+      },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5b63a5f_24b69820",
@@ -267,6 +291,30 @@
       "side": 1,
       "message": "The comment is helpful, though I\u0027m concerned that implementation details in android-sh might change and break this (unless it\u0027s a documented part of android-sh\u0027s implementation). \n\nI think I like that suggestion -- though did you mean errors for ExitCode \u003c\u003d 2?",
       "parentUuid": "c828e3ac_6b2d43b0",
+      "range": {
+        "startLine": 85,
+        "startChar": 36,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a82cfe_f5599761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-19T08:56:54Z",
+      "side": 1,
+      "message": "I updated to make errors only if ExitCode \u003d\u003d 0 or ExitCode \u003d\u003d 1.",
+      "parentUuid": "aca46814_5a06536a",
       "range": {
         "startLine": 85,
         "startChar": 36,
