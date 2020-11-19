@@ -70,6 +70,30 @@
       },
       "revId": "687e952e0ee36cb074c65a7d7a235555d4d75548",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cffc46f_93d3f781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/starz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-19T23:29:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "59c712d7_b435c5d2",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "687e952e0ee36cb074c65a7d7a235555d4d75548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
