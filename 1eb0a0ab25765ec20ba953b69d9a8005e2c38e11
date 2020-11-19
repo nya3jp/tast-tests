@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d912165a_cde3aa01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-19T09:25:39Z",
+      "side": 1,
+      "message": "Start review as \"no IR\" on ch48 seems to be expected.",
+      "revId": "1eb0a0ab25765ec20ba953b69d9a8005e2c38e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
