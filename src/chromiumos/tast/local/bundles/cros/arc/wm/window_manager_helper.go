@@ -30,6 +30,8 @@ const (
 	Pkg23 = "org.chromium.arc.testapp.windowmanager23"
 	// Pkg24 Apk compiled against target SDK 24 (N)
 	Pkg24 = "org.chromium.arc.testapp.windowmanager24"
+	// Pkg24Secondary is used for the tests that need to run two ARC activities at the same time.
+	Pkg24Secondary = "org.chromium.arc.testapp.windowmanager24.inmaximizedlist"
 
 	// APKNameArcWMTestApp23 APK name for ArcWMTestApp_23.apk
 	APKNameArcWMTestApp23 = "ArcWMTestApp_23.apk"
@@ -39,6 +41,9 @@ const (
 
 	// APKNameArcPipSimpleTastTest APK name for ArcPipSimpleTastTest.apk
 	APKNameArcPipSimpleTastTest = "ArcPipSimpleTastTest.apk"
+
+	// APKNameArcWMTestApp24Secondary APK name for ArcWMTestApp_24_InMaximizedList.apk.
+	APKNameArcWMTestApp24Secondary = "ArcWMTestApp_24_InMaximizedList.apk"
 
 	// ResizableLandscapeActivity used by the subtests.
 	ResizableLandscapeActivity = "org.chromium.arc.testapp.windowmanager.ResizeableLandscapeActivity"
@@ -65,6 +70,11 @@ const (
 	Landscape = "landscape"
 	// Portrait used by the subtests.
 	Portrait = "portrait"
+
+	// TimeReservedForStop is the time that is reserved to stop an activity after the execution is complete.
+	TimeReservedForStop = 500 * time.Millisecond
+	// RotationAnimationDuration is the time to wait for an animation to complete.
+	RotationAnimationDuration = 750 * time.Millisecond
 )
 
 // CheckFunc represents a function that checks certain criteria for tests.
