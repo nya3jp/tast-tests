@@ -16,6 +16,23 @@
       "message": "PTAL. This was previously done in CL:2283290 now just aligning it to the new way of generating crostini parameters.",
       "revId": "bdec0c0711c7df410fcbf01fd9b1a0a2bcae24c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "885c524e_c08893d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-11-19T04:40:53Z",
+      "side": 1,
+      "message": "My understanding from earlier discussion is that you are really just using crostini as a platform to run a Samba server. Have you considered running it directly on the host instead? We seem to already install smbd via the net-fs/samba package.",
+      "revId": "bdec0c0711c7df410fcbf01fd9b1a0a2bcae24c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
