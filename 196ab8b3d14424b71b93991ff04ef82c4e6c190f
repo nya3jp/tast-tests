@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac0809ed_d030c54a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/skype.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-19T22:40:54Z",
+      "side": 1,
+      "message": "please use an interval of half second to make sure we don\u0027t spam this too much",
+      "range": {
+        "startLine": 124,
+        "startChar": 25,
+        "endLine": 124,
+        "endChar": 49
+      },
+      "revId": "196ab8b3d14424b71b93991ff04ef82c4e6c190f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
