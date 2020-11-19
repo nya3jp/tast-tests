@@ -413,6 +413,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "716b3f9d_fdfd1b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-19T10:00:29Z",
+      "side": 1,
+      "message": "Ah, I understood what you concern. Thank you!\nI updated the comment. Clarifying that the reports are sent from inside of ARCVM is important.",
+      "parentUuid": "9b446f08_0d0dbfe9",
+      "revId": "0e0bfdb2df2b9934fe583ed5e085fb6129f4156f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea634722_54a5d9bd",
