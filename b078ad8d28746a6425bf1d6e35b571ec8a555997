@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44c1b9b_da509f3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390760
+      },
+      "writtenOn": "2020-11-19T16:08:45Z",
+      "side": 1,
+      "message": "Changed to use ServeAndVerify.",
+      "revId": "b078ad8d28746a6425bf1d6e35b571ec8a555997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
