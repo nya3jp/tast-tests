@@ -171,19 +171,15 @@ func testRecordCancelTimer(ctx context.Context, app *cca.App) error {
 	return nil
 }
 
-func startRecording(ctx context.Context, app *cca.App) error {
-	if err := app.ClickShutter(ctx); err != nil {
-		return err
-	}
-	if err := app.WaitForState(ctx, "recording", true); err != nil {
-		return errors.Wrap(err, "recording is not started")
-	}
-	return nil
+func startRecording(ctx context.Context, app *cca.App) (time.Time, error) {
+	return app.TriggerStateChange(ctx, "recording", true, func() error {
+		return app.ClickShutter(ctx)
+	})
 }
 
 func testVideoSnapshot(ctx context.Context, app *cca.App) error {
-	startTime := time.Now()
-	if err := startRecording(ctx, app); err != nil {
+	startTime, err := startRecording(ctx, app)
+	if err != nil {
 		return err
 	}
 
@@ -199,29 +195,35 @@ func testVideoSnapshot(ctx context.Context, app *cca.App) error {
 		return errors.Wrap(err, "failed find saved video snapshot file")
 	}
 
-	if _, err := app.StopRecording(ctx, cca.TimerOff, startTime); err != nil {
+	if _, _, err := app.StopRecording(ctx, cca.TimerOff, startTime); err != nil {
 		return errors.Wrap(err, "failed to stop recording")
 	}
 	return nil
 }
 
-// startRecordAndPause starts recording for 1 second and pause the recording.
-func startRecordAndPause(ctx context.Context, app *cca.App) error {
-	if err := startRecording(ctx, app); err != nil {
-		return err
+// startRecordAndPause starts recording for 1 second and pauses the recording.
+// Returns the start and paused recording time.
+func startRecordAndPause(ctx context.Context, app *cca.App) (time.Time, time.Time, error) {
+	start, err := startRecording(ctx, app)
+	if err != nil {
+		return time.Time{}, time.Time{}, err
 	}
 
 	if err := testing.Sleep(ctx, time.Second); err != nil {
-		return err
+		return time.Time{}, time.Time{}, err
 	}
 
-	if err := app.Click(ctx, cca.VideoPauseResumeButton); err != nil {
-		return errors.Wrap(err, "failed to pause recording")
+	paused, err := app.TriggerStateChange(ctx, "recording-paused", true, func() error {
+		if err := app.Click(ctx, cca.VideoPauseResumeButton); err != nil {
+			return errors.Wrap(err, "failed to pause recording")
+		}
+		return nil
+	})
+	if err != nil {
+		return time.Time{}, time.Time{}, err
 	}
-	if err := app.WaitForState(ctx, "recording-paused", true); err != nil {
-		return errors.Wrap(err, "failed to resume recording")
-	}
-	return nil
+
+	return start, paused, nil
 }
 
 func videoDuration(ctx context.Context, app *cca.App, info os.FileInfo) (time.Duration, error) {
@@ -269,9 +271,10 @@ func videoDuration(ctx context.Context, app *cca.App, info os.FileInfo) (time.Du
 	return time.Duration(duration * float64(time.Second)), nil
 }
 
-// stopRecordWithDuration stops recording and checks the result video with expected duration.
-func stopRecordWithDuration(ctx context.Context, app *cca.App, startTime time.Time, expected time.Duration) error {
-	info, err := app.StopRecording(ctx, cca.TimerOff, startTime)
+// stopRecordWithDuration stops recording and checks the result video duration with expected duration
+// derived from passing stop recording time into |expected()|.
+func stopRecordWithDuration(ctx context.Context, app *cca.App, startTime time.Time, expected func(time.Time) time.Duration) error {
+	info, stopTime, err := app.StopRecording(ctx, cca.TimerOff, startTime)
 	if err != nil {
 		return errors.Wrap(err, "failed to stop recording")
 	}
@@ -279,17 +282,18 @@ func stopRecordWithDuration(ctx context.Context, app *cca.App, startTime time.Ti
 	if err != nil {
 		return errors.Wrap(err, "failed to get video duration")
 	}
+	expectedDuration := expected(stopTime)
 
-	if duration > expected+durationTolerance || duration < expected-durationTolerance {
+	if duration > expectedDuration+durationTolerance || duration < expectedDuration-durationTolerance {
 		return errors.Errorf("incorrect result video duration get %v; want %v with tolerance %v",
-			duration, expected, durationTolerance)
+			duration, expectedDuration, durationTolerance)
 	}
 	return nil
 }
 
 func testStopInPause(ctx context.Context, app *cca.App) error {
-	startTime := time.Now()
-	if err := startRecordAndPause(ctx, app); err != nil {
+	startTime, pausedTime, err := startRecordAndPause(ctx, app)
+	if err != nil {
 		return errors.Wrap(err, "failed to start and pause recording")
 	}
 
@@ -297,12 +301,14 @@ func testStopInPause(ctx context.Context, app *cca.App) error {
 		return err
 	}
 
-	return stopRecordWithDuration(ctx, app, startTime, time.Second)
+	return stopRecordWithDuration(ctx, app, startTime, func(_ time.Time) time.Duration {
+		return pausedTime.Sub(startTime)
+	})
 }
 
 func testPauseResume(ctx context.Context, app *cca.App) error {
-	startTime := time.Now()
-	if err := startRecordAndPause(ctx, app); err != nil {
+	startTime, pausedTime, err := startRecordAndPause(ctx, app)
+	if err != nil {
 		return errors.Wrap(err, "failed to start and pause recording")
 	}
 
@@ -311,16 +317,21 @@ func testPauseResume(ctx context.Context, app *cca.App) error {
 	}
 
 	// Resume recording.
-	if err := app.Click(ctx, cca.VideoPauseResumeButton); err != nil {
-		return errors.Wrap(err, "failed to resume recording")
-	}
-	if err := app.WaitForState(ctx, "recording-paused", false); err != nil {
-		return errors.Wrap(err, "failed to wait for resume recording state")
+	resumedTime, err := app.TriggerStateChange(ctx, "recording-paused", false, func() error {
+		if err := app.Click(ctx, cca.VideoPauseResumeButton); err != nil {
+			return errors.Wrap(err, "failed to resume recording")
+		}
+		return nil
+	})
+	if err != nil {
+		return err
 	}
 
 	if err := testing.Sleep(ctx, time.Second); err != nil {
 		return err
 	}
 
-	return stopRecordWithDuration(ctx, app, startTime, 2*time.Second)
+	return stopRecordWithDuration(ctx, app, startTime, func(stopTime time.Time) time.Duration {
+		return pausedTime.Sub(startTime) + stopTime.Sub(resumedTime)
+	})
 }
