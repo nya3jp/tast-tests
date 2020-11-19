@@ -104,6 +104,30 @@
       },
       "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7754ca_e6295676",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-19T15:45:22Z",
+      "side": 1,
+      "message": "Which object do I need to wait for? \"window.OobeAPI\"?",
+      "parentUuid": "68d027e2_85fee15b",
+      "range": {
+        "startLine": 849,
+        "startChar": 22,
+        "endLine": 849,
+        "endChar": 25
+      },
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
