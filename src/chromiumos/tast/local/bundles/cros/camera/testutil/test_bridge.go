@@ -8,6 +8,7 @@ package testutil
 
 import (
 	"context"
+	"strings"
 
 	"github.com/mafredri/cdp/protocol/target"
 
@@ -37,7 +38,32 @@ func setUpTestBridge(ctx context.Context, cr *chrome.Chrome, useSWA bool) (*chro
 	var pageConn *chrome.Conn
 	var err error
 	if useSWA {
-		pageConn, err = cr.NewConn(ctx, "chrome://camera-app/views/test.html")
+		pageConn, err = func() (*chrome.Conn, error) {
+			conn, err := cr.NewConn(ctx, "chrome://camera-app/test/test.html")
+			if err != nil {
+				return nil, err
+			}
+
+			shouldCloseConn := true
+			defer func() {
+				if shouldCloseConn {
+					if err := conn.Close(); err != nil {
+						testing.ContextLog(ctx, "Failed to close connection: ", conn)
+					}
+				}
+			}()
+
+			// TODO(b/173092399): Remove the fallback for legacy path when Chrome is uprev.
+			if pageContent, err := conn.PageContent(ctx); err != nil {
+				return nil, err
+			} else if strings.Contains(pageContent, "This site can’t be reached") {
+				// Fallback to use legacy path for test page.
+				return cr.NewConn(ctx, "chrome://camera-app/views/test.html")
+			}
+
+			shouldCloseConn = false
+			return conn, nil
+		}()
 	} else {
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
@@ -85,7 +111,8 @@ func tearDownBridgePageConnection(ctx context.Context, cr *chrome.Chrome, conn *
 	// For platform app, it does not make sense to close background page.
 	if useSWA {
 		checkTestPage := func(t *target.Info) bool {
-			return t.URL == "chrome://camera-app/views/test.html"
+			// TODO(b/173092399): Remove the legacy path when Chrome is uprev.
+			return t.URL == "chrome://camera-app/test/test.html" || t.URL == "chrome://camera-app/views/test.html"
 		}
 		if testPageAlive, err := cr.IsTargetAvailable(ctx, checkTestPage); err == nil {
 			if testPageAlive {
