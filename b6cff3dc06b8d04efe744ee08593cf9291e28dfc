@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edb9b62_6f5378e4",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-19T02:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35b596ec_75fb5fe6",
+      "range": {
+        "startLine": 268,
+        "startChar": 13,
+        "endLine": 268,
+        "endChar": 22
+      },
+      "revId": "b6cff3dc06b8d04efe744ee08593cf9291e28dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1af2e4c_4221fab5",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-18T10:00:13Z",
       "side": 1,
       "message": "Because this is in reverse order, could you comment the reason?",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 288,
+        "endChar": 26
+      },
+      "revId": "b6cff3dc06b8d04efe744ee08593cf9291e28dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc35656_be8e4122",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-19T02:06:00Z",
+      "side": 1,
+      "message": "Removed the loop",
+      "parentUuid": "a1af2e4c_4221fab5",
       "range": {
         "startLine": 288,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0648a0fe_7e0af933",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-19T02:06:00Z",
+      "side": 1,
+      "message": "Removed this code.",
+      "parentUuid": "b6daeeb4_45945598",
+      "range": {
+        "startLine": 289,
+        "startChar": 33,
+        "endLine": 290,
+        "endChar": 31
+      },
+      "revId": "b6cff3dc06b8d04efe744ee08593cf9291e28dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d387143e_788d0c16",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-18T10:00:13Z",
       "side": 1,
       "message": "nit: can be simplified to\n\nreturn readRAPLFileValue(...)",
+      "range": {
+        "startLine": 301,
+        "startChar": 2,
+        "endLine": 305,
+        "endChar": 15
+      },
+      "revId": "b6cff3dc06b8d04efe744ee08593cf9291e28dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2679481e_76045d27",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-19T02:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d387143e_788d0c16",
       "range": {
         "startLine": 301,
         "startChar": 2,
