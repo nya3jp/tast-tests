@@ -16,6 +16,40 @@
       "message": "Fixed all remaining comments.",
       "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2c8b2e_78108cb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-19T02:33:41Z",
+      "side": 1,
+      "message": "LGTM % one minor comment. Dean@, would you like to take another look?",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476b1837_55e75415",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-19T02:33:41Z",
+      "side": 1,
+      "message": "Hmm..., as we\u0027ll usually hit this with some un-closed session in previous test, I\u0027m hesitant to make it wait forever here. I slightly prefer quick error out than waiting. YMMV as I guess you want to avoid return error in NewSession.",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
