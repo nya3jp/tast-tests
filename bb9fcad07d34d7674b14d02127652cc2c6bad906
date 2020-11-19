@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46bd6828_d75b3248",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-11-19T00:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d45d5f3_5fe58019",
+      "range": {
+        "startLine": 135,
+        "startChar": 37,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "bb9fcad07d34d7674b14d02127652cc2c6bad906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cffa871b_3aa3d8ac",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-11-18T16:04:21Z",
       "side": 1,
       "message": "Ditto L135 comment",
+      "revId": "bb9fcad07d34d7674b14d02127652cc2c6bad906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "232f6e25_9d9377fd",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-11-19T00:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cffa871b_3aa3d8ac",
       "revId": "bb9fcad07d34d7674b14d02127652cc2c6bad906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
