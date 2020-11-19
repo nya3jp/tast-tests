@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8d74b1_07812591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-19T19:38:18Z",
+      "side": 1,
+      "message": "I think you missed my comments for the previous CL\u0027s, can you change \nappActivity \u003d \".view.activities.StartupActivity\"",
+      "revId": "321f94cd64c895241aa1402cdb46603251574cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
