@@ -79,7 +79,7 @@ func init() {
 			},
 			{
 				Name:              "handwriting_no_nnapi_goldmont",
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform("octopus")),
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("octopus", "volteer")),
 				Val: benchmarkParams{
 					driver:     "libhandwriting_benchmark-goldmont.so",
 					configFile: "handwriting-scenario-1.config",
