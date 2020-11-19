@@ -39,6 +39,30 @@
       },
       "revId": "33747d884bed2d96fd8d317f31667eb9d8930ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be9418f_b8e20b25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/kinemaster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-19T22:57:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f20b129_6cdfab15",
+      "range": {
+        "startLine": 111,
+        "startChar": 25,
+        "endLine": 111,
+        "endChar": 56
+      },
+      "revId": "33747d884bed2d96fd8d317f31667eb9d8930ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
