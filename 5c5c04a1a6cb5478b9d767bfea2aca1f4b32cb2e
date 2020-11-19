@@ -142,6 +142,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc38a5ae_9c219fd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T15:38:33Z",
+      "side": 1,
+      "message": "I have a strong option on this :). ServeAndRefresh is only for policies with odd defaults that we don\u0027t want to replicate in the code generator used for tast.",
+      "parentUuid": "91dc6961_1df47550",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85d05f6f_5e1846c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
         "patchSetId": 1
