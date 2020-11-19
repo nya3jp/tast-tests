@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f8b17a_91cef049",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:09:12Z",
+      "side": 1,
+      "message": "nit: Tast",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03149745_91de15fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:09:12Z",
+      "side": 1,
+      "message": "you can just omit it",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "98925399_26c012b2",
@@ -65,6 +111,69 @@
       "writtenOn": "2020-11-19T15:24:55Z",
       "side": 1,
       "message": "Thanks for the super fast review!",
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a69ca7_96091ddc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:09:12Z",
+      "side": 1,
+      "message": "In general looks good, however I have one concern. Same for TouchVirtualKeyboardEnabled test",
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e63e83_764c960b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:09:12Z",
+      "side": 1,
+      "message": "Please give more details how you test it",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ac989a_db729c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:09:12Z",
+      "side": 1,
+      "message": "Please use VirtualKeyboard, Keyboard might not work on tablets",
+      "range": {
+        "startLine": 44,
+        "startChar": 24,
+        "endLine": 44,
+        "endChar": 32
+      },
       "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +299,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd5ed692_2674e36c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:09:12Z",
+      "side": 1,
+      "message": "nit: looks a bit useless",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85d05f6f_5e1846c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
         "patchSetId": 1
@@ -219,6 +351,52 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "85d05f6f_5e1846c8",
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04f6e23_ab1223f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:09:12Z",
+      "side": 1,
+      "message": "nit: I believe that Ctrl used much more often",
+      "range": {
+        "startLine": 85,
+        "startChar": 34,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e85aa8_47b863bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:09:12Z",
+      "side": 1,
+      "message": "I am not sure whether it\u0027s correct way to check whether virtual keyboard will appear.\n\nWe may have problems when you expect to don\u0027t see keyboard. This function just check that such UI item does not exist, if so it just exists. But what if keyboard will appear in the next second?\n\nLooks like the only way is to just wait for a while and check whether it will appear.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 4
+      },
       "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
