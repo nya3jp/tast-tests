@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae23d1f4_1a537eae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-19T20:13:08Z",
+      "side": 1,
+      "message": "Yes, the quicksettings wrapper covers this functionality and could be used here instead.",
+      "parentUuid": "2178d6f4_27ff18c4",
+      "revId": "7245bee48465ce643f5c51b31556a3e7432d217b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "247805fb_20476957",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-19T19:50:30Z",
       "side": 1,
       "message": "This already exists in chrome/ui/quicksettings. I believe it is at least mostly the same.\n\nEither those methods should be used (I think they need slight modification to reopen) or it should potentially be extracted to chrome/ui/systemtray and then shared by this and quicksettings. I think quicksettings is likely the correct home though. Adding Kyle incase he has any comments.",
+      "revId": "7245bee48465ce643f5c51b31556a3e7432d217b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a6d2ad_44ed952d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-19T20:13:08Z",
+      "side": 1,
+      "message": "Yep quicksettings.go can take care of this. As Brendan pointed out, the only modification needed would be for closing and reopening the tray. If there\u0027s a general need to always update the system tray, the Show function could be modified to reopen it, or an alternative function could be added to hide and reopen it for use cases that require it.",
+      "parentUuid": "247805fb_20476957",
       "revId": "7245bee48465ce643f5c51b31556a3e7432d217b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
