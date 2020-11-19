@@ -16,6 +16,29 @@
       "message": "I wonder if it would be better to stop checking the subsection titles, and instead just check that the # of sections increases/decreases when you click the advanced button. We wouldn\u0027t have to worry about keeping up with string changes, although I suppose it\u0027ll be easier once this is in CQ.",
       "revId": "7d4f48d35ec9ba9a5c131a0ae3b154b2d98a29a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659a2d70_c1a7e05b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-19T17:47:49Z",
+      "side": 1,
+      "message": "This honestly seems like a bug lol. Why is it a question?",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "7d4f48d35ec9ba9a5c131a0ae3b154b2d98a29a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
