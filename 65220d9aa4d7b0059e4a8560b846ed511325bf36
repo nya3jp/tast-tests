@@ -211,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db1eef9_05726d6a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T14:36:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "37505252_8912e3e0",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "65220d9aa4d7b0059e4a8560b846ed511325bf36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0ec7337_d0bdc69e",
