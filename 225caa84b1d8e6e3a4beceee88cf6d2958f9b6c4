@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "084fc140_4a5548fd",
+        "filename": "src/chromiumos/tast/local/chrome/ash/capture_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:15:47Z",
+      "side": 1,
+      "message": "Unfortunately yes :(\n\nI don\u0027t think it\u0027s a problem, if we\u0027ll click wrong button, then test will fail.",
+      "parentUuid": "af8249ff_d60348ef",
+      "revId": "225caa84b1d8e6e3a4beceee88cf6d2958f9b6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f80e1ff_fc07aa8b",
