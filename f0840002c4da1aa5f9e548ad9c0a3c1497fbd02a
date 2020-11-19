@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "430a6c39_99e11dcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-11-19T21:02:34Z",
+      "side": 1,
+      "message": "LGTM. Defer it to Hirono and Ricardo.",
+      "revId": "f0840002c4da1aa5f9e548ad9c0a3c1497fbd02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
