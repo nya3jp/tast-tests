@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d0baf5f_6ccd8e45",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1601,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-19T15:20:05Z",
+      "side": 1,
+      "message": "Removed the code.\nWill use OOBE helper function instead.",
+      "parentUuid": "8b38d05c_d070e120",
+      "range": {
+        "startLine": 1601,
+        "startChar": 19,
+        "endLine": 1601,
+        "endChar": 30
+      },
+      "revId": "1cb7cf392326627621fcf69df1eb854c38246e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f243fc20_f8a955fc",
@@ -108,6 +132,30 @@
       "writtenOn": "2020-10-29T17:22:41Z",
       "side": 1,
       "message": "You should probably also raise value change events here, as the part of field modification:\nfield.dispatchEvent(new Event(\"input\"));\nfield.dispatchEvent(new Event(\"change\"));",
+      "range": {
+        "startLine": 1606,
+        "startChar": 24,
+        "endLine": 1606,
+        "endChar": 35
+      },
+      "revId": "1cb7cf392326627621fcf69df1eb854c38246e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f7e85d_74bb34cb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-19T15:20:05Z",
+      "side": 1,
+      "message": "Removed the code.\nWill use OOBE helper function instead.",
+      "parentUuid": "f243fc20_f8a955fc",
       "range": {
         "startLine": 1606,
         "startChar": 24,
