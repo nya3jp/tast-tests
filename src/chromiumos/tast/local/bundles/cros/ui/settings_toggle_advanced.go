@@ -59,7 +59,7 @@ var advancedSubHeadings = []ui.FindParams{
 	},
 	{
 		Role: ui.RoleTypeHeading,
-		Name: "Reset settings",
+		Name: "Reset settings?",
 	},
 }
 
