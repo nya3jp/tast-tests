@@ -88,7 +88,9 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 		submitID         = "btnSubmit"
 		notNowAndroidID  = "android:id/autofill_save_no"
 		notNowAutodeskID = "com.autodesk.autocadws:id/notNowButton"
-		fabIconID        = "com.autodesk.autocadws:id/fabButton"
+		okID             = "android:id/button1"
+		notNowID         = "com.autodesk.autocadws:id/tpf_not_now"
+		titleText        = "ree"
 	)
 
 	// Click on sign in button.
@@ -149,9 +151,25 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on notNowAutocad button: ", err)
 	}
 
-	// Check for home icon.
-	fabIconButton := d.Object(ui.ID(fabIconID))
-	if err := fabIconButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("fabIcon button doesn't exist: ", err)
+	//Click ok button
+	okButton := d.Object(ui.ID(okID))
+	if err := okButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Ok button doesn't exist: ", err)
+	} else if err := okButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on Ok button: ", err)
+	}
+
+	//Click not now button
+	notNowButton := d.Object(ui.ID(notNowID))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Not now button doesn't exist: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on not now button: ", err)
+	}
+
+	// Check for title icon.
+	titleButton := d.Object(ui.TextContains(titleText))
+	if err := titleButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("Title button doesn't exist: ", err)
 	}
 }
