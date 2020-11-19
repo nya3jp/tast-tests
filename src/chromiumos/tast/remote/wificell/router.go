@@ -817,10 +817,9 @@ func (r *Router) claimBridge(ctx context.Context, br string) error {
 	}
 
 	// Disable the bridge to prevent shill from spawning dhcpcd on it.
-	if output, err := r.host.Command("dbus-send", "--system", "--type=method_call", "--print-reply",
+	if err := r.host.Command("dbus-send", "--system", "--type=method_call", "--print-reply",
 		"--dest=org.chromium.flimflam", fmt.Sprintf("/device/%s", br), "org.chromium.flimflam.Device.Disable",
-	).Output(ctx); err != nil {
-		testing.ContextLogf(ctx, "Failed to disable the bridge %q, stdout=%q", br, string(output))
+	).Run(ctx, ssh.DumpLogOnError); err != nil {
 		return errors.Wrapf(err, "failed to set bridge %s down: %v", br, err)
 	}
 
