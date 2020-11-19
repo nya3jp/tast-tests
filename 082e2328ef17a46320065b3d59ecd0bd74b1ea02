@@ -16,6 +16,23 @@
       "message": "Thanks, yunkez@ and raleksandrov@, for providing some OOBE helper functions!\n\nI\u0027ve cleaned up this CL, together with these helper functions.\nCould you please take a look?\nThanks.",
       "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e33bd7_08d4c8be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-19T09:44:31Z",
+      "side": 1,
+      "message": "This CL is dependent on Chrome up\u0027rev to include crrev/c/2527055.\nI\u0027ve cherry-picked and verified these OOBE helper functions in my local build.",
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
