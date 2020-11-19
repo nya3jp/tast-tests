@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5abe3aaf_0dd7bd65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T17:57:43Z",
+      "side": 1,
+      "message": "I updated my CL to hide system tray if it\u0027s open to reduce errors in the future.",
+      "parentUuid": "68e1a732_73e17723",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 4
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00d79b74_20455f4e",
@@ -255,6 +279,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9e58f51_671954fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T17:57:43Z",
+      "side": 1,
+      "message": "At least if you will read error messages, then it sound like we wanted to confirm that device is muted and then confirm that device is not muted. I found it\u0027s confusing to understand what actually we cant to confirm.\n\nAlso, there shouldn\u0027t be both muted/unmuted icons. Checking that one still exist should be enough I think. WDYT?",
+      "parentUuid": "acadd99e_c20f3bf9",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fca9680_7cfe01a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
         "patchSetId": 1
@@ -384,6 +432,54 @@
       "side": 1,
       "message": "It should not change.",
       "parentUuid": "2a653dae_c4095d09",
+      "range": {
+        "startLine": 132,
+        "startChar": 14,
+        "endLine": 132,
+        "endChar": 38
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35be4d1a_8f58386d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T17:57:43Z",
+      "side": 1,
+      "message": "btw, ideally button should be not clickable.\n\nDoes it makes sense to verify both icons?",
+      "parentUuid": "009d55f5_1cfc7e7b",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 105
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51a29ea4_8a0859b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T17:57:43Z",
+      "side": 1,
+      "message": "WaitUntilExistsStatus is a wrapper around WaitUntilExists and WaitUntilGone. I think we should not use wrapper if we always pass constant: true/false, just because it\u0027s a bit more readable.",
+      "parentUuid": "b84faa90_7e10f587",
       "range": {
         "startLine": 132,
         "startChar": 14,
