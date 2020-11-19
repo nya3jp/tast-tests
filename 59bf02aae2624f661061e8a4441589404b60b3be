@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da83f28a_e90aa520",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-19T09:23:04Z",
+      "side": 1,
+      "message": "LGTM. Dean@, would you like to also take a look? (as you reviewed the parent CL)",
+      "revId": "59bf02aae2624f661061e8a4441589404b60b3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
