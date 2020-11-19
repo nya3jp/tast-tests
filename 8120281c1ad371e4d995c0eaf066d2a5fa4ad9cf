@@ -16,6 +16,236 @@
       "message": "PTAL. I\u0027ll move to using your new helpers for the tray once they land.",
       "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f70d961_14a22595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:57:46Z",
+      "side": 1,
+      "message": "nit: expectedMuted/wantMuted?",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 7
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01ed572_5e2ed8ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:57:46Z",
+      "side": 1,
+      "message": "interesting... maybe I should also reopen system tray in my utils?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 4
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d79b74_20455f4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:57:46Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 117,
+        "startChar": 35,
+        "endLine": 117,
+        "endChar": 38
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d16d63_fa2da458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:57:46Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 122,
+        "startChar": 35,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97f2abb_687ff987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:57:46Z",
+      "side": 1,
+      "message": "Maybe we can just pass expected UI params into test case structure?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fca9680_7cfe01a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:57:46Z",
+      "side": 1,
+      "message": "nit: update message",
+      "range": {
+        "startLine": 128,
+        "startChar": 14,
+        "endLine": 128,
+        "endChar": 42
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a653dae_c4095d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:57:46Z",
+      "side": 1,
+      "message": "maybe use WaitUntilGone instead?",
+      "range": {
+        "startLine": 132,
+        "startChar": 14,
+        "endLine": 132,
+        "endChar": 38
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "511ee4dd_a735faa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:57:46Z",
+      "side": 1,
+      "message": "Maybe we should sleep for a while and then check that unmutedFindParams does not exist?\n\notherwise we cannot wait for something to be gone if it does not exist.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 105
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf5888c_60238c67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:57:46Z",
+      "side": 1,
+      "message": "Maybe we failed to check if device is still muted?",
+      "range": {
+        "startLine": 133,
+        "startChar": 14,
+        "endLine": 133,
+        "endChar": 59
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8587f3d3_24b97209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T16:57:46Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 133,
+        "startChar": 32,
+        "endLine": 133,
+        "endChar": 35
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
