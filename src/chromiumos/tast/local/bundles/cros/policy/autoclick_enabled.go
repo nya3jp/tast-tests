@@ -148,6 +148,37 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 			if node.Checked != param.wantChecked {
 				s.Errorf("Unexpected toggle button checked state in the settings: got %s; want %s", node.Checked, param.wantChecked)
 			}
+
+			if param.wantChecked == ui.CheckedStateTrue {
+				// Policy unset will open the modal dialog about turning off autoclicks.
+				// We need to close it. Otherwise it messes up the next test.
+
+				if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+					s.Fatal("Failed to clean up: ", err)
+				}
+
+				// Find Yes button on the dialog.
+				yesButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
+					ClassName: "MdTextButton",
+					Name:      "Yes",
+				}, 15*time.Second)
+				if err != nil {
+					s.Fatal("Failed to find and yes button: ", err)
+				}
+
+				condition := func(ctx context.Context) (bool, error) {
+					isDialogShown, err := ui.Exists(ctx, tconn, ui.FindParams{
+						Name: "Are you sure you want to turn off automatic clicks?",
+					})
+					return !isDialogShown, err
+				}
+
+				opts := testing.PollOptions{Timeout: 15 * time.Second, Interval: 500 * time.Millisecond}
+				// Click until the dialog is gone.
+				if err := yesButton.LeftClickUntil(ctx, condition, &opts); err != nil {
+					s.Fatal("Failed to close the dialog: ", err)
+				}
+			}
 		})
 	}
 }
