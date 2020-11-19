@@ -22,6 +22,30 @@
       },
       "revId": "a38d02a4052d425c031a393236c08d63714bd254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63bfaf5_3ad98b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-19T06:30:32Z",
+      "side": 1,
+      "message": "The reason for doing this is to make sure the Clean up function has enough time to run, so reserving the time before running the function veth.NewPair()\nrefer to:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "parentUuid": "f3d224c0_2c0855be",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 15
+      },
+      "revId": "a38d02a4052d425c031a393236c08d63714bd254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
