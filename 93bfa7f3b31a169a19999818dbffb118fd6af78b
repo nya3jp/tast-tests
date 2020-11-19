@@ -16,6 +16,23 @@
       "message": "I split CL into 2, now it looks much better :) Thanks!",
       "revId": "93bfa7f3b31a169a19999818dbffb118fd6af78b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db29c4f8_dcc899fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T15:36:17Z",
+      "side": 1,
+      "message": "LGTM % question",
+      "revId": "93bfa7f3b31a169a19999818dbffb118fd6af78b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
