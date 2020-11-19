@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "080d68bd_ba5b78ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-19T21:29:36Z",
+      "side": 1,
+      "message": "nit: please, mention that it was tested both on P and R (assuming it was)",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 57
+      },
+      "revId": "f0840002c4da1aa5f9e548ad9c0a3c1497fbd02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "430a6c39_99e11dcd",
