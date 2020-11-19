@@ -27,7 +27,7 @@ cros deploy --root=/usr/local ${DUT_IP} tast-local-apks-cros
 
 2. Run your tast testcase in chroot by:
 ```
-$ tast -verbose run ${DUT_IP} arc.AudioSanity.playback
+$ tast -verbose run ${DUT_IP} arc.AudioValidity.playback
 ```
 
 # Reference Doc

@@ -4,7 +4,7 @@
  * found in the LICENSE file.
  */
 
-package org.chromium.arc.testapp.appsanitytast;
+package org.chromium.arc.testapp.appvaliditytast;
 
 import android.app.Activity;
 import android.os.Bundle;
