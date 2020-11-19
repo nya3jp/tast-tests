@@ -20,7 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DisableScreenshots,
+		Func: DisableScreenshotsHotkey,
 		// TODO(crbug.com/1125556): check whether screenshot can be taken by extensions APIs.
 		Desc: "Behavior of the DisableScreenshots policy, check whether screenshot can be taken by pressing hotkeys",
 		Contacts: []string{
@@ -33,7 +33,7 @@ func init() {
 	})
 }
 
-func DisableScreenshots(ctx context.Context, s *testing.State) {
+func DisableScreenshotsHotkey(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*pre.PreData).Chrome
 	fdms := s.PreValue().(*pre.PreData).FakeDMS
 
