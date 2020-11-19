@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2178d6f4_27ff18c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-19T19:50:30Z",
+      "side": 1,
+      "message": "Kyle, I believe this functionality is all the same as the quicksettings wrapper you wrote. Just want to guarantee that is correct and see if you have comments.",
+      "revId": "7245bee48465ce643f5c51b31556a3e7432d217b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247805fb_20476957",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-19T19:50:30Z",
+      "side": 1,
+      "message": "This already exists in chrome/ui/quicksettings. I believe it is at least mostly the same.\n\nEither those methods should be used (I think they need slight modification to reopen) or it should potentially be extracted to chrome/ui/systemtray and then shared by this and quicksettings. I think quicksettings is likely the correct home though. Adding Kyle incase he has any comments.",
+      "revId": "7245bee48465ce643f5c51b31556a3e7432d217b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
