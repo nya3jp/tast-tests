@@ -16,6 +16,29 @@
       "message": "Please take a look, thanks.",
       "revId": "d167a5762013d96c9035796de33653808e244884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f8d55f_4c84d69a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-11-19T20:54:20Z",
+      "side": 1,
+      "message": "ARC P dumpsys displays won\u0027t get type EXTERNAL displayID, as well as other places using the same function.",
+      "range": {
+        "startLine": 207,
+        "startChar": 36,
+        "endLine": 207,
+        "endChar": 56
+      },
+      "revId": "d167a5762013d96c9035796de33653808e244884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
