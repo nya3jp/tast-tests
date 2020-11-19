@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/power"
@@ -40,6 +41,11 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 
 	cr := s.PreValue().(arc.PreData).Chrome
 
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	defer cancel()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -51,6 +57,11 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+	defer func() {
+		if err := recorder.Close(closeCtx); err != nil {
+			s.Error("Failed to stop recorder: ", err)
+		}
+	}()
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		s.Log("Just wait for 30 seconds to check the load of idle status")
