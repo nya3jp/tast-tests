@@ -16,6 +16,24 @@
       "message": "...crash/crash/crash.go is pretty funny, but I assume you want to keep this out of the same directory as the tests since it\u0027s library code.",
       "revId": "b42d66d7382df0907359cd635cbafe59f546c8f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b2bed2_536443a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-19T18:36:12Z",
+      "side": 1,
+      "message": "I agree. Long-term we should migrate most of this to either crash/user.go or tast-tests/local/crash/, but for now I want to keep this CL as a simple rename.",
+      "parentUuid": "cfca25ef_26f7caff",
+      "revId": "b42d66d7382df0907359cd635cbafe59f546c8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
