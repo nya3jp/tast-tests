@@ -204,13 +204,17 @@ func launchActivityOnExternalDisplay(ctx context.Context, s *testing.State, cr *
 		{"Launch unresizeable activity on the external display", wm.NonResizableUnspecifiedActivity},
 	} {
 		runOrFatal(ctx, s, test.name, func(ctx context.Context, s *testing.State) error {
-			act, err := arc.NewActivity(a, wm.Pkg24, test.actName)
+			externalARCDisplayID, err := arc.FirstDisplayIDByType(ctx, a, arc.ExternalDisplay)
+			if err != nil {
+				return err
+			}
+
+			act, err := arc.NewActivityOnDisplay(a, wm.Pkg24, test.actName, externalARCDisplayID)
 			if err != nil {
 				return err
 			}
 			defer act.Close()
-
-			if err := startActivityOnDisplay(ctx, a, tconn, wm.Pkg24, test.actName, firstExternalDisplayID); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				return err
 			}
 			defer act.Stop(ctx, tconn)
@@ -225,6 +229,11 @@ func launchActivityOnExternalDisplay(ctx context.Context, s *testing.State, cr *
 // maximizeVisibility checks whether the window is visible on one display if another window is maximized on the other display.
 func maximizeVisibility(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	externalARCDisplayID, err := arc.FirstDisplayIDByType(ctx, a, arc.ExternalDisplay)
 	if err != nil {
 		return err
 	}
@@ -246,18 +255,18 @@ func maximizeVisibility(ctx context.Context, s *testing.State, cr *chrome.Chrome
 	}
 
 	// Start WM activity on the external display and set it to normal window state.
-	wmAct, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	wmAct, err := arc.NewActivityOnDisplay(a, wm.Pkg24, wm.ResizableUnspecifiedActivity, externalARCDisplayID)
 	if err != nil {
 		return err
 	}
 	defer wmAct.Close()
 
-	if err := startActivityOnDisplay(ctx, a, tconn, wm.Pkg24, wm.ResizableUnspecifiedActivity, firstExternalDisplayID); err != nil {
+	if err := wmAct.Start(ctx, a); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx, tconn)
 
-	// Get external display ID.
+	// Get external display physical ID.
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
 		return err
@@ -326,6 +335,11 @@ func relayoutDisplays(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		return err
 	}
 
+	externalARCDisplayID, err := arc.FirstDisplayIDByType(ctx, a, arc.ExternalDisplay)
+	if err != nil {
+		return err
+	}
+
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
 		return err
@@ -357,13 +371,13 @@ func relayoutDisplays(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	}
 
 	// Start wm Activity on external display.
-	wmAct, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	wmAct, err := arc.NewActivityOnDisplay(a, wm.Pkg24, wm.ResizableUnspecifiedActivity, externalARCDisplayID)
 	if err != nil {
 		return err
 	}
 	defer wmAct.Close()
 
-	if err := startActivityOnDisplay(ctx, a, tconn, wm.Pkg24, wm.ResizableUnspecifiedActivity, firstExternalDisplayID); err != nil {
+	if err := wmAct.Start(ctx, a); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx, tconn)
@@ -432,6 +446,11 @@ func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		return err
 	}
 
+	externalARCDisplayID, err := arc.FirstDisplayIDByType(ctx, a, arc.ExternalDisplay)
+	if err != nil {
+		return err
+	}
+
 	info, err := getInternalAndExternalDisplays(ctx, tconn)
 	if err != nil {
 		return err
@@ -455,13 +474,13 @@ func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	}
 
 	// Start wm Activity on external display.
-	wmAct, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	wmAct, err := arc.NewActivityOnDisplay(a, wm.Pkg24, wm.ResizableUnspecifiedActivity, externalARCDisplayID)
 	if err != nil {
 		return err
 	}
 	defer wmAct.Close()
 
-	if err := startActivityOnDisplay(ctx, a, tconn, wm.Pkg24, wm.ResizableUnspecifiedActivity, firstExternalDisplayID); err != nil {
+	if err := wmAct.Start(ctx, a); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx, tconn)
@@ -782,6 +801,15 @@ func rotateDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *
 		return err
 	}
 
+	externalARCDisplayID, err := arc.FirstDisplayIDByType(ctx, a, arc.ExternalDisplay)
+	if err != nil {
+		return err
+	}
+	internalARCDisplayID, err := arc.FirstDisplayIDByType(ctx, a, arc.InternalDisplay)
+	if err != nil {
+		return err
+	}
+
 	// Setup display layout.
 	disp, err := getInternalAndExternalDisplays(ctx, tconn)
 	if err != nil {
@@ -793,12 +821,12 @@ func rotateDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *
 		windowState ash.WindowStateType
 		wantCC      []configChangeEvent
 	}{
-		{internalDisplayID, ash.WindowStateNormal, nil},
-		{internalDisplayID, ash.WindowStateMaximized, []configChangeEvent{
+		{internalARCDisplayID, ash.WindowStateNormal, nil},
+		{internalARCDisplayID, ash.WindowStateMaximized, []configChangeEvent{
 			{handled: true, screenSize: true, orientation: true},
 		}},
-		{firstExternalDisplayID, ash.WindowStateNormal, nil},
-		{firstExternalDisplayID, ash.WindowStateMaximized, []configChangeEvent{
+		{externalARCDisplayID, ash.WindowStateNormal, nil},
+		{externalARCDisplayID, ash.WindowStateMaximized, []configChangeEvent{
 			{handled: true, screenSize: true, orientation: true},
 		}},
 	} {
@@ -856,6 +884,15 @@ func snappingOnDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		return err
 	}
 
+	externalARCDisplayID, err := arc.FirstDisplayIDByType(ctx, a, arc.ExternalDisplay)
+	if err != nil {
+		return err
+	}
+	internalARCDisplayID, err := arc.FirstDisplayIDByType(ctx, a, arc.InternalDisplay)
+	if err != nil {
+		return err
+	}
+
 	disp, err := getInternalAndExternalDisplays(ctx, tconn)
 	if err != nil {
 		return err
@@ -867,7 +904,7 @@ func snappingOnDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 	defer keyboard.Close()
 
-	for _, dispID := range []androidDisplayID{internalDisplayID, firstExternalDisplayID} {
+	for _, dispID := range []androidDisplayID{internalARCDisplayID, externalARCDisplayID} {
 		d := disp.displayInfo(dispID)
 		u := d.WorkArea.Width / 2
 		for _, state := range []ash.WindowStateType{ash.WindowStateNormal, ash.WindowStateMaximized} {
@@ -1310,6 +1347,7 @@ type displayLayout struct {
 }
 
 // displayInfo returns display.Info by id.
+// TODO(sstan): Replace by parse from dumpsys info.
 func (layout *displayLayout) displayInfo(id androidDisplayID) *display.Info {
 	if id == internalDisplayID {
 		return &layout.internal
