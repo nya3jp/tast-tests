@@ -80,6 +80,30 @@
       },
       "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68d027e2_85fee15b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1001299
+      },
+      "writtenOn": "2020-11-19T15:32:38Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;rcl\u003d328906279d66486264f00f2068eece169abffdbf;l\u003d1248\nYou\u0027d probably need to add another waiter after these lines",
+      "parentUuid": "0f6fc587_6164550b",
+      "range": {
+        "startLine": 849,
+        "startChar": 22,
+        "endLine": 849,
+        "endChar": 25
+      },
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
