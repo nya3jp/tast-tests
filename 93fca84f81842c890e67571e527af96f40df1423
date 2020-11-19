@@ -16,6 +16,23 @@
       "message": "Hey folks, please review. I\u0027ve added Alexander as an author.",
       "revId": "93fca84f81842c890e67571e527af96f40df1423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c97b4b_8d6533ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-19T16:50:40Z",
+      "side": 1,
+      "message": "Thanks for fixing the issue.",
+      "revId": "93fca84f81842c890e67571e527af96f40df1423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
