@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3cc0542_d43d00cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-19T14:38:17Z",
+      "side": 1,
+      "message": "PTAL. I\u0027ll move to using your new helpers for the tray once they land.",
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
