@@ -128,6 +128,30 @@
       },
       "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e1e8a6e_c7086ad8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1001299
+      },
+      "writtenOn": "2020-11-19T15:49:29Z",
+      "side": 1,
+      "message": "Yes, though it can also be referred as just \"OobeAPI\".",
+      "parentUuid": "ec7754ca_e6295676",
+      "range": {
+        "startLine": 849,
+        "startChar": 22,
+        "endLine": 849,
+        "endChar": 25
+      },
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
