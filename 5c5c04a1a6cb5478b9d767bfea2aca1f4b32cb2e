@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad5d9b40_68dbdc84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-19T15:37:31Z",
+      "side": 1,
+      "message": "ServeAndVerify actually calls ServeAndRefresh and also has the verification in it. So it is better to use ServeAndVerify.\nWhen I wrote TouchVirtualKeyboardEnabled I just wasn\u0027t aware of ServeAndVerify.",
+      "parentUuid": "91dc6961_1df47550",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "5c5c04a1a6cb5478b9d767bfea2aca1f4b32cb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85d05f6f_5e1846c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
         "patchSetId": 1
