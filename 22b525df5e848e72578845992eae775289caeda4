@@ -222,6 +222,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "428696a7_7e66474c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T15:54:29Z",
+      "side": 1,
+      "message": "Since it\u0027s a combination of policies, maybe it makes sense to add a test case when there is no DefaultSearchProviderEnabled policy or it sets to false and URL is provided to fake search engine",
+      "range": {
+        "startLine": 87,
+        "startChar": 70,
+        "endLine": 87,
+        "endChar": 117
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5ed85ec_58392f5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
         "patchSetId": 5
