@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbdce4b4_a01ed29a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-19T08:44:53Z",
+      "side": 1,
+      "message": "PTAL.\n\nFYI, the reason why ui automation doesn\u0027t work on lacros is because the chrome.automation.getDesktop api only works on chromeos. chrome.automation.getTree works on both desktop and chromeos, but it can\u0027t be used to access browser ui, just stuff in the tab.\n\nWe might have to do something about this in the future.",
+      "revId": "e90cd2721df306af5bdeca2f5e983e06743ca6d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
