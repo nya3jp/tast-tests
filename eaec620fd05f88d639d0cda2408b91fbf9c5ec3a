@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee7825b_c4e31e9d",
+        "filename": "src/chromiumos/tast/local/multivm/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-19T02:01:58Z",
+      "side": 1,
+      "message": "I never thought of embedding as inheritance before, but yes, it is inheritance rather than composition.\n\nI made it a private field.",
+      "parentUuid": "a47d2951_ecd4cf69",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 13
+      },
+      "revId": "eaec620fd05f88d639d0cda2408b91fbf9c5ec3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4c6c188_1f39c45f",
@@ -60,6 +84,24 @@
       "writtenOn": "2020-11-18T09:31:25Z",
       "side": 1,
       "message": "Do we need to export StateManager? IIUC it\u0027s used inside preconditions only.",
+      "revId": "eaec620fd05f88d639d0cda2408b91fbf9c5ec3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1e4adc_aceead01",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-19T02:01:58Z",
+      "side": 1,
+      "message": "The plan is to use it in tast-tests-private etc. to implement preconditions/fixtures, once this is committed.",
+      "parentUuid": "f4c6c188_1f39c45f",
       "revId": "eaec620fd05f88d639d0cda2408b91fbf9c5ec3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
