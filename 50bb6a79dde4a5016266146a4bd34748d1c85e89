@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "43c134e0_a74e029c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-11-19T04:25:28Z",
+      "side": 1,
+      "message": "Changed the CL description because this is not true for a simple rebooting. The actual motivation of this change is that we have seen DUT failed to reboot and the logs before that reboot attempt was lost which made diagnosing difficult.",
+      "revId": "50bb6a79dde4a5016266146a4bd34748d1c85e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ac9e86b4_2cf4f10f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -60,6 +77,47 @@
         "endLine": 91,
         "endChar": 2
       },
+      "revId": "50bb6a79dde4a5016266146a4bd34748d1c85e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f50fc4_c4419353",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-11-19T04:25:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b44c59d5_a739522f",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "50bb6a79dde4a5016266146a4bd34748d1c85e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fcbd55_f9962951",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-11-19T04:25:28Z",
+      "side": 1,
+      "message": "I\u0027ve found this copied duplicated files of chrome logs (suffixed with date-time) to the host unless they are actually cleared by test like resetting TPM. I moved this back to the helpers_remote.go. Then this change only copies messages file. Updated CL description accordingly.",
       "revId": "50bb6a79dde4a5016266146a4bd34748d1c85e89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
