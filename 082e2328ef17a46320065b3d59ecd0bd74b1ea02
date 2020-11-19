@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ddd33e_927765cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-19T09:40:52Z",
+      "side": 1,
+      "message": "Thanks, yunkez@ and raleksandrov@, for providing some OOBE helper functions!\n\nI\u0027ve cleaned up this CL, together with these helper functions.\nCould you please take a look?\nThanks.",
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
