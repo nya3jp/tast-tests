@@ -733,25 +733,28 @@ func (a *App) StartRecording(ctx context.Context, timerState TimerState) (time.T
 }
 
 // StopRecording stops recording a video.
-func (a *App) StopRecording(ctx context.Context, timerState TimerState, startTime time.Time) (os.FileInfo, error) {
+func (a *App) StopRecording(ctx context.Context, timerState TimerState, startTime time.Time) (os.FileInfo, time.Time, error) {
 	testing.ContextLog(ctx, "Click on stop shutter")
-	if err := a.ClickShutter(ctx); err != nil {
-		return nil, err
+	stopTime, err := a.TriggerStateChange(ctx, "recording", false, func() error {
+		return a.ClickShutter(ctx)
+	})
+	if err != nil {
+		return nil, time.Time{}, err
 	}
 	if err := a.WaitForState(ctx, "taking", false); err != nil {
-		return nil, errors.Wrap(err, "shutter is not ended")
+		return nil, time.Time{}, errors.Wrap(err, "shutter is not ended")
 	}
 	dirs, err := a.SavedDirs(ctx)
 	if err != nil {
-		return nil, err
+		return nil, time.Time{}, err
 	}
 	info, err := a.WaitForFileSaved(ctx, dirs, VideoPattern, startTime)
 	if err != nil {
-		return nil, errors.Wrap(err, "cannot find result video")
+		return nil, time.Time{}, errors.Wrap(err, "cannot find result video")
 	} else if elapsed := info.ModTime().Sub(startTime); timerState == TimerOn && elapsed < TimerDelay {
-		return nil, errors.Errorf("the capture happen after elapsed time %v, should be after %v timer", elapsed, TimerDelay)
+		return nil, time.Time{}, errors.Errorf("the capture happen after elapsed time %v, should be after %v timer", elapsed, TimerDelay)
 	}
-	return info, nil
+	return info, stopTime, nil
 }
 
 // RecordVideo records a video with duration length and save to default location.
@@ -765,7 +768,11 @@ func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration t
 		return nil, err
 	}
 
-	return a.StopRecording(ctx, timerState, startTime)
+	info, _, err := a.StopRecording(ctx, timerState, startTime)
+	if err != nil {
+		return nil, err
+	}
+	return info, err
 }
 
 // savedDirs returns the paths to the folder where captured files might be saved.
@@ -1297,6 +1304,32 @@ func (a *App) TriggerConfiguration(ctx context.Context, trigger func() error) er
 		return errors.Wrap(err, "failed to waiting for the completion configuration update")
 	}
 	return nil
+}
+
+// TriggerStateChange triggers |state| change by calling |trigger()|, waits for
+// its value changing from |!expected| to |expected| and returns when the
+// change happens.
+func (a *App) TriggerStateChange(ctx context.Context, state string, expected bool, trigger func() error) (time.Time, error) {
+	var wrappedPromise chrome.JSObject
+	if err := a.conn.Call(ctx, &wrappedPromise, `
+	  (state, expected) => {
+		const p = Tast.observeStateChange(state, expected);
+		return () => p;
+	  }
+	  `, state, expected); err != nil {
+		return time.Time{}, errors.Wrapf(err, "failed to observe %v state with %v expected value", state, expected)
+	}
+	defer wrappedPromise.Release(ctx)
+
+	if err := trigger(); err != nil {
+		return time.Time{}, err
+	}
+
+	var ts int64
+	if err := a.conn.Call(ctx, &ts, `(p) => p()`, &wrappedPromise); err != nil {
+		return time.Time{}, errors.Wrapf(err, "failed to wait for %v state changing to %v", state, expected)
+	}
+	return time.Unix(0, ts*1e6), nil
 }
 
 // EnsureTabletModeEnabled makes sure that the tablet mode states of both
