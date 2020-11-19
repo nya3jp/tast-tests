@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d9f43b_a6c16208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "1. \"extra\" sound a bit confusing, but not sure what is better more self documented name\n2. not consistent with Pkg23 / Pkg24 names, maybe we should start package name with Pkg prefix?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d410bb26_6fac040e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "same\n\nshould start with APKNameArc... ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a9ec08_26f9cb27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "as mentioned above, I am not sure we should pay much attention to reserve time to stop activities.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "846c7546_f3f3b066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "looks like moving this variable is not related to the CL. Will you use it on other tests?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a2a28b_428644c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "please use shorter names, for example `ctxLeftAct`",
+      "range": {
+        "startLine": 675,
+        "startChar": 1,
+        "endLine": 675,
+        "endChar": 23
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e9bbc22_fe8c5ae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "it can be just `cancel`",
+      "range": {
+        "startLine": 676,
+        "startChar": 6,
+        "endLine": 676,
+        "endChar": 31
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bcf21e2_223a04f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "Should we pay much attention to activity stop?\n\nIIUC, arc.Booted pre condition should handle it:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/arc/snapshot.go;l\u003d90",
+      "range": {
+        "startLine": 676,
+        "startChar": 56,
+        "endLine": 676,
+        "endChar": 78
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93cbbd4e_f629cd38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "same: just `cancel`",
+      "range": {
+        "startLine": 680,
+        "startChar": 6,
+        "endLine": 680,
+        "endChar": 32
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06268c82_02cf7b01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "same: leftAct?",
+      "range": {
+        "startLine": 683,
+        "startChar": 1,
+        "endLine": 683,
+        "endChar": 13
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3166787d_f5cb69f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "1. Looks inconsistent if you use 2 different contexts in one function\n2. Please always pass context by value, don\u0027t bind by reference, e.g.\n\ndefer func(ctx context.Context) {\n  ..\n}(ctxForStopLeftActivity)",
+      "range": {
+        "startLine": 692,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 4
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abfe293b_8b48f667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "same: shorter?",
+      "range": {
+        "startLine": 712,
+        "startChar": 2,
+        "endLine": 712,
+        "endChar": 19
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587f7272_63bdc92f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "same: pass context by value",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 745,
+        "endChar": 4
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549973a1_38b31952",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "it should never be nil if err is nil",
+      "range": {
+        "startLine": 770,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 0
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ad99884_48c51715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-19T11:50:08Z",
+      "side": 1,
+      "message": "we can make it much simpler\n\nfor example,\n\n```\nlWant :\u003d coords.Rect{\n  Left: 0, Top: 0, Width: pdInfo.WorkArea.Width/2, Height: pdInfo.WorkArea.Height}\n\nif lActWInfo.BoundsInRoot !\u003d lWant {\n  return errors.Errorf(\n    \"unexpected snapped to the left activity bounds: got %+v; want %+v\",\n    lActWInfo.BoundsInRoot,\n    lWant)\n}\n\n\n```",
+      "range": {
+        "startLine": 784,
+        "startChar": 0,
+        "endLine": 792,
+        "endChar": 0
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
