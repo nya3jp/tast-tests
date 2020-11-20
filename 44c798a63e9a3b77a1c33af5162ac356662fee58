@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba91d5d_5e59fbd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T00:53:25Z",
+      "side": 1,
+      "message": "Associate the CL with b:161341898 and chromium:1097612",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "44c798a63e9a3b77a1c33af5162ac356662fee58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
