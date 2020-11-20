@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b49364_73c2f1ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-20T04:18:11Z",
+      "side": 1,
+      "message": "Yes, try wrapping all duration related logic in another video struct. The test looks more clear now. Thanks for the suggestion.\n\nHi all reviewers, PTAL. The latest patch introduce some refactor for making duration logic more clear.",
+      "parentUuid": "6ecea66e_b776b2aa",
+      "revId": "39cd345573944fcaf545d514828e7117ea6daefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c78173b_061d5ebf",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e88f45_f06108eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-20T04:18:11Z",
+      "side": 1,
+      "message": "Removed the function after refactor.",
+      "parentUuid": "6c78173b_061d5ebf",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 62
+      },
+      "revId": "39cd345573944fcaf545d514828e7117ea6daefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ab248de_6ef75c86",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-11-19T10:36:33Z",
       "side": 1,
       "message": "It might be problematic that err exists already.",
+      "range": {
+        "startLine": 337,
+        "startChar": 4,
+        "endLine": 337,
+        "endChar": 7
+      },
+      "revId": "39cd345573944fcaf545d514828e7117ea6daefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "954f8b49_1faba6a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-20T04:18:11Z",
+      "side": 1,
+      "message": "Done by wrapping the error.",
+      "parentUuid": "7ab248de_6ef75c86",
       "range": {
         "startLine": 337,
         "startChar": 4,
