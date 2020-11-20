@@ -16,6 +16,121 @@
       "message": "It\u0027s a rewrite of http://crrev.com/c/1668351",
       "revId": "83bb7039433e86147c651661012c1c059a7edc07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "459b8c9c_27782766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-20T01:07:08Z",
+      "side": 1,
+      "message": "optional: If you find yourself using boolean valued variables a lot, you could define your own helper function (or move this one to a place where it is accessible from here):\nhttps://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/pita/pre/common.go;l\u003d74?q\u003dBoolVar%20package:chromeos_public%7Cchromeos_internal",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 77
+      },
+      "revId": "83bb7039433e86147c651661012c1c059a7edc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "601ac54e_29816015",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-20T01:07:08Z",
+      "side": 1,
+      "message": "Can you print out the error?\n`s.Fatal(\"Failed to create test environment: \", err)`",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 49
+      },
+      "revId": "83bb7039433e86147c651661012c1c059a7edc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7a6d90_a1f8f555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-20T01:07:08Z",
+      "side": 1,
+      "message": "Can you print out the error?\n`s.Fatal(\"Failed to create test environment: \", err)`",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "83bb7039433e86147c651661012c1c059a7edc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53a91f5_037d3d4a",
+        "filename": "src/chromiumos/tast/local/memory/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-20T01:07:08Z",
+      "side": 1,
+      "message": "if you fail here, it seems like you won\u0027t clean up the WPR instance. One option is to add up top: \n\nsuccess :\u003d false\ndefer func() {\n   if !success {\n        te.Close(ctx)\n   }\n}\n\n// Before returning\nsuccess :\u003d true\nreturn te, nil",
+      "range": {
+        "startLine": 821,
+        "startChar": 2,
+        "endLine": 821,
+        "endChar": 53
+      },
+      "revId": "83bb7039433e86147c651661012c1c059a7edc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e4fd24_34cd8b92",
+        "filename": "src/chromiumos/tast/local/memory/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-20T01:07:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 827,
+        "startChar": 3,
+        "endLine": 827,
+        "endChar": 54
+      },
+      "revId": "83bb7039433e86147c651661012c1c059a7edc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
