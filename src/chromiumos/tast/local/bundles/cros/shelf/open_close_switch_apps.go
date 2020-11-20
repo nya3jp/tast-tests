@@ -6,6 +6,7 @@ package shelf
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/apps"
@@ -19,12 +20,12 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: OpenCloseSwitchApps,
-		Desc: "Checks basic shelf functionality",
+		Desc: "Checks interacting with apps in the shelf",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"tbarzic@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
@@ -73,9 +74,20 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to pin Files app to the shelf: ", err)
 	}
 
+	// Get the expected browser.
+	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not find the Chrome app: ", err)
+	}
+
+	// Chrome app name doesn't exactly match the chrome shelf name so modify it here for simpler code later.
+	if chromeApp.Name == apps.Chrome.Name {
+		chromeApp.Name = "Google Chrome"
+	}
+
 	// Find the shelf icon buttons. StableFind ensures the shelf icons have stopped redistributing after launching the apps.
 	opts := testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second}
-	chromeBtn, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "ash/ShelfAppButton", Name: apps.Chrome.Name}, &opts)
+	chromeBtn, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "ash/ShelfAppButton", Name: chromeApp.Name}, &opts)
 	if err != nil {
 		s.Fatal("Failed to find Chrome shelf button: ", err)
 	}
@@ -87,7 +99,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	}
 	defer filesBtn.Release(ctx)
 
-	chromeInfo := appInfo{chromeBtn, apps.Chrome.ID, "Chrome - New Tab", apps.Chrome.Name}
+	chromeInfo := appInfo{chromeBtn, chromeApp.ID, "New Tab", chromeApp.Name}
 	filesInfo := appInfo{filesBtn, apps.Files.ID, "Files - My files", apps.Files.Name}
 	checkApps := []appInfo{chromeInfo, filesInfo}
 
@@ -114,7 +126,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to click %v shelf button: %v", app.Name, err)
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-				return w.IsActive && w.Title == app.WindowTitle
+				return w.IsActive && strings.Contains(w.Title, app.WindowTitle)
 			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 				if i == 0 {
 					s.Fatalf("%v app window not opened after clicking shelf icon: %v", app.Name, err)
