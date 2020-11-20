@@ -86,11 +86,6 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed selecting file: ", err)
 	}
 
-	dstPoint := coords.Point{X: 100, Y: 100}
-	if err := mouse.Drag(ctx, tconn, srcPoint, dstPoint, time.Second); err != nil {
-		s.Fatal("Failed to send drag events: ", err)
-	}
-
 	// Get connection to foreground extension to verify changes.
 	dropTargetURL := "chrome-extension://" + dropTargetExtID + "/window.html"
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(dropTargetURL))
@@ -98,6 +93,15 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		s.Fatalf("Could not connect to extension at %v: %v", dropTargetURL, err)
 	}
 	defer conn.Close()
+
+	if err := waitForFileToBeSelected(ctx, conn, files); err != nil {
+		s.Fatal("Failed waiting for the drag drop extension to be ready: ", err)
+	}
+
+	dstPoint := coords.Point{X: 100, Y: 100}
+	if err := mouse.Drag(ctx, tconn, srcPoint, dstPoint, time.Second); err != nil {
+		s.Fatal("Failed to send drag events: ", err)
+	}
 
 	if err := verifyDroppedFileMatchesDraggedFile(ctx, conn, textFile); err != nil {
 		s.Fatal("Failed verifying the dropped file matches the drag file: ", err)
@@ -133,6 +137,38 @@ func verifyDroppedFileMatchesDraggedFile(ctx context.Context, conn *chrome.Conn,
 
 	if createdFileName != actualDroppedFileName {
 		return errors.Errorf("failed dropped file doesnt match dragged file, got: %q; want: %q", actualDroppedFileName, createdFileName)
+	}
+
+	return nil
+}
+
+// waitForFileToBeSelected makes sure the extension title has loaded JavaScript properly.
+// This also waits for the files app listbox to stabilize.
+func waitForFileToBeSelected(ctx context.Context, conn *chrome.Conn, f *filesapp.FilesApp) error {
+	if err := conn.WaitForExprFailOnErrWithTimeout(ctx, "window.document.title == 'awaiting drop.'", 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed waiting for javascript to update window.document.title")
+	}
+
+	// Get the listbox which has the list of files.
+	listBox, err := f.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, 15*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find listbox")
+	}
+	defer listBox.Release(ctx)
+
+	// Setup a watcher to wait for the selected files to stabilize.
+	ew, err := ui.NewWatcher(ctx, listBox, ui.EventTypeActiveDescendantChanged)
+	if err != nil {
+		return errors.Wrap(err, "failed getting a watcher for the files listbox")
+	}
+	defer ew.Release(ctx)
+
+	// Check the listbox for any Activedescendantchanged events occurring in a 2 second interval.
+	// If any events are found continue polling until 10s is reached.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return ew.EnsureNoEvents(ctx, 2*time.Second)
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrapf(err, "failed waiting %v for listbox to stabilize", 10*time.Second)
 	}
 
 	return nil
