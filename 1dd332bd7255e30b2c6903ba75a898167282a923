@@ -33,6 +33,24 @@
       "message": "I think you missed my comments for the previous CL\u0027s, can you change \nappActivity \u003d \".MainActivity\"",
       "revId": "1dd332bd7255e30b2c6903ba75a898167282a923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9da3614_ee1c2e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/soundtrap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2020-11-20T20:34:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "377ccf04_705e99f2",
+      "revId": "1dd332bd7255e30b2c6903ba75a898167282a923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
