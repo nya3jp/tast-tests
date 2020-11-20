@@ -25,7 +25,14 @@ type App struct {
 // Chrome has details about the Chrome app.
 var Chrome = App{
 	ID:   "mgndgikekgjfcpckkfioiadnlibdjbkf",
-	Name: "Google Chrome",
+	Name: "Chrome",
+}
+
+// Chromium has details about the Chromium app.
+// It replaces Chrome on amd64-generic builds.
+var Chromium = App{
+	ID:   "mgndgikekgjfcpckkfioiadnlibdjbkf",
+	Name: "Chromium",
 }
 
 // Camera has details about the Camera app.
@@ -172,4 +179,22 @@ func LaunchSystemWebApp(ctx context.Context, tconn *chrome.TestConn, appName, ur
 // Close closes an app specified by appID.
 func Close(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.closeApp)`, appID)
+}
+
+// ChromeOrChromium returns the correct browser for the current build.
+// Chromium is returned on non branded builds (e.g amd64-generic).
+func ChromeOrChromium(ctx context.Context, tconn *chrome.TestConn) (App, error) {
+	capps, err := ash.ChromeApps(ctx, tconn)
+	if err != nil {
+		return App{}, errors.Wrap(err, "failed to get list of installed apps")
+	}
+	for _, app := range capps {
+		if app.AppID == Chrome.ID {
+			if app.Name == Chrome.Name {
+				return Chrome, nil
+			}
+			return Chromium, nil
+		}
+	}
+	return App{}, errors.New("Neither Chrome or Chromium were found in available apps")
 }

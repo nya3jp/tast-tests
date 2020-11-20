@@ -48,9 +48,18 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 			s.Fatal("Unexpected apps in the shelf. Expected only Chrome and Files: ", shelfItems)
 		}
 	}
+	// Get the expected browser.
+	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not find the Chrome app: ", err)
+	}
 
+	// Chrome app name doesn't exactly match the chrome shelf name so modify it here for simpler code later.
+	if chromeApp.Name == apps.Chrome.Name {
+		chromeApp.Name = "Google Chrome"
+	}
 	// Chrome must be first because it is automatically opened upon login.
-	defaultApps := []apps.App{apps.Chrome, apps.Files, apps.WallpaperPicker}
+	defaultApps := []apps.App{chromeApp, apps.Files, apps.WallpaperPicker}
 
 	for _, app := range defaultApps {
 		s.Logf("Launching %s", app.Name)
@@ -78,10 +87,6 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 			s.Errorf("App IDs did not match. Got: %v; Want: %v", shelfItem.AppID, expectedApp.ID)
 		}
 		if shelfItem.Title != expectedApp.Name {
-			// Exception for Google Chrome. On some builds, Google Chrome is named Chromium.
-			if expectedApp.Name == "Google Chrome" && shelfItem.Title == "Chromium" {
-				continue
-			}
 			s.Errorf("App names did not match. Got: %v; Want: %v", shelfItem.Title, expectedApp.Name)
 		}
 	}
@@ -96,8 +101,7 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	for _, app := range defaultApps {
 		var found = false
 		for _, icon := range icons {
-			// Exception for Google Chrome. On some builds, Google Chrome is named Chromium.
-			if icon.Name == app.Name || (app.Name == "Google Chrome" && icon.Name == "Chromium") {
+			if icon.Name == app.Name {
 				s.Logf("Found icon for %s", app.Name)
 				found = true
 				break
