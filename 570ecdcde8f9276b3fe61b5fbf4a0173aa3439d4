@@ -34,6 +34,98 @@
       "parentUuid": "ec54c537_d3b7318f",
       "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b0136f_cc500219",
+        "filename": "src/chromiumos/tast/local/power/cpuidle_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-20T00:44:55Z",
+      "side": 1,
+      "message": "nit: remove parentheses if any one constant",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c229e2c7_87bbfefc",
+        "filename": "src/chromiumos/tast/local/power/cpuidle_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-20T00:44:55Z",
+      "side": 1,
+      "message": "Optional: I personally suggest to provide some data samples in comment to help readers to understand the regex.",
+      "range": {
+        "startLine": 34,
+        "startChar": 47,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c1aff30_423b2732",
+        "filename": "src/chromiumos/tast/local/power/cpuidle_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-20T00:44:55Z",
+      "side": 1,
+      "message": "Looks like match and error are only used in the statement. How about write it as below:\n```\nif match, err :\u003d regexp.MatchString(`^cpu\\d+$`, cpuInfo.Name()); err !\u003d nil{\n    return nil, 0, errors.Wrap(err, \"error trying to match cpu name\")\n} else if !match {\n    continue\n}\n```",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e872b0_331c0ee9",
+        "filename": "src/chromiumos/tast/local/power/cpuidle_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-20T00:44:55Z",
+      "side": 1,
+      "message": "nit: Comment should finish with period.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 54
+      },
+      "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
