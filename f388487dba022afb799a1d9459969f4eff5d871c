@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef90f53e_a52f08c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-11-20T18:56:47Z",
+      "side": 1,
+      "message": "Yes, so the problem is that the test is failing when ran in the lab but passing when run after a reboot. Restarting Chrome might help, so worth trying.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dbuild\u0026col\u003dboard_model\u0026first_date\u003d2020-09-24\u0026last_date\u003d2020-11-20\u0026test\u003dChromePIPEnergyAndPower\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "revId": "f388487dba022afb799a1d9459969f4eff5d871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
