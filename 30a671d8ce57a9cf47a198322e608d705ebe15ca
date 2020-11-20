@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efacd193_caef3f23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30d9f43b_a6c16208",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d410bb26_6fac040e",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-19T11:50:08Z",
       "side": 1,
       "message": "same\n\nshould start with APKNameArc... ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e160f7fb_033dbc61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d410bb26_6fac040e",
       "range": {
         "startLine": 46,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b64b1d_8c5806ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "This will be resolved on the previous comment. So I am marking this as done for now until we come to a consensus.",
+      "parentUuid": "58a9ec08_26f9cb27",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "846c7546_f3f3b066",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9860ba47_09799319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Yes, here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_tablet.go;drc\u003d2395e7f9d8d004d08a782d03e47be089f0ad909e;l\u003d399\nand line 408.",
+      "parentUuid": "846c7546_f3f3b066",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02a2a28b_428644c9",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-11-19T11:50:08Z",
       "side": 1,
       "message": "please use shorter names, for example `ctxLeftAct`",
+      "range": {
+        "startLine": 675,
+        "startChar": 1,
+        "endLine": 675,
+        "endChar": 23
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd31d94_443cd6e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02a2a28b_428644c9",
       "range": {
         "startLine": 675,
         "startChar": 1,
@@ -162,6 +282,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5622c7_d121ddb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e9bbc22_fe8c5ae7",
+      "range": {
+        "startLine": 676,
+        "startChar": 6,
+        "endLine": 676,
+        "endChar": 31
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daa241fd_326be6bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "arc.Prepare that calls restorePackages is called once per test (like WMResizableClamshell) and not for each test cases (wmRC17 or wmRC22). If the activity is not properly stopped after a test case execution, then it can cause problem for other test cases that use that activity.",
+      "parentUuid": "6bcf21e2_223a04f8",
+      "range": {
+        "startLine": 676,
+        "startChar": 56,
+        "endLine": 676,
+        "endChar": 78
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93cbbd4e_f629cd38",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5059b32a_1242939c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93cbbd4e_f629cd38",
+      "range": {
+        "startLine": 680,
+        "startChar": 6,
+        "endLine": 680,
+        "endChar": 32
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06268c82_02cf7b01",
@@ -198,6 +390,30 @@
       "writtenOn": "2020-11-19T11:50:08Z",
       "side": 1,
       "message": "same: leftAct?",
+      "range": {
+        "startLine": 683,
+        "startChar": 1,
+        "endLine": 683,
+        "endChar": 13
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e43d50_3f817e3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06268c82_02cf7b01",
       "range": {
         "startLine": 683,
         "startChar": 1,
@@ -233,6 +449,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "733a80d0_8e88dec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "I am following this:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "parentUuid": "3166787d_f5cb69f2",
+      "range": {
+        "startLine": 692,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 4
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abfe293b_8b48f667",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 2
@@ -244,6 +484,30 @@
       "writtenOn": "2020-11-19T11:50:08Z",
       "side": 1,
       "message": "same: shorter?",
+      "range": {
+        "startLine": 712,
+        "startChar": 2,
+        "endLine": 712,
+        "endChar": 19
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "627c7d30_fda86e93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abfe293b_8b48f667",
       "range": {
         "startLine": 712,
         "startChar": 2,
@@ -277,6 +541,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cecea530_4560bf4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587f7272_63bdc92f",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 745,
+        "endChar": 4
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "549973a1_38b31952",
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e391bd65_034c82c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "549973a1_38b31952",
+      "range": {
+        "startLine": 770,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 0
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ad99884_48c51715",
@@ -313,6 +625,30 @@
       "writtenOn": "2020-11-19T11:50:08Z",
       "side": 1,
       "message": "we can make it much simpler\n\nfor example,\n\n```\nlWant :\u003d coords.Rect{\n  Left: 0, Top: 0, Width: pdInfo.WorkArea.Width/2, Height: pdInfo.WorkArea.Height}\n\nif lActWInfo.BoundsInRoot !\u003d lWant {\n  return errors.Errorf(\n    \"unexpected snapped to the left activity bounds: got %+v; want %+v\",\n    lActWInfo.BoundsInRoot,\n    lWant)\n}\n\n\n```",
+      "range": {
+        "startLine": 784,
+        "startChar": 0,
+        "endLine": 792,
+        "endChar": 0
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40439ef2_a600f70d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T06:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad99884_48c51715",
       "range": {
         "startLine": 784,
         "startChar": 0,
