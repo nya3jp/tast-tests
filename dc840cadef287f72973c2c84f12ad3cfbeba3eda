@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d307c4_9f5e6d06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T13:40:48Z",
+      "side": 1,
+      "message": "nit: please use slightly different format:\n\n`invalid window state: got %q; want LeftSnapped`\n\nSame for other places",
+      "range": {
+        "startLine": 718,
+        "startChar": 25,
+        "endLine": 718,
+        "endChar": 73
+      },
+      "revId": "dc840cadef287f72973c2c84f12ad3cfbeba3eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
