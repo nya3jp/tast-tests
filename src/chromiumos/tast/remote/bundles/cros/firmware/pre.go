@@ -25,7 +25,7 @@ func init() {
 			Name:      "normal",
 			Val:       common.BootModeNormal,
 			Pre:       pre.NormalMode(),
-			ExtraAttr: []string{"group:mainline", "informational"},
+			ExtraAttr: []string{"group:mainline", "informational", "group:firmware", "firmware_smoke"},
 		}, {
 			Name: "dev",
 			Val:  common.BootModeDev,

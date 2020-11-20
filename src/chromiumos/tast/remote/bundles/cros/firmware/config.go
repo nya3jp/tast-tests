@@ -17,7 +17,7 @@ func init() {
 		Desc:         "Verifies that remote tests can load fw-testing-configs properly",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
 		Data:         []string{firmware.ConfigFile},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:firmware", "firmware_smoke"},
 		SoftwareDeps: []string{"crossystem"},
 	})
 }
