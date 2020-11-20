@@ -85,6 +85,29 @@
       },
       "revId": "e4fac35c1bd29fd7dea35fed284815462aad4858",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36cc5133_8807e423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T13:39:49Z",
+      "side": 1,
+      "message": "you can use %q to wrap string in quotes which is preferred here",
+      "range": {
+        "startLine": 132,
+        "startChar": 50,
+        "endLine": 132,
+        "endChar": 51
+      },
+      "revId": "e4fac35c1bd29fd7dea35fed284815462aad4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
