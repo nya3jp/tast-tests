@@ -51,6 +51,24 @@
       "parentUuid": "885c524e_c08893d8",
       "revId": "bdec0c0711c7df410fcbf01fd9b1a0a2bcae24c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd599ee_d1d99cf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-11-20T04:07:57Z",
+      "side": 1,
+      "message": "I understand the issue you\u0027re having with the current state of affairs, what I don\u0027t understand is the benefit you\u0027re trying to get from it.",
+      "parentUuid": "ffa31773_cdf66100",
+      "revId": "bdec0c0711c7df410fcbf01fd9b1a0a2bcae24c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
