@@ -74,31 +74,26 @@ func init() {
 func HotseatAnimation(ctx context.Context, s *testing.State) {
 	const (
 		// Histograms for hotseat.
-		extendedHotseatHistogram                      = "Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat"
-		extendedHotseatWidgetHistogram                = "Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToExtendedHotseat"
-		extendedHotseatTranslucentBackgroundHistogram = "Ash.HotseatWidgetAnimation.TranslucentBackground.AnimationSmoothness.TransitionToExtendedHotseat"
-		hiddenHotseatHistogram                        = "Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat"
-		hiddenHotseatWidgetHistogram                  = "Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToHiddenHotseat"
-		shownHotseatHistogram                         = "Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat"
-		shownHotseatWidgetHistogram                   = "Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToShownHotseat"
-		shownHotseatTranslucentBackgroundHistogram    = "Ash.HotseatWidgetAnimation.TranslucentBackground.AnimationSmoothness.TransitionToShownHotseat"
-		shownHomeLauncherHistogram                    = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeInOverview"
-		hiddenHomeLauncherHistogram                   = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeOutOverview"
+		extendedHotseatWidgetHistogram             = "Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToExtendedHotseat"
+		hiddenHotseatHistogram                     = "Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat"
+		hiddenHotseatWidgetHistogram               = "Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToHiddenHotseat"
+		shownHotseatHistogram                      = "Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat"
+		shownHotseatWidgetHistogram                = "Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToShownHotseat"
+		shownHotseatTranslucentBackgroundHistogram = "Ash.HotseatWidgetAnimation.TranslucentBackground.AnimationSmoothness.TransitionToShownHotseat"
+		shownHomeLauncherHistogram                 = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeInOverview"
+		hiddenHomeLauncherHistogram                = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeOutOverview"
 
 		// Histograms for back button.
-		hiddenBackButtonHistogram   = "Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToHiddenHotseat"
-		shownBackButtonHistogram    = "Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToShownHotseat"
-		extendedBackButtonHistogram = "Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToExtendedHotseat"
+		hiddenBackButtonHistogram = "Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToHiddenHotseat"
+		shownBackButtonHistogram  = "Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToShownHotseat"
 
 		// Histograms for home button.
-		hiddenHomeButtonHistogram   = "Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToHiddenHotseat"
-		shownHomeButtonHistogram    = "Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToShownHotseat"
-		extendedHomeButtonHistogram = "Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToExtendedHotseat"
+		hiddenHomeButtonHistogram = "Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToHiddenHotseat"
+		shownHomeButtonHistogram  = "Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToShownHotseat"
 
 		// Histograms for navigation widget.
-		hiddenWidgetHistogram   = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToHiddenHotseat"
-		shownWidgetHistogram    = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToShownHotseat"
-		extendedWidgetHistogram = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToExtendedHotseat"
+		hiddenWidgetHistogram = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToHiddenHotseat"
+		shownWidgetHistogram  = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToShownHotseat"
 
 		overviewTimeout = 10 * time.Second
 	)
@@ -121,7 +116,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		for i := 0; i < numApps; i++ {
 			opts = append(opts, chrome.UnpackedExtension(filepath.Join(tmpdir, fmt.Sprintf("fake_%d", i))))
 		}
-		opts = append(opts, chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode", "--disable-features=MaintainShelfStateWhenEnteringOverview"))
+		opts = append(opts, chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode"))
 
 		// Install fake apps and disable flags.
 		cr, err = chrome.New(ctx, opts...)
@@ -149,6 +144,13 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
 	defer cleanup(ctx)
+
+	// The app list gets shown during transition to tablet mode, Wait for the transition to
+	// full screen app list to finish before proceeding with testing hotseat animations to
+	// prevent the app list animation's adverse effect on the initial hotseat transition.
+	if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
+		s.Fatal("Home launcher failed to show: ", err)
+	}
 
 	// Prepare the touch screen as this test requires touch scroll events.
 	tsw, err := input.Touchscreen(ctx)
@@ -241,14 +243,8 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		// Record metrics data which can only be collected with the shelf navigation widget shown.
 		histogramsName = append(histogramsName,
 			shownBackButtonHistogram,
-			extendedHomeButtonHistogram,
 			shownHomeButtonHistogram,
-			extendedWidgetHistogram,
-			shownWidgetHistogram,
-			// Data for those three histograms can only be collected when the flag, which maintains the shelf state when entering the overview mode, is disabled.
-			extendedHotseatHistogram,
-			extendedHotseatTranslucentBackgroundHistogram,
-			extendedBackButtonHistogram)
+			shownWidgetHistogram)
 	}
 
 	// Histograms for window activation.
