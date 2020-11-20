@@ -83,14 +83,6 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remount user vault: ", err)
 	}
 
-	// Keep file reference to prevent unmount on restart
-	file, err := os.Open(fillFile2)
-	if err != nil {
-		s.Fatal("Failed to open file: ", err)
-	}
-	defer cryptohome.UnmountVault(ctx, user2)
-	defer file.Close()
-
 	if err := cleanup.ForceAutomaticCleanup(ctx); err != nil {
 		s.Fatal("Failed to run cleanup: ", err)
 	}
@@ -101,11 +93,9 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check if fill file exists: ", err)
 	}
 
-	if _, err := os.Stat(fillFile2); err != nil {
-		if os.IsNotExist(err) {
-			s.Error("fillFile for user2  was removed")
-		} else {
-			s.Fatal("Failed to check if fill file exists: ", err)
-		}
+	if _, err := os.Stat(fillFile2); err == nil {
+		s.Error("fillFile for user2 still present")
+	} else if !os.IsNotExist(err) {
+		s.Fatal("Failed to check if fill file exists: ", err)
 	}
 }
