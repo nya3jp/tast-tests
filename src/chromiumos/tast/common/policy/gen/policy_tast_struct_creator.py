@@ -423,7 +423,10 @@ class Policy(object):
 
   def find_references(self, refs):
     """For this policy, find and record any references in its schema."""
-    parse_schema('refs', self.schema, refs, references_only=True)
+    if self.name in REF_PARSE_OVERRIDES:
+      REF_PARSE_OVERRIDES[self.name](self.schema, refs)
+    else:
+      parse_schema('refs', self.schema, refs, references_only=True)
 
 def parse_override_extension_settings(p, refs):
   # The top level setting is best stored as a map.
@@ -451,10 +454,29 @@ type ArcPolicyValue struct {
 """ + attr_structs
   return attr_type, attr_structs
 
+def ref_parse_override_managed_bookmarks(schema, refs):
+  name = 'Ref' + schema['items']['id']
+  refs[schema['items']['id']] = Reference(name, '*'+name, '')
+  ref_type = '*' + 'Ref' +schema['items']['id']
+  ref_code = """
+type RefBookmarkType struct {
+\tChildren\t[]*RefBookmarkType\t`json:"children,omitempty"`
+\tName\tstring\t`json:"name"`
+\tToplevelName string\t`json:"toplevel_name"`
+\tUrl\tstring\t`json:"url"`
+}
+"""
+  refs[schema['items']['id']].update(ref_type, ref_code)
+
 # Functions to use instead of parse_schema() if the default way won't work.
 PARSE_OVERRIDES = {
     'ExtensionSettings': parse_override_extension_settings,
     'ArcPolicy': parse_override_arc_policy
+}
+
+# Functions to use for reference objects when the default way won't work.
+REF_PARSE_OVERRIDES = {
+    'ManagedBookmarks': ref_parse_override_managed_bookmarks
 }
 
 # Go code to replace the contents of Equal() for the named policy.

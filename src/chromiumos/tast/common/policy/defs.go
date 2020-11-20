@@ -335,35 +335,6 @@ func (p *AutoFillEnabled) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 19. DisabledPlugins
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type DisabledPlugins struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *DisabledPlugins) Name() string          { return "DisabledPlugins" }
-func (p *DisabledPlugins) Field() string         { return "" }
-func (p *DisabledPlugins) Scope() Scope          { return ScopeUser }
-func (p *DisabledPlugins) Status() Status        { return p.Stat }
-func (p *DisabledPlugins) UntypedV() interface{} { return p.Val }
-func (p *DisabledPlugins) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *DisabledPlugins) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 20. SyncDisabled
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -567,6 +538,7 @@ func (p *AuthSchemes) Equal(iface interface{}) bool {
 
 ///////////////////////////////////////////////////////////////////////////////
 // 27. DisableAuthNegotiateCnameLookup
+// This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
 type DisableAuthNegotiateCnameLookup struct {
 	Stat Status
@@ -595,6 +567,7 @@ func (p *DisableAuthNegotiateCnameLookup) Equal(iface interface{}) bool {
 
 ///////////////////////////////////////////////////////////////////////////////
 // 28. EnableAuthNegotiatePort
+// This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
 type EnableAuthNegotiatePort struct {
 	Stat Status
@@ -1200,35 +1173,6 @@ func (p *DefaultJavaScriptSetting) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 51. DefaultPluginsSetting
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type DefaultPluginsSetting struct {
-	Stat Status
-	Val  int
-}
-
-func (p *DefaultPluginsSetting) Name() string          { return "DefaultPluginsSetting" }
-func (p *DefaultPluginsSetting) Field() string         { return "" }
-func (p *DefaultPluginsSetting) Scope() Scope          { return ScopeUser }
-func (p *DefaultPluginsSetting) Status() Status        { return p.Stat }
-func (p *DefaultPluginsSetting) UntypedV() interface{} { return p.Val }
-func (p *DefaultPluginsSetting) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *DefaultPluginsSetting) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 52. DefaultPopupsSetting
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -1606,64 +1550,6 @@ func (p *JavaScriptBlockedForUrls) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 73. PluginsAllowedForUrls
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type PluginsAllowedForUrls struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *PluginsAllowedForUrls) Name() string          { return "PluginsAllowedForUrls" }
-func (p *PluginsAllowedForUrls) Field() string         { return "" }
-func (p *PluginsAllowedForUrls) Scope() Scope          { return ScopeUser }
-func (p *PluginsAllowedForUrls) Status() Status        { return p.Stat }
-func (p *PluginsAllowedForUrls) UntypedV() interface{} { return p.Val }
-func (p *PluginsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *PluginsAllowedForUrls) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 74. PluginsBlockedForUrls
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type PluginsBlockedForUrls struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *PluginsBlockedForUrls) Name() string          { return "PluginsBlockedForUrls" }
-func (p *PluginsBlockedForUrls) Field() string         { return "" }
-func (p *PluginsBlockedForUrls) Scope() Scope          { return ScopeUser }
-func (p *PluginsBlockedForUrls) Status() Status        { return p.Stat }
-func (p *PluginsBlockedForUrls) UntypedV() interface{} { return p.Val }
-func (p *PluginsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *PluginsBlockedForUrls) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 75. PopupsAllowedForUrls
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -1751,64 +1637,6 @@ func (p *CookiesAllowedForUrls) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 78. EnabledPlugins
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type EnabledPlugins struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *EnabledPlugins) Name() string          { return "EnabledPlugins" }
-func (p *EnabledPlugins) Field() string         { return "" }
-func (p *EnabledPlugins) Scope() Scope          { return ScopeUser }
-func (p *EnabledPlugins) Status() Status        { return p.Stat }
-func (p *EnabledPlugins) UntypedV() interface{} { return p.Val }
-func (p *EnabledPlugins) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *EnabledPlugins) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 79. DisabledPluginsExceptions
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type DisabledPluginsExceptions struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *DisabledPluginsExceptions) Name() string          { return "DisabledPluginsExceptions" }
-func (p *DisabledPluginsExceptions) Field() string         { return "" }
-func (p *DisabledPluginsExceptions) Scope() Scope          { return ScopeUser }
-func (p *DisabledPluginsExceptions) Status() Status        { return p.Stat }
-func (p *DisabledPluginsExceptions) UntypedV() interface{} { return p.Val }
-func (p *DisabledPluginsExceptions) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *DisabledPluginsExceptions) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 80. TranslateEnabled
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -1830,35 +1658,6 @@ func (p *TranslateEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	return v, nil
 }
 func (p *TranslateEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 81. AllowOutdatedPlugins
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type AllowOutdatedPlugins struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *AllowOutdatedPlugins) Name() string          { return "AllowOutdatedPlugins" }
-func (p *AllowOutdatedPlugins) Field() string         { return "" }
-func (p *AllowOutdatedPlugins) Scope() Scope          { return ScopeUser }
-func (p *AllowOutdatedPlugins) Status() Status        { return p.Stat }
-func (p *AllowOutdatedPlugins) UntypedV() interface{} { return p.Val }
-func (p *AllowOutdatedPlugins) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *AllowOutdatedPlugins) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
@@ -2819,35 +2618,6 @@ func (p *DeviceTargetVersionPrefix) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 143. ReportDeviceLocation
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type ReportDeviceLocation struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *ReportDeviceLocation) Name() string          { return "ReportDeviceLocation" }
-func (p *ReportDeviceLocation) Field() string         { return "device_reporting.report_location" }
-func (p *ReportDeviceLocation) Scope() Scope          { return ScopeDevice }
-func (p *ReportDeviceLocation) Status() Status        { return p.Stat }
-func (p *ReportDeviceLocation) UntypedV() interface{} { return p.Val }
-func (p *ReportDeviceLocation) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *ReportDeviceLocation) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 144. PinnedLauncherApps
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -3144,35 +2914,6 @@ func (p *RemoteAccessHostDomain) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 157. RemoteAccessHostRequireCurtain
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type RemoteAccessHostRequireCurtain struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *RemoteAccessHostRequireCurtain) Name() string          { return "RemoteAccessHostRequireCurtain" }
-func (p *RemoteAccessHostRequireCurtain) Field() string         { return "" }
-func (p *RemoteAccessHostRequireCurtain) Scope() Scope          { return ScopeUser }
-func (p *RemoteAccessHostRequireCurtain) Status() Status        { return p.Stat }
-func (p *RemoteAccessHostRequireCurtain) UntypedV() interface{} { return p.Val }
-func (p *RemoteAccessHostRequireCurtain) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *RemoteAccessHostRequireCurtain) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 158. SystemTimezone
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -3370,6 +3111,35 @@ func (p *ShowLogoutButtonInTray) UnmarshalAs(m json.RawMessage) (interface{}, er
 	return v, nil
 }
 func (p *ShowLogoutButtonInTray) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 165. BuiltInDnsClientEnabled
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type BuiltInDnsClientEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *BuiltInDnsClientEnabled) Name() string          { return "BuiltInDnsClientEnabled" }
+func (p *BuiltInDnsClientEnabled) Field() string         { return "" }
+func (p *BuiltInDnsClientEnabled) Scope() Scope          { return ScopeUser }
+func (p *BuiltInDnsClientEnabled) Status() Status        { return p.Stat }
+func (p *BuiltInDnsClientEnabled) UntypedV() interface{} { return p.Val }
+func (p *BuiltInDnsClientEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *BuiltInDnsClientEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
@@ -4346,95 +4116,6 @@ func (p *AllowScreenWakeLocks) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 204. ContentPackDefaultFilteringBehavior
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type ContentPackDefaultFilteringBehavior struct {
-	Stat Status
-	Val  int
-}
-
-func (p *ContentPackDefaultFilteringBehavior) Name() string {
-	return "ContentPackDefaultFilteringBehavior"
-}
-func (p *ContentPackDefaultFilteringBehavior) Field() string         { return "" }
-func (p *ContentPackDefaultFilteringBehavior) Scope() Scope          { return ScopeUser }
-func (p *ContentPackDefaultFilteringBehavior) Status() Status        { return p.Stat }
-func (p *ContentPackDefaultFilteringBehavior) UntypedV() interface{} { return p.Val }
-func (p *ContentPackDefaultFilteringBehavior) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *ContentPackDefaultFilteringBehavior) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 205. ContentPackManualBehaviorHosts
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type ContentPackManualBehaviorHosts struct {
-	Stat Status
-	Val  map[string]bool
-}
-
-func (p *ContentPackManualBehaviorHosts) Name() string          { return "ContentPackManualBehaviorHosts" }
-func (p *ContentPackManualBehaviorHosts) Field() string         { return "" }
-func (p *ContentPackManualBehaviorHosts) Scope() Scope          { return ScopeUser }
-func (p *ContentPackManualBehaviorHosts) Status() Status        { return p.Stat }
-func (p *ContentPackManualBehaviorHosts) UntypedV() interface{} { return p.Val }
-func (p *ContentPackManualBehaviorHosts) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v map[string]bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as map[string]bool", m)
-	}
-	return v, nil
-}
-func (p *ContentPackManualBehaviorHosts) Equal(iface interface{}) bool {
-	v, ok := iface.(map[string]bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 206. ContentPackManualBehaviorURLs
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type ContentPackManualBehaviorURLs struct {
-	Stat Status
-	Val  map[string]bool
-}
-
-func (p *ContentPackManualBehaviorURLs) Name() string          { return "ContentPackManualBehaviorURLs" }
-func (p *ContentPackManualBehaviorURLs) Field() string         { return "" }
-func (p *ContentPackManualBehaviorURLs) Scope() Scope          { return ScopeUser }
-func (p *ContentPackManualBehaviorURLs) Status() Status        { return p.Stat }
-func (p *ContentPackManualBehaviorURLs) UntypedV() interface{} { return p.Val }
-func (p *ContentPackManualBehaviorURLs) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v map[string]bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as map[string]bool", m)
-	}
-	return v, nil
-}
-func (p *ContentPackManualBehaviorURLs) Equal(iface interface{}) bool {
-	v, ok := iface.(map[string]bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 207. AttestationEnabledForDevice
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -5137,37 +4818,6 @@ func (p *DefaultSearchProviderImageURLPostParams) Equal(iface interface{}) bool 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 234. RemoteAccessHostAllowClientPairing
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type RemoteAccessHostAllowClientPairing struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *RemoteAccessHostAllowClientPairing) Name() string {
-	return "RemoteAccessHostAllowClientPairing"
-}
-func (p *RemoteAccessHostAllowClientPairing) Field() string         { return "" }
-func (p *RemoteAccessHostAllowClientPairing) Scope() Scope          { return ScopeUser }
-func (p *RemoteAccessHostAllowClientPairing) Status() Status        { return p.Stat }
-func (p *RemoteAccessHostAllowClientPairing) UntypedV() interface{} { return p.Val }
-func (p *RemoteAccessHostAllowClientPairing) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *RemoteAccessHostAllowClientPairing) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 235. RequireOnlineRevocationChecksForLocalAnchors
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -5625,35 +5275,6 @@ func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) Equal(iface interface{}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 257. RemoteAccessHostAllowGnubbyAuth
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type RemoteAccessHostAllowGnubbyAuth struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *RemoteAccessHostAllowGnubbyAuth) Name() string          { return "RemoteAccessHostAllowGnubbyAuth" }
-func (p *RemoteAccessHostAllowGnubbyAuth) Field() string         { return "" }
-func (p *RemoteAccessHostAllowGnubbyAuth) Scope() Scope          { return ScopeUser }
-func (p *RemoteAccessHostAllowGnubbyAuth) Status() Status        { return p.Stat }
-func (p *RemoteAccessHostAllowGnubbyAuth) UntypedV() interface{} { return p.Val }
-func (p *RemoteAccessHostAllowGnubbyAuth) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *RemoteAccessHostAllowGnubbyAuth) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 258. PowerManagementIdleSettings
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -5965,37 +5586,6 @@ func (p *TouchVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 270. EnableDeprecatedWebPlatformFeatures
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type EnableDeprecatedWebPlatformFeatures struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *EnableDeprecatedWebPlatformFeatures) Name() string {
-	return "EnableDeprecatedWebPlatformFeatures"
-}
-func (p *EnableDeprecatedWebPlatformFeatures) Field() string         { return "" }
-func (p *EnableDeprecatedWebPlatformFeatures) Scope() Scope          { return ScopeUser }
-func (p *EnableDeprecatedWebPlatformFeatures) Status() Status        { return p.Stat }
-func (p *EnableDeprecatedWebPlatformFeatures) UntypedV() interface{} { return p.Val }
-func (p *EnableDeprecatedWebPlatformFeatures) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *EnableDeprecatedWebPlatformFeatures) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 271. DeviceTransferSAMLCookies
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -6262,126 +5852,6 @@ func (p *DeviceRebootOnShutdown) UnmarshalAs(m json.RawMessage) (interface{}, er
 }
 func (p *DeviceRebootOnShutdown) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 285. RemoteAccessHostMatchUsername
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type RemoteAccessHostMatchUsername struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *RemoteAccessHostMatchUsername) Name() string          { return "RemoteAccessHostMatchUsername" }
-func (p *RemoteAccessHostMatchUsername) Field() string         { return "" }
-func (p *RemoteAccessHostMatchUsername) Scope() Scope          { return ScopeUser }
-func (p *RemoteAccessHostMatchUsername) Status() Status        { return p.Stat }
-func (p *RemoteAccessHostMatchUsername) UntypedV() interface{} { return p.Val }
-func (p *RemoteAccessHostMatchUsername) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *RemoteAccessHostMatchUsername) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 286. RemoteAccessHostTokenUrl
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type RemoteAccessHostTokenUrl struct {
-	Stat Status
-	Val  string
-}
-
-func (p *RemoteAccessHostTokenUrl) Name() string          { return "RemoteAccessHostTokenUrl" }
-func (p *RemoteAccessHostTokenUrl) Field() string         { return "" }
-func (p *RemoteAccessHostTokenUrl) Scope() Scope          { return ScopeUser }
-func (p *RemoteAccessHostTokenUrl) Status() Status        { return p.Stat }
-func (p *RemoteAccessHostTokenUrl) UntypedV() interface{} { return p.Val }
-func (p *RemoteAccessHostTokenUrl) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
-	}
-	return v, nil
-}
-func (p *RemoteAccessHostTokenUrl) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 287. RemoteAccessHostTokenValidationUrl
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type RemoteAccessHostTokenValidationUrl struct {
-	Stat Status
-	Val  string
-}
-
-func (p *RemoteAccessHostTokenValidationUrl) Name() string {
-	return "RemoteAccessHostTokenValidationUrl"
-}
-func (p *RemoteAccessHostTokenValidationUrl) Field() string         { return "" }
-func (p *RemoteAccessHostTokenValidationUrl) Scope() Scope          { return ScopeUser }
-func (p *RemoteAccessHostTokenValidationUrl) Status() Status        { return p.Stat }
-func (p *RemoteAccessHostTokenValidationUrl) UntypedV() interface{} { return p.Val }
-func (p *RemoteAccessHostTokenValidationUrl) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
-	}
-	return v, nil
-}
-func (p *RemoteAccessHostTokenValidationUrl) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 288. RemoteAccessHostTokenValidationCertificateIssuer
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type RemoteAccessHostTokenValidationCertificateIssuer struct {
-	Stat Status
-	Val  string
-}
-
-func (p *RemoteAccessHostTokenValidationCertificateIssuer) Name() string {
-	return "RemoteAccessHostTokenValidationCertificateIssuer"
-}
-func (p *RemoteAccessHostTokenValidationCertificateIssuer) Field() string         { return "" }
-func (p *RemoteAccessHostTokenValidationCertificateIssuer) Scope() Scope          { return ScopeUser }
-func (p *RemoteAccessHostTokenValidationCertificateIssuer) Status() Status        { return p.Stat }
-func (p *RemoteAccessHostTokenValidationCertificateIssuer) UntypedV() interface{} { return p.Val }
-func (p *RemoteAccessHostTokenValidationCertificateIssuer) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
-	}
-	return v, nil
-}
-func (p *RemoteAccessHostTokenValidationCertificateIssuer) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
 	if !ok {
 		return ok
 	}
@@ -8119,34 +7589,6 @@ func (p *DeviceSecondFactorAuthentication) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 376. EcryptfsMigrationStrategy
-///////////////////////////////////////////////////////////////////////////////
-type EcryptfsMigrationStrategy struct {
-	Stat Status
-	Val  int
-}
-
-func (p *EcryptfsMigrationStrategy) Name() string          { return "EcryptfsMigrationStrategy" }
-func (p *EcryptfsMigrationStrategy) Field() string         { return "" }
-func (p *EcryptfsMigrationStrategy) Scope() Scope          { return ScopeUser }
-func (p *EcryptfsMigrationStrategy) Status() Status        { return p.Stat }
-func (p *EcryptfsMigrationStrategy) UntypedV() interface{} { return p.Val }
-func (p *EcryptfsMigrationStrategy) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *EcryptfsMigrationStrategy) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 377. NoteTakingAppsLockScreenWhitelist
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -8169,65 +7611,6 @@ func (p *NoteTakingAppsLockScreenWhitelist) UnmarshalAs(m json.RawMessage) (inte
 }
 func (p *NoteTakingAppsLockScreenWhitelist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 378. CastReceiverEnabled
-// This policy has a default value of False.
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type CastReceiverEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *CastReceiverEnabled) Name() string          { return "CastReceiverEnabled" }
-func (p *CastReceiverEnabled) Field() string         { return "" }
-func (p *CastReceiverEnabled) Scope() Scope          { return ScopeUser }
-func (p *CastReceiverEnabled) Status() Status        { return p.Stat }
-func (p *CastReceiverEnabled) UntypedV() interface{} { return p.Val }
-func (p *CastReceiverEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *CastReceiverEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 379. CastReceiverName
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type CastReceiverName struct {
-	Stat Status
-	Val  string
-}
-
-func (p *CastReceiverName) Name() string          { return "CastReceiverName" }
-func (p *CastReceiverName) Field() string         { return "cast_receiver_name.name" }
-func (p *CastReceiverName) Scope() Scope          { return ScopeDevice }
-func (p *CastReceiverName) Status() Status        { return p.Stat }
-func (p *CastReceiverName) UntypedV() interface{} { return p.Val }
-func (p *CastReceiverName) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
-	}
-	return v, nil
-}
-func (p *CastReceiverName) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
 	if !ok {
 		return ok
 	}
@@ -11613,35 +10996,6 @@ func (p *DeviceWilcoDtcAllowed) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 533. AllowPopupsDuringPageUnload
-// This policy has a default value of True.
-///////////////////////////////////////////////////////////////////////////////
-type AllowPopupsDuringPageUnload struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *AllowPopupsDuringPageUnload) Name() string          { return "AllowPopupsDuringPageUnload" }
-func (p *AllowPopupsDuringPageUnload) Field() string         { return "" }
-func (p *AllowPopupsDuringPageUnload) Scope() Scope          { return ScopeUser }
-func (p *AllowPopupsDuringPageUnload) Status() Status        { return p.Stat }
-func (p *AllowPopupsDuringPageUnload) UntypedV() interface{} { return p.Val }
-func (p *AllowPopupsDuringPageUnload) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *AllowPopupsDuringPageUnload) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 535. DeviceWilcoDtcConfiguration
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -12687,35 +12041,6 @@ func (p *SelectToSpeakEnabled) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 576. CrostiniRootAccessAllowed
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type CrostiniRootAccessAllowed struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *CrostiniRootAccessAllowed) Name() string          { return "CrostiniRootAccessAllowed" }
-func (p *CrostiniRootAccessAllowed) Field() string         { return "" }
-func (p *CrostiniRootAccessAllowed) Scope() Scope          { return ScopeUser }
-func (p *CrostiniRootAccessAllowed) Status() Status        { return p.Stat }
-func (p *CrostiniRootAccessAllowed) UntypedV() interface{} { return p.Val }
-func (p *CrostiniRootAccessAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *CrostiniRootAccessAllowed) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 577. VmManagementCliAllowed
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -12862,35 +12187,6 @@ func (p *DnsOverHttpsMode) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 583. SendFilesForMalwareCheck
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type SendFilesForMalwareCheck struct {
-	Stat Status
-	Val  int
-}
-
-func (p *SendFilesForMalwareCheck) Name() string          { return "SendFilesForMalwareCheck" }
-func (p *SendFilesForMalwareCheck) Field() string         { return "" }
-func (p *SendFilesForMalwareCheck) Scope() Scope          { return ScopeUser }
-func (p *SendFilesForMalwareCheck) Status() Status        { return p.Stat }
-func (p *SendFilesForMalwareCheck) UntypedV() interface{} { return p.Val }
-func (p *SendFilesForMalwareCheck) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *SendFilesForMalwareCheck) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 584. PolicyAtomicGroupsEnabled
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -12913,213 +12209,6 @@ func (p *PolicyAtomicGroupsEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 }
 func (p *PolicyAtomicGroupsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 585. UnsafeEventsReportingEnabled
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type UnsafeEventsReportingEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *UnsafeEventsReportingEnabled) Name() string          { return "UnsafeEventsReportingEnabled" }
-func (p *UnsafeEventsReportingEnabled) Field() string         { return "" }
-func (p *UnsafeEventsReportingEnabled) Scope() Scope          { return ScopeUser }
-func (p *UnsafeEventsReportingEnabled) Status() Status        { return p.Stat }
-func (p *UnsafeEventsReportingEnabled) UntypedV() interface{} { return p.Val }
-func (p *UnsafeEventsReportingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *UnsafeEventsReportingEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 586. BlockLargeFileTransfer
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type BlockLargeFileTransfer struct {
-	Stat Status
-	Val  int
-}
-
-func (p *BlockLargeFileTransfer) Name() string          { return "BlockLargeFileTransfer" }
-func (p *BlockLargeFileTransfer) Field() string         { return "" }
-func (p *BlockLargeFileTransfer) Scope() Scope          { return ScopeUser }
-func (p *BlockLargeFileTransfer) Status() Status        { return p.Stat }
-func (p *BlockLargeFileTransfer) UntypedV() interface{} { return p.Val }
-func (p *BlockLargeFileTransfer) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *BlockLargeFileTransfer) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 587. DelayDeliveryUntilVerdict
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type DelayDeliveryUntilVerdict struct {
-	Stat Status
-	Val  int
-}
-
-func (p *DelayDeliveryUntilVerdict) Name() string          { return "DelayDeliveryUntilVerdict" }
-func (p *DelayDeliveryUntilVerdict) Field() string         { return "" }
-func (p *DelayDeliveryUntilVerdict) Scope() Scope          { return ScopeUser }
-func (p *DelayDeliveryUntilVerdict) Status() Status        { return p.Stat }
-func (p *DelayDeliveryUntilVerdict) UntypedV() interface{} { return p.Val }
-func (p *DelayDeliveryUntilVerdict) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *DelayDeliveryUntilVerdict) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 588. AllowPasswordProtectedFiles
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type AllowPasswordProtectedFiles struct {
-	Stat Status
-	Val  int
-}
-
-func (p *AllowPasswordProtectedFiles) Name() string          { return "AllowPasswordProtectedFiles" }
-func (p *AllowPasswordProtectedFiles) Field() string         { return "" }
-func (p *AllowPasswordProtectedFiles) Scope() Scope          { return ScopeUser }
-func (p *AllowPasswordProtectedFiles) Status() Status        { return p.Stat }
-func (p *AllowPasswordProtectedFiles) UntypedV() interface{} { return p.Val }
-func (p *AllowPasswordProtectedFiles) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *AllowPasswordProtectedFiles) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 589. CheckContentCompliance
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type CheckContentCompliance struct {
-	Stat Status
-	Val  int
-}
-
-func (p *CheckContentCompliance) Name() string          { return "CheckContentCompliance" }
-func (p *CheckContentCompliance) Field() string         { return "" }
-func (p *CheckContentCompliance) Scope() Scope          { return ScopeUser }
-func (p *CheckContentCompliance) Status() Status        { return p.Stat }
-func (p *CheckContentCompliance) UntypedV() interface{} { return p.Val }
-func (p *CheckContentCompliance) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *CheckContentCompliance) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 590. URLsToCheckComplianceOfDownloadedContent
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type URLsToCheckComplianceOfDownloadedContent struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *URLsToCheckComplianceOfDownloadedContent) Name() string {
-	return "URLsToCheckComplianceOfDownloadedContent"
-}
-func (p *URLsToCheckComplianceOfDownloadedContent) Field() string         { return "" }
-func (p *URLsToCheckComplianceOfDownloadedContent) Scope() Scope          { return ScopeUser }
-func (p *URLsToCheckComplianceOfDownloadedContent) Status() Status        { return p.Stat }
-func (p *URLsToCheckComplianceOfDownloadedContent) UntypedV() interface{} { return p.Val }
-func (p *URLsToCheckComplianceOfDownloadedContent) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *URLsToCheckComplianceOfDownloadedContent) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 591. URLsToNotCheckComplianceOfUploadedContent
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type URLsToNotCheckComplianceOfUploadedContent struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *URLsToNotCheckComplianceOfUploadedContent) Name() string {
-	return "URLsToNotCheckComplianceOfUploadedContent"
-}
-func (p *URLsToNotCheckComplianceOfUploadedContent) Field() string         { return "" }
-func (p *URLsToNotCheckComplianceOfUploadedContent) Scope() Scope          { return ScopeUser }
-func (p *URLsToNotCheckComplianceOfUploadedContent) Status() Status        { return p.Stat }
-func (p *URLsToNotCheckComplianceOfUploadedContent) UntypedV() interface{} { return p.Val }
-func (p *URLsToNotCheckComplianceOfUploadedContent) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *URLsToNotCheckComplianceOfUploadedContent) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -13327,37 +12416,6 @@ func (p *DeviceLoginScreenLargeCursorEnabled) UnmarshalAs(m json.RawMessage) (in
 }
 func (p *DeviceLoginScreenLargeCursorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 600. URLsToCheckForMalwareOfUploadedContent
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type URLsToCheckForMalwareOfUploadedContent struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *URLsToCheckForMalwareOfUploadedContent) Name() string {
-	return "URLsToCheckForMalwareOfUploadedContent"
-}
-func (p *URLsToCheckForMalwareOfUploadedContent) Field() string         { return "" }
-func (p *URLsToCheckForMalwareOfUploadedContent) Scope() Scope          { return ScopeUser }
-func (p *URLsToCheckForMalwareOfUploadedContent) Status() Status        { return p.Stat }
-func (p *URLsToCheckForMalwareOfUploadedContent) UntypedV() interface{} { return p.Val }
-func (p *URLsToCheckForMalwareOfUploadedContent) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *URLsToCheckForMalwareOfUploadedContent) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -14598,35 +13656,6 @@ func (p *PrinterTypeDenyList) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 648. ForceLegacyDefaultReferrerPolicy
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type ForceLegacyDefaultReferrerPolicy struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *ForceLegacyDefaultReferrerPolicy) Name() string          { return "ForceLegacyDefaultReferrerPolicy" }
-func (p *ForceLegacyDefaultReferrerPolicy) Field() string         { return "" }
-func (p *ForceLegacyDefaultReferrerPolicy) Scope() Scope          { return ScopeUser }
-func (p *ForceLegacyDefaultReferrerPolicy) Status() Status        { return p.Stat }
-func (p *ForceLegacyDefaultReferrerPolicy) UntypedV() interface{} { return p.Val }
-func (p *ForceLegacyDefaultReferrerPolicy) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *ForceLegacyDefaultReferrerPolicy) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 649. SyncTypesListDisabled
 ///////////////////////////////////////////////////////////////////////////////
 type SyncTypesListDisabled struct {
@@ -15022,35 +14051,6 @@ func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) Equal(iface interface{}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 662. LocalDiscoveryEnabled
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type LocalDiscoveryEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *LocalDiscoveryEnabled) Name() string          { return "LocalDiscoveryEnabled" }
-func (p *LocalDiscoveryEnabled) Field() string         { return "" }
-func (p *LocalDiscoveryEnabled) Scope() Scope          { return ScopeUser }
-func (p *LocalDiscoveryEnabled) Status() Status        { return p.Stat }
-func (p *LocalDiscoveryEnabled) UntypedV() interface{} { return p.Val }
-func (p *LocalDiscoveryEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *LocalDiscoveryEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 664. PrintingAPIExtensionsWhitelist
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -15140,66 +14140,6 @@ func (p *ScreenCaptureAllowed) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 668. BlockUnsupportedFiletypes
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type BlockUnsupportedFiletypes struct {
-	Stat Status
-	Val  int
-}
-
-func (p *BlockUnsupportedFiletypes) Name() string          { return "BlockUnsupportedFiletypes" }
-func (p *BlockUnsupportedFiletypes) Field() string         { return "" }
-func (p *BlockUnsupportedFiletypes) Scope() Scope          { return ScopeUser }
-func (p *BlockUnsupportedFiletypes) Status() Status        { return p.Stat }
-func (p *BlockUnsupportedFiletypes) UntypedV() interface{} { return p.Val }
-func (p *BlockUnsupportedFiletypes) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *BlockUnsupportedFiletypes) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 669. URLsToNotCheckForMalwareOfDownloadedContent
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type URLsToNotCheckForMalwareOfDownloadedContent struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *URLsToNotCheckForMalwareOfDownloadedContent) Name() string {
-	return "URLsToNotCheckForMalwareOfDownloadedContent"
-}
-func (p *URLsToNotCheckForMalwareOfDownloadedContent) Field() string         { return "" }
-func (p *URLsToNotCheckForMalwareOfDownloadedContent) Scope() Scope          { return ScopeUser }
-func (p *URLsToNotCheckForMalwareOfDownloadedContent) Status() Status        { return p.Stat }
-func (p *URLsToNotCheckForMalwareOfDownloadedContent) UntypedV() interface{} { return p.Val }
-func (p *URLsToNotCheckForMalwareOfDownloadedContent) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *URLsToNotCheckForMalwareOfDownloadedContent) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 670. DeviceMinimumVersion
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -15278,9 +14218,10 @@ type SystemProxySettings struct {
 }
 
 type SystemProxySettingsValue struct {
-	SystemProxyEnabled     bool   `json:"system_proxy_enabled"`
-	SystemServicesPassword string `json:"system_services_password"`
-	SystemServicesUsername string `json:"system_services_username"`
+	PolicyCredentialsAuthSchemes []string `json:"policy_credentials_auth_schemes"`
+	SystemProxyEnabled           bool     `json:"system_proxy_enabled"`
+	SystemServicesPassword       string   `json:"system_services_password"`
+	SystemServicesUsername       string   `json:"system_services_username"`
 }
 
 func (p *SystemProxySettings) Name() string          { return "SystemProxySettings" }
@@ -15649,37 +14590,6 @@ func (p *ScrollToTextFragmentEnabled) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 688. ManagedGuestSessionAutoLaunchNotificationReduced
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type ManagedGuestSessionAutoLaunchNotificationReduced struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *ManagedGuestSessionAutoLaunchNotificationReduced) Name() string {
-	return "ManagedGuestSessionAutoLaunchNotificationReduced"
-}
-func (p *ManagedGuestSessionAutoLaunchNotificationReduced) Field() string         { return "" }
-func (p *ManagedGuestSessionAutoLaunchNotificationReduced) Scope() Scope          { return ScopeUser }
-func (p *ManagedGuestSessionAutoLaunchNotificationReduced) Status() Status        { return p.Stat }
-func (p *ManagedGuestSessionAutoLaunchNotificationReduced) UntypedV() interface{} { return p.Val }
-func (p *ManagedGuestSessionAutoLaunchNotificationReduced) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *ManagedGuestSessionAutoLaunchNotificationReduced) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 689. SystemFeaturesDisableList
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -15702,35 +14612,6 @@ func (p *SystemFeaturesDisableList) UnmarshalAs(m json.RawMessage) (interface{},
 }
 func (p *SystemFeaturesDisableList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 690. CrostiniArcAdbSideloadingAllowed
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type CrostiniArcAdbSideloadingAllowed struct {
-	Stat Status
-	Val  int
-}
-
-func (p *CrostiniArcAdbSideloadingAllowed) Name() string          { return "CrostiniArcAdbSideloadingAllowed" }
-func (p *CrostiniArcAdbSideloadingAllowed) Field() string         { return "" }
-func (p *CrostiniArcAdbSideloadingAllowed) Scope() Scope          { return ScopeUser }
-func (p *CrostiniArcAdbSideloadingAllowed) Status() Status        { return p.Stat }
-func (p *CrostiniArcAdbSideloadingAllowed) UntypedV() interface{} { return p.Val }
-func (p *CrostiniArcAdbSideloadingAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *CrostiniArcAdbSideloadingAllowed) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
 	if !ok {
 		return ok
 	}
@@ -15868,39 +14749,6 @@ func (p *VoiceInteractionQuickAnswersEnabled) UnmarshalAs(m json.RawMessage) (in
 }
 func (p *VoiceInteractionQuickAnswersEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 695. DeviceCrostiniArcAdbSideloadingAllowed
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type DeviceCrostiniArcAdbSideloadingAllowed struct {
-	Stat Status
-	Val  int
-}
-
-func (p *DeviceCrostiniArcAdbSideloadingAllowed) Name() string {
-	return "DeviceCrostiniArcAdbSideloadingAllowed"
-}
-func (p *DeviceCrostiniArcAdbSideloadingAllowed) Field() string {
-	return "device_crostini_arc_adb_sideloading_allowed.mode"
-}
-func (p *DeviceCrostiniArcAdbSideloadingAllowed) Scope() Scope          { return ScopeDevice }
-func (p *DeviceCrostiniArcAdbSideloadingAllowed) Status() Status        { return p.Stat }
-func (p *DeviceCrostiniArcAdbSideloadingAllowed) UntypedV() interface{} { return p.Val }
-func (p *DeviceCrostiniArcAdbSideloadingAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *DeviceCrostiniArcAdbSideloadingAllowed) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
 	if !ok {
 		return ok
 	}
@@ -16933,6 +15781,93 @@ func (p *SafeBrowsingAllowlistDomains) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 733. DevicePrintersAccessMode
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DevicePrintersAccessMode struct {
+	Stat Status
+	Val  int
+}
+
+func (p *DevicePrintersAccessMode) Name() string          { return "DevicePrintersAccessMode" }
+func (p *DevicePrintersAccessMode) Field() string         { return "device_printers_access_mode.access_mode" }
+func (p *DevicePrintersAccessMode) Scope() Scope          { return ScopeDevice }
+func (p *DevicePrintersAccessMode) Status() Status        { return p.Stat }
+func (p *DevicePrintersAccessMode) UntypedV() interface{} { return p.Val }
+func (p *DevicePrintersAccessMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *DevicePrintersAccessMode) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 734. DevicePrintersBlocklist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DevicePrintersBlocklist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *DevicePrintersBlocklist) Name() string          { return "DevicePrintersBlocklist" }
+func (p *DevicePrintersBlocklist) Field() string         { return "device_printers_blocklist.blocklist" }
+func (p *DevicePrintersBlocklist) Scope() Scope          { return ScopeDevice }
+func (p *DevicePrintersBlocklist) Status() Status        { return p.Stat }
+func (p *DevicePrintersBlocklist) UntypedV() interface{} { return p.Val }
+func (p *DevicePrintersBlocklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *DevicePrintersBlocklist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 735. DevicePrintersAllowlist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DevicePrintersAllowlist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *DevicePrintersAllowlist) Name() string          { return "DevicePrintersAllowlist" }
+func (p *DevicePrintersAllowlist) Field() string         { return "device_printers_allowlist.allowlist" }
+func (p *DevicePrintersAllowlist) Scope() Scope          { return ScopeDevice }
+func (p *DevicePrintersAllowlist) Status() Status        { return p.Stat }
+func (p *DevicePrintersAllowlist) UntypedV() interface{} { return p.Val }
+func (p *DevicePrintersAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *DevicePrintersAllowlist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 736. URLBlocklist
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -17137,7 +16072,42 @@ func (p *AutoplayAllowlist) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 743. DevicePrinters
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DevicePrinters struct {
+	Stat Status
+	Val  *DevicePrintersValue
+}
+
+type DevicePrintersValue struct {
+	Hash string `json:"hash"`
+	Url  string `json:"url"`
+}
+
+func (p *DevicePrinters) Name() string          { return "DevicePrinters" }
+func (p *DevicePrinters) Field() string         { return "device_printers.external_policy" }
+func (p *DevicePrinters) Scope() Scope          { return ScopeDevice }
+func (p *DevicePrinters) Status() Status        { return p.Stat }
+func (p *DevicePrinters) UntypedV() interface{} { return p.Val }
+func (p *DevicePrinters) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v *DevicePrintersValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as *DevicePrintersValue", m)
+	}
+	return v, nil
+}
+func (p *DevicePrinters) Equal(iface interface{}) bool {
+	v, ok := iface.(*DevicePrintersValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 746. AuthNegotiateDelegateAllowlist
+// This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
 type AuthNegotiateDelegateAllowlist struct {
 	Stat Status
@@ -17166,6 +16136,7 @@ func (p *AuthNegotiateDelegateAllowlist) Equal(iface interface{}) bool {
 
 ///////////////////////////////////////////////////////////////////////////////
 // 747. AuthServerAllowlist
+// This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
 type AuthServerAllowlist struct {
 	Stat Status
@@ -17367,6 +16338,93 @@ func (p *SerialBlockedForUrls) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 754. DefaultSensorsSetting
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DefaultSensorsSetting struct {
+	Stat Status
+	Val  int
+}
+
+func (p *DefaultSensorsSetting) Name() string          { return "DefaultSensorsSetting" }
+func (p *DefaultSensorsSetting) Field() string         { return "" }
+func (p *DefaultSensorsSetting) Scope() Scope          { return ScopeUser }
+func (p *DefaultSensorsSetting) Status() Status        { return p.Stat }
+func (p *DefaultSensorsSetting) UntypedV() interface{} { return p.Val }
+func (p *DefaultSensorsSetting) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *DefaultSensorsSetting) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 755. SensorsAllowedForUrls
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type SensorsAllowedForUrls struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *SensorsAllowedForUrls) Name() string          { return "SensorsAllowedForUrls" }
+func (p *SensorsAllowedForUrls) Field() string         { return "" }
+func (p *SensorsAllowedForUrls) Scope() Scope          { return ScopeUser }
+func (p *SensorsAllowedForUrls) Status() Status        { return p.Stat }
+func (p *SensorsAllowedForUrls) UntypedV() interface{} { return p.Val }
+func (p *SensorsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *SensorsAllowedForUrls) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 756. SensorsBlockedForUrls
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type SensorsBlockedForUrls struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *SensorsBlockedForUrls) Name() string          { return "SensorsBlockedForUrls" }
+func (p *SensorsBlockedForUrls) Field() string         { return "" }
+func (p *SensorsBlockedForUrls) Scope() Scope          { return ScopeUser }
+func (p *SensorsBlockedForUrls) Status() Status        { return p.Stat }
+func (p *SensorsBlockedForUrls) UntypedV() interface{} { return p.Val }
+func (p *SensorsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *SensorsBlockedForUrls) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 759. NoteTakingAppsLockScreenAllowlist
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -17461,6 +16519,63 @@ func (p *DeviceShowLowDiskSpaceNotification) UnmarshalAs(m json.RawMessage) (int
 }
 func (p *DeviceShowLowDiskSpaceNotification) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 764. DeviceUserAllowlist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DeviceUserAllowlist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *DeviceUserAllowlist) Name() string          { return "DeviceUserAllowlist" }
+func (p *DeviceUserAllowlist) Field() string         { return "user_allowlist.user_allowlist" }
+func (p *DeviceUserAllowlist) Scope() Scope          { return ScopeDevice }
+func (p *DeviceUserAllowlist) Status() Status        { return p.Stat }
+func (p *DeviceUserAllowlist) UntypedV() interface{} { return p.Val }
+func (p *DeviceUserAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *DeviceUserAllowlist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 765. UsbDetachableAllowlist
+///////////////////////////////////////////////////////////////////////////////
+type UsbDetachableAllowlist struct {
+	Stat Status
+	Val  []*RefUsbDeviceIdInclusive
+}
+
+func (p *UsbDetachableAllowlist) Name() string          { return "UsbDetachableAllowlist" }
+func (p *UsbDetachableAllowlist) Field() string         { return "usb_detachable_allowlist.id" }
+func (p *UsbDetachableAllowlist) Scope() Scope          { return ScopeDevice }
+func (p *UsbDetachableAllowlist) Status() Status        { return p.Stat }
+func (p *UsbDetachableAllowlist) UntypedV() interface{} { return p.Val }
+func (p *UsbDetachableAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*RefUsbDeviceIdInclusive
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*RefUsbDeviceIdInclusive", m)
+	}
+	return v, nil
+}
+func (p *UsbDetachableAllowlist) Equal(iface interface{}) bool {
+	v, ok := iface.([]*RefUsbDeviceIdInclusive)
 	if !ok {
 		return ok
 	}
@@ -17881,6 +16996,425 @@ func (p *LookalikeWarningAllowlistDomains) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 783. PrintingAPIExtensionsAllowlist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type PrintingAPIExtensionsAllowlist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *PrintingAPIExtensionsAllowlist) Name() string          { return "PrintingAPIExtensionsAllowlist" }
+func (p *PrintingAPIExtensionsAllowlist) Field() string         { return "" }
+func (p *PrintingAPIExtensionsAllowlist) Scope() Scope          { return ScopeUser }
+func (p *PrintingAPIExtensionsAllowlist) Status() Status        { return p.Stat }
+func (p *PrintingAPIExtensionsAllowlist) UntypedV() interface{} { return p.Val }
+func (p *PrintingAPIExtensionsAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *PrintingAPIExtensionsAllowlist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 784. QuickUnlockModeAllowlist
+// This policy has a default value of [].
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type QuickUnlockModeAllowlist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *QuickUnlockModeAllowlist) Name() string          { return "QuickUnlockModeAllowlist" }
+func (p *QuickUnlockModeAllowlist) Field() string         { return "" }
+func (p *QuickUnlockModeAllowlist) Scope() Scope          { return ScopeUser }
+func (p *QuickUnlockModeAllowlist) Status() Status        { return p.Stat }
+func (p *QuickUnlockModeAllowlist) UntypedV() interface{} { return p.Val }
+func (p *QuickUnlockModeAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *QuickUnlockModeAllowlist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 785. AttestationExtensionAllowlist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type AttestationExtensionAllowlist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *AttestationExtensionAllowlist) Name() string          { return "AttestationExtensionAllowlist" }
+func (p *AttestationExtensionAllowlist) Field() string         { return "" }
+func (p *AttestationExtensionAllowlist) Scope() Scope          { return ScopeUser }
+func (p *AttestationExtensionAllowlist) Status() Status        { return p.Stat }
+func (p *AttestationExtensionAllowlist) UntypedV() interface{} { return p.Val }
+func (p *AttestationExtensionAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *AttestationExtensionAllowlist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 787. WebRtcAllowLegacyTLSProtocols
+///////////////////////////////////////////////////////////////////////////////
+type WebRtcAllowLegacyTLSProtocols struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *WebRtcAllowLegacyTLSProtocols) Name() string          { return "WebRtcAllowLegacyTLSProtocols" }
+func (p *WebRtcAllowLegacyTLSProtocols) Field() string         { return "" }
+func (p *WebRtcAllowLegacyTLSProtocols) Scope() Scope          { return ScopeUser }
+func (p *WebRtcAllowLegacyTLSProtocols) Status() Status        { return p.Stat }
+func (p *WebRtcAllowLegacyTLSProtocols) UntypedV() interface{} { return p.Val }
+func (p *WebRtcAllowLegacyTLSProtocols) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *WebRtcAllowLegacyTLSProtocols) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 788. MediaRecommendationsEnabled
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type MediaRecommendationsEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *MediaRecommendationsEnabled) Name() string          { return "MediaRecommendationsEnabled" }
+func (p *MediaRecommendationsEnabled) Field() string         { return "" }
+func (p *MediaRecommendationsEnabled) Scope() Scope          { return ScopeUser }
+func (p *MediaRecommendationsEnabled) Status() Status        { return p.Stat }
+func (p *MediaRecommendationsEnabled) UntypedV() interface{} { return p.Val }
+func (p *MediaRecommendationsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *MediaRecommendationsEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 789. DeviceFamilyLinkAccountsAllowed
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DeviceFamilyLinkAccountsAllowed struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *DeviceFamilyLinkAccountsAllowed) Name() string { return "DeviceFamilyLinkAccountsAllowed" }
+func (p *DeviceFamilyLinkAccountsAllowed) Field() string {
+	return "family_link_accounts_allowed.family_link_accounts_allowed"
+}
+func (p *DeviceFamilyLinkAccountsAllowed) Scope() Scope          { return ScopeDevice }
+func (p *DeviceFamilyLinkAccountsAllowed) Status() Status        { return p.Stat }
+func (p *DeviceFamilyLinkAccountsAllowed) UntypedV() interface{} { return p.Val }
+func (p *DeviceFamilyLinkAccountsAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *DeviceFamilyLinkAccountsAllowed) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 791. BrowsingDataLifetime
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type BrowsingDataLifetime struct {
+	Stat Status
+	Val  []*BrowsingDataLifetimeValue
+}
+
+type BrowsingDataLifetimeValue struct {
+	DataTypes         []string `json:"data_types"`
+	TimeToLiveInHours int      `json:"time_to_live_in_hours"`
+}
+
+func (p *BrowsingDataLifetime) Name() string          { return "BrowsingDataLifetime" }
+func (p *BrowsingDataLifetime) Field() string         { return "" }
+func (p *BrowsingDataLifetime) Scope() Scope          { return ScopeUser }
+func (p *BrowsingDataLifetime) Status() Status        { return p.Stat }
+func (p *BrowsingDataLifetime) UntypedV() interface{} { return p.Val }
+func (p *BrowsingDataLifetime) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*BrowsingDataLifetimeValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*BrowsingDataLifetimeValue", m)
+	}
+	return v, nil
+}
+func (p *BrowsingDataLifetime) Equal(iface interface{}) bool {
+	v, ok := iface.([]*BrowsingDataLifetimeValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 792. IntranetRedirectBehavior
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type IntranetRedirectBehavior struct {
+	Stat Status
+	Val  int
+}
+
+func (p *IntranetRedirectBehavior) Name() string          { return "IntranetRedirectBehavior" }
+func (p *IntranetRedirectBehavior) Field() string         { return "" }
+func (p *IntranetRedirectBehavior) Scope() Scope          { return ScopeUser }
+func (p *IntranetRedirectBehavior) Status() Status        { return p.Stat }
+func (p *IntranetRedirectBehavior) UntypedV() interface{} { return p.Val }
+func (p *IntranetRedirectBehavior) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *IntranetRedirectBehavior) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 793. LacrosAllowed
+// This policy has a default value of False.
+///////////////////////////////////////////////////////////////////////////////
+type LacrosAllowed struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *LacrosAllowed) Name() string          { return "LacrosAllowed" }
+func (p *LacrosAllowed) Field() string         { return "" }
+func (p *LacrosAllowed) Scope() Scope          { return ScopeUser }
+func (p *LacrosAllowed) Status() Status        { return p.Stat }
+func (p *LacrosAllowed) UntypedV() interface{} { return p.Val }
+func (p *LacrosAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *LacrosAllowed) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 794. DeviceArcDataSnapshotHours
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DeviceArcDataSnapshotHours struct {
+	Stat Status
+	Val  *DeviceArcDataSnapshotHoursValue
+}
+
+type DeviceArcDataSnapshotHoursValue struct {
+	Intervals []*RefWeeklyTimeIntervals `json:"intervals"`
+	Timezone  string                    `json:"timezone"`
+}
+
+func (p *DeviceArcDataSnapshotHours) Name() string { return "DeviceArcDataSnapshotHours" }
+func (p *DeviceArcDataSnapshotHours) Field() string {
+	return "arc_data_snapshot_hours.arc_data_snapshot_hours"
+}
+func (p *DeviceArcDataSnapshotHours) Scope() Scope          { return ScopeDevice }
+func (p *DeviceArcDataSnapshotHours) Status() Status        { return p.Stat }
+func (p *DeviceArcDataSnapshotHours) UntypedV() interface{} { return p.Val }
+func (p *DeviceArcDataSnapshotHours) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v *DeviceArcDataSnapshotHoursValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as *DeviceArcDataSnapshotHoursValue", m)
+	}
+	return v, nil
+}
+func (p *DeviceArcDataSnapshotHours) Equal(iface interface{}) bool {
+	v, ok := iface.(*DeviceArcDataSnapshotHoursValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 802. TargetBlankImpliesNoOpener
+///////////////////////////////////////////////////////////////////////////////
+type TargetBlankImpliesNoOpener struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *TargetBlankImpliesNoOpener) Name() string          { return "TargetBlankImpliesNoOpener" }
+func (p *TargetBlankImpliesNoOpener) Field() string         { return "" }
+func (p *TargetBlankImpliesNoOpener) Scope() Scope          { return ScopeUser }
+func (p *TargetBlankImpliesNoOpener) Status() Status        { return p.Stat }
+func (p *TargetBlankImpliesNoOpener) UntypedV() interface{} { return p.Val }
+func (p *TargetBlankImpliesNoOpener) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *TargetBlankImpliesNoOpener) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 804. FullscreenAlertEnabled
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type FullscreenAlertEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *FullscreenAlertEnabled) Name() string          { return "FullscreenAlertEnabled" }
+func (p *FullscreenAlertEnabled) Field() string         { return "" }
+func (p *FullscreenAlertEnabled) Scope() Scope          { return ScopeUser }
+func (p *FullscreenAlertEnabled) Status() Status        { return p.Stat }
+func (p *FullscreenAlertEnabled) UntypedV() interface{} { return p.Val }
+func (p *FullscreenAlertEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *FullscreenAlertEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 805. NTPCardsVisible
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type NTPCardsVisible struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *NTPCardsVisible) Name() string          { return "NTPCardsVisible" }
+func (p *NTPCardsVisible) Field() string         { return "" }
+func (p *NTPCardsVisible) Scope() Scope          { return ScopeUser }
+func (p *NTPCardsVisible) Status() Status        { return p.Stat }
+func (p *NTPCardsVisible) UntypedV() interface{} { return p.Val }
+func (p *NTPCardsVisible) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *NTPCardsVisible) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 806. BasicAuthOverHttpEnabled
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type BasicAuthOverHttpEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *BasicAuthOverHttpEnabled) Name() string          { return "BasicAuthOverHttpEnabled" }
+func (p *BasicAuthOverHttpEnabled) Field() string         { return "" }
+func (p *BasicAuthOverHttpEnabled) Scope() Scope          { return ScopeUser }
+func (p *BasicAuthOverHttpEnabled) Status() Status        { return p.Stat }
+func (p *BasicAuthOverHttpEnabled) UntypedV() interface{} { return p.Val }
+func (p *BasicAuthOverHttpEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *BasicAuthOverHttpEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // Reference values (used via '$ref' in JSON Schema).
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -17908,13 +17442,18 @@ type RefDeviceLoginScreenPowerSettingsDelays struct {
 }
 
 type RefBookmarkType struct {
-	Children     []*RefBookmarkType `json:"children"`
+	Children     []*RefBookmarkType `json:"children,omitempty"`
 	Name         string             `json:"name"`
 	ToplevelName string             `json:"toplevel_name"`
 	Url          string             `json:"url"`
 }
 
 type RefUsbDeviceId struct {
+	ProductId int `json:"product_id"`
+	VendorId  int `json:"vendor_id"`
+}
+
+type RefUsbDeviceIdInclusive struct {
 	ProductId int `json:"product_id"`
 	VendorId  int `json:"vendor_id"`
 }
