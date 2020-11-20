@@ -22,6 +22,30 @@
       },
       "revId": "b179d375174c9cc8660c70e62a58be416294c6f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc7c9cc_4aa35c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-20T01:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "459e2fc7_1e3793af",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "b179d375174c9cc8660c70e62a58be416294c6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
