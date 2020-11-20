@@ -80,6 +80,30 @@
       },
       "revId": "d167a5762013d96c9035796de33653808e244884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7d124d_c355f9c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-11-20T18:41:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0904a04c_f3aaf661",
+      "range": {
+        "startLine": 207,
+        "startChar": 36,
+        "endLine": 207,
+        "endChar": 56
+      },
+      "revId": "d167a5762013d96c9035796de33653808e244884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
