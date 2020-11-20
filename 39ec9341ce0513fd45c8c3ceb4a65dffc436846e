@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb691ba5_f9a85738",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_magnifier_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-20T16:13:14Z",
+      "side": 1,
+      "message": "could you avoid sprintf?\n\ntconn.Call(ctx, \u0026value, `async (name) \u003d\u003e {\n    let result \u003d await tast.promisify(tast.bind(chrome.accessibilityFeatures[name], \"get\"))({});\n     ...\n}`, item.name)",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 47
+      },
+      "revId": "39ec9341ce0513fd45c8c3ceb4a65dffc436846e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe5aec08_1c0dab81",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_magnifier_type.go",
         "patchSetId": 1
@@ -36,6 +59,29 @@
         "startChar": 14,
         "endLine": 104,
         "endChar": 28
+      },
+      "revId": "39ec9341ce0513fd45c8c3ceb4a65dffc436846e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236f8129_4a0d76de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_magnifier_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-20T16:13:14Z",
+      "side": 1,
+      "message": "screenMagnifier and dockedMagnifier looks independent?\nIf so, s.Errorf() to check dockeedMagnifier even if screenMagnifier has unexpected value for better coverage.",
+      "range": {
+        "startLine": 107,
+        "startChar": 7,
+        "endLine": 107,
+        "endChar": 13
       },
       "revId": "39ec9341ce0513fd45c8c3ceb4a65dffc436846e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
