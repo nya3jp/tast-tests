@@ -22,6 +22,30 @@
       },
       "revId": "dc840cadef287f72973c2c84f12ad3cfbeba3eda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e20160d_4f85fe6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-11-20T20:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d307c4_9f5e6d06",
+      "range": {
+        "startLine": 718,
+        "startChar": 25,
+        "endLine": 718,
+        "endChar": 73
+      },
+      "revId": "dc840cadef287f72973c2c84f12ad3cfbeba3eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
