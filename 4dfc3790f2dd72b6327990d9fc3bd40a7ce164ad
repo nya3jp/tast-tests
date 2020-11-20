@@ -46,6 +46,30 @@
       },
       "revId": "4dfc3790f2dd72b6327990d9fc3bd40a7ce164ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da06d642_40d5825a",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-20T19:39:45Z",
+      "side": 1,
+      "message": "Is there a cl to change code int the test?",
+      "parentUuid": "b5b77152_1b6c50e7",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "4dfc3790f2dd72b6327990d9fc3bd40a7ce164ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
