@@ -156,7 +156,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	device = match[1]
 
 	expectedFirstAPILevel := getProperty(propertySDKVersion)
-	if getProperty(propertyModel) == "rammus-arc-r" {
+	if device == "rammus" && strings.HasSuffix(board, "-arc-r") {
 		// TODO(b/159985784): Remove the hack once we bring up a board truly
 		// setting first_api_level=30.
 		//
