@@ -38,35 +38,45 @@ func OOBESmoke(ctx context.Context, s *testing.State) {
 	}
 	defer oobeConn.Close()
 
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "!document.querySelector('oobe-welcome-md[hidden]')"); err != nil {
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the welcome screen to be visible: ", err)
 	}
-	if err := oobeConn.Exec(ctx, "document.querySelector('oobe-welcome-md').$.welcomeScreen.$.welcomeNextButton.click()"); err != nil {
+	if err := oobeConn.Exec(ctx, "OobeAPI.screens.WelcomeScreen.clickNext()"); err != nil {
 		s.Fatal("Failed to click welcome page next button: ", err)
 	}
 
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "!document.querySelector('oobe-network[hidden]')"); err != nil {
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the network screen to be visible: ", err)
 	}
-	if err := oobeConn.Exec(ctx, "document.querySelector('oobe-network').$.nextButton.click()"); err != nil {
+	if err := oobeConn.Exec(ctx, "OobeAPI.screens.NetworkScreen.clickNext()"); err != nil {
 		s.Fatal("Failed to click network page next button: ", err)
 	}
 
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "!document.querySelector('oobe-eula-md[hidden]')"); err != nil {
-		s.Fatal("Failed to wait for the eula screen to be visible: ", err)
-	}
-	if err := oobeConn.Exec(ctx, "document.querySelector('oobe-eula-md').$.acceptButton.click()"); err != nil {
-		s.Fatal("Failed to click accept eula button: ", err)
+	shouldSkipEulaScreen := false
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.EulaScreen.shouldSkip()", &shouldSkipEulaScreen); err != nil {
+		s.Fatal("Failed to evaluate whether to skip Eula screen: ", err)
 	}
 
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "!document.querySelector('user-creation.hidden')"); err != nil {
+	if !shouldSkipEulaScreen {
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EulaScreen.isVisible()"); err != nil {
+			s.Fatal("Failed to wait for the eula screen to be visible: ", err)
+		}
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EulaScreen.nextButton.isEnabled()"); err != nil {
+			s.Fatal("Failed to wait for the accept eula button to be enabled: ", err)
+		}
+		if err := oobeConn.Exec(ctx, "OobeAPI.screens.EulaScreen.clickNext()"); err != nil {
+			s.Fatal("Failed to click accept eula button: ", err)
+		}
+	}
+
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.UserCreationScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the user creation screen to be visible: ", err)
 	}
-	if err := oobeConn.Exec(ctx, "document.querySelector('user-creation').$.nextButton.click()"); err != nil {
+	if err := oobeConn.Exec(ctx, "OobeAPI.screens.UserCreationScreen.clickNext()"); err != nil {
 		s.Fatal("Failed to click user creation screen next button: ", err)
 	}
 
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "!document.querySelector('gaia-signin[hidden]')"); err != nil {
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.GaiaScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the login screen to be visible: ", err)
 	}
 }
