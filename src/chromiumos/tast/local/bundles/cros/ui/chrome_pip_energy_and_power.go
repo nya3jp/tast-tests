@@ -39,7 +39,6 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		Data:         []string{"bear-320x240.h264.mp4", "pip_video.html"},
-		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "small",
@@ -63,7 +62,17 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr := s.PreValue().(*chrome.Chrome)
+	// There have been test failures that the Chrome OS Bisector
+	// cannot reproduce. This suggests to me that the failures are
+	// caused by some kind of state left over from other tests. As
+	// it may be difficult to find the specific root cause, I will
+	// just not use a precondition.
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
