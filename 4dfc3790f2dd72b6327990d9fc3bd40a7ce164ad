@@ -22,6 +22,30 @@
       },
       "revId": "4dfc3790f2dd72b6327990d9fc3bd40a7ce164ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5b77152_1b6c50e7",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2020-11-20T19:38:06Z",
+      "side": 1,
+      "message": "It\u0027s used in a crosint test",
+      "parentUuid": "7bc1374b_6eeab9ca",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "4dfc3790f2dd72b6327990d9fc3bd40a7ce164ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
