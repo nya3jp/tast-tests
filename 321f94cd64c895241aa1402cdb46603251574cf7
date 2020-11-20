@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "948dc0de_6f0c00e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2020-11-20T20:03:00Z",
+      "side": 1,
+      "message": "Sure. Thanks!",
+      "parentUuid": "2521f56f_247d338b",
+      "revId": "321f94cd64c895241aa1402cdb46603251574cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e8d74b1_07812591",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-19T19:38:18Z",
       "side": 1,
       "message": "I think you missed my comments for the previous CL\u0027s, can you change \nappActivity \u003d \".view.activities.StartupActivity\"",
+      "revId": "321f94cd64c895241aa1402cdb46603251574cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8520ccb7_db7a4567",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/autocad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2020-11-20T20:03:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e8d74b1_07812591",
       "revId": "321f94cd64c895241aa1402cdb46603251574cf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
