@@ -16,6 +16,92 @@
       "message": "Adding Alexander for team specific tast review.",
       "revId": "59c6968a8edbb46fc0deb5853692bed2cf9a7b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45887616_b48a7007",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-20T15:15:02Z",
+      "side": 1,
+      "message": "Thanks for adding the test.",
+      "revId": "59c6968a8edbb46fc0deb5853692bed2cf9a7b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85cd7463_544477af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-20T15:15:02Z",
+      "side": 1,
+      "message": "nit: Let\u0027s put a better description here. Some tests in the past used this but it doesn\u0027t really describe the test.\nHow about: \"Check if YouTube content is viewable according to the value set for the policy\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 48
+      },
+      "revId": "59c6968a8edbb46fc0deb5853692bed2cf9a7b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1260d46_ab67bb6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-20T15:15:02Z",
+      "side": 1,
+      "message": "nit: \"Failed to verify YouTube content restriction: \"",
+      "range": {
+        "startLine": 82,
+        "startChar": 12,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "59c6968a8edbb46fc0deb5853692bed2cf9a7b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9b84979_b52cdf75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-20T15:15:02Z",
+      "side": 1,
+      "message": "5 seconds seems a little bit too short. Let\u0027s increase it to 15 to make sure and reduce flakyness due to loading times.",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 28
+      },
+      "revId": "59c6968a8edbb46fc0deb5853692bed2cf9a7b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
