@@ -25,7 +25,7 @@ func init() {
 		Timeout:      8 * time.Minute,
 		Contacts:     []string{"cros-fw-engprod@google.com", "aluo@google.com"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:firmware", "firmware_smoke"},
 		SoftwareDeps: []string{"flashrom"},
 	})
 }

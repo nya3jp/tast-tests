@@ -19,7 +19,7 @@ func init() {
 		Desc:        "Verifies that firmware tests can remotely perform a blocking sync on the DUT",
 		Contacts:    []string{"cros-fw-engprod@google.com"},
 		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
-		Attr:        []string{"group:mainline", "informational"},
+		Attr:        []string{"group:mainline", "informational", "group:firmware", "firmware_smoke"},
 	})
 }
 

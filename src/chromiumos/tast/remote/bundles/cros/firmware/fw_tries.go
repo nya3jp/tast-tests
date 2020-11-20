@@ -17,7 +17,7 @@ func init() {
 		Desc:         "Verify that the DUT can be specified to boot from A or B",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
 		SoftwareDeps: []string{"crossystem"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:firmware", "firmware_smoke"},
 	})
 }
 
