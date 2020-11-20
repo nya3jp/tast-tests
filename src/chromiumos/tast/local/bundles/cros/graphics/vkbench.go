@@ -48,7 +48,7 @@ func init() {
 			"pwang@chromium.org",
 			"chromeos-gfx@google.com",
 		},
-		SoftwareDeps: []string{"no_qemu"},
+		SoftwareDeps: []string{"no_qemu", "vulkan"},
 		Params: []testing.Param{
 			{
 				Name:      "",
@@ -95,7 +95,7 @@ func VKBench(ctx context.Context, s *testing.State) {
 	var cmd *testexec.Cmd
 	args := []string{"--spirv_dir", vkbenchShaderPath, "--out_dir", s.OutDir()}
 	if testConfig.hasty {
-		args = append(args, "-hasty")
+		args = append(args, "--hasty")
 	}
 	cmd = testexec.CommandContext(ctx, vkbenchPath, args...)
 	s.Log("Running ", shutil.EscapeSlice(cmd.Args))
