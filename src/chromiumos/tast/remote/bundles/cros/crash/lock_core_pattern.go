@@ -16,7 +16,7 @@ func init() {
 		Func:         LockCorePattern,
 		Desc:         "Verify locked |core_pattern| after `crash_reporter --init` on kernels <= 3.18",
 		Contacts:     []string{"sarthakkukreti@chromium.org", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"lock_core_pattern", "reboot"},
 	})
 }
