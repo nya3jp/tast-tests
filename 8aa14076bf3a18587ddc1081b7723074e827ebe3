@@ -56,6 +56,30 @@
       },
       "revId": "8aa14076bf3a18587ddc1081b7723074e827ebe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f0fa7d_212e1d03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-20T12:33:23Z",
+      "side": 1,
+      "message": "It looks like it\u0027s the same format as in other tests:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/arc_backup_restore_service_enabled.go;l\u003d23\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go;l\u003d22\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/autoclick_enabled.go;l\u003d24\n\nDo you mean anything specific?",
+      "parentUuid": "59332698_a85cb142",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 112
+      },
+      "revId": "8aa14076bf3a18587ddc1081b7723074e827ebe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
