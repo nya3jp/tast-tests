@@ -33,6 +33,23 @@
       "message": "deanliao@, please +2 if CL looks good to you. Thanks.",
       "revId": "d5f2e5a13176d594f2d906ac159dac5048f1e0f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51682fbf_8bbe5940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-20T18:09:51Z",
+      "side": 1,
+      "message": "yichenz@, do you mind to review and +1 on the CL? From my other CL, the tast owner wants one test owner to review the CL as well. Thanks.",
+      "revId": "d5f2e5a13176d594f2d906ac159dac5048f1e0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
