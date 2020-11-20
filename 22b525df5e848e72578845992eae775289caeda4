@@ -431,6 +431,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c81c27e6_b5e90518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T12:07:14Z",
+      "side": 1,
+      "message": "Right, this is expected behaviour which we can test by adding more test cases:\n- DefaultSearchProviderEnabled is not set and DefaultSearchProviderSearchURL is set to fake;\n- DefaultSearchProviderEnabled is set to false and DefaultSearchProviderSearchURL is set to fake",
+      "parentUuid": "aeb3a946_e9167eed",
+      "range": {
+        "startLine": 87,
+        "startChar": 70,
+        "endLine": 87,
+        "endChar": 117
+      },
+      "revId": "22b525df5e848e72578845992eae775289caeda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5ed85ec_58392f5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
         "patchSetId": 5

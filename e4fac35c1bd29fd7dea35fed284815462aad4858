@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "505da75e_208b46cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T12:07:14Z",
+      "side": 1,
+      "message": "have few more comments",
+      "revId": "e4fac35c1bd29fd7dea35fed284815462aad4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ede146_b2ea37b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T12:07:14Z",
+      "side": 1,
+      "message": "we need to request addressBar UI node inside testing.Poll, because addressBar.Value won\u0027t be updated in itself. You probably was lucky that after first request of addressBar you received updated value, however might not work for some slower devices.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "e4fac35c1bd29fd7dea35fed284815462aad4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ecd1a24_9115ce68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T12:07:14Z",
+      "side": 1,
+      "message": "nit: you can just rely on default interval which is 100ms",
+      "range": {
+        "startLine": 127,
+        "startChar": 54,
+        "endLine": 127,
+        "endChar": 79
+      },
+      "revId": "e4fac35c1bd29fd7dea35fed284815462aad4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3eae047_208aa470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T12:07:14Z",
+      "side": 1,
+      "message": "Can we use strings.HasPrefix instead?\n\nhttps://golang.org/pkg/strings/#HasPrefix",
+      "range": {
+        "startLine": 131,
+        "startChar": 7,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "e4fac35c1bd29fd7dea35fed284815462aad4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
