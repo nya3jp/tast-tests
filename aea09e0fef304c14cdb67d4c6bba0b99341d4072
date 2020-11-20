@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62290587_12ab567b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-11-20T02:55:52Z",
+      "side": 1,
+      "message": "Could we hold off submitting this until we see if tests are fixed by\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2550762",
+      "revId": "aea09e0fef304c14cdb67d4c6bba0b99341d4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
