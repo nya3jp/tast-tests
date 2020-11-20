@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dbe7dfa_7066d921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1252512
+      },
+      "writtenOn": "2020-11-20T14:20:57Z",
+      "side": 1,
+      "message": "Could you point me to the specific file please? I can\u0027t find an instance of exported policy values. I could only find declarations like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/incognito_mode_availability.go;l\u003d39;drc\u003dcf0a34c1169c2ac4429305d2e845fc7649bdfe1a within the test file.",
+      "parentUuid": "55640311_d84feaa4",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35561443_36e7fb2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-20T03:49:18Z",
       "side": 1,
       "message": "Maybe error here? IIUC, it is unexpected policyVal.Val.",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abeffc1d_4c20b12a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1252512
+      },
+      "writtenOn": "2020-11-20T14:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35561443_36e7fb2a",
       "range": {
         "startLine": 102,
         "startChar": 8,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed75d685_441551fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1252512
+      },
+      "writtenOn": "2020-11-20T14:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abae8082_7efe5e0c",
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dd5e93d_59863477",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e706645_d6d0551f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1252512
+      },
+      "writtenOn": "2020-11-20T14:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd5e93d_59863477",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0cd3295_14c1bc16",
@@ -117,6 +207,30 @@
       "writtenOn": "2020-11-20T03:49:18Z",
       "side": 1,
       "message": "nit: As all tests are in the same package, function names may collide. Maybe \"getYTErrorMessage\" so that it is less general.",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 20
+      },
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b22df69_d9c5c78b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1252512
+      },
+      "writtenOn": "2020-11-20T14:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0cd3295_14c1bc16",
       "range": {
         "startLine": 185,
         "startChar": 5,
