@@ -104,6 +104,24 @@
       "parentUuid": "28a9a568_f26ee15e",
       "revId": "dbbdb09efc5ac3a9807bcbbd40ee597614ed0bf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c079a0b0_78aaa288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2020-11-20T16:49:37Z",
+      "side": 1,
+      "message": "Great!  Can you please make sure those changes are also cherry picked to M88, so the test passes there as well?",
+      "parentUuid": "d7049043_0d872e66",
+      "revId": "dbbdb09efc5ac3a9807bcbbd40ee597614ed0bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
