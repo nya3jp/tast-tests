@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0732c2b3_58457447",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-20T17:32:18Z",
+      "side": 1,
+      "message": "Add the crbug here",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18211fa3_ea090d37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-20T17:32:18Z",
+      "side": 1,
+      "message": "Replace these with:\n\nchromeos-sw-engprod@google.com",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90fd839d_a6187a8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-20T17:32:18Z",
+      "side": 1,
+      "message": "Is there a login screen precondition you can use instead of getting there yourself?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139ccf56_92a5159c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-20T17:32:18Z",
+      "side": 1,
+      "message": "I think I asked this on Kyle\u0027s CL too but: Why do we use PodIconParams here and access the quicksettings constannts for the ones below?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd2a57e_39ac2cf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-20T17:32:18Z",
+      "side": 1,
+      "message": "This is nearly identical to the code in quick_settings_lock_screen.go\n\nCould you refactor it to the quicksettings library and update both tests to call it from there",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 0
+      },
+      "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
