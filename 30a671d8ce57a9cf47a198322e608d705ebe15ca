@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8cb08b9_740a308d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T13:40:48Z",
+      "side": 1,
+      "message": "But you already using it in vm_resizable_tablet and originally that constant live there. If it\u0027s used only in that test, why it should be in some separate helper file?",
+      "parentUuid": "9860ba47_09799319",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02a2a28b_428644c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 2
@@ -332,6 +356,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "014d9538_547a75a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T13:40:48Z",
+      "side": 1,
+      "message": "SetupAndRunTestCases passes original context to each test case method which means that even if you reserve some time for clean up test case, but shorter context will time out, then other test cases won\u0027t have enough time to run.\n\nSo it does not really matter whether you reserved time for clean up or not, other test cases will fail in case of timeout.\n\nYou can just rewrite to parametrised test and use all benefits from arc.Booted() precondition. Also other benefits: \n1. independently promote each test case to be part of CQ. You have a lot of test cases and each of them just adds more flakiness, which means it\u0027s extremely hard to add test to the CQ. In the future there will be more and more test cases.\n2. separate timeouts/contexts per test case. Otherwise you will need to increase all the time test timeout, because you will add more and more test case over time.",
+      "parentUuid": "daa241fd_326be6bd",
+      "range": {
+        "startLine": 676,
+        "startChar": 56,
+        "endLine": 676,
+        "endChar": 78
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93cbbd4e_f629cd38",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 2
@@ -461,6 +509,30 @@
       "side": 1,
       "message": "I am following this:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
       "parentUuid": "3166787d_f5cb69f2",
+      "range": {
+        "startLine": 692,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 4
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f79ce6b_9fc267e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T13:40:48Z",
+      "side": 1,
+      "message": "It\u0027s a bad example, I\u0027ll create a CL to fix it :( \n\nJust check official Golang context documentation, it says\n`pass a Context explicitly to each function that needs it`\nhttps://golang.org/pkg/context/#pkg-overview:~:text\u003dpass%20a%20Context%20explicitly%20to%20each%20function%20that%20needs%20it",
+      "parentUuid": "733a80d0_8e88dec5",
       "range": {
         "startLine": 692,
         "startChar": 0,
