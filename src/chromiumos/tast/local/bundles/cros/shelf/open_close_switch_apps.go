@@ -73,18 +73,15 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to pin Files app to the shelf: ", err)
 	}
 
-	// Find the shelf icon buttons.
-	// A short sleep here ensures the app icons are in the right place before we locate them.
-	// Without it, the test moves too quickly and will try to click the center of the shelf
-	// later, where the Chrome icon is initially located.
-	testing.Sleep(ctx, time.Second)
-	chromeBtn, err := ui.Find(ctx, tconn, ui.FindParams{ClassName: "ash/ShelfAppButton", Name: apps.Chrome.Name})
+	// Find the shelf icon buttons. StableFind ensures the shelf icons have stopped redistributing after launching the apps.
+	opts := testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second}
+	chromeBtn, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "ash/ShelfAppButton", Name: apps.Chrome.Name}, &opts)
 	if err != nil {
 		s.Fatal("Failed to find Chrome shelf button: ", err)
 	}
 	defer chromeBtn.Release(ctx)
 
-	filesBtn, err := ui.Find(ctx, tconn, ui.FindParams{ClassName: "ash/ShelfAppButton", Name: apps.Files.Name})
+	filesBtn, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "ash/ShelfAppButton", Name: apps.Files.Name}, &opts)
 	if err != nil {
 		s.Fatal("Failed to find Files shelf button: ", err)
 	}
