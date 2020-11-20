@@ -545,6 +545,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e9b7adb_0c9148b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T14:28:00Z",
+      "side": 1,
+      "message": "CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2550748",
+      "parentUuid": "3f79ce6b_9fc267e6",
+      "range": {
+        "startLine": 692,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 4
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abfe293b_8b48f667",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
         "patchSetId": 2
