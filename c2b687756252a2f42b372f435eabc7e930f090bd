@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a64ded_ac387eb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-11-20T22:53:19Z",
+      "side": 1,
+      "message": "Hi David \u0026 Kyle:\n\nTouchscreen behavior on clamshell machine while running in tablet can be different from tablet and convertible. This change reduces the use of touchscreen to avoid the issue.\n\nI have run this changes on fleex (clamshell), drallion (clamshell), kodama (tablet), dru(tablet), hana (convertible),and sparky360 (convertible). They all passed.\n\nPlease review.\n\nSeewai\n",
+      "revId": "c2b687756252a2f42b372f435eabc7e930f090bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
