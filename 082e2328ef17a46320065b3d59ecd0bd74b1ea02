@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c73e10_836afdbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-20T02:51:28Z",
+      "side": 1,
+      "message": "Thanks a lot for making dev.RemoteDesktop better!",
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dc792c4_4b2491d0",
@@ -149,6 +166,121 @@
         "startChar": 22,
         "endLine": 849,
         "endChar": 25
+      },
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b9a6e49_4ea6feb1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-20T02:51:28Z",
+      "side": 1,
+      "message": "Empty array/NodeList are truthy in JS. IIUC we need to check |.length \u003e 0| or append |[0]| here.",
+      "range": {
+        "startLine": 1642,
+        "startChar": 3,
+        "endLine": 1642,
+        "endChar": 36
+      },
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447ffb0e_d1cdd233",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-20T02:51:28Z",
+      "side": 1,
+      "message": "nit: %q for consistency",
+      "range": {
+        "startLine": 1642,
+        "startChar": 30,
+        "endLine": 1642,
+        "endChar": 35
+      },
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76e6ca0_32721686",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1649,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-20T02:51:28Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 1649,
+        "startChar": 24,
+        "endLine": 1649,
+        "endChar": 27
+      },
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "667fd746_3ebf679e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-20T02:51:28Z",
+      "side": 1,
+      "message": "Do we \"click next\" here?",
+      "range": {
+        "startLine": 1656,
+        "startChar": 14,
+        "endLine": 1656,
+        "endChar": 29
+      },
+      "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2cfe96_5f0008cc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1659,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-20T02:51:28Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 1659,
+        "startChar": 24,
+        "endLine": 1659,
+        "endChar": 27
       },
       "revId": "082e2328ef17a46320065b3d59ecd0bd74b1ea02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
