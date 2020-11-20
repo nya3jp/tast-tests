@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2569fd_f261a49f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/open_close_switch_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-20T22:54:20Z",
+      "side": 1,
+      "message": "Forgot that we haven\u0027t updated this part yet to use something like StableFind or WaitForHotseatAnimationToFinish. Should we do that first just in case? Especially since things seem to run slower in Chromium CQ",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "349b39ada7ae0ed9a7ab963a77bab6ced5954b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
