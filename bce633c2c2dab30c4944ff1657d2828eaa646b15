@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a0b335_a641deaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-20T17:03:53Z",
+      "side": 1,
+      "message": "Almost there.",
+      "revId": "bce633c2c2dab30c4944ff1657d2828eaa646b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea2cbd97_494c9e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-20T17:03:53Z",
+      "side": 1,
+      "message": "These links are pointing to HEAD so they might bitrot. We need permalinks, e.g. in\nthis case \nhttps://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/data/00000548.ivf\n\nPermalinks can be obtained from the web git interface clicking the \"Permalink\"\nbutton in the specific file page\u0027s upper right area.",
+      "range": {
+        "startLine": 9,
+        "startChar": 74,
+        "endLine": 9,
+        "endChar": 78
+      },
+      "revId": "bce633c2c2dab30c4944ff1657d2828eaa646b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef7d605_ca1b40af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-20T17:03:53Z",
+      "side": 1,
+      "message": "Not needed (AV1 lives in a post-migration world only).",
+      "range": {
+        "startLine": 53,
+        "startChar": 132,
+        "endLine": 53,
+        "endChar": 153
+      },
+      "revId": "bce633c2c2dab30c4944ff1657d2828eaa646b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42cb6b9f_d1a4b88e",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-20T17:03:53Z",
+      "side": 1,
+      "message": "From PS3: \n\u003e These lines are the same as l.66-73, l.162-168, extract them to a common function?\n\nThis might have been forgotten (RunAccelVideoTestCmd() was refactored out of \nthe places where it was redundant, which is good though).",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 42
+      },
+      "revId": "bce633c2c2dab30c4944ff1657d2828eaa646b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
