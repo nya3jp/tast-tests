@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -39,6 +40,7 @@ func init() {
 				Name:              "tablet_mode",
 				Val:               true,
 				ExtraSoftwareDeps: []string{"tablet_mode"},
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			},
 		},
 	})
@@ -103,7 +105,7 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 	}
 
 	// Drag one icon to the top of another icon to create a folder.
-	if err := dragIcon(ctx, tconn, icons[0], icons[1], tabletMode); err != nil {
+	if err := dragIcon(ctx, tconn, icons[0], icons[1]); err != nil {
 		s.Fatalf("Failed to Drag app %q: %v", icons[0].Name, err)
 	}
 
@@ -120,7 +122,7 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 }
 
 // dragIcon is a helper function to cause a drag of the left button from start to end for tablet.
-func dragIcon(ctx context.Context, tconn *chrome.TestConn, srcIcon, targetIcon *ui.Node, tabletMode bool) error {
+func dragIcon(ctx context.Context, tconn *chrome.TestConn, srcIcon, targetIcon *ui.Node) error {
 	start := srcIcon.Location.CenterPoint()
 	end := targetIcon.Location.CenterPoint()
 
@@ -132,16 +134,8 @@ func dragIcon(ctx context.Context, tconn *chrome.TestConn, srcIcon, targetIcon *
 
 	var ctlr pointer.Controller
 	var err error
-	if tabletMode {
-		// Setting up touch control
-		ctlr, err = pointer.NewTouchController(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to create the touch controller")
-		}
-	} else {
-		// Setting up mouse control
-		ctlr = pointer.NewMouseController(tconn)
-	}
+	ctlr = pointer.NewMouseController(tconn)
+
 	// Simulate a long press so that the icon is ready to be moved.
 	// It is based on the implementation on ui.LongPress, but this
 	// implementation works for both touch screen and mouse press.
