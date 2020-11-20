@@ -232,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4ef8d8c_92a21d24",
+        "filename": "src/chromiumos/tast/remote/network/cmd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the *current* equivalent. The benefit of having FindCmdPath is an abstraction prepared to search in other locations, so whenever the need arises (e.g. due to new equipment/firmware/whatever) the changes would be limited to this function only, not all Command() calls, limiting change footprint.",
+      "parentUuid": "737f5ade_3366949a",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9ddd70ed_66058e85",
         "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
         "patchSetId": 4
