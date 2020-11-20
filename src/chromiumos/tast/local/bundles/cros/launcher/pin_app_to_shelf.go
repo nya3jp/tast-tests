@@ -149,11 +149,7 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	}
 
 	// Run any inactive pinned app.
-	if tabletMode {
-		err = ash.LaunchAppFromHotseat(ctx, tconn, app1.Name, app1.ID)
-	} else {
-		err = ash.LaunchAppFromShelf(ctx, tconn, app1.Name, app1.ID)
-	}
+	err = ash.LaunchAppFromShelf(ctx, tconn, app1.Name, app1.ID)
 	if err != nil {
 		s.Fatalf("Failed to run app %v: %v", app1.Name, err)
 	}
