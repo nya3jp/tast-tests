@@ -21,7 +21,10 @@ dummy
 #    - see crbug/1135039
 
 # first.?class.?citizen - clean
-# grandfathered         - clean
+
+grandfathered
+#    - see crbug/1152062
+
 # gr[ae]y.?hat          - clean
 # gr[ae]y.?list         - clean
 # insane                - clean
@@ -42,14 +45,18 @@ dummy
 master
 #    - see crbug/1122372
 
-# \bmitm\b              - clean
+# \bmitm(\b|\d)         - clean
 
 \bnative
 #    - see crbug/1135046
 
 # \bred.?line           - clean
-# rtfm                  - clean
-# \bsane\b              - clean
+
+rtfm
+#    - see crbug/1152068
+
+\b(in)?sane(\b|\d)
+#    - see crbug/1135047
 
 sanity
 #    - see crbug/1135049
@@ -68,5 +75,5 @@ white.?list
 #    - see crbug/1125493
 #    - see crbug/1113099
 
-\bwtf
-#   - see crbug/1135053
+# \bwtf                 - clean
+
