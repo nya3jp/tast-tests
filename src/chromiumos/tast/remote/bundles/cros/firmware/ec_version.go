@@ -17,7 +17,7 @@ func init() {
 		Func:         ECVersion,
 		Desc:         "Verify that the EC version can be retrieved from ectool",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:firmware", "firmware_smoke"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
 }
