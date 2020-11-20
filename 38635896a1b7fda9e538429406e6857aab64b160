@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "8bb6a367_e8879da3",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
@@ -20,10 +21,34 @@
         "endChar": 25
       },
       "revId": "38635896a1b7fda9e538429406e6857aab64b160",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95410a0c_de0a08f6",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-20T08:10:30Z",
+      "side": 1,
+      "message": "Removed this field. I think it\u0027s enough that returning messages as err object.",
+      "parentUuid": "8bb6a367_e8879da3",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "38635896a1b7fda9e538429406e6857aab64b160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "2d0fff9b_dd266db4",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
@@ -43,8 +68,31 @@
         "endChar": 69
       },
       "revId": "38635896a1b7fda9e538429406e6857aab64b160",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "402d21dc_1a02aae3",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-20T08:10:30Z",
+      "side": 1,
+      "message": "testing.ContextLogf internally uses fmt.Sprintf instead of fmt.Errorf. %w is available only with fmt.Errorf. So %w is not supported here.",
+      "parentUuid": "2d0fff9b_dd266db4",
+      "range": {
+        "startLine": 115,
+        "startChar": 67,
+        "endLine": 115,
+        "endChar": 69
+      },
+      "revId": "38635896a1b7fda9e538429406e6857aab64b160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

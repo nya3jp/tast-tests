@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2e46ab_fa3fa794",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-20T08:10:30Z",
+      "side": 1,
+      "message": "CLs for the command to dump pstore are now merged. Sorry for delaying.\n\nNow the command doesn\u0027t have no feature to monitor files like `tail` command. So I updated this CL to call it once at arc.Close().",
+      "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c38f88_547815f5",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-20T08:10:30Z",
+      "side": 1,
+      "message": "Is this Okay?",
+      "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
