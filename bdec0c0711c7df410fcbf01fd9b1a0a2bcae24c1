@@ -69,6 +69,23 @@
       "parentUuid": "ffa31773_cdf66100",
       "revId": "bdec0c0711c7df410fcbf01fd9b1a0a2bcae24c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e80ee088_64d03f04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-20T04:16:23Z",
+      "side": 1,
+      "message": "Code looks fine, but have the same question as Fergus",
+      "revId": "bdec0c0711c7df410fcbf01fd9b1a0a2bcae24c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
