@@ -16,6 +16,24 @@
       "message": "Could we hold off submitting this until we see if tests are fixed by\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2550762",
       "revId": "aea09e0fef304c14cdb67d4c6bba0b99341d4072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b75aa48_a5e2478f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2020-11-20T03:18:47Z",
+      "side": 1,
+      "message": "Sure, since that patch was submitted, and this one is still waiting on the CQ.",
+      "parentUuid": "62290587_12ab567b",
+      "revId": "aea09e0fef304c14cdb67d4c6bba0b99341d4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
