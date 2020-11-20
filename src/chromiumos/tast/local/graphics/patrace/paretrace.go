@@ -29,7 +29,7 @@ import (
 
 // RunTrace replays a PATrace (GLES) (https://github.com/ARM-software/patrace)
 // in Android. APK and trace data are specified by apkFile and traceFile.
-func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) {
+func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string, offscreen bool) {
 	const (
 		pkgName                = "com.arm.pa.paretrace"
 		activityName           = ".Activities.RetraceActivity"
@@ -114,7 +114,11 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 
 	s.Log("Starting activity")
 
-	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-S", "-n"}, []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath}); err != nil {
+	options := []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath}
+	if offscreen {
+		options = append(options, "--ez", "forceOffscreen", "true")
+	}
+	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-S", "-n"}, options); err != nil {
 		s.Fatal("Cannot start retrace: ", err)
 	}
 
