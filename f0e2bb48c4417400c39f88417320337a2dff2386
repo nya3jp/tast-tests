@@ -86,6 +86,23 @@
       "message": "Sammie, could you help to review the CL as well since you reviewed early changes of this test?",
       "revId": "f0e2bb48c4417400c39f88417320337a2dff2386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df21f400_8e3b42b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-11-20T18:15:13Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "f0e2bb48c4417400c39f88417320337a2dff2386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
