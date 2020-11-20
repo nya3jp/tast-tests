@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d7bcae5_f0713c81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-20T16:22:16Z",
+      "side": 1,
+      "message": "otoh, if smth will go wrong you will wait 30 seconds instead of 10/15. We should also fail fast, but don\u0027t set too low timeouts.",
+      "parentUuid": "59ac3c6a_e8cd23d3",
+      "range": {
+        "startLine": 91,
+        "startChar": 36,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "98d013748489017d3eacb884dfa3aecd8043e614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e70946a_55355b77",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard_enabled.go",
         "patchSetId": 3
