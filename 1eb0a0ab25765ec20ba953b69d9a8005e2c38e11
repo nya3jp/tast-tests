@@ -16,6 +16,23 @@
       "message": "Start review as \"no IR\" on ch48 seems to be expected.",
       "revId": "1eb0a0ab25765ec20ba953b69d9a8005e2c38e11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d770a44d_c4149250",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T05:42:07Z",
+      "side": 1,
+      "message": "Add a comment:\n// Use 2.4GHz channel 1 as some devices sets no_IR on 5GHz channels. See http://b/173633813.",
+      "revId": "1eb0a0ab25765ec20ba953b69d9a8005e2c38e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
