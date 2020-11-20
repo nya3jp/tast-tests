@@ -22,6 +22,30 @@
       },
       "revId": "a09e528b783c0a0a25a08a343a6ae72c5f6e0767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "596c0870_ab6bda1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-20T03:49:34Z",
+      "side": 1,
+      "message": "Yeah, I built using fast_built.sh -T on my local machine and it builds. Let me try repo sync and rebase, see if that fixes it.\n\nMight be something that doesn\u0027t get marked as merge conflict but actually breaks.",
+      "parentUuid": "b80dd49b_dce3b9fb",
+      "range": {
+        "startLine": 737,
+        "startChar": 39,
+        "endLine": 737,
+        "endChar": 45
+      },
+      "revId": "a09e528b783c0a0a25a08a343a6ae72c5f6e0767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
