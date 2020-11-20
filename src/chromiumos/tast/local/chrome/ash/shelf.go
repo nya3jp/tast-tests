@@ -534,6 +534,9 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 // LaunchAppFromShelf opens an app by name which is currently pinned to the shelf.
 // The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
 func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName, appID string) error {
+	if err := ShowHotseat(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to launch app from shelf")
+	}
 	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
 	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
@@ -551,9 +554,13 @@ func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName, ap
 	return nil
 }
 
-// LaunchAppFromHotseat opens an app by name which is currently pinned to the hotseat.
-// The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
-func LaunchAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName, appID string) error {
+// ShowHotseat make sure hotseat is shown in tablet mode.
+func ShowHotseat(ctx context.Context, tconn *chrome.TestConn) error {
+	if tabletMode, err := TabletModeEnabled(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to check if DUT is in tablet mode")
+	} else if !tabletMode {
+		return nil
+	}
 	// Get touch controller for tablet.
 	tc, err := pointer.NewTouchController(ctx, tconn)
 	if err != nil {
@@ -568,26 +575,6 @@ func LaunchAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName, 
 		return errors.Wrap(err, "failed to show hotseat")
 	}
 
-	params := ui.FindParams{Name: appName, ClassName: "ash/ShelfAppButton"}
-	icon, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find app %q", appName)
-	}
-	defer icon.Release(ctx)
-
-	// Press button to launch app.
-	x, y := tcc.ConvertLocation(icon.Location.CenterPoint())
-	if err := stw.Move(x, y); err != nil {
-		return errors.Wrapf(err, "failed to press icon %q", appName)
-	}
-	if err := stw.End(); err != nil {
-		return errors.Wrapf(err, "failed to release pressed icon %q", appName)
-	}
-
-	// Make sure app is launched.
-	if err := WaitForApp(ctx, tconn, appID); err != nil {
-		return errors.Wrap(err, "failed to wait for the app to be launched")
-	}
 	return nil
 }
 

@@ -16,9 +16,18 @@ import (
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 var shelfAppButton = "ash/ShelfAppButton"
+
+// loggedInWith2FakeApps returns the precondition that Chrome is already
+// logged in and 2 fake applications (extensions) are installed. PreValue for
+// the test with this precondition is an instance of *chrome.Chrome.
+// The parameter name makes sure each mode get a fresh login with fake apps.
+func loggedInWith2FakeApps(name string) testing.Precondition {
+	return ash.NewFakeAppPrecondition("PinAppToShelf_"+name, 2, chrome.NewPrecondition, false)
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -31,16 +40,17 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{
-			{
-				Name: "clamshell_mode",
-				Val:  false,
-			},
-			{
-				Name:              "tablet_mode",
-				Val:               true,
-				ExtraSoftwareDeps: []string{"tablet_mode"},
-			},
+		Params: []testing.Param{{
+			Name: "clamshell_mode",
+			Pre:  loggedInWith2FakeApps("clamshell_mode"),
+			Val:  false,
+		}, {
+			Name:              "tablet_mode",
+			Pre:               loggedInWith2FakeApps("tablet_mode"),
+			Val:               true,
+			ExtraSoftwareDeps: []string{"tablet_mode"},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		},
 		},
 	})
 }
@@ -49,17 +59,7 @@ func init() {
 func PinAppToShelf(ctx context.Context, s *testing.State) {
 	tabletMode := s.Param().(bool)
 
-	// This test needs to use New instead of precondition because this test
-	// assume that the following icons are on the top level of the extended
-	// launcher: WebStore, Camera, Settings, Help and Files.
-	// To use chrome.New ensures that condition of the desktop is not affected
-	// by the previous test of the same run.
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -79,10 +79,10 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	}
 
 	app1 := apps.WebStore
-	app2 := apps.Camera
-	app3 := apps.Settings
-	app4 := apps.Help
-	app5 := apps.Files
+	app2 := apps.App{ID: "fake_0", Name: "fake app 0"}
+	app3 := apps.App{ID: "fake_1", Name: "fake app 1"}
+	app4 := apps.Settings
+	app5 := apps.Help
 
 	// Open the Launcher and go to Apps list page.
 	if err := launcher.OpenExpandedView(ctx, tconn); err != nil {
@@ -149,12 +149,7 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	}
 
 	// Run any inactive pinned app.
-	if tabletMode {
-		err = ash.LaunchAppFromHotseat(ctx, tconn, app1.Name, app1.ID)
-	} else {
-		err = ash.LaunchAppFromShelf(ctx, tconn, app1.Name, app1.ID)
-	}
-	if err != nil {
+	if err = ash.LaunchAppFromShelf(ctx, tconn, app1.Name, app1.ID); err != nil {
 		s.Fatalf("Failed to run app %v: %v", app1.Name, err)
 	}
 }
