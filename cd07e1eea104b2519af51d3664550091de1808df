@@ -39,6 +39,30 @@
       },
       "revId": "cd07e1eea104b2519af51d3664550091de1808df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21694200_66897db5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-11-20T07:11:51Z",
+      "side": 1,
+      "message": "Moved the s.Errorf() to the below of crash.MoveFilesToOut() and made it Fatal.",
+      "parentUuid": "181a483f_502a3cc2",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 3
+      },
+      "revId": "cd07e1eea104b2519af51d3664550091de1808df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
