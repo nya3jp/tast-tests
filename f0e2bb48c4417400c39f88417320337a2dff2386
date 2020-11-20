@@ -16,6 +16,23 @@
       "message": "LGTM. If slowing down the user action can not completely solve the problem, then you might need to think of other solutions.",
       "revId": "f0e2bb48c4417400c39f88417320337a2dff2386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07a802a_058910a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-20T16:40:57Z",
+      "side": 1,
+      "message": "LGTM but need test-owner approval as well.",
+      "revId": "f0e2bb48c4417400c39f88417320337a2dff2386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
