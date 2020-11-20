@@ -19,12 +19,12 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: OpenCloseSwitchApps,
-		Desc: "Checks basic shelf functionality",
+		Desc: "Checks interacting with apps in the shelf",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"tbarzic@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
