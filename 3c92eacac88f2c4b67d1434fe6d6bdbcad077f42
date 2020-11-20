@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da1fe30_7456e0a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-20T14:47:17Z",
+      "side": 1,
+      "message": "alexanderhartl@, do you know if WaitForLocationChangeCompleted waits for the address bar to be updated? Or should we manually poll until address bar value changes?",
+      "revId": "3c92eacac88f2c4b67d1434fe6d6bdbcad077f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

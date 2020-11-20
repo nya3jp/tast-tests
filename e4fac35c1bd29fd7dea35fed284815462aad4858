@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "932b310e_d8083d45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-20T14:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8ede146_b2ea37b7",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "e4fac35c1bd29fd7dea35fed284815462aad4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ecd1a24_9115ce68",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-20T12:07:14Z",
       "side": 1,
       "message": "nit: you can just rely on default interval which is 100ms",
+      "range": {
+        "startLine": 127,
+        "startChar": 54,
+        "endLine": 127,
+        "endChar": 79
+      },
+      "revId": "e4fac35c1bd29fd7dea35fed284815462aad4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf5c53f_eb0a117e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-20T14:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ecd1a24_9115ce68",
       "range": {
         "startLine": 127,
         "startChar": 54,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4624f407_6a1e3646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-20T14:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3eae047_208aa470",
+      "range": {
+        "startLine": 131,
+        "startChar": 7,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "e4fac35c1bd29fd7dea35fed284815462aad4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36cc5133_8807e423",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-20T13:39:49Z",
       "side": 1,
       "message": "you can use %q to wrap string in quotes which is preferred here",
+      "range": {
+        "startLine": 132,
+        "startChar": 50,
+        "endLine": 132,
+        "endChar": 51
+      },
+      "revId": "e4fac35c1bd29fd7dea35fed284815462aad4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f51f294_07e6de03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-20T14:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36cc5133_8807e423",
       "range": {
         "startLine": 132,
         "startChar": 50,
