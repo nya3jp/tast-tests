@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/vda_smoke-vp90_2_17_show_existing_frame_20190906.vp9",
+  "size": 175642,
+  "sha256sum": "6495e530da19b37bd0beec6fc8439aac8789551c027c58624d1edf6a2de48a6a"
+}
