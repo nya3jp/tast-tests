@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1412954c_09870d9b",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T11:13:50Z",
+      "side": 1,
+      "message": "Or more precisely, Use AP named as....\nas we just started integration of non-Gale APs.",
+      "parentUuid": "5329d272_605bec32",
+      "revId": "7f7b64f8caaa56a6cf5c78ba4e74aae1ae2a0b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f39908cf_9d00126f",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-11-20T04:51:17Z",
       "side": 1,
       "message": "The place handling dealing with default router and routers are different. Think about making them symmetric (resolving default value in the same place) in the upcoming CL.",
+      "revId": "7f7b64f8caaa56a6cf5c78ba4e74aae1ae2a0b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c19e61_d8c821b2",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T11:13:50Z",
+      "side": 1,
+      "message": "I just (reluctantly) removed default handling here per request of Yen-lin 😄\nTreating as resolved.",
+      "parentUuid": "f39908cf_9d00126f",
       "revId": "7f7b64f8caaa56a6cf5c78ba4e74aae1ae2a0b74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
