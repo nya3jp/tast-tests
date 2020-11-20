@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe7896a_8f4b9e00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-20T05:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9070c97a_bdc87277",
+      "range": {
+        "startLine": 408,
+        "startChar": 55,
+        "endLine": 408,
+        "endChar": 64
+      },
+      "revId": "4e508a2773f55bb3cc1e7fa3f7206372e1188d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd8671ab_4fd19209",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e227c377_619a5bfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-20T05:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd8671ab_4fd19209",
+      "range": {
+        "startLine": 414,
+        "startChar": 55,
+        "endLine": 414,
+        "endChar": 62
+      },
+      "revId": "4e508a2773f55bb3cc1e7fa3f7206372e1188d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b12b5458_0bd381b7",
@@ -60,6 +108,24 @@
       "writtenOn": "2020-11-20T05:37:14Z",
       "side": 1,
       "message": "why is this changed?",
+      "revId": "4e508a2773f55bb3cc1e7fa3f7206372e1188d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8753c8c_befa2c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-20T05:58:53Z",
+      "side": 1,
+      "message": "Because the |startRecording()| function is moved into |video.start()| after the refactor, and |testConfirmDialog| don\u0027t need to verify the video duration. So I replace the function here to just simply click shutter button and await for |taking| happen.",
+      "parentUuid": "b12b5458_0bd381b7",
       "revId": "4e508a2773f55bb3cc1e7fa3f7206372e1188d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
