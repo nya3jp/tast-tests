@@ -997,3 +997,8 @@ func hostBoard(ctx context.Context, host *ssh.Conn) (string, error) {
 func (r *Router) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
 	return r.ipr.MAC(ctx, iface)
 }
+
+// Conn returns ssh.Conn pointer.
+func (r *Router) Conn() *ssh.Conn {
+	return r.host
+}
