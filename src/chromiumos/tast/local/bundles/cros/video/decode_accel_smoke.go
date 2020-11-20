@@ -26,13 +26,13 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9},
 		Params: []testing.Param{{
 			Name:      "vp9_1",
-			Val:       "vda_sanity-bear_profile1.vp9",
-			ExtraData: []string{"vda_sanity-bear_profile1.vp9", "vda_sanity-bear_profile1.vp9.json"},
+			Val:       "vda_smoke-bear_profile1.vp9",
+			ExtraData: []string{"vda_smoke-bear_profile1.vp9", "vda_smoke-bear_profile1.vp9.json"},
 		}, {
 			Name:      "vp9_2",
-			Val:       "vda_sanity-bear_profile2.vp9",
+			Val:       "vda_smoke-bear_profile2.vp9",
 			ExtraAttr: []string{"informational"},
-			ExtraData: []string{"vda_sanity-bear_profile2.vp9", "vda_sanity-bear_profile2.vp9.json"},
+			ExtraData: []string{"vda_smoke-bear_profile2.vp9", "vda_smoke-bear_profile2.vp9.json"},
 			// The "vp9_smoke" SoftwareDeps is an allowlist used to filter out devices that are
 			// known to be unstable when encountering unexpected features in a VP9 video stream.
 			// The allowlist is used to avoid crashes on devices that are not expected to be fixed
@@ -48,16 +48,16 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("zork")),
 		}, {
 			Name:              "vp9_3",
-			Val:               "vda_sanity-bear_profile3.vp9",
+			Val:               "vda_smoke-bear_profile3.vp9",
 			ExtraAttr:         []string{"informational"},
-			ExtraData:         []string{"vda_sanity-bear_profile3.vp9", "vda_sanity-bear_profile3.vp9.json"},
+			ExtraData:         []string{"vda_smoke-bear_profile3.vp9", "vda_smoke-bear_profile3.vp9.json"},
 			ExtraSoftwareDeps: []string{"vp9_smoke"},
 		}},
 	})
 }
 
 // DecodeAccelSmoke runs the FlushAtEndOfStream test in the video_decode_accelerator_tests. The
-// vda_sanity-bear_profile{1,2,3}.vp9 video is used with metadata that incorrectly initializes the
+// vda_smoke-bear_profile{1,2,3}.vp9 video is used with metadata that incorrectly initializes the
 // video decoder for VP9 profile0. The test doesn't look at the decode result, but verifies system
 // robustness when encountering unexpected features.
 func DecodeAccelSmoke(ctx context.Context, s *testing.State) {
