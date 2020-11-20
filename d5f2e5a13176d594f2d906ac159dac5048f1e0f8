@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "d5f2e5a13176d594f2d906ac159dac5048f1e0f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c9bc7bd_a416e4e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-20T16:12:03Z",
+      "side": 1,
+      "message": "deanliao@, please +2 if CL looks good to you. Thanks.",
+      "revId": "d5f2e5a13176d594f2d906ac159dac5048f1e0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
