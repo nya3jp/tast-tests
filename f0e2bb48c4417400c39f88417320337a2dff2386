@@ -137,6 +137,23 @@
       "message": "LGTM, thank you Xiyuan for getting the extra review!",
       "revId": "f0e2bb48c4417400c39f88417320337a2dff2386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ac1f29_4e742d2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-20T18:42:57Z",
+      "side": 1,
+      "message": "Cool. Thank you all for the review.",
+      "revId": "f0e2bb48c4417400c39f88417320337a2dff2386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
