@@ -395,6 +395,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f67e6e28_a0328269",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:17:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a3cf6f5_ac2a7b85",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5f3b2e7_35c97a28",
@@ -473,6 +497,24 @@
       "side": 1,
       "message": "See my comment there as well.",
       "parentUuid": "8eae67eb_f174bbfe",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47102703_bf5bd77d",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:17:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc155557_14c8bc29",
       "revId": "ca79829180e24616d128b96fe6065530f099d37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -984,6 +1026,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b058952_b329449c",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:17:20Z",
+      "side": 1,
+      "message": "Ack\n\nSorry perhaps a mistype comment.",
+      "parentUuid": "53fa2f72_472be7c8",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "567f08b5_af94b76e",
@@ -1233,6 +1299,24 @@
       "side": 1,
       "message": "Yes, I\u0027m aware of that recommendation. However I can seen no other way, as I cannot find anything to poll for checking if server is up.",
       "parentUuid": "ef9e916b_f6174d5c",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc481448_bf0593cb",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:17:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a24fe772_f43a32d1",
       "revId": "ca79829180e24616d128b96fe6065530f099d37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
