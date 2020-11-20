@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b778b482_c429b3d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-11-20T23:11:27Z",
+      "side": 1,
+      "message": "I\u0027m tempted to chump this.",
+      "revId": "52d421fa95ebc195dda9e6e8b59ce6f7bf55e4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
