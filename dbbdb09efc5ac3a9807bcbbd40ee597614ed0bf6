@@ -86,6 +86,24 @@
       "parentUuid": "5ec991ed_584daa6b",
       "revId": "dbbdb09efc5ac3a9807bcbbd40ee597614ed0bf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7049043_0d872e66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-11-20T10:53:27Z",
+      "side": 1,
+      "message": "Test is now passing.  This CL can be abandoned\n\nhttps://tastboard.corp.google.com/test/crostini.OpenWithTerminal.buster_amd64_stable",
+      "parentUuid": "28a9a568_f26ee15e",
+      "revId": "dbbdb09efc5ac3a9807bcbbd40ee597614ed0bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
