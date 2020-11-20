@@ -16,6 +16,24 @@
       "message": "alexanderhartl@, do you know if WaitForLocationChangeCompleted waits for the address bar to be updated? Or should we manually poll until address bar value changes?",
       "revId": "3c92eacac88f2c4b67d1434fe6d6bdbcad077f42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "917a9813_f645d8cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-20T15:23:52Z",
+      "side": 1,
+      "message": "I my opinion the address bar is updated before the function returns.\nWhen you search over the address bar you can already see the changed string in the address bar before the search results are loaded and WaitForLocationChangeCompleted should not return until the results have beend loaded.\nBut tbh I\u0027m not 100% sure there.",
+      "parentUuid": "6da1fe30_7456e0a5",
+      "revId": "3c92eacac88f2c4b67d1434fe6d6bdbcad077f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
