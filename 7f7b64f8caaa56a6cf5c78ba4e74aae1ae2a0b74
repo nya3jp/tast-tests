@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0b27bd5_427d4e83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T04:51:17Z",
+      "side": 1,
+      "message": "A nit and a recommendation. You may commit it after fixing the nit.",
+      "revId": "7f7b64f8caaa56a6cf5c78ba4e74aae1ae2a0b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5329d272_605bec32",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T04:51:17Z",
+      "side": 1,
+      "message": "Add a comment \n// Use the Gale named as packet capturer as the second router when TFFeaturesRouters is set.",
+      "revId": "7f7b64f8caaa56a6cf5c78ba4e74aae1ae2a0b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39908cf_9d00126f",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T04:51:17Z",
+      "side": 1,
+      "message": "The place handling dealing with default router and routers are different. Think about making them symmetric (resolving default value in the same place) in the upcoming CL.",
+      "revId": "7f7b64f8caaa56a6cf5c78ba4e74aae1ae2a0b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
