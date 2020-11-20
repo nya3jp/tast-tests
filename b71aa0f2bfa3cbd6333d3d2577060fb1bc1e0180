@@ -33,6 +33,24 @@
       "message": "can you change this to appActivity \u003d \".core.activity.navigation.NavigationActivity\"",
       "revId": "b71aa0f2bfa3cbd6333d3d2577060fb1bc1e0180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc18975_f09b0c0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/bandlab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2020-11-20T20:35:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4ddbdc12_50aa2fe0",
+      "revId": "b71aa0f2bfa3cbd6333d3d2577060fb1bc1e0180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
