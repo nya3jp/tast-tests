@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca78f109_df4a1f46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-20T00:55:19Z",
+      "side": 1,
+      "message": "+2 for Tast Owners % nits",
+      "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b0136f_cc500219",
@@ -54,6 +71,52 @@
         "startChar": 0,
         "endLine": 20,
         "endChar": 1
+      },
+      "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1078e6a_b4c45007",
+        "filename": "src/chromiumos/tast/local/power/cpuidle_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-20T00:55:19Z",
+      "side": 1,
+      "message": "maybe: a mapping from ... to files containing cpuidle residency information. ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 86
+      },
+      "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a71373_70c03bd0",
+        "filename": "src/chromiumos/tast/local/power/cpuidle_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-20T00:55:19Z",
+      "side": 1,
+      "message": "please drop the \u0027get\u0027 (\u0027get\u0027 is not really go style, unless concept involves get, e.g. HTTP GET). See also: go/go-style/decisions#getters.",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 25
       },
       "revId": "570ecdcde8f9276b3fe61b5fbf4a0173aa3439d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
