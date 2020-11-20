@@ -69,6 +69,23 @@
       "parentUuid": "2ba0b45e_b59d3653",
       "revId": "f0e2bb48c4417400c39f88417320337a2dff2386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97934541_ca67e24e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-20T18:06:47Z",
+      "side": 1,
+      "message": "Sammie, could you help to review the CL as well since you reviewed early changes of this test?",
+      "revId": "f0e2bb48c4417400c39f88417320337a2dff2386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
