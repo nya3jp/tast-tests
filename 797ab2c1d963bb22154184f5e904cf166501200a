@@ -16,6 +16,24 @@
       "message": "Agree, but does it need to be Cq-Depends on https://chromium-review.googlesource.com/c/chromiumos/platform2/+/2551414 ?",
       "revId": "797ab2c1d963bb22154184f5e904cf166501200a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ac77fb_08f84739",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-20T17:53:23Z",
+      "side": 1,
+      "message": "Technically yes, but I can\u0027t run a dry run on this CL while that one is in the CQ, so I\u0027ll wait for that one to either land or CQ flake before I add the Cq-Depend.",
+      "parentUuid": "8ebc992e_04728d0f",
+      "revId": "797ab2c1d963bb22154184f5e904cf166501200a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
