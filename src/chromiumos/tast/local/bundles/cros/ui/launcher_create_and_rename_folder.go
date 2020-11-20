@@ -133,16 +133,8 @@ func dragIcon(ctx context.Context, tconn *chrome.TestConn, srcIcon, targetIcon *
 
 	var ctlr pointer.Controller
 	var err error
-	if tabletMode {
-		// Setting up touch control
-		ctlr, err = pointer.NewTouchController(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to create the touch controller")
-		}
-	} else {
-		// Setting up mouse control
-		ctlr = pointer.NewMouseController(tconn)
-	}
+	ctlr = pointer.NewMouseController(tconn)
+
 	// Simulate a long press so that the icon is ready to be moved.
 	// It is based on the implementation on ui.LongPress, but this
 	// implementation works for both touch screen and mouse press.
