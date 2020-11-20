@@ -214,6 +214,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "737f5ade_3366949a",
+        "filename": "src/chromiumos/tast/remote/network/cmd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "My point is: it obtains path using \"which\", which uses the same mechanism to obtain real path of the executable that the shell uses.\n\nSo it is equivalent to me that:\nconn.Command(\"foo\", ...)\nand \nconn.Command(FindCmdPath(ctx, conn, \"foo\"), ...)",
+      "parentUuid": "72432c4c_22af3a6f",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9ddd70ed_66058e85",
         "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
         "patchSetId": 4
@@ -249,6 +267,30 @@
       "side": 1,
       "message": "Network is layer 3, but I get what you mean.",
       "parentUuid": "9ddd70ed_66058e85",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c86b35_7541ebe6",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "ha you caught me",
+      "parentUuid": "052a8fb3_08c68f0a",
       "range": {
         "startLine": 16,
         "startChar": 14,

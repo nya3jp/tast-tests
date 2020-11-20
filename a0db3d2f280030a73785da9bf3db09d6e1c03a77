@@ -37,6 +37,247 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8beb584_e68561e6",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 51
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bc08ba_44dc430c",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "How about\nreturn fmt.Sprintf(\"{type: %s, duration: %v, measurements:[%s]\", r.TestType, r.Duration, strings.Join(measurements, \", \"))",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1c9fe8_a52f9ae0",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "type",
+      "range": {
+        "startLine": 213,
+        "startChar": 28,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f1b972_d41dd35d",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "Is a sample only contains a type? If not, we may count duplicate numSamples if a sample contains multiple matched measurements.",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64ef9dc1_f9a5c073",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "You don\u0027t need to convert numSamples to time.Duration as \"duration\" is already a time.Duration type.",
+      "range": {
+        "startLine": 223,
+        "startChar": 16,
+        "endLine": 223,
+        "endChar": 41
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f705121_cea87aa4",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "Does dev / avg has any statistical meaning?",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab84720_81927493",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "Do we need the firewallParams reverting logic in parepareServer?",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2960e8_88fa7732",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "starts ... unblocks... . (ending period)",
+      "range": {
+        "startLine": 126,
+        "startChar": 16,
+        "endLine": 126,
+        "endChar": 21
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e57549_814daa92",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "startNetserver",
+      "range": {
+        "startLine": 127,
+        "startChar": 17,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1621693_142e0e2c",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "elapsed :\u003d time.Since(startupTime)",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 37
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ef0817_332bbb94",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "r.config.TestTime",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 46
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "476b1837_55e75415",
         "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
         "patchSetId": 10
@@ -48,6 +289,29 @@
       "writtenOn": "2020-11-19T02:33:41Z",
       "side": 1,
       "message": "Hmm..., as we\u0027ll usually hit this with some un-closed session in previous test, I\u0027m hesitant to make it wait forever here. I slightly prefer quick error out than waiting. YMMV as I guess you want to avoid return error in NewSession.",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45be3506_2063a60a",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-20T07:14:19Z",
+      "side": 1,
+      "message": "// Run runs a netperf runner ...\n\nI know it is verbose, but the first word of the function command is the function name, which is a noun not a verb.",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 21
+      },
       "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
