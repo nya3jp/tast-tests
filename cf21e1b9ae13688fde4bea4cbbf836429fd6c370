@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9154d43_49bed7b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_java_script_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-20T07:31:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35a2d85_8480d343",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "cf21e1b9ae13688fde4bea4cbbf836429fd6c370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7837404c_2f8ace1e",
@@ -88,6 +112,30 @@
       "writtenOn": "2020-11-19T20:29:08Z",
       "side": 1,
       "message": "ditto: \n\n\"Failed to server and verify policies\"",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "cf21e1b9ae13688fde4bea4cbbf836429fd6c370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "613b6b52_62f04e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_java_script_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2020-11-20T07:31:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7837404c_2f8ace1e",
       "range": {
         "startLine": 62,
         "startChar": 23,
