@@ -16,5 +16,7 @@ window.addEventListener('load', () => {
       dropArea.innerText = 'drop registered';
     }
   }
+
+  window.document.title = 'awaiting drop.';
 }, { once: true });
 
