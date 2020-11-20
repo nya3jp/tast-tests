@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44d6d183_b4b4b340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f20ba48_e196f396",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e92dcaf_da9c811c",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-11-14T15:44:41Z",
       "side": 1,
       "message": "Please note that Golang has no file scoped const: they shared within the package. Please define the consts inside the function or if you insist defining them globally, at least add a prefix, e.g. \"slKeyToPress\" to avoid possible collision. \n\nhttps://stackoverflow.com/questions/45253939/global-variable-private-to-file",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0087de8_fb392fc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Thanks for this insight! (moved code to subdirectory)",
+      "parentUuid": "3e92dcaf_da9c811c",
       "revId": "e223deed29907c3c21aa8864b099502493012649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c709833_56fff083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Aah, so that\u0027s the reason why there are so many subdirectories with a single file in them. Thanks!",
+      "parentUuid": "0a6aeab7_a1a9bf33",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6024b270_862c1f05",
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c0b0555_5eb70c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "It does, but it worked without an explicit mapping. Added explicit mapping for consistency.",
+      "parentUuid": "6024b270_862c1f05",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8ba53fc_2bc4de5e",
@@ -105,6 +183,30 @@
       "writtenOn": "2020-11-14T15:44:41Z",
       "side": 1,
       "message": "Avoid log flooding. Let\u0027s consolidate them into one line:\n\ntesting.ContextLog(ctx, \"Listening on address: \", ln.Addr())\n\nSame below.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b35be6c9_bf7d9a63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8ba53fc_2bc4de5e",
       "range": {
         "startLine": 76,
         "startChar": 1,
@@ -138,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e97f4d_d99cd13a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17e52e58_53af6e97",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0086c7ca_1a567b95",
@@ -157,6 +283,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca7fcb6e_909a11fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Done(-ish). Isn\u0027t it good to have empty space before `for` in this case?",
+      "parentUuid": "0086c7ca_1a567b95",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8f0c2f3_ecfcbdea",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
         "patchSetId": 4
@@ -168,6 +312,30 @@
       "writtenOn": "2020-11-14T15:44:41Z",
       "side": 1,
       "message": "if err :\u003d ...; err !\u003d nil {\n  testing.ContextLog(...)\n}\n\nIf Decode() returns an error, in addition to log it, shall we loop again or fail the test?",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 48
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa5c020_0d703677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8f0c2f3_ecfcbdea",
       "range": {
         "startLine": 104,
         "startChar": 2,
@@ -201,6 +369,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd6de076_f0c7da5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f333683_66b0a93c",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de212737_c4aa7fb5",
@@ -220,6 +412,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48bb3470_9877a0db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "{\n  \"framesMetaData\": [\n    { \"cornerPoints\": [\n        [ { \"x\": 561, \"y\": 52 },\n          { \"x\": 703, \"y\": 56 },\n          { \"x\": 701, \"y\": 103 },\n          { \"x\": 559, \"y\": 99 } ]\n      ],\n      \"line\": [ \"mmm\" ]\n    }\n  ],\n  \"recordingStartTime\": 1605511145620,\n  \"videoFps\": 120,\n  \"hostSyncTimestamp\": 1605511145632\n}\n\nframesMetaData contains OCR data for each frame from the slo-mo video capture. Yes, elements in FramesMetaData are sorted by time, but the actual bottleneck here is waiting for phone to do the OCR for all the frames (it takes seconds or tens of seconds on my Pixel3).",
+      "parentUuid": "de212737_c4aa7fb5",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82ff0267_d0a0dc16",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
         "patchSetId": 4
@@ -231,6 +441,30 @@
       "writtenOn": "2020-11-14T15:44:41Z",
       "side": 1,
       "message": "In Golang we use VideoFPS instead of VideoFps.",
+      "range": {
+        "startLine": 128,
+        "startChar": 102,
+        "endLine": 128,
+        "endChar": 110
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af1f3d9b_0f40e79f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ff0267_d0a0dc16",
       "range": {
         "startLine": 128,
         "startChar": 102,
@@ -264,6 +498,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd464d01_9604aba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34feb402_1d6a3cf9",
+      "range": {
+        "startLine": 144,
+        "startChar": 23,
+        "endLine": 144,
+        "endChar": 54
+      },
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92c4b94a_03298d9f",
@@ -281,6 +539,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b77aeed_4f8241a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "It was added because I thought that simulating a keypress takes an insignificant amount of time. Added a condition and a comment.",
+      "parentUuid": "92c4b94a_03298d9f",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01fbf5e5_f62d45ae",
@@ -294,6 +570,24 @@
       "writtenOn": "2020-11-14T15:44:41Z",
       "side": 1,
       "message": "Shall we make the timestamp before or after keyboard.Type()? Please elaborate the reason.",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0cd1f5_e98e2483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-20T08:48:10Z",
+      "side": 1,
+      "message": "Here I was assuming that simulating a key press is instant, but after testing it on my nami/pantheon device it takes exactly 50ms, which is a very significant number.\n\nAdded a TODO note to investigate it further.",
+      "parentUuid": "01fbf5e5_f62d45ae",
       "revId": "e223deed29907c3c21aa8864b099502493012649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
