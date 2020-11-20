@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4136ee9f_99017f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/java_script_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-11-20T09:23:24Z",
+      "side": 1,
+      "message": "The submission of this and the other two tests fail here as a colon is missing\n\nblockJavaScript :\u003d \u0026policy.DefaultJavaScriptSettings{Val: 2}",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "02fa60f2c2ecee908e7241bf412af395cb2f0c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
