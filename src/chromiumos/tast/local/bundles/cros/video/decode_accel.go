@@ -33,7 +33,7 @@ func init() {
 			Name:              "h264",
 			Val:               "test-25fps.h264",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
 			// Run H264 video decode tests on CQ, limited to devices on the CQ allow list.
@@ -41,49 +41,49 @@ func init() {
 			Val:               "test-25fps.h264",
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(cqAllowlist...)),
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
 			Name:              "vp8",
 			Val:               "test-25fps.vp8",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
 			Name:              "vp9",
 			Val:               "test-25fps.vp9",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}, {
 			Name:              "h264_resolution_switch",
 			Val:               "switch_1080p_720p_240frames.h264",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"switch_1080p_720p_240frames.h264", "switch_1080p_720p_240frames.h264.json"},
 		}, {
 			Name:              "vp8_resolution_switch",
 			Val:               "resolution_change_500frames.vp8.ivf",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"resolution_change_500frames.vp8.ivf", "resolution_change_500frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp9_resolution_switch",
 			Val:               "resolution_change_500frames.vp9.ivf",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
 		}, {
 			Name: "vp8_odd_dimensions",
 			Val:  "test-25fps-321x241.vp8",
 			// TODO(b/138915749): Enable once decoding odd dimension videos is fixed.
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"test-25fps-321x241.vp8", "test-25fps-321x241.vp8.json"},
 		}, {
 			Name: "vp9_odd_dimensions",
 			Val:  "test-25fps-321x241.vp9",
 			// TODO(b/138915749): Enable once decoding odd dimension videos is fixed.
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"test-25fps-321x241.vp9", "test-25fps-321x241.vp9.json"},
 		}, {
 			// This test uses a video that makes use of the VP9 show-existing-frame feature and is used in Android CTS:
@@ -91,14 +91,14 @@ func init() {
 			Name:              "vp9_show_existing_frame",
 			Val:               "vda_sanity-vp90_2_17_show_existing_frame.vp9",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"vda_sanity-vp90_2_17_show_existing_frame.vp9", "vda_sanity-vp90_2_17_show_existing_frame.vp9.json"},
 		}, {
 			// H264 stream in which a profile changes from Baseline to Main.
 			Name:              "h264_profile_change",
 			Val:               "test-25fps_basemain.h264",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported"},
 			ExtraData:         []string{"test-25fps_basemain.h264", "test-25fps_basemain.h264.json"},
 		}, {
 			// Run with HW decoder using VA-API only because only the HW decoder can decode SVC stream correctly today.
@@ -107,7 +107,7 @@ func init() {
 			Name:              "vp9_keyframe_spatial_layers",
 			Val:               "keyframe_spatial_layers_180p_360p.vp9.ivf",
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "vaapi"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "vaapi", "video_decoder_legacy_supported"},
 			ExtraData:         []string{"keyframe_spatial_layers_180p_360p.vp9.ivf", "keyframe_spatial_layers_180p_360p.vp9.ivf.json"},
 		}},
 	})
