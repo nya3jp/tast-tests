@@ -93,6 +93,7 @@ func init() {
 
 func IconAndUsername(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
+	keyboard := s.PreValue().(crostini.PreData).Keyboard
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
@@ -107,7 +108,7 @@ func IconAndUsername(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		// Exiting Terminal app.
-		if err := terminalApp.Close(cleanupCtx); err != nil {
+		if err := terminalApp.Exit(cleanupCtx, keyboard); err != nil {
 			s.Fatal("Failed to exit Terminal window: ", err)
 		}
 	}()
