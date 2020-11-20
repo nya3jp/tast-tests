@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/coords"
@@ -62,8 +63,30 @@ func NotificationCentreSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find notification popup: ", err)
 	}
 	s.Log("Waiting for notification to auto-dismiss")
-	if err := ui.WaitUntilGone(ctx, tconn, params, uiTimeout); err != nil {
-		s.Fatal("Failed waiting for notification to auto-dismiss: ", err)
+	// Depending on DUT state when test is run, the notification could be focused and will not autodismiss.
+	// Check for that condition while waiting for notification to dismiss
+	subparams := ui.FindParams{
+		State: map[ui.StateType]bool{ui.StateTypeFocused: true},
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		notificationPopup, err := ui.FindWithTimeout(ctx, tconn, params, 1*time.Second)
+		if err != nil {
+			// Notification dismissed
+			return nil
+		}
+		// Notification still exists. Check if it has focus
+		notificationFocus, err := notificationPopup.DescendantWithTimeout(ctx, subparams, 1*time.Second)
+		if err != nil {
+			return errors.New("failed to find descendants of notification")
+		}
+		if notificationFocus.State[ui.StateTypeFocused] {
+			s.Log("Notification had focus. Opening launcher to change focus")
+			launcher.OpenLauncher(ctx, tconn)
+			return errors.New("notification exists and was focused")
+		}
+		return errors.New("notification still exists")
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		s.Fatal("Failed waiting for notification to dismiss: ", err)
 	}
 	s.Log("Open quick settings")
 	if err := quicksettings.Show(ctx, tconn); err != nil {
