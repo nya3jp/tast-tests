@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
@@ -69,6 +70,9 @@ func VirtualKeyboardEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeOnErrorToFile(
+				ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name+".txt")
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -92,11 +96,12 @@ func VirtualKeyboardEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to click address bar: ", err)
 			}
 
+			// If the keyboard is not supposed to appear, wait to check if it appears.
 			if !param.expected {
-				testing.Sleep(ctx, 15*time.Second)
+				testing.Sleep(ctx, 10*time.Second)
 			}
 
-			// Confirm the status of the  virtual keyboard node.
+			// Confirm the status of the virtual keyboard node.
 			if err := ui.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeKeyboard,
 				Name: "Chrome OS Virtual Keyboard",
