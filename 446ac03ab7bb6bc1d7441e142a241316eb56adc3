@@ -221,6 +221,30 @@
       },
       "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afcaf26d_cebec1f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-20T20:35:47Z",
+      "side": 1,
+      "message": "I tried just log the optin error, then I still got the Play files and move on with sharing it with Crostini, which is strange.",
+      "parentUuid": "6fc3481a_ec3ba4ef",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
