@@ -128,6 +128,47 @@
       "parentUuid": "b12b5458_0bd381b7",
       "revId": "4e508a2773f55bb3cc1e7fa3f7206372e1188d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "622ba29c_b5eed4bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-20T06:19:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e8753c8c_befa2c2b",
+      "revId": "4e508a2773f55bb3cc1e7fa3f7206372e1188d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10d19dd1_04cb0110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-20T06:19:16Z",
+      "side": 1,
+      "message": "Hmm why is this false...? Should we wait \"recording\" state to be true here?",
+      "range": {
+        "startLine": 459,
+        "startChar": 43,
+        "endLine": 459,
+        "endChar": 48
+      },
+      "revId": "4e508a2773f55bb3cc1e7fa3f7206372e1188d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
