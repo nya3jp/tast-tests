@@ -16,6 +16,23 @@
       "message": "+niwa@, +hidehiko@, PTAL.",
       "revId": "741418038cd18f53d9890cd8050a15f79340154e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b3de3b5_84693ab6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2020-11-20T07:03:21Z",
+      "side": 1,
+      "message": "(I\u0027ll add Cq-Depend: to/from the reland of crrev.com/i/3410977 once its revert is merged. The test failure broke PFQ and the original change is being reverted.)",
+      "revId": "741418038cd18f53d9890cd8050a15f79340154e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
