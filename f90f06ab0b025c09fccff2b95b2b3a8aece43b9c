@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7752bd64_447a3957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-20T17:55:55Z",
+      "side": 1,
+      "message": "Skipping tast-fw-libraries because aluo is going on PTO on Monday",
+      "revId": "f90f06ab0b025c09fccff2b95b2b3a8aece43b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
