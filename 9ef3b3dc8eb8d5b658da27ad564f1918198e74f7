@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c757725_91eaa05f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-20T23:18:08Z",
+      "side": 1,
+      "message": "Thanks for the pointer to your CL. By default I wasn\u0027t getting the xz compression with tar. Checking the chromite code I found it passes this arg to tar\n\ntar --use-compress-program ~/cros/chromite/scripts/xz_auto -cf ...",
+      "parentUuid": "9b2b8711_c8175355",
+      "revId": "9ef3b3dc8eb8d5b658da27ad564f1918198e74f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43545160_9c44a096",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "Oh, I see. Thanks for pointer and your explanation.",
       "parentUuid": "296898a3_8c5bfec4",
+      "revId": "9ef3b3dc8eb8d5b658da27ad564f1918198e74f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5030715a_bd8eb3f2",
+        "filename": "src/chromiumos/tast/local/lacros/data/lacros_binary.tar.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-20T23:18:08Z",
+      "side": 1,
+      "message": "Better now after using tar with xz",
+      "parentUuid": "eae870b1_83f2310b",
       "revId": "9ef3b3dc8eb8d5b658da27ad564f1918198e74f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
