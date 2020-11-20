@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c8ad4f0_182c5e1b",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8beb584_e68561e6",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 51
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2bc08ba_44dc430c",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-11-20T07:14:19Z",
       "side": 1,
       "message": "How about\nreturn fmt.Sprintf(\"{type: %s, duration: %v, measurements:[%s]\", r.TestType, r.Duration, strings.Join(measurements, \", \"))",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dec47b4_336184c6",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2bc08ba_44dc430c",
       "range": {
         "startLine": 66,
         "startChar": 8,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ea8fad_dee92bf3",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1c9fe8_a52f9ae0",
+      "range": {
+        "startLine": 213,
+        "startChar": 28,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20f1b972_d41dd35d",
@@ -123,6 +195,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "431af4c5_1ad552d9",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "I think I cannot assume here we will have only one type of samples, this is a public function.",
+      "parentUuid": "20f1b972_d41dd35d",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64ef9dc1_f9a5c073",
         "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
         "patchSetId": 10
@@ -134,6 +224,30 @@
       "writtenOn": "2020-11-20T07:14:19Z",
       "side": 1,
       "message": "You don\u0027t need to convert numSamples to time.Duration as \"duration\" is already a time.Duration type.",
+      "range": {
+        "startLine": 223,
+        "startChar": 16,
+        "endLine": 223,
+        "endChar": 41
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59056d5_4f752946",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "I\u0027m afraid I need, otherwise: \"mismatched int and time.Duration\". If I used a literal, then perhaps it would work, with variable it does not.",
+      "parentUuid": "64ef9dc1_f9a5c073",
       "range": {
         "startLine": 223,
         "startChar": 16,
@@ -169,6 +283,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89ab0f24_fbe9915a",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "No statistical significance, just %. dev is absolute value, we want to represent it as % of value.\nThe same result would be with dev \u003e\u003d fraction*value.",
+      "parentUuid": "0f705121_cea87aa4",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ab84720_81927493",
         "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
         "patchSetId": 10
@@ -186,6 +324,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a07ffe35_fd733852",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "Yes, for similar reason why we want to stop netserver: to clean up environment after a broken test run. Otherwise iptables will happily add new identical rule and then remove only one at the end of the test, leaving the system unnecessarily vulnerable.",
+      "parentUuid": "8ab84720_81927493",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b2960e8_88fa7732",
         "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
         "patchSetId": 10
@@ -197,6 +353,30 @@
       "writtenOn": "2020-11-20T07:14:19Z",
       "side": 1,
       "message": "starts ... unblocks... . (ending period)",
+      "range": {
+        "startLine": 126,
+        "startChar": 16,
+        "endLine": 126,
+        "endChar": 21
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "750e9352_f3ed3f3b",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b2960e8_88fa7732",
       "range": {
         "startLine": 126,
         "startChar": 16,
@@ -230,6 +410,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "435f2d2e_505b61e3",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e57549_814daa92",
+      "range": {
+        "startLine": 127,
+        "startChar": 17,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1621693_142e0e2c",
@@ -243,6 +447,30 @@
       "writtenOn": "2020-11-20T07:14:19Z",
       "side": 1,
       "message": "elapsed :\u003d time.Since(startupTime)",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 37
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b03679_676f5674",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1621693_142e0e2c",
       "range": {
         "startLine": 150,
         "startChar": 1,
@@ -276,6 +504,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d4ef72_735b5511",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21ef0817_332bbb94",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 46
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "476b1837_55e75415",
@@ -295,6 +547,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa4e6cd7_f64e5936",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "This approach makes possible multiple concurrent calls (they will just get synchronised on the mutex).\n\nTBH, this may lock only in case of programmer error (forget to call Close()). Unfortunately golang does not provide us with a proper destructor to facilitate RAII, so I cannot do much more.\nUltimately, the test will time out,\n2020/11/19 22:24:16 [22:24:16.081] Connected\n2020/11/20 00:11:42 [00:11:42.751] Error at run.go:540: Test did not return on timeout (see log for goroutine dump)\n2020/11/20 00:11:42 [00:11:42.751] Stack trace:\n\nWith the offending stack trace:\n2020/11/20 00:11:42 [00:11:42.779] goroutine 2802 [semacquire, 107 minutes]:\n2020/11/20 00:11:42 [00:11:42.779] sync.runtime_SemacquireMutex(0x1c15c2c, 0x0, 0x1)\n2020/11/20 00:11:42 [00:11:42.779] \t/usr/lib/go/src/runtime/sema.go:71 +0x47\n2020/11/20 00:11:42 [00:11:42.779] sync.(*Mutex).lockSlow(0x1c15c28)\n2020/11/20 00:11:42 [00:11:42.779] \t/usr/lib/go/src/sync/mutex.go:138 +0xfc\n2020/11/20 00:11:42 [00:11:42.779] sync.(*Mutex).Lock(...)\n2020/11/20 00:11:42 [00:11:42.779] \t/usr/lib/go/src/sync/mutex.go:81\n2020/11/20 00:11:42 [00:11:42.779] chromiumos/tast/remote/network/netperf.NewSession(0xc00003a5a0, 0xc0002570e0, 0xc, 0xc0001e0110, 0xc000257130, 0xd, 0x0)",
+      "parentUuid": "476b1837_55e75415",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45be3506_2063a60a",
         "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
         "patchSetId": 10
@@ -306,6 +576,30 @@
       "writtenOn": "2020-11-20T07:14:19Z",
       "side": 1,
       "message": "// Run runs a netperf runner ...\n\nI know it is verbose, but the first word of the function command is the function name, which is a noun not a verb.",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e63404d_08961434",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-20T12:23:30Z",
+      "side": 1,
+      "message": "Or it might be imperative ;)\nGenerally, I\u0027m not a fan of a rule enforcing repeating name in function headers while refusing to properly describe function arguments by their names and I will try to go around that requirement as often as I can. 😄",
+      "parentUuid": "45be3506_2063a60a",
       "range": {
         "startLine": 60,
         "startChar": 7,
