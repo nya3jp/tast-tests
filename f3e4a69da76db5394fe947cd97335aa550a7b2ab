@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c927a5_261acd66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-20T20:30:03Z",
+      "side": 1,
+      "message": "It looks like we accidentally removed it in CL:2538094. PTAL. Thanks.",
+      "revId": "f3e4a69da76db5394fe947cd97335aa550a7b2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
