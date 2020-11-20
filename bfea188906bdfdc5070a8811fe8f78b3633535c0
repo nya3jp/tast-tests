@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "553c5844_5540f548",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-11-20T01:53:06Z",
+      "side": 1,
+      "message": "Clicking the close button rather than typing \u0027exit\u0027 is an alternative way to close the terminal.\n\nThey both verify that the terminal window is removed.",
+      "parentUuid": "e5d4874e_e1053b98",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 69
+      },
+      "revId": "bfea188906bdfdc5070a8811fe8f78b3633535c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20d7d5db_3846a1c3",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-20T01:49:30Z",
       "side": 1,
       "message": "Also associate with chromium:1151074",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "bfea188906bdfdc5070a8811fe8f78b3633535c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3164a2_61c260ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-11-20T01:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20d7d5db_3846a1c3",
       "range": {
         "startLine": 13,
         "startChar": 4,
