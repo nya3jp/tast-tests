@@ -33,6 +33,24 @@
       "message": "My understanding from earlier discussion is that you are really just using crostini as a platform to run a Samba server. Have you considered running it directly on the host instead? We seem to already install smbd via the net-fs/samba package.",
       "revId": "bdec0c0711c7df410fcbf01fd9b1a0a2bcae24c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa31773_cdf66100",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-11-20T04:06:02Z",
+      "side": 1,
+      "message": "I think there is still benefit having the test run on crostini, even if it\u0027s only on the stable version.\n\nThe unstable variants are failing due to issues that are not related to SMB (in fact most of the time it doesn\u0027t even make it to our test) and for myself and the Files team to investigate the issue ends up being unnecessary noise (usually the underlying issue is being investigated already by the crostini team).",
+      "parentUuid": "885c524e_c08893d8",
+      "revId": "bdec0c0711c7df410fcbf01fd9b1a0a2bcae24c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
