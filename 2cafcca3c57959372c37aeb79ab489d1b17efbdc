@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e878d9f9_c52ab6b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-20T03:49:18Z",
+      "side": 1,
+      "message": "Generally looks good. only some minor comments.\n\nPlease also include your teammate to review (ref: go/tast-reviews)",
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55640311_d84feaa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-20T03:49:18Z",
+      "side": 1,
+      "message": "These seem to be something should be defined in policy package? As other user of policy.ForceYouTubeRestrict will also need them.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35561443_36e7fb2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-20T03:49:18Z",
+      "side": 1,
+      "message": "Maybe error here? IIUC, it is unexpected policyVal.Val.",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abae8082_7efe5e0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-20T03:49:18Z",
+      "side": 1,
+      "message": "similar logic repeats for different modes, not sure if it might be simpler to extract common logic. for example, something like:\n\n  var accStrict, accModerate bool\n  switch val {\n  case forceYouTubeRestrictDisabled:\n    strict, moderate \u003d true, true\n  case forceYouTubeRestrictModerate:\n    strict, moderate \u003d true, false\n  case forceYouTubeRestrictStrict:\n    strict, moderate \u003d false, false\n  }\n\n  r, err :\u003d isStrictlyRestrictedContentViewable(ctx, cr)\n  if err !\u003d nil {\n    return err\n  }\n  if r !\u003d accStrict {\n    return errors.Errorf(\"unexpected strictly restricted accessibility, got %t, want %t\", r, accStrict)\n  }\n  ...\n\nOr, is this less readable? WDYT?",
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd5e93d_59863477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-20T03:49:18Z",
+      "side": 1,
+      "message": "I think error string should not be capitalized according to http://go/tast-writing#formatting.\n\nSimilar below.",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cd3295_14c1bc16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-20T03:49:18Z",
+      "side": 1,
+      "message": "nit: As all tests are in the same package, function names may collide. Maybe \"getYTErrorMessage\" so that it is less general.",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 20
+      },
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
