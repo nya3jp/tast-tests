@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ec32f0d0_a8c593fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b0ec8d_2637538b",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "278f2352_674c3877",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -105,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c608e5_d8f69522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c8540f_cb55c940",
+      "range": {
+        "startLine": 43,
+        "startChar": 18,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "133b73bb_b472d8bd",
@@ -118,6 +166,30 @@
       "writtenOn": "2020-11-18T23:43:11Z",
       "side": 1,
       "message": "nit: \"to setup\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7ab9ff_0cb4f4f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "133b73bb_b472d8bd",
       "range": {
         "startLine": 49,
         "startChar": 18,
@@ -145,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ef384d_129f2b96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ef84e78_16306ca6",
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ca1e284_83cb8044",
@@ -168,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7557d65_98ee611e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ca1e284_83cb8044",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b48e97f_13c61e69",
@@ -181,6 +295,30 @@
       "writtenOn": "2020-11-18T22:25:48Z",
       "side": 1,
       "message": "nit: Move this above the UI setup code.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 35
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3a334c_09a7290f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "I think I moved this to the right location.",
+      "parentUuid": "8b48e97f_13c61e69",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -240,6 +378,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64227f0c_cc2e06df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "I used ioutil.TempDir and then used filepath.Base to get the folder name that is created. Let me know what you think.",
+      "parentUuid": "a6c211bf_58ebf204",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68ec5ebd_e075658d",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
         "patchSetId": 6
@@ -251,6 +413,30 @@
       "writtenOn": "2020-11-18T22:25:48Z",
       "side": 1,
       "message": "Folder?",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 32
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc07849a_2407d751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done. I removed the create folder happening in the UI and moved it to os.Mkdir at the beginning of this file.",
+      "parentUuid": "68ec5ebd_e075658d",
       "range": {
         "startLine": 109,
         "startChar": 28,
@@ -284,6 +470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79689c44_52a77752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84b490f1_5f83b2e1",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e46c4ca8_5e48d02f",
@@ -297,6 +507,30 @@
       "writtenOn": "2020-11-18T22:25:48Z",
       "side": 1,
       "message": "OpenFile actually performs this with a 15 second timeout. Can remove this",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "064128ec_3b4da9e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e46c4ca8_5e48d02f",
       "range": {
         "startLine": 117,
         "startChar": 0,
@@ -326,6 +560,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c635c51_e17053d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "This is from the drap_drop_background.js which instructs the extension to be created at 0,0 and to extend to 300,300. I just picked 100,100 as its in the window.  I could set this to be 150,150 to target the center of the window?  I added a comment to clarify where this number comes from.",
+      "parentUuid": "7518aa33_09548c95",
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28fe05ca_b54b07a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
         "patchSetId": 6
@@ -337,6 +589,30 @@
       "writtenOn": "2020-11-18T22:25:48Z",
       "side": 1,
       "message": "mouse.Click performs the move already, can remove this line\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/mouse/mouse.go;l\u003d34;drc\u003d26f64c3c00d3671c5e94ecc4c8be3b46a74ff118",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 47
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b56965e_1adb90d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28fe05ca_b54b07a3",
       "range": {
         "startLine": 143,
         "startChar": 0,
@@ -364,6 +640,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b71e01_2cc4fa24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2bb5a5c_5da15b78",
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b94fb8eb_e9000e16",
@@ -377,6 +671,30 @@
       "writtenOn": "2020-11-18T01:08:14Z",
       "side": 1,
       "message": "nit: What about adding some console.error() if the clipboard doesn\u0027t contain the \u0027fs/sources\u0027?\n\n if (!e.clipboardData.types.includes(\u0027fs/sources\u0027) {\n   console.error(\"paste event doesn\u0027t contain \u0027fs/sources\u0027\");\n   return;\n }\n\nI\u0027m not sure if this shows up anywhere, but it\u0027ll probably help debugging this test if it start failing.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 55
+      },
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7927f534_d46fbcf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/drag_drop_window.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1290879
+      },
+      "writtenOn": "2020-11-21T01:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b94fb8eb_e9000e16",
       "range": {
         "startLine": 22,
         "startChar": 0,
