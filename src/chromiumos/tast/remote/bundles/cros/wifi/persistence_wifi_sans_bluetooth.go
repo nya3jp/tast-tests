@@ -32,7 +32,7 @@ func init() {
 }
 
 func PersistenceWifiSansBluetooth(ctx context.Context, s *testing.State) {
-	// Cleanup on exit.
+	// Clean up on exit.
 	credKey := s.RequiredVar("wifi.signinProfileTestExtensionManifestKey")
 	defer func(ctx context.Context) {
 		d := s.DUT()
