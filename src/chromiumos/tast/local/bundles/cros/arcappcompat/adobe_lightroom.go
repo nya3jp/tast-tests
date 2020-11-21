@@ -61,8 +61,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars: []string{"arcappcompat.username", "arcappcompat.password",
-			"arcappcompat.AdobeLightroom.emailid", "arcappcompat.AdobeLightroom.password"},
+		Vars:    []string{"arcappcompat.username", "arcappcompat.password"},
 	})
 }
 
@@ -81,12 +80,9 @@ func AdobeLightroom(ctx context.Context, s *testing.State) {
 // verify AdobeLightroom reached main activity page of the app.
 func launchAppForAdobeLightroom(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		skipID          = "com.adobe.lrmobile:id/gotoLastPage"
-		signInID        = "com.adobe.lrmobile:id/signIn"
-		enterEmailID    = "EmailPage-EmailField"
-		continueText    = "Continue"
-		enterPasswordID = "PasswordPage-PasswordField"
-		addIconID       = "com.adobe.lrmobile:id/addPhotosButton"
+		skipID     = "com.adobe.lrmobile:id/gotoLastPage"
+		googleID   = "com.adobe.lrmobile:id/google"
+		addPhotoID = "com.adobe.lrmobile:id/addPhotosButton"
 	)
 
 	// Click on skip button.
@@ -97,52 +93,17 @@ func launchAppForAdobeLightroom(ctx context.Context, s *testing.State, tconn *ch
 		s.Fatal("Failed to click on skip in button: ", err)
 	}
 
-	// Click on sign in button.
-	signInButton := d.Object(ui.ID(signInID))
-	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("sign in button doesn't exist: ", err)
-	} else if err := signInButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on sign in button: ", err)
-	}
-
-	// Check and click email address.
-	AdobeLightroomEmailID := s.RequiredVar("arcappcompat.AdobeLightroom.emailid")
-	enterEmailAddress := d.Object(ui.ID(enterEmailID))
-	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("EnterEmailAddress doesn't exist: ", err)
-	} else if err := enterEmailAddress.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterEmailAddress: ", err)
-	} else if err := enterEmailAddress.SetText(ctx, AdobeLightroomEmailID); err != nil {
-		s.Fatal("Failed to enterEmailAddress: ", err)
-	}
-
-	// Click on continue button.
-	continueButton := d.Object(ui.Text(continueText))
-	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("continue button doesn't exist: ", err)
-	} else if err := continueButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on continue  button: ", err)
-	}
-
-	// Enter password.
-	AdobeLightroomPassword := s.RequiredVar("arcappcompat.AdobeLightroom.password")
-	enterPassword := d.Object(ui.ID(enterPasswordID))
-	if err := enterPassword.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("enterPassword doesn't exist: ", err)
-	} else if err := enterPassword.SetText(ctx, AdobeLightroomPassword); err != nil {
-		s.Fatal("Failed to enterPassword: ", err)
-	}
-
-	// Click on continue button.
-	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("continue button doesn't exist: ", err)
-	} else if err := continueButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on continue  button: ", err)
+	// Click on google button.
+	googleButton := d.Object(ui.ID(googleID))
+	if err := googleButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("Google button doesn't exist: ", err)
+	} else if err := googleButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on google button: ", err)
 	}
 
 	// Check for add icon.
-	addIconButton := d.Object(ui.ID(addIconID))
-	if err := addIconButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("addIcon button doesn't exist: ", err)
+	addPhotoButton := d.Object(ui.ID(addPhotoID))
+	if err := addPhotoButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Fatal("addPhoto button doesn't exist: ", err)
 	}
 }
