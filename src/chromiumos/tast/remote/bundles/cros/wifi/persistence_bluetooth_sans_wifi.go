@@ -33,7 +33,7 @@ func init() {
 
 func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 	credKey := s.RequiredVar("wifi.signinProfileTestExtensionManifestKey")
-	// Cleanup on exit.
+	// Clean up on exit.
 	defer func(ctx context.Context) {
 		d := s.DUT()
 		r, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
