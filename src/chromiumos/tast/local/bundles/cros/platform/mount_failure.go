@@ -110,11 +110,12 @@ func expectedFilesRegexes() []string {
 	return res
 }
 
-func validateCrashLogs(files map[string][]string) error {
+func validateCrashLogs(ctx context.Context, outDir string, files map[string][]string) error {
 	for _, mf := range mountFailures {
 		logFileRegex := mf.name + `\.\d{8}\.\d{6}\.0\.log`
 
 		if len(files[logFileRegex]) != 1 {
+			crash.MoveFilesToOut(ctx, outDir, files[logFileRegex]...)
 			return errors.Errorf("multiple log files (%v) within the same regex bucket: %s", files[logFileRegex], mf.name)
 		}
 
@@ -126,9 +127,11 @@ func validateCrashLogs(files map[string][]string) error {
 
 		for _, cmd := range mf.wantLogCommands {
 			if !strings.Contains(string(contents), mountFailureLogMap[cmd].wantHeader) {
+				crash.MoveFilesToOut(ctx, outDir, f)
 				return errors.Errorf("header not found: %s", mountFailureLogMap[cmd].wantHeader)
 			}
 			if !strings.Contains(string(contents), mountFailureLogMap[cmd].contents) {
+				crash.MoveFilesToOut(ctx, outDir, f)
 				return errors.Errorf("contents not found: %s", mountFailureLogMap[cmd].contents)
 			}
 		}
@@ -172,7 +175,11 @@ func MountFailure(ctx context.Context, s *testing.State) {
 		s.Fatal("Couldn't find expected files: ", err)
 	}
 
-	if err := validateCrashLogs(files); err != nil {
-		s.Fatal("Failed to validate contents of the crash reporters: ", err)
+	if err := validateCrashLogs(ctx, s.OutDir(), files); err != nil {
+		s.Error("Failed to validate contents of the crash reporters: ", err)
+	}
+
+	if err := crash.RemoveAllFiles(ctx, files); err != nil {
+		s.Log("Couldn't clean up files: ", err)
 	}
 }
