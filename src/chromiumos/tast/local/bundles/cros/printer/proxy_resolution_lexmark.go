@@ -28,14 +28,6 @@ func init() {
 		Attr: []string{"group:mainline", "informational"},
 		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
-			Name: "default_resolution",
-			Val: &proxyippprint.Params{
-				PpdFile:      "printer_Lexmark.ppd",
-				PrintFile:    "to_print.pdf",
-				ExpectedFile: "printer_resolution_lexmark_default_golden.ps",
-			},
-			ExtraData: []string{"printer_resolution_lexmark_default_golden.ps"},
-		}, {
 			Name: "600dpi",
 			Val: &proxyippprint.Params{
 				PpdFile:      "printer_Lexmark.ppd",

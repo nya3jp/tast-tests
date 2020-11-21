@@ -25,17 +25,8 @@ func init() {
 			"to_print.pdf",
 			"printer_Lexmark.ppd",
 		},
-		Attr: []string{"group:mainline"},
+		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name: "default_resolution",
-			Val: &ippprint.Params{
-				PpdFile:      "printer_Lexmark.ppd",
-				PrintFile:    "to_print.pdf",
-				ExpectedFile: "printer_resolution_lexmark_default_golden.ps",
-			},
-			ExtraData: []string{"printer_resolution_lexmark_default_golden.ps"},
-			ExtraAttr: []string{"informational"},
-		}, {
 			Name: "600dpi",
 			Val: &ippprint.Params{
 				PpdFile:      "printer_Lexmark.ppd",
@@ -44,7 +35,6 @@ func init() {
 				Options:      []ippprint.Option{ippprint.WithResolution("600dpi")},
 			},
 			ExtraData: []string{"printer_resolution_lexmark_600dpi_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "1200dpi",
 			Val: &ippprint.Params{
@@ -54,7 +44,6 @@ func init() {
 				Options:      []ippprint.Option{ippprint.WithResolution("1200dpi")},
 			},
 			ExtraData: []string{"printer_resolution_lexmark_1200dpi_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "2400x600dpi",
 			Val: &ippprint.Params{
@@ -64,7 +53,6 @@ func init() {
 				Options:      []ippprint.Option{ippprint.WithResolution("2400x600dpi")},
 			},
 			ExtraData: []string{"printer_resolution_lexmark_2400x600dpi_golden.ps"},
-			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
