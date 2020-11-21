@@ -133,6 +133,39 @@ func (s *BluetoothService) GetBluetoothPowered(ctx context.Context, req *network
 	return &network.GetBluetoothPoweredResponse{Powered: res, Persistent: enabled.Value}, nil
 }
 
+// SetBluetoothPoweredFast sets the Bluetooth adapter power status. This setting does not persist across boots.
+func (s *BluetoothService) SetBluetoothPoweredFast(ctx context.Context, req *network.SetBluetoothPoweredFastRequest) (*empty.Empty, error) {
+	adapters, err := bluetooth.Adapters(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get Bluetooth adapters")
+	}
+
+	if len(adapters) != 1 {
+		return nil, errors.Errorf("got %d adapters, expected 1 adapter", len(adapters))
+	}
+	if err := adapters[0].SetPowered(ctx, req.Powered); err != nil {
+		return nil, errors.Wrap(err, "could not set Bluetooth power state")
+	}
+	return &empty.Empty{}, nil
+}
+
+// GetBluetoothPoweredFast checks whether the Bluetooth adapter is enabled.
+func (s *BluetoothService) GetBluetoothPoweredFast(ctx context.Context, _ *empty.Empty) (*network.GetBluetoothPoweredFastResponse, error) {
+	adapters, err := bluetooth.Adapters(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get Bluetooth adapters")
+	}
+
+	if len(adapters) != 1 {
+		return &network.GetBluetoothPoweredFastResponse{Powered: false}, nil
+	}
+	res, err := adapters[0].Powered(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get Bluetooth power state")
+	}
+	return &network.GetBluetoothPoweredFastResponse{Powered: res}, nil
+}
+
 // ValidateBluetoothFunctional checks to see whether the Bluetooth device is usable.
 func (s *BluetoothService) ValidateBluetoothFunctional(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
 	adapters, err := bluetooth.Adapters(ctx)

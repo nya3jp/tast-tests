@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
+	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/testing"
 )
 
@@ -19,6 +20,25 @@ func AssertWifiEnabled(ctx context.Context, tf *wificell.TestFixture) (retErr er
 	if err != nil {
 		return errors.Wrap(err, "failed to configure the ap")
 	}
+	return pingTest(ctx, tf, ap)
+}
+
+// AssertWifiEnabledOnChannel makes sure that Wifi is enabled on the DUT on a specific channel. Other than configuring
+// the AP to operate on a set channel, it is otherwise the same as AssertWifiEnabled.
+func AssertWifiEnabledOnChannel(ctx context.Context, tf *wificell.TestFixture, channel int) (retErr error) {
+	tfOps := []hostapd.Option{
+		hostapd.Mode(hostapd.Mode80211nPure),
+		hostapd.Channel(channel),
+		hostapd.HTCaps(hostapd.HTCapHT20),
+	}
+	ap, err := tf.ConfigureAP(ctx, tfOps, nil)
+	if err != nil {
+		return errors.Wrap(err, "failed to configure the ap")
+	}
+	return pingTest(ctx, tf, ap)
+}
+
+func pingTest(ctx context.Context, tf *wificell.TestFixture, ap *wificell.APIface) (retErr error) {
 	defer func(ctx context.Context) {
 		if err := tf.DeconfigAP(ctx, ap); err != nil {
 			if retErr == nil {
@@ -31,7 +51,7 @@ func AssertWifiEnabled(ctx context.Context, tf *wificell.TestFixture) (retErr er
 	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 	defer cancel()
 
-	_, err = tf.ConnectWifiAP(ctx, ap)
+	_, err := tf.ConnectWifiAP(ctx, ap)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to WiFi")
 	}
@@ -52,4 +72,5 @@ func AssertWifiEnabled(ctx context.Context, tf *wificell.TestFixture) (retErr er
 	}
 
 	return nil
+
 }

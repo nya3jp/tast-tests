@@ -11,10 +11,16 @@ import "google/protobuf/empty.proto";
 option go_package = "chromiumos/tast/services/cros/network";
 
 service BluetoothService {
-  // SetBluetoothPowered enables/disables the Bluetooth device through dbus.
+  // SetBluetoothPowered enables/disables the Bluetooth device through settingsPrivate.
   rpc SetBluetoothPowered(SetBluetoothPoweredRequest) returns (google.protobuf.Empty) {}
+  // SetBluetoothPoweredFast enables/disables the Bluetooth device through dbus.
+  rpc SetBluetoothPoweredFast(SetBluetoothPoweredFastRequest) returns (google.protobuf.Empty) {}
+
   // GetBluetoothPowered returns the status of the bluetooth adapter as well as the machine's Bluetooth boot preference.
   rpc GetBluetoothPowered(GetBluetoothPoweredRequest) returns (GetBluetoothPoweredResponse) {}
+  // GetBluetoothPoweredFast returns the status of the bluetooth adapter.
+  rpc GetBluetoothPoweredFast(google.protobuf.Empty) returns (GetBluetoothPoweredFastResponse) {}
+
   // ValidateBluetoothFunctional checks to see whether the Bluetooth device is usable.
   rpc ValidateBluetoothFunctional(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
@@ -23,10 +29,16 @@ message SetBluetoothPoweredRequest {
     bool powered = 1;
     string credentials = 2;
 }
+message SetBluetoothPoweredFastRequest {
+    bool powered = 1;
+}
 message GetBluetoothPoweredRequest {
     string credentials = 1;
 }
 message GetBluetoothPoweredResponse {
     bool powered = 1;
     bool persistent = 2;
+}
+message GetBluetoothPoweredFastResponse {
+    bool powered = 1;
 }
