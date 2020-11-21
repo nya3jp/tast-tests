@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17f1776_50ce7ba8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-11-21T00:48:11Z",
+      "side": 1,
+      "message": "Forgot to remove an unused parameter. The latest patch removed it.",
+      "revId": "f2848a1989f7d37f895bca4a21ed1426f6bff76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
