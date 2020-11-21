@@ -80,18 +80,6 @@ func saveMountFailureLogs() error {
 	return nil
 }
 
-func cleanupMountFailureLogs() error {
-	for _, log := range mountFailureLogMap {
-		if log.path == "" {
-			continue
-		}
-		if err := os.Remove(log.path); err != nil {
-			return errors.Wrapf(err, "failed to remove %s", log.path)
-		}
-	}
-	return nil
-}
-
 func reportMountFailures(ctx context.Context) error {
 	for _, mf := range mountFailures {
 		cmd := testexec.CommandContext(ctx, "/sbin/crash_reporter", mf.crashReporterArgs...)
@@ -110,11 +98,12 @@ func expectedFilesRegexes() []string {
 	return res
 }
 
-func validateCrashLogs(files map[string][]string) error {
+func validateCrashLogs(ctx context.Context, s *testing.State, files map[string][]string) error {
 	for _, mf := range mountFailures {
 		logFileRegex := mf.name + `\.\d{8}\.\d{6}\.0\.log`
 
 		if len(files[logFileRegex]) != 1 {
+			crash.MoveFilesToOut(ctx, s.OutDir(), files[logFileRegex]...)
 			return errors.Errorf("multiple log files (%v) within the same regex bucket: %s", files[logFileRegex], mf.name)
 		}
 
@@ -126,9 +115,11 @@ func validateCrashLogs(files map[string][]string) error {
 
 		for _, cmd := range mf.wantLogCommands {
 			if !strings.Contains(string(contents), mountFailureLogMap[cmd].wantHeader) {
+				crash.MoveFilesToOut(ctx, s.OutDir(), f)
 				return errors.Errorf("header not found: %s", mountFailureLogMap[cmd].wantHeader)
 			}
 			if !strings.Contains(string(contents), mountFailureLogMap[cmd].contents) {
+				crash.MoveFilesToOut(ctx, s.OutDir(), f)
 				return errors.Errorf("contents not found: %s", mountFailureLogMap[cmd].contents)
 			}
 		}
@@ -146,9 +137,6 @@ func MountFailure(ctx context.Context, s *testing.State) {
 	defer crash.TearDownCrashTest(ctx)
 
 	err := saveMountFailureLogs()
-
-	// Cleanup logs on exit.
-	defer cleanupMountFailureLogs()
 
 	if err != nil {
 		s.Fatal("Failed to set up debug logs for mount failure collector: ", err)
@@ -172,7 +160,11 @@ func MountFailure(ctx context.Context, s *testing.State) {
 		s.Fatal("Couldn't find expected files: ", err)
 	}
 
-	if err := validateCrashLogs(files); err != nil {
-		s.Fatal("Failed to validate contents of the crash reporters: ", err)
+	if err := validateCrashLogs(ctx, s, files); err != nil {
+		s.Error("Failed to validate contents of the crash reporters: ", err)
+	}
+
+	if err := crash.RemoveAllFiles(ctx, files); err != nil {
+		s.Log("Couldn't clean up files: ", err)
 	}
 }
