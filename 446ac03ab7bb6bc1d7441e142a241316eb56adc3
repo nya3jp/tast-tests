@@ -245,6 +245,30 @@
       },
       "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2f5a46_3ccb4e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-11-21T00:36:35Z",
+      "side": 1,
+      "message": "Please add comment why optin is needed.",
+      "parentUuid": "6fc3481a_ec3ba4ef",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
