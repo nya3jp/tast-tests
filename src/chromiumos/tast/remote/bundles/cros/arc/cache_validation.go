@@ -47,7 +47,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: []string{
 				"/usr/share/arcvm/properties/build.prop",
-				"git_rvc-arc-dev-linux-apps",
+				"git_rvc-arc-linux-apps",
 			},
 		}},
 		Timeout: 5 * time.Minute,
