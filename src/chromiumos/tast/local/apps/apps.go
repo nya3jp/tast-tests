@@ -65,16 +65,28 @@ var Files = App{
 	Name: "Files",
 }
 
+// Gallery (aka Backlight) has details about the Gallery app.
+var Gallery = App{
+	ID:   "jhdjimmaggjajfjphpljagpgkidjilnj",
+	Name: "Gallery",
+}
+
 // Help (aka Explore) has details about the Help app.
 var Help = App{
 	ID:   "nbljnnecbjbmifnoehiemkgefbnpoeak",
 	Name: "Explore",
 }
 
-// Gallery (aka Backlight) has details about the Gallery app.
-var Gallery = App{
-	ID:   "jhdjimmaggjajfjphpljagpgkidjilnj",
-	Name: "Gallery",
+// Lacros has details about Lacros browser app.
+var Lacros = App{
+	ID:   "jaimifaeiicidiikhmjedcgdimealfbh",
+	Name: "Lacros",
+}
+
+// Photos has details about the Photos app.
+var Photos = App{
+	ID:   "fdbkkojdbojonckghlanfaopfakedeca",
+	Name: "Photos",
 }
 
 // PlayBooks has details about the Play Books app.
@@ -141,12 +153,6 @@ var WallpaperPicker = App{
 var WebStore = App{
 	ID:   "ahfgeienlihckogmohjhadlkjgocpleb",
 	Name: "Web Store",
-}
-
-// Photos has details about the Photos app.
-var Photos = App{
-	ID:   "fdbkkojdbojonckghlanfaopfakedeca",
-	Name: "Photos",
 }
 
 // Launch launches an app specified by appID.
