@@ -269,6 +269,30 @@
       },
       "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9836bf0_bbfeb1c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-22T07:34:34Z",
+      "side": 1,
+      "message": "Added sanity check question related to optin error in pre.go.",
+      "parentUuid": "0d2f5a46_3ccb4e29",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
