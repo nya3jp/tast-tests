@@ -266,6 +266,14 @@ func EnterpriseEnroll() Option {
 	return func(c *Chrome) { c.enroll = true }
 }
 
+// EnableChromad enables Chromad enrollment and login given credentials.
+func EnableChromad(cred ChromadCred) Option {
+	return func(c *Chrome) {
+		c.chromadEnabled = true
+		c.chromadCred = cred
+	}
+}
+
 // ARCDisabled returns an Option that can be passed to New to disable ARC.
 func ARCDisabled() Option {
 	return func(c *Chrome) { c.arcMode = arcDisabled }
@@ -327,6 +335,12 @@ func LoadSigninProfileExtension(key string) Option {
 	return func(c *Chrome) { c.signinExtKey = key }
 }
 
+// ChromadCred are enrollment and domain join auth credentials for chromad.
+type ChromadCred struct {
+	EnrollUser, EnrollPass string // user/pass for enrollment
+	DomainUser, DomainPass string // user/pass for domain join
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
@@ -348,6 +362,9 @@ type Chrome struct {
 	enroll                 bool   // whether device should be enrolled
 	arcMode                arcMode
 	restrictARCCPU         bool // a flag to control cpu restrictions on ARC
+
+	chromadCred    ChromadCred
+	chromadEnabled bool
 
 	// If breakpadTestMode is true, tell Chrome's breakpad to always write
 	// dumps directly to a hardcoded directory.
@@ -411,6 +428,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		region:                 "us",
 		policyEnabled:          false,
 		enroll:                 false,
+		chromadEnabled:         false,
 		breakpadTestMode:       true,
 		tracingStarted:         false,
 		logAggregator:          jslog.NewAggregator(),
