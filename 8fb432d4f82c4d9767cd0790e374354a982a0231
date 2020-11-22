@@ -70,6 +70,24 @@
       "parentUuid": "ca56f466_b986164d",
       "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d265528b_7e639053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-22T07:34:34Z",
+      "side": 1,
+      "message": "What was added?  I saw you added arc.DisableSyncFlags() but what about chrome.ARCSupported() instead of chrome.ARCEnabled()?",
+      "parentUuid": "d0aa11f2_81ec202e",
+      "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
