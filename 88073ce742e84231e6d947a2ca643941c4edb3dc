@@ -39,6 +39,30 @@
       },
       "revId": "88073ce742e84231e6d947a2ca643941c4edb3dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2abfdc_42b7ccfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pandora.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2020-11-22T04:12:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19ba64b4_619e5ce3",
+      "range": {
+        "startLine": 74,
+        "startChar": 37,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "88073ce742e84231e6d947a2ca643941c4edb3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
