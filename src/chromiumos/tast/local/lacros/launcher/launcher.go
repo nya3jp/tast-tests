@@ -29,9 +29,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// BinaryPath is the root directory for lacros-chrome related binaries.
-const BinaryPath = LacrosTestPath + "/lacros_binary"
-
 // LacrosChrome contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
 type LacrosChrome struct {
@@ -176,6 +173,16 @@ func receiveMojoFile(ctx context.Context) (*os.File, error) {
 	return f, nil
 }
 
+// extensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
+func extensionArgs(extID, extList string) []string {
+	return []string{
+		"--enable-experimental-extension-apis",   // Allow Chrome to use the Chrome Automation API.
+		"--whitelisted-extension-id=" + extID,    // Whitelists the test extension to access all Chrome APIs.
+		"--load-extension=" + extList,            // Load extensions.
+		"--disable-extensions-except=" + extList, // Disable extensions other than the Tast test extension.
+	}
+}
+
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
 func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	killLacrosChrome(ctx)
@@ -193,28 +200,25 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	l := &LacrosChrome{testExtID: p.Chrome.TestExtID()}
 	extList := strings.Join(p.Chrome.ExtDirs(), ",")
 	args := []string{
-		"--ozone-platform=wayland",                  // Use wayland to connect to exo wayland server.
-		"--no-sandbox",                              // Disable sandbox for now
-		"--remote-debugging-port=0",                 // Let Chrome choose its own debugging port.
-		"--enable-experimental-extension-apis",      // Allow Chrome to use the Chrome Automation API.
-		"--whitelisted-extension-id=" + l.testExtID, // Whitelists the test extension to access all Chrome APIs.
-		"--load-extension=" + extList,               // Load extensions
-		"--no-first-run",                            // Prevent showing up offer pages, e.g. google.com/chromebooks.
-		"--user-data-dir=" + userDataDir,            // Specify a --user-data-dir, which holds on-disk state for Chrome.
-		"--lang=en-US",                              // Language
-		"--breakpad-dump-location=" + BinaryPath,    // Specify location for breakpad dump files.
+		"--ozone-platform=wayland",               // Use wayland to connect to exo wayland server.
+		"--no-sandbox",                           // Disable sandbox for now
+		"--remote-debugging-port=0",              // Let Chrome choose its own debugging port.
+		"--no-first-run",                         // Prevent showing up offer pages, e.g. google.com/chromebooks.
+		"--user-data-dir=" + userDataDir,         // Specify a --user-data-dir, which holds on-disk state for Chrome.
+		"--lang=en-US",                           // Language
+		"--breakpad-dump-location=" + BinaryPath, // Specify location for breakpad dump files.
 		"--window-size=800,600",
 		"--log-file=" + userDataDir + "/logfile",     // Specify log file location for debugging.
 		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
 		"--enable-gpu-rasterization",                 // Enable GPU rasterization. This is necessary to enable OOP rasterization.
 		"--enable-oop-rasterization",                 // Enable OOP rasterization.
-		"--disable-extensions-except=" + extList,     // Disable extensions other than the Tast test extension.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--use-cras",                                 // Use CrAS.
 		"--use-fake-ui-for-media-stream",             // Avoid the need to grant camera/microphone permissions.
 		"--mojo-platform-channel-handle=3",           // Pass the file descriptor needed to connect lacros and ash-chrome via Mojo.
 		chrome.BlankURL,                              // Specify first tab to load.
 	}
+	args = append(args, extensionArgs(l.testExtID, extList)...)
 
 	// Get a file to connect to ash-chrome using Mojo with. Make sure to do this
 	f, err := receiveMojoFile(ctx)
