@@ -81,6 +81,11 @@ func (c *CrosDisks) Unmount(ctx context.Context, devicePath string, options []st
 	return status, nil
 }
 
+// Rename calls CrosDisks.Rename D-Bus method.
+func (c *CrosDisks) Rename(ctx context.Context, path, volumeName string) error {
+	return c.call(ctx, "Rename", path, volumeName).Err
+}
+
 // AddDeviceToAllowlist calls CrosDisks.AddDeviceToAllowlist D-Bus method.
 func (c *CrosDisks) AddDeviceToAllowlist(ctx context.Context, devicePath string) error {
 	return c.call(ctx, "AddDeviceToAllowlist", devicePath).Err
@@ -92,16 +97,24 @@ func (c *CrosDisks) RemoveDeviceFromAllowlist(ctx context.Context, devicePath st
 }
 
 // MountCompletedWatcher is a thin wrapper of dbusutil.SignalWatcher to return
-// signal content as mountCompleted.
+// signal content as MountCompleted.
 type MountCompletedWatcher struct {
+	dbusutil.SignalWatcher
+}
+
+// DeviceOperationCompletionWatcher is a thin wrapper of dbusutil.SignalWatcher to return
+// signal content as DeviceOperationCompleted.
+type DeviceOperationCompletionWatcher struct {
 	dbusutil.SignalWatcher
 }
 
 // See MountErrorType defined in system_api/dbus/cros-disks/dbus-constants.h
 const (
-	MountErrorNone              uint32 = 0
-	MountErrorPathNotMounted    uint32 = 6
-	MountErrorInvalidDevicePath uint32 = 100
+	MountErrorNone               uint32 = 0
+	MountErrorPathNotMounted     uint32 = 6
+	MountErrorMountProgramFailed uint32 = 12
+	MountErrorNeedPassword       uint32 = 13
+	MountErrorInvalidDevicePath  uint32 = 100
 )
 
 // MountCompleted holds the body data of MountCompleted signal.
@@ -110,6 +123,12 @@ type MountCompleted struct {
 	SourcePath string
 	SourceType uint32
 	MountPath  string
+}
+
+// DeviceOperationCompleted holds status of the operation doen.
+type DeviceOperationCompleted struct {
+	Status uint32
+	Device string
 }
 
 // Wait waits for the MountCompleted signal, and returns the body data of the
@@ -124,6 +143,21 @@ func (m *MountCompletedWatcher) Wait(ctx context.Context) (MountCompleted, error
 		return ret, nil
 	case <-ctx.Done():
 		return ret, errors.Wrap(ctx.Err(), "didn't get MountCompleted signal")
+	}
+}
+
+// Wait waits for the DeviceOperationCompleted signal, and returns the body data of the
+// received signal.
+func (m *DeviceOperationCompletionWatcher) Wait(ctx context.Context) (DeviceOperationCompleted, error) {
+	var ret DeviceOperationCompleted
+	select {
+	case s := <-m.Signals:
+		if err := dbus.Store(s.Body, &ret.Status, &ret.Device); err != nil {
+			return ret, errors.Wrap(err, "failed to store DeviceOperationCompleted data")
+		}
+		return ret, nil
+	case <-ctx.Done():
+		return ret, errors.Wrap(ctx.Err(), "didn't get DeviceOperationCompleted signal")
 	}
 }
 
@@ -161,4 +195,36 @@ func (c *CrosDisks) MountAndWaitForCompletion(ctx context.Context, devicePath, f
 		return MountCompleted{}, err
 	}
 	return m, nil
+}
+
+// doSomethingAndWaitForCompletion performs an operation and waits for the response signal.
+// This is a convenience method for the odd CrosDisks' signal-based API.
+func (c *CrosDisks) doSomethingAndWaitForCompletion(ctx context.Context, f func() error, signalName string) (DeviceOperationCompleted, error) {
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      dbusPath,
+		Interface: dbusInterface,
+		Member:    signalName,
+	}
+	s, err := dbusutil.NewSignalWatcher(ctx, c.conn, spec)
+	if err != nil {
+		return DeviceOperationCompleted{}, err
+	}
+	w := DeviceOperationCompletionWatcher{*s}
+	defer w.Close(ctx)
+
+	if err := f(); err != nil {
+		return DeviceOperationCompleted{}, err
+	}
+
+	r, err := w.Wait(ctx)
+	if err != nil {
+		return DeviceOperationCompleted{}, err
+	}
+	return r, nil
+}
+
+// RenameAndWaitForCompletion renames volume and waits for the response signal.
+func (c *CrosDisks) RenameAndWaitForCompletion(ctx context.Context, path, volumeName string) (DeviceOperationCompleted, error) {
+	return c.doSomethingAndWaitForCompletion(ctx, func() error { return c.Rename(ctx, path, volumeName) }, "RenameCompleted")
 }
