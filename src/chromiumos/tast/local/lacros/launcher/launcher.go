@@ -29,9 +29,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// BinaryPath is the root directory for lacros-chrome related binaries.
-const BinaryPath = LacrosTestPath + "/lacros_binary"
-
 // LacrosChrome contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
 type LacrosChrome struct {
