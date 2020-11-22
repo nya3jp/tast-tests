@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95fa405_ba302645",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2020-11-22T23:17:32Z",
+      "side": 1,
+      "message": "I\u0027m leaving the fine details about Tast for the other reviewers since I haven\u0027t used Tast to be able to help.",
+      "revId": "3c03dab24127ca29af021885f7c02de5674b6987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
