@@ -88,6 +88,24 @@
       "parentUuid": "d0aa11f2_81ec202e",
       "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07361292_e4046b19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-22T23:16:59Z",
+      "side": 1,
+      "message": "chrome.ExtraArgs(arc.DisableSyncFlags()...) was added.\n\nIf changing chrome.ARCEnabled() to chrome.ARCSupported(), optin.Perform,  optin.WaitForPlayStoreShown and the test case ran without error. However, the DUTs is in this https://drive.google.com/file/d/1IE4XRqMaZwlG6kQM4Hk7DNo8vP9wa0Tn/view?usp\u003dsharing.\n\nIf using both chrome.ARCEnabled() and chrome.ARCSupported(), got the same error as before.",
+      "parentUuid": "d265528b_7e639053",
+      "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
