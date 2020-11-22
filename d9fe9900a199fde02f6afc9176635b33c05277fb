@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6cbe53c0_01e025cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-22T08:30:37Z",
+      "side": 1,
+      "message": "Done. This CL is now the last one in a list of changes. I\u0027ve limited it to a few boards so as not to do anything bad to the lab (even though they OK\u0027d it)",
+      "parentUuid": "61c0b7ca_e5405846",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fe70894a_fa2dc922",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -70,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6622e04_1e8d432e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-22T08:30:37Z",
+      "side": 1,
+      "message": "Thanks. Please review the other CLs in the chain first :) They are for adding UI integration with the binary from GCS. And a test for launching lacros from the shelf UI. Then this test for testing the omaha flow",
+      "parentUuid": "a9bd5c29_b5ec6f7e",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650beb39_b29cdb19",
@@ -83,6 +119,24 @@
       "writtenOn": "2020-11-18T13:38:50Z",
       "side": 1,
       "message": "Could you move this to L144 to minimize the scope?",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aff23c0_c7a7a168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-22T08:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650beb39_b29cdb19",
       "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48709461_c4f460e9",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-22T08:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d670f4fb_85218445",
+      "range": {
+        "startLine": 189,
+        "startChar": 15,
+        "endLine": 189,
+        "endChar": 16
+      },
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39a6ce57_6815a23c",
@@ -123,6 +201,24 @@
       "writtenOn": "2020-11-18T13:38:50Z",
       "side": 1,
       "message": "testing.PollBreak to stop polling immediately.",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cafd9238_d1ff58c2",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-22T08:30:37Z",
+      "side": 1,
+      "message": "No need to pollbreak. The dir is only created after the binary is downloaded.",
+      "parentUuid": "39a6ce57_6815a23c",
       "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -146,6 +242,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5efe6cd9_1292782f",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-22T08:30:37Z",
+      "side": 1,
+      "message": "Everytime I log in and out with the default test user it is getting cleared.",
+      "parentUuid": "2c156a7a_4c61ef6c",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99e0b758_d8533419",
         "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
         "patchSetId": 4
@@ -157,6 +271,24 @@
       "writtenOn": "2020-11-18T13:38:50Z",
       "side": 1,
       "message": "nit: const.",
+      "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d5bded3_2e39c243",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-22T08:30:37Z",
+      "side": 1,
+      "message": "I change the value of it in a couple of lines",
+      "parentUuid": "99e0b758_d8533419",
       "revId": "d9fe9900a199fde02f6afc9176635b33c05277fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
