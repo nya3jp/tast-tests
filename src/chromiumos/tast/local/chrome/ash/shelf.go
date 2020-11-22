@@ -173,7 +173,7 @@ type ShelfItem struct {
 	AppID           string          `json:"appId"`
 	LaunchID        string          `json:"launchId"`
 	Title           string          `json:"title"`
-	Type            string          `json:"type"`
+	Type            ShelfItemType   `json:"type"`
 	Status          ShelfItemStatus `json:"status"`
 	ShowsToolTip    bool            `json:"showsTooltip"`
 	PinnedByPolicy  bool            `json:"pinnedByPolicy"`
@@ -240,6 +240,7 @@ const (
 	BuiltIn   AppType = "BuiltIn"
 	Crostini  AppType = "Crostini"
 	Extension AppType = "Extension"
+	Lacros    AppType = "Lacros"
 	Web       AppType = "Web"
 	MacNative AppType = "MacNative"
 )
