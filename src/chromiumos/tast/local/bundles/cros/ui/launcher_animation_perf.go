@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	lacrostest "chromiumos/tast/local/bundles/cros/ui/lacros"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -113,7 +112,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr, err := lacrostest.GetChrome(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+	cr, err := lacros.GetChrome(ctx, s.PreValue())
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -146,11 +145,11 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
 	for _, windows := range []int{0, 2} {
 		func() {
-			_, l, cs, err := lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+			_, l, cs, err := lacros.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
 			if err != nil {
 				s.Fatal("Failed to setup lacrostest: ", err)
 			}
-			defer lacrostest.CloseLacrosChrome(ctx, l)
+			defer lacros.CloseLacrosChrome(ctx, l)
 
 			conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, windows-currentWindows)
 			if err != nil {

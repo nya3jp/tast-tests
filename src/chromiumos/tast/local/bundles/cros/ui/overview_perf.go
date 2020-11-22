@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	lacrostest "chromiumos/tast/local/bundles/cros/ui/lacros"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -57,11 +56,11 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr, l, cs, err := lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+	cr, l, cs, err := lacros.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
-	defer lacrostest.CloseLacrosChrome(ctx, l)
+	defer lacros.CloseLacrosChrome(ctx, l)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

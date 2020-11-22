@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/lacros"
+	lacroslauncher "chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -25,24 +27,39 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{
+			{
+				Pre: chrome.LoggedIn(),
+				Val: apps.Settings,
+			},
+			{
+				Name:              "lacros",
+				Val:               apps.Lacros,
+				Pre:               lacroslauncher.StartedByDataUI(),
+				ExtraData:         []string{lacroslauncher.DataArtifact},
+				ExtraSoftwareDeps: []string{"lacros"},
+			}},
 	})
 }
 
 // SearchBuiltInApps searches for the Settings app in the Launcher.
 func SearchBuiltInApps(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, err := lacros.GetChrome(ctx, s.PreValue())
+	if err != nil {
+		s.Fatal("Failed to get a Chrome instance: ", err)
+	}
+	app := s.Param().(apps.App)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := launcher.SearchAndLaunch(ctx, tconn, apps.Settings.Name); err != nil {
+	if err := launcher.SearchAndLaunch(ctx, tconn, app.Name); err != nil {
 		s.Fatal("Failed to launch Settings: ", err)
 	}
 
-	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
 		s.Fatal("Failed to wait for Settings: ", err)
 	}
 }
