@@ -33,6 +33,24 @@
       "message": "Just double checking from earlier comment, does using chrome.ARCSupported() instead of chrome.ARCEnabled() makes any difference in term of the optin error? \n\nIf it does maybe add arcSupported option in addition to arcEnabled?",
       "revId": "fd89f27dd4c205c05b40cc0a1f7531c265123982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f23a31_0cf349d6",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-22T23:16:59Z",
+      "side": 1,
+      "message": "Replied above.",
+      "parentUuid": "cb4fd61d_b6385d60",
+      "revId": "fd89f27dd4c205c05b40cc0a1f7531c265123982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

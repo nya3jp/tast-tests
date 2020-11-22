@@ -293,6 +293,30 @@
       },
       "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8131076_f755255c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-22T23:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9836bf0_bbfeb1c2",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "446ac03ab7bb6bc1d7441e142a241316eb56adc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
