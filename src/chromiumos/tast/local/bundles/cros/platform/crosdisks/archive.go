@@ -49,9 +49,6 @@ var PreparedArchives = []string{
 	"crosdisks/MacOS UTF-8 Bug 903664.zip",
 }
 
-const mountStatusMountProgramFailed = uint32(12)
-const mountStatusNeedPassword = uint32(13)
-
 func withMountedArchiveDo(ctx context.Context, cd *crosdisks.CrosDisks, archivePath, password string, f func(ctx context.Context, mountPath string) error) error {
 	options := ""
 	if password != "" {
@@ -68,12 +65,12 @@ func verifyArchiveContent(ctx context.Context, cd *crosdisks.CrosDisks, archiveP
 
 func verifyEncryptedArchiveContent(ctx context.Context, cd *crosdisks.CrosDisks, archivePath, password string, expectedContent DirectoryContents) error {
 	// Check that it fails without a password.
-	if err := verifyMountStatus(ctx, cd, archivePath, filepath.Ext(archivePath), "", mountStatusNeedPassword); err != nil {
+	if err := verifyMountStatus(ctx, cd, archivePath, filepath.Ext(archivePath), "", crosdisks.MountErrorNeedPassword); err != nil {
 		return errors.Wrap(err, "verification failed for encrypted archive without password")
 	}
 	// Check that it fails with a wrong password.
 	for _, pw := range []string{"", password + "foo", password[0 : len(password)-1]} {
-		if err := verifyMountStatus(ctx, cd, archivePath, filepath.Ext(archivePath), "password="+pw, mountStatusNeedPassword); err != nil {
+		if err := verifyMountStatus(ctx, cd, archivePath, filepath.Ext(archivePath), "password="+pw, crosdisks.MountErrorNeedPassword); err != nil {
 			return errors.Wrap(err, "verification failed for encrypted archive with incorrect password")
 		}
 	}
@@ -88,7 +85,7 @@ func testInvalidArchives(ctx context.Context, s *testing.State, cd *crosdisks.Cr
 		"Not There.rar",
 		"Not There.zip",
 	} {
-		if err := verifyMountStatus(ctx, cd, filepath.Join(dataDir, f), filepath.Ext(f), "", mountStatusMountProgramFailed); err != nil {
+		if err := verifyMountStatus(ctx, cd, filepath.Join(dataDir, f), filepath.Ext(f), "", crosdisks.MountErrorMountProgramFailed); err != nil {
 			s.Errorf("Unexpected status of mounting invalid archive %q: %v", f, err)
 		}
 	}
@@ -216,7 +213,7 @@ func testMixedEncryptioninArchives(ctx context.Context, s *testing.State, cd *cr
 // testStrictPasswordInArchives checks that invalid password is not accidentally accepted. https://crbug.com/1127752
 func testStrictPasswordInArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
 	archivePath := filepath.Join(dataDir, "Strict Password.zip")
-	if err := verifyMountStatus(ctx, cd, archivePath, filepath.Ext(archivePath), "password=sample", mountStatusNeedPassword); err != nil {
+	if err := verifyMountStatus(ctx, cd, archivePath, filepath.Ext(archivePath), "password=sample", crosdisks.MountErrorNeedPassword); err != nil {
 		s.Errorf("Test failed for %q: %v", archivePath, err)
 	}
 }

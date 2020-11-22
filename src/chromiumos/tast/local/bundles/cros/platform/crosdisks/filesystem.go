@@ -106,29 +106,26 @@ func RunFilesystemTests(ctx context.Context, s *testing.State) {
 		// is too fragile and remains in a half-broken state after that, so we only check known good scenarios.
 		s.Run(ctx, "vfat", func(ctx context.Context, state *testing.State) {
 			if err := formatDevice(ctx, "mkfs.vfat -n EMPTY1", ld.DevicePath()); err != nil {
-				s.Error("Could not format device: ", err)
-				return
+				state.Fatal("Could not format device: ", err)
 			}
 			if err := testMountFilesystem(ctx, cd, ld, "EMPTY1"); err != nil {
-				s.Error("Test case failed: ", err)
+				state.Fatal("Test case failed: ", err)
 			}
 		})
 		s.Run(ctx, "exfat", func(ctx context.Context, state *testing.State) {
 			if err := formatDevice(ctx, "mkfs.exfat -n EMPTY2", ld.DevicePath()); err != nil {
-				s.Error("Could not format device: ", err)
-				return
+				state.Fatal("Could not format device: ", err)
 			}
 			if err := testMountFilesystem(ctx, cd, ld, "EMPTY2"); err != nil {
-				s.Error("Test case failed: ", err)
+				state.Fatal("Test case failed: ", err)
 			}
 		})
 		s.Run(ctx, "ntfs", func(ctx context.Context, state *testing.State) {
 			if err := formatDevice(ctx, "mkfs.ntfs -f -L EMPTY3", ld.DevicePath()); err != nil {
-				s.Error("Could not format device: ", err)
-				return
+				state.Fatal("Could not format device: ", err)
 			}
 			if err := testMountFilesystem(ctx, cd, ld, "EMPTY3"); err != nil {
-				s.Error("Test case failed: ", err)
+				state.Fatal("Test case failed: ", err)
 			}
 		})
 		return nil
