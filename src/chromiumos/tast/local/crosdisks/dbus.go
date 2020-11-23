@@ -86,6 +86,11 @@ func (c *CrosDisks) Rename(ctx context.Context, path, volumeName string) error {
 	return c.call(ctx, "Rename", path, volumeName).Err
 }
 
+// Format calls CrosDisks.Rename D-Bus method.
+func (c *CrosDisks) Format(ctx context.Context, path, fsType string, options []string) error {
+	return c.call(ctx, "Format", path, fsType, options).Err
+}
+
 // AddDeviceToAllowlist calls CrosDisks.AddDeviceToAllowlist D-Bus method.
 func (c *CrosDisks) AddDeviceToAllowlist(ctx context.Context, devicePath string) error {
 	return c.call(ctx, "AddDeviceToAllowlist", devicePath).Err
@@ -227,4 +232,9 @@ func (c *CrosDisks) doSomethingAndWaitForCompletion(ctx context.Context, f func(
 // RenameAndWaitForCompletion renames volume and waits for the response signal.
 func (c *CrosDisks) RenameAndWaitForCompletion(ctx context.Context, path, volumeName string) (DeviceOperationCompleted, error) {
 	return c.doSomethingAndWaitForCompletion(ctx, func() error { return c.Rename(ctx, path, volumeName) }, "RenameCompleted")
+}
+
+// FormatAndWaitForCompletion renames volume and waits for the response signal.
+func (c *CrosDisks) FormatAndWaitForCompletion(ctx context.Context, path, fsType string, options []string) (DeviceOperationCompleted, error) {
+	return c.doSomethingAndWaitForCompletion(ctx, func() error { return c.Format(ctx, path, fsType, options) }, "FormatCompleted")
 }
