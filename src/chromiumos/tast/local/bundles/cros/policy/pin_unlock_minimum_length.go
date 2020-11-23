@@ -26,7 +26,8 @@ func init() {
 			"gabormagda@google.com",
 			"chromeos-commercial-stability@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(crbug.com/1149286) Disable the test until it can be fixed
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.User,
 	})
