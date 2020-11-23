@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34df105f_d1ea05be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-23T21:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85aebccc_7fd9e008",
+      "range": {
+        "startLine": 65,
+        "startChar": 31,
+        "endLine": 65,
+        "endChar": 46
+      },
+      "revId": "b2b77eb84ec634dc61b614147c4f8b54fcf6ad08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b33f05d_3c317e65",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-23T18:33:31Z",
       "side": 1,
       "message": "It seems like the definition of subparams should ensure that this is always true.",
+      "revId": "b2b77eb84ec634dc61b614147c4f8b54fcf6ad08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca68974_84b8197f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-23T21:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b33f05d_3c317e65",
       "revId": "b2b77eb84ec634dc61b614147c4f8b54fcf6ad08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
