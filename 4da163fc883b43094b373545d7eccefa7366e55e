@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06277d3_30b73f14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-23T17:33:31Z",
+      "side": 1,
+      "message": "Thanks, Sarthak! Few quick points.",
+      "revId": "4da163fc883b43094b373545d7eccefa7366e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587d235d_579bee86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-23T17:33:31Z",
+      "side": 1,
+      "message": "I believe generally tast guidance is to never pass |testing.State| to other functions. Instead can you pass s.OutDir()?",
+      "range": {
+        "startLine": 101,
+        "startChar": 43,
+        "endLine": 101,
+        "endChar": 60
+      },
+      "revId": "4da163fc883b43094b373545d7eccefa7366e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
