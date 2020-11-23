@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a4a25b_213949de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-23T08:00:44Z",
+      "side": 1,
+      "message": "Help CQ+2 as the CQ was affected by https://crbug.com/1151463\n\nSorry that I should not CR+2 the previous revert CL as the test did its job.",
+      "revId": "a58a7ee6540c37789a812c0b2feb59379ce311eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
