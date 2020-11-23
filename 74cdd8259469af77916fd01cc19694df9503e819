@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb059451_8e1bea98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T23:02:32Z",
+      "side": 1,
+      "message": "period",
+      "range": {
+        "startLine": 60,
+        "startChar": 69,
+        "endLine": 60,
+        "endChar": 70
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2a78a1_63352f90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T23:02:32Z",
+      "side": 1,
+      "message": "probably should defer releasing this",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4a64d0_a744e95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T23:02:32Z",
+      "side": 1,
+      "message": "period",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "783c665e_a167fc25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T23:02:32Z",
+      "side": 1,
+      "message": "period",
+      "range": {
+        "startLine": 70,
+        "startChar": 52,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8ed93b_e849d9de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T23:02:32Z",
+      "side": 1,
+      "message": "defer releasing this one too",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfcf54ca_2be43655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T23:02:32Z",
+      "side": 1,
+      "message": "errors.Wrap might be better for additional info",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee69abd_134578a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T23:02:32Z",
+      "side": 1,
+      "message": "We should probably handle the error here as well",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
