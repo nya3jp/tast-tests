@@ -16,6 +16,24 @@
       "message": "nit: don\u0027t change commit subject",
       "revId": "b3db479bacb2f7ae4cf44fdd69efa97ca7bba07e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e239054d_9e264784",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390760
+      },
+      "writtenOn": "2020-11-23T16:54:48Z",
+      "side": 1,
+      "message": "I didn\u0027t realised it was changed.\n\nReverted to previous subject.",
+      "parentUuid": "7816a67c_1b97af24",
+      "revId": "b3db479bacb2f7ae4cf44fdd69efa97ca7bba07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
