@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d00305a3_eb208622",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390760
+      },
+      "writtenOn": "2020-11-23T15:58:45Z",
+      "side": 1,
+      "message": "Checked the error code from Sleep.\n\nThe code now results as a full new file.\nApologies for this: I messed up with git and repo and this was the only way I found to keep working on this CL 😞",
+      "revId": "27c828babb3bcc8f5fd39b1da1adb0b11fac492e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
