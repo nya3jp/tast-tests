@@ -169,6 +169,30 @@
       },
       "revId": "4e508a2773f55bb3cc1e7fa3f7206372e1188d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece79b1e_a2548592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-11-23T01:05:31Z",
+      "side": 1,
+      "message": "Yes, it\u0027s a bug. I forget to test on \"camera.CCAUIRecordVideo.swa\". Fixed on latest PS. Thanks for catching this.",
+      "parentUuid": "10d19dd1_04cb0110",
+      "range": {
+        "startLine": 459,
+        "startChar": 43,
+        "endLine": 459,
+        "endChar": 48
+      },
+      "revId": "4e508a2773f55bb3cc1e7fa3f7206372e1188d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
