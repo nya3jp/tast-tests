@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net"
+	"os"
 	"reflect"
 	"sort"
 	"strconv"
@@ -28,6 +29,7 @@ import (
 	"chromiumos/tast/errors"
 	local_network "chromiumos/tast/local/network"
 	"chromiumos/tast/local/network/cmd"
+	network_iface "chromiumos/tast/local/network/iface"
 	"chromiumos/tast/local/network/ping"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
@@ -2145,6 +2147,220 @@ func (s *WifiService) FlushBSS(ctx context.Context, req *network.FlushBSSRequest
 	ageThreshold := uint32(time.Duration(req.Age).Seconds())
 	if err := iface.FlushBSS(ctx, ageThreshold); err != nil {
 		return nil, errors.Wrap(err, "failed to call FlushBSS method")
+	}
+	return &empty.Empty{}, nil
+}
+
+// ResetTest is the main body of the Reset test, which resets/suspends and verifies the connection for several times.
+func (s *WifiService) ResetTest(ctx context.Context, req *network.ResetTestRequest) (*empty.Empty, error) {
+	const (
+		resetNum           = 15
+		suspendNum         = 5
+		suspendDuration    = time.Second * 10
+		idleConnectTimeout = time.Second * 20
+		pingLossThreshold  = 20.0
+
+		mwifiexFormat = "/sys/kernel/debug/mwifiex/%s/reset"
+		ath10kFormat  = "/sys/kernel/debug/ieee80211/%s/ath10k/simulate_fw_crash"
+		// Possible reset paths for Intel wireless NICs are:
+		// 1. /sys/kernel/debug/iwlwifi/{iface}/iwlmvm/fw_restart
+		//    Logs look like: iwlwifi 0000:00:0c.0: 0x00000038 | BAD_COMMAND
+		//    This also triggers a register dump after the restart.
+		// 2. /sys/kernel/debug/iwlwifi/{iface}/iwlmvm/fw_nmi
+		//    Logs look like: iwlwifi 0000:00:0c.0: 0x00000084 | NMI_INTERRUPT_UNKNOWN
+		//    This triggers a "hardware restart" once the NMI is processed
+		// 3. /sys/kernel/debug/iwlwifi/{iface}/iwlmvm/fw_dbg_collect
+		//    The third one is a mechanism to collect firmware debug dumps, that
+		//    effectively causes a restart, but we'll leave it aside for now.
+		iwlwifiFormat = "/sys/kernel/debug/iwlwifi/%s/iwlmvm/fw_restart"
+
+		mwifiexTimeout  = time.Second * 20
+		mwifiexInterval = time.Millisecond * 500
+	)
+
+	fileExists := func(file string) bool {
+		_, err := os.Stat(file)
+		return !os.IsNotExist(err)
+	}
+	writeStringToFile := func(file, content string) error {
+		return ioutil.WriteFile(file, []byte(content), 0444)
+	}
+	pingOnce := func(ctx context.Context) error {
+		res, err := ping.NewLocalRunner().Ping(ctx, req.ServerIp)
+		if err != nil {
+			return errors.Wrap(err, "failed to ping from the DUT")
+		}
+		if res.Loss > pingLossThreshold {
+			return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
+		}
+		return nil
+	}
+	assertIdleAndConnect := func(ctx context.Context, f func(ctx context.Context) error) error {
+		service, err := shill.NewService(ctx, dbus.ObjectPath(req.ServicePath))
+		if err != nil {
+			return errors.Wrap(err, "failed to create a shill service")
+		}
+		pw, err := service.CreateWatcher(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create shill property watcher")
+		}
+		defer pw.Close(ctx)
+		ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+		defer cancel()
+
+		if err := f(ctx); err != nil {
+			return err
+		}
+
+		if err := pw.Expect(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateIdle); err != nil {
+			return errors.Wrap(err, "failed to wait for the service enters Idle state")
+		}
+		if err := pw.Expect(ctx, shillconst.ServicePropertyIsConnected, true); err != nil {
+			return errors.Wrap(err, "failed to wait for the service becomes IsConnected")
+		}
+
+		return nil
+	}
+
+	// Utils for mwifiex, ath10k, and iwlwifi drivers. *ResetPath return the reset paths in sysfs if they exist. *Reset do the reset once.
+	mwifiexResetPath := func(_ context.Context, iface string) (string, error) {
+		resetPath := fmt.Sprintf(mwifiexFormat, iface)
+		if !fileExists(resetPath) {
+			return "", errors.Errorf("mwifiex reset path %q does not exist", resetPath)
+		}
+		return resetPath, nil
+	}
+	mwifiexReset := func(ctx context.Context, resetPath string) error {
+		ctx, cancel := ctxutil.Shorten(ctx, mwifiexTimeout)
+		defer cancel()
+
+		// We aren't guaranteed to receive a disconnect event, but shill will at least notice the adapter went away.
+		if err := assertIdleAndConnect(ctx, func(_ context.Context) error {
+			if err := writeStringToFile(resetPath, "1"); err != nil {
+				return errors.Wrapf(err, "failed to write to the reset path %q", resetPath)
+			}
+			return nil
+		}); err != nil {
+			return err
+		}
+
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if !fileExists(resetPath) {
+				return errors.Errorf("failed to wait for reset interface file %q to come back", resetPath)
+			}
+			return nil
+		}, &testing.PollOptions{
+			// Not setting Timeout here as we have shortened the ctx in the beginning of the function.
+			Interval: mwifiexInterval,
+		})
+	}
+	ath10kResetPath := func(ctx context.Context, iface string) (string, error) {
+		phy, err := network_iface.NewInterface(iface).PhyName(ctx)
+		if err != nil {
+			return "", errors.Wrapf(err, "failed to get the phy name of the WiFi interface (%s)", iface)
+		}
+		resetPath := fmt.Sprintf(ath10kFormat, phy)
+		if !fileExists(resetPath) {
+			return "", errors.Errorf("ath10k reset path %q does not exist", resetPath)
+		}
+		return resetPath, nil
+	}
+	ath10kReset := func(_ context.Context, resetPath string) error {
+		// Simulate ath10k firmware crash. mac80211 handles firmware crashes transparently, so we don't expect a full disconnect/reconnet event.
+		// From ath10k debugfs:
+		//   To simulate firmware crash write one of the keywords to this file:
+		//   `soft`       - This will send WMI_FORCE_FW_HANG_ASSERT to firmware if FW supports that command.
+		//   `hard`       - This will send to firmware command with illegal parameters causing firmware crash.
+		//   `assert`     - This will send special illegal parameter to firmware to cause assert failure and crash.
+		//   `hw-restart` - This will simply queue hw restart without fw/hw actually crashing.
+		if err := writeStringToFile(resetPath, "soft"); err != nil {
+			return errors.Wrapf(err, "failed to write to the reset path %q", resetPath)
+		}
+		return nil
+	}
+	iwlwifiResetPath := func(ctx context.Context, iface string) (string, error) {
+		par, err := network_iface.NewInterface(iface).ParentDeviceName(ctx)
+		if err != nil {
+			return "", errors.Wrapf(err, "failed to get the parent device name of the WiFi interface (%s)", iface)
+		}
+		resetPath := fmt.Sprintf(iwlwifiFormat, par)
+		if !fileExists(resetPath) {
+			return "", errors.Errorf("iwlwifi reset path %q does not exist", resetPath)
+		}
+		return resetPath, nil
+	}
+	iwlwifiReset := func(_ context.Context, resetPath string) error {
+		// Simulate iwlwifi firmware crash. mac80211 handles firmware crashes transparently, so we don't expect a full disconnect/reconnet event.
+		if err := writeStringToFile(resetPath, "1"); err != nil {
+			return errors.Wrapf(err, "failed to write to the reset path %q", resetPath)
+		}
+		return nil
+	}
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+	iface, err := shill.WifiInterface(ctx, manager, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the WiFi interface")
+	}
+
+	// Find the first workable reset path and function by checking the presence of a reset path from the three WiFi module families.
+	var reset func(context.Context, string) error
+	var resetPath string
+	var resetPathErrs []string
+	for _, v := range []struct {
+		reset     func(context.Context, string) error
+		resetPath func(context.Context, string) (string, error)
+	}{
+		{mwifiexReset, mwifiexResetPath},
+		{ath10kReset, ath10kResetPath},
+		{iwlwifiReset, iwlwifiResetPath},
+	} {
+		rp, err := v.resetPath(ctx, iface)
+		if err == nil {
+			reset = v.reset
+			resetPath = rp
+			break
+		}
+		// Collect the errors from *ResetPath functions in case we can't find any available reset path.
+		resetPathErrs = append(resetPathErrs, err.Error())
+	}
+	if reset == nil {
+		return nil, errors.Errorf("no valid reset path, err=%s", strings.Join(resetPathErrs, ", err="))
+	}
+
+	testing.ContextLogf(ctx, "Reset WiFi device for %d times then perform suspend/resume test; totally %d rounds; reset path=%s", resetNum, suspendNum, resetPath)
+
+	for i := 0; i < suspendNum; i++ {
+		testing.ContextLogf(ctx, "Start reseting for %d times", resetNum)
+		for j := 0; j < resetNum; j++ {
+			if err := reset(ctx, resetPath); err != nil {
+				return nil, errors.Wrap(err, "failed to reset the WiFi interface")
+			}
+			if err := pingOnce(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to verify connection after reset")
+			}
+		}
+		testing.ContextLogf(ctx, "Finished %d resetings; Start suspending for %s", resetNum, suspendDuration)
+		// Suspend for suspendDuration; resume; then wait for the service enters Idle state and IsConnected in order.
+		if err := func(ctx context.Context) error {
+			ctx, cancel := context.WithTimeout(ctx, suspendDuration+idleConnectTimeout)
+			defer cancel()
+
+			return assertIdleAndConnect(ctx, func(ctx context.Context) error {
+				if err := suspend(ctx, suspendDuration); err != nil {
+					return errors.Wrap(err, "failed to suspend")
+				}
+				return nil
+			})
+		}(ctx); err != nil {
+			return nil, err
+		}
+		if err := pingOnce(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to verify connection after suspend")
+		}
 	}
 	return &empty.Empty{}, nil
 }
