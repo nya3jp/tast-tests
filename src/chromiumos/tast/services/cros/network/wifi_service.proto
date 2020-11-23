@@ -154,6 +154,9 @@ service WifiService {
   // To notify the caller that it is ready, it sends an empty response after
   // the signal watcher is initialized.
   rpc DisconnectReason(google.protobuf.Empty) returns (stream DisconnectReasonResponse) {}
+
+  // ResetTest is the main body of the Reset test, which resets/suspends and verifies the connection for several times.
+  rpc ResetTest(ResetTestRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -447,4 +450,9 @@ message SetGlobalFTPropertyRequest {
 
 message InitDUTRequest {
   bool with_ui = 1;
+}
+
+message ResetTestRequest {
+  string service_path = 1;
+  string server_ip = 2;
 }
