@@ -332,7 +332,7 @@ func (f *FilesApp) SelectContextMenu(ctx context.Context, fileName string, menuN
 		Role: ui.RoleTypeListBoxOption,
 	}
 
-	opts := testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}
+	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}
 	if err := ui.StableFindAndRightClick(ctx, f.tconn, params, &opts); err != nil {
 		return errors.Wrapf(err, "failed to find and right click %s", fileName)
 	}
