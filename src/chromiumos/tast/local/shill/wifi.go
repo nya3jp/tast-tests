@@ -8,6 +8,8 @@ package shill
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -55,4 +57,27 @@ func WifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (stri
 			return "", err
 		}
 	}
+}
+
+const deviceInfoRoot = "/sys/class/net"
+
+// WifiPhyName returns name of the WiFi phy (e.g., "phy0").
+func WifiPhyName(iface string) (string, error) {
+	p, err := os.Readlink(filepath.Join(deviceInfoRoot, iface, "phy80211"))
+	if err != nil {
+		return "", err
+	}
+	_, f := filepath.Split(p)
+	return f, nil
+}
+
+// WifiParentDeviceName returns name of device at which WiFi phy device is present.
+// For example for a wifi NIC present on a PCI bus, this would be the same as PCI_SLOT_PATH.
+func WifiParentDeviceName(iface string) (string, error) {
+	p, err := os.Readlink(filepath.Join(deviceInfoRoot, iface, "device"))
+	if err != nil {
+		return "", err
+	}
+	_, f := filepath.Split(p)
+	return f, nil
 }
