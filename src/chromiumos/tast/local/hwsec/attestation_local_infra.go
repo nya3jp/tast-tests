@@ -103,7 +103,9 @@ func (ali *AttestationLocalInfra) restoreTPMOwnerPasswordIfNeeded(ctx context.Co
 		return nil
 	}
 	if err := RestoreTPMManagerData(ctx); err != nil {
-		return errors.Wrap(err, "failed to restore tpm manager local data")
+		// Don't restore TPM owner password if it doesn't exist before we run the test.
+		testing.ContextLog(ctx, "No owner password to restore: ", err)
+		return nil
 	}
 	if err := ali.dc.RestartTpmManager(ctx); err != nil {
 		return errors.Wrap(err, "failed to restart tpm manager")
