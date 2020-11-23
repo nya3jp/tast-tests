@@ -33,6 +33,24 @@
       "message": "As I see the error can have a different origin as well, e.g. the file is there, but something failed with the fsutil.CopyFile() call. I don\u0027t feel comfortable throwing these errors away.\nIt might be better to check if the password does not exist before this call.",
       "revId": "6b9537313658be828e11ec64a5e887ebd97354f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec67c7d8_68be7ecd",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_infra.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-11-23T12:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3abaa1f3_2ad2fadb",
+      "revId": "6b9537313658be828e11ec64a5e887ebd97354f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
