@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1c07c6_cf082902",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-23T18:29:21Z",
+      "side": 1,
+      "message": "This CL needs to be submitted before chromium CL.\nCan you review this?\n\nThanks!",
+      "revId": "a2292d53cb67d5e770ed4d673e7f2f2aeb5d5616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
