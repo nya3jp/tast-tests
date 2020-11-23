@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9e2563_9a70e61c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_disks_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-23T10:27:07Z",
+      "side": 1,
+      "message": "nit: can you also add a team group to the contacts?",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "609fe584_2cdd2f3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_disks_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-23T10:27:07Z",
+      "side": 1,
+      "message": "Why did you move the test content to a common folder? This only makes sense if it will be called by multiple tests.",
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4f9e0b7_9ed5ab43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-23T10:27:07Z",
+      "side": 1,
+      "message": "nit: split into two checks",
+      "range": {
+        "startLine": 45,
+        "startChar": 72,
+        "endLine": 45,
+        "endChar": 104
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76b4ad2_7702dbc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-23T10:27:07Z",
+      "side": 1,
+      "message": "use s as well here. It should shadow the previous one.",
+      "range": {
+        "startLine": 60,
+        "startChar": 47,
+        "endLine": 60,
+        "endChar": 52
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03650c26_d8ec521d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-23T10:27:07Z",
+      "side": 1,
+      "message": "return the value of testVolumeFormat here, don\u0027t use fatal",
+      "range": {
+        "startLine": 62,
+        "startChar": 14,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0515c676_6efcc34c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-23T10:27:07Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 11
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8845f7_b837797a",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-23T10:27:07Z",
+      "side": 1,
+      "message": "Format",
+      "range": {
+        "startLine": 89,
+        "startChar": 26,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0788bf1f_3e207896",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-23T10:27:07Z",
+      "side": 1,
+      "message": "formats",
+      "range": {
+        "startLine": 237,
+        "startChar": 30,
+        "endLine": 237,
+        "endChar": 45
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
