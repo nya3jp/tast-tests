@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6fcb318_6da4e605",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-23T01:12:15Z",
+      "side": 1,
+      "message": "+2 for Tast Owners % nit",
+      "revId": "bab2f4af990c2b822ef98e5d287c8b16fac5c960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "457d9244_ca1a5913",
+        "filename": "src/chromiumos/tast/local/memory/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-11-23T01:12:15Z",
+      "side": 1,
+      "message": "nit: this is not quite grammatically correct. It could be changed to:\n\"NewTestEnv creates a new TestEnv, creating new WPR, Chrome, and ARC instances to use.\"\n\nAlternatively, I wonder if one of the following might not be better:\n- NewTestEnv performs common setup for memory pressure tests. or\n- NewTestEnv initialises a new TestEnv instance.",
+      "range": {
+        "startLine": 801,
+        "startChar": 14,
+        "endLine": 801,
+        "endChar": 74
+      },
+      "revId": "bab2f4af990c2b822ef98e5d287c8b16fac5c960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
