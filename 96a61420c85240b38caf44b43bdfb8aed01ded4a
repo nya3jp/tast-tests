@@ -16,6 +16,24 @@
       "message": "Does everything in these tests call the cryptohome command line tool? I think it\u0027d be much more useful to call the actual dbus interface.",
       "revId": "96a61420c85240b38caf44b43bdfb8aed01ded4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c4a737_ede1deeb",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2020-11-23T21:28:23Z",
+      "side": 1,
+      "message": "This does call the actual DBUS interface defined in a previous CL. Cryptohome CLI just is a way to call it .. Do you mean to call the DBUS command line tool instead?",
+      "parentUuid": "634902ae_431d292f",
+      "revId": "96a61420c85240b38caf44b43bdfb8aed01ded4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
