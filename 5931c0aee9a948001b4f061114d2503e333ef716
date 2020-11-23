@@ -95,6 +95,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ab5572c_937f0eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T18:47:23Z",
+      "side": 1,
+      "message": "The Name attributes for the pod icons change based on their enabled/disabled state, so their params can\u0027t be as nicely encoded as constants. We have to do partial matching which requires putting together a regex: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go?l\u003d139",
+      "parentUuid": "139ccf56_92a5159c",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46495ac8_258ffd60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T18:47:23Z",
+      "side": 1,
+      "message": "super nit: lower case",
+      "range": {
+        "startLine": 95,
+        "startChar": 6,
+        "endLine": 95,
+        "endChar": 7
+      },
+      "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fd2a57e_39ac2cf6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
         "patchSetId": 3
@@ -111,6 +158,69 @@
         "startChar": 1,
         "endLine": 108,
         "endChar": 0
+      },
+      "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec97bd0a_af780ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T18:47:23Z",
+      "side": 1,
+      "message": "Can you update this comment to describe what we\u0027re testing here? Using `SliderValue` here compresses a lot of steps, so it would be good to describe what we\u0027re trying to do.",
+      "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ef509e_72a2fef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T18:47:23Z",
+      "side": 1,
+      "message": "I\u0027d update this variable name, since \u0027initial\u0027 doesn\u0027t really describe anything in this test.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 8
+      },
+      "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8370fb4_6dae4f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-11-23T18:47:23Z",
+      "side": 1,
+      "message": "nit: exists",
+      "range": {
+        "startLine": 123,
+        "startChar": 24,
+        "endLine": 123,
+        "endChar": 29
       },
       "revId": "5931c0aee9a948001b4f061114d2503e333ef716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
