@@ -34,6 +34,23 @@
       "parentUuid": "13d0584e_8d96a908",
       "revId": "eca0f160322ad6b45f1701009aa1b821eb2badfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57c908a_25245dfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-23T15:50:55Z",
+      "side": 1,
+      "message": "OK, thanks.\n\nYou can also promote the ones that have passed in 20 builds now by splitting up this CL, if you would like.",
+      "revId": "eca0f160322ad6b45f1701009aa1b821eb2badfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
