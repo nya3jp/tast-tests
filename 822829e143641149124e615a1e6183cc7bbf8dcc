@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "931106f2_75358517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-23T17:33:31Z",
+      "side": 0,
+      "message": "Looks like this now won\u0027t clean up /run/* log files; is that deliberate? If so it seems unrelated to cleaning up /var/spool/crash, so can you either update the commit message to clarify or split this change into a second commit if it\u0027s intentional?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 1
+      },
+      "revId": "822829e143641149124e615a1e6183cc7bbf8dcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
