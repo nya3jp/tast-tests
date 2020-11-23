@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e9f80b_298f1f8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_disks_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-23T21:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f9e2563_9a70e61c",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "609fe584_2cdd2f3e",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01807c47_33f46d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_disks_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-23T21:19:35Z",
+      "side": 1,
+      "message": "CrosDisks has half a dozen tests, each split into numerous subtests, etc. It\u0027s better to keep all of them grouped in a common package as they reuse lots of common code between each other.",
+      "parentUuid": "609fe584_2cdd2f3e",
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4f9e0b7_9ed5ab43",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-11-23T10:27:07Z",
       "side": 1,
       "message": "nit: split into two checks",
+      "range": {
+        "startLine": 45,
+        "startChar": 72,
+        "endLine": 45,
+        "endChar": 104
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b2cad0_f5ca953c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-23T21:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4f9e0b7_9ed5ab43",
       "range": {
         "startLine": 45,
         "startChar": 72,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f676a43_721fa668",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-23T21:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f76b4ad2_7702dbc0",
+      "range": {
+        "startLine": 60,
+        "startChar": 47,
+        "endLine": 60,
+        "endChar": 52
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03650c26_d8ec521d",
@@ -100,6 +190,30 @@
       "writtenOn": "2020-11-23T10:27:07Z",
       "side": 1,
       "message": "return the value of testVolumeFormat here, don\u0027t use fatal",
+      "range": {
+        "startLine": 62,
+        "startChar": 14,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffdca6b_7a276037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-23T21:19:35Z",
+      "side": 1,
+      "message": "There is a distinction here: the inner Fatal is the actual test which, while the outer is that the set-up failed, which changes the wording and meaning.",
+      "parentUuid": "03650c26_d8ec521d",
       "range": {
         "startLine": 62,
         "startChar": 14,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a8e396_d7757301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-23T21:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0515c676_6efcc34c",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 11
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de8845f7_b837797a",
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee30e919_4b1d1ddc",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-23T21:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de8845f7_b837797a",
+      "range": {
+        "startLine": 89,
+        "startChar": 26,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0788bf1f_3e207896",
@@ -169,6 +331,30 @@
       "writtenOn": "2020-11-23T10:27:07Z",
       "side": 1,
       "message": "formats",
+      "range": {
+        "startLine": 237,
+        "startChar": 30,
+        "endLine": 237,
+        "endChar": 45
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3959fe28_7bf87544",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-23T21:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0788bf1f_3e207896",
       "range": {
         "startLine": 237,
         "startChar": 30,
