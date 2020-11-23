@@ -122,7 +122,7 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Look for the Play Store icon.
-			if err := ui.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
 				Name:      apps.PlayStore.Name,
 				ClassName: "SearchResultSuggestionChipView",
 			}, param.wantEnabled, 15*time.Second); err != nil {

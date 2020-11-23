@@ -75,7 +75,7 @@ func ShowLogoutButtonInTray(ctx context.Context, s *testing.State) {
 			}
 
 			// Confirm the status of the Sign out button node.
-			if err := ui.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeButton,
 				Name: "Sign out",
 			}, param.wantButton, 15*time.Second); err != nil {
