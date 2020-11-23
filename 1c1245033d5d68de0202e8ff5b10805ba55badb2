@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff59ae83_b206ff1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T16:13:33Z",
+      "side": 1,
+      "message": "Hi Victor,\n\nI used methods from quicksettings package, PTAL :) \n\nThanks!",
+      "revId": "1c1245033d5d68de0202e8ff5b10805ba55badb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
