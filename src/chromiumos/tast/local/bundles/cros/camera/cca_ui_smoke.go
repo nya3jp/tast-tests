@@ -34,7 +34,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			Pre:               testutil.ChromeWithPlatformApp(),
 			Val:               testutil.PlatformApp,
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"informational", "group:camera-postsubmit"},
 		}, {
 			Name: "fake",
 			Pre:  testutil.ChromeWithPlatformAppAndFakeCamera(),
