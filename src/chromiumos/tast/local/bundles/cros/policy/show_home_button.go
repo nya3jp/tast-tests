@@ -81,7 +81,7 @@ func ShowHomeButton(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 
 			// Confirm the status of the Home button node.
-			if err := ui.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeButton,
 				Name: "Home",
 			}, param.wantButton, 15*time.Second); err != nil {
