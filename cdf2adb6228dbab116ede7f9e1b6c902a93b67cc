@@ -16,6 +16,24 @@
       "message": "Now this failure shouldn\u0027t be happening with chrome.ArcSupported() \u0026 optin.FindOptInExtensionPageAndAcceptTerms() so no need to bypass error?",
       "revId": "cdf2adb6228dbab116ede7f9e1b6c902a93b67cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1745ad_c73c38d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-23T23:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88aff62b_0e19571b",
+      "revId": "cdf2adb6228dbab116ede7f9e1b6c902a93b67cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
