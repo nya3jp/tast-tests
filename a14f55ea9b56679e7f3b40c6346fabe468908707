@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35877cf4_5e9407b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T16:16:48Z",
+      "side": 1,
+      "message": "This is my understanding as well, but creating a virtual keyboard is still slower.\nThough it is true that F12 can have an exotic behaviour, just like the Search key did in the other test.",
+      "parentUuid": "1732f14d_88035b85",
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e19680b7_d469dad1",
@@ -120,6 +138,30 @@
       "side": 1,
       "message": "Actually we are pressing Ctrl+T and type \"chrome://user-actions\\n\" which may fail.",
       "parentUuid": "e19680b7_d469dad1",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 103
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32d2229_2e27bfa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T16:16:48Z",
+      "side": 1,
+      "message": "Yes, a failure can happen, but the UI tree in the dump does not help to find its cause. I think this tree is not refreshed until you search something in it.",
+      "parentUuid": "2c2d0eb9_e856fb26",
       "range": {
         "startLine": 78,
         "startChar": 0,
@@ -177,6 +219,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b9ab29_686d7347",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T16:16:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8b6d93fd_47f14559",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb4143a5_3311f635",
@@ -214,6 +280,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "bb4143a5_3311f635",
+      "range": {
+        "startLine": 125,
+        "startChar": 60,
+        "endLine": 125,
+        "endChar": 110
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db869553_7ee3e2de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T16:16:48Z",
+      "side": 1,
+      "message": "I was thinking about:\n\u003e  if err :\u003d ui.WaitUntilExists(ctx, tconn, ui.FindParams{\n\u003e  \tName: \"User Action\",\n\u003e  \tRole: ui.RoleTypeColumnHeader},\n\u003e  5*time.Second); err !\u003d nil {\nUp until now I saw the structure initializatons in this format if there are multiple \"fields\". I don\u0027t know if there is a style guidance for it though.",
+      "parentUuid": "aabc553f_601848a9",
       "range": {
         "startLine": 125,
         "startChar": 60,
