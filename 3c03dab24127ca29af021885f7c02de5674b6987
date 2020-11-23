@@ -16,6 +16,29 @@
       "message": "I\u0027m leaving the fine details about Tast for the other reviewers since I haven\u0027t used Tast to be able to help.",
       "revId": "3c03dab24127ca29af021885f7c02de5674b6987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4a39626_a639ae35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-11-23T03:51:44Z",
+      "side": 1,
+      "message": "It seems when I ran the test on my local, this command was actually opening up the Feedback menu. With the menu loading asynchronously the Feedback is the first item to appear but gets pushed down when other items are added. Might want to update the `ClickMoreMenuItem` code to wait for the menu to be stable before clicking.\n\nIf you add `time.Sleep(5*time.Second)` after this but before the `WaitForFile` you\u0027ll see the paste never actually happens, the `WaitForFile` identifies it in the Downloads directory.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "3c03dab24127ca29af021885f7c02de5674b6987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
