@@ -237,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c78979_5e06574a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T14:39:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35e65156_89526383",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02a2a28b_428644c9",
@@ -416,6 +440,30 @@
       "side": 1,
       "message": "I was mostly referring that any failure during stopping the activity when I said \"activity not stopped properly\", not just timeout.\nBut I noticed that your question was specifically about time reserved for stopping the activity. TimeReservedForStop can play two rolls (please correct me if I am wrong), first one and the obvious one is to make sure Stop() has enough time to run, and second one to make sure Stop() wouldn\u0027t take too long and waste other test cases\u0027 execution time. Don\u0027t you think that the second reason is reasonable to have this time reserved? \n \nI see the benefits of parameterized test that you mentioned, but I think that is a major change that can affect all consumers of SetupAndRunTestCases() function.\n\nPlease advise what is the best approach? Should I just remove the time reserved for stop and the related context?",
       "parentUuid": "014d9538_547a75a6",
+      "range": {
+        "startLine": 676,
+        "startChar": 56,
+        "endLine": 676,
+        "endChar": 78
+      },
+      "revId": "30a671d8ce57a9cf47a198322e608d705ebe15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27632be_2226976a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T14:39:08Z",
+      "side": 1,
+      "message": "TimeReservedForStop does not really play second role (make sure Stop() wouldn\u0027t take too long and waste other test cases\u0027 execution time), because if you shorter context rather then global/default context to Stop().\n\nIn the current implementation, test cases share the same context, so they are not isolated from each other. Instead of trying to handle contexts correctly I would just prefer to start using parametrised tests and Tast framework will manage all contexts and test cases will be isolated.\n\nI think right now the best approach will be just remove contexts reserved for Stop(). In the long term we should use parametrised tests here.",
+      "parentUuid": "afdb428d_aa13b2f5",
       "range": {
         "startLine": 676,
         "startChar": 56,
