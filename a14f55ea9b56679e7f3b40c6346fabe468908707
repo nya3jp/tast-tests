@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe018603_58b901f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T15:44:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8c3b888_e7702b8d",
+      "range": {
+        "startLine": 24,
+        "startChar": 105,
+        "endLine": 24,
+        "endChar": 114
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3670b03_1ea895cd",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1732f14d_88035b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T15:44:35Z",
+      "side": 1,
+      "message": "IIUC, we create virtual \"physical\" keyboard device with VirtualKeyboard and reuse existing keyboard device with Keyboard. It does not use \"display virtual\" keyboard.\n\nI remember I had issues with Keyboard on tablets, maybe because they have keyboard devices and my test was broken on tablets. Or maybe because some keyboard devices behave differently when pressing keys like F1,..,F12.",
+      "parentUuid": "b3670b03_1ea895cd",
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e19680b7_d469dad1",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-11-23T09:54:11Z",
       "side": 1,
       "message": "There are no UI interaction until the next defer faillog, so I think this one can be deleted.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 103
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c2d0eb9_e856fb26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T15:44:35Z",
+      "side": 1,
+      "message": "Actually we are pressing Ctrl+T and type \"chrome://user-actions\\n\" which may fail.",
+      "parentUuid": "e19680b7_d469dad1",
       "range": {
         "startLine": 78,
         "startChar": 0,
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b6d93fd_47f14559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T15:44:35Z",
+      "side": 1,
+      "message": "Initially I actually did the same as autotest, but then I was thinking whether it\u0027s a good approach.\n\nThe main concern is that we rely on chrome://user-actions implementation and don\u0027t actually check what is shown on the screen although we can do it. Also benefit of this approach is that it can be reused for force installed extensions.",
+      "parentUuid": "0131a2b4_d29b67f5",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb4143a5_3311f635",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
         "patchSetId": 2
@@ -100,6 +190,30 @@
       "writtenOn": "2020-11-23T09:54:11Z",
       "side": 1,
       "message": "nit: Putting Name and Role into new lines might be better. Same for the other 2 FindPArams() below.",
+      "range": {
+        "startLine": 125,
+        "startChar": 60,
+        "endLine": 125,
+        "endChar": 110
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabc553f_601848a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T15:44:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb4143a5_3311f635",
       "range": {
         "startLine": 125,
         "startChar": 60,
