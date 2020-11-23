@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "95467971206fd0068d80a62617ecd0fd4bfefe44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48f04fb_43d4dbfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-23T17:28:51Z",
+      "side": 1,
+      "message": "this fails tests (fast_build.sh -T):\n\ntast-local-tests-cros-0.0.1-r4448: ?   \tchromiumos/tast/local/bundles/cros/apps/pre\t[no test files]\ntast-local-tests-cros-0.0.1-r4448: --- FAIL: TestTimeout (0.00s)\ntast-local-tests-cros-0.0.1-r4448:     testcheck.go:48: arc.KernelCrash.real_consent: timeout is too short (0s \u003c 4m50s)\ntast-local-tests-cros-0.0.1-r4448:     testcheck.go:48: arc.KernelCrash.mock_consent: timeout is too short (0s \u003c 4m50s)\n",
+      "revId": "95467971206fd0068d80a62617ecd0fd4bfefe44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
