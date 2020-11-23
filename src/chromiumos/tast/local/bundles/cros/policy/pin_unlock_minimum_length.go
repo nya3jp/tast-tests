@@ -26,7 +26,7 @@ func init() {
 			"gabormagda@google.com",
 			"chromeos-commercial-stability@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.User,
 	})
