@@ -16,6 +16,24 @@
       "message": "nit: add a TODO (with a bug) to still check what is happening when running cleanup with a mounted user. This change makes the test pretty much identical to cryptohome.AutomaticCleanupManyUsers.5_users with just 2 users.",
       "revId": "2b95dae95b4c9f598424132e071dc0068c3069e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55724a17_00dd4437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-11-23T22:31:32Z",
+      "side": 1,
+      "message": "I think this step tests the cleanup with a mounted user. Do you mean in the existence of a second mounted user?",
+      "parentUuid": "58ef0fb4_67fbc95f",
+      "revId": "2b95dae95b4c9f598424132e071dc0068c3069e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
