@@ -301,6 +301,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76455aa6_0f5eedea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-23T13:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9e58f51_671954fd",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fca9680_7cfe01a1",
@@ -485,6 +509,30 @@
         "startChar": 14,
         "endLine": 132,
         "endChar": 38
+      },
+      "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6665e07a_d2724ac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-23T13:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35be4d1a_8f58386d",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 105
       },
       "revId": "8120281c1ad371e4d995c0eaf066d2a5fa4ad9cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
