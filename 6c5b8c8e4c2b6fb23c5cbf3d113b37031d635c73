@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d204a66_12313468",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T14:41:38Z",
+      "side": 1,
+      "message": "LGTM % Gabor comments\n\nSorry for misleading with the way how to test policy combination.",
+      "revId": "6c5b8c8e4c2b6fb23c5cbf3d113b37031d635c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5493589e_1594d7ea",
@@ -83,6 +100,30 @@
       "writtenOn": "2020-11-23T14:33:23Z",
       "side": 1,
       "message": "Instead of finding this node in every polling cycle, it is possible to get the node before the Poll(), and just update it before the value check.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 5
+      },
+      "revId": "6c5b8c8e4c2b6fb23c5cbf3d113b37031d635c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0e32ee_20049048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T14:41:38Z",
+      "side": 1,
+      "message": "Good suggestion, didn\u0027t know we can update Node!",
+      "parentUuid": "d5e6aac7_e86d7317",
       "range": {
         "startLine": 128,
         "startChar": 0,
