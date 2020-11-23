@@ -96,7 +96,7 @@ func TouchVirtualKeyboardEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Confirm the status of the  virtual keyboard node.
-			if err := ui.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeKeyboard,
 				Name: "Chrome OS Virtual Keyboard",
 			}, param.enabled, 15*time.Second); err != nil {

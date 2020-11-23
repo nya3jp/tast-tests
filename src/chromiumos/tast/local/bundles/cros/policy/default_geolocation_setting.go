@@ -119,7 +119,7 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 					Name: "Allow",
 				}
 
-				if err := ui.WaitUntilExistsStatus(ctx, tconn, params, param.wantAsk, 30*time.Second); err != nil {
+				if err := policyutil.WaitUntilExistsStatus(ctx, tconn, params, param.wantAsk, 30*time.Second); err != nil {
 					ch <- errors.Wrap(err, "failed to confirm the desired status of the allow button")
 					return
 				}

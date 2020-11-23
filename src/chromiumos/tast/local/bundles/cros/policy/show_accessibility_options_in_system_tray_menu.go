@@ -109,7 +109,7 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 			}
 
 			// Look for the a11y button in the system tray.
-			if err := ui.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeButton,
 				Name: "Show accessibility settings",
 			}, param.wantChecked == ui.CheckedStateTrue, 15*time.Second); err != nil {

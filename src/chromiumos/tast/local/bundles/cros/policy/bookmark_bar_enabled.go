@@ -138,7 +138,7 @@ func BookmarkBarEnabled(ctx context.Context, s *testing.State) {
 			defer vconn.Close()
 
 			// Confirm whether bookmark bar is shown with the bookmarked URL.
-			if err := ui.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeButton,
 				Name: bookmarkName,
 			}, param.wantBookmarbar, 10*time.Second); err != nil {
