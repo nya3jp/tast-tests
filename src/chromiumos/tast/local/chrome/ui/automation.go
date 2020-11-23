@@ -338,13 +338,15 @@ func StableFindAndClick(ctx context.Context, tconn *chrome.TestConn, params Find
 }
 
 // StableFindAndRightClick waits for the first matching stable node and then right clicks it.
-func StableFindAndRightClick(ctx context.Context, tconn *chrome.TestConn, params FindParams, opts *testing.PollOptions) error {
-	node, err := StableFind(ctx, tconn, params, opts)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find stable node with %v", params)
-	}
-	defer node.Release(ctx)
-	return node.RightClick(ctx)
+func StableFindAndRightClick(ctx context.Context, tconn *chrome.TestConn, params FindParams, opts *testing.PollOptions) (err error) {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		node, err := StableFind(ctx, tconn, params, opts)
+		if err != nil {
+			return errors.Wrapf(err, "failed to find stable node with %v", params)
+		}
+		defer node.Release(ctx)
+		return node.RightClick(ctx)
+	}, testing.PollOptions{Timeout: 5 * time.Second, Interval: time.Second})
 }
 
 // FocusAndWait calls the focus() Javascript method of the AutomationNode.
