@@ -9,11 +9,13 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -81,13 +83,14 @@ func Discord(ctx context.Context, s *testing.State) {
 // verify Discord reached main activity page of the app.
 func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInText        = "Login"
-		textEditClassName = "android.widget.EditText"
-		enterEmailText    = "Email"
-		enterPasswordText = "Password"
-		homeIconID        = "com.discord:id/tabs_host_bottom_nav_friends_item"
-		notNowID          = "android:id/autofill_save_no"
-		verifyCaptchaID   = "com.discord:id/auth_captcha_verify"
+		signInText             = "Login"
+		textEditClassName      = "android.widget.EditText"
+		enterEmailText         = "Email"
+		emailOrPhoneNumberText = "Email or Phone Number"
+		enterPasswordText      = "Password"
+		homeIconID             = "com.discord:id/tabs_host_bottom_nav_friends_item"
+		notNowID               = "android:id/autofill_save_no"
+		verifyCaptchaID        = "com.discord:id/auth_captcha_verify"
 	)
 
 	// Click on sign in button.
@@ -98,27 +101,62 @@ func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on signInButton: ", err)
 	}
 
-	// Enter email address.
-	DiscordEmailID := s.RequiredVar("arcappcompat.Discord.emailid")
+	// Click on emailid text field until the emailid text field is focused.
 	enterEmailAddress := d.Object(ui.ClassName(textEditClassName), ui.Text(enterEmailText))
-	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("EnterEmailAddress doesn't exist: ", err)
-	} else if err := enterEmailAddress.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterEmailAddress: ", err)
-	} else if err := enterEmailAddress.SetText(ctx, DiscordEmailID); err != nil {
-		s.Fatal("Failed to enterEmailAddress: ", err)
+	if err := enterEmailAddress.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("enterEmailAddress doesn't exist: ", err)
+		enterEmailAddress = d.Object(ui.ClassName(textEditClassName), ui.Text(emailOrPhoneNumberText))
+		if err := enterEmailAddress.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+			s.Error("enterEmailAddress doesn't exist: ", err)
+		}
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if emailIDFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
+			return errors.New("email text field not focused yet")
+		} else if !emailIDFocused {
+			enterEmailAddress.Click(ctx)
+			return errors.New("email text field not focused yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Fatal("Failed to focus EmailId: ", err)
 	}
 
-	// Enter Password.
-	DiscordPassword := s.RequiredVar("arcappcompat.Discord.password")
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+
+	emailID := s.RequiredVar("arcappcompat.Discord.emailid")
+	if err := kb.Type(ctx, emailID); err != nil {
+		s.Fatal("Failed to enter emailID: ", err)
+	}
+	s.Log("Entered EmailAddress")
+
+	// Click on password text field until the password text field is focused.
 	enterPassword := d.Object(ui.ClassName(textEditClassName), ui.Text(enterPasswordText))
 	if err := enterPassword.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("EnterPassword doesn't exist: ", err)
-	} else if err := enterPassword.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterPassword: ", err)
-	} else if err := enterPassword.SetText(ctx, DiscordPassword); err != nil {
-		s.Fatal("Failed to enterPassword: ", err)
+		s.Error("enterPassword doesn't exist: ", err)
 	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
+			return errors.New("password text field not focused yet")
+		} else if !pwdFocused {
+			enterPassword.Click(ctx)
+			return errors.New("Password text field not focused yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Fatal("Failed to focus password: ", err)
+	}
+
+	password := s.RequiredVar("arcappcompat.Discord.password")
+	if err := kb.Type(ctx, password); err != nil {
+		s.Fatal("Failed to enter password: ", err)
+	}
+	s.Log("Entered password")
 
 	// Click on sign in button.
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
