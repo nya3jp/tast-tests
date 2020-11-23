@@ -638,17 +638,6 @@ func WaitUntilGone(ctx context.Context, tconn *chrome.TestConn, params FindParam
 	return root.WaitUntilDescendantGone(ctx, params, timeout)
 }
 
-// WaitUntilExistsStatus repeatedly checks the existence of a node
-// until the desired status is found or the timeout is reached.
-// If the JavaScript fails to execute, an error is returned.
-func WaitUntilExistsStatus(ctx context.Context, tconn *chrome.TestConn, params FindParams, exists bool, timeout time.Duration) error {
-	if exists {
-		return WaitUntilExists(ctx, tconn, params, timeout)
-	}
-
-	return WaitUntilGone(ctx, tconn, params, timeout)
-}
-
 // RootDebugInfo returns the chrome.automation root as a string.
 // If the JavaScript fails to execute, an error is returned.
 func RootDebugInfo(ctx context.Context, tconn *chrome.TestConn) (string, error) {

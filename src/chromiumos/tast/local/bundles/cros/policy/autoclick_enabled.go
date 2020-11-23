@@ -106,7 +106,7 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Check if a click occurred by checking whether the Sign out button is visible or not.
-			if err := ui.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
+			if err := policyutil.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
 				Name:      "Sign out",
 				ClassName: "SignOutButton",
 			}, param.wantButton, 30*time.Second); err != nil {
