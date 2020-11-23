@@ -172,6 +172,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9be1883_7c0ef896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T16:33:49Z",
+      "side": 1,
+      "message": "Will remove it.",
+      "parentUuid": "b32d2229_2e27bfa1",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 103
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0131a2b4_d29b67f5",
@@ -304,6 +328,30 @@
       "side": 1,
       "message": "I was thinking about:\n\u003e  if err :\u003d ui.WaitUntilExists(ctx, tconn, ui.FindParams{\n\u003e  \tName: \"User Action\",\n\u003e  \tRole: ui.RoleTypeColumnHeader},\n\u003e  5*time.Second); err !\u003d nil {\nUp until now I saw the structure initializatons in this format if there are multiple \"fields\". I don\u0027t know if there is a style guidance for it though.",
       "parentUuid": "aabc553f_601848a9",
+      "range": {
+        "startLine": 125,
+        "startChar": 60,
+        "endLine": 125,
+        "endChar": 110
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4497ad3_a0561d91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-23T16:33:49Z",
+      "side": 1,
+      "message": "To inline we can use either\n\n```\nif err :\u003d ui.WaitUntilExists(ctx, tconn, ui.FindParams{\n\tName: \"User Action\",\n\tRole: ui.RoleTypeColumnHeader},\n\t5*time.Second); err !\u003d nil {\n\ts.Fatal(\"Failed to wait for page nodes: \", err)\n}\n```\n\nor \n\n```\nif err :\u003d ui.WaitUntilExists(ctx, tconn, ui.FindParams{\n\tName: \"User Action\",\n\tRole: ui.RoleTypeColumnHeader,\n}, 5*time.Second); err !\u003d nil {\n\ts.Fatal(\"Failed to wait for page nodes: \", err)\n}\n```\n\nI personally prefer second option, because first option is less readable.\n\n\n\nAlso having a separate variable is not that bad option, because requires less lines. Anyway, let\u0027s inline it.",
+      "parentUuid": "db869553_7ee3e2de",
       "range": {
         "startLine": 125,
         "startChar": 60,
