@@ -32,9 +32,9 @@ func NewAttestationLocalInfra(dc *hwsec.DaemonController) *AttestationLocalInfra
 
 // Enable enables the local test infra for attestation flow testing.
 func (ali *AttestationLocalInfra) Enable(ctx context.Context) (lastErr error) {
-	if err := ali.restoreTPMOwnerPasswordIfNeeded(ctx); err != nil {
-		return errors.Wrap(err, "failed to restore tpm owner password")
-	}
+	// if err := ali.restoreTPMOwnerPasswordIfNeeded(ctx); err != nil {
+	// 	return errors.Wrap(err, "failed to restore tpm owner password")
+	// }
 	if _, err := os.Stat(hwsec.AttestationDBPath); err == nil {
 		// Note: we don't restart attestationd here because key injection that follows restarts attestationd already.
 		if err := ali.snapshot.Stash(hwsec.AttestationDBPath); err != nil {
@@ -103,7 +103,9 @@ func (ali *AttestationLocalInfra) restoreTPMOwnerPasswordIfNeeded(ctx context.Co
 		return nil
 	}
 	if err := RestoreTPMManagerData(ctx); err != nil {
-		return errors.Wrap(err, "failed to restore tpm manager local data")
+		// Don't restor TPM owner password if it doesn't exist before we run the test.
+		testing.ContextLog(ctx, "No owner password to restore: ", err)
+		return nil
 	}
 	if err := ali.dc.RestartTpmManager(ctx); err != nil {
 		return errors.Wrap(err, "failed to restart tpm manager")
