@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "104ee503_2f6971aa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-23T18:05:10Z",
+      "side": 1,
+      "message": "I think it would be better kept outside of automation.go. Then with individual use cases, users can keep right clicking while polling for what they expect to happen next.\n\nOn that note, I really prefer avoiding generic counted retries. If we are going to loop, we should try to use testing.Poll\n\nCan I get more context on the issue you are running into? I am wonder why increasing the poll opts for stable find doesn\u0027t fix the issue you are running into.",
+      "range": {
+        "startLine": 342,
+        "startChar": 1,
+        "endLine": 342,
+        "endChar": 13
+      },
+      "revId": "fcabb22f0ab892424fdccefe6592b8f56aa2b4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25b12132_5b3127de",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 1
