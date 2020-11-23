@@ -106,6 +106,24 @@
       "parentUuid": "d265528b_7e639053",
       "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f18ed5_3452c1c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-23T04:22:29Z",
+      "side": 1,
+      "message": "I think that prompt is to be expected for unmanaged CrOS accounts.  You can follow the optin.FindOptInExtensionPageAndAcceptTerms(...) example below to accept and finish optin.  \n\nI think you will need both existing `arcEnabled` option (for current use cases in crotini) and another `arcSupported` option for optin with Play Store in your case.\n\nBut as khmel@ mentioned, please add comment in code for justifying why optin is needed in this case.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go;rcl\u003d803d65d59ae2056942f8342f881025140d4a1248;l\u003d229",
+      "parentUuid": "07361292_e4046b19",
+      "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
