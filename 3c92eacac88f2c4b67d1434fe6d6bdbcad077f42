@@ -68,6 +68,24 @@
       "message": "nit: add blank line after defer statement",
       "revId": "3c92eacac88f2c4b67d1434fe6d6bdbcad077f42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3fdb87_8ea418ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-23T08:16:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb701263_8bf24c09",
+      "revId": "3c92eacac88f2c4b67d1434fe6d6bdbcad077f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
