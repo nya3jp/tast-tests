@@ -39,6 +39,30 @@
       },
       "revId": "4da163fc883b43094b373545d7eccefa7366e55e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21da2524_c9302bbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-11-23T19:49:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587d235d_579bee86",
+      "range": {
+        "startLine": 101,
+        "startChar": 43,
+        "endLine": 101,
+        "endChar": 60
+      },
+      "revId": "4da163fc883b43094b373545d7eccefa7366e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
