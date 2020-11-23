@@ -638,6 +638,50 @@ func WaitUntilGone(ctx context.Context, tconn *chrome.TestConn, params FindParam
 	return root.WaitUntilDescendantGone(ctx, params, timeout)
 }
 
+// VerifyNotExists checks if the element does not appear during timeout.
+// The function first waits until the element disappears.
+// Note: this waits for the full timeout to check that the element does not appear.
+func VerifyNotExists(ctx context.Context, tconn *chrome.TestConn, params FindParams, timeout time.Duration) error {
+	start := time.Now()
+
+	// Wait for element to disappear.
+	if err := WaitUntilGone(ctx, tconn, params, timeout); err != nil {
+		return err
+	}
+
+	timeout = timeout - time.Since(start)
+
+	// Wait for the full timeout to see if the element shows up.
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		if exists, err := Exists(ctx, tconn, params); err != nil {
+			return testing.PollBreak(err)
+		} else if !exists {
+			return ErrNodeDoesNotExist
+		}
+
+		return nil
+	}, &testing.PollOptions{
+		Timeout: timeout,
+	})
+
+	if err != nil {
+		// Succeed if element is still missing.
+		if errors.Is(err, ErrNodeDoesNotExist) || err == context.DeadlineExceeded {
+			// Check if overall context has not expired.
+			if ctx.Err() != nil {
+				return ctx.Err()
+			}
+
+			return nil
+		}
+
+		return err
+	}
+
+	// No error means that the element was found.
+	return ErrNodeExists
+}
+
 // WaitUntilExistsStatus repeatedly checks the existence of a node
 // until the desired status is found or the timeout is reached.
 // If the JavaScript fails to execute, an error is returned.
@@ -646,7 +690,7 @@ func WaitUntilExistsStatus(ctx context.Context, tconn *chrome.TestConn, params F
 		return WaitUntilExists(ctx, tconn, params, timeout)
 	}
 
-	return WaitUntilGone(ctx, tconn, params, timeout)
+	return VerifyNotExists(ctx, tconn, params, timeout)
 }
 
 // RootDebugInfo returns the chrome.automation root as a string.
