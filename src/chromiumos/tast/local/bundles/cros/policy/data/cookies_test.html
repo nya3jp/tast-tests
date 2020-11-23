@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+var cookiesAllowed = false;
+function onLoad() {
+  document.cookie = "test cookie";
+  if (document.cookie === "test cookie") {
+    cookiesAllowed = true;
+  }
+}
+</script>
+</head>
+<body onload="onLoad()">
+</body>
+</html>
