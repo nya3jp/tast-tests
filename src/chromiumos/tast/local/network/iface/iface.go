@@ -23,9 +23,11 @@ func NewInterface(n string) *Iface {
 	return &Iface{name: n}
 }
 
+const deviceInfoRoot = "/sys/class/net"
+
 // ParentDeviceName returns name of device at which wiphy device is present.
 func (i *Iface) ParentDeviceName(ctx context.Context) (string, error) {
-	devicePath := filepath.Join("/sys/class/net", i.name, "device")
+	devicePath := filepath.Join(deviceInfoRoot, i.name, "device")
 	rel, err := os.Readlink(devicePath)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to readlink device path")
@@ -33,4 +35,13 @@ func (i *Iface) ParentDeviceName(ctx context.Context) (string, error) {
 
 	deviceName := filepath.Base(rel)
 	return deviceName, nil
+}
+
+// PhyName returns name of the WiFi phy (e.g., "phy0").
+func (i *Iface) PhyName(_ context.Context) (string, error) {
+	p, err := os.Readlink(filepath.Join(deviceInfoRoot, i.name, "phy80211"))
+	if err != nil {
+		return "", errors.Wrap(err, "failed to readlink phy path")
+	}
+	return filepath.Base(p), nil
 }
