@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5493589e_1594d7ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T14:33:23Z",
+      "side": 1,
+      "message": "Opening a virtual keyboard is slower than input.Keyboard(). If there is no specific advantage here to using a virtual one, use Keyboard() instead.",
+      "range": {
+        "startLine": 52,
+        "startChar": 18,
+        "endLine": 52,
+        "endChar": 33
+      },
+      "revId": "6c5b8c8e4c2b6fb23c5cbf3d113b37031d635c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df84cd1e_5e59be69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T14:33:23Z",
+      "side": 1,
+      "message": "You should use different names for the different policy configurations.",
+      "range": {
+        "startLine": 70,
+        "startChar": 14,
+        "endLine": 70,
+        "endChar": 19
+      },
+      "revId": "6c5b8c8e4c2b6fb23c5cbf3d113b37031d635c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6541f34_6868a236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T14:33:23Z",
+      "side": 1,
+      "message": "I am not sure this part should be tested. I don\u0027t see any real life usecase, where an admin wants to set a restriction, and this case hinders them even if not working correctly.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 4
+      },
+      "revId": "6c5b8c8e4c2b6fb23c5cbf3d113b37031d635c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e6aac7_e86d7317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T14:33:23Z",
+      "side": 1,
+      "message": "Instead of finding this node in every polling cycle, it is possible to get the node before the Poll(), and just update it before the value check.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 5
+      },
+      "revId": "6c5b8c8e4c2b6fb23c5cbf3d113b37031d635c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "213aea7b_f44bff4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
         "patchSetId": 9
