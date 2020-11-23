@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e595a69_399be3c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-23T03:51:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea2cbd97_494c9e97",
+      "range": {
+        "startLine": 9,
+        "startChar": 74,
+        "endLine": 9,
+        "endChar": 78
+      },
+      "revId": "bce633c2c2dab30c4944ff1657d2828eaa646b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ef7d605_ca1b40af",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c25339_04d09311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-23T03:51:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ef7d605_ca1b40af",
+      "range": {
+        "startLine": 53,
+        "startChar": 132,
+        "endLine": 53,
+        "endChar": 153
+      },
+      "revId": "bce633c2c2dab30c4944ff1657d2828eaa646b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42cb6b9f_d1a4b88e",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-11-20T17:03:53Z",
       "side": 1,
       "message": "From PS3: \n\u003e These lines are the same as l.66-73, l.162-168, extract them to a common function?\n\nThis might have been forgotten (RunAccelVideoTestCmd() was refactored out of \nthe places where it was redundant, which is good though).",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 42
+      },
+      "revId": "bce633c2c2dab30c4944ff1657d2828eaa646b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af52ca8b_84eecf05",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-11-23T03:51:58Z",
+      "side": 1,
+      "message": "Hmm, I think this cannot be moved to the function because this is a pre-process for entire test, not for a single test command.",
+      "parentUuid": "42cb6b9f_d1a4b88e",
       "range": {
         "startLine": 113,
         "startChar": 0,
