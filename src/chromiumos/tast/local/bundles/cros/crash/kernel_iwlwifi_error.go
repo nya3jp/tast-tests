@@ -48,7 +48,9 @@ func init() {
 		// parameters needed for this test. (See linked bug.)
 		// TODO(crbug.com/1115620): remove "Elm" and "Hana" after
 		// unibuild migration completed.
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("bob",
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(
+			"asurada",
+			"bob",
 			"elm",
 			"grunt",
 			"hana",
