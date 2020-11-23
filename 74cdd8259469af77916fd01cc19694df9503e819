@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cd2d3dc_92e55408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-23T23:45:34Z",
+      "side": 1,
+      "message": "Since this is already in a poll, it might also be possible to use DescendantExists.",
+      "parentUuid": "3e8ed93b_e849d9de",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfcf54ca_2be43655",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
         "patchSetId": 5
