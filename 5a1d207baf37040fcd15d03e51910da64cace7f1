@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "53406dd1_d214318e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T15:39:35Z",
+      "side": 1,
+      "message": "nit: I like the tag format better:\n\u003e  policy: Disable PinUnlockMinimumLength",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "5a1d207baf37040fcd15d03e51910da64cace7f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "34292e95_717698cb",
@@ -14,6 +37,40 @@
       "writtenOn": "2020-11-23T14:21:31Z",
       "side": 1,
       "message": "Hi Gabor, can you PTAL at this change?",
+      "revId": "5a1d207baf37040fcd15d03e51910da64cace7f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29bbe51f_f480e1b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T15:39:35Z",
+      "side": 1,
+      "message": "+Oleh, as I have only +1 right at the moment.\nLGTM % nit",
+      "revId": "5a1d207baf37040fcd15d03e51910da64cace7f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "341709ca_6a86a8e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_minimum_length.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T15:39:35Z",
+      "side": 1,
+      "message": "nit: it might be better to just comment it out, and add a comment above it as a ToDo, linking the bug there.",
       "revId": "5a1d207baf37040fcd15d03e51910da64cace7f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
