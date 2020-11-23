@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c3b888_e7702b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T09:54:11Z",
+      "side": 1,
+      "message": "chrome://user-actions",
+      "range": {
+        "startLine": 24,
+        "startChar": 105,
+        "endLine": 24,
+        "endChar": 114
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3670b03_1ea895cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T09:54:11Z",
+      "side": 1,
+      "message": "AFAIK opening a virtual keyboard is slower that opening a normal one (where possible). Is there an advantage to open a virtual one here?",
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19680b7_d469dad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T09:54:11Z",
+      "side": 1,
+      "message": "There are no UI interaction until the next defer faillog, so I think this one can be deleted.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 103
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0131a2b4_d29b67f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T09:54:11Z",
+      "side": 1,
+      "message": "The approach in the autotest seems faster. It sets the policy, presses all the 4 hotkey combinations to open the developer tools, and checks the User Actions table to see what happened only once after this. If the window of the developer tools war triggered, it is enabled, if not, it is not.\nNo waiting for 4*5 seconds in the not allowed state, and no refreshing of the page between the different hotkey combinations.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb4143a5_3311f635",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-23T09:54:11Z",
+      "side": 1,
+      "message": "nit: Putting Name and Role into new lines might be better. Same for the other 2 FindPArams() below.",
+      "range": {
+        "startLine": 125,
+        "startChar": 60,
+        "endLine": 125,
+        "endChar": 110
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
