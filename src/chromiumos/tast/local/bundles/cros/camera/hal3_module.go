@@ -17,9 +17,9 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     HAL3Module,
-		Desc:     "Verifies camera module function with HAL3 interface",
+		Desc:     "Verifies camera module function with HAL4 interface",
 		Contacts: []string{"hywu@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline", "informational", "group:camera-postsubmit"},
 		// TODO(shik): Once cros_camera_test supports an external camera,
 		// replace caps.BuiltinCamera with caps.BuiltinOrVividCamera.
 		// Same for other HAL3* tests.

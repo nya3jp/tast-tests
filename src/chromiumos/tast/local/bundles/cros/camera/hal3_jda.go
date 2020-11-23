@@ -18,7 +18,7 @@ func init() {
 		Func:         HAL3JDA,
 		Desc:         "Verifies JPEG decode accelerator works in USB HALv3",
 		Contacts:     []string{"hywu@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-postsubmit"},
 		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.HWDecodeJPEG, caps.BuiltinUSBCamera},
 		Pre:          chrome.LoggedIn(),
 	})
