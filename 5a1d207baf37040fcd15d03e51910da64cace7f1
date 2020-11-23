@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34292e95_717698cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2020-11-23T14:21:31Z",
+      "side": 1,
+      "message": "Hi Gabor, can you PTAL at this change?",
+      "revId": "5a1d207baf37040fcd15d03e51910da64cace7f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
