@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea64e42d_fa35b01a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-23T05:47:44Z",
+      "side": 1,
+      "message": "Need Brendan\u0027s review of this one.",
+      "revId": "fcabb22f0ab892424fdccefe6592b8f56aa2b4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b12132_5b3127de",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-23T05:47:44Z",
+      "side": 1,
+      "message": "Are we guaranteed that this will only click once?  If it clicks more than once it could cause errors.",
+      "revId": "fcabb22f0ab892424fdccefe6592b8f56aa2b4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
