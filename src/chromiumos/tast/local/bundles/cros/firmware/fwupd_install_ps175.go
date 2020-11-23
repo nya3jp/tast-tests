@@ -36,7 +36,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.Platform("puff")),
-		Data:         []string{"fwupd_install_dummy_ps175_V99.99.cab", "flashrom"},
+		Data:         []string{"fwupd_install_placeholder_ps175_V99.99.cab", "flashrom"},
 	})
 }
 
@@ -70,7 +70,7 @@ func FwupdInstallPS175(ctx context.Context, s *testing.State) {
 	}
 	defer f.Close()
 
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdtool", "install", s.DataPath("fwupd_install_dummy_ps175_V99.99.cab"), deviceID)
+	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdtool", "install", s.DataPath("fwupd_install_placeholder_ps175_V99.99.cab"), deviceID)
 	defer os.Remove(filepath.Join(s.OutDir(), "fwupd_flashrom_call_parameters.txt"))
 
 	cmd.Stdout = f
