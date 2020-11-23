@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe9186e_39fd38a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-23T20:21:26Z",
+      "side": 1,
+      "message": "maybe\n\n tast-tests: Add filemanager.CopyImage test",
+      "revId": "3c03dab24127ca29af021885f7c02de5674b6987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d95fa405_ba302645",
@@ -14,6 +31,23 @@
       "writtenOn": "2020-11-22T23:17:32Z",
       "side": 1,
       "message": "I\u0027m leaving the fine details about Tast for the other reviewers since I haven\u0027t used Tast to be able to help.",
+      "revId": "3c03dab24127ca29af021885f7c02de5674b6987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc27bf7_4cfe76e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-23T20:21:26Z",
+      "side": 1,
+      "message": "For the record, are you planning on allowing the two halves of the test to run independently of one another, or are you fine with the current behavior where the first half failing means the second won\u0027t run?",
       "revId": "3c03dab24127ca29af021885f7c02de5674b6987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

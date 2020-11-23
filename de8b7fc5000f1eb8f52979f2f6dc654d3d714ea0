@@ -576,6 +576,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb211eb_86f80cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/copy_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-11-23T20:21:26Z",
+      "side": 1,
+      "message": "That\u0027s fine, thanks.",
+      "parentUuid": "2c635c51_e17053d0",
+      "revId": "de8b7fc5000f1eb8f52979f2f6dc654d3d714ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28fe05ca_b54b07a3",
