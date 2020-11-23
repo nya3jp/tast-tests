@@ -16,6 +16,46 @@
       "message": "This CL needs to be submitted before chromium CL.\nCan you review this?\n\nThanks!",
       "revId": "a2292d53cb67d5e770ed4d673e7f2f2aeb5d5616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a78e4b0_e7e8ad72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-23T18:32:22Z",
+      "side": 1,
+      "message": "LGTM modulo nit.",
+      "revId": "a2292d53cb67d5e770ed4d673e7f2f2aeb5d5616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec75631c_1c87173d",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-23T18:32:22Z",
+      "side": 1,
+      "message": "nit: \"reject small resolutions for performance\".",
+      "range": {
+        "startLine": 208,
+        "startChar": 40,
+        "endLine": 209,
+        "endChar": 15
+      },
+      "revId": "a2292d53cb67d5e770ed4d673e7f2f2aeb5d5616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
