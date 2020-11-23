@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9214b6f_8b99d2bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/high_contrast_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-23T08:46:50Z",
+      "side": 1,
+      "message": "It looks like all tests in tast/local/bundles/cros/policy/ use the table pattern, I think I\u0027ll keep it as is.",
+      "parentUuid": "2fc99b43_b0d63d40",
+      "revId": "18388daf73e05e2f2dd5b5adbae92e2cb0861b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "156ccbf5_75b0316f",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3777675_78ec6524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/high_contrast_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-23T08:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "156ccbf5_75b0316f",
+      "revId": "18388daf73e05e2f2dd5b5adbae92e2cb0861b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "001ef5d3_c73fda93",
@@ -65,6 +101,24 @@
       "writtenOn": "2020-11-19T18:42:47Z",
       "side": 1,
       "message": "nit: The prescribed ordering is actual !\u003d expected, as you have in L83. Please switch the ordering in L82:\n\n    if highContrastValue !\u003d param.enabled {",
+      "revId": "18388daf73e05e2f2dd5b5adbae92e2cb0861b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3304ec16_05bc3b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/high_contrast_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-23T08:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "001ef5d3_c73fda93",
       "revId": "18388daf73e05e2f2dd5b5adbae92e2cb0861b9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
