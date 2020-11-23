@@ -63,6 +63,30 @@
       },
       "revId": "69de318e48e43a24f966b2e033335c90b2fc29a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec5daca9_ecfc124b",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-11-23T21:28:18Z",
+      "side": 1,
+      "message": "Ack. Thanks for your reply!",
+      "parentUuid": "fda9f2a9_f53aa201",
+      "range": {
+        "startLine": 457,
+        "startChar": 4,
+        "endLine": 457,
+        "endChar": 40
+      },
+      "revId": "69de318e48e43a24f966b2e033335c90b2fc29a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
