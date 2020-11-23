@@ -17,7 +17,7 @@ import (
 	"github.com/golang/protobuf/proto"
 	"golang.org/x/crypto/pkcs12"
 
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/system_api/enterprise_management"
 	lm "chromiumos/system_api/login_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"

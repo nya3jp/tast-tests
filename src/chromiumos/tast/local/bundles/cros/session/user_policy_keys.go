@@ -12,7 +12,7 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/system_api/enterprise_management"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"

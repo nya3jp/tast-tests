@@ -6,7 +6,7 @@
 package ownership
 
 import (
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/system_api/enterprise_management"
 	lm "chromiumos/system_api/login_manager_proto"
 )
 
