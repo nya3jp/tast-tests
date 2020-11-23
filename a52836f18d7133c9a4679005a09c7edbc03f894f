@@ -22,6 +22,30 @@
       },
       "revId": "a52836f18d7133c9a4679005a09c7edbc03f894f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ec11a8_ac11f0da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-23T20:25:30Z",
+      "side": 1,
+      "message": "hah! too many lacros CLs lately",
+      "parentUuid": "d7c5fb4d_04907c23",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "a52836f18d7133c9a4679005a09c7edbc03f894f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
