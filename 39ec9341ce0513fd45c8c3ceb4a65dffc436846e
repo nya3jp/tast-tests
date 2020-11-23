@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9612c465_a56c7870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_magnifier_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-23T08:12:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb691ba5_f9a85738",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 47
+      },
+      "revId": "39ec9341ce0513fd45c8c3ceb4a65dffc436846e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe5aec08_1c0dab81",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb271768_30a0404a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_magnifier_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-23T08:12:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe5aec08_1c0dab81",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 28
+      },
+      "revId": "39ec9341ce0513fd45c8c3ceb4a65dffc436846e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "236f8129_4a0d76de",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-11-20T16:13:14Z",
       "side": 1,
       "message": "screenMagnifier and dockedMagnifier looks independent?\nIf so, s.Errorf() to check dockeedMagnifier even if screenMagnifier has unexpected value for better coverage.",
+      "range": {
+        "startLine": 107,
+        "startChar": 7,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "39ec9341ce0513fd45c8c3ceb4a65dffc436846e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b7570ec_c533ee77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_magnifier_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2020-11-23T08:12:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "236f8129_4a0d76de",
       "range": {
         "startLine": 107,
         "startChar": 7,
