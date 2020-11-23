@@ -6,6 +6,7 @@ package hwsec
 
 import (
 	"context"
+	"os"
 	"strings"
 
 	"chromiumos/tast/common/hwsec"
@@ -39,6 +40,12 @@ func BackupTPMManagerDataIfIntact(ctx context.Context) error {
 		return errors.Wrap(err, "failed to copy tpm manager local data")
 	}
 	return nil
+}
+
+// StatTPMManagerDataBackup returns the status of tpm manager backup file.
+func StatTPMManagerDataBackup(ctx context.Context) error {
+	_, err := os.Stat(tpmManagerLocalDataBackupPath)
+	return err
 }
 
 // RestoreTPMManagerData copies the backup file back to the location of tpm manager local data.
