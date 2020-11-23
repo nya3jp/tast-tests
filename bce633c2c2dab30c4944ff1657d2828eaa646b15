@@ -157,6 +157,30 @@
       },
       "revId": "bce633c2c2dab30c4944ff1657d2828eaa646b15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "944f5836_666f355f",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-23T17:36:58Z",
+      "side": 1,
+      "message": "Hmm I think theoretically it could be put into a function but on second\nthoughts it might turn hairy because said function would need to return\n|shortCtx|, |cancel| and the upstart.EnsureJobRunning() so it might not\nbe very clean. Never mind.",
+      "parentUuid": "af52ca8b_84eecf05",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 42
+      },
+      "revId": "bce633c2c2dab30c4944ff1657d2828eaa646b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
