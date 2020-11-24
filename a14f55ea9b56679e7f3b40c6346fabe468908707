@@ -360,6 +360,30 @@
       },
       "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20304ee5_77fb3458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-24T08:29:38Z",
+      "side": 1,
+      "message": "Yes, I also like the second version.\nIn case of elementsParams, I agree that it should be a variable, as you use it in 2 places.",
+      "parentUuid": "d4497ad3_a0561d91",
+      "range": {
+        "startLine": 125,
+        "startChar": 60,
+        "endLine": 125,
+        "endChar": 110
+      },
+      "revId": "a14f55ea9b56679e7f3b40c6346fabe468908707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
