@@ -16,6 +16,24 @@
       "message": "use append here instead of duplicating the vmodule argument above:\n\nopts \u003d append(opts, chrome.ExtraArgs(\"--vmodule\u003dcrostini*\u003d1\"))",
       "revId": "9fd52144a03099c02f4b4e540311abffbf9e986d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5fc4e0_7cb486f8",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-24T04:55:56Z",
+      "side": 0,
+      "message": "+1",
+      "parentUuid": "124f26b1_bce610fc",
+      "revId": "9fd52144a03099c02f4b4e540311abffbf9e986d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
