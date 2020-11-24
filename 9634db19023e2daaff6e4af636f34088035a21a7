@@ -16,6 +16,24 @@
       "message": "Thanks for adding the test.\ncookies_test.html is missing from the CL.",
       "revId": "9634db19023e2daaff6e4af636f34088035a21a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27c7fc18_c95afac2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302390
+      },
+      "writtenOn": "2020-11-24T09:46:56Z",
+      "side": 1,
+      "message": "Yes, html file is added in previous CL (see relation chain).",
+      "parentUuid": "93868504_e1aedfb5",
+      "revId": "9634db19023e2daaff6e4af636f34088035a21a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
