@@ -19,8 +19,7 @@ func init() {
 		Func: ChangeWallpaper,
 		Desc: "Follows the user flow to change the wallpaper",
 		Contacts: []string{
-			"bhansknecht@chromium.org",
-			"kyleshima@chromium.org",
+			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
