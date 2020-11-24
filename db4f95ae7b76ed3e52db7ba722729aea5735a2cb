@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ac38b0c_c071b18b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-24T18:29:36Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 27,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "db4f95ae7b76ed3e52db7ba722729aea5735a2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
