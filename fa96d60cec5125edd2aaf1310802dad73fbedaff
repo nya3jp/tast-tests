@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86cdb43_1552c256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-24T11:39:14Z",
+      "side": 1,
+      "message": "I\u0027m out sick this week, reassigning.",
+      "revId": "fa96d60cec5125edd2aaf1310802dad73fbedaff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
