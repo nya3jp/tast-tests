@@ -187,42 +187,23 @@ type pointerCaptureSubtestFunc func(ctx context.Context, s *testing.State, t poi
 // enabled. This is tested by injecting a large number of relative mouse movements in a single
 // direction.
 func verifyPointerCaptureBounds(ctx context.Context, s *testing.State, t pointerCaptureSubtestState) {
-	delta := coords.NewPoint(-50, -50)
-	var pendingMatchers []motioninput.Matcher
+	delta := coords.NewPoint(-100, -100)
 
-	verifyAndClearInjectedEvents := func() {
-		if err := t.tester.ExpectEventsAndClear(ctx, pendingMatchers...); err != nil {
-			s.Fatal("Failed to verify motion event and clear: ", err)
-		}
-		if err := t.tester.ClearMotionEvents(ctx); err != nil {
-			s.Fatal("Failed to clear events: ", err)
-		}
-		pendingMatchers = pendingMatchers[:0]
-	}
-
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 20; i++ {
 		if err := t.mew.Move(int32(delta.X), int32(delta.Y)); err != nil {
 			s.Fatalf("Failed to move mouse by (%d, %d): %v", delta.X, delta.Y, err)
 		}
 		// We only verify the action and source of each event and not the magnitude of the movements
 		// because ChromeOS applies mouse acceleration to such large and frequent movements.
-		pendingMatchers = append(pendingMatchers, motioninput.ActionSourceMatcher(motioninput.ActionMove, motioninput.SourceMouseRelative))
+		matcher := motioninput.ActionSourceMatcher(motioninput.ActionMove, motioninput.SourceMouseRelative)
 
-		// TODO(b/156655077): Remove input event injection throttling after the bug is resolved.
-		//  eventFrequencyHz is the experimentally determined frequency for input injection so that
-		//  multiple ACTION_MOVE events are not batched together by Android. We skip processing of
-		//  batched events so that we do not count extraneous events generated in the input pipeline.
-		//  See the bug for more details.
-		const eventFrequencyHz = 30
-		if err := testing.Sleep(ctx, time.Second/eventFrequencyHz); err != nil {
-			s.Fatal("Failed to sleep: ", err)
+		if err := t.tester.ExpectEventsAndClear(ctx, matcher); err != nil {
+			s.Fatal("Failed to verify motion event and clear: ", err)
 		}
-
-		if i%10 == 0 {
-			verifyAndClearInjectedEvents()
+		if err := t.tester.ClearMotionEvents(ctx); err != nil {
+			s.Fatal("Failed to clear events: ", err)
 		}
 	}
-	verifyAndClearInjectedEvents()
 }
 
 // verifyPointerCaptureButtons is a subtest that ensures mouse button functionality when Pointer
