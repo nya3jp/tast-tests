@@ -22,8 +22,7 @@ func init() {
 		Func: SettingsToggleAdvanced,
 		Desc: "Checks that the Advanced section of Settings can be expanded and collapsed",
 		Contacts: []string{
-			"bhansknecht@chromium.org",
-			"kyleshima@chromium.org",
+			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

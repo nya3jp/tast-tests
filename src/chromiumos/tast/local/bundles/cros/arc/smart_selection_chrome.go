@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SmartSelectionChrome,
 		Desc:         "Test ARC's smart selections show up in Chrome's right click menu",
-		Contacts:     []string{"bhansknecht@chromium.org", "dhaddock@chromium.org"},
+		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,

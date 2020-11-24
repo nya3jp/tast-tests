@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PINUnlock,
 		Desc:         "Checks that PIN unlock and PIN autosubmit works for Chrome OS",
-		Contacts:     []string{"kyleshima@chromium.org", "rsorokin@chromium.org"},
+		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
