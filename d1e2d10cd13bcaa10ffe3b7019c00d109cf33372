@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82557006_1a7a48a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375351
+      },
+      "writtenOn": "2020-11-24T08:22:35Z",
+      "side": 1,
+      "message": "The above CL has been merged and this is now ready for review. Please take a look whenever you have time. Thanks.",
+      "revId": "d1e2d10cd13bcaa10ffe3b7019c00d109cf33372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
