@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4aa2c5_b4208b8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-24T10:29:40Z",
+      "side": 1,
+      "message": "After a second thought, maybe we can use conn.Navigate() instead of making a new connection again...? Not sure will it work or not though.",
+      "revId": "a5d70dfbb47a28f0293a867e8df45a2c8b8ce577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb0553a_edcbf2f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-24T10:29:40Z",
+      "side": 1,
+      "message": "huge nit: I would slightly prefer a simple linear flow for this instead of using defer and shouldCloseConn. We can negate the strings.Contains() check to reduce the nested level if needed.",
+      "revId": "a5d70dfbb47a28f0293a867e8df45a2c8b8ce577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d5d944_f14c24ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-24T10:29:40Z",
+      "side": 1,
+      "message": ", nil?",
+      "range": {
+        "startLine": 61,
+        "startChar": 64,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "a5d70dfbb47a28f0293a867e8df45a2c8b8ce577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
