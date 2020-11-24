@@ -34,6 +34,24 @@
       "parentUuid": "58ef0fb4_67fbc95f",
       "revId": "2b95dae95b4c9f598424132e071dc0068c3069e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4a33edc_aa1cf251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-24T10:22:04Z",
+      "side": 1,
+      "message": "Restarting cryptohome unmounts the user, that\u0027s why the file is removed. We need a way to trigger cleanup with the user fully mounted.",
+      "parentUuid": "55724a17_00dd4437",
+      "revId": "2b95dae95b4c9f598424132e071dc0068c3069e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
