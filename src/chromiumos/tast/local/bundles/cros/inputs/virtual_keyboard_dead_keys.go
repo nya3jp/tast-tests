@@ -36,14 +36,14 @@ func init() {
 		Func:         VirtualKeyboardDeadKeys,
 		Desc:         "Checks that dead keys on the virtual keyboard work",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "french_stable",
 				ExtraHardwareDeps: pre.InputsStableModels,
-				ExtraAttr:         []string{"group:mainline"},
+				ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream"},
 				// "French - French keyboard" input method uses a compact-layout VK for
 				// non-a11y mode where there's no dead keys, and a full-layout VK for
 				// a11y mode where there's dead keys. To test dead keys on the VK of
@@ -75,6 +75,7 @@ func init() {
 				Name:              "french_mojo",
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledClamshell()),
 				ExtraHardwareDeps: pre.InputsMojoModels,
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:fr::fra",
 					hasDecoder:           true,
@@ -84,7 +85,7 @@ func init() {
 			}, {
 				Name:              "catalan_stable",
 				ExtraHardwareDeps: pre.InputsStableModels,
-				ExtraAttr:         []string{"group:mainline"},
+				ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream"},
 				// "Catalan keyboard" input method uses the same full-layout VK (that
 				// has dead keys) for both a11y & non-a11y. Just use non-a11y here.
 				Pre: pre.VKEnabledTablet(),
@@ -114,6 +115,7 @@ func init() {
 			}, {
 				Name:              "catalan_mojo",
 				ExtraHardwareDeps: pre.InputsMojoModels,
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",

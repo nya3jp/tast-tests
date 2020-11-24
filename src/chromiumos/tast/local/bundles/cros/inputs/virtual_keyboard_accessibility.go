@@ -19,13 +19,13 @@ func init() {
 		Func:         VirtualKeyboardAccessibility,
 		Desc:         "Checks that the accessibility keyboard displays correctly",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Params: []testing.Param{{
 			Name:              "stable",
 			Pre:               pre.VKEnabledClamshell(),
 			ExtraHardwareDeps: pre.InputsStableModels,
-			ExtraAttr:         []string{"group:mainline"},
+			ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
 			Pre:               pre.VKEnabledClamshell(),
@@ -35,6 +35,7 @@ func init() {
 			Name:              "mojo",
 			Pre:               pre.IMEServiceEnabled(pre.VKEnabledClamshell()),
 			ExtraHardwareDeps: pre.InputsMojoModels,
+			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}},
 	})
 }

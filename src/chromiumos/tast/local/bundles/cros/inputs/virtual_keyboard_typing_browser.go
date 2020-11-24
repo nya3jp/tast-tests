@@ -22,14 +22,14 @@ func init() {
 		Func:         VirtualKeyboardTypingBrowser,
 		Desc:         "Checks that the virtual keyboard works in Chrome browser",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
 			Pre:               pre.VKEnabledTablet(),
 			ExtraHardwareDeps: pre.InputsStableModels,
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
 			Pre:               pre.VKEnabledTablet(),
@@ -39,6 +39,7 @@ func init() {
 			Name:              "mojo",
 			Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 			ExtraHardwareDeps: pre.InputsMojoModels,
+			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}}})
 }
 
