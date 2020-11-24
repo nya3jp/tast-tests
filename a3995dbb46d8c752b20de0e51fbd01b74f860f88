@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "845d1808_fabe3c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_qrcode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-24T03:32:00Z",
+      "side": 1,
+      "message": "Yes. Added some commit message to clarify that.",
+      "parentUuid": "9da44b52_90ace554",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "a3995dbb46d8c752b20de0e51fbd01b74f860f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e303e06_459ad120",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-24T03:15:33Z",
       "side": 1,
       "message": "nit: \"!HTMLImageElement\" ?",
+      "range": {
+        "startLine": 8,
+        "startChar": 21,
+        "endLine": 8,
+        "endChar": 37
+      },
+      "revId": "a3995dbb46d8c752b20de0e51fbd01b74f860f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7f63ea_8924b3b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_qrcode.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-24T03:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e303e06_459ad120",
       "range": {
         "startLine": 8,
         "startChar": 21,
