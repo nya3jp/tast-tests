@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/testing"
@@ -109,6 +110,8 @@ func CommandPs(ctx context.Context, s *testing.State) {
 	}
 	defer terminalApp.Exit(cleanupCtx, keyboard)
 
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
 	outputFile := "test.txt"
 	// Run command ps in Terminal window, redirect the output to a file for check.
 	if err = terminalApp.RunCommand(ctx, keyboard, fmt.Sprintf("ps > %s", outputFile)); err != nil {
@@ -121,6 +124,15 @@ func CommandPs(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to cat the result file: ", err)
 	}
 	if !strings.Contains(content, "bash") || !strings.Contains(content, "ps") {
-		s.Fatal("Failed to get valid ps output: ", content)
+		s.Log("Line 127, failed to get valid ps output through redircting out put to a test file, the content is: ", content)
+
+		if err = terminalApp.RunCommand(ctx, keyboard, "ps"); err != nil {
+			s.Fatal("Failed to run command in Terminal window: ", err)
+		}
+
+		strs := []string{" CMD", " bash", " ps"}
+		if err = terminalApp.FindText(ctx, strs...); err != nil {
+			s.Fatal("Failed to verify the out put of command ps: ", err)
+		}
 	}
 }

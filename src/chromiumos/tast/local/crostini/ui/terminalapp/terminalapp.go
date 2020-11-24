@@ -7,6 +7,7 @@ package terminalapp
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"time"
 
@@ -207,4 +208,24 @@ func (ta *TerminalApp) Close(ctx context.Context) error {
 
 	// Wait for window to close.
 	return ui.WaitUntilGone(ctx, ta.tconn, ui.FindParams{Name: ta.Root.Name, Role: ta.Root.Role, ClassName: ta.Root.ClassName}, time.Minute)
+}
+
+// FindText finds text in the Terminal window.
+func (ta *TerminalApp) FindText(ctx context.Context, strs ...string) error {
+	if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for ui location to complete")
+	}
+
+	for _, s := range strs {
+		params := ui.FindParams{
+			Role:       ui.RoleTypeInlineTextBox,
+			Attributes: map[string]interface{}{"name": regexp.MustCompile(fmt.Sprintf(".*%s.*", s))},
+		}
+		text, err := ta.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+		if err != nil {
+			return errors.Wrapf(err, "failed to find %s", s)
+		}
+		text.Release(ctx)
+	}
+	return nil
 }
