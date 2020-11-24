@@ -101,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a01ce1_6578da17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-24T12:33:20Z",
+      "side": 1,
+      "message": "This is a new addition, Miriam added it not long ago as the absence of delay caused some problems at another policy.",
+      "parentUuid": "60abce3d_fbc6cdc5",
+      "revId": "08705c7de6acb6f669f638ae584def8ef89e71b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1bfe708_5c04faeb",
