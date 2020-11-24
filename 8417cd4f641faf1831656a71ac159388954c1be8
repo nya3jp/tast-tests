@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f54939bc_938e9dec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-24T07:08:49Z",
+      "side": 1,
+      "message": "Does this take so long time? I guess it\u0027d be finished within a min or so?",
+      "revId": "8417cd4f641faf1831656a71ac159388954c1be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "733e48cb_49e33c05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-24T07:08:49Z",
+      "side": 1,
+      "message": "for better stability, how about (making sure) closing all windows, before launching Lacros?",
+      "revId": "8417cd4f641faf1831656a71ac159388954c1be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
