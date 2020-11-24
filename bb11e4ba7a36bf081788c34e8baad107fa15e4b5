@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad3c807c_176455eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-24T21:58:54Z",
+      "side": 1,
+      "message": "There is a half a dozen other CrosDisks* tests that are structured this way. There is no point making this single test structured differently.",
+      "parentUuid": "d053822b_93357e7f",
+      "revId": "bb11e4ba7a36bf081788c34e8baad107fa15e4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f92dbba_c7a4a0a6",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cbc69a6_f0ed4e22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-24T21:58:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4f92dbba_c7a4a0a6",
+      "range": {
+        "startLine": 64,
+        "startChar": 9,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "bb11e4ba7a36bf081788c34e8baad107fa15e4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bff5872e_ab245f9e",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-11-24T08:52:48Z",
       "side": 1,
       "message": "export this function",
+      "range": {
+        "startLine": 65,
+        "startChar": 14,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "bb11e4ba7a36bf081788c34e8baad107fa15e4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76813f3e_858a3a46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-24T21:58:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bff5872e_ab245f9e",
       "range": {
         "startLine": 65,
         "startChar": 14,
