@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eca0f61_533660b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-11-24T02:36:46Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "c580003cf1ae55d92e58ed5df3d427f798d5d38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e044bf91_b77b8928",
@@ -14,6 +31,30 @@
       "writtenOn": "2020-11-17T10:35:28Z",
       "side": 1,
       "message": "I am worried that these lines never executed with existing tests. Not sure we should submit these lines.\n\n\nalso these lines repeat in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go;l\u003d102-104?q\u003dRunARCVideoPerfTest\n\nSo, maybe it makes sense to create a separate function for DecodeTestOptions that will return []string with additional args?\n\nfor example,\n\n```\nfunc (opts *DecodeTestOptions) ArgList() []string {\n  var args []string\n  if opts.DecoderType \u003d\u003d video.SoftwareDecoder {\n    args \u003d append(args, \"--use_sw_decoder\")\n  }\n  return args\n}\n\nusage:\n\ntestArgs :\u003d []string{\n\ttestVideoDataArg,\n\t\"--loop\",\n\t\"--gtest_filter\u003dC2VideoDecoderSurfaceE2ETest.TestFPS\",\n}\ntestArgs \u003d append(testArgs, opts.ArgList()...)\n```",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "c580003cf1ae55d92e58ed5df3d427f798d5d38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72155651_b3ce0923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-11-24T02:36:46Z",
+      "side": 1,
+      "message": "Currently none of our tests in the lab use a SW decoder, we might add some in the future but it\u0027s not decided yet. But more importantly this CL adds an easy way to locally run SW decoder tests so we can compare performance while developing and optimizing. As the commit message mentions: \"DecoderType: video.SoftwareDecoder\" can be added locally to run the test with a SW decoder.\n\nMost tests use the \"--use-sw-decoder\" flag in argsList() defined in arc_accel_video.go, but these power tests work in a different way so they have their own logic. IMHO a little bit of duplication to keep things simple and readable is OK here.\n\nLet me know if you have a strong preference, but then I\u0027ll have to rework argsList() which should probably be done in a separate CL.",
+      "parentUuid": "e044bf91_b77b8928",
       "range": {
         "startLine": 153,
         "startChar": 0,
