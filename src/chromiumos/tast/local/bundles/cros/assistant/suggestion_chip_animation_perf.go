@@ -22,7 +22,10 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-var uiPollOptions = testing.PollOptions{Timeout: 5 * time.Second}
+var uiPollOptions = testing.PollOptions{
+	Timeout:  8 * time.Second,
+	Interval: 500 * time.Millisecond,
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
