@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d053822b_93357e7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-24T08:52:48Z",
+      "side": 1,
+      "message": "This entire function can be moved inside the test.",
+      "revId": "bb11e4ba7a36bf081788c34e8baad107fa15e4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f92dbba_c7a4a0a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-24T08:52:48Z",
+      "side": 1,
+      "message": "export this function",
+      "range": {
+        "startLine": 64,
+        "startChar": 9,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "bb11e4ba7a36bf081788c34e8baad107fa15e4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff5872e_ab245f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-24T08:52:48Z",
+      "side": 1,
+      "message": "export this function",
+      "range": {
+        "startLine": 65,
+        "startChar": 14,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "bb11e4ba7a36bf081788c34e8baad107fa15e4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

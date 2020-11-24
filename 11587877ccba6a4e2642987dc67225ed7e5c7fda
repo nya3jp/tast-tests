@@ -224,6 +224,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a0709d_1c5f6f42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-24T08:52:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6ffdca6b_7a276037",
+      "range": {
+        "startLine": 62,
+        "startChar": 14,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "11587877ccba6a4e2642987dc67225ed7e5c7fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0515c676_6efcc34c",
