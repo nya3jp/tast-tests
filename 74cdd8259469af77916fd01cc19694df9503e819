@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82966f43_3fd59717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-24T00:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb059451_8e1bea98",
+      "range": {
+        "startLine": 60,
+        "startChar": 69,
+        "endLine": 60,
+        "endChar": 70
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce2a78a1_63352f90",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-23T23:02:32Z",
       "side": 1,
       "message": "probably should defer releasing this",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97554480_ec4f7bad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-24T00:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce2a78a1_63352f90",
       "range": {
         "startLine": 65,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef3db67_e1b010a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-24T00:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a4a64d0_a744e95d",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "783c665e_a167fc25",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-23T23:02:32Z",
       "side": 1,
       "message": "period",
+      "range": {
+        "startLine": 70,
+        "startChar": 52,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88c553d_6f6213d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-24T00:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "783c665e_a167fc25",
       "range": {
         "startLine": 70,
         "startChar": 52,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e89a04_68b01503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-24T00:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cd2d3dc_92e55408",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfcf54ca_2be43655",
@@ -163,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1b499e2_d6bc296c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-24T00:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfcf54ca_2be43655",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bee69abd_134578a1",
@@ -176,6 +320,30 @@
       "writtenOn": "2020-11-23T23:02:32Z",
       "side": 1,
       "message": "We should probably handle the error here as well",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "74cdd8259469af77916fd01cc19694df9503e819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e47202_20cf7f9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_centre_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-24T00:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bee69abd_134578a1",
       "range": {
         "startLine": 76,
         "startChar": 2,
