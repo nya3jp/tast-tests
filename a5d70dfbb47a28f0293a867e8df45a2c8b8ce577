@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "759f4261_ab298414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-24T11:03:39Z",
+      "side": 1,
+      "message": "Great idea. It works, thanks!",
+      "parentUuid": "0e4aa2c5_b4208b8c",
+      "revId": "a5d70dfbb47a28f0293a867e8df45a2c8b8ce577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fb0553a_edcbf2f1",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-24T10:29:40Z",
       "side": 1,
       "message": "huge nit: I would slightly prefer a simple linear flow for this instead of using defer and shouldCloseConn. We can negate the strings.Contains() check to reduce the nested level if needed.",
+      "revId": "a5d70dfbb47a28f0293a867e8df45a2c8b8ce577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c0968c_80bacc80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-24T11:03:39Z",
+      "side": 1,
+      "message": "Offline discussed with Shik. Since we might have multiple cases that need to close the connection, we decide to leave the logic here unchanged.",
+      "parentUuid": "8fb0553a_edcbf2f1",
       "revId": "a5d70dfbb47a28f0293a867e8df45a2c8b8ce577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,30 @@
       "writtenOn": "2020-11-24T10:56:55Z",
       "side": 1,
       "message": "Ah I misread it. Please ignore this comment.",
+      "parentUuid": "26d5d944_f14c24ac",
+      "range": {
+        "startLine": 61,
+        "startChar": 64,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "a5d70dfbb47a28f0293a867e8df45a2c8b8ce577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db9ddfa_fa18c4d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-24T11:03:39Z",
+      "side": 1,
+      "message": "I think the third option of chrome.NewConn() is optional so that we might not need it.",
       "parentUuid": "26d5d944_f14c24ac",
       "range": {
         "startLine": 61,
