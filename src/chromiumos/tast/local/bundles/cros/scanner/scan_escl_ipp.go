@@ -50,11 +50,6 @@ func init() {
 	})
 }
 
-const (
-	sourceImage = "scan_escl_ipp_source.jpg"
-	goldenImage = "scan_escl_ipp_golden.png"
-)
-
 // findScanner runs lsusb in order to find the Bus and Device number for the USB
 // device with the VID and PID given in devInfo.
 func findScanner(ctx context.Context, devInfo usbprinter.DevInfo) (bus, device string, err error) {
