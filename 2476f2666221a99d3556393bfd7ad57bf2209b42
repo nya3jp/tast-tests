@@ -70,6 +70,47 @@
       "parentUuid": "89fb05c3_76411b84",
       "revId": "2476f2666221a99d3556393bfd7ad57bf2209b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac60a3b_2054f9f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-24T14:47:04Z",
+      "side": 1,
+      "message": "Sounds good",
+      "parentUuid": "b139b6f8_8a737900",
+      "revId": "2476f2666221a99d3556393bfd7ad57bf2209b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "756659bc_bccea8a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_notifications_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-24T14:47:04Z",
+      "side": 1,
+      "message": "nit: Open notification settings.",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "2476f2666221a99d3556393bfd7ad57bf2209b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
