@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60abce3d_fbc6cdc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-24T12:15:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6a65b9f9_65de2268",
+      "revId": "08705c7de6acb6f669f638ae584def8ef89e71b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1bfe708_5c04faeb",
