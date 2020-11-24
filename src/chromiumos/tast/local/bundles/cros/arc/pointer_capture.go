@@ -59,8 +59,11 @@ func PointerCapture(ctx context.Context, s *testing.State) {
 
 	runSubtest := func(ctx context.Context, s *testing.State, subtestFunc pointerCaptureSubtestFunc) {
 		test := pointerCaptureSubtestState{}
+		test.arc = a
+		test.tconn = tconn
+		test.d = d
 
-		act, err := arc.NewActivity(a, motioninput.Package, motioninput.PointerCaptureActivity)
+		act, err := arc.NewActivity(a, motioninput.Package, motioninput.AutoPointerCaptureActivity)
 		if err != nil {
 			s.Fatal("Failed to create an activity: ", err)
 		}
@@ -86,7 +89,7 @@ func PointerCapture(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to enable pointer capture: ", err)
 		}
 
-		if err := expectPointerCaptureEnabled(ctx, d); err != nil {
+		if err := expectPointerCaptureState(ctx, d, true); err != nil {
 			s.Fatal("Failed to verify that pointer capture is enabled: ", err)
 		}
 
@@ -103,11 +106,20 @@ func PointerCapture(ctx context.Context, s *testing.State) {
 		Func pointerCaptureSubtestFunc
 	}{
 		{
+			Name: "Pointer Capture sends relative movements",
+			Func: verifyPointerCaptureRelativeMovement,
+		}, {
 			Name: "Pointer Capture is not restricted by display bounds",
 			Func: verifyPointerCaptureBounds,
 		}, {
 			Name: "Pointer Capture buttons",
 			Func: verifyPointerCaptureButtons,
+		}, {
+			Name: "Pointer Capture is disabled when Chrome is focused",
+			Func: verifyPointerCaptureDisabledWhenChromeFocused,
+		}, {
+			Name: "Pointer Capture is re-enabled after switching focus with the keyboard",
+			Func: verifyPointerCaptureWithKeyboardFocusChange,
 		},
 	} {
 		s.Run(ctx, subtest.Name, func(ctx context.Context, s *testing.State) {
@@ -158,16 +170,16 @@ func readPointerCaptureState(ctx context.Context, d *ui.Device) (*pointerCapture
 	return &state, nil
 }
 
-// expectPointerCaptureEnabled polls readPointerCaptureState repeatedly until Pointer Capture is
-// enabled.
-func expectPointerCaptureEnabled(ctx context.Context, d *ui.Device) error {
+// expectPointerCaptureState polls readPointerCaptureState repeatedly until Pointer Capture is
+// equal to the expected value.
+func expectPointerCaptureState(ctx context.Context, d *ui.Device, enabled bool) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		state, err := readPointerCaptureState(ctx, d)
 		if err != nil {
 			return err
 		}
-		if !state.Enabled {
-			return errors.New("expected Pointer Capture to be enabled, but was disabled")
+		if state.Enabled != enabled {
+			return errors.Errorf("unexpected Pointer Capture state: want: %t, got: %t", enabled, state.Enabled)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
@@ -177,10 +189,40 @@ func expectPointerCaptureEnabled(ctx context.Context, d *ui.Device) error {
 type pointerCaptureSubtestState struct {
 	tester *motioninput.Tester
 	mew    *input.MouseEventWriter
+	arc    *arc.ARC
+	tconn  *chrome.TestConn
+	d      *ui.Device
 }
 
 // pointerCaptureSubtestFunc represents a subtest function.
 type pointerCaptureSubtestFunc func(ctx context.Context, s *testing.State, t pointerCaptureSubtestState)
+
+// ensureRelativeMovement is a helper function that injects a relative mouse movements through a uinput
+// mouse device and checks that a relative movement was sent to the application.
+func ensureRelativeMovement(ctx context.Context, t pointerCaptureSubtestState, delta coords.Point) error {
+	if err := t.mew.Move(int32(delta.X), int32(delta.Y)); err != nil {
+		return errors.Wrapf(err, "failed to move mouse by (%d, %d)", delta.X, delta.Y)
+	}
+	// We only verify the action and source of each event and not the magnitude of the movements
+	// because ChromeOS applies mouse acceleration which changes the magnitude.
+	matcher := motioninput.ActionSourceMatcher(motioninput.ActionMove, motioninput.SourceMouseRelative)
+
+	if err := t.tester.ExpectEventsAndClear(ctx, matcher); err != nil {
+		return errors.Wrap(err, "failed to verify motion event and clear")
+	}
+	if err := t.tester.ClearMotionEvents(ctx); err != nil {
+		return errors.Wrap(err, "failed to clear events")
+	}
+	return nil
+}
+
+// verifyPointerCaptureRelativeMovement is a subtest that verifies that mouse movements injected when Pointer
+// Capture is enabled are sent to the app as relative movements.
+func verifyPointerCaptureRelativeMovement(ctx context.Context, s *testing.State, t pointerCaptureSubtestState) {
+	if err := ensureRelativeMovement(ctx, t, coords.NewPoint(10, 10)); err != nil {
+		s.Fatal("Failed to verify relative movement: ", err)
+	}
+}
 
 // verifyPointerCaptureBounds is a subtest that verifies mouse movement is not restricted by the
 // bounds of the display, since only relative movements are reported when Pointer Capture is
@@ -190,18 +232,8 @@ func verifyPointerCaptureBounds(ctx context.Context, s *testing.State, t pointer
 	delta := coords.NewPoint(-100, -100)
 
 	for i := 0; i < 20; i++ {
-		if err := t.mew.Move(int32(delta.X), int32(delta.Y)); err != nil {
-			s.Fatalf("Failed to move mouse by (%d, %d): %v", delta.X, delta.Y, err)
-		}
-		// We only verify the action and source of each event and not the magnitude of the movements
-		// because ChromeOS applies mouse acceleration to such large and frequent movements.
-		matcher := motioninput.ActionSourceMatcher(motioninput.ActionMove, motioninput.SourceMouseRelative)
-
-		if err := t.tester.ExpectEventsAndClear(ctx, matcher); err != nil {
-			s.Fatal("Failed to verify motion event and clear: ", err)
-		}
-		if err := t.tester.ClearMotionEvents(ctx); err != nil {
-			s.Fatal("Failed to clear events: ", err)
+		if err := ensureRelativeMovement(ctx, t, delta); err != nil {
+			s.Fatal("Failed to verify relative movement: ", err)
 		}
 	}
 }
@@ -217,5 +249,93 @@ func verifyPointerCaptureButtons(ctx context.Context, s *testing.State, t pointe
 	}
 	if err := t.tester.ExpectEventsAndClear(ctx, matcher(motioninput.ActionDown, 1), matcher(motioninput.ActionButtonPress, 1), matcher(motioninput.ActionButtonRelease, 0), matcher(motioninput.ActionUp, 0)); err != nil {
 		s.Fatal("Failed to clear motion events and clear: ", err)
+	}
+}
+
+// verifyPointerCaptureDisabledWhenChromeFocused is a subtest that ensures Pointer Capture is disabled when
+// a Chrome window comes into focus.
+func verifyPointerCaptureDisabledWhenChromeFocused(ctx context.Context, s *testing.State, t pointerCaptureSubtestState) {
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+
+	// Press the search key to bring the launcher into focus.
+	if err := kb.Accel(ctx, "Search"); err != nil {
+		s.Fatal("Failed to press Search: ", err)
+	}
+
+	// Pointer Capture should be disabled when window loses focus.
+	if err := expectPointerCaptureState(ctx, t.d, false); err != nil {
+		s.Fatal("Failed to verify that pointer capture is disabled: ", err)
+	}
+
+	// Press the search key again to hide the launcher.
+	if err := kb.Accel(ctx, "Search"); err != nil {
+		s.Fatal("Failed to press Search: ", err)
+	}
+
+	// Pointer Capture should be enabled when window gains focus.
+	if err := expectPointerCaptureState(ctx, t.d, true); err != nil {
+		s.Fatal("Failed to verify that pointer capture is enabled: ", err)
+	}
+	// Clear events, since hover events could have been generated before Pointer Capture was re-enabled.
+	if err := t.tester.ClearMotionEvents(ctx); err != nil {
+		s.Fatal("Failed to clear events: ", err)
+	}
+	if err := ensureRelativeMovement(ctx, t, coords.NewPoint(10, 10)); err != nil {
+		s.Fatal("Failed to verify relative movement: ", err)
+	}
+}
+
+// verifyPointerCaptureWithKeyboardFocusChange is a subtest that ensures Pointer Capture is disabled when
+// the activity loses focus and re-gains Pointer Capture when it is focused again using the keyboard.
+func verifyPointerCaptureWithKeyboardFocusChange(ctx context.Context, s *testing.State, t pointerCaptureSubtestState) {
+	// Launch the settings activity to make the Pointer Capture Activity lose focus.
+	const (
+		settingsPackage  = "com.android.settings"
+		settingsActivity = ".Settings"
+	)
+	act, err := arc.NewActivity(t.arc, settingsPackage, settingsActivity)
+	if err != nil {
+		s.Fatal("Failed to create an activity: ", err)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, t.tconn); err != nil {
+		s.Fatal("Failed to start an activity: ", err)
+	}
+	defer act.Stop(ctx, t.tconn)
+
+	if err := ash.WaitForVisible(ctx, t.tconn, settingsPackage); err != nil {
+		s.Fatal("Failed to wait for activity to be visible: ", err)
+	}
+
+	// Pointer Capture should be disabled when window loses focus.
+	if err := expectPointerCaptureState(ctx, t.d, false); err != nil {
+		s.Fatal("Failed to verify that pointer capture is disabled: ", err)
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+
+	if err := kb.Accel(ctx, "Alt+Tab"); err != nil {
+		s.Fatal("Failed to press Alt+Tab to switch windows: ", err)
+	}
+
+	// The activity will automatically request pointer capture when it gains focus.
+	if err := expectPointerCaptureState(ctx, t.d, true); err != nil {
+		s.Fatal("Failed to verify that pointer capture is enabled: ", err)
+	}
+	// Clear events, since hover events could have been generated before Pointer Capture was re-enabled.
+	if err := t.tester.ClearMotionEvents(ctx); err != nil {
+		s.Fatal("Failed to clear events: ", err)
+	}
+	if err := ensureRelativeMovement(ctx, t, coords.NewPoint(10, 10)); err != nil {
+		s.Fatal("Failed to verify relative movement: ", err)
 	}
 }
