@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PointerCaptureActivity"
+        <activity android:name=".AutoPointerCaptureActivity"
             android:configChanges="touchscreen|keyboard|screenLayout|screenSize"
             android:launchMode="singleTop"
             android:exported="true">

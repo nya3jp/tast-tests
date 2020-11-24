@@ -15,14 +15,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * PointerCaptureActivity is a {@link MotionEventReportingActivity} that requests Pointer Capture to
- * be enabled whenever the activity is clicked, and reports all {@link MotionEvent}s that it
- * receives, including captured events.
+ * AutoPointerCaptureActivity is a {@link MotionEventReportingActivity} that:
+ *   - requests Pointer Capture to be enabled whenever the activity window is first clicked,
+ *   - automatically enables Pointer Capture whenever the window is subsequently re-focused, and
+ *   - reports all {@link MotionEvent}s that it receives, including captured events.
  */
-public class PointerCaptureActivity extends MotionEventReportingActivity {
+public class AutoPointerCaptureActivity extends MotionEventReportingActivity {
 
     private View mCaptureView;
     private TextView mTvPointerCaptureState;
+    private boolean mShouldRequestCapture;
 
     private static final String KEY_POINTER_CAPTURE_STATE = "pointer_capture_enabled";
 
@@ -38,7 +40,17 @@ public class PointerCaptureActivity extends MotionEventReportingActivity {
             reportMotionEvent(event);
             return true;
         });
-        mCaptureView.setOnClickListener(View::requestPointerCapture);
+        mCaptureView.setOnClickListener((v) -> {
+            mShouldRequestCapture = true;
+            v.requestPointerCapture();
+        });
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        if (hasFocus && mShouldRequestCapture) {
+            mCaptureView.requestPointerCapture();
+        }
     }
 
     @Override

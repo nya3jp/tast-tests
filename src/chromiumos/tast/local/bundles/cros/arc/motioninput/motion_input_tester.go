@@ -76,8 +76,8 @@ const (
 	APK     = "ArcMotionInputTest.apk"
 	Package = "org.chromium.arc.testapp.motioninput"
 
-	EventReportingActivity = ".MotionEventReportingActivity"
-	PointerCaptureActivity = ".PointerCaptureActivity"
+	EventReportingActivity     = ".MotionEventReportingActivity"
+	AutoPointerCaptureActivity = ".AutoPointerCaptureActivity"
 
 	intentActionClearEvents = Package + ".ACTION_CLEAR_EVENTS"
 )
