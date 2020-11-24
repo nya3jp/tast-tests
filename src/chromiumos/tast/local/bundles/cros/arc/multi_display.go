@@ -36,13 +36,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type androidDisplayID int32
-
 const (
-	internalDisplayID androidDisplayID = arc.DefaultDisplayID
-	// FirstExternalDisplayID represents the display ID for the first external display.
-	firstExternalDisplayID androidDisplayID = 1
-
 	dispPkg = "org.chromium.arc.testapp.multidisplay"
 	dispApk = "ArcMultiDisplayTest.apk"
 
@@ -1127,32 +1121,6 @@ func ensureWindowOnDisplay(ctx context.Context, tconn *chrome.TestConn, pkgName,
 	return nil
 }
 
-// startActivityOnDisplay starts an activity by calling "am start --display" on the given display ID.
-// TODO(ruanc): Move this function to proper location (activity.go or Ash) once the external displays has better support.
-func startActivityOnDisplay(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, pkgName, actName string, dispID androidDisplayID) error {
-	cmd := a.Command(ctx, "am", "start", "--display", dispID.string(), pkgName+"/"+actName)
-	output, err := cmd.Output()
-	if err != nil {
-		return errors.Wrap(err, "failed to start activity")
-	}
-	// "adb shell" doesn't distinguish between a failed/successful run. For that we have to parse the output.
-	// Looking for:
-	//  Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.example.name/.ActvityName }
-	//  Error type 3
-	//  Error: Activity class {com.example.name/com.example.name.ActvityName} does not exist.
-	re := regexp.MustCompile(`(?m)^Error:\s*(.*)$`)
-	groups := re.FindStringSubmatch(string(output))
-	if len(groups) == 2 {
-		testing.ContextLog(ctx, "Failed to start activity: ", groups[1])
-		return errors.New("failed to start activity")
-	}
-
-	if err := ash.WaitForVisible(ctx, tconn, pkgName); err != nil {
-		return errors.Wrap(err, "failed to wait for visible activity")
-	}
-	return nil
-}
-
 // ensureSetWindowState checks whether the window is in requested window state. If not, make sure to set window state to the requested window state.
 func ensureSetWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName string, expectedState ash.WindowStateType) error {
 	if state, err := ash.GetARCAppWindowState(ctx, tconn, pkgName); err != nil {
@@ -1511,21 +1479,6 @@ func (cursor *cursorOnDisplay) moveTo(ctx context.Context, tconn *chrome.TestCon
 	cursor.currentDisp = dstDisp
 	cursor.currentDispType = dstDispType
 	return nil
-}
-
-// string returns string representation of id.
-func (id androidDisplayID) string() string {
-	return fmt.Sprintf("%d", id)
-}
-
-// label returns display name of android ID.
-func (id androidDisplayID) label() string {
-	if id == internalDisplayID {
-		return "internal"
-	} else if id == firstExternalDisplayID {
-		return "external"
-	}
-	panic(fmt.Sprintf("invalid id %q", id))
 }
 
 var classNameReg = regexp.MustCompile("[^.]+$")
