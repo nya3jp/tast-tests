@@ -22,6 +22,30 @@
       },
       "revId": "9d78a96c273204dd0b734b449dccdaa4c8fa9b24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f09615eb_8f593a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1325055
+      },
+      "writtenOn": "2020-11-24T18:18:21Z",
+      "side": 1,
+      "message": "I\u0027m not an expert on the Tast expressions, but this seems like it should work. An OWNER of this repo that has some context on the bug can give a better review. Right now it looks like this is failing CQ with errors like:\n\ntast-local-tests-cros-0.0.1-r4468: error(s) in registered tests: /build/zork/tmp/portage/chromeos-base/tast-local-tests-cros-0.0.1-r4468/work/tast-local-tests-cros-0.0.1/src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go:26: group \"camera-postsubmit\" is invalid; see chromiumos/tast/internal/testing/attr.go for the full list of valid groups",
+      "parentUuid": "f2c0b6b0_a6aae50c",
+      "range": {
+        "startLine": 37,
+        "startChar": 45,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "9d78a96c273204dd0b734b449dccdaa4c8fa9b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
