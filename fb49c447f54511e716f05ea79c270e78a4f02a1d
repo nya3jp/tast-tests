@@ -111,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d1c02e_9270cc8b",
+        "filename": "src/chromiumos/tast/local/power/package_cstates_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-24T01:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e08d9180_63fbfba5",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c168e453_6cae34e4",
@@ -146,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dafd4e87_ebef0081",
+        "filename": "src/chromiumos/tast/local/power/package_cstates_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-24T01:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08dd0d6a_2536162d",
+      "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "403729af_422ede61",
@@ -159,6 +201,30 @@
       "writtenOn": "2020-11-20T07:06:16Z",
       "side": 1,
       "message": "nit: similar as getIntelCPUUarch, maybe fetch?",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 8
+      },
+      "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd94df83_112df087",
+        "filename": "src/chromiumos/tast/local/power/package_cstates_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-24T01:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "403729af_422ede61",
       "range": {
         "startLine": 120,
         "startChar": 5,
@@ -192,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1af266d_9c29b1e1",
+        "filename": "src/chromiumos/tast/local/power/package_cstates_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-24T01:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "019aef2f_949aacd1",
+      "range": {
+        "startLine": 185,
+        "startChar": 11,
+        "endLine": 185,
+        "endChar": 14
+      },
+      "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "894e3aa5_5a9cd03b",
@@ -215,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5a2a08_1cb915db",
+        "filename": "src/chromiumos/tast/local/power/package_cstates_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-24T01:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "894e3aa5_5a9cd03b",
+      "range": {
+        "startLine": 192,
+        "startChar": 9,
+        "endLine": 192,
+        "endChar": 12
+      },
+      "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "256c0cbf_3874eef1",
@@ -228,6 +342,24 @@
       "writtenOn": "2020-11-20T07:06:16Z",
       "side": 1,
       "message": "nit: So, on non-Intel devices, this will just collect nothing without error. Might be nice to mention the behavior in docstring of PackageCStatesMetrics?",
+      "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c409ef5_0326d737",
+        "filename": "src/chromiumos/tast/local/power/package_cstates_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-11-24T01:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "256c0cbf_3874eef1",
       "revId": "fb49c447f54511e716f05ea79c270e78a4f02a1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
