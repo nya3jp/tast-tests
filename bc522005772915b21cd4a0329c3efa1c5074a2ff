@@ -16,6 +16,23 @@
       "message": "Running a tryjob: https://ci.chromium.org/b/8863076881590693456",
       "revId": "bc522005772915b21cd4a0329c3efa1c5074a2ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "806a5176_dc1c9515",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383354
+      },
+      "writtenOn": "2020-11-24T19:08:40Z",
+      "side": 1,
+      "message": "Tryjob with the timeout change sees this test passing: https://ci.chromium.org/ui/p/chromeos/builders/general/Try/b8862819590449851904",
+      "revId": "bc522005772915b21cd4a0329c3efa1c5074a2ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
