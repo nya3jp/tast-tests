@@ -16,6 +16,29 @@
       "message": "Hi Brendan, \n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "38efec7bf8e4c32eb4a3e03f17515101ef1d4bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a307da8_f90ceeda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-24T00:24:06Z",
+      "side": 1,
+      "message": "Ditto here, Why does this need a new precondition?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 138
+      },
+      "revId": "38efec7bf8e4c32eb4a3e03f17515101ef1d4bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
