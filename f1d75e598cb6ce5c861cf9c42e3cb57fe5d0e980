@@ -46,6 +46,30 @@
       },
       "revId": "f1d75e598cb6ce5c861cf9c42e3cb57fe5d0e980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39126357_afc8c4b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_built_in_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-24T00:56:10Z",
+      "side": 1,
+      "message": "I am gonna message nya@ just to get better context on why this is an issue, but I guess the proper solution is to make a library that runs the test and then 2 wrapper tests for the different preconditions.",
+      "parentUuid": "a3f304f8_f57bf253",
+      "range": {
+        "startLine": 37,
+        "startChar": 23,
+        "endLine": 37,
+        "endChar": 54
+      },
+      "revId": "f1d75e598cb6ce5c861cf9c42e3cb57fe5d0e980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
