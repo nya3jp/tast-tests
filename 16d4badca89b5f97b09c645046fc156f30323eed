@@ -39,6 +39,30 @@
       },
       "revId": "16d4badca89b5f97b09c645046fc156f30323eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49b73013_c11cc289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-24T00:45:37Z",
+      "side": 1,
+      "message": "Myscript Nebo app needs subscription to install. So used the following account to subscribe the app,var appcompatMyscriptNebo \u003d \u0026arc.GaiaVars{\n\tUserVar: \"arcappcompat.MyscriptNebo.username\",\n\tPassVar: \"arcappcompat.MyscriptNebo.password\",\n}. So this precondition is needed here. Thanks.",
+      "parentUuid": "530dcf92_1fa324f3",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 144
+      },
+      "revId": "16d4badca89b5f97b09c645046fc156f30323eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
