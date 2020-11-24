@@ -22,6 +22,391 @@
       },
       "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04421f46_51f91ce5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "LGTM % minor comments",
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a53c27_12f458f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "These tests validate",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fc7975_f38b5a08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "and --gtest\\_filter\u003dVideoDecoderTest.FlushAtEndOfStream",
+      "range": {
+        "startLine": 76,
+        "startChar": 58,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b3a8a4_89535110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "I think this is a strange way of putting it. Maybe you meant something like:\n\n  Unlike the DecodeAccel and DecodeAccelVD tests, DecodeCompliance mostly targets\n  specific codec features and is primarily concerned with the correctness of the\n  produced frames.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 69
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b641464a_6d62e727",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "Currently, we only test AV1.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfd6f4ac_22011ab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "DecodeCompliance",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 36
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17854ccc_59507e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "remove \u0027test\u0027",
+      "range": {
+        "startLine": 84,
+        "startChar": 51,
+        "endLine": 84,
+        "endChar": 55
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d5ee023_56e63a89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "for details about",
+      "range": {
+        "startLine": 84,
+        "startChar": 41,
+        "endLine": 84,
+        "endChar": 46
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3170097d_03306aca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 3,
+        "startChar": 21,
+        "endLine": 3,
+        "endChar": 22
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c081c315_cf7e3fd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "These",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 3
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c52d39_1946a566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "AV1",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfa7da47_c83b4bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "Is this needed? If so, why isn\u0027t it needed on ln. 15?",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e7eb8a7_d3062e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "This is essentially the same description as DecodeAccel/DecodeAccelVD. If I\u0027m understanding the point of the test correctly, I think it should say something like:\n\nVerifies the result of decoding a variety of videos (i.e., test vectors) that target mostly specific codec features by running the video_decode_accelerator_tests binary.",
+      "range": {
+        "startLine": 53,
+        "startChar": 17,
+        "endLine": 53,
+        "endChar": 131
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e226072_115c25cf",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "the direct VideoDecoder.",
+      "range": {
+        "startLine": 105,
+        "startChar": 39,
+        "endLine": 105,
+        "endChar": 52
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59e89960_dd9aac70",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "Test vector failed: \n\n(note that with ContextLog, the first letter should be capitalized - unlike errors.Errorf)",
+      "range": {
+        "startLine": 130,
+        "startChar": 28,
+        "endLine": 130,
+        "endChar": 34
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e735d52_c3e5e7ac",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "Test vector passed:",
+      "range": {
+        "startLine": 132,
+        "startChar": 28,
+        "endLine": 132,
+        "endChar": 33
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25a4c148_bc5520b8",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-11-24T04:16:32Z",
+      "side": 1,
+      "message": "failed to validate the decoding of %v",
+      "range": {
+        "startLine": 136,
+        "startChar": 24,
+        "endLine": 136,
+        "endChar": 52
+      },
+      "revId": "250d5ef06732a13b862da81227e0d06cfd08835e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
