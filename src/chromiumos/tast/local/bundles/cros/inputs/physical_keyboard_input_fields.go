@@ -22,7 +22,7 @@ func init() {
 		Func:         PhysicalKeyboardInputFields,
 		Desc:         "Checks that physical keyboard works on different input fields",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
+		Attr:         []string{"group:mainline", "informational", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      5 * time.Minute,
