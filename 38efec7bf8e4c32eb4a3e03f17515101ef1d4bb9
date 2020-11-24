@@ -39,6 +39,30 @@
       },
       "revId": "38efec7bf8e4c32eb4a3e03f17515101ef1d4bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "639987c5_ddab3903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-11-24T00:44:04Z",
+      "side": 1,
+      "message": "Photolemur app needs subscription to install. So used the following account to subscribe the app, var appcompatPhotolemur \u003d \u0026arc.GaiaVars{\n\tUserVar: \"arcappcompat.Photolemur.username\",\n\tPassVar: \"arcappcompat.Photolemur.password\",\n}. So this precondition is needed here. Thanks.",
+      "parentUuid": "7a307da8_f90ceeda",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 138
+      },
+      "revId": "38efec7bf8e4c32eb4a3e03f17515101ef1d4bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
