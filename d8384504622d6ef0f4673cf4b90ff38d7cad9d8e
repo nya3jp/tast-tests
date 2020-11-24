@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92458612_3935bdf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-24T00:53:10Z",
+      "side": 1,
+      "message": "LGTM +1.  Please have tast-owners review for +2.  Thanks.",
+      "revId": "d8384504622d6ef0f4673cf4b90ff38d7cad9d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

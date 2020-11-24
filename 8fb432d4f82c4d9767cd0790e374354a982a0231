@@ -142,6 +142,24 @@
       "parentUuid": "e7f18ed5_3452c1c3",
       "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19592cc6_73649fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_movies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-11-24T00:53:10Z",
+      "side": 1,
+      "message": "\"Use ARCSupported, not ARCEnabled.\" - I assume this is working now?",
+      "parentUuid": "85c0d3bf_2b7fe445",
+      "revId": "8fb432d4f82c4d9767cd0790e374354a982a0231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
