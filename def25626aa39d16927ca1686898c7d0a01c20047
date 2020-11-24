@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f422fe53_8fe88d30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-24T04:45:12Z",
+      "side": 1,
+      "message": "nit: For consistency with other commits in the camera/ folder, let\u0027s use \"camera: Add\" here",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "def25626aa39d16927ca1686898c7d0a01c20047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a03ea54_5ab07ac7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-24T04:45:12Z",
+      "side": 1,
+      "message": "Could you help add TEST\u003d section here and verify the result with test_that to trigger the camera-postsubmit suite?",
+      "revId": "def25626aa39d16927ca1686898c7d0a01c20047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21683b96_6390b245",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-24T04:45:12Z",
+      "side": 1,
+      "message": "I think we need Cq-Depend on https://crrev.com/c/2556730?",
+      "revId": "def25626aa39d16927ca1686898c7d0a01c20047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
