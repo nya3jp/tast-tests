@@ -9,11 +9,13 @@ package testutil
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -158,4 +160,14 @@ func PlatformAppLauncher() AppLauncher {
 	return func(ctx context.Context, tconn *chrome.TestConn) error {
 		return tconn.Call(ctx, nil, `tast.promisify(chrome.management.launchApp)`, ID)
 	}
+}
+
+// GetUSBCamerasFromV4L2Test returns a list of usb camera paths.
+func GetUSBCamerasFromV4L2Test(ctx context.Context) ([]string, error) {
+	cmd := testexec.CommandContext(ctx, "media_v4l2_test", "--list_usbcam")
+	out, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, err
+	}
+	return strings.Fields(string(out)), nil
 }
