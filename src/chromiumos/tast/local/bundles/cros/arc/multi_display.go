@@ -507,7 +507,9 @@ func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		return err
 	}
 
-	type param struct {
+	defer setDisplayPower(ctx, displayPowerAllOn)
+
+	for _, removeAdd := range []struct {
 		name         string
 		power        displayPowerState
 		origDispInfo display.Info
@@ -515,32 +517,12 @@ func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 
 		moveAct     *arc.Activity
 		moveWinInfo *ash.Window
-	}
-	var prm []param
-	version, err := arc.SDKVersion()
-	if err != nil {
-		return err
-	}
-	if version >= arc.SDKR {
-		prm = []param{
-			// TODO(b/159759425): Disable as it causes Android system crash
-			// When removing internal display, the window on internal display will move to the external display.
-			// {"Remove and add internal display", displayPowerInternalOffExternalOn, intDispInfo, extDispInfo, settingsAct, settingsWindowInfo},
-			// TODO(b/161298024): Disable as it causes to change the android external display ID b/161298024
-			// When removing external display, the window on external display will move to the internal display.
-			// {"Remove and add external display", displayPowerInternalOnExternalOff, extDispInfo, intDispInfo, wmAct, wmWindowInfo},
-		}
-		s.Logf("%q is skipped due to %s", "Remove and add internal display", "b/159759425")
-		s.Logf("%q is skipped due to %s", "Remove and add external display", "b/161298024")
-	} else {
-		prm = []param{
-			// When removing internal display, the window on internal display will move to the external display.
-			{"Remove and add internal display", displayPowerInternalOffExternalOn, intDispInfo, extDispInfo, settingsAct, settingsWindowInfo},
-			// When removing external display, the window on external display will move to the internal display.
-			{"Remove and add external display", displayPowerInternalOnExternalOff, extDispInfo, intDispInfo, wmAct, wmWindowInfo},
-		}
-	}
-	for _, removeAdd := range prm {
+	}{
+		// When removing internal display, the window on internal display will move to the external display.
+		{"Remove and add internal display", displayPowerInternalOffExternalOn, intDispInfo, extDispInfo, settingsAct, settingsWindowInfo},
+		// When removing external display, the window on external display will move to the internal display.
+		{"Remove and add external display", displayPowerInternalOnExternalOff, extDispInfo, intDispInfo, wmAct, wmWindowInfo},
+	} {
 		runOrFatal(ctx, s, removeAdd.name, func(ctx context.Context, s *testing.State) error {
 			// Remove one display and the window on the removed display should move to the other display.
 			if err := setDisplayPower(ctx, removeAdd.power); err != nil {
@@ -548,6 +530,10 @@ func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 			}
 			// Wait for display off.
 			if err := waitForDisplay(ctx, tconn, removeAdd.origDispInfo.ID, false, 10*time.Second); err != nil {
+				return err
+			}
+			// Wait for display on.
+			if err := waitForDisplay(ctx, tconn, removeAdd.destDispInfo.ID, true, 10*time.Second); err != nil {
 				return err
 			}
 			if err := ensureActivityReady(ctx, tconn, removeAdd.moveAct); err != nil {
