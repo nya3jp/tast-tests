@@ -18,6 +18,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "610b9395_4e6e877e",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-11-24T08:14:35Z",
+      "side": 1,
+      "message": "do you ever Run this outside of here?\nwhy do you need to keep arcvmConsoleCmd object around ?",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 49
+      },
+      "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "67c38f88_547815f5",
@@ -31,6 +54,75 @@
       "writtenOn": "2020-11-20T08:10:30Z",
       "side": 1,
       "message": "Is this Okay?",
+      "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63213018_1ddb286c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-11-24T08:14:35Z",
+      "side": 1,
+      "message": "please use \"container\" when referring to non-ARCVM.",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 75
+      },
+      "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e030b6_30e6c73a",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-11-24T08:14:35Z",
+      "side": 1,
+      "message": "logcat is started early because we monitor the output and it runs in `tail -f` mode.\nvm_pstore_dump does not, so there\u0027s no point in starting early ?",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 76
+      },
+      "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb03505e_6d5e4c0d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-11-24T08:14:35Z",
+      "side": 1,
+      "message": "we\u0027ll want to diagnose pstore log if crosvm logs moved from syslog to pstore.",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 74
+      },
       "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
