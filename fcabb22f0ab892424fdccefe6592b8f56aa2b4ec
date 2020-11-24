@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79bce363_daf71f22",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-24T18:53:31Z",
+      "side": 1,
+      "message": "I don\u0027t exactly understand the UI that you are dealing with and how it is reacting, but I feel that this should be fixable by having a long enough interval in the poll options. You should be able to set the interval to a second(might even be able to get away with less), which would end up having a similar effect to this.\n\nIt feels weird to me to have the nested poll options, and I would prefer if you could just increase the interval of the poll options passed in, but if that doesn\u0027t work, this CL is otherwise fine.",
+      "parentUuid": "4293a6b0_e0549f1d",
+      "range": {
+        "startLine": 342,
+        "startChar": 1,
+        "endLine": 342,
+        "endChar": 13
+      },
+      "revId": "fcabb22f0ab892424fdccefe6592b8f56aa2b4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25b12132_5b3127de",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 1
