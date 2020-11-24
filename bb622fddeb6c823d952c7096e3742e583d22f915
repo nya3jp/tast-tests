@@ -16,6 +16,52 @@
       "message": "Tast owner PTAL, thanks.",
       "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06cbaf01_a89048de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-24T16:32:33Z",
+      "side": 1,
+      "message": "Please reserve time for cleanup: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 510,
+        "startChar": 23,
+        "endLine": 510,
+        "endChar": 26
+      },
+      "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4d9858_8f330eab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-24T16:32:33Z",
+      "side": 1,
+      "message": "Please capture an error that may be returned by setDisplayPower. To avoid overwriting any other returned error, you can use a named return value:\n\n    func removeAddDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) (retErr error) {\n        ...\n        defer func() {\n            if err :\u003d setDisplayPower(ctx, displayPowerAllOn); err !\u003d nil \u0026\u0026 retErr \u003d\u003d nil {\n                retErr \u003d errors.Wrap(err, \"during removeAddDisplay cleanup\")\n            }\n        }()\n        ...\n    }",
+      "range": {
+        "startLine": 510,
+        "startChar": 1,
+        "endLine": 510,
+        "endChar": 6
+      },
+      "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
