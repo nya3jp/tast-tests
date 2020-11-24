@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BrightnessQueries,
 		Desc:         "Tests changing the screen brightness using Assistant queries",
-		Contacts:     []string{"kyleshima@chromium.org", "bhansknecht@chromium.org", "meilinw@chromium.org"},
+		Contacts:     []string{"chromeos-sw-engprod@google.com", "meilinw@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "display_backlight"},
 		Pre:          assistant.VerboseLoggingEnabled(),

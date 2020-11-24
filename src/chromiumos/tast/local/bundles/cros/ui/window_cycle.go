@@ -23,8 +23,7 @@ func init() {
 		Func: WindowCycle,
 		Desc: "Checks Alt+Tab and Alt+Shift+Tab functionality for cycling windows",
 		Contacts: []string{
-			"kyleshima@chromium.org",
-			"bhansknecht@chromium.org",
+			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
