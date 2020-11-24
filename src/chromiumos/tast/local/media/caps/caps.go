@@ -65,4 +65,5 @@ const (
 	VividCamera          = Prefix + "vivid_camera"
 	BuiltinCamera        = Prefix + "builtin_camera"
 	BuiltinOrVividCamera = Prefix + "builtin_or_vivid_camera"
+	CameraPrivacySwitch  = Prefix + "camera_privacy_switch"
 )

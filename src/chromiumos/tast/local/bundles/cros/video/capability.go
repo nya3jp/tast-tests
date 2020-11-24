@@ -60,6 +60,7 @@ var avtestLabelToCapability = map[string]capability{
 	"vivid_camera":             {caps.VividCamera, false},
 	"builtin_camera":           {caps.BuiltinCamera, false},
 	"builtin_or_vivid_camera":  {caps.BuiltinOrVividCamera, false},
+	"camera_privacy_switch":    {caps.CameraPrivacySwitch, false},
 }
 
 // Capability compares the results between autocaps package and avtest_label_detect.
