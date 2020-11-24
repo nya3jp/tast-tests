@@ -39,6 +39,30 @@
       },
       "revId": "67255be48982fb58d8e8d5fe06d6560a2d6dfc12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a59b53_210d7c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_ps175.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-11-24T19:36:03Z",
+      "side": 1,
+      "message": "agree. done.",
+      "parentUuid": "ed1a683d_2526f75a",
+      "range": {
+        "startLine": 39,
+        "startChar": 40,
+        "endLine": 39,
+        "endChar": 51
+      },
+      "revId": "67255be48982fb58d8e8d5fe06d6560a2d6dfc12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
