@@ -16,10 +16,11 @@ func init() {
 		Func: CrosDisksArchive,
 		Desc: "Verifies CrosDisks mounts various archive types",
 		Contacts: []string{
+			"chromeos-files-syd@google.com",
 			"fdegros@chromium.org",
 			"jboulic@chromium.org",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Data: crosdisks.PreparedArchives,
 	})
 }
