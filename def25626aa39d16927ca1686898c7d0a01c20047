@@ -101,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5537dbd_0aefae15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459272
+      },
+      "writtenOn": "2020-11-24T23:36:17Z",
+      "side": 1,
+      "message": "it really is what i should\u0027ve done already. but ChromeOS newbie is clueless on how to test. thanks for showing me the ropes",
+      "parentUuid": "8b6566c0_b6035bd3",
+      "revId": "def25626aa39d16927ca1686898c7d0a01c20047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21683b96_6390b245",
