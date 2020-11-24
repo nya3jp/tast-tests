@@ -94,6 +94,30 @@
       },
       "revId": "f1d75e598cb6ce5c861cf9c42e3cb57fe5d0e980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ecc9d96_c1299374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_built_in_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-24T07:04:37Z",
+      "side": 1,
+      "message": "+1 to hear from nya@ (He\u0027s ooo today. Let\u0027s wait another day).\n\nThe original intention was to keep the code better error prone.\nSpecifically, we were concerned about making complicated precondition, which is difficult to be share with others.\nThe situation is being changed, and actually fixture is being introduced. It\u0027s worth revisit here. Thank you for pointing it out, Brendan.",
+      "parentUuid": "39126357_afc8c4b4",
+      "range": {
+        "startLine": 37,
+        "startChar": 23,
+        "endLine": 37,
+        "endChar": 54
+      },
+      "revId": "f1d75e598cb6ce5c861cf9c42e3cb57fe5d0e980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
