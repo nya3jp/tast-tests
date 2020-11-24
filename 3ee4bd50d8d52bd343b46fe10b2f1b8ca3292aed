@@ -209,6 +209,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5f2de4cb_46f6bede",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-24T08:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9c35c82_942a0ae4",
+      "range": {
+        "startLine": 300,
+        "startChar": 3,
+        "endLine": 300,
+        "endChar": 62
+      },
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "06b5a92f_f382e83c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
         "patchSetId": 6
