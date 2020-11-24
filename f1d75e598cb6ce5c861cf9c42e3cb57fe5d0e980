@@ -118,6 +118,30 @@
       },
       "revId": "f1d75e598cb6ce5c861cf9c42e3cb57fe5d0e980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa45290d_db7966e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_built_in_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-11-24T07:11:55Z",
+      "side": 1,
+      "message": "We also have helpers that are meant to reduce mistakes here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/lacros/lacros.go;l\u003d21;drc\u003d52963b7a9578bb44f6d58e13b76ee2deeec8591b\n\nAlso adding a \u0027GetChrome\u0027 in a separate CL one that should replace the code here at line #46.",
+      "parentUuid": "1ecc9d96_c1299374",
+      "range": {
+        "startLine": 37,
+        "startChar": 23,
+        "endLine": 37,
+        "endChar": 54
+      },
+      "revId": "f1d75e598cb6ce5c861cf9c42e3cb57fe5d0e980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
