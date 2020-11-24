@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60346b04_603612b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459272
+      },
+      "writtenOn": "2020-11-24T06:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f422fe53_8fe88d30",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "def25626aa39d16927ca1686898c7d0a01c20047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a03ea54_5ab07ac7",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb25fc39_15721ae7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459272
+      },
+      "writtenOn": "2020-11-24T06:54:44Z",
+      "side": 1,
+      "message": "$ tast list chromeos6-row2-rack24-host21.cros \u0027(\"group:camera-postsubmit\")\u0027\ncamera.CCAUISmoke.vivid\ncamera.CaptureUnittests\ncamera.HAL3Device\ncamera.HAL3JDA\ncamera.HAL3JEA\ncamera.HAL3Module\n\nalso run (a kevin board)\n$ tast test chromeos6-row2-rack24-host21.cros \u0027(\"group:camera-postsubmit\")\u0027\n2020/11/24 14:42:15 --------------------------------------------------------------------------------\n2020/11/24 14:42:15 camera.CCAUISmoke.vivid  [ SKIP ] missing SoftwareDeps: autotest-capability:vivid_camera\n2020/11/24 14:42:15 camera.HAL3JDA           [ SKIP ] missing SoftwareDeps: autotest-capability:hw_dec_jpeg\n2020/11/24 14:42:15 camera.CaptureUnittests  [ PASS ]\n2020/11/24 14:42:15 camera.HAL3Device        [ PASS ]\n2020/11/24 14:42:15 camera.HAL3JEA           [ PASS ]\n2020/11/24 14:42:15 camera.HAL3Module        [ PASS ]\n2020/11/24 14:42:15 --------------------------------------------------------------------------------",
+      "parentUuid": "0a03ea54_5ab07ac7",
+      "revId": "def25626aa39d16927ca1686898c7d0a01c20047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21683b96_6390b245",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -54,6 +96,24 @@
       "writtenOn": "2020-11-24T04:45:12Z",
       "side": 1,
       "message": "I think we need Cq-Depend on https://crrev.com/c/2556730?",
+      "revId": "def25626aa39d16927ca1686898c7d0a01c20047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94a35c5_dae39124",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1459272
+      },
+      "writtenOn": "2020-11-24T06:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21683b96_6390b245",
       "revId": "def25626aa39d16927ca1686898c7d0a01c20047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
