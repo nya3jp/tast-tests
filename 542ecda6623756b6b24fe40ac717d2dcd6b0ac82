@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21044967_edbc37ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-24T11:59:11Z",
+      "side": 1,
+      "message": "Hi Anastasiia,\n\nCan you please create a follow-up CL to resolve my comment?\n\nThanks!",
+      "revId": "542ecda6623756b6b24fe40ac717d2dcd6b0ac82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd2033d_30c8a128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_search_url.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-24T11:59:11Z",
+      "side": 1,
+      "message": "nit: please handle return error",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "542ecda6623756b6b24fe40ac717d2dcd6b0ac82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
