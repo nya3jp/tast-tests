@@ -10,12 +10,11 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -55,7 +54,7 @@ func V4L2(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get test list: ", err)
 	}
 
-	usbCams, err := getUSBCamerasFromV4L2Test(ctx)
+	usbCams, err := testutil.GetUSBCamerasFromV4L2Test(ctx)
 	if err != nil {
 		s.Fatal("Failed to get USB cameras: ", err)
 	}
@@ -133,13 +132,4 @@ func getTestList(ctx context.Context) (string, error) {
 	}
 
 	return "default", nil
-}
-
-func getUSBCamerasFromV4L2Test(ctx context.Context) ([]string, error) {
-	cmd := testexec.CommandContext(ctx, "media_v4l2_test", "--list_usbcam")
-	out, err := cmd.Output(testexec.DumpLogOnError)
-	if err != nil {
-		return nil, err
-	}
-	return strings.Fields(string(out)), nil
 }
