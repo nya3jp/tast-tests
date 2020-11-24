@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f630ffba_29508f46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-24T12:50:55Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "c580003cf1ae55d92e58ed5df3d427f798d5d38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e044bf91_b77b8928",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "Currently none of our tests in the lab use a SW decoder, we might add some in the future but it\u0027s not decided yet. But more importantly this CL adds an easy way to locally run SW decoder tests so we can compare performance while developing and optimizing. As the commit message mentions: \"DecoderType: video.SoftwareDecoder\" can be added locally to run the test with a SW decoder.\n\nMost tests use the \"--use-sw-decoder\" flag in argsList() defined in arc_accel_video.go, but these power tests work in a different way so they have their own logic. IMHO a little bit of duplication to keep things simple and readable is OK here.\n\nLet me know if you have a strong preference, but then I\u0027ll have to rework argsList() which should probably be done in a separate CL.",
       "parentUuid": "e044bf91_b77b8928",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "c580003cf1ae55d92e58ed5df3d427f798d5d38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b5a465_34a40155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-24T12:50:55Z",
+      "side": 1,
+      "message": "Thanks for your comment! \n\nLet\u0027s not change it, but maybe it makes sense to add a comment that explains why do you need that if condition?",
+      "parentUuid": "72155651_b3ce0923",
       "range": {
         "startLine": 153,
         "startChar": 0,
