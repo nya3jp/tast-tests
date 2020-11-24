@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4293a6b0_e0549f1d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-24T01:36:45Z",
+      "side": 1,
+      "message": "Error: Error at home_directory_delete_file.go:119: delete_from_linuxfiles: Failed to test deleting files from Linux files: failed to delete testfile.txt in Linux files: failed to right click on testfile.txt: failed to find and right click testfile.txt: TypeError: Cannot read property \u0027left\u0027 of undefined\n\nSo the item got changed after StableFind. Increasing the poll opts will not work because it will stop as soon as it hits the first stable(location of the element stays the same between two checks). Then right click will still fail if the element got changed after StableFind.\n\nretries has been changed to testing.Poll,PTAL!",
+      "parentUuid": "104ee503_2f6971aa",
+      "range": {
+        "startLine": 342,
+        "startChar": 1,
+        "endLine": 342,
+        "endChar": 13
+      },
+      "revId": "fcabb22f0ab892424fdccefe6592b8f56aa2b4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25b12132_5b3127de",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2020-11-23T05:47:44Z",
       "side": 1,
       "message": "Are we guaranteed that this will only click once?  If it clicks more than once it could cause errors.",
+      "revId": "fcabb22f0ab892424fdccefe6592b8f56aa2b4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5514cd7_14ebfabe",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-24T01:36:45Z",
+      "side": 1,
+      "message": "Line 351 guarantees that it will exit once it successfully right clicks.",
+      "parentUuid": "25b12132_5b3127de",
       "revId": "fcabb22f0ab892424fdccefe6592b8f56aa2b4ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
