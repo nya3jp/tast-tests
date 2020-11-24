@@ -56,6 +56,29 @@
       },
       "revId": "d6d58fadbe185ffadf73ea476152992a55ca69ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4aadba_0439659f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-11-24T19:45:06Z",
+      "side": 1,
+      "message": "super nit: combine line and then also combine follow if as else if.",
+      "range": {
+        "startLine": 559,
+        "startChar": 1,
+        "endLine": 560,
+        "endChar": 16
+      },
+      "revId": "d6d58fadbe185ffadf73ea476152992a55ca69ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
