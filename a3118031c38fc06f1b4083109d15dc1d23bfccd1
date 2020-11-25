@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4abea9eb_0e183bd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2213,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T09:20:30Z",
+      "side": 1,
+      "message": "If that\u0027s the case, I guess it\u0027s OK as we still have a ping check after reset, so the connection should be alive at that point. Or, if we want to be more consistent with the checks in Autotest, we can do GetProperty again after reset to ensure the state. (Then we\u0027re asking the \"reset function\" has to be synchronous itself.)",
+      "parentUuid": "bb7f863b_d00aad1d",
+      "range": {
+        "startLine": 2211,
+        "startChar": 0,
+        "endLine": 2213,
+        "endChar": 3
+      },
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "134ec3a4_d5a88488",
@@ -147,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa7cef5_8ffec288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2298,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T09:20:30Z",
+      "side": 1,
+      "message": "oh, I forget %v only separate slice items with space. Then current version LGTM.",
+      "parentUuid": "ed7722ce_bdc94b54",
+      "range": {
+        "startLine": 2298,
+        "startChar": 54,
+        "endLine": 2298,
+        "endChar": 95
+      },
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70f22d1d_e9903a68",
@@ -213,6 +261,24 @@
       "side": 1,
       "message": "I would prefer reading sysfs because it looks simpler, and we can place these similar functions together.",
       "parentUuid": "0a0fd9a5_cd89acfa",
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c9c07be_574ecbbe",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T09:20:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b8fe5ec_552b2b9c",
       "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
