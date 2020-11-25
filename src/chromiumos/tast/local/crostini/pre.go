@@ -163,7 +163,7 @@ func getContainerRootfsArtifact(arch string, debianVersion vm.ContainerDebianVer
 // GetInstallerOptions returns an InstallationOptions struct with data
 // paths, install mode, and debian version set appropriately for the
 // test.
-func GetInstallerOptions(s testingState, debianVersion vm.ContainerDebianVersion, largeContainer bool) *cui.InstallationOptions {
+func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.ContainerDebianVersion, largeContainer bool) *cui.InstallationOptions {
 	var arch string
 	for _, dep := range s.SoftwareDeps() {
 		if dep == "amd64" || dep == "arm" {
@@ -174,11 +174,23 @@ func GetInstallerOptions(s testingState, debianVersion vm.ContainerDebianVersion
 		s.Fatal("Running on an unknown architecture")
 	}
 
+	var mode string
+	if isComponent {
+		mode = cui.Artifact
+	} else {
+		mode = cui.Dlc
+	}
+
+	var vmPath string
+	if isComponent {
+		vmPath = s.DataPath(getVMArtifact(arch))
+	}
+
 	iOptions := &cui.InstallationOptions{
-		VMArtifactPath:        s.DataPath(getVMArtifact(arch)),
+		VMArtifactPath:        vmPath,
 		ContainerMetadataPath: s.DataPath(getContainerMetadataArtifact(arch, debianVersion, largeContainer)),
 		ContainerRootfsPath:   s.DataPath(getContainerRootfsArtifact(arch, debianVersion, largeContainer)),
-		Mode:                  cui.Artifact,
+		Mode:                  mode,
 		DebianVersion:         debianVersion,
 	}
 
@@ -242,10 +254,17 @@ func StartedByArtifactBusterLargeContainer() testing.Precondition {
 	return startedByArtifactBusterLargeContainerPre
 }
 
-type setupMode int
+type vmSetupMode int
 
 const (
-	artifact setupMode = iota
+	component vmSetupMode = iota
+	dlc
+)
+
+type containerType int
+
+const (
+	normal containerType = iota
 	largeContainer
 )
 
@@ -259,21 +278,24 @@ const (
 var startedByArtifactStretchPre = &preImpl{
 	name:          "crostini_started_by_artifact_stretch",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	mode:          artifact,
+	vmMode:        component,
+	container:     normal,
 	debianVersion: vm.DebianStretch,
 }
 
 var startedByArtifactBusterPre = &preImpl{
 	name:          "crostini_started_by_artifact_buster",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	mode:          artifact,
+	vmMode:        component,
+	container:     normal,
 	debianVersion: vm.DebianBuster,
 }
 
 var startedTraceVMPre = &preImpl{
 	name:          "crostini_started_trace_vm",
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	mode:          artifact,
+	vmMode:        component,
+	container:     normal,
 	debianVersion: vm.DebianBuster,
 	minDiskSize:   16 * settings.SizeGB, // graphics.TraceReplay relies on at least 16GB size.
 }
@@ -281,7 +303,8 @@ var startedTraceVMPre = &preImpl{
 var startedARCEnabledPre = &preImpl{
 	name:          "crostini_started_arc_enabled",
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	mode:          artifact,
+	vmMode:        component,
+	container:     normal,
 	debianVersion: vm.DebianBuster,
 	arcEnabled:    true,
 }
@@ -289,7 +312,8 @@ var startedARCEnabledPre = &preImpl{
 var startedByArtifactWithGaiaLoginStretchPre = &preImpl{
 	name:          "crostini_started_by_artifact_gaialogin_stretch",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	mode:          artifact,
+	vmMode:        component,
+	container:     normal,
 	debianVersion: vm.DebianStretch,
 	loginType:     loginGaia,
 }
@@ -297,7 +321,8 @@ var startedByArtifactWithGaiaLoginStretchPre = &preImpl{
 var startedByArtifactWithGaiaLoginBusterPre = &preImpl{
 	name:          "crostini_started_by_artifact_gaialogin_buster",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	mode:          artifact,
+	vmMode:        component,
+	container:     normal,
 	debianVersion: vm.DebianBuster,
 	loginType:     loginGaia,
 }
@@ -305,7 +330,8 @@ var startedByArtifactWithGaiaLoginBusterPre = &preImpl{
 var startedByArtifactBusterLargeContainerPre = &preImpl{
 	name:          "crostini_started_by_artifact_buster_large_container",
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	mode:          largeContainer,
+	vmMode:        component,
+	container:     largeContainer,
 	debianVersion: vm.DebianBuster,
 }
 
@@ -313,7 +339,8 @@ var startedByArtifactBusterLargeContainerPre = &preImpl{
 type preImpl struct {
 	name          string                    // Name of this precondition (for logging/uniqueing purposes).
 	timeout       time.Duration             // Timeout for completing the precondition.
-	mode          setupMode                 // Where (download/build artifact) the container image comes from.
+	vmMode        vmSetupMode               // Where (component/dlc) the VM comes from.
+	container     containerType             // What type of container (regular or extra-large) to use.
 	debianVersion vm.ContainerDebianVersion // OS version of the container image.
 	arcEnabled    bool                      // Flag for whether Arc++ should be available (as well as crostini).
 	minDiskSize   uint64                    // The minimum size of the VM image in bytes. 0 to use default disk size.
@@ -425,6 +452,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			s.RequiredVar("crostini.gaiaID"),
 		), chrome.GAIALogin())
 	}
+	if p.vmMode == dlc {
+		opts = append(opts, chrome.EnableFeatures("CrostiniUseDlc"))
+	}
 	if useLocalImage {
 		// Retain the user's cryptohome directory and previously installed VM.
 		opts = append(opts, chrome.KeepState())
@@ -454,7 +484,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	} else {
 		// Install Crostini.
-		iOptions := GetInstallerOptions(s, p.debianVersion, p.mode == largeContainer)
+		iOptions := GetInstallerOptions(s, p.vmMode == component, p.debianVersion, p.container == largeContainer)
 		iOptions.UserName = p.cr.User()
 		iOptions.MinDiskSize = p.minDiskSize
 		if _, err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
