@@ -104,6 +104,30 @@
       },
       "revId": "c580003cf1ae55d92e58ed5df3d427f798d5d38d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f391e3b_cf87b58e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-11-25T03:50:13Z",
+      "side": 1,
+      "message": "Good idea thanks, added a comment!",
+      "parentUuid": "e0b5a465_34a40155",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "c580003cf1ae55d92e58ed5df3d427f798d5d38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
