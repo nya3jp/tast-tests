@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package notifications
 
 import (
 	"context"
@@ -22,7 +22,7 @@ const uiTimeout = 30 * time.Second
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: NotificationCentreSmoke,
+		Func: Smoke,
 		Desc: "Checks that notifications appear in notification centre and can be interacted with",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -33,8 +33,8 @@ func init() {
 	})
 }
 
-// NotificationCentreSmoke tests that notifications appear in notification centre.
-func NotificationCentreSmoke(ctx context.Context, s *testing.State) {
+// Smoke tests that notifications appear in notification centre.
+func Smoke(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
