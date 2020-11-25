@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a5a2a5_a994cb77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-25T22:56:15Z",
+      "side": 1,
+      "message": "\u003e \"writen\" is a possible misspelling of \"written\".\n\nPlease fix.",
+      "parentUuid": "37d77168_01ca6b14",
+      "range": {
+        "startLine": 84,
+        "startChar": 37,
+        "endLine": 84,
+        "endChar": 43
+      },
+      "revId": "6010a9b802b4da0837518b10f4a8fecf3ad4e5f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
