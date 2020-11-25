@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0a96ed_d04e5f48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blocklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-11-25T15:30:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc61a240_8ed20d9d",
+      "range": {
+        "startLine": 60,
+        "startChar": 10,
+        "endLine": 60,
+        "endChar": 13
+      },
+      "revId": "e739ad945d8e1f979b3c8a72a6719625312edecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "883c1b17_fb832ec2",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-11-18T13:31:56Z",
       "side": 1,
       "message": "ditto",
+      "revId": "e739ad945d8e1f979b3c8a72a6719625312edecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95d36e9_7d1ae1b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blocklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-11-25T15:30:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "883c1b17_fb832ec2",
       "revId": "e739ad945d8e1f979b3c8a72a6719625312edecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
