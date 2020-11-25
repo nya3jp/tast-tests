@@ -16,6 +16,69 @@
       "message": "LGTM, thanks for adding the test.",
       "revId": "c378286ec6769624f0a0ac25f59f533d5bc11ac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e6c6fe_345c1e2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-25T02:14:58Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "c378286ec6769624f0a0ac25f59f533d5bc11ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835d730c_71902963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_keyword.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-25T02:14:58Z",
+      "side": 1,
+      "message": "nit: avoid having the same error message whenever possible.\n\ne.g: there are 3 error that look the same. try to differenciate it a bit just to make it easier to debug.\n\ne.g: this one could be \"Failed to write keyword event\", and the next one \"Failed to write Tab event\", etc...",
+      "range": {
+        "startLine": 116,
+        "startChar": 12,
+        "endLine": 116,
+        "endChar": 36
+      },
+      "revId": "c378286ec6769624f0a0ac25f59f533d5bc11ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4bb2d24_ac3adbf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_keyword.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-25T02:14:58Z",
+      "side": 1,
+      "message": "huge nit:\n\n+1 for having good variable names\nalthough in this case:\n* very long variable name\n* and is only used in the next two lines\n* and has a comment describing what it is doing\n\nso, in this case it would help to have a shorter variable name for readability purposes.\n\ne.g:\n\n\n  keywordPresent :\u003d stringContains(...)  // or something like this....",
+      "range": {
+        "startLine": 143,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 37
+      },
+      "revId": "c378286ec6769624f0a0ac25f59f533d5bc11ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
