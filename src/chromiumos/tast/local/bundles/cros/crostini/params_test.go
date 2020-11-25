@@ -139,6 +139,7 @@ func TestAppTestParams(t *testing.T) {
 			},
 			StableHardwareDep: "crostini.CrostiniAppTest",
 			UseLargeContainer: true,
+			OnlyStableBoards:  true,
 		}})
 		genparams.Ensure(t, filename, params)
 	}

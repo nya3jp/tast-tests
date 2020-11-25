@@ -62,7 +62,8 @@ import (
 // Param specifies how each set of crostini tests should be generated.
 type Param struct {
 	// Name of the test case. Generated tests will look like
-	// "name_artifact", "name_download_buster" etc.
+	// "name_amd64_buster_stable", "name_arm_stretch_unstable"
+	// etc.
 	Name string
 
 	// ExtraAttr contains additional attributes to add to the
@@ -82,10 +83,8 @@ type Param struct {
 	// to run this test case.
 	ExtraSoftwareDeps []string
 
-	// Timeout indicates the timeout for this test case. This is
-	// used directly for artifact tests, download tests add 3
-	// minutes to allow additional time for the VM and container to
-	// be downloaded. If unspecified, defaults to 7 * time.Minute.
+	// Timeout indicates the timeout for this test case. If
+	// unspecified, defaults to 7 * time.Minute.
 	Timeout time.Duration
 
 	// Val is a freeform value that can be retrieved from
@@ -127,9 +126,9 @@ type Param struct {
 	// doubt, set to false, and if you're wrong you will get an
 	// error message when you try to run your tests.
 	//
-	// This also controls whether separate stable/unstable
-	// artifact tests are generated, since this distinction is
-	// only relevant to the CQ.
+	// This also controls whether separate stable/unstable tests
+	// are generated, since this distinction is only relevant to
+	// the CQ.
 	IsNotMainline bool
 
 	// UseLargeContainer controls whether to use the normal test
@@ -137,8 +136,8 @@ type Param struct {
 	// pre-installed.
 	UseLargeContainer bool
 
-	// OnlyStable controls whether to only use the stable board
-	// variants and exclude all the unstable variants.
+	// OnlyStableBoards controls whether to only use the stable
+	// board variants and exclude all the unstable variants.
 	OnlyStableBoards bool
 }
 
@@ -166,17 +165,35 @@ const template = `{{range .}} {
 
 // MakeTestParamsFromList takes a list of test cases (in the form of
 // crostini.Param objects) and generates a set of crostini test
-// parameters for each. Currently this means all four of artifact,
-// artifact_unstable, download_stretch, and download_buster tests. See
-// the documentation for crostini.Param for how these values effect
-// the results. Each crostini.Param object is treated independently,
-// producing its own set of sub-tests.
+// parameters for each. See the documentation for crostini.Param for
+// how these values effect the results. Each crostini.Param object is
+// treated independently, producing its own set of sub-tests.
 //
 // Normally you should use MakeTestParams instead, but if your test is
 // parameterized beyond which crostini preconditions it uses, you will
 // need this.
 func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 	var result []generatedParam
+
+	type iterator struct {
+		debianVersion vm.ContainerDebianVersion
+		arch          string
+		stable        bool
+	}
+	var it = []iterator{}
+
+	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
+		for _, arch := range []string{"amd64", "arm"} {
+			for _, stable := range []bool{true, false} {
+				it = append(it, iterator{
+					debianVersion: debianVersion,
+					arch:          arch,
+					stable:        stable,
+				})
+			}
+		}
+	}
+
 	for _, testCase := range baseCases {
 		var namePrefix string
 		if testCase.Name != "" {
@@ -194,106 +211,90 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 		}
 
-		stableBoards := []bool{true}
-		if !testCase.OnlyStableBoards {
-			stableBoards = append(stableBoards, false)
-		}
+		for _, i := range it {
 
-		for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
-			if testCase.MinimalSet && debianVersion != vm.DebianBuster {
+			if (testCase.IsNotMainline || testCase.OnlyStableBoards) && !i.stable {
+				// The stable/unstable distinction is only important for mainline tests
 				continue
 			}
 
-			for _, arch := range []string{"amd64", "arm"} {
+			if testCase.MinimalSet && i.debianVersion != vm.DebianBuster {
+				continue
+			}
 
-				for _, stable := range stableBoards {
-					if !stable && testCase.IsNotMainline {
-						// The stable/unstable distinction is only important for mainline tests
-						continue
-					}
-
-					if !stable && testCase.UseLargeContainer {
-						// When using the large container we have to restrict ourselves to
-						// a smaller range of devices, and the unstable tests are not
-						// expected to provide a useful signal.
-						continue
-					}
-
-					name := ""
-					if !testCase.MinimalSet {
-						// If we're generating a minimal set then the debian version
-						// is always the same and we don't need to include it in the test name.
-						name += string(debianVersion) + "_"
-					}
-					name += arch
-					if !testCase.IsNotMainline && !testCase.UseLargeContainer {
-						if stable {
-							name += "_stable"
-						} else {
-							name += "_unstable"
-						}
-					}
-
-					// _unstable tests can never be CQ critical.
-					var extraAttr []string
-					if !stable && canBeCritical {
-						extraAttr = append(extraAttr, "informational")
-					}
-
-					extraData := []string{
-						getVMArtifact(arch),
-						getContainerMetadataArtifact(arch, debianVersion, testCase.UseLargeContainer),
-						getContainerRootfsArtifact(arch, debianVersion, testCase.UseLargeContainer),
-					}
-
-					extraSoftwareDeps := []string{arch}
-
-					var hardwareDeps string
-					if !testCase.IsNotMainline {
-						if stable {
-							if testCase.StableHardwareDep != "" {
-								hardwareDeps = testCase.StableHardwareDep
-							} else {
-								hardwareDeps = "crostini.CrostiniStable"
-							}
-						} else {
-							if testCase.UnstableHardwareDep != "" {
-								hardwareDeps = testCase.UnstableHardwareDep
-							} else {
-								hardwareDeps = "crostini.CrostiniUnstable"
-							}
-						}
-					}
-
-					var precondition string
-					if testCase.Preconditions != nil {
-						precondition = testCase.Preconditions[debianVersion]
-					} else if debianVersion == vm.DebianStretch {
-						precondition = "crostini.StartedByComponentStretch()"
-					} else {
-						precondition = "crostini.StartedByComponentBuster()"
-					}
-
-					var timeout time.Duration
-					if testCase.Timeout != time.Duration(0) {
-						timeout = testCase.Timeout
-					} else {
-						timeout = 7 * time.Minute
-					}
-
-					testParam := generatedParam{
-						Name:              namePrefix + name,
-						ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
-						ExtraData:         append(testCase.ExtraData, extraData...),
-						ExtraSoftwareDeps: append(testCase.ExtraSoftwareDeps, extraSoftwareDeps...),
-						ExtraHardwareDeps: hardwareDeps,
-						Pre:               precondition,
-						Timeout:           timeout,
-						Val:               testCase.Val,
-					}
-					result = append(result, testParam)
+			name := ""
+			if !testCase.MinimalSet {
+				// If we're generating a minimal set then the debian version
+				// is always the same and we don't need to include it in the test name.
+				name += string(i.debianVersion) + "_"
+			}
+			name += i.arch
+			if !testCase.IsNotMainline && !testCase.OnlyStableBoards {
+				if i.stable {
+					name += "_stable"
+				} else {
+					name += "_unstable"
 				}
 			}
+
+			// _unstable tests can never be CQ critical.
+			var extraAttr []string
+			if !i.stable && canBeCritical {
+				extraAttr = append(extraAttr, "informational")
+			}
+
+			extraData := []string{
+				getVMArtifact(i.arch),
+				getContainerMetadataArtifact(i.arch, i.debianVersion, testCase.UseLargeContainer),
+				getContainerRootfsArtifact(i.arch, i.debianVersion, testCase.UseLargeContainer),
+			}
+
+			extraSoftwareDeps := []string{i.arch}
+
+			var hardwareDeps string
+			if !testCase.IsNotMainline {
+				if i.stable {
+					if testCase.StableHardwareDep != "" {
+						hardwareDeps = testCase.StableHardwareDep
+					} else {
+						hardwareDeps = "crostini.CrostiniStable"
+					}
+				} else {
+					if testCase.UnstableHardwareDep != "" {
+						hardwareDeps = testCase.UnstableHardwareDep
+					} else {
+						hardwareDeps = "crostini.CrostiniUnstable"
+					}
+				}
+			}
+
+			var precondition string
+			if testCase.Preconditions != nil {
+				precondition = testCase.Preconditions[i.debianVersion]
+			} else if i.debianVersion == vm.DebianStretch {
+				precondition = "crostini.StartedByComponentStretch()"
+			} else {
+				precondition = "crostini.StartedByComponentBuster()"
+			}
+
+			var timeout time.Duration
+			if testCase.Timeout != time.Duration(0) {
+				timeout = testCase.Timeout
+			} else {
+				timeout = 7 * time.Minute
+			}
+
+			testParam := generatedParam{
+				Name:              namePrefix + name,
+				ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
+				ExtraData:         append(testCase.ExtraData, extraData...),
+				ExtraSoftwareDeps: append(testCase.ExtraSoftwareDeps, extraSoftwareDeps...),
+				ExtraHardwareDeps: hardwareDeps,
+				Pre:               precondition,
+				Timeout:           timeout,
+				Val:               testCase.Val,
+			}
+			result = append(result, testParam)
 		}
 	}
 	return genparams.Template(t, template, result)
