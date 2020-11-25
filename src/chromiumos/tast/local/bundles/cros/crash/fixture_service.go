@@ -115,6 +115,21 @@ func (c *FixtureService) RemoveAllFiles(ctx context.Context, req *crash_service.
 	return &empty.Empty{}, crash.RemoveAllFiles(ctx, files)
 }
 
+func (c *FixtureService) SetConsent(ctx context.Context, req *crash_service.SetConsentRequest) (*empty.Empty, error) {
+	if c.cr == nil {
+		cr, err := chrome.New(ctx, chrome.ExtraArgs(crash.ChromeVerboseConsentFlags))
+		if err != nil {
+			testing.ContextLog(ctx, "Error setting up chrome: ", err)
+			return nil, err
+		}
+		c.cr = cr
+	}
+	if err := crash.SetConsent(ctx, c.cr, req.Consent); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
 func (c *FixtureService) TearDown(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	var firstErr error
 	if err := crash.TearDownCrashTest(ctx); err != nil {
