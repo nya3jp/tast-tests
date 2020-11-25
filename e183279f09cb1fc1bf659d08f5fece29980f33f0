@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4658f2ca_5b4f73a7",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-25T22:32:52Z",
+      "side": 1,
+      "message": "(not for this cl): It feels like this is starting to defaeat the purpose of having an options object, I think isComponent, debianVersion and largeContainer should be fields on teh options object, and the paths should be calculated where it is used.",
+      "range": {
+        "startLine": 167,
+        "startChar": 5,
+        "endLine": 167,
+        "endChar": 24
+      },
+      "revId": "e183279f09cb1fc1bf659d08f5fece29980f33f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3a40bb_5227992c",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-25T22:32:52Z",
+      "side": 1,
+      "message": "Should this be renamed to component as well?",
+      "range": {
+        "startLine": 198,
+        "startChar": 21,
+        "endLine": 198,
+        "endChar": 29
+      },
+      "revId": "e183279f09cb1fc1bf659d08f5fece29980f33f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
