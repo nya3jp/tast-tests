@@ -177,7 +177,7 @@ func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.Cont
 
 	var mode string
 	if isComponent {
-		mode = cui.Artifact
+		mode = cui.Component
 	} else {
 		mode = cui.Dlc
 	}
@@ -211,62 +211,62 @@ type PreData struct {
 	Keyboard    *input.KeyboardEventWriter
 }
 
-// StartedByArtifactStretch ensures that a VM running stretch has
+// StartedByComponentStretch ensures that a VM running stretch has
 // started before the test runs. This precondition has complex
 // requirements to use that are best met using the test parameter
 // generator in params.go.
 // Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByArtifactStretch() testing.Precondition { return startedByArtifactStretchPre }
+func StartedByComponentStretch() testing.Precondition { return startedByComponentStretchPre }
 
-// StartedByArtifactBuster ensures that a VM running buster has
+// StartedByComponentBuster ensures that a VM running buster has
 // started before the test runs. This precondition has complex
 // requirements to use that are best met using the test parameter
 // generator in params.go.
 // Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByArtifactBuster() testing.Precondition { return startedByArtifactBusterPre }
+func StartedByComponentBuster() testing.Precondition { return startedByComponentBusterPre }
 
 // StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
 func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 
-// StartedARCEnabled is similar to StartedByArtifactBuster, but will start Chrome
-// with ARCEnabled() option.
+// StartedARCEnabled is similar to StartedByComponentBuster, but will
+// start Chrome with ARCEnabled() option.
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
 
-// StartedArtifactStretchARCEnabledGaia is similar to StartedByArtifactStretch, but will
+// StartedComponentStretchARCEnabledGaia is similar to StartedByComponentStretch, but will
 // start Chrome with ARCEnabled() option and gaia login.
 // Tip: Run tests with -var=keepState=true to speed up local development
-func StartedArtifactStretchARCEnabledGaia() testing.Precondition {
-	return startedByArtifactStretchARCEnabledGaiaPre
+func StartedComponentStretchARCEnabledGaia() testing.Precondition {
+	return startedByComponentStretchARCEnabledGaiaPre
 }
 
-// StartedArtifactBusterARCEnabledGaia is similar to StartedByArtifactBuster, but will
+// StartedComponentBusterARCEnabledGaia is similar to StartedByComponentBuster, but will
 // start Chrome with ARCEnabled() option and gaia login.
 // Tip: Run tests with -var=keepState=true to speed up local development
-func StartedArtifactBusterARCEnabledGaia() testing.Precondition {
-	return startedByArtifactBusterARCEnabledGaiaPre
+func StartedComponentBusterARCEnabledGaia() testing.Precondition {
+	return startedByComponentBusterARCEnabledGaiaPre
 }
 
-// StartedByArtifactWithGaiaLoginStretch is similar to
-// StartedByArtifactStretch, but will log in Chrome with Gaia with
+// StartedByComponentWithGaiaLoginStretch is similar to
+// StartedByComponentStretch, but will log in Chrome with Gaia with
 // Auth() option.
 // Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByArtifactWithGaiaLoginStretch() testing.Precondition {
-	return startedByArtifactWithGaiaLoginStretchPre
+func StartedByComponentWithGaiaLoginStretch() testing.Precondition {
+	return startedByComponentWithGaiaLoginStretchPre
 }
 
-// StartedByArtifactWithGaiaLoginBuster is similar to
-// StartedByArtifactBuster, but will log in Chrome with Gaia with
+// StartedByComponentWithGaiaLoginBuster is similar to
+// StartedByComponentBuster, but will log in Chrome with Gaia with
 // Auth() option.
 // Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByArtifactWithGaiaLoginBuster() testing.Precondition {
-	return startedByArtifactWithGaiaLoginBusterPre
+func StartedByComponentWithGaiaLoginBuster() testing.Precondition {
+	return startedByComponentWithGaiaLoginBusterPre
 }
 
-// StartedByArtifactBusterLargeContainer is similar to StartedByArtifactBuster,
+// StartedByComponentBusterLargeContainer is similar to StartedByComponentBuster,
 // but will download the large container which has apps (Gedit, Emacs, Eclipse, Android Studio, and Visual Studio) installed.
-func StartedByArtifactBusterLargeContainer() testing.Precondition {
-	return startedByArtifactBusterLargeContainerPre
+func StartedByComponentBusterLargeContainer() testing.Precondition {
+	return startedByComponentBusterLargeContainerPre
 }
 
 type vmSetupMode int
@@ -290,16 +290,16 @@ const (
 	loginGaia
 )
 
-var startedByArtifactStretchPre = &preImpl{
-	name:          "crostini_started_by_artifact_stretch",
+var startedByComponentStretchPre = &preImpl{
+	name:          "crostini_started_by_component_stretch",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
 	vmMode:        component,
 	container:     normal,
 	debianVersion: vm.DebianStretch,
 }
 
-var startedByArtifactBusterPre = &preImpl{
-	name:          "crostini_started_by_artifact_buster",
+var startedByComponentBusterPre = &preImpl{
+	name:          "crostini_started_by_component_buster",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
 	vmMode:        component,
 	container:     normal,
@@ -324,26 +324,28 @@ var startedARCEnabledPre = &preImpl{
 	arcEnabled:    true,
 }
 
-var startedByArtifactStretchARCEnabledGaiaPre = &preImpl{
+var startedByComponentStretchARCEnabledGaiaPre = &preImpl{
 	name:          "crostini_started_arc_enabled_stretch",
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	mode:          artifact,
+	vmMode:        component,
+	container:     normal,
 	debianVersion: vm.DebianStretch,
 	arcEnabled:    true,
 	loginType:     loginGaia, // Needs gaia login to enable Play files.
 }
 
-var startedByArtifactBusterARCEnabledGaiaPre = &preImpl{
+var startedByComponentBusterARCEnabledGaiaPre = &preImpl{
 	name:          "crostini_started_arc_enabled_buster",
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	mode:          artifact,
+	vmMode:        component,
+	container:     normal,
 	debianVersion: vm.DebianBuster,
 	arcEnabled:    true,
 	loginType:     loginGaia, // Needs gaia login to enable Play files.
 }
 
-var startedByArtifactWithGaiaLoginStretchPre = &preImpl{
-	name:          "crostini_started_by_artifact_gaialogin_stretch",
+var startedByComponentWithGaiaLoginStretchPre = &preImpl{
+	name:          "crostini_started_by_component_gaialogin_stretch",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
 	vmMode:        component,
 	container:     normal,
@@ -351,8 +353,8 @@ var startedByArtifactWithGaiaLoginStretchPre = &preImpl{
 	loginType:     loginGaia,
 }
 
-var startedByArtifactWithGaiaLoginBusterPre = &preImpl{
-	name:          "crostini_started_by_artifact_gaialogin_buster",
+var startedByComponentWithGaiaLoginBusterPre = &preImpl{
+	name:          "crostini_started_by_component_gaialogin_buster",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
 	vmMode:        component,
 	container:     normal,
@@ -360,8 +362,8 @@ var startedByArtifactWithGaiaLoginBusterPre = &preImpl{
 	loginType:     loginGaia,
 }
 
-var startedByArtifactBusterLargeContainerPre = &preImpl{
-	name:          "crostini_started_by_artifact_buster_large_container",
+var startedByComponentBusterLargeContainerPre = &preImpl{
+	name:          "crostini_started_by_component_buster_large_container",
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
 	vmMode:        component,
 	container:     largeContainer,
