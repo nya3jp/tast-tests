@@ -9,6 +9,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -26,6 +27,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"diagnostics"},
 		Attr:         []string{"group:mainline", "informational"},
+		Timeout:      5 * time.Minute,
 	})
 }
 
