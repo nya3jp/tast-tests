@@ -34,7 +34,8 @@ func init() {
 			{
 				Name: "hidden",
 				Val: []hostapd.Option{
-					hostapd.Channel(48),
+					// Use 2.4G band as some devices sets no_IR on 5GHz channels. See http://b/173633813.
+					hostapd.Channel(1),
 					hostapd.Mode(hostapd.Mode80211nPure),
 					hostapd.HTCaps(hostapd.HTCapHT40),
 					hostapd.Hidden(),
