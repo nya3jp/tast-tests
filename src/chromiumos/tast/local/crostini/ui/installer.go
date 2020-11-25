@@ -39,6 +39,7 @@ var installWindowFindParams = ui.FindParams{
 // Image setup mode.
 const (
 	Artifact = "artifact"
+	Dlc      = "dlc"
 )
 
 // InstallationOptions is a struct contains parameters for Crostini installation.
@@ -194,10 +195,12 @@ func (p *Installer) Install(ctx context.Context) error {
 }
 
 func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerMetadata, containerRootfs, terminaImage string, err error) {
-	// Prepare image.
-	terminaImage, err = vm.ExtractTermina(ctx, iOptions.VMArtifactPath)
-	if err != nil {
-		return "", "", "", errors.Wrap(err, "failed to extract termina: ")
+	if iOptions.Mode == Artifact {
+		// Prepare image.
+		terminaImage, err = vm.ExtractTermina(ctx, iOptions.VMArtifactPath)
+		if err != nil {
+			return "", "", "", errors.Wrap(err, "failed to extract termina: ")
+		}
 	}
 
 	containerMetadata = iOptions.ContainerMetadataPath
@@ -238,21 +241,23 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 
 	testing.ContextLog(ctx, "Installing crostini")
 
-	url := "http://" + addr + "/"
-	if err := tconn.Eval(ctx, fmt.Sprintf(
-		`chrome.autotestPrivate.registerComponent(%q, %q)`,
-		vm.ImageServerURLComponentName, url), nil); err != nil {
-		return 0, errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
-	}
+	if iOptions.Mode == Artifact {
+		url := "http://" + addr + "/"
+		if err := tconn.Eval(ctx, fmt.Sprintf(
+			`chrome.autotestPrivate.registerComponent(%q, %q)`,
+			vm.ImageServerURLComponentName, url), nil); err != nil {
+			return 0, errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
+		}
 
-	if err := vm.MountComponent(ctx, terminaImage); err != nil {
-		return 0, errors.Wrap(err, "failed to mount component")
-	}
+		if err := vm.MountComponent(ctx, terminaImage); err != nil {
+			return 0, errors.Wrap(err, "failed to mount component")
+		}
 
-	if err := tconn.Eval(ctx, fmt.Sprintf(
-		`chrome.autotestPrivate.registerComponent(%q, %q)`,
-		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
-		return 0, errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
+		if err := tconn.Eval(ctx, fmt.Sprintf(
+			`chrome.autotestPrivate.registerComponent(%q, %q)`,
+			vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
+			return 0, errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
+		}
 	}
 
 	// Install Crostini from Settings.
