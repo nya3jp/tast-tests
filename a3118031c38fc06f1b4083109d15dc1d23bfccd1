@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af35b39d_8470067b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T06:32:28Z",
+      "side": 1,
+      "message": "A few minor comments.\n\nOne side discussion, I think reset will generate crash files and I saw a thread [1] about uploading crash files in Tast tests to crash server. Then, I wonder if we have to remove crash files after this test properly passed to avoid noise in crash server. (When the test fail, we still might want the crash files for debugging, I guess?)\n\nI didn\u0027t see Autotest handles this but I\u0027m not sure if it will upload it\u0027s crash files to crash server.\n\n[1] https://groups.google.com/a/chromium.org/g/tast-users/c/kDEMer_pR0k/m/0XuE48UlAAAJ",
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e336e9_ac50f212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2213,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T06:32:28Z",
+      "side": 1,
+      "message": "Not really sure if this is needed. I think the idle wait is for ensuring the Polling before is after the interface is gone, so possible don\u0027t need this?\n\nOr is it possible that states gets idle but the interface is not yet removed in sysfs?",
+      "range": {
+        "startLine": 2211,
+        "startChar": 0,
+        "endLine": 2213,
+        "endChar": 3
+      },
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "134ec3a4_d5a88488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2221,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T06:32:28Z",
+      "side": 1,
+      "message": "Maybe \"No timeout here as ...\"? I thought the comment was for Interval when I first saw this. :p",
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d32e388_d7200f10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2298,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T06:32:28Z",
+      "side": 1,
+      "message": "nit: perhaps \"errors\u003d%v\" is clear enough? multiple \"err\u003d\" is a little strange to me.",
+      "range": {
+        "startLine": 2298,
+        "startChar": 54,
+        "endLine": 2298,
+        "endChar": 95
+      },
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f22d1d_e9903a68",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T06:32:28Z",
+      "side": 1,
+      "message": "The two added function might be more suitable in network package as they are not interacting with shill?",
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a0fd9a5_cd89acfa",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T06:32:28Z",
+      "side": 1,
+      "message": "I think this can be done with \"iw\" command but a little tricky.\n1. use \"iw dev $interface info\" to get phy ID. (Currently runner.ListInterfaces provides similar information. We may add something like InterfaceByName for this)\n2. use \"iw phy#$id info\" to get phy name.\n\nDo you think that using \"iw\" might be better? (so that we can avoid sysfs operation). If so, we can also have this wrapped as a iw.Runner method.",
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bdbe26b_e990f5fa",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T06:32:28Z",
+      "side": 1,
+      "message": "Is this equivalent to \"f :\u003d filepath.Base\"? I guess they might be different in some corner cases but I\u0027m not sure if that is related here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40cc238_38784548",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T06:32:28Z",
+      "side": 1,
+      "message": "I guess you can use crbug.com/1070299 here?",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54454045_c9b33c72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T06:32:28Z",
+      "side": 1,
+      "message": "Might be nice to have comments for that we only support reset on Intel/Marvell/QCA WiFi (or iwlwifi/mwifiex/ath10k). So it\u0027s easier to modify these when WiFi hwdep is done i.e. no need of reading detailed logic.",
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
