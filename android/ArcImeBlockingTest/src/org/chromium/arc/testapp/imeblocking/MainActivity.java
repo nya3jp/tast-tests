@@ -9,22 +9,32 @@ package org.chromium.arc.testapp.imeblocking;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
         Button button = findViewById(R.id.button);
-        button.setOnClickListener(this);
+        button.setOnClickListener(v -> { openDialog(v); });
+
+        Button button2 = findViewById(R.id.dialog_with_text_field);
+        button2.setOnClickListener(v -> { openDialogWithTextField(v); });
+
+        Button button3 = findViewById(R.id.open_normal_dialog_above);
+        button3.setOnClickListener(v -> { openDialogWithTextField(v); openDialog(v); });
+
+        Button button4 = findViewById(R.id.open_text_field_dialog_above);
+        button4.setOnClickListener(v -> { openDialog(v); openDialogWithTextField(v); });
     }
 
-    @Override
-    public void onClick(View v) {
+    private void openDialog(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(android.R.string.unknownName)
                 .setPositiveButton(android.R.string.ok, null)
@@ -39,6 +49,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 .setFlags(
                         WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,
                         WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        dialog.show();
+    }
+
+    private void openDialogWithTextField(View v) {
+        final EditText input = findViewById(R.id.text_in_dialog);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(android.R.string.unknownName)
+            .setPositiveButton(android.R.string.ok, null)
+            .setNegativeButton(android.R.string.cancel, null);
+        builder.setView(input);
+
+        AlertDialog dialog = builder.create();
+        dialog.create();
         dialog.show();
     }
 }

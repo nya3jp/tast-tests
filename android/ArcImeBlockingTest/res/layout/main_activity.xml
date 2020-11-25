@@ -17,4 +17,19 @@
           android:layout_height="wrap_content"
           android:text="Open a dialog"
           android:id="@+id/button" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open a dialog with a text field"
+        android:id="@+id/dialog_with_text_field" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open a dialog on top of a dialog with text field"
+        android:id="@+id/open_normal_dialog_above" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open a dialog with text field on top of a dialog"
+        android:id="@+id/open_text_field_dialog_above" />
 </LinearLayout>
