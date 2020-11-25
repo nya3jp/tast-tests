@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3450888d_b4046e99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-11-25T02:30:50Z",
+      "side": 1,
+      "message": "Still LGTM % Ricardo\u0027s comments and a minor comment you missed.",
+      "revId": "5d0543c5494ae9e03461fdbfbe76aee8f1b5ef59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb90b1d8_199fca32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-11-25T02:30:50Z",
+      "side": 1,
+      "message": "validate",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "5d0543c5494ae9e03461fdbfbe76aee8f1b5ef59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a38c8b9_1428b451",
