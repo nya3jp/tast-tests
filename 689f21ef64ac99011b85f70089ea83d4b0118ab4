@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fce8e82d_97bbfcf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1422654
+      },
+      "writtenOn": "2020-11-25T06:44:14Z",
+      "side": 1,
+      "message": "There\u0027s a small bug that user-creation screen does not have hidden attribute defined and isVisible() in OobeAPI always returns true which is incorrect. I\u0027ve fixed it here (https://chromium-review.googlesource.com/c/chromium/src/+/2558792). I\u0027m wondering should we have hidden attribute for all screens? \n\nAfter this fix, it works when running on DUT. \n\nI\u0027d like to wait for this change to merge first to have OobeAPI enabled (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2505396).\n",
+      "revId": "689f21ef64ac99011b85f70089ea83d4b0118ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
