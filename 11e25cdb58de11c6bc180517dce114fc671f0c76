@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc2a330_8adcf545",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-25T23:41:02Z",
+      "side": 1,
+      "message": "Im not sure I agree with this (and line 226).  I think there is value in fully specifying things in the name as it allows comparing across tests.  Without this you need to look at the test source code to work out whether it was buster/stretch or stable/unstable for these tests.\n\nThe tradeoff is of course longer names.\n\nI\u0027ll leave the call to you, just wanted to bring it up.",
+      "revId": "11e25cdb58de11c6bc180517dce114fc671f0c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
