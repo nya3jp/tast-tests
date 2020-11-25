@@ -34,11 +34,11 @@ var (
 
 	// arcAppLoadingBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off")
+	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, arc.DisableSyncFlags()...)
 
 	// arcAppLoadingVMBooted is a precondition similar to arc.VMBooted(). The only difference from arc.VMBooted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, "--ignore-arcvm-dev-conf", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off")
+	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf")...)
 )
 
 func init() {
@@ -136,6 +136,15 @@ func init() {
 // subflow will be tested separately including separate performance metrics
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
+	const (
+		// tbfRateMbit specifies how fast the data will leave the primary bucket.
+		tbfRateMbit = 10
+		// tbfLatency is amount of time a packet can be delayed by token rate before drop.
+		tbfLatencyMs = 18
+		// tbfBurst is the size of the bucket used by rate option.
+		tbfBurstKb = 10
+	)
+
 	// Start network helper to serve requests from the app.
 	conn, err := nethelper.Start(ctx, apploading.NethelperPort)
 	if err != nil {
@@ -146,6 +155,17 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 			s.Logf("WARNING: Failed to close nethelper connection: %s", err)
 		}
 	}()
+
+	// TODO(b/169947243): Add initial traffic control queuing discipline settings
+	// for traffic shaping based on experiments with netem, RTT latency, and iperf3
+	// bandwidth measurements.  Only kernel version 4.4+ with ARCVM supports tc-tbf.
+	if kernelSupported, err := apploading.IsKernelVersionAtLeast(ctx, 4, 4); err != nil {
+		s.Fatal("Failed to check kernel version: ", err)
+	} else if kernelSupported {
+		if err := conn.AddTcTbf(ctx, tbfRateMbit, tbfLatencyMs, tbfBurstKb); err != nil {
+			s.Fatal("Failed to add tc-tbf: ", err)
+		}
+	}
 
 	finalPerfValues := perf.NewValues()
 	param := s.Param().(testParameters)
