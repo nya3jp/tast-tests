@@ -101,7 +101,7 @@ func CrosConfig(ctx context.Context, s *testing.State) {
 }
 
 // getDeviceIdentity determines the DUT's identity by getting /:name from cros_config.
-// This identity will be expanded in the future to include SKU and whitelabels.
+// This identity will be expanded in the future to include SKU and unbranded labels.
 // See go/cros-domain-model for details and naming.
 // Returns output such as "eve", "scarlet", or "nautilus".
 func getDeviceIdentity(ctx context.Context) (string, error) {
