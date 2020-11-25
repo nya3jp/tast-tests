@@ -76,7 +76,7 @@ func TwoUsersInstall(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to login Chrome and get test API for %s: %s", s.RequiredVar("crostini.gaiaUsername"), err)
 	}
 
-	iOptionsUser1 := crostini.GetInstallerOptions(s, vm.DebianBuster, false /*largeContainer*/)
+	iOptionsUser1 := crostini.GetInstallerOptions(s, true /*isComponent*/, vm.DebianBuster, false /*largeContainer*/)
 	iOptionsUser1.UserName = firstCr.User()
 	// Cleanup for the first user.
 	defer func() {
@@ -99,7 +99,7 @@ func TwoUsersInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to login Chrome and get test API for testuser: ", err)
 	}
 
-	iOptionsUser2 := crostini.GetInstallerOptions(s, vm.DebianBuster, false /*largeContainer*/)
+	iOptionsUser2 := crostini.GetInstallerOptions(s, true /*isComponent*/, vm.DebianBuster, false /*largeContainer*/)
 	iOptionsUser2.UserName = secondCr.User()
 	// Cleanup for the second user.
 	defer func() {
