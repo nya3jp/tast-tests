@@ -117,7 +117,7 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 			s.Fatalf("%q routine has status %q; want \"Passed\", \"Failed\", or \"Not run\"", routine, status)
 		}
 
-		if progress != 100 {
+		if progress != 100 && status != "Not run" {
 			s.Fatalf("%q routine has progress %d; want 100", routine, progress)
 		}
 	}
