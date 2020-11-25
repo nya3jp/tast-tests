@@ -44,7 +44,7 @@ const (
 	ARCVMPath = "/opt/google/vms/android"
 )
 
-// DisableSyncFlags is the default flags for disabling ARC content sync when using GAIA acounts.
+// DisableSyncFlags is the default flags for disabling ARC content sync when using GAIA accounts.
 func DisableSyncFlags() []string {
 	return []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
 }
