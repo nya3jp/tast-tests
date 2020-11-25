@@ -167,10 +167,12 @@ func testBlockCameraFeature(ctx context.Context, fdms *fakedms.FakeDMS, cr *chro
 	if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
 		return errors.Wrap(err, "failed to find camera app in the launcher")
 	}
-	_, err = ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "BubbleDialogDelegateView", Name: "Camera is blocked"}, 5*time.Second)
+	dialogView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "BubbleDialogDelegateView", Name: "Camera is blocked"}, 5*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to get blocked dialog")
 	}
+	defer dialogView.Release(ctx)
+
 	return nil
 }
 
