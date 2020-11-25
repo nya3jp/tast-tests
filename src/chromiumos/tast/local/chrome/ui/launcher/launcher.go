@@ -88,9 +88,13 @@ func WaitForAppResult(ctx context.Context, tconn *chrome.TestConn, appName strin
 		}
 		defer searchResultView.Release(ctx)
 
-		appNode, err = searchResultView.DescendantWithTimeout(ctx, ui.FindParams{Name: appName + ", Installed App"}, timeout)
+		appNode, err = searchResultView.DescendantWithTimeout(ctx, ui.FindParams{Name: appName + ", Installed App"}, time.Second)
 		if err != nil {
-			return errors.Wrapf(err, "%s app does not exist in search result", appName)
+			// Try blocked apps as well.
+			appNode, err = searchResultView.DescendantWithTimeout(ctx, ui.FindParams{Name: appName + ", Installed App, Blocked"}, time.Second)
+			if err != nil {
+				return errors.Wrapf(err, "%s app does not exist in search result", appName)
+			}
 		}
 		if err := appNode.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 3 * time.Second}); err != nil {
 			appNode.Release(ctx)
