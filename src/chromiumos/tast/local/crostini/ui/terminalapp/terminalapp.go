@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
@@ -81,7 +82,7 @@ func (ta *TerminalApp) waitForPrompt(ctx context.Context) error {
 		Attributes: map[string]interface{}{"name": regexp.MustCompile(`\@penguin\: `)},
 	}
 	waitForPrompt := uig.FindWithTimeout(parentParams, uiTimeout).
-		FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "$ "}, 90*time.Second).
+		FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText, Name: "$ "}, 3*time.Minute).
 		WithNamef("Terminal.waitForPrompt()")
 	return uig.Do(ctx, ta.tconn, uig.WaitForLocationChangeCompleted(), waitForPrompt)
 }
@@ -90,12 +91,22 @@ func (ta *TerminalApp) waitForPrompt(ctx context.Context) error {
 func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemNameRegexp string) (retErr error) {
 	revert, err := ash.EnsureTabletModeEnabled(ctx, ta.tconn, false)
 	if err != nil {
-		return errors.Wrap(err, "Unable to switch out of tablet mode")
+		testing.ContextLog(ctx, "Unable to switch out of tablet mode, try to swipe up the hot seat")
+		tc, err := pointer.NewTouchController(ctx, ta.tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to create the touch controller")
+		}
+		defer tc.Close()
+		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, ta.tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
+			return errors.Wrap(err, "failed to swipe up the hotseat")
+		}
 	}
 	defer func() {
-		revert(ctx)
-		if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
-			retErr = errors.Wrap(err, "error waiting for tablet mode reversion transition to complete")
+		if revert != nil {
+			revert(ctx)
+			if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
+				retErr = errors.Wrap(err, "error waiting for tablet mode reversion transition to complete")
+			}
 		}
 	}()
 
