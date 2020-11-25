@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a6f23f_9cc80468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1128435
+      },
+      "writtenOn": "2020-11-25T21:57:41Z",
+      "side": 1,
+      "message": "whitelabels aren\u0027t the same as \"allowed labels\". We need to consult SIEs with the better term..",
+      "range": {
+        "startLine": 104,
+        "startChar": 67,
+        "endLine": 105,
+        "endChar": 10
+      },
+      "revId": "e98312b0fb2c438a043d8985e9d73685103be75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
