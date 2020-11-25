@@ -69,7 +69,7 @@ func init() {
 				ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
 				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "amd64"},
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           1 * time.Hour,
 				Val:               glbenchConfig{environment: envDebian},
 			}, {
@@ -77,7 +77,7 @@ func init() {
 				ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
 				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "arm"},
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           1 * time.Hour,
 				Val:               glbenchConfig{environment: envDebian},
 			}, {
@@ -86,7 +86,7 @@ func init() {
 				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           5 * time.Minute,
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 			}, {
@@ -95,7 +95,7 @@ func init() {
 				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           5 * time.Minute,
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 			}, {
@@ -104,7 +104,7 @@ func init() {
 				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           5 * time.Minute,
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 			}, {
@@ -113,7 +113,7 @@ func init() {
 				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           5 * time.Minute,
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 			},

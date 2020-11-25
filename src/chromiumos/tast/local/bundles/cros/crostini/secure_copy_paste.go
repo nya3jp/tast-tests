@@ -52,7 +52,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -65,7 +65,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -77,7 +77,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -90,7 +90,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -102,7 +102,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -115,7 +115,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -127,7 +127,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -140,7 +140,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -152,7 +152,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -165,7 +165,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -177,7 +177,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -190,7 +190,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -202,7 +202,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -215,7 +215,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -227,7 +227,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -240,7 +240,7 @@ func init() {
 				ExtraData:         []string{"secure_copy.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -252,7 +252,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -265,7 +265,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -277,7 +277,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -290,7 +290,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -302,7 +302,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -315,7 +315,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -327,7 +327,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -340,7 +340,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "wayland",
@@ -352,7 +352,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -365,7 +365,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -377,7 +377,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -390,7 +390,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -402,7 +402,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -415,7 +415,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -427,7 +427,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",
@@ -440,7 +440,7 @@ func init() {
 				ExtraData:         []string{"secure_paste.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: secureCopyPasteConfig{
 					backend: "x11",

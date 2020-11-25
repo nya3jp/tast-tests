@@ -38,8 +38,8 @@ var installWindowFindParams = ui.FindParams{
 
 // Image setup mode.
 const (
-	Artifact = "artifact"
-	Dlc      = "dlc"
+	Component = "component"
+	Dlc       = "dlc"
 )
 
 // InstallationOptions is a struct contains parameters for Crostini installation.
@@ -195,7 +195,7 @@ func (p *Installer) Install(ctx context.Context) error {
 }
 
 func prepareImages(ctx context.Context, iOptions *InstallationOptions) (containerMetadata, containerRootfs, terminaImage string, err error) {
-	if iOptions.Mode == Artifact {
+	if iOptions.Mode == Component {
 		// Prepare image.
 		terminaImage, err = vm.ExtractTermina(ctx, iOptions.VMArtifactPath)
 		if err != nil {
@@ -241,7 +241,7 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 
 	testing.ContextLog(ctx, "Installing crostini")
 
-	if iOptions.Mode == Artifact {
+	if iOptions.Mode == Component {
 		url := "http://" + addr + "/"
 		if err := tconn.Eval(ctx, fmt.Sprintf(
 			`chrome.autotestPrivate.registerComponent(%q, %q)`,

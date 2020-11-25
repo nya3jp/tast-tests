@@ -30,7 +30,7 @@ func init() {
 				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: trace.HwDepsStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           15 * time.Minute,
 				Val: comm.TestGroupConfig{
 					Labels: []string{"short"},
@@ -45,7 +45,7 @@ func init() {
 				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: trace.HwDepsUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           15 * time.Minute,
 				Val: comm.TestGroupConfig{
 					Labels: []string{"short"},
@@ -59,7 +59,7 @@ func init() {
 				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: trace.HwDepsStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           15 * time.Minute,
 				Val: comm.TestGroupConfig{
 					Labels: []string{"short"},
@@ -74,7 +74,7 @@ func init() {
 				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: trace.HwDepsUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           15 * time.Minute,
 				Val: comm.TestGroupConfig{
 					Labels: []string{"short"},
