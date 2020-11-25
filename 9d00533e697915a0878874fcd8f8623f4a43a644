@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05cb3a5a_58a97fab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-11-25T19:53:51Z",
+      "side": 1,
+      "message": "Adding tests for focus changes for Pointer Capture. PTAL, thanks!",
+      "revId": "9d00533e697915a0878874fcd8f8623f4a43a644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
