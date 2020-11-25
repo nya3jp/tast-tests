@@ -6,13 +6,11 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -36,6 +34,13 @@ func init() {
 
 func IMEBlocking(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Creating test API connection failed: ", err)
+	}
+
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
@@ -54,9 +59,16 @@ func IMEBlocking(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting app")
-	if err := a.Command(ctx, "am", "start", "-W", fmt.Sprintf("%s/%s", pkg, cls)).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed starting app: ", err)
+	act, err := arc.NewActivity(a, pkg, cls)
+	if err != nil {
+		s.Fatal("Failed to create a new Activity: ", err)
 	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed to start the activity: ", err)
+	}
+	defer act.Stop(ctx, tconn)
 
 	const (
 		fieldID  = "org.chromium.arc.testapp.imeblocking:id/text"

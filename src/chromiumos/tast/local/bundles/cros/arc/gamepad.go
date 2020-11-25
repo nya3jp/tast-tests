@@ -207,6 +207,11 @@ func waitForGamepadAxis(ctx context.Context, d *ui.Device, axis string, expected
 
 func Gamepad(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
+	cr := s.PreValue().(arc.PreData).Chrome
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
@@ -237,9 +242,16 @@ func Gamepad(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting app")
-	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(); err != nil {
-		s.Fatal("Failed starting app: ", err)
+	act, err := arc.NewActivity(a, pkg, cls)
+	if err != nil {
+		s.Fatal("Failed to create a new activity: ", err)
 	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed to start the activity: ", err)
+	}
+	defer act.Close()
 
 	s.Log("Checking the device connection")
 	var device inputDevice

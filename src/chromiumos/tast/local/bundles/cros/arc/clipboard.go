@@ -151,13 +151,24 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	cr := p.Chrome
 	a := p.ARC
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	s.Log("Starting app")
 	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
-	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(); err != nil {
-		s.Fatal("Failed starting app: ", err)
+	act, err := arc.NewActivity(a, pkg, cls)
+	if err != nil {
+		s.Fatal("Failed to create a new activity: ", err)
 	}
+	defer act.Close()
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed to start the activity: ", err)
+	}
+	defer act.Stop(ctx, tconn)
 
 	s.Log("Waiting for App showing up")
 	d, err := a.NewUIDevice(ctx)
@@ -169,10 +180,6 @@ func Clipboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the app shown: ", err)
 	}
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to get test connection: ", err)
-	}
 	s.Log("Waiting for chrome.clipboard API to become available")
 	if err := tconn.WaitForExpr(ctx, "chrome.clipboard"); err != nil {
 		s.Fatal("chrome.clipboard API unavailable: ", err)
