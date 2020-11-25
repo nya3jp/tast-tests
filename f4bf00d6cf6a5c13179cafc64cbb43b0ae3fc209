@@ -22,6 +22,30 @@
       },
       "revId": "f4bf00d6cf6a5c13179cafc64cbb43b0ae3fc209",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a69dd4_d7a620d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_output_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-25T09:54:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e7e6a4c_845963e5",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 0
+      },
+      "revId": "f4bf00d6cf6a5c13179cafc64cbb43b0ae3fc209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
