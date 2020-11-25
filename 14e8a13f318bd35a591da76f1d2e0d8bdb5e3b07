@@ -22,6 +22,30 @@
       },
       "revId": "14e8a13f318bd35a591da76f1d2e0d8bdb5e3b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca68c081_e622a542",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-25T23:06:14Z",
+      "side": 1,
+      "message": "I\u0027d expect it\u0027s self-explanatory, but OK.",
+      "parentUuid": "beb8ea40_bdbdb565",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "14e8a13f318bd35a591da76f1d2e0d8bdb5e3b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
