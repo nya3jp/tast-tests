@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,8 +24,6 @@ func init() {
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
-		// Run the test only on boards that support CSA.
-		HardwareDeps: hwdep.D(hwdep.Platform("kukui", "jacuzzi", "grunt", "zork", "dedede", "speedy")),
 	})
 }
 
@@ -118,7 +115,7 @@ func CSAReconnect(ctx context.Context, s *testing.State) {
 	for _, ph := range monitorResult {
 		if ph.Name == shillconst.ServicePropertyIsConnected {
 			if !ph.Value.(bool) {
-				s.Fatal("DUT: failed to stay connected during the roaming process")
+				s.Fatal("DUT: failed to stay connected during the channel switching process")
 			}
 		}
 	}
