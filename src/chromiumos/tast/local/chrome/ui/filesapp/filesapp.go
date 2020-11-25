@@ -120,6 +120,11 @@ func (f *FilesApp) Close(ctx context.Context) error {
 // OpenDir opens one of the directories shown in the navigation tree.
 // An error is returned if dir is not found or does not open.
 func (f *FilesApp) OpenDir(ctx context.Context, dirName, expectedTitle string) error {
+	// Wait location.
+	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
+
 	// Select dirName in the directory tree.
 	params := ui.FindParams{
 		Name: dirName,
@@ -537,6 +542,11 @@ func (f *FilesApp) RenameFile(ctx context.Context, title, oldName, newName strin
 // SelectDirectoryContextMenuItem right clicks the specified directory in the navigation tree and selects the specified context menu item.
 // An error is returned if dir is not found or right click fails.
 func (f *FilesApp) SelectDirectoryContextMenuItem(ctx context.Context, dirName, menuItem string) error {
+	// Wait location.
+	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
+
 	// Select dirName in the directory tree.
 	params := ui.FindParams{
 		Name: dirName,
@@ -562,6 +572,11 @@ func (f *FilesApp) SelectDirectoryContextMenuItem(ctx context.Context, dirName, 
 
 	if err := dirRow.StableRightClick(ctx, f.stablePollOpts); err != nil {
 		return errors.Wrapf(err, "failed to right click %s", dirName)
+	}
+
+	// Wait location.
+	if err := ui.WaitForLocationChangeCompleted(ctx, f.tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
 	}
 
 	// Left click menuItem.
