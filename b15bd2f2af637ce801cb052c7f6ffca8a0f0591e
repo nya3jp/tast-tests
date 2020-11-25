@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "080964d7_0e1194aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-25T03:33:18Z",
+      "side": 1,
+      "message": "Good point. Thanks. Changed.",
+      "parentUuid": "21136e0f_94d1582e",
+      "revId": "b15bd2f2af637ce801cb052c7f6ffca8a0f0591e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10a7fc8d_c72bf22e",
@@ -54,6 +72,54 @@
       "writtenOn": "2020-11-25T03:12:12Z",
       "side": 1,
       "message": "Don\u0027t put line numbers, they will change over time.",
+      "range": {
+        "startLine": 127,
+        "startChar": 9,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "b15bd2f2af637ce801cb052c7f6ffca8a0f0591e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9dc644_e69d6d61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_ps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-25T03:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10a7fc8d_c72bf22e",
+      "range": {
+        "startLine": 127,
+        "startChar": 68,
+        "endLine": 127,
+        "endChar": 75
+      },
+      "revId": "b15bd2f2af637ce801cb052c7f6ffca8a0f0591e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1968810d_c2966011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_ps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-25T03:33:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae78cdcc_48bc6c86",
       "range": {
         "startLine": 127,
         "startChar": 9,
