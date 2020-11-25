@@ -43,6 +43,7 @@ var testFiles = []string{
 	"remove_cancel.go",
 	"remove_ok.go",
 	"resize_cancel.go",
+	"resize_ok.go",
 	"restart.go",
 	"shared_font_files.go",
 	"share_downloads_add_files.go",
