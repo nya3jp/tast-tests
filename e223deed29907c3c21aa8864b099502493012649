@@ -299,6 +299,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be6fad6f_314d3b0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T17:46:34Z",
+      "side": 1,
+      "message": "I personally group the variable definitions and for-loop together. But your point also makes sense. You can have a blank line between variable definition and for-loop.",
+      "parentUuid": "ca7fcb6e_909a11fa",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8f0c2f3_ecfcbdea",
@@ -424,6 +442,24 @@
       "side": 1,
       "message": "{\n  \"framesMetaData\": [\n    { \"cornerPoints\": [\n        [ { \"x\": 561, \"y\": 52 },\n          { \"x\": 703, \"y\": 56 },\n          { \"x\": 701, \"y\": 103 },\n          { \"x\": 559, \"y\": 99 } ]\n      ],\n      \"line\": [ \"mmm\" ]\n    }\n  ],\n  \"recordingStartTime\": 1605511145620,\n  \"videoFps\": 120,\n  \"hostSyncTimestamp\": 1605511145632\n}\n\nframesMetaData contains OCR data for each frame from the slo-mo video capture. Yes, elements in FramesMetaData are sorted by time, but the actual bottleneck here is waiting for phone to do the OCR for all the frames (it takes seconds or tens of seconds on my Pixel3).",
       "parentUuid": "de212737_c4aa7fb5",
+      "revId": "e223deed29907c3c21aa8864b099502493012649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca0f1b2_b3e5d3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T17:46:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48bb3470_9877a0db",
       "revId": "e223deed29907c3c21aa8864b099502493012649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
