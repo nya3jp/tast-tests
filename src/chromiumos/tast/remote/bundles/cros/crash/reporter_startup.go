@@ -6,6 +6,7 @@ package crash
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 	"strings"
 	"time"
@@ -13,6 +14,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	commoncrash "chromiumos/tast/common/crash"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/rpc"
@@ -57,25 +59,87 @@ func uptime(ctx context.Context, fileSystem baserpc.FileSystemClient) (float64, 
 }
 
 // ReporterStartup tests crash reporter is set up correctly after reboot.
-// Equivlaent to the local test in testReporterStartup, but without
+// Equivalent to the local test in testReporterStartup, but without
 // re-initializing to catch problems with the default crash reporting setup.
 // See src/chromiumos/tast/local/bundles/cros/platform/user_crash.go
 func ReporterStartup(ctx context.Context, s *testing.State) {
 	d := s.DUT()
-	s.Log("Rebooting DUT")
-	if err := d.Reboot(ctx); err != nil {
-		s.Fatal("Failed to reboot DUT: ", err)
-	}
 
 	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
-	defer cl.Close(ctx)
+
+	fixtureService := crashservice.NewFixtureServiceClient(cl.Conn)
+
+	req := crashservice.SetUpCrashTestRequest{
+		Consent: crashservice.SetUpCrashTestRequest_REAL_CONSENT,
+	}
+
+	// Shorten deadline to leave time for cleanup
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	if _, err := fixtureService.SetUp(ctx, &req); err != nil {
+		s.Error("Failed to set up: ", err)
+		cl.Close(cleanupCtx)
+		return
+	}
+
+	// This is a bit delicate. If the test fails _before_ we reboot,
+	// we need to do TearDown then, and on the same connection (so we can close Chrome).
+	//
+	// If it fails to reconnect, we do not need to clean these up.
+	//
+	// Otherwise, we need to re-establish a connection to the machine and
+	// run TearDown.
+	defer func() {
+		if fixtureService != nil {
+			if _, err := fixtureService.TearDown(cleanupCtx, &empty.Empty{}); err != nil {
+				s.Error("Couldn't tear down: ", err)
+			}
+		}
+		if cl != nil {
+			cl.Close(cleanupCtx)
+		}
+	}()
+
+	// Disable consent.
+	consentReq := crashservice.SetConsentRequest{Consent: false}
+	if _, err := fixtureService.SetConsent(ctx, &consentReq); err != nil {
+		s.Fatal("SetConsent failed: ", err)
+	}
+
+	goodCore := false
+	defer func() {
+		// Restore expected contents if crash_reporter --init didn't work,
+		// so that no matter what this test will end with the expected core pattern.
+		if !goodCore {
+			if err := d.Conn().Command("/bin/bash", "-c", fmt.Sprintf("/bin/echo '%s' > %s", commoncrash.ExpectedCorePattern(), commoncrash.CorePattern)).Run(cleanupCtx); err != nil {
+				s.Errorf("Failed restoring core pattern file %s: %s", commoncrash.CorePattern, err)
+			}
+		}
+	}()
+
+	fixtureService = nil
+	cl.Close(ctx)
+	cl = nil
+
+	// On reboot, the core_pattern will be set to |/sbin/crash_reporter --early --log_to_stderr --user=%P:%s:%u:%g:%f
+	s.Log("Rebooting DUT")
+	if err := d.Reboot(ctx); err != nil {
+		s.Fatal("Failed to reboot DUT: ", err)
+	}
+
+	cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	fixtureService = crashservice.NewFixtureServiceClient(cl.Conn)
 
 	// Turn off crash filtering so we see the original setting.
-	fixture := crashservice.NewFixtureServiceClient(cl.Conn)
-	if _, err := fixture.DisableCrashFilter(ctx, &empty.Empty{}); err != nil {
+	if _, err := fixtureService.DisableCrashFilter(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to turn off crash filtering: ", err)
 	}
 
@@ -89,6 +153,8 @@ func ReporterStartup(ctx context.Context, s *testing.State) {
 	expectedCorePattern := commoncrash.ExpectedCorePattern()
 	if trimmed != expectedCorePattern {
 		s.Errorf("Unexpected core_pattern: got %s, want %s", trimmed, expectedCorePattern)
+	} else {
+		goodCore = true
 	}
 
 	// Check that we wrote out the file indicating that crash_reporter is

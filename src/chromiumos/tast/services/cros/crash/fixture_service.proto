@@ -34,6 +34,9 @@ service FixtureService {
   // RemoveAllFiles removes all files in the request.
   rpc RemoveAllFiles (RemoveAllFilesRequest) returns (google.protobuf.Empty) {}
 
+  // SetConsent sets consent as specified in the request.
+  rpc SetConsent (SetConsentRequest) returns (google.protobuf.Empty) {}
+
   // TearDown undoes the actions SetUp does and resets the machine to normal
   // state.
   rpc TearDown (google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -69,6 +72,10 @@ message WaitForCrashFilesResponse {
 
 message RemoveAllFilesRequest {
   repeated RegexMatch matches = 1;
+}
+
+message SetConsentRequest {
+  bool consent = 1;
 }
 
 message RegexMatch {
