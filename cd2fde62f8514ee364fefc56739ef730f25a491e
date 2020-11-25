@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6807b2a_990f0a7a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-25T06:51:01Z",
+      "side": 1,
+      "message": "Sometimes 90 seconds is not enough according to the test screenshot.",
+      "range": {
+        "startLine": 85,
+        "startChar": 74,
+        "endLine": 85,
+        "endChar": 76
+      },
+      "revId": "cd2fde62f8514ee364fefc56739ef730f25a491e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
