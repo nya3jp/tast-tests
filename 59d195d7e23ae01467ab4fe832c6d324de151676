@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b1f7d8c_b9d30983",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-25T01:52:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b91d8a_a5945210",
+      "revId": "59d195d7e23ae01467ab4fe832c6d324de151676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b15c1f0_06eac6d4",
@@ -65,6 +83,30 @@
       "writtenOn": "2020-11-24T07:19:46Z",
       "side": 1,
       "message": "Could you share this with LaunchLacrosChrome?",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 43
+      },
+      "revId": "59d195d7e23ae01467ab4fe832c6d324de151676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33966765_2d8d2fae",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-25T01:52:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b15c1f0_06eac6d4",
       "range": {
         "startLine": 179,
         "startChar": 2,
