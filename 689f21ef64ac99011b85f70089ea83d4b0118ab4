@@ -51,6 +51,24 @@
       "message": "how come it\u0027s working if it does not pass --enable-oobe-test-api flag ? :)",
       "revId": "689f21ef64ac99011b85f70089ea83d4b0118ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e39a795_59c8f313",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1422654
+      },
+      "writtenOn": "2020-11-25T10:35:08Z",
+      "side": 1,
+      "message": "The flag is added in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2505396 and I\u0027d like to wait for this CL to land first to avoid merge conflict.\n\nAdded the flag on my local so test is working :)",
+      "parentUuid": "2aadea15_ced163f4",
+      "revId": "689f21ef64ac99011b85f70089ea83d4b0118ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
