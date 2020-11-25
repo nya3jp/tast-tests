@@ -16,6 +16,24 @@
       "message": "nit: This CL might need to Cq-Depend on https://crrev.com/c/2558279. You might also want to add Cq-Depend for other CLs to make them land in a correct order (or together, if needed).",
       "revId": "80d585603fb6e0eea99675fa4b6fbdc267da13de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2e02ad_2f95e85a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2020-11-25T08:30:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a7611ef8_9df306db",
+      "revId": "80d585603fb6e0eea99675fa4b6fbdc267da13de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
