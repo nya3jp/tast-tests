@@ -160,8 +160,11 @@ func moveAllCrashesTo(source, target string) error {
 		return errors.Wrapf(err, "couldn't make stash crash dir %s", target)
 	}
 	for _, f := range files {
-		if err := os.Rename(filepath.Join(source, f.Name()), filepath.Join(target, f.Name())); err != nil {
-			return errors.Wrapf(err, "couldn't move file: %v", f.Name())
+		// Don't move directories (like the "attachments" directory that crashpad creates).
+		if !f.IsDir() {
+			if err := os.Rename(filepath.Join(source, f.Name()), filepath.Join(target, f.Name())); err != nil {
+				return errors.Wrapf(err, "couldn't move file: %v", f.Name())
+			}
 		}
 	}
 	return nil

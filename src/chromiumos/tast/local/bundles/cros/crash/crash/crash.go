@@ -343,7 +343,10 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 
 	var crashFiles []string
 	for _, f := range crashContents {
-		crashFiles = append(crashFiles, f.Name())
+		if !f.IsDir() {
+			// Skip directories, e.g. those created by crashpad.
+			crashFiles = append(crashFiles, f.Name())
+		}
 	}
 	testing.ContextLogf(ctx, "Contents in %s: %v", crashDir, crashFiles)
 
@@ -354,6 +357,10 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	for _, f := range crashContents {
 		if filepath.Ext(f.Name()) == ".core" {
 			// Ignore core files.  We'll test them later.
+			continue
+		}
+		if f.IsDir() {
+			// Skip directories, e.g. those created by crashpad.
 			continue
 		}
 		if opts.ExpectCrashReporterFail && strings.HasPrefix(f.Name(), oldBasename+".") {
