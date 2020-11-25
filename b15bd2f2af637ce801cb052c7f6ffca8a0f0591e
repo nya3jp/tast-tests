@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21136e0f_94d1582e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-25T03:12:12Z",
+      "side": 1,
+      "message": "I think most likely that you are trying to read the file before the command has completed.  Rather than this it would be better to have a wait between executing the command and reading the file.  Either wait for the prompt to re-appear in the terminal, or put the file verification in a polling loop for a few seconds.",
+      "revId": "b15bd2f2af637ce801cb052c7f6ffca8a0f0591e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a7fc8d_c72bf22e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_ps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-25T03:12:12Z",
+      "side": 1,
+      "message": "output shouldn\u0027t have a space",
+      "range": {
+        "startLine": 127,
+        "startChar": 68,
+        "endLine": 127,
+        "endChar": 75
+      },
+      "revId": "b15bd2f2af637ce801cb052c7f6ffca8a0f0591e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae78cdcc_48bc6c86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_ps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-25T03:12:12Z",
+      "side": 1,
+      "message": "Don\u0027t put line numbers, they will change over time.",
+      "range": {
+        "startLine": 127,
+        "startChar": 9,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "b15bd2f2af637ce801cb052c7f6ffca8a0f0591e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
