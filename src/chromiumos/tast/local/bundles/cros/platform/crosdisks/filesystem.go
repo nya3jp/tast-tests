@@ -11,11 +11,13 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosdisks"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -84,8 +86,13 @@ func testMountFilesystem(ctx context.Context, cd *crosdisks.CrosDisks, ld *crosd
 			return errors.Wrapf(err, "failed to write a test file in %q as chronos", file)
 		}
 		// Check that file is actually there.
-		if _, err := os.Stat(file); err != nil {
+		st, err := os.Stat(file)
+		if err != nil {
 			return errors.Wrapf(err, "failed to stat a test file %q", file)
+		}
+		stat, _ := st.Sys().(*syscall.Stat_t)
+		if stat.Uid != sysutil.ChronosUID {
+			return errors.Errorf("wrong owner of the file: got %d; want %d", stat.Uid, sysutil.ChronosUID)
 		}
 		return nil
 	})
