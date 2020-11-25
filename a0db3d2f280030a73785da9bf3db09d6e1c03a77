@@ -563,6 +563,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd1585b_f45c543c",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T05:31:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa4e6cd7_f64e5936",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45be3506_2063a60a",
