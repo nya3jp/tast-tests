@@ -10,10 +10,10 @@ import (
 
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -53,16 +53,9 @@ func LockScreen(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// Take a screenshot to show a notification. Using the virtual keyboard is required since
-	// different physical keyboards can require different key combinations to take a screenshot.
-	keyboard, err := input.VirtualKeyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get virtual keyboard: ", err)
-	}
-	defer keyboard.Close()
-
-	if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
-		s.Fatal("Failed to take a screenshot: ", err)
+	// Create a test notification.
+	if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeBasic, "Test", "blahhh"); err != nil {
+		s.Fatal("Failed to create a test notification: ", err)
 	}
 
 	params := ui.FindParams{
