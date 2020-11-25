@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a38c8b9_1428b451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-25T02:03:56Z",
+      "side": 1,
+      "message": "instead of a function, just declare it as a global variable. e.g:\n\n  var videoTestFiles \u003d []string {\n    ...\n  }",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "5d0543c5494ae9e03461fdbfbe76aee8f1b5ef59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8bfa62_053c7c23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-25T02:03:56Z",
+      "side": 1,
+      "message": "getTestVectors -\u003e testVectors\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#TOC-Getters",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "5d0543c5494ae9e03461fdbfbe76aee8f1b5ef59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5203eff7_c8ea91b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-25T02:03:56Z",
+      "side": 1,
+      "message": "if there is only one test, you can ignore this \"Val\" and just get this directly from DecodeCompliance.",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 39
+      },
+      "revId": "5d0543c5494ae9e03461fdbfbe76aee8f1b5ef59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7656a92a_b712f1de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-25T02:03:56Z",
+      "side": 1,
+      "message": "The \"Extra\" prefix is used when your test declares multiple sub-tests.\n\nIn this case, there are not needed. Please, \"promote\" these variables as non \"Extra\".\n\nSee:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-registration",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "5d0543c5494ae9e03461fdbfbe76aee8f1b5ef59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1282c3f3_90a70bc7",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-25T02:03:56Z",
+      "side": 1,
+      "message": "add docstring for this func",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "5d0543c5494ae9e03461fdbfbe76aee8f1b5ef59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
