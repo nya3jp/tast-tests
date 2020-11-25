@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -24,6 +25,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_api_can_access_external_storage.js"},
+		Pre:          testutil.ChromeWithPlatformApp(),
 	})
 }
 
@@ -31,11 +33,7 @@ func init() {
 // expected. The APIs under testing are not owned by CCA team. This test prevents changes to those
 // APIs' implementations from silently breaking CCA.
 func CCAAPI(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(*chrome.Chrome)
 
 	const ccaID = "hfhhnacclhffhdffklopdkcgdhifgngh"
 	bgURL := fmt.Sprintf("chrome-extension://%s/views/background.html", ccaID)
