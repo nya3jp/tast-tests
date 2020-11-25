@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb7f863b_d00aad1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2213,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-25T08:30:44Z",
+      "side": 1,
+      "message": "Autotest waits for connection after reset: http://cs/chromeos_public/src/third_party/autotest/files/server/site_tests/network_WiFi_Reset/network_WiFi_Reset.py?l\u003d176\n\nI moved it into mwifiexReset (and only in mwifiexReset) because:\n1) We have already started a property watcher in it so we can share some code.\n2) wait_for_connection is redundant for ath10k and iwlwifi since the crashes are transparent to shill.",
+      "parentUuid": "f6e336e9_ac50f212",
+      "range": {
+        "startLine": 2211,
+        "startChar": 0,
+        "endLine": 2213,
+        "endChar": 3
+      },
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "134ec3a4_d5a88488",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2020-11-25T06:32:28Z",
       "side": 1,
       "message": "Maybe \"No timeout here as ...\"? I thought the comment was for Interval when I first saw this. :p",
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "734f01ce_88d3b1a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2221,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-25T08:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "134ec3a4_d5a88488",
       "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed7722ce_bdc94b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2298,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-25T08:30:44Z",
+      "side": 1,
+      "message": "Printing []string as %v behaves like concatenating:\n  fmt.Printf(\"%v\", []string{\"1 23\", \"a bc\"})\n  // Output: [1 23 a bc]\n\nIt is a bit hard to read because we have no comma or period in the error messages.\n\nOTOH, %q adds some back slashes in front of the quotes in the messages:\n  fmt.Printf(\"%v\", []string{\"1 23\", `\"a\" bc`})\n  // Output: [\"1 23\" \"\\\"a\\\" bc\"]\n\nI would slightly prefer the current design \u003e %q \u003e %v. WDYT?",
+      "parentUuid": "7d32e388_d7200f10",
+      "range": {
+        "startLine": 2298,
+        "startChar": 54,
+        "endLine": 2298,
+        "endChar": 95
+      },
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70f22d1d_e9903a68",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 1
@@ -94,6 +160,24 @@
       "writtenOn": "2020-11-25T06:32:28Z",
       "side": 1,
       "message": "The two added function might be more suitable in network package as they are not interacting with shill?",
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e110af7_5cb47e8a",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-25T08:30:44Z",
+      "side": 1,
+      "message": "Oh, parent device name is already in local/network/iface/iface.go. Moved PhyName to the same file.",
+      "parentUuid": "70f22d1d_e9903a68",
       "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -117,6 +201,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b8fe5ec_552b2b9c",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-25T08:30:44Z",
+      "side": 1,
+      "message": "I would prefer reading sysfs because it looks simpler, and we can place these similar functions together.",
+      "parentUuid": "0a0fd9a5_cd89acfa",
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0bdbe26b_e990f5fa",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 1
@@ -128,6 +230,30 @@
       "writtenOn": "2020-11-25T06:32:28Z",
       "side": 1,
       "message": "Is this equivalent to \"f :\u003d filepath.Base\"? I guess they might be different in some corner cases but I\u0027m not sure if that is related here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b7f758b_49b46720",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-25T08:30:44Z",
+      "side": 1,
+      "message": "Base does more checks like it returns \".\" if the parameter is empty, while Split simply splits the parameter at the last slash. Let\u0027s use filepath.Base instead.",
+      "parentUuid": "0bdbe26b_e990f5fa",
       "range": {
         "startLine": 81,
         "startChar": 1,
@@ -161,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7d7ff5_122f4395",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-25T08:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b40cc238_38784548",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54454045_c9b33c72",
@@ -174,6 +324,24 @@
       "writtenOn": "2020-11-25T06:32:28Z",
       "side": 1,
       "message": "Might be nice to have comments for that we only support reset on Intel/Marvell/QCA WiFi (or iwlwifi/mwifiex/ath10k). So it\u0027s easier to modify these when WiFi hwdep is done i.e. no need of reading detailed logic.",
+      "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cb0a566_61f2de74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-11-25T08:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54454045_c9b33c72",
       "revId": "a3118031c38fc06f1b4083109d15dc1d23bfccd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
