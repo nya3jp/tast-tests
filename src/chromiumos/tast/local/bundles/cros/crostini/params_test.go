@@ -113,8 +113,8 @@ func TestGaiaLoginParams(t *testing.T) {
 	for _, filename := range gaiaLoginTests {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
 			Preconditions: map[vm.ContainerDebianVersion]string{
-				vm.DebianStretch: "crostini.StartedByArtifactWithGaiaLoginStretch()",
-				vm.DebianBuster:  "crostini.StartedByArtifactWithGaiaLoginBuster()",
+				vm.DebianStretch: "crostini.StartedByComponentWithGaiaLoginStretch()",
+				vm.DebianBuster:  "crostini.StartedByComponentWithGaiaLoginBuster()",
 			}}})
 		genparams.Ensure(t, filename, params)
 	}
@@ -134,7 +134,7 @@ func TestAppTestParams(t *testing.T) {
 			Timeout:    15 * time.Minute,
 			MinimalSet: true,
 			Preconditions: map[vm.ContainerDebianVersion]string{
-				vm.DebianBuster: "crostini.StartedByArtifactBusterLargeContainer()",
+				vm.DebianBuster: "crostini.StartedByComponentBusterLargeContainer()",
 			},
 			StableHardwareDep: "crostini.CrostiniAppTest",
 			UseLargeContainer: true,

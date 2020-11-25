@@ -98,7 +98,7 @@ type Param struct {
 	// containing a go expression that evaluates to the
 	// precondition that should be used to install that
 	// version. If not set, defaults to the
-	// crostini.StartedByArtifact{Stretch,Buster} preconditions.
+	// crostini.StartedByComponent{Stretch,Buster} preconditions.
 	Preconditions map[vm.ContainerDebianVersion]string
 
 	// StableHardwareDep contains a go expression that evaluates
@@ -269,9 +269,9 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 					if testCase.Preconditions != nil {
 						precondition = testCase.Preconditions[debianVersion]
 					} else if debianVersion == vm.DebianStretch {
-						precondition = "crostini.StartedByArtifactStretch()"
+						precondition = "crostini.StartedByComponentStretch()"
 					} else {
-						precondition = "crostini.StartedByArtifactBuster()"
+						precondition = "crostini.StartedByComponentBuster()"
 					}
 
 					var timeout time.Duration

@@ -40,7 +40,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -54,7 +54,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -67,7 +67,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -81,7 +81,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -94,7 +94,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -108,7 +108,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -121,7 +121,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -135,7 +135,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -148,7 +148,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -162,7 +162,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -175,7 +175,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -189,7 +189,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -202,7 +202,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -216,7 +216,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -229,7 +229,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -243,7 +243,7 @@ func init() {
 				ExtraData:         []string{"toolkit_gtk3_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_gtk3_demo.py",
@@ -256,7 +256,7 @@ func init() {
 				ExtraData:         []string{"toolkit_qt5_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
@@ -270,7 +270,7 @@ func init() {
 				ExtraData:         []string{"toolkit_qt5_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
@@ -283,7 +283,7 @@ func init() {
 				ExtraData:         []string{"toolkit_qt5_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
@@ -297,7 +297,7 @@ func init() {
 				ExtraData:         []string{"toolkit_qt5_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
@@ -310,7 +310,7 @@ func init() {
 				ExtraData:         []string{"toolkit_qt5_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
@@ -324,7 +324,7 @@ func init() {
 				ExtraData:         []string{"toolkit_qt5_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
@@ -337,7 +337,7 @@ func init() {
 				ExtraData:         []string{"toolkit_qt5_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
@@ -351,7 +351,7 @@ func init() {
 				ExtraData:         []string{"toolkit_qt5_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_qt5_demo.py",
@@ -364,7 +364,7 @@ func init() {
 				ExtraData:         []string{"toolkit_tkinter_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
@@ -378,7 +378,7 @@ func init() {
 				ExtraData:         []string{"toolkit_tkinter_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_stretch_amd64.tar.xz", "crostini_test_container_rootfs_stretch_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
@@ -391,7 +391,7 @@ func init() {
 				ExtraData:         []string{"toolkit_tkinter_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
@@ -405,7 +405,7 @@ func init() {
 				ExtraData:         []string{"toolkit_tkinter_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_stretch_arm.tar.xz", "crostini_test_container_rootfs_stretch_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactStretch(),
+				Pre:               crostini.StartedByComponentStretch(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
@@ -418,7 +418,7 @@ func init() {
 				ExtraData:         []string{"toolkit_tkinter_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
@@ -432,7 +432,7 @@ func init() {
 				ExtraData:         []string{"toolkit_tkinter_demo.py", "crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
@@ -445,7 +445,7 @@ func init() {
 				ExtraData:         []string{"toolkit_tkinter_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
@@ -459,7 +459,7 @@ func init() {
 				ExtraData:         []string{"toolkit_tkinter_demo.py", "crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByArtifactBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 				Val: toolkitConfig{
 					data:    "toolkit_tkinter_demo.py",
