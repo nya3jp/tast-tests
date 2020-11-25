@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de87dd3d_0b155925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-25T17:14:45Z",
+      "side": 1,
+      "message": "This will fail on some DUTs:\n\n1. DUTs with no EC, such tidus, will not have the `ectool` command.\n2. DUTs with a Wilco EC, such as sarien, have `ectool` but seem to throw an error for `ectool motionsense`:\n\n    \u003e ectool motionsense spoof 0 activity 4\n    Port 0x204,0x200 are both 0xFF.\n    Very likely this board doesn\u0027t have a Chromium EC.\n    Cannot find I2C adapter\n    Unable to establish host communication\n    Couldn\u0027t find EC\n\nYou can wait for actual results to come in on Tastboard to verify this, but it might make sense to add to `HardwareDeps: hwdep.D(hwdep.ChromeEC())`, as in the following example: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/ec_version.go",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5bafb7_a0a2a1e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-25T17:14:45Z",
+      "side": 1,
+      "message": "nit/typo: \"ActivitySensorID\". Same nit applies to the 4 other comments in this file where \"ActivitySenserID\" is written.",
+      "range": {
+        "startLine": 52,
+        "startChar": 29,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3bad3d3_a0d15e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-25T17:14:45Z",
+      "side": 1,
+      "message": "As a reader, it is not clear to me what the difference between originalSpoofEnable and originalSpoofState is. Could you please add a comment to clarify?",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64e46076_c542db19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-25T17:14:45Z",
+      "side": 1,
+      "message": "style: Rather than setting to a 0-value and then overwriting, I think the test logic would be clearer if you set originalSpoofEnable directly upon creation:\n\n    originalSpoofEnable \u003d strings.Contains(string(output), \"enabled\")\n    originalSpoofState :\u003d \"0\"\n    if originalSpoofEnable {\n        orignalSpoofState, err \u003d sensor.ReadAttr(\"in_proximity_raw\")\n        if err !\u003d nil {\n            s.Fatal(\"Failed to read originalSpoofState: \", err)\n        }\n    } else {\n        ...\n    }",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad36c48c_43b18bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-25T17:14:45Z",
+      "side": 1,
+      "message": "Move this line to after err has been handled (after L82)",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51242f44_ad4fe92f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-25T17:14:45Z",
+      "side": 1,
+      "message": "There are 5 instances in this file of calling `ectool motionsense spoof ActivitySensorID activity BodyDetectionID [Enable/Disable/None] [ActivityState/None]`. To reduce duplicated code, I think it would make sense to create a helper function for this.",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f1eb85_a6b9bbcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-25T17:14:45Z",
+      "side": 1,
+      "message": "It looks like this function changes the spoof activity, and never switches it back. It might be helpful to add a clarifying comment to the function, or to where the function is called at L87, specifying that it changes the state as a side-effect.",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35660bb1_546020c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-25T17:14:45Z",
+      "side": 1,
+      "message": "Do you need to handle/log this error in any way, or is breaking sufficient? A clarifying comment may be helpful here.",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
