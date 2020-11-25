@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b998b04_bbaddb15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-25T16:06:03Z",
+      "side": 1,
+      "message": "This is the default value, so can be dropped.",
+      "revId": "98d051a6ea0aa211fe58d18320c7e01cb45c40ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
