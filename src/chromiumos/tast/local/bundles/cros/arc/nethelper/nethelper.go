@@ -39,6 +39,7 @@ const (
 	okResponse     = "OK"
 	failedResponse = "FAILED"
 
+	tcCmd        = "tc"
 	iptablesCmd  = "/sbin/iptables"
 	ip6tablesCmd = "/sbin/ip6tables"
 )
@@ -52,7 +53,9 @@ var (
 type Connection struct {
 	// Contains network listeners that could be used by client to connect this server.
 	listeners []net.Listener
-	rules     []string
+	ifaces    []net.Interface
+	iprules   []string
+	tcrules   []string
 }
 
 // Close cleans up the connection descriptor.
@@ -65,7 +68,7 @@ func (c *Connection) Close(ctx context.Context) error {
 	}
 
 	// Delete iptables rules that were created.
-	for _, rule := range c.rules {
+	for _, rule := range c.iprules {
 		for _, cmd := range cmds {
 			args := append([]string{"-D"}, strings.Fields(rule)...)
 			if err := testexec.CommandContext(ctx, cmd, args...).Run(testexec.DumpLogOnError); err != nil && firstErr == nil {
@@ -77,6 +80,15 @@ func (c *Connection) Close(ctx context.Context) error {
 			if err := testexec.CommandContext(ctx, cmd, args...).Run(); err == nil && firstErr == nil {
 				firstErr = errors.Errorf("failed to verify removal of iptables rule: %s", rule)
 			}
+		}
+	}
+
+	// Delete traffic control queuing discipline rules that were created.
+	for _, rule := range c.tcrules {
+		args := append([]string{"qdisc", "del"}, strings.Fields(rule)...)
+		testing.ContextLogf(ctx, "Deleting tc-tbf configuration: %s", strings.Join(args[:], " "))
+		if err := testexec.CommandContext(ctx, tcCmd, args...).Run(testexec.DumpLogOnError); err != nil && firstErr == nil {
+			firstErr = errors.Errorf("failed to remove tc qdisc rule: %s", rule)
 		}
 	}
 
@@ -98,7 +110,7 @@ func Start(ctx context.Context, port int) (*Connection, error) {
 		}
 
 		rule := "INPUT -i " + i + " -p tcp -m tcp --dport " + strconv.Itoa(port) + " -j ACCEPT -w"
-		result.rules = append(result.rules, rule)
+		result.iprules = append(result.iprules, rule)
 		for _, cmd := range cmds {
 			args := append([]string{"-A"}, strings.Fields(rule)...)
 			if err := testexec.CommandContext(ctx, cmd, args...).Run(testexec.DumpLogOnError); err != nil {
@@ -124,6 +136,7 @@ func Start(ctx context.Context, port int) (*Connection, error) {
 		if _, ok := ifacesArcSet[regexp.MustCompile("[^a-z]+(_?[a-z]+)*$").ReplaceAllString(i.Name, "")]; !ok {
 			continue
 		}
+		result.ifaces = append(result.ifaces, i)
 		addrs, err := i.Addrs()
 		if err != nil {
 			testing.ContextLogf(ctx, "Failed to enum addresses for %s", i.Name)
@@ -160,6 +173,37 @@ func Start(ctx context.Context, port int) (*Connection, error) {
 	}
 
 	return nil, errors.Errorf("failed to start server at port %d, no address is available", port)
+}
+
+// AddTcTbf adds up traffic control token bucket filter queuing discipling for the
+// connection using speed rate (mbit), token latency (ms), and burst bucket size (kb).
+func (c *Connection) AddTcTbf(ctx context.Context, rate, latency, burst int) error {
+	if len(c.ifaces) == 0 {
+		return errors.New("failed to obtain connection interface")
+	}
+
+	for _, i := range c.ifaces {
+		rule := "dev " + i.Name + " root tbf rate " + strconv.Itoa(rate) + "mbit latency " + strconv.Itoa(latency) + "ms burst " + strconv.Itoa(burst) + "kb"
+		c.tcrules = append(c.tcrules, rule)
+		args := append([]string{"qdisc", "add"}, strings.Fields(rule)...)
+		testing.ContextLogf(ctx, "Adding tc-tbf configuration: %s", strings.Join(args[:], " "))
+		if err := testexec.CommandContext(ctx, tcCmd, args...).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to add tc-tbf rule: %s", rule)
+		}
+
+		// Check rules were added in tc qdisc for device.
+		args = append([]string{"qdisc", "show", "dev"}, i.Name)
+		out, err := testexec.CommandContext(ctx, tcCmd, args...).Output()
+		if err != nil {
+			return errors.Wrapf(err, "failed to verify addition of tc-tbf rule: %s", rule)
+		}
+		fields := strings.Fields(string(out))
+		if fields[1] != "tbf" {
+			return errors.Errorf("failed to show tc-tbf was added: %s", out)
+		}
+	}
+
+	return nil
 }
 
 func listenForClients(ctx context.Context, listener net.Listener) {
