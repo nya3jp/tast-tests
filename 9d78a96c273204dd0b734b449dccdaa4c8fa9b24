@@ -70,6 +70,30 @@
       },
       "revId": "9d78a96c273204dd0b734b449dccdaa4c8fa9b24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7603c7_5038e3dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459272
+      },
+      "writtenOn": "2020-11-25T02:34:56Z",
+      "side": 1,
+      "message": "yes. thank you. i did in \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2556730 and listed as Cq-Depend in this change. and \n$ tast test chromeos6-row2-rack24-host21.cros \u0027(\"group:camera-postsubmit\")\u0027\nsuccessfully test thest tests.\n\nmwarton@, can you +2 that CL? thanks!",
+      "parentUuid": "7af25e39_e2d90a50",
+      "range": {
+        "startLine": 37,
+        "startChar": 45,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "9d78a96c273204dd0b734b449dccdaa4c8fa9b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
