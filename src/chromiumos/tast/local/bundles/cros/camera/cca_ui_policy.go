@@ -164,12 +164,53 @@ func testBlockCameraFeature(ctx context.Context, fdms *fakedms.FakeDMS, cr *chro
 	if err != nil {
 		return errors.Wrap(err, "failed to get test extension connection")
 	}
-	if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
-		return errors.Wrap(err, "failed to find camera app in the launcher")
+
+	if err := launchBlockedCameraAppInLauncher(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to launch blocked camera app")
 	}
-	_, err = ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "BubbleDialogDelegateView", Name: "Camera is blocked"}, 5*time.Second)
+
+	dialogView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "BubbleDialogDelegateView", Name: "Camera is blocked"}, 5*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to get blocked dialog")
+	}
+	defer dialogView.Release(ctx)
+
+	return nil
+}
+
+func launchBlockedCameraAppInLauncher(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := launcher.OpenLauncher(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open launcher")
+	}
+	if err := launcher.Search(ctx, tconn, "Camera"); err != nil {
+		return errors.Wrap(err, "failed to search for Camera app")
+	}
+
+	var appNode *ui.Node
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		searchResultView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "SearchResultPageView"}, time.Second)
+		if err != nil {
+			return errors.Wrap(err, "failed to find Search Result Container")
+		}
+		defer searchResultView.Release(ctx)
+
+		appNode, err = searchResultView.DescendantWithTimeout(ctx, ui.FindParams{Name: "Camera, Installed App, Blocked"}, time.Second)
+		if err != nil {
+			return errors.Wrap(err, "failed to wait for camera icon show up in the search result")
+		}
+
+		if err := appNode.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 3 * time.Second}); err != nil {
+			appNode.Release(ctx)
+			return errors.Wrap(err, "failed to wait for search result window positioned")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for search result")
+	}
+	defer appNode.Release(ctx)
+
+	if err := appNode.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to launch app")
 	}
 	return nil
 }
