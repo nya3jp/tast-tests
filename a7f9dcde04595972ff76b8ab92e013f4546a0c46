@@ -16,6 +16,148 @@
       "message": "Thanks for your detailed review!",
       "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1b63e4_b073df36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T17:46:34Z",
+      "side": 1,
+      "message": "Sorry for delay as I\u0027m CrOS sheriff this and last week.  Please also ask your teammate to review the code.",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80198ad2_2a45e210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T17:46:34Z",
+      "side": 1,
+      "message": "No delay? If so, just fill 0.",
+      "range": {
+        "startLine": 26,
+        "startChar": 22,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9cc672a_b3e992c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T17:46:34Z",
+      "side": 1,
+      "message": "// In JSON, the field\u0027s name is \"line\", though it is a list of lines.",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2880339_12ebb672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T17:46:34Z",
+      "side": 1,
+      "message": "This is a blocking call, right? What if ctx timeout reached? Would it stop? I think it is still blocked.",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b58d99d_1ddbf4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T17:46:34Z",
+      "side": 1,
+      "message": "Where does the calculated lag value go?",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea86676f_30a24837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T17:46:34Z",
+      "side": 1,
+      "message": "The maximum value of time.Duration is about 290 years. I think the code shall not live longer than year 2260 so it should be fine :)",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7133f07_bbed362a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T17:46:34Z",
+      "side": 1,
+      "message": "Though the bottleneck is not here, I\u0027m still afraid that a user reading your code wondering why it searches the already checked frame data. How about:\n\n\tts :\u003d timestamps[0]\n\ti :\u003d 0\n\tsearchKey :\u003d keyToPress\n\tfor j, frameData :\u003d range ocrData.FrameMetaData {\n\t\t// match searchKey in frameData.Lines\n\t\tif found {\n\t\t\tframeCaptureTime :\u003d ...\n\t\t\tlagResults[i] \u003d ts.Sub(frameCaptureTime)\n\t\t\ti++\n\t\t\tif i \u003e\u003d len(timestamps) {\n\t\t\t\tbreak\n\t\t\t}\n\t\t\tts \u003d timestamps[i]\n\t\t\tsearchKey +\u003d keyToPress\n\t\t}\n\t}\n\nAlso, I feel that it is worth to write an unittest for this function.",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec0b5439_bbd1d283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T17:46:34Z",
+      "side": 1,
+      "message": "Looks like the interval of keypress events are not the same. Is this expected?",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
