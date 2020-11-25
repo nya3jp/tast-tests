@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1809bdc_05fe1762",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-25T16:15:40Z",
+      "side": 1,
+      "message": "nit: unused. Could you drop?",
+      "range": {
+        "startLine": 177,
+        "startChar": 19,
+        "endLine": 177,
+        "endChar": 40
+      },
+      "revId": "6ea2201d0c522574339909711a2ae835fc544a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf85d27f_2fda3f72",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-25T16:15:40Z",
+      "side": 1,
+      "message": "nit/style: can this be fit in a line?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "6ea2201d0c522574339909711a2ae835fc544a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c85f143a_708ef9d8",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-25T16:15:40Z",
+      "side": 1,
+      "message": "Hmm... sorry my comment might not be clear enough.\n\nIf Lacros is launched from UI, like Shelf, defaultChromeOptions are needed, because the code to launch lacros-chrome in ash-chrome looks at it.\nIf Lacros is launched from command line, --lacros-mojo-socket-for-testing is needed, but the defaultChromeOptions is unneeded, because lacros-chrome is directly launched.",
+      "range": {
+        "startLine": 48,
+        "startChar": 41,
+        "endLine": 48,
+        "endChar": 131
+      },
+      "revId": "6ea2201d0c522574339909711a2ae835fc544a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
