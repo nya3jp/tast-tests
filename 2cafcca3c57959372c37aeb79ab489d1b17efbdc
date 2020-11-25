@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bce5190_adbfd7a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T02:46:23Z",
+      "side": 1,
+      "message": "Hmm... so previous ones are all defined in test files. I\u0027m not sure if there will be other tests using policy.ForceYouTubeRestrict. If not, then I think it\u0027s OK to be defined in test files. Otherwise, as Tast doesn\u0027t allow referencing symbols in other test files, it will have to be place in support library. (Or still, it can be moved to policy package only when needed.)\n\nFeel free to close this if you think it\u0027s simpler to place the enum here.",
+      "parentUuid": "5dbe7dfa_7066d921",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "2cafcca3c57959372c37aeb79ab489d1b17efbdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35561443_36e7fb2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
         "patchSetId": 1
