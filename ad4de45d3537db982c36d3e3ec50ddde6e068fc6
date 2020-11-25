@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5fee45_56cf8db6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/sshfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-25T21:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e778427e_0a420836",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "ad4de45d3537db982c36d3e3ec50ddde6e068fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec3973e7_e5111e7a",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-11-25T05:24:46Z",
       "side": 1,
       "message": "nit: according to https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures, \"got %q; expected %q\" might be preferred order in golang.",
+      "range": {
+        "startLine": 107,
+        "startChar": 48,
+        "endLine": 107,
+        "endChar": 78
+      },
+      "revId": "ad4de45d3537db982c36d3e3ec50ddde6e068fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ffd1ec_15e0921a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/sshfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-11-25T21:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec3973e7_e5111e7a",
       "range": {
         "startLine": 107,
         "startChar": 48,
