@@ -16,6 +16,23 @@
       "message": "Hi Everybody:\n\nIn the latest patch, I just\n\n1. Addressed the two review comments.\n2. I found a problem running the test on kaisa and flaffy. It was ok after I followed David\u0027s suggestion to add a hardware dependency in the tablet mode.\n3. I just tested the new code with fleex (clamshell), kodama (tablet) drallion (clamshell), dru(tablet), hana (convertible), octopus (convertible), jax (chromebox), flaffy (chromebox), kaisa (chromebox) and sparky360 (convertible).\n\nThe tests are either passed or skipped (no support on tablet mode or no internal display).\n\nPlease review.\n\nThanks.\n\nSeewai",
       "revId": "c02d277d627d66aac955db5b23ad572a74cf5374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4522f302_f2986bd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-11-25T19:19:02Z",
+      "side": 1,
+      "message": "Forgot to mention one more thing. I found \"Files\" on the shelf in some models. Therefore, it could not be pinned. I used fake apps for pinning purpose.",
+      "revId": "c02d277d627d66aac955db5b23ad572a74cf5374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
