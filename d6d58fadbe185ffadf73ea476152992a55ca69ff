@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37b32e4_6689a9ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-11-25T18:47:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "badc84fd_4a366a44",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 16
+      },
+      "revId": "d6d58fadbe185ffadf73ea476152992a55ca69ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a4aadba_0439659f",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-11-24T19:45:06Z",
       "side": 1,
       "message": "super nit: combine line and then also combine follow if as else if.",
+      "range": {
+        "startLine": 559,
+        "startChar": 1,
+        "endLine": 560,
+        "endChar": 16
+      },
+      "revId": "d6d58fadbe185ffadf73ea476152992a55ca69ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8745149_e6b4b175",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-11-25T18:47:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a4aadba_0439659f",
       "range": {
         "startLine": 559,
         "startChar": 1,
