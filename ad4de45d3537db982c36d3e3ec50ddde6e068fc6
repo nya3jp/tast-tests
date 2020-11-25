@@ -16,6 +16,69 @@
       "message": "I\u0027m out sick this week, reassigning.",
       "revId": "ad4de45d3537db982c36d3e3ec50ddde6e068fc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb739628_c4b2a9ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T05:24:46Z",
+      "side": 1,
+      "message": "+2 for tast style % nits.",
+      "revId": "ad4de45d3537db982c36d3e3ec50ddde6e068fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e778427e_0a420836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/sshfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T05:24:46Z",
+      "side": 1,
+      "message": "nit: According to https://github.com/golang/go/wiki/CodeReviewComments#initialisms, maybe \"SSHFS\"?",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "ad4de45d3537db982c36d3e3ec50ddde6e068fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec3973e7_e5111e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/sshfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-25T05:24:46Z",
+      "side": 1,
+      "message": "nit: according to https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures, \"got %q; expected %q\" might be preferred order in golang.",
+      "range": {
+        "startLine": 107,
+        "startChar": 48,
+        "endLine": 107,
+        "endChar": 78
+      },
+      "revId": "ad4de45d3537db982c36d3e3ec50ddde6e068fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
