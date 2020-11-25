@@ -16,6 +16,23 @@
       "message": "Thanks for adding the test.\nLGTM",
       "revId": "220c233bca902b6b2ae7bdf33d2cc090912224a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "301e3289_ba8aeb0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302390
+      },
+      "writtenOn": "2020-11-25T13:34:40Z",
+      "side": 1,
+      "message": "Hi deanliao@,\n\nCould you please take a look? I need your lgtm to be able to submit the CL :) ",
+      "revId": "220c233bca902b6b2ae7bdf33d2cc090912224a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
