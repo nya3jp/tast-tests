@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -47,9 +46,9 @@ func Notification(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 
 	const (
-		apk      = "ArcNotificationTest.apk"
-		pkg      = "org.chromium.arc.testapp.notification"
-		activity = pkg + "/.NotificationActivity"
+		apk = "ArcNotificationTest.apk"
+		pkg = "org.chromium.arc.testapp.notification"
+		cls = ".NotificationActivity"
 
 		// UI IDs in the app.
 		idPrefix = pkg + ":id/"
@@ -78,9 +77,16 @@ func Notification(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Launching app")
-	if err := a.Command(ctx, "am", "start", "-W", activity).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to launch the app: ", err)
+	act, err := arc.NewActivity(a, pkg, cls)
+	if err != nil {
+		s.Fatal("Failed to create a new activity: ", err)
 	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed to start the activity: ", err)
+	}
+	defer act.Stop(ctx, tconn)
 
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
