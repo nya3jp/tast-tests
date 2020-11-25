@@ -16,6 +16,23 @@
       "message": "thanks for the quick review",
       "revId": "d7de98b441b32f345504a46b98aaa0ac7426b299",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a46417_3659c10b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-25T02:49:39Z",
+      "side": 1,
+      "message": "Kick a new dry run to make things green",
+      "revId": "d7de98b441b32f345504a46b98aaa0ac7426b299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
