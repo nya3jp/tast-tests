@@ -69,6 +69,23 @@
       "message": "LGTM",
       "revId": "9634db19023e2daaff6e4af636f34088035a21a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d55259f_45155940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302390
+      },
+      "writtenOn": "2020-11-25T13:34:58Z",
+      "side": 1,
+      "message": "Hi Katherine,\n\nCould you please take a look? I need your lgtm to be able to submit the CL :) ",
+      "revId": "9634db19023e2daaff6e4af636f34088035a21a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
