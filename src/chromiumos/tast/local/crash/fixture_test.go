@@ -419,18 +419,32 @@ func TestMoveAllCrashesTo(t *testing.T) {
 	}
 
 	src := filepath.Join(tmpDir, "srcdir")
+	srcSub := filepath.Join(src, "subdir")
 	dst2 := filepath.Join(tmpDir, "dstdir2")
-	if err := mkdirAll(src); err != nil {
+	if err := mkdirAll(src, srcSub); err != nil {
 		t.Fatalf("mkdirAll: %v", err)
 	}
+
+	if err := createAll(filepath.Join(src, "foo.log"),
+		filepath.Join(srcSub, "subFoo.log")); err != nil {
+		t.Fatalf("createAll: %v", err)
+	}
+
 	if err := moveAllCrashesTo(src, dst2); err != nil {
 		t.Fatalf("moveAllCrashesTo: %v", err)
 	}
 	if _, err := os.Stat(src); err != nil {
 		t.Fatalf("%s should still exist", src)
 	}
-	if _, err := os.Stat(dst2); err != nil {
-		t.Fatalf("%s should be created", dst2)
+	// Verify that foo.log was moved and that srcSub (and its contents)
+	// were not.
+	if err := statAll(dst2, filepath.Join(dst2, "foo.log"),
+		srcSub, filepath.Join(srcSub, "subFoo.log")); err != nil {
+		t.Fatalf("statAll: %s", err)
+	}
+	if err := checkNonExistent(filepath.Join(dst2, "subdir"),
+		filepath.Join(src, "foo.log")); err != nil {
+		t.Fatalf("checkNonExistent: %s", err)
 	}
 }
 
