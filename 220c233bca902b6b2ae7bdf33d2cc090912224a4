@@ -33,6 +33,46 @@
       "message": "Hi deanliao@,\n\nCould you please take a look? I need your lgtm to be able to submit the CL :) ",
       "revId": "220c233bca902b6b2ae7bdf33d2cc090912224a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cc4a914_a2c15b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T18:22:46Z",
+      "side": 1,
+      "message": "Sorry for delay as I\u0027m the CrOS sheriff of the week. One question.",
+      "revId": "220c233bca902b6b2ae7bdf33d2cc090912224a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45575a77_ea69c700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/cookies_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-25T18:22:46Z",
+      "side": 1,
+      "message": "What if err !\u003d nil \u0026\u0026 !tc.allow ?  For disallow cookie case, eval cookiesAllowed should not return error, right? If so, we shall fail the test when err !\u003d nil.",
+      "range": {
+        "startLine": 85,
+        "startChar": 57,
+        "endLine": 85,
+        "endChar": 79
+      },
+      "revId": "220c233bca902b6b2ae7bdf33d2cc090912224a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
