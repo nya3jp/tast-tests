@@ -114,7 +114,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string, 
 
 	s.Log("Starting activity")
 
-	options := []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath}
+	options := []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath, "--ez", "force_single_window", "true"}
 	if offscreen {
 		options = append(options, "--ez", "forceOffscreen", "true")
 	}
