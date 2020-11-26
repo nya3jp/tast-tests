@@ -33,6 +33,24 @@
       "message": "nit: Instead of duplicating the logic in launcher.WaitForAppResult(), should we change it directly by polling both \", Installed App\" and \", Installed App, Blocked\" names?\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/launcher/launcher.go?l\u003d91\u0026rcl\u003da38bb594ab95dc52610fa34679773d7767a7f298",
       "revId": "c16e940b7fd76160c33f3f2c702de99a6f8afc04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3d2be4_68f8db5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-11-26T03:21:03Z",
+      "side": 1,
+      "message": "Yes, it is also an option. I add the logic for ourselves because I saw Help app does the same thing as well:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/launch_help_app_from_launcher.go;rcl\u003d2b24a4e45fad79addebe2138ba57571cfda9a2ba;l\u003d46\n\nSince those methods in launcher.go are already public and our use case is rather rare (searching for a blocked app), after second thought I think maybe we can put the logic on our side just as Help app does.\n\nBut I am also okay if you think it will be more proper to have methods in launcher.go also poll for blocked apps.",
+      "parentUuid": "5bf30973_639df734",
+      "revId": "c16e940b7fd76160c33f3f2c702de99a6f8afc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
