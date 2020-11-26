@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2373e1a_30ef0d42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-26T14:00:20Z",
+      "side": 1,
+      "message": "The purpose of WaitUntilExistsStatus is to return immediately if the required status is met. It should not be used in cases when you do something, and want to check if a node appears some time after the trigger event. So in case of the false status, you start when the node is there, trigger something, and when the node is gone, you don\u0027t expect it to return, or when you know that if another node is present, and this one is not, you don\u0027t expect this one to exist again.",
+      "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
