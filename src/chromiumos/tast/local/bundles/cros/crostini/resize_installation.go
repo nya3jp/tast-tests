@@ -34,7 +34,6 @@ func init() {
 				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               nil,
 				Timeout:           7 * time.Minute,
 			}, {
 				Name:              "amd64_unstable",
@@ -42,14 +41,12 @@ func init() {
 				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               nil,
 				Timeout:           7 * time.Minute,
 			}, {
 				Name:              "arm_stable",
 				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               nil,
 				Timeout:           7 * time.Minute,
 			}, {
 				Name:              "arm_unstable",
@@ -57,7 +54,6 @@ func init() {
 				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               nil,
 				Timeout:           7 * time.Minute,
 			},
 		},
