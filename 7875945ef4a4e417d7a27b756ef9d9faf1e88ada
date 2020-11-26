@@ -22,6 +22,52 @@
       },
       "revId": "7875945ef4a4e417d7a27b756ef9d9faf1e88ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098738f6_22901481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-26T14:19:20Z",
+      "side": 1,
+      "message": "You don\u0027t need to add our name here.\nPlease add \n\u003e  \"chromeos-commercial-stability@google.com\",",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "7875945ef4a4e417d7a27b756ef9d9faf1e88ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b6a2eb_4dfac65f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-26T14:19:20Z",
+      "side": 1,
+      "message": "Use ServeAndVerify() if possible. (It was not possible with the AllowDinosaurEasterEgg policy.)",
+      "range": {
+        "startLine": 103,
+        "startChar": 24,
+        "endLine": 103,
+        "endChar": 39
+      },
+      "revId": "7875945ef4a4e417d7a27b756ef9d9faf1e88ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
