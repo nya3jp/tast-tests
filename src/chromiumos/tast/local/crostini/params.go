@@ -93,12 +93,10 @@ type Param struct {
 	// as the Val for each test case generated for this object.
 	Val string
 
-	// Preconditions is a map from debian version to a string
-	// containing a go expression that evaluates to the
-	// precondition that should be used to install that
-	// version. If not set, defaults to the
-	// crostini.StartedByComponent{Stretch,Buster} preconditions.
-	Preconditions map[vm.ContainerDebianVersion]string
+	// SelfManagedInstall indicates that this test will be
+	// installing crostini itself, and therefore there should be
+	// no crostini install precondition set.
+	SelfManagedInstall bool
 
 	// StableHardwareDep contains a go expression that evaluates
 	// to a hardware dependency which controls the collection of
@@ -195,6 +193,11 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 	}
 
 	for _, testCase := range baseCases {
+
+		if testCase.UseLargeContainer && !testCase.OnlyStableBoards {
+			t.Fatalf("Test %q: UseLargeContainer requires OnlyStableBoards", testCase.Name)
+		}
+
 		var namePrefix string
 		if testCase.Name != "" {
 			namePrefix = testCase.Name + "_"
@@ -256,6 +259,8 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				if i.stable {
 					if testCase.StableHardwareDep != "" {
 						hardwareDeps = testCase.StableHardwareDep
+					} else if testCase.UseLargeContainer {
+						hardwareDeps = "crostini.CrostiniAppTest"
 					} else {
 						hardwareDeps = "crostini.CrostiniStable"
 					}
@@ -269,10 +274,14 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			var precondition string
-			if testCase.Preconditions != nil {
-				precondition = testCase.Preconditions[i.debianVersion]
+			if testCase.SelfManagedInstall {
+				precondition = ""
 			} else {
-				precondition = "crostini.StartedByComponentBuster()"
+				if testCase.UseLargeContainer {
+					precondition = "crostini.StartedByComponentBusterLargeContainer()"
+				} else {
+					precondition = "crostini.StartedByComponentBuster()"
+				}
 			}
 
 			var timeout time.Duration
