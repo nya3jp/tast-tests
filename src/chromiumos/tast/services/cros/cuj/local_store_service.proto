@@ -1,0 +1,29 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.cuj;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/cuj";
+
+
+// LocalStoreService provides a service to save misc files for host machine to downloaded.
+service LocalStoreService {
+  // Create creates a folder in target machine.
+  rpc Create (google.protobuf.Empty) returns (CreateResponse) {}
+
+  // Remove pulls remote targets data
+  rpc Remove (RemoveRequest) returns (google.protobuf.Empty) {}
+}
+
+message CreateResponse {
+  string path = 1;
+}
+
+message RemoveRequest {
+  string path = 1;
+}
