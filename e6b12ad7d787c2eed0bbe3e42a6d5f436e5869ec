@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93aa9b9d_9bcd3da6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-11-26T04:16:31Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "e6b12ad7d787c2eed0bbe3e42a6d5f436e5869ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a1df4a0_eb4a373d",
@@ -65,6 +82,30 @@
       "writtenOn": "2020-11-26T02:30:35Z",
       "side": 1,
       "message": "please double check:\n20 * -100 \u003d -2000... the pointer might go offscreen on some devices (?) if so, will the test fail?",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 37
+      },
+      "revId": "e6b12ad7d787c2eed0bbe3e42a6d5f436e5869ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c55c2d9a_c0a751bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-11-26T04:16:31Z",
+      "side": 1,
+      "message": "Yup, that\u0027s the point of this test. It\u0027s trying to make mouse movements large enough that would push the mouse to the edge of the screen. But when Pointer Capture is enabled, the app should still receive relative events.\n\nI picked 2000 here because the mouse starts at the center of the screen, and a movement of 2000 should push the cursor to the edge of most displays if Pointer Capture was not enabled.\n\nAnother note is that the -100 sent in each mouse event are injected as events coming from the kernel, and there is additional scaling applied in userspace, so it doesn\u0027t necessarily correspond to pixels.",
+      "parentUuid": "1a1df4a0_eb4a373d",
       "range": {
         "startLine": 190,
         "startChar": 1,
