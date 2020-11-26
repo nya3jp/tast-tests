@@ -16,6 +16,46 @@
       "message": "jchinlee@ PTAL - first stab",
       "revId": "0a68de738284a2d156222a8f8105c1b3ee19dfde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2028c91_17e500e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-11-26T04:18:51Z",
+      "side": 1,
+      "message": "LGTM\n\nThe other encode tests seem to use _180p, _320p, _720p to name the tests instead of QVGA and VGA, if we want to match those, but the resolutions are close enough that either way sounds fine to me.",
+      "revId": "0a68de738284a2d156222a8f8105c1b3ee19dfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9e3e672_dbdd9e3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-11-26T04:18:51Z",
+      "side": 1,
+      "message": "What\u0027s the motivation for including this as a separate parameter instead of just setting the metric name to \"fps\" below directly (since this function already is specialized to fps)?",
+      "range": {
+        "startLine": 133,
+        "startChar": 32,
+        "endLine": 133,
+        "endChar": 36
+      },
+      "revId": "0a68de738284a2d156222a8f8105c1b3ee19dfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
