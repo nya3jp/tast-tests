@@ -15,6 +15,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -46,6 +48,11 @@ func WMResizableConversion(ctx context.Context, s *testing.State) {
 			// resizable/conversion: undefined orientation
 			Name: "RV_undefined_orientation",
 			Func: wmRV21,
+		},
+		wm.TestCase{
+			// resizable/conversion: split screen
+			Name: "RV_split_screen",
+			Func: wmRV22,
 		},
 	})
 }
@@ -425,5 +432,335 @@ func wmRV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	// 	return nil
 	// }, &testing.PollOptions{Timeout: 5 * time.Second})
 
+	return nil
+}
+
+// wmRV22 covers resizable/conversion: split screen.
+// Expected behavior is defined in: go/arc-wm-r RV22: resizable/conversion: split screen.
+func wmRV22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) (retErr error) {
+	// Test Steps:
+	// This test starts at landscape tablet mode.
+	// 1- Start the first activity - Under activity.
+	// 2- Start the second activity - over activity.
+	// 3- Snap the over activity to the left:
+	//   3-1- Swipe the over activity from top-center to the middle of the screen.
+	//   3-2- Continue swiping the over activity from the middle of the screen to the top-left corner.
+	//   3-3- Make sure the over activity is snapped to the left.
+	// 4- Snap the under activity to the right:
+	//   4-1- Touch the middle of the right half of the screen.
+	//   4-2- Make sure the under activity is snapped to the right.
+	// 5- Check vertical split in landscape tablet mode.
+	// 6- Convert to clamshell mode
+	// 7- Check clamshell split.
+	// 8- Convert back to tablet mode
+	// 9- Check vertical split in landscape tablet mode.
+	// 10- Rotate the screen by 270 degrees - to portrait mode.
+	// 11- Check horizontal split in portrait tablet mode.
+	// 12- Convert to clamshell mode
+	// 13- Check clamshell split.
+	// 14- Convert back to tablet mode
+	// 15- Check horizontal split in portrait tablet mode.
+
+	// This test starts at landscape tablet mode.
+	clnEnabled, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
+	if err != nil {
+		return errors.Wrap(err, "failed to ensure if tablet mode is enabled")
+	}
+	defer clnEnabled(ctx)
+
+	underActivity, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "failed to create under activity")
+	}
+	defer underActivity.Close()
+
+	// 1- Start the first activity - Under activity.
+	if err := underActivity.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start under activity")
+	}
+	defer func(ctx context.Context) {
+		if err := underActivity.Stop(ctx, tconn); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to stop under activity")
+			} else {
+				testing.ContextLog(ctx, "Failed to stop under activity: ", err)
+			}
+		}
+	}(ctx)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, underActivity, d); err != nil {
+		return errors.Wrap(err, "failed to wait until under activity is ready")
+	}
+
+	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24Secondary)); err != nil {
+		return errors.Wrap(err, "failed to install extra APK")
+	}
+	overActivity, err := arc.NewActivity(a, wm.Pkg24Secondary, wm.ResizableUnspecifiedActivity)
+	if err != nil {
+		return err
+	}
+	defer overActivity.Close()
+
+	// 2- Start the second activity - over activity.
+	if err := overActivity.Start(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to start over activity")
+	}
+	defer func(ctx context.Context) {
+		if err := overActivity.Stop(ctx, tconn); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to stop over activity")
+			} else {
+				testing.ContextLog(ctx, "Failed to stop over activity: ", err)
+			}
+		}
+	}(ctx)
+
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, overActivity, d); err != nil {
+		return errors.Wrap(err, "failed to wait until over activity is ready")
+	}
+
+	pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	if pdInfo == nil {
+		return errors.New("failed to find primary display info")
+	}
+
+	tew, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create touch screen event writer")
+	}
+	defer tew.Close()
+
+	stw, err := tew.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "failed to create single touch screen writer")
+	}
+	defer stw.Close()
+
+	tcc := tew.NewTouchCoordConverter(pdInfo.Bounds.Size())
+
+	// 3- Snap the over activity to the left - Start.
+	from := coords.NewPoint(pdInfo.WorkArea.Width/2, 0)
+	to := coords.NewPoint(pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height/2)
+
+	x0, y0 := tcc.ConvertLocation(from)
+	x1, y1 := tcc.ConvertLocation(to)
+
+	//   3-1- Swipe the over activity from top-center to the middle of the screen.
+	if err := stw.Swipe(ctx, x0, y0, x1, y1, 500*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to swipe from top-center to the middle of the screen")
+	}
+
+	//   3-2- Continue swiping the over activity from the middle of the screen to the top-left corner.
+	to = coords.NewPoint(1, 1)
+	x2, y2 := tcc.ConvertLocation(to)
+
+	if err := stw.Swipe(ctx, x1, y1, x2, y2, 500*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to swipe from the middle of the screen to the top-left corner")
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to finish the swipe gesture")
+	}
+
+	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for over activity")
+	}
+
+	//   3-3- Make sure the over activity is snapped to the left.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get arc app window info for over activity"))
+		}
+
+		if overActivityWInfo.State != ash.WindowStateLeftSnapped {
+			return errors.Errorf("invalid window state: got %+v; want LeftSnapped", overActivityWInfo.State)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+	// 3- Snap the over activity to the left - End.
+
+	// 4- Snap the under activity to the right - Start.
+	overActivityWInfo, err = ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for over activity")
+	}
+
+	mid := coords.NewPoint(pdInfo.WorkArea.Width*3/4, pdInfo.WorkArea.Height/2)
+	x, y := tcc.ConvertLocation(mid)
+
+	//   4-1- Touch the middle of the right half of the screen.
+	if err := stw.Move(x, y); err != nil {
+		return errors.Wrap(err, "failed to move touch")
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to end touch")
+	}
+
+	//   4-2- Make sure the under activity is snapped to the right.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		underActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get arc app window info for under activity"))
+		}
+
+		if underActivityWInfo.State != ash.WindowStateRightSnapped {
+			return errors.Errorf("invalid window state: got %+v; want RightSnapped", overActivityWInfo.State)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+	// 4- Snap the under activity to the right - End.
+
+	// 5- Check vertical split in landscape tablet mode.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := wm.CheckVerticalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+			return errors.Wrap(err, "failed to assert vertical split window bounds before conversion")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+
+	// 6- Convert to clamshell mode
+	clnDisabled, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		return errors.Wrap(err, "failed to ensure if tablet mode is disabled from landscape tablet mode")
+	}
+	defer clnDisabled(ctx)
+
+	// 7- Check clamshell split.
+	if err := checkClamshellSplit(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to check clamshell split after converting from landscape tablet mode")
+	}
+
+	// 8- Convert back to tablet mode
+	clnEnabled2, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
+	if err != nil {
+		return errors.Wrap(err, "failed to ensure if tablet mode is enabled from clamshell mode")
+	}
+	defer clnEnabled2(ctx)
+
+	// 9-Check vertical split in landscape tablet mode.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := wm.CheckVerticalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+			return errors.Wrap(err, "failed to assert vertical split window bounds after converting to landscape tablet mode from clamshell")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+
+	// 10- Rotate the screen by 270 degrees - to portrait mode.
+	clnRotation, err := wm.RotateDisplay(ctx, tconn, display.Rotate270)
+	if err != nil {
+		return errors.Wrap(err, "failed to rotate the display by 270 degrees")
+	}
+	defer clnRotation()
+
+	if err := testing.Sleep(ctx, wm.RotationAnimationDuration); err != nil {
+		return errors.Wrap(err, "failed to sleep for rotation to landscape animation to finish")
+	}
+
+	pdInfo, err = display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	// 11- Check horizontal split in portrait tablet mode.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := wm.CheckHorizontalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+			return errors.Wrap(err, "failed to assert horizontal split window bounds after rotating to portrait tablet mode from landscape tablet mode")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+
+	// 12- Convert to clamshell mode
+	clnDisabled2, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		return errors.Wrap(err, "failed to ensure if tablet mode is disabled from portrait tablet mode")
+	}
+	defer clnDisabled2(ctx)
+
+	// 13- Check clamshell split.
+	if err := checkClamshellSplit(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to check clamshell split")
+	}
+
+	// 14- Convert to tablet mode
+	clnEnabled3, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
+	if err != nil {
+		return errors.Wrap(err, "failed to ensure if tablet mode is enabled from clamshell mode")
+	}
+	defer clnEnabled3(ctx)
+
+	// 15- Check horizontal split in portrait tablet mode.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := wm.CheckHorizontalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+			return errors.Wrap(err, "failed to assert horizontal split window bounds after converting to portrait tablet mode from clamshell")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// checkClamshellSplit helps to assert window bounds in clamshell split mode.
+func checkClamshellSplit(ctx context.Context, tconn *chrome.TestConn) error {
+	// 7- Get app window info in clamshell mode - Start.
+	pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	leftWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for left activity")
+	}
+
+	if leftWInfo.State != ash.WindowStateLeftSnapped {
+		return errors.Errorf("invlaid window state: got %+v; want LeftSnapped", leftWInfo.State)
+	}
+
+	rightWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window info for right activity")
+	}
+
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, rightWInfo.ID); err != nil {
+		return errors.Wrap(err, "failed to wait for window finish animating")
+	}
+
+	if rightWInfo.State != ash.WindowStateRightSnapped {
+		return errors.Errorf("invlaid window state: got %+v; want RightSnapped", rightWInfo.State)
+	}
+
+	lWant := coords.NewRect(0, 0, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
+	rWant := coords.NewRect(pdInfo.WorkArea.Width/2, 0, pdInfo.WorkArea.Width/2, pdInfo.WorkArea.Height)
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if leftWInfo.BoundsInRoot != lWant {
+			return errors.Errorf("invalid snapped to the left activity bounds: got %+v; want %+v",
+				leftWInfo.BoundsInRoot, lWant)
+		}
+
+		if rightWInfo.BoundsInRoot != rWant {
+			return errors.Errorf("invalid snapped to the right activity bounds: got %+v; want %+v",
+				rightWInfo.BoundsInRoot, rWant)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
 	return nil
 }
