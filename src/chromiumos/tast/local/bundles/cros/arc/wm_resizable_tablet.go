@@ -378,7 +378,7 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	// 4- Snap the under activity to the right - End.
 
 	// 5- Get app window info for assertions. Over activity must be snapped to the left and under activity to the right.
-	if err := checkVerticalSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+	if err := wm.CheckVerticalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
 		return errors.Wrap(err, "failed to assert vertical split window bounds before rotation")
 	}
 
@@ -394,7 +394,7 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// 7- Get app window info for assertions. Over activity must be snapped to the top and under activity to the bottom.
-	if err := checkHorizontalSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+	if err := wm.CheckHorizontalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
 		return errors.Wrap(err, "failed to assert horizontal split window bounds in portrait mode")
 	}
 
@@ -410,74 +410,8 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// 9- Get app window info for assertions. Over activity must be snapped to the left and under activity to the right.
-	if err := checkVerticalSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
+	if err := wm.CheckVerticalTabletSplit(ctx, tconn, pdInfo.WorkArea); err != nil {
 		return errors.Wrap(err, "failed to assert vertical split window bounds after rotation")
-	}
-
-	return nil
-}
-
-// checkVerticalSplit helps to assert window bounds in vertical split mode.
-func checkVerticalSplit(ctx context.Context, tconn *chrome.TestConn, displayWorkArea coords.Rect) error {
-	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
-	if err != nil {
-		return errors.Wrap(err, "failed to get arc app window info for over activity")
-	}
-	underActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return errors.Wrap(err, "failed to get arc app window info for under activity")
-	}
-	// Over activity must be snapped to the left.
-	if overActivityWInfo.BoundsInRoot.Left != 0 ||
-		overActivityWInfo.BoundsInRoot.Top != 0 ||
-		overActivityWInfo.BoundsInRoot.Width >= displayWorkArea.Width/2 ||
-		overActivityWInfo.BoundsInRoot.Height != displayWorkArea.Height {
-		return errors.Errorf("invalid snapped to the left activity bounds, got: Left = %d, Top = %d, Width = %d, Height = %d; want: Left = 0, Top = 0, Width < %d, Height = %d",
-			overActivityWInfo.BoundsInRoot.Left, overActivityWInfo.BoundsInRoot.Top, overActivityWInfo.BoundsInRoot.Width, overActivityWInfo.BoundsInRoot.Height, displayWorkArea.Width/2, displayWorkArea.Height)
-	}
-	// Under activity must be snapped to the right.
-	if underActivityWInfo.BoundsInRoot.Left <= displayWorkArea.Width/2 ||
-		underActivityWInfo.BoundsInRoot.Top != 0 ||
-		underActivityWInfo.BoundsInRoot.Width >= displayWorkArea.Width/2 ||
-		underActivityWInfo.BoundsInRoot.Height != displayWorkArea.Height ||
-		underActivityWInfo.BoundsInRoot.Left+underActivityWInfo.BoundsInRoot.Width != displayWorkArea.Width {
-		return errors.Errorf("invalid snapped to the right activity bounds, got: Left = %d, Top = %d, Width = %d, Height = %d, Right = %d; want: Left > %d, Top = 0, Width < %d, Height = %d, Right = %d",
-			underActivityWInfo.BoundsInRoot.Left, underActivityWInfo.BoundsInRoot.Top, underActivityWInfo.BoundsInRoot.Width, underActivityWInfo.BoundsInRoot.Height,
-			underActivityWInfo.BoundsInRoot.Left+underActivityWInfo.BoundsInRoot.Width, displayWorkArea.Width/2, displayWorkArea.Width/2, displayWorkArea.Height, displayWorkArea.Width)
-	}
-
-	return nil
-}
-
-// checkHorizontalSplit helps to assert window bounds in horizontal split mode.
-func checkHorizontalSplit(ctx context.Context, tconn *chrome.TestConn, displayWorkArea coords.Rect) error {
-	underActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return errors.Wrap(err, "failed to get arc app window info for under activity")
-	}
-	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
-	if err != nil {
-		return errors.Wrap(err, "failed to get arc app window info for over activity")
-	}
-
-	// Over activity must be snapped to the top.
-	if overActivityWInfo.BoundsInRoot.Left != 0 ||
-		overActivityWInfo.BoundsInRoot.Top != 0 ||
-		overActivityWInfo.BoundsInRoot.Width != displayWorkArea.Width ||
-		overActivityWInfo.BoundsInRoot.Height >= displayWorkArea.Height/2 {
-		return errors.Errorf("invalid snapped to the top activity bounds, got: Left = %d, Top = %d, Width = %d, Height = %d; want: Left = 0, Top = 0, Width = %d, Height < %d",
-			overActivityWInfo.BoundsInRoot.Left, overActivityWInfo.BoundsInRoot.Top, overActivityWInfo.BoundsInRoot.Width, overActivityWInfo.BoundsInRoot.Height,
-			displayWorkArea.Width, displayWorkArea.Height/2)
-	}
-	// Under activity must be snapped to the bottom.
-	if underActivityWInfo.BoundsInRoot.Left != 0 ||
-		underActivityWInfo.BoundsInRoot.Top <= displayWorkArea.Height/2 ||
-		underActivityWInfo.BoundsInRoot.Width != displayWorkArea.Width ||
-		underActivityWInfo.BoundsInRoot.Height >= displayWorkArea.Height/2 ||
-		underActivityWInfo.BoundsInRoot.Top+underActivityWInfo.BoundsInRoot.Height != displayWorkArea.Height {
-		return errors.Errorf("invalid snapped to the bottom activity bounds, got: Left = %d, Top = %d, Width = %d, Height = %d; want: Left = 0, Top > %d, Width = %d, Height < %d",
-			underActivityWInfo.BoundsInRoot.Left, underActivityWInfo.BoundsInRoot.Top, underActivityWInfo.BoundsInRoot.Width, underActivityWInfo.BoundsInRoot.Height,
-			displayWorkArea.Height/2, displayWorkArea.Width, displayWorkArea.Height/2)
 	}
 
 	return nil
