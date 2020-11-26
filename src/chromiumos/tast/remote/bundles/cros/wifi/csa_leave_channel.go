@@ -23,7 +23,7 @@ func init() {
 		Func:        CSALeaveChannel,
 		Desc:        "Verifies that DUT will move off-channel after the AP sends a Spectrum Management action frame with a Channel Move element",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func"},
+		Attr:        []string{"group:wificell", "wificell_func", "wificell_cq"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
