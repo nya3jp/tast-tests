@@ -235,10 +235,21 @@ func StartedByComponentStretch() testing.Precondition { return startedByComponen
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByComponentBuster() testing.Precondition { return startedByComponentBusterPre }
 
+// StartedByDlcBuster is like StartedByComponentBuster, except for
+// setting up the VM via DLC.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedByDlcBuster() testing.Precondition { return startedByDlcBusterPre }
+
 // StartedByComponentBusterLargeContainer is similar to StartedByComponentBuster,
 // but will download the large container which has apps (Gedit, Emacs, Eclipse, Android Studio, and Visual Studio) installed.
 func StartedByComponentBusterLargeContainer() testing.Precondition {
 	return startedByComponentBusterLargeContainerPre
+}
+
+// StartedByDlcBusterLargeContainer is similar to StartedByDlcBuster,
+// but will download the large container which has apps (Gedit, Emacs, Eclipse, Android Studio, and Visual Studio) installed.
+func StartedByDlcBusterLargeContainer() testing.Precondition {
+	return startedByDlcBusterLargeContainerPre
 }
 
 type vmSetupMode int
@@ -271,10 +282,26 @@ var startedByComponentBusterPre = &preImpl{
 	debianVersion: vm.DebianBuster,
 }
 
+var startedByDlcBusterPre = &preImpl{
+	name:          "crostini_started_by_dlc_buster",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	vmMode:        dlc,
+	container:     normal,
+	debianVersion: vm.DebianBuster,
+}
+
 var startedByComponentBusterLargeContainerPre = &preImpl{
 	name:          "crostini_started_by_component_buster_large_container",
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
 	vmMode:        component,
+	container:     largeContainer,
+	debianVersion: vm.DebianBuster,
+}
+
+var startedByDlcBusterLargeContainerPre = &preImpl{
+	name:          "crostini_started_by_dlc_buster_large_container",
+	timeout:       chrome.LoginTimeout + 10*time.Minute,
+	vmMode:        dlc,
 	container:     largeContainer,
 	debianVersion: vm.DebianBuster,
 }
