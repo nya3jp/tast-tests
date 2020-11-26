@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28afa5f5_287311a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-26T22:28:17Z",
+      "side": 1,
+      "message": "This is a high risk change as it removes potentially all testing of Crostini independently of ARC++. \n\nParticularly as ARC++ moves to ARCVM there is a risk of introducing dependencies of Crostini on a running ARC that may break Crostini for users who do not have ARC enabled.\n\nWhile the code looks ok, this is a change that needs to be discussed with and signed off by the whole team.\n\nLets schedule a meeting, or discuss in standup next week. ",
+      "revId": "324e9f0318cde3ee003878de3c4157c28384c0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
