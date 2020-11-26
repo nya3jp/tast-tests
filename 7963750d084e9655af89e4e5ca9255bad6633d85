@@ -16,6 +16,23 @@
       "message": "I have submitted a more complete implementation in terms of the framework around APIface, TestFixture and Pre. Please review.\nThere is still some cleanup required but I\u0027d rather finish this after a review of the work so far.\nAnd actual implementation of Cisco AP wrapper is empty but this will be a separate large CL.",
       "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a03c09_bdbbf40b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-26T17:28:00Z",
+      "side": 1,
+      "message": "I\u0027m the CrOS Sheriff of the week. I\u0027ll try my best to review the CL on Friday or this weekend.",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
