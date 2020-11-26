@@ -16,6 +16,144 @@
       "message": "PTAL, Should I remove managedbookmarks autotests in this CL?",
       "revId": "91acb096dec31891586fde8c224509ad8ad543ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009ffa93_19e75279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-26T14:16:17Z",
+      "side": 1,
+      "message": "It looks funny. Can you change it to \"folder\" or \"topLevel\"?",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "91acb096dec31891586fde8c224509ad8ad543ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aafecb3f_7c38dbbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-26T14:16:17Z",
+      "side": 1,
+      "message": "You don\u0027t test anything in this case. I think it can be skipped.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "91acb096dec31891586fde8c224509ad8ad543ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb71a30_d2a3367c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-26T14:16:17Z",
+      "side": 1,
+      "message": "There should be only one here.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 6
+      },
+      "revId": "91acb096dec31891586fde8c224509ad8ad543ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ef4209_f122eb2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-26T14:16:17Z",
+      "side": 1,
+      "message": "topLvl is enough here.",
+      "range": {
+        "startLine": 116,
+        "startChar": 11,
+        "endLine": 116,
+        "endChar": 42
+      },
+      "revId": "91acb096dec31891586fde8c224509ad8ad543ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e27435_06977927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-26T14:16:17Z",
+      "side": 1,
+      "message": "top level bookmark folder",
+      "range": {
+        "startLine": 119,
+        "startChar": 29,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "91acb096dec31891586fde8c224509ad8ad543ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c3fc53_3bf98202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-26T14:16:17Z",
+      "side": 1,
+      "message": "If you don\u0027t need the node, use WaitUntilExists() instead.\nYou can move it into the \"if\" if you are using this function, and you don\u0027t need the defer.",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 36
+      },
+      "revId": "91acb096dec31891586fde8c224509ad8ad543ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
