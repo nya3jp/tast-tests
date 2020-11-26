@@ -14,15 +14,12 @@ import (
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/vm"
 )
 
 func TestResizeInstallationParams(t *testing.T) {
 	params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
-		Preconditions: map[vm.ContainerDebianVersion]string{
-			vm.DebianBuster: "nil",
-		},
-		MinimalSet: true,
+		MinimalSet:         true,
+		SelfManagedInstall: true,
 	}})
 	genparams.Ensure(t, "resize_installation.go", params)
 }
