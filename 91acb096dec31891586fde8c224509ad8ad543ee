@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "784d5425_d4768b84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-11-26T13:47:54Z",
+      "side": 1,
+      "message": "PTAL, Should I remove managedbookmarks autotests in this CL?",
+      "revId": "91acb096dec31891586fde8c224509ad8ad543ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
