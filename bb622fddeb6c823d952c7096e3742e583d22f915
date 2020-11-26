@@ -62,6 +62,54 @@
       },
       "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "983cbc5a_a7a75d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-26T04:52:44Z",
+      "side": 1,
+      "message": "If test this defer on L528, it looks like redundant for later since setting all display power on is also a part of test, see L557. Defer here because once test failure, the display won\u0027t be set all power on. What do you think?",
+      "parentUuid": "06cbaf01_a89048de",
+      "range": {
+        "startLine": 510,
+        "startChar": 23,
+        "endLine": 510,
+        "endChar": 26
+      },
+      "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f9c3b04_75d32008",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-26T04:52:44Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "4f4d9858_8f330eab",
+      "range": {
+        "startLine": 510,
+        "startChar": 1,
+        "endLine": 510,
+        "endChar": 6
+      },
+      "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
