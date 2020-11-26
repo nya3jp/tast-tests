@@ -179,17 +179,21 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 		debianVersion vm.ContainerDebianVersion
 		arch          string
 		stable        bool
+		vmMode        string
 	}
 	var it = []iterator{}
 
 	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
 		for _, arch := range []string{"amd64", "arm"} {
 			for _, stable := range []bool{true, false} {
-				it = append(it, iterator{
-					debianVersion: debianVersion,
-					arch:          arch,
-					stable:        stable,
-				})
+				for _, vmMode := range []string{"component", "dlc"} {
+					it = append(it, iterator{
+						debianVersion: debianVersion,
+						arch:          arch,
+						stable:        stable,
+						vmMode:        vmMode,
+					})
+				}
 			}
 		}
 	}
@@ -223,15 +227,19 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				continue
 			}
 
-			if testCase.MinimalSet && i.debianVersion != vm.DebianBuster {
+			if testCase.MinimalSet && (i.debianVersion != vm.DebianBuster || i.vmMode != "component") {
+				// The minimal set is currently buster/component
 				continue
 			}
 
 			name := ""
 			if !testCase.MinimalSet {
-				// If we're generating a minimal set then the debian version
-				// is always the same and we don't need to include it in the test name.
-				name += string(i.debianVersion) + "_"
+				// If we're generating a minimal set
+				// then the debian version and use of
+				// component/dlc is always the same
+				// and we don't need to include it in
+				// the test name.
+				name += i.vmMode + "_" + string(i.debianVersion) + "_"
 			}
 			name += i.arch
 			if !testCase.IsNotMainline && !testCase.OnlyStableBoards {
@@ -243,18 +251,25 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			// _unstable tests can never be CQ critical.
+			// dlc tests are temporarily informational while under development.
 			var extraAttr []string
-			if !i.stable && canBeCritical {
+			if (!i.stable || i.vmMode == "dlc") && canBeCritical {
 				extraAttr = append(extraAttr, "informational")
 			}
 
-			extraData := []string{
-				vm.GetVMArtifact(i.arch),
+			var extraData []string
+			if i.vmMode == "component" {
+				extraData = []string{vm.GetVMArtifact(i.arch)}
+			}
+			extraData = append(extraData,
 				getContainerMetadataArtifact(i.arch, i.debianVersion, testCase.UseLargeContainer),
 				getContainerRootfsArtifact(i.arch, i.debianVersion, testCase.UseLargeContainer),
-			}
+			)
 
 			extraSoftwareDeps := []string{i.arch}
+			if i.vmMode == "dlc" {
+				extraSoftwareDeps = append(extraSoftwareDeps, "dlc")
+			}
 
 			var hardwareDeps string
 			if !testCase.IsNotMainline {
@@ -279,9 +294,9 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			if testCase.SelfManagedInstall {
 				precondition = ""
 			} else if testCase.UseLargeContainer {
-				precondition = fmt.Sprintf("crostini.StartedByComponent%sLargeContainer()", strings.Title(string(i.debianVersion)))
+				precondition = fmt.Sprintf("crostini.StartedBy%s%sLargeContainer()", strings.Title(i.vmMode), strings.Title(string(i.debianVersion)))
 			} else {
-				precondition = fmt.Sprintf("crostini.StartedByComponent%s()", strings.Title(string(i.debianVersion)))
+				precondition = fmt.Sprintf("crostini.StartedBy%s%s()", strings.Title(i.vmMode), strings.Title(string(i.debianVersion)))
 			}
 
 			var timeout time.Duration
