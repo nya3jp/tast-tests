@@ -16,6 +16,23 @@
       "message": "Defer to Shik.",
       "revId": "c16e940b7fd76160c33f3f2c702de99a6f8afc04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf30973_639df734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-11-26T02:12:35Z",
+      "side": 1,
+      "message": "nit: Instead of duplicating the logic in launcher.WaitForAppResult(), should we change it directly by polling both \", Installed App\" and \", Installed App, Blocked\" names?\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/launcher/launcher.go?l\u003d91\u0026rcl\u003da38bb594ab95dc52610fa34679773d7767a7f298",
+      "revId": "c16e940b7fd76160c33f3f2c702de99a6f8afc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
