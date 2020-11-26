@@ -33,6 +33,24 @@
       "message": "Not really familiar with GO or this test infrastructure, although thanks for adding a test.\n\nIf you want to check the trace data, you could run our tools/busy_threads (Which generates scheduling events with predictable names) and check you see them in the trace.",
       "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e17881e_b8c08060",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-11-26T10:24:14Z",
+      "side": 1,
+      "message": "Thanks for the info. But I don\u0027t have a good way to look deep into the trace data in the test yet (only checks that the trace data file is generated, but the other checks serves as good smoke tests already).\nIt\u0027s in the plan that we ship trace_processor_shell to the test framework so that tast tests can use this feature, but trace_processor_shell can\u0027t be built using the current ebuild.",
+      "parentUuid": "b55eb17a_3e5fa8ee",
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
