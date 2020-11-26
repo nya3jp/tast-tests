@@ -40,7 +40,6 @@ func AudioRecord(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	conn, err := l.TestAPIConn(ctx)
-	//conn, err := l.NewConn(ctx, server.URL+"/audio_record_test.html")
 	if err != nil {
 		s.Fatal(err, "failed to open new tab")
 	}
