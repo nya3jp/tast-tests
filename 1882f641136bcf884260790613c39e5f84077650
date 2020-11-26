@@ -16,6 +16,23 @@
       "message": "Thanks for reviewing! Replied to comments.",
       "revId": "1882f641136bcf884260790613c39e5f84077650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e43a3e_9df76d4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-11-26T02:27:02Z",
+      "side": 1,
+      "message": "Thanks for looking into this!\n\nJust curious, have you tried playing with the variables (what does the result look like)?",
+      "revId": "1882f641136bcf884260790613c39e5f84077650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
