@@ -25,13 +25,13 @@ type momentaryPowerFunc = func() (float64, error)
 
 // CreateReadMomentaryPowerW returns a lambda that returns current momentary power consumption in W.
 func CreateReadMomentaryPowerW(ctx context.Context) (momentaryPowerFunc, error) {
-	batteryPaths, err := power.ListSysfsBatteryPaths(ctx)
+	batteryPath, err := power.SysfsBatteryPath(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get battery paths")
+		return nil, errors.Wrap(err, "failed to get a battery path")
 	}
 
 	lambda := func() (float64, error) {
-		result, err := power.ReadSystemPower(batteryPaths)
+		result, err := power.ReadSystemPower(batteryPath)
 		if err != nil {
 			return 0, errors.Wrap(err, "failed to read battery momentary power")
 		}

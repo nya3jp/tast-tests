@@ -36,18 +36,18 @@ func SetBatteryDischarge(ctx context.Context, lowBatteryMargin float64) (Cleanup
 		return nil, err
 	}
 	lowBatteryCutoff := shutdownCutoff + lowBatteryMargin
-	devPaths, err := power.ListSysfsBatteryPaths(ctx)
+	devPath, err := power.SysfsBatteryPath(ctx)
 	if err != nil {
 		return nil, err
 	}
-	capacity, err := power.ReadBatteryCapacity(devPaths)
+	capacity, err := power.ReadBatteryCapacity(devPath)
 	if err != nil {
 		return nil, err
 	}
 	if lowBatteryCutoff >= capacity {
 		return nil, errors.Errorf("battery percent %.2f is too low to start discharging", capacity)
 	}
-	status, err := power.ReadBatteryStatus(devPaths)
+	status, err := power.ReadBatteryStatus(devPath)
 	if err != nil {
 		return nil, err
 	}
