@@ -45,6 +45,7 @@ var testFiles = []string{
 	"resize_cancel.go",
 	"resize_ok.go",
 	"restart.go",
+	"run_with_arc.go",
 	"shared_font_files.go",
 	"share_downloads_add_files.go",
 	"share_downloads.go",
@@ -108,6 +109,7 @@ func TestExpensiveParams(t *testing.T) {
 var gaiaLoginTests = []string{
 	"no_access_to_drive.go",
 	"share_drive.go",
+	"share_movies.go",
 }
 
 func TestGaiaLoginParams(t *testing.T) {
