@@ -16,6 +16,24 @@
       "message": "Is it worth doing this as a remote test, and making sure the core pattern is reset after a boot? After all, there\u0027s lots of other things that can go wrong -- we can forget to call crash_reporter --init or it could be called too early before core pattern is available for writing or some such. And \"having core pattern reset on each boot\" is really the desired behavior.\n\nOTOH, I can see that\u0027s a harder test to write and a much harder test to get to critical. ",
       "revId": "765c3743e6aae2770744865e23a59e9c019e0b15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef4328f_1e1da1c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-11-26T01:13:19Z",
+      "side": 1,
+      "message": "We do have crash.ReporterStartup already. I\u0027ll extend that to test what we need.",
+      "parentUuid": "4fe6c2b9_50e9fa3c",
+      "revId": "765c3743e6aae2770744865e23a59e9c019e0b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
