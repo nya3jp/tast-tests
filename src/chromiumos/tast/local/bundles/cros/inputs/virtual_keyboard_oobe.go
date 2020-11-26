@@ -24,18 +24,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardOOBE,
 		Desc:         "Checks that the virtual keyboard works in OOBE Gaia Login",
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Vars:         []string{"inputs.signinProfileTestExtensionManifestKey"},
-		Params: []testing.Param{{
-			Name:              "stable",
-			ExtraHardwareDeps: pre.InputsStableModels,
-		}, {
-			Name:              "unstable",
-			ExtraHardwareDeps: pre.InputsUnstableModels,
-			ExtraAttr:         []string{"informational"},
-		}},
+		HardwareDeps: pre.InputsStableModels,
 	})
 }
 
