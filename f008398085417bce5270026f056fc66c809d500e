@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab0740a_14d526ca",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-26T10:25:19Z",
+      "side": 1,
+      "message": "Actually you won\u0027t have problems if you just pass one path instead of paths array.\n\nSo, maybe it makes sense to introduce one more method called\n`SysfsBatteryPath(ctx) (string, error)` which will call ListSysfsBatteryPaths and check whether there is only one battery?",
+      "range": {
+        "startLine": 63,
+        "startChar": 23,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "f008398085417bce5270026f056fc66c809d500e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a68f467e_eea887b0",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-26T10:25:19Z",
+      "side": 1,
+      "message": "nit: please rephrase it a bit to align with Go style:\n\nerror.Errorf(\"unexpected number of batteries: got %d; want 1\", len(devPaths))",
+      "range": {
+        "startLine": 65,
+        "startChar": 46,
+        "endLine": 65,
+        "endChar": 85
+      },
+      "revId": "f008398085417bce5270026f056fc66c809d500e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b75453_db93f9d5",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-26T10:25:19Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 83
+      },
+      "revId": "f008398085417bce5270026f056fc66c809d500e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
