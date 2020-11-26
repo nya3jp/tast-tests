@@ -62,7 +62,7 @@ var batteryStatusMap = map[string]BatteryStatus{
 // ReadBatteryStatus returns the current battery status.
 func ReadBatteryStatus(devPaths []string) (BatteryStatus, error) {
 	if len(devPaths) != 1 {
-		return BatteryStatusUnknown, errors.New("device has multiple batteries")
+		return BatteryStatusUnknown, errors.Errorf("device has %v batteries, but expected 1", len(devPaths))
 	}
 	devPath := devPaths[0]
 	statusStr, err := readFirstLine(path.Join(devPath, "status"))
@@ -80,7 +80,7 @@ func ReadBatteryStatus(devPaths []string) (BatteryStatus, error) {
 // which comes from /sys/class/power_supply/<supply name>/capacity.
 func ReadBatteryCapacity(devPaths []string) (float64, error) {
 	if len(devPaths) != 1 {
-		return 0, errors.New("device has multiple batteries")
+		return 0, errors.Errorf("device has %v batteries, but expected 1", len(devPaths))
 	}
 	devPath := devPaths[0]
 	capacity, err := readInt64(path.Join(devPath, "capacity"))
