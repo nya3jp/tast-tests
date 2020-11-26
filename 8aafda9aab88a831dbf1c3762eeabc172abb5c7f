@@ -16,6 +16,23 @@
       "message": "Please take a look. Thanks.",
       "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55eb17a_3e5fa8ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002871
+      },
+      "writtenOn": "2020-11-26T10:08:23Z",
+      "side": 1,
+      "message": "Not really familiar with GO or this test infrastructure, although thanks for adding a test.\n\nIf you want to check the trace data, you could run our tools/busy_threads (Which generates scheduling events with predictable names) and check you see them in the trace.",
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
