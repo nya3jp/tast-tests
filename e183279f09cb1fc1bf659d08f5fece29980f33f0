@@ -45,6 +45,30 @@
       },
       "revId": "e183279f09cb1fc1bf659d08f5fece29980f33f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "070c5129_81c29700",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-11-26T04:59:41Z",
+      "side": 1,
+      "message": "I put all the renaming in the next CL",
+      "parentUuid": "1b3a40bb_5227992c",
+      "range": {
+        "startLine": 198,
+        "startChar": 21,
+        "endLine": 198,
+        "endChar": 29
+      },
+      "revId": "e183279f09cb1fc1bf659d08f5fece29980f33f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
