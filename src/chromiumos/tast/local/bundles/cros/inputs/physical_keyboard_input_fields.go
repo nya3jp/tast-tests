@@ -62,7 +62,7 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Fail to launch inputs test server: ", err)
 	}
@@ -103,7 +103,7 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 			inputField := subtest.inputField
 
-			if err := its.ClickFieldAndWaitForActive(ctx, tconn, inputField); err != nil {
+			if err := its.ClickFieldAndWaitForActive(ctx, inputField); err != nil {
 				s.Fatal("Failed to click input field: ", err)
 			}
 

@@ -295,19 +295,24 @@ func GetSuggestions(ctx context.Context, kconn *chrome.Conn) ([]string, error) {
 	return suggestions, err
 }
 
-// WaitForDecoderEnabled waits for decoder to be enabled or disabled.
-func WaitForDecoderEnabled(ctx context.Context, cr *chrome.Chrome, enabled bool) error {
-	// TODO(b/157686038) A better solution to identify decoder status.
-	// Decoder works async in returning status to frontend IME and self loading.
-	// Using sleep temporarily before a reliable evaluation api provided in cl/339837443.
-	testing.Sleep(ctx, 10*time.Second)
+// WaitForDecoderReady waits for vk decoder status change completed.
+func WaitForDecoderReady(ctx context.Context, cr *chrome.Chrome) error {
+	bconn, err := BackgroundConn(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to create IME background connection")
+	}
+	defer bconn.Close()
+
+	if err := bconn.WaitForExpr(ctx, "i18n_input_javascript_chos_isDecoderActivated()"); err != nil {
+		return errors.Wrap(err, "failed to wait for vk decoder to be activated")
+	}
 	return nil
 }
 
 // ClickUntilVKShown repeatedly left clicks the node until the condition returns true with no error.
 // This is useful for situations where there is no indication of whether the node is ready to receive clicks.
 // The interval between clicks and the timeout can be specified using testing.PollOptions.
-func ClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, node *ui.Node) error {
+func ClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, node *ui.Node) error {
 	condition := func(ctx context.Context) (bool, error) {
 		return IsShown(ctx, tconn)
 	}
@@ -315,18 +320,18 @@ func ClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, node *ui.Nod
 	if err := node.LeftClickUntil(ctx, condition, &opts); err != nil {
 		return errors.Wrapf(err, "failed to click %v until vk shown", node)
 	}
-	return WaitLocationStable(ctx, tconn)
+	return WaitForVKReady(ctx, tconn, cr)
 }
 
 // FindAndClickUntilVKShown is similar to ClickUntilVKShown.
 // It finds element first and then performs ClickUntilVKShown.
-func FindAndClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, params ui.FindParams) error {
+func FindAndClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, params ui.FindParams) error {
 	node, err := ui.FindWithTimeout(ctx, tconn, params, 20*time.Second)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find node with params %v", params)
 	}
 	defer node.Release(ctx)
-	return ClickUntilVKShown(ctx, tconn, node)
+	return ClickUntilVKShown(ctx, tconn, cr, node)
 }
 
 // WaitForVKReady waits for virtual keyboard shown, completely positioned and decoder ready for use.
@@ -336,7 +341,7 @@ func WaitForVKReady(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chro
 		return err
 	}
 
-	return WaitForDecoderEnabled(ctx, cr, true)
+	return WaitForDecoderReady(ctx, cr)
 }
 
 // SwitchToVoiceInput changes virtual keyboard to voice input layout.

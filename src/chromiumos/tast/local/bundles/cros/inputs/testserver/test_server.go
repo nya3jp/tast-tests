@@ -109,11 +109,13 @@ const html = `<!DOCTYPE html>
 // InputsTestServer is an unified server instance being used to manage web server and connection.
 type InputsTestServer struct {
 	server *httptest.Server
+	cr     *chrome.Chrome
+	tconn  *chrome.TestConn
 	conn   *chrome.Conn
 }
 
 // Launch launches a local web server to serve inputs testing on different type of input fields.
-func Launch(ctx context.Context, cr *chrome.Chrome) (*InputsTestServer, error) {
+func Launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (*InputsTestServer, error) {
 	testing.ContextLog(ctx, "Start a local server to test inputs")
 
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -136,6 +138,8 @@ func Launch(ctx context.Context, cr *chrome.Chrome) (*InputsTestServer, error) {
 	return &InputsTestServer{
 		server: server,
 		conn:   conn,
+		cr:     cr,
+		tconn:  tconn,
 	}, nil
 }
 
@@ -156,8 +160,8 @@ func (its *InputsTestServer) WaitForFieldToBeActive(ctx context.Context, inputFi
 }
 
 // ClickFieldAndWaitForActive clicks the input field and waits for it to be active.
-func (its *InputsTestServer) ClickFieldAndWaitForActive(ctx context.Context, tconn *chrome.TestConn, inputField InputField) error {
-	if err := inputField.Click(ctx, tconn); err != nil {
+func (its *InputsTestServer) ClickFieldAndWaitForActive(ctx context.Context, inputField InputField) error {
+	if err := inputField.Click(ctx, its.tconn); err != nil {
 		return errors.Wrapf(err, "failed to click %s", inputField)
 	}
 	return its.WaitForFieldToBeActive(ctx, inputField)
@@ -177,8 +181,8 @@ func (inputField InputField) Click(ctx context.Context, tconn *chrome.TestConn) 
 	return inputField.action(ctx, tconn, actionFunc)
 }
 
-// ClickUntilVKShown clicks the input field and waits for the virtual keyboard to show up.
-func (inputField InputField) ClickUntilVKShown(ctx context.Context, tconn *chrome.TestConn) error {
+// ClickFieldUntilVKShown clicks the input field and waits for the virtual keyboard to show up.
+func (its *InputsTestServer) ClickFieldUntilVKShown(ctx context.Context, inputField InputField) error {
 	actionFunc := func(node *ui.Node) error {
 		if err := node.MakeVisible(ctx); err != nil {
 			return errors.Wrapf(err, "failed to make the %s input field visible", string(inputField))
@@ -186,9 +190,9 @@ func (inputField InputField) ClickUntilVKShown(ctx context.Context, tconn *chrom
 		if err := node.WaitLocationStable(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrapf(err, "failed to wait for %s input field location stable", inputField)
 		}
-		return vkb.ClickUntilVKShown(ctx, tconn, node)
+		return vkb.ClickUntilVKShown(ctx, its.tconn, its.cr, node)
 	}
-	return inputField.action(ctx, tconn, actionFunc)
+	return inputField.action(ctx, its.tconn, actionFunc)
 }
 
 // GetValue returns current text in the input field.

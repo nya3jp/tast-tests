@@ -19,7 +19,6 @@ import (
 // deadKeysTestCase struct encapsulates parameters for each Dead Keys test.
 type deadKeysTestCase struct {
 	inputMethodID        string
-	hasDecoder           bool
 	useA11yVk            bool
 	typingKeys           []string
 	expectedTypingResult string
@@ -53,7 +52,6 @@ func init() {
 					// "French - French keyboard" input method is decoder-backed. Dead keys
 					// are implemented differently from those of a no-frills input method.
 					inputMethodID: "xkb:fr::fra",
-					hasDecoder:    true,
 					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
 					// based on Shift and Caps states, then add Shift and Caps related
 					// typing sequences to the test case.
@@ -67,7 +65,6 @@ func init() {
 				Pre:               pre.VKEnabledClamshell(),
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:fr::fra",
-					hasDecoder:           true,
 					typingKeys:           []string{circumflex, "a"},
 					expectedTypingResult: "â",
 				},
@@ -78,7 +75,6 @@ func init() {
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:fr::fra",
-					hasDecoder:           true,
 					typingKeys:           []string{circumflex, "a"},
 					expectedTypingResult: "â",
 				},
@@ -93,8 +89,6 @@ func init() {
 					// "Catalan keyboard" input method is no-frills. Dead keys are
 					// implemented differently from those of a decoder-backed input method.
 					inputMethodID: "xkb:es:cat:cat",
-					hasDecoder:    false,
-
 					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
 					// based on Shift and Caps states, then add Shift and Caps related
 					// typing sequences to the test case.
@@ -108,7 +102,6 @@ func init() {
 				Pre:               pre.VKEnabledTablet(),
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",
-					hasDecoder:           false,
 					typingKeys:           []string{acuteAccent, "a"},
 					expectedTypingResult: "á",
 				},
@@ -119,7 +112,6 @@ func init() {
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",
-					hasDecoder:           false,
 					typingKeys:           []string{acuteAccent, "a"},
 					expectedTypingResult: "á",
 				},
@@ -135,7 +127,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
@@ -148,15 +140,8 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 
 	inputField := testserver.TextAreaNoCorrectionInputField
 
-	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+	if err := its.ClickFieldUntilVKShown(ctx, inputField); err != nil {
 		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
-	}
-
-	if testCase.hasDecoder {
-		s.Log("Wait for decoder running")
-		if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
-			s.Fatal("Failed to wait for decoder running: ", err)
-		}
 	}
 
 	if err := vkb.TapKeys(ctx, tconn, testCase.typingKeys); err != nil {

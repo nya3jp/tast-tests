@@ -106,12 +106,8 @@ func chromeVirtualKeyboardBasicEditingTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-
-	if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
-		s.Fatal("Failed to wait for the IME decoder is ready: ", err)
 	}
 
 	// Press a sequence of keys. Avoid using Space since it triggers autocomplete, which can

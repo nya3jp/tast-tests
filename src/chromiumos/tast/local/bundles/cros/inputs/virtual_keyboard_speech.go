@@ -62,15 +62,15 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	defer os.Remove(testFileLocation)
 
 	// Launch inputs test web server.
-	ts, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer ts.Close()
+	defer its.Close()
 
 	inputField := testserver.TextAreaInputField
 
-	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+	if err := its.ClickFieldUntilVKShown(ctx, inputField); err != nil {
 		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 	}
 

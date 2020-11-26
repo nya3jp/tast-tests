@@ -89,7 +89,7 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 	defer element.Release(ctx)
 
 	s.Log("Click input to trigger virtual keyboard")
-	if err := vkb.ClickUntilVKShown(ctx, tconn, element); err != nil {
+	if err := vkb.ClickUntilVKShown(ctx, tconn, cr, element); err != nil {
 		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
 	}
 

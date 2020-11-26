@@ -79,12 +79,8 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 	defer searchInputElement.Release(ctx)
 
 	s.Log("Click searchbox to trigger virtual keyboard")
-	if err := vkb.ClickUntilVKShown(ctx, tconn, searchInputElement); err != nil {
+	if err := vkb.ClickUntilVKShown(ctx, tconn, cr, searchInputElement); err != nil {
 		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
-	}
-
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard ready")
 	}
 
 	if err := vkb.TapKeys(ctx, tconn, strings.Split(typingKeys, "")); err != nil {

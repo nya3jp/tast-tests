@@ -67,12 +67,8 @@ func VirtualKeyboardTypingBrowser(ctx context.Context, s *testing.State) {
 	}
 	defer inputNode.Release(ctx)
 
-	if err := vkb.ClickUntilVKShown(ctx, tconn, inputNode); err != nil {
+	if err := vkb.ClickUntilVKShown(ctx, tconn, cr, inputNode); err != nil {
 		s.Fatal("Failed to click the input node and wait for vk shown: ", err)
-	}
-
-	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
-		s.Fatal("Failed to wait for virtual keyboard ready: ", err)
 	}
 
 	if err := vkb.TapKeys(ctx, tconn, strings.Split(typingKeys, "")); err != nil {

@@ -55,7 +55,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
@@ -97,17 +97,12 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to set settings: ", err)
 			}
 
-			s.Log("Wait for decoder running")
-			if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
-				s.Fatal("Failed to wait for virtual keyboard shown up: ", err)
-			}
-
 			// Clear text before starting input.
 			if err := its.Clear(ctx, inputField); err != nil {
 				s.Fatal("Failed to clear input field: ", err)
 			}
 
-			if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+			if err := its.ClickFieldUntilVKShown(ctx, inputField); err != nil {
 				s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 			}
 			defer vkb.HideVirtualKeyboard(ctx, tconn)

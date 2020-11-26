@@ -90,7 +90,7 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 			Attributes: map[string]interface{}{"inputType": "url"},
 		}
 
-		if err := vkb.FindAndClickUntilVKShown(ctx, tconn, params); err != nil {
+		if err := vkb.FindAndClickUntilVKShown(ctx, tconn, cr, params); err != nil {
 			s.Fatal("Failed to click the omnibox and wait for vk shown: ", err)
 		}
 

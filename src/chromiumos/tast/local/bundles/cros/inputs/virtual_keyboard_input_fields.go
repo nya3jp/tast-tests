@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -41,22 +42,24 @@ func init() {
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
 				ExtraHardwareDeps: pre.InputsMojoModels,
-			}, {
-				Name:              "jp_us_stable",
-				Pre:               pre.VKEnabledTablet(),
-				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraHardwareDeps: pre.InputsStableModels,
-			}, {
-				Name:              "jp_us_unstable",
-				Pre:               pre.VKEnabledTablet(),
-				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraHardwareDeps: pre.InputsUnstableModels,
-			}, {
-				Name:              "jp_us_mojo",
-				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
-				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraHardwareDeps: pre.InputsMojoModels,
-			}, {
+			},
+			// {
+			// 	Name:              "jp_us_stable",
+			// 	Pre:               pre.VKEnabledTablet(),
+			// 	Val:               ime.INPUTMETHOD_NACL_MOZC_US,
+			// 	ExtraHardwareDeps: pre.InputsStableModels,
+			// }, {
+			// 	Name:              "jp_us_unstable",
+			// 	Pre:               pre.VKEnabledTablet(),
+			// 	Val:               ime.INPUTMETHOD_NACL_MOZC_US,
+			// 	ExtraHardwareDeps: pre.InputsUnstableModels,
+			// }, {
+			// 	Name:              "jp_us_mojo",
+			// 	Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+			// 	Val:               ime.INPUTMETHOD_NACL_MOZC_US,
+			// 	ExtraHardwareDeps: pre.InputsMojoModels,
+			// },
+			{
 				Name:              "zh_pinyin_stable",
 				Pre:               pre.VKEnabledTablet(),
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
@@ -86,7 +89,7 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
 	}
 
-	its, err := testserver.Launch(ctx, cr)
+	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
@@ -238,10 +241,16 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 
 	for _, subtest := range subTests {
 		s.Run(ctx, string(subtest.inputField), func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+			defer func() {
+				if s.HasError() {
+					screenshot.CaptureChrome(ctx, cr, "screenshot_"+string(subtest.inputField)+".png")
+					faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+string(subtest.inputField)+".txt")
+				}
+			}()
+
 			inputField := subtest.inputField
 
-			if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
+			if err := its.ClickFieldUntilVKShown(ctx, inputField); err != nil {
 				s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 			}
 
