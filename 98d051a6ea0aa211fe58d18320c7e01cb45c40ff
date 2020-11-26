@@ -16,6 +16,24 @@
       "message": "This is the default value, so can be dropped.",
       "revId": "98d051a6ea0aa211fe58d18320c7e01cb45c40ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74df683f_b5152405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-26T07:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b998b04_bbaddb15",
+      "revId": "98d051a6ea0aa211fe58d18320c7e01cb45c40ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
