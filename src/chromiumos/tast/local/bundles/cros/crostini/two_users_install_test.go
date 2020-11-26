@@ -15,16 +15,13 @@ import (
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/vm"
 )
 
 func TestTwoUsersInstallParams(t *testing.T) {
 	params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
-		Timeout: 14 * time.Minute,
-		Preconditions: map[vm.ContainerDebianVersion]string{
-			vm.DebianBuster: "nil",
-		},
-		MinimalSet: true,
+		Timeout:            14 * time.Minute,
+		MinimalSet:         true,
+		SelfManagedInstall: true,
 	}})
 	genparams.Ensure(t, "two_users_install.go", params)
 }
