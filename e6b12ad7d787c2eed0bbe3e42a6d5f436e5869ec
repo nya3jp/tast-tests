@@ -33,6 +33,46 @@
       "message": "+Ricardo, PTAL, thanks.",
       "revId": "e6b12ad7d787c2eed0bbe3e42a6d5f436e5869ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57b8bd1_c012d3ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-26T02:30:35Z",
+      "side": 1,
+      "message": "+2 % comment",
+      "revId": "e6b12ad7d787c2eed0bbe3e42a6d5f436e5869ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1df4a0_eb4a373d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-26T02:30:35Z",
+      "side": 1,
+      "message": "please double check:\n20 * -100 \u003d -2000... the pointer might go offscreen on some devices (?) if so, will the test fail?",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 37
+      },
+      "revId": "e6b12ad7d787c2eed0bbe3e42a6d5f436e5869ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
