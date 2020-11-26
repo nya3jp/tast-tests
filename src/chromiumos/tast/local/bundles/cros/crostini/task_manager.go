@@ -115,7 +115,7 @@ func TaskManager(ctx context.Context, s *testing.State) {
 	defer taskManagerRootNode.Release(ctx)
 
 	entry, err := taskManagerRootNode.DescendantWithTimeout(ctx,
-		ui.FindParams{Name: "Linux Virtual Machine: termina"}, time.Second*5)
+		ui.FindParams{Name: "Linux Virtual Machine: termina"}, time.Second*30)
 	if err != nil {
 		s.Fatal("Couldn't find node for Crostini: ", err)
 	}
