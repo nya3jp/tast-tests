@@ -51,6 +51,161 @@
       "parentUuid": "b55eb17a_3e5fa8ee",
       "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a89397_1d0fa45b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-26T22:20:08Z",
+      "side": 1,
+      "message": "Is perfetto available on every cros device?  You don\u0027t have any hardware or software dependencies here.",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1bd2885_1d121ce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-26T22:20:08Z",
+      "side": 1,
+      "message": "Please add a group contact as well in case you are unavailable.",
+      "range": {
+        "startLine": 31,
+        "startChar": 22,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb484f6_eeeb753a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-26T22:20:08Z",
+      "side": 1,
+      "message": "tracedJob?",
+      "range": {
+        "startLine": 45,
+        "startChar": 43,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c3b2918_c9aa629a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-26T22:20:08Z",
+      "side": 1,
+      "message": "tracedProbesJob?",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0845c059_dd4f5018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-26T22:20:08Z",
+      "side": 1,
+      "message": "is this a binary or a text proto? (not sure what the --txt argument does) If a text proto please use the appropriate extension.",
+      "range": {
+        "startLine": 64,
+        "startChar": 62,
+        "endLine": 64,
+        "endChar": 67
+      },
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e81ac8_73748fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-26T22:20:08Z",
+      "side": 1,
+      "message": "You probably want testexec.DumpLogOnError here.",
+      "range": {
+        "startLine": 67,
+        "startChar": 15,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3f3d14_afd25952",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-26T22:20:08Z",
+      "side": 1,
+      "message": "Please use testing.Poll instead of Sleep for reduced flakiness",
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
