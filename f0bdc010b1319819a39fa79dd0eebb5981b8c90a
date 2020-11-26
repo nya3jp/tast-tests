@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d1a9b8_41458775",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-26T22:34:35Z",
+      "side": 1,
+      "message": "Are you able to give a more succinct explanation of these rules in a comment?\n\nIt\u0027s hard to work out the reasoning behind these (technical limitation or just a policy decision) and to tell if you have covered all the cases.",
+      "revId": "f0bdc010b1319819a39fa79dd0eebb5981b8c90a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
