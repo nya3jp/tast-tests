@@ -93,12 +93,15 @@ type Param struct {
 	// as the Val for each test case generated for this object.
 	Val string
 
-	// Preconditions is a map from debian version to a string
-	// containing a go expression that evaluates to the
-	// precondition that should be used to install that
-	// version. If not set, defaults to the
-	// crostini.StartedByComponent{Stretch,Buster} preconditions.
-	Preconditions map[vm.ContainerDebianVersion]string
+	// SelfManagedInstall indicates that this test will be
+	// installing crostini itself, and therefore there should be
+	// no crostini install precondition set.
+	SelfManagedInstall bool
+
+	// LargeVMDisk - By default the VM disk is set to max(7.5 GiB,
+	// free space). If this flag is set, this is set to 16 GiB
+	// instead.
+	LargeVMDisk bool
 
 	// StableHardwareDep contains a go expression that evaluates
 	// to a hardware dependency which controls the collection of
@@ -139,6 +142,10 @@ type Param struct {
 	// OnlyStableBoards controls whether to only use the stable
 	// board variants and exclude all the unstable variants.
 	OnlyStableBoards bool
+
+	// RealGaiaLogin - If set, use a real gaia account rather then
+	// the default tast test fake account.
+	RealGaiaLogin bool
 }
 
 type generatedParam struct {
@@ -195,6 +202,29 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 	}
 
 	for _, testCase := range baseCases {
+
+		if testCase.SelfManagedInstall && testCase.LargeVMDisk {
+			t.Fatalf("Test %q: cannot set both SelfManagedInstall and LargeVMDisk", testCase.Name)
+		}
+		if testCase.LargeVMDisk && testCase.UseLargeContainer {
+			t.Fatalf("Test %q: Can't set both LargeVMDisk and UseLargeContainer", testCase.Name)
+		}
+		if testCase.LargeVMDisk && !testCase.MinimalSet {
+			t.Fatalf("Test %q: LargeVMDisk requires MinimalSet", testCase.Name)
+		}
+		if testCase.UseLargeContainer && !testCase.MinimalSet {
+			t.Fatalf("Test %q: UseLargeContainer requires MinimalSet", testCase.Name)
+		}
+		if testCase.UseLargeContainer && !testCase.OnlyStableBoards {
+			t.Fatalf("Test %q: UseLargeContainer requires OnlyStableBoards", testCase.Name)
+		}
+		if testCase.RealGaiaLogin && testCase.LargeVMDisk {
+			t.Fatalf("Test %q: Can't set both RealGaiaLogin and LargeVMDisk", testCase.Name)
+		}
+		if testCase.RealGaiaLogin && testCase.UseLargeContainer {
+			t.Fatalf("Test %q: Can't set both RealGaiaLogin and UseLargeContainer", testCase.Name)
+		}
+
 		var namePrefix string
 		if testCase.Name != "" {
 			namePrefix = testCase.Name + "_"
@@ -256,6 +286,8 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				if i.stable {
 					if testCase.StableHardwareDep != "" {
 						hardwareDeps = testCase.StableHardwareDep
+					} else if testCase.UseLargeContainer {
+						hardwareDeps = "crostini.CrostiniAppTest"
 					} else {
 						hardwareDeps = "crostini.CrostiniStable"
 					}
@@ -269,12 +301,24 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			var precondition string
-			if testCase.Preconditions != nil {
-				precondition = testCase.Preconditions[i.debianVersion]
+			if testCase.SelfManagedInstall {
+				precondition = ""
 			} else if i.debianVersion == vm.DebianStretch {
-				precondition = "crostini.StartedByComponentStretch()"
+				if testCase.RealGaiaLogin {
+					precondition = "crostini.StartedByComponentWithGaiaLoginStretch()"
+				} else {
+					precondition = "crostini.StartedByComponentStretch()"
+				}
 			} else {
-				precondition = "crostini.StartedByComponentBuster()"
+				if testCase.LargeVMDisk {
+					precondition = "crostini.StartedTraceVM()"
+				} else if testCase.UseLargeContainer {
+					precondition = "crostini.StartedByComponentBusterLargeContainer()"
+				} else if testCase.RealGaiaLogin {
+					precondition = "crostini.StartedByComponentWithGaiaLoginBuster()"
+				} else {
+					precondition = "crostini.StartedByComponentBuster()"
+				}
 			}
 
 			var timeout time.Duration

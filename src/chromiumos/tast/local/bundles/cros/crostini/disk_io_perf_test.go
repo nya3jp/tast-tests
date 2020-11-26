@@ -15,17 +15,14 @@ import (
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/vm"
 )
 
 func TestDiskIoPerfParams(t *testing.T) {
 	params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
-		Timeout: 60 * time.Minute,
-		Preconditions: map[vm.ContainerDebianVersion]string{
-			vm.DebianBuster: "crostini.StartedTraceVM()",
-		},
+		Timeout:       60 * time.Minute,
 		MinimalSet:    true,
 		IsNotMainline: true,
+		LargeVMDisk:   true,
 	}})
 	genparams.Ensure(t, "disk_io_perf.go", params)
 }

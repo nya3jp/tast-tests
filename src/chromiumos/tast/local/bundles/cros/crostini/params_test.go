@@ -15,7 +15,6 @@ import (
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/vm"
 )
 
 var testFiles = []string{
@@ -115,10 +114,8 @@ var gaiaLoginTests = []string{
 func TestGaiaLoginParams(t *testing.T) {
 	for _, filename := range gaiaLoginTests {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
-			Preconditions: map[vm.ContainerDebianVersion]string{
-				vm.DebianStretch: "crostini.StartedByComponentWithGaiaLoginStretch()",
-				vm.DebianBuster:  "crostini.StartedByComponentWithGaiaLoginBuster()",
-			}}})
+			RealGaiaLogin: true,
+		}})
 		genparams.Ensure(t, filename, params)
 	}
 }
@@ -134,11 +131,8 @@ var appTests = []string{
 func TestAppTestParams(t *testing.T) {
 	for _, filename := range appTests {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
-			Timeout:    15 * time.Minute,
-			MinimalSet: true,
-			Preconditions: map[vm.ContainerDebianVersion]string{
-				vm.DebianBuster: "crostini.StartedByComponentBusterLargeContainer()",
-			},
+			Timeout:           15 * time.Minute,
+			MinimalSet:        true,
 			StableHardwareDep: "crostini.CrostiniAppTest",
 			UseLargeContainer: true,
 			OnlyStableBoards:  true,
