@@ -225,6 +225,16 @@ func StartedByComponentStretch() testing.Precondition { return startedByComponen
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByComponentBuster() testing.Precondition { return startedByComponentBusterPre }
 
+// StartedByDlcStretch is like StartedByComponentStretch, except for
+// setting up the VM via DLC.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedByDlcStretch() testing.Precondition { return startedByDlcStretchPre }
+
+// StartedByDlcBuster is like StartedByComponentBuster, except for
+// setting up the VM via DLC.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedByDlcBuster() testing.Precondition { return startedByDlcBusterPre }
+
 // StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
 func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 
@@ -242,6 +252,22 @@ func StartedByComponentWithGaiaLoginStretch() testing.Precondition {
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByComponentWithGaiaLoginBuster() testing.Precondition {
 	return startedByComponentWithGaiaLoginBusterPre
+}
+
+// StartedByDlcWithGaiaLoginStretch is like
+// StartedByComponentWithGaiaLoginStretch, except for setting up the
+// VM via DLC.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedByDlcWithGaiaLoginStretch() testing.Precondition {
+	return startedByDlcWithGaiaLoginStretchPre
+}
+
+// StartedByDlcWithGaiaLoginBuster is like
+// StartedByComponentWithGaiaLoginBuster, except for setting up the
+// VM via DLC.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedByDlcWithGaiaLoginBuster() testing.Precondition {
+	return startedByDlcWithGaiaLoginBusterPre
 }
 
 // StartedByComponentBusterLargeContainer is similar to StartedByComponentBuster,
@@ -287,6 +313,22 @@ var startedByComponentBusterPre = &preImpl{
 	debianVersion: vm.DebianBuster,
 }
 
+var startedByDlcStretchPre = &preImpl{
+	name:          "crostini_started_by_dlc_stretch",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	vmMode:        dlc,
+	container:     normal,
+	debianVersion: vm.DebianStretch,
+}
+
+var startedByDlcBusterPre = &preImpl{
+	name:          "crostini_started_by_dlc_buster",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	vmMode:        dlc,
+	container:     normal,
+	debianVersion: vm.DebianBuster,
+}
+
 var startedTraceVMPre = &preImpl{
 	name:          "crostini_started_trace_vm",
 	timeout:       chrome.LoginTimeout + 10*time.Minute,
@@ -309,6 +351,24 @@ var startedByComponentWithGaiaLoginBusterPre = &preImpl{
 	name:          "crostini_started_by_component_gaialogin_buster",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
 	vmMode:        component,
+	container:     normal,
+	debianVersion: vm.DebianBuster,
+	loginType:     loginGaia,
+}
+
+var startedByDlcWithGaiaLoginStretchPre = &preImpl{
+	name:          "crostini_started_by_dlc_gaialogin_stretch",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	vmMode:        dlc,
+	container:     normal,
+	debianVersion: vm.DebianStretch,
+	loginType:     loginGaia,
+}
+
+var startedByDlcWithGaiaLoginBusterPre = &preImpl{
+	name:          "crostini_started_by_dlc_gaialogin_buster",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	vmMode:        dlc,
 	container:     normal,
 	debianVersion: vm.DebianBuster,
 	loginType:     loginGaia,
