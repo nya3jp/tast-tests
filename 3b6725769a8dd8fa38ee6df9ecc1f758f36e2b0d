@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5bbe3fe_239f1d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-26T20:45:14Z",
+      "side": 1,
+      "message": "Makes sense, done!",
+      "parentUuid": "242181d6_acfe0092",
+      "revId": "3b6725769a8dd8fa38ee6df9ecc1f758f36e2b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74c7f5df_e2aeab5f",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-11-26T09:55:30Z",
       "side": 1,
       "message": "Data files should be prefixed with the test name: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Data-files\nAs it is an external data, creating new links to them shouldn\u0027t add extra size to the test.\n\nI saw that the video folder doesn\u0027t really follow this guidance, but the current structure doesn\u0027t contain much information about the data file ownerships.",
+      "revId": "3b6725769a8dd8fa38ee6df9ecc1f758f36e2b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20cd0122_8cc5cf5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-26T20:45:14Z",
+      "side": 1,
+      "message": "Since this is a larger change that just this CL, would you mind if I\ndo this in a follow up later on? Let me know if you feel strongly\nabout it.",
+      "parentUuid": "74c7f5df_e2aeab5f",
       "revId": "3b6725769a8dd8fa38ee6df9ecc1f758f36e2b0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b5a472_27b1b4a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-26T20:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad18caa7_0f7fa3f6",
+      "revId": "3b6725769a8dd8fa38ee6df9ecc1f758f36e2b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d107633e_859e0a6a",
@@ -82,6 +136,30 @@
       "writtenOn": "2020-11-26T09:55:30Z",
       "side": 1,
       "message": "minor nit: at the other functions you refer to this as logFile.",
+      "range": {
+        "startLine": 133,
+        "startChar": 32,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "3b6725769a8dd8fa38ee6df9ecc1f758f36e2b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74247c5a_32551fdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-26T20:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d107633e_859e0a6a",
       "range": {
         "startLine": 133,
         "startChar": 32,
