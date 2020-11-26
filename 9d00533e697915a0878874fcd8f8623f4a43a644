@@ -16,6 +16,46 @@
       "message": "Adding tests for focus changes for Pointer Capture. PTAL, thanks!",
       "revId": "9d00533e697915a0878874fcd8f8623f4a43a644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec74a509_ba676f11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-26T02:37:00Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "9d00533e697915a0878874fcd8f8623f4a43a644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef453673_e79db59d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-11-26T02:37:00Z",
+      "side": 1,
+      "message": "nit: this is fine, but you can reduce it by replacing it with true/false with %t\n\n\n\ne.g:\n\n  return errors.Errorf(\"unexpected enabled state; got: %t, want: %t\", ...)",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 4
+      },
+      "revId": "9d00533e697915a0878874fcd8f8623f4a43a644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
