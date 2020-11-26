@@ -228,25 +228,6 @@ func StartedByComponentBuster() testing.Precondition { return startedByComponent
 // StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
 func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 
-// StartedARCEnabled is similar to StartedByComponentBuster, but will
-// start Chrome with ARCEnabled() option.
-// Tip: Run tests with -var=keepState=true to speed up local development
-func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
-
-// StartedComponentStretchARCEnabledGaia is similar to StartedByComponentStretch, but will
-// start Chrome with ARCEnabled() option and gaia login.
-// Tip: Run tests with -var=keepState=true to speed up local development
-func StartedComponentStretchARCEnabledGaia() testing.Precondition {
-	return startedByComponentStretchARCEnabledGaiaPre
-}
-
-// StartedComponentBusterARCEnabledGaia is similar to StartedByComponentBuster, but will
-// start Chrome with ARCEnabled() option and gaia login.
-// Tip: Run tests with -var=keepState=true to speed up local development
-func StartedComponentBusterARCEnabledGaia() testing.Precondition {
-	return startedByComponentBusterARCEnabledGaiaPre
-}
-
 // StartedByComponentWithGaiaLoginStretch is similar to
 // StartedByComponentStretch, but will log in Chrome with Gaia with
 // Auth() option.
@@ -315,35 +296,6 @@ var startedTraceVMPre = &preImpl{
 	minDiskSize:   16 * settings.SizeGB, // graphics.TraceReplay relies on at least 16GB size.
 }
 
-var startedARCEnabledPre = &preImpl{
-	name:          "crostini_started_arc_enabled",
-	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	vmMode:        component,
-	container:     normal,
-	debianVersion: vm.DebianBuster,
-	arcEnabled:    true,
-}
-
-var startedByComponentStretchARCEnabledGaiaPre = &preImpl{
-	name:          "crostini_started_arc_enabled_stretch",
-	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	vmMode:        component,
-	container:     normal,
-	debianVersion: vm.DebianStretch,
-	arcEnabled:    true,
-	loginType:     loginGaia, // Needs gaia login to enable Play files.
-}
-
-var startedByComponentBusterARCEnabledGaiaPre = &preImpl{
-	name:          "crostini_started_arc_enabled_buster",
-	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	vmMode:        component,
-	container:     normal,
-	debianVersion: vm.DebianBuster,
-	arcEnabled:    true,
-	loginType:     loginGaia, // Needs gaia login to enable Play files.
-}
-
 var startedByComponentWithGaiaLoginStretchPre = &preImpl{
 	name:          "crostini_started_by_component_gaialogin_stretch",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
@@ -377,7 +329,6 @@ type preImpl struct {
 	vmMode        vmSetupMode               // Where (component/dlc) the VM comes from.
 	container     containerType             // What type of container (regular or extra-large) to use.
 	debianVersion vm.ContainerDebianVersion // OS version of the container image.
-	arcEnabled    bool                      // Flag for whether Arc++ should be available (as well as crostini).
 	minDiskSize   uint64                    // The minimum size of the VM image in bytes. 0 to use default disk size.
 	cr            *chrome.Chrome
 	tconn         *chrome.TestConn
@@ -470,7 +421,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}()
 
 	opts := []chrome.Option{chrome.ARCDisabled()}
-	if p.arcEnabled {
+
+	// Enable ARC++ if it is supported. We do this on every
+	// supported device because some tests rely on it and this
+	// lets us reduce the number of distinct preconditions. If
+	// your test relies on ARC++ you should add an appropriate
+	// software dependency.
+	if arc.Supported() {
 		if p.loginType == loginGaia {
 			opts = []chrome.Option{chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)}
 		} else {
