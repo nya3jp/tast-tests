@@ -174,7 +174,17 @@ func (ta *TerminalApp) RunCommand(ctx context.Context, keyboard *input.KeyboardE
 
 	// Type command.
 	if err := keyboard.Type(ctx, cmd); err != nil {
-		return errors.Wrapf(err, "failed to type %s in Terminal", cmd)
+		testing.ContextLogf(ctx, "Failed to type %s with the keyboard: %s", cmd, err)
+		testing.ContextLog(ctx, "Creating a local keyboard and try again")
+		keyboard, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get a keyboard")
+		}
+		defer keyboard.Close()
+
+		if err := keyboard.Type(ctx, cmd); err != nil {
+			return errors.Wrapf(err, "failed to type %s with locally created keyboard", cmd)
+		}
 	}
 
 	// Press Enter.
