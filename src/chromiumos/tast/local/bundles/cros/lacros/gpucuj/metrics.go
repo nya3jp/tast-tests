@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"math"
+	"path/filepath"
 	"sort"
 
 	"chromiumos/tast/common/perf"
@@ -18,6 +19,8 @@ import (
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
+
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 )
 
 var metricMap = map[string]struct {
@@ -297,7 +300,13 @@ func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values
 	return nil
 }
 
-func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvocation, perfFn func(ctx context.Context) error) error {
+type traceable interface {
+	StartTracing(ctx context.Context, categories []string) error
+	StopTracing(ctx context.Context) (*trace.Trace, error)
+}
+
+func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
+	invoc *testInvocation, perfFn func(ctx context.Context) error) error {
 	var keys []string
 	for k, v := range metricMap {
 		if v.uma {
@@ -311,9 +320,32 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvoca
 		return errors.Wrap(err, "failed to get RAPL snapshot")
 	}
 
+	if invoc.traceDir != "" {
+		if err := tracer.StartTracing(ctx, tracingCategories); err != nil {
+			return err
+		}
+	}
+
 	histograms, err := metrics.Run(ctx, tconn, perfFn, keys...)
 	if err != nil {
+						if _, err := tracer.StopTracing(ctx); err != nil {
+					testing.ContextLog(ctx, "Failed to stop tracing after encountering other error: ", err)
+				}
 		return errors.Wrap(err, "failed to get histograms")
+	}
+
+	if invoc.traceDir != "" {
+		tr, err := tracer.StopTracing(ctx)
+		if err != nil {
+			return err
+		}
+
+		if invoc.traceDir != "" {
+			filename := filepath.Join(invoc.traceDir, string(invoc.crt)+"-"+invoc.page.name+"-trace.data.gz")
+			if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
+				return err
+			}
+		}
 	}
 
 	raplv, err := rapl.DiffWithCurrentRAPL()

@@ -8,10 +8,7 @@ package gpucuj
 import (
 	"context"
 	"math"
-	"path/filepath"
 	"time"
-
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -73,22 +70,22 @@ var pageSet = []page{
 		name: "aquarium", // WebGL Aquarium. This page is for testing WebGL.
 		url:  "https://webglsamples.org/aquarium/aquarium.html",
 	},
-	{
-		name: "poster", // Poster Circle. This page is for testing compositor performance.
-		url:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
-	},
-	{
-		name: "maps", // Google Maps. This page is for testing WebGL.
-		url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
-	},
-	{
-		name: "video", // Static video. This page is for testing video playback.
-		url:  "/video.html",
-	},
-	{
-		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
-		url:  "https://en.wikipedia.org/wiki/Cat",
-	},
+	// {
+	// 	name: "poster", // Poster Circle. This page is for testing compositor performance.
+	// 	url:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+	// },
+	// {
+	// 	name: "maps", // Google Maps. This page is for testing WebGL.
+	// 	url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
+	// },
+	// {
+	// 	name: "video", // Static video. This page is for testing video playback.
+	// 	url:  "/video.html",
+	// },
+	// {
+	// 	name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
+	// 	url:  "https://en.wikipedia.org/wiki/Cat",
+	// },
 }
 
 // This test deals with both ChromeOS chrome and lacros chrome. In order to reduce confusion,
@@ -163,11 +160,6 @@ type testInvocation struct {
 	crt      lacros.ChromeType
 	metrics  *metricsRecorder
 	traceDir string
-}
-
-type traceable interface {
-	StartTracing(ctx context.Context, categories []string) error
-	StopTracing(ctx context.Context) (*trace.Trace, error)
 }
 
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
@@ -272,30 +264,6 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 		defer toggleThreeDotMenu(ctx, tconn, clickFn)
 	}
 
-	if invoc.traceDir != "" {
-		oldPerfFn := perfFn
-		perfFn = func(ctx context.Context) error {
-			if err := tracer.StartTracing(ctx, tracingCategories); err != nil {
-				return err
-			}
-			if err := oldPerfFn(ctx); err != nil {
-				if _, err := tracer.StopTracing(ctx); err != nil {
-					testing.ContextLog(ctx, "Failed to stop tracing after encountering other error: ", err)
-				}
-				return err
-			}
-			tr, err := tracer.StopTracing(ctx)
-			if err != nil {
-				return err
-			}
-			filename := filepath.Join(invoc.traceDir, string(invoc.crt)+"-"+invoc.page.name+"-trace.data")
-			if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
-				return err
-			}
-			return nil
-		}
-	}
-
 	// Sleep for three seconds after loading pages / setting up the environment.
 	// Loading a page can cause some transient spikes in activity or similar
 	// 'unstable' state. Unfortunately there's no clear condition to wait for like
@@ -305,7 +273,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, t
 	// manual inspection).
 	testing.Sleep(ctx, 3*time.Second)
 
-	return runHistogram(ctx, tconn, invoc, perfFn)
+	return runHistogram(ctx, tconn, tracer, invoc, perfFn)
 }
 
 func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
@@ -357,7 +325,7 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation
 }
 
 // RunGpuCUJ runs a GpuCUJ test according to the given parameters.
-func RunGpuCUJ(ctx context.Context, pd launcher.PreData, params TestParams, serverURL string) (
+func RunGpuCUJ(ctx context.Context, pd launcher.PreData, params TestParams, serverURL string, traceDir string) (
 	retPV *perf.Values, retCleanup lacros.CleanupCallback, retErr error) {
 	cleanup, err := lacros.SetupPerfTest(ctx, pd.TestAPIConn, "lacros.GpuCUJ")
 	if err != nil {
@@ -402,6 +370,7 @@ func RunGpuCUJ(ctx context.Context, pd launcher.PreData, params TestParams, serv
 			page:     page,
 			crt:      lacros.ChromeTypeLacros,
 			metrics:  &m,
+			traceDir: traceDir,
 		}); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to run lacros test")
 		}
@@ -412,6 +381,7 @@ func RunGpuCUJ(ctx context.Context, pd launcher.PreData, params TestParams, serv
 			page:     page,
 			crt:      lacros.ChromeTypeChromeOS,
 			metrics:  &m,
+			traceDir: traceDir,
 		}); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to run cros test")
 		}
