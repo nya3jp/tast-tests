@@ -442,9 +442,19 @@ func (f *FilesApp) LeftClickItem(ctx context.Context, itemName string, role ui.R
 
 // DeleteFileOrFolder deletes a file or folder through selecting Delete in context menu.
 func (f *FilesApp) DeleteFileOrFolder(ctx context.Context, fileName string) error {
-	// Select Delete from context menu of the file / folder.
-	if err := f.SelectContextMenu(ctx, fileName, Delete); err != nil {
-		return errors.Wrapf(err, "failed to right click on %s", fileName)
+	if err := f.SelectFile(ctx, fileName); err != nil {
+		return errors.Wrapf(err, "failed to select %s", fileName)
+	}
+
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create keyboard")
+	}
+	defer keyboard.Close()
+
+	// Press Alt+Backspace to delete.
+	if err := keyboard.Accel(ctx, "Alt+Backspace"); err != nil {
+		return errors.Wrap(err, "failed to press Alt+Backspace")
 	}
 
 	params := ui.FindParams{
@@ -454,7 +464,7 @@ func (f *FilesApp) DeleteFileOrFolder(ctx context.Context, fileName string) erro
 	}
 	deleteButton, err := f.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
 	if err != nil {
-		return errors.Wrapf(err, "failed to find button Delete after selecting Delete in context menu of %s", fileName)
+		return errors.Wrapf(err, "failed to find button Delete after pressing Alt+Backspace on %s", fileName)
 	}
 	defer deleteButton.Release(ctx)
 
