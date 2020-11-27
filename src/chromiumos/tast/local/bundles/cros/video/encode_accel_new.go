@@ -14,11 +14,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// encodeTestData returns the files used in video.EncodeAccelNew, the webm file and the json file returned by encode.YUVJSONFileNameFor().
-func encodeTestData(webmFileName string) []string {
-	return []string{webmFileName, encode.YUVJSONFileNameFor(webmFileName)}
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		// TODO(crbug.com/1045825): Rename to EncodeAccel once the existing EncodeAccel is deprecated.
@@ -36,7 +31,7 @@ func init() {
 				Profile:  videotype.H264Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
-			ExtraData:         encodeTestData(encode.Tulip180P.Name),
+			ExtraData:         encode.TestData(encode.Tulip180P.Name),
 		}, {
 			Name: "h264_192p",
 			Val: encode.TestOptionsNew{
@@ -44,7 +39,7 @@ func init() {
 				Profile:  videotype.H264Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
-			ExtraData:         encodeTestData(encode.Bear192P.Name),
+			ExtraData:         encode.TestData(encode.Bear192P.Name),
 		}, {
 			Name: "h264_360p",
 			Val: encode.TestOptionsNew{
@@ -52,7 +47,7 @@ func init() {
 				Profile:  videotype.H264Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
-			ExtraData:         encodeTestData(encode.Tulip360P.Name),
+			ExtraData:         encode.TestData(encode.Tulip360P.Name),
 		}, {
 			Name: "h264_720p",
 			Val: encode.TestOptionsNew{
@@ -60,7 +55,7 @@ func init() {
 				Profile:  videotype.H264Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
-			ExtraData:         encodeTestData(encode.Tulip720P.Name),
+			ExtraData:         encode.TestData(encode.Tulip720P.Name),
 		}, {
 			Name: "h264_1080p",
 			Val: encode.TestOptionsNew{
@@ -68,7 +63,7 @@ func init() {
 				Profile:  videotype.H264Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
-			ExtraData:         encodeTestData(encode.Crowd1080P.Name),
+			ExtraData:         encode.TestData(encode.Crowd1080P.Name),
 		}, {
 			Name: "h264_2160p",
 			Val: encode.TestOptionsNew{
@@ -76,7 +71,7 @@ func init() {
 				Profile:  videotype.H264Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
-			ExtraData:         encodeTestData(encode.Crowd2160P.Name),
+			ExtraData:         encode.TestData(encode.Crowd2160P.Name),
 		}, {
 			Name: "vp8_180p",
 			Val: encode.TestOptionsNew{
@@ -84,7 +79,7 @@ func init() {
 				Profile:  videotype.VP8Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			ExtraData:         encodeTestData(encode.Tulip180P.Name),
+			ExtraData:         encode.TestData(encode.Tulip180P.Name),
 		}, {
 			Name: "vp8_192p",
 			Val: encode.TestOptionsNew{
@@ -92,7 +87,7 @@ func init() {
 				Profile:  videotype.VP8Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			ExtraData:         encodeTestData(encode.Bear192P.Name),
+			ExtraData:         encode.TestData(encode.Bear192P.Name),
 		}, {
 			Name: "vp8_360p",
 			Val: encode.TestOptionsNew{
@@ -100,7 +95,7 @@ func init() {
 				Profile:  videotype.VP8Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			ExtraData:         encodeTestData(encode.Tulip360P.Name),
+			ExtraData:         encode.TestData(encode.Tulip360P.Name),
 		}, {
 			Name: "vp8_720p",
 			Val: encode.TestOptionsNew{
@@ -108,7 +103,7 @@ func init() {
 				Profile:  videotype.VP8Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			ExtraData:         encodeTestData(encode.Tulip720P.Name),
+			ExtraData:         encode.TestData(encode.Tulip720P.Name),
 		}, {
 			Name: "vp8_1080p",
 			Val: encode.TestOptionsNew{
@@ -116,7 +111,7 @@ func init() {
 				Profile:  videotype.VP8Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			ExtraData:         encodeTestData(encode.Crowd1080P.Name),
+			ExtraData:         encode.TestData(encode.Crowd1080P.Name),
 		}, {
 			Name: "vp8_2160p",
 			Val: encode.TestOptionsNew{
@@ -124,7 +119,7 @@ func init() {
 				Profile:  videotype.VP8Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8_4K},
-			ExtraData:         encodeTestData(encode.Crowd2160P.Name),
+			ExtraData:         encode.TestData(encode.Crowd2160P.Name),
 		}, {
 			Name: "vp9_180p",
 			Val: encode.TestOptionsNew{
@@ -132,7 +127,7 @@ func init() {
 				Profile:  videotype.VP9Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraData:         encodeTestData(encode.Tulip180P.Name),
+			ExtraData:         encode.TestData(encode.Tulip180P.Name),
 		}, {
 			Name: "vp9_192p",
 			Val: encode.TestOptionsNew{
@@ -140,7 +135,7 @@ func init() {
 				Profile:  videotype.VP9Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraData:         encodeTestData(encode.Bear192P.Name),
+			ExtraData:         encode.TestData(encode.Bear192P.Name),
 		}, {
 			Name: "vp9_360p",
 			Val: encode.TestOptionsNew{
@@ -148,7 +143,7 @@ func init() {
 				Profile:  videotype.VP9Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraData:         encodeTestData(encode.Tulip360P.Name),
+			ExtraData:         encode.TestData(encode.Tulip360P.Name),
 		}, {
 			Name: "vp9_720p",
 			Val: encode.TestOptionsNew{
@@ -156,7 +151,7 @@ func init() {
 				Profile:  videotype.VP9Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraData:         encodeTestData(encode.Tulip720P.Name),
+			ExtraData:         encode.TestData(encode.Tulip720P.Name),
 		}, {
 			Name: "vp9_1080p",
 			Val: encode.TestOptionsNew{
@@ -164,7 +159,7 @@ func init() {
 				Profile:  videotype.VP9Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraData:         encodeTestData(encode.Crowd1080P.Name),
+			ExtraData:         encode.TestData(encode.Crowd1080P.Name),
 		}, {
 			Name: "vp9_2160p",
 			Val: encode.TestOptionsNew{
@@ -172,7 +167,7 @@ func init() {
 				Profile:  videotype.VP9Prof,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9_4K},
-			ExtraData:         encodeTestData(encode.Crowd2160P.Name),
+			ExtraData:         encode.TestData(encode.Crowd2160P.Name),
 		}},
 	})
 }
