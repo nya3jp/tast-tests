@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d27556_90aed6b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-11-27T07:55:41Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "35a5e319d2636bb89ade28bbd47322a028435836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eeaae38_73b24f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-11-27T07:55:41Z",
+      "side": 1,
+      "message": "Apparently, uiautomator.click alone could not bring up the virtual keyboard even though we can open the keyboard by clicking/touching manually, so this is needed.",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 3
+      },
+      "revId": "35a5e319d2636bb89ade28bbd47322a028435836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
