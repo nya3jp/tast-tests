@@ -1,0 +1,143 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5635d146_8fc81d1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-27T09:01:55Z",
+      "side": 1,
+      "message": "Verifies that",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "3a20c7fb39e25d89995e1bfb7610d2a01f5c1016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a836fa_93a399a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-27T09:01:55Z",
+      "side": 1,
+      "message": "Reserve some time for TearDownCrashTest",
+      "range": {
+        "startLine": 58,
+        "startChar": 31,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "3a20c7fb39e25d89995e1bfb7610d2a01f5c1016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d530ba44_f13f7a0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-27T09:01:55Z",
+      "side": 1,
+      "message": "%s file under %s: \", fwDbgCollect, iwlwifiDir",
+      "range": {
+        "startLine": 64,
+        "startChar": 26,
+        "endLine": 64,
+        "endChar": 41
+      },
+      "revId": "3a20c7fb39e25d89995e1bfb7610d2a01f5c1016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e6f3d0_68c24d14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-27T09:01:55Z",
+      "side": 1,
+      "message": "Reserve some time for crash.RemoveAllFiles() and perform the clean up in defer function.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 13
+      },
+      "revId": "3a20c7fb39e25d89995e1bfb7610d2a01f5c1016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901b77eb_2698c546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-27T09:01:55Z",
+      "side": 1,
+      "message": "\u003e \"writen\" is a possible misspelling of \"written\".\n\nPlease fix.",
+      "parentUuid": "2d2740d6_09a6bb7e",
+      "range": {
+        "startLine": 84,
+        "startChar": 37,
+        "endLine": 84,
+        "endChar": 43
+      },
+      "revId": "3a20c7fb39e25d89995e1bfb7610d2a01f5c1016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2617553f_2ceccbcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-27T09:01:55Z",
+      "side": 1,
+      "message": "Is it possible that fileInfo.Size() \u003d\u003d 0 \u003d\u003d currentFileSize at the first iteration?",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "3a20c7fb39e25d89995e1bfb7610d2a01f5c1016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
