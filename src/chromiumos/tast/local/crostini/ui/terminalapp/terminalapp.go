@@ -89,14 +89,26 @@ func (ta *TerminalApp) waitForPrompt(ctx context.Context) error {
 
 // clickShelfMenuItem shuts down crostini by right clicking on the terminal app shelf icon.
 func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemNameRegexp string) (retErr error) {
-	tc, err := pointer.NewTouchController(ctx, ta.tconn)
+	revert, err := ash.EnsureTabletModeEnabled(ctx, ta.tconn, false)
 	if err != nil {
-		return errors.Wrap(err, "failed to create the touch controller")
+		testing.ContextLog(ctx, "Unable to switch out of tablet mode, try to swipe up the hot seat")
+		tc, err := pointer.NewTouchController(ctx, ta.tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to create the touch controller")
+		}
+		defer tc.Close()
+		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, ta.tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
+			return errors.Wrap(err, "failed to swipe up the hotseat")
+		}
 	}
-	defer tc.Close()
-	if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, ta.tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
-		return errors.Wrap(err, "failed to swipe up the hotseat")
-	}
+	defer func() {
+		if revert != nil {
+			revert(ctx)
+			if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
+				retErr = errors.Wrap(err, "error waiting for tablet mode reversion transition to complete")
+			}
+		}
+	}()
 
 	if err := ui.WaitForLocationChangeCompleted(ctx, ta.tconn); err != nil {
 		return errors.Wrap(err, "error waiting for transition out of tablet mode to complete")
