@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7fc3b53_e0cad628",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "`user:passwd@ciscohost`\nIt would be more natural.",
+      "range": {
+        "startLine": 28,
+        "startChar": 64,
+        "endLine": 28,
+        "endChar": 85
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e6d95356_4c4521bc",
@@ -31,6 +54,378 @@
       "writtenOn": "2020-11-26T17:28:00Z",
       "side": 1,
       "message": "I\u0027m the CrOS Sheriff of the week. I\u0027ll try my best to review the CL on Friday or this weekend.",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a6cb890_d9af9d72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "First pass.\n\nGenerally, I think we should look on that not as \"Adding Cisco AP support\", but \"Support for multi-vendor APs (incl. Cisco)\".",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c4a210_bf172e95",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "This may ask for troubles in case you will use one controller for two setups.",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ec0787_539a87b4",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "I\u0027d rather move it to a separate method.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a435aa0_86208c21",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "More general: proxyConn. If we finally get independent host in test infrastructure, we would be able to move proxy there.",
+      "range": {
+        "startLine": 76,
+        "startChar": 77,
+        "endLine": 76,
+        "endChar": 84
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c518911_a95379a6",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "Where do you close these pipes?",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28977fbe_95b3927c",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "double whitespace",
+      "range": {
+        "startLine": 86,
+        "startChar": 57,
+        "endLine": 86,
+        "endChar": 59
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06c3aa3_6f1b7ddd",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "`controller connection`",
+      "range": {
+        "startLine": 90,
+        "startChar": 43,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa4299d_5cdb3655",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "`; skip++{}`\n?",
+      "range": {
+        "startLine": 125,
+        "startChar": 47,
+        "endLine": 127,
+        "endChar": 3
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e266cc_409995f5",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "Lacks method description.",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2d0ad4_3106c9c1",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "Consider unifying interface with ssh.Command().Run()/.Output(). It will be easier to read its calls.",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 35
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5c77c3_7b303f49",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "Lacks method description.",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913767fe_20703810",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "I think we should think about it as not only Cisco, but rather multi-vendor.",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d463de_6b287c4c",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "I think you should be more nuanced here. It is not enough to check for the variable, otherwise you would attempt to initialise the controller also on setups that do not contain Cisco APs.\n\nI see two possibilities: \n1) maintain list of hostnames that support Cisco APs (need modification of code each time a new setup is added);\n2) resolve companionName(s, \"-ap1\") IPs (this is a bit hacky).",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6cc7c1f_c767b902",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "Perhaps, it might be worth adding second attribute to each target, RouterType {Gale,Cisco,...}",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0cbc5c1_0fc5d8da",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "hostname and credentials",
+      "range": {
+        "startLine": 87,
+        "startChar": 41,
+        "endLine": 87,
+        "endChar": 49
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b703e85_90f5f9a4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "nit: `proxyConn`?",
+      "range": {
+        "startLine": 326,
+        "startChar": 6,
+        "endLine": 326,
+        "endChar": 11
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c83c25b8_15241df3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "I\u0027d rather put it much higher and initialise routers\u0026pcap only when ctrl target \u003d\u003d \"\".",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43804d6c_e15cfcaf",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-11-27T18:17:12Z",
+      "side": 1,
+      "message": "!\u003d\nin case some bright mind decides password might contain \u0027:\u0027",
+      "range": {
+        "startLine": 342,
+        "startChar": 22,
+        "endLine": 342,
+        "endChar": 23
+      },
       "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
