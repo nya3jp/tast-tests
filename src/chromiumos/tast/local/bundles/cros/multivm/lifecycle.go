@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/multivm/stats"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/memoryuser"
@@ -27,6 +28,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      30 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
+		Vars:         []string{"randSize"},
 		Params: []testing.Param{{
 			Name: "host",
 			Pre:  multivm.NoVMStarted(),
@@ -65,6 +67,7 @@ func init() {
 func Lifecycle(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(*multivm.PreData)
 	param := s.Param().(*lifecycleParam)
+	r := stats.NewRandFromVar(s.Var("randSize"))
 
 	info, err := kernelmeter.MemInfo()
 	if err != nil {
@@ -92,12 +95,12 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	var appsAliveTasks []memoryuser.KillableTask
 	for i := 0; i < numTasks/numTypes; i++ {
 		if param.inHost {
-			task := server.NewMemoryStressTask(int(taskAllocMiB), 0.67, hostLimit)
+			task := server.NewMemoryStressTask(int(stats.ExponentialInt64(taskAllocMiB, r)), 0.67, hostLimit)
 			tabsAliveTasks = append(tabsAliveTasks, task)
 			tasks = append(tasks, task)
 		}
 		if param.inARC {
-			task := memoryuser.NewArcLifecycleTask(len(appsAliveTasks), int64(taskAllocMiB)*memory.MiB, 0.67, hostLimit)
+			task := memoryuser.NewArcLifecycleTask(len(appsAliveTasks), stats.ExponentialInt64(taskAllocMiB, r)*memory.MiB, 0.67, hostLimit)
 			appsAliveTasks = append(appsAliveTasks, task)
 			tasks = append(tasks, task)
 		}

@@ -64,7 +64,7 @@ func (t *ArcLifecycleTask) Run(ctx context.Context, testEnv *TestEnv) error {
 	}
 
 	// Launch the app.
-	testing.ContextLogf(ctx, "Starting %s", t.mainActivity())
+	testing.ContextLogf(ctx, "Starting %s %d MiB", t.mainActivity(), t.allocateBytes>>20)
 	sizeString := strconv.FormatInt(t.allocateBytes, 10)
 	ratioString := strconv.FormatFloat(t.ratio, 'f', -1, 64)
 	startOut, err := testEnv.arc.Command(
