@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/multivm/stats"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/memoryuser"
@@ -28,6 +29,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      30 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
+		Vars:         []string{"randSize"},
 		Params: []testing.Param{{
 			Name:              "arc_host",
 			Pre:               multivm.ArcStarted(),
@@ -44,6 +46,7 @@ func init() {
 func LifecycleShifting(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(*multivm.PreData)
 	param := s.Param().(*lifecycleShiftingParam)
+	r := stats.NewRandFromVar(s.Var("randSize"))
 
 	info, err := kernelmeter.MemInfo()
 	if err != nil {
@@ -78,7 +81,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		const numTasks = 50
 		if param.inHost {
 			for j := 0; j < numTasks/numTypes; j++ {
-				task := server.NewMemoryStressTask(int(taskAllocMiB), compressRatio, hostLimit)
+				task := server.NewMemoryStressTask(int(stats.ExponentialInt64(taskAllocMiB, r)), compressRatio, hostLimit)
 				tabsAliveTasks = append(tabsAliveTasks, task)
 				tasks = append(tasks, task)
 			}
@@ -91,7 +94,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		}
 		if param.inARC {
 			for j := 0; j < numTasks/numTypes; j++ {
-				task := memoryuser.NewArcLifecycleTask(len(appsAliveTasks), taskAllocMiB*memory.MiB, compressRatio, hostLimit)
+				task := memoryuser.NewArcLifecycleTask(len(appsAliveTasks), stats.ExponentialInt64(taskAllocMiB, r)*memory.MiB, compressRatio, hostLimit)
 				appsAliveTasks = append(appsAliveTasks, task)
 				tasks = append(tasks, task)
 			}
