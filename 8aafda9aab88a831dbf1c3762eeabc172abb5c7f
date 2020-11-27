@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "656bfc14_7cc7d47f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-11-27T07:51:15Z",
+      "side": 1,
+      "message": "Yes, we ship the Perfetto binaries to all boards in https://crrev.com/c/2536222\nThis test can start running after the Cq-Depend change https://crrev.com/c/2463019 lands.",
+      "parentUuid": "54a89397_1d0fa45b",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1bd2885_1d121ce7",
@@ -136,6 +160,30 @@
       "writtenOn": "2020-11-26T22:20:08Z",
       "side": 1,
       "message": "tracedJob?",
+      "range": {
+        "startLine": 45,
+        "startChar": 43,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "8aafda9aab88a831dbf1c3762eeabc172abb5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "870cf614_7edbf58f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-11-27T07:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eb484f6_eeeb753a",
       "range": {
         "startLine": 45,
         "startChar": 43,
