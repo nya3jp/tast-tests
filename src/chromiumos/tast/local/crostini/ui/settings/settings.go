@@ -43,7 +43,7 @@ const (
 
 // Window names for different settings page.
 const (
-	PageNameLinux = "Settings - Linux"
+	PageNameLinux = "Settings - Linux development environment"
 	PageNameMSF   = "Settings - " + ManageSharedFolders
 )
 
