@@ -16,6 +16,23 @@
       "message": "I\u0027m offline this week for sickness... reassigning.",
       "revId": "7b779f0d19e523b8be4abc9bb0f965347c772ac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eddfccf_3497d9bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-27T04:39:24Z",
+      "side": 1,
+      "message": "Code is fine, please get Paul\u0027s review before submitting.",
+      "revId": "7b779f0d19e523b8be4abc9bb0f965347c772ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
