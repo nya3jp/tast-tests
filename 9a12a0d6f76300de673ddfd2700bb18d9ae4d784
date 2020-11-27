@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65baa031_c5930147",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-27T02:31:40Z",
+      "side": 1,
+      "message": "I\u0027m offline this week for sickness... reassigning.\n",
+      "revId": "9a12a0d6f76300de673ddfd2700bb18d9ae4d784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
