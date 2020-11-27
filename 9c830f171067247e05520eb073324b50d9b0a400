@@ -33,6 +33,23 @@
       "message": "I\u0027m offline this week for sickness. My reviews will be delayed, sorry.",
       "revId": "9c830f171067247e05520eb073324b50d9b0a400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44040525_052690bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-27T08:10:52Z",
+      "side": 1,
+      "message": "Oh no, you are both sick this week. Take care.\nNo worry about the review.",
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
