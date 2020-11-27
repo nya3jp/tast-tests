@@ -108,6 +108,8 @@ type StreamInfo struct {
 	Effects     uint64
 	FrameRate   uint32
 	NumChannels uint8
+	IsPinned    bool
+	ClientType  string
 }
 
 var streamInfoRegex = regexp.MustCompile("(.*):(.*)")
@@ -126,10 +128,12 @@ func newStreamInfo(s string) (*StreamInfo, error) {
 		Effects     = "effects"
 		FrameRate   = "frame_rate"
 		NumChannels = "num_channels"
+		isPinned    = "is_pinned"
+		ClientType  = "client_type"
 	)
 
 	// Checks all key exists.
-	for _, k := range []string{Direction, Effects, FrameRate, NumChannels} {
+	for _, k := range []string{Direction, Effects, FrameRate, NumChannels, isPinned, ClientType} {
 		if _, ok := res[k]; !ok {
 			return nil, errors.Errorf("missing key: %s in StreamInfo", k)
 		}
@@ -144,9 +148,15 @@ func newStreamInfo(s string) (*StreamInfo, error) {
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to parse StreamInfo::%s (value: %s)", FrameRate, res[FrameRate])
 	}
+
 	numChannels, err := strconv.ParseUint(res[NumChannels], 10, 8)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to parse StreamInfo::%s (value: %s)", NumChannels, res[NumChannels])
+	}
+
+	pinned, err := strconv.ParseUint(res[isPinned], 10, 32)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse StreamInfo::%s (value: %s)", isPinned, res[isPinned])
 	}
 
 	return &StreamInfo{
@@ -154,6 +164,8 @@ func newStreamInfo(s string) (*StreamInfo, error) {
 		Effects:     effects,
 		FrameRate:   uint32(frameRate),
 		NumChannels: uint8(numChannels),
+		IsPinned:    pinned != 0,
+		ClientType:  res[ClientType],
 	}, nil
 }
 
