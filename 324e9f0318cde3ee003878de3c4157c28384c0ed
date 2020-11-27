@@ -34,6 +34,24 @@
       "parentUuid": "28afa5f5_287311a3",
       "revId": "324e9f0318cde3ee003878de3c4157c28384c0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c9d2d02_98d55ee2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-11-27T07:48:07Z",
+      "side": 1,
+      "message": "I think all devices with crostini also have ARC++, except enterprises that only ban ARC++, so in a sense this would be a more real test.\n\nI\u0027m happy to talk about this more next week though.",
+      "parentUuid": "fe81b853_d3149ff4",
+      "revId": "324e9f0318cde3ee003878de3c4157c28384c0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
