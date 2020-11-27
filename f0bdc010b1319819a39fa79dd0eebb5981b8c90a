@@ -16,6 +16,24 @@
       "message": "Are you able to give a more succinct explanation of these rules in a comment?\n\nIt\u0027s hard to work out the reasoning behind these (technical limitation or just a policy decision) and to tell if you have covered all the cases.",
       "revId": "f0bdc010b1319819a39fa79dd0eebb5981b8c90a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b5c8933_62f114a9",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-11-27T07:50:36Z",
+      "side": 1,
+      "message": "There\u0027s no technical limitation here, it\u0027s just based on the set of preconditions we\u0027ve actually created. Currently we have 6 different binary choices available (soon to be 7), so we have to cut down on that space somehow. Again, might be best to talk about this next week.",
+      "parentUuid": "99d1a9b8_41458775",
+      "revId": "f0bdc010b1319819a39fa79dd0eebb5981b8c90a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
