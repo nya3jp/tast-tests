@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3acf074_4c6088a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-27T09:08:21Z",
+      "side": 1,
+      "message": "With the CL, the test runs on all boards. Is that what you want?",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7829efd8_2d1a3946",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-27T09:08:21Z",
+      "side": 1,
+      "message": "Does the CL fix the flakiness of wifi.CSAReconnect?",
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
