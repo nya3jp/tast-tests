@@ -40,7 +40,7 @@ func init() {
 				Name:              "us_en_mojo",
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
-				ExtraHardwareDeps: pre.InputsMojoModels,
+				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			}, {
 				Name:              "jp_us_stable",
 				Pre:               pre.VKEnabledTablet(),
@@ -55,7 +55,7 @@ func init() {
 				Name:              "jp_us_mojo",
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraHardwareDeps: pre.InputsMojoModels,
+				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			}, {
 				Name:              "zh_pinyin_stable",
 				Pre:               pre.VKEnabledTablet(),
@@ -70,7 +70,7 @@ func init() {
 				Name:              "zh_pinyin_mojo",
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-				ExtraHardwareDeps: pre.InputsMojoModels,
+				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			},
 		},
 	})
