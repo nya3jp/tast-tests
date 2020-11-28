@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb58fa3a_5fb205c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-11-28T17:55:50Z",
+      "side": 1,
+      "message": "Looks like this CL broke the test\n\nhttps://tastboard.corp.google.com/test/shelf.LaunchedApps",
+      "revId": "5bd838cdd3d103357276d476c98a6d6bfa05090f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
