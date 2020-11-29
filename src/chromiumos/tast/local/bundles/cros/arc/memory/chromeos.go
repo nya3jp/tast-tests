@@ -157,9 +157,14 @@ func (c *ChromeOSAllocator) AllocateUntil(
 			}
 			// Be conservative and only allocate 1/4 of the distance to the
 			// nearest memory limit. Truncate allocations to MiB.
+			// Limit allocations to 64MiB, to avoid large mmap ranges that might
+			// fail.
+			const maxAllocMiB = 64
 			allocMiB := (distance / memory.MiB) / 4
 			if allocMiB == 0 {
 				allocMiB = 1
+			} else if allocMiB > maxAllocMiB {
+				allocMiB = maxAllocMiB
 			}
 			if err = c.Allocate(int(allocMiB * memory.MiB)); err != nil {
 				return nil, errors.Wrap(err, "unable to allocate")
