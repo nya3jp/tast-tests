@@ -38,19 +38,14 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// At login, we should have just Chrome and Files in the Shelf.
-	defaultPinnedApps := []apps.App{apps.Chrome, apps.Files}
+	// At login, we should have just Chrome and maybe Files in the Shelf.
 	shelfItems, err := ash.ShelfItems(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get shelf items: ", err)
 	}
-	if len(shelfItems) != len(defaultPinnedApps) {
-		s.Fatal("Wrong number of apps in the shelf. Expected only Chrome and Files: ", shelfItems)
-	}
-	for i, shelfItem := range shelfItems {
-		expectedApp := defaultPinnedApps[i]
-		if shelfItem.AppID != expectedApp.ID {
-			s.Fatal("Unexpected app in the shelf: ", shelfItem.AppID)
+	if len(shelfItems) != 1 {
+		if len(shelfItems) != 2 || shelfItems[1].AppID != apps.Files.ID {
+			s.Fatal("Unexpected apps in the shelf. Expected only Chrome and Files: ", shelfItems)
 		}
 	}
 	// Get the expected browser.
