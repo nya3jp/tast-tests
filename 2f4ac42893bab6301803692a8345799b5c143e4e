@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec6b9f4c_70853b68",
+        "filename": "src/chromiumos/tast/local/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-29T22:40:49Z",
+      "side": 1,
+      "message": "It decreases the readability to use the same name as that in the struct StreamInfo, especially they are of different type.",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf37874_4dbd0229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-29T22:40:49Z",
+      "side": 1,
+      "message": "lacrosChrome?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab8146d8_07f43b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-29T22:40:49Z",
+      "side": 1,
+      "message": "Please include the loopbackID in the msg.",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9557cc60_f3d664f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-11-29T22:40:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
