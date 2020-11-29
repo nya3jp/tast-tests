@@ -16,6 +16,24 @@
       "message": "Looks like this CL broke the test\n\nhttps://tastboard.corp.google.com/test/shelf.LaunchedApps",
       "revId": "5bd838cdd3d103357276d476c98a6d6bfa05090f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "445ec810_27cc8320",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2020-11-29T23:56:41Z",
+      "side": 1,
+      "message": "Hmm, strange. It looks like it\u0027s flaky, too.\n\nThe only thing I can think of is that some of the test devices might be using old Profiles which don\u0027t have the new behavior, which only happens to new Profiles. Not too sure how to go about investigating.\n\nI\u0027ve made a revert which I\u0027m can be submitted in the meantime.",
+      "parentUuid": "bb58fa3a_5fb205c2",
+      "revId": "5bd838cdd3d103357276d476c98a6d6bfa05090f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
