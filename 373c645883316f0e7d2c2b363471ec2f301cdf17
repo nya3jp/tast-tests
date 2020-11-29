@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cecd1689_dba5608d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_omnibox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2020-11-29T22:23:36Z",
+      "side": 1,
+      "message": "Renaming the test will restart historic results collection. Just making sure this is what you want.",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "373c645883316f0e7d2c2b363471ec2f301cdf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
