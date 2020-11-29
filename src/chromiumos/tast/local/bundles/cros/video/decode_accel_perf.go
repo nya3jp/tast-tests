@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Measures hardware video decode performance by running the video_decode_accelerator_perf_tests binary",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "video_decoder_legacy_supported"},
 		Params: []testing.Param{{
 			Name:              "h264_1080p_30fps",
 			Val:               "1080p_30fps_300frames.h264",
