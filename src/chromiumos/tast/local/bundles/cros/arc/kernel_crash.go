@@ -82,11 +82,11 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	s.Log("Making crash")
 	// The user of /proc/sysrq-trigger is root, but `adb shell` uses shell user. So we need to use android-sh.
 	cmd := testexec.CommandContext(ctx, "/usr/sbin/android-sh", "-c", "echo c >/proc/sysrq-trigger")
+	// The android-sh returns the exit code of `echo` command when the command fails to crash ARCVM or the command stops before the crash of ARCVM actually started. The return code seems unstable, so we use Log() instead of Error() or Fatal().
 	if err := cmd.Run(); err == nil {
-		s.Fatal("Failed to crash: the process unexpectedly returns exit code 0")
-	} else if cmd.ProcessState.ExitCode() < 2 {
-		// The android-sh returns 0 if the command succeeds, and returns 1 in most errors which are not related to the kernel crash. At least now, It returns 123 when the kernel successfully crashes.
-		s.Fatal("Failed to crash: ", err)
+		s.Log("The android-sh process to crash ARCVM finished with exit code 0")
+	} else {
+		s.Log("The android-sh process to crash ARCVM finished with an error: ", err)
 	}
 
 	s.Log("Waiting for old ARCVM process to stop")
@@ -95,7 +95,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 			return errors.Errorf("ARCVM (pid %d) still exists", oldPID)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for old ARCVM process to exit: ", err)
 	}
 	if err := a.Close(); err != nil {
