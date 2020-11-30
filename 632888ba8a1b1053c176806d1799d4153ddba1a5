@@ -68,6 +68,30 @@
       },
       "revId": "632888ba8a1b1053c176806d1799d4153ddba1a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bd69c43_d1d78037",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-11-30T23:08:27Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure of the exact paths involved here, but Borealis and Crostini have differences in terms of what is read-write (eg Borealis most everything is read-only except /home/chronos and /tmp), and what is executable (eg Borealis /tmp is executable but not Crostini).",
+      "parentUuid": "6fe4b18b_f069c698",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "632888ba8a1b1053c176806d1799d4153ddba1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
