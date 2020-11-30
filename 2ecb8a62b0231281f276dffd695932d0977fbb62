@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a9a979_0b83fd22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-11-30T18:59:52Z",
+      "side": 1,
+      "message": "2020/11/30 10:32:05 graphics.FastInk.clamshell  [ FAIL ] Rotate0/Maximized: Detected overlay strategy Underlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate90/Normal: Detected overlay strategy Underlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate90/LeftSnapped: Detected overlay strategy Underlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate90/Maximized: Detected overlay strategy Underlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate90/Fullscreen: Detected overlay strategy SingleOnTop; expected Fullscreen\n2020/11/30 10:32:05                                      Rotate180/Normal: Detected overlay strategy Underlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate180/LeftSnapped: Detected overlay strategy No overlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate180/Maximized: Detected overlay strategy Underlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate180/Fullscreen: Detected overlay strategy SingleOnTop; expected Fullscreen\n2020/11/30 10:32:05                                      Rotate270/Normal: Detected overlay strategy Underlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate270/LeftSnapped: Detected overlay strategy Underlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate270/Maximized: Detected overlay strategy Underlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate270/Fullscreen: Detected overlay strategy SingleOnTop; expected Fullscreen\n2020/11/30 10:32:05 graphics.FastInk.tablet     [ FAIL ] Rotate0/LeftSnapped: Detected overlay strategy No overlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate90/LeftSnapped: Detected overlay strategy No overlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate90/Maximized: Detected overlay strategy No overlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate90/Fullscreen: Detected overlay strategy No overlay; expected Fullscreen\n2020/11/30 10:32:05                                      Rotate180/LeftSnapped: Detected overlay strategy No overlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate180/Fullscreen: Detected overlay strategy SingleOnTop; expected Fullscreen\n2020/11/30 10:32:05                                      Rotate270/LeftSnapped: Detected overlay strategy No overlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate270/Maximized: Detected overlay strategy No overlay; expected SingleOnTop\n2020/11/30 10:32:05                                      Rotate270/Fullscreen: Detected overlay strategy No overlay; expected Fullscreen",
+      "revId": "2ecb8a62b0231281f276dffd695932d0977fbb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
