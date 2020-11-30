@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e524b5_b512840d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-30T13:59:50Z",
+      "side": 1,
+      "message": "The current function does not seem to simplify the existing code. Maybe add a FindSettingsNode where tests only need to check the result.",
+      "revId": "101ca46f101ac8773951f3e0f024e49582634e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
