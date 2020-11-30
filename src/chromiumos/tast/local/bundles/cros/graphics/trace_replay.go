@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/graphics/trace"
 	"chromiumos/tast/local/graphics/trace/comm"
+	"chromiumos/tast/local/graphics/trace/guestos"
 	"chromiumos/tast/testing"
 )
 
@@ -93,7 +94,10 @@ func TraceReplay(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	config := s.Param().(comm.TestGroupConfig)
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
-	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), pre.Container, &config, nil); err != nil {
+	guest := guestos.CrostiniGuestOS{
+		VMInstance: pre.Container,
+	}
+	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), &guest, &config, nil); err != nil {
 		s.Fatal("Trace replay test failed: ", err)
 	}
 }
