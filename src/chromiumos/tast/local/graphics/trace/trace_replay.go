@@ -25,21 +25,36 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/graphics/trace/comm"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/vm"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
+// IContainer interface is used to unify various VM container interfaces
+type IContainer interface {
+	// Command returns a testexec.Cmd with a vsh command that will run in this
+	// container.
+	Command(ctx context.Context, vshArgs ...string) *testexec.Cmd
+	// PushFile copies a local file to the container's filesystem.
+	PushFile(ctx context.Context, localPath, containerPath string) error
+	// GetFile copies a remote file from the container's filesystem.
+	GetFile(ctx context.Context, containerPath, localPath string) error
+	// GetBinPath returns the container's binaries path.
+	// The trace_replay binary will be uploaded into this directory.
+	GetBinPath() string
+	// GetTempPath returns the container's temp path. This directory can be
+	// used to store downloaded artifacts and other temp files.
+	GetTempPath() string
+}
+
 const (
-	outDirName           = "trace"
-	glxInfoFile          = "glxinfo.txt"
-	replayAppName        = "trace_replay"
-	replayAppPathAtHost  = "/usr/local/graphics"
-	replayAppPathAtGuest = "/tmp/graphics"
-	fileServerPort       = 8085
+	outDirName          = "trace"
+	glxInfoFile         = "glxinfo.txt"
+	replayAppName       = "trace_replay"
+	replayAppPathAtHost = "/usr/local/graphics"
+	fileServerPort      = 8085
 )
 
-func logContainerInfo(ctx context.Context, cont *vm.Container, file string) error {
+func logContainerInfo(ctx context.Context, cont IContainer, file string) error {
 	f, err := os.Create(file)
 	if err != nil {
 		return err
@@ -268,18 +283,18 @@ func startFileServer(ctx context.Context, addr, outDir string, cloudStorage *tes
 	return server
 }
 
-func pushTraceReplayApp(ctx context.Context, cont *vm.Container) error {
+func pushTraceReplayApp(ctx context.Context, cont IContainer) error {
 	replayAppAtHost := path.Join(replayAppPathAtHost, replayAppName)
 	if _, err := os.Stat(replayAppAtHost); os.IsNotExist(err) {
 		return errors.Wrapf(err, "unable to locate replay app at host: <%s> not found", replayAppAtHost)
 	}
 
-	if err := cont.Command(ctx, "mkdir", "-p", replayAppPathAtGuest).Run(); err != nil {
-		return errors.Wrapf(err, "unable to create directory <%s> inside the container", replayAppPathAtGuest)
+	if err := cont.Command(ctx, "mkdir", "-p", cont.GetBinPath()).Run(); err != nil {
+		return errors.Wrapf(err, "unable to create directory <%s> inside the container", cont.GetBinPath())
 	}
 
-	replayAppAtGuest := path.Join(replayAppPathAtGuest, replayAppName)
-	testing.ContextLogf(ctx, "Copying %s to the container <%s>", replayAppName, replayAppPathAtGuest)
+	replayAppAtGuest := path.Join(cont.GetBinPath(), replayAppName)
+	testing.ContextLogf(ctx, "Copying %s to the container <%s>", replayAppName, cont.GetBinPath())
 	if err := cont.PushFile(ctx, replayAppAtHost, replayAppAtGuest); err != nil {
 		return errors.Wrap(err, "unable to copy replay app into the guest container")
 	}
@@ -288,14 +303,14 @@ func pushTraceReplayApp(ctx context.Context, cont *vm.Container) error {
 
 // runTraceReplayInVM calls the trace_replay executable in a VM with args and writes test results to a file
 // for Crosbolt to pick up later.
-func runTraceReplayInVM(ctx context.Context, resultDir string, cont *vm.Container, group *comm.TestGroupConfig) error {
+func runTraceReplayInVM(ctx context.Context, resultDir string, cont IContainer, group *comm.TestGroupConfig) error {
 	replayArgs, err := json.Marshal(*group)
 	if err != nil {
 		return err
 	}
 
 	testing.ContextLog(ctx, "Running replay with args: "+string(replayArgs))
-	replayCmd := cont.Command(ctx, path.Join(replayAppPathAtGuest, replayAppName), string(replayArgs))
+	replayCmd := cont.Command(ctx, path.Join(cont.GetBinPath(), replayAppName), string(replayArgs))
 	replayOutput, err := replayCmd.Output()
 	if err != nil {
 		return err
@@ -350,14 +365,14 @@ func runTraceReplayInVM(ctx context.Context, resultDir string, cont *vm.Containe
 // It also interacts with the graphics_Power subtest via IPC to create temporal
 // checkpoints on the power-dashboard, and stores additional results to a directory
 // to be collected by the managing server test.
-func runTraceReplayExtendedInVM(ctx context.Context, resultDir string, cont *vm.Container, group *comm.TestGroupConfig) error {
+func runTraceReplayExtendedInVM(ctx context.Context, resultDir string, cont IContainer, group *comm.TestGroupConfig) error {
 	replayArgs, err := json.Marshal(*group)
 	if err != nil {
 		return err
 	}
 
 	testing.ContextLog(ctx, "Running extended replay with args: "+string(replayArgs))
-	replayCmd := cont.Command(ctx, path.Join(replayAppPathAtGuest, replayAppName), string(replayArgs))
+	replayCmd := cont.Command(ctx, path.Join(cont.GetBinPath(), replayAppName), string(replayArgs))
 	replayOutput, err := replayCmd.Output()
 	if err != nil {
 		return err
@@ -378,7 +393,7 @@ func runTraceReplayExtendedInVM(ctx context.Context, resultDir string, cont *vm.
 }
 
 // RunTraceReplayTest starts a VM and replays all the traces in the test config.
-func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *testing.CloudStorage, cont *vm.Container, group *comm.TestGroupConfig, testVars *comm.TestVars) error {
+func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *testing.CloudStorage, cont IContainer, group *comm.TestGroupConfig, testVars *comm.TestVars) error {
 	// Guest is unable to use VM network interface to access it's host because of security reason,
 	// and the only to make such connectivity is to use host's outbound network interface.
 	outboundIP, err := getOutboundIP()
@@ -401,11 +416,14 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	if err := os.MkdirAll(outDir, 0755); err != nil {
 		return errors.Wrapf(err, "failed to create output dir <%v>", outDir)
 	}
+
+	/* TODO(tutankhamen): glxinfo can't be invoked due to problems with lack of PATH variable
+	 * in borealis vsh implementation
 	file := filepath.Join(outDir, glxInfoFile)
 	testing.ContextLog(ctx, "Logging container graphics environment to ", glxInfoFile)
 	if err := logContainerInfo(ctx, cont, file); err != nil {
 		return errors.Wrap(err, "failed to log container information")
-	}
+	}*/
 
 	if err := getSystemInfo(&group.Host); err != nil {
 		return err
@@ -416,7 +434,7 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	}
 
 	// Validate the protocol version of the guest trace_replay app
-	replayAppVersionCmd := cont.Command(ctx, path.Join(replayAppPathAtGuest, replayAppName), "--version")
+	replayAppVersionCmd := cont.Command(ctx, path.Join(cont.GetBinPath(), replayAppName), "--version")
 	replayAppVersionOutput, err := replayAppVersionCmd.Output()
 	if err != nil {
 		return err
