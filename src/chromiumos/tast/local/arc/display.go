@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 
@@ -131,7 +132,7 @@ func (d *Display) CaptionHeight(ctx context.Context) (h int, err error) {
 	return i, nil
 }
 
-func scrapeDensity(output []byte, sdkVersion int) (density float64, err error) {
+func scrapeDensity(displayID int, output []byte, sdkVersion int) (density float64, err error) {
 	var re *regexp.Regexp
 	switch sdkVersion {
 	case SDKP:
@@ -145,14 +146,20 @@ func scrapeDensity(output []byte, sdkVersion int) (density float64, err error) {
 			`(?:\s+.*$)*` + // Skip entire lines...
 			`\s*PhysicalDisplayInfo{.*density (\d\.\d+)?`) // ...until density is matched.
 	case SDKR:
+		uniqueID, err := scrapeUniqueID(displayID, output, sdkVersion)
+		if err != nil {
+			return -1, err
+		}
 		// In Android R, we are looking for:
 		// Display Devices: size=2
-		//   DisplayDeviceInfo
+		//   DisplayDeviceInfo{...: uniqueId="local:1886094531531010", ...}
+		//     ...
 		//     mDisplayInfo=DisplayInfo{..., density=2.0, ...}
-		re = regexp.MustCompile(`(?m)` + // Enable multiline.
-			`^Display Devices: size=2\n` + // Match Display Devices section.
-			`(?:\s+.*$)*` + // Skip entire lines...
-			`\s*mDisplayInfo.*{.*density=(\d\.\d+)?`) // ...until density is matched.
+		s := fmt.Sprintf(`(?m)`+ // Enable multiline.
+			`^\s+DisplayDeviceInfo{.+uniqueId="%s".+$`+ // Match Display Devices section.
+			`(?:\s+.*$)+?`+ // Skip entire lines...
+			`\s+mDisplayInfo=.+density=(\d\.\d+)?`, uniqueID) // ...until density is matched.
+		re = regexp.MustCompile(s)
 	default:
 		return -1, errors.Errorf("unsupported Android version %d", sdkVersion)
 	}
@@ -178,7 +185,7 @@ func (d *Display) PhysicalDensity(ctx context.Context) (density float64, err err
 	if err != nil {
 		return -1, err
 	}
-	return scrapeDensity(output, n)
+	return scrapeDensity(d.DisplayID, output, n)
 }
 
 // Size returns the display size. Takes into account possible orientation changes.
@@ -246,4 +253,26 @@ func (d *Display) stableSize(ctx context.Context) (s coords.Size, err error) {
 	}
 
 	return coords.NewSize(width, height), nil
+}
+
+func scrapeUniqueID(displayID int, output []byte, sdkVersion int) (string, error) {
+	if sdkVersion < SDKR {
+		return "", errors.Errorf("unsupported Android version %d", sdkVersion)
+	}
+
+	// Looking for:
+	// mDisplayId=...
+	// ...
+	// mBaseDisplayInfo=DisplayInfo{... , uniqueId "local:1886094531531010", ...}
+	s := fmt.Sprintf(`(?m)`+ // Enable multiline.
+		`mDisplayId=%d`+ // Gather displayId number.
+		`(?:\s+.*$)*?\s+`+ // Skip lines and words.
+		`mBaseDisplayInfo=[\W\w]+?uniqueId "(.+)"`, displayID) // Locate to uniqueId string.
+
+	re := regexp.MustCompile(s)
+	groups := re.FindStringSubmatch(string(output))
+	if len(groups) != 2 {
+		return "", errors.New("failed to parse 'dumpsys display'")
+	}
+	return string(groups[1]), nil
 }
