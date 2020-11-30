@@ -43,7 +43,12 @@ func BeaconInterval(ctx context.Context, s *testing.State) {
 	const expectBeaconInt = 200
 
 	s.Log("Setting up AP")
-	apOps := wificell.CommonAPOptions(hostapd.BeaconInterval(expectBeaconInt))
+	apOps := []hostapd.Option{
+		hostapd.Mode(hostapd.Mode80211nMixed),
+		hostapd.Channel(6),
+		hostapd.HTCaps(hostapd.HTCapHT40),
+		hostapd.BeaconInterval(expectBeaconInt),
+	}
 	ap, err := tf.ConfigureAP(ctx, apOps, nil)
 	if err != nil {
 		s.Fatal("Failed to configure ap: ", err)
