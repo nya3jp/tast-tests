@@ -51,7 +51,7 @@ def to_camel_case(snake_case_str):
   return ''.join(s.lower().title() for s in snake_case_str.split('_'))
 
 
-def print_definitions(lines, defined_type_name, go_type_name, description):
+def print_definitions(lines, defined_type_name, go_type_name, description, output_none):
   """Prints generated Golang type definitions.
 
   Args:
@@ -83,7 +83,8 @@ def print_definitions(lines, defined_type_name, go_type_name, description):
 
   for r in defs:
     print('\t%s%s %s = "%s"' % (defined_type_name, r[0], go_type_name, r[1]))
-
+  if output_none:
+    print('\t%s%s %s = ""' % (defined_type_name, "None", go_type_name))
   print(')')
   print()
 
@@ -95,14 +96,14 @@ def main(argv):
 
   print(HEADER)
   print_definitions(lines, 'StateType', 'StateType',
-                    'characteristics of a chrome.automation AutomationNode')
+                    'characteristics of a chrome.automation AutomationNode', False)
   print_definitions(lines, 'RoleType', 'RoleType',
-                    'the purpose of a chrome.automation AutomationNode')
+                    'the purpose of a chrome.automation AutomationNode', False)
   print_definitions(lines, 'EventType', 'EventType',
-                    'the type of a chrome.automation AutomationEvent')
+                    'the type of a chrome.automation AutomationEvent', False)
   print_definitions(
       lines, 'Restriction', 'RestrictionState',
-      'the restriction state of a chrome.automation AutomationNode')
+      'the restriction state of a chrome.automation AutomationNode', True)
   print(FOOTER)
 
 
