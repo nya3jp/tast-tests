@@ -16,6 +16,86 @@
       "message": "gabormagda@, hidehiko@ PTAL",
       "revId": "688f66d74c7818dd36ec847e40d69c530ae21291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee80f2b_dfa4ebf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:23:32Z",
+      "side": 1,
+      "message": "LGTM with style fix requests.\nSorry for delay. Back from sick OOO.",
+      "revId": "688f66d74c7818dd36ec847e40d69c530ae21291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a6ae49_84da746d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:23:32Z",
+      "side": 1,
+      "message": "nit: can these be merged.\n\ntestOpt.command \u003d append(testOpt.command,\n    strconv.Itoa(...), ...  // L93 content\n    yuvFile)  // L94 content.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "688f66d74c7818dd36ec847e40d69c530ae21291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6394740b_e04d1b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:23:32Z",
+      "side": 1,
+      "message": "nit: can this be just testOpt.command",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 99
+      },
+      "revId": "688f66d74c7818dd36ec847e40d69c530ae21291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2095d4d7_60432104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:23:32Z",
+      "side": 1,
+      "message": "nit: could you move this to just before L112, where it is actually needed at latest timing?",
+      "revId": "688f66d74c7818dd36ec847e40d69c530ae21291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
