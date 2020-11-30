@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cad3f6e_f2c3b624",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T07:59:30Z",
+      "side": 1,
+      "message": "tast LGTM. Defer to ihf@ and/or mcasas@.",
+      "revId": "ebd3552e37d28293610a1d99ce61b9ff8536d97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
