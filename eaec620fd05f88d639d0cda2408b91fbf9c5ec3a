@@ -104,6 +104,24 @@
       "parentUuid": "f4c6c188_1f39c45f",
       "revId": "eaec620fd05f88d639d0cda2408b91fbf9c5ec3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91353bec_80fb14aa",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T03:13:23Z",
+      "side": 1,
+      "message": "I see, thanks for explanation.",
+      "parentUuid": "de1e4adc_aceead01",
+      "revId": "eaec620fd05f88d639d0cda2408b91fbf9c5ec3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
