@@ -154,11 +154,11 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 
 		ap, err := tf.ConfigureAP(ctx, apOps, nil)
 		if err != nil {
-			return errors.Wrap(err, "failed to configure the initial AP")
+			return errors.Wrap(err, "failed to configure the AP")
 		}
 		defer func(ctx context.Context) {
 			if err := tf.DeconfigAP(ctx, ap); err != nil {
-				collectFirstErr(&retErr, errors.Wrap(err, "failed to deconfig the initial AP"))
+				collectFirstErr(&retErr, errors.Wrap(err, "failed to deconfig the AP"))
 			}
 		}(ctx)
 		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
@@ -196,7 +196,7 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 
 		s.Log("Verifying connection")
 		if err := tf.VerifyConnection(ctx, ap); err != nil {
-			return errors.Wrap(err, "failed to verify connection to the inital AP")
+			return errors.Wrap(err, "failed to verify connection to the AP")
 		}
 		return nil
 	}
