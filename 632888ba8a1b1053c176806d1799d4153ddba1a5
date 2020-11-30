@@ -45,6 +45,29 @@
       },
       "revId": "632888ba8a1b1053c176806d1799d4153ddba1a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fe4b18b_f069c698",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-30T21:42:41Z",
+      "side": 1,
+      "message": "Looks like no one is calling this? Am I missing something?\n\nBtw, any reason why we replace replayAppPathAtGuest with this? Shouldn\u0027t borealis/crostini put their binary/tmp files into the same PATH?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "632888ba8a1b1053c176806d1799d4153ddba1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
