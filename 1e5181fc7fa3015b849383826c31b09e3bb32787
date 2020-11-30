@@ -103,6 +103,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b0277f_662abc35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-30T11:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07d32472_b3c0c84a",
+      "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2201367e_bd825d69",
@@ -120,6 +138,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b6d9113_eb90dfe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-30T11:54:14Z",
+      "side": 1,
+      "message": "Made the name of the Bookmark \"Policies\" explicit by typing it through the keyboard in the test.",
+      "parentUuid": "2201367e_bd825d69",
+      "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb523d8a_e623b437",
@@ -133,6 +169,30 @@
       "writtenOn": "2020-11-30T08:37:57Z",
       "side": 1,
       "message": "Start button clicked. Adding bookmark dialog should be shown. Click the \"Done\" button in the dialog.",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 48
+      },
+      "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a10d4c_ae609ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-30T11:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb523d8a_e623b437",
       "range": {
         "startLine": 61,
         "startChar": 5,
