@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a8da22e_2da3e40f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-30T19:52:14Z",
+      "side": 1,
+      "message": "IIUC, CSA shoud be supported on all boards, so I was thinking to run the test on all boards and then check if some boards (WiFi chips) do not support it.\n\nWDYT?",
+      "parentUuid": "b3acf074_4c6088a0",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7829efd8_2d1a3946",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-27T09:08:21Z",
       "side": 1,
       "message": "Does the CL fix the flakiness of wifi.CSAReconnect?",
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e95a27e1_08a20f6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-30T19:52:14Z",
+      "side": 1,
+      "message": "This CL does not fix the falkiness. In the meantime, I am not sure if the flakiness is due to the test quality or the affected DUTs. I am still investigating the issue. \n\nI linked the bug b:174159304 for the string fix:\n\"failed to stay connected during the channel switching process\"",
+      "parentUuid": "7829efd8_2d1a3946",
       "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
