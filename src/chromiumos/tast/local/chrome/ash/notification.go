@@ -43,7 +43,9 @@ func Notifications(ctx context.Context, tconn *chrome.TestConn) ([]*Notification
 
 // HideVisibleNotifications clicks on the tray button to show and hide the system tray button, which should also hide any visible notification.
 func HideVisibleNotifications(ctx context.Context, tconn *chrome.TestConn) error {
-	trayButton, err := ui.Find(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "UnifiedSystemTray"})
+	trayButton, err := ui.StableFind(ctx,
+		tconn, ui.FindParams{Role: ui.RoleTypeButton, ClassName: "UnifiedSystemTray"},
+		&testing.PollOptions{Timeout: 5 * time.Second})
 	if err != nil {
 		return errors.Wrap(err, "system tray button not found")
 	}
