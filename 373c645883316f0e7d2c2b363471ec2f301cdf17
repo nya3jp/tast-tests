@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1fc8091_c762e5b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-30T11:37:43Z",
+      "side": 1,
+      "message": "It is already merged in https://crrev.com/c/2562902.\n\nAbandon this cl. Thanks for the review.",
+      "revId": "373c645883316f0e7d2c2b363471ec2f301cdf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cecd1689_dba5608d",
