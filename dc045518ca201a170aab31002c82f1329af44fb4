@@ -16,6 +16,24 @@
       "message": "Friendly ping: Greg PTAL, thanks.",
       "revId": "dc045518ca201a170aab31002c82f1329af44fb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4f145e_03e7fc6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-30T16:43:07Z",
+      "side": 1,
+      "message": "Sorry for the delay, US offices were on holiday.",
+      "parentUuid": "2314dcf6_b4ca3fbb",
+      "revId": "dc045518ca201a170aab31002c82f1329af44fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

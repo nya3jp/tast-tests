@@ -110,6 +110,30 @@
       },
       "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19dc7717_42cb234e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-11-30T16:43:07Z",
+      "side": 1,
+      "message": "We don\u0027t know whether L557 will actually be run. For example, if L532 returns an error, then the the runOrFatal function will return early, so L557 will never get the chance to reset the display power. So, it is still helpful to defer the cleanup function. Whether we should defer it here or at L528, I\u0027m not sure: Daichi, maybe you can help?\n\nWe can also prevent setting the display power when it is redundant. If we had a helper function to check the current display power, then we could change this deferred function to something like this:\n\n    defer func() {\n        if ok, err :\u003d checkDisplayPower(ctx, displayPowerAllOn); err !\u003d nil {\n            if retErr \u003d\u003d nil {\n                retErr \u003d\u003d err\n            }\n            return\n        } else if !ok {\n            // Display power is already displayPowerAllOn, so no need to reset.\n            return\n        }\n        if err \u003d setDisplayPower(ctx, displayPowerAllOn); err !\u003d nil \u0026\u0026 retErr \u003d\u003d nil {\n            retErr \u003d errors.Wrap(err, \"during removeAddDisplay cleanup\")\n        }\n    }\n\nEither way, we do still need to reserve time for the clean-up task, per https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "parentUuid": "983cbc5a_a7a75d32",
+      "range": {
+        "startLine": 510,
+        "startChar": 23,
+        "endLine": 510,
+        "endChar": 26
+      },
+      "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
