@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f27c77_4ff2cd91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T05:22:40Z",
+      "side": 1,
+      "message": "+1 to Junichi\u0027s comments.\n",
+      "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "610b9395_4e6e877e",
@@ -58,6 +75,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "74924fc7_92792046",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T05:22:40Z",
+      "side": 1,
+      "message": "No action required; FYI\n\nWe\u0027ll lose stack traces by using errors.New instead of errors.Wrap.\n\nI\u0027m still not sure of the best strategy on handling multiple errors. I usually return only the first encountered error, i.e.\n\n var firstErr error\n if err :\u003d ...; err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil {\n   firstErr \u003d err\n }\n if err :\u003d ...; err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil {\n   firstErr \u003d err\n }\n ...\n return firstErr\n\nBut obviously we\u0027ll miss non-first errors.",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 66
+      },
+      "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "67c38f88_547815f5",
@@ -71,6 +111,29 @@
       "writtenOn": "2020-11-20T08:10:30Z",
       "side": 1,
       "message": "Is this Okay?",
+      "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c24edbf_a1d8b10f",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T05:22:40Z",
+      "side": 1,
+      "message": "err is not assigned.",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 47
+      },
       "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
