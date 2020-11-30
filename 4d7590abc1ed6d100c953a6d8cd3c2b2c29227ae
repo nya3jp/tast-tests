@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7452e4e8_0f0db164",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-30T18:17:41Z",
+      "side": 1,
+      "message": "nit: Make subject short and fit in one line. Move extras into CL description body.",
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91ee7ed1_f281ae28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-30T18:17:41Z",
+      "side": 1,
+      "message": "nit: remove -\u003e removed",
+      "range": {
+        "startLine": 37,
+        "startChar": 46,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9808c9ff_4486e07b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-30T18:17:41Z",
+      "side": 1,
+      "message": "Do we need to worry that `req.Path` could an arbitrary file path and not necessarily under c.tempDir ? Should we do \"os.RemoveAll(c.tmpDir)\" and not need client to pass in the path at all ?",
+      "range": {
+        "startLine": 62,
+        "startChar": 24,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faac623b_c2b147a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-30T18:17:41Z",
+      "side": 1,
+      "message": "Why do we need to clear `req.Path`?",
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "309f0175_1084e6a8",
+        "filename": "src/chromiumos/tast/services/cros/cuj/local_store_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-11-30T18:17:41Z",
+      "side": 1,
+      "message": "Could you elaborate how LocalStoreService is expected to be used? Why do we need it? How the files there be created? Do you plan to add more methods like SaveFile etc to send data and create file on a DUT using the service?",
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
