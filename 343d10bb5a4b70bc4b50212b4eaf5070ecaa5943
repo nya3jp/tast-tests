@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4820b8d2_65d413e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-30T12:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e5bafb7_a0a2a1e1",
+      "range": {
+        "startLine": 52,
+        "startChar": 29,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c75c33_89968350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-30T12:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de87dd3d_0b155925",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3bad3d3_a0d15e32",
@@ -60,6 +108,24 @@
       "writtenOn": "2020-11-25T17:14:45Z",
       "side": 1,
       "message": "As a reader, it is not clear to me what the difference between originalSpoofEnable and originalSpoofState is. Could you please add a comment to clarify?",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d1ddc3_92f56dc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-30T12:43:24Z",
+      "side": 1,
+      "message": "Added some comments in patchset#6, line 53, 54 to explain this two variable.",
+      "parentUuid": "c3bad3d3_a0d15e32",
       "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "797b9ecf_ffb6f33b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-30T12:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64e46076_c542db19",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad36c48c_43b18bd5",
@@ -94,6 +178,24 @@
       "writtenOn": "2020-11-25T17:14:45Z",
       "side": 1,
       "message": "Move this line to after err has been handled (after L82)",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d1ee66_7af3e09b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-30T12:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad36c48c_43b18bd5",
       "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eae9fbb_b933219f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-30T12:43:24Z",
+      "side": 1,
+      "message": "Added spoofActivity() function.",
+      "parentUuid": "51242f44_ad4fe92f",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65f1eb85_a6b9bbcd",
@@ -132,6 +252,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f595be8d_91ec099c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-30T12:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f1eb85_a6b9bbcd",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35660bb1_546020c6",
@@ -145,6 +283,24 @@
       "writtenOn": "2020-11-25T17:14:45Z",
       "side": 1,
       "message": "Do you need to handle/log this error in any way, or is breaking sufficient? A clarifying comment may be helpful here.",
+      "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7512251_b9edf257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-30T12:43:24Z",
+      "side": 1,
+      "message": "I originally think we can just break and return same error(\"not found any proximity event in the log\").\nHowever, now I think that returning scanner error instead should provide more informations.\nAlso, this if block should be actually after \"for scanner.Scan()\", so I moved it.",
+      "parentUuid": "35660bb1_546020c6",
       "revId": "343d10bb5a4b70bc4b50212b4eaf5070ecaa5943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
