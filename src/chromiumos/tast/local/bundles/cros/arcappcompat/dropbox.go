@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
@@ -37,7 +38,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Dropbox,
 		Desc:         "Functional test for Dropbox that installs the app also verifies it is logged in and that the main page is open, checks Dropbox correctly changes the window state in both clamshell and touchview mode",
-		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
+		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
@@ -81,13 +82,21 @@ func Dropbox(ctx context.Context, s *testing.State) {
 // verify Dropbox reached main activity page of the app.
 func launchAppForDropbox(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInID          = "com.dropbox.android:id/tour_sign_in"
-		enterEmailID      = "com.dropbox.android:id/login_email_text_view"
-		enterPasswordID   = "com.dropbox.android:id/login_password_text_view"
-		submitID          = "com.dropbox.android:id/login_submit"
-		cancelDescription = "Cancel"
-		skipText          = "Skip"
-		homeFabID         = "com.dropbox.android:id/fab_button"
+		confirmText        = "Confirm"
+		continueText       = "Continue"
+		dismissText        = "Dismiss"
+		signInID           = "com.dropbox.android:id/tour_sign_in"
+		enterEmailID       = "com.dropbox.android:id/login_email_text_view"
+		enterPasswordID    = "com.dropbox.android:id/login_password_text_view"
+		submitID           = "com.dropbox.android:id/login_submit"
+		cancelDescription  = "Cancel"
+		notNowID           = "android:id/autofill_save_no"
+		skipText           = "Skip"
+		sendSecurityCodeID = "com.dropbox.android:id/enter_twofactor_code_leadin"
+		unLinkDevicesID    = "com.dropbox.android:id/secondary_button"
+		unLinkButtonID     = "com.dropbox.android:id/confirmButton"
+		selectDevicesID    = "com.dropbox.android:id/unlink_checkbox"
+		homeFabID          = "com.dropbox.android:id/fab_button"
 	)
 
 	// Click on sign in button.
@@ -126,10 +135,82 @@ func launchAppForDropbox(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on submit  button: ", err)
 	}
 
+	// Check for send security code.
+	checkForsendSecurityCode := d.Object(ui.ID(sendSecurityCodeID))
+	if err := checkForsendSecurityCode.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("checkForsendSecurityCode doesn't exist")
+	} else {
+		s.Log("checkForsendSecurityCode does exist")
+		return
+	}
+
+	// click on notnow button.
+	notNowButton := d.Object(ui.ID(notNowID))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exist: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
+	}
+
+	// Click on dismiss button.
+	dismissButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(dismissText))
+	if err := dismissButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("dismissButton doesn't exist: ", err)
+	} else if err := dismissButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on dismissButton: ", err)
+	}
+
+	// Click on unlink devices.
+	clickOnUnLinkDevices := d.Object(ui.ID(unLinkDevicesID))
+	if err := clickOnUnLinkDevices.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnUnLinkDevices doesn't exist: ", err)
+	} else if err := clickOnUnLinkDevices.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnUnLinkDevices: ", err)
+	}
+
+	// Select devices to unlink until Unlink is enabled.
+	selectDevices := d.Object(ui.ID(selectDevicesID))
+	if err := selectDevices.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("selectDevices doesn't exist: ", err)
+	} else {
+		s.Log("selectDevices does exist")
+		// Click on select devices to unlink until Unlink is enabled.
+		unLinkButton := d.Object(ui.ID(unLinkButtonID))
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if unLinkButtonEnabled, err := unLinkButton.IsEnabled(ctx); err != nil {
+				return errors.New("unLinkButton not enabled yet")
+			} else if !unLinkButtonEnabled {
+				selectDevices.Click(ctx)
+				return errors.New("unLinkButton not focused yet")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+			s.Log("Failed to focus unLinkButton: ", err)
+		} else if err := unLinkButton.Click(ctx); err != nil {
+			s.Fatal("Failed to click on unLinkButton: ", err)
+		}
+	}
+
+	// Click on confirm button.
+	confirmButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(confirmText))
+	if err := confirmButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("confirmButton doesn't exist: ", err)
+	} else if err := confirmButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on confirmButton: ", err)
+	}
+
+	// Click on continue button.
+	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(continueText))
+	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("continueButton doesn't exist: ", err)
+	} else if err := continueButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on continueButton: ", err)
+	}
+
 	// Click on cancel button.
 	cancelButton := d.Object(ui.Description(cancelDescription))
 	if err := cancelButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("cancel button doesn't exist: ", err)
+		s.Log("cancel button doesn't exist: ", err)
 	} else if err := cancelButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on cancel  button: ", err)
 	}
@@ -137,14 +218,14 @@ func launchAppForDropbox(ctx context.Context, s *testing.State, tconn *chrome.Te
 	// Click on skip button.
 	skipButton := d.Object(ui.Text(skipText))
 	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("skip button doesn't exist: ", err)
+		s.Log("skip button doesn't exist: ", err)
 	} else if err := skipButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on skip  button: ", err)
 	}
 
 	// Check for fav icon.
 	homeFavButton := d.Object(ui.ID(homeFabID))
-	if err := homeFavButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("homeFavButton button doesn't exist: ", err)
+	if err := homeFavButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Error("homeFavButton button doesn't exist: ", err)
 	}
 }
