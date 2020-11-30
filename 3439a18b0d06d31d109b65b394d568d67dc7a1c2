@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec076aa_d273293d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-11-30T02:38:04Z",
+      "side": 1,
+      "message": "x",
+      "revId": "3439a18b0d06d31d109b65b394d568d67dc7a1c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5233def_95983176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-11-30T02:38:04Z",
+      "side": 1,
+      "message": "Is this test expected to be run even on the devices without batteries?\nIf so, you need to add _nobatterymetrics variants of the tests and set this value as setup.NoBatteryDischarge to prevent errors if the device does not have batteries. (Same thing is done in the PowerIdlePerf test.) \nSee https://crrev.com/c/2561970 for examples of _nobatterymetrics parameterization and parameter generator usage, and http://go/tast-generate-params for the parameter generator.",
+      "revId": "3439a18b0d06d31d109b65b394d568d67dc7a1c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
