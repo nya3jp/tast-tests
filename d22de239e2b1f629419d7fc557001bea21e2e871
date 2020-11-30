@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80435102_7ceaa788",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-30T09:14:56Z",
+      "side": 1,
+      "message": "Sorry for the delay. Generally looks good to me.\n\nThe code is ~500 lines and the param is ~1000 lines. Reduce the complexity by half sounds good enough to me.\n\nThe main down side I see is that it might not be obvious when we have some typo in the strings in code. One question: does Tast codegen library print good enough error in this case?",
+      "revId": "d22de239e2b1f629419d7fc557001bea21e2e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0bc56a3_15defa36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-30T09:14:56Z",
+      "side": 1,
+      "message": "nit: perhaps AP? (but as this is still WIP, I guess no need of immediate change)",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "d22de239e2b1f629419d7fc557001bea21e2e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d8c31b_1951b1e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-30T09:14:56Z",
+      "side": 1,
+      "message": "Not sure if it might be over-design if we extract this common prefix. This sounds somehow reasonable to me as this is \"SimpleConnect\" test. :p",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 51
+      },
+      "revId": "d22de239e2b1f629419d7fc557001bea21e2e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd533f69_6ce78fdf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-30T09:14:56Z",
+      "side": 1,
+      "message": "Looks like this can also be composed of paramsVal instead of Customized with a little diff in the simple_connect.go? I see .CommonAPOptions and .ExtraHardwareDeps so possibly enough.",
+      "revId": "d22de239e2b1f629419d7fc557001bea21e2e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
