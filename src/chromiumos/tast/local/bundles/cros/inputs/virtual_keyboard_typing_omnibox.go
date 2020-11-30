@@ -19,31 +19,31 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardTypingBrowser,
-		Desc:         "Checks that the virtual keyboard works in Chrome browser",
+		Func:         VirtualKeyboardTypingOmnibox,
+		Desc:         "Checks that the virtual keyboard works in Chrome browser omnibox",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
 			Pre:               pre.VKEnabledTablet(),
 			ExtraHardwareDeps: pre.InputsStableModels,
-			ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
+			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
 			Pre:               pre.VKEnabledTablet(),
 			ExtraHardwareDeps: pre.InputsUnstableModels,
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"informational"},
 		}, {
-			Name:              "mojo",
+			Name:              "exp",
 			Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
-			ExtraHardwareDeps: pre.InputsMojoModels,
-			ExtraAttr:         []string{"group:input-tools-upstream"},
+			ExtraSoftwareDeps: []string{"gboard_decoder"},
+			ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 		}}})
 }
 
-func VirtualKeyboardTypingBrowser(ctx context.Context, s *testing.State) {
+func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 	// typingKeys indicates a key series that tapped on virtual keyboard.
 	const typingKeys = "go"
 	cr := s.PreValue().(pre.PreData).Chrome

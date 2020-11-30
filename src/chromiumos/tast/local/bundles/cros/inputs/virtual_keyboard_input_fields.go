@@ -37,10 +37,10 @@ func init() {
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
-				Name:              "us_en_mojo",
+				Name:              "us_en_exp",
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
-				ExtraHardwareDeps: pre.InputsMojoModels,
+				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			}, {
 				Name:              "jp_us_stable",
 				Pre:               pre.VKEnabledTablet(),
@@ -52,10 +52,10 @@ func init() {
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
-				Name:              "jp_us_mojo",
+				Name:              "jp_us_exp",
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraHardwareDeps: pre.InputsMojoModels,
+				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			}, {
 				Name:              "zh_pinyin_stable",
 				Pre:               pre.VKEnabledTablet(),
@@ -67,10 +67,10 @@ func init() {
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
-				Name:              "zh_pinyin_mojo",
+				Name:              "zh_pinyin_exp",
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-				ExtraHardwareDeps: pre.InputsMojoModels,
+				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			},
 		},
 	})
