@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91adbc3_d38e5c00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-11-30T06:18:39Z",
+      "side": 1,
+      "message": "network_WiFi_CSA should be removed from CQ now. Rebase to avoid cache issue.",
+      "revId": "d310a43c4ce7da3eace25a07b082b36c3ef9db52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
