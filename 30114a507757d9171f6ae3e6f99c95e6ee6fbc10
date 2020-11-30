@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdaa5f5f_d641b1ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2020-11-30T11:54:14Z",
+      "side": 1,
+      "message": "Thanks.\nUpdated the patch, PTAL.",
+      "revId": "30114a507757d9171f6ae3e6f99c95e6ee6fbc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
