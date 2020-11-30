@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "495f597f_8d07cdfc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-30T09:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01245465_829540ce",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "940262d17c6a33a9c1147a318dd699ce7304e8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ad8c5c0b_3014e1a0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -71,6 +95,30 @@
       "writtenOn": "2020-11-30T09:00:18Z",
       "side": 1,
       "message": "fix order of args here ?",
+      "range": {
+        "startLine": 257,
+        "startChar": 20,
+        "endLine": 257,
+        "endChar": 64
+      },
+      "revId": "940262d17c6a33a9c1147a318dd699ce7304e8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9268db07_d1d0b912",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-30T09:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b61ea7b_456ff11f",
       "range": {
         "startLine": 257,
         "startChar": 20,
