@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4500ba6b_b795cc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-30T17:18:05Z",
+      "side": 1,
+      "message": "Filed b/174479526 to not forget.",
+      "parentUuid": "2a3e2a86_2a0e70b4",
+      "revId": "3b6725769a8dd8fa38ee6df9ecc1f758f36e2b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad18caa7_0f7fa3f6",
