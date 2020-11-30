@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc61b137_641be729",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-30T12:46:02Z",
+      "side": 1,
+      "message": "I also added the activityID const and the ReadIntegerAttr() function in iio/iio.go and use defer to recover the spoofing status in sensor_activity.go.",
+      "revId": "e5d0b1390fbb41ba1db68b2388f280aebd352beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
