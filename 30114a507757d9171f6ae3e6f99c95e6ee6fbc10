@@ -16,6 +16,46 @@
       "message": "Thanks.\nUpdated the patch, PTAL.",
       "revId": "30114a507757d9171f6ae3e6f99c95e6ee6fbc10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29cc45a_6018e63e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T15:38:20Z",
+      "side": 1,
+      "message": "One nit.",
+      "revId": "30114a507757d9171f6ae3e6f99c95e6ee6fbc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d9b4840_42724878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T15:38:20Z",
+      "side": 1,
+      "message": "const bookmarkName \u003d \"Policies\" \nbefore line 47 and use it here and line 142.",
+      "range": {
+        "startLine": 85,
+        "startChar": 28,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "30114a507757d9171f6ae3e6f99c95e6ee6fbc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
