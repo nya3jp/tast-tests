@@ -110,6 +110,30 @@
       },
       "revId": "ca5f89d910c5555efe988bfed6a09dd3fc78e5ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9144fa45_6701c10e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-11-30T22:54:36Z",
+      "side": 1,
+      "message": "Most code I have seen is split between ignoring the error and just logging it.\n\nMost tests don\u0027t treat errors in cleanup code as errors, but they do log the problem for debugging purposes.\n\nGenerally I would recommend logging the error (s.Log or testing.ContextLog) so you have at least some idea of what is happening if the test starts having problems.",
+      "parentUuid": "10cd48f3_f4da39f8",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 25
+      },
+      "revId": "ca5f89d910c5555efe988bfed6a09dd3fc78e5ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
