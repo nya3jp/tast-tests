@@ -116,6 +116,30 @@
       },
       "revId": "3439a18b0d06d31d109b65b394d568d67dc7a1c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b000a4b_564bd7c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2020-11-30T14:20:35Z",
+      "side": 1,
+      "message": "Not as closely as we could, but at least if it errors out then we would see that as a failure on tastboard: https://tastboard.corp.google.com/test?testname\u003dplatform.MLBenchmark.*\n\nAlso, I was discouraged from passing the testing.State field around. Can you refactor it to use \u0027return errors.Wrap(err, ...\u0027 instead?",
+      "parentUuid": "4997805b_8c1e8ca9",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "3439a18b0d06d31d109b65b394d568d67dc7a1c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
