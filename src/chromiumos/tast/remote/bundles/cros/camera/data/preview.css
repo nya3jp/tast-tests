@@ -1,0 +1,25 @@
+/* Copyright 2019 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file. */
+
+video {
+  border: 5px solid limegreen;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+body.failed video {
+  border-color: red;
+}
+
+.message {
+  color: limegreen;
+}
+
+body.failed .message {
+  color: red;
+}
