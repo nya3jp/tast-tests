@@ -184,6 +184,24 @@
       "parentUuid": "46c19a4e_cd50f75d",
       "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400bcf4f_8fbf510b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-30T16:00:49Z",
+      "side": 1,
+      "message": "In the unset case there is no top level folder.",
+      "parentUuid": "24e86bb3_8ee5d5a3",
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
