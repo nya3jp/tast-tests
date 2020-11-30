@@ -33,7 +33,7 @@ func init() {
 		// This test is a technical experiment. It is very flaky at the moment.
 		// Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
 		Data: []string{enTestFile},
-		Pre:  pre.VKEnabledTablet(),
+		Pre:  pre.VKEnabledTablet,
 	})
 }
 

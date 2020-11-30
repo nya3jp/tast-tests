@@ -53,25 +53,35 @@ const resetTimeout = 30 * time.Second
 // defaultIMECode is used for new Chrome instance.
 const defaultIMECode = ime.IMEPrefix + string(ime.INPUTMETHOD_XKB_US_ENG)
 
+func inputsPreCondition(name string, dm deviceMode, opts ...chrome.Option) *preImpl {
+	return &preImpl{
+		name:    name,
+		timeout: resetTimeout + chrome.LoginTimeout,
+		dm:      dm,
+		opts:    opts,
+	}
+}
+
 // VKEnabled creates a new precondition can be shared by tests that require an already-started Chromeobject that enables virtual keyboard.
 // It uses --enable-virtual-keyboard to force enable virtual keyboard regardless of device ui mode.
-func VKEnabled() testing.Precondition { return vkEnabledPre }
+var VKEnabled = inputsPreCondition("virtual_keyboard_enabled_pre", notForced)
 
 // VKEnabledTablet creates a new precondition for testing virtual keyboard in tablet mode.
 // It boots device in tablet mode and force enabled virtual keyboard via chrome flag --enable-virtual-keyboard.
-func VKEnabledTablet() testing.Precondition { return vkEnabledTabletPre }
+var VKEnabledTablet = inputsPreCondition("virtual_keyboard_enabled_tablet_pre", tabletMode)
 
 // VKEnabledClamshell creates a new precondition for testing virtual keyboard in clamshell mode.
 // It uses Chrome API settings.a11y.virtual_keyboard to enable a11y vk instead of --enable-virtual-keyboard.
-func VKEnabledClamshell() testing.Precondition { return vkEnabledClamshellPre }
+var VKEnabledClamshell = inputsPreCondition("virtual_keyboard_enabled_clamshell_pre", clamshellMode)
 
-// IMEServiceEnabled returns a precondition with IME service enabled.
-// It works on a predefined precondition type rather than creating a new definition.
-func IMEServiceEnabled(precondition testing.Precondition) testing.Precondition {
-	newPreImpl := precondition.(*preImpl)
-	newPreImpl.opts = append(newPreImpl.opts, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
-	return newPreImpl
-}
+// VKEnabledExp creates same precondition as VKEnabled with extra Chrome options.
+var VKEnabledExp = inputsPreCondition("virtual_keyboard_enabled_exp_pre", notForced, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
+
+// VKEnabledTabletExp creates same precondition as VKEnabledTablet with extra Chrome options.
+var VKEnabledTabletExp = inputsPreCondition("virtual_keyboard_enabled_tablet_exp_pre", tabletMode, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
+
+// VKEnabledClamshellExp creates same precondition as VKEnabledClamshell with extra Chrome options.
+var VKEnabledClamshellExp = inputsPreCondition("virtual_keyboard_enabled_clamshell_exp_pre", clamshellMode, chrome.ExtraArgs("--enable-features=ImeMojoDecoder"))
 
 // The PreData object is made available to users of this precondition via:
 //
@@ -101,24 +111,6 @@ type preImpl struct {
 	dm      deviceMode      // device ui mode to test
 	opts    []chrome.Option // Options that should be passed to chrome.New
 	tconn   *chrome.TestConn
-}
-
-var vkEnabledPre = &preImpl{
-	name:    "virtual_keyboard_enabled_pre",
-	timeout: resetTimeout + chrome.LoginTimeout,
-	dm:      notForced,
-}
-
-var vkEnabledTabletPre = &preImpl{
-	name:    "virtual_keyboard_enabled_tablet_pre",
-	timeout: resetTimeout + chrome.LoginTimeout,
-	dm:      tabletMode,
-}
-
-var vkEnabledClamshellPre = &preImpl{
-	name:    "virtual_keyboard_enabled_clamshell_pre",
-	timeout: resetTimeout + chrome.LoginTimeout,
-	dm:      clamshellMode,
 }
 
 func (p *preImpl) String() string         { return p.name }

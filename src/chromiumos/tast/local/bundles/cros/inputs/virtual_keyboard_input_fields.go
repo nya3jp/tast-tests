@@ -28,47 +28,47 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "us_en_stable",
-				Pre:               pre.VKEnabledTablet(),
+				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "us_en_unstable",
-				Pre:               pre.VKEnabledTablet(),
+				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
 				Name:              "us_en_exp",
-				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+				Pre:               pre.VKEnabledTabletExp,
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			}, {
 				Name:              "jp_us_stable",
-				Pre:               pre.VKEnabledTablet(),
+				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "jp_us_unstable",
-				Pre:               pre.VKEnabledTablet(),
+				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
 				Name:              "jp_us_exp",
-				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+				Pre:               pre.VKEnabledTabletExp,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			}, {
 				Name:              "zh_pinyin_stable",
-				Pre:               pre.VKEnabledTablet(),
+				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "zh_pinyin_unstable",
-				Pre:               pre.VKEnabledTablet(),
+				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
 				Name:              "zh_pinyin_exp",
-				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+				Pre:               pre.VKEnabledTabletExp,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			},

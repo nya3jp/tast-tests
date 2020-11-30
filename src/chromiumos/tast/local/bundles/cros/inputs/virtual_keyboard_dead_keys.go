@@ -48,7 +48,7 @@ func init() {
 				// non-a11y mode where there's no dead keys, and a full-layout VK for
 				// a11y mode where there's dead keys. To test dead keys on the VK of
 				// this input method, a11y mode must be enabled.
-				Pre: pre.VKEnabledClamshell(),
+				Pre: pre.VKEnabledClamshell,
 				Val: deadKeysTestCase{
 					// "French - French keyboard" input method is decoder-backed. Dead keys
 					// are implemented differently from those of a no-frills input method.
@@ -64,7 +64,7 @@ func init() {
 				Name:              "french_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 				ExtraAttr:         []string{"informational"},
-				Pre:               pre.VKEnabledClamshell(),
+				Pre:               pre.VKEnabledClamshell,
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:fr::fra",
 					hasDecoder:           true,
@@ -73,7 +73,7 @@ func init() {
 				},
 			}, {
 				Name:              "french_exp",
-				Pre:               pre.IMEServiceEnabled(pre.VKEnabledClamshell()),
+				Pre:               pre.VKEnabledClamshellExp,
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 				Val: deadKeysTestCase{
@@ -88,7 +88,7 @@ func init() {
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				// "Catalan keyboard" input method uses the same full-layout VK (that
 				// has dead keys) for both a11y & non-a11y. Just use non-a11y here.
-				Pre: pre.VKEnabledTablet(),
+				Pre: pre.VKEnabledTablet,
 				Val: deadKeysTestCase{
 					// "Catalan keyboard" input method is no-frills. Dead keys are
 					// implemented differently from those of a decoder-backed input method.
@@ -105,7 +105,7 @@ func init() {
 				Name:              "catalan_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 				ExtraAttr:         []string{"informational"},
-				Pre:               pre.VKEnabledTablet(),
+				Pre:               pre.VKEnabledTablet,
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",
 					hasDecoder:           false,
@@ -116,7 +116,7 @@ func init() {
 				Name:              "catalan_exp",
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
-				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+				Pre:               pre.VKEnabledTabletExp,
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",
 					hasDecoder:           false,
