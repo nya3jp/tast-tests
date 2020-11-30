@@ -29,9 +29,16 @@ func newDataChartPre(name, path string) *chartPre {
 
 var dataChartScene = newDataChartPre("cts_portrait_scene", "third_party/cts_portrait_scene.jpg")
 
-// DataChartScene returns test precondition for displaying scene.pdf on chart tablet.
+// DataChartScene returns test precondition for displaying default test scene on chart tablet.
 func DataChartScene() *chartPre {
 	return dataChartScene
+}
+
+var alignChartScene = newDataChartPre("align_scene", "align.svg")
+
+// AlignChartScene returns test precondition for displaying pattern for checking camerabox alignment on chart tablet.
+func AlignChartScene() *chartPre {
+	return alignChartScene
 }
 
 func (p *chartPre) String() string         { return "chart_" + p.name }
