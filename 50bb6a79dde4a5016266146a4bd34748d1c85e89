@@ -120,6 +120,24 @@
       "message": "I\u0027ve found this copied duplicated files of chrome logs (suffixed with date-time) to the host unless they are actually cleared by test like resetting TPM. I moved this back to the helpers_remote.go. Then this change only copies messages file. Updated CL description accordingly.",
       "revId": "50bb6a79dde4a5016266146a4bd34748d1c85e89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d4d1c59_77837845",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T03:15:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "23fcbd55_f9962951",
+      "revId": "50bb6a79dde4a5016266146a4bd34748d1c85e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
