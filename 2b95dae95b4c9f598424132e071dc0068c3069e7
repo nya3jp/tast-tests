@@ -52,6 +52,24 @@
       "parentUuid": "55724a17_00dd4437",
       "revId": "2b95dae95b4c9f598424132e071dc0068c3069e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caaa0774_b404e5a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-11-30T19:40:57Z",
+      "side": 1,
+      "message": "Here, due to the change in the cryptohome code, cleanup is made by cryptohome_namespace_mounter, not the service.cc. So, if I understand your point correctly, we already cover that. Anyway I think it is better to submit this change now to fix the test and I\u0027ll submit another CL for the TODO if it is still not covered.",
+      "parentUuid": "d4a33edc_aa1cf251",
+      "revId": "2b95dae95b4c9f598424132e071dc0068c3069e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
