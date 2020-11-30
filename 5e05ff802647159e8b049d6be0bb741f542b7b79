@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5381f91f_dab3dd9f",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-30T06:45:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b94860f_09828f79",
+      "range": {
+        "startLine": 135,
+        "startChar": 19,
+        "endLine": 135,
+        "endChar": 63
+      },
+      "revId": "5e05ff802647159e8b049d6be0bb741f542b7b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "922b4f68_0bdecf5a",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "144f5853_ca837c68",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-30T06:45:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "922b4f68_0bdecf5a",
+      "range": {
+        "startLine": 257,
+        "startChar": 20,
+        "endLine": 257,
+        "endChar": 64
+      },
+      "revId": "5e05ff802647159e8b049d6be0bb741f542b7b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43f6635a_c40da40e",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-11-30T06:15:44Z",
       "side": 1,
       "message": "hm I wonder if this is needed here, since this function is only called in the case SDKR above.",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 2
+      },
+      "revId": "5e05ff802647159e8b049d6be0bb741f542b7b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c48b3c9_41238f24",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-30T06:45:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43f6635a_c40da40e",
       "range": {
         "startLine": 258,
         "startChar": 1,
