@@ -26,6 +26,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "401bf5d2_dacca408",
+        "filename": "src/chromiumos/tast/local/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:09:50Z",
+      "side": 1,
+      "message": "Do you have alternative recommendation?\n\nNote: struct member needs to be always \"xxx.IsPinned\", while this needs to be always \"IsPinned\" without preceding dot-notations.",
+      "parentUuid": "ec6b9f4c_70853b68",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe51bfc_9104e0a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:09:50Z",
+      "side": 1,
+      "message": "Launching lacros time should be a part of pre-condition timeout, which is not included here.\nCould you give it a try to use default timeout? (\u003d2mins excluding pre-condition setup time).",
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bf37874_4dbd0229",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
         "patchSetId": 2
@@ -42,6 +83,76 @@
         "startChar": 1,
         "endLine": 47,
         "endChar": 2
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72cfd277_77e73a60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:09:50Z",
+      "side": 1,
+      "message": "FYI: go prefers shorter name depending on the surrounding context. So, l is fine, I think? Or, lc taking from *l*acros*c*hrome?",
+      "parentUuid": "7bf37874_4dbd0229",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86160652_edd543c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:09:50Z",
+      "side": 1,
+      "message": "it is often recommended to avoid \"get\", \"is\", \"has\" prefixes.\n\ncan this be just deviceID? (the leading letter should be lower case).",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 12
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "934d7b64_08916275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:09:50Z",
+      "side": 1,
+      "message": "nit: deviceName to follow JS style.",
+      "range": {
+        "startLine": 64,
+        "startChar": 51,
+        "endLine": 64,
+        "endChar": 52
       },
       "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -72,6 +183,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3febd68d_2d2cdb06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:09:50Z",
+      "side": 1,
+      "message": "nit: can \"Call(ctx, nil `audio.setSinkId`, loopbackID)\" work ?",
+      "range": {
+        "startLine": 83,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9557cc60_f3d664f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
         "patchSetId": 2
@@ -88,6 +222,52 @@
         "startChar": 5,
         "endLine": 86,
         "endChar": 10
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9fe1a77_d194cba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:09:50Z",
+      "side": 1,
+      "message": "style:\nstreams, err :\u003d crastestclient.WaitForStreams(...)\nif err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe4ea43_bd75e790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-11-30T08:09:50Z",
+      "side": 1,
+      "message": "ditto for lower case.\nSuggestion \"containsLacrosPinnedStream\"?",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 4
       },
       "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
