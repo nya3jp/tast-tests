@@ -34,6 +34,24 @@
       "parentUuid": "bb58fa3a_5fb205c2",
       "revId": "5bd838cdd3d103357276d476c98a6d6bfa05090f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cada5550_dbbb3301",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-30T21:59:27Z",
+      "side": 1,
+      "message": "Sheriff here.  Is there a revert of this CL expected soon?  We have quite a few test failures with tast.shelf.LaunchedApps",
+      "parentUuid": "445ec810_27cc8320",
+      "revId": "5bd838cdd3d103357276d476c98a6d6bfa05090f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
