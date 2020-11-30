@@ -50,28 +50,28 @@ func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
 	defer keyboard.Close()
 
 	for _, param := range []struct {
-		name           string
-		wantRestricted bool                              // wantRestricted is the wanted restriction state of the toggle button for the "Show lock screen when waking from sleep" option.
-		wantChecked    ui.CheckedState                   // wantChecked is the wanted checked state of the toggle button for the "Show lock screen when waking from sleep" option.
-		value          *policy.ChromeOsLockOnIdleSuspend // value is the value of the policy.
+		name            string
+		wantRestriction ui.RestrictionState               // wantRestriction is the wanted restriction state of the checkboxes in Browsing history.
+		wantChecked     ui.CheckedState                   // wantChecked is the wanted checked state of the checkboxes in Browsing history.
+		value           *policy.ChromeOsLockOnIdleSuspend // value is the value of the policy.
 	}{
 		{
-			name:           "forced",
-			wantRestricted: true,
-			wantChecked:    ui.CheckedStateTrue,
-			value:          &policy.ChromeOsLockOnIdleSuspend{Val: true},
+			name:            "forced",
+			wantRestriction: ui.RestrictionDisabled,
+			wantChecked:     ui.CheckedStateTrue,
+			value:           &policy.ChromeOsLockOnIdleSuspend{Val: true},
 		},
 		{
-			name:           "disabled",
-			wantRestricted: true,
-			wantChecked:    ui.CheckedStateFalse,
-			value:          &policy.ChromeOsLockOnIdleSuspend{Val: false},
+			name:            "disabled",
+			wantRestriction: ui.RestrictionDisabled,
+			wantChecked:     ui.CheckedStateFalse,
+			value:           &policy.ChromeOsLockOnIdleSuspend{Val: false},
 		},
 		{
-			name:           "unset",
-			wantRestricted: false,
-			wantChecked:    ui.CheckedStateFalse,
-			value:          &policy.ChromeOsLockOnIdleSuspend{Stat: policy.StatusUnset},
+			name:            "unset",
+			wantRestriction: ui.RestrictionNone,
+			wantChecked:     ui.CheckedStateFalse,
+			value:           &policy.ChromeOsLockOnIdleSuspend{Stat: policy.StatusUnset},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -104,25 +104,19 @@ func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to type password: ", err)
 			}
 
-			// Find the toggle button node.
-			tbNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeToggleButton,
-				Name: "Show lock screen when waking from sleep",
-			}, 15*time.Second)
-			if err != nil {
-				s.Fatal("Finding toggle button failed: ", err)
-			}
-			defer tbNode.Release(ctx)
-
-			// Check the checked state of the toggle button.
-			if tbNode.Checked != param.wantChecked {
-				s.Errorf("Unexpected toggle button checked state: got %v; want %v", tbNode.Checked, param.wantChecked)
-			}
-
-			// Check the restriction setting of the toggle button.
-			if restricted := (tbNode.Restriction == ui.RestrictionDisabled || tbNode.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
-				s.Logf("The restriction state is %q", tbNode.Restriction)
-				s.Errorf("Unexpected toggle button restriction: got %t; want %t", restricted, param.wantRestricted)
+			if err := policyutil.VerifySettingsNode(ctx, tconn,
+				ui.FindParams{
+					Role: ui.RoleTypeToggleButton,
+					Name: "Show lock screen when waking from sleep",
+				},
+				ui.FindParams{
+					Attributes: map[string]interface{}{
+						"restriction": param.wantRestriction,
+						"checked":     param.wantChecked,
+					},
+				},
+			); err != nil {
+				s.Error("Unexpected settings state: ", err)
 			}
 		})
 	}

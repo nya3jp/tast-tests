@@ -50,30 +50,28 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 	defer kb.Close()
 
 	for _, param := range []struct {
-		name string
-		// show is the expected existence of the a11y button.
-		show bool
-		// wantRestricted is the wanted restriction state of the toggle button for the "Always show accessibility options in the system menu" option.
-		wantRestricted bool
-		policy         *policy.ShowAccessibilityOptionsInSystemTrayMenu
+		name            string
+		wantChecked     ui.CheckedState     // wantChecked is the expected existence of the a11y button.
+		wantRestriction ui.RestrictionState // wantRestriction is the wanted restriction state of the toggle button for the "Always show accessibility options in the system menu" option.
+		policy          *policy.ShowAccessibilityOptionsInSystemTrayMenu
 	}{
 		{
-			name:           "unset",
-			show:           false,
-			wantRestricted: false,
-			policy:         &policy.ShowAccessibilityOptionsInSystemTrayMenu{Stat: policy.StatusUnset},
+			name:            "unset",
+			wantChecked:     ui.CheckedStateFalse,
+			wantRestriction: ui.RestrictionNone,
+			policy:          &policy.ShowAccessibilityOptionsInSystemTrayMenu{Stat: policy.StatusUnset},
 		},
 		{
-			name:           "false",
-			show:           false,
-			wantRestricted: true,
-			policy:         &policy.ShowAccessibilityOptionsInSystemTrayMenu{Val: false},
+			name:            "false",
+			wantChecked:     ui.CheckedStateFalse,
+			wantRestriction: ui.RestrictionDisabled,
+			policy:          &policy.ShowAccessibilityOptionsInSystemTrayMenu{Val: false},
 		},
 		{
-			name:           "true",
-			show:           true,
-			wantRestricted: true,
-			policy:         &policy.ShowAccessibilityOptionsInSystemTrayMenu{Val: true},
+			name:            "true",
+			wantChecked:     ui.CheckedStateTrue,
+			wantRestriction: ui.RestrictionDisabled,
+			policy:          &policy.ShowAccessibilityOptionsInSystemTrayMenu{Val: true},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -90,32 +88,19 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 			}
 
 			// Open settings page where the affected toggle button can be found.
-			conn, err := cr.NewConn(ctx, "chrome://os-settings/osAccessibility")
-			if err != nil {
-				s.Fatal("Failed to connect to the OS Accessibility settings page: ", err)
-			}
-			defer conn.Close()
-
-			// Find the toggle button node.
-			tbNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeToggleButton,
-				Name: "Always show accessibility options in the system menu",
-			}, 15*time.Second)
-			if err != nil {
-				s.Fatal("Failed to find the toggle button: ", err)
-			}
-			defer tbNode.Release(ctx)
-
-			// Check the checked state of the toggle button.
-			if checked := tbNode.Checked == ui.CheckedStateTrue; checked != param.show {
-				s.Logf("The checked state is %q", tbNode.Checked)
-				s.Errorf("Unexpected toggle button checked state: got %t; want %t", checked, param.show)
-			}
-
-			// Check the restriction state of the toggle button.
-			if restricted := tbNode.Restriction == ui.RestrictionDisabled; restricted != param.wantRestricted {
-				s.Logf("The restriction state is %q", tbNode.Restriction)
-				s.Errorf("Unexpected toggle button restriction: got %t; want %t", restricted, param.wantRestricted)
+			if err := policyutil.VerifySettingsState(ctx, cr, "chrome://os-settings/osAccessibility",
+				ui.FindParams{
+					Role: ui.RoleTypeToggleButton,
+					Name: "Always show accessibility options in the system menu",
+				},
+				ui.FindParams{
+					Attributes: map[string]interface{}{
+						"restriction": param.wantRestriction,
+						"checked":     param.wantChecked,
+					},
+				},
+			); err != nil {
+				s.Error("Unexpected settings state: ", err)
 			}
 
 			// Open system tray.
@@ -127,7 +112,7 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 			if err := ui.WaitUntilExistsStatus(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeButton,
 				Name: "Show accessibility settings",
-			}, param.show, 15*time.Second); err != nil {
+			}, param.wantChecked == ui.CheckedStateTrue, 15*time.Second); err != nil {
 				s.Error("Could not confirm the desired status of the Accessibility button: ", err)
 			}
 		})

@@ -41,34 +41,34 @@ func SafeBrowsingProtectionLevel(ctx context.Context, s *testing.State) {
 	}
 
 	for _, param := range []struct {
-		name           string
-		wantRestricted bool   // wantRestricted is the wanted restriction state of the checkboxes in Safe Browsing settings page.
-		selectedOption string // selectedOption is the selected safety level in Safe Browsing settings page.
-		value          *policy.SafeBrowsingProtectionLevel
+		name            string
+		wantRestriction ui.RestrictionState // wantRestriction is the wanted restriction state of the checkboxes in Safe Browsing settings page.
+		selectedOption  string              // selectedOption is the selected safety level in Safe Browsing settings page.
+		value           *policy.SafeBrowsingProtectionLevel
 	}{
 		{
-			name:           "unset",
-			wantRestricted: false,
-			selectedOption: "Standard protection",
-			value:          &policy.SafeBrowsingProtectionLevel{Stat: policy.StatusUnset},
+			name:            "unset",
+			wantRestriction: ui.RestrictionNone,
+			selectedOption:  "Standard protection",
+			value:           &policy.SafeBrowsingProtectionLevel{Stat: policy.StatusUnset},
 		},
 		{
-			name:           "no_protection",
-			wantRestricted: true,
-			selectedOption: "No protection (not recommended)",
-			value:          &policy.SafeBrowsingProtectionLevel{Val: 0},
+			name:            "no_protection",
+			wantRestriction: ui.RestrictionDisabled,
+			selectedOption:  "No protection (not recommended)",
+			value:           &policy.SafeBrowsingProtectionLevel{Val: 0},
 		},
 		{
-			name:           "standard_protection",
-			wantRestricted: true,
-			selectedOption: "Standard protection",
-			value:          &policy.SafeBrowsingProtectionLevel{Val: 1},
+			name:            "standard_protection",
+			wantRestriction: ui.RestrictionDisabled,
+			selectedOption:  "Standard protection",
+			value:           &policy.SafeBrowsingProtectionLevel{Val: 1},
 		},
 		{
-			name:           "enhanced_protection",
-			wantRestricted: true,
-			selectedOption: "Enhanced protection",
-			value:          &policy.SafeBrowsingProtectionLevel{Val: 2},
+			name:            "enhanced_protection",
+			wantRestriction: ui.RestrictionDisabled,
+			selectedOption:  "Enhanced protection",
+			value:           &policy.SafeBrowsingProtectionLevel{Val: 2},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -105,14 +105,13 @@ func SafeBrowsingProtectionLevel(ctx context.Context, s *testing.State) {
 			}
 			defer srbNode.Release(ctx)
 
-			if isRestricted, err := srbNode.Matches(ctx, ui.FindParams{Attributes: map[string]interface{}{"restriction": ui.RestrictionDisabled}}); err != nil {
-				s.Fatal("Checking restriction attribute failed: ", err)
-			} else if isRestricted != param.wantRestricted {
-				s.Errorf("Failed to verify restriction behavior; got %t, want %t", isRestricted, param.wantRestricted)
-			}
-
-			if srbNode.Name != param.selectedOption {
-				s.Errorf("Unexpected selected safety level; got %q, want %q", srbNode.Name, param.selectedOption)
+			if err := policyutil.CheckNodeAttributes(srbNode, ui.FindParams{
+				Attributes: map[string]interface{}{
+					"restriction": param.wantRestriction,
+					"name":        param.selectedOption,
+				},
+			}); err != nil {
+				s.Error("Unexpected settings state: ", err)
 			}
 		})
 	}
