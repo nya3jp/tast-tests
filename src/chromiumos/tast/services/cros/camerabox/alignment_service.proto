@@ -1,0 +1,30 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.camerabox;
+
+import "common.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/camerabox";
+
+// AlignmentService provides RPC methods verifying alignment on DUT in camerabox
+// setup.
+service AlignmentService {
+  // ManualAlign opens preview page on DUT and wait until preview is aligned.
+  rpc ManualAlign(ManualAlignRequest) returns (google.protobuf.Empty) {}
+}
+
+message ManualAlignRequest {
+  // Absolute path for saving data used on DUT.
+  string data_path = 1;
+  // Username to login chrome and prepare chrome remote desktop.
+  string username = 2;
+  // Password to login chrome and prepare chrome remote desktop.
+  string password = 3;
+  // DUT's target camera facing to be aligned.
+  Facing facing = 4;
+}
