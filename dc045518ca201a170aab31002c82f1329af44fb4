@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2314dcf6_b4ca3fbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-30T02:39:02Z",
+      "side": 1,
+      "message": "Friendly ping: Greg PTAL, thanks.",
+      "revId": "dc045518ca201a170aab31002c82f1329af44fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
