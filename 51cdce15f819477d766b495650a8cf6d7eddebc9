@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d483273_016dfe5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ssid_switch_back.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T18:55:49Z",
+      "side": 1,
+      "message": "We don\u0027t add ending period in test description. See code search result: https://source.corp.google.com/search?q\u003dDesc:\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2F\u0026start\u003d1",
+      "range": {
+        "startLine": 23,
+        "startChar": 119,
+        "endLine": 23,
+        "endChar": 121
+      },
+      "revId": "51cdce15f819477d766b495650a8cf6d7eddebc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bdcceb9_450dc5f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ssid_switch_back.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T18:55:49Z",
+      "side": 1,
+      "message": "Curious why you don\u0027t let hostapd.Option generate BSSID for you?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "51cdce15f819477d766b495650a8cf6d7eddebc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8f263b_1d958593",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ssid_switch_back.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T18:55:49Z",
+      "side": 1,
+      "message": "tryConnect err:",
+      "range": {
+        "startLine": 78,
+        "startChar": 10,
+        "endLine": 78,
+        "endChar": 29
+      },
+      "revId": "51cdce15f819477d766b495650a8cf6d7eddebc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d94813_3e6103a4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ssid_switch_back.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T18:55:49Z",
+      "side": 1,
+      "message": "The function tryConnect() deals with both ap1 and ap2. What does \"initial AP\" mean?",
+      "range": {
+        "startLine": 87,
+        "startChar": 64,
+        "endLine": 87,
+        "endChar": 71
+      },
+      "revId": "51cdce15f819477d766b495650a8cf6d7eddebc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
