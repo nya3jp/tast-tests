@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a85ba2ae_2cc7dcb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Updated description.",
+      "parentUuid": "9a702cf7_a3575351",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "099980b4_44bf3c2f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
@@ -115,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc2d056d_f7256d45",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78787d32_65765862",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4aa18b8_01a4fd08",
@@ -128,6 +176,30 @@
       "writtenOn": "2020-11-30T04:59:26Z",
       "side": 1,
       "message": "No action required:\n\nI wonder what\u0027s a clean API to specify a contact address. I expect many more tests using real GAIA accounts to use this option, and such tests will always use GAIALogin, Auth and Contact. It\u0027s nicer if we can use a single option to cover all cases involving real GAIA account.\n\nThat said, I think this is a good start and we can revisit API later.",
+      "range": {
+        "startLine": 191,
+        "startChar": 5,
+        "endLine": 191,
+        "endChar": 12
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f19c4a_d3941fc2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Agree that we should combine Auth() and Contact() into a single option. This will involve lots of interface changes, so deferring it to a separate CL.\n\nOne issue is that automated tests cannot use contact email for login because contact email authentication requires manual approval by user. If we are combining the two options, we will likely pass an empty email \"\" to the contact parameter for most (all?) of the tests.",
+      "parentUuid": "a4aa18b8_01a4fd08",
       "range": {
         "startLine": 191,
         "startChar": 5,
@@ -184,6 +256,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d0ac52_49551451",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8f67de4_31acfee8",
+      "range": {
+        "startLine": 1532,
+        "startChar": 22,
+        "endLine": 1532,
+        "endChar": 28
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d13fa335_ddbec76d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "I was thinking password is either passed in via -var\u003dpass\u003d or read from RequiredVar(\"dev.password\"). \n\nWhat should I use instead?",
+      "parentUuid": "823cd74e_45795f93",
+      "range": {
+        "startLine": 1532,
+        "startChar": 19,
+        "endLine": 1532,
+        "endChar": 74
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e069226_48248dfb",
@@ -197,6 +317,30 @@
       "writtenOn": "2020-11-30T04:59:26Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 1540,
+        "startChar": 20,
+        "endLine": 1540,
+        "endChar": 81
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ccdaa79_2de480c7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1540,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e069226_48248dfb",
       "range": {
         "startLine": 1540,
         "startChar": 20,
@@ -230,6 +374,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8688bd6b_458d6ed6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a63fb08_586077d3",
+      "range": {
+        "startLine": 1546,
+        "startChar": 71,
+        "endLine": 1546,
+        "endChar": 83
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2a04ef8_491cf473",
@@ -243,6 +411,30 @@
       "writtenOn": "2020-11-30T04:59:26Z",
       "side": 1,
       "message": "Can you please use oobeConn.Call? It\u0027s a safer alternative to Exec + fmt.Sprintf.",
+      "range": {
+        "startLine": 1560,
+        "startChar": 21,
+        "endLine": 1560,
+        "endChar": 25
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "169cdf9a_8b121346",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2a04ef8_491cf473",
       "range": {
         "startLine": 1560,
         "startChar": 21,
@@ -276,6 +468,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "215283e0_ab67db76",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0ec67ed_bd071fa0",
+      "range": {
+        "startLine": 1577,
+        "startChar": 55,
+        "endLine": 1577,
+        "endChar": 61
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed3343ad_a195e6bc",
@@ -289,6 +505,30 @@
       "writtenOn": "2020-11-30T04:59:26Z",
       "side": 1,
       "message": "style: Please use single quotes for strings.\nhttps://google.github.io/styleguide/jsguide.html#features-strings-use-single-quotes",
+      "range": {
+        "startLine": 1581,
+        "startChar": 10,
+        "endLine": 1581,
+        "endChar": 21
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a34bb3_ac3d63f1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1581,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed3343ad_a195e6bc",
       "range": {
         "startLine": 1581,
         "startChar": 10,
@@ -322,6 +562,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c1a59d_1b78b603",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1583,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f79e90e6_d8e40829",
+      "range": {
+        "startLine": 1580,
+        "startChar": 2,
+        "endLine": 1583,
+        "endChar": 20
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "330095eb_4a29aba6",
@@ -339,6 +603,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb72ecc_b314db23",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "Good idea! Done.",
+      "parentUuid": "330095eb_4a29aba6",
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e255570_b5e7684d",
@@ -352,6 +634,30 @@
       "writtenOn": "2020-11-30T04:59:26Z",
       "side": 1,
       "message": "Spaces/tabs are mixed around here...",
+      "range": {
+        "startLine": 1651,
+        "startChar": 2,
+        "endLine": 1654,
+        "endChar": 4
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58601f18_19f5a0ee",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1654,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-11-30T16:17:10Z",
+      "side": 1,
+      "message": "This function has been removed after refactoring.",
+      "parentUuid": "8e255570_b5e7684d",
       "range": {
         "startLine": 1651,
         "startChar": 2,
