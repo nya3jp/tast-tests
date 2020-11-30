@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "141b4352_d29c10cd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-30T10:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e83ffeb4_fedb8676",
+      "range": {
+        "startLine": 643,
+        "startChar": 85,
+        "endLine": 643,
+        "endChar": 106
+      },
+      "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72dcb672_82b5a889",
@@ -89,6 +113,30 @@
       "writtenOn": "2020-11-30T09:20:40Z",
       "side": 1,
       "message": "Does it make sense to wait here?",
+      "range": {
+        "startLine": 644,
+        "startChar": 0,
+        "endLine": 647,
+        "endChar": 2
+      },
+      "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f72d421_e07b9006",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-30T10:08:03Z",
+      "side": 1,
+      "message": "Yes. It\u0027s easier in tests to just update the policy and then call this function. Test do need to wait themselves. I\u0027ll update the description.",
+      "parentUuid": "72dcb672_82b5a889",
       "range": {
         "startLine": 644,
         "startChar": 0,
@@ -122,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6bd982_48ebc35e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-30T10:08:03Z",
+      "side": 1,
+      "message": "Good point.",
+      "parentUuid": "a22b8a90_5cc6057a",
+      "range": {
+        "startLine": 663,
+        "startChar": 44,
+        "endLine": 663,
+        "endChar": 59
+      },
+      "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5921eb48_b35b75ba",
@@ -135,6 +207,30 @@
       "writtenOn": "2020-11-30T09:20:19Z",
       "side": 1,
       "message": "we can just `return ErrNodeExists` instead",
+      "range": {
+        "startLine": 669,
+        "startChar": 3,
+        "endLine": 674,
+        "endChar": 11
+      },
+      "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c1428ee_aa62ea69",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-30T10:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5921eb48_b35b75ba",
       "range": {
         "startLine": 669,
         "startChar": 3,
