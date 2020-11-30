@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "998e46dd_5728fd4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-30T13:17:43Z",
+      "side": 1,
+      "message": "For the first part: I asked for the unset part to be deleted, as there were no tests in that case. It is hard to create a condition to check.",
+      "parentUuid": "66bbf19b_fa7e493d",
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67046f04_f322b84e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
         "patchSetId": 8
@@ -128,6 +146,24 @@
       "writtenOn": "2020-11-30T12:57:29Z",
       "side": 1,
       "message": "Do we also want to check that there are no unexpected other bookmarks?",
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c19a4e_cd50f75d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-30T13:17:43Z",
+      "side": 1,
+      "message": "Like checking the number of bookmark entries in the folder?",
+      "parentUuid": "418ec17e_05608fb8",
       "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
