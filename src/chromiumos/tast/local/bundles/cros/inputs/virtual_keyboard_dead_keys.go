@@ -36,14 +36,14 @@ func init() {
 		Func:         VirtualKeyboardDeadKeys,
 		Desc:         "Checks that dead keys on the virtual keyboard work",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "french_stable",
 				ExtraHardwareDeps: pre.InputsStableModels,
-				ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				// "French - French keyboard" input method uses a compact-layout VK for
 				// non-a11y mode where there's no dead keys, and a full-layout VK for
 				// a11y mode where there's dead keys. To test dead keys on the VK of
@@ -63,7 +63,7 @@ func init() {
 			}, {
 				Name:              "french_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-				ExtraAttr:         []string{"group:mainline", "informational"},
+				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledClamshell(),
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:fr::fra",
@@ -72,10 +72,10 @@ func init() {
 					expectedTypingResult: "â",
 				},
 			}, {
-				Name:              "french_mojo",
+				Name:              "french_exp",
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledClamshell()),
-				ExtraHardwareDeps: pre.InputsMojoModels,
-				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraSoftwareDeps: []string{"gboard_decoder"},
+				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:fr::fra",
 					hasDecoder:           true,
@@ -85,7 +85,7 @@ func init() {
 			}, {
 				Name:              "catalan_stable",
 				ExtraHardwareDeps: pre.InputsStableModels,
-				ExtraAttr:         []string{"group:mainline", "group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				// "Catalan keyboard" input method uses the same full-layout VK (that
 				// has dead keys) for both a11y & non-a11y. Just use non-a11y here.
 				Pre: pre.VKEnabledTablet(),
@@ -104,7 +104,7 @@ func init() {
 			}, {
 				Name:              "catalan_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
-				ExtraAttr:         []string{"group:mainline", "informational"},
+				ExtraAttr:         []string{"informational"},
 				Pre:               pre.VKEnabledTablet(),
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",
@@ -113,9 +113,9 @@ func init() {
 					expectedTypingResult: "á",
 				},
 			}, {
-				Name:              "catalan_mojo",
-				ExtraHardwareDeps: pre.InputsMojoModels,
-				ExtraAttr:         []string{"group:input-tools-upstream"},
+				Name:              "catalan_exp",
+				ExtraSoftwareDeps: []string{"gboard_decoder"},
+				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 				Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
 				Val: deadKeysTestCase{
 					inputMethodID:        "xkb:es:cat:cat",

@@ -19,14 +19,6 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// MojoModels is a list of boards that installed IME mojo service.
-var MojoModels = []string{
-	"betty",
-}
-
-// InputsMojoModels defines the hardware dependence on a list of boards in mojoModels.
-var InputsMojoModels = hwdep.D(hwdep.Model(MojoModels...))
-
 // StableModels is a list of boards that stable enough and aim to run inputs tests in CQ.
 var StableModels = []string{
 	// Top VK usage board in 2020 -- convertible, ARM.
