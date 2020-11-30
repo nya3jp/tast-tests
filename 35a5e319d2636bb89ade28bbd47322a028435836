@@ -39,6 +39,30 @@
       },
       "revId": "35a5e319d2636bb89ade28bbd47322a028435836",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413d55e1_f8b30da5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-11-30T02:25:27Z",
+      "side": 1,
+      "message": "If UI automator clicking does not bring up the keyboard, that is an actual bug caught by the test, so please file a bug and assign it to me. (I believe adjustPan/adjustResize in ARC R is still not working in some cases.)",
+      "parentUuid": "6eeaae38_73b24f81",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 3
+      },
+      "revId": "35a5e319d2636bb89ade28bbd47322a028435836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
