@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69084ca_c7f127dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-11-30T07:38:44Z",
+      "side": 1,
+      "message": "Looks good to me (from a person who knows the arc.PowerIdlePerf test)\n\nI wish the diff algorithm did a better job, as there really shouldn\u0027t be a change to the actual test...",
+      "revId": "0efe8475a71f221b5f178e810775085f87d9b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
