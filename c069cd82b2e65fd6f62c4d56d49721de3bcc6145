@@ -51,6 +51,75 @@
       "parentUuid": "b2373e1a_30ef0d42",
       "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83ffeb4_fedb8676",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-30T09:20:19Z",
+      "side": 1,
+      "message": "looks like this method will wait up to 2*timeout in the worst case",
+      "range": {
+        "startLine": 643,
+        "startChar": 85,
+        "endLine": 643,
+        "endChar": 106
+      },
+      "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a22b8a90_5cc6057a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-30T09:20:19Z",
+      "side": 1,
+      "message": "I think we should error if context expired which means we didn\u0027t have enough time to verify node won\u0027t appear",
+      "range": {
+        "startLine": 663,
+        "startChar": 44,
+        "endLine": 663,
+        "endChar": 59
+      },
+      "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5921eb48_b35b75ba",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-30T09:20:19Z",
+      "side": 1,
+      "message": "we can just `return ErrNodeExists` instead",
+      "range": {
+        "startLine": 669,
+        "startChar": 3,
+        "endLine": 674,
+        "endChar": 11
+      },
+      "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
