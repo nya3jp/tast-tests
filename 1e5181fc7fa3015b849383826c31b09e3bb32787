@@ -67,6 +67,80 @@
       "message": "Hi deanliao@,\n\nFriendly ping :)",
       "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21627652_cd44deb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T08:37:57Z",
+      "side": 1,
+      "message": "Some suggestions.",
+      "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07d32472_b3c0c84a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T08:37:57Z",
+      "side": 1,
+      "message": "// Bookmark the URL: chrome://policy.",
+      "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2201367e_bd825d69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T08:37:57Z",
+      "side": 1,
+      "message": "It would be nice to specify Name field in the AddBookmark dialog to avoid the unnecessary assumption that the title of chrome://policy is \"Policies\".",
+      "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb523d8a_e623b437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T08:37:57Z",
+      "side": 1,
+      "message": "Start button clicked. Adding bookmark dialog should be shown. Click the \"Done\" button in the dialog.",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 48
+      },
+      "revId": "1e5181fc7fa3015b849383826c31b09e3bb32787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
