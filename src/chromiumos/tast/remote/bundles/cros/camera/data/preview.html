@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>HELLO Title</title>
+<style>
+video {
+  border: 5px solid limegreen;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+body.failed video {
+  border-color: red;
+}
+
+.message {
+  color: limegreen;
+}
+
+body.failed .message {
+  color: red;
+}
+
+</style>
+</head>
+<body>
+
+<div>
+The border of preview should lay in green area:
+</div>
+<div>
+<video></video>
+<div class="message"></div>
+</div>
+
+</body>
+<script>
+/**
+ * @enum {number}
+ */
+let Facing = {
+  BACK: 1,
+  FRONT: 2,
+};
+
+/**
+ * @enum {number}
+ */
+let AspectRatio = {
+  AR4X3: 0,
+  AR16X9: 1,
+};
+
+class Preview {
+  constructor() {
+    /** @const {!HTMLVideoElement} */
+    this.video = document.querySelector('video');
+    /** @const {?Facing} */
+    this.facing = null;
+    /** @const {?AspectRatio} */
+    this.aspectRatio = null;
+  }
+
+  async open(facing, aspectRatio) {
+    const video = document.querySelector('video');
+    const aspectRatioValue = aspectRatio === AspectRatio.AR4X3 ? 4/3 : 16/9;
+    const constraints = {
+      audio: false,
+      video: {
+        facingMode: facing === Facing.BACK ? 'environment' : 'user',
+        aspectRatio: aspectRatioValue,
+      },
+    };
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    await new Promise((resolve, reject) => {
+      video.addEventListener('canplay', resolve);
+      video.addEventListener('error', reject);
+      video.srcObject = stream;
+    });
+    video.width = 800;
+    video.height = 800 / aspectRatioValue;
+    await new Promise((resolve, reject) => {
+      video.addEventListener('playing', resolve);
+      video.addEventListener('error', reject);
+      video.play();
+    });
+    this.facing = facing;
+    this.aspectRatio = aspectRatio;
+  }
+
+  async close() {
+    this.video.pause();
+    const track = this.video.srcObject.getVideoTracks()[0];
+    track.stop();
+    this.facing = null;
+    this.aspectRatio = null;
+  }
+
+  async getFrame() {
+    const canvas = document.createElement('canvas');
+    canvas.width = this.video.videoWidth;
+    canvas.height = this.video.videoHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(this.video, 0, 0);
+    const blob = await new Promise((resolve, reject) => {
+      canvas.toBlob(resolve, 'image/jpeg');
+    });
+    const arrayBuffer = await blob.arrayBuffer();
+    return [...new Uint8Array(arrayBuffer)];
+  }
+}
+
+const preview = new Preview();
+
+async function getPreviewFrame(facing, aspectRatio) {
+  if (preview.facing !== null && (preview.facing !== facing || preview.aspectRatio !== aspectRatio)) {
+    await preview.close();
+  }
+  if (preview.facing === null) {
+    await preview.open(facing, aspectRatio);
+  }
+  return preview.getFrame();
+}
+
+function feedbackAlign(passed, message) {
+  document.body.classList.toggle('failed', !passed);
+  document.querySelector('.message').textContent = message;
+}
+</script>
+</html>

@@ -1,0 +1,55 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.camerabox;
+
+import "common.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/camerabox";
+
+// AlignmentService provides RPC methods verifying alignment on DUT in camerabox
+// setup.
+service AlignmentService {
+  // Prepare does preparation on DUT for running the alignment check.
+  rpc Prepare(PrepareRequest) returns (google.protobuf.Empty) {}
+  // GetPreviewFrame gets camera preview frame via preview.html.
+  rpc GetPreviewFrame(GetPreviewFrameRequest) returns (google.protobuf.Empty) {}
+  // FeedbackAlign feedbacks alignment result on preview.html.
+  rpc FeedbackAlign(FeedbackAlignRequest) returns (google.protobuf.Empty) {}
+  // Cleanup cleans up service states.
+  rpc Cleanup(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message PrepareRequest {
+  // Directory on DUT for exchanging file results with test host.
+  string out_dir = 1;
+  // Username to login chrome and prepare chrome remote desktop.
+  string username = 2;
+  // Password to login chrome and prepare chrome remote desktop.
+  string password = 3;
+}
+
+enum AspectRatio {
+  // 4 x 3 aspect ratio
+  AR4X3 = 0;
+  // 16 x 9 aspect ratio
+  AR16X9 = 1;
+}
+
+message GetPreviewFrameRequest {
+  // DUT's target camera facing.
+  Facing facing = 1;
+  // Aspect ratio of preview frame.
+  AspectRatio ratio = 2;
+}
+
+message FeedbackAlignRequest {
+  // Whether the it's feedback for passed result.
+  bool passed = 1;
+  // Detail message of feedback.
+  string msg = 2;
+}
