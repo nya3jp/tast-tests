@@ -23,7 +23,7 @@ func init() {
 		Func:        OptionalDHCPProperties,
 		Desc:        "Verifies that optional DHCP properties set on the DUT are used as parameters in DHCP requests",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
