@@ -45,32 +45,32 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	for _, param := range []struct {
-		name           string
-		value          *policy.AutoclickEnabled
-		wantButton     bool
-		wantChecked    ui.CheckedState
-		wantRestricted bool
+		name        string
+		value       *policy.AutoclickEnabled
+		wantButton  bool
+		wantChecked ui.CheckedState
+		restriction ui.RestrictionState
 	}{
 		{
-			name:           "unset",
-			value:          &policy.AutoclickEnabled{Stat: policy.StatusUnset},
-			wantButton:     false,
-			wantChecked:    ui.CheckedStateFalse,
-			wantRestricted: false,
+			name:        "unset",
+			value:       &policy.AutoclickEnabled{Stat: policy.StatusUnset},
+			wantButton:  false,
+			wantChecked: ui.CheckedStateFalse,
+			restriction: ui.RestrictionNone,
 		},
 		{
-			name:           "disabled",
-			value:          &policy.AutoclickEnabled{Val: false},
-			wantButton:     false,
-			wantChecked:    ui.CheckedStateFalse,
-			wantRestricted: true,
+			name:        "disabled",
+			value:       &policy.AutoclickEnabled{Val: false},
+			wantButton:  false,
+			wantChecked: ui.CheckedStateFalse,
+			restriction: ui.RestrictionDisabled,
 		},
 		{
-			name:           "enabled",
-			value:          &policy.AutoclickEnabled{Val: true},
-			wantButton:     true,
-			wantChecked:    ui.CheckedStateTrue,
-			wantRestricted: true,
+			name:        "enabled",
+			value:       &policy.AutoclickEnabled{Val: true},
+			wantButton:  true,
+			wantChecked: ui.CheckedStateTrue,
+			restriction: ui.RestrictionDisabled,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -139,14 +139,15 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 			}
 			defer node.Release(ctx)
 
-			// Check the restriction setting of the toggle button.
-			if restricted := (node.Restriction == ui.RestrictionDisabled || node.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
-				s.Logf("The restriction attribute is %q", node.Restriction)
-				s.Errorf("Unexpected toggle button restriction in the settings: got %t; want %t", restricted, param.wantRestricted)
-			}
-
-			if node.Checked != param.wantChecked {
-				s.Errorf("Unexpected toggle button checked state in the settings: got %s; want %s", node.Checked, param.wantChecked)
+			if isMatched, err := node.MatchesParamsWithEmptyAttributes(ctx, ui.FindParams{
+				Attributes: map[string]interface{}{
+					"restriction": param.restriction,
+					"checked":     param.wantChecked,
+				},
+			}); err != nil {
+				s.Fatal("Failed to check a matching node: ", err)
+			} else if isMatched == false {
+				s.Errorf("Failed to verify the matching toggle button node; got (%#v, %#v), want (%#v, %#v)", node.Checked, node.Restriction, param.wantChecked, param.restriction)
 			}
 
 			if param.wantChecked == ui.CheckedStateTrue {

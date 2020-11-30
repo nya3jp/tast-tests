@@ -49,44 +49,44 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 	}
 
 	for _, param := range []struct {
-		name           string
-		nodeName       string                            // nodeName is the name of the toggle button node we want to check.
-		wantAsk        bool                              // wantAsk states whether a dialog to ask for permission should appear or not.
-		wantRestricted bool                              // wantRestricted is the wanted restriction state of the toggle button in the location settings.
-		wantChecked    ui.CheckedState                   // wantChecked is the wanted checked state of the toggle button in the location settings.
-		value          *policy.DefaultGeolocationSetting // value is the value of the policy.
+		name        string
+		nodeName    string                            // nodeName is the name of the toggle button node we want to check.
+		wantAsk     bool                              // wantAsk states whether a dialog to ask for permission should appear or not.
+		restriction ui.RestrictionState               // restriction is the wanted restriction state of the toggle button in the location settings.
+		wantChecked ui.CheckedState                   // wantChecked is the wanted checked state of the toggle button in the location settings.
+		value       *policy.DefaultGeolocationSetting // value is the value of the policy.
 	}{
 		{
-			name:           "unset",
-			nodeName:       "Ask before accessing (recommended)",
-			wantAsk:        true,
-			wantRestricted: false,
-			wantChecked:    ui.CheckedStateTrue,
-			value:          &policy.DefaultGeolocationSetting{Stat: policy.StatusUnset},
+			name:        "unset",
+			nodeName:    "Ask before accessing (recommended)",
+			wantAsk:     true,
+			restriction: ui.RestrictionNone,
+			wantChecked: ui.CheckedStateTrue,
+			value:       &policy.DefaultGeolocationSetting{Stat: policy.StatusUnset},
 		},
 		{
-			name:           "allow",
-			nodeName:       "Ask before accessing (recommended)",
-			wantAsk:        false,
-			wantRestricted: true,
-			wantChecked:    ui.CheckedStateTrue,
-			value:          &policy.DefaultGeolocationSetting{Val: 1},
+			name:        "allow",
+			nodeName:    "Ask before accessing (recommended)",
+			wantAsk:     false,
+			restriction: ui.RestrictionDisabled,
+			wantChecked: ui.CheckedStateTrue,
+			value:       &policy.DefaultGeolocationSetting{Val: 1},
 		},
 		{
-			name:           "deny",
-			nodeName:       "Blocked",
-			wantAsk:        false,
-			wantRestricted: true,
-			wantChecked:    ui.CheckedStateFalse,
-			value:          &policy.DefaultGeolocationSetting{Val: 2},
+			name:        "deny",
+			nodeName:    "Blocked",
+			wantAsk:     false,
+			restriction: ui.RestrictionDisabled,
+			wantChecked: ui.CheckedStateFalse,
+			value:       &policy.DefaultGeolocationSetting{Val: 2},
 		},
 		{
-			name:           "ask",
-			nodeName:       "Ask before accessing (recommended)",
-			wantAsk:        true,
-			wantRestricted: true,
-			wantChecked:    ui.CheckedStateTrue,
-			value:          &policy.DefaultGeolocationSetting{Val: 3},
+			name:        "ask",
+			nodeName:    "Ask before accessing (recommended)",
+			wantAsk:     true,
+			restriction: ui.RestrictionDisabled,
+			wantChecked: ui.CheckedStateTrue,
+			value:       &policy.DefaultGeolocationSetting{Val: 3},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -187,16 +187,16 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 			}
 			defer node.Release(ctx)
 
-			// Check the restriction setting of the toggle button.
-			if restricted := (node.Restriction == ui.RestrictionDisabled || node.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
-				s.Logf("The restriction attribute is %q", node.Restriction)
-				s.Errorf("Unexpected toggle button restriction in the settings: got %t; want %t", restricted, param.wantRestricted)
+			if isMatched, err := node.MatchesParamsWithEmptyAttributes(ctx, ui.FindParams{
+				Attributes: map[string]interface{}{
+					"restriction": param.restriction,
+					"checked":     param.wantChecked,
+				},
+			}); err != nil {
+				s.Fatal("Failed to check a matching node: ", err)
+			} else if isMatched == false {
+				s.Errorf("Failed to verify the matching toggle button node; got (%#v, %#v), want (%#v, %#v)", node.Checked, node.Restriction, param.wantChecked, param.restriction)
 			}
-
-			if node.Checked != param.wantChecked {
-				s.Errorf("Unexpected toggle button checked state in the settings: got %s; want %s", node.Checked, param.wantChecked)
-			}
-
 		})
 	}
 }

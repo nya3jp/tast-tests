@@ -358,6 +358,7 @@ type RestrictionState string
 const (
 	RestrictionDisabled RestrictionState = "disabled"
 	RestrictionReadOnly RestrictionState = "readOnly"
+	RestrictionNone     RestrictionState = ""
 )
 
 // CheckedState describes the checked state of a chrome.automation AutomationNode.

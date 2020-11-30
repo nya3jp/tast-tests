@@ -42,31 +42,31 @@ func SafeBrowsingProtectionLevel(ctx context.Context, s *testing.State) {
 
 	for _, param := range []struct {
 		name           string
-		wantRestricted bool   // wantRestricted is the wanted restriction state of the checkboxes in Safe Browsing settings page.
-		selectedOption string // selectedOption is the selected safety level in Safe Browsing settings page.
+		restriction    ui.RestrictionState // restriction is the wanted restriction state of the checkboxes in Safe Browsing settings page.
+		selectedOption string              // selectedOption is the selected safety level in Safe Browsing settings page.
 		value          *policy.SafeBrowsingProtectionLevel
 	}{
 		{
 			name:           "unset",
-			wantRestricted: false,
+			restriction:    ui.RestrictionNone,
 			selectedOption: "Standard protection",
 			value:          &policy.SafeBrowsingProtectionLevel{Stat: policy.StatusUnset},
 		},
 		{
 			name:           "no_protection",
-			wantRestricted: true,
+			restriction:    ui.RestrictionDisabled,
 			selectedOption: "No protection (not recommended)",
 			value:          &policy.SafeBrowsingProtectionLevel{Val: 0},
 		},
 		{
 			name:           "standard_protection",
-			wantRestricted: true,
+			restriction:    ui.RestrictionDisabled,
 			selectedOption: "Standard protection",
 			value:          &policy.SafeBrowsingProtectionLevel{Val: 1},
 		},
 		{
 			name:           "enhanced_protection",
-			wantRestricted: true,
+			restriction:    ui.RestrictionDisabled,
 			selectedOption: "Enhanced protection",
 			value:          &policy.SafeBrowsingProtectionLevel{Val: 2},
 		},
@@ -105,14 +105,13 @@ func SafeBrowsingProtectionLevel(ctx context.Context, s *testing.State) {
 			}
 			defer srbNode.Release(ctx)
 
-			if isRestricted, err := srbNode.Matches(ctx, ui.FindParams{Attributes: map[string]interface{}{"restriction": ui.RestrictionDisabled}}); err != nil {
-				s.Fatal("Checking restriction attribute failed: ", err)
-			} else if isRestricted != param.wantRestricted {
-				s.Errorf("Failed to verify restriction behavior; got %t, want %t", isRestricted, param.wantRestricted)
-			}
-
-			if srbNode.Name != param.selectedOption {
-				s.Errorf("Unexpected selected safety level; got %q, want %q", srbNode.Name, param.selectedOption)
+			if isMatched, err := srbNode.MatchesParamsWithEmptyAttributes(ctx, ui.FindParams{
+				Attributes: map[string]interface{}{"restriction": param.restriction},
+				Name:       param.selectedOption,
+			}); err != nil {
+				s.Fatal("Failed to check a matching node: ", err)
+			} else if isMatched == false {
+				s.Errorf("Failed to verify the matching selected node; got (%s, %#v), want (%s, %#v)", srbNode.Name, srbNode.Restriction, param.selectedOption, param.restriction)
 			}
 		})
 	}

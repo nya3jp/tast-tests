@@ -12,6 +12,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"reflect"
 	"regexp"
 	"time"
 
@@ -498,6 +499,27 @@ func (n *Node) Matches(ctx context.Context, params FindParams) (bool, error) {
 		return false, err
 	}
 	return match, nil
+}
+
+// MatchesParamsWithEmptyAttributes returns whether this node matches the given params, and ignores empty attributes.
+func (n *Node) MatchesParamsWithEmptyAttributes(ctx context.Context, params FindParams) (bool, error) {
+	attributes := make(map[string]interface{})
+	for k, v := range params.Attributes {
+		// Ignore empty attributes.
+		if !reflect.DeepEqual(v, reflect.Zero(reflect.TypeOf(v)).Interface()) {
+			attributes[k] = v
+		} else {
+			// TODO: We may need a better solution in the JS code to deal with empty attributes.
+			// Calling Attribute() with non-existing attribute should return nil and error.
+			attrValue, err := n.Attribute(ctx, k)
+			if err == nil || attrValue != nil {
+				return false, nil
+			}
+		}
+	}
+	updatedParams := params
+	updatedParams.Attributes = attributes
+	return n.Matches(ctx, updatedParams)
 }
 
 // Attribute gets the specified attribute of this node.

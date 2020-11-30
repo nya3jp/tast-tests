@@ -65,32 +65,32 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 	}()
 
 	for _, param := range []struct {
-		name           string
-		wantAsk        bool
-		wantRestricted bool                              // wantRestricted is the wanted restriction state of the toggle button in the download settings.
-		wantChecked    ui.CheckedState                   // wantChecked is the wanted checked state of the toggle button in the download settings.
-		value          *policy.PromptForDownloadLocation // value is the value of the policy.
+		name        string
+		wantAsk     bool
+		restriction ui.RestrictionState               // restriction is the wanted restriction state of the toggle button in the download settings.
+		wantChecked ui.CheckedState                   // wantChecked is the wanted checked state of the toggle button in the download settings.
+		value       *policy.PromptForDownloadLocation // value is the value of the policy.
 	}{
 		{
-			name:           "unset",
-			wantAsk:        false,
-			wantRestricted: false,
-			wantChecked:    ui.CheckedStateFalse,
-			value:          &policy.PromptForDownloadLocation{Stat: policy.StatusUnset},
+			name:        "unset",
+			wantAsk:     false,
+			restriction: ui.RestrictionNone,
+			wantChecked: ui.CheckedStateFalse,
+			value:       &policy.PromptForDownloadLocation{Stat: policy.StatusUnset},
 		},
 		{
-			name:           "disabled",
-			wantAsk:        false,
-			wantRestricted: true,
-			wantChecked:    ui.CheckedStateFalse,
-			value:          &policy.PromptForDownloadLocation{Val: false},
+			name:        "disabled",
+			wantAsk:     false,
+			restriction: ui.RestrictionDisabled,
+			wantChecked: ui.CheckedStateFalse,
+			value:       &policy.PromptForDownloadLocation{Val: false},
 		},
 		{
-			name:           "enabled",
-			wantAsk:        true,
-			wantRestricted: true,
-			wantChecked:    ui.CheckedStateTrue,
-			value:          &policy.PromptForDownloadLocation{Val: true},
+			name:        "enabled",
+			wantAsk:     true,
+			restriction: ui.RestrictionDisabled,
+			wantChecked: ui.CheckedStateTrue,
+			value:       &policy.PromptForDownloadLocation{Val: true},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -124,13 +124,15 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 			}
 			defer nodeTB.Release(ctx)
 
-			// Check the restriction setting of the toggle button.
-			if restricted := (nodeTB.Restriction == ui.RestrictionDisabled || nodeTB.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
-				s.Errorf("Unexpected toggle button restriction in the settings: got %t; want %t", restricted, param.wantRestricted)
-			}
-
-			if nodeTB.Checked != param.wantChecked {
-				s.Errorf("Unexpected toggle button checked state in the settings: got %s; want %s", nodeTB.Checked, param.wantChecked)
+			if isMatched, err := nodeTB.MatchesParamsWithEmptyAttributes(ctx, ui.FindParams{
+				Attributes: map[string]interface{}{
+					"restriction": param.restriction,
+					"checked":     param.wantChecked,
+				},
+			}); err != nil {
+				s.Fatal("Failed to check a matching node: ", err)
+			} else if isMatched == false {
+				s.Errorf("Failed to verify the matching toggle button node; got (%#v, %#v), want (%#v, %#v)", nodeTB.Checked, nodeTB.Restriction, param.wantChecked, param.restriction)
 			}
 
 			// Start a download.
