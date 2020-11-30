@@ -34,7 +34,6 @@ const (
 	addKeyExSuccessMessage                 = "Key added."
 	removeKeyExSuccessMessage              = "Key removed."
 	migrateKeyExSucessMessage              = "Key migration succeeded."
-	updateKeyExSuccessMessage              = "Key updated."
 	dbusCallFailedMessage                  = "call failed:"
 )
 
@@ -564,22 +563,6 @@ func (u *UtilityCryptohomeBinary) ChangeVaultPassword(ctx context.Context, usern
 	if output != migrateKeyExSucessMessage {
 		testing.ContextLogf(ctx, "Incorrect MigrateKeyEx message; got %q, want %q", output, migrateKeyExSucessMessage)
 		return errors.Errorf("incorrect message from MigrateKeyEx; got %q, want %q", output, migrateKeyExSucessMessage)
-	}
-
-	return nil
-}
-
-// ChangeVaultLabel changes the vault label for the user username with label and password, to newLabel. nil is returned iff the operation is successful.
-func (u *UtilityCryptohomeBinary) ChangeVaultLabel(ctx context.Context, username, password, label, newLabel string) error {
-	binaryOutput, err := u.binary.UpdateKeyEx(ctx, username, password, label, newLabel)
-	if err != nil {
-		return errors.Wrap(err, "failed to call UpdateKeyEx")
-	}
-
-	output := strings.TrimSuffix(string(binaryOutput), "\n")
-	if output != updateKeyExSuccessMessage {
-		testing.ContextLogf(ctx, "Incorrect UpdateKeyEx message; got %q, want %q", output, updateKeyExSuccessMessage)
-		return errors.Errorf("incorrect message from UpdateKeyEx; got %q, want %q", output, updateKeyExSuccessMessage)
 	}
 
 	return nil
