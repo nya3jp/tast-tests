@@ -29,17 +29,17 @@ func init() {
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
-			Pre:               pre.VKEnabledTablet(),
+			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: pre.InputsStableModels,
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
-			Pre:               pre.VKEnabledTablet(),
+			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: pre.InputsUnstableModels,
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "exp",
-			Pre:               pre.IMEServiceEnabled(pre.VKEnabledTablet()),
+			Pre:               pre.VKEnabledTabletExp,
 			ExtraSoftwareDeps: []string{"gboard_decoder"},
 			ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 		}},

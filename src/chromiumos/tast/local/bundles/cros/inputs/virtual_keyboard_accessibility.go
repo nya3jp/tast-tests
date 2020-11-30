@@ -23,17 +23,17 @@ func init() {
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Params: []testing.Param{{
 			Name:              "stable",
-			Pre:               pre.VKEnabledClamshell(),
+			Pre:               pre.VKEnabledClamshell,
 			ExtraHardwareDeps: pre.InputsStableModels,
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
-			Pre:               pre.VKEnabledClamshell(),
+			Pre:               pre.VKEnabledClamshell,
 			ExtraHardwareDeps: pre.InputsUnstableModels,
 			ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
 			Name:              "exp",
-			Pre:               pre.IMEServiceEnabled(pre.VKEnabledClamshell()),
+			Pre:               pre.VKEnabledClamshellExp,
 			ExtraSoftwareDeps: []string{"gboard_decoder"},
 			ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 		}},
