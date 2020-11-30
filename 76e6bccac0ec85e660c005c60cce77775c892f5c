@@ -51,6 +51,24 @@
       "parentUuid": "7c290bbc_b50cbc98",
       "revId": "76e6bccac0ec85e660c005c60cce77775c892f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f09cc2_4ab18b27",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-30T21:14:58Z",
+      "side": 1,
+      "message": "+1 on DISPLAY\u003d:0 glxinfo",
+      "parentUuid": "079b523b_7e6d58da",
+      "revId": "76e6bccac0ec85e660c005c60cce77775c892f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

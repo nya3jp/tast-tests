@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13cc92c_7d9aabd1",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-30T21:14:58Z",
+      "side": 1,
+      "message": "This looks useful, how about move it into vm/ package and let vm.Container class implements the interface?",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 15
+      },
+      "revId": "632888ba8a1b1053c176806d1799d4153ddba1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7660c3d5_7871d9ec",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-11-30T21:14:58Z",
+      "side": 1,
+      "message": "I presume we can put binary in TempPath so that we don\u0027t need this?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "632888ba8a1b1053c176806d1799d4153ddba1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
