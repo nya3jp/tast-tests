@@ -16,6 +16,46 @@
       "message": "tast LGTM. Defer to ihf@ and/or mcasas@.",
       "revId": "ebd3552e37d28293610a1d99ce61b9ff8536d97e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "362e780f_4b158a88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-30T15:58:53Z",
+      "side": 1,
+      "message": "+1 % comment.",
+      "revId": "ebd3552e37d28293610a1d99ce61b9ff8536d97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d1615d_d506fc9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-30T15:58:53Z",
+      "side": 1,
+      "message": "Since this whole test is dependent on \"video_decoder_legacy_supported\",\nwe could just add it here and not in the individual variants.",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "ebd3552e37d28293610a1d99ce61b9ff8536d97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
