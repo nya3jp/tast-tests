@@ -66,6 +66,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cde0e96_907d1ea4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-30T10:08:11Z",
+      "side": 1,
+      "message": "Fixtures are now available, and as I understood they will replace preconditions in the future.\nIs it possible to implement this as a fixture (real qustion, as not everything is supported in the fixtures at the moment), to avoid a possible rewriting in the near future?\nA fixtue example:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/fixture.go\n\n+CC Shuhei for more info on fixtures.\n",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9a055cb_82e663e5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/doc.go",
         "patchSetId": 1
