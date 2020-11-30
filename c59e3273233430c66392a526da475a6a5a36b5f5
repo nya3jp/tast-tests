@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42723cf7_55475f99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-30T08:34:53Z",
+      "side": 1,
+      "message": "I have a question, thanks!!",
+      "revId": "c59e3273233430c66392a526da475a6a5a36b5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3afbba6_443c5808",
@@ -88,6 +105,30 @@
       "writtenOn": "2020-11-13T06:58:24Z",
       "side": 1,
       "message": "I don\u0027t think this is the same calculation we do for caption height on the Android side. In ArcSystemUI, we use the deviceScaleFactor of the display [1] to determine the caption height in pixels.\n\nThe density value obtained from d.PhysicalDensity(ctx) is determined from the density DPI that we set in Android. It is calculated like so:\n  density \u003d densityDpi / DENSITY_DEFAULT\n\nwhere DENSITY_DEFAULT is always 160 in Android. This density is not very useful when comparing to deviceScaleFactor set in Chrome, because there are board-specific variances.\n\nThe proper thing to do here would be to get a dump of the current calculated caption height from ArcSystemUI, but I don\u0027t think we have a way to do that right now.\n\nSince we don\u0027t have a way to dump the current caption height or the current deviceScaleFactor used by Android in R, we could temporarily use the actual caption height that Chrome sets. \nThe caption height calculated in arc.CompantionLibrary [2] is correct, so we could use something like that for now:\n  CaptionHeightR * displayMode.DeviceScaleFactor\n\n\n[1]: http://cs/android/vendor/google_arc/packages/system/ArcSystemUI/src/org/chromium/arc/systemui/wm/ArcInsetsHandler.java?l\u003d259\u0026rcl\u003d934fbaaba824a5f15339b7f019cda77c32ca97e7\n\n[2]: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/companion_library.go?l\u003d328\u0026rcl\u003d214df54cfa78401e50cd477cb6a8de65f19bc903",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "c59e3273233430c66392a526da475a6a5a36b5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e261754_2b6e0738",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-11-30T08:34:53Z",
+      "side": 1,
+      "message": "Thanks for you precise and patient explanation. Since this disp.CaptionHeight is bound to too many functions, it will cause a bunch of parameters change if I tried to add tconn for get displayMode from Chrome. So I\u0027m looking for an alternative method like adding a output of deviceScaleFactor from dumpsys Wayland. I wonder is default_scale * zoom_factor \u003d\u003d deviceScaleFactor [1] or it is satisfy another expression, or no. \n\n[1]: https://source.corp.google.com/rvc-arc/vendor/google_arc/libs/libwaylanddisplaylayout/include/wayland_display_layout.h;rcl\u003dbc4f47b94c0a78bde9aa69d353a22d5627ec4a17;l\u003d49",
+      "parentUuid": "bb340251_a959e391",
       "range": {
         "startLine": 84,
         "startChar": 24,
