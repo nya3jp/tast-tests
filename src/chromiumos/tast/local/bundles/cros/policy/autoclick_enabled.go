@@ -45,32 +45,32 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	for _, param := range []struct {
-		name           string
-		value          *policy.AutoclickEnabled
-		wantButton     bool
-		wantChecked    ui.CheckedState
-		wantRestricted bool
+		name            string
+		value           *policy.AutoclickEnabled
+		wantButton      bool
+		wantChecked     ui.CheckedState
+		wantRestriction ui.RestrictionState
 	}{
 		{
-			name:           "unset",
-			value:          &policy.AutoclickEnabled{Stat: policy.StatusUnset},
-			wantButton:     false,
-			wantChecked:    ui.CheckedStateFalse,
-			wantRestricted: false,
+			name:            "unset",
+			value:           &policy.AutoclickEnabled{Stat: policy.StatusUnset},
+			wantButton:      false,
+			wantChecked:     ui.CheckedStateFalse,
+			wantRestriction: ui.RestrictionNone,
 		},
 		{
-			name:           "disabled",
-			value:          &policy.AutoclickEnabled{Val: false},
-			wantButton:     false,
-			wantChecked:    ui.CheckedStateFalse,
-			wantRestricted: true,
+			name:            "disabled",
+			value:           &policy.AutoclickEnabled{Val: false},
+			wantButton:      false,
+			wantChecked:     ui.CheckedStateFalse,
+			wantRestriction: ui.RestrictionDisabled,
 		},
 		{
-			name:           "enabled",
-			value:          &policy.AutoclickEnabled{Val: true},
-			wantButton:     true,
-			wantChecked:    ui.CheckedStateTrue,
-			wantRestricted: true,
+			name:            "enabled",
+			value:           &policy.AutoclickEnabled{Val: true},
+			wantButton:      true,
+			wantChecked:     ui.CheckedStateTrue,
+			wantRestriction: ui.RestrictionDisabled,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -128,25 +128,19 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to find and click Manage accessibility features link: ", err)
 			}
 
-			// Find the toggle button node.
-			params := ui.FindParams{
-				Role: ui.RoleTypeToggleButton,
-				Name: "Automatically click when the cursor stops",
-			}
-			node, err := ui.FindWithTimeout(ctx, tconn, params, 15*time.Second)
-			if err != nil {
-				s.Fatal("Finding Automatically click when the cursor stops node failed: ", err)
-			}
-			defer node.Release(ctx)
-
-			// Check the restriction setting of the toggle button.
-			if restricted := (node.Restriction == ui.RestrictionDisabled || node.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
-				s.Logf("The restriction attribute is %q", node.Restriction)
-				s.Errorf("Unexpected toggle button restriction in the settings: got %t; want %t", restricted, param.wantRestricted)
-			}
-
-			if node.Checked != param.wantChecked {
-				s.Errorf("Unexpected toggle button checked state in the settings: got %s; want %s", node.Checked, param.wantChecked)
+			if err := policyutil.VerifySettingsNode(ctx, tconn,
+				ui.FindParams{
+					Role: ui.RoleTypeToggleButton,
+					Name: "Automatically click when the cursor stops",
+				},
+				ui.FindParams{
+					Attributes: map[string]interface{}{
+						"restriction": param.wantRestriction,
+						"checked":     param.wantChecked,
+					},
+				},
+			); err != nil {
+				s.Error("Unexpected settings state: ", err)
 			}
 
 			if param.wantChecked == ui.CheckedStateTrue {

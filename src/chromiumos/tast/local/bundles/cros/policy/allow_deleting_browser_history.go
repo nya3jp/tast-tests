@@ -42,28 +42,28 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 	}
 
 	for _, param := range []struct {
-		name           string
-		wantRestricted bool                                // wantRestricted is the wanted restriction state of the checkboxes in Browsing history.
-		wantChecked    ui.CheckedState                     // wantChecked is the wanted checked state of the checkboxes in Browsing history.
-		value          *policy.AllowDeletingBrowserHistory // value is the value of the policy.
+		name            string
+		wantRestriction ui.RestrictionState                 // wantRestriction is the wanted restriction state of the checkboxes in Browsing history.
+		wantChecked     ui.CheckedState                     // wantChecked is the wanted checked state of the checkboxes in Browsing history.
+		value           *policy.AllowDeletingBrowserHistory // value is the value of the policy.
 	}{
 		{
-			name:           "unset",
-			wantRestricted: false,
-			wantChecked:    ui.CheckedStateTrue,
-			value:          &policy.AllowDeletingBrowserHistory{Stat: policy.StatusUnset},
+			name:            "unset",
+			wantRestriction: ui.RestrictionNone,
+			wantChecked:     ui.CheckedStateTrue,
+			value:           &policy.AllowDeletingBrowserHistory{Stat: policy.StatusUnset},
 		},
 		{
-			name:           "allow",
-			wantRestricted: false,
-			wantChecked:    ui.CheckedStateTrue,
-			value:          &policy.AllowDeletingBrowserHistory{Val: true},
+			name:            "allow",
+			wantRestriction: ui.RestrictionNone,
+			wantChecked:     ui.CheckedStateTrue,
+			value:           &policy.AllowDeletingBrowserHistory{Val: true},
 		},
 		{
-			name:           "deny",
-			wantRestricted: true,
-			wantChecked:    ui.CheckedStateFalse,
-			value:          &policy.AllowDeletingBrowserHistory{Val: false},
+			name:            "deny",
+			wantRestriction: ui.RestrictionDisabled,
+			wantChecked:     ui.CheckedStateFalse,
+			value:           &policy.AllowDeletingBrowserHistory{Val: false},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -132,25 +132,19 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 					}
 				}
 
-				// Find the checkbox node.
-				cbNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-					Role: ui.RoleTypeCheckBox,
-					Name: cb.name,
-				}, 15*time.Second)
-				if err != nil {
-					s.Fatalf("Finding %q checkbox failed: %v", cb.ref, err)
-				}
-				defer cbNode.Release(ctx)
-
-				// Check the checked state of the checkbox.
-				if cbNode.Checked != param.wantChecked {
-					s.Errorf("Unexpected %q checkbox checked state in the %s tab: got %v; want %v", cb.ref, cb.tab, cbNode.Checked, param.wantChecked)
-				}
-
-				// Check the restriction setting of the checkbox.
-				if restricted := (cbNode.Restriction == ui.RestrictionDisabled || cbNode.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
-					s.Logf("The restriction attribute is %q", cbNode.Restriction)
-					s.Errorf("Unexpected %q checkbox restriction in the %s tab: got %t; want %t", cb.ref, cb.tab, restricted, param.wantRestricted)
+				if err := policyutil.VerifySettingsNode(ctx, tconn,
+					ui.FindParams{
+						Role: ui.RoleTypeCheckBox,
+						Name: cb.name,
+					},
+					ui.FindParams{
+						Attributes: map[string]interface{}{
+							"restriction": param.wantRestriction,
+							"checked":     param.wantChecked,
+						},
+					},
+				); err != nil {
+					s.Error("Unexpected settings state: ", err)
 				}
 			}
 		})
