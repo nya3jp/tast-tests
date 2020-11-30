@@ -137,6 +137,30 @@
       },
       "revId": "c59e3273233430c66392a526da475a6a5a36b5f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1478e69_8831cb56",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-11-30T20:39:59Z",
+      "side": 1,
+      "message": "Yes, that is correct: \n  default_scale * zoom_factor \u003d\u003d device_scale_factor\n\nYou could certainly add it to the Wayland Dump. I prefer that approach, thanks!",
+      "parentUuid": "0e261754_2b6e0738",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "c59e3273233430c66392a526da475a6a5a36b5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
