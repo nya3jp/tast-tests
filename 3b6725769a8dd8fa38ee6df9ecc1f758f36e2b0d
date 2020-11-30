@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3e2a86_2a0e70b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-11-30T08:27:41Z",
+      "side": 1,
+      "message": "You are right, it is better to do it in a separate CL.\nBut as it is a bigger change, please consult with the owners of this package first. Take my comment only as a recommendation.",
+      "parentUuid": "20cd0122_8cc5cf5f",
+      "revId": "3b6725769a8dd8fa38ee6df9ecc1f758f36e2b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad18caa7_0f7fa3f6",
