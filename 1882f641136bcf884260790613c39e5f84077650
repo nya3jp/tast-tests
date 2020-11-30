@@ -50,6 +50,23 @@
       "message": "I\u0027m offline this week for sickness, my reviews will be delayed, sorry.",
       "revId": "1882f641136bcf884260790613c39e5f84077650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea1ba6ac_52e201d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T05:42:37Z",
+      "side": 1,
+      "message": "LGTM per Tast reviews, I\u0027ll defer to Yury.\n",
+      "revId": "1882f641136bcf884260790613c39e5f84077650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
