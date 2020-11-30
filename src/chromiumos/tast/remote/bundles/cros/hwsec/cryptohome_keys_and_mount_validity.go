@@ -227,66 +227,6 @@ func testMigrateKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinar
 	return nil
 }
 
-// testUpdateKeyEx checks that UpdateKeyEx works correctly.
-func testUpdateKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
-	// We should be able to change key label with UpdateKeyEx, and check that both the new and old label behave as expected.
-	if err := utility.ChangeVaultLabel(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.ChangedPasswordLabel); err != nil {
-		return errors.New("failed to change the vault password")
-	}
-	if result, _ := utility.CheckVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel); result {
-		return errors.New("the old label still works")
-	}
-	if result, _ := utility.CheckVault(ctx, util.FirstUsername, util.FirstPassword, util.ChangedPasswordLabel); !result {
-		return errors.New("the new label doesn't work")
-	}
-	if err := checkKeysLabels(ctx, utility, []string{util.ChangedPasswordLabel}); err != nil {
-		return errors.Wrap(err, "list of keys is incorrect after UpdateKeyEx")
-	}
-
-	// Mounting with old and new label should behave as expected.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, hwsec.NewVaultConfig()); err == nil {
-		return errors.New("still can mount vault with old label")
-	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.ChangedPasswordLabel, false, hwsec.NewVaultConfig()); err != nil {
-		return errors.Wrap(err, "failed to mount with new label")
-	}
-	if err := checkMountState(ctx, utility, true); err != nil {
-		return errors.Wrap(err, "vault not mounted after mounting with changed label")
-	}
-
-	// UpdateKeyEx should work when vault is mounted.
-	if err := utility.ChangeVaultLabel(ctx, util.FirstUsername, util.FirstPassword, util.ChangedPasswordLabel, util.PasswordLabel); err != nil {
-		return errors.Wrap(err, "failed to change vault label back when mounted")
-	}
-	if err := checkMountState(ctx, utility, true); err != nil {
-		return errors.Wrap(err, "vault not mounted after changing label while mounted")
-	}
-
-	// Calling CheckKeyEx(), which tries to authenticate with the new label,
-	// should be effective immediately without a remount.
-	if result, _ := utility.CheckVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel); !result {
-		return errors.New("the new label doesn't work after changing label back while mounted")
-	}
-	// Note: In the current implementation, the old label still works after
-	// changing the label while mounted. We do not test this here.
-
-	// The new label should continue to work when we try to authenticate
-	// through CheckKeyEx() API, even after we unmount.
-	if err := unmountTestVault(ctx, utility); err != nil {
-		return errors.Wrap(err, "failed to unmount")
-	}
-	if err := checkMountState(ctx, utility, false); err != nil {
-		return errors.Wrap(err, "vault mounted after unmounting while testing UpdateKeyEx")
-	}
-	if result, _ := utility.CheckVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel); !result {
-		return errors.New("the new label doesn't work after the label is changed back")
-	}
-	if result, _ := utility.CheckVault(ctx, util.FirstUsername, util.FirstPassword, util.ChangedPasswordLabel); result {
-		return errors.New("the old label still works after the label is changed back")
-	}
-	return nil
-}
-
 // checkUserVault checks that the vault/keys related API works correctly.
 func checkUserVault(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
 	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PasswordLabel, util.FirstPassword, util.IncorrectPassword); err != nil {
@@ -303,10 +243,6 @@ func checkUserVault(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary)
 
 	if err := testMigrateKeyEx(ctx, utility); err != nil {
 		return errors.Wrap(err, "test on MigrateKeyEx failed")
-	}
-
-	if err := testUpdateKeyEx(ctx, utility); err != nil {
-		return errors.Wrap(err, "test on UpdateKeyEx failed")
 	}
 
 	return nil
