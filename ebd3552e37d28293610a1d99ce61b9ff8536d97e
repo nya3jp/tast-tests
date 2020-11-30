@@ -56,6 +56,30 @@
       },
       "revId": "ebd3552e37d28293610a1d99ce61b9ff8536d97e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a9e2ce_1323809b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2020-11-30T17:15:51Z",
+      "side": 1,
+      "message": "thanks, I didn\u0027t know I could do that.",
+      "parentUuid": "16d1615d_d506fc9e",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "ebd3552e37d28293610a1d99ce61b9ff8536d97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
