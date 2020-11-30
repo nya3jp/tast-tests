@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0d35384_2fe6484c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-11-30T16:31:40Z",
+      "side": 1,
+      "message": "Regarding the tree of bookmarks, this CL is only for porting existing testcases not adding new ones. If required, we can create a bug with a TODO to test a tree of bookmarks \u0026 have a separate CL for it.",
+      "parentUuid": "998e46dd_5728fd4a",
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67046f04_f322b84e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
         "patchSetId": 8
@@ -83,6 +101,30 @@
       "writtenOn": "2020-11-30T12:57:29Z",
       "side": 1,
       "message": "single\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "694b061d_dc9f1a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-11-30T16:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67046f04_f322b84e",
       "range": {
         "startLine": 52,
         "startChar": 10,
@@ -116,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cec42cbf_c957a5bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-11-30T16:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efe6997f_2ab1ad11",
+      "range": {
+        "startLine": 63,
+        "startChar": 10,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "586bbf87_787be568",
@@ -129,6 +195,24 @@
       "writtenOn": "2020-11-30T12:57:29Z",
       "side": 1,
       "message": "You don\u0027t need the if. The default for a slice is an empty one.",
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f20f768_964b1699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-11-30T16:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "586bbf87_787be568",
       "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -200,6 +284,24 @@
       "side": 1,
       "message": "In the unset case there is no top level folder.",
       "parentUuid": "24e86bb3_8ee5d5a3",
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d86a51_abb1a6c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-11-30T16:31:40Z",
+      "side": 1,
+      "message": "+1 to Gabor reply",
+      "parentUuid": "400bcf4f_8fbf510b",
       "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
