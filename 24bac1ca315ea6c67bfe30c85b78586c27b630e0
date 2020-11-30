@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39fdf47_6d93f7a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-30T01:20:25Z",
+      "side": 1,
+      "message": "As suggested, update all names to exp rather than mojo. Once mojo online, we can continue to use this structure to experimenting new features.",
+      "parentUuid": "46cacc21_40e68b91",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "24bac1ca315ea6c67bfe30c85b78586c27b630e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "755ef134_de251793",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-30T00:20:10Z",
       "side": 1,
       "message": "Do you have any results of these tests on IME Service? If they are flaky or broken, we should run them in google3 first.",
+      "range": {
+        "startLine": 78,
+        "startChar": 33,
+        "endLine": 78,
+        "endChar": 46
+      },
+      "revId": "24bac1ca315ea6c67bfe30c85b78586c27b630e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eea45cb3_d97f7945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-11-30T01:20:25Z",
+      "side": 1,
+      "message": "These tests are very stable when I run them locally on betty. Also they all passed in google3. This change will enable them to run at informational level, to collect result on different boards.",
+      "parentUuid": "755ef134_de251793",
       "range": {
         "startLine": 78,
         "startChar": 33,
