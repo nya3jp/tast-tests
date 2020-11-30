@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09bdcbe_de5d7dd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-30T17:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49a6ae49_84da746d",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "688f66d74c7818dd36ec847e40d69c530ae21291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6394740b_e04d1b5b",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60117cce_a9881824",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-30T17:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6394740b_e04d1b5b",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 99
+      },
+      "revId": "688f66d74c7818dd36ec847e40d69c530ae21291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2095d4d7_60432104",
@@ -94,6 +142,24 @@
       "writtenOn": "2020-11-30T08:23:32Z",
       "side": 1,
       "message": "nit: could you move this to just before L112, where it is actually needed at latest timing?",
+      "revId": "688f66d74c7818dd36ec847e40d69c530ae21291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c94d8a63_9ec1f876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-11-30T17:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2095d4d7_60432104",
       "revId": "688f66d74c7818dd36ec847e40d69c530ae21291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
