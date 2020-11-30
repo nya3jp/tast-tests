@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20b9fdab_ce8074a6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-30T14:24:56Z",
+      "side": 1,
+      "message": "Maybe it makes sense to still running 1*timeout in the worst case by measuring how much did we spend in WaitUntilGone?",
+      "range": {
+        "startLine": 642,
+        "startChar": 58,
+        "endLine": 642,
+        "endChar": 98
+      },
+      "revId": "a092c09384075fcd3e8524bf4ea8ead71c3d1ab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
