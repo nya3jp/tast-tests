@@ -23,7 +23,7 @@ func init() {
 		Func:        MalformedProbeResp,
 		Desc:        "Test that we can stay connected to the configured AP when receiving malformed probe responses from an AP that we are not connected to",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
