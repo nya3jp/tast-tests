@@ -78,6 +78,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72dcb672_82b5a889",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-11-30T09:20:40Z",
+      "side": 1,
+      "message": "Does it make sense to wait here?",
+      "range": {
+        "startLine": 644,
+        "startChar": 0,
+        "endLine": 647,
+        "endChar": 2
+      },
+      "revId": "c069cd82b2e65fd6f62c4d56d49721de3bcc6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a22b8a90_5cc6057a",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 1
