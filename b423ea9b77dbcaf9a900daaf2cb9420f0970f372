@@ -16,6 +16,24 @@
       "message": "Having binary files like this in git is something we want to avoid. This has come up with fuzzing corpora in the past.",
       "revId": "b423ea9b77dbcaf9a900daaf2cb9420f0970f372",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50923ee6_95cc5a85",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/data/corpus.db",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-11-30T19:07:36Z",
+      "side": 1,
+      "message": "I see, yes. We could try and have the unpacked corpus in the git repo(at that point it would be a directory of text files), and pack it as part of the tast test.",
+      "parentUuid": "e44a7c0b_85d5b7e8",
+      "revId": "b423ea9b77dbcaf9a900daaf2cb9420f0970f372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
