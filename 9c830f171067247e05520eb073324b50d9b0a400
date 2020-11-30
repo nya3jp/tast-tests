@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a702cf7_a3575351",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "To me, the main point of the CL seems like adding OTA support to the chrome package.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "099980b4_44bf3c2f",
@@ -48,6 +71,293 @@
       "writtenOn": "2020-11-27T08:10:52Z",
       "side": 1,
       "message": "Oh no, you are both sick this week. Take care.\nNo worry about the review.",
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0006703_746b8646",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "Thanks for adding OTA account support, that\u0027s very helpful!",
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78787d32_65765862",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "typo: cryptohome",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4aa18b8_01a4fd08",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "No action required:\n\nI wonder what\u0027s a clean API to specify a contact address. I expect many more tests using real GAIA accounts to use this option, and such tests will always use GAIALogin, Auth and Contact. It\u0027s nicer if we can use a single option to cover all cases involving real GAIA account.\n\nThat said, I think this is a good start and we can revisit API later.",
+      "range": {
+        "startLine": 191,
+        "startChar": 5,
+        "endLine": 191,
+        "endChar": 12
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "823cd74e_45795f93",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "It\u0027s not always -var\u003dpass\u003d... to specify the GAIA password.",
+      "range": {
+        "startLine": 1532,
+        "startChar": 19,
+        "endLine": 1532,
+        "endChar": 74
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f67de4_31acfee8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "style: \"please ...\"\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 1532,
+        "startChar": 22,
+        "endLine": 1532,
+        "endChar": 28
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e069226_48248dfb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1540,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1540,
+        "startChar": 20,
+        "endLine": 1540,
+        "endChar": 81
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a63fb08_586077d3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "Can you also include authType value for debugging?",
+      "range": {
+        "startLine": 1546,
+        "startChar": 71,
+        "endLine": 1546,
+        "endChar": 83
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2a04ef8_491cf473",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "Can you please use oobeConn.Call? It\u0027s a safer alternative to Exec + fmt.Sprintf.",
+      "range": {
+        "startLine": 1560,
+        "startChar": 21,
+        "endLine": 1560,
+        "endChar": 25
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ec67ed_bd071fa0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "Can you introduce a new enum type for the return value? There are only a few valid values so it\u0027s nice to use enum instead of strings.",
+      "range": {
+        "startLine": 1577,
+        "startChar": 55,
+        "endLine": 1577,
+        "endChar": 61
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed3343ad_a195e6bc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1581,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "style: Please use single quotes for strings.\nhttps://google.github.io/styleguide/jsguide.html#features-strings-use-single-quotes",
+      "range": {
+        "startLine": 1581,
+        "startChar": 10,
+        "endLine": 1581,
+        "endChar": 21
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f79e90e6_d8e40829",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1583,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "style: Please always use braces, even for one-line conditionals.\nhttps://google.github.io/styleguide/jsguide.html#formatting-braces-all",
+      "range": {
+        "startLine": 1580,
+        "startChar": 2,
+        "endLine": 1583,
+        "endChar": 20
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "330095eb_4a29aba6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "It\u0027s nice to avoid almost duplicated logic in insertGAIAField and insertGAIAFieldByName....\n\nMy recommendation is to update insertGAIAField to take a CSS selector instead of ID. Then it can be used to select by names.\n\nJS API: document.querySelector(...)\n\nGo API:\n insertGAIAField(ctx, conn, \"#foo\", value)  // select by ID\n insertGAIAField(ctx, conn, \"input[name\u003dfoo]\", value) // select by name",
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e255570_b5e7684d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1654,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-11-30T04:59:26Z",
+      "side": 1,
+      "message": "Spaces/tabs are mixed around here...",
+      "range": {
+        "startLine": 1651,
+        "startChar": 2,
+        "endLine": 1654,
+        "endChar": 4
+      },
       "revId": "9c830f171067247e05520eb073324b50d9b0a400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
