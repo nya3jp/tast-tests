@@ -44,11 +44,20 @@ func init() {
 			},
 			{
 				Name:              "soda_no_nnapi_goldmont",
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform("octopus")),
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("octopus", "volteer")),
 				Val: benchmarkParams{
 					driver:     "libsoda_benchmark_driver.so",
 					configFile: "soda-scenario-1-goldmont.config",
 					scenario:   "soda_no_nnapi_goldmont",
+				},
+			},
+			{
+				Name:              "soda_no_nnapi_skylake",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("hatch", "volteer")),
+				Val: benchmarkParams{
+					driver:     "libsoda_benchmark_driver.so",
+					configFile: "soda-scenario-1-skylake.config",
+					scenario:   "soda_no_nnapi_skylake",
 				},
 			},
 			{
@@ -84,6 +93,15 @@ func init() {
 					driver:     "libhandwriting_benchmark-goldmont.so",
 					configFile: "handwriting-scenario-1.config",
 					scenario:   "handwriting_no_nnapi_goldmont",
+				},
+			},
+			{
+				Name:              "handwriting_no_nnapi_skylake",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("hatch", "volteer")),
+				Val: benchmarkParams{
+					driver:     "libhandwriting_benchmark-skylake.so",
+					configFile: "handwriting-scenario-1.config",
+					scenario:   "handwriting_no_nnapi_skylake",
 				},
 			},
 			{
