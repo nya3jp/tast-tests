@@ -100,7 +100,8 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 			"/var/cache/app_pack",
 			"/var/lib/tpm",
 		).CombinedOutput(ctx); err != nil {
-			return errors.Wrapf(err, "failed to remove files to clear ownership: %s", string(out))
+			// TODO(b/173189029): Ignore errors on failure. This is a workaround to prevent Permission denied when removing a fscrypt directory.
+			testing.ContextLog(ctx, "Failed to remove files to clear ownership: ", err, string(out))
 		}
 	}
 
