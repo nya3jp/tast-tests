@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2996322e_58deb04f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-30T23:12:03Z",
+      "side": 1,
+      "message": "I was trying to have the same implementation as dev_coredump.go which triggers .devcore dump by writing \"1\" to \"fw_restart\". However, I think the implementation of kernel_iwlwifi_error.go is better, so I changed it to that.",
+      "parentUuid": "9aa522f8_1dd5e564",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "37ec68c2e668b23db9479cfda2fa815a4c62f8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d727e134_a05e7a02",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
         "patchSetId": 3
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64b2e66a_063761d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-30T23:12:03Z",
+      "side": 1,
+      "message": "I only tested this on octopus, but it seems that is not enough. I will run it on multiple devices and try to find reasonable and comprehensive values.",
+      "parentUuid": "d727e134_a05e7a02",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "37ec68c2e668b23db9479cfda2fa815a4c62f8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73281795_0cd20bff",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-30T22:25:26Z",
       "side": 1,
       "message": "typo: written",
+      "range": {
+        "startLine": 112,
+        "startChar": 50,
+        "endLine": 112,
+        "endChar": 56
+      },
+      "revId": "37ec68c2e668b23db9479cfda2fa815a4c62f8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e351162f_91142086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-11-30T23:12:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73281795_0cd20bff",
       "range": {
         "startLine": 112,
         "startChar": 50,
