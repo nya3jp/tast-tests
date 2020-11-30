@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "078a3854_de17b927",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T14:58:24Z",
+      "side": 1,
+      "message": "an Autotest test.",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8aa283c6_88f58fca",
@@ -14,6 +37,149 @@
       "writtenOn": "2020-11-25T09:20:30Z",
       "side": 1,
       "message": "LGTM.",
+      "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fde412f_3cff3858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2202,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T14:58:24Z",
+      "side": 1,
+      "message": "Need to reserve some time for pw.Close().\n\nAlso line 2194-2214 and line 2317-2338 are quite similar. Would it be possible to deduplicate them?",
+      "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e6f043_55c94dc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2229,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T14:58:24Z",
+      "side": 1,
+      "message": "phy name of the WiFi interface (%s)\", iface",
+      "range": {
+        "startLine": 2229,
+        "startChar": 50,
+        "endLine": 2229,
+        "endChar": 63
+      },
+      "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "817fcedf_7d43f854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2248,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T14:58:24Z",
+      "side": 1,
+      "message": "Do we have any way to check the reset is executed for ath10k and iwlwifi module?",
+      "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd0dc68_95f308d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2253,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T14:58:24Z",
+      "side": 1,
+      "message": "the parent device name of the WiFi interface (%s)\", iface",
+      "range": {
+        "startLine": 2253,
+        "startChar": 46,
+        "endLine": 2253,
+        "endChar": 73
+      },
+      "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5d1524_5452119a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T14:58:24Z",
+      "side": 1,
+      "message": "// Find the first workable reset path and function by checking the presence of a reset path from the three WiFi module families.",
+      "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68905a8d_b90aad5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2302,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T14:58:24Z",
+      "side": 1,
+      "message": "Reset WiFi device for %s times then perform suspend/resume test; totally %d rounds; reset path\u003d%s",
+      "range": {
+        "startLine": 2302,
+        "startChar": 27,
+        "endLine": 2302,
+        "endChar": 65
+      },
+      "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f312e2f_84ed5a31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2315,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-11-30T14:58:24Z",
+      "side": 1,
+      "message": "// Suspend for suspendDuration; resume; then wait for ...",
+      "range": {
+        "startLine": 2315,
+        "startChar": 2,
+        "endLine": 2315,
+        "endChar": 12
+      },
       "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
