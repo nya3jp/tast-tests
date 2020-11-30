@@ -55,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "51c8156f_04a4b398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-30T14:14:00Z",
+      "side": 1,
+      "message": "Running on devices without batteries isn\u0027t a first priority for us. Added a hardware dependency to support battery discharge for now.\n\nThanks for pointing out the doc for auto-generating params, looks very useful!",
+      "parentUuid": "e5233def_95983176",
+      "revId": "3439a18b0d06d31d109b65b394d568d67dc7a1c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f0889049_1613bcb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/power.go",
         "patchSetId": 2
@@ -66,6 +84,30 @@
       "writtenOn": "2020-11-30T09:49:11Z",
       "side": 1,
       "message": "In my opinion yes. Otherwise something might break and we\u0027ll never notice until we need the data and it\u0027s not there.\n\nUp to you though!",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "3439a18b0d06d31d109b65b394d568d67dc7a1c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4997805b_8c1e8ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-11-30T14:14:00Z",
+      "side": 1,
+      "message": "Passed `testing.State` here to make it error. Do we monitor the tests for non-fatal errors?",
+      "parentUuid": "f0889049_1613bcb6",
       "range": {
         "startLine": 29,
         "startChar": 6,
