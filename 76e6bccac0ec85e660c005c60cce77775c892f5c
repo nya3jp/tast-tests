@@ -33,6 +33,24 @@
       "message": "implementaiton\n\nTry: env DISPLAY\u003d:0 glxinfo\n\nPATH shouldn\u0027t be needed from my tests.  eg I tested the following successfully:\nvsh --vm_name\u003dborealis --owner_id\u003d$cryptohome env DISPLAY\u003d:0 glxinfo",
       "revId": "76e6bccac0ec85e660c005c60cce77775c892f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "079b523b_7e6d58da",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-11-30T19:40:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c290bbc_b50cbc98",
+      "revId": "76e6bccac0ec85e660c005c60cce77775c892f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
