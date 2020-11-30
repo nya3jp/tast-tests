@@ -196,7 +196,6 @@ const (
 	RoleTypeSearchBox              RoleType = "searchBox"
 	RoleTypeSection                RoleType = "section"
 	RoleTypeSlider                 RoleType = "slider"
-	RoleTypeSliderThumb            RoleType = "sliderThumb"
 	RoleTypeSpinButton             RoleType = "spinButton"
 	RoleTypeSplitter               RoleType = "splitter"
 	RoleTypeStaticText             RoleType = "staticText"
@@ -238,6 +237,7 @@ const (
 	EventTypeActiveDescendantChanged         EventType = "activeDescendantChanged"
 	EventTypeAlert                           EventType = "alert"
 	EventTypeAriaAttributeChanged            EventType = "ariaAttributeChanged"
+	EventTypeAriaCurrentChanged              EventType = "ariaCurrentChanged"
 	EventTypeAtomicChanged                   EventType = "atomicChanged"
 	EventTypeAutoCompleteChanged             EventType = "autoCompleteChanged"
 	EventTypeAutocorrectionOccured           EventType = "autocorrectionOccured"
@@ -358,6 +358,7 @@ type RestrictionState string
 const (
 	RestrictionDisabled RestrictionState = "disabled"
 	RestrictionReadOnly RestrictionState = "readOnly"
+	RestrictionNone     RestrictionState = ""
 )
 
 // CheckedState describes the checked state of a chrome.automation AutomationNode.
