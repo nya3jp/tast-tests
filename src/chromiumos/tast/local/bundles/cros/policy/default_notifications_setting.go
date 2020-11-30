@@ -6,7 +6,6 @@ package policy
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ui"
@@ -43,36 +42,36 @@ func DefaultNotificationsSetting(ctx context.Context, s *testing.State) {
 
 	for _, param := range []struct {
 		name           string
-		wantPermission string          // the expected answer for the JS query
-		wantRestricted bool            // the expected restriction state of the toggle button
-		wantChecked    ui.CheckedState // the expected checked state of the toggle button
+		wantPermission string              // the expected answer for the JS query
+		restriction    ui.RestrictionState // the expected restriction state of the toggle button
+		wantChecked    ui.CheckedState     // the expected checked state of the toggle button
 		value          *policy.DefaultNotificationsSetting
 	}{
 		{
 			name:           "unset",
 			wantPermission: "default",
-			wantRestricted: false,
+			restriction:    ui.RestrictionNone,
 			wantChecked:    ui.CheckedStateTrue,
 			value:          &policy.DefaultNotificationsSetting{Stat: policy.StatusUnset},
 		},
 		{
 			name:           "allow",
 			wantPermission: "granted",
-			wantRestricted: true,
+			restriction:    ui.RestrictionDisabled,
 			wantChecked:    ui.CheckedStateTrue,
 			value:          &policy.DefaultNotificationsSetting{Val: 1}, // Allow sites to show desktop notifications.
 		},
 		{
 			name:           "deny",
 			wantPermission: "denied",
-			wantRestricted: true,
+			restriction:    ui.RestrictionDisabled,
 			wantChecked:    ui.CheckedStateFalse,
 			value:          &policy.DefaultNotificationsSetting{Val: 2}, // Do not allow any site to show desktop notifications.
 		},
 		{
 			name:           "ask",
 			wantPermission: "default",
-			wantRestricted: true,
+			restriction:    ui.RestrictionDisabled,
 			wantChecked:    ui.CheckedStateTrue,
 			value:          &policy.DefaultNotificationsSetting{Val: 3}, // Ask every time a site wants to show desktop notifications.
 		},
@@ -104,24 +103,19 @@ func DefaultNotificationsSetting(ctx context.Context, s *testing.State) {
 				s.Errorf("Unexpected permission value; got %s, want %s", permission, param.wantPermission)
 			}
 
-			tbNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeToggleButton,
-				Name: "Sites can ask to send notifications",
-			}, 15*time.Second)
-			if err != nil {
-				s.Fatal("Finding toggle button failed: ", err)
-			}
-			defer tbNode.Release(ctx)
-
-			// Check the checked state of the toggle button.
-			if tbNode.Checked != param.wantChecked {
-				s.Errorf("Unexpected toggle button checked state: got %v; want %v", tbNode.Checked, param.wantChecked)
-			}
-
-			// Check the restriction setting of the toggle button.
-			if restricted := (tbNode.Restriction == ui.RestrictionDisabled || tbNode.Restriction == ui.RestrictionReadOnly); restricted != param.wantRestricted {
-				s.Logf("The restriction state is %q", tbNode.Restriction)
-				s.Errorf("Unexpected toggle button restriction: got %t; want %t", restricted, param.wantRestricted)
+			if err := policyutil.FindSettingsNode(ctx, tconn,
+				ui.FindParams{
+					Role: ui.RoleTypeToggleButton,
+					Name: "Sites can ask to send notifications",
+				},
+				ui.FindParams{
+					Attributes: map[string]interface{}{
+						"restriction": param.restriction,
+						"checked":     param.wantChecked,
+					},
+				},
+			); err != nil {
+				s.Fatal("Failed to check a matching node: ", err)
 			}
 		})
 	}
