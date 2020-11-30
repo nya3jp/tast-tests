@@ -33,6 +33,103 @@
       "message": "+Victor to have a 2nd reviewer.",
       "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66bbf19b_fa7e493d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-30T12:57:29Z",
+      "side": 1,
+      "message": "Also test the case where the policy is not set.\n\nDo we want to test a tree of bookmarks?",
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67046f04_f322b84e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-30T12:57:29Z",
+      "side": 1,
+      "message": "single\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe6997f_2ab1ad11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-30T12:57:29Z",
+      "side": 1,
+      "message": "multiple",
+      "range": {
+        "startLine": 63,
+        "startChar": 10,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "586bbf87_787be568",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-30T12:57:29Z",
+      "side": 1,
+      "message": "You don\u0027t need the if. The default for a slice is an empty one.",
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "418ec17e_05608fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-11-30T12:57:29Z",
+      "side": 1,
+      "message": "Do we also want to check that there are no unexpected other bookmarks?",
+      "revId": "5ca6ae48020ff53cbb79e0537e63cc2f2da9f5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
