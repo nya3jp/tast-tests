@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44e4504_ac16dc06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2020-11-30T03:23:58Z",
+      "side": 1,
+      "message": "The newly added test is breaking PFQ. Can I revert it for now? Cc: constables\n\nhttps://cros-goldeneye.corp.google.com/chromeos/legoland/builderHistory?buildConfig\u003dkukui-arc-r-vmrvc-android-pfq\u0026buildBranch\u003dmaster",
+      "revId": "3710286c204165e411b8b3418f8c9a0138ac00a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
