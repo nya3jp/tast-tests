@@ -33,6 +33,24 @@
       "message": "For me Ctrl+Shift+I and Ctrl+Shift+J also closes DevTools.",
       "revId": "e4c01fca167ff0c609ccec14cc6ab78c115a0185",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95309960_1c549625",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-12-01T18:51:13Z",
+      "side": 1,
+      "message": "Ah... interesting, I thought it\u0027s only for F12. Then looks like we have to increase test timeout to 2 minutes.\n\nAny better ideas?",
+      "parentUuid": "9d01ad10_d24cf114",
+      "revId": "e4c01fca167ff0c609ccec14cc6ab78c115a0185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
