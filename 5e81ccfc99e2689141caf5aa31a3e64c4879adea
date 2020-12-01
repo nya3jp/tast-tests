@@ -34,6 +34,24 @@
       "parentUuid": "69fed89b_437cfa3d",
       "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c352c07a_0acd28a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2020-12-01T05:50:50Z",
+      "side": 1,
+      "message": "Sounds good - autocap spec may also change a bit with IME service anyway.",
+      "parentUuid": "42456312_24df42e0",
+      "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
