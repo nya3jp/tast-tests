@@ -38,12 +38,13 @@ type testParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: PlatformEncoding,
-		Desc: "Verifies platform encoding",
+		Desc: "Verifies platform encoding by using the libva-utils encoder binaries",
 		Contacts: []string{
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",
 		},
-		Attr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+		SoftwareDeps: []string{"vaapi"},
 		Params: []testing.Param{{
 			Name: "vp8_180",
 			Val: testParam{
@@ -52,7 +53,7 @@ func init() {
 				size:     coords.NewSize(320, 180),
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, "vaapi"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
 			Name: "vp8_360",
 			Val: testParam{
@@ -61,7 +62,7 @@ func init() {
 				size:     coords.NewSize(640, 360),
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, "vaapi"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
 			Name: "vp8_720",
 			Val: testParam{
@@ -70,7 +71,7 @@ func init() {
 				size:     coords.NewSize(1280, 720),
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, "vaapi"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}},
 		Timeout: 20 * time.Minute,
 	})
@@ -95,6 +96,17 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	// TODO(mcasas): decode the output file and PSNR/SSIM-compare with input.
 	ivfFile := yuvFile + ".ivf"
 	testOpt.command = append(testOpt.command, ivfFile)
+
+	// WebRTC uses Constant BitRate (CBR) with a very large intra-frame
+	// period, error resiliency and a certain quality parameter and target
+	// bitrate.
+	testOpt.command = append(testOpt.command, "--intra_period", "3000")
+	testOpt.command = append(testOpt.command, "--qp", "28" /* Quality Parameter */)
+	testOpt.command = append(testOpt.command, "--rcmode", "1" /* For Constant BitRate (CBR) */)
+	testOpt.command = append(testOpt.command, "--error_resilient" /* Off by default, enable. */)
+
+	bitrate := 256 * testOpt.size.Width * testOpt.size.Height / (320.0 * 240.0)
+	testOpt.command = append(testOpt.command, "--fb", strconv.Itoa(bitrate) /* From Chromecast */)
 
 	s.Log("Running ", shutil.EscapeSlice(testOpt.command))
 	logFile, err := runTest(ctx, s.OutDir(), testOpt.command[0], testOpt.command[1:]...)
