@@ -33,6 +33,41 @@
       "message": "LGTM but please also get approval from a test-owner, per go/tast-reviews",
       "revId": "c93f8779e1991efe62aeacea96276d871cbe755a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc65d6b5_7f1603fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-01T02:07:53Z",
+      "side": 1,
+      "message": "Are you not a tast-owner? gwsq added you when I added tast-owners to the CL?",
+      "parentUuid": "a51c776d_c4216c3b",
+      "revId": "c93f8779e1991efe62aeacea96276d871cbe755a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c10cf26_0f84e4d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-01T02:07:53Z",
+      "side": 1,
+      "message": "Trying tast-owners again...",
+      "revId": "c93f8779e1991efe62aeacea96276d871cbe755a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
