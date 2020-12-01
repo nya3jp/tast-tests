@@ -46,6 +46,30 @@
       },
       "revId": "d319286bce3cea7bbf99801636770451e745fdd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "051ca65d_a9b2a192",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-12-01T02:10:53Z",
+      "side": 0,
+      "message": "My point is to add the bool enabled/disable the flag, so if exists and yes, dont do anything\nif exist but no, remove it.\n\nIMEServiceEnabled(true /* enable IME decoder */)\nIMEServiceEnabled(false /* disable IME decoder */)",
+      "parentUuid": "08e1d9a4_7a57bf6e",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "d319286bce3cea7bbf99801636770451e745fdd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
