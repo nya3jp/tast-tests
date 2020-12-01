@@ -22,6 +22,30 @@
       },
       "revId": "4ad881da2c411c725238931374f341883cabf598",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95fae488_7d97cf31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-12-01T17:45:06Z",
+      "side": 1,
+      "message": "Oops, yes, deleted a digit off the end.",
+      "parentUuid": "a316b581_90f12e6f",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "4ad881da2c411c725238931374f341883cabf598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
