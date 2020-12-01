@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc7bbc7_edf8e72d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-01T19:24:24Z",
+      "side": 1,
+      "message": "PTAL for a first pass, thanks! This must be landed after https://chromium-review.googlesource.com/c/chromium/src/+/2358989",
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
