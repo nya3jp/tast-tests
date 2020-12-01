@@ -35,7 +35,7 @@ func init() {
 			Name: "fetch_core",
 			Val:  true,
 		}},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
