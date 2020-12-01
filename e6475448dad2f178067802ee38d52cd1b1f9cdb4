@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f5dfc5_0a4a777b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-01T20:10:59Z",
+      "side": 1,
+      "message": "Apparently \"Sanity\" is a frowned upon word for reasons unknown to me.\n(There\u0027s been a blanket s/Sanity/(Smoke|Validity)/ recently in\ncrrev.com/c/2536955).",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4dc8045_1c4eb4e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-01T20:10:59Z",
+      "side": 1,
+      "message": "QQ: This bug hasn\u0027t been migrated?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fcc7bbc7_edf8e72d",
@@ -14,6 +60,138 @@
       "writtenOn": "2020-12-01T19:24:24Z",
       "side": 1,
       "message": "PTAL for a first pass, thanks! This must be landed after https://chromium-review.googlesource.com/c/chromium/src/+/2358989",
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b947c41_f5cec817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-01T20:10:59Z",
+      "side": 1,
+      "message": "Looking good, some comments.",
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac62a913_176986d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-01T20:10:59Z",
+      "side": 1,
+      "message": "nit: s/otuput/output/",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be41268b_e53a5633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-01T20:10:59Z",
+      "side": 1,
+      "message": "nit: Following the taxonomy in the doco (go/cros-video-testing-2021) I \nthink is good to insert \"Platform\" here somewhere (like for the case of \nPlatformEncoding [1]).\n\nE.g. PlatformDecodingVaapi? PlatformSmokeVaapi? I prefer the first one\nso it\u0027s clear that is about decoding.\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go;l\u003d79?q\u003dplatformencoding\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a6430a_39ccd440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-01T20:10:59Z",
+      "side": 1,
+      "message": "s/chromeos-video-eng/chromeos-gfx-video/",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4596005f_0281453a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-01T20:10:59Z",
+      "side": 1,
+      "message": "QQ: If the associated RunVaapiSanityTest() call fails, wouldn\u0027t Tast \nmark this case as failed as well?",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a6ca10_cb18d6ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-01T20:10:59Z",
+      "side": 1,
+      "message": "It took me a minute to figure out why this was the \"vp9_fail\" case --\nbut there doesn\u0027t seem to be many .ivf files to be used, so I guess\nthis is fine. Maybe leave a comment here calling out what\u0027s being done?",
+      "range": {
+        "startLine": 31,
+        "startChar": 51,
+        "endLine": 31,
+        "endChar": 54
+      },
       "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
