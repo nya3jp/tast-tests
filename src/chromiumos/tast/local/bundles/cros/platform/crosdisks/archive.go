@@ -47,6 +47,7 @@ var PreparedArchives = []string{
 	"crosdisks/Symlinks.zip",
 	"crosdisks/Unicode.zip",
 	"crosdisks/MacOS UTF-8 Bug 903664.zip",
+	"crosdisks/SJIS Bug 846195.zip",
 }
 
 func withMountedArchiveDo(ctx context.Context, cd *crosdisks.CrosDisks, archivePath, password string, f func(ctx context.Context, mountPath string) error) error {
@@ -162,6 +163,19 @@ func testMacOSUTF8InArchives(ctx context.Context, s *testing.State, cd *crosdisk
 		"日本語フォルダ/新しいテキストドキュメント.txt": {1541735341, []byte("新しいテキストドキュメントです。\n")},
 	}
 	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "MacOS UTF-8 Bug 903664.zip"), "", expectedContent); err != nil {
+		s.Error("Test failed: ", err)
+	}
+}
+
+// testSJISInArchives tests that filenames encoded in Shift JIS are correctly detected and converted to UTF-8.
+// https://crbug.com/846195
+// https://crbug.com/834544
+func testSJISInArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
+	expectedContent := DirectoryContents{
+		"新しいフォルダ/SJIS_835C_ソ.txt":    {Mtime: 347068800},
+		"新しいフォルダ/新しいテキスト ドキュメント.txt": {Mtime: 1002026088},
+	}
+	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), "", expectedContent); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }
@@ -338,6 +352,9 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 			})
 			s.Run(ctx, "MacOS-utf8", func(ctx context.Context, state *testing.State) {
 				testMacOSUTF8InArchives(ctx, state, cd, mountPath)
+			})
+			s.Run(ctx, "SJIS", func(ctx context.Context, state *testing.State) {
+				testSJISInArchives(ctx, state, cd, mountPath)
 			})
 			s.Run(ctx, "UniformEncryption", func(ctx context.Context, state *testing.State) {
 				testUniformEncryptionInArchives(ctx, state, cd, mountPath)
