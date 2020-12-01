@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d3312f_0c0d0ec8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-01T06:08:30Z",
+      "side": 1,
+      "message": "\u003e \"inital\" is a possible misspelling of \"initial\".\n\nFixed.",
+      "parentUuid": "67ac3a5e_2cea76fc",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "1015d1edae966a407e7d907043ab107dcbd172a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
