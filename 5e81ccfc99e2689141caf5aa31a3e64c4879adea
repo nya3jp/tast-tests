@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69fed89b_437cfa3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2020-12-01T05:19:56Z",
+      "side": 1,
+      "message": "So my take on this would be: Before the google3 change this should have been flaky - would have maybe capitalized on the field (probably not, maybe about 1% flake or something).\n\nAfter, we should always get caps, so if we are inconsistently getting caps now, that is probably a bug.\n\nAnyway, LGTM",
+      "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
