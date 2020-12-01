@@ -32,7 +32,7 @@ func init() {
 				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByComponentWithGaiaLoginBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 			}, {
 				Name:              "buster_amd64_unstable",
@@ -40,14 +40,14 @@ func init() {
 				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
 				ExtraSoftwareDeps: []string{"amd64"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByComponentWithGaiaLoginBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 			}, {
 				Name:              "buster_arm_stable",
 				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByComponentWithGaiaLoginBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 			}, {
 				Name:              "buster_arm_unstable",
@@ -55,7 +55,7 @@ func init() {
 				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
 				ExtraSoftwareDeps: []string{"arm"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByComponentWithGaiaLoginBuster(),
+				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           7 * time.Minute,
 			},
 		},
@@ -66,6 +66,10 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
 	cr := s.PreValue().(crostini.PreData).Chrome
+
+	if !crostini.GaiaLoginAvailable(s) {
+		s.Fatal("This test requires access to a real gaia account. If you are an internal user, you can run this with a checkout of the internal Chrome OS repos")
+	}
 
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
