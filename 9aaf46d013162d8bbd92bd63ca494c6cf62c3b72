@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed0104ae_67c1da62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-01T02:21:17Z",
+      "side": 1,
+      "message": "all boards.",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3acf074_4c6088a0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -50,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e97611f2_f57c98dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-01T02:21:17Z",
+      "side": 1,
+      "message": "You are right, we should run the test on all boards. Let\u0027s rephrase it:\nRemove the HW dependencies to allow the test to run on all boards.",
+      "parentUuid": "8a8da22e_2da3e40f",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7829efd8_2d1a3946",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -79,6 +126,41 @@
       "side": 1,
       "message": "This CL does not fix the falkiness. In the meantime, I am not sure if the flakiness is due to the test quality or the affected DUTs. I am still investigating the issue. \n\nI linked the bug b:174159304 for the string fix:\n\"failed to stay connected during the channel switching process\"",
       "parentUuid": "7829efd8_2d1a3946",
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0189fcbf_ad0a51b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-01T02:21:17Z",
+      "side": 1,
+      "message": "Also associate to b/162796400.",
+      "parentUuid": "e95a27e1_08a20f6f",
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26f9d928_47f25232",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-01T02:21:17Z",
+      "side": 1,
+      "message": "Some nits",
       "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
