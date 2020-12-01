@@ -188,6 +188,22 @@ func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.Cont
 	return iOptions
 }
 
+// interface defined for GaiaLoginAvailable to allow both
+// testing.State and testing.PreState to be passed in as the first
+// argument.
+type varState interface {
+	Var(string) (string, bool)
+}
+
+// GaiaLoginAvailable returns whether or not a real gaia account is in use. This requires some variables from tast-tests-private
+func GaiaLoginAvailable(s varState) bool {
+	_, ok1 := s.Var("crostini.gaiaUsername")
+	_, ok2 := s.Var("crostini.gaiaPassword")
+	_, ok3 := s.Var("crostini.gaiaID")
+
+	return ok1 && ok2 && ok3
+}
+
 // The PreData object is made available to users of this precondition via:
 //
 //	func DoSomething(ctx context.Context, s *testing.State) {
@@ -215,22 +231,6 @@ func StartedByComponentStretch() testing.Precondition { return startedByComponen
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByComponentBuster() testing.Precondition { return startedByComponentBusterPre }
 
-// StartedByComponentWithGaiaLoginStretch is similar to
-// StartedByComponentStretch, but will log in Chrome with Gaia with
-// Auth() option.
-// Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByComponentWithGaiaLoginStretch() testing.Precondition {
-	return startedByComponentWithGaiaLoginStretchPre
-}
-
-// StartedByComponentWithGaiaLoginBuster is similar to
-// StartedByComponentBuster, but will log in Chrome with Gaia with
-// Auth() option.
-// Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByComponentWithGaiaLoginBuster() testing.Precondition {
-	return startedByComponentWithGaiaLoginBusterPre
-}
-
 // StartedByComponentBusterLargeContainer is similar to StartedByComponentBuster,
 // but will download the large container which has apps (Gedit, Emacs, Eclipse, Android Studio, and Visual Studio) installed.
 func StartedByComponentBusterLargeContainer() testing.Precondition {
@@ -251,13 +251,6 @@ const (
 	largeContainer
 )
 
-type loginType int
-
-const (
-	loginNonGaia loginType = iota
-	loginGaia
-)
-
 var startedByComponentStretchPre = &preImpl{
 	name:          "crostini_started_by_component_stretch",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
@@ -272,24 +265,6 @@ var startedByComponentBusterPre = &preImpl{
 	vmMode:        component,
 	container:     normal,
 	debianVersion: vm.DebianBuster,
-}
-
-var startedByComponentWithGaiaLoginStretchPre = &preImpl{
-	name:          "crostini_started_by_component_gaialogin_stretch",
-	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	vmMode:        component,
-	container:     normal,
-	debianVersion: vm.DebianStretch,
-	loginType:     loginGaia,
-}
-
-var startedByComponentWithGaiaLoginBusterPre = &preImpl{
-	name:          "crostini_started_by_component_gaialogin_buster",
-	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	vmMode:        component,
-	container:     normal,
-	debianVersion: vm.DebianBuster,
-	loginType:     loginGaia,
 }
 
 var startedByComponentBusterLargeContainerPre = &preImpl{
@@ -311,7 +286,6 @@ type preImpl struct {
 	tconn         *chrome.TestConn
 	cont          *vm.Container
 	keyboard      *input.KeyboardEventWriter
-	loginType     loginType
 	startedOK     bool
 }
 
@@ -405,7 +379,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	// your test relies on ARC++ you should add an appropriate
 	// software dependency.
 	if arc.Supported() {
-		if p.loginType == loginGaia {
+		if GaiaLoginAvailable(s) {
 			opts = []chrome.Option{chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)}
 		} else {
 			opts = []chrome.Option{chrome.ARCEnabled()}
@@ -418,7 +392,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Log("Failed to gather disk usage: ", err)
 	}
 
-	if p.loginType == loginGaia {
+	if GaiaLoginAvailable(s) {
 		opts = append(opts, chrome.Auth(
 			s.RequiredVar("crostini.gaiaUsername"),
 			s.RequiredVar("crostini.gaiaPassword"),
