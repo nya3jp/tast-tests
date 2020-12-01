@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1552d698_fb72196f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-12-01T15:38:34Z",
+      "side": 1,
+      "message": "Hi all,\n\nPTAL :)\n\nGabor, you was right, it shoud be much better to press all keys at once and then check DevTools. Otherwise it\u0027s too slow on some devices.\n\nThanks,\nOleh",
+      "revId": "e4c01fca167ff0c609ccec14cc6ab78c115a0185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
