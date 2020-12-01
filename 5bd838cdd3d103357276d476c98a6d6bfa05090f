@@ -88,6 +88,24 @@
       "parentUuid": "cada5550_dbbb3301",
       "revId": "5bd838cdd3d103357276d476c98a6d6bfa05090f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3c1137_fa1fd257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2020-12-01T01:08:48Z",
+      "side": 1,
+      "message": "Revert has now been merged. The flakiness should clear up now, sorry about that.",
+      "parentUuid": "bec75e1b_28ea2636",
+      "revId": "5bd838cdd3d103357276d476c98a6d6bfa05090f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
