@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c452c10_d4ea9144",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-01T00:22:33Z",
+      "side": 1,
+      "message": "Hi Eric, I think the tests should all have passed 20 builds by now.",
+      "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
