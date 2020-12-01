@@ -6,9 +6,12 @@ package firmware
 
 import (
 	"context"
+	"time"
 
 	fwCommon "chromiumos/tast/common/firmware"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 )
 
@@ -122,6 +125,27 @@ func BootMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to set up normal mode: ", err)
 		}
 	}
+
+	// Sometimes the test leaves the DUT powered-off, which prevents other tests from running.
+	// To prevent this, defer a cleanup function to reset the DUT if unconnected.
+	ctxForCleanup := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+	defer func(ctx context.Context) {
+		if h.DUT.Connected(ctx) {
+			return
+		}
+		s.Log("DUT not connected at end-of-test. Cold-resetting")
+		if err := h.RequireServo(ctx); err != nil {
+			s.Fatal("Requiring servo during cleanup: ", err)
+		}
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+			s.Fatal("Resetting DUT during cleanup: ", err)
+		}
+		if err := h.DUT.WaitConnect(ctx); err != nil {
+			s.Fatal("Reconnecting to DUT during cleanup: ", err)
+		}
+	}(ctxForCleanup)
 
 	// Switch to tc.bootToMode.
 	// RebootToMode ensures that the DUT winds up in the expected boot mode afterward.
