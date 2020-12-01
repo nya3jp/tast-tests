@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "217ca85d_b3a58a4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-01T05:28:35Z",
+      "side": 1,
+      "message": "Hmm... then it is a little awkward. We get benefit when adding new combination but also get harder to debug when adding cases. Given that we can always drop codegen by removing the \"DO NOT EDIT.\" line when we find it not useful, I think it is good to try. Not sure if others think the overhead of codegen is too much or have better ideas for handling the parameters instead of \"strings\".",
+      "parentUuid": "192399fe_995570fc",
+      "revId": "d22de239e2b1f629419d7fc557001bea21e2e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0bc56a3_15defa36",
