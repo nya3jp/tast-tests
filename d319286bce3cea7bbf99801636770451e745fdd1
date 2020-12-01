@@ -22,6 +22,30 @@
       },
       "revId": "d319286bce3cea7bbf99801636770451e745fdd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e1d9a4_7a57bf6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-01T02:07:17Z",
+      "side": 0,
+      "message": "It is different. It needs to create 2 different instances. They can not be mix used from my understanding. When reference testing.Precondition in this code, it modifies the existing instance instead of creating a new one. That\u0027s why it continously add ExtraArgs to the Chrome instance.",
+      "parentUuid": "f4d6272c_05876830",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "d319286bce3cea7bbf99801636770451e745fdd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
