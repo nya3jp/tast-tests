@@ -55,8 +55,8 @@ const html = `<!DOCTYPE html>
 <pre>&lt;<b>textarea</b> rows="7"&gt;&lt;/textarea&gt;</pre>
 <textarea rows="7" aria-label="textAreaInputField" style="width: 100%"></textarea>
 <br /><br />
-<pre>&lt;input type="<b>text</b>"/&gt;</pre>
-<input type="text" aria-label="textInputField" style="width: 100%" />
+<pre>&lt;input type="<b>text</b> autocapitalize disabled"/&gt;</pre>
+<input type="text" autocapitalize="off" aria-label="textInputField" style="width: 100%" />
 <br /><br />
 <pre>&lt;input type="<b>search</b>"/&gt;</pre>
 <input type="search" aria-label="searchInputField" style="width: 100%" />
