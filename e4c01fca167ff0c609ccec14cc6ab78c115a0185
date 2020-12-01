@@ -16,6 +16,23 @@
       "message": "Hi all,\n\nPTAL :)\n\nGabor, you was right, it shoud be much better to press all keys at once and then check DevTools. Otherwise it\u0027s too slow on some devices.\n\nThanks,\nOleh",
       "revId": "e4c01fca167ff0c609ccec14cc6ab78c115a0185",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d01ad10_d24cf114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-12-01T16:15:58Z",
+      "side": 1,
+      "message": "For me Ctrl+Shift+I and Ctrl+Shift+J also closes DevTools.",
+      "revId": "e4c01fca167ff0c609ccec14cc6ab78c115a0185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
