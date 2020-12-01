@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "019f2494_d5054b9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-01T08:05:55Z",
+      "side": 1,
+      "message": "Xiyuan and Mike already made good comments. :) ",
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91ee7ed1_f281ae28",
@@ -54,6 +71,30 @@
       "writtenOn": "2020-12-01T00:46:24Z",
       "side": 1,
       "message": "Why are we intentionally returning an empty value here?",
+      "range": {
+        "startLine": 58,
+        "startChar": 81,
+        "endLine": 58,
+        "endChar": 93
+      },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f3433c_1520906d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-01T08:05:55Z",
+      "side": 1,
+      "message": "It is required to return some protocol buffer message by gRPC contract.",
+      "parentUuid": "bb9d865f_678fa345",
       "range": {
         "startLine": 58,
         "startChar": 81,
@@ -101,6 +142,30 @@
       "side": 1,
       "message": "I agree. Someone could potentially (accidentally) put in a path and unknowingly delete files other than intended. I\u0027m also thinking that as much as it\u0027s less flexible, we should probably store the data in the same primary folder each time and key subfolders based on the name of the test. That way, we don\u0027t accidentally generate excess data that isn\u0027t cleaned up (e.g. if someone decides to store data by date and cleanup scripts don\u0027t remove the data after being downloaded).",
       "parentUuid": "9808c9ff_4486e07b",
+      "range": {
+        "startLine": 62,
+        "startChar": 24,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b572116_fe4ed1fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-01T08:05:55Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "383bf4ce_f6065410",
       "range": {
         "startLine": 62,
         "startChar": 24,
