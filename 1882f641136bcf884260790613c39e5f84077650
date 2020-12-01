@@ -84,6 +84,41 @@
       "message": "TY",
       "revId": "1882f641136bcf884260790613c39e5f84077650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "681c7bf3_a036c79f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-12-01T19:32:14Z",
+      "side": 1,
+      "message": "Thank you all for reviewing!",
+      "revId": "1882f641136bcf884260790613c39e5f84077650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee857598_0ecfa143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-12-01T19:32:14Z",
+      "side": 1,
+      "message": "Hi Jason, sorry I was OoO last few days.  Per offline discussion before US holiday, I did try other tbf param values and plan to share doc with more experiment findings.  \n\nBefore basing my final values from empirical testing results (http://b/169947243#comment8) using iperf3 and ping tests on home network (w/ netem delay),  I tried values in the range of `rate 10-100mbit latency 15-20ms burst 10-100kb`; lowering burst bucket size / token rate and rising latency individually to observe changes in score.   With the least restrictive settings in that range, `tc` had no affect on ARC++ or ARCVM scores.  I recall changing token rate had more affect on score (especially ARC++) than the params but I need to re-run again to double check.",
+      "parentUuid": "84e43a3e_9df76d4a",
+      "revId": "1882f641136bcf884260790613c39e5f84077650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
