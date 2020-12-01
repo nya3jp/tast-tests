@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a316b581_90f12e6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-12-01T01:56:36Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right bug #?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "4ad881da2c411c725238931374f341883cabf598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
