@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10d2ec67_a66786fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-01T02:53:34Z",
+      "side": 1,
+      "message": "Why we need to get the jpeg frame back and check alignment here? Could we do it directly in JS?",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "478fd2ab_ad0cb5db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-01T02:53:34Z",
+      "side": 1,
+      "message": "Please format this file with proper indentation.",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06851c0e_db7ba4a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-01T02:53:34Z",
+      "side": 1,
+      "message": "nit: use OffscreenCanvas?",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f3c8a2b_7f4569f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-01T02:53:34Z",
+      "side": 1,
+      "message": "Do we need to do jpeg encode/decode here? getImageData() could get the raw pixel data directly.",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
