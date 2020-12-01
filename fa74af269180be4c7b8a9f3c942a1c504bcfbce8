@@ -16,6 +16,23 @@
       "message": "hwsec-wise LGTM.",
       "revId": "fa74af269180be4c7b8a9f3c942a1c504bcfbce8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "597c9468_f6222b07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-12-01T02:18:38Z",
+      "side": 1,
+      "message": "We can try to CQ+2 again, because this CL(crrev/c/2564301) landed.",
+      "revId": "fa74af269180be4c7b8a9f3c942a1c504bcfbce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
