@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "20a12a23_14c9f269",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-01T15:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a6d2147_b3f2dc2d",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d0b5733a_b3b675d3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,24 @@
       "writtenOn": "2020-12-01T15:21:41Z",
       "side": 1,
       "message": "Exists() can return with a context timeout as well. If you PollBreak() with a timeout error, the Poll() return with this error, and not the last useful error (ErrNodeDoesNotExist in this case).",
+      "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72c577d_03a0c862",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-01T15:58:19Z",
+      "side": 1,
+      "message": "If the context expires we should fail the test in this case. Not sure if it\u0027s worth to make the function more complex to return a different error.",
+      "parentUuid": "85b0437c_7e041367",
       "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
