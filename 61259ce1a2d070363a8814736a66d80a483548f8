@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d6edd84_95c4ccca",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-12-01T09:13:53Z",
+      "side": 1,
+      "message": "This may be confusing for an average user of dev.RemoteDesktop.\nIt\u0027s not clear whether a test account is using password or contact email authentication.\nBy running dev.RemoteDesktop, the script will prompt for -var\u003dpass\u003d\u003cpassword\u003e or -var\u003dcontact\u003d\u003ccontact\u003e accordingly and the user can supply the correct value.\n\nFor other scripts calling chrome.go, chrome.Auth will make more sense.\n\nShould I put both? \n\"please supply a password to chrome.Auth with -var\u003dpass\u003d\u003cpassword\u003e\"",
+      "parentUuid": "29387557_b54f0178",
+      "range": {
+        "startLine": 1541,
+        "startChar": 52,
+        "endLine": 1541,
+        "endChar": 72
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a37c46b_240e1378",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
