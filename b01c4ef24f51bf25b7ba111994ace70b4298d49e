@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a05607c_cf2ff24e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-01T23:29:58Z",
+      "side": 1,
+      "message": "+2 % comment",
+      "revId": "b01c4ef24f51bf25b7ba111994ace70b4298d49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad1dfa5f_b21dffeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-01T23:29:58Z",
+      "side": 1,
+      "message": "does it return an error? if so, handle it.",
+      "range": {
+        "startLine": 93,
+        "startChar": 7,
+        "endLine": 93,
+        "endChar": 10
+      },
+      "revId": "b01c4ef24f51bf25b7ba111994ace70b4298d49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
