@@ -123,7 +123,7 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 			// Find and click manage accessibility link.
 			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
 				Role: ui.RoleTypeLink,
-				Name: "Manage accessibility features",
+				Name: "Manage accessibility features Enable accessibility features",
 			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
 				s.Fatal("Failed to find and click Manage accessibility features link: ", err)
 			}
