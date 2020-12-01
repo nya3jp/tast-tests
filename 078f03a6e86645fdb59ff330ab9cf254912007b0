@@ -63,6 +63,30 @@
       },
       "revId": "078f03a6e86645fdb59ff330ab9cf254912007b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5abfa6e6_7e09c5f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/tiktok.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-12-01T20:53:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e6d1fdc_4bc3ecce",
+      "range": {
+        "startLine": 107,
+        "startChar": 25,
+        "endLine": 107,
+        "endChar": 59
+      },
+      "revId": "078f03a6e86645fdb59ff330ab9cf254912007b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
