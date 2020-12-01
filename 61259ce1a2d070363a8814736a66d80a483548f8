@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcc36b8e_fe84727f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-12-01T10:20:56Z",
+      "side": 1,
+      "message": "RE: many more tests will start using the option\nAutomated tests cannot use contact email approval because it requires human intervention. You mean other manual tests will use this option later?\n\nRE: check the values of runtime variables before calling chrome.New\nBut we have no way of checking whether an account is using password or contact email approval until we reach chrome.New and hit the GAIA page. I\u0027m thinking... how can we be generic enough in chrome.go and at the same time provide informative error to dev.RemoteDesktop?",
+      "parentUuid": "6347eb3a_3fc275a0",
+      "range": {
+        "startLine": 1541,
+        "startChar": 52,
+        "endLine": 1541,
+        "endChar": 72
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a37c46b_240e1378",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
