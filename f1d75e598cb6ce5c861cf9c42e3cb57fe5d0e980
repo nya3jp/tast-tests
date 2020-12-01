@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d30d1dbd_1d2e472f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T18:07:31Z",
+      "side": 1,
+      "message": "LGTM, though please switch to GetChrome.",
+      "revId": "f1d75e598cb6ce5c861cf9c42e3cb57fe5d0e980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee3d56ad_64a089aa",
@@ -246,6 +263,24 @@
       "writtenOn": "2020-12-01T07:25:56Z",
       "side": 1,
       "message": "WDYT about replacing this with GetChrome?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/lacros/lacros.go;l\u003d38?q\u003dgetchrome%20f:tast\n\nWe can remove the ChromeType argument and remove any other Val\u0027s that use it in other tests. IIRC there are some tests that use ChromeType directly, so we could add a function to compute that from the Pre value. Not super fussed tho",
+      "revId": "f1d75e598cb6ce5c861cf9c42e3cb57fe5d0e980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a372e12_b2dd1d3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_built_in_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T18:07:31Z",
+      "side": 1,
+      "message": "+1 for using GetChrome and also removing the ChromeType argument. It is better to use a type switch in that method than have the user pass a type in that they might mix up.",
+      "parentUuid": "7de0d8aa_88fc6ec3",
       "revId": "f1d75e598cb6ce5c861cf9c42e3cb57fe5d0e980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
