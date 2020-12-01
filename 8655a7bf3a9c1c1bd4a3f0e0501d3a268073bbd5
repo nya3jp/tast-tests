@@ -33,6 +33,24 @@
       "message": "Is there a way to prevent the tests from running on kefka-kernelnext? tast.printer.TestPPDs is timing out on this board plus some of the other tests are flaking.",
       "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560d1318_4a852064",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-12-01T19:31:11Z",
+      "side": 1,
+      "message": "I think you can use a hardware dependency to specify that you don\u0027t want to run on certain boards. But has that been investigated at all?\n\nAre the flakes only on kefka-kernelnext?",
+      "parentUuid": "62f45509_67073cad",
+      "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
