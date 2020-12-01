@@ -116,6 +116,24 @@
       "parentUuid": "e72c577d_03a0c862",
       "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a043a1_2d4ced35",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-01T16:52:46Z",
+      "side": 1,
+      "message": "I check for both cases below on line 667.",
+      "parentUuid": "441fd4b0_1284ae18",
+      "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
