@@ -140,6 +140,30 @@
       },
       "revId": "632888ba8a1b1053c176806d1799d4153ddba1a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4034979_def801a3",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-12-01T18:52:02Z",
+      "side": 1,
+      "message": "Hmm, I think in a Crostini container yes, but not in the actual Termina VM?",
+      "parentUuid": "d09ed82a_114e4194",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "632888ba8a1b1053c176806d1799d4153ddba1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
