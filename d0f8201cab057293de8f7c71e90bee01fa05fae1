@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c048b519_bc872796",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-01T09:41:02Z",
+      "side": 1,
+      "message": "Not very sure if we would design a more sophisticated criteria in the future. In that case, I think it would be better to still copy the from to golang context and process here in order to use third party image process library like go-opencv.",
+      "parentUuid": "10d2ec67_a66786fd",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "478fd2ab_ad0cb5db",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-01T02:53:34Z",
       "side": 1,
       "message": "Please format this file with proper indentation.",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c07fd244_0b1c69b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-01T09:41:02Z",
+      "side": 1,
+      "message": "Do you think we should use any kind of open source formatter for this file?\nThere seems have no html formatter in chromium or chrome os repo.\nOr I just use an internal formatter like:\nhttps://g3doc.corp.google.com/geo/earth/g3doc/style/html.md#use-earth-html-format",
+      "parentUuid": "478fd2ab_ad0cb5db",
       "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
