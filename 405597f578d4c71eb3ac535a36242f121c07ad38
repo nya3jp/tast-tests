@@ -47,6 +47,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "49b9e1c8_3f5d6ef4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2020-12-01T01:11:18Z",
+      "side": 1,
+      "message": "test generated content?",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "83d61090_b4942b38",
@@ -192,6 +215,64 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed1e3e5c_7f9d8c4c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2020-12-01T01:11:18Z",
+      "side": 1,
+      "message": "And also make the function name more descriptive? Prepare doesn\u0027t say what the function is trying to do.",
+      "parentUuid": "ae8e8f17_6ab288a0",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b3b96da_ae0b9a7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2020-12-01T01:11:18Z",
+      "side": 1,
+      "message": "Some comments to explain the steps taken are also useful here.",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844714e9_9fe369db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2020-12-01T01:11:18Z",
+      "side": 1,
+      "message": "Where is this method coming from? I don\u0027t see this in this commit or in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2562900\n\nBecause I can\u0027t figure out where this is coming from, the structure of mduts is unclear. From 75-79, it looks like it\u0027s a list of a list that you\u0027re flattening into a single list? If we\u0027re parsing the DUTs from a parameter, can we simply flatten that list to start?",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "faa67a2b_94334d65",
         "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
         "patchSetId": 1
@@ -203,6 +284,30 @@
       "writtenOn": "2020-11-30T06:31:35Z",
       "side": 1,
       "message": "I\u0027m not sure why you need this variable. Is there any reason that prevent you from using double loop in line 83?",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 9
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774f82d2_5cd60651",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2020-12-01T01:11:18Z",
+      "side": 1,
+      "message": "Agreed. It would be more clear to just use the double loop on 83 than to flatten the list only to use it again.",
+      "parentUuid": "faa67a2b_94334d65",
       "range": {
         "startLine": 74,
         "startChar": 5,
@@ -232,6 +337,23 @@
         "endLine": 78,
         "endChar": 3
       },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b01146da_6d345a6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2020-12-01T01:11:18Z",
+      "side": 1,
+      "message": "Will we have that many DUTs in the group that we need to parallel this execution? Are we expecting a long delay on the response for the RPCs such that this is a greater optimization over the double loop in 75-79 and then another loop in 85?",
       "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
