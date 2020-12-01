@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d630c73_770c0c12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-01T04:59:57Z",
+      "side": 1,
+      "message": "I tried and I think it would be better to keep mkOps simple and preserve the readability we gain from field names, unless mkOps is called a lot (such as tunneled1x cases). It becomes a bit confusing when mkOps\u0027s parameter count grows...",
+      "parentUuid": "1fe42098_d8993be6",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "3ee4bd50d8d52bd343b46fe10b2f1b8ca3292aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f57f020a_7ad8db58",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
         "patchSetId": 6
