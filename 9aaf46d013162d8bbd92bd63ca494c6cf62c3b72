@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8912e32_f1bcb9b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-01T18:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0104ae_67c1da62",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3acf074_4c6088a0",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c93c917_b0929f8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-01T18:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e97611f2_f57c98dd",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7829efd8_2d1a3946",
@@ -144,6 +192,24 @@
       "side": 1,
       "message": "Also associate to b/162796400.",
       "parentUuid": "e95a27e1_08a20f6f",
+      "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea813f8b_fe6f0431",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-01T18:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0189fcbf_ad0a51b4",
       "revId": "9aaf46d013162d8bbd92bd63ca494c6cf62c3b72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
