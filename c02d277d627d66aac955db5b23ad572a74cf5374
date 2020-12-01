@@ -33,6 +33,23 @@
       "message": "Forgot to mention one more thing. I found \"Files\" on the shelf in some models. Therefore, it could not be pinned. I used fake apps for pinning purpose.",
       "revId": "c02d277d627d66aac955db5b23ad572a74cf5374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5ef452_e217cf7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-12-01T02:36:56Z",
+      "side": 1,
+      "message": "Submit to CQ",
+      "revId": "c02d277d627d66aac955db5b23ad572a74cf5374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
