@@ -134,6 +134,24 @@
       "parentUuid": "441fd4b0_1284ae18",
       "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a10a1cc_737ec3f2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-12-01T18:49:24Z",
+      "side": 1,
+      "message": "Wait, I thought that \"err \u003d\u003d context.DeadlineExceeded\" should never happen in the normal path.\n\nVictor, you said `If the context expires we should fail the test in this case`, but `if err \u003d\u003d context.DeadlineExceeded` you actually return `nil`",
+      "parentUuid": "f1a043a1_2d4ced35",
+      "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
