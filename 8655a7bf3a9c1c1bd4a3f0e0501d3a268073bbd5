@@ -16,6 +16,23 @@
       "message": "Hi Eric, I think the tests should all have passed 20 builds by now.",
       "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f45509_67073cad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-01T01:16:42Z",
+      "side": 1,
+      "message": "Is there a way to prevent the tests from running on kefka-kernelnext? tast.printer.TestPPDs is timing out on this board plus some of the other tests are flaking.",
+      "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
