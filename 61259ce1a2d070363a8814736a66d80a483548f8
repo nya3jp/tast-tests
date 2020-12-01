@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1311485_3824ac8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-01T08:13:56Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e295df_960834ce",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-01T08:13:56Z",
+      "side": 1,
+      "message": "nit: I\u0027m afraid those identifiers might easily conflict with local variables...\n\nHow about adding prefix/suffix, e.g. authPassword?",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 8
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29387557_b54f0178",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-01T08:13:56Z",
+      "side": 1,
+      "message": "chrome.Auth",
+      "range": {
+        "startLine": 1541,
+        "startChar": 52,
+        "endLine": 1541,
+        "endChar": 72
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a37c46b_240e1378",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-01T08:13:56Z",
+      "side": 1,
+      "message": "chrome.Contact",
+      "range": {
+        "startLine": 1549,
+        "startChar": 57,
+        "endLine": 1549,
+        "endChar": 79
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b8b064_a6901cb9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1615,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-01T08:13:56Z",
+      "side": 1,
+      "message": "nit: This is no longer an ID, can you rename it, e.g. `selector`?",
+      "range": {
+        "startLine": 1615,
+        "startChar": 58,
+        "endLine": 1615,
+        "endChar": 65
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59a6560_a974cdc2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1711,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-01T08:13:56Z",
+      "side": 1,
+      "message": "To make sure: the selector is different from previous one (#password !\u003d input[name\u003dpassword]), please make sure that the new selector works for normal GAIA login.",
+      "range": {
+        "startLine": 1711,
+        "startChar": 43,
+        "endLine": 1711,
+        "endChar": 63
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
