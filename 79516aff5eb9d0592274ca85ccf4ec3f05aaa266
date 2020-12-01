@@ -16,6 +16,23 @@
       "message": "Done. tast-owner PTAL thanks!",
       "revId": "79516aff5eb9d0592274ca85ccf4ec3f05aaa266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd879c5_35d2a579",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-01T03:10:48Z",
+      "side": 1,
+      "message": "LGTM for tast style",
+      "revId": "79516aff5eb9d0592274ca85ccf4ec3f05aaa266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
