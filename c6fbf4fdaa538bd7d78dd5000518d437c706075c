@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f32cef7c_b8dac4e6",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T22:57:02Z",
+      "side": 1,
+      "message": "Do we need chrometype at all or can we just use a type switch like in getchrome?",
+      "range": {
+        "startLine": 38,
+        "startChar": 48,
+        "endLine": 38,
+        "endChar": 62
+      },
+      "revId": "c6fbf4fdaa538bd7d78dd5000518d437c706075c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
