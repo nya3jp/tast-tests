@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87916463_e8068341",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-01T13:19:33Z",
+      "side": 1,
+      "message": "How about having 3 files camerabox_align.{html,js,css} so we can format the js part with the clang-format? For html and css, I think prettier or even gg\u003dG in vim should do a decent job.",
+      "parentUuid": "c07fd244_0b1c69b0",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06851c0e_db7ba4a2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
         "patchSetId": 3
