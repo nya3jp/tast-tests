@@ -98,6 +98,24 @@
       "parentUuid": "85b0437c_7e041367",
       "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441fd4b0_1284ae18",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-12-01T16:21:01Z",
+      "side": 1,
+      "message": "But the inside fuinction in Poll() will always run until the context expires. And at that point it is a coin toss if it expires inside Exists() or outside.",
+      "parentUuid": "e72c577d_03a0c862",
+      "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
