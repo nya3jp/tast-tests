@@ -68,6 +68,24 @@
       "message": "Trying tast-owners again...",
       "revId": "c93f8779e1991efe62aeacea96276d871cbe755a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "417d3263_cb040800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-01T16:26:01Z",
+      "side": 1,
+      "message": "I should clarify. Per go/tast-reviews, there are two approvals needed: a \"test owner\" and a \"Tast reviewer\":\n\n    1. Test owners. If your change modifies an existing test, send it to one of the owners of the test (those listed in the Contacts field of the test declaration, excluding yourself). If your change introduces a new test, send it to your team member(s) who will co-own the test. Getting reviews from the test owners makes sure the change is good from the perspective of feature experts.\n\n    2. Tast reviewers. Send your change to tast-owners@google.com. In a few minutes, the code review is assigned to one or more Tast reviewers using the gwsq bot. Getting reviews from the Tast reviewers makes sure the change is good from the perspective of Tast test experts.\n\nSo yes, I am a Tast reviewer, but I cannot confirm whether this change makes sense from the perspective of a feature expert; for that you would need a *test* (not Tast) owner.",
+      "parentUuid": "fc65d6b5_7f1603fa",
+      "revId": "c93f8779e1991efe62aeacea96276d871cbe755a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
