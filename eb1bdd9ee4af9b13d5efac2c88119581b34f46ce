@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04fe2232_82861b03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-12-01T02:33:26Z",
+      "side": 1,
+      "message": "\u003e Wrong number of apps in the shelf. Expected only Chrome and Files: [0xc00090ec60]\nlooks unrelated to this patch.",
+      "revId": "eb1bdd9ee4af9b13d5efac2c88119581b34f46ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
