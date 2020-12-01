@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5e6b2c54_4ab9158e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "59e8a37e_ab5760e5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "16e32dd6_ffa9d98f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 14
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63340441_29ed4cd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab01a22b_4af3a445",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edc7a47e_11d95829",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "You may want more informative errors here. Ditto for below",
+      "range": {
+        "startLine": 120,
+        "startChar": 14,
+        "endLine": 120,
+        "endChar": 61
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9013504a_62a8da3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "hmm for the information to help debug I added the test step that is put into the log message plus error. Looks okay to me and streamlined with others steps. Any hints what else to add?",
+      "parentUuid": "edc7a47e_11d95829",
       "range": {
         "startLine": 120,
         "startChar": 14,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b739e610_1a7c1de9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Not really, I wasted the message to have test step. Done.",
+      "parentUuid": "4dad867f_c12bab82",
+      "range": {
+        "startLine": 122,
+        "startChar": 32,
+        "endLine": 122,
+        "endChar": 37
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce12c8d7_9860106c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 14
@@ -123,6 +219,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "I feel like a polling solution would be a better solution because it more matches user flow and will notify of us bugs. You could just poll the remaining section of this code and that should work fine.",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace971c5_3bae6397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "I would agree if we were testing here that bookmarks bar gets populated on the fly with a new element. But, our focus here is to use bookmarks bar as an indicator.\nIf we opt-in for polling I would then move it to the BookmarkCurrentTab method as test does not have to know whether and how to wait.\nThoughts?",
+      "parentUuid": "ce12c8d7_9860106c",
       "range": {
         "startLine": 191,
         "startChar": 1,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "246e4a9e_daf21a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done, changed dot(.) to colon(:) as well.",
+      "parentUuid": "3b92c1d4_666ff4ed",
+      "range": {
+        "startLine": 204,
+        "startChar": 59,
+        "endLine": 204,
+        "endChar": 60
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5384bfe_911d02e7",
@@ -169,6 +313,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 2
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c9a7d3_fd4f658d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5384bfe_911d02e7",
       "range": {
         "startLine": 248,
         "startChar": 1,
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5e8819_e7b00a16",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "94b6715b_10cc86a3",
+      "range": {
+        "startLine": 5,
+        "startChar": 40,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9e4c9e6_b28184a8",
@@ -215,6 +407,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "ditto - please pass in the keyboard",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b4a308_d8d05dd3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9e4c9e6_b28184a8",
       "range": {
         "startLine": 68,
         "startChar": 1,
@@ -273,6 +489,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6b074c6_fec0b4fe",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "I checked and it only takes into account the visible bookmarks:\n2020/12/01 09:10:21 policy.EditBookmarksEnabled  [ FAIL ] unset: Encountered error when executing test logic for [adding bookmark], Err: unexpected bookmarks count; got 8, want 9\n2020/12/01 09:10:21                                       true: Encountered error when executing test logic for [adding bookmark], Err: unexpected bookmarks count; got 8, want 9",
+      "parentUuid": "53ca1a12_4fc5cf43",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 15
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62220f8b_f5806c98",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c076a06_7a2fd0c2",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8229d920_59c296e1",
         "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar.go",
         "patchSetId": 14
@@ -284,6 +548,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "ditto - default timeout",
+      "range": {
+        "startLine": 104,
+        "startChar": 44,
+        "endLine": 104,
+        "endChar": 112
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e2a073_dcf400ed",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8229d920_59c296e1",
       "range": {
         "startLine": 104,
         "startChar": 44,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "915391d3_8c580296",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc14f994_2bc1887e",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8209e179_7acded28",
@@ -340,6 +652,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b897b848_6b48d7e0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8209e179_7acded28",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6880e07d_400ad789",
@@ -353,6 +689,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "ditto - default timeout",
+      "range": {
+        "startLine": 53,
+        "startChar": 56,
+        "endLine": 53,
+        "endChar": 69
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aea7c59_0581c2de",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6880e07d_400ad789",
       "range": {
         "startLine": 53,
         "startChar": 56,
@@ -388,6 +748,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c103916_a743e24b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "I wouldn\u0027t make any validation or assumption for the call. Whoever uses the api they should follow the way user interacts with he UI. Calling this multiple times (or on the page that is already bookmarked) brings the bookmark dialog up and closes it.",
+      "parentUuid": "fb94e0c0_3d04c25d",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "239e25fc_1d0735e1",
         "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
         "patchSetId": 14
@@ -411,6 +795,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3071b990_8e57414f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Bookmark star icon is the UI element that indicates whether user can or can\u0027t use bookmark functionality.",
+      "parentUuid": "239e25fc_1d0735e1",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60827475_b5d78956",
         "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
         "patchSetId": 14
@@ -422,6 +830,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "ditto - default timeout, you may even potentially want to make a default pollOpts if that makes sense",
+      "range": {
+        "startLine": 90,
+        "startChar": 65,
+        "endLine": 90,
+        "endChar": 80
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b9944e_f35dd77d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60827475_b5d78956",
       "range": {
         "startLine": 90,
         "startChar": 65,
@@ -457,6 +889,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d183f61_431a846d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "This will work as well. The thing is that hitting ctrl+d not only brings up the bookmark menu but adds opened tab as a bookmark automatically. For already existing bookmarks it just brings up the menu though.",
+      "parentUuid": "98219964_a2b0ef82",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f0c8c6c_b85974b1",
         "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
         "patchSetId": 14
@@ -468,6 +924,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "ditto - pass this in",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a16fba35_30e3a495",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f0c8c6c_b85974b1",
       "range": {
         "startLine": 106,
         "startChar": 1,
@@ -491,6 +971,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "Please remove the word get",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 8
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c17c0be_6e212836",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9383771_a3225178",
       "range": {
         "startLine": 119,
         "startChar": 5,
@@ -526,6 +1030,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34cd023a_decdfd36",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "As above - it will add it as a bookmark. I added the comment for all functions that bring up bookmark dialog.",
+      "parentUuid": "c6fb80bf_e5cf5685",
+      "range": {
+        "startLine": 120,
+        "startChar": 11,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a33de554_358a3d02",
         "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
         "patchSetId": 14
@@ -537,6 +1065,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "I would advise picking a default acceptable timeout and setting it as a constant and then using the same timeout in all locations as opposed to custom timeouts in each location. Maybe something like 20s. If you want more control that is fine, but I would still try to define clear timeouts. Like quickTimeout 5s, mediumTimeout 15s, etc. A lot of test just end up flaking due to timeouts and slow devices.",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 18
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd9c8ed_9dadb0e5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a33de554_358a3d02",
       "range": {
         "startLine": 127,
         "startChar": 4,
@@ -560,6 +1112,30 @@
       "writtenOn": "2020-11-16T23:52:29Z",
       "side": 1,
       "message": "Please don\u0027t create a keyboard in a method. Create it in the test and pass it in. The issue is that on some devices the virtual keyboard can be extremely slow to create, so we want to ensure it is only done once per test.\n\nProbably with this change, it would be best to just remove this function and directly call keyboard.Accel in other location that use this function.",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f3d5da_211a879a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-01T15:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c618497_8861c74f",
       "range": {
         "startLine": 140,
         "startChar": 1,
