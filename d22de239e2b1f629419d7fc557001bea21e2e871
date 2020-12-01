@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "192399fe_995570fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-01T04:59:57Z",
+      "side": 1,
+      "message": "If there is obvious error (such as brackets not match, lack of comma, etc. I guess it is the error that occurs when formatting), codegen library will report the error but the line number will be meaningless (temporary value during codegen I guess). In this case, debugging is a little hard.\nIf there is typo (so the error would be package or function name not declare, etc), codegen library would not detect and you can get the precise error report by an additional fast_build.",
+      "parentUuid": "80435102_7ceaa788",
+      "revId": "d22de239e2b1f629419d7fc557001bea21e2e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0bc56a3_15defa36",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-30T09:14:56Z",
       "side": 1,
       "message": "nit: perhaps AP? (but as this is still WIP, I guess no need of immediate change)",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "d22de239e2b1f629419d7fc557001bea21e2e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f70107f_4379f0ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-01T04:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0bc56a3_15defa36",
       "range": {
         "startLine": 24,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6200ea10_6f34df00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-01T04:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19d8c31b_1951b1e7",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 51
+      },
+      "revId": "d22de239e2b1f629419d7fc557001bea21e2e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd533f69_6ce78fdf",
@@ -77,6 +143,24 @@
       "writtenOn": "2020-11-30T09:14:56Z",
       "side": 1,
       "message": "Looks like this can also be composed of paramsVal instead of Customized with a little diff in the simple_connect.go? I see .CommonAPOptions and .ExtraHardwareDeps so possibly enough.",
+      "revId": "d22de239e2b1f629419d7fc557001bea21e2e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da684d1f_6cf75b66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-01T04:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd533f69_6ce78fdf",
       "revId": "d22de239e2b1f629419d7fc557001bea21e2e871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
