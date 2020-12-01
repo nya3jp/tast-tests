@@ -45,6 +45,29 @@
       },
       "revId": "c75c26be3ac30cc4c175cd98d365ba1e2e4d9df7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b623a84_50ecc481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-12-01T18:39:52Z",
+      "side": 1,
+      "message": "why change this to 10? is it related to this change?",
+      "range": {
+        "startLine": 104,
+        "startChar": 34,
+        "endLine": 104,
+        "endChar": 36
+      },
+      "revId": "c75c26be3ac30cc4c175cd98d365ba1e2e4d9df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
