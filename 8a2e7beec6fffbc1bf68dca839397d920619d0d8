@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b628843_89bcaa13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-01T15:14:25Z",
+      "side": 1,
+      "message": "d",
+      "range": {
+        "startLine": 118,
+        "startChar": 64,
+        "endLine": 118,
+        "endChar": 65
+      },
+      "revId": "8a2e7beec6fffbc1bf68dca839397d920619d0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eca18500_8c7dfa49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-01T15:14:25Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 12
+      },
+      "revId": "8a2e7beec6fffbc1bf68dca839397d920619d0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8772a4b_f14f9808",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-01T15:14:25Z",
+      "side": 1,
+      "message": "d",
+      "range": {
+        "startLine": 118,
+        "startChar": 51,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "8a2e7beec6fffbc1bf68dca839397d920619d0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
