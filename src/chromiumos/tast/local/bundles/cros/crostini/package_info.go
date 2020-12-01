@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Queries the information for a Debian package that we have copied into the container",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
-		Vars:         []string{"keepState"},
+		Vars:         []string{"keepState", "crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
 		Data:         []string{"package.deb"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
