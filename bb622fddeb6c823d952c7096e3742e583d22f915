@@ -134,6 +134,30 @@
       },
       "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6083dceb_45248101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2020-12-01T07:09:55Z",
+      "side": 1,
+      "message": "To me it\u0027s natural to call defer after #528 where the test changes display states as it brings the display state back for the next sub-test.",
+      "parentUuid": "19dc7717_42cb234e",
+      "range": {
+        "startLine": 510,
+        "startChar": 23,
+        "endLine": 510,
+        "endChar": 26
+      },
+      "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
