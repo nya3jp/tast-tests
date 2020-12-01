@@ -152,6 +152,24 @@
       "parentUuid": "f1a043a1_2d4ced35",
       "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f9bb6d_bb2cf833",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-01T18:57:16Z",
+      "side": 1,
+      "message": "testing.Poll creates an internal context that expires when the timeout is reached. That\u0027s the one generating the error, not the outside context.",
+      "parentUuid": "5a10a1cc_737ec3f2",
+      "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
