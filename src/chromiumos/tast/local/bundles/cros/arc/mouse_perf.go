@@ -91,19 +91,20 @@ func MousePerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Check latency for mouse ACTION_MOVE events which are generated when moving mouse after left-button pressing down and holding.
-	s.Log("Injecting mouse move events")
+	s.Log("Injecting mouse press-down move events")
 	const (
 		numEvents = 100
 		waitMS    = 50
+		y         = 0
 	)
 	eventTimes := make([]int64, 0, numEvents)
-	var x, y int32 = 10, 0
 	if err := m.Press(); err != nil {
 		s.Fatal("Unable to inject Press mouse event: ", err)
 	}
 	if err := inputlatency.WaitForClearUI(ctx, d); err != nil {
 		s.Fatal("Failed to clear UI: ", err)
 	}
+	var x int32 = 10
 	for i := 0; i < numEvents; i++ {
 		if x == 10 {
 			x = -10
@@ -171,6 +172,38 @@ func MousePerf(ctx context.Context, s *testing.State) {
 	}
 
 	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgMouseLeftClickLatency", pv); err != nil {
+		s.Fatal("Failed to evaluate: ", err)
+	}
+
+	// Clear data to start next test.
+	if err := inputlatency.WaitForClearUI(ctx, d); err != nil {
+		s.Fatal("Failed to clear UI: ", err)
+	}
+
+	s.Log("Injecting the mouse hover-move events")
+	// Additional ACTION_HOVER_ENTER event is generated for the first mouse hover-move event.
+	if err := m.Move(x, y); err != nil {
+		s.Fatal("Unable to inject mouse hover-move event: ", err)
+	}
+	if err := inputlatency.WaitForClearUI(ctx, d); err != nil {
+		s.Fatal("Failed to clear UI: ", err)
+	}
+
+	eventTimes = make([]int64, 0, numEvents)
+	for i := 0; i < numEvents; i++ {
+		if x == 10 {
+			x = -10
+		} else {
+			x = 10
+		}
+		if err := inputlatency.WaitForNextEventTime(ctx, a, &eventTimes, waitMS); err != nil {
+			s.Fatal("Failed to generate event time: ", err)
+		}
+		if err := m.Move(x, y); err != nil {
+			s.Fatal("Unable to inject mouse hover-move event: ", err)
+		}
+	}
+	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgMouseHoverMoveLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
