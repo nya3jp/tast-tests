@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39e49344_c3b59303",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ssid_switch_back.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-01T09:09:39Z",
+      "side": 1,
+      "message": "Thanks for adding the comment.",
+      "parentUuid": "dedf5227_f2ab82b3",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "51cdce15f819477d766b495650a8cf6d7eddebc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee8f263b_1d958593",
