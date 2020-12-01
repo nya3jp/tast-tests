@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccb887ec_c1ecf5ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-01T23:18:49Z",
+      "side": 1,
+      "message": "I ran the test a 100 times on octopus and zork with the following values:\n  Timeout:  1 * time.Second,\n  Interval: 1 * time.Millisecond,\n\nResults:\noctopus: took max 26ms to finish writing the fw dump, but less than 2ms most of the times.\nzork:    took less than 2ms all the times\n\nBased on comment(https://b.corp.google.com/issues/170974763#comment1) and the results above. I changed the values to:\n  Timeout:  5 * time.Second,\n  Interval: 100 * time.Millisecond,\n\nWDYT?",
+      "parentUuid": "64b2e66a_063761d1",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "37ec68c2e668b23db9479cfda2fa815a4c62f8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73281795_0cd20bff",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
         "patchSetId": 3
