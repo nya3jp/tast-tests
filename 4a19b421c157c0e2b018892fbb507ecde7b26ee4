@@ -16,6 +16,29 @@
       "message": "ricarodq@: friendly ping for review.",
       "revId": "4a19b421c157c0e2b018892fbb507ecde7b26ee4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ea2ee8_cd91f609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-01T23:39:20Z",
+      "side": 1,
+      "message": "(what I mentioned in the prev. comment):\n\nThese \"Extra\" parameters are not needed if your file only has one test.\nYou can \"promote\" them to the \"root\" level. e.g:\n\n  {\n  ...\n  SortwareDeps: []string{\"chrome\", \"video_decoder_direct\", caps.HWDecodeAV1},\n  Data: videoTestFiles,\n  Params: [] {{\n     // Also, you can get rid of \"Params\" if \"av1_test_vectors\" is harcoded.\n  }\n  }\n\n\nIn Tast, the guideline is to avoid \"generic/multi-purpose\" for the sake of \"just in case I might need this in the future\".\nIf you already know that you are going to add more tests, it is Ok (assuming that you are already working on the a follow-up CL). If so, it is good to mention that in the commit description so that the reviewer knows about it.",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "4a19b421c157c0e2b018892fbb507ecde7b26ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
