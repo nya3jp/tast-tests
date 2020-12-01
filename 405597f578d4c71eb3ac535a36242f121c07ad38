@@ -233,6 +233,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbcfbe46_42913174",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-01T01:30:54Z",
+      "side": 1,
+      "message": "Prepare is the precondition interface, the name can\u0027t be renamed. One way to have more descriptive name is defining another function and let Prepare calls it.",
+      "parentUuid": "ed1e3e5c_7f9d8c4c",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b1af5e_8b404e21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-01T01:30:54Z",
+      "side": 1,
+      "message": "I noticed right now each precondition is doing this manually. \n\nnya@ do you think it is a good idea to have tast infrastructure implementing timging.Start for each precondition Prepare/Close method?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b3b96da_ae0b9a7d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
         "patchSetId": 1
