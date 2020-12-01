@@ -37,6 +37,7 @@ var testFiles = []string{
 	"launch_browser.go",
 	"launch_terminal.go",
 	"no_access_to_downloads.go",
+	"no_access_to_drive.go",
 	"no_shared_folder.go",
 	"open_with_terminal.go",
 	"package_info.go",
@@ -51,6 +52,7 @@ var testFiles = []string{
 	"shared_font_files.go",
 	"share_downloads_add_files.go",
 	"share_downloads.go",
+	"share_drive.go",
 	"share_files_cancel.go",
 	"share_files_manage.go",
 	"share_files_ok.go",
@@ -58,6 +60,7 @@ var testFiles = []string{
 	"share_files_toast.go",
 	"share_folders.go",
 	"share_invalid_paths.go",
+	"share_movies.go",
 	"sshfs_mount.go",
 	"sync_time.go",
 	"task_manager.go",
@@ -105,23 +108,6 @@ func TestExpensiveParams(t *testing.T) {
 			Timeout:    duration,
 			MinimalSet: true,
 		}})
-		genparams.Ensure(t, filename, params)
-	}
-}
-
-var gaiaLoginTests = []string{
-	"no_access_to_drive.go",
-	"share_drive.go",
-	"share_movies.go",
-}
-
-func TestGaiaLoginParams(t *testing.T) {
-	for _, filename := range gaiaLoginTests {
-		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
-			Preconditions: map[vm.ContainerDebianVersion]string{
-				vm.DebianStretch: "crostini.StartedByComponentWithGaiaLoginStretch()",
-				vm.DebianBuster:  "crostini.StartedByComponentWithGaiaLoginBuster()",
-			}}})
 		genparams.Ensure(t, filename, params)
 	}
 }

@@ -25,7 +25,7 @@ func TestLauncherParams(t *testing.T) {
 				desktopFile: "wayland_demo_fixed_size.desktop",
 				iconFile:    "wayland_demo.png",
 				windowName:  "wayland_demo_fixed_size",
-				installRoot: "/home/testuser/.local",
+				installRoot: ".local",
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			}`,
 		}, {
@@ -35,7 +35,7 @@ func TestLauncherParams(t *testing.T) {
 				desktopFile: "x11_demo_fixed_size.desktop",
 				iconFile:    "x11_demo.png",
 				windowName:  "x11_demo_fixed_size",
-				installRoot: "/home/testuser/.local",
+				installRoot: ".local",
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			}`,
 		}, {

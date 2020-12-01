@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Performance test for mouse responsiveness",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Vars:         []string{"keepState"},
+		Vars:         []string{"keepState", "crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
 		Data:         []string{"mouse_perf.py"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
@@ -89,7 +89,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Launch the app.
-	if err := cont.PushFile(ctx, s.DataPath(appletFile), "/home/testuser/"+appletFile); err != nil {
+	if err := cont.PushFile(ctx, s.DataPath(appletFile), appletFile); err != nil {
 		s.Fatalf("Failed to push %v to container: %v", appletFile, err)
 	}
 	output, err := crostini.RunWindowedApp(ctx, tconn, cont, pre.Keyboard, 30*time.Second, doMouseMove, true, "mouse_perf", []string{"python3", appletFile})

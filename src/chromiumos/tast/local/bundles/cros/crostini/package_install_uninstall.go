@@ -6,6 +6,8 @@ package crostini
 
 import (
 	"context"
+	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/crostini"
@@ -19,7 +21,7 @@ func init() {
 		Desc:         "Installs and then uninstalls a package that we have copied into the container",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
-		Vars:         []string{"keepState"},
+		Vars:         []string{"keepState", "crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
 		Data:         []string{"package.deb"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
@@ -91,7 +93,8 @@ func init() {
 
 func PackageInstallUninstall(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
-	filePath := "/home/testuser/package.deb"
+	cr := s.PreValue().(crostini.PreData).Chrome
+	filePath := fmt.Sprintf("/home/%s/package.deb", strings.Split(cr.User(), "@")[0])
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	if err := crostini.TransferToContainer(ctx, cont, s.DataPath("package.deb"), filePath); err != nil {
