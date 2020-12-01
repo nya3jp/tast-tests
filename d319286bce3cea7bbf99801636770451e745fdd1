@@ -70,6 +70,30 @@
       },
       "revId": "d319286bce3cea7bbf99801636770451e745fdd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8142367_7f561cee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1192965
+      },
+      "writtenOn": "2020-12-01T02:19:37Z",
+      "side": 0,
+      "message": "As discussed offline, this is once-only task during the life of the session.",
+      "parentUuid": "051ca65d_a9b2a192",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "d319286bce3cea7bbf99801636770451e745fdd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
