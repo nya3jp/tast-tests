@@ -16,6 +16,23 @@
       "message": "Thanks for the review.",
       "revId": "dfa3a597b16ed139de3530104066f3a0f36b4675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72c994e_b0ba8efd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-01T09:00:59Z",
+      "side": 1,
+      "message": "dedede build failure is possibly hitting b/174504493. Other test failures also seem unrelated. Wait for the fix to be merged before retry.",
+      "revId": "dfa3a597b16ed139de3530104066f3a0f36b4675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
