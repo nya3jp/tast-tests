@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c96856_41ac307c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-01T16:09:12Z",
+      "side": 1,
+      "message": "hiroh@ PTAL - you know these values better than me.\n\nOthers FYI.",
+      "revId": "6c206adbfcc5b94cc03942c40a2d5b75a5d8fad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
