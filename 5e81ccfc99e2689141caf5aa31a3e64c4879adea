@@ -16,6 +16,24 @@
       "message": "So my take on this would be: Before the google3 change this should have been flaky - would have maybe capitalized on the field (probably not, maybe about 1% flake or something).\n\nAfter, we should always get caps, so if we are inconsistently getting caps now, that is probably a bug.\n\nAnyway, LGTM",
       "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42456312_24df42e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-01T05:34:43Z",
+      "side": 1,
+      "message": "Thanks for the comment, John. From my understanding, auto capitalization is relatively low priority feature. It is a bit annonying when it fails and breaks other tests such as typing testing, which is the core function. My suggestion is that once auto capitalization change landed, we can do a sepearte test design to understand the feature and clairfy the expectation. Then we add some tast tests on it and make the feature enabled by default after. WDYT",
+      "parentUuid": "69fed89b_437cfa3d",
+      "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
