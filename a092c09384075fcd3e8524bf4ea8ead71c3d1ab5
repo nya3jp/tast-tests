@@ -22,6 +22,30 @@
       },
       "revId": "a092c09384075fcd3e8524bf4ea8ead71c3d1ab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "387a4b50_448f8f34",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-01T15:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20b9fdab_ce8074a6",
+      "range": {
+        "startLine": 642,
+        "startChar": 58,
+        "endLine": 642,
+        "endChar": 98
+      },
+      "revId": "a092c09384075fcd3e8524bf4ea8ead71c3d1ab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
