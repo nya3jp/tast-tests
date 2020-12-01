@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be5f8904_ebff66a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-01T10:05:15Z",
+      "side": 1,
+      "message": "This is a bit confusing as there is |err| in the code.\nHow about something like:\n- we use Log() instead of Error() or Fatal().\n- we don\u0027t report this error.\n- we just log this error and move on.",
+      "range": {
+        "startLine": 91,
+        "startChar": 190,
+        "endLine": 91,
+        "endChar": 210
+      },
+      "revId": "c75c26be3ac30cc4c175cd98d365ba1e2e4d9df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
