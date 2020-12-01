@@ -170,6 +170,24 @@
       "parentUuid": "5a10a1cc_737ec3f2",
       "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e655392f_075eb0d1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-12-01T19:06:36Z",
+      "side": 1,
+      "message": "Then there is a problem that testing.Poll may run much less then timeout if we just don\u0027t have enough time.",
+      "parentUuid": "93f9bb6d_bb2cf833",
+      "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
