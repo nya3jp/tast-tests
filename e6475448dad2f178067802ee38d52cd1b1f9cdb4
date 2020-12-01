@@ -106,6 +106,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1aa962f2_4d3ec494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-01T21:24:55Z",
+      "side": 1,
+      "message": "Just \"Chrome\" or \"the browser\". Because Chrome runs in several processes.",
+      "range": {
+        "startLine": 38,
+        "startChar": 64,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c923e90_a40c5cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-01T21:24:55Z",
+      "side": 1,
+      "message": "Assume that Chrome can take much longer than 10 seconds to start, when it is unhappy. We don\u0027t want to debug this, so give it more here, say 90 seconds. It is a good idea to be generous with timeouts, like at least 5x of one sees locally, maybe even 10x. Hitting a timeout must mean it was truly exceptional (say a proper hang).",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4467bb_735a458e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-01T21:24:55Z",
+      "side": 1,
+      "message": "What about crashes? Also hangs/timeout? I have not checked, but ideally we want to steal the failure handling from how we run other Chrome binaries.",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 15
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce70e529_c0c76bb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-01T21:24:55Z",
+      "side": 1,
+      "message": "I assume I missed when this was added to the chromeos-chrome.ebuild and to the bisector?",
+      "range": {
+        "startLine": 55,
+        "startChar": 16,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be41268b_e53a5633",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
         "patchSetId": 1
@@ -117,6 +209,30 @@
       "writtenOn": "2020-12-01T20:10:59Z",
       "side": 1,
       "message": "nit: Following the taxonomy in the doco (go/cros-video-testing-2021) I \nthink is good to insert \"Platform\" here somewhere (like for the case of \nPlatformEncoding [1]).\n\nE.g. PlatformDecodingVaapi? PlatformSmokeVaapi? I prefer the first one\nso it\u0027s clear that is about decoding.\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go;l\u003d79?q\u003dplatformencoding\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95661d24_fa37d3da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-01T21:24:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be41268b_e53a5633",
       "range": {
         "startLine": 17,
         "startChar": 8,
@@ -191,6 +307,29 @@
         "startChar": 51,
         "endLine": 31,
         "endChar": 54
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29ee223_b982ca75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-01T21:24:55Z",
+      "side": 1,
+      "message": "The tast owners don\u0027t like the word \"Sanity\" anymore.",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 16
       },
       "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
