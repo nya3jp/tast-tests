@@ -56,6 +56,30 @@
       },
       "revId": "e5d0b1390fbb41ba1db68b2388f280aebd352beb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "116f2b79_bca1f650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-12-01T04:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591f1355_a4eccfd9",
+      "range": {
+        "startLine": 455,
+        "startChar": 6,
+        "endLine": 455,
+        "endChar": 7
+      },
+      "revId": "e5d0b1390fbb41ba1db68b2388f280aebd352beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
