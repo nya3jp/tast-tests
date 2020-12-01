@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb9d865f_678fa345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2020-12-01T00:46:24Z",
+      "side": 1,
+      "message": "Why are we intentionally returning an empty value here?",
+      "range": {
+        "startLine": 58,
+        "startChar": 81,
+        "endLine": 58,
+        "endChar": 93
+      },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9808c9ff_4486e07b",
         "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
         "patchSetId": 1
@@ -54,6 +77,30 @@
       "writtenOn": "2020-11-30T18:17:41Z",
       "side": 1,
       "message": "Do we need to worry that `req.Path` could an arbitrary file path and not necessarily under c.tempDir ? Should we do \"os.RemoveAll(c.tmpDir)\" and not need client to pass in the path at all ?",
+      "range": {
+        "startLine": 62,
+        "startChar": 24,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "383bf4ce_f6065410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2020-12-01T00:46:24Z",
+      "side": 1,
+      "message": "I agree. Someone could potentially (accidentally) put in a path and unknowingly delete files other than intended. I\u0027m also thinking that as much as it\u0027s less flexible, we should probably store the data in the same primary folder each time and key subfolders based on the name of the test. That way, we don\u0027t accidentally generate excess data that isn\u0027t cleaned up (e.g. if someone decides to store data by date and cleanup scripts don\u0027t remove the data after being downloaded).",
+      "parentUuid": "9808c9ff_4486e07b",
       "range": {
         "startLine": 62,
         "startChar": 24,
@@ -112,6 +159,52 @@
       "side": 1,
       "message": "Saw CL:2562901. So this service is like providing a testing.ContextOutDir but for companion DUTs. The companionion DUTs dump files there and master DUT downloads it. Please update comment to make it more clear.\n\nHow does companion DUTs work? Would it be possible to reuse testing.ContextOutDir and relevant infra code?",
       "parentUuid": "309f0175_1084e6a8",
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "044f9aa0_cff6ebaa",
+        "filename": "src/chromiumos/tast/services/cros/cuj/local_store_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2020-12-01T00:46:24Z",
+      "side": 1,
+      "message": "I know that we already have tools that allow us to collect data generated during testing, so I\u0027m not sure why we need this extra service.",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d216975_ac23070e",
+        "filename": "src/chromiumos/tast/services/cros/cuj/local_store_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2020-12-01T00:46:24Z",
+      "side": 1,
+      "message": "download",
+      "range": {
+        "startLine": 14,
+        "startChar": 79,
+        "endLine": 14,
+        "endChar": 89
+      },
       "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
