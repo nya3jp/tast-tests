@@ -50,6 +50,23 @@
       "message": "Submit to CQ",
       "revId": "c02d277d627d66aac955db5b23ad572a74cf5374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9081b97f_06f956c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2020-12-01T17:08:40Z",
+      "side": 1,
+      "message": "Resubmit",
+      "revId": "c02d277d627d66aac955db5b23ad572a74cf5374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
