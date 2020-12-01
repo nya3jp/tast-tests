@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9697dc20_c37851b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/kahoot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-12-01T20:58:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4e98f87_3876839d",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 56
+      },
+      "revId": "b6980b37b63805f6952135f3f5373049318fb9a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaebbe28_ded98a79",
