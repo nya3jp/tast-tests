@@ -96,6 +96,17 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	ivfFile := yuvFile + ".ivf"
 	testOpt.command = append(testOpt.command, ivfFile)
 
+	// WebRTC uses Constant BitRate (CBR) with a very large intra-frame
+	// period, error resiliency and a certain quality parameter and target
+	// bitrate.
+	testOpt.command = append(testOpt.command, "--intra_period", "3000")
+	testOpt.command = append(testOpt.command, "--qp", "28" /* Quality Parameter */)
+	testOpt.command = append(testOpt.command, "--rcmode", "1" /* For Constant BitRate (CBR) */)
+	testOpt.command = append(testOpt.command, "--error_resilient" /* Off by default, enable. */)
+
+	bitrate := 256 * testOpt.size.Width * testOpt.size.Height / (320.0 * 240.0)
+	testOpt.command = append(testOpt.command, "--fb", strconv.Itoa(bitrate) /* From Chromecast */)
+
 	s.Log("Running ", shutil.EscapeSlice(testOpt.command))
 	logFile, err := runTest(ctx, s.OutDir(), testOpt.command[0], testOpt.command[1:]...)
 	if err != nil {
