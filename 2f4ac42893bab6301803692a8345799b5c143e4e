@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e0c3fe7_e93c7ae5",
+        "filename": "src/chromiumos/tast/local/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-01T08:57:31Z",
+      "side": 1,
+      "message": "Did you mean replace IsPinned with isPinned in the structure?",
+      "parentUuid": "9bfd44e6_71f168e9",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fe51bfc_9104e0a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
         "patchSetId": 2
@@ -85,6 +109,24 @@
       "writtenOn": "2020-11-30T08:09:50Z",
       "side": 1,
       "message": "Launching lacros time should be a part of pre-condition timeout, which is not included here.\nCould you give it a try to use default timeout? (\u003d2mins excluding pre-condition setup time).",
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e1b6cc_d4b978aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-01T08:57:31Z",
+      "side": 1,
+      "message": "Sure. So the launching lacros time have already been counted in this tast?",
+      "parentUuid": "3fe51bfc_9104e0a5",
       "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -160,6 +202,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3429a048_241efaf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-01T08:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97e8668c_3455c4b0",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86160652_edd543c7",
@@ -173,6 +239,30 @@
       "writtenOn": "2020-11-30T08:09:50Z",
       "side": 1,
       "message": "it is often recommended to avoid \"get\", \"is\", \"has\" prefixes.\n\ncan this be just deviceID? (the leading letter should be lower case).",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 12
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45184300_b64aa2d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-01T08:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86160652_edd543c7",
       "range": {
         "startLine": 62,
         "startChar": 1,
@@ -206,6 +296,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e81845_686e6d4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-01T08:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934d7b64_08916275",
+      "range": {
+        "startLine": 64,
+        "startChar": 51,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab8146d8_07f43b67",
@@ -219,6 +333,30 @@
       "writtenOn": "2020-11-29T22:40:49Z",
       "side": 1,
       "message": "Please include the loopbackID in the msg.",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2e5693_8b283e0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-01T08:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab8146d8_07f43b67",
       "range": {
         "startLine": 79,
         "startChar": 5,
@@ -254,6 +392,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64e0c47c_def3b570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-01T08:57:31Z",
+      "side": 1,
+      "message": "No, it can\u0027t. Error msg: Failed to execute \u0027setSinkId\u0027 on \u0027HTMLMediaElement\u0027: Illegal invocation",
+      "parentUuid": "3febd68d_2d2cdb06",
+      "range": {
+        "startLine": 83,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9557cc60_f3d664f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
         "patchSetId": 2
@@ -265,6 +427,30 @@
       "writtenOn": "2020-11-29T22:40:49Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc54fe9d_114866a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-01T08:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9557cc60_f3d664f1",
       "range": {
         "startLine": 86,
         "startChar": 5,
@@ -298,6 +484,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dcdef9d_6cf9ee76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-01T08:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9fe1a77_d194cba8",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fe4ea43_bd75e790",
@@ -311,6 +521,30 @@
       "writtenOn": "2020-11-30T08:09:50Z",
       "side": 1,
       "message": "ditto for lower case.\nSuggestion \"containsLacrosPinnedStream\"?",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 4
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5772e0f_f929877b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-01T08:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe4ea43_bd75e790",
       "range": {
         "startLine": 101,
         "startChar": 1,
