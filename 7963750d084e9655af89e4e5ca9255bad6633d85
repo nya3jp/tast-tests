@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "55dd0797_090c6f92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Yes, I know, but current password to the test controller contains @ :) I will request a change and then fix this.",
+      "parentUuid": "e7fc3b53_e0cad628",
+      "range": {
+        "startLine": 28,
+        "startChar": 64,
+        "endLine": 28,
+        "endChar": 85
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e6d95356_4c4521bc",
@@ -117,6 +141,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c073c91_e08e0cce",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Yes, but I think it would be problematic anyway, so I assume there is one controller per test setup.",
+      "parentUuid": "a9c4a210_bf172e95",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c4bdd9_f49b21f5",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Yes, now it\u0027s just a test/debug code.",
+      "parentUuid": "82ec0787_539a87b4",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a435aa0_86208c21",
         "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
         "patchSetId": 2
@@ -128,6 +194,30 @@
       "writtenOn": "2020-11-27T18:17:12Z",
       "side": 1,
       "message": "More general: proxyConn. If we finally get independent host in test infrastructure, we would be able to move proxy there.",
+      "range": {
+        "startLine": 76,
+        "startChar": 77,
+        "endLine": 76,
+        "endChar": 84
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1604ee4_23ea365b",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a435aa0_86208c21",
       "range": {
         "startLine": 76,
         "startChar": 77,
@@ -163,6 +253,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69c1fa76_d449fbc5",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Nowhere, yet :) Close/teardown is on the todo list in commit comment.",
+      "parentUuid": "2c518911_a95379a6",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28977fbe_95b3927c",
         "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
         "patchSetId": 2
@@ -174,6 +288,30 @@
       "writtenOn": "2020-11-27T18:17:12Z",
       "side": 1,
       "message": "double whitespace",
+      "range": {
+        "startLine": 86,
+        "startChar": 57,
+        "endLine": 86,
+        "endChar": 59
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4975cf6_4daee24a",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28977fbe_95b3927c",
       "range": {
         "startLine": 86,
         "startChar": 57,
@@ -207,6 +345,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "885df0f1_ba7c7b94",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b06c3aa3_6f1b7ddd",
+      "range": {
+        "startLine": 90,
+        "startChar": 43,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fa4299d_5cdb3655",
@@ -230,6 +392,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f36d47f_85d9f34d",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Right, it\u0027s Rust that does not have the increment operator :)",
+      "parentUuid": "9fa4299d_5cdb3655",
+      "range": {
+        "startLine": 125,
+        "startChar": 47,
+        "endLine": 127,
+        "endChar": 3
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71e266cc_409995f5",
@@ -243,6 +429,24 @@
       "writtenOn": "2020-11-27T18:17:12Z",
       "side": 1,
       "message": "Lacks method description.",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80431839_f2df5d8d",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71e266cc_409995f5",
       "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -287,6 +491,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a95202c_8d2d053a",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f5c77c3_7b303f49",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1fba753_a2b83904",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "I think it would be overkill, it\u0027s a simple private function.",
+      "parentUuid": "1a2d0ad4_3106c9c1",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 35
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "913767fe_20703810",
@@ -312,6 +558,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60e63889_10c51c04",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Not sure this is the right time.\nApproaching this correctly would require a serious revamp of the hostapd/gale-based part of current solutions.\nThis sounds like an entirely new project, might make sense sometime later once initial Cisco support is in.",
+      "parentUuid": "913767fe_20703810",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12d463de_6b287c4c",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 2
@@ -323,6 +593,24 @@
       "writtenOn": "2020-11-27T18:17:12Z",
       "side": 1,
       "message": "I think you should be more nuanced here. It is not enough to check for the variable, otherwise you would attempt to initialise the controller also on setups that do not contain Cisco APs.\n\nI see two possibilities: \n1) maintain list of hostnames that support Cisco APs (need modification of code each time a new setup is added);\n2) resolve companionName(s, \"-ap1\") IPs (this is a bit hacky).",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03896082_7257b24e",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "But it\u0027s guarded by TFFeaturesCiscoController, which will filter this out to tests that actually require this setup.\nI think this could be optimized once we have more setups with Cisco (or other APs) and can establish a pattern/naming scheme to be used here. I wouldn\u0027t bother this now, there is high risk that any solution we come with will turn invalid once it becomes relevant.",
+      "parentUuid": "12d463de_6b287c4c",
       "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -357,6 +645,30 @@
       "writtenOn": "2020-11-27T18:17:12Z",
       "side": 1,
       "message": "hostname and credentials",
+      "range": {
+        "startLine": 87,
+        "startChar": 41,
+        "endLine": 87,
+        "endChar": 49
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce04b692_23fabbcb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Ack. Will wait for the format issue (@) to resolve.",
+      "parentUuid": "e0cbc5c1_0fc5d8da",
       "range": {
         "startLine": 87,
         "startChar": 41,
@@ -409,6 +721,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdc41f5c_ca45882a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Nope, target might be set (e.g. default value) but not available and then routers is fallback (see #349)",
+      "parentUuid": "c83c25b8_15241df3",
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43804d6c_e15cfcaf",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 2
@@ -420,6 +750,30 @@
       "writtenOn": "2020-11-27T18:17:12Z",
       "side": 1,
       "message": "!\u003d\nin case some bright mind decides password might contain \u0027:\u0027",
+      "range": {
+        "startLine": 342,
+        "startChar": 22,
+        "endLine": 342,
+        "endChar": 23
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c8d4f5b_93a5ae53",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-01T12:02:25Z",
+      "side": 1,
+      "message": "Right",
+      "parentUuid": "43804d6c_e15cfcaf",
       "range": {
         "startLine": 342,
         "startChar": 22,
