@@ -142,7 +142,7 @@ func testNoPolicy(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome,
 // testBlockCCAExtension tries to block CCA extension and expects the background
 // page of CCA is not accessible.
 func testBlockCCAExtension(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, tb *testutil.TestBridge) error {
-	if err := servePolicy(ctx, fdms, cr, []policy.Policy{&policy.ExtensionInstallBlacklist{Val: []string{cca.ID}}}, tb, false); err != nil {
+	if err := servePolicy(ctx, fdms, cr, []policy.Policy{&policy.ExtensionInstallBlocklist{Val: []string{cca.ID}}}, tb, false); err != nil {
 		return errors.Wrap(err, "failed to serve policy")
 	}
 
