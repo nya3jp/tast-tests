@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c160fa0_63a23d53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T18:23:31Z",
+      "side": 1,
+      "message": "Ah, I see, I guess I didn\u0027t realize what the test step was when reading this before. Looks good.\nI guess I would normally write the error as s.Fatal(\"Failed to check the visibility of the bookmark icon: \", err). So your error message is actually more verbose.",
+      "parentUuid": "9013504a_62a8da3f",
+      "range": {
+        "startLine": 120,
+        "startChar": 14,
+        "endLine": 120,
+        "endChar": 61
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dad867f_c12bab82",
@@ -206,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c402cb89_ad87ab5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T18:23:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b739e610_1a7c1de9",
+      "range": {
+        "startLine": 122,
+        "startChar": 32,
+        "endLine": 122,
+        "endChar": 37
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce12c8d7_9860106c",
@@ -243,6 +291,30 @@
       "side": 1,
       "message": "I would agree if we were testing here that bookmarks bar gets populated on the fly with a new element. But, our focus here is to use bookmarks bar as an indicator.\nIf we opt-in for polling I would then move it to the BookmarkCurrentTab method as test does not have to know whether and how to wait.\nThoughts?",
       "parentUuid": "ce12c8d7_9860106c",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6549cb2_62084439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T18:23:31Z",
+      "side": 1,
+      "message": "I think either way is fine. If it is outside of the scope of your test, it is fine to do things this way.",
+      "parentUuid": "ace971c5_3bae6397",
       "range": {
         "startLine": 191,
         "startChar": 1,
@@ -535,6 +607,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e5cf490_fc5bde72",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T18:23:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6b074c6_fec0b4fe",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 15
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8229d920_59c296e1",
@@ -770,6 +866,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dd34cd2_214c3155",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T18:23:31Z",
+      "side": 1,
+      "message": "Strange, but understandable. I guess the name is just occasionally misleading since it might not bookmark.",
+      "parentUuid": "4c103916_a743e24b",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "239e25fc_1d0735e1",
@@ -807,6 +927,30 @@
       "side": 1,
       "message": "Bookmark star icon is the UI element that indicates whether user can or can\u0027t use bookmark functionality.",
       "parentUuid": "239e25fc_1d0735e1",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a015be31_041d6f6b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T18:23:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3071b990_8e57414f",
       "range": {
         "startLine": 73,
         "startChar": 5,
@@ -901,6 +1045,30 @@
       "side": 1,
       "message": "This will work as well. The thing is that hitting ctrl+d not only brings up the bookmark menu but adds opened tab as a bookmark automatically. For already existing bookmarks it just brings up the menu though.",
       "parentUuid": "98219964_a2b0ef82",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644b39ae_0aa4d5a7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T18:23:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0d183f61_431a846d",
       "range": {
         "startLine": 102,
         "startChar": 1,
@@ -1042,6 +1210,30 @@
       "side": 1,
       "message": "As above - it will add it as a bookmark. I added the comment for all functions that bring up bookmark dialog.",
       "parentUuid": "c6fb80bf_e5cf5685",
+      "range": {
+        "startLine": 120,
+        "startChar": 11,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "1a0dbda8d6fddad7987364c1efea37a952a93f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf555ccc_05abcf13",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-01T18:23:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34cd023a_decdfd36",
       "range": {
         "startLine": 120,
         "startChar": 11,
