@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6411011_6a30c486",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-12-01T01:21:29Z",
+      "side": 1,
+      "message": "Hi Victor,\n\nFriendly ping :)\n\nThanks!",
+      "revId": "6eba5f49882ea59c774791774a5d5498c1ee02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
