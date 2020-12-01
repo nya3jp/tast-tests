@@ -140,6 +140,30 @@
       },
       "revId": "3439a18b0d06d31d109b65b394d568d67dc7a1c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d075070c_29abee21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-01T14:10:57Z",
+      "side": 1,
+      "message": "Done, but it\u0027s not very pretty since the error happens within a goroutine.",
+      "parentUuid": "1b000a4b_564bd7c2",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "3439a18b0d06d31d109b65b394d568d67dc7a1c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
