@@ -31,7 +31,7 @@ func CreateReadMomentaryPowerW(ctx context.Context) (momentaryPowerFunc, error) 
 	}
 
 	lambda := func() (float64, error) {
-		result, err := power.ReadSystemPower(batteryPaths)
+		result, err := power.ReadSystemPower(ctx, batteryPaths)
 		if err != nil {
 			return 0, errors.Wrap(err, "failed to read battery momentary power")
 		}

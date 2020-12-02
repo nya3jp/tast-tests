@@ -11,6 +11,7 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -95,16 +96,30 @@ func ReadBatteryCapacity(devPaths []string) (float64, error) {
 // voltage_now and current_now.
 // If reading these attributes fails, this function returns non-nil error,
 // otherwise returns sum of power consumption of each battery.
-func ReadSystemPower(devPaths []string) (float64, error) {
+func ReadSystemPower(ctx context.Context, devPaths []string) (float64, error) {
 	systemPower := 0.
 	for _, devPath := range devPaths {
-		supplyVoltage, err := readFloat64(path.Join(devPath, "voltage_now"))
-		if err != nil {
-			return 0., errors.Wrap(err, "failed to read voltage_now")
+		var err error
+		supplyCurrent, supplyVoltage := 0., 0.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			supplyVoltage, err = readFloat64(path.Join(devPath, "voltage_now"))
+			if err != nil {
+				return errors.Wrap(err, "failed to read voltage_now")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 1 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
+			testing.ContextLog(ctx, "Failed to fetch voltage value from: ", path.Join(devPath, "voltage_now"))
+			return systemPower, nil
 		}
-		supplyCurrent, err := readFloat64(path.Join(devPath, "current_now"))
-		if err != nil {
-			return 0., errors.Wrap(err, "failed to read current_now")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			supplyCurrent, err = readFloat64(path.Join(devPath, "current_now"))
+			if err != nil {
+				return errors.Wrap(err, "failed to read current_now")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 2 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
+			testing.ContextLog(ctx, "Failed to fetch current value from: ", path.Join(devPath, "current_now"))
+			return systemPower, errors.Wrap(err, "failed to fetch current value")
 		}
 		if supplyCurrent < 0. {
 			// Some board (e.g. hana) reports negative values for current_now
@@ -164,6 +179,7 @@ func ListSysfsBatteryPaths(ctx context.Context) ([]string, error) {
 type SysfsBatteryMetrics struct {
 	powerMetric  perf.Metric
 	batteryPaths []string
+	prefix       string
 }
 
 // Assert that SysfsBatteryMetrics can be used in perf.Timeline.
@@ -172,6 +188,12 @@ var _ perf.TimelineDatasource = &SysfsBatteryMetrics{}
 // NewSysfsBatteryMetrics creates a struct to capture battery metrics with sysfs.
 func NewSysfsBatteryMetrics() *SysfsBatteryMetrics {
 	return &SysfsBatteryMetrics{}
+}
+
+// NewSysfsBatteryMetricsWithPrefix creates a struct to capture battery metrics with sysfs.
+// The given prefix will be put in front of metric name.
+func NewSysfsBatteryMetricsWithPrefix(prefix string) *SysfsBatteryMetrics {
+	return &SysfsBatteryMetrics{prefix: prefix}
 }
 
 // Setup reads the low battery shutdown percent that that we can error out a
@@ -190,7 +212,8 @@ func (b *SysfsBatteryMetrics) Setup(ctx context.Context, prefix string) error {
 		testing.ContextLog(ctx, path)
 	}
 	b.batteryPaths = batteryPaths
-	b.powerMetric = perf.Metric{Name: prefix + "system", Unit: "W", Direction: perf.SmallerIsBetter, Multiple: true}
+	b.prefix = prefix + b.prefix
+	b.powerMetric = perf.Metric{Name: b.prefix + "system", Unit: "W", Direction: perf.SmallerIsBetter, Multiple: true}
 	return nil
 }
 
@@ -207,7 +230,7 @@ func (b *SysfsBatteryMetrics) Snapshot(ctx context.Context, values *perf.Values)
 	if len(b.batteryPaths) == 0 {
 		return nil
 	}
-	power, err := ReadSystemPower(b.batteryPaths)
+	power, err := ReadSystemPower(ctx, b.batteryPaths)
 	if err != nil {
 		return err
 	}
