@@ -328,6 +328,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1691ed_b7874130",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-12-02T14:59:19Z",
+      "side": 1,
+      "message": "Changed to chrome.Auth and chrome.Contact.\nAppended informative message in remote_desktop.go",
+      "parentUuid": "734e469f_958682e7",
+      "range": {
+        "startLine": 1532,
+        "startChar": 19,
+        "endLine": 1532,
+        "endChar": 74
+      },
+      "revId": "9c830f171067247e05520eb073324b50d9b0a400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e069226_48248dfb",

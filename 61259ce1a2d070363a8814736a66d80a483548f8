@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d1c641_4f623d44",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-12-02T14:59:19Z",
+      "side": 1,
+      "message": "Done.\n(unknownAuth / passwordAuth / contactAuth)",
+      "parentUuid": "44e295df_960834ce",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 8
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29387557_b54f0178",
@@ -160,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5533fc81_5a5dbae8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-12-02T14:59:19Z",
+      "side": 1,
+      "message": "Changed to chrome.Auth().\nAlso appended informative message in remote_desktop.go",
+      "parentUuid": "2e321473_c6a4b7a8",
+      "range": {
+        "startLine": 1541,
+        "startChar": 52,
+        "endLine": 1541,
+        "endChar": 72
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a37c46b_240e1378",
@@ -173,6 +221,30 @@
       "writtenOn": "2020-12-01T08:13:56Z",
       "side": 1,
       "message": "chrome.Contact",
+      "range": {
+        "startLine": 1549,
+        "startChar": 57,
+        "endLine": 1549,
+        "endChar": 79
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da066d2a_d7fcff4c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-12-02T14:59:19Z",
+      "side": 1,
+      "message": "Changed to chrome.Contact().",
+      "parentUuid": "1a37c46b_240e1378",
       "range": {
         "startLine": 1549,
         "startChar": 57,
@@ -206,6 +278,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b813b3b6_a7feed91",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1615,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-12-02T14:59:19Z",
+      "side": 1,
+      "message": "Renamed.",
+      "parentUuid": "e2b8b064_a6901cb9",
+      "range": {
+        "startLine": 1615,
+        "startChar": 58,
+        "endLine": 1615,
+        "endChar": 65
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d59a6560_a974cdc2",
@@ -219,6 +315,30 @@
       "writtenOn": "2020-12-01T08:13:56Z",
       "side": 1,
       "message": "To make sure: the selector is different from previous one (#password !\u003d input[name\u003dpassword]), please make sure that the new selector works for normal GAIA login.",
+      "range": {
+        "startLine": 1711,
+        "startChar": 43,
+        "endLine": 1711,
+        "endChar": 63
+      },
+      "revId": "61259ce1a2d070363a8814736a66d80a483548f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c67bc2b_0f5f4461",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1711,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2020-12-02T14:59:19Z",
+      "side": 1,
+      "message": "Yes, you are right. The change was intentional.\n\nPreviously, it was relying on a hack to input password, falling back on getElementsByTagName when #password was not found (please see the code in patch 7):\nfield.getElementsByTagName(\u0027INPUT\u0027)\nNow, with querySelector, we can query with both id and name accurately. \nThanks for the suggestion.\n\nSure. I\u0027ve tested both password and contact email approval login flow.",
+      "parentUuid": "d59a6560_a974cdc2",
       "range": {
         "startLine": 1711,
         "startChar": 43,
