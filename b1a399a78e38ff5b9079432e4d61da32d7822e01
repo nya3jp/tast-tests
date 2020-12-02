@@ -33,6 +33,24 @@
       "message": "Can you check the return error?\nif err :\u003d p.Save(s.OutDir()); err !\u003d nil {\n   ...\n}",
       "revId": "b1a399a78e38ff5b9079432e4d61da32d7822e01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1203980a_5234ba48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-02T23:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56cb96b4_63286cf8",
+      "revId": "b1a399a78e38ff5b9079432e4d61da32d7822e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
