@@ -50,6 +50,23 @@
       "message": "YH, Marco, can you review the changes?",
       "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ffa5c5_79a9621a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-02T21:13:23Z",
+      "side": 1,
+      "message": "Is there documentation anywhere as to why \"white-label\" is considered oppressive?  FMU it\u0027s referring to the color of a label without anything being written on it as white.\n\nThe term \"white-label\" here is referring to the equivalent term in cros_config.  Unless you go and change this in cros_config it may be confusing.",
+      "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
