@@ -132,7 +132,7 @@ var CrostiniUnstable = hwdep.D(hwdep.Model(UnstableModels...))
 // CrostiniAppTest is a hardware dependency limiting the boards on which app testing is run.
 // App testing uses a large container which needs large space. Many DUTs in the lab do not have enough space.
 // The boards listed have enough space.
-var CrostiniAppTest = hwdep.D(hwdep.Platform("hatch", "eve", "atlas", "nami"))
+var CrostiniAppTest = hwdep.D(hwdep.Model("hatch", "eve", "atlas", "nami"))
 
 // interface defined for GetInstallerOptions to allow both
 // testing.State and testing.PreState to be passed in as the first
