@@ -231,3 +231,46 @@ func WaitForSearchBox(ctx context.Context, tconn *chrome.TestConn, timeout time.
 	}
 	return ui.WaitUntilExists(ctx, tconn, params, timeout)
 }
+
+// SwitchOn enables the named toggle button.
+func SwitchOn(ctx context.Context, tconn *chrome.TestConn, name string) error {
+	btn, err := toggleButton(ctx, tconn, name)
+	if err != nil {
+		return err
+	}
+	defer btn.Release(ctx)
+
+	if btn.Checked == ui.CheckedStateMixed {
+		return errors.New("button is not toggleable")
+	}
+	if btn.Checked != ui.CheckedStateTrue {
+		return btn.LeftClick(ctx)
+	}
+	return nil
+}
+
+// SwitchOff disables the named toggle button.
+func SwitchOff(ctx context.Context, tconn *chrome.TestConn, name string) error {
+	btn, err := toggleButton(ctx, tconn, name)
+	if err != nil {
+		return err
+	}
+	defer btn.Release(ctx)
+
+	if btn.Checked == ui.CheckedStateMixed {
+		return errors.New("button is not toggleable")
+	}
+	if btn.Checked == ui.CheckedStateTrue {
+		return btn.LeftClick(ctx)
+	}
+	return nil
+}
+
+func toggleButton(ctx context.Context, tconn *chrome.TestConn, name string) (*ui.Node, error) {
+	pattern := regexp.QuoteMeta(name)
+	params := ui.FindParams{
+		Role:       ui.RoleTypeToggleButton,
+		Attributes: map[string]interface{}{"name": regexp.MustCompile(pattern)},
+	}
+	return DescendantNodeWithTimeout(ctx, tconn, params, time.Second)
+}
