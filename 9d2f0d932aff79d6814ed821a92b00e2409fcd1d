@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e85bb26_e2bff3c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-02T04:43:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e43f33f7_bb8bff99",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8179ca61_5328c222",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed6e0db_cf42a893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-02T04:43:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5fba57d0_6e8274ed",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c4d7749_803f0564",
@@ -149,6 +197,30 @@
       "side": 1,
       "message": "This is to avoid calling Close() in the defer above.\nI agree this is not necessary, but I think it\u0027s nice to have in case someone add new code between this line and arc.New() below in future.\nDo you think it\u0027s better to remove this?",
       "parentUuid": "2c4d7749_803f0564",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 8
+      },
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "366c644b_4ffbb819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-02T04:43:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ab000e7_fe22bee7",
       "range": {
         "startLine": 88,
         "startChar": 1,
