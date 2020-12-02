@@ -33,6 +33,91 @@
       "message": "LGTM",
       "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74937903_368557f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-02T16:13:22Z",
+      "side": 1,
+      "message": "Per go/tast-reviews, please also collect CR from a test owner.",
+      "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e6fca3f_9fc07efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-02T16:13:22Z",
+      "side": 1,
+      "message": "Is \"Starting app\" still an accurate log, or should this be changed to \"Creating activity\"?",
+      "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7197165_19ebabe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-02T16:13:22Z",
+      "side": 1,
+      "message": "Is \"Starting app\" still an accurate log, or should this be changed to \"Creating activity\"?",
+      "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d1cd79_5c0c7bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-02T16:13:22Z",
+      "side": 1,
+      "message": "Is \"Starting app\" still an accurate log, or should this be changed to \"Creating activity\"?",
+      "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca89634b_0ba0e4f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-02T16:13:22Z",
+      "side": 1,
+      "message": "Is \"Launching app\" still an accurate log, or should this be changed to \"Creating activity\"?",
+      "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
