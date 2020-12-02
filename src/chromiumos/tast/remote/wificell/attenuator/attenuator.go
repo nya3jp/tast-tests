@@ -52,7 +52,7 @@ func (a *Attenuator) sendCmd(ctx context.Context, cmd string) (string, error) {
 		return "", errors.Wrapf(err, "failed to run command %s", cmd)
 	}
 
-	return string(ret), nil
+	return strings.TrimSpace(string(ret)), nil
 }
 
 // Open access to the attenuator.
