@@ -24,6 +24,16 @@ var appcompatNoteshelf = &arc.GaiaVars{
 	PassVar: "arcappcompat.Noteshelf.password",
 }
 
+var appcompatPhotolemur = &arc.GaiaVars{
+	UserVar: "arcappcompat.Photolemur.username",
+	PassVar: "arcappcompat.Photolemur.password",
+}
+
+var appcompatArtrage = &arc.GaiaVars{
+	UserVar: "arcappcompat.Artrage.username",
+	PassVar: "arcappcompat.Artrage.password",
+}
+
 // AppCompatBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the app compat credentials, and opt-in to the Play Store.
 var AppCompatBooted = arc.NewPrecondition("arcappcompat_booted", appcompatGaia, arc.DisableSyncFlags()...)
@@ -47,3 +57,19 @@ var AppCompatBootedForNoteshelf = arc.NewPrecondition("arcappcompat_bootedForNot
 // AppCompatBootedInTabletModeForNoteshelf returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
 var AppCompatBootedInTabletModeForNoteshelf = arc.NewPrecondition("arcappcompat_booted_in_tablet_modeForNoteshelf", appcompatNoteshelf, append(arc.DisableSyncFlags(), "--force-tablet-mode=touch_view", "--enable-virtual-keyboard")...)
+
+// AppCompatBootedForPhotolemur is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
+// that it will GAIA login with the Photolemur credentials, and opt-in to the Play Store.
+var AppCompatBootedForPhotolemur = arc.NewPrecondition("arcappcompat_bootedForPhotolemur", appcompatPhotolemur, arc.DisableSyncFlags()...)
+
+// AppCompatBootedInTabletModeForPhotolemur returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
+// that Chrome is launched in tablet mode in this precondition.
+var AppCompatBootedInTabletModeForPhotolemur = arc.NewPrecondition("arcappcompat_booted_in_tablet_modeForPhotolemur", appcompatPhotolemur, append(arc.DisableSyncFlags(), "--force-tablet-mode=touch_view", "--enable-virtual-keyboard")...)
+
+// AppCompatBootedForArtrage is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
+// that it will GAIA login with the Artrage credentials, and opt-in to the Play Store.
+var AppCompatBootedForArtrage = arc.NewPrecondition("arcappcompat_bootedForArtrage", appcompatArtrage, arc.DisableSyncFlags()...)
+
+// AppCompatBootedInTabletModeForArtrage returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
+// that Chrome is launched in tablet mode in this precondition.
+var AppCompatBootedInTabletModeForArtrage = arc.NewPrecondition("arcappcompat_booted_in_tablet_modeForArtrage", appcompatArtrage, append(arc.DisableSyncFlags(), "--force-tablet-mode=touch_view", "--enable-virtual-keyboard")...)
