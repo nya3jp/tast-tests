@@ -12,7 +12,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
 	"chromiumos/tast/local/drivefs"
@@ -98,11 +97,7 @@ func NoAccessToDrive(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	cr := s.PreValue().(crostini.PreData).Chrome
 
-	// Use a shortened context for test operations to reserve time for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
-	defer cancel()
-	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
+	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	if err := cont.CheckFileDoesNotExistInDir(ctx, sharedfolders.MountPath, sharedfolders.MountFolderGoogleDrive); err != nil {
 		s.Fatalf("GoogleDrive is unexpectedly listed in %s in the container: %s", sharedfolders.MountPath, err)

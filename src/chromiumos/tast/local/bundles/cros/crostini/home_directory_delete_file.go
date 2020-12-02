@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
@@ -99,17 +98,12 @@ func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
-	// Use a shortened context for test operations to reserve time for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
-	defer cancel()
-
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to open Files app: ", err)
 	}
-	defer filesApp.Close(cleanupCtx)
+	defer filesApp.Close(ctx)
 
 	const fileName = "testfile.txt"
 

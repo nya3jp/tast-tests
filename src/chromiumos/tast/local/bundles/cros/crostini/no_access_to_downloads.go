@@ -11,7 +11,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
@@ -102,10 +101,6 @@ func NoAccessToDownloads(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(crostini.PreData).Chrome
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
-
-	// Use a shortened context for test operations to reserve time for cleanup.
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
 
 	if err := checkHomeDirInContainerEmpty(ctx, cont); err != nil {
 		s.Fatal("Home directory in container is not empty by default: ", err)

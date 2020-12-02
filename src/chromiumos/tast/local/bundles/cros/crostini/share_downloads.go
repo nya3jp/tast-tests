@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/listset"
 	"chromiumos/tast/local/chrome"
@@ -98,10 +97,6 @@ func ShareDownloads(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
 
-	// Use a shortened context for test operations to reserve time for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
-	defer cancel()
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Open Files app.
@@ -109,12 +104,12 @@ func ShareDownloads(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Files app: ", err)
 	}
-	defer filesApp.Close(cleanupCtx)
+	defer filesApp.Close(ctx)
 
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont); err != nil {
+		if err := sharedFolders.UnshareAll(ctx, tconn, cont); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
