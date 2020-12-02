@@ -7,6 +7,7 @@ package launcher
 import (
 	"context"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -51,6 +52,7 @@ var defaultChromeOptions = []chrome.Option{
 type PreData struct {
 	Chrome      *chrome.Chrome   // The CrOS-chrome instance.
 	TestAPIConn *chrome.TestConn // The CrOS-chrome connection.
+	Mode        setupMode        // Mode used to get the lacros binary.
 }
 
 // StartedByData uses a pre-built image downloaded from cloud storage as a
@@ -81,10 +83,18 @@ func StartedByDataForceComposition() testing.Precondition { return startedByData
 // To use this precondition you must have lacros.DataArtifact as a data dependency.
 func StartedByDataUI() testing.Precondition { return startedByDataUIPre }
 
+// StartedByOmaha is a precondition to enable Lacros by feature flag in Chrome.
+// This does not require downloading a binary from Google Storage before the test.
+// It will use the currently available fishfood release of Lacros from Omaha.
+func StartedByOmaha() testing.Precondition { return startedByOmahaPre }
+
 type setupMode int
 
 const (
+	// download lacros binary from GCS.
 	download setupMode = iota
+	// Omaha is used to get the lacros binary.
+	omaha
 )
 
 var startedByDataPre = &preImpl{
@@ -110,6 +120,13 @@ var startedByDataUIPre = &preImpl{
 	timeout: chrome.LoginTimeout + 7*time.Minute,
 	mode:    download,
 	opts:    defaultChromeOptions,
+}
+
+var startedByOmahaPre = &preImpl{
+	name:    "lacros_started_by_omaha",
+	timeout: chrome.LoginTimeout + 7*time.Minute,
+	mode:    omaha,
+	opts:    []chrome.Option{chrome.EnableFeatures("LacrosSupport")},
 }
 
 // Implementation of lacros's precondition.
@@ -201,6 +218,22 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		if err := p.prepareLacrosChromeBinary(ctx, s); err != nil {
 			s.Fatal("Failed to download and prepare lacros-chrome, err")
 		}
+	case omaha:
+		// When launched by Omaha we need to wait several seconds for lacros to be launchable.
+		// It is ready when the image loader path is created with the chrome executable.
+		testing.ContextLog(ctx, "Waiting for Lacros to initialize")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			matches, err := filepath.Glob("/run/imageloader/lacros-fishfood/*/chrome")
+			if err != nil {
+				return errors.Wrap(err, "binary path does not exist yet")
+			}
+			if len(matches) == 0 {
+				return errors.New("binary path does not exist yet")
+			}
+			return nil
+		}, &testing.PollOptions{Interval: 5 * time.Second}); err != nil {
+			s.Fatal("Failed to find lacros binary: ", err)
+		}
 	default:
 		s.Fatal("Unrecognized mode: ", p.mode)
 	}
@@ -244,5 +277,5 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.tconn}
+	return PreData{p.cr, p.tconn, p.mode}
 }

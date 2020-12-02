@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,8 +23,16 @@ func init() {
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Pre:          launcher.StartedByDataUI(),
-		Data:         []string{launcher.DataArtifact},
+		Params: []testing.Param{
+			{
+				Pre:       launcher.StartedByDataUI(),
+				ExtraData: []string{launcher.DataArtifact},
+			},
+			{
+				Name:              "omaha",
+				Pre:               launcher.StartedByOmaha(),
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
+			}},
 	})
 }
 
