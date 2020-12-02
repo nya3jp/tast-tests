@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b338bb_1d4a5540",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-02T03:54:48Z",
+      "side": 1,
+      "message": "Only a nit.",
+      "revId": "e02b991ae0e3d28f087a28b0fc9d0c0bbac3b90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4987a6ac_603edb6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-02T03:54:48Z",
+      "side": 1,
+      "message": "See b/170974763\n\n(I prefer b/170974763 form as it is a shortened URL for the issue).",
+      "range": {
+        "startLine": 128,
+        "startChar": 65,
+        "endLine": 128,
+        "endChar": 82
+      },
+      "revId": "e02b991ae0e3d28f087a28b0fc9d0c0bbac3b90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
