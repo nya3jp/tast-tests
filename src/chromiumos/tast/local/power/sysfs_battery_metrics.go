@@ -11,6 +11,7 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -82,34 +83,67 @@ func ReadBatteryCapacity(devPath string) (float64, error) {
 	return float64(capacity), nil
 }
 
+// ReadBatteryPropertyInt64 reads the battery property file content from the given
+// battery path, and return a float value.
+// The given file content should be an integer, and error will be returned otherwise.
+func ReadBatteryPropertyInt64(devPaths []string, property string) (float64, error) {
+	if len(devPaths) != 1 {
+		return 0, errors.New("device has multiple batteries")
+	}
+	devPath := devPaths[0]
+	content, err := readInt64(path.Join(devPath, property))
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read property %v from %v", property, devPath)
+	}
+	return float64(content), nil
+}
+
 // ReadSystemPower returns system power consumption in Watts.
 // It is assumed that power supplies at devPath have attributes
 // voltage_now and current_now.
 // If reading these attributes fails, this function returns non-nil error,
-// otherwise returns power consumption of the battery.
-func ReadSystemPower(devPath string) (float64, error) {
-	supplyVoltage, err := readFloat64(path.Join(devPath, "voltage_now"))
-	if err != nil {
-		return 0., errors.Wrap(err, "failed to read voltage_now")
+// otherwise returns sum of power consumption of each battery.
+func ReadSystemPower(ctx context.Context, devPaths []string) (float64, error) {
+	systemPower := 0.
+	for _, devPath := range devPaths {
+		var err error
+		supplyCurrent, supplyVoltage := 0., 0.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			supplyVoltage, err = readFloat64(path.Join(devPath, "voltage_now"))
+			if err != nil {
+				return errors.Wrap(err, "failed to read voltage_now")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 1 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
+			testing.ContextLog(ctx, "Failed to fetch voltage value from: ", path.Join(devPath, "voltage_now"))
+			return systemPower, errors.Wrap(err, "failed to fetch voltage value")
+		}
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			supplyCurrent, err = readFloat64(path.Join(devPath, "current_now"))
+			if err != nil {
+				return errors.Wrap(err, "failed to read current_now")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 2 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
+			testing.ContextLog(ctx, "Failed to fetch current value from: ", path.Join(devPath, "current_now"))
+			return systemPower, errors.Wrap(err, "failed to fetch current value")
+		}
+		if supplyCurrent < 0. {
+			// Some board (e.g. hana) reports negative values for current_now
+			// when discharging so flip the sign on that case to align with
+			// other boards.
+			supplyCurrent = -supplyCurrent
+		}
+		// voltage_now and current_now reports their value in micro unit
+		// so adjust this to match with Watt.
+		systemPower += supplyVoltage * supplyCurrent * 1e-12
 	}
-	supplyCurrent, err := readFloat64(path.Join(devPath, "current_now"))
-	if err != nil {
-		return 0., errors.Wrap(err, "failed to read current_now")
-	}
-	if supplyCurrent < 0. {
-		// Some board (e.g. hana) reports negative values for current_now
-		// when discharging so flip the sign on that case to align with
-		// other boards.
-		supplyCurrent = -supplyCurrent
-	}
-	// voltage_now and current_now reports their value in micro unit
-	// so adjust this to match with Watt.
-	return supplyVoltage * supplyCurrent * 1e-12, nil
+	return systemPower, nil
 }
 
-// listSysfsBatteryPaths lists paths of batteries which supply power to the system
+// ListSysfsBatteryPaths lists paths of batteries which supply power to the system
 // and has voltage_now and current_now attributes.
-func listSysfsBatteryPaths(ctx context.Context) ([]string, error) {
+func ListSysfsBatteryPaths(ctx context.Context) ([]string, error) {
 	// TODO(hikarun): Remove ContextLogf()s after checking this function works on all platforms
 	const sysfsPowerSupplyPath = "/sys/class/power_supply"
 	testing.ContextLog(ctx, "Listing batteries in ", sysfsPowerSupplyPath)
@@ -151,7 +185,7 @@ func listSysfsBatteryPaths(ctx context.Context) ([]string, error) {
 // SysfsBatteryPath returns a path of battery which supply power to the system
 // and has voltage_now and current_now attributes.
 func SysfsBatteryPath(ctx context.Context) (string, error) {
-	batteryPaths, err := listSysfsBatteryPaths(ctx)
+	batteryPaths, err := ListSysfsBatteryPaths(ctx)
 	if err != nil {
 		return "", err
 	}
@@ -163,8 +197,9 @@ func SysfsBatteryPath(ctx context.Context) (string, error) {
 
 // SysfsBatteryMetrics hold the metrics read from sysfs.
 type SysfsBatteryMetrics struct {
-	powerMetric perf.Metric
-	batteryPath string
+	powerMetric  perf.Metric
+	batteryPaths []string
+	prefix       string
 }
 
 // Assert that SysfsBatteryMetrics can be used in perf.Timeline.
@@ -175,10 +210,16 @@ func NewSysfsBatteryMetrics() *SysfsBatteryMetrics {
 	return &SysfsBatteryMetrics{}
 }
 
+// NewSysfsBatteryMetricsWithPrefix creates a struct to capture battery metrics with sysfs.
+// The given prefix will be put in front of metric name.
+func NewSysfsBatteryMetricsWithPrefix(prefix string) *SysfsBatteryMetrics {
+	return &SysfsBatteryMetrics{prefix: prefix}
+}
+
 // Setup reads the low battery shutdown percent that that we can error out a
 // test if the battery is ever too low.
 func (b *SysfsBatteryMetrics) Setup(ctx context.Context, prefix string) error {
-	batteryPaths, err := listSysfsBatteryPaths(ctx)
+	batteryPaths, err := ListSysfsBatteryPaths(ctx)
 	if err != nil {
 		return err
 	}
@@ -190,11 +231,9 @@ func (b *SysfsBatteryMetrics) Setup(ctx context.Context, prefix string) error {
 	for _, path := range batteryPaths {
 		testing.ContextLog(ctx, path)
 	}
-	if len(batteryPaths) != 1 {
-		return errors.Errorf("unexpected number of batteries: got %d; want 1", len(batteryPaths))
-	}
-	b.batteryPath = batteryPaths[0]
-	b.powerMetric = perf.Metric{Name: prefix + "system", Unit: "W", Direction: perf.SmallerIsBetter, Multiple: true}
+	b.batteryPaths = batteryPaths
+	b.prefix = prefix + b.prefix
+	b.powerMetric = perf.Metric{Name: b.prefix + "system", Unit: "W", Direction: perf.SmallerIsBetter, Multiple: true}
 	return nil
 }
 
@@ -208,7 +247,10 @@ func (b *SysfsBatteryMetrics) Start(ctx context.Context) error {
 // If there are no batteries can be used to report the metrics,
 // Snapshot does nothing and returns without error.
 func (b *SysfsBatteryMetrics) Snapshot(ctx context.Context, values *perf.Values) error {
-	power, err := ReadSystemPower(b.batteryPath)
+	if len(b.batteryPaths) == 0 {
+		return nil
+	}
+	power, err := ReadSystemPower(ctx, b.batteryPaths)
 	if err != nil {
 		return err
 	}

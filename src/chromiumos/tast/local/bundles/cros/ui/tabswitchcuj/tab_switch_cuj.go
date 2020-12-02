@@ -205,4 +205,10 @@ func Run(ctx context.Context, s *testing.State) {
 	if err = pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to store values: ", err)
 	}
+
+	// Export histogram raw data, and save everything as CUJ perf.
+	recorder.AppendHistogramRaw(pv)
+	if err = pv.SaveAs(ctx, s.OutDir(), perf.CUJPerf); err != nil {
+		s.Error("Failed to store cuj values: ", err)
+	}
 }

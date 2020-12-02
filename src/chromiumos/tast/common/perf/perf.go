@@ -175,6 +175,18 @@ func (p *Values) Set(s Metric, vs ...float64) {
 	validate(s, p.values[s])
 }
 
+// Get gets performance metric value(s) by metric name.
+func (p *Values) Get(name string) []float64 {
+
+	for k, v := range p.values {
+		if k.Name == name {
+			return v
+		}
+	}
+
+	return nil
+}
+
 // Format describes the output format for perf data.
 type Format int
 
@@ -183,6 +195,8 @@ const (
 	Crosbolt Format = iota
 	// Chromeperf is used for Chrome OS infra dashboards (go/chromeperf).
 	Chromeperf
+	// CUJPerf is used for CUJ dashboard
+	CUJPerf
 )
 
 func (format Format) fileName() (string, error) {
@@ -191,6 +205,8 @@ func (format Format) fileName() (string, error) {
 		return "results-chart.json", nil
 	case Chromeperf:
 		return "perf_results.json", nil
+	case CUJPerf:
+		return "cuj_results.json", nil
 	default:
 		return "", errors.Errorf("invalid perf format: %d", format)
 	}
@@ -373,7 +389,7 @@ func (p *Values) SaveAs(ctx context.Context, outDir string, format Format) error
 
 	var json []byte
 	switch format {
-	case Crosbolt:
+	case Crosbolt, CUJPerf:
 		json, err = p.toCrosbolt()
 	case Chromeperf:
 		json, err = p.toChromeperf(ctx)
