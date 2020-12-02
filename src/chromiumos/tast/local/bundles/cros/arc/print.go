@@ -33,13 +33,14 @@ func init() {
 			"bmgordon@google.com",
 			"jschettler@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vm",
 			Val:               "arc_print_vm_ippusb_golden.pdf",
