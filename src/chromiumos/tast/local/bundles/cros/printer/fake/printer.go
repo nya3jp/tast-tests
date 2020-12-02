@@ -9,7 +9,7 @@ import (
 	"context"
 	"io/ioutil"
 	"net"
-	"time"
+	"sync/atomic"
 
 	"chromiumos/tast/errors"
 )
@@ -17,9 +17,10 @@ import (
 // Printer is a fake printer implementation, which reads LPR requests,
 // and returns them via ReadRequest.
 type Printer struct {
-	ln     net.Listener
-	cancel func()
-	ch     chan []byte
+	ln    net.Listener
+	ch    chan []byte
+	conn  net.Conn
+	state int32
 }
 
 // NewPrinter creates and starts a fake printer.
@@ -29,45 +30,29 @@ func NewPrinter(ctx context.Context) (*Printer, error) {
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to listen on %s", address)
 	}
-
-	rctx, cancel := context.WithCancel(ctx)
-	p := &Printer{ln, cancel, make(chan []byte)}
-	go p.run(rctx)
+	p := &Printer{ln: ln, ch: make(chan []byte, 1)}
+	go p.run()
 	return p, nil
 }
 
 // run runs the background task to read the LPR requests and to proxy them
 // to ch.
-func (p *Printer) run(ctx context.Context) {
-	for {
-		if eof := func() bool {
-			conn, err := p.ln.Accept()
-			if err != nil {
-				return true
-			}
-			defer conn.Close()
-			// Make sure that the goroutine exits eventually even
-			// if the process connected to |conn| is hanging.
-			rctx, cancel := context.WithTimeout(ctx, 2*time.Second)
-			defer cancel()
-			deadline, _ := rctx.Deadline()
-			conn.SetReadDeadline(deadline)
-			data, err := ioutil.ReadAll(conn)
-			if err != nil {
-				return false
-			}
-			select {
-			case <-ctx.Done():
-				// If timed out, we should see EOF on a
-				// following iteration and exit then.
-			case p.ch <- data:
-			}
-			return false
-		}(); eof {
-			close(p.ch)
-			return
-		}
+func (p *Printer) run() {
+	defer close(p.ch)
+	conn, err := p.ln.Accept()
+	if err != nil {
+		return
 	}
+	p.conn = conn
+	if atomic.AddInt32(&p.state, 1) > 1 {
+		conn.Close()
+		return
+	}
+	data, err := ioutil.ReadAll(conn)
+	if err != nil {
+		return
+	}
+	p.ch <- data
 }
 
 // Close stops the fake printer.
@@ -75,8 +60,10 @@ func (p *Printer) Close() {
 	// This triggers to return an error by Accept() in run(). So,
 	// eventually the goroutine exits.
 	p.ln.Close()
-	// Also, call the cancel to notify the context used in run().
-	p.cancel()
+	// This triggers ioutil.ReadAll() in run() to return an error.
+	if atomic.AddInt32(&p.state, 1) > 1 {
+		p.conn.Close()
+	}
 }
 
 // ReadRequest returns the print request.
