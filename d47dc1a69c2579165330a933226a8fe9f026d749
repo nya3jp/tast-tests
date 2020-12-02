@@ -16,6 +16,24 @@
       "message": "Is this the optimal place for this logic architecturally?  (I think it probably makes sense, just want to make sure we think it though, and avoid making test content more complex than required).  Are the subsequent tests failing b/c repair jobs are not not running between them or because the repair system is missing a validator to detect the condition that causes the subsequent tests to fail?",
       "revId": "d47dc1a69c2579165330a933226a8fe9f026d749",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d6d316_55ce4cff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-02T21:02:21Z",
+      "side": 1,
+      "message": "That\u0027s a great question.\n\nWhen the `tast` command runs several Tast tests in serial, there is no repair job that is expected to run in-between, other than what is provided by the test\u0027s Precondition or Fixture.\n\nAs I described in the bug, I see three options for how to handle this:\n\n1. Change the Tast RTD so that it turns on the DUT in between tests. I don\u0027t know of any way to do this without a servod connection, and currently the RTD does not inherently support Servo.\n2. Wrap the test in a precondition/fixture. I don\u0027t think this will work right now with Servo, either.\n3. Have the test clean itself up. This is what I\u0027ve implemented here.\n\nI think that option #3 is by far the easiest, because it doesn\u0027t require us to add servo support in any new places. As we start to extend our body of tests, we\u0027ll probably want to write an abstraction to prevent duplicated code. I think Fixtures will be our best bet here, especially because of their inheritance. But for now, that is unneeded abstraction.",
+      "parentUuid": "76b801e8_d5be5b1c",
+      "revId": "d47dc1a69c2579165330a933226a8fe9f026d749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
