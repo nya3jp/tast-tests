@@ -32,6 +32,9 @@ const resetTimeout = 15 * time.Second
 // The Chrome instance is also shared and cannot be closed by tests.
 func LoggedIn() testing.Precondition { return loggedInPre }
 
+// LoggedInDisableSync is the same as LoggedIn just passes --disable-sync flag.
+func LoggedInDisableSync() testing.Precondition { return loggedInDisableSync }
+
 // NewPrecondition creates a new precondition that can be shared by tests
 // that require an already-started Chrome object that was created with opts.
 // suffix is appended to precondition's name.
@@ -44,6 +47,7 @@ func NewPrecondition(suffix string, opts ...Option) testing.Precondition {
 }
 
 var loggedInPre = NewPrecondition("logged_in")
+var loggedInDisableSync = NewPrecondition("logged_in_disable_sync", ExtraArgs("--disable-sync"))
 
 // preImpl implements testing.Precondition.
 type preImpl struct {

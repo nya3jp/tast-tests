@@ -25,7 +25,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          chrome.LoggedInDisableSync(),
 	})
 }
 
