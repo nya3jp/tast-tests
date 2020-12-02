@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36f6f231_fe9a4d7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-02T09:25:11Z",
+      "side": 1,
+      "message": "LGTM % final nits. Thanks for the involved test!",
+      "revId": "6f8c899dd852a75988f306de4e93a7463c95176e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c48fa29_b636c363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-02T09:25:11Z",
+      "side": 1,
+      "message": "you can simply remove the entries completely, go will use the default value (\"\").\nnit: all comments need to end with a .",
+      "revId": "6f8c899dd852a75988f306de4e93a7463c95176e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b210a07_aa6a133c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-02T09:25:11Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 12
+      },
+      "revId": "6f8c899dd852a75988f306de4e93a7463c95176e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff2fb2d_1edff981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-02T09:25:11Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 12
+      },
+      "revId": "6f8c899dd852a75988f306de4e93a7463c95176e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c0c9794_1e311f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-02T09:25:11Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 12
+      },
+      "revId": "6f8c899dd852a75988f306de4e93a7463c95176e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808b4d8f_88832b0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-02T09:25:11Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 143,
+        "startChar": 6,
+        "endLine": 143,
+        "endChar": 12
+      },
+      "revId": "6f8c899dd852a75988f306de4e93a7463c95176e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a54d7a_a4fc558e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-02T09:25:11Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 12
+      },
+      "revId": "6f8c899dd852a75988f306de4e93a7463c95176e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980b0d3a_1b187fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-02T09:25:11Z",
+      "side": 1,
+      "message": "changed?",
+      "range": {
+        "startLine": 210,
+        "startChar": 39,
+        "endLine": 210,
+        "endChar": 46
+      },
+      "revId": "6f8c899dd852a75988f306de4e93a7463c95176e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
