@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae20443_8973459a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-02T04:43:35Z",
+      "side": 1,
+      "message": "Great! Please watch out for CQ test results, since this change affects so many tests involving Chrome.\n",
+      "revId": "75f2835a6b1f47ce225eae553acec24f057d7316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
