@@ -102,7 +102,7 @@ func HomeDirectoryRenameFile(ctx context.Context, s *testing.State) {
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 90*time.Second)
 	defer cancel()
 
 	// Open Files app.
