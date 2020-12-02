@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d47ac3c_0619ad46",
+        "filename": "src/chromiumos/tast/local/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-02T03:13:14Z",
+      "side": 1,
+      "message": "Done. Please take a look to see whether it\u0027s better. Thanks!",
+      "parentUuid": "aed88402_ab7ce23c",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fe51bfc_9104e0a5",
@@ -169,6 +193,24 @@
       "side": 1,
       "message": "Oops, I meant,\ndownloading executable, installing, etc. which is expected to take the time, should be counted.\nLaunching lacros chrome needs to be counted in this Timeout, still, but I think 2mins is enough.",
       "parentUuid": "a4e1b6cc_d4b978aa",
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7582be15_554fdd6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-02T03:13:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6851c491_e8a064b7",
       "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -635,6 +677,30 @@
       "side": 1,
       "message": "Looks not done yet?",
       "parentUuid": "e5772e0f_f929877b",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 4
+      },
+      "revId": "2f4ac42893bab6301803692a8345799b5c143e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "645ab959_ae3f5cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-12-02T03:13:14Z",
+      "side": 1,
+      "message": "Oh, sorry for it.",
+      "parentUuid": "94f0785b_2ef45801",
       "range": {
         "startLine": 101,
         "startChar": 1,
