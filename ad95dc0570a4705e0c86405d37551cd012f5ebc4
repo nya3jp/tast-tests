@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fac6a92_541ecc74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-02T00:11:25Z",
+      "side": 1,
+      "message": "IIRC, RAPL is Intel only. Not present on AMD",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "ad95dc0570a4705e0c86405d37551cd012f5ebc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444f6ad9_33c5edee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-02T00:11:25Z",
+      "side": 1,
+      "message": "in go, \"get\" prefixes should be avoided whenever possible.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#TOC-Getters\n\n\na possible alternative could be:\n\n  create...Func ?",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "ad95dc0570a4705e0c86405d37551cd012f5ebc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5af4f3b_0070fbdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-02T00:11:25Z",
+      "side": 1,
+      "message": "nit: not clear what Wh is from the context. It it is Watt hour, just put Watt hour.",
+      "range": {
+        "startLine": 45,
+        "startChar": 23,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "ad95dc0570a4705e0c86405d37551cd012f5ebc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d499b415_5e1b94ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-02T00:11:25Z",
+      "side": 1,
+      "message": "Wh -\u003e WH\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 13
+      },
+      "revId": "ad95dc0570a4705e0c86405d37551cd012f5ebc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b03646c6_c0381201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-02T00:11:25Z",
+      "side": 1,
+      "message": "any particular reason why this func does not return an err?  (instead of updating the \"global\" variable?)",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 40
+      },
+      "revId": "ad95dc0570a4705e0c86405d37551cd012f5ebc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18939b5_aa3f1750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-02T00:11:25Z",
+      "side": 1,
+      "message": "nit: ditto, add doctring to func",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 14
+      },
+      "revId": "ad95dc0570a4705e0c86405d37551cd012f5ebc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f452cc63_b1112076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-02T00:11:25Z",
+      "side": 1,
+      "message": "could you add docstring to the func?",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "ad95dc0570a4705e0c86405d37551cd012f5ebc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc4a8e1_bf79f43d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/scenario.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-02T00:11:25Z",
+      "side": 1,
+      "message": "nit: remove \"1 *\"",
+      "range": {
+        "startLine": 158,
+        "startChar": 21,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "ad95dc0570a4705e0c86405d37551cd012f5ebc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
