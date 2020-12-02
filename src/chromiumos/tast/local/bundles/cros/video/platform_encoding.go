@@ -125,6 +125,7 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		Unit:      "fps",
 		Direction: perf.BiggerIsBetter,
 	}, fps)
+	p.Save(s.OutDir())
 	s.Log(p)
 }
 
