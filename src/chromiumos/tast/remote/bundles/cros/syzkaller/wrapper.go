@@ -71,9 +71,15 @@ func init() {
 		// stopping. The overall test duration is 12 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
-		Data:    []string{"testing_rsa", "enabled_syscalls.txt", "corpus.db"},
+		Data:    []string{testingRSA, enabledSyscallsFile, corpusDB},
 	})
 }
+
+const (
+	testingRSA          = "testing_rsa"
+	enabledSyscallsFile = "enabled_syscalls.txt"
+	corpusDB            = "corpus.db"
+)
 
 // Wrapper runs Syzkaller against DUTs with KASAN and KCOV enabled.
 func Wrapper(ctx context.Context, s *testing.State) {
@@ -100,7 +106,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := os.Mkdir(syzkallerWorkdir, 0755); err != nil {
 		s.Fatalf("Unable to create temp workdir: %v", err)
 	}
-	cmd := exec.Command("cp", s.DataPath("corpus.db"), syzkallerWorkdir)
+	cmd := exec.Command("cp", s.DataPath(corpusDB), filepath.Join(syzkallerWorkdir, "corpus.db"))
 	if err := cmd.Run(); err != nil {
 		s.Fatalf("Failed to copy seed corpus to workdir: %v", err)
 	}
@@ -113,13 +119,13 @@ func Wrapper(ctx context.Context, s *testing.State) {
 
 	// Chmod the keyfile so that ssh connections do not fail due to
 	// open permissions.
-	sshKey := s.DataPath("testing_rsa")
+	sshKey := s.DataPath(testingRSA)
 	if err := os.Chmod(sshKey, 0600); err != nil {
 		s.Fatalf("Unable to chmod sshkey to 0600: %v", err)
 	}
 
 	// Read enabled_syscalls.
-	enabledSyscalls, err := loadEnabledSyscalls(s.DataPath("enabled_syscalls.txt"))
+	enabledSyscalls, err := loadEnabledSyscalls(s.DataPath(enabledSyscallsFile))
 	if err != nil {
 		s.Fatalf("Unable to load enabled syscalls: %v", err)
 	}
