@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12dd0fce_37b95fa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-12-02T00:50:42Z",
+      "side": 1,
+      "message": "Thanks. I\u0027ll hold off on submitting until the fix for Pointer Capture focus lands (crrev.com/c/2559255).",
+      "revId": "69d4dc1854e54e0f2dae0c14f0e1ea596549812b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
