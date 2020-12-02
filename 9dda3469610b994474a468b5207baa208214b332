@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6027d223_8572da6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/edjing_mix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-12-02T18:48:50Z",
+      "side": 1,
+      "message": "Can you change this to id like this, allowButton :\u003d d.Object(ui.ClassName(android.widget.Button), ui.Text(ALLOW))",
+      "revId": "9dda3469610b994474a468b5207baa208214b332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
