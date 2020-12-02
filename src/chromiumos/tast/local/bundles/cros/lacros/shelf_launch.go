@@ -6,13 +6,16 @@ package lacros
 
 import (
 	"context"
+	"path/filepath"
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,8 +25,16 @@ func init() {
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Pre:          launcher.StartedByDataUI(),
-		Data:         []string{launcher.DataArtifact},
+		Params: []testing.Param{
+			{
+				Pre:       launcher.StartedByDataUI(),
+				ExtraData: []string{launcher.DataArtifact},
+			},
+			{
+				Name:              "omaha",
+				Pre:               launcher.StartedByOmaha(),
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("enguarde", "samus", "sparky")),
+			}},
 	})
 }
 
@@ -31,6 +42,25 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	tconn, err := s.PreValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	// When launched by Omaha we need to wait several seconds after signing in for lacros to be launchable.
+	// It is ready when the image loader path is created with the chrome executable.
+	if s.PreValue().(launcher.PreData).Mode == launcher.Omaha {
+		testing.ContextLog(ctx, "Waiting for Lacros to initialize")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var matches []string
+			var err error
+			if matches, err = filepath.Glob("/run/imageloader/lacros-fishfood/*/chrome"); err != nil {
+				return errors.Wrap(err, "binaryPath does not exist yet")
+			}
+			if len(matches) == 0 {
+				return errors.New("BinaryPath does not exist yet")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 5 * time.Second}); err != nil {
+			s.Fatal("Failed to find lacros binary: ", err)
+		}
 	}
 
 	s.Log("Checking that Lacros is included in installed apps")
