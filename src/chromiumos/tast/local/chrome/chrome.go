@@ -19,6 +19,7 @@ import (
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 	"github.com/golang/protobuf/proto"
+	"github.com/mafredri/cdp/protocol/browser"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/caller"
@@ -38,6 +39,9 @@ const (
 	// LoginTimeout is the maximum amount of time that Chrome is expected to take to perform login.
 	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
 	LoginTimeout = 80 * time.Second
+
+	// LoginCheckTimeout is the maximum amount of time that Chrome is expected to check whether a user has logged in.
+	LoginCheckTimeout = 15 * time.Second
 
 	// gaiaLoginTimeout is the maximum amount of the time that Chrome is expected
 	// to take to perform actual gaia login. As far as I checked a few samples of
@@ -98,6 +102,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/policyutil/pre",
 	"chromiumos/tast/local/bundles/cros/camera/testutil",
 	"chromiumos/tast/local/bundles/cros/ui/cuj",
+	"chromiumos/tast/local/bundles/cros/cuj/pre",
 	"chromiumos/tast/local/bundles/cros/inputs/pre",
 	"chromiumos/tast/local/bundles/crosint/pita/pre",
 	"chromiumos/tast/local/bundles/pita/pita/pre",
@@ -315,6 +320,12 @@ func RestrictARCCPU() Option {
 	return func(c *Chrome) { c.restrictARCCPU = true }
 }
 
+// ReuseLogin returns an Option that can be passed to New to make Chrome to reuse the existing
+// login session from same user
+func ReuseLogin() Option {
+	return func(c *Chrome) { c.reuseLogin = true }
+}
+
 // CrashNormalMode tells the crash handling system to act like it would on a
 // real device. If this option is not used, the Chrome instances created by this package
 // will skip calling crash_reporter and write any dumps into /home/chronos/crash directly
@@ -372,7 +383,7 @@ type Chrome struct {
 	enroll                      bool   // whether device should be enrolled
 	arcMode                     arcMode
 	restrictARCCPU              bool // a flag to control cpu restrictions on ARC
-
+	reuseLogin                  bool
 	// If breakpadTestMode is true, tell Chrome's breakpad to always write
 	// dumps directly to a hardcoded directory.
 	breakpadTestMode bool
@@ -497,6 +508,34 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 
 	if err := c.PrepareExtensions(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
+	}
+
+	if c.reuseLogin && cdputil.IsCdpListening(ctx) {
+		var err error
+		if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort); err != nil {
+			testing.ContextLog(ctx, "Chrome cannot create new session: ", err)
+			return nil, c.chromeErr(err)
+		}
+		userLoggedIn, err := c.IsLoggedIn(ctx)
+		if userLoggedIn {
+			testing.ContextLog(ctx, "User has logged in. ")
+			toClose = nil
+			return c, nil
+		}
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to determine login status: ", err)
+		}
+		// Need to restart extConn and CDP Session, because chrome will be restarted.
+		if c.testExtConn != nil {
+			c.testExtConn.locked = false
+			c.testExtConn.Close()
+			c.testExtConn = nil
+		}
+		if c.devsess != nil {
+			c.devsess.Close(ctx)
+			c.devsess = nil
+		}
+		testing.ContextLog(ctx, "No login session to reuse. Restart chrome")
 	}
 
 	if err := c.restartChromeForTesting(ctx); err != nil {
@@ -1046,6 +1085,11 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 	return upstart.EnsureJobRunning(ctx, "ui")
 }
 
+// NewBrowserContext creates a new empty browser context.
+func (c *Chrome) NewBrowserContext(ctx context.Context) (browser.ContextID, error) {
+	return c.devsess.CreateBrowserContext(ctx)
+}
+
 // NewConn creates a new Chrome renderer and returns a connection to it.
 // If url is empty, an empty page (about:blank) is opened. Otherwise, the page
 // from the specified URL is opened. You can assume that the page loading has
@@ -1088,6 +1132,11 @@ type TargetMatcher = cdputil.TargetMatcher
 // MatchTargetURL returns a TargetMatcher that matches targets with the supplied URL.
 func MatchTargetURL(url string) TargetMatcher {
 	return func(t *target.Info) bool { return t.URL == url }
+}
+
+// MatchTargetTitle returns a TargetMatcher that matches targets with the supplied title.
+func MatchTargetTitle(title string) TargetMatcher {
+	return func(t *target.Info) bool { return t.Title == title }
 }
 
 // NewConnForTarget iterates through all available targets and returns a connection to the
@@ -1849,4 +1898,62 @@ func SaveTraceToFile(ctx context.Context, trace *trace.Trace, path string) error
 	}
 
 	return nil
+}
+
+// IsLoggedIn checks if user has logged in.
+func (c *Chrome) IsLoggedIn(ctx context.Context) (bool, error) {
+	testing.ContextLog(ctx, "try to get user login status")
+
+	cancelCtx, cancel := context.WithTimeout(ctx, LoginCheckTimeout)
+	defer cancel()
+
+	conn, err := c.TestAPIConn(cancelCtx)
+	if err != nil {
+		// If a connect to existing chrome cannot be created, user is not in logged in status
+		return false, nil
+	}
+
+	js := `
+		var loginStatus = null;
+		var currentUser = null;
+
+		chrome.usersPrivate.getLoginStatus(function (status) {
+			loginStatus = status;
+		});
+		chrome.usersPrivate.getCurrentUser(function (user) {
+			currentUser = user;
+		});
+		`
+
+	//testing.ContextLog(ctx, "Run js: ", js)
+
+	if err := conn.Exec(cancelCtx, js); err != nil {
+		return false, errors.Wrap(err, "failed to run js to get loginStatus and current user")
+	}
+
+	var loginStatus, isScreenLocked, currentUser string
+
+	if err := conn.WaitForExpr(cancelCtx, "loginStatus != null"); err != nil {
+		return false, errors.Wrap(err, "failed to wait loginStatus")
+	}
+	if err := conn.Eval(cancelCtx, "loginStatus.isLoggedIn + ''", &loginStatus); err != nil {
+		return false, errors.Wrap(err, "failed to evaluate loginStatus.isLoggedIn")
+	}
+	if err := conn.Eval(cancelCtx, "loginStatus.isScreenLocked + ''", &isScreenLocked); err != nil {
+		return false, errors.Wrap(err, "failed to evaluate loginStatus.isScreenLocked")
+	}
+
+	if loginStatus == "true" {
+		if err := conn.WaitForExpr(cancelCtx, "currentUser != null"); err != nil {
+			return false, errors.Wrap(err, "failed to wait currentUser")
+		}
+		if err := conn.Eval(cancelCtx, "currentUser.email + ''", &currentUser); err != nil {
+			return false, errors.Wrap(err, "failed to evaluate currentUser")
+		}
+	}
+
+	testing.ContextLog(cancelCtx, "loginStatus: ", loginStatus, ", screenLocked: ", isScreenLocked,
+		", currentUser: ", currentUser)
+
+	return loginStatus == "true" && currentUser == c.user, nil
 }
