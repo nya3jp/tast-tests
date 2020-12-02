@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "492b5e92_49647f6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-12-02T09:32:29Z",
+      "side": 1,
+      "message": "I tried to do that but unfortunately the bookmarks aren\u0027t descendants of the folder node. They are descendants of the shelf bar.",
+      "parentUuid": "17c5de3d_4fb069b9",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "8a2e7beec6fffbc1bf68dca839397d920619d0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b628843_89bcaa13",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
         "patchSetId": 10
@@ -88,6 +112,78 @@
         "startChar": 51,
         "endLine": 118,
         "endChar": 52
+      },
+      "revId": "8a2e7beec6fffbc1bf68dca839397d920619d0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3d4d9e5_fb29ecc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-12-02T09:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca18500_8c7dfa49",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 12
+      },
+      "revId": "8a2e7beec6fffbc1bf68dca839397d920619d0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abd3c3a9_0aba5495",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-12-02T09:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8772a4b_f14f9808",
+      "range": {
+        "startLine": 118,
+        "startChar": 51,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "8a2e7beec6fffbc1bf68dca839397d920619d0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "853c9bc4_78ac35db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-12-02T09:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b628843_89bcaa13",
+      "range": {
+        "startLine": 118,
+        "startChar": 64,
+        "endLine": 118,
+        "endChar": 65
       },
       "revId": "8a2e7beec6fffbc1bf68dca839397d920619d0d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"

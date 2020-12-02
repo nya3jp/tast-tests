@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4afbcf9c_c8f8370f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2020-12-02T09:32:29Z",
+      "side": 1,
+      "message": "Thanks Victor \u0026 Gabor!",
+      "revId": "c9e1bdeb0ada7b93a32dd2dcf7aba00b958b49bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
