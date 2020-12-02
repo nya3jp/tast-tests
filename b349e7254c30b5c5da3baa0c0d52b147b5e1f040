@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9163bca1_8445fb4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2202,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-02T07:44:39Z",
+      "side": 1,
+      "message": "Awesome!",
+      "parentUuid": "82f93959_6b102e47",
+      "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68e6f043_55c94dc5",
@@ -178,6 +196,24 @@
       "side": 1,
       "message": "I saw some wpa_supplicant logs on my rammus DUT, but it seems like there is no proper API to monitor it; OTOH, there is even no any logs on grunt device.",
       "parentUuid": "817fcedf_7d43f854",
+      "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "658acfd9_ed0553f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2248,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-02T07:44:39Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "626711c5_49541d55",
       "revId": "b349e7254c30b5c5da3baa0c0d52b147b5e1f040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
