@@ -40,7 +40,7 @@ func init() {
 			"michaelcheco@google.com",
 			"jschettler@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
@@ -51,6 +51,7 @@ func init() {
 					featureFlag: "DiagnosticsApp",
 					waitForApp:  diagnosticsapp.WaitForApp,
 				},
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "print_management",
@@ -60,7 +61,8 @@ func init() {
 					featureFlag: "",
 					waitForApp:  printmanagementapp.WaitForApp,
 				},
-				Pre: chrome.LoggedIn(),
+				Pre:       chrome.LoggedIn(),
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "scan",
