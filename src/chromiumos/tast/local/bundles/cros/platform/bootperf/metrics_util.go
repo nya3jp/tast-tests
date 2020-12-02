@@ -37,8 +37,13 @@ const (
 )
 
 var (
-	// Names of metrics, their associated bootstat events, and 'Required' flag.
-	// Test fails if a required event is not found. Each event samples statistics measured since kernel startup at a specific moment on the boot critical path:
+	// Names of metrics, their associated bootstat events, and 'Required' and 'Recommended' flags.
+	// The test fails if a Required event is not found.
+	// A Recommended (but not Required) event will cause the test to wait for some reasonable time to allow the
+	// event to be recorded, but not fail the test if it doesn't show up. This can allow for some level of flake in
+	// an underlying event (e.g., WiFi hardware failure) without making it completely optional (which would
+	// otherwise fail to report if the event is slower than the slowest Required event).
+	// Each event samples statistics measured since kernel startup at a specific moment on the boot critical path:
 	//   pre-startup - The start of the `chromeos_startup` script;
 	//     roughly, the time when /sbin/init emits the `startup`
 	//     Upstart event.
@@ -59,28 +64,27 @@ var (
 	//     cellular device.
 	//   kernel_to_wifi_registered - The moment when Shill detects a WiFi device.
 	eventMetrics = []struct {
-		MetricName string
-		EventName  string
-		Required   bool
+		MetricName  string
+		EventName   string
+		Required    bool
+		Recommended bool
 	}{
-		{"kernel_to_startup", "pre-startup", true},
-		{"kernel_to_startup_done", "post-startup", true},
-		{"kernel_to_chrome_exec", "chrome-exec", true},
-		{"kernel_to_chrome_main", "chrome-main", true},
+		{"kernel_to_startup", "pre-startup", true, false},
+		{"kernel_to_startup_done", "post-startup", true, false},
+		{"kernel_to_chrome_exec", "chrome-exec", true, false},
+		{"kernel_to_chrome_main", "chrome-main", true, false},
 		// These two events do not happen if device is in OOBE.
-		{"kernel_to_signin_start", "login-start-signin-screen", false},
-		{"kernel_to_signin_wait",
-			"login-wait-for-signin-state-initialize", false},
+		{"kernel_to_signin_start", "login-start-signin-screen", false, false},
+		{"kernel_to_signin_wait", "login-wait-for-signin-state-initialize", false, false},
 		// This event doesn't happen if device has no users.
-		{"kernel_to_signin_users", "login-send-user-list", false},
-		{"kernel_to_login", "login-prompt-visible", true},
+		{"kernel_to_signin_users", "login-send-user-list", false, false},
+		{"kernel_to_login", "login-prompt-visible", true, false},
 		// Not all boards support ARC.
-		{"kernel_to_android_start", "android-start", false},
-		// Not all devices have cellular. All should have WiFi, but we
-		// still don't want to fail (e.g., if there are hardware
-		// issues).
-		{"kernel_to_cellular_registered", "network-cellular-registered", false},
-		{"kernel_to_wifi_registered", "network-wifi-registered", false},
+		{"kernel_to_android_start", "android-start", false, false},
+		// Not all devices have cellular.
+		{"kernel_to_cellular_registered", "network-cellular-registered", false, false},
+		// All should have WiFi, but we still don't want to fail (e.g., if there are hardware issues).
+		{"kernel_to_wifi_registered", "network-wifi-registered", false, true},
 	}
 
 	uptimeFileGlob = filepath.Join("/tmp", uptimePrefix+"*")
@@ -94,10 +98,10 @@ var (
 // WaitUntilBootComplete is a helper function to wait until boot complete and
 // we are ready to collect boot metrics.
 func WaitUntilBootComplete(ctx context.Context) error {
-	return testing.Poll(ctx, func(context.Context) error {
+	pollOnce := func(ctx context.Context, useRecommended bool) error {
 		// Check that bootstat files are available.
 		for _, k := range eventMetrics {
-			if !k.Required {
+			if !(k.Required || (useRecommended && k.Recommended)) {
 				continue
 			}
 
@@ -135,10 +139,20 @@ func WaitUntilBootComplete(ctx context.Context) error {
 		}
 
 		return nil
+	}
+
+	// Wait for Recommended events for the first 60 seconds.
+	if err := testing.Poll(ctx, func(context.Context) error {
+		return pollOnce(ctx, true)
 	}, &testing.PollOptions{
 		Timeout:  60 * time.Second,
 		Interval: time.Second,
-	})
+	}); err == nil {
+		return nil
+	}
+
+	// Try one last time without the Recommended events, if we timed out.
+	return pollOnce(ctx, false)
 }
 
 // parseBootstat reads values from a bootstat event file. Each line of a
