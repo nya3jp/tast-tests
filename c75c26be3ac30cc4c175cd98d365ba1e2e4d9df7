@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "843b895a_a1a00bd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-12-02T00:40:03Z",
+      "side": 1,
+      "message": "adb root is only allowed on -userdebug. You can\u0027t run adb root on -user builds, which means the test will fail on all *-arc-r boards.",
+      "range": {
+        "startLine": 84,
+        "startChar": 40,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "c75c26be3ac30cc4c175cd98d365ba1e2e4d9df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ebea961_44df0e6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
         "patchSetId": 3
