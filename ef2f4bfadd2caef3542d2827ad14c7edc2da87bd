@@ -16,6 +16,46 @@
       "message": "Hi Brendan, \n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "ef2f4bfadd2caef3542d2827ad14c7edc2da87bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e27cb3_a535d581",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-02T20:31:32Z",
+      "side": 1,
+      "message": "Just a nit",
+      "revId": "ef2f4bfadd2caef3542d2827ad14c7edc2da87bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a3e5ac_a9938343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/enlight_facetune.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-02T20:31:32Z",
+      "side": 1,
+      "message": "We may want to set a interval and not click right keypad super fast. Interval: 300 * time.Millisecond maybe or something similar?",
+      "range": {
+        "startLine": 96,
+        "startChar": 25,
+        "endLine": 96,
+        "endChar": 57
+      },
+      "revId": "ef2f4bfadd2caef3542d2827ad14c7edc2da87bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
