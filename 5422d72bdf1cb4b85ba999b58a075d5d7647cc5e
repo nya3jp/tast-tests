@@ -623,6 +623,24 @@
       "parentUuid": "4175da58_b76ecd18",
       "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5be03d6b_68d5b490",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-02T06:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "329eaa0b_0dcdc4ac",
+      "revId": "5422d72bdf1cb4b85ba999b58a075d5d7647cc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

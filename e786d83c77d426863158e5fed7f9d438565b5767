@@ -16,6 +16,23 @@
       "message": "LGTM, but please double check the open comments to see if there are any nits you need to resolve.",
       "revId": "e786d83c77d426863158e5fed7f9d438565b5767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1231fb_ac8984d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-02T06:15:11Z",
+      "side": 1,
+      "message": "Checked not resolved comments ",
+      "revId": "e786d83c77d426863158e5fed7f9d438565b5767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

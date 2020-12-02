@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e3830bb_da60036b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-02T06:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b786e8bb_797245b5",
+      "range": {
+        "startLine": 109,
+        "startChar": 13,
+        "endLine": 109,
+        "endChar": 25
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b008aa66_e2604cb1",
@@ -513,6 +537,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1425fdcb_722dc48e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-02T06:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30341559_5d03aa30",
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c0367f2_04c01253",
@@ -644,6 +686,30 @@
       "side": 1,
       "message": "The thing is that when one of the test fails and does not clean up the bookmark then there is a need to a logic that will track that - what bookmarks were there and what was added.\nI would stick with this for now.",
       "parentUuid": "982fd97a_39db473f",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 2
+      },
+      "revId": "162dc996e299e8df475dc66eef3c646d8d891440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6195e8d6_17f7f83a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-02T06:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10bf5e59_4ed1ce84",
       "range": {
         "startLine": 276,
         "startChar": 0,
