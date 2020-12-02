@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be70a4bb_9ba535dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-02T08:08:53Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t know that.\nI stopped replacing to `adb root`. About android-sh, I want to keep untouched in this CL.",
+      "parentUuid": "843b895a_a1a00bd7",
+      "range": {
+        "startLine": 84,
+        "startChar": 40,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "c75c26be3ac30cc4c175cd98d365ba1e2e4d9df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ebea961_44df0e6e",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-01T18:38:59Z",
       "side": 1,
       "message": "This comment is no longer accurate; please update.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 107
+      },
+      "revId": "c75c26be3ac30cc4c175cd98d365ba1e2e4d9df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca6704ca_5734f7ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-02T08:08:53Z",
+      "side": 1,
+      "message": "Thank you for catching. However, I stop changing to `adb root`, so this is kept as `android-sh`.",
+      "parentUuid": "2ebea961_44df0e6e",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9386ef80_ede4ebb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-02T08:08:53Z",
+      "side": 1,
+      "message": "I used the first one of suggestions. I agree that \"errors\" is confusing.",
+      "parentUuid": "be5f8904_ebff66a9",
+      "range": {
+        "startLine": 91,
+        "startChar": 190,
+        "endLine": 91,
+        "endChar": 210
+      },
+      "revId": "c75c26be3ac30cc4c175cd98d365ba1e2e4d9df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b623a84_50ecc481",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-01T18:39:52Z",
       "side": 1,
       "message": "why change this to 10? is it related to this change?",
+      "range": {
+        "startLine": 104,
+        "startChar": 34,
+        "endLine": 104,
+        "endChar": 36
+      },
+      "revId": "c75c26be3ac30cc4c175cd98d365ba1e2e4d9df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6715a4a_a7ad1617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-02T08:08:53Z",
+      "side": 1,
+      "message": "I reduced this timeout because now this testing.Poll reaches timeout more frequently than before.\n\nBefore this CL, this testing.Poll is used only when the crash using /proc/sysrq-trigger succeded. This just waited the stop.\nAfter this CL, it is called even if the crash fails. Now this also checkes the success of the crash.",
+      "parentUuid": "2b623a84_50ecc481",
       "range": {
         "startLine": 104,
         "startChar": 34,
