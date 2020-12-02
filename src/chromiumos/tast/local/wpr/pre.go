@@ -88,6 +88,29 @@ func RecordMode(archive string) testing.Precondition {
 	return getOrCreatePrecondition(getCallerPackage(), archive, Record)
 }
 
+// RemoteReplayMode returns a precondition that Chrome is logged in, preserving the state
+// and redirects its traffic through a remote WPR.
+//
+// Example usage:
+//
+//	func init() {
+//		testing.AddTest(&testing.Test{
+//			Func: DoSomething
+//			...
+//			Pre: wpr.RemoteReplayMode(),
+//		})
+//	}
+//
+//	func DoSomething(ctx context.Context, s *testing.State) {
+//		// cr is a logged-in Chrome with net traffic redirected through WPR
+//		// and recorded.
+//		cr := s.PreValue().(*chrome.Chrome)
+//		...
+//	}
+func RemoteReplayMode() testing.Precondition {
+	return getOrCreatePrecondition(getCallerPackage(), "", RemoteReplay)
+}
+
 // preImpl implements testing.Precondition.
 type preImpl struct {
 	// Data for testing.Precondition.
@@ -110,6 +133,21 @@ func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
 
 func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
+	switch p.mode {
+	case Record:
+		return p.prepareLocal(ctx, s)
+	case Replay:
+		return p.prepareLocal(ctx, s)
+	case RemoteReplay:
+		return p.prepareRemote(ctx, s)
+	default:
+		s.Fatal("Unknown WPR mode: ", p.mode)
+	}
+
+	return nil
+}
+
+func (p *preImpl) prepareLocal(ctx context.Context, s *testing.PreState) interface{} {
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
@@ -143,6 +181,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			archive = s.DataPath(p.archive)
 		case Record:
 			archive = p.archive
+		case RemoteReplay:
+			s.Fatal("RemoveReplay should prepare with prepareRemote")
 		default:
 			s.Fatal("Unknown WPR mode: ", p.mode)
 		}
@@ -159,6 +199,58 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		p.wpr.HTTPPort, p.wpr.HTTPSPort)
 	var err error
 	p.cr, err = chrome.New(ctx, p.wpr.ChromeOptions...)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	chrome.Lock()
+
+	return p.cr
+}
+
+func (p *preImpl) prepareRemote(ctx context.Context, s *testing.PreState) interface{} {
+	ctx, st := timing.Start(ctx, "prepare_"+p.name)
+	defer st.End()
+
+	httpAddr := s.RequiredVar("wpr_http_addr")
+	httpsAddr := s.RequiredVar("wpr_https_addr")
+	if err := waitForServerSocket(ctx, httpAddr, nil); err != nil {
+		s.Fatalf("Cannot connect to WPR at %s: %v", httpAddr, err)
+	}
+	testing.ContextLog(ctx, "WPR HTTP socket is up at ", httpAddr)
+
+	if p.cr != nil {
+		err := func() error {
+			ctx, cancel := context.WithTimeout(ctx, resetTimeout)
+			defer cancel()
+			ctx, st := timing.Start(ctx, "reset_chrome_"+p.name)
+			defer st.End()
+			if err := p.cr.Responded(ctx); err != nil {
+				return errors.Wrap(err, "existing Chrome connection is unusable")
+			}
+			if err := p.cr.ResetState(ctx); err != nil {
+				return errors.Wrap(err, "failed resetting existing Chrome session")
+			}
+			return nil
+		}()
+		if err == nil {
+			s.Log("Reusing existing Chrome session")
+			return p.cr
+		}
+
+		s.Log("Failed to reuse existing Chrome session: ", err)
+		p.Close(ctx, s)
+	}
+
+	args := chromeRuntimeArgs(httpAddr, httpsAddr)
+	var err error
+
+	testing.ContextLogf(ctx, "Starting Chrome with remote WPR at addrs %s and %s", httpAddr, httpsAddr)
+	p.cr, err = chrome.New(ctx,
+		// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
+		// Remove this when new UI becomes default.
+		chrome.EnableFeatures("WebUITabStrip"),
+		chrome.KeepState(),
+		chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
