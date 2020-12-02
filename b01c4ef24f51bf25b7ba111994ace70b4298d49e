@@ -39,6 +39,30 @@
       },
       "revId": "b01c4ef24f51bf25b7ba111994ace70b4298d49e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab49a8ff_6e23621f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-12-02T00:28:23Z",
+      "side": 1,
+      "message": "It\u0027s actually just an indication that the type casting is successful, which we know for sure anyway because we know the platform we are running on.",
+      "parentUuid": "ad1dfa5f_b21dffeb",
+      "range": {
+        "startLine": 93,
+        "startChar": 7,
+        "endLine": 93,
+        "endChar": 10
+      },
+      "revId": "b01c4ef24f51bf25b7ba111994ace70b4298d49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
