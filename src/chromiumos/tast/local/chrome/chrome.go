@@ -863,6 +863,11 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	}
+	if c.loginMode == fakeLogin {
+		// Syncing with fake user account causes apps to not be pinned.
+		// See crbug.com/1154486.
+		args = append(args, "--disable-sync")
+	}
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
 	}
