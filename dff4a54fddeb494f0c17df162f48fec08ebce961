@@ -16,6 +16,29 @@
       "message": "Hi Brendan, \n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "dff4a54fddeb494f0c17df162f48fec08ebce961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ffcf01_6acec1a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/enlight_pixaloop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-02T20:34:52Z",
+      "side": 1,
+      "message": "ditto here on click interval",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 44
+      },
+      "revId": "dff4a54fddeb494f0c17df162f48fec08ebce961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
