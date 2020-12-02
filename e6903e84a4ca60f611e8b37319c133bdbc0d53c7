@@ -39,6 +39,29 @@
       },
       "revId": "e6903e84a4ca60f611e8b37319c133bdbc0d53c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e47a0643_7b7e6064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_eclipse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-02T22:19:38Z",
+      "side": 1,
+      "message": "Is it ok to use s.OutDir()?",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "e6903e84a4ca60f611e8b37319c133bdbc0d53c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
