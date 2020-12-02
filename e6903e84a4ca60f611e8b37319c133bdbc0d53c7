@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c71c531_0faec3e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-12-02T21:31:59Z",
+      "side": 1,
+      "message": "I started an email thread with some more details, copied from the thread for posterity:\n\n\"[S]omeone suggested a while ago (sorry, I forget who) that we can start by taking screenshots and manually comparing them.\n\nSo I started doing that.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2569023 takes screenshots in our existing app tests. As people add more app tests can you please copy the screenshot-taking logic?\n\nNext step is to build something that can show all the screenshots from a run at once, then in future we can iterate on better and better automation to detect issues now that we\u0027ll have a training set of historical data.\nWon\u0027t make tests fail if they break things, but that automation isn\u0027t necessary for release qualification or searching back to discover when a regression was introduced so still progress.\n\nThoughts? Any concerns/comments/etc?\"",
+      "revId": "e6903e84a4ca60f611e8b37319c133bdbc0d53c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
