@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f472e35_e2bd1483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-02T01:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "760f5d40_561665f2",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "37ec68c2e668b23db9479cfda2fa815a4c62f8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73281795_0cd20bff",
