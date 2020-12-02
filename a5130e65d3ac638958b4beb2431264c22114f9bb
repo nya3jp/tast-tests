@@ -721,6 +721,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d6cd02_5ec4cba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-02T06:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d91486_6ed7ee99",
+      "range": {
+        "startLine": 170,
+        "startChar": 26,
+        "endLine": 170,
+        "endChar": 31
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a718ed39_5e46ac08",
@@ -857,6 +881,24 @@
       "side": 1,
       "message": "It is not when everything works okay and passes. But may be crucial when investigating test failures. In ui testing it is considered a good practice to log \u0027else\u0027 statements. \nConsider someone calling this function twice - the second call would do nothing, no interaction with the ui nor log about what happened.",
       "parentUuid": "a8e51681_e0d635ae",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5983ed25_479183be",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/bookmarksbar/bookmarksbar.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-02T06:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55efeef7_382f02b6",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1200,6 +1242,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca60af6_24894aa1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-02T06:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceccc899_51b02609",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40a8b19f_bb771540",
@@ -1302,6 +1368,24 @@
       "side": 1,
       "message": "Talked with Victor, changing the implementation.",
       "parentUuid": "8b6aad3e_64f813c9",
+      "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba25fb3a_05b56583",
+        "filename": "src/chromiumos/tast/local/chrome/ui/browser/browser.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2020-12-02T06:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2bfc790_bc918921",
       "revId": "a5130e65d3ac638958b4beb2431264c22114f9bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
