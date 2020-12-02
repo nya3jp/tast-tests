@@ -70,6 +70,30 @@
       },
       "revId": "0ba0508463afea235a1fa807adf36127acc9f58e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb5b0a9a_bf371dbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-02T04:39:24Z",
+      "side": 1,
+      "message": "I think we need to close it with the following code.",
+      "parentUuid": "643b08c2_74365948",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "0ba0508463afea235a1fa807adf36127acc9f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
