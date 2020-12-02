@@ -33,7 +33,7 @@ func init() {
 		Func:        ChannelScanDwellTime,
 		Desc:        "Tests that channel dwell time for single-channel scan is within acceptable range",
 		Contacts:    []string{"wgd@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_perf", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
