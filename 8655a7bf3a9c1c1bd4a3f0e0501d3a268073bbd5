@@ -51,6 +51,24 @@
       "parentUuid": "62f45509_67073cad",
       "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1078f124_8cfa3f1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-02T01:07:00Z",
+      "side": 1,
+      "message": "The TestPPDs test has timed out all 9 times it has been run on kefka-kernelnext and the AddHpPrinter test has failed all 10 times it has been run on the board. Both tests have not been run much on kefka-kernelnext so it\u0027s possible the failures are flakes. I created a bug for it (b/174612982) and modified the tests to skip this board for now.",
+      "parentUuid": "560d1318_4a852064",
+      "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
