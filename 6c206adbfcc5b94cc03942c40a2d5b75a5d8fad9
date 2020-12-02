@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b4e7951c_80d3dcec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-02T03:58:04Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "80fa20bf_f9aa8dd6",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "6c206adbfcc5b94cc03942c40a2d5b75a5d8fad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "54c96856_41ac307c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -115,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac4bdb4_a6c5d4b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-02T03:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c98889_63959355",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "6c206adbfcc5b94cc03942c40a2d5b75a5d8fad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "592b7159_515d1639",
@@ -128,6 +176,30 @@
       "writtenOn": "2020-12-02T02:39:45Z",
       "side": 1,
       "message": "I think vaapi is common because this test uses libva-utils.\nShould this be in SoftwareDeps in testing.Test?",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 56
+      },
+      "revId": "6c206adbfcc5b94cc03942c40a2d5b75a5d8fad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b354d898_29516ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-02T03:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "592b7159_515d1639",
       "range": {
         "startLine": 73,
         "startChar": 49,
