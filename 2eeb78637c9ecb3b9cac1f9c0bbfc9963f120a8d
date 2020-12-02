@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a387d72_15ba6d1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-02T23:29:56Z",
+      "side": 1,
+      "message": "Probably more readable if you can use measurement here.\nAlso, this is tast-tests repo, you can drop the tast-tests prefix.",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "61613ab1_c7411a6d",
@@ -31,6 +54,115 @@
       "writtenOn": "2020-12-02T23:01:03Z",
       "side": 1,
       "message": "LGTM with question",
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea80a007_75a65132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-02T23:29:56Z",
+      "side": 1,
+      "message": "check the err returned by NewRAPLSnapshot instead.",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 10
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaebd3cb_e3d1ba18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-02T23:29:56Z",
+      "side": 1,
+      "message": "we shouldn\u0027t ignore the error here.",
+      "range": {
+        "startLine": 128,
+        "startChar": 14,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c54fa6f_9a7f57b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-02T23:29:56Z",
+      "side": 1,
+      "message": "Why we need this? Is `fps` a list? Can you also put this into the commit message?",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 18
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe2c888_9ce9c1d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-02T23:29:56Z",
+      "side": 1,
+      "message": "How about rename the err returned by NewRAPLSnapshot and check it here? Just in case energyDiff is not nil somehow?",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 14
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f292eac9_472693db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-02T23:29:56Z",
+      "side": 1,
+      "message": "Just some idea, how about introduce energy.ReportWattPerfMetrics in the power package? I feel like it is a very useful function.",
       "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
