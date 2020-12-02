@@ -36,9 +36,25 @@ const (
 	sectorSize = 512
 )
 
+type metricRequirement int
+
+const (
+	// An Optional metric may be collected, but we will not wait for it.
+	metricOptional metricRequirement = iota
+	// We will wait a reasonable amount of time for a Recommended metric, but won't abort if it's not found.
+	metricRecommended
+	// We will wait for a Required metric, and abort if it's not found.
+	metricRequired
+)
+
 var (
-	// Names of metrics, their associated bootstat events, and 'Required' flag.
-	// Test fails if a required event is not found. Each event samples statistics measured since kernel startup at a specific moment on the boot critical path:
+	// Names of metrics, their associated bootstat events, and their recommendation status.
+	// The test fails if a Required event is not found.
+	// A Recommended event will cause the test to wait for some reasonable time to allow the event to be recorded,
+	// but not fail the test if it doesn't show up. This can allow for some level of flake in an underlying event
+	// (e.g., WiFi hardware failure) without making it completely optional (which would otherwise fail to report if
+	// the event is slower than the slowest Required event).
+	// Each event samples statistics measured since kernel startup at a specific moment on the boot critical path:
 	//   pre-startup - The start of the `chromeos_startup` script;
 	//     roughly, the time when /sbin/init emits the `startup`
 	//     Upstart event.
@@ -59,28 +75,26 @@ var (
 	//     cellular device.
 	//   kernel_to_wifi_registered - The moment when Shill detects a WiFi device.
 	eventMetrics = []struct {
-		MetricName string
-		EventName  string
-		Required   bool
+		MetricName  string
+		EventName   string
+		Requirement metricRequirement
 	}{
-		{"kernel_to_startup", "pre-startup", true},
-		{"kernel_to_startup_done", "post-startup", true},
-		{"kernel_to_chrome_exec", "chrome-exec", true},
-		{"kernel_to_chrome_main", "chrome-main", true},
+		{"kernel_to_startup", "pre-startup", metricRequired},
+		{"kernel_to_startup_done", "post-startup", metricRequired},
+		{"kernel_to_chrome_exec", "chrome-exec", metricRequired},
+		{"kernel_to_chrome_main", "chrome-main", metricRequired},
 		// These two events do not happen if device is in OOBE.
-		{"kernel_to_signin_start", "login-start-signin-screen", false},
-		{"kernel_to_signin_wait",
-			"login-wait-for-signin-state-initialize", false},
+		{"kernel_to_signin_start", "login-start-signin-screen", metricOptional},
+		{"kernel_to_signin_wait", "login-wait-for-signin-state-initialize", metricOptional},
 		// This event doesn't happen if device has no users.
-		{"kernel_to_signin_users", "login-send-user-list", false},
-		{"kernel_to_login", "login-prompt-visible", true},
+		{"kernel_to_signin_users", "login-send-user-list", metricOptional},
+		{"kernel_to_login", "login-prompt-visible", metricRequired},
 		// Not all boards support ARC.
-		{"kernel_to_android_start", "android-start", false},
-		// Not all devices have cellular. All should have WiFi, but we
-		// still don't want to fail (e.g., if there are hardware
-		// issues).
-		{"kernel_to_cellular_registered", "network-cellular-registered", false},
-		{"kernel_to_wifi_registered", "network-wifi-registered", false},
+		{"kernel_to_android_start", "android-start", metricOptional},
+		// Not all devices have cellular.
+		{"kernel_to_cellular_registered", "network-cellular-registered", metricOptional},
+		// All should have WiFi, but we still don't want to fail (e.g., if there are hardware issues).
+		{"kernel_to_wifi_registered", "network-wifi-registered", metricRecommended},
 	}
 
 	uptimeFileGlob = filepath.Join("/tmp", uptimePrefix+"*")
@@ -94,10 +108,10 @@ var (
 // WaitUntilBootComplete is a helper function to wait until boot complete and
 // we are ready to collect boot metrics.
 func WaitUntilBootComplete(ctx context.Context) error {
-	return testing.Poll(ctx, func(context.Context) error {
+	pollOnce := func(ctx context.Context, recommendation metricRequirement) error {
 		// Check that bootstat files are available.
 		for _, k := range eventMetrics {
-			if !k.Required {
+			if k.Requirement < recommendation {
 				continue
 			}
 
@@ -135,10 +149,20 @@ func WaitUntilBootComplete(ctx context.Context) error {
 		}
 
 		return nil
+	}
+
+	// Wait for Recommended events for the first 60 seconds.
+	if err := testing.Poll(ctx, func(context.Context) error {
+		return pollOnce(ctx, metricRecommended)
 	}, &testing.PollOptions{
 		Timeout:  60 * time.Second,
 		Interval: time.Second,
-	})
+	}); err == nil {
+		return nil
+	}
+
+	// Try one last time with only Required metrics, in case a Recommended metric wasn't found.
+	return pollOnce(ctx, metricRequired)
 }
 
 // parseBootstat reads values from a bootstat event file. Each line of a
@@ -218,7 +242,7 @@ func GatherTimeMetrics(ctx context.Context, results *platform.GetBootPerfMetrics
 		key := "seconds_" + k.MetricName
 		val, err := parseUptime(k.EventName, "/tmp", 0)
 		if err != nil {
-			if k.Required {
+			if k.Requirement == metricRequired {
 				return errors.Wrapf(err, "failed in gather time for %s", k.EventName)
 			}
 			// Failed in getting a non-required metric. Log and skip.
