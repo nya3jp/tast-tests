@@ -19,3 +19,13 @@ const (
 	BootModeRecovery    BootMode = "rec"
 	BootModeUnspecified BootMode = "unspecified"
 )
+
+// RWSection refers to one of the two RW firmware sections installed on a Chromebook.
+type RWSection string
+
+// There are two RW sections of firmware: "A" and "B". Normally, A is used unless B is required, such as while updating A.
+const (
+	RWSectionA           RWSection = "A"
+	RWSectionB           RWSection = "B"
+	RWSectionUnspecified RWSection = ""
+)

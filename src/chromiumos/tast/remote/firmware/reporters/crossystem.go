@@ -18,15 +18,25 @@ type CrossystemParam string
 // Crossystem params used by tests, add more as needed.
 const (
 	CrossystemParamDevswBoot  CrossystemParam = "devsw_boot"
-	CrossystemParamMainfwType CrossystemParam = "mainfw_type"
+	CrossystemParamFWBTries   CrossystemParam = "fwb_tries"
+	CrossystemParamFWTryNext  CrossystemParam = "fw_try_next"
+	CrossystemParamFWTryCount CrossystemParam = "fw_try_count"
+	CrossystemParamFWVboot2   CrossystemParam = "fw_vboot2"
 	CrossystemParamKernkeyVfy CrossystemParam = "kernkey_vfy"
+	CrossystemParamMainfwAct  CrossystemParam = "mainfw_act"
+	CrossystemParamMainfwType CrossystemParam = "mainfw_type"
 )
 
 var (
 	knownCrossystemParams = []CrossystemParam{
 		CrossystemParamDevswBoot,
-		CrossystemParamMainfwType,
+		CrossystemParamFWBTries,
+		CrossystemParamFWTryCount,
+		CrossystemParamFWTryNext,
+		CrossystemParamFWVboot2,
 		CrossystemParamKernkeyVfy,
+		CrossystemParamMainfwAct,
+		CrossystemParamMainfwType,
 	}
 	rCrossystemLine = regexp.MustCompile(`^([^ =]*) *= *(.*[^ ]) *# [^#]*$`)
 )
