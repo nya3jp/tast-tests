@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -22,6 +23,13 @@ const (
 	groupSmoothness metricGroup = "AnimationSmoothness"
 	groupLatency    metricGroup = "InputLatency"
 	groupOther      metricGroup = ""
+)
+
+const (
+	metricPrefix        = "TPS."
+	batteryMetricPrefix = "Battery."
+	powerUsageMeticName = "Power.usage"
+	powerUsagePercName  = "Power.usagePercentage"
 )
 
 const checkInterval = time.Second
@@ -80,13 +88,15 @@ type record struct {
 type Recorder struct {
 	tconn *chrome.TestConn
 
-	names   []string
-	records map[string]*record
+	names          []string
+	records        map[string]*record
+	histsCollector [][]*metrics.Histogram
 
-	timeline         *perf.Timeline
-	gpuDataSource    *gpuDataSource
-	frameDataTracker *FrameDataTracker
-	zramInfoTracker  *ZramInfoTracker
+	timeline           *perf.Timeline
+	gpuDataSource      *gpuDataSource
+	frameDataTracker   *FrameDataTracker
+	zramInfoTracker    *ZramInfoTracker
+	batteryInfoTracker *BatteryInfoTracker
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -119,11 +129,12 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 	gpuDS := newGPUDataSource(tconn)
 	sources := []perf.TimelineDatasource{
 		NewCPUUsageSource("CPU"),
+		power.NewSysfsBatteryMetricsWithPrefix(batteryMetricPrefix),
 		newThermalDataSource(ctx),
 		gpuDS,
 		newMemoryDataSource("RAM.Absolute", "RAM.Diff.Absolute", "RAM"),
 	}
-	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
+	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix(metricPrefix))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}
@@ -131,24 +142,30 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}
 
-	frameDataTracker, err := NewFrameDataTracker()
+	frameDataTracker, err := NewFrameDataTracker(metricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create FrameDataTracker")
 	}
 
-	zramInfoTracker, err := NewZramInfoTracker()
+	zramInfoTracker, err := NewZramInfoTracker(metricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ZramInfoTracker")
 	}
 
+	batteryInfoTracker, err := NewBatteryInfoTracker(ctx, metricPrefix)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create BatteryInfoTracker")
+	}
+
 	r := &Recorder{
-		tconn:            tconn,
-		names:            make([]string, 0, len(configs)),
-		records:          make(map[string]*record, len(configs)+2),
-		timeline:         timeline,
-		gpuDataSource:    gpuDS,
-		frameDataTracker: frameDataTracker,
-		zramInfoTracker:  zramInfoTracker,
+		tconn:              tconn,
+		names:              make([]string, 0, len(configs)),
+		records:            make(map[string]*record, len(configs)+2),
+		timeline:           timeline,
+		gpuDataSource:      gpuDS,
+		frameDataTracker:   frameDataTracker,
+		zramInfoTracker:    zramInfoTracker,
+		batteryInfoTracker: batteryInfoTracker,
 	}
 	for _, config := range configs {
 		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
@@ -186,6 +203,10 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		return nil, errors.Wrap(err, "failed to start ZramInfoTracker")
 	}
 
+	if err := r.batteryInfoTracker.Start(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start BatteryInfoTracker")
+	}
+
 	if err := r.timeline.StartRecording(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start recording timeline data")
 	}
@@ -207,6 +228,8 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) e
 	if err != nil {
 		return err
 	}
+
+	r.histsCollector = append(r.histsCollector, hists)
 	for _, hist := range hists {
 		if hist.TotalCount() == 0 {
 			continue
@@ -249,6 +272,13 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		}
 	}
 
+	if err := r.batteryInfoTracker.Stop(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to stop BatteryInfoTracker: ", err)
+		if stopErr == nil {
+			stopErr = errors.Wrap(err, "failed to stop BatteryInfoTracker")
+		}
+	}
+
 	vs, err := r.timeline.StopRecording()
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to stop timeline: ", err)
@@ -260,6 +290,20 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		return stopErr
 	}
 	pv.Merge(vs)
+
+	// Integrate battery power consumption into CUJ power usage
+	if batteryValues := vs.Get(metricPrefix + batteryMetricPrefix + "system"); batteryValues != nil {
+		pu := float64(0)
+		for _, v := range batteryValues {
+			pu += float64(v) * checkInterval.Seconds()
+		}
+
+		pv.Set(perf.Metric{
+			Name:      metricPrefix + powerUsageMeticName,
+			Unit:      "J",
+			Direction: perf.SmallerIsBetter,
+		}, pu)
+	}
 
 	displayInfo, err := NewDisplayInfo(ctx, r.tconn)
 	if err != nil {
@@ -288,11 +332,96 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 			Variant:   "very_jank_rate",
 			Direction: perf.SmallerIsBetter,
 		}, record.jankCounts[1]/float64(record.totalCount)*100)
+
+		rawHist := func(hist *metrics.Histogram) [][]float64 {
+			var mins = []float64{}
+			var maxs = []float64{}
+			var counts = []float64{}
+			for _, b := range hist.Buckets {
+				mins = append(mins, float64(b.Min))
+				maxs = append(maxs, float64(b.Max))
+				counts = append(counts, float64(b.Count))
+			}
+			return [][]float64{mins, maxs, counts}
+		}
+
+		rawCombine := func(histsCollector [][]*metrics.Histogram, name string) [][]float64 {
+			var mins = []float64{}
+			var maxs = []float64{}
+			var counts = []float64{}
+			for _, hists := range histsCollector {
+				var raw = [][]float64{}
+				for _, hist := range hists {
+					if hist.Name == name {
+						raw = rawHist(hist)
+						break
+					}
+				}
+				mins = append(mins, raw[0]...)
+				maxs = append(maxs, raw[1]...)
+				counts = append(counts, raw[2]...)
+			}
+			return [][]float64{mins, maxs, counts}
+		}
+
+		if len(record.config.jankCriteria) >= 2 {
+			var raw = [][]float64{}
+			raw = rawCombine(r.histsCollector, name)
+			pv.Set(perf.Metric{
+				Name:      name,
+				Unit:      record.config.unit,
+				Variant:   "bucket_min",
+				Direction: record.config.direction,
+				Multiple:  true,
+			}, raw[0]...)
+			pv.Set(perf.Metric{
+				Name:      name,
+				Unit:      record.config.unit,
+				Variant:   "bucket_max",
+				Direction: record.config.direction,
+				Multiple:  true,
+			}, raw[1]...)
+			pv.Set(perf.Metric{
+				Name:      name,
+				Unit:      "count",
+				Variant:   "bucket_count",
+				Direction: record.config.direction,
+				Multiple:  true,
+			}, raw[2]...)
+		}
 	}
 
 	displayInfo.Record(pv)
 	r.frameDataTracker.Record(pv)
 	r.zramInfoTracker.Record(pv)
+	r.batteryInfoTracker.Record(pv)
+
+	setPowerUsage(pv, r.batteryInfoTracker)
 
 	return nil
+}
+
+func setPowerUsage(pv *perf.Values, t *BatteryInfoTracker) {
+	// Integrate battery power consumption into CUJ power usage.
+	pu := float64(0)
+	powerSystemMetricName := metricPrefix + batteryMetricPrefix + "system"
+	if batteryValues := pv.Get(powerSystemMetricName); batteryValues != nil {
+		for _, v := range batteryValues {
+			pu += float64(v) * checkInterval.Seconds()
+		}
+
+		pv.Set(perf.Metric{
+			Name:      metricPrefix + powerUsageMeticName,
+			Unit:      "J",
+			Direction: perf.SmallerIsBetter,
+		}, pu)
+	}
+	fullEnergy := t.EnergyFullDesign()
+	if fullEnergy != 0 {
+		pv.Set(perf.Metric{
+			Name:      metricPrefix + powerUsagePercName,
+			Unit:      "percent",
+			Direction: perf.SmallerIsBetter,
+		}, float64(pu/fullEnergy*100))
+	}
 }
