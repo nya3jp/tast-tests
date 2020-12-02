@@ -148,6 +148,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "237e2288_1e8d2dfa",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-02T10:12:21Z",
+      "side": 1,
+      "message": "With that code, the error message will be like:\n\n There are other errors: error2, error3: error1\n\nbecause errors.Wrap(err, \"foo\") formats to \"foo: err\".\n\nAnyway, I don\u0027t have good suggestion, sorry.",
+      "parentUuid": "32ea74e4_c8698226",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 66
+      },
+      "revId": "c297d1514635d7d684b0d9c0474a01f4b3f42bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "67c38f88_547815f5",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 5
