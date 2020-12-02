@@ -22,8 +22,9 @@ func init() {
 		Contacts: []string{
 			"andrewxu@chromium.org",
 			"newcomer@chromium.org",
+			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
