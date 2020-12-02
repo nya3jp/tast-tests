@@ -25,7 +25,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          chrome.LoggedInDisableSync(),
 	})
 }
 
@@ -38,16 +38,6 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// At login, we should have just Chrome and maybe Files in the Shelf.
-	shelfItems, err := ash.ShelfItems(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get shelf items: ", err)
-	}
-	if len(shelfItems) != 1 {
-		if len(shelfItems) != 2 || shelfItems[1].AppID != apps.Files.ID {
-			s.Fatal("Unexpected apps in the shelf. Expected only Chrome and Files: ", shelfItems)
-		}
-	}
 	// Get the expected browser.
 	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
 	if err != nil {
@@ -58,8 +48,24 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	if chromeApp.Name == apps.Chrome.Name {
 		chromeApp.Name = "Google Chrome"
 	}
-	// Chrome must be first because it is automatically opened upon login.
-	defaultApps := []apps.App{chromeApp, apps.Files, apps.WallpaperPicker}
+
+	default2Apps := []apps.App{chromeApp, apps.Files}
+	default5Apps := append(default2Apps, apps.Gmail, apps.Docs, apps.Youtube)
+
+	// Check that default apps are already pinned once logged in.
+	shelfItems, err := ash.ShelfItems(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get shelf items: ", err)
+	}
+
+	var defaultApps []apps.App
+	if len(shelfItems) == 2 {
+		defaultApps = default2Apps
+	} else if len(shelfItems) == 5 {
+		defaultApps = default5Apps
+	} else {
+		s.Fatal("Unexpected number of apps in shelf, expected 2 or 5, got: ", len(shelfItems))
+	}
 
 	for _, app := range defaultApps {
 		s.Logf("Launching %s", app.Name)

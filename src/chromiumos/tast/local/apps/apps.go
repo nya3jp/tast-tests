@@ -53,6 +53,12 @@ var Diagnostics = App{
 	Name: "Diagnostics",
 }
 
+// Docs has details about the Google Docs app.
+var Docs = App{
+	ID:   "aohghmighlieiainnegkcijnfilokake",
+	Name: "Docs",
+}
+
 // Duo has details about the Duo app.
 var Duo = App{
 	ID:   "djkcbcmkefiiphjkonbeknmcgiheajce",
@@ -69,6 +75,12 @@ var Files = App{
 var Gallery = App{
 	ID:   "jhdjimmaggjajfjphpljagpgkidjilnj",
 	Name: "Gallery",
+}
+
+// Gmail has details about the gmail app.
+var Gmail = App{
+	ID:   "hhkfkjpmacfncmbapfohfocpjpdnobjg",
+	Name: "Gmail",
 }
 
 // Help (aka Explore) has details about the Help app.
@@ -153,6 +165,12 @@ var WallpaperPicker = App{
 var WebStore = App{
 	ID:   "ahfgeienlihckogmohjhadlkjgocpleb",
 	Name: "Web Store",
+}
+
+// Youtube has details about the Youtube app.
+var Youtube = App{
+	ID:   "aniolghapcdkoolpkffememnhpphmjkl",
+	Name: "Youtube",
 }
 
 // Launch launches an app specified by appID.
