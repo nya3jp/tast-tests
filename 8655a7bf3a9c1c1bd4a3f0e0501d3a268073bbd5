@@ -69,6 +69,24 @@
       "parentUuid": "560d1318_4a852064",
       "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd6cc3b_7dbd989f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-12-02T17:05:23Z",
+      "side": 1,
+      "message": "Actually, I think you want to add a SoftwareDep for this to ensure it still runs on normal kefka (combining a check for use flags \"kefka\" and \"kernel-upstream\"). You may need to add kernel-upstream into IUSE for Tast as well.",
+      "parentUuid": "1078f124_8cfa3f1a",
+      "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
