@@ -16,6 +16,46 @@
       "message": "jchinlee@, tast-owners@ PTAL\n\nOthers FYI",
       "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b3c4483_afa07305",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-12-02T23:01:03Z",
+      "side": 1,
+      "message": "LGTM with question",
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b5d08b_1a7d91f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-12-02T23:01:03Z",
+      "side": 1,
+      "message": "energy.Total() seems to include both Zone 0 and 1 --- is it intended that we report that sum as Package0? (I do see this snippet seems similar to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/power/rapl.go;l\u003d59;drc\u003d72549f98bf6817169f13e11513c888acd95a48fe, but I guess we can\u0027t leverage that since the map in perf.Values aren\u0027t queryable)",
+      "range": {
+        "startLine": 194,
+        "startChar": 4,
+        "endLine": 194,
+        "endChar": 12
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
