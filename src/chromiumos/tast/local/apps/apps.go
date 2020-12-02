@@ -7,10 +7,12 @@ package apps
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -221,4 +223,39 @@ func ChromeOrChromium(ctx context.Context, tconn *chrome.TestConn) (App, error) 
 		}
 	}
 	return App{}, errors.New("Neither Chrome or Chromium were found in available apps")
+}
+
+// LaunchBySearch open app by search app name.
+func LaunchBySearch(ctx context.Context, tconn *chrome.TestConn, appName, packageName string) error {
+	if _, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName); err == nil {
+		testing.ContextLogf(ctx, "Package %s is already visible, skipping", packageName)
+		return nil
+	}
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open the keyboard")
+	}
+	defer kb.Close()
+
+	if err := kb.Accel(ctx, "Search"); err != nil {
+		return errors.Wrap(err, "failed to press key 'Search'")
+	}
+
+	if err := testing.Sleep(ctx, time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep")
+	}
+	if err := kb.Type(ctx, appName); err != nil {
+		return errors.Wrap(err, "failed to type the query")
+	}
+	if err := testing.Sleep(ctx, time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep")
+	}
+	if err := kb.Accel(ctx, "Enter"); err != nil {
+		return errors.Wrap(err, "failed to type the enter key")
+	}
+	if err := ash.WaitForVisible(ctx, tconn, packageName); err != nil {
+		return errors.Wrapf(err, "failed to wait for the new window of %s", packageName)
+	}
+
+	return nil
 }
