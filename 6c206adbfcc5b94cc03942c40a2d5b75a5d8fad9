@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "80fa20bf_f9aa8dd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-02T02:32:34Z",
+      "side": 1,
+      "message": "The values in vp8 encoder is used in any use scenario (e.g. for chromeacst and media recorder).\nPerhaps, this should be chrome intel hw vp8 encoder?",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "6c206adbfcc5b94cc03942c40a2d5b75a5d8fad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "54c96856_41ac307c",
@@ -31,6 +54,23 @@
       "writtenOn": "2020-12-02T01:57:49Z",
       "side": 1,
       "message": "Also adding tast-owners@ because I have a bunch of comments\nand Tast style is very opinionated about it.",
+      "revId": "6c206adbfcc5b94cc03942c40a2d5b75a5d8fad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d149d6c_dae6ffed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-02T02:32:34Z",
+      "side": 1,
+      "message": "LGTM % one comment.",
       "revId": "6c206adbfcc5b94cc03942c40a2d5b75a5d8fad9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
