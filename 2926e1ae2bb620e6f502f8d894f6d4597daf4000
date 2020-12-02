@@ -16,6 +16,29 @@
       "message": "PTAL.",
       "revId": "2926e1ae2bb620e6f502f8d894f6d4597daf4000",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "815b9cb0_cc7c0d3a",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-02T02:57:18Z",
+      "side": 1,
+      "message": "Does it make sense to set this flag whenever a fake account is used?",
+      "range": {
+        "startLine": 50,
+        "startChar": 79,
+        "endLine": 50,
+        "endChar": 94
+      },
+      "revId": "2926e1ae2bb620e6f502f8d894f6d4597daf4000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
