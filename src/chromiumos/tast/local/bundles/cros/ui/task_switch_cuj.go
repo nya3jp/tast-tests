@@ -12,9 +12,9 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/gmail"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	chromeui "chromiumos/tast/local/chrome/ui"
@@ -128,7 +128,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 
 	var pc pointer.Controller
 	var setOverviewModeAndWait func(ctx context.Context) error
-	var openAppList func(ctx context.Context) error
 	type subtest struct {
 		name string
 		desc string
@@ -147,9 +146,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		tsew := tc.Touchscreen()
 		setOverviewModeAndWait = func(ctx context.Context) error {
 			return ash.DragToShowOverview(ctx, tsew, stw, tconn)
-		}
-		openAppList = func(ctx context.Context) error {
-			return ash.DragToShowHomescreen(ctx, tsew.Width(), tsew.Height(), stw, tconn)
 		}
 		subtest2 = subtest{
 			"hotseat",
@@ -267,9 +263,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			}
 			return ash.WaitForOverviewState(ctx, tconn, ash.Shown, timeout)
 		}
-		openAppList = func(ctx context.Context) error {
-			return kw.Accel(ctx, "search")
-		}
 		subtest2 = subtest{
 			"alt-tab",
 			"Switching the focused window through Alt-Tab",
@@ -333,117 +326,16 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(closeCtx)
 
-	// Launch arc apps from the app launcher; first open the app-launcher, type
-	// the query and select the first search result, and wait for the app window
-	// to appear. When the app has the splash screen, skip it.
-	// TODO(mukai): make sure that the initial search result is the intended
-	// one.
-	for _, app := range []struct {
-		query       string
-		packageName string
-		skipSplash  func(ctx context.Context) error
-	}{
-		{"play store", playStorePackageName, func(ctx context.Context) error {
-			return nil
-		}},
-		{"gmail", gmailPackageName, func(ctx context.Context) error {
-			const (
-				dialogID            = "com.google.android.gm:id/customPanel"
-				dismissID           = "com.google.android.gm:id/gm_dismiss_button"
-				customPanelMaxCount = 10
-			)
-			gotIt := d.Object(ui.Text("GOT IT"))
-			if err := gotIt.WaitForExists(ctx, timeout); err != nil {
-				s.Log(`Failed to find "GOT IT" button, believing splash screen has been dismissed already`)
-				return nil
-			}
-			if err := gotIt.Click(ctx); err != nil {
-				return errors.Wrap(err, `failed to click "GOT IT" button`)
-			}
-			// Sometimes, the account information might not be ready yet. In that case
-			// a warning dialog appears. If the warning message does not appear, it
-			// is fine.
-			pleaseAdd := d.Object(ui.Text("Please add at least one email address"))
-			if err := pleaseAdd.WaitForExists(ctx, timeout); err == nil {
-				// Even though the warning dialog appears, the email address should
-				// appear already. Therefore, here simply clicks the 'OK' button to
-				// dismiss the warning dialog and moves on.
-				if err := testing.Sleep(ctx, timeout); err != nil {
-					return errors.Wrap(err, "failed to wait for the email address appearing")
-				}
-				okButton := d.Object(ui.ClassName("android.widget.Button"), ui.Text("OK"))
-				if err := okButton.Exists(ctx); err != nil {
-					return errors.Wrap(err, "failed to find the ok button")
-				}
-				if err := okButton.Click(ctx); err != nil {
-					return errors.Wrap(err, "failed to click the OK button")
-				}
-			}
-			takeMe := d.Object(ui.Text("TAKE ME TO GMAIL"))
-			if err := takeMe.WaitForExists(ctx, timeout); err != nil {
-				return errors.Wrap(err, `"TAKE ME TO GMAIL" is not shown`)
-			}
-			if err := takeMe.Click(ctx); err != nil {
-				return errors.Wrap(err, `failed to click "TAKE ME TO GMAIL" button`)
-			}
-			// After clicking 'take me to gmail', it might show a series of dialogs to
-			// finalize the setup. Here skips those dialogs by clicking their 'ok'
-			// buttons.
-			for i := 0; i < customPanelMaxCount; i++ {
-				dialog := d.Object(ui.ID(dialogID))
-				if err := dialog.WaitForExists(ctx, timeout); err != nil {
-					return nil
-				}
-				dismiss := d.Object(ui.ID(dismissID))
-				if err := dismiss.Exists(ctx); err != nil {
-					return errors.Wrap(err, "dismiss button not found")
-				}
-				if err := dismiss.Click(ctx); err != nil {
-					return errors.Wrap(err, "failed to click the dismiss button")
-				}
-			}
-			return errors.New("too many dialog popups")
-		}},
-	} {
-		if err = recorder.Run(ctx, func(ctx context.Context) error {
-			launchCtx, cancel := context.WithTimeout(ctx, 2*time.Minute)
-			defer cancel()
-			if _, err := ash.GetARCAppWindowInfo(ctx, tconn, app.packageName); err == nil {
-				testing.ContextLogf(ctx, "Package %s is already visible, skipping", app.packageName)
-				return nil
-			}
-			if err := openAppList(launchCtx); err != nil {
-				return errors.Wrap(err, "failed to open the app-list")
-			}
-			if err := testing.Sleep(launchCtx, time.Second); err != nil {
-				return errors.Wrap(err, "failed to sleep")
-			}
-			if err := kw.Type(launchCtx, app.query); err != nil {
-				return errors.Wrap(err, "failed to type the query")
-			}
-			// Finds the first search result tile and assume it is the app. Not
-			// searching by name because launcher could append suffix to the app
-			// name. E.g. gmail app has "Gmail, Installed app" as its name. The
-			// suffix is for chromevox and could change.
-			if err := chromeui.StableFindAndClick(ctx, tconn,
-				chromeui.FindParams{
-					ClassName: "SearchResultTileItemView",
-				},
-				&testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-				return errors.Wrapf(err, "failed to find and click app tile: %s", app.query)
-			}
-			if err := ash.WaitForVisible(launchCtx, tconn, app.packageName); err != nil {
-				return errors.Wrapf(err, "failed to wait for the new window of %s", app.packageName)
-			}
-			s.Log("Skipping the splash screen of ", app.query)
-			if err = app.skipSplash(launchCtx); err != nil {
-				return errors.Wrap(err, "failed to skip the splash screen of the app")
-			}
-			// Waits some time to stabilize the result of launcher animations.
-			return testing.Sleep(launchCtx, timeout)
-		}); err != nil {
-			s.Fatalf("Failed to launch %s: %v", app.query, err)
+	if err = recorder.Run(ctx, func(ctx context.Context) error {
+		launchCtx, cancel := context.WithTimeout(ctx, 2*time.Minute)
+		defer cancel()
+		s.Log("Launch Gmail app")
+		if _, err := gmail.New(launchCtx, tconn, d, tabletMode); err != nil {
+			return errors.Wrap(err, "failed to launch Gmail")
 		}
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to launch Gmail: ", err)
 	}
 
 	// Here adds browser windows:

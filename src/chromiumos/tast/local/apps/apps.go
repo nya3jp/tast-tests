@@ -7,10 +7,14 @@ package apps
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/pointer"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -239,4 +243,61 @@ func ChromeOrChromium(ctx context.Context, tconn *chrome.TestConn) (App, error) 
 		}
 	}
 	return App{}, errors.New("Neither Chrome or Chromium were found in available apps")
+}
+
+// LaunchBySearch opens an ARC app by searching the given name.
+func LaunchBySearch(ctx context.Context, tconn *chrome.TestConn, appName, packageName string, tabletMode bool) error {
+	if _, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName); err == nil {
+		testing.ContextLogf(ctx, "Package %s is already visible, skipping", packageName)
+		return nil
+	}
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open the keyboard")
+	}
+	defer kb.Close()
+
+	// open app list
+	if tabletMode {
+		tc, err := pointer.NewTouchController(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to create a touch controller")
+		}
+		stw := tc.EventWriter()
+		tsew := tc.Touchscreen()
+		if err := ash.DragToShowHomescreen(ctx, tsew.Width(), tsew.Height(), stw, tconn); err != nil {
+			return errors.Wrap(err, "failed to drag to show Homescreen")
+		}
+	} else {
+		if err := kb.Accel(ctx, "Search"); err != nil {
+			return errors.Wrap(err, "failed to press key 'Search'")
+		}
+	}
+
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
+	if err := kb.Type(ctx, appName); err != nil {
+		return errors.Wrap(err, "failed to type the query")
+	}
+	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to wait for animation finished")
+	}
+
+	params := ui.FindParams{ClassName: "SearchResultTileItemView"}
+	node, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to wait app icon")
+	}
+	defer node.Release(ctx)
+
+	if err := node.StableLeftClick(ctx, &testing.PollOptions{Interval: time.Second, Timeout: time.Second * 10}); err != nil {
+		return errors.Wrap(err, "failed to click app icon")
+	}
+
+	if err := ash.WaitForVisible(ctx, tconn, packageName); err != nil {
+		return errors.Wrapf(err, "failed to wait for the new window of %s", packageName)
+	}
+
+	return nil
 }
