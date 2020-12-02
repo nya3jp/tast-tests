@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34bd763a_db1b48cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-02T08:08:53Z",
+      "side": 1,
+      "message": "I\u0027ve stopped replacing `android-sh` in this CL.\nI was trying to do two things in one CL, but now do only one thing, fixing the failure on Stainless.",
+      "revId": "06fd649c2bd7cc056aad14899e0da490fc8a8786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
