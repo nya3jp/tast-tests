@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b801e8_d5be5b1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-12-02T20:01:30Z",
+      "side": 1,
+      "message": "Is this the optimal place for this logic architecturally?  (I think it probably makes sense, just want to make sure we think it though, and avoid making test content more complex than required).  Are the subsequent tests failing b/c repair jobs are not not running between them or because the repair system is missing a validator to detect the condition that causes the subsequent tests to fail?",
+      "revId": "d47dc1a69c2579165330a933226a8fe9f026d749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
