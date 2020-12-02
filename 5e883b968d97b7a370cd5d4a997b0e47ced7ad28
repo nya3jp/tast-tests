@@ -188,6 +188,24 @@
       "parentUuid": "93f9bb6d_bb2cf833",
       "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "942c81fd_e0e55373",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-12-02T08:41:09Z",
+      "side": 1,
+      "message": "Exists() usually execuest in the millisecond scale, so it should not be a problem.\nBut if I remember correctly it does not return with a context.DeadlineExceeded error, but a wrapped error. (Or if the open source package it uses is not updated yet, it returns with a concatenated error, which is not a DeadlineExceeded error anymore.)\nI will try to check it this afternoon.",
+      "parentUuid": "e655392f_075eb0d1",
+      "revId": "5e883b968d97b7a370cd5d4a997b0e47ced7ad28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
