@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b861f5d9_98e696f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-02T07:44:39Z",
+      "side": 1,
+      "message": "How about adding a comment:\n\n// Asserts that after f() is called, shill sees the service changes state to Idle then to IsConnected.\n// The reason to pass f() is because we need to set up a shill property watcher before the f() is called.",
+      "revId": "febe31651f57e9e035f28243eb5b133219e4a599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
