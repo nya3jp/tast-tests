@@ -16,6 +16,184 @@
       "message": "PTAL.",
       "revId": "103d82ccbb21864c76d144627527047adc26a1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22abbb0e_669779c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-02T14:46:39Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "752d682d_0537f63c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-02T14:46:39Z",
+      "side": 1,
+      "message": "note: 7 min may be too long to take to promote to critical in the future.\nit may be necessary to reduce the total duration, then.",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93389783_5d81a0e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-02T14:46:39Z",
+      "side": 1,
+      "message": "nit: could you move common deps to outside of Params?",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7463882_ea89a09e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-02T14:46:39Z",
+      "side": 1,
+      "message": "maybe: waitForActionBarStabilized ?",
+      "range": {
+        "startLine": 139,
+        "startChar": 5,
+        "endLine": 139,
+        "endChar": 27
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5a10f12_04825ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-02T14:46:39Z",
+      "side": 1,
+      "message": "clickShareButtonAndWaitForApp\n\nBTW, is it necessary to combine those two? WDYT to split into two, clickShareButton, and WaitForApp.",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 31
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079d66db_8d45522c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-02T14:46:39Z",
+      "side": 1,
+      "message": "nit: setUpARC",
+      "range": {
+        "startLine": 236,
+        "startChar": 5,
+        "endLine": 236,
+        "endChar": 13
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4659a1f2_cab6e9bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-02T14:46:39Z",
+      "side": 1,
+      "message": "missing a.Close() in this case.",
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c58f9a3_e30d219b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-02T14:46:39Z",
+      "side": 1,
+      "message": "style: could you split this else if into two? Specifically, else is unnecessary.\n\nif err :\u003d allowButton.WaitForExists(...); ... {\n  return ...\n}\nif err :\u003d allowButton.Click(...); ... {\n  ...\n}",
+      "range": {
+        "startLine": 281,
+        "startChar": 3,
+        "endLine": 281,
+        "endChar": 14
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
