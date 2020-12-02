@@ -29,6 +29,12 @@ func NewRAPLPowerMetrics() *RAPLPowerMetrics {
 	return &RAPLPowerMetrics{nil, make(map[string]perf.Metric), ""}
 }
 
+// NewRAPLPowerMetricsWithPrefix creates a timeline metric to collect Intel
+// RAPL energy numbers. The given prefix will be put in front of metric name.
+func NewRAPLPowerMetricsWithPrefix(prefix string) *RAPLPowerMetrics {
+	return &RAPLPowerMetrics{nil, make(map[string]perf.Metric), prefix}
+}
+
 // Setup creates a RAPLSnapshot which lets us sample energy numbers without
 // worrying about overflow. We do this in Setup because there's some extra work
 // scanning sysfs that might be expensive if done during the test.
