@@ -23,8 +23,9 @@ const resetTimeout = 30 * time.Second
 
 // PreData is the struct returned by the preconditions.
 type PreData struct {
-	Chrome *chrome.Chrome
-	ARC    *arc.ARC
+	Chrome    *chrome.Chrome
+	ARC       *arc.ARC
+	LoginTime int64
 }
 
 type preImpl struct {
@@ -32,6 +33,7 @@ type preImpl struct {
 	timeout         time.Duration
 	cr              *chrome.Chrome
 	arc             *arc.ARC
+	loginTime       int64
 	optinCompleted  bool
 	origRunningPkgs map[string]struct{}
 }
@@ -69,42 +71,69 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		var err error
 		username := s.RequiredVar("ui.cuj_username")
 		password := s.RequiredVar("ui.cuj_password")
-		p.cr, err = chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
+
+		var opts []chrome.Option // Options that should be passed to New.
+		opts = append(opts,
+			chrome.GAIALogin(),
+			chrome.Auth(username, password, "gaia-id"),
+			chrome.ARCSupported(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
+
+		if keepstate, _ := s.Var("ui.keepstate"); keepstate == "true" {
+			opts = append(opts, chrome.KeepState())
+		}
+		if disableSWA, _ := s.Var("ui.disableSWA"); disableSWA == "true" {
+			opts = append(opts, chrome.DisableFeatures("CameraSystemWebApp"))
+		}
+
+		start := time.Now()
+		p.cr, err = chrome.New(ctx, opts...)
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
+		end := time.Now()
+		p.loginTime = end.Sub(start).Milliseconds()
+
 		chrome.Lock()
 	}()
 
-	func() {
-		if p.optinCompleted {
-			return
-		}
-		const playStorePackageName = "com.android.vending"
-		ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout)
-		defer cancel()
+	tconn, err := p.cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
 
-		// Optin to Play Store.
-		s.Log("Opting into Play Store")
-		tconn, err := p.cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to get the test conn: ", err)
-		}
-		if err := optin.Perform(ctx, p.cr, tconn); err != nil {
-			s.Fatal("Failed to optin to Play Store: ", err)
-		}
-		p.optinCompleted = true
+	if provisioned, err := checkArcProvisioned(ctx, tconn); err != nil {
+		s.Fatal("Failed to get arc provisioned")
+	} else if !provisioned {
+		func() {
+			if p.optinCompleted {
+				return
+			}
+			const playStorePackageName = "com.android.vending"
+			ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout)
+			defer cancel()
 
-		s.Log("Waiting for Playstore shown")
-		if err := ash.WaitForVisible(ctx, tconn, playStorePackageName); err != nil {
-			s.Fatal("Failed to wait for the playstore: ", err)
-		}
+			// Optin to Play Store.
+			s.Log("Opting into Play Store")
+			tconn, err := p.cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to get the test conn: ", err)
+			}
+			if err := optin.Perform(ctx, p.cr, tconn); err != nil {
+				s.Fatal("Failed to optin to Play Store: ", err)
+			}
+			p.optinCompleted = true
 
-		if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-			s.Fatal("Failed to close Play Store: ", err)
-		}
-	}()
+			s.Log("Waiting for Playstore shown")
+			if err := ash.WaitForVisible(ctx, tconn, playStorePackageName); err != nil {
+				s.Fatal("Failed to wait for the playstore: ", err)
+			}
+
+			if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+				s.Fatal("Failed to close Play Store: ", err)
+			}
+		}()
+	}
 
 	func() {
 		ctx, cancel := context.WithTimeout(ctx, arc.BootTimeout)
@@ -191,4 +220,13 @@ var loggedInToCUJUser = &preImpl{name: "logged_in_to_cuj_user", timeout: chrome.
 // test user and activates ARC.
 func LoggedInToCUJUser() testing.Precondition {
 	return loggedInToCUJUser
+}
+
+// checkArcProvisioned checks whether ARC provisioning is completed.
+func checkArcProvisioned(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	var provisioned bool
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.isArcProvisioned)()`, &provisioned); err != nil {
+		return false, errors.Wrap(err, "failed running autotestPrivate.isArcProvisioned")
+	}
+	return provisioned, nil
 }
