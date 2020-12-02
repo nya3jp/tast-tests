@@ -1,0 +1,1 @@
+syz_emit_ethernet(0x1a, &(0x7f0000000000)={@link_local, @multicast, @val={@void}, {@mpls_mc={0x8848, {[], @llc={@snap={0x0, 0x0, 'L', "130f98"}}}}}}, 0x0)

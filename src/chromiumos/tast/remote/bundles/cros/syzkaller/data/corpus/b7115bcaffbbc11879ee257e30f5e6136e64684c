@@ -1,0 +1,2 @@
+r0 = syz_init_net_socket$bt_l2cap(0x1f, 0x1, 0x0)
+fsetxattr$security_selinux(r0, &(0x7f0000000000)='security.selinux\x00', &(0x7f0000004d00)='system_u:object_r:ldconfig_exec_t:s0\x00', 0xfe73, 0x0)

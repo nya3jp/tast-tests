@@ -1,0 +1,2 @@
+r0 = socket$inet(0x2, 0x3, 0x2)
+ioctl$sock_inet_SIOCGIFBRDADDR(r0, 0x8919, &(0x7f0000000040)={'team_slave_0\x00'})

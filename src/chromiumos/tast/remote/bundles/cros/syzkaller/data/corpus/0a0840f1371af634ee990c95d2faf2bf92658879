@@ -1,0 +1,5 @@
+syz_emit_ethernet(0x4a, &(0x7f0000000140)=ANY=[@ANYBLOB="aaaaaaaaaaaaffffffffffff86dd60afd72100000600000000000000000000000000f100000133"], 0x0)
+socket$inet6(0xa, 0x0, 0x0)
+fcntl$dupfd(0xffffffffffffffff, 0x0, 0xffffffffffffffff)
+sendmsg$TIPC_NL_SOCK_GET(0xffffffffffffffff, 0x0, 0x0)
+ioctl$FS_IOC_REMOVE_ENCRYPTION_KEY_ALL_USERS(0xffffffffffffffff, 0xc0406619, 0x0)

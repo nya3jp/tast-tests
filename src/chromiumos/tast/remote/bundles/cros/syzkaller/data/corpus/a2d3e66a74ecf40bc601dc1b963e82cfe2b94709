@@ -1,0 +1,3 @@
+r0 = openat$vndbinder(0xffffffffffffff9c, &(0x7f0000000240)='/dev/vndbinder\x00', 0x0, 0x0)
+ioctl$FICLONERANGE(r0, 0x4020940d, 0x0)
+ioctl$BINDER_GET_NODE_DEBUG_INFO(r0, 0xc018620b, &(0x7f0000000000))

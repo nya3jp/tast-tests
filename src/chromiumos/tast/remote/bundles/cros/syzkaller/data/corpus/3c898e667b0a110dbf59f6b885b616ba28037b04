@@ -1,0 +1,2 @@
+r0 = openat$keychord(0xffffffffffffff9c, &(0x7f00000000c0)='/dev/keychord\x00', 0x141082, 0x0)
+write$FUSE_NOTIFY_RETRIEVE(r0, &(0x7f0000000100)={0x30}, 0x30)

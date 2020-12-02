@@ -1,0 +1,1 @@
+prctl$PR_MCE_KILL(0x21, 0xb99aacf291bea5c6, 0x0)

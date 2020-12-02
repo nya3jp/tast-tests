@@ -1,0 +1,5 @@
+r0 = syz_init_net_socket$bt_hci(0x1f, 0x3, 0x1)
+ioctl$sock_bt_hci(r0, 0x400448c9, 0x0)
+r1 = openat$vsock(0xffffffffffffff9c, &(0x7f00000013c0)='/dev/vsock\x00', 0x0, 0x0)
+ioctl$VIDIOC_G_EDID(r1, 0xc0285628, 0x0)
+ioctl$USBDEVFS_RESETEP(r1, 0x80045503, &(0x7f0000000000)={0xc})

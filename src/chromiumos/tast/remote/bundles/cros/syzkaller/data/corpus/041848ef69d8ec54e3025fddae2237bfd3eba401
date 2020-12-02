@@ -1,0 +1,2 @@
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+getsockopt$inet_IP_XFRM_POLICY(r0, 0x0, 0x11, &(0x7f00000001c0)={{{@in6=@ipv4={[], [], @remote}, @in=@broadcast}}, {{@in=@broadcast}, 0x0, @in6=@empty}}, &(0x7f0000000080)=0xffffffffffffff2f)

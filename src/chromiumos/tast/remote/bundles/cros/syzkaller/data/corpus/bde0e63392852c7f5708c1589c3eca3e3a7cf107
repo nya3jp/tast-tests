@@ -1,0 +1,2 @@
+r0 = socket$inet6(0xa, 0x100000000002, 0x0)
+ioctl$sock_SIOCETHTOOL(r0, 0x8946, &(0x7f0000000200)={'bridge_slave_0\x00', &(0x7f0000000040)=@ethtool_eee={0x45}})

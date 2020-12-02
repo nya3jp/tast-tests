@@ -1,0 +1,4 @@
+unshare(0x400)
+socket$packet(0x11, 0x0, 0x300)
+r0 = syz_open_procfs(0x0, &(0x7f0000000040)='net/ptype\x00')
+read$alg(r0, &(0x7f0000000200)=""/222, 0xde)

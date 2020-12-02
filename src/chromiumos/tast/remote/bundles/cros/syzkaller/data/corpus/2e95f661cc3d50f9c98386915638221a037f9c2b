@@ -1,0 +1,1 @@
+openat$drirender128(0xffffffffffffff9c, &(0x7f0000000100)='/dev/dri/renderD128\x00', 0x603, 0x0)

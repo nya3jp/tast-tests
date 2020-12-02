@@ -1,0 +1,7 @@
+r0 = openat$i915(0xffffffffffffff9c, &(0x7f0000000000)='/dev/i915\x00', 0x0, 0x0)
+ioctl$DRM_IOCTL_I915_GEM_CREATE(r0, 0xc010645b, &(0x7f0000000180)={0xcdbe})
+ioctl$DRM_IOCTL_I915_GEM_PREAD(r0, 0x4020645c, &(0x7f0000000040)={0x1, 0x0, 0x99ce, 0x7a, &(0x7f0000000340)="57d5832b6cbd47e44817ff74bffa68b9898f21f65aa16555c5d186f6b51de84a56efca27f7a9eb67762ae5a9b67ce9f74e4111568d7b8fb52f20ec812ff014bcaa1fd3c08af32d755c579be6a0c9a903e4fc016fcf78c8731b708b29e58485960dfde68338ea0403f32b4c7a41ea0548ac751e0c9fb7b7d3954e"})
+ioctl$SNDRV_SEQ_IOCTL_CREATE_QUEUE(0xffffffffffffffff, 0xc08c5332, &(0x7f0000000040)={0xee85, 0x0, 0x0, 'queue0\x00'})
+r1 = openat$sndseq(0xffffffffffffff9c, 0x0, 0x0)
+ioctl$SNDRV_SEQ_IOCTL_CLIENT_ID(r1, 0x80045301, &(0x7f0000000380))
+ioctl$SNDRV_SEQ_IOCTL_SET_CLIENT_POOL(0xffffffffffffffff, 0x4058534c, 0x0)

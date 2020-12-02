@@ -1,0 +1,1 @@
+syz_open_dev$video(&(0x7f0000000e00)='/dev/video#\x00', 0xffffffffffffffff, 0x0)

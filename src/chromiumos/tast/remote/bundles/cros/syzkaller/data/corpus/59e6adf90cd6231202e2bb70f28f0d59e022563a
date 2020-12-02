@@ -1,0 +1,1 @@
+syz_open_dev$media(&(0x7f0000000080)='/dev/media#\x00', 0x325153db, 0x517801)

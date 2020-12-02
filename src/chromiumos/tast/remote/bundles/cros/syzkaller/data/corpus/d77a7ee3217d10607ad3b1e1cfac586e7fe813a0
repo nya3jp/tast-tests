@@ -1,0 +1,3 @@
+r0 = add_key$keyring(&(0x7f0000000040)='keyring\x00', &(0x7f0000000080)={'syz', 0x0}, 0x0, 0x0, 0xfffffffffffffffe)
+keyctl$revoke(0x3, r0)
+request_key(&(0x7f0000000240)='keyring\x00', &(0x7f0000000200)={'syz', 0x0}, &(0x7f00000001c0)='{\\@\\)++\x00', 0x0)

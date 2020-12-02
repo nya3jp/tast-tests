@@ -1,0 +1,2 @@
+socketpair$unix(0x1, 0x2, 0x0, &(0x7f0000000080)={0xffffffffffffffff, <r0=>0xffffffffffffffff})
+connect(r0, &(0x7f00000000c0)=@tipc=@id, 0x80)

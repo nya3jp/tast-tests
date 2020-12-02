@@ -1,0 +1,7 @@
+openat$vimc1(0xffffffffffffff9c, 0x0, 0x2, 0x0)
+ioctl$VIDIOC_ENUM_FMT(0xffffffffffffffff, 0xc0405602, 0x0)
+r0 = syz_open_dev$video(&(0x7f0000000040)='/dev/video#\x00', 0x3, 0x0)
+syz_open_dev$video(0x0, 0x0, 0x0)
+ioctl$VIDIOC_ENUM_FMT(0xffffffffffffffff, 0xc0405602, 0x0)
+ioctl$VIDIOC_S_FBUF(0xffffffffffffffff, 0x4030560b, &(0x7f0000000380)={0x10, 0x10, &(0x7f0000000300)="7c5022478874b11a89f2db8b2d669c547a0a8f8c530a58518fdfed1e998f2bc4f1e6242c5c76a18a5eae35ac72f254c6186044d1067fee2cfa59eebf1ec118ee265a0df9d087d83f7983ceeacdfd5cc589694a74e00e3275bd036a27065a6a9bd6659b7344cea5ab0df9ae31d758db9e28307063105c487f560ab8011d72c515", {0x3, 0x5, 0x35303553, 0x0, 0x6, 0xf8ddcc4, 0x5, 0x4}})
+ioctl$VIDIOC_S_FMT(r0, 0xc0d05605, &(0x7f0000000080)={0x1, @vbi={0x0, 0x14}})

@@ -1,0 +1,1 @@
+syz_emit_ethernet(0x4e, &(0x7f0000000300)={@local, @remote, @void, {@ipv6={0x86dd, @generic={0x0, 0x6, "b549c6", 0x18, 0x0, 0x0, @local, @rand_addr=' \x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02', {[@dstopts={0x0, 0x1, [], [@jumbo, @pad1]}]}}}}}, 0x0)

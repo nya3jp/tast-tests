@@ -1,0 +1,2 @@
+r0 = openat$uinput(0xffffffffffffff9c, &(0x7f0000000000)='/dev/uinput\x00', 0x0, 0x0)
+ioctl$FS_IOC_GET_ENCRYPTION_KEY_STATUS(r0, 0xc080661a, 0x0)

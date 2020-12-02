@@ -1,0 +1,4 @@
+unshare(0x400)
+r0 = openat$pfkey(0xffffffffffffff9c, &(0x7f0000000000)='/proc/self/net/pfkey\x00', 0x250662, 0x0)
+r1 = socket$inet_tcp(0x2, 0x1, 0x0)
+fcntl$dupfd(r0, 0x0, r1)

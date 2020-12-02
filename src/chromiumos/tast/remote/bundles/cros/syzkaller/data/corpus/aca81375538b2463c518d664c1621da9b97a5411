@@ -1,0 +1,1 @@
+syz_emit_ethernet(0x5a, &(0x7f0000000000)={@link_local, @multicast, @val={@void, {0x8100, 0x1}}, {@canfd={0xd, {{}, 0x0, 0x0, 0x0, 0x0, "9211900c7a165f9f2e56a873955299a2fd2d4a434d69dd78fc2e174b492f4aea421bd8cb6f18edaca2d574cfe714af8f6d26e904e1acc8075c9651c07b2954ff"}}}}, 0x0)

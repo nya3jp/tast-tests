@@ -1,0 +1,2 @@
+r0 = openat$i915(0xffffffffffffff9c, &(0x7f00000002c0)='/dev/i915\x00', 0x0, 0x0)
+ioctl$DRM_IOCTL_I915_GEM_VM_DESTROY(r0, 0x4010647b, 0x0)

@@ -1,0 +1,2 @@
+r0 = openat$vga_arbiter(0xffffffffffffff9c, &(0x7f0000000440)='/dev/vga_arbiter\x00', 0x1, 0x0)
+pwrite64(r0, &(0x7f0000000480)='/', 0x1, 0x0)

@@ -1,0 +1,2 @@
+syz_init_net_socket$bt_l2cap(0x1f, 0x5, 0x0)
+syz_open_procfs(0xffffffffffffffff, &(0x7f0000000100)='fd/4\x00')

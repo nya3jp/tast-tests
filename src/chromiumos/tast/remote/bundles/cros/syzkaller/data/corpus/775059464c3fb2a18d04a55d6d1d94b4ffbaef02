@@ -1,0 +1,2 @@
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000000280)='/dev/snd/seq\x00', 0x802)
+readv(r0, &(0x7f00000024c0)=[{&(0x7f00000002c0)=""/4096, 0x1000}], 0x1)

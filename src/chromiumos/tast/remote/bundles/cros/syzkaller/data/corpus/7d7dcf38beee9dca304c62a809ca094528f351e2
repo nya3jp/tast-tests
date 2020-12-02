@@ -1,0 +1,2 @@
+socketpair$unix(0x1, 0x3, 0x0, &(0x7f00000016c0)={<r0=>0xffffffffffffffff})
+ioctl$sock_SIOCETHTOOL(r0, 0x8946, &(0x7f0000000080)={'geneve0\x00', &(0x7f0000000000)=@ethtool_eee={0x44}})

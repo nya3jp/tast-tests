@@ -1,0 +1,3 @@
+r0 = syz_open_procfs(0xffffffffffffffff, &(0x7f0000000080)='net/protocols\x00')
+r1 = socket$alg(0x26, 0x5, 0x0)
+sendfile(r1, r0, 0x0, 0xfffffff)

@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0x0, &(0x7f00000001c0)='sched\x00')
+write$FUSE_GETXATTR(r0, 0x0, 0x0)

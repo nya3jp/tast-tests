@@ -1,0 +1,2 @@
+r0 = openat$vim2m(0xffffffffffffff9c, &(0x7f0000000040)='/dev/vim2m\x00', 0x2, 0x0)
+ioctl$vim2m_VIDIOC_TRY_FMT(r0, 0xc0d05640, &(0x7f00000002c0)={0x0, @pix_mp})

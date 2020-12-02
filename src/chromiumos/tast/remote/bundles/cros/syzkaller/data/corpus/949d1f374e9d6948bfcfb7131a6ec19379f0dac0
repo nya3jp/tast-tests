@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0x0, &(0x7f0000000000)='attr\x00')
+mknodat(r0, &(0x7f0000000080)='./file0\x00', 0x0, 0x0)

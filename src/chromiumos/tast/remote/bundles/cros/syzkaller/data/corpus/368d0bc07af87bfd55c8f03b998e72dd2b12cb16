@@ -1,0 +1,6 @@
+r0 = socket$inet6(0xa, 0x1000000000002, 0x0)
+r1 = socket$inet6(0xa, 0x1000000000002, 0x0)
+r2 = dup3(r1, r0, 0x0)
+r3 = socket$inet6(0xa, 0x100000000002, 0x0)
+ioctl$ifreq_SIOCGIFINDEX_batadv_hard(r3, 0x8933, &(0x7f0000000040)={'batadv_slave_1\x00', <r4=>0x0})
+ioctl$sock_inet6_SIOCSIFADDR(r2, 0x8916, &(0x7f0000000080)={@private2={0xfc, 0x2, [], 0x1}, 0x0, r4})

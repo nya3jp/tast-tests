@@ -1,0 +1,4 @@
+r0 = socket$inet_icmp_raw(0x2, 0x3, 0x1)
+r1 = getpid()
+fcntl$setownex(r0, 0xf, &(0x7f0000000240)={0x0, r1})
+ioctl$sock_SIOCGPGRP(r0, 0x8904, 0x0)

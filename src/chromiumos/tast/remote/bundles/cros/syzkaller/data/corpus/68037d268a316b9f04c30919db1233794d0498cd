@@ -1,0 +1,2 @@
+r0 = add_key$user(&(0x7f0000000200)='user\x00', &(0x7f0000000240)={'syz', 0x1}, &(0x7f0000000280)="8d", 0x1, 0xfffffffffffffffd)
+keyctl$search(0xa, r0, &(0x7f0000000340)='user\x00', &(0x7f0000000380)={'syz', 0x3}, 0x0)

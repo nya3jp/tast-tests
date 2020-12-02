@@ -1,0 +1,3 @@
+r0 = socket$packet(0x11, 0x2, 0x300)
+setsockopt$packet_fanout(r0, 0x107, 0x12, &(0x7f0000000440), 0x4)
+syz_emit_ethernet(0x2c, &(0x7f0000000480)={@remote, @local, @void, {@ipx={0x8137, {0xffff, 0x1e, 0x0, 0x0, {@broadcast, @random="1958ae41793d"}, {@broadcast, @random="273475202bab"}}}}}, 0x0)

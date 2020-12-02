@@ -1,0 +1,2 @@
+r0 = syz_init_net_socket$bt_l2cap(0x1f, 0x3, 0x3)
+ioctl$VIDIOC_G_EXT_CTRLS(r0, 0xc0205647, 0x0)

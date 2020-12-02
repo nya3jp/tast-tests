@@ -1,0 +1,2 @@
+r0 = socket$packet(0x11, 0x3, 0x300)
+ioctl$sock_SIOCETHTOOL(r0, 0x8946, &(0x7f0000000300)={'vlan1\x00', &(0x7f00000002c0)=@ethtool_stats})

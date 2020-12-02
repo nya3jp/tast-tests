@@ -1,0 +1,1 @@
+openat$i915(0xffffffffffffff9c, &(0x7f00000000c0)='/dev/i915\x00', 0x4d1885, 0x0)

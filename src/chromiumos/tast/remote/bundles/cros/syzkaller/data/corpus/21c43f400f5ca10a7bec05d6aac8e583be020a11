@@ -1,0 +1,3 @@
+ioctl$sock_SIOCETHTOOL(0xffffffffffffffff, 0x8946, &(0x7f00000003c0)={'wg1\x00', &(0x7f0000000040)=ANY=[@ANYBLOB="0300000028f48c30d4ebf62772ff6551271821f197bdef23"]})
+r0 = socket$inet(0x2, 0x3, 0x9)
+setsockopt$inet_mreqn(r0, 0x0, 0x40, &(0x7f0000000000)={@multicast2, @private}, 0xc)

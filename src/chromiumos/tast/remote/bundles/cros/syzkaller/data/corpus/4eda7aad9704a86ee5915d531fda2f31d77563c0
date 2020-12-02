@@ -1,0 +1,2 @@
+syz_open_dev$sndctrl(&(0x7f0000000240)='/dev/snd/controlC#\x00', 0x0, 0x90100)
+openat$vimc0(0xffffffffffffff9c, &(0x7f0000000740)='/dev/video0\x00', 0x2, 0x0)

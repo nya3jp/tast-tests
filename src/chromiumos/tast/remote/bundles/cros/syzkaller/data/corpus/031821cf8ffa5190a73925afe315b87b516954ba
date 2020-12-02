@@ -1,0 +1,2 @@
+r0 = openat$pfkey(0xffffffffffffff9c, &(0x7f0000000040)='/proc/self/net/pfkey\x00', 0x0, 0x0)
+read$snddsp(r0, &(0x7f0000000080)=""/150, 0x96)

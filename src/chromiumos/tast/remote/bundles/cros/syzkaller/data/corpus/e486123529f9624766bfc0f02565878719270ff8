@@ -1,0 +1,2 @@
+r0 = fanotify_init(0x0, 0x0)
+ioctl$FS_IOC_SETFSLABEL(r0, 0x41009432, 0x0)

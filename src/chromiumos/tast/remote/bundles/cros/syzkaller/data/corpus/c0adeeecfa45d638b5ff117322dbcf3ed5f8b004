@@ -1,0 +1,2 @@
+r0 = inotify_init1(0x0)
+inotify_rm_watch(r0, 0x0)

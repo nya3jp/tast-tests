@@ -1,0 +1,5 @@
+ioctl$VIDIOC_S_PARM(0xffffffffffffffff, 0xc0cc5616, &(0x7f0000000280)={0x0, @raw_data="a0297a681cc1185e93a5e319159968159e0b1a84443a3b5ca96b2f5796e9ffe210b0eb7579a0828ac2b6153cb57d58a8c3b87ae514f8e2c3845cebade67cbe1dc97546669b01b6f1b60a31fea733cf612ae46ff5299bdd0e4b1e1c60825138f5750e5ee9498aee3fa3888b9f305d9aff6072339b3846847c1d5ead412c67767026d64c6a4b8df0ed645f66d8919a756a1aba2f3ac4c44aef17b206f26a88bc0369452fcee7a96984656d9694e5e44684bda767c4ff8b25f9f8f1d2bfd2b322737781a37109798d00"})
+ioctl$DRM_IOCTL_I915_GEM_EXECBUFFER2_WR(0xffffffffffffffff, 0xc0406469, &(0x7f0000000180)={&(0x7f0000000500)=[{0x0, 0x5, &(0x7f0000000200)=[{}, {}, {}, {}, {}]}], 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0})
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f00000001c0)='/dev/snd/seq\x00', 0x8002)
+ioctl$SNDRV_SEQ_IOCTL_CREATE_QUEUE(r0, 0xc08c5332, &(0x7f00000000c0)={0x0, 0x0, 0x0, 'queue1\x00'})
+write$sndseq(r0, &(0x7f0000000080)=[{0x0, 0x0, 0x0, 0x0, @tick, {}, {}, @addr}], 0xfffffeea)

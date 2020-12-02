@@ -1,0 +1,5 @@
+# See https://goo.gl/kgGztJ for information about syzkaller reproducers.
+#{"threaded":true,"collide":true,"repeat":true,"procs":1,"sandbox":"none","fault_call":-1,"tun":true,"tmpdir":true,"cgroups":true,"netdev":true,"resetnet":true,"segv":true}
+setsockopt$inet_tcp_TCP_REPAIR(0xffffffffffffffff, 0x6, 0x13, 0x0, 0x0)
+bpf$PROG_LOAD(0x5, &(0x7f0000000340)={0x1, 0x3, &(0x7f0000000000)=@framed, &(0x7f00000000c0)='syzkaller\x00', 0x1, 0xb7, &(0x7f0000000240)=""/183}, 0x48)
+socket$kcm(0x29, 0x2000000000000005, 0x0)

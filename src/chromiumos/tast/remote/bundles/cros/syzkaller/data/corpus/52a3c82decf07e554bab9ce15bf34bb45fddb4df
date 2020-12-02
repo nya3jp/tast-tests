@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0x0, &(0x7f0000000180)='auxv\x00')
+mmap$snddsp_control(&(0x7f0000ffb000/0x2000)=nil, 0x1000, 0x2000006, 0x10, r0, 0x83000000)

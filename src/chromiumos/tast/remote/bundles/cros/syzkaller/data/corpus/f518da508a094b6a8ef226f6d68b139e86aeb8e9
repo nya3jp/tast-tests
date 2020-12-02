@@ -1,0 +1,2 @@
+socketpair$unix(0x1, 0x3, 0x0, &(0x7f0000000000)={0xffffffffffffffff, <r0=>0xffffffffffffffff})
+ioctl$sock_SIOCETHTOOL(r0, 0x8946, &(0x7f00000000c0)={'veth1_to_hsr\x00', &(0x7f0000000080)=@ethtool_wolinfo={0x6, 0x0, 0x0, "3e125f2e3fa6"}})

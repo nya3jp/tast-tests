@@ -1,0 +1,1 @@
+prctl$PR_MCE_KILL_GET(0x22)

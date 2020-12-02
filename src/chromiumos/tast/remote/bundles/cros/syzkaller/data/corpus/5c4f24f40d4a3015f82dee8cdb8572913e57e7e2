@@ -1,0 +1,2 @@
+r0 = socket$inet6(0xa, 0x1000000000003, 0x4)
+setsockopt$inet6_IPV6_IPSEC_POLICY(r0, 0x29, 0x22, &(0x7f00000001c0)={{{@in=@empty, @in=@initdev={0xac, 0x1e, 0x0, 0x0}}}, {{@in6=@rand_addr=' \x01\x00'}, 0x0, @in=@broadcast}}, 0xe8)

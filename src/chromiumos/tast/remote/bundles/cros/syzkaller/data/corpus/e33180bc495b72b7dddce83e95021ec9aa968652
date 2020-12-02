@@ -1,0 +1,2 @@
+mkdirat(0xffffffffffffff9c, &(0x7f0000000000)='./file0\x00', 0x0)
+lsetxattr$system_posix_acl(&(0x7f0000000080)='./file0\x00', &(0x7f00000000c0)='system.posix_acl_access\x00', &(0x7f0000000400)=ANY=[@ANYBLOB="0200000001000000", @ANYRES32=0x0, @ANYBLOB="0200", @ANYRES32=0x0, @ANYBLOB="02000100", @ANYRES32=0x0, @ANYBLOB="020026a0", @ANYRES32=0x0, @ANYBLOB="0200", @ANYRES32=0x0, @ANYBLOB="020001"], 0x9c, 0x0)

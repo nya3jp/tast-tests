@@ -1,0 +1,1 @@
+prctl$PR_GET_NO_NEW_PRIVS(0x27)

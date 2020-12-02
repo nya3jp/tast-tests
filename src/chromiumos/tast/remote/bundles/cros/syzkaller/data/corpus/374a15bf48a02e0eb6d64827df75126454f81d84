@@ -1,0 +1,3 @@
+syz_open_procfs(0xffffffffffffffff, &(0x7f0000000040)='net/dev\x00')
+r0 = syz_init_net_socket$bt_l2cap(0x1f, 0x1, 0x0)
+ioctl$sock_SIOCINQ(r0, 0x541b, &(0x7f0000000180))

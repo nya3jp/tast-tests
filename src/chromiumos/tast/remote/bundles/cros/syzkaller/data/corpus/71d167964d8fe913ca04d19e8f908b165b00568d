@@ -1,0 +1,6 @@
+# See https://goo.gl/kgGztJ for information about syzkaller reproducers.
+#{"repeat":true,"procs":1,"sandbox":"none","fault_call":-1,"tmpdir":true,"cgroups":true}
+recvmsg$kcm(0xffffffffffffffff, &(0x7f0000000740)={0x0, 0x0, 0x0, 0x0, &(0x7f00000019c0)=""/4096, 0x1000}, 0x0)
+r0 = openat$cgroup_root(0xffffffffffffff9c, &(0x7f0000000180)='./cgroup\x00', 0x200002, 0x0)
+r1 = openat$cgroup_int(r0, &(0x7f0000000040)='memory.high\x00', 0x2, 0x0)
+writev(r1, &(0x7f0000000700), 0x1000000000000085)

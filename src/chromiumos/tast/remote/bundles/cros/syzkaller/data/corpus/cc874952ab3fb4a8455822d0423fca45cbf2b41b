@@ -1,0 +1,4 @@
+mlockall(0x1)
+munlockall()
+r0 = gettid()
+process_vm_writev(r0, &(0x7f00000000c0)=[{&(0x7f00000018c0)=""/4096, 0x1000}], 0x1, &(0x7f00000029c0)=[{&(0x7f0000002b00)=""/4096, 0x1000}], 0x1, 0x0)

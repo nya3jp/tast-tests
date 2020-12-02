@@ -1,0 +1,2 @@
+socketpair$unix(0x1, 0x1, 0x0, &(0x7f0000001680)={0xffffffffffffffff, <r0=>0xffffffffffffffff})
+ioctl$sock_ifreq(r0, 0x8931, &(0x7f0000000080)={'vlan0\x00', @ifru_data=&(0x7f0000000040)="1ef565896427343bfbb864e4a62b04fdca7596427f7ae22a360c3b4e37402783"})

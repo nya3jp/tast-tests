@@ -1,0 +1,4 @@
+openat$sndseq(0xffffffffffffff9c, &(0x7f0000002140)='/dev/snd/seq\x00', 0x0)
+r0 = syz_open_procfs(0x0, &(0x7f0000000040)='smaps\x00')
+r1 = syz_open_procfs(0xffffffffffffffff, &(0x7f0000000080)='fd/3\x00')
+sendfile(r1, r0, 0x0, 0x200)

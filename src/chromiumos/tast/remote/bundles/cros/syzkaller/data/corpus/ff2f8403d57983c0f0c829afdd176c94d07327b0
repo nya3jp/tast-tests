@@ -1,0 +1,3 @@
+ioctl$VIDIOC_TRY_FMT(0xffffffffffffffff, 0xc0d05640, &(0x7f0000000000)={0x9, @sliced})
+mprotect(&(0x7f0000000000/0x2000)=nil, 0x2000, 0x4)
+openat$i915(0xffffffffffffff9c, &(0x7f0000000000)='/dev/i915\x00', 0x181043, 0x0)

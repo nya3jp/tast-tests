@@ -1,0 +1,4 @@
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000000080)='/dev/snd/seq\x00', 0x0)
+r1 = syz_open_procfs(0x0, &(0x7f0000000480)='net/vlan/config\x00')
+clock_gettime(0x0, &(0x7f0000000600))
+ppoll(&(0x7f00000005c0)=[{r0}, {r1, 0x6040}], 0x2, 0x0, 0x0, 0x0)

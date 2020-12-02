@@ -1,0 +1,1 @@
+ioctl$SNDRV_PCM_IOCTL_REWIND(0xffffffffffffffff, 0x40084146, 0x0)

@@ -1,0 +1,4 @@
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000000040)='/dev/snd/seq\x00', 0x8002)
+ioctl$SNDRV_SEQ_IOCTL_CREATE_QUEUE(r0, 0xc08c5332, &(0x7f0000000200)={0x0, 0x0, 0x0, 'queue0\x00'})
+ioctl$VIDIOC_ENUMINPUT(0xffffffffffffffff, 0xc050561a, &(0x7f0000000380)={0x0, "8549e20221b909ea87d512a367008392309ee1e0f190e55d38dc0339632d186e"})
+write$sndseq(r0, &(0x7f0000000300), 0xfffffc49)

@@ -1,0 +1,2 @@
+ioctl$DRM_IOCTL_I915_GETPARAM(0xffffffffffffffff, 0xc0106446, &(0x7f0000000100))
+munmap(&(0x7f0000ff9000/0x4000)=nil, 0x4000)

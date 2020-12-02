@@ -1,0 +1,1 @@
+timerfd_settime(0xffffffffffffffff, 0x56d9e59ab3617574, &(0x7f0000000080)={{}, {0x77359400}}, 0x0)

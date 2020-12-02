@@ -1,0 +1,4 @@
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000000100)='/dev/snd/seq\x00', 0x0)
+r1 = socket$unix(0x1, 0x2, 0x0)
+r2 = fcntl$dupfd(r0, 0x0, r1)
+ioctl$SNDRV_SEQ_IOCTL_QUERY_SUBS(r2, 0xc058534f, &(0x7f0000000140))

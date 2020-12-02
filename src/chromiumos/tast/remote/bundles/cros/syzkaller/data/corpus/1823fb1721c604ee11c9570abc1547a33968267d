@@ -1,0 +1,3 @@
+r0 = shmget$private(0x0, 0x400000, 0x0, &(0x7f0000c00000/0x400000)=nil)
+shmat(r0, &(0x7f0000d70000/0x3000)=nil, 0x4000)
+syz_kvm_setup_cpu$arm64(0xffffffffffffffff, 0xffffffffffffffff, &(0x7f0000dcd000/0x18000)=nil, &(0x7f0000000300)=[{0x0, &(0x7f00000002c0)="f2a4489e4cd4cd9c658c57329c8b67d12c076e8b4dc4e50b70355f86c739b8d7629d5a0342e48ffd8b7d38a60fb368bfb804", 0x32}], 0x1, 0x0, 0x0, 0x0)

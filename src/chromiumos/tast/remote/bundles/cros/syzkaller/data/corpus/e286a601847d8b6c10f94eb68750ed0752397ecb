@@ -1,0 +1,2 @@
+openat$i915(0xffffffffffffff9c, &(0x7f0000000080)='/dev/i915\x00', 0x399900, 0x0)
+openat$vimc0(0xffffffffffffff9c, &(0x7f0000000300)='/dev/video0\x00', 0x2, 0x0)

@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0x0, &(0x7f0000000180)='net/softnet_stat\x00')
+ioctl$sock_TIOCINQ(r0, 0x541b, &(0x7f0000001780))

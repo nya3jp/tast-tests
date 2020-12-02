@@ -1,0 +1,2 @@
+r0 = fanotify_init(0x0, 0x0)
+write$binfmt_elf32(r0, 0x0, 0x0)

@@ -1,0 +1,4 @@
+r0 = openat$vimc0(0xffffffffffffff9c, &(0x7f0000000040)='/dev/video0\x00', 0x2, 0x0)
+r1 = syz_open_dev$vim2m(&(0x7f0000000080)='/dev/video#\x00', 0x0, 0x2)
+ioctl$vim2m_VIDIOC_REQBUFS(r1, 0xc0145608, &(0x7f0000000040)={0x1, 0x1})
+ioctl$VIDIOC_S_PARM(r0, 0xc0cc5616, &(0x7f0000000100)={0x1, @output})

@@ -1,0 +1,4 @@
+r0 = openat$uinput(0xffffffffffffff9c, &(0x7f0000000000)='/dev/uinput\x00', 0x0, 0x0)
+r1 = syz_open_procfs(0x0, &(0x7f0000000000)='net/mcfilter\x00')
+r2 = dup3(r0, r1, 0x0)
+ioctl$sock_inet_SIOCDARP(r2, 0x8953, 0x0)

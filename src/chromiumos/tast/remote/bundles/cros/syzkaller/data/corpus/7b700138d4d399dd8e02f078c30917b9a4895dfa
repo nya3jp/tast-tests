@@ -1,0 +1,2 @@
+r0 = socket$packet(0x11, 0x2, 0x300)
+ioctl$sock_inet_SIOCGIFBRDADDR(r0, 0x8919, &(0x7f0000000080)={'vlan1\x00', {0x2, 0x0, @broadcast}})

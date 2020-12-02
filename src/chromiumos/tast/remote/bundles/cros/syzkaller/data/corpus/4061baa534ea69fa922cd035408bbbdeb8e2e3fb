@@ -1,0 +1,3 @@
+sync()
+ioctl$RTC_WKALM_SET(0xffffffffffffffff, 0x4028700f, 0x0)
+fcntl$notify(0xffffffffffffffff, 0x402, 0x0)

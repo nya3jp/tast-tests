@@ -1,0 +1,3 @@
+r0 = openat$uinput(0xffffffffffffff9c, &(0x7f0000000000)='/dev/uinput\x00', 0x0, 0x0)
+ioctl$UI_ABS_SETUP(r0, 0x401c5504, 0x0)
+ioctl$FS_IOC_GETVERSION(r0, 0x80087601, 0x0)

@@ -1,0 +1,2 @@
+r0 = openat$tun(0xffffffffffffff9c, &(0x7f0000000040)='/dev/net/tun\x00', 0x0, 0x0)
+fsetxattr$system_posix_acl(r0, &(0x7f0000000000)='system.posix_acl_access\x00', &(0x7f0000000280)={{}, {}, [{0x2, 0xe}]}, 0x2c, 0x0)

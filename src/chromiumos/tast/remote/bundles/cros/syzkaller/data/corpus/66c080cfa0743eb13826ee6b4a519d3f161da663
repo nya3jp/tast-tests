@@ -1,0 +1,2 @@
+r0 = socket$unix(0x1, 0x1, 0x0)
+ioctl$sock_inet_SIOCSIFFLAGS(r0, 0x8914, &(0x7f0000000380)={'syz_tun\x00'})

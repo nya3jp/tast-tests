@@ -1,0 +1,1 @@
+syz_emit_ethernet(0xe, &(0x7f0000000000)={@local, @broadcast, @void, {@generic={0x804d}}}, 0x0)

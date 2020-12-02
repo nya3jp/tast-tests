@@ -1,0 +1,2 @@
+r0 = fanotify_init(0x0, 0x0)
+fsetxattr(r0, &(0x7f0000000000)=@random={'os2.', '-\\/\x18*#-:#^#\\:)\x00'}, 0x0, 0x0, 0x0)

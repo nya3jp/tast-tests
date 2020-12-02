@@ -1,0 +1,8 @@
+socketpair$unix(0x1, 0x3, 0x0, &(0x7f00000016c0)={<r0=>0xffffffffffffffff})
+ioctl$sock_SIOCSIFBR(r0, 0x8941, &(0x7f00000000c0)=@generic={0x6})
+r1 = dup3(r0, 0xffffffffffffffff, 0x80000)
+connect$bt_rfcomm(r1, &(0x7f0000000000)={0x1f, @none, 0x96}, 0xa)
+ioctl$sock_SIOCBRADDBR(r0, 0x89a0, &(0x7f0000000040)='syzkaller0\x00')
+read(r0, &(0x7f0000000080), 0x0)
+setsockopt(r0, 0x2, 0x3, &(0x7f0000000100)="7d6cf982cdbae759b1ffb0ac82130fb19540f3ba878f88a60e3dfb595262593792cb3c2030237f72cd28fbfc61dd95dc6fc4ff833523b6570d876a222da2842153b3e8285525", 0x46)
+semctl$SEM_STAT(0x0, 0x0, 0x12, &(0x7f0000000340)=""/4096)

@@ -1,0 +1,4 @@
+syz_open_dev$dri(0x0, 0x0, 0x0)
+syz_open_dev$dri(0x0, 0xffffffffffffffff, 0x0)
+ioctl$DRM_IOCTL_ADD_CTX(0xffffffffffffffff, 0xc0086420, &(0x7f0000000280))
+openat$drirender128(0xffffffffffffff9c, &(0x7f0000000200)='/dev/dri/renderD128\x00', 0x90000, 0x0)

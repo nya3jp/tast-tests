@@ -1,0 +1,4 @@
+unshare(0x400)
+r0 = openat$vsock(0xffffffffffffff9c, &(0x7f0000000000)='/dev/vsock\x00', 0x381802, 0x0)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000080)='/dev/kvm\x00', 0x0, 0x0)
+fcntl$dupfd(r0, 0x406, r1)

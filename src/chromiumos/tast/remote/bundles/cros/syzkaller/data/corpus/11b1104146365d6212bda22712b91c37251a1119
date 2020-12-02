@@ -1,0 +1,2 @@
+unshare(0x400)
+inotify_add_watch(0xffffffffffffffff, 0x0, 0x80000900)

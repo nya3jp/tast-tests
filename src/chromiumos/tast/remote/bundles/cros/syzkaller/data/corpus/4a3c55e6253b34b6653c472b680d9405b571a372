@@ -1,0 +1,2 @@
+socketpair$unix(0x1, 0x1, 0x0, &(0x7f0000000040)={<r0=>0xffffffffffffffff})
+ioctl$sock_ifreq(r0, 0x89a3, &(0x7f0000000200)={'veth0_virt_wifi\x00', @ifru_addrs=@nl=@proc})

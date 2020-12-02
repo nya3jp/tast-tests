@@ -1,0 +1,2 @@
+r0 = gettid()
+ptrace(0x4207, r0)

@@ -1,0 +1,7 @@
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f00000000c0)='/dev/snd/seq\x00', 0x0)
+ioctl$SNDRV_SEQ_IOCTL_CREATE_QUEUE(r0, 0xc08c5332, &(0x7f00000003c0)={0x0, 0x0, 0x0, 'queue1\x00', 0x8})
+ioctl$SNDRV_SEQ_IOCTL_CREATE_QUEUE(0xffffffffffffffff, 0xc08c5332, 0x0)
+ioctl$SNDRV_SEQ_IOCTL_SET_QUEUE_INFO(r0, 0xc08c5335, &(0x7f0000000000)={0x0, 0x80, 0x0, 'queue1\x00'})
+ioctl$SNDRV_SEQ_IOCTL_QUERY_NEXT_CLIENT(0xffffffffffffffff, 0xc0bc5351, &(0x7f0000000480)={0x40, 0x0, 'client0\x00', 0x0, "644acf6068b8b275", "c50a12fe2af1c3e2da795444a6be5c525004a435518db93981e53216df46d963", 0x40})
+syz_open_dev$video(0x0, 0x0, 0x32c00)
+ioctl$SNDRV_SEQ_IOCTL_QUERY_SUBS(0xffffffffffffffff, 0xc058534f, 0x0)

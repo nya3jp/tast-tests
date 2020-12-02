@@ -1,0 +1,4 @@
+openat$i915(0xffffffffffffff9c, &(0x7f0000000000)='/dev/i915\x00', 0x0, 0x0)
+mprotect(&(0x7f0000000000/0x3000)=nil, 0x3000, 0x5)
+r0 = openat$vimc0(0xffffffffffffff9c, &(0x7f0000000000)='/dev/video0\x00', 0x2, 0x0)
+ioctl$VIDIOC_G_TUNER(r0, 0xc054561d, &(0x7f00000000c0)={0x0, "aa49b3e3d610edd7d90a41137f4d12dddfa90f115d367b2692d4bd92cac16fee"})

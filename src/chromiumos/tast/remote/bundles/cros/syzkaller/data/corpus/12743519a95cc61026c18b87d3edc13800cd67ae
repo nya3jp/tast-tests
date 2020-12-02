@@ -1,0 +1,2 @@
+socket$inet6(0xa, 0x0, 0x0)
+syz_emit_ethernet(0x46, &(0x7f0000000300)=ANY=[@ANYBLOB="aaaaaaaaaaaaffffffffffff86dd60b481000000110000000000000000000000000020060000000000000000f2"], 0x0)

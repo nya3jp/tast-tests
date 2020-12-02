@@ -1,0 +1,2 @@
+unshare(0x400)
+execve(&(0x7f0000000000)='./file0\x00', 0x0, 0x0)

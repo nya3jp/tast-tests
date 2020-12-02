@@ -1,0 +1,2 @@
+syz_open_dev$video(&(0x7f0000001180)='/dev/video#\x00', 0x0, 0x1e5801)
+syz_init_net_socket$bt_l2cap(0x1f, 0x1, 0x0)

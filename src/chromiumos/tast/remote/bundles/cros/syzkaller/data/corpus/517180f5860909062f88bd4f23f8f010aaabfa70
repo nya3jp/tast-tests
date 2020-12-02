@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0x0, &(0x7f00000000c0)='net/udp6\x00')
+lseek(r0, 0x7, 0x0)

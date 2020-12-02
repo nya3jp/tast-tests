@@ -1,0 +1,2 @@
+r0 = openat$vimc0(0xffffffffffffff9c, &(0x7f0000000040)='/dev/video0\x00', 0x2, 0x0)
+ioctl$VIDIOC_CROPCAP(r0, 0xc02c563a, &(0x7f0000000080)={0x9})

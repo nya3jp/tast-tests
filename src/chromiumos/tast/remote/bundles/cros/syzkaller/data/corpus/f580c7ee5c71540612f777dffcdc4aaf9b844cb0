@@ -1,0 +1,2 @@
+r0 = openat$uinput(0xffffffffffffff9c, &(0x7f0000003c80)='/dev/uinput\x00', 0x0, 0x0)
+readv(r0, &(0x7f00000000c0)=[{&(0x7f0000000000)=""/96, 0x60}], 0x1)

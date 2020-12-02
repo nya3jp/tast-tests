@@ -1,0 +1,4 @@
+r0 = openat$tun(0xffffffffffffff9c, &(0x7f0000000180)='/dev/net/tun\x00', 0x0, 0x0)
+r1 = openat$binder_debug(0xffffffffffffff9c, &(0x7f0000000080)='/sys/kernel/debug/binder/stats\x00', 0x0, 0x0)
+ioctl$TUNSETIFF(r0, 0x400454ca, &(0x7f0000000000)={'\x00', 0x2})
+dup3(r1, r0, 0x80000)

@@ -1,0 +1,1 @@
+syz_emit_ethernet(0x2a, &(0x7f0000000000)={@link_local, @random="5b82cdb4cfb9", @void, {@arp={0x806, @generic={0x0, 0x0, 0x6, 0x4, 0x0, @link_local, "f10344f7", @multicast, "6eecb967"}}}}, 0x0)

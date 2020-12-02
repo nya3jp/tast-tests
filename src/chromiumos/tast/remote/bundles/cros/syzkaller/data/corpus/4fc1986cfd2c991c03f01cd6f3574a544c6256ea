@@ -1,0 +1,2 @@
+r0 = socket$alg(0x26, 0x5, 0x0)
+ioctl$sock_SIOCBRDELBR(r0, 0x89a1, &(0x7f0000000000)='ip_vti0\x00')

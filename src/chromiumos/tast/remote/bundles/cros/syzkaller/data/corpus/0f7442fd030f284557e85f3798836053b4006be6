@@ -1,0 +1,6 @@
+r0 = openat$binder_debug(0xffffffffffffff9c, &(0x7f0000000040)='/sys/kernel/debug/binder/state\x00', 0x0, 0x0)
+close(r0)
+r1 = epoll_create1(0x0)
+r2 = openat$fuse(0xffffffffffffff9c, &(0x7f0000000080)='/dev/fuse\x00', 0x2, 0x0)
+epoll_ctl$EPOLL_CTL_ADD(r1, 0x1, r2, &(0x7f0000000280))
+close(r0)

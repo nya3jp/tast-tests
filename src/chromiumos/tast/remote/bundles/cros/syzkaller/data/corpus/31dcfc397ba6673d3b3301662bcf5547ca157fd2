@@ -1,0 +1,2 @@
+clock_gettime(0x0, &(0x7f0000000080)={<r0=>0x0})
+clock_settime(0x0, &(0x7f00000000c0)={r0})

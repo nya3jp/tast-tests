@@ -1,0 +1,2 @@
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+ioctl$sock_SIOCETHTOOL(r0, 0x8946, &(0x7f00000000c0)={'veth0_virt_wifi\x00', &(0x7f0000000100)=@ethtool_rxnfc={0x30, 0x0, 0x0, {0x0, @tcp_ip4_spec={@private, @initdev={0xac, 0x1e, 0x0, 0x0}}, {0x0, @broadcast}, @hdata="4a2e390a4c09b4ad88ae6179d509f2eded29e706f44eec5207a998ffbdcbe6392453924a65564818acbd781ab084b20f7453699e", {0x0, @link_local}}}})

@@ -1,0 +1,4 @@
+# See https://goo.gl/kgGztJ for information about syzkaller reproducers.
+#{"procs":1,"sandbox":"","fault_call":-1}
+syz_mount_image$iso9660(&(0x7f0000000080)='iso9660\x00', &(0x7f0000000100)='./file0\x00', 0x0, 0x0, &(0x7f0000000a80), 0x0, &(0x7f00000001c0)=ANY=[@ANYBLOB='gid\x00', @ANYRESHEX=0x0, @ANYBLOB])
+mount(&(0x7f0000000000)='./file0\x00', &(0x7f0000000340)='./file0\x00', &(0x7f0000000300)='hugetlbfs\x00', 0x0, &(0x7f00000001c0))

@@ -1,0 +1,3 @@
+pipe2$9p(&(0x7f0000000080)={0xffffffffffffffff, <r0=>0xffffffffffffffff}, 0x0)
+write$P9_RLOPEN(r0, &(0x7f0000000180)={0x18}, 0x18)
+fcntl$setpipe(r0, 0x407, 0x0)

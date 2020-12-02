@@ -1,0 +1,3 @@
+r0 = openat$i915(0xffffffffffffff9c, &(0x7f00000000c0)='/dev/i915\x00', 0x0, 0x0)
+ioctl$DRM_IOCTL_I915_GEM_USERPTR(0xffffffffffffffff, 0xc0186473, &(0x7f0000000080)={&(0x7f0000000100)="d99929bfc5ce08c45cd8e0f60d1bf1950b2688ea18e73b791d322cd8a1efe2be3fbbe00e5cb4", 0x26})
+ioctl$DRM_IOCTL_I915_GEM_EXECBUFFER2_WR(r0, 0xc0406469, &(0x7f00000017c0)={&(0x7f0000000000)=[{0x0, 0x0, 0x0}], 0x520, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0})

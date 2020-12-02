@@ -1,0 +1,2 @@
+add_key$user(&(0x7f0000000180)='user\x00', &(0x7f00000001c0)={'syz', 0x3}, &(0x7f0000000200)='p', 0x1, 0xffffffffffffffff)
+add_key$user(&(0x7f0000000180)='user\x00', &(0x7f00000001c0)={'syz', 0x3}, &(0x7f0000000200)='p', 0x1, 0xffffffffffffffff)

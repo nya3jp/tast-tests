@@ -1,0 +1,1 @@
+ioctl$DRM_IOCTL_I915_PERF_OPEN(0xffffffffffffffff, 0x40106476, 0x0)

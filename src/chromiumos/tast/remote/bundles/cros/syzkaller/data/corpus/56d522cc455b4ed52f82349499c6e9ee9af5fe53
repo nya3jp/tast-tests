@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0xffffffffffffffff, &(0x7f0000000140)='net/ip6_flowlabel\x00')
+pread64(r0, &(0x7f0000000000)=""/212, 0xd4, 0x7)

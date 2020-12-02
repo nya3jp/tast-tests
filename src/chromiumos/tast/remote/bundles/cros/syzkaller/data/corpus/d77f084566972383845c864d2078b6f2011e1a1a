@@ -1,0 +1,2 @@
+r0 = openat$vimc0(0xffffffffffffff9c, &(0x7f0000001400)='/dev/video0\x00', 0x2, 0x0)
+ioctl$VIDIOC_S_FMT(r0, 0xc0d05605, &(0x7f0000000340)={0x1, @pix_mp={0xffffff00, 0x1ff, 0x56595559}})

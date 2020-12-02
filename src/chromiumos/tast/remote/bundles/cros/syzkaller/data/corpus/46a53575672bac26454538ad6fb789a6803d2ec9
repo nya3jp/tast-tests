@@ -1,0 +1,2 @@
+r0 = socket$packet(0x11, 0x3, 0x300)
+ioctl$sock_SIOCGIFVLAN_ADD_VLAN_CMD(r0, 0x8982, &(0x7f0000000000)={0x0, 'ip6gretap0\x00'})

@@ -1,0 +1,5 @@
+r0 = openat$vimc2(0xffffffffffffff9c, &(0x7f0000000680)='/dev/video2\x00', 0x2, 0x0)
+ioctl$VIDIOC_TRY_FMT(r0, 0xc0d05640, &(0x7f0000000480)={0xb, @vbi})
+r1 = openat$vimc2(0xffffffffffffff9c, &(0x7f0000000000)='/dev/video2\x00', 0x2, 0x0)
+syz_open_dev$video(&(0x7f0000000040)='/dev/video#\x00', 0x800000000000003, 0xd0800)
+ioctl$VIDIOC_ENUM_FMT(r1, 0xc0405602, 0xffffffffffffffff)

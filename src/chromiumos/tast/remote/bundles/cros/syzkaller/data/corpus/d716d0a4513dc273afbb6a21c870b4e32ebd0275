@@ -1,0 +1,2 @@
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000002140)='/dev/snd/seq\x00', 0x0)
+ioctl$FS_IOC_GET_ENCRYPTION_POLICY(r0, 0x400c6615, &(0x7f0000000180)={0x0, @adiantum})

@@ -1,0 +1,2 @@
+mkdirat(0xffffffffffffff9c, &(0x7f0000000000)='./file0\x00', 0x0)
+mount(0x0, &(0x7f0000000280)='./file0\x00', &(0x7f0000000040)='devpts\x00', 0x0, &(0x7f0000000080)='\xf1,\x1c.\xcb\xbbT\xdc\xf0\x10\x9b0\x00\x00')

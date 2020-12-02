@@ -1,0 +1,2 @@
+r0 = getpid()
+sched_setaffinity(r0, 0x8, &(0x7f0000000400)=0x4f44)

@@ -1,0 +1,4 @@
+r0 = socket$inet6(0xa, 0x1000000000002, 0x0)
+r1 = socket$inet6(0xa, 0x1000000000002, 0x0)
+r2 = dup3(r1, r0, 0x0)
+setsockopt$inet_mreqsrc(r2, 0x0, 0xf, &(0x7f0000000100)={@remote, @multicast2, @multicast2}, 0xc)

@@ -1,0 +1,4 @@
+unshare(0x400)
+r0 = syz_open_procfs(0x0, &(0x7f0000000180)='net/softnet_stat\x00')
+r1 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000002140)='/dev/snd/seq\x00', 0x0)
+sendfile(r1, r0, 0x0, 0x0)

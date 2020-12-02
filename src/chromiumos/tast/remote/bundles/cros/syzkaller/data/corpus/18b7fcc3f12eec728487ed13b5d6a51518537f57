@@ -1,0 +1,5 @@
+syz_emit_ethernet(0x46, 0x0, 0x0)
+syz_open_procfs(0x0, 0x0)
+r0 = gettid()
+r1 = syz_open_procfs(r0, &(0x7f0000000380)='net/ipx\x00')
+ioctl$sock_inet_SIOCGIFBRDADDR(r1, 0x8919, 0x0)

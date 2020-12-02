@@ -1,0 +1,2 @@
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000080)='/dev/rfkill\x00', 0x0, 0x0)
+fchown(r0, 0xffffffffffffffff, 0x0)

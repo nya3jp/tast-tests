@@ -1,0 +1,2 @@
+perf_event_open(0x0, 0x0, 0xffffffffffffffff, 0xffffffffffffffff, 0x0)
+sysinfo(&(0x7f00000000c0)=""/233)

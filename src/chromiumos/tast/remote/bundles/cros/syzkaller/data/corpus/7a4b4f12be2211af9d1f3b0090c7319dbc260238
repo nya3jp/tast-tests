@@ -1,0 +1,4 @@
+r0 = socket$packet(0x11, 0x3, 0x300)
+ioctl$sock_SIOCOUTQ(r0, 0x5411, &(0x7f00000001c0))
+r1 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000002140)='/dev/snd/seq\x00', 0x0)
+ioctl$SNDRV_SEQ_IOCTL_PVERSION(r1, 0x80045300, &(0x7f0000000040))

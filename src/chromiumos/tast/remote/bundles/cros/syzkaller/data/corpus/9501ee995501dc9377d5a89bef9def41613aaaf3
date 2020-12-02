@@ -1,0 +1,5 @@
+munmap(&(0x7f0000ff6000/0x3000)=nil, 0x3000)
+ioctl$VIDIOC_QBUF(0xffffffffffffffff, 0xc058560f, 0x0)
+openat$zero(0xffffffffffffff9c, &(0x7f0000000340)='/dev/zero\x00', 0x0, 0x0)
+mlockall(0x7)
+munlockall()

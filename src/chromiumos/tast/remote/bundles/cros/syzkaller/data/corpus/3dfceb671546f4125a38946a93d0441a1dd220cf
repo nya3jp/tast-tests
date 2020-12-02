@@ -1,0 +1,5 @@
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+ioctl$sock_SIOCSIFBR(r0, 0x8941, &(0x7f0000000000)=@add_del={0x2, &(0x7f0000000040)='team0\x00'})
+r1 = syz_open_procfs(0x0, &(0x7f0000000040)='net/ip_mr_cache\x00')
+lseek(r1, 0x7, 0x0)
+ioctl$KVM_SET_IDENTITY_MAP_ADDR(r1, 0x4008ae48, &(0x7f0000000080)=0x4)

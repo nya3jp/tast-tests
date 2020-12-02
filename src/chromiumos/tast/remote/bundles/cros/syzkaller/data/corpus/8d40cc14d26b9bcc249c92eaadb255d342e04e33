@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0x0, &(0x7f0000000000)='net/vlan/config\x00')
+fanotify_mark(r0, 0x6, 0x8000011, 0xffffffffffffffff, 0x0)

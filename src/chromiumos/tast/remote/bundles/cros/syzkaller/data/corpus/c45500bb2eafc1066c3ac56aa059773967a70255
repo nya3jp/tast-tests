@@ -1,0 +1,1 @@
+syz_emit_ethernet(0x11, &(0x7f0000000080)={@local, @remote, @void, {@llc_tr={0x11, {@llc={0x0, 0x0, "86"}}}}}, 0x0)

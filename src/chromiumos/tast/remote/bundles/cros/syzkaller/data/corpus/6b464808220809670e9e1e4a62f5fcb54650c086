@@ -1,0 +1,2 @@
+r0 = socket$packet(0x11, 0x3, 0x300)
+ioctl$sock_inet_SIOCSIFDSTADDR(r0, 0x8918, &(0x7f0000000040)={'veth0_to_bridge\x00', {0x2, 0x0, @loopback}})

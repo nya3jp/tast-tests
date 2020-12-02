@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0xffffffffffffffff, &(0x7f0000000680)='net/ip_mr_cache\x00')
+readv(r0, &(0x7f0000000600)=[{&(0x7f00000001c0)=""/249, 0xf9}], 0x1)

@@ -1,0 +1,2 @@
+r0 = socket$inet_udplite(0x2, 0x2, 0x88)
+ioctl$sock_ifreq(r0, 0x8937, &(0x7f0000000140)={'batadv_slave_1\x00', @ifru_settings={0x0, 0x0, @raw_hdlc=0x0}})

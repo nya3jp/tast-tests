@@ -1,0 +1,2 @@
+r0 = openat$vimc0(0xffffffffffffff9c, &(0x7f0000000000)='/dev/video0\x00', 0x2, 0x0)
+ioctl$VIDIOC_ENUMINPUT(r0, 0xc050561a, &(0x7f0000000040)={0x0, "8f9b30300d2b5502c0d58ae724aabe303fc23eaf14507734b7ab5c2db3f9408b"})

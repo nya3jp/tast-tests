@@ -1,0 +1,2 @@
+r0 = openat$vimc0(0xffffffffffffff9c, &(0x7f0000000300)='/dev/video0\x00', 0x2, 0x0)
+ioctl$VIDIOC_QUERYMENU(r0, 0xc02c5625, &(0x7f0000000500)={0xfffffffd, 0x0, @name="a32e4d3230d7d296c2f9244f7a7cce7c282c428f41f95a771d24300172bab04f"})

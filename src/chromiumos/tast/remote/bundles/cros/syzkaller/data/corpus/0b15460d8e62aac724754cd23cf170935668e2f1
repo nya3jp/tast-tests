@@ -1,0 +1,1 @@
+setsockopt$bt_BT_VOICE(0xffffffffffffffff, 0x112, 0xb, &(0x7f0000000040), 0xfffffffffffffc99)

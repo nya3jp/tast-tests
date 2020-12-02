@@ -1,0 +1,2 @@
+r0 = socket$alg(0x26, 0x5, 0x0)
+ioctl$sock_SIOCGIFVLAN_ADD_VLAN_CMD(r0, 0x8982, &(0x7f0000000180)={0x0, 'veth1_virt_wifi\x00'})

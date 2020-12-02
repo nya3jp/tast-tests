@@ -1,0 +1,2 @@
+r0 = openat$vndbinder(0xffffffffffffff9c, &(0x7f0000000180)='/dev/vndbinder\x00', 0x0, 0x0)
+ioctl$BINDER_WRITE_READ(r0, 0xc0306201, &(0x7f0000001140)={0xffffffffffffffc4, 0x0, &(0x7f00000012c0), 0x3d, 0x0, &(0x7f0000000380)="45a70a9c0439174df7551bcaf493645f3b198b732f698cb3567b442385eb8b9ff1c4eb7fd9674c879f3acd83eb198b1110958ef799812de90cdadac882"})

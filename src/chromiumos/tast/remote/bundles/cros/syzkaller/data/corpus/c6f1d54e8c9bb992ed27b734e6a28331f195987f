@@ -1,0 +1,2 @@
+r0 = socket$unix(0x1, 0x2, 0x0)
+shutdown(r0, 0x977ca00787ee5df1)

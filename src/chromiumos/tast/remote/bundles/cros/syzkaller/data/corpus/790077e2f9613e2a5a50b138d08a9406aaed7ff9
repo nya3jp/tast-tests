@@ -1,0 +1,1 @@
+clock_gettime(0xfffffffffffffffe, &(0x7f0000000000))

@@ -1,0 +1,5 @@
+mkdirat(0xffffffffffffff9c, &(0x7f0000000000)='./file0\x00', 0x0)
+r0 = openat$fuse(0xffffffffffffff9c, &(0x7f0000000280)='/dev/fuse\x00', 0x2, 0x0)
+mount$fuse(0x0, &(0x7f0000000200)='./file0\x00', &(0x7f0000000080)='fuse\x00', 0x0, &(0x7f00000002c0)={{'fd', 0x3d, r0}, 0x2c, {'rootmode', 0x3d, 0x4000}, 0x2c, {'user_id'}, 0x2c, {'group_id'}})
+read$FUSE(r0, 0x0, 0x0)
+lsetxattr$security_smack_transmute(&(0x7f00000000c0)='./file0\x00', &(0x7f0000000580)='security.SMACK64TRANSMUTE\x00', 0x0, 0x0, 0x0)

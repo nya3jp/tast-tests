@@ -1,0 +1,5 @@
+r0 = socket$unix(0x1, 0x2, 0x0)
+ioctl$sock_SIOCGIFCONF(r0, 0x8912, &(0x7f0000000080)=@buf={0x50, &(0x7f0000000000)="584c11cd78fe5a5ae6b0c4794460682b0d59a21d33f41ee6e601d4355bc719900e490898fcdbc61b89634d2a313b14e3990358c2cae49f8171c301c3063501c0143fcd8c4239aeba14547974f8cbc3c2"})
+r1 = shmget$private(0x0, 0x2000, 0x0, &(0x7f0000ffb000/0x2000)=nil)
+shmctl$IPC_RMID(r1, 0x0)
+shmctl$IPC_INFO(r1, 0x3, &(0x7f00000000c0)=""/233)

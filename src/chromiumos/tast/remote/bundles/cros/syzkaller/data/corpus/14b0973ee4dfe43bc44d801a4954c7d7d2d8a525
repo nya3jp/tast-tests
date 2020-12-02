@@ -1,0 +1,2 @@
+pipe2(&(0x7f0000000040)={<r0=>0xffffffffffffffff}, 0x800)
+read$FUSE(r0, 0x0, 0x54)

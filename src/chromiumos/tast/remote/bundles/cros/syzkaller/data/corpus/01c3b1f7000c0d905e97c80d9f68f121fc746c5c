@@ -1,0 +1,2 @@
+r0 = socket$inet_icmp_raw(0x2, 0x3, 0x1)
+ioctl$sock_inet_SIOCSIFFLAGS(r0, 0x8914, &(0x7f00000004c0)={'vlan1\x00'})

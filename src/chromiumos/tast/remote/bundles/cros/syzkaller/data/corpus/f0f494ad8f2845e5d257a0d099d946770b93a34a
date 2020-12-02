@@ -1,0 +1,2 @@
+r0 = syz_open_dev$media(&(0x7f0000000080)='/dev/media#\x00', 0x0, 0x0)
+pread64(r0, &(0x7f00000000c0)=""/167, 0xfffffffffffffcad, 0x0)

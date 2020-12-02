@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0xffffffffffffffff, &(0x7f0000000080)='net/protocols\x00')
+sendfile(r0, r0, &(0x7f0000000480)=0xd2d, 0x10000000)

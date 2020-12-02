@@ -1,0 +1,4 @@
+r0 = syz_init_net_socket$bt_hci(0x1f, 0x3, 0x1)
+ioctl$sock_bt_hci(r0, 0x800448d2, &(0x7f0000000200))
+r1 = syz_open_dev$sndpcmp(&(0x7f0000000000)='/dev/snd/pcmC#D#p\x00', 0x7, 0x0)
+mmap$snddsp_control(&(0x7f0000ffa000/0x3000)=nil, 0x1000, 0x0, 0x11, r1, 0x83000000)

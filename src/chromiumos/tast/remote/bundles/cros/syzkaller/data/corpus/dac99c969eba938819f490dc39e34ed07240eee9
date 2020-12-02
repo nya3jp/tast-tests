@@ -1,0 +1,4 @@
+ioctl$DRM_IOCTL_VERSION(0xffffffffffffffff, 0xc0406400, 0x0)
+r0 = openat$drirender128(0xffffffffffffff9c, &(0x7f0000000380)='/dev/dri/renderD128\x00', 0x0, 0x0)
+ioctl$DRM_IOCTL_MODE_CREATE_DUMB(r0, 0xc02064b2, &(0x7f0000000100)={0x401, 0x5, 0x10001, 0x2})
+ioctl$DRM_IOCTL_VERSION(0xffffffffffffffff, 0xc0406400, 0x0)

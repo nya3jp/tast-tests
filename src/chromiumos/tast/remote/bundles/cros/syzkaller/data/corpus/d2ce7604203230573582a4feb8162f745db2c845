@@ -1,0 +1,1 @@
+prctl$PR_SET_SECUREBITS(0x1c, 0xad2146156f65db0e)

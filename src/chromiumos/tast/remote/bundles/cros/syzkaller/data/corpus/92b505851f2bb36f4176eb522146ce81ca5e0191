@@ -1,0 +1,7 @@
+mkdirat(0xffffffffffffff9c, &(0x7f0000000000)='./file0\x00', 0x0)
+mount(0x0, &(0x7f0000000440)='./file0\x00', &(0x7f0000000040)='vfat\x00', 0x0, &(0x7f00000001c0)='\x00\x00\x00\x03\x00\x00\x00\x00\x00\x00\xa0')
+syslog(0x2, &(0x7f0000000080)=""/48, 0x30)
+r0 = syz_open_procfs(0x0, &(0x7f0000000000)='net/mcfilter\x00')
+r1 = syz_open_procfs(0xffffffffffffffff, 0x0)
+sendfile(r1, r0, 0x0, 0x0)
+syz_open_procfs(0xffffffffffffffff, &(0x7f0000000080)='comm\x00')

@@ -1,0 +1,7 @@
+r0 = openat$vimc0(0xffffffffffffff9c, &(0x7f0000000480)='/dev/video0\x00', 0x2, 0x0)
+ioctl$VIDIOC_SUBDEV_QUERY_DV_TIMINGS(0xffffffffffffffff, 0x80845663, 0x0)
+ioctl$VIDIOC_REQBUFS(r0, 0xc0145608, &(0x7f0000000000)={0x8, 0x1, 0x1})
+ioctl$VIDIOC_QUERYSTD(0xffffffffffffffff, 0x8008563f, &(0x7f0000000040))
+openat$vimc0(0xffffffffffffff9c, 0x0, 0x2, 0x0)
+openat$vimc0(0xffffffffffffff9c, &(0x7f0000000480)='/dev/video0\x00', 0x2, 0x0)
+ioctl$VIDIOC_S_AUDOUT(0xffffffffffffffff, 0x40345632, &(0x7f0000000080)={0x9, "dc66e62bdea1d67c61965206f974c2aaacc558a34fca8fe9e28a24fbef615903"})

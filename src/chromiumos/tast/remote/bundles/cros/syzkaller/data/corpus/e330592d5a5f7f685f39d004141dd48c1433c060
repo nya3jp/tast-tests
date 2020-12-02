@@ -1,0 +1,5 @@
+r0 = openat$vimc0(0xffffffffffffff9c, &(0x7f0000000100)='/dev/video0\x00', 0x2, 0x0)
+ioctl$VIDIOC_S_PARM(r0, 0xc0cc5616, &(0x7f0000000200)={0x1, @output})
+ioctl$VIDIOC_S_PARM(r0, 0xc0cc5616, &(0x7f0000000200)={0x1, @output})
+ioctl$VIDIOC_QUERYCAP(0xffffffffffffffff, 0x80685600, 0x0)
+ioctl$SNDRV_PCM_IOCTL_WRITEI_FRAMES(0xffffffffffffffff, 0x40184150, 0x0)

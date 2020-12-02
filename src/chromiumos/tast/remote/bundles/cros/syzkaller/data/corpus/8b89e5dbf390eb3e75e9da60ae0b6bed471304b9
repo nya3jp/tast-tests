@@ -1,0 +1,2 @@
+r0 = socket$inet_udplite(0x2, 0x2, 0x88)
+ioctl$sock_ifreq(r0, 0x8922, &(0x7f0000000000)={'syz_tun\x00', @ifru_data=&(0x7f0000000040)="2ac40d7528064f7abc2172630ddc786d5da7f63b0b907c8c48035e65e6d2c894"})

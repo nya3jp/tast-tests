@@ -1,0 +1,2 @@
+r0 = syz_open_dev$I2C(&(0x7f0000000100)='/dev/i2c-#\x00', 0x80000001, 0x0)
+ioctl$FIBMAP(r0, 0x1, 0x0)

@@ -1,0 +1,1 @@
+seccomp$SECCOMP_GET_NOTIF_SIZES(0x3, 0x0, 0x0)

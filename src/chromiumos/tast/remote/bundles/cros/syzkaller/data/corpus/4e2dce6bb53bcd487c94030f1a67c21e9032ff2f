@@ -1,0 +1,3 @@
+r0 = syz_open_dev$dri(&(0x7f0000000000)='/dev/dri/card#\x00', 0x1, 0x0)
+ioctl$DRM_IOCTL_MODE_CREATEPROPBLOB(r0, 0xc01064bd, &(0x7f0000000040)={&(0x7f0000000100)='5', 0x1, <r1=>0x0})
+ioctl$DRM_IOCTL_MODE_GETPROPBLOB(r0, 0xc01064ac, &(0x7f0000000080)={r1, 0x0, 0x0})

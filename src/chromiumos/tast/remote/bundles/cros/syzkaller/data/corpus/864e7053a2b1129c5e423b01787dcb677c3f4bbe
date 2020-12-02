@@ -1,0 +1,3 @@
+mmap(&(0x7f0000000000/0xfd5000)=nil, 0xfd5000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet_tcp_TLS_TX(r0, 0x6, 0x1, &(0x7f0000000000)=@ccm_128={{}, "cc11a4a4bb52cff2", "f0b1e58f209a887ce7bba4a71664f570", "74844836", "76059782f433b178"}, 0x28)

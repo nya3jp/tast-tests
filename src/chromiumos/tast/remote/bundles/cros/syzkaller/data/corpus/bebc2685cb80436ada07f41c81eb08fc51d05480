@@ -1,0 +1,2 @@
+r0 = memfd_create(&(0x7f00000004c0)='ip6gre0\x00', 0x0)
+write$binfmt_elf32(r0, 0x0, 0x0)

@@ -1,0 +1,3 @@
+r0 = openat$vim2m(0xffffffffffffff9c, &(0x7f0000000040)='/dev/vim2m\x00', 0x2, 0x0)
+ioctl$vim2m_VIDIOC_S_FMT(r0, 0xc0d05605, &(0x7f0000000140)={0x1, @sdr})
+ioctl$vim2m_VIDIOC_REQBUFS(r0, 0xc0145608, &(0x7f0000000100)={0x0, 0x1, 0x1})

@@ -1,0 +1,3 @@
+# See https://goo.gl/kgGztJ for information about syzkaller reproducers.
+#{"repeat":true,"procs":8,"sandbox":"","fault_call":-1}
+syz_mount_image$reiserfs(&(0x7f0000000000)='reiserfs\x00', &(0x7f0000000100)='./fiue0\x00', 0x400000000000000, 0x1, &(0x7f0000000200)=[{&(0x7f0000000240)="00080000ec0500006d8a2b001200000008080000b90200000001000084811f4ce10000001e000000000000000010ec0302e5fb00526549734572334673", 0x3d, 0x10000}], 0x0, &(0x7f0000013900))

@@ -1,0 +1,2 @@
+r0 = syz_open_dev$video(&(0x7f0000000280)='/dev/video#\x00', 0x0, 0x0)
+ioctl$VIDIOC_ENUM_FMT(r0, 0xc0405602, &(0x7f0000000100)={0x0, 0x4, 0x0, "6b77f54997a791eb0ec8296682c5469a2018783d00"})

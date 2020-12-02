@@ -1,0 +1,4 @@
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000000100)='/dev/snd/seq\x00', 0x24a602)
+syz_open_dev$dri(&(0x7f0000000000)='/dev/dri/card#\x00', 0x3, 0x1)
+ioctl$SNDRV_SEQ_IOCTL_SUBSCRIBE_PORT(r0, 0x40505330, &(0x7f0000000080)={{}, {0xe}, 0x0, 0x1})
+shmctl$SHM_LOCK(0x0, 0xb)

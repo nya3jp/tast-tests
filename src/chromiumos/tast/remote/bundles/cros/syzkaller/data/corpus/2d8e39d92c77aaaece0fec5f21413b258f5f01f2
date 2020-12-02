@@ -1,0 +1,6 @@
+r0 = openat$vimc0(0xffffffffffffff9c, &(0x7f0000000000)='/dev/video0\x00', 0x2, 0x0)
+ioctl$VIDIOC_S_PARM(r0, 0xc0cc5616, &(0x7f0000000080)={0x1})
+ioctl$VIDIOC_QUERY_EXT_CTRL(0xffffffffffffffff, 0xc0e85667, 0x0)
+ioctl$VIDIOC_S_FMT(r0, 0xc0d05605, &(0x7f0000000380)={0x1, @raw_data="bffd5f1d4b3842b88a414403ca157e4c233e5becd9f925f6628180766ab8630e732443d6bd048c6984479f3d4cae8955dcaad24287770747c9acfd64ff974160f6c699a9168b459114448183c6ab59abd793a3339af6762e572443119ea0bfb4fb39f51cab0fdd9d176ec281657da7efcfb9427a838de003023dad72935fc0098be43425eed3e08e0b6a6b9d722e64fbcac3f5fc39b67dfc42bab12e706114d26d2be7994bc1ef6257ea2d3299d19f4928e4e275dd656e124169002aa6d095fecb9b8b528c289832"})
+ioctl$sock_bt_hci(0xffffffffffffffff, 0x0, 0x0)
+ioctl$sock_bt_hidp_HIDPGETCONNINFO(0xffffffffffffffff, 0x800448d3, 0x0)

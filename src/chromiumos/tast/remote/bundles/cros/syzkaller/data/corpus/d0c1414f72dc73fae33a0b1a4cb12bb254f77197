@@ -1,0 +1,4 @@
+# See https://goo.gl/kgGztJ for information about syzkaller reproducers.
+#{"repeat":true,"procs":1,"sandbox":"","fault_call":-1,"waitrepeat":true}
+r0 = openat$nullb(0xffffffffffffff9c, &(0x7f0000000000)='/dev/nullb0\x00', 0x1, 0x0)
+writev(r0, &(0x7f0000000400)=[{&(0x7f0000000900)="af", 0x1}], 0x1)

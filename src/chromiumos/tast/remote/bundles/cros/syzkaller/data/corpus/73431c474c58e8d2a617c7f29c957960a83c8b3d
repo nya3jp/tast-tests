@@ -1,0 +1,4 @@
+r0 = inotify_init1(0x0)
+fcntl$setown(r0, 0x8, 0xffffffffffffffff)
+fcntl$getownex(r0, 0x10, &(0x7f00000001c0)={0x0, <r1=>0x0})
+capget(&(0x7f0000000000)={0x20080522, r1}, &(0x7f0000000040))

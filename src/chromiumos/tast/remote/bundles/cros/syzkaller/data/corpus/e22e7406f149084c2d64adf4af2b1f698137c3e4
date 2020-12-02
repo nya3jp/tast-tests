@@ -1,0 +1,5 @@
+r0 = syz_init_net_socket$bt_hci(0x1f, 0x3, 0x1)
+bind$bt_hci(r0, &(0x7f0000000000), 0x6)
+r1 = syz_open_dev$vivid(&(0x7f0000000040)='/dev/video#\x00', 0x1, 0x2)
+ioctl$VIDIOC_ENUMINPUT(r1, 0xc050561a, &(0x7f0000000080)={0x1, "a76ca1d8495b85653c35bd95e2a47b343640f3bad60df8be227af2430eefbfc7", 0x1, 0x401, 0x5, 0x7, 0x3000010, 0x2})
+ioctl$sock_bt_hci(r0, 0x400448e6, &(0x7f0000000100)=':')

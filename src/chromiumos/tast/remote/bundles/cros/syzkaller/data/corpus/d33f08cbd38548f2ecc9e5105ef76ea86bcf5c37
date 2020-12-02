@@ -1,0 +1,5 @@
+r0 = syz_open_procfs(0x0, &(0x7f0000000000)='net/vlan/config\x00')
+read(r0, 0x0, 0x0)
+r1 = syz_open_procfs(0x0, &(0x7f0000000000)='net/vlan/config\x00')
+r2 = dup3(r0, r1, 0x0)
+pread64(r2, 0x0, 0x0, 0x80000001)

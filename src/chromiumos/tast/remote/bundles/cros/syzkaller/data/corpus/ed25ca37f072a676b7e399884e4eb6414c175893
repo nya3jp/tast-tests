@@ -1,0 +1,4 @@
+r0 = openat$sndtimer(0xffffffffffffff9c, &(0x7f0000000000)='/dev/snd/timer\x00', 0x0)
+r1 = syz_open_procfs(0x0, &(0x7f0000000040)='net/unix\x00')
+clock_gettime(0x0, &(0x7f0000000140))
+ppoll(&(0x7f0000000100)=[{r0}, {r1, 0x40}], 0x2, 0x0, 0x0, 0x0)

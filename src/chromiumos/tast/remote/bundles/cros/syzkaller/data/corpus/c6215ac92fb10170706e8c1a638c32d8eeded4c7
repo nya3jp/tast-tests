@@ -1,0 +1,1 @@
+syz_emit_ethernet(0x3e, &(0x7f00000001c0)=ANY=[], 0x0)

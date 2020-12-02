@@ -1,0 +1,3 @@
+ioctl$VIDIOC_G_MODULATOR(0xffffffffffffffff, 0xc0445636, &(0x7f00000000c0)={0x0, "3084715f3bf9c8491b34aa4250f0eb047a4396561cee8e005f27f1a6b332caec"})
+mprotect(&(0x7f0000ffb000/0x2000)=nil, 0x2000, 0x5)
+mremap(&(0x7f0000ffc000/0x2000)=nil, 0x2000, 0x1000, 0x3, &(0x7f0000ffe000/0x1000)=nil)

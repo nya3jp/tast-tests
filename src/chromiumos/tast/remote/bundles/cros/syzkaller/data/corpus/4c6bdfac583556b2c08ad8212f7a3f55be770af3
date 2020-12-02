@@ -1,0 +1,2 @@
+r0 = openat$apparmor_thread_exec(0xffffffffffffff9c, &(0x7f0000000000)='/proc/thread-self/attr/exec\x00', 0x2, 0x0)
+lseek(r0, 0xcf1, 0x1)

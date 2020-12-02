@@ -1,0 +1,2 @@
+r0 = gettid()
+setpriority(0x1, r0, 0x0)

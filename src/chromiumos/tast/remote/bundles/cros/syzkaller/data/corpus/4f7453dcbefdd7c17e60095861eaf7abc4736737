@@ -1,0 +1,7 @@
+r0 = syz_open_dev$dri(&(0x7f0000000280)='/dev/dri/card#\x00', 0x0, 0x0)
+r1 = syz_open_dev$dri(&(0x7f0000000280)='/dev/dri/card#\x00', 0x0, 0x0)
+ioctl$DRM_IOCTL_ADD_CTX(0xffffffffffffffff, 0xc0086420, 0x0)
+ioctl$DRM_IOCTL_RES_CTX(r1, 0xc0106426, &(0x7f00000002c0)={0x0, 0x0})
+ioctl$DRM_IOCTL_ADD_CTX(r0, 0xc0086420, &(0x7f0000000000))
+ioctl$DRM_IOCTL_ADD_CTX(0xffffffffffffffff, 0xc0086420, 0x0)
+syz_open_dev$dri(&(0x7f00000000c0)='/dev/dri/card#\x00', 0x0, 0x12040)

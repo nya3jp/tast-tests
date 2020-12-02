@@ -1,0 +1,2 @@
+r0 = syz_init_net_socket$bt_l2cap(0x1f, 0x1, 0x3)
+ioctl$VIDIOC_ENUMINPUT(r0, 0xc050561a, 0x0)

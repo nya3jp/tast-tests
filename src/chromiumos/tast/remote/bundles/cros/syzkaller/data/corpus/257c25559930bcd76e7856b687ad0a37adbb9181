@@ -1,0 +1,1 @@
+syz_open_dev$dri(&(0x7f0000000140)='/dev/dri/card#\x00', 0xffffffffffffffff, 0x981c0)

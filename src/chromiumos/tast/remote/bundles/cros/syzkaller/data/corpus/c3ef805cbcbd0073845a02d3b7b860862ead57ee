@@ -1,0 +1,1 @@
+vmsplice(0xffffffffffffffff, &(0x7f0000001640), 0x10000000000000a7, 0x0)

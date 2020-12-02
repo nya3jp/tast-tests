@@ -1,0 +1,2 @@
+sendfile(0xffffffffffffffff, 0xffffffffffffffff, 0x0, 0x200)
+syz_open_dev$loop(&(0x7f0000000280)='/dev/loop#\x00', 0xc0e, 0x111481)

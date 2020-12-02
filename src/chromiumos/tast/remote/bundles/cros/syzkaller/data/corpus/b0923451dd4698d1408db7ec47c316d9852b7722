@@ -1,0 +1,2 @@
+openat$vimc0(0xffffffffffffff9c, &(0x7f0000000040)='/dev/video0\x00', 0x2, 0x0)
+syz_open_dev$video(&(0x7f0000000080)='/dev/video#\x00', 0x0, 0x4100)

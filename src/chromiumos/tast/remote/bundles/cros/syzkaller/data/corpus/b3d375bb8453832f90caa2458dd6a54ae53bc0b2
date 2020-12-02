@@ -1,0 +1,1 @@
+syz_emit_ethernet(0x77, &(0x7f0000001cc0)={@multicast, @random="01cf4712f0cb", @void, {@ipv6={0x86dd, @generic={0x0, 0x6, "17a510", 0x41, 0x2c, 0x0, @initdev={0xfe, 0x88, [], 0x0, 0x0}, @dev, {[], "b4490a7893343fb51babf94e854c607f15a7b7d8f949fccc253b8c5a83580dd6a79b05f356640c93564ca361cd74374700717f72fb0aabaa470aec475e3290bb6a"}}}}}, 0x0)

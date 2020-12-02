@@ -1,0 +1,2 @@
+r0 = syz_open_dev$sndctrl(&(0x7f0000000080)='/dev/snd/controlC#\x00', 0x0, 0x0)
+ioctl$SNDRV_CTL_IOCTL_ELEM_LOCK(r0, 0x40405514, &(0x7f0000000040)={0x86, 0x0, 0x0, 0x0, 'syz1\x00'})

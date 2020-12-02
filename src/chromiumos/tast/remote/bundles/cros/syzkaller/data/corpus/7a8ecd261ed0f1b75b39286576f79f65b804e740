@@ -1,0 +1,2 @@
+unshare(0x400)
+fsync(0xffffffffffffffff)

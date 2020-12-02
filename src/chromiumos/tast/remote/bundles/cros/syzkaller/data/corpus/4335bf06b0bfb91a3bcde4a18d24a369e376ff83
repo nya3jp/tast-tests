@@ -1,0 +1,2 @@
+r0 = openat$keychord(0xffffffffffffff9c, &(0x7f0000000100)='/dev/keychord\x00', 0x1, 0x0)
+pwrite64(r0, &(0x7f0000000000)="5b015bd52f84", 0xffe1, 0x100000080000000)

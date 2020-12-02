@@ -1,0 +1,3 @@
+r0 = inotify_init1(0x0)
+fcntl$setown(r0, 0x8, 0xffffffffffffffff)
+fcntl$setown(r0, 0x8, 0x0)

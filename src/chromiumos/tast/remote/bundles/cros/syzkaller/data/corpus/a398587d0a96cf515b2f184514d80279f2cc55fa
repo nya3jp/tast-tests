@@ -1,0 +1,2 @@
+r0 = openat$keychord(0xffffffffffffff9c, &(0x7f0000000380)='/dev/keychord\x00', 0x161402, 0x0)
+write$P9_RWALK(r0, 0x0, 0x0)

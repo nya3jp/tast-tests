@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0x0, &(0x7f0000000040)='net/route\x00')
+linkat(r0, &(0x7f0000000000)='\x00', 0xffffffffffffffff, 0x0, 0x1000)

@@ -1,0 +1,2 @@
+r0 = openat$vsock(0xffffffffffffff9c, &(0x7f0000000040)='/dev/vsock\x00', 0x161902, 0x0)
+write$FUSE_NOTIFY_INVAL_INODE(r0, &(0x7f0000000200)={0x28}, 0x28)

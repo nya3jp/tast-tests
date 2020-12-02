@@ -1,0 +1,2 @@
+syz_open_dev$sndpcmc(&(0x7f0000000000)='/dev/snd/pcmC#D#c\x00', 0x439e, 0x0)
+ioctl$VIDIOC_CROPCAP(0xffffffffffffffff, 0xc02c563a, 0x0)

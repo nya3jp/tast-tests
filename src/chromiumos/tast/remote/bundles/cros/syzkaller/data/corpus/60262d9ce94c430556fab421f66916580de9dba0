@@ -1,0 +1,2 @@
+r0 = socket$nl_netfilter(0x10, 0x3, 0xc)
+ioctl$sock_SIOCGIFVLAN_SET_VLAN_EGRESS_PRIORITY_CMD(r0, 0x8982, &(0x7f0000000040)={0x3, 'ip6erspan0\x00'})

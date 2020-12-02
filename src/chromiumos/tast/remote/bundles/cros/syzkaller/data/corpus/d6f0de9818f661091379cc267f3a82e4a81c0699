@@ -1,0 +1,2 @@
+r0 = gettid()
+ioprio_get$pid(0x2, r0)

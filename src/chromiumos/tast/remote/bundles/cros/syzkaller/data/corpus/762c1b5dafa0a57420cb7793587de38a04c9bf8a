@@ -1,0 +1,1 @@
+syz_open_dev$sndpcmp(&(0x7f00000001c0)='/dev/snd/pcmC#D#p\x00', 0x7a8, 0x44a01)

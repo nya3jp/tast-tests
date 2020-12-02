@@ -1,0 +1,2 @@
+openat$sndseq(0xffffffffffffff9c, &(0x7f0000000a00)='/dev/snd/seq\x00', 0x84000)
+ioctl$VIDIOC_S_FMT(0xffffffffffffffff, 0xc0d05605, 0x0)

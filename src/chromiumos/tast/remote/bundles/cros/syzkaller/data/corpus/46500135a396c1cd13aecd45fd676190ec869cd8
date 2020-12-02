@@ -1,0 +1,2 @@
+r0 = syz_open_dev$vim2m(&(0x7f0000000080)='/dev/video#\x00', 0x0, 0x2)
+ioctl$vim2m_VIDIOC_EXPBUF(r0, 0xc0405610, &(0x7f0000000180))

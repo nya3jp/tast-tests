@@ -1,0 +1,2 @@
+r0 = openat$tun(0xffffffffffffff9c, &(0x7f0000000080)='/dev/net/tun\x00', 0x1a1801, 0x0)
+write$binfmt_script(r0, 0x0, 0x0)

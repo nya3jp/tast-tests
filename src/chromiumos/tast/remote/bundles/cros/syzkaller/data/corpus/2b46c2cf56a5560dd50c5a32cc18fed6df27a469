@@ -1,0 +1,2 @@
+unshare(0x400)
+fcntl$F_SET_FILE_RW_HINT(0xffffffffffffffff, 0x40e, 0x0)

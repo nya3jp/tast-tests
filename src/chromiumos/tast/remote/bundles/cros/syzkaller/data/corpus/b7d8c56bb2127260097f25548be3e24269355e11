@@ -1,0 +1,2 @@
+r0 = gettid()
+prctl$PR_SET_PTRACER(0x59616d61, r0)

@@ -1,0 +1,5 @@
+r0 = openat$vhost_vsock(0xffffffffffffff9c, &(0x7f0000000080)='/dev/vhost-vsock\x00', 0x2, 0x0)
+ioctl$VHOST_SET_OWNER(r0, 0xaf01, 0x0)
+r1 = openat$vimc2(0xffffffffffffff9c, &(0x7f0000000140)='/dev/video2\x00', 0x2, 0x0)
+r2 = dup3(r0, r1, 0x0)
+ioctl$DRM_IOCTL_MODE_SETPLANE(r2, 0xc03064b7, 0x0)

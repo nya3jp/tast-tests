@@ -1,0 +1,4 @@
+syz_open_dev$dri(&(0x7f0000000040)='/dev/dri/card#\x00', 0xffffffffffffffff, 0x755402)
+r0 = syz_open_dev$dri(&(0x7f00000001c0)='/dev/dri/card#\x00', 0x1, 0x8100)
+ioctl$DRM_IOCTL_GET_STATS(r0, 0x80f86406, 0xfffffffffffffffe)
+ioctl$DRM_IOCTL_AGP_ACQUIRE(r0, 0x6430)

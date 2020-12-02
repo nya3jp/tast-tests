@@ -1,0 +1,7 @@
+# See https://goo.gl/kgGztJ for information about syzkaller reproducers.
+#{"repeat":true,"procs":1,"sandbox":"none","fault_call":-1,"netdev":true}
+r0 = openat$tun(0xffffffffffffff9c, &(0x7f0000000640)='/dev/net/tun\x00', 0x0, 0x0)
+ioctl$TUNSETIFF(r0, 0x400454ca, &(0x7f00000000c0)={"00ac720000000000ec973f820f7c4000", 0x102})
+ioctl$TUNSETLINK(r0, 0x400454cd, 0x30a)
+r1 = socket$nl_route(0x10, 0x3, 0x0)
+sendmsg$nl_route(r1, &(0x7f0000000100)={&(0x7f0000000080), 0xc, &(0x7f0000000000)={&(0x7f00000001c0)=@newlink={0x28, 0x10, 0xc362e63b3f31ba5f, 0x0, 0x0, {0x0, 0x0, 0x0, 0x0, 0x3}, [@IFLA_GROUP={0x8}]}, 0x28}}, 0x0)

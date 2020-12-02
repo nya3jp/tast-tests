@@ -1,0 +1,2 @@
+r0 = socket$key(0xf, 0x3, 0x2)
+write(r0, &(0x7f0000000380)="e23fd57aa602d1f3e3deab748fecee8e", 0x10)

@@ -1,0 +1,2 @@
+r0 = openat$apparmor_task_exec(0xffffffffffffff9c, &(0x7f0000000080)='/proc/self/attr/exec\x00', 0x2, 0x0)
+lseek(r0, 0x0, 0x1)

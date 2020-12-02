@@ -1,0 +1,2 @@
+mkdirat(0xffffffffffffff9c, &(0x7f0000000000)='./file0\x00', 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000040)='./file0/file0\x00', 0x266400, 0x0)

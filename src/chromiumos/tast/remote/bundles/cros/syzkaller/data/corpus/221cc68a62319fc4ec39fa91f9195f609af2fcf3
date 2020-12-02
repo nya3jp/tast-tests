@@ -1,0 +1,2 @@
+r0 = memfd_create(&(0x7f0000000200)='/dev/zero\x00', 0x0)
+pwrite64(r0, 0x0, 0x0, 0x0)

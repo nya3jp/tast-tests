@@ -1,0 +1,2 @@
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000000000)='/dev/snd/seq\x00', 0x0)
+ioctl$SNDRV_SEQ_IOCTL_SET_CLIENT_INFO(r0, 0x40bc5311, &(0x7f0000000080)={0x0, 0x0, 'client0\x00', 0x0, "f5cd573daa09b555", "bffd21496cbc8c2afdc10cb2e23723e66ed5fe982533093e60c0c84a3a0315c7"})

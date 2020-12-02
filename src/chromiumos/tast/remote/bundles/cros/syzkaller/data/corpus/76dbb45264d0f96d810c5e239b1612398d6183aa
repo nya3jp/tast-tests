@@ -1,0 +1,3 @@
+pipe2$9p(&(0x7f00000001c0)={<r0=>0xffffffffffffffff, <r1=>0xffffffffffffffff}, 0x0)
+write$P9_RLOPEN(r1, &(0x7f0000000000)={0x18}, 0x18)
+vmsplice(r0, &(0x7f0000000040)=[{&(0x7f0000000200)="e33329a12172d74e0adf585ea7e26e67aa9d602447b3347d7f", 0x19}], 0x1, 0x0)

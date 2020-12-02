@@ -1,0 +1,6 @@
+r0 = syz_init_net_socket$bt_hci(0x1f, 0x3, 0x1)
+ioctl$sock_bt_hci(r0, 0x400448cb, &(0x7f0000000000)="18999bed14566c2a9253adf150e02351c5ef5ac60e33e7742bddb39464b2e1833b0484885d180adc3d9cb981347f586377f5ae08566167461495e5a984a437937a185863f1e6be91211537cb0d4eeeebc457aa586a58c21ce6fb752ef33a6ecd977df53b5783a813460843e03da773afbb3f0a618582b718885bfb")
+getsockopt$bt_sco_SCO_OPTIONS(0xffffffffffffffff, 0x11, 0x1, &(0x7f0000000080)=""/212, &(0x7f0000000180)=0xd4)
+r1 = openat$i915(0xffffffffffffff9c, &(0x7f0000000140)='/dev/i915\x00', 0x0, 0x0)
+ioctl$DRM_IOCTL_I915_PERF_REMOVE_CONFIG(r1, 0x40086478, &(0x7f00000005c0))
+ioctl$DRM_IOCTL_I915_GET_RESET_STATS(r1, 0xc0186472, &(0x7f00000001c0)={0x5, 0xfffffffc})

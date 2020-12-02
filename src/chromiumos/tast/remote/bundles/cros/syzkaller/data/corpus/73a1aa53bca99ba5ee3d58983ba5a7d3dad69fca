@@ -1,0 +1,2 @@
+r0 = socket$inet_udplite(0x2, 0x2, 0x88)
+ioctl$sock_ifreq(r0, 0x8921, &(0x7f0000000140)={'veth0_virt_wifi\x00', @ifru_flags})

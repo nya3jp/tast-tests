@@ -1,0 +1,2 @@
+r0 = openat$i915(0xffffffffffffff9c, &(0x7f00000005c0)='/dev/i915\x00', 0x0, 0x0)
+ioctl$DRM_IOCTL_I915_GEM_CONTEXT_SETPARAM(r0, 0xc0186475, &(0x7f0000000040)={0x0, 0x4, 0x4})

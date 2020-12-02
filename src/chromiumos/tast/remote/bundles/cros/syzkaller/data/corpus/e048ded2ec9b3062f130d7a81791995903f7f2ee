@@ -1,0 +1,2 @@
+r0 = syz_open_dev$video(&(0x7f0000000100)='/dev/video#\x00', 0x0, 0x800)
+ioctl$VIDIOC_DQEVENT(r0, 0x80885659, 0x0)

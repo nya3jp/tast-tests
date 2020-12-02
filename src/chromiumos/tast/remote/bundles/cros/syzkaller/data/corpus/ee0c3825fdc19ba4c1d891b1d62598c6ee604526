@@ -1,0 +1,2 @@
+r0 = socket$inet6(0xa, 0x100000000002, 0x0)
+setsockopt$inet6_IPV6_XFRM_POLICY(r0, 0x29, 0x23, &(0x7f0000000300)={{{@in6=@private0, @in=@private}}, {{@in6=@private0}, 0x0, @in=@dev}}, 0xe8)

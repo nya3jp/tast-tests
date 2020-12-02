@@ -1,0 +1,2 @@
+r0 = openat$smack_task_current(0xffffffffffffff9c, &(0x7f0000000040)='/proc/self/attr/current\x00', 0x2, 0x0)
+read(r0, 0x0, 0x0)

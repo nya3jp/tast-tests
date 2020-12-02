@@ -1,0 +1,2 @@
+syz_open_dev$sndctrl(&(0x7f0000000000)='/dev/snd/controlC#\x00', 0x0, 0x0)
+mprotect(&(0x7f0000ff9000/0x3000)=nil, 0x3000, 0x0)

@@ -1,0 +1,3 @@
+syz_open_dev$sndpcmp(&(0x7f0000000000)='/dev/snd/pcmC#D#p\x00', 0x10000004, 0x0)
+ioctl$SNDRV_PCM_IOCTL_FORWARD(0xffffffffffffffff, 0x40084149, &(0x7f0000000040)=0xffff)
+munmap(&(0x7f0000ff9000/0x4000)=nil, 0x4000)

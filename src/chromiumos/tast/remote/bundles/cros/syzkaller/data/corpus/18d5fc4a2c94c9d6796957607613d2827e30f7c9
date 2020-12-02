@@ -1,0 +1,2 @@
+socketpair$unix(0x1, 0x2, 0x0, &(0x7f00000016c0)={<r0=>0xffffffffffffffff})
+ioctl$sock_SIOCSIFVLAN_GET_VLAN_EGRESS_PRIORITY_CMD(r0, 0x8983, 0x0)

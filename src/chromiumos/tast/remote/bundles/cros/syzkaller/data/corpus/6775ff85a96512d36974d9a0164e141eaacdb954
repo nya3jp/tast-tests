@@ -1,0 +1,2 @@
+unshare(0x400)
+fchmod(0xffffffffffffffff, 0x0)

@@ -1,0 +1,1 @@
+openat$fuse(0xffffffffffffff9c, &(0x7f0000002040)='/dev/fuse\x00', 0x2, 0x0)

@@ -1,0 +1,1 @@
+ioctl$VIDIOC_G_EXT_CTRLS(0xffffffffffffffff, 0xc0205647, 0x0)

@@ -1,0 +1,2 @@
+r0 = syz_open_dev$I2C(&(0x7f0000000040)='/dev/i2c-#\x00', 0xff, 0x0)
+ioctl$I2C_SLAVE_FORCE(r0, 0x706, 0x9c)

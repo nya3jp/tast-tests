@@ -1,0 +1,4 @@
+ioctl$EVIOCSKEYCODE_V2(0xffffffffffffffff, 0x40284504, &(0x7f0000000b80)={0x0, 0x0, 0x0, 0x920, "28aeec9f223b28e27c594c63870afd0a98824ecd58161cc6bb7c58e141ad7795"})
+sched_yield()
+ioctl$sock_SIOCSIFBR(0xffffffffffffffff, 0x8941, 0x0)
+ioctl$DRM_IOCTL_PRIME_FD_TO_HANDLE(0xffffffffffffffff, 0xc00c642e, 0x0)

@@ -1,0 +1,2 @@
+r0 = gettid()
+tkill(r0, 0x80024)

@@ -1,0 +1,8 @@
+syslog(0xa, 0x0, 0x12)
+setxattr$security_smack_transmute(&(0x7f0000000000)='./file0\x00', &(0x7f0000000080)='security.SMACK64TRANSMUTE\x00', &(0x7f00000000c0)='TRUE', 0x4, 0x3)
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+ioctl$sock_SIOCBRDELBR(r0, 0x89a1, &(0x7f0000000040)='vxcan1\x00')
+r1 = syz_open_procfs(0x0, &(0x7f0000000180)='net/softnet_stat\x00')
+pread64(r1, 0x0, 0x0, 0x0)
+read$alg(r1, &(0x7f0000000200)=""/222, 0xde)
+ioctl$RTC_EPOCH_SET(r1, 0x4008700e, 0x1000)

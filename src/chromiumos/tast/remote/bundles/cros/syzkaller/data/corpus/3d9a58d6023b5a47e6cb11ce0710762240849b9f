@@ -1,0 +1,2 @@
+r0 = openat$i915(0xffffffffffffff9c, &(0x7f0000000000)='/dev/i915\x00', 0x0, 0x0)
+ioctl$DRM_IOCTL_I915_PERF_ADD_CONFIG(r0, 0x40486477, &(0x7f0000000040)={"0d5a1fac85bc2f716d22458c442db325501fe4c4980f08415878c512f6c9e2c6fde0c8ff", 0x0, 0x0, 0x0, 0x0, 0x0, 0x6})

@@ -1,0 +1,2 @@
+r0 = openat$zero(0xffffffffffffff9c, &(0x7f0000000080)='/dev/zero\x00', 0x80201, 0x0)
+write$FUSE_LSEEK(r0, &(0x7f00000000c0)={0x18}, 0x18)

@@ -1,0 +1,5 @@
+socketpair$unix(0x1, 0x1, 0x0, &(0x7f00000016c0)={<r0=>0xffffffffffffffff})
+getsockopt$sock_cred(r0, 0x1, 0x11, &(0x7f0000caaffb)={0x0, <r1=>0x0}, &(0x7f0000cab000)=0xc)
+setreuid(0x0, r1)
+r2 = syz_open_procfs(0xffffffffffffffff, &(0x7f0000000080)='comm\x00')
+fsetxattr$trusted_overlay_origin(r2, &(0x7f00000002c0)='trusted.overlay.origin\x00', 0x0, 0x0, 0x0)

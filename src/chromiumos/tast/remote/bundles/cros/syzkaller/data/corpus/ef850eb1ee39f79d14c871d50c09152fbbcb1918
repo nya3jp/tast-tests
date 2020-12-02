@@ -1,0 +1,2 @@
+unshare(0x400)
+flock(0xffffffffffffffff, 0x0)

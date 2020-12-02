@@ -1,0 +1,7 @@
+r0 = socket$bt_hidp(0x1f, 0x3, 0x6)
+setsockopt$bt_BT_FLUSHABLE(r0, 0x112, 0x8, &(0x7f0000000000)=0x10000, 0x4)
+ioctl$DRM_IOCTL_I915_GET_PIPE_FROM_CRTC_ID(0xffffffffffffffff, 0xc0086465, &(0x7f0000000040))
+ioctl$VIDIOC_S_AUDOUT(0xffffffffffffffff, 0x40345632, &(0x7f0000000080)={0x1, "8ad2e08178423cefae6a7b37af45cdbd98a211d76dcedbf78b58e7c7ce338d61", 0x1, 0x1})
+mmap$DRM_I915(&(0x7f0000ffc000/0x2000)=nil, 0x2000, 0x6, 0x2010, 0xffffffffffffffff, 0xb9)
+ioctl$sock_bt_hidp_HIDPCONNDEL(r0, 0x400448c9, &(0x7f00000000c0)={@fixed={[], 0x11}})
+syz_open_dev$video(&(0x7f0000000400)='/dev/video#\x00', 0x0, 0x4000)

@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0xffffffffffffffff, &(0x7f0000000100)='fdinfo\x00')
+openat$cgroup_procs(r0, &(0x7f0000000000)='tasks\x00', 0x2, 0x0)

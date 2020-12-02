@@ -1,0 +1,2 @@
+r0 = openat$keychord(0xffffffffffffff9c, &(0x7f0000000040)='/dev/keychord\x00', 0x103900, 0x0)
+read$alg(r0, &(0x7f0000000200)=""/233, 0xe9)

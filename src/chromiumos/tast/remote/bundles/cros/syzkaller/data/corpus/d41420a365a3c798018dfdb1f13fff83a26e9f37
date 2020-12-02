@@ -1,0 +1,2 @@
+r0 = socket$inet_icmp_raw(0x2, 0x3, 0x1)
+ioctl$sock_SIOCETHTOOL(r0, 0x8946, &(0x7f0000000100)={'veth1_to_bridge\x00', &(0x7f0000000000)=@ethtool_rxnfc={0x29, 0x0, 0x0, {0x0, @usr_ip6_spec={@mcast2, @private0}, {0x0, @dev}, @ether_spec={@empty, @broadcast}, {0x0, @multicast}}}})

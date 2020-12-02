@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0x0, &(0x7f0000000000)='gid_map\x00')
+write$FUSE_NOTIFY_INVAL_INODE(r0, 0x0, 0x0)

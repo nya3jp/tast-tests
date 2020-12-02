@@ -1,0 +1,2 @@
+r0 = memfd_create(&(0x7f0000000400)='+\x8b\x8a\x16\x11O\xdd\xdfk(\xc6\xcej\x1b\x80>oJ\x02u\x9b\x94a\xac', 0x0)
+pread64(r0, 0x0, 0x0, 0x8b06)

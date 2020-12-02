@@ -1,0 +1,2 @@
+r0 = socket$packet(0x11, 0x3, 0x300)
+ioctl$sock_inet_SIOCSIFADDR(r0, 0x8916, &(0x7f0000000040)={'veth0_vlan\x00', {0x2, 0x0, @local}})

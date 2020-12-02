@@ -1,0 +1,4 @@
+r0 = socket$inet_icmp_raw(0x2, 0x3, 0x1)
+ioctl$sock_ifreq(r0, 0x8910, 0x0)
+ioctl$sock_inet_SIOCSIFFLAGS(r0, 0x8914, &(0x7f00000004c0)={'veth1_macvtap\x00', 0x1000})
+setitimer(0x1, &(0x7f0000000480)={{}, {0x77359400}}, 0x0)

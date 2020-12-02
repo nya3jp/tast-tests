@@ -1,0 +1,3 @@
+mount$fuse(0x0, 0x0, 0x0, 0x0, &(0x7f0000000240)=ANY=[])
+r0 = memfd_create(&(0x7f0000000400)='+\x8b\x8a\x16\x11O\xdd\xdfk(\xc6\xcej\x1b\x80>oJ\x02u\x9b\x94a\xac', 0x0)
+write$binfmt_misc(r0, &(0x7f0000000540)=ANY=[], 0xfffffda2)

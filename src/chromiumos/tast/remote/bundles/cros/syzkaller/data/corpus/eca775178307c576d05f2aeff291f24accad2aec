@@ -1,0 +1,4 @@
+r0 = inotify_init1(0x0)
+fcntl$setown(r0, 0x8, 0xffffffffffffffff)
+fcntl$getownex(r0, 0x10, &(0x7f00000001c0)={0x0, <r1=>0x0})
+ioprio_get$pid(0x1, r1)

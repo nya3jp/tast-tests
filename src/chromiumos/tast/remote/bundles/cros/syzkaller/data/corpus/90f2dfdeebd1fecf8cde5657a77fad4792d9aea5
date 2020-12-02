@@ -1,0 +1,2 @@
+r0 = syz_open_dev$dri(&(0x7f00000001c0)='/dev/dri/card#\x00', 0x0, 0x0)
+ioctl$DRM_IOCTL_WAIT_VBLANK(r0, 0xc018643a, &(0x7f0000000180))

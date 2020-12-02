@@ -1,0 +1,6 @@
+r0 = syz_init_net_socket$bt_hci(0x1f, 0x3, 0x1)
+ioctl$sock_bt_hci(r0, 0x0, 0x0)
+r1 = syz_init_net_socket$bt_hci(0x1f, 0x3, 0x1)
+ioctl$sock_bt_hci(r1, 0x400448c9, 0x0)
+r2 = syz_init_net_socket$bt_hci(0x1f, 0x3, 0x1)
+ioctl$sock_bt_hci(r2, 0x0, &(0x7f0000000000)="912a1168ffb94793cbaa1af76576d9c532f37df96427ae671ac9d284459b3e9c68b3553652318ba9e68cdc05687473e85cf5a182dc6e447c358d5ca1ebd25d8d2c74a2d5076caf4bfe0399d6cc9870dc1239fd9d372573e5b0b4a12f0bed9b547790fa267fe8ca367e765e8acaa9d956a3a9ff28eb983ad13f06ce18df6ecd3bad80d123c4858fa624965346aa2d28e883e4e4a6da44b655b5974e394eb2c573d9b2e636c4b56e8fe33b89c7e9b8d79916389d800f2ceee02c826b35")

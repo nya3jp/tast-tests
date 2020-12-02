@@ -1,0 +1,6 @@
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f00000001c0)='/dev/snd/seq\x00', 0x8002)
+ioctl$SNDRV_CTL_IOCTL_ELEM_WRITE(0xffffffffffffffff, 0xc4c85513, &(0x7f0000000880)={{}, 0x0, [0x0, 0xfffffffffffffffc]})
+ioctl$SNDRV_SEQ_IOCTL_CREATE_QUEUE(r0, 0xc08c5332, &(0x7f00000007c0)={0x0, 0x0, 0x0, 'queue1\x00'})
+syz_open_dev$sndctrl(&(0x7f00000001c0)='/dev/snd/controlC#\x00', 0x0, 0x0)
+setsockopt$bt_BT_RCVMTU(0xffffffffffffffff, 0x112, 0xd, &(0x7f0000000240)=0x5, 0x2)
+write$sndseq(r0, &(0x7f0000000080)=[{0x0, 0x0, 0x0, 0x0, @tick, {}, {}, @addr}], 0xfffffeea)

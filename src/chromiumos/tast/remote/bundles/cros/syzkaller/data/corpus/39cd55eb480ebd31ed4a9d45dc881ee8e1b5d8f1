@@ -1,0 +1,5 @@
+mkdirat(0xffffffffffffff9c, &(0x7f0000000000)='./file0\x00', 0x0)
+r0 = openat$fuse(0xffffffffffffff9c, &(0x7f0000002040)='/dev/fuse\x00', 0x2, 0x0)
+mount$fuse(0x0, &(0x7f0000000200)='./file0\x00', &(0x7f0000000300)='fuse\x00', 0x0, &(0x7f0000000240)=ANY=[@ANYBLOB='fd=', @ANYRESHEX=r0, @ANYBLOB=',rootmode=00000000000000000040000,user_id=', @ANYRESDEC=0x0, @ANYBLOB=',group_id=', @ANYRESDEC=0x0])
+read$FUSE(r0, &(0x7f0000001000), 0x1000)
+write$FUSE_INIT(r0, &(0x7f0000000100)={0x50, 0x0, 0x2}, 0x50)

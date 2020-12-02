@@ -1,0 +1,2 @@
+r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000000280)='/dev/snd/seq\x00', 0x42)
+write$sndseq(r0, &(0x7f00000002c0)=[{0x0, 0x8, 0x0, 0x0, @time, {}, {}, @addr}], 0x1c)

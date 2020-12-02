@@ -1,0 +1,2 @@
+r0 = syz_open_procfs(0x0, &(0x7f00000001c0)='ns\x00')
+openat(r0, &(0x7f0000000080)='./file0\x00', 0x210401, 0x0)

@@ -1,0 +1,2 @@
+mlockall(0x6)
+io_setup(0x1, &(0x7f0000000040))

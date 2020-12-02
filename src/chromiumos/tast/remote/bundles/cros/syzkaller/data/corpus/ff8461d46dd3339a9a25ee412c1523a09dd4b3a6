@@ -1,0 +1,1 @@
+prctl$PR_GET_THP_DISABLE(0x2a)

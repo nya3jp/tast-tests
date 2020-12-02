@@ -1,0 +1,2 @@
+r0 = socket$key(0xf, 0x3, 0x2)
+ioctl$sock_SIOCGIFBR(r0, 0x8940, &(0x7f0000000280)=@add_del={0x2, &(0x7f0000000000)='rose0\x00'})

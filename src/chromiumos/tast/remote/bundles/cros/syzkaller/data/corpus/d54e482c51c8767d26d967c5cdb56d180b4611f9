@@ -1,0 +1,2 @@
+r0 = socket$unix(0x1, 0x2, 0x0)
+ioctl$sock_SIOCETHTOOL(r0, 0x8946, &(0x7f0000000100)={'bond_slave_0\x00', &(0x7f0000000000)=@ethtool_gstrings={0x1b, 0x6}})

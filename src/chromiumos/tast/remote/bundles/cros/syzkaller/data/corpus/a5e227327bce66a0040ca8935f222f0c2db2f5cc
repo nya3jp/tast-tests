@@ -1,0 +1,2 @@
+r0 = socket$inet6(0xa, 0x1000000000003, 0x4)
+ioctl$sock_inet6_SIOCSIFADDR(r0, 0x8916, &(0x7f0000000440)={@mcast2})

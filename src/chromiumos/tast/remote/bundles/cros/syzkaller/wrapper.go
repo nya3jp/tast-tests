@@ -71,7 +71,7 @@ func init() {
 		// stopping. The overall test duration is 12 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
-		Data:    []string{"testing_rsa", "enabled_syscalls.txt", "corpus.db"},
+		Data:    []string{"testing_rsa", "enabled_syscalls.txt", "corpus"},
 	})
 }
 
@@ -100,9 +100,10 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := os.Mkdir(syzkallerWorkdir, 0755); err != nil {
 		s.Fatalf("Unable to create temp workdir: %v", err)
 	}
-	cmd := exec.Command("cp", s.DataPath("corpus.db"), syzkallerWorkdir)
-	if err := cmd.Run(); err != nil {
-		s.Fatalf("Failed to copy seed corpus to workdir: %v", err)
+
+	// Initialize seed corpus.
+	if err := initializeSeedCorpus(artifactsDir, s.DataPath("corpus")); err != nil {
+		s.Fatalf("Failed to initialize seed corpus: %v", err)
 	}
 
 	// Create startup script.
@@ -198,7 +199,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	// as part of the tast results directory.
 	tastResultsDir := s.OutDir()
 	s.Log("Copying syzkaller workdir to tast results directory")
-	cmd = exec.Command("cp", "-r", syzkallerWorkdir, tastResultsDir)
+	cmd := exec.Command("cp", "-r", syzkallerWorkdir, tastResultsDir)
 	if err := cmd.Run(); err != nil {
 		s.Fatalf("Failed to copy syzkaller workdir: %v", err)
 	}
@@ -246,4 +247,16 @@ func loadEnabledSyscalls(fpath string) ([]string, error) {
 		enabledSyscalls = append(enabledSyscalls, line)
 	}
 	return enabledSyscalls, nil
+}
+
+func initializeSeedCorpus(artifactsDir, corpusDir string) error {
+	seedDir := filepath.Join(artifactsDir, "sys/linux")
+	if err := os.MkdirAll(seedDir, 0755); err != nil {
+		return err
+	}
+	cmd := exec.Command("cp", "-r", corpusDir, filepath.Join(seedDir, "test"))
+	if err := cmd.Run(); err != nil {
+		return err
+	}
+	return nil
 }

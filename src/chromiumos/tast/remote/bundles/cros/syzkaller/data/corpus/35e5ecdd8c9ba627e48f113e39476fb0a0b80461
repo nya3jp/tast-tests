@@ -1,0 +1,2 @@
+mkdirat(0xffffffffffffff9c, &(0x7f0000000000)='./file0\x00', 0x0)
+mount$fuse(0x0, &(0x7f0000000200)='./file0\x00', &(0x7f0000000040)='fuse\x00', 0x0, &(0x7f0000000140)=ANY=[@ANYBLOB='fd=', @ANYRESHEX, @ANYBLOB=',rootmode=', @ANYRESDEC=0x0])

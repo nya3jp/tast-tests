@@ -1,0 +1,2 @@
+r0 = syz_open_dev$I2C(&(0x7f00000000c0)='/dev/i2c-#\x00', 0x95d1, 0x0)
+ioctl$I2C_PEC(r0, 0x708, 0x0)

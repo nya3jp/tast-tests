@@ -1,0 +1,2 @@
+r0 = syz_open_dev$dri(&(0x7f0000000000)='/dev/dri/card#\x00', 0x1, 0x0)
+ioctl$DRM_IOCTL_MODE_GETPROPERTY(r0, 0xc04064aa, &(0x7f0000000300)={0x0, 0x0, 0x6})

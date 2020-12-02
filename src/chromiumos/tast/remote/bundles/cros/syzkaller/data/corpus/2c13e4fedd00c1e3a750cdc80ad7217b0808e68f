@@ -1,0 +1,3 @@
+r0 = openat$binder(0xffffffffffffff9c, &(0x7f0000000040)='/dev/binder\x00', 0x0, 0x0)
+ioctl$BINDER_WRITE_READ(r0, 0xc0306201, 0x0)
+ioctl$TIOCL_SETSEL(r0, 0x541c, 0x0)

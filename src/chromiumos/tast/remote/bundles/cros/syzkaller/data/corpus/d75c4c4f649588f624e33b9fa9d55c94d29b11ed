@@ -1,0 +1,2 @@
+r0 = openat$vimc0(0xffffffffffffff9c, &(0x7f0000000000)='/dev/video0\x00', 0x2, 0x0)
+ioctl$VIDIOC_ENUM_FMT(r0, 0xc0405602, &(0x7f00000000c0)={0x9, 0x1, 0x0, "83166cc5165389acf96b9b522a6255cecfde6fe81e5ab4d555c6bac9f3dfde55"})

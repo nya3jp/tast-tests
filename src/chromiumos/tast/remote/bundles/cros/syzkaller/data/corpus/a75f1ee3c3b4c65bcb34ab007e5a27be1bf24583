@@ -1,0 +1,3 @@
+r0 = syz_init_net_socket$bt_l2cap(0x1f, 0x3, 0x3)
+r1 = dup(r0)
+setsockopt$bt_rfcomm_RFCOMM_LM(r1, 0x12, 0x3, &(0x7f0000000000), 0x4)
