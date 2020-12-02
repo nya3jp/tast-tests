@@ -46,6 +46,30 @@
       },
       "revId": "0ba0508463afea235a1fa807adf36127acc9f58e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "643b08c2_74365948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-02T04:19:22Z",
+      "side": 1,
+      "message": "if you release it immediately there is no need for the following code to close it ever right?  I think releasing immediately is better unless you actually need to use it later.",
+      "parentUuid": "c2805858_dbc5721d",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "0ba0508463afea235a1fa807adf36127acc9f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
