@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
@@ -108,12 +109,27 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	bitrate := 256 * testOpt.size.Width * testOpt.size.Height / (320.0 * 240.0)
 	testOpt.command = append(testOpt.command, "--fb", strconv.Itoa(bitrate) /* From Chromecast */)
 
+	energy, raplErr := power.NewRAPLSnapshot()
+	if raplErr != nil || energy == nil {
+		s.Log("Energy consumption is not available for this board")
+	}
+	startTime := time.Now()
+
 	s.Log("Running ", shutil.EscapeSlice(testOpt.command))
 	logFile, err := runTest(ctx, s.OutDir(), testOpt.command[0], testOpt.command[1:]...)
 	if err != nil {
 		s.Fatal("Failed to run binary: ", err)
 	}
 	defer os.Remove(ivfFile)
+
+	timeDelta := time.Now().Sub(startTime)
+	var energyDiff *power.RAPLValues
+	var energyErr error
+	if raplErr == nil && energy != nil {
+		if energyDiff, energyErr = energy.DiffWithCurrentRAPL(); energyErr != nil {
+			s.Log("Energy consumption measurement failed: ", energyErr)
+		}
+	}
 
 	fps, err := extractFPS(logFile)
 	if err != nil {
@@ -125,6 +141,11 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		Unit:      "fps",
 		Direction: perf.BiggerIsBetter,
 	}, fps)
+
+	if energyDiff != nil && energyErr == nil {
+		energyDiff.ReportWattPerfMetrics(p, "", timeDelta)
+	}
+
 	s.Log(p)
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf results: ", err)

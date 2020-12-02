@@ -76,6 +76,30 @@ func (rapl *RAPLValues) ReportPerfMetrics(perfValues *perf.Values, prefix string
 	}
 }
 
+// ReportWattPerfMetrics appends to perfValues all the RAPL values in Watts.
+// prefix is an optional string what will be used in perf.Metric Name.
+// timeDelta is the measurement interval in seconds.
+func (rapl *RAPLValues) ReportWattPerfMetrics(perfValues *perf.Values, prefix string, timeDelta time.Duration) {
+	interval := timeDelta.Seconds()
+	for _, e := range []struct {
+		name  string
+		value float64
+	}{
+		{"Package0", rapl.joules[package0] / interval},
+		{"Core", rapl.joules[core] / interval},
+		{"Uncore", rapl.joules[uncore] / interval},
+		{"DRAM", rapl.joules[dram] / interval},
+		{"Psys", rapl.joules[psys] / interval},
+	} {
+		perfValues.Append(perf.Metric{
+			Name:      prefix + e.name,
+			Unit:      "Watts",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}, e.value)
+	}
+}
+
 // Total returns the sum of joules at the top level.
 func (rapl *RAPLValues) Total() float64 {
 	return rapl.joules[package0] + rapl.joules[psys]
