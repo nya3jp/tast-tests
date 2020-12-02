@@ -6,12 +6,14 @@ package crostini
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -80,6 +82,15 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 	}
 	if _, err := ui.FindWithTimeout(ctx, tconn, param, 30*time.Second); err != nil {
 		s.Fatal("Failed to find android studio window: ", err)
+	}
+
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		s.Fatal("Failed to get name of directory for screenshot")
+	}
+	path := filepath.Join(dir, "crostini_app_android_studio.png")
+	if err := screenshot.Capture(ctx, path); err != nil {
+		s.Fatal("Failed to take screenshot: ", err)
 	}
 
 	//TODO(jinrongwu): UI test on android studio code.

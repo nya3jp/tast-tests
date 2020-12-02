@@ -7,6 +7,7 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -129,6 +131,15 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 	// Press ctrl+S to save the file.
 	if err = keyboard.Accel(ctx, "ctrl+S"); err != nil {
 		return errors.Wrap(err, "failed to press ctrl+S in Visual Studio Code window")
+	}
+
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		return errors.Wrap(err, "failed to get name of directory for screenshot")
+	}
+	path := filepath.Join(dir, "crostini_app_vscode.png")
+	if err := screenshot.Capture(ctx, path); err != nil {
+		return errors.Wrap(err, "failed to take screenshot")
 	}
 
 	// Press ctrl+W twice to exit window.

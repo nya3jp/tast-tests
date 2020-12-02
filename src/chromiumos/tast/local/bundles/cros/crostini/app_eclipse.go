@@ -7,6 +7,7 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -14,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -96,6 +98,15 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 	}
 	if _, err := ui.FindWithTimeout(ctx, tconn, param, 90*time.Second); err != nil {
 		s.Fatal("Failed to find eclipse window: ", err)
+	}
+
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		s.Fatal("Failed to get name of directory for screenshot")
+	}
+	path := filepath.Join(dir, "crostini_app_eclipse.png")
+	if err := screenshot.Capture(ctx, path); err != nil {
+		s.Fatal("Failed to take screenshot: ", err)
 	}
 
 	//TODO(jinrongwu): UI test on eclipse.

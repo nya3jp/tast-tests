@@ -7,6 +7,7 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -127,6 +129,15 @@ func createFileWithEmacs(ctx context.Context, keyboard *input.KeyboardEventWrite
 	}
 	if err = keyboard.Accel(ctx, "ctrl+S"); err != nil {
 		return errors.Wrap(err, "failed to press ctrl+C in emacs window")
+	}
+
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		return errors.Wrap(err, "failed to get name of directory for screenshot")
+	}
+	path := filepath.Join(dir, "crostini_app_emacs.png")
+	if err := screenshot.Capture(ctx, path); err != nil {
+		return errors.Wrap(err, "failed to take screenshot")
 	}
 
 	// Press ctrl+x and ctrl+c to and quit.
