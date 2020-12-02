@@ -20,13 +20,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Mode represents the mode to use in WPR, either record mode or replay mode.
+// Mode represents the mode to use in WPR
 type Mode int
 
-// Replay vs. Record is the mode to use when running WPR.
+// the mode to use in WPR
+//   Replay is the mode to use when running WPR on local side, and WPR is set to replay all recorded web traffic.
+//   Record is the mode to use when running WPR on local side, and WPR is set to record web traffic.
+//   RemoteReplay is the mode to use when WPR is running on remote side, and WPR is set to replay all recorded web traffic.
 const (
 	Replay Mode = iota
 	Record
+	RemoteReplay
 )
 
 func (m Mode) String() string {
@@ -35,6 +39,8 @@ func (m Mode) String() string {
 		return "replay"
 	case Record:
 		return "record"
+	case RemoteReplay:
+		return "remote_replay"
 	default:
 		return ""
 	}
@@ -140,14 +146,9 @@ func New(ctx context.Context, mode Mode, archive string) (*WPR, error) {
 	}
 	testing.ContextLog(ctx, "WPR HTTP socket is up at ", httpSocketName)
 
-	// Build chrome.Options to configure Chrome to send traffic through WPR.
-	resolverRules := fmt.Sprintf(
-		"MAP *:80 127.0.0.1:%d,MAP *:443 127.0.0.1:%d,EXCLUDE localhost",
-		httpPort, httpsPort)
-	resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
-	const spkiList = "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
-	spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
-	args := []string{resolverRulesFlag, spkiListFlag}
+	httpAddr := fmt.Sprintf("127.0.0.1:%d", httpPort)
+	httpsAddr := fmt.Sprintf("127.0.0.1:%d", httpsPort)
+	args := chromeRuntimeArgs(httpAddr, httpsAddr)
 	opts := []chrome.Option{chrome.ExtraArgs(args...)}
 
 	wpr := &WPR{
@@ -158,6 +159,15 @@ func New(ctx context.Context, mode Mode, archive string) (*WPR, error) {
 	}
 	proc = nil // Skip the deferred kill on success.
 	return wpr, nil
+}
+
+// chromeRuntimeArgs builds chrome argument to resolve traffic to the given http/https destniations.
+func chromeRuntimeArgs(httpAddr, httpsAddr string) []string {
+	resolverRules := fmt.Sprintf("MAP *:80 %s,MAP *:443 %s,EXCLUDE localhost", httpAddr, httpsAddr)
+	resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
+	const spkiList = "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
+	spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
+	return []string{resolverRulesFlag, spkiListFlag}
 }
 
 // Close sends SIGINT to the WPR process.
