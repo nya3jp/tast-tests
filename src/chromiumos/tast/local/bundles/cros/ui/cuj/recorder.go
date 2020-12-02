@@ -7,6 +7,9 @@ package cuj
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
+	"path"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -23,6 +26,8 @@ const (
 	groupLatency    metricGroup = "InputLatency"
 	groupOther      metricGroup = ""
 )
+
+const metricPrefix = "TPS."
 
 const checkInterval = time.Second
 
@@ -73,7 +78,13 @@ type record struct {
 	config     MetricConfig
 	totalCount int64
 	jankCounts [2]float64
-	sum        int64
+
+	// The following fields can be outputted to json file as histogram raw data.
+
+	// Sum is the sum of the all entries in the histogram.
+	Sum int64 `json:"sum"`
+	// Buckets contains ranges of reported values. It's the concatenated histogram buckets from multiple runs.
+	Buckets []metrics.HistogramBucket `json:"buckets"`
 }
 
 // Recorder is a utility to measure various metrics for CUJ-style tests.
@@ -83,10 +94,11 @@ type Recorder struct {
 	names   []string
 	records map[string]*record
 
-	timeline         *perf.Timeline
-	gpuDataSource    *gpuDataSource
-	frameDataTracker *FrameDataTracker
-	zramInfoTracker  *ZramInfoTracker
+	timeline           *perf.Timeline
+	gpuDataSource      *gpuDataSource
+	frameDataTracker   *FrameDataTracker
+	zramInfoTracker    *ZramInfoTracker
+	batteryInfoTracker *BatteryInfoTracker
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -123,7 +135,7 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		gpuDS,
 		newMemoryDataSource("RAM.Absolute", "RAM.Diff.Absolute", "RAM"),
 	}
-	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
+	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix(metricPrefix))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}
@@ -131,24 +143,30 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}
 
-	frameDataTracker, err := NewFrameDataTracker()
+	frameDataTracker, err := NewFrameDataTracker(metricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create FrameDataTracker")
 	}
 
-	zramInfoTracker, err := NewZramInfoTracker()
+	zramInfoTracker, err := NewZramInfoTracker(metricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ZramInfoTracker")
 	}
 
+	batteryInfoTracker, err := NewBatteryInfoTracker(ctx, metricPrefix)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create BatteryInfoTracker")
+	}
+
 	r := &Recorder{
-		tconn:            tconn,
-		names:            make([]string, 0, len(configs)),
-		records:          make(map[string]*record, len(configs)+2),
-		timeline:         timeline,
-		gpuDataSource:    gpuDS,
-		frameDataTracker: frameDataTracker,
-		zramInfoTracker:  zramInfoTracker,
+		tconn:              tconn,
+		names:              make([]string, 0, len(configs)),
+		records:            make(map[string]*record, len(configs)+2),
+		timeline:           timeline,
+		gpuDataSource:      gpuDS,
+		frameDataTracker:   frameDataTracker,
+		zramInfoTracker:    zramInfoTracker,
+		batteryInfoTracker: batteryInfoTracker,
 	}
 	for _, config := range configs {
 		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
@@ -186,6 +204,10 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		return nil, errors.Wrap(err, "failed to start ZramInfoTracker")
 	}
 
+	if err := r.batteryInfoTracker.Start(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start BatteryInfoTracker")
+	}
+
 	if err := r.timeline.StartRecording(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start recording timeline data")
 	}
@@ -207,13 +229,15 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) e
 	if err != nil {
 		return err
 	}
+
 	for _, hist := range hists {
 		if hist.TotalCount() == 0 {
 			continue
 		}
+
 		record := r.records[hist.Name]
 		record.totalCount += hist.TotalCount()
-		record.sum += hist.Sum
+		record.Sum += hist.Sum
 		jankCounts := []float64{
 			getJankCounts(hist, record.config.direction, record.config.jankCriteria[0]),
 			getJankCounts(hist, record.config.direction, record.config.jankCriteria[1]),
@@ -221,9 +245,12 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) e
 		record.jankCounts[0] += jankCounts[0]
 		record.jankCounts[1] += jankCounts[1]
 
+		// Concatenate buckets.
+		record.Buckets = append(record.Buckets, hist.Buckets...)
+
 		if totalRecord, ok := r.records[string(record.config.group)]; ok {
 			totalRecord.totalCount += hist.TotalCount()
-			totalRecord.sum += hist.Sum
+			totalRecord.Sum += hist.Sum
 			totalRecord.jankCounts[0] += jankCounts[0]
 			totalRecord.jankCounts[1] += jankCounts[1]
 		}
@@ -246,6 +273,13 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		testing.ContextLog(ctx, "Failed to stop ZramInfoTracker: ", err)
 		if stopErr == nil {
 			stopErr = errors.Wrap(err, "failed to stop ZramInfoTracker")
+		}
+	}
+
+	if err := r.batteryInfoTracker.Stop(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to stop BatteryInfoTracker: ", err)
+		if stopErr == nil {
+			stopErr = errors.Wrap(err, "failed to stop BatteryInfoTracker")
 		}
 	}
 
@@ -275,7 +309,7 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 			Unit:      record.config.unit,
 			Variant:   "average",
 			Direction: record.config.direction,
-		}, float64(record.sum)/float64(record.totalCount))
+		}, float64(record.Sum)/float64(record.totalCount))
 		pv.Set(perf.Metric{
 			Name:      name,
 			Unit:      "percent",
@@ -293,6 +327,18 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	displayInfo.Record(pv)
 	r.frameDataTracker.Record(pv)
 	r.zramInfoTracker.Record(pv)
+	r.batteryInfoTracker.Record(pv)
 
 	return nil
+}
+
+// SaveHistograms saves histogram raw data to a given directory in a
+// file named "recorder_histograms.json" by marshal the recorders.
+func (r *Recorder) SaveHistograms(outDir string) error {
+	filePath := path.Join(outDir, "recorder_histograms.json")
+	j, err := json.MarshalIndent(r.records, "", "  ")
+	if err != nil {
+		return err
+	}
+	return ioutil.WriteFile(filePath, j, 0644)
 }
