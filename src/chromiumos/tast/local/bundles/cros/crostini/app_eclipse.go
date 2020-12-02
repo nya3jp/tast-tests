@@ -98,5 +98,7 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find eclipse window: ", err)
 	}
 
+	crostini.TakeAppScreenshot(ctx, "eclipse")
+
 	//TODO(jinrongwu): UI test on eclipse.
 }

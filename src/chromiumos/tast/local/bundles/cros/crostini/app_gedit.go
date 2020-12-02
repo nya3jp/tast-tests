@@ -125,6 +125,8 @@ func testCreateFileWithGedit(ctx context.Context, terminalApp *terminalapp.Termi
 		return errors.Wrap(err, "failed to press ctrl+S on the app window")
 	}
 
+	crostini.TakeAppScreenshot(ctx, "gedit")
+
 	// Press ctrl+W twice to exit window.
 	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
 		return errors.Wrap(err, "failed to press ctrl+W on the app window")

@@ -131,6 +131,8 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		return errors.Wrap(err, "failed to press ctrl+S in Visual Studio Code window")
 	}
 
+	crostini.TakeAppScreenshot(ctx, "vscode")
+
 	// Press ctrl+W twice to exit window.
 	if err = keyboard.Accel(ctx, "ctrl+W"); err != nil {
 		return errors.Wrap(err, "failed to press ctrl+W in Visual Studio Code window")

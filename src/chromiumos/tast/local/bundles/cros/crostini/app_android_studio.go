@@ -81,6 +81,7 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 	if _, err := ui.FindWithTimeout(ctx, tconn, param, 30*time.Second); err != nil {
 		s.Fatal("Failed to find android studio window: ", err)
 	}
+	crostini.TakeAppScreenshot(ctx, "android_studio")
 
 	//TODO(jinrongwu): UI test on android studio code.
 }
