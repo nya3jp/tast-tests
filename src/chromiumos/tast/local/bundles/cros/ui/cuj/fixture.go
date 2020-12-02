@@ -33,6 +33,16 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		Vars:            []string{"ui.cuj_username", "ui.cuj_password"},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name:            "loggedInAndKeepState",
+		Desc:            "The CUJ test fixture which keeps login state",
+		Contacts:        []string{"mukai@chromium.org"},
+		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true},
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		Vars:            []string{"ui.cuj_username", "ui.cuj_password"},
+	})
 }
 
 func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, error) {
@@ -40,7 +50,6 @@ func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, erro
 	if err != nil {
 		return nil, errors.Wrap(err, "listing activities failed")
 	}
-
 	acts := make(map[string]struct{})
 	for _, t := range tasks {
 		for _, a := range t.ActivityInfos {
@@ -61,6 +70,10 @@ type loggedInToCUJUserFixture struct {
 	arc             *arc.ARC
 	origRunningPkgs map[string]struct{}
 	logMarker       *logsaver.Marker
+	keepState       bool
+	// webUITabStrip indicates whether we should run new chrome UI under tablet mode.
+	// Remove this flag when new UI becomes default.
+	webUITabStrip bool
 }
 
 func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -72,10 +85,19 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		var err error
 		username := s.RequiredVar("ui.cuj_username")
 		password := s.RequiredVar("ui.cuj_password")
-		cr, err = chrome.New(ctx,
+		opts := []chrome.Option{
 			chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 			chrome.ARCSupported(),
-			chrome.ExtraArgs(arc.DisableSyncFlags()...))
+			chrome.ExtraArgs(arc.DisableSyncFlags()...),
+		}
+		if f.keepState {
+			opts = append(opts, chrome.KeepState())
+		}
+		if f.webUITabStrip {
+			opts = append(opts, chrome.EnableFeatures("WebUITabStrip"))
+		}
+		cr, err = chrome.New(ctx, opts...)
+
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
@@ -90,45 +112,61 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		}
 	}()
 
-	func() {
-		const playStorePackageName = "com.android.vending"
-		ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout+time.Minute)
-		defer cancel()
-
-		// Optin to Play Store.
-		s.Log("Opting into Play Store")
+	enablePlayStore := true
+	if f.keepState {
+		// Check whether the play store has been enabled.
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
-			s.Fatal("Failed to get the test conn: ", err)
+			s.Fatal("Failed to connect Test API: ", err)
 		}
-		if err := optin.Perform(ctx, cr, tconn); err != nil {
-			s.Fatal("Failed to optin to Play Store: ", err)
+		st, err := arc.GetState(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get ARC state: ", err)
 		}
+		enablePlayStore = !st.Provisioned
+	}
 
-		s.Log("Waiting for Playstore shown")
-		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-			return w.ARCPackageName == playStorePackageName
-		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-			// Playstore app window might not be shown, but optin should be successful
-			// at this time. Log the error message but continue.
-			s.Log("Failed to wait for the playstore window to be visible: ", err)
-			return
-		}
+	if enablePlayStore {
+		func() {
+			const playStorePackageName = "com.android.vending"
+			ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout+time.Minute)
+			defer cancel()
 
-		if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-			s.Fatal("Failed to close Play Store: ", err)
-		}
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if _, err := ash.GetARCAppWindowInfo(ctx, tconn, playStorePackageName); err == ash.ErrWindowNotFound {
-				return nil
-			} else if err != nil {
-				return testing.PollBreak(err)
+			// Optin to Play Store.
+			s.Log("Opting into Play Store")
+			tconn, err := cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to get the test conn: ", err)
 			}
-			return errors.New("still seeing playstore window")
-		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-			s.Fatal("Failed to wait for the playstore window to be closed: ", err)
-		}
-	}()
+			if err := optin.Perform(ctx, cr, tconn); err != nil {
+				s.Fatal("Failed to optin to Play Store: ", err)
+			}
+
+			s.Log("Waiting for Playstore shown")
+			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+				return w.ARCPackageName == playStorePackageName
+			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+				// Playstore app window might not be shown, but optin should be successful
+				// at this time. Log the error message but continue.
+				s.Log("Failed to wait for the playstore window to be visible: ", err)
+				return
+			}
+
+			if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+				s.Fatal("Failed to close Play Store: ", err)
+			}
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if _, err := ash.GetARCAppWindowInfo(ctx, tconn, playStorePackageName); err == ash.ErrWindowNotFound {
+					return nil
+				} else if err != nil {
+					return testing.PollBreak(err)
+				}
+				return errors.New("still seeing playstore window")
+			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+				s.Fatal("Failed to wait for the playstore window to be closed: ", err)
+			}
+		}()
+	}
 
 	var a *arc.ARC
 	func() {
