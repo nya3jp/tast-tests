@@ -213,8 +213,15 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 
 	// Use that mapping to figure out when the first and last scanned beacon were
 	// transmitted. The difference in timestamps was the dwell time of the scan.
-	timeFirst := ssidTimestamps[beaconFirst]
-	timeFinal := ssidTimestamps[beaconFinal]
+	timeFirst, ok := ssidTimestamps[beaconFirst]
+	if !ok {
+		s.Fatal("Failed to find timestamp of the first beacon ", beaconFirst)
+	}
+	timeFinal, ok := ssidTimestamps[beaconFinal]
+	if !ok {
+		s.Fatal("Failed to find the timestamp of the final beacon ", beaconFinal)
+	}
+
 	dwellTime := timeFinal.Sub(timeFirst)
 	s.Log("First Beacon Time: ", timeFirst)
 	s.Log("Final Beacon Time: ", timeFinal)
