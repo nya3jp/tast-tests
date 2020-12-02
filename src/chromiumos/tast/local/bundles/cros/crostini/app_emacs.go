@@ -129,6 +129,8 @@ func createFileWithEmacs(ctx context.Context, keyboard *input.KeyboardEventWrite
 		return errors.Wrap(err, "failed to press ctrl+C in emacs window")
 	}
 
+	crostini.TakeAppScreenshot(ctx, "emacs")
+
 	// Press ctrl+x and ctrl+c to and quit.
 	if err = keyboard.Accel(ctx, "ctrl+X"); err != nil {
 		return errors.Wrap(err, "failed to press ctrl+X in emacs window")
