@@ -31,6 +31,16 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		Vars:            []string{"ui.cuj_username", "ui.cuj_password"},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name:            "loggedInToCUJUserKeepState",
+		Desc:            "The fixture used for UI CUJ tests with keep user state",
+		Contacts:        []string{"mukai@chromium.org", "xliu@cienet.com"},
+		Impl:            &loggedInToCUJUserFixture{keepState: true},
+		SetUpTimeout:    chrome.LoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		Vars:            []string{"ui.cuj_username", "ui.cuj_password"},
+	})
 }
 
 func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, error) {
@@ -57,6 +67,7 @@ type FixtureData struct {
 type loggedInToCUJUserFixture struct {
 	cr              *chrome.Chrome
 	arc             *arc.ARC
+	keepState       bool
 	origRunningPkgs map[string]struct{}
 }
 
@@ -69,8 +80,19 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		var err error
 		username := s.RequiredVar("ui.cuj_username")
 		password := s.RequiredVar("ui.cuj_password")
-		cr, err = chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
-			chrome.ExtraArgs(arc.DisableSyncFlags()...))
+
+		var opts = []chrome.Option{
+			chrome.GAIALogin(),
+			chrome.Auth(username, password, "gaia-id"),
+			chrome.ARCSupported(),
+			chrome.ExtraArgs(arc.DisableSyncFlags()...),
+		}
+		if f.keepState {
+			opts = append(opts,
+				chrome.KeepState(),
+			)
+		}
+		cr, err = chrome.New(ctx, opts...)
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
@@ -85,42 +107,54 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		}
 	}()
 
-	func() {
-		const playStorePackageName = "com.android.vending"
-		ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout+time.Minute)
-		defer cancel()
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
+	defer tconn.Close()
 
-		// Optin to Play Store.
-		s.Log("Opting into Play Store")
-		tconn, err := cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to get the test conn: ", err)
-		}
-		if err := optin.Perform(ctx, cr, tconn); err != nil {
-			s.Fatal("Failed to optin to Play Store: ", err)
-		}
+	if provisioned, err := arc.IsArcProvisioned(ctx, tconn); err != nil {
+		s.Fatal("Failed to get ARC provisioned")
+	} else if provisioned {
+		s.Log("ARC is already provisioned. Skipping the setup")
+	} else {
+		func() {
+			const playStorePackageName = "com.android.vending"
+			ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout+time.Minute)
+			defer cancel()
 
-		s.Log("Waiting for Playstore shown")
-		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-			return w.ARCPackageName == playStorePackageName
-		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-			s.Fatal("Failed to wait for the playstore: ", err)
-		}
-
-		if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-			s.Fatal("Failed to close Play Store: ", err)
-		}
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if _, err := ash.GetARCAppWindowInfo(ctx, tconn, playStorePackageName); err == ash.ErrWindowNotFound {
-				return nil
-			} else if err != nil {
-				return testing.PollBreak(err)
+			// Optin to Play Store.
+			s.Log("Opting into Play Store")
+			tconn, err := cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to get the test conn: ", err)
 			}
-			return errors.New("still seeing playstore window")
-		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-			s.Fatal("Failed to wait for the playstore window to be closed: ", err)
-		}
-	}()
+			if err := optin.Perform(ctx, cr, tconn); err != nil {
+				s.Fatal("Failed to optin to Play Store: ", err)
+			}
+
+			s.Log("Waiting for Playstore shown")
+			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+				return w.ARCPackageName == playStorePackageName
+			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+				s.Fatal("Failed to wait for the playstore: ", err)
+			}
+
+			if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+				s.Fatal("Failed to close Play Store: ", err)
+			}
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if _, err := ash.GetARCAppWindowInfo(ctx, tconn, playStorePackageName); err == ash.ErrWindowNotFound {
+					return nil
+				} else if err != nil {
+					return testing.PollBreak(err)
+				}
+				return errors.New("still seeing playstore window")
+			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+				s.Fatal("Failed to wait for the playstore window to be closed: ", err)
+			}
+		}()
+	}
 
 	var a *arc.ARC
 	func() {
