@@ -316,9 +316,14 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvoca
 		return errors.Wrap(err, "failed to get histograms")
 	}
 
-	raplv, err := rapl.DiffWithCurrentRAPL()
-	if err != nil {
-		return errors.Wrap(err, "failed to compute RAPL diffs")
+	// `rapl` could be nil when not supported.
+	var raplv *power.RAPLValues
+	if rapl != nil {
+		rd, err := rapl.DiffWithCurrentRAPL()
+		if err != nil {
+			return errors.Wrap(err, "failed to compute RAPL diffs")
+		}
+		raplv = rd
 	}
 
 	// Store metrics in the form: Scenario.PageSet.UMA metric name.statistic.{chromeos, lacros}.
@@ -331,21 +336,23 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvoca
 		}
 	}
 
-	nongpuPower := raplv.Total() - raplv.Uncore()
-	if err := invoc.metrics.recordValue(ctx, invoc, "total_power", raplv.Total()); err != nil {
-		return err
-	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "nongpu_power", nongpuPower); err != nil {
-		return err
-	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "cpu_power", raplv.Core()); err != nil {
-		return err
-	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "dram_power", raplv.DRAM()); err != nil {
-		return err
-	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "gpu_power", raplv.Uncore()); err != nil {
-		return err
+	if raplv != nil {
+		nongpuPower := raplv.Total() - raplv.Uncore()
+		if err := invoc.metrics.recordValue(ctx, invoc, "total_power", raplv.Total()); err != nil {
+			return err
+		}
+		if err := invoc.metrics.recordValue(ctx, invoc, "nongpu_power", nongpuPower); err != nil {
+			return err
+		}
+		if err := invoc.metrics.recordValue(ctx, invoc, "cpu_power", raplv.Core()); err != nil {
+			return err
+		}
+		if err := invoc.metrics.recordValue(ctx, invoc, "dram_power", raplv.DRAM()); err != nil {
+			return err
+		}
+		if err := invoc.metrics.recordValue(ctx, invoc, "gpu_power", raplv.Uncore()); err != nil {
+			return err
+		}
 	}
 	return nil
 }
