@@ -6,11 +6,13 @@ package crostini
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -91,13 +93,10 @@ func init() {
 
 func TaskManager(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
+	keyboard := s.PreValue().(crostini.PreData).Keyboard
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Couldn't get keyboard: ", err)
-	}
-	defer keyboard.Close()
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// \x1b == Escape
 	if err := keyboard.Accel(ctx, "Search+\x1b"); err != nil {
@@ -117,9 +116,12 @@ func TaskManager(ctx context.Context, s *testing.State) {
 	entry, err := taskManagerRootNode.DescendantWithTimeout(ctx,
 		ui.FindParams{Name: "Linux Virtual Machine: termina"}, time.Second*30)
 	if err != nil {
+		if err := screenshot.Capture(ctx, filepath.Join(s.OutDir(), "scTaskManager.png")); err != nil {
+			s.Fatal("Failed to take screenshot: ", err)
+		}
 		s.Fatal("Couldn't find node for Crostini: ", err)
 	}
-	entry.Release(ctx)
+	defer entry.Release(ctx)
 
 	if err := keyboard.Accel(ctx, "Ctrl+w"); err != nil {
 		s.Fatal("Couldn't close task manager: ", err)
