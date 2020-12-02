@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cdd6d8a_9f9f3bd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-02T04:23:39Z",
+      "side": 1,
+      "message": "Thank you for reviewing!",
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "258253db_e2e229dc",
@@ -14,6 +31,30 @@
       "writtenOn": "2020-12-02T00:20:14Z",
       "side": 1,
       "message": "Please include r here.",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e43f33f7_bb8bff99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-02T04:23:39Z",
+      "side": 1,
+      "message": "r is a boolean value, and it\u0027s always true here.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/arc/proc.go;l\u003d59?q\u003darc.InitExist",
+      "parentUuid": "258253db_e2e229dc",
       "range": {
         "startLine": 80,
         "startChar": 17,
@@ -49,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fba57d0_6e8274ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-02T04:23:39Z",
+      "side": 1,
+      "message": "This is done by the defer above.",
+      "parentUuid": "8179ca61_5328c222",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c4d7749_803f0564",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
         "patchSetId": 2
@@ -60,6 +125,30 @@
       "writtenOn": "2020-12-02T00:20:14Z",
       "side": 1,
       "message": "I think this is not necessary.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 8
+      },
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab000e7_fe22bee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-02T04:23:39Z",
+      "side": 1,
+      "message": "This is to avoid calling Close() in the defer above.\nI agree this is not necessary, but I think it\u0027s nice to have in case someone add new code between this line and arc.New() below in future.\nDo you think it\u0027s better to remove this?",
+      "parentUuid": "2c4d7749_803f0564",
       "range": {
         "startLine": 88,
         "startChar": 1,
