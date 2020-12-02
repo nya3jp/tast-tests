@@ -152,6 +152,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5594afdd_8001b9b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-12-02T12:33:10Z",
+      "side": 1,
+      "message": "I think it is enough to return with an error. You can check inside this function if adding the bookmark was not allowed, and raise an error in that case.",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "6f8c899dd852a75988f306de4e93a7463c95176e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dadccb1_c30a6792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-12-02T12:33:10Z",
+      "side": 1,
+      "message": "Just an idea: changing \"can\" to \"could\" might be more descriptive.",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "6f8c899dd852a75988f306de4e93a7463c95176e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "980b0d3a_1b187fe9",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
         "patchSetId": 17
