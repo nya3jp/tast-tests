@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f758d6a1_08e94123",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-02T01:59:19Z",
+      "side": 1,
+      "message": "I don\u0027t know if we should delete the shortened contexts.  It is still useful for the tests to fail reasonably quickly if they aren\u0027t going to work rather than waiting 7-10 minutes each.  We could potentially cause the entire test suite to time out if multiple tests fail.\n\nHave you tried just extending the shortened context on the affected tests?",
+      "revId": "632b3988cc3a72ee84eaaabea8efb0d7f78a90f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
