@@ -26,7 +26,7 @@ func init() {
 			"cros-oac@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars: []string{
 			"ui.signinProfileTestExtensionManifestKey",
 			"ui.oac_username",

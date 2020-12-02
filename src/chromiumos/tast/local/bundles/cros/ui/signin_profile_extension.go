@@ -16,8 +16,8 @@ func init() {
 		Func:         SigninProfileExtension,
 		Desc:         "Check private signin profile extension loads",
 		Contacts:     []string{"cros-oac@google.com", "chromeos-sw-engprod@google.com"},
-		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 	})
 }
