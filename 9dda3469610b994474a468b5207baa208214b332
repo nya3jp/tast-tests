@@ -51,6 +51,24 @@
       "parentUuid": "6027d223_8572da6f",
       "revId": "9dda3469610b994474a468b5207baa208214b332",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44dcfa54_e186856a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/edjing_mix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2020-12-02T22:55:22Z",
+      "side": 1,
+      "message": "Hi Meenakshi,\nJust checked, \"Try for free\" and \"Allow\" pop ups are not identified, so have to use keys to close them. \nThanks!",
+      "parentUuid": "781a53b3_b983b3c4",
+      "revId": "9dda3469610b994474a468b5207baa208214b332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
