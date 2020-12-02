@@ -115,6 +115,15 @@ func Type() (t InstallType, ok bool) {
 	return 0, false
 }
 
+// IsArcProvisioned checks whether ARC provisioning is completed.
+func IsArcProvisioned(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	var provisioned bool
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.isArcProvisioned)()`, &provisioned); err != nil {
+		return false, errors.Wrap(err, "failed running autotestPrivate.isArcProvisioned")
+	}
+	return provisioned, nil
+}
+
 // ARC holds resources related to an active ARC session. Call Close to release
 // those resources.
 type ARC struct {
