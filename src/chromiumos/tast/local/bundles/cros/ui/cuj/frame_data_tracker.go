@@ -15,6 +15,7 @@ import (
 
 // FrameDataTracker is helper to get animation frame data from Chrome.
 type FrameDataTracker struct {
+	prefix        string
 	animationData []perfutil.DisplayFrameData
 	dsData        *perfutil.DisplayFrameData
 	dsTracker     *perfutil.DisplaySmoothnessTracker
@@ -115,8 +116,9 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 }
 
 // NewFrameDataTracker creates a new instance for FrameDataTracker.
-func NewFrameDataTracker() (*FrameDataTracker, error) {
+func NewFrameDataTracker(metricPrefix string) (*FrameDataTracker, error) {
 	return &FrameDataTracker{
+		prefix:    metricPrefix,
 		dsTracker: perfutil.NewDisplaySmoothnessTracker(),
 	}, nil
 }
