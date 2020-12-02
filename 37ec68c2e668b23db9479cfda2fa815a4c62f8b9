@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9d9816_e30d2994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_fw_dump.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-02T03:54:48Z",
+      "side": 1,
+      "message": "Awesome. Thanks for explaining how the empirical values are selected.",
+      "parentUuid": "3f472e35_e2bd1483",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "37ec68c2e668b23db9479cfda2fa815a4c62f8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73281795_0cd20bff",
