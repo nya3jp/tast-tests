@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
@@ -108,12 +109,24 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	bitrate := 256 * testOpt.size.Width * testOpt.size.Height / (320.0 * 240.0)
 	testOpt.command = append(testOpt.command, "--fb", strconv.Itoa(bitrate) /* From Chromecast */)
 
+	energy, err := power.NewRAPLSnapshot()
+	if err != nil {
+		s.Log("Energy consumption is not available for this board")
+	}
+	startTime := time.Now()
+
 	s.Log("Running ", shutil.EscapeSlice(testOpt.command))
 	logFile, err := runTest(ctx, s.OutDir(), testOpt.command[0], testOpt.command[1:]...)
 	if err != nil {
 		s.Fatal("Failed to run binary: ", err)
 	}
 	defer os.Remove(ivfFile)
+
+	timeDelta := time.Now().Sub(startTime).Seconds()
+	var energyDiff *power.RAPLValues
+	if energy != nil {
+		energyDiff, _ = energy.DiffWithCurrentRAPL()
+	}
 
 	fps, err := extractFPS(logFile)
 	if err != nil {
@@ -124,7 +137,13 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		Name:      "fps",
 		Unit:      "fps",
 		Direction: perf.BiggerIsBetter,
+		Multiple:  true,
 	}, fps)
+
+	if energyDiff != nil {
+		reportPower(energyDiff, timeDelta, p)
+	}
+
 	s.Log(p)
 }
 
@@ -164,4 +183,24 @@ func extractFPS(logFile string) (fps float64, err error) {
 		return 0.0, errors.Wrapf(err, "failed to parse FPS value %q", fpsString)
 	}
 	return fps, nil
+}
+
+// reportPower calculates the power consumption and appends it to p
+func reportPower(energy *power.RAPLValues, timeDelta float64, p *perf.Values) {
+	for _, e := range []struct {
+		name  string
+		value float64
+	}{
+		{"Package0", energy.Total() / timeDelta},
+		{"Core", energy.Core() / timeDelta},
+		{"Uncore", energy.Uncore() / timeDelta},
+		{"DRAM", energy.DRAM() / timeDelta},
+	} {
+		p.Append(perf.Metric{
+			Name:      e.name,
+			Unit:      "Watts",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}, e.value)
+	}
 }
