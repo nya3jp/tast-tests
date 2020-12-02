@@ -1,0 +1,21 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.meta;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/meta";
+
+// OutputService is a service used by meta tests exercising gRPC output support.
+service OutputService {
+  // SaveOutputs creates files in the gRPC output directory.
+  rpc SaveOutputs(SaveOutputsRequest) returns (google.protobuf.Empty) {}
+}
+
+message SaveOutputsRequest {
+  map<string, string> files = 1;
+}
