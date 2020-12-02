@@ -126,6 +126,9 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		Direction: perf.BiggerIsBetter,
 	}, fps)
 	s.Log(p)
+	if err := p.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed to save perf results: ", err)
+	}
 }
 
 // runTest runs the exe binary test with arguments args.
