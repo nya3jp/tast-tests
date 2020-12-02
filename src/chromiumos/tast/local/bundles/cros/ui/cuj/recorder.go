@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/load"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -23,6 +24,12 @@ const (
 	groupSmoothness metricGroup = "AnimationSmoothness"
 	groupLatency    metricGroup = "InputLatency"
 	groupOther      metricGroup = ""
+)
+
+const (
+	matricPrefix        = "TPS."
+	batteryMetricPrefix = "Battery."
+	powerUsageMeticName = "Power.usage"
 )
 
 const checkInterval = time.Second
@@ -81,8 +88,9 @@ type record struct {
 type Recorder struct {
 	tconn *chrome.TestConn
 
-	names   []string
-	records map[string]*record
+	names          []string
+	records        map[string]*record
+	histsCollector [][]*metrics.Histogram
 
 	timeline         *perf.Timeline
 	gpuDataSource    *gpuDataSource
@@ -120,13 +128,14 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 	memDiff := newMemoryDiffDataSource("RAM.Diff.Absolute")
 	gpuDS := newGPUDataSource(tconn)
 	sources := []perf.TimelineDatasource{
+		power.NewSysfsBatteryMetricsWithPrefix(batteryMetricPrefix),
 		load.NewCPUUsageSource("CPU", false),
 		load.NewMemoryUsageSource("RAM.Absolute", "RAM"),
 		newThermalDataSource(ctx),
 		gpuDS,
 		memDiff,
 	}
-	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
+	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix(matricPrefix))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}
@@ -214,6 +223,8 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) e
 	if err != nil {
 		return err
 	}
+
+	r.histsCollector = append(r.histsCollector, hists)
 	for _, hist := range hists {
 		if hist.TotalCount() == 0 {
 			continue
@@ -268,6 +279,20 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	}
 	pv.Merge(vs)
 
+	// Integrate battery power consumption into CUJ power usage
+	if batteryValues := vs.Get(matricPrefix + batteryMetricPrefix + "system"); batteryValues != nil {
+		pu := float64(0)
+		for _, v := range batteryValues {
+			pu += float64(v) * checkInterval.Seconds()
+		}
+
+		pv.Set(perf.Metric{
+			Name:      matricPrefix + powerUsageMeticName,
+			Unit:      "J",
+			Direction: perf.SmallerIsBetter,
+		}, pu)
+	}
+
 	displayInfo, err := NewDisplayInfo(ctx, r.tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display info")
@@ -295,6 +320,63 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 			Variant:   "very_jank_rate",
 			Direction: perf.SmallerIsBetter,
 		}, record.jankCounts[1]/float64(record.totalCount)*100)
+
+		rawHist := func(hist *metrics.Histogram) [][]float64 {
+			var mins = []float64{}
+			var maxs = []float64{}
+			var counts = []float64{}
+			for _, b := range hist.Buckets {
+				mins = append(mins, float64(b.Min))
+				maxs = append(maxs, float64(b.Max))
+				counts = append(counts, float64(b.Count))
+			}
+			return [][]float64{mins, maxs, counts}
+		}
+
+		rawCombine := func(histsCollector [][]*metrics.Histogram, name string) [][]float64 {
+			var mins = []float64{}
+			var maxs = []float64{}
+			var counts = []float64{}
+			for _, hists := range histsCollector {
+				var raw = [][]float64{}
+				for _, hist := range hists {
+					if hist.Name == name {
+						raw = rawHist(hist)
+						break
+					}
+				}
+				mins = append(mins, raw[0]...)
+				maxs = append(maxs, raw[1]...)
+				counts = append(counts, raw[2]...)
+			}
+			return [][]float64{mins, maxs, counts}
+		}
+
+		if len(record.config.jankCriteria) >= 2 {
+			var raw = [][]float64{}
+			raw = rawCombine(r.histsCollector, name)
+			pv.Set(perf.Metric{
+				Name:      name,
+				Unit:      record.config.unit,
+				Variant:   "bucket_min",
+				Direction: record.config.direction,
+				Multiple:  true,
+			}, raw[0]...)
+			pv.Set(perf.Metric{
+				Name:      name,
+				Unit:      record.config.unit,
+				Variant:   "bucket_max",
+				Direction: record.config.direction,
+				Multiple:  true,
+			}, raw[1]...)
+			pv.Set(perf.Metric{
+				Name:      name,
+				Unit:      "count",
+				Variant:   "bucket_count",
+				Direction: record.config.direction,
+				Multiple:  true,
+			}, raw[2]...)
+		}
 	}
 
 	displayInfo.Record(pv)
