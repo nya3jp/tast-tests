@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17e9d71_46ba863f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-02T04:15:51Z",
+      "side": 1,
+      "message": "Arowa, you want to click CQ+2, not CR+2, right? ;)",
+      "revId": "98c7efef4f7212a4e1ba42222e8d4944ad43cb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
