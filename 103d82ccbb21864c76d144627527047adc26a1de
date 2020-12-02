@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cdcc84f4_dd6907f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-02T23:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22abbb0e_669779c4",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "752d682d_0537f63c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-02T14:46:39Z",
       "side": 1,
       "message": "note: 7 min may be too long to take to promote to critical in the future.\nit may be necessary to reduce the total duration, then.",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "022486ab_16538bbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-02T23:04:37Z",
+      "side": 1,
+      "message": "Yes agreed, need to install an app via sideload to reduce the extra time taken to launch play store and install. Have a todo tracking this on line 99.",
+      "parentUuid": "752d682d_0537f63c",
       "range": {
         "startLine": 39,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8012d702_e93157df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-02T23:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93389783_5d81a0e0",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7463882_ea89a09e",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-12-02T14:46:39Z",
       "side": 1,
       "message": "maybe: waitForActionBarStabilized ?",
+      "range": {
+        "startLine": 139,
+        "startChar": 5,
+        "endLine": 139,
+        "endChar": 27
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "429cab98_b603b5b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-02T23:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7463882_ea89a09e",
       "range": {
         "startLine": 139,
         "startChar": 5,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78168abe_37fd4435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-02T23:04:37Z",
+      "side": 1,
+      "message": "Done. I\u0027ve split it up into `clickShareButton` and `clickAppOnStableSharesheet` as I have a func called `waitForAppOnStableSharesheet` which seems slightly confusing.",
+      "parentUuid": "f5a10f12_04825ba3",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 31
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "079d66db_8d45522c",
@@ -146,6 +266,30 @@
       "writtenOn": "2020-12-02T14:46:39Z",
       "side": 1,
       "message": "nit: setUpARC",
+      "range": {
+        "startLine": 236,
+        "startChar": 5,
+        "endLine": 236,
+        "endChar": 13
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f152ccb1_827b7cb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-02T23:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "079d66db_8d45522c",
       "range": {
         "startLine": 236,
         "startChar": 5,
@@ -173,6 +317,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d5a64e_9845ff88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-02T23:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4659a1f2_cab6e9bb",
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c58f9a3_e30d219b",
@@ -186,6 +348,30 @@
       "writtenOn": "2020-12-02T14:46:39Z",
       "side": 1,
       "message": "style: could you split this else if into two? Specifically, else is unnecessary.\n\nif err :\u003d allowButton.WaitForExists(...); ... {\n  return ...\n}\nif err :\u003d allowButton.Click(...); ... {\n  ...\n}",
+      "range": {
+        "startLine": 281,
+        "startChar": 3,
+        "endLine": 281,
+        "endChar": 14
+      },
+      "revId": "103d82ccbb21864c76d144627527047adc26a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd1140eb_f82cdbb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-02T23:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c58f9a3_e30d219b",
       "range": {
         "startLine": 281,
         "startChar": 3,
