@@ -113,6 +113,19 @@ func (h *Histogram) Diff(old *Histogram) (*Histogram, error) {
 	return diff, nil
 }
 
+// Concat concatenates the buckets of two histograms.
+// There is no bucket merge.
+func (h *Histogram) Concat(new *Histogram) error {
+	if h.Name != new.Name {
+		return errors.Errorf("unmatched histogram, %s vs %s", h.Name, new.Name)
+	}
+	h.Sum += new.Sum
+
+	h.Buckets = append(h.Buckets, new.Buckets...)
+
+	return nil
+}
+
 // String contains a human-readable representation of h as "Name: [[0,5):2 [5,10):1 ...]",
 // where each space-separated term is "[<min>,<max>):<count>".
 func (h *Histogram) String() string {

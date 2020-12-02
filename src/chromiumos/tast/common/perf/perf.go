@@ -175,6 +175,17 @@ func (p *Values) Set(s Metric, vs ...float64) {
 	validate(s, p.values[s])
 }
 
+// Get gets performance metric value(s) by metric name.
+func (p *Values) Get(name string) []float64 {
+	for k, v := range p.values {
+		if k.Name == name {
+			return v
+		}
+	}
+
+	return nil
+}
+
 // Format describes the output format for perf data.
 type Format int
 

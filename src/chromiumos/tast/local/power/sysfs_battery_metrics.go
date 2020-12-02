@@ -107,6 +107,17 @@ func ReadSystemPower(devPath string) (float64, error) {
 	return supplyVoltage * supplyCurrent * 1e-12, nil
 }
 
+// ReadBatteryProperty reads the battery property file content from the given
+// battery path, and return a float value.
+// The given file content should be an integer, and error will be returned otherwise.
+func ReadBatteryProperty(devPath, property string) (float64, error) {
+	content, err := readInt64(path.Join(devPath, property))
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read property %v from %v", property, devPath)
+	}
+	return float64(content), nil
+}
+
 // listSysfsBatteryPaths lists paths of batteries which supply power to the system
 // and has voltage_now and current_now attributes.
 func listSysfsBatteryPaths(ctx context.Context) ([]string, error) {

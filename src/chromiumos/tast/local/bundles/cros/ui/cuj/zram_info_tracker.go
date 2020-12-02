@@ -27,13 +27,14 @@ const (
 // ZramInfoTracker is a helper to collect zram info.
 type ZramInfoTracker struct {
 	hasZram         bool
+	prefix          string
 	memUsedMaxStart float64
 	memUsedMaxEnd   float64
 }
 
 // NewZramInfoTracker creates a new instance of ZramInfoTracker. If zram is not
 // used on the device, hasZram flag is set to false and makes track a no-op.
-func NewZramInfoTracker() (*ZramInfoTracker, error) {
+func NewZramInfoTracker(metricPrefix string) (*ZramInfoTracker, error) {
 	hasZram := false
 
 	if fi, err := os.Stat(zramDevPath); err == nil {
@@ -42,6 +43,7 @@ func NewZramInfoTracker() (*ZramInfoTracker, error) {
 	}
 
 	return &ZramInfoTracker{
+		prefix:  metricPrefix,
 		hasZram: hasZram,
 	}, nil
 }

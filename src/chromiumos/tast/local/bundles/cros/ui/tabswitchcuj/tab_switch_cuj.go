@@ -205,4 +205,9 @@ func Run(ctx context.Context, s *testing.State) {
 	if err = pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to store values: ", err)
 	}
+
+	// Export histogram raw data.
+	if err = recorder.SaveHistograms(s.OutDir()); err != nil {
+		s.Error("Failed to save cuj histogram raw data: ", err)
+	}
 }
