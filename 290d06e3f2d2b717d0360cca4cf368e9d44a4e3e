@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1570e53_f34ac5de",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-02T10:12:21Z",
+      "side": 1,
+      "message": "nit: please use len() to check if a slice is empty since nil is not the only empty slice (e.g. make([]T, 0).",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 17
+      },
+      "revId": "290d06e3f2d2b717d0360cca4cf368e9d44a4e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ac046c_314b8b12",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-02T10:12:21Z",
+      "side": 1,
+      "message": "nit: Why don\u0027t we set outDir here?",
+      "range": {
+        "startLine": 175,
+        "startChar": 9,
+        "endLine": 175,
+        "endChar": 14
+      },
+      "revId": "290d06e3f2d2b717d0360cca4cf368e9d44a4e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757119cc_9a77333d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-02T10:12:21Z",
+      "side": 1,
+      "message": "dynamicWriter is useful only when we want to switch the destination while writing data.\n\nIn this case we can just use a normal file descriptor:\n\n f, err :\u003d os.Create(...)\n if err !\u003d nil {\n   return err\n }\n defer f.Close()\n\n cmd :\u003d testexec.CommandContext(...)\n cmd.Stdout \u003d f\n return cmd.Run()",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 21
+      },
+      "revId": "290d06e3f2d2b717d0360cca4cf368e9d44a4e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
