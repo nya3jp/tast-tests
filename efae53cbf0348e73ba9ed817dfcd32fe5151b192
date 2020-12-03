@@ -34,6 +34,24 @@
       "parentUuid": "a39a346b_58888091",
       "revId": "efae53cbf0348e73ba9ed817dfcd32fe5151b192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3409e961_78bac8e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-12-03T22:07:12Z",
+      "side": 1,
+      "message": "Thanks Jun! Abandoning this CL.",
+      "parentUuid": "382af350_28efc6f4",
+      "revId": "efae53cbf0348e73ba9ed817dfcd32fe5151b192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
