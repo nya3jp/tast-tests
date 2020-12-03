@@ -1175,6 +1175,30 @@ func init() {
 						),
 					},
 				},
+			}, {
+				// PoC for b/170368080.
+				Name: "poc",
+				Val: []simpleConnectTestcase{
+					{
+						// Failure due to that a subject alternative name (SAN) is set but does not match any of the server certificate SANs.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACert, eapCert3.ServerCred, eapCert3.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`}),
+						),
+						expectedFailure: true,
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACert, eapCert1.ServerCred, eapCert1.CACert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+						),
+					},
+				},
 			},
 		},
 	})
