@@ -52,6 +52,24 @@
       "parentUuid": "fe81b853_d3149ff4",
       "revId": "324e9f0318cde3ee003878de3c4157c28384c0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d50bb28b_c6c66892",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-03T23:16:47Z",
+      "side": 1,
+      "message": "This was resolved in the meeting, all crostini developers agreed that the non-arc cases are not significant enough to justify the testing cost.",
+      "parentUuid": "0c9d2d02_98d55ee2",
+      "revId": "324e9f0318cde3ee003878de3c4157c28384c0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
