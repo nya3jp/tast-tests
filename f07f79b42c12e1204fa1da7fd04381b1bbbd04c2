@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92a60c0_0a62ecf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-03T00:07:40Z",
+      "side": 1,
+      "message": "Hey all,\n\nI changed this CL a lot. It is much simpler now. I will only schedule this test on a few devices so as not to overload the lab (even though guocb@ said it would be fine) \n\nPTAL :) ",
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
