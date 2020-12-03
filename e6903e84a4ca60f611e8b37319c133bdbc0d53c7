@@ -62,6 +62,29 @@
       },
       "revId": "e6903e84a4ca60f611e8b37319c133bdbc0d53c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cfcec50_09af6b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-03T00:56:08Z",
+      "side": 1,
+      "message": "Rather than repeating this 4 times should we make a crostini.Screenshot(ctx, \"crostini_app_vscode\")?\n\nIf we are ok with Nicks non-fatal suggestion it doesn\u0027t even need error handling.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "e6903e84a4ca60f611e8b37319c133bdbc0d53c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
