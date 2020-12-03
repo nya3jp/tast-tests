@@ -52,6 +52,23 @@
       "parentUuid": "42456312_24df42e0",
       "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a70a2d6_1aad939f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337797
+      },
+      "writtenOn": "2020-12-03T09:19:42Z",
+      "side": 1,
+      "message": "Hi Jun Sheng, we got test failures here: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1155055.\nCould you check that this CL is a fix or cause? Thanks.",
+      "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
