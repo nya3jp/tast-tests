@@ -41,7 +41,7 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 		configurationPollTimeout         = 1 * time.Second  // The time to wait for remaining configurations after detecting virtual network
 	)
 
-	startARC := func() {
+	startARC := func() *arc.ARC {
 		cr, err := chrome.New(ctx, chrome.ARCEnabled())
 		if err != nil {
 			s.Fatal("Failed to connect to Chrome: ", err)
@@ -52,9 +52,10 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to start ARC: ", err)
 		}
 		defer a.Close()
+		return a
 	}
 
-	startARC()
+	a := startARC()
 
 	s.Log("Testing multinet behavior on device addition")
 
@@ -88,7 +89,7 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 		}, &testing.PollOptions{Timeout: configurationPollTimeout})
 
 		testing.Poll(ctx, func(ctx context.Context) error {
-			if err := arc.BootstrapCommand(ctx, "/system/bin/ip", "link", "show", ifName).Run(); err != nil {
+			if err := a.Command(ctx, "ip", "link", "show", ifName).Run(); err != nil {
 				return errors.Wrapf(err, "failed verifying interface %s in ARC (%s)", ifName, err)
 			}
 			return nil
