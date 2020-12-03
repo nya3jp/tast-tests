@@ -190,33 +190,24 @@ func (d *Display) PhysicalDensity(ctx context.Context) (density float64, err err
 // Size returns the display size. Takes into account possible orientation changes.
 // For example, if the display is rotated, instead of returning {W, H}, it will return {H, W}.
 func (d *Display) Size(ctx context.Context) (s coords.Size, err error) {
-	cmd := d.a.Command(ctx, "dumpsys", "window", "displays")
+	var cmd *testexec.Cmd
+	sdkVersion, err := SDKVersion()
+	if err != nil {
+		return coords.Size{}, err
+	}
+
+	if sdkVersion <= SDKP {
+		cmd = d.a.Command(ctx, "dumpsys", "window", "displays")
+	} else {
+		cmd = d.a.Command(ctx, "dumpsys", "displays")
+	}
+
 	output, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
 		return coords.Size{}, errors.Wrap(err, "failed to execute 'dumpsys window displays'")
 	}
 
-	// Looking for:
-	// Display: mDisplayId=0
-	//   init=2400x1600 240dpi cur=2400x1600 app=2400x1424 rng=1600x1424-2400x2224
-	re := regexp.MustCompile(`(?m)` + // Enable multiline.
-		`^\s*Display: mDisplayId=0\n` + // Match displayId 0 (internal display).
-		`\s*init=([0-9]+)x([0-9]+)`) // Gather 'init=' bounds.
-	groups := re.FindStringSubmatch(string(output))
-	if len(groups) != 3 {
-		return coords.Size{}, errors.New("failed to parse dumpsys output")
-	}
-
-	width, err := strconv.Atoi(groups[1])
-	if err != nil {
-		return coords.Size{}, errors.Wrap(err, "could not parse bounds")
-	}
-	height, err := strconv.Atoi(groups[2])
-	if err != nil {
-		return coords.Size{}, errors.Wrap(err, "could not parse bounds")
-	}
-
-	return coords.NewSize(width, height), nil
+	return scrapeDisplaySize(output, false, d.DisplayID, sdkVersion)
 }
 
 // stableSize returns the display size. It is not affected by display rotations.
@@ -228,15 +219,63 @@ func (d *Display) stableSize(ctx context.Context) (s coords.Size, err error) {
 		return coords.Size{}, errors.Wrap(err, "failed to execute 'dumpsys display'")
 	}
 
-	// Looking for:
-	// DISPLAY MANAGER (dumpsys display)
-	//   mOnlyCode=false
-	//   [skipping some properties]
-	//   mStableDisplaySize=Point(2400, 1600)
-	re := regexp.MustCompile(`(?m)` + // Enable multiline.
-		`^\s*DISPLAY MANAGER \(dumpsys display\)\n` + // Match DISPLAY MANAGER
-		`(?:\s+.*$)*` + // Skip entire lines...
-		`\s+mStableDisplaySize=\w*\((\d*),\s*(\d*)\)`) // Gather 'mStableDisplaySize=' bounds.
+	n, err := SDKVersion()
+	if err != nil {
+		return coords.Size{}, err
+	}
+
+	return scrapeDisplaySize(output, true, d.DisplayID, n)
+}
+
+func scrapeDisplaySize(output []byte, isStableSize bool, displayID, sdkVersion int) (s coords.Size, err error) {
+	var re *regexp.Regexp
+	switch sdkVersion {
+	case SDKP:
+		if isStableSize {
+			// For ARC P, from `dumpsys display` looking for:
+			// DISPLAY MANAGER (dumpsys display)
+			//   mOnlyCode=false
+			//   [skipping some properties]
+			//   mStableDisplaySize=Point(2400, 1600)
+			re = regexp.MustCompile(`(?m)` + // Enable multiline.
+				`^\s*DISPLAY MANAGER \(dumpsys display\)\n` + // Match DISPLAY MANAGER
+				`(?:\s+.*$)*` + // Skip entire lines...
+				`\s+mStableDisplaySize=\w*\((\d*),\s*(\d*)\)`) // Gather 'mStableDisplaySize=' bounds.
+		} else {
+			// For ARC P, from `dumpsys window display` looking for:
+			// Display: mDisplayId=0
+			//   init=2400x1600 240dpi cur=2400x1600 app=2400x1424 rng=1600x1424-2400x2224
+			re = regexp.MustCompile(`(?m)` + // Enable multiline.
+				`^\s*Display: mDisplayId=0\n` + // Match displayId 0 (internal display).
+				`\s*init=([0-9]+)x([0-9]+)`) // Gather 'init=' bounds.
+		}
+	case SDKR:
+		// For ARC R, dump output from `dumpsys display`
+		if isStableSize {
+			// Looking for:
+			//   mDisplayId=...
+			//   ...
+			//   mBaseDisplayInfo=DisplayInfo{... , real 3840 x 2160, ...}
+			s := fmt.Sprintf(`(?m)`+ // Enable multiline.
+				`mDisplayId=%d`+ // Gather displayId number.
+				`(?:\s+.*$)*?\s+`+ // Skip lines and words.
+				`mBaseDisplayInfo=.+?real ([0-9]+) x ([0-9]+)`, displayID) // Locate to base real size string.
+			re = regexp.MustCompile(s)
+		} else {
+			// Looking for:
+			//   mDisplayId=...
+			//   ...
+			//   mOverrideDisplayInfo=DisplayInfo{... , real 2160 x 3840, ...}
+			s := fmt.Sprintf(`(?m)`+ // Enable multiline.
+				`mDisplayId=%d`+ // Gather displayId number.
+				`(?:\s+.*$)*?\s+`+ // Skip lines and words.
+				`mOverrideDisplayInfo=.+?real ([0-9]+) x ([0-9]+)`, displayID) // Locate to overide real size string.
+			re = regexp.MustCompile(s)
+		}
+	default:
+		return coords.Size{}, errors.Errorf("unsupported Android version %d", sdkVersion)
+	}
+
 	groups := re.FindStringSubmatch(string(output))
 	if len(groups) != 3 {
 		return coords.Size{}, errors.New("failed to parse dumpsys output")
