@@ -16,6 +16,24 @@
       "message": "Missed a space between minus sign and Check?",
       "revId": "fb3d8b9d1be87251e2b82c21d0000506e9ad7151",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6016c61f_0236c889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1398964
+      },
+      "writtenOn": "2020-12-03T23:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5632924_8d99d0c1",
+      "revId": "fb3d8b9d1be87251e2b82c21d0000506e9ad7151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
