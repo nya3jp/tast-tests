@@ -10,9 +10,9 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/platform/mlbenchmark"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -37,7 +37,7 @@ func init() {
 			"group:crosbolt",
 			"crosbolt_nightly",
 		},
-		SoftwareDeps: []string{"chrome", "ml_benchmark"},
+		SoftwareDeps: []string{"ml_benchmark"},
 		HardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 		Params: []testing.Param{
 			{
@@ -148,16 +148,6 @@ func MLBenchmark(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
-
 	// setup.Setup configures a DUT for a test, and cleans up after.
 	sup, cleanup := setup.New("MLBenchmark")
 	defer func() {
@@ -167,13 +157,21 @@ func MLBenchmark(ctx context.Context, s *testing.State) {
 	}()
 
 	// Add the default power test configuration.
-	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+	sup.Add(setup.PowerTest(ctx, nil, setup.PowerTestOptions{
 		Wifi:    setup.DisableWifiInterfaces,
 		Battery: setup.ForceBatteryDischarge,
+		// Since we stop the UI disabling the Night Light is redundant.
+		NightLight: setup.DoNotDisableNightLight,
 	}))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
+
+	// Stop UI in order to minimize the number of factors that could influence the results.
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui: ", err)
+	}
+	defer upstart.StartJob(ctx, "ui")
 
 	if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownPreserveUI); err != nil {
 		s.Fatal("Failed to wait CPU cool down: ", err)

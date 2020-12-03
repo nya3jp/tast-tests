@@ -114,7 +114,7 @@ func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: setup.ForceBatteryDischarge}))
+		Wifi: setup.DisableWifiInterfaces, Battery: setup.ForceBatteryDischarge, NightLight: setup.DisableNightLight}))
 
 	// Push raw video file to ARC.
 	sup.Add(setup.AdbMkdir(ctx, a, arcFilePath))

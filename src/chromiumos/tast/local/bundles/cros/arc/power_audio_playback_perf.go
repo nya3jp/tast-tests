@@ -185,7 +185,7 @@ func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: param.BatteryDischargeMode}))
+		Wifi: setup.DisableWifiInterfaces, Battery: param.BatteryDischargeMode, NightLight: setup.DisableNightLight}))
 
 	// Install testing app.
 	a := s.PreValue().(arc.PreData).ARC
