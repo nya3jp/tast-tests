@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ea361eb_b0a5d844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-03T19:27:43Z",
+      "side": 1,
+      "message": "Are you hitting the problem I did recently where you that one builder that is failing is running old test code for the failing selinux test?",
+      "revId": "22ee374e273bf9783ecfbc08818189f38a038aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
