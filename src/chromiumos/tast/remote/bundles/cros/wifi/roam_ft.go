@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -363,6 +364,20 @@ func RoamFT(ctx context.Context, s *testing.State) {
 			s.Error("Failed to verify the connection: ", err)
 		}
 	}
+	hasSMESupport := func(ctx context.Context) bool {
+		phys, err := iw.NewRemoteRunner(s.DUT().Conn()).ListPhys(ctx)
+		if err != nil {
+			s.Fatal("Failed to check SME capability: ", err)
+		}
+		for _, p := range phys {
+			for _, c := range p.Commands {
+				if c == "authenticate" {
+					return true
+				}
+			}
+		}
+		return false
+	}
 
 	ctx, restoreBg, err := tf.TurnOffBgscan(ctx)
 	if err != nil {
@@ -391,7 +406,8 @@ func RoamFT(ctx context.Context, s *testing.State) {
 	if _, err := tf.WifiClient().SetGlobalFTProperty(ctx, &network.SetGlobalFTPropertyRequest{Enabled: true}); err != nil {
 		s.Fatal("Failed to turn on the global FT property: ", err)
 	}
-	runOnce(ctx, param.secConfFac, false)
+	// Expect failure if we are running pure FT test and the DUT is not supporting SME.
+	runOnce(ctx, param.secConfFac, !param.mixed && !hasSMESupport(ctx))
 	// Run the test without global FT. It should pass iff we configured the AP in mixed mode.
 	if _, err := tf.WifiClient().SetGlobalFTProperty(ctx, &network.SetGlobalFTPropertyRequest{Enabled: false}); err != nil {
 		s.Fatal("Failed to turn off the global FT property: ", err)
