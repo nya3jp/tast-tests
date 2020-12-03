@@ -33,11 +33,20 @@ func init() {
 func PMKSACaching(ctx context.Context, s *testing.State) {
 	const (
 		ap0Channel  = 1
-		ap0BSSID    = "00:11:22:33:44:55"
 		ap1Channel  = 44
-		ap1BSSID    = "00:11:22:33:44:56"
 		roamTimeout = 30 * time.Second
 	)
+	// Generate BSSIDs for the two APs.
+	mac0, err := hostapd.RandomMAC()
+	if err != nil {
+		s.Fatal("Failed to generate BSSID: ", err)
+	}
+	mac1, err := hostapd.RandomMAC()
+	if err != nil {
+		s.Fatal("Failed to generate BSSID: ", err)
+	}
+	ap0BSSID := mac0.String()
+	ap1BSSID := mac1.String()
 
 	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {

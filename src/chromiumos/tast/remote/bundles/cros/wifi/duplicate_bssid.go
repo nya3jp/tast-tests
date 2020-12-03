@@ -34,12 +34,18 @@ func DuplicateBSSID(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForCollectLogs(ctx)
 	defer cancel()
 
+	// Generate the shared BSSID.
+	bssid, err := hostapd.RandomMAC()
+	if err != nil {
+		s.Fatal("Failed to generate random BSSID: ", err)
+	}
+
 	// Configure an AP on the specific channel with given SSID. It returns a shortened
 	// ctx, the channel's mapping frequency, a callback to deconfigure the AP and an
 	// error object. Note that it directly uses s and tf from the outer scope.
 	configureAP := func(ctx context.Context, channel int) (context.Context, *wificell.APIface, func(context.Context), error) {
 		s.Logf("Setting up the AP on channel %d", channel)
-		options := []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(channel), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID("00:11:22:33:44:55")}
+		options := []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(channel), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(bssid.String())}
 		ap, err := tf.ConfigureAP(ctx, options, nil)
 		if err != nil {
 			return ctx, nil, nil, err
