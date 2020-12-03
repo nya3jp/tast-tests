@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e4b285f_09315fd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/fwupd_install_dummy_rtd2142_V99.99.cab",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-03T23:30:05Z",
+      "side": 0,
+      "message": "This should probably be an external data file: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files",
+      "revId": "61a43298c27b4e282d21d62ba58114ff7d36ce48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
