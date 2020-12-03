@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c08359_47404f36",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-03T21:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f83f4510_78b006fe",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83c1721e_58eac755",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-03T00:56:55Z",
       "side": 1,
       "message": "Nit, can split into a vboot1 and vboot2 functions.",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c39ac8b8_4c72884b",
+        "filename": "src/chromiumos/tast/remote/firmware/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-03T21:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c1721e_58eac755",
       "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb508958_348fe163",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-03T21:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74fb170c_ddc86a07",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eabc58c5_89da55d3",
@@ -65,6 +119,24 @@
       "writtenOn": "2020-12-03T00:56:55Z",
       "side": 1,
       "message": "Nit, can move this error check up to make it more readable:\nif csValue !\u003d \"1\" \u0026\u0026 csValue !\u003d \"0\" {\n  ...\n}\nreturn csValue \u003d\u003d \"1\", nil",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37489ede_b0df1384",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-03T21:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eabc58c5_89da55d3",
       "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8e7dcf_a43b2c97",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-03T21:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17911096_5b654c44",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "097bd51b_815894b2",
@@ -99,6 +189,24 @@
       "writtenOn": "2020-12-03T00:56:55Z",
       "side": 1,
       "message": "To save time of doing 2 crosssystem commands, can omit requiredKeys and do the key navigation logic here.",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca930ad9_a9d0d315",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-03T21:28:27Z",
+      "side": 1,
+      "message": "Done, except I am including all requiredKeys. The alternative would be checking explicitly for the existence of each key at read-time, to avoid accidentally reading zero-values. I think this is a little cleaner, and it still passes on both nasher and tidus.",
+      "parentUuid": "097bd51b_815894b2",
       "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78c7503_1fa90c4c",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-03T21:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b38e4faf_11381531",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f5b8b9f_2788bb48",
@@ -133,6 +259,24 @@
       "writtenOn": "2020-12-03T00:56:55Z",
       "side": 1,
       "message": "This looks like a checker and not a reporter.  Maybe better implemented in a test case or another library.  Now if tast owners accepted my assertions proposal...  A side benefit is that RWSectionUnspecified will no longer be needed which simplifies error checking.",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aea5f6ef_011be628",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-03T21:28:27Z",
+      "side": 1,
+      "message": "I think there is room to interpret a checker as a type of reporter. It reports whether or not the DUT matches certain conditions. Nevertheless, done - I\u0027ve moved this to remote/firmware/fw_tries.go.\n\nI have left in the RWSectionUnspecified option.",
+      "parentUuid": "2f5b8b9f_2788bb48",
       "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
