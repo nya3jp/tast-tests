@@ -6,6 +6,7 @@
 # Defines actions for compilation of resources.
 
 # Args:
+#     compile_sdk_version: Which Android SDK version to use at compile time.
 #     deps: A list of dependencies.
 #     manifest: A path to a manifest file.
 #     min_sdk_version: A default minimum sdk version to use for
@@ -29,7 +30,13 @@ template("process_resources") {
       "resource_files",
       "rjava_dir",
       "target_sdk_version",
+      "compile_sdk_version",
     ])
+
+    # compile_sdk_version can override the global "android_platform"
+    if (defined(compile_sdk_version)) {
+      android_platform = "${android_sdk_path}/platforms/android-${compile_sdk_version}/android.jar"
+    }
 
     script = "//build/util/process_resources.py"
     sources = [
@@ -78,6 +85,7 @@ template("process_resources") {
 
 # Args:
 #     classes_dex: A path to intermediate classes.dex.
+#     compile_sdk_version: Which Android SDK version to use at compile time.
 #     deps: A list of dependencies.
 #     resource_apk: A path to a resource APK.
 #     source_files: A list of directories which contain source files.
@@ -94,7 +102,13 @@ template("compile_sources") {
       "resource_apk",
       "source_files",
       "unsigned_apk",
+      "compile_sdk_version",
     ])
+
+    # Compile SDK version can override the global "androd_platform"
+    if (defined(compile_sdk_version)) {
+      android_platform = "${android_sdk_path}/platforms/android-${compile_sdk_version}/android.jar"
+    }
 
     script = "//build/util/javac.py"
     sources = [

@@ -16,6 +16,7 @@ if (android_build_tools == "") {
     android_build_tools = "${android_sdk_path}/build-tools/android-Q"
 }
 
+# Targets can override this value with "compile_sdk_version".
 android_platform = getenv("ANDROID_PLATFORM")
 if (android_platform == "") {
     android_platform = "${android_sdk_path}/platforms/android-Q/android.jar"
