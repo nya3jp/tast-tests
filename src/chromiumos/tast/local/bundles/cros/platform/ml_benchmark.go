@@ -52,8 +52,9 @@ func init() {
 				},
 			},
 			{
-				Name:              "soda_no_nnapi_skylake",
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform("hatch", "volteer")),
+				Name: "soda_no_nnapi_skylake",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("hatch", "volteer"),
+					hwdep.SkipOnModel("akemi", "kindred", "kled", "nightfury")),
 				Val: benchmarkParams{
 					driver:     "libsoda_benchmark_driver.so",
 					configFile: "soda-scenario-1-skylake.config",
@@ -96,8 +97,9 @@ func init() {
 				},
 			},
 			{
-				Name:              "handwriting_no_nnapi_skylake",
-				ExtraHardwareDeps: hwdep.D(hwdep.Platform("hatch", "volteer")),
+				Name: "handwriting_no_nnapi_skylake",
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("hatch", "volteer"),
+					hwdep.SkipOnModel("akemi", "kindred", "kled", "nightfury")),
 				Val: benchmarkParams{
 					driver:     "libhandwriting_benchmark-skylake.so",
 					configFile: "handwriting-scenario-1.config",
