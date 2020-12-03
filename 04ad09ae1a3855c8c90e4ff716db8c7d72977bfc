@@ -1,0 +1,296 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "420ad01a_11ecd23b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "BTW you should also respond to the unresolved comments on the previous patch set as well so we know they\u0027ve been addressed :)",
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91a4b9ae_5f3d9de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "nit: don\u0027t think this comment is necessary since the one on L113 already says what we\u0027re trying to do here.",
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23d0c8f_4bc74316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "I think we should also specify the chrome_internal dep to avoid future CQ issues since we\u0027re using a private var (ui.signinProfileTestExtensionManifestKey), is that right David?",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283dac98_226d0bd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "what are we trying to say with this?",
+      "range": {
+        "startLine": 41,
+        "startChar": 79,
+        "endLine": 41,
+        "endChar": 88
+      },
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de40950b_93982c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "I think this comment can be clearer. Maybe just an explanation of why we\u0027re using ShowWithRetry, since it\u0027s clear from the test name/description/package that we\u0027re gonna be opening QS",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 46
+      },
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cffd2e8_252c42f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "I might make change this function to something like \u0027CommonElementsExist\u0027 (or a better name if you can think of one), which would check the existence of common elements that are present regardless of login or collapse state.",
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c5e1e0_462cc172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "This is mistakenly checking the volume slider. Their params are the same, so you need to actually go to the Audio Settings page if you want to verify that the mic gain slider is present.",
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "902646bf_b0fdbbc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "nit: change the name, since these aren\u0027t actually params (ui.FindParams).",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 10
+      },
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0e92b7_07d5712c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "Bluetooth should be checked conditionally like in the lockscreen test. Some devices without bluetooth adapters (like VM) won\u0027t have the pod.",
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1503f64b_551451f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "clarify",
+      "range": {
+        "startLine": 90,
+        "startChar": 25,
+        "endLine": 90,
+        "endChar": 36
+      },
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c1d062_3a04ae0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "This comment isn\u0027t accurate for the block below. The UI existence check doesn\u0027t come until later. Here you\u0027re just generating the FindParams.",
+      "range": {
+        "startLine": 90,
+        "startChar": 56,
+        "endLine": 90,
+        "endChar": 96
+      },
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46b3907_6e0c1180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "nit: space after",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 22
+      },
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f52650a_b21c47ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "s.Fatalf would be better so you can put the actual name of the one that failed here",
+      "range": {
+        "startLine": 95,
+        "startChar": 37,
+        "endLine": 95,
+        "endChar": 50
+      },
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f124b0a2_7ae047fd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-03T23:17:24Z",
+      "side": 1,
+      "message": "Can you make this function name more informative? Like what kind of nodes",
+      "range": {
+        "startLine": 542,
+        "startChar": 5,
+        "endLine": 542,
+        "endChar": 31
+      },
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
