@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/network/ping"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/common/wifi/security/wpaeap"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -1072,6 +1074,30 @@ func init() {
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
 				}},
+			}, {
+				// PoC for b/170368080.
+				Name: "poc",
+				Val: []simpleConnectTestcase{
+					{
+						// Failure due to that a subject alternative name (SAN) is set but does not match any of the server certificate SANs.
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert3.CACred.Cert, eapCert3.ServerCred, eapCert3.CACred.Cert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
+							tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`}),
+						),
+						expectedFailure: true,
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: tunneled1x.NewConfigFactory(
+							eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+							tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
+							tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
+						),
+					},
+				},
 			},
 		},
 	})
@@ -1095,6 +1121,16 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 	}()
 
 	testOnce := func(ctx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, pingOps []ping.Option, expectedFailure bool) {
+		var iwlwifiFWDbgCollectPath string
+		if out, err := s.DUT().Command("find", "/sys/kernel/debug/iwlwifi/", "-name", "fw_dbg_collect").Output(ctx); err != nil || len(out) == 0 {
+			testing.ContextLog(ctx, "Failed to get iwlwifi fw_dbg_collect: ", err)
+		} else if lines := strings.Split(string(out), "\n"); len(lines) == 0 {
+			testing.ContextLog(ctx, "No iwlwifi fw_dbg_collect found, not Intel WiFi?")
+		} else {
+			// Collect fw dump if the test failed.
+			iwlwifiFWDbgCollectPath = strings.TrimSpace(lines[0])
+		}
+
 		ap, err := tf.ConfigureAP(ctx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
@@ -1115,6 +1151,20 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
 			}
 		}(ctx)
+
+		// Collect fwdump if test failed.
+		if iwlwifiFWDbgCollectPath != "" {
+			defer func(ctx context.Context) {
+				if !s.HasError() {
+					return
+				}
+				if err := s.DUT().Command("bash", "-c", fmt.Sprintf("echo 1 > %s", iwlwifiFWDbgCollectPath)).Run(ctx); err != nil {
+					testing.ContextLog(ctx, "Failed to trigger iwlwifi fw_dbg_collect: ", err)
+				}
+			}(ctx)
+			ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+		}
 
 		resp, err := tf.ConnectWifiAP(ctx, ap)
 		if err != nil {

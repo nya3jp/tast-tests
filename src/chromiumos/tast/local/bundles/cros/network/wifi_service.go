@@ -228,8 +228,16 @@ func (s *WifiService) connectService(ctx context.Context, service *shill.Service
 		// We're not yet in connectedStates, wait until connected.
 		configCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
 		defer cancel()
-		if _, err := pw.ExpectIn(configCtx, shillconst.ServicePropertyState, connectedStates); err != nil {
+		expected := append([]interface{}{shillconst.ServiceStateIdle, shillconst.ServiceStateFailure}, connectedStates...)
+		state, err := pw.ExpectIn(configCtx, shillconst.ServicePropertyState, expected)
+		if err != nil {
 			return 0, 0, errors.Wrap(err, "failed to configure")
+		}
+		if state == shillconst.ServiceStateIdle {
+			return 0, 0, errors.New("rollback from associated states to idle state")
+		}
+		if state == shillconst.ServiceStateFailure {
+			return 0, 0, errors.New("failure state detected")
 		}
 	}
 	configTime = time.Since(start)
