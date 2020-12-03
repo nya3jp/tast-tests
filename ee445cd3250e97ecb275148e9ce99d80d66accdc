@@ -22,6 +22,30 @@
       },
       "revId": "ee445cd3250e97ecb275148e9ce99d80d66accdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "031e07c1_9933b7c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-12-03T21:15:05Z",
+      "side": 1,
+      "message": "Done (marking as exempt from owners since this is blocking CQ runs).",
+      "parentUuid": "a618b65e_d1387be5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "ee445cd3250e97ecb275148e9ce99d80d66accdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
