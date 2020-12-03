@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebd97fc8_147a3da5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-03T00:02:07Z",
+      "side": 1,
+      "message": "Be sure to change the public glxgears/extended test if you change the parameter of function.",
+      "range": {
+        "startLine": 417,
+        "startChar": 104,
+        "endLine": 417,
+        "endChar": 114
+      },
+      "revId": "8231a57fef243dc3f456a7b5aaab98202ac6992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
