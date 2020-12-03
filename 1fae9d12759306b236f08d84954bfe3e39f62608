@@ -211,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88bea3ab_27ef0dba",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-03T23:43:58Z",
+      "side": 1,
+      "message": "Right, as long as all vboot1 and vboot2 platforms (will) output all the CrossystemParamFW* values here then it\u0027s ok.  Good thing you checked 2 of them, hopefully the rest behave the same way.",
+      "parentUuid": "ca930ad9_a9d0d315",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b38e4faf_11381531",
@@ -277,6 +295,24 @@
       "side": 1,
       "message": "I think there is room to interpret a checker as a type of reporter. It reports whether or not the DUT matches certain conditions. Nevertheless, done - I\u0027ve moved this to remote/firmware/fw_tries.go.\n\nI have left in the RWSectionUnspecified option.",
       "parentUuid": "2f5b8b9f_2788bb48",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b4aca6_81cb9203",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-03T23:43:58Z",
+      "side": 1,
+      "message": "If keeping RWSectionUnspecified just for error conditions, then it\u0027s unnecessary (and potentially confusing) since the caller should ignore the other returned values if error is not nil.  So you can just return one of the valid RWSections.",
+      "parentUuid": "aea5f6ef_011be628",
       "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
