@@ -63,6 +63,30 @@
       },
       "revId": "4a19b421c157c0e2b018892fbb507ecde7b26ee4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64f0f21_5460ddb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-03T07:51:44Z",
+      "side": 1,
+      "message": "Okay, I am going to add av1_10bit_vectors in a follow up CL next week.\nCan we merge this CL as-is then?",
+      "parentUuid": "00df1533_8d610a80",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "4a19b421c157c0e2b018892fbb507ecde7b26ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
