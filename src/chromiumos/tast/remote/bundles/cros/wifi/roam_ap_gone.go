@@ -43,7 +43,7 @@ func init() {
 		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Pre:         wificell.TestFixturePre(),
+		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
 		Params: []testing.Param{
 			{
