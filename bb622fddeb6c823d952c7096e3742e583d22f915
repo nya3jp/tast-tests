@@ -158,6 +158,30 @@
       },
       "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c952d5_c2053e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-12-03T06:56:48Z",
+      "side": 1,
+      "message": "Done. Since tast not support check display power state, I just add a TODO tag.",
+      "parentUuid": "6083dceb_45248101",
+      "range": {
+        "startLine": 510,
+        "startChar": 23,
+        "endLine": 510,
+        "endChar": 26
+      },
+      "revId": "bb622fddeb6c823d952c7096e3742e583d22f915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
