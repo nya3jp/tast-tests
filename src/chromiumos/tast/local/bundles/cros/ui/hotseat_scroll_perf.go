@@ -257,6 +257,10 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 		return cleanupAll, err
 	}
 
+	if err := ash.WaitForStableShelfBounds(ctx, tconn); err != nil {
+		return cleanupAll, errors.Wrap(err, "failed to wait for stable shelf bounds")
+	}
+
 	return cleanupAll, nil
 }
 
@@ -290,13 +294,6 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to ensure the tablet-mode enabled status to %v: %v", s.Param().(bool), err)
 	}
 	defer cleanup(ctx)
-
-	// Tests close all notification as part of the test state reset, which impacts shelf bounds.
-	// Wait for shelf/hotseat animations to complete to ensure shelf bounds are stable when the test
-	// starts.
-	if err := ash.WaitForStableShelfBounds(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for stable shelf bounds: ", err)
-	}
 
 	type testSetting struct {
 		state uiState

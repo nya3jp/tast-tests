@@ -513,7 +513,8 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 			return errors.New("no icons found")
 		}
 		lastIconBounds := info.IconsBoundsInScreen[len(info.IconsBoundsInScreen)-1]
-		if lastIconBounds.Right() > displayInfo.Bounds.Right() {
+		if lastIconBounds.Right() > displayInfo.Bounds.Right() &&
+			(info.LeftArrowBounds.Size().Width > 0 || info.RightArrowBounds.Size().Width > 0) {
 			return nil
 		}
 
