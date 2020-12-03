@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09cf214e_3a0dd7d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T03:29:37Z",
+      "side": 1,
+      "message": "Golang\u0027s scope is package based so this is visible to the package. Unless it is used in other files, move it inside the function.\n\nFYI, init() is special: https://golang.org/doc/effective_go.html#init",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd43420b_8efa6068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T03:29:37Z",
+      "side": 1,
+      "message": "Let\u0027s use backtick for regular expression.",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 94
+      },
+      "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f1ce84_ca20622d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T03:29:37Z",
+      "side": 1,
+      "message": "Is this the default output of fwupdtool? If so, define it:\nfwupdCallParam :\u003d filepath.Join(s.OutDir(), \"fwupd_flashrom_call_parameters.txt\")\nso both here and line 84 can use it.",
+      "range": {
+        "startLine": 76,
+        "startChar": 17,
+        "endLine": 76,
+        "endChar": 80
+      },
+      "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
