@@ -64,6 +64,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ff152b_ebf1d6e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-12-03T16:11:34Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "be43292eb52b4f8e2580714b0de34732f3eee175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db9af8b_9b8a937b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-12-03T16:11:34Z",
+      "side": 1,
+      "message": "consider: rename for generality - \"IGuestOS\"\nBorealis is not container-based.",
+      "revId": "be43292eb52b4f8e2580714b0de34732f3eee175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e396cd93_c8d6da1c",
