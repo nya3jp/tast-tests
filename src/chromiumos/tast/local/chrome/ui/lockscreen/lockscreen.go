@@ -15,10 +15,13 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
 const uiTimeout = 10 * time.Second
+
+var pollOpts = testing.PollOptions{Interval: time.Second, Timeout: uiTimeout}
 
 // State contains the state returned by chrome.autotestPrivate.loginStatus,
 // corresponding to 'LoginStatusDict' as defined in autotest_private.idl.
@@ -38,7 +41,7 @@ type State struct {
 // GetState returns the login status information from chrome.autotestPrivate.loginStatus
 func GetState(ctx context.Context, tconn *chrome.TestConn) (State, error) {
 	var st State
-	if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.loginStatus)()`, &st); err != nil {
+	if err := tconn.Call(ctx, &st, `tast.promisify(chrome.autotestPrivate.loginStatus)`); err != nil {
 		return st, errors.Wrap(err, "failed calling chrome.autotestPrivate.loginStatus")
 	}
 	return st, nil
@@ -62,24 +65,68 @@ func WaitState(ctx context.Context, tconn *chrome.TestConn, check func(st State)
 	return st, err
 }
 
-// WaitForPasswordField waits for the password text field for a given user pod to appear in the UI.
+// PasswordFieldParams generates FindParams for the password field.
 // The password field node can be uniquely identified by its name attribute, which includes the username,
-// such as "Password for username@gmail.com". We'll wait for the node whose name matches the regex
+// such as "Password for username@gmail.com". The FindParams will find the node whose name matches the regex
 // /Password for <username>/, so the domain can be omitted, or the username argument can be an empty
-// string to wait for any password field to appear.
-func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username string, timeout time.Duration) error {
+// string to find the first password field in the hierarchy.
+func PasswordFieldParams(ctx context.Context, tconn *chrome.TestConn, username string) (ui.FindParams, error) {
+	var params ui.FindParams
 	r, err := regexp.Compile(fmt.Sprintf("Password for %v", username))
 	if err != nil {
-		return errors.Wrap(err, "failed to compile regexp for name attribute")
+		return params, errors.Wrap(err, "failed to compile regexp for name attribute")
 	}
 	attributes := map[string]interface{}{
 		"name": r,
 	}
-	params := ui.FindParams{
+	params = ui.FindParams{
 		Role:       ui.RoleTypeTextField,
 		Attributes: attributes,
 	}
+	return params, nil
+}
+
+// WaitForPasswordField waits for the password text field for a given user pod to appear in the UI.
+func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username string, timeout time.Duration) error {
+	params, err := PasswordFieldParams(ctx, tconn, username)
+	if err != nil {
+		return err
+	}
 	return ui.WaitUntilExists(ctx, tconn, params, timeout)
+}
+
+// EnterPassword enters and submits the given password. Refer to PasswordFieldParams for username options.
+// It doesn't make any assumptions about the password being correct, so callers should verify the login/lock state afterwards.
+func EnterPassword(ctx context.Context, tconn *chrome.TestConn, username, password string, kb *input.KeyboardEventWriter) error {
+	params, err := PasswordFieldParams(ctx, tconn, username)
+	if err != nil {
+		return err
+	}
+	field, err := ui.FindWithTimeout(ctx, tconn, params, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find password box")
+	}
+	defer field.Release(ctx)
+	if err := field.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click password box")
+	}
+	// Wait for the field to be focused before entering the password.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := field.Update(ctx); err != nil {
+			return errors.Wrap(err, "failed to update password field node")
+		}
+		if !field.State[ui.StateTypeFocused] {
+			return errors.New("password field not focused yet")
+		}
+		return nil
+	}, nil); err != nil {
+		return err
+	}
+
+	if err := kb.Type(ctx, password+"\n"); err != nil {
+		return errors.Wrap(err, "failed to enter and submit password")
+	}
+	return nil
 }
 
 // Lock locks the screen.
@@ -109,5 +156,85 @@ func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
 
 // SubmitPIN submits the entered PIN.
 func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
-	return uig.Do(ctx, tconn, uig.FindWithTimeout(ui.FindParams{Name: "Submit", Role: ui.RoleTypeButton}, uiTimeout).LeftClick())
+	node, err := ui.FindWithTimeout(ctx, tconn, SubmitBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &pollOpts)
+}
+
+// ShowPassword clicks the Show password button
+func ShowPassword(ctx context.Context, tconn *chrome.TestConn) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, ShowPasswordBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &pollOpts)
+}
+
+// HidePassword clicks the Hide password button
+func HidePassword(ctx context.Context, tconn *chrome.TestConn) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, HidePasswordBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &pollOpts)
+}
+
+// SwitchToPassword clicks the 'Switch to password' button
+func SwitchToPassword(ctx context.Context, tconn *chrome.TestConn) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, SwitchToPwdBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &pollOpts)
+}
+
+// GetUserPassword searches the password field for a given user pod and returns the password node
+func GetUserPassword(ctx context.Context, tconn *chrome.TestConn, username string) *ui.Node {
+	params, err := PasswordFieldParams(ctx, tconn, username)
+	if err != nil {
+		errors.Wrap(err, "failed to find the password node")
+	}
+
+	textField, err := ui.Find(ctx, tconn, params)
+	if err != nil {
+		errors.New("failed to read pin / password value")
+	}
+	return textField
+}
+
+// WaitForPasswordHidden checks that Pin / Password field is autohidden 5s after show password button is pressed.
+func WaitForPasswordHidden(ctx context.Context, tconn *chrome.TestConn) bool {
+	if err := ShowPassword(ctx, tconn); err != nil {
+		errors.Wrap(err, "failed to click Show password button: ")
+		return false
+	}
+
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		flag, e := ui.Exists(ctx, tconn, HidePasswordBtnParams)
+		if e != nil {
+			return testing.PollBreak(e)
+		}
+		if flag {
+			return errors.New("hide password button was found")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 6 * time.Second})
+
+	showPwd, e := ui.Exists(ctx, tconn, ShowPasswordBtnParams)
+
+	if err != nil || e != nil {
+		return false
+	}
+
+	return true && showPwd
 }
