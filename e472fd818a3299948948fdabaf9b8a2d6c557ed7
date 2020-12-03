@@ -39,6 +39,30 @@
       },
       "revId": "e472fd818a3299948948fdabaf9b8a2d6c557ed7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b387069_bc84a15d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-03T03:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6e17e51_4dd80791",
+      "range": {
+        "startLine": 25,
+        "startChar": 52,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "e472fd818a3299948948fdabaf9b8a2d6c557ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
