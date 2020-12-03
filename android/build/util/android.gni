@@ -10,6 +10,7 @@ import("//build/util/rules.gni")
 # Defines configs for building an APK.
 
 # Args:
+#     compile_sdk_version: Which Android SDK version to use at compile time.
 #     manifest: A path to a manifest file.
 #     min_sdk_version: A default minimum sdk version.
 #     resource_dirs: A list of directories which contain resources.
@@ -32,6 +33,7 @@ template("android_apk") {
 
   process_resources("${apk_name}__process_resources") {
     forward_variables_from(invoker, [
+      "compile_sdk_version",
       "manifest",
       "min_sdk_version",
       "rename_manifest_package",
@@ -50,6 +52,7 @@ template("android_apk") {
 
   compile_sources("${apk_name}__compile_sources") {
     forward_variables_from(invoker, [
+      "compile_sdk_version",
       "source_dirs",
     ])
     sources_rel = exec_script(
