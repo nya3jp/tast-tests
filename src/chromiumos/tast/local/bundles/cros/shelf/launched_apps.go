@@ -25,7 +25,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          chrome.LoggedInDisableSync(),
 	})
 }
 
@@ -38,16 +38,6 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// At login, we should have just Chrome and maybe Files in the Shelf.
-	shelfItems, err := ash.ShelfItems(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get shelf items: ", err)
-	}
-	if len(shelfItems) != 1 {
-		if len(shelfItems) != 2 || shelfItems[1].AppID != apps.Files.ID {
-			s.Fatal("Unexpected apps in the shelf. Expected only Chrome and Files: ", shelfItems)
-		}
-	}
 	// Get the expected browser.
 	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
 	if err != nil {
@@ -58,8 +48,29 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	if chromeApp.Name == apps.Chrome.Name {
 		chromeApp.Name = "Google Chrome"
 	}
-	// Chrome must be first because it is automatically opened upon login.
-	defaultApps := []apps.App{chromeApp, apps.Files, apps.WallpaperPicker}
+
+	default2Apps := []apps.App{chromeApp, apps.Files}
+	default5Apps := append(default2Apps, apps.Gmail, apps.Docs, apps.Youtube)
+
+	// Check that default apps are already pinned once logged in.
+	shelfItems, err := ash.ShelfItems(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get shelf items: ", err)
+	}
+
+	var defaultApps []apps.App
+	if len(shelfItems) == len(default2Apps) {
+		defaultApps = default2Apps
+	} else if len(shelfItems) == len(default5Apps) {
+		defaultApps = default5Apps
+	} else {
+		s.Log("======= shelfItems =======")
+		for _, shelfItem := range shelfItems {
+			s.Log("AppID: ", shelfItem.AppID)
+			s.Log("Title: ", shelfItem.Title)
+		}
+		s.Fatalf("Unexpected number (%v) apps in the shelf (2, 5): %v", len(shelfItems), shelfItems)
+	}
 
 	for _, app := range defaultApps {
 		s.Logf("Launching %s", app.Name)
@@ -77,7 +88,7 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get shelf items: ", err)
 	}
 
-	s.Log("Checking that all expected apps are in the shelf")
+	s.Log("Checking that all expected apps are in the shelf once launched")
 	if len(shelfItems) != len(defaultApps) {
 		s.Fatalf("Shelf items count does not match expected apps. Got: %v; Want: %v", len(shelfItems), len(defaultApps))
 	}
