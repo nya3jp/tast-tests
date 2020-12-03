@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cd3da59_ce652b21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-03T23:30:05Z",
+      "side": 1,
+      "message": "You might want to comment where this magic string comes from.",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 59
+      },
+      "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8f1ce84_ca20622d",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
         "patchSetId": 1
@@ -65,6 +88,29 @@
         "startChar": 17,
         "endLine": 76,
         "endChar": 80
+      },
+      "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308a6125_a18193e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-03T23:30:05Z",
+      "side": 1,
+      "message": "Why is this file getting removed in general. Is it not useful if the test fails for debugging?",
+      "range": {
+        "startLine": 76,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 16
       },
       "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
