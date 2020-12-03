@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f8326c_0a472bf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-03T21:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0cdfaa3_7859db15",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "be43292eb52b4f8e2580714b0de34732f3eee175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca1d1cfd_0e754ce6",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-03T07:26:35Z",
       "side": 1,
       "message": "Remove space.",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "be43292eb52b4f8e2580714b0de34732f3eee175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbfdb64e_381dc0a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-03T21:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca1d1cfd_0e754ce6",
       "range": {
         "startLine": 23,
         "startChar": 16,
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f757c5_ef627079",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-03T21:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5db9af8b_9b8a937b",
+      "revId": "be43292eb52b4f8e2580714b0de34732f3eee175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e396cd93_c8d6da1c",
@@ -111,6 +177,30 @@
       "writtenOn": "2020-12-03T07:26:35Z",
       "side": 1,
       "message": "Single line?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "be43292eb52b4f8e2580714b0de34732f3eee175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc1ce42_41dc8250",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-03T21:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e396cd93_c8d6da1c",
       "range": {
         "startLine": 34,
         "startChar": 0,
