@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67a1043_bebde090",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-12-03T11:19:58Z",
+      "side": 1,
+      "message": "LGTM for power framework modification w/ a nit",
+      "revId": "0e246d038e81d083214945de4d0000f7d0373c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051d52c8_6ef8bce8",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-12-03T11:19:58Z",
+      "side": 1,
+      "message": "I think it is preferred to make \"DoNotDisableNightLight\" as default since go language prefers to write code explicitly (similar discussion has done for WifiInterfacesMode)\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2491570/5..7/src/chromiumos/tast/local/power/setup/setup.go#b131",
+      "revId": "0e246d038e81d083214945de4d0000f7d0373c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
