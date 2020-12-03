@@ -71,6 +71,18 @@ var Gallery = App{
 	Name: "Gallery",
 }
 
+// Docs has details about the Google Docs app.
+var Docs = App{
+	ID:   "aohghmighlieiainnegkcijnfilokake",
+	Name: "Docs",
+}
+
+// Gmail has details about the gmail app.
+var Gmail = App{
+	ID:   "hhkfkjpmacfncmbapfohfocpjpdnobjg",
+	Name: "Gmail",
+}
+
 // Help (aka Explore) has details about the Help app.
 var Help = App{
 	ID:   "nbljnnecbjbmifnoehiemkgefbnpoeak",
@@ -153,6 +165,12 @@ var WallpaperPicker = App{
 var WebStore = App{
 	ID:   "ahfgeienlihckogmohjhadlkjgocpleb",
 	Name: "Web Store",
+}
+
+// Youtube has details about the Youtube app.
+var Youtube = App{
+	ID:   "aniolghapcdkoolpkffememnhpphmjkl",
+	Name: "Youtube",
 }
 
 // Launch launches an app specified by appID.
