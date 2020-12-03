@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -29,7 +30,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Timeout:      5 * time.Minute,
+		Timeout:      180 * time.Minute,
 		Params: []testing.Param{{
 			Pre: testutil.ChromeWithPlatformApp(),
 			Val: testutil.PlatformApp,
@@ -185,12 +186,13 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		run   func(context.Context, *cca.App) error
 		timer cca.TimerState
 	}{
-		{"testRecordVideoWithWindowChanged", testRecordVideoWithWindowChanged, cca.TimerOff},
-		{"testRecordVideoWithTimer", testRecordVideoWithTimer, cca.TimerOn},
-		{"testRecordCancelTimer", testRecordCancelTimer, cca.TimerOn},
-		{"testVideoSnapshot", testVideoSnapshot, cca.TimerOff},
-		{"testStopInPause", testStopInPause, cca.TimerOff},
-		{"testPauseResume", testPauseResume, cca.TimerOff},
+		//{"testRecordVideoWithWindowChanged", testRecordVideoWithWindowChanged, cca.TimerOff},
+		//{"testRecordVideoWithTimer", testRecordVideoWithTimer, cca.TimerOn},
+		//{"testRecordCancelTimer", testRecordCancelTimer, cca.TimerOn},
+		//{"testVideoSnapshot", testVideoSnapshot, cca.TimerOff},
+		//{"testStopInPause", testStopInPause, cca.TimerOff},
+		//{"testPauseResume", testPauseResume, cca.TimerOff},
+		{"testStressRecording", testStressRecording, cca.TimerOff},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx
@@ -326,6 +328,38 @@ func testVideoSnapshot(ctx context.Context, app *cca.App) error {
 
 	if _, _, err := app.StopRecording(ctx, cca.TimerOff, startTime); err != nil {
 		return errors.Wrap(err, "failed to stop recording")
+	}
+	return nil
+}
+
+func testStressRecording(ctx context.Context, app *cca.App) error {
+	cmd := testexec.CommandContext(ctx, "cras_test_client", "--mute", "1")
+	if err := cmd.Run(); err != nil {
+		return errors.Wrap(err, "failed to mute audio")
+	}
+	for i := 0; i < 720; i++ {
+		testing.ContextLog(ctx, "Video recording iteration: ", i)
+		testing.ContextLog(ctx, "Click on start shutter")
+		startTime := time.Now()
+		if err := app.ClickShutter(ctx); err != nil {
+			return err
+		}
+		if err := app.WaitForState(ctx, "recording", true); err != nil {
+			return errors.Wrap(err, "recording is not started")
+		}
+
+		time.Sleep(10 * time.Second);
+
+		info, _, err := app.StopRecording(ctx, cca.TimerOff, startTime)
+		if err != nil {
+			return errors.Wrap(err, "failed to stop recording")
+		}
+
+		path, err := app.FilePathInSavedDirs(ctx, info.Name())
+		if err != nil {
+			return errors.Wrap(err, "failed to get file path in saved path")
+		}
+		os.Remove(path)
 	}
 	return nil
 }
