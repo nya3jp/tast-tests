@@ -275,6 +275,9 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to release the tap")
 		}
 		pressed = false
+		if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for the overview state to be hidden")
+		}
 		if err := ash.WaitWindowFinishAnimating(ctx, tconn, ow.ID); err != nil {
 			return errors.Wrap(err, "failed to wait for the overview window animation")
 		}
