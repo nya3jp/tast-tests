@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5235a61_01722735",
+        "filename": "src/chromiumos/tast/services/cros/meta/output_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-12-03T01:14:22Z",
+      "side": 1,
+      "message": "I think this is totally acceptable, however, did you consider other names?\n(I think \"output\" means \"output directory\" of Tast, but I am afraid \"output\" may look too a generic name when it appears by itself without context.)",
+      "revId": "0955dc533cb923817a0fec81f64470582ad4c77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
