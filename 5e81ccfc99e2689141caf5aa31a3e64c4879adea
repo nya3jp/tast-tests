@@ -69,6 +69,24 @@
       "message": "Hi Jun Sheng, we got test failures here: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1155055.\nCould you check that this CL is a fix or cause? Thanks.",
       "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad538a65_b523ae88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-03T09:50:39Z",
+      "side": 1,
+      "message": "hi Frank, sorry if it caused some noises. Honestly I have no idea. This is a attempted fix, but seems consistently fail on CQ. And I could not reproduce it on my local. I will stop push this cl before found the root cause.",
+      "parentUuid": "2a70a2d6_1aad939f",
+      "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
