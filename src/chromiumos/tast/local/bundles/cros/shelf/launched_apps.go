@@ -38,15 +38,23 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// At login, we should have just Chrome and maybe Files in the Shelf.
+	tableModeEnabled, err := ash.TableModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed retrieving tablet mode status")
+	}
+
+	defaultApps := []apps.App{chromeApp, apps.Files}
+	if tableModeEnabled {
+		defaultApps := []apps.App{chromeApp, apps.Files, apps.Gmail, apps.Docs, apps.Youtube}
+	}
+
+	// Check that default apps are already pinned once logged in.
 	shelfItems, err := ash.ShelfItems(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get shelf items: ", err)
 	}
-	if len(shelfItems) != 1 {
-		if len(shelfItems) != 2 || shelfItems[1].AppID != apps.Files.ID {
-			s.Fatal("Unexpected apps in the shelf. Expected only Chrome and Files: ", shelfItems)
-		}
+	if len(shelfItems) != len(defaultApps) {
+		s.Fatal("Unexpected apps in the shelf: ", shelfItems)
 	}
 	// Get the expected browser.
 	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
@@ -58,8 +66,6 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	if chromeApp.Name == apps.Chrome.Name {
 		chromeApp.Name = "Google Chrome"
 	}
-	// Chrome must be first because it is automatically opened upon login.
-	defaultApps := []apps.App{chromeApp, apps.Files, apps.WallpaperPicker}
 
 	for _, app := range defaultApps {
 		s.Logf("Launching %s", app.Name)
