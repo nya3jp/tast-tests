@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a9a009_2f9edf91",
+        "filename": "src/chromiumos/tast/local/media/caps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-03T05:47:48Z",
+      "side": 1,
+      "message": "sadly tast_lint complains HWDecodeAV1_4K_10BPP because of https://golang.org/doc/effective_go.html#mixed-caps.\n\nOne option: Use NOLINT to this line.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "ad740c6b65b4b4c15335ca45c2ceb255e547def2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
