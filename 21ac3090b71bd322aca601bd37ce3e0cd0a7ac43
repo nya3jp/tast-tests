@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b318c43_9d7535f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-03T23:20:20Z",
+      "side": 1,
+      "message": "Close settings app?",
+      "revId": "21ac3090b71bd322aca601bd37ce3e0cd0a7ac43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
