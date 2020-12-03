@@ -45,7 +45,7 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 	}
 	if len(shelfItems) != 1 {
 		if len(shelfItems) != 2 || shelfItems[1].AppID != apps.Files.ID {
-			s.Fatal("Unexpected apps in the shelf. Expected only Chrome and Files: ", shelfItems)
+			s.Fatalf("Unexpected apps (%v) in the shelf. Expected (2) only Chrome and Files: %v", len(shelfItems), shelfItems)
 		}
 	}
 	// Get the expected browser.
