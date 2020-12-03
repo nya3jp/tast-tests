@@ -16,6 +16,23 @@
       "message": "Hope it helps!",
       "revId": "6f5085c9b838d32281d7598ddec7b5ef9a7784fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31fe6cd_95543f49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-03T19:22:44Z",
+      "side": 1,
+      "message": "Thanks for the fix :)",
+      "revId": "6f5085c9b838d32281d7598ddec7b5ef9a7784fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
