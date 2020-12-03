@@ -16,6 +16,23 @@
       "message": "pwang@ PTAL",
       "revId": "bcb7feb9e1b3bc77a115fed59e4f945c41fbbb87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb90bdbe_e6ae8093",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-03T08:21:33Z",
+      "side": 1,
+      "message": "Sorry for the late reply. LGTM.",
+      "revId": "bcb7feb9e1b3bc77a115fed59e4f945c41fbbb87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
