@@ -94,6 +94,30 @@
       },
       "revId": "0ba0508463afea235a1fa807adf36127acc9f58e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72694c54_665ec1fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-03T23:50:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb5b0a9a_bf371dbe",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "0ba0508463afea235a1fa807adf36127acc9f58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
