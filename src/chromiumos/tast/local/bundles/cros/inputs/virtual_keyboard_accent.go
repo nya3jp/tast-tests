@@ -32,7 +32,7 @@ func init() {
 			Name:              "stable",
 			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: pre.InputsStableModels,
-			ExtraAttr:         []string{"group:input-tools-upstream"},
+			ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
 			Pre:               pre.VKEnabledTablet,
