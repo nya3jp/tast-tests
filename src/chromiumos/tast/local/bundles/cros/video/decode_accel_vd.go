@@ -25,6 +25,12 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			ExtraData:         []string{"test-25fps.av1.ivf", "test-25fps.av1.ivf.json"},
 		}, {
+			Name:              "av1_10bit",
+			Val:               "test-25fps-10bit.av1.ivf",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
+			ExtraData:         []string{"test-25fps-10bit.av1.ivf", "test-25fps-10bit.av1.ivf.json"},
+		}, {
 			Name:              "h264",
 			Val:               "test-25fps.h264",
 			ExtraAttr:         []string{"group:mainline", "informational"},
