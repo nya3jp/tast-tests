@@ -33,6 +33,24 @@
       "message": "I think it is preferred to make \"DoNotDisableNightLight\" as default since go language prefers to write code explicitly (similar discussion has done for WifiInterfacesMode)\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2491570/5..7/src/chromiumos/tast/local/power/setup/setup.go#b131",
       "revId": "0e246d038e81d083214945de4d0000f7d0373c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7859a4f7_40984660",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-03T14:43:51Z",
+      "side": 1,
+      "message": "Since it would require changing a lot of existing tests to preserve the existing behaviour I\u0027ve decided to implement it in a separate CL.",
+      "parentUuid": "051d52c8_6ef8bce8",
+      "revId": "0e246d038e81d083214945de4d0000f7d0373c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
