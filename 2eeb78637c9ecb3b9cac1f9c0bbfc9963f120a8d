@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "541552b7_4768cf17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-03T15:05:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a387d72_15ba6d1f",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "61613ab1_c7411a6d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98db73c6_67b48b68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-03T15:05:21Z",
+      "side": 1,
+      "message": "I checked the error back in l.113, and the documentation of the method\nsays:\n  // If no rapl files can be found, it returns a nil RAPLSnapshot, but does not return an error.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/power/rapl.go;l\u003d118?q\u003dNewRAPLSnapshot\n\n\nWill add both checks back in l.113 and here.",
+      "parentUuid": "ea80a007_75a65132",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 10
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaebd3cb_e3d1ba18",
@@ -94,6 +142,30 @@
       "writtenOn": "2020-12-02T23:29:56Z",
       "side": 1,
       "message": "we shouldn\u0027t ignore the error here.",
+      "range": {
+        "startLine": 128,
+        "startChar": 14,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcb69eb_a1cee73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-03T15:05:21Z",
+      "side": 1,
+      "message": "Done - caught and reporting it, but only as s.Log() since we want the\ntest to continue even if the power consumption fails.",
+      "parentUuid": "aaebd3cb_e3d1ba18",
       "range": {
         "startLine": 128,
         "startChar": 14,
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aca14b8_cb470a5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-03T15:05:21Z",
+      "side": 1,
+      "message": "Hmm no reason, I thought I had an error during the writing of this code\nabout the subsequent p.Set() complaining, but must have been my bad.\nRemoved.",
+      "parentUuid": "9c54fa6f_9a7f57b1",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 18
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abe2c888_9ce9c1d1",
@@ -140,6 +236,30 @@
       "writtenOn": "2020-12-02T23:29:56Z",
       "side": 1,
       "message": "How about rename the err returned by NewRAPLSnapshot and check it here? Just in case energyDiff is not nil somehow?",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 14
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da784bec_76c2c0ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-03T15:05:21Z",
+      "side": 1,
+      "message": "Done, calling it |energyErr|.",
+      "parentUuid": "abe2c888_9ce9c1d1",
       "range": {
         "startLine": 143,
         "startChar": 4,
@@ -167,6 +287,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90cf2739_e875de6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-03T15:05:21Z",
+      "side": 1,
+      "message": "I certainly think it is :-) -- I thought to wait for such refactor \nuntil there\u0027s at least 2 callsites, but now I think that\u0027s more the\nChromium approach. Will move in the next PS.",
+      "parentUuid": "f292eac9_472693db",
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b5d08b_1a7d91f1",
@@ -180,6 +318,30 @@
       "writtenOn": "2020-12-02T23:01:03Z",
       "side": 1,
       "message": "energy.Total() seems to include both Zone 0 and 1 --- is it intended that we report that sum as Package0? (I do see this snippet seems similar to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/power/rapl.go;l\u003d59;drc\u003d72549f98bf6817169f13e11513c888acd95a48fe, but I guess we can\u0027t leverage that since the map in perf.Values aren\u0027t queryable)",
+      "range": {
+        "startLine": 194,
+        "startChar": 4,
+        "endLine": 194,
+        "endChar": 12
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0cf023b_ec1a4428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-03T15:05:21Z",
+      "side": 1,
+      "message": "Yeah it was a bit of a white lie because rapl.go didn\u0027t give access to the package0\nmeas separately\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/power/rapl.go;l\u003d80-82\nbut since pwang@ told me to create a new ReportWattPerfMetrics() in that file,\nthen I can just log the right things.",
+      "parentUuid": "16b5d08b_1a7d91f1",
       "range": {
         "startLine": 194,
         "startChar": 4,
