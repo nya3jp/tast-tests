@@ -78,7 +78,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set input method: ", err)
 	}
 
-	inputField := testserver.TextInputField
+	inputField := testserver.TextAreaNoCorrectionInputField
 
 	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
 		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
