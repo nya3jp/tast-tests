@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "420413c7_7e3fba85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-03T23:31:18Z",
+      "side": 1,
+      "message": "Even with chrome_internal, there will still be CQ issues when run in the Chrome CQ.  chrome_internal will remove some of them (tests that are run on amd64-generic). Chrome CQ has some chromebooks though (kevin and caroline) so chrome_internal will be met there and it will fail trying to read tast-tests-private.\n\nSo yes add chrome_internal, it is the best thing we have at this point",
+      "parentUuid": "e23d0c8f_4bc74316",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "04ad09ae1a3855c8c90e4ff716db8c7d72977bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "283dac98_226d0bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
         "patchSetId": 4
