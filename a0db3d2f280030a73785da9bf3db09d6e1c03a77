@@ -213,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5f5d706_5d403c45",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T17:46:45Z",
+      "side": 1,
+      "message": "Is it really okay that numSamples \u003e len(samples) ?",
+      "parentUuid": "431af4c5_1ad552d9",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64ef9dc1_f9a5c073",
         "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
         "patchSetId": 10
@@ -248,6 +266,30 @@
       "side": 1,
       "message": "I\u0027m afraid I need, otherwise: \"mismatched int and time.Duration\". If I used a literal, then perhaps it would work, with variable it does not.",
       "parentUuid": "64ef9dc1_f9a5c073",
+      "range": {
+        "startLine": 223,
+        "startChar": 16,
+        "endLine": 223,
+        "endChar": 41
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31766f59_1e562972",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T17:46:45Z",
+      "side": 1,
+      "message": "You are right. My impression came from the common pattern like 3 * time.Second. In this case Golang compiler converts the numeric literal to the type of time.Second, which is int64.\n\nI apologize.",
+      "parentUuid": "d59056d5_4f752946",
       "range": {
         "startLine": 223,
         "startChar": 16,
@@ -307,6 +349,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7ca5973_bd720e28",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T17:46:45Z",
+      "side": 1,
+      "message": "Self answer: this is called Coefficient of Variation (CV) [1], a standardized measure of dispersion of a probability distribution or frequency distribution.\n\nHowever, you cannot compare two different measurements / units\u0027 CV. See the example of different CV for the same temperature reading using Celsius and Fahrenheit unit [2].\n\nIn sum, calculating CV is good, but different measurements (throughput, errors and transaction rate) should have different thresholds.\n\n[1] https://en.wikipedia.org/wiki/Coefficient_of_variation\n[2] https://en.wikipedia.org/wiki/Coefficient_of_variation#Examples_of_misuse",
+      "parentUuid": "89ab0f24_fbe9915a",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ab84720_81927493",
         "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
         "patchSetId": 10
@@ -336,6 +402,24 @@
       "side": 1,
       "message": "Yes, for similar reason why we want to stop netserver: to clean up environment after a broken test run. Otherwise iptables will happily add new identical rule and then remove only one at the end of the test, leaving the system unnecessarily vulnerable.",
       "parentUuid": "8ab84720_81927493",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8a37c5_7db1f1fc",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T17:46:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a07ffe35_fd733852",
       "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -618,6 +702,30 @@
       "side": 1,
       "message": "Or it might be imperative ;)\nGenerally, I\u0027m not a fan of a rule enforcing repeating name in function headers while refusing to properly describe function arguments by their names and I will try to go around that requirement as often as I can. 😄",
       "parentUuid": "45be3506_2063a60a",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3464041_009fe964",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T17:46:45Z",
+      "side": 1,
+      "message": "I know it looks weird to treat a verb as a sentence\u0027s subject. However, this is enforced by \"Go Code Review Comments\":\n\"Comments should begin with the name of the thing being described and end in a period.\"\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "parentUuid": "8e63404d_08961434",
       "range": {
         "startLine": 60,
         "startChar": 7,

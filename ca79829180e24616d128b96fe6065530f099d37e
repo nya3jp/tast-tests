@@ -250,6 +250,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cfa29bb_71dffdcb",
+        "filename": "src/chromiumos/tast/remote/network/cmd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T17:46:45Z",
+      "side": 1,
+      "message": "The only case I can think of is that the function contains a mapping table of binaries and their full paths. But that\u0027s not a good idea as the function is generic to network package.\n\nAs conn.Command() is not a cheap function call (though Golang is significantly faster than Autotest), I lean to avoid using the function.\n\nBrian / Yenlin, what do you think?",
+      "parentUuid": "f4ef8d8c_92a21d24",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9ddd70ed_66058e85",
         "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
         "patchSetId": 4
