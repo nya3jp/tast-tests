@@ -39,6 +39,11 @@ const (
 	HWDecodeAV1_4K   = Prefix + "hw_dec_av1_2160_30"
 	HWDecodeAV1_4K60 = Prefix + "hw_dec_av1_2160_60"
 
+	HWDecodeAV1_10BPP      = Prefix + "hw_dec_av1_1080_30_10bpp"
+	HWDecodeAV1_60_10BPP   = Prefix + "hw_dec_av1_1080_60_10bpp"
+	HWDecodeAV1_4K10BPP    = Prefix + "hw_dec_av1_2160_30_10bpp"
+	HWDecodeAV1_4K60_10BPP = Prefix + "hw_dec_av1_2160_60_10bpp"
+
 	// JPEG Decoding
 	HWDecodeJPEG = Prefix + "hw_dec_jpeg"
 
