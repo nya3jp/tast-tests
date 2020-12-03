@@ -47,11 +47,20 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	const (
-		ap1BSSID   = "00:11:22:33:44:55"
 		ap1Channel = 48
-		ap2BSSID   = "00:11:22:33:44:56"
 		ap2Channel = 1
 	)
+	// Generate BSSIDs for the two APs.
+	mac1, err := hostapd.RandomMAC()
+	if err != nil {
+		s.Fatal("Failed to generate BSSID: ", err)
+	}
+	mac2, err := hostapd.RandomMAC()
+	if err != nil {
+		s.Fatal("Failed to generate BSSID: ", err)
+	}
+	ap1BSSID := mac1.String()
+	ap2BSSID := mac2.String()
 
 	// Configure the initial AP.
 	optionsAP1 := []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(ap1Channel), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(ap1BSSID)}

@@ -26,11 +26,6 @@ type roamTestcase struct {
 	secConfFac security.ConfigFactory
 }
 
-const (
-	ap1BSSID = "00:11:22:33:44:55"
-	ap2BSSID = "00:11:22:33:44:56"
-)
-
 // EAP certs/keys for EAP tests.
 var (
 	roamCert = certificate.TestCert1()
@@ -49,32 +44,32 @@ func init() {
 			{
 				// Verifies that DUT can roam between two APs in full view of it.
 				Val: roamTestcase{
-					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(ap1BSSID)},
-					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(ap2BSSID)},
+					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)},
+					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)},
 					secConfFac: nil,
 				},
 			}, {
 				// Verifies that DUT can roam between two WPA APs in full view of it.
 				Name: "wpa",
 				Val: roamTestcase{
-					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(ap1BSSID)},
-					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(ap2BSSID)},
+					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)},
+					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)},
 					secConfFac: wpa.NewConfigFactory("chromeos", wpa.Mode(wpa.ModePureWPA2), wpa.Ciphers2(wpa.CipherCCMP)),
 				},
 			}, {
 				// Verifies that DUT can roam between two WEP APs in full view of it.
 				Name: "wep",
 				Val: roamTestcase{
-					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(ap1BSSID)},
-					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(ap2BSSID)},
+					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)},
+					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)},
 					secConfFac: wep.NewConfigFactory([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}, wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				},
 			}, {
 				// Verifies that DUT can roam between two WPA-EAP APs in full view of it.
 				Name: "8021xwpa",
 				Val: roamTestcase{
-					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(ap1BSSID)},
-					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.BSSID(ap2BSSID)},
+					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)},
+					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)},
 					secConfFac: wpaeap.NewConfigFactory(roamCert.CACert, roamCert.ServerCred, wpaeap.ClientCACert(roamCert.CACert), wpaeap.ClientCred(roamCert.ClientCred)),
 				},
 			},
@@ -135,6 +130,13 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify connection: ", err)
 	}
 
+	// Generate the BSSID for second AP.
+	mac, err := hostapd.RandomMAC()
+	if err != nil {
+		s.Fatal("Failed to generate random BSSID: ", err)
+	}
+	ap2BSSID := mac.String()
+
 	props := []*wificell.ShillProperty{
 		&wificell.ShillProperty{
 			Property:       shillconst.ServicePropertyWiFiBSSID,
@@ -151,7 +153,11 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 	}
 
 	// Configure the second AP.
-	ops := append([]hostapd.Option{hostapd.SSID(ssid)}, param.apOpts2...)
+	var ops []hostapd.Option
+	ops = append(ops, param.apOpts2...)
+	// Override SSID and BSSID as we need the same SSID as the first AP
+	// and the BSSID that we're waiting.
+	ops = append(ops, hostapd.SSID(ssid), hostapd.BSSID(ap2BSSID))
 	ap2, err := tf.ConfigureAP(ctx, ops, param.secConfFac)
 	if err != nil {
 		s.Fatal("Failed to configure ap, err: ", err)
