@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21556a93_9ff02b02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-03T16:47:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3dfc87f6_36ab5e15",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "ad95dc0570a4705e0c86405d37551cd012f5ebc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "444f6ad9_33c5edee",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "I moved the totalPowerWH-updating code here because I didn\u0027t want to duplicate the code. Now that you\u0027ve mentioned it I see the possibility to make the SamplePower immediately return the error after first encountering it, and not waiting for the `quit` channel.\n\nThere\u0027s still some duplication, but hopefully not too bad. What do you think?",
       "parentUuid": "b03646c6_c0381201",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 40
+      },
+      "revId": "ad95dc0570a4705e0c86405d37551cd012f5ebc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c84cf8_8a3ef6c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-03T16:47:03Z",
+      "side": 1,
+      "message": "LGTM as it is now.",
+      "parentUuid": "ef2cc432_71da1a78",
       "range": {
         "startLine": 61,
         "startChar": 0,
