@@ -16,6 +16,23 @@
       "message": "Thank you for fixing!",
       "revId": "9a0ea7bbfbc4f1d4f59c95db303c67c4fdbe33c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1d2fa1_1a8415a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-12-03T02:54:22Z",
+      "side": 1,
+      "message": "maybe ideally we can have rapl code return an error if it\u0027s called on a non-intel cpu but fixing the immediate problem now sgtm",
+      "revId": "9a0ea7bbfbc4f1d4f59c95db303c67c4fdbe33c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
