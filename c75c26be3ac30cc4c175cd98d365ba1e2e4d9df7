@@ -211,6 +211,30 @@
       },
       "revId": "c75c26be3ac30cc4c175cd98d365ba1e2e4d9df7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf3eb2b_be2e05c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-03T04:48:05Z",
+      "side": 1,
+      "message": "This is the timeout only to stop the VM, and there is another timeout for rebooting. So I think 10 second is enough long.",
+      "parentUuid": "abffb7b3_d0f2e9a8",
+      "range": {
+        "startLine": 104,
+        "startChar": 34,
+        "endLine": 104,
+        "endChar": 36
+      },
+      "revId": "c75c26be3ac30cc4c175cd98d365ba1e2e4d9df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
