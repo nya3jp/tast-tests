@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4512031_e5923da5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-03T02:47:51Z",
+      "side": 1,
+      "message": "Hi, could you PTAL?\n\nThis is the continuation of this other CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/2570694\n",
+      "revId": "661efb2d79d07b1f743256818b79e04ceb6a1c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
