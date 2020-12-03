@@ -12,15 +12,13 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"syscall"
 	"time"
-
-	"github.com/shirou/gopsutil/process"
 
 	lpb "chromiumos/system_api/lorgnette_proto"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
+	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -79,47 +77,6 @@ func findScanner(ctx context.Context, devInfo usbprinter.DevInfo) (bus, device s
 	return tokens[1], tokens[3], nil
 }
 
-func keepAlivePath(devInfo usbprinter.DevInfo) string {
-	return fmt.Sprintf("/run/ippusb/%s-%s_keep_alive.sock", devInfo.VID, devInfo.PID)
-}
-
-func killIPPUSBBridge(ctx context.Context, devInfo usbprinter.DevInfo) error {
-	ps, err := process.Processes()
-	if err != nil {
-		return err
-	}
-
-	for _, p := range ps {
-		if name, err := p.Name(); err != nil || name != "ippusb_bridge" {
-			continue
-		}
-
-		testing.ContextLog(ctx, "Killing ippusb_bridge with pid ", p.Pid)
-		if err := syscall.Kill(int(p.Pid), syscall.SIGINT); err != nil && err != syscall.ESRCH {
-			return errors.Wrap(err, "failed to kill ippusb_bridge")
-		}
-
-		// Wait for the process to exit so that its sockets can be removed.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			// We need a fresh process.Process since it caches attributes.
-			// TODO(crbug.com/1131511): Clean up error handling here when gpsutil has been upreved.
-			if _, err := process.NewProcess(p.Pid); err == nil {
-				return errors.Errorf("pid %d is still running", p.Pid)
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return errors.Wrap(err, "failed to wait for ippusb_bridge to exit")
-		}
-		if err := os.Remove(fmt.Sprintf("/run/ippusb/%s-%s.sock", devInfo.VID, devInfo.PID)); err != nil && !os.IsNotExist(err) {
-			return errors.Wrap(err, "failed to remove ippusb_bridge socket")
-		}
-		if err := os.Remove(keepAlivePath(devInfo)); err != nil && !os.IsNotExist(err) {
-			return errors.Wrap(err, "failed to remove ippusb_bridge keepalive socket")
-		}
-	}
-	return nil
-}
-
 func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	const (
 		descriptors      = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
@@ -169,12 +126,12 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Setting up ipp-usb connection")
-		ippusbBridge := testexec.CommandContext(ctx, "ippusb_bridge", "--bus-device", fmt.Sprintf("%s:%s", bus, device), "--keep-alive", keepAlivePath(devInfo))
+		ippusbBridge := testexec.CommandContext(ctx, "ippusb_bridge", "--bus-device", fmt.Sprintf("%s:%s", bus, device), "--keep-alive", ippusbbridge.KeepAlivePath(&devInfo))
 
 		if err := ippusbBridge.Start(); err != nil {
 			s.Fatal("Failed to connect to printer with ippusb_bridge: ", err)
 		}
-		defer killIPPUSBBridge(cleanupCtx, devInfo)
+		defer ippusbbridge.Kill(cleanupCtx, &devInfo)
 
 		// Defined in src/platform2/ippusb_bridge/src/main.rs
 		const port = 60000
@@ -197,7 +154,7 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 
 		// In the USB case, ippusb_bridge is started indirectly by lorgnette, so we don't
 		// have a process to kill directly.  Instead, search the process tree.
-		defer killIPPUSBBridge(cleanupCtx, devInfo)
+		defer ippusbbridge.Kill(cleanupCtx, &devInfo)
 	}
 
 	tmpDir, err := ioutil.TempDir("", "tast.scanner.ScanEsclIPP.")
