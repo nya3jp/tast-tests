@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a53fe24f_f3d88038",
+        "filename": "src/chromiumos/tast/local/printing/ippusbbridge/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2020-12-03T17:59:28Z",
+      "side": 1,
+      "message": "Can you make this comment a little more explicit and give context on what ippusb_bridge is?",
+      "revId": "e73d6cea6c7bc07d9d1955cc190bddf263923f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
