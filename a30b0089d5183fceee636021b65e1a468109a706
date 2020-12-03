@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd76fd19_6589023a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-12-03T18:45:23Z",
+      "side": 1,
+      "message": "x is not, it\u0027s changing. Maybe I should remove y and replace y by 0?",
+      "parentUuid": "4d542e2e_fca4aa05",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 23
+      },
+      "revId": "a30b0089d5183fceee636021b65e1a468109a706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60408dbc_4cbff101",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
         "patchSetId": 1
@@ -77,6 +101,30 @@
       "writtenOn": "2020-12-03T16:54:42Z",
       "side": 1,
       "message": "could this be moved outside the loop?\n\nalso, not clear where `x` is changed. it seems that it is defined as \"x \u003d 10\" in L100.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 3
+      },
+      "revId": "a30b0089d5183fceee636021b65e1a468109a706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "936d7bda_ff2d15e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-12-03T18:45:23Z",
+      "side": 1,
+      "message": "Mouse position is located at the center of the screen at the beginning. Mouse is moved by x, y relatively. x \u003c 0, it moves to its left by 10. Otherwise, it moves to its right by 10. so the loop is like move mouse to left, then right, then left...Do you mean if it is moved outside the screen? No. It always stays at the center. (x, y) is a relative position.",
+      "parentUuid": "8cca2f21_0c128e86",
       "range": {
         "startLine": 197,
         "startChar": 0,
