@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShelfLaunch,
-		Desc:         "Tests basic lacros startup",
+		Desc:         "Tests launching and interacting with lacros launched from the UI",
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
@@ -84,5 +84,26 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		return w.IsVisible && strings.HasPrefix(w.Title, "Welcome to Chrome") && strings.HasPrefix(w.Name, "ExoShellSurface")
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
+	}
+
+	s.Log("Connecting to the lacros-chrome browser")
+	const userDataDir = "/home/chronos/user/lacros/"
+	l, err := launcher.ConnectToLacrosChrome(ctx, s.PreValue().(launcher.PreData).Chrome, userDataDir)
+	if err != nil {
+		s.Fatal("Failed to connect to lacros-chrome: ", err)
+	}
+	defer l.Close(ctx)
+	s.Log("Opening a new tab")
+	tab, err := l.Devsess.CreateTarget(ctx, "about:blank")
+	if err != nil {
+		s.Fatal("Failed to open new tab: ", err)
+	}
+	defer l.Devsess.CloseTarget(ctx, tab)
+	s.Log("Closing lacros-chrome browser")
+	if err := l.Close(ctx); err != nil {
+		s.Fatal("Failed to close lacros-chrome: ", err)
+	}
+	if err := ash.WaitForAppClosed(ctx, tconn, apps.Lacros.ID); err != nil {
+		s.Fatalf("%s did not close successfully: %s", apps.Lacros.Name, err)
 	}
 }
