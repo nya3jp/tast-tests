@@ -857,6 +857,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--cros-region=" + c.region,                  // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 		"--enable-oobe-test-api",                     // Enable OOBE helper functions for authentication.
+		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 	}
 	if c.enroll {
 		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
