@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7087889e_beaac1e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-03T23:00:27Z",
+      "side": 1,
+      "message": "Oops. Sorry, didn\u0027t check the comment.\nI thought an error returned if there\u0027s no rapl file can be found.",
+      "parentUuid": "98db73c6_67b48b68",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 10
+      },
+      "revId": "2eeb78637c9ecb3b9cac1f9c0bbfc9963f120a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaebd3cb_e3d1ba18",
