@@ -308,6 +308,31 @@ func (s *Settings) GetDiskSize(ctx context.Context) (string, error) {
 	return node.Name, nil
 }
 
+// ResizeDisk resizes the VM disk to approximately targetSize via the settings app.
+// If growing the VM disk, set increase to true, otherwise set it to false.
+func (s *Settings) ResizeDisk(ctx context.Context, kb *input.KeyboardEventWriter, targetSize uint64, increase bool) error {
+	dialog := &ResizeDiskDialog{}
+	uig.PageObject(dialog)
+
+	if err := uig.Do(ctx, s.tconn,
+		uig.FindWithTimeout(resizeButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
+		dialog.Slider.FocusAndWait(15*time.Second)); err != nil {
+		return errors.Wrap(err, "failed to open resize slider")
+	}
+
+	if _, err := ChangeDiskSize(ctx, s.tconn, kb, dialog.Slider, increase, targetSize); err != nil {
+		return errors.Wrap(err, "failed to resize disk")
+	}
+
+	if err := uig.Do(ctx, s.tconn,
+		dialog.Resize.LeftClick(),
+		uig.WaitUntilDescendantGone(ui.FindParams{Name: "Resize Linux disk", Role: "genericContainer"}, uiTimeout)); err != nil {
+		return errors.Wrap(err, "failed to click \"Resize\"")
+	}
+
+	return nil
+}
+
 // GetDiskSize returns the current size based on the disk size slider text.
 func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *uig.Action) (uint64, error) {
 	node, err := uig.GetNode(ctx, tconn, slider.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText}, uiTimeout))

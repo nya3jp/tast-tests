@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	cui "chromiumos/tast/local/crostini/ui"
-	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
@@ -225,9 +224,6 @@ func StartedByComponentStretch() testing.Precondition { return startedByComponen
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByComponentBuster() testing.Precondition { return startedByComponentBusterPre }
 
-// StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
-func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
-
 // StartedByComponentWithGaiaLoginStretch is similar to
 // StartedByComponentStretch, but will log in Chrome with Gaia with
 // Auth() option.
@@ -287,15 +283,6 @@ var startedByComponentBusterPre = &preImpl{
 	debianVersion: vm.DebianBuster,
 }
 
-var startedTraceVMPre = &preImpl{
-	name:          "crostini_started_trace_vm",
-	timeout:       chrome.LoginTimeout + 10*time.Minute,
-	vmMode:        component,
-	container:     normal,
-	debianVersion: vm.DebianBuster,
-	minDiskSize:   16 * settings.SizeGB, // graphics.TraceReplay relies on at least 16GB size.
-}
-
 var startedByComponentWithGaiaLoginStretchPre = &preImpl{
 	name:          "crostini_started_by_component_gaialogin_stretch",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
@@ -329,7 +316,6 @@ type preImpl struct {
 	vmMode        vmSetupMode               // Where (component/dlc) the VM comes from.
 	container     containerType             // What type of container (regular or extra-large) to use.
 	debianVersion vm.ContainerDebianVersion // OS version of the container image.
-	minDiskSize   uint64                    // The minimum size of the VM image in bytes. 0 to use default disk size.
 	cr            *chrome.Chrome
 	tconn         *chrome.TestConn
 	cont          *vm.Container
@@ -482,7 +468,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		// Install Crostini.
 		iOptions := GetInstallerOptions(s, p.vmMode == component, p.debianVersion, p.container == largeContainer)
 		iOptions.UserName = p.cr.User()
-		iOptions.MinDiskSize = p.minDiskSize
 		if _, err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}
