@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee820d2_1e074e59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-03T16:47:03Z",
+      "side": 1,
+      "message": "+2  % (see optional)",
+      "revId": "a117332e5982a2d50c87f57f71d9c39db59b7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfdb73b5_7b8ff83f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mlbenchmark/power.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-03T16:47:03Z",
+      "side": 1,
+      "message": "optional: remove the if/else\n\n  err :\u003d updateTotalPower(time.Now())\n  result \u003c- SamplingResult(Value: totalPowerWH * 3600, Err: err)",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 4
+      },
+      "revId": "a117332e5982a2d50c87f57f71d9c39db59b7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
