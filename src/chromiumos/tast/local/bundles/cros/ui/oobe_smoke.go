@@ -25,8 +25,7 @@ func init() {
 }
 
 func OOBESmoke(ctx context.Context, s *testing.State) {
-	// HID detection screen is shown before the welcome screen on certain devices, thus flag is added to prevent such cases.
-	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.ExtraArgs("--disable-hid-detection-on-oobe"), chrome.EnableFeatures("ChildSpecificSignin"))
+	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.EnableFeatures("ChildSpecificSignin"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

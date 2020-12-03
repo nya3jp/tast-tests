@@ -832,6 +832,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--cros-region=" + c.region,                  // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
+		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 	}
 	if c.enroll {
 		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
