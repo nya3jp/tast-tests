@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a094d76a_373178d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-03T07:58:07Z",
+      "side": 1,
+      "message": "The main point of this CL is to add a meta test (meta.ServiceOutput). A gRPC service is added to be called from the meta test.",
+      "parentUuid": "1455bb1f_a329168d",
+      "revId": "0955dc533cb923817a0fec81f64470582ad4c77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d5235a61_01722735",
         "filename": "src/chromiumos/tast/services/cros/meta/output_service.proto",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-03T01:14:22Z",
       "side": 1,
       "message": "I think this is totally acceptable, however, did you consider other names?\n(I think \"output\" means \"output directory\" of Tast, but I am afraid \"output\" may look too a generic name when it appears by itself without context.)",
+      "revId": "0955dc533cb923817a0fec81f64470582ad4c77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d656adc7_a8fed89c",
+        "filename": "src/chromiumos/tast/services/cros/meta/output_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-03T07:58:07Z",
+      "side": 1,
+      "message": "Makes sense. I renamed this to FileOutputService so that it\u0027s clear that it\u0027s about files... does it sound okay to you?",
+      "parentUuid": "d5235a61_01722735",
       "revId": "0955dc533cb923817a0fec81f64470582ad4c77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
