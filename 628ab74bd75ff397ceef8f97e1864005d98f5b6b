@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9881dfdd_eb67bc83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T07:40:48Z",
+      "side": 1,
+      "message": "The function tests XOR behavior (either Wifi or Bluetooth enabled). Is \"Coex\" a correct name?",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd53094a_260ec802",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
         "patchSetId": 2
@@ -54,6 +77,23 @@
         "endLine": 28,
         "endChar": 43
       },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d7c5d3_97aa5c94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T07:40:48Z",
+      "side": 1,
+      "message": "Shorten ctx a bit after the defer line.",
       "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +134,23 @@
       "writtenOn": "2020-12-03T03:24:59Z",
       "side": 1,
       "message": "As there\u0027s no more logic after this function, this function scope might not be necessary?",
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06bb6bdf_6af2b9ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T07:40:48Z",
+      "side": 1,
+      "message": "We may put restore/enable WiFi in defer and use a flag wifiEnabled to shortcut the defer function if it is enabled in the normal flow. If not, we can still use defer to enable it.\n\nSame for Bluetooth.",
       "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -213,6 +270,52 @@
         "startChar": 24,
         "endLine": 16,
         "endChar": 27
+      },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98c14740_bb0ba3bf",
+        "filename": "src/chromiumos/tast/services/cros/network/bluetooth_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T07:40:48Z",
+      "side": 1,
+      "message": "D-Bus",
+      "range": {
+        "startLine": 16,
+        "startChar": 75,
+        "endLine": 16,
+        "endChar": 79
+      },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc3a1665_e15749a8",
+        "filename": "src/chromiumos/tast/services/cros/network/bluetooth_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-03T07:40:48Z",
+      "side": 1,
+      "message": "Bluetooth",
+      "range": {
+        "startLine": 21,
+        "startChar": 55,
+        "endLine": 21,
+        "endChar": 64
       },
       "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
