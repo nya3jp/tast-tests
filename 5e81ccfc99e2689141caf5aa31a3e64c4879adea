@@ -87,6 +87,24 @@
       "parentUuid": "2a70a2d6_1aad939f",
       "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0511ff42_7fee349f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337797
+      },
+      "writtenOn": "2020-12-03T10:33:12Z",
+      "side": 1,
+      "message": "Submitting the change can cause another error: https://ci.chromium.org/ui/p/chromeos/builders/vmtest/betty-pi-arc-direct-tast-vm/b8862053446640741120/overview",
+      "parentUuid": "ad538a65_b523ae88",
+      "revId": "5e81ccfc99e2689141caf5aa31a3e64c4879adea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
