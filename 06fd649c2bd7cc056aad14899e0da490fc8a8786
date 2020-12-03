@@ -33,6 +33,46 @@
       "message": "Add hidehiko@ to reviewers. I\u0027ve forgotton to add an owner to reviewers.",
       "revId": "06fd649c2bd7cc056aad14899e0da490fc8a8786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "095ecfcf_459d0369",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-03T05:15:23Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "06fd649c2bd7cc056aad14899e0da490fc8a8786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21342b30_d239aaae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-03T05:15:23Z",
+      "side": 1,
+      "message": "optional: maybe testexec.DumpLogOnError to the arg, so that it may show something on (unexpected) error cases, which may help in the future debugging.",
+      "range": {
+        "startLine": 86,
+        "startChar": 18,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "06fd649c2bd7cc056aad14899e0da490fc8a8786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
