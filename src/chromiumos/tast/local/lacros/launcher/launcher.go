@@ -39,6 +39,19 @@ type LacrosChrome struct {
 	testExtConn   *chrome.Conn      // connection to test extension exposing APIs
 }
 
+// ConnectToLacrosChrome connects to a running lacros instance (e.g launched by the UI) and returns a LacrosChrome object that can be used to interact with it.
+func ConnectToLacrosChrome(ctx context.Context, chrome *chrome.Chrome, userDataDir string) (*LacrosChrome, error) {
+	l := &LacrosChrome{testExtID: chrome.TestExtID()}
+	debuggingPortPath := userDataDir + "/DevToolsActivePort"
+	var err error
+	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath, cdputil.WaitPort); err != nil {
+		l.Close(ctx)
+		return nil, errors.Wrap(err, "failed to connect to debugging port")
+	}
+	l.logAggregator = jslog.NewAggregator()
+	return l, nil
+}
+
 // StartTracing starts trace events collection for the selected categories. Android
 // categories must be prefixed with "disabled-by-default-android ", e.g. for the
 // gfx category, use "disabled-by-default-android gfx", including the space.
@@ -176,6 +189,7 @@ func receiveMojoFile(ctx context.Context) (*os.File, error) {
 // extensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
 func extensionArgs(extID, extList string) []string {
 	return []string{
+		"--remote-debugging-port=0",              // Let Chrome choose its own debugging port.
 		"--enable-experimental-extension-apis",   // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + extID,    // Whitelists the test extension to access all Chrome APIs.
 		"--load-extension=" + extList,            // Load extensions.
@@ -202,7 +216,6 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	args := []string{
 		"--ozone-platform=wayland",               // Use wayland to connect to exo wayland server.
 		"--no-sandbox",                           // Disable sandbox for now
-		"--remote-debugging-port=0",              // Let Chrome choose its own debugging port.
 		"--no-first-run",                         // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--user-data-dir=" + userDataDir,         // Specify a --user-data-dir, which holds on-disk state for Chrome.
 		"--lang=en-US",                           // Language
