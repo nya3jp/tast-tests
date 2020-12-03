@@ -315,6 +315,24 @@
       "parentUuid": "aea5f6ef_011be628",
       "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e746d2f5_9fb70861",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/fw_tries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-03T23:47:23Z",
+      "side": 1,
+      "message": "Oh I see you\u0027re still using it, ignore my last comment then.",
+      "parentUuid": "b1b4aca6_81cb9203",
+      "revId": "1fae9d12759306b236f08d84954bfe3e39f62608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
