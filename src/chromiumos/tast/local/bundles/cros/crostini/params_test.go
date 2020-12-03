@@ -76,6 +76,7 @@ func TestParams(t *testing.T) {
 
 var perfTests = map[string]time.Duration{
 	"cpu_perf.go":      12 * time.Minute,
+	"disk_io_perf.go":  60 * time.Minute,
 	"input_latency.go": 10 * time.Minute,
 	"mouse_perf.go":    7 * time.Minute,
 	"network_perf.go":  10 * time.Minute,
