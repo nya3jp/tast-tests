@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8012855d_0822cf3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "As the behavior changed a little bit, might be nice to mention the reason in commit msg. The main difference I see: After WiFi enabled, we verify the functionality with connection + ping to a brand new AP instead of expecting reconnect.\n\nVerification with ping is more thorough and the reconnection behavior is somehow covered by wifi.DisableEnable already so I guess the change is OK.",
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6844b02_1e1f8b5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "generally looks good, only some minor comments.",
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd53094a_260ec802",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "I think we don\u0027t reboot in this test?",
+      "range": {
+        "startLine": 28,
+        "startChar": 33,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c27a876_2deeb0d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "small nit: As we don\u0027t reboot in this test, perhaps can share the btClient in line87. But this one will be even safer (e.g. we might unexpectedly break the gRPC in the test for some reason) so either way is good to me.",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61bcc31a_69edc2ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "As there\u0027s no more logic after this function, this function scope might not be necessary?",
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3c67a0_6b850269",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "nit: Maybe we can PollBreak in this case.",
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47aa182_97b2cd3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "This set + poll combination repeats a few times, I guess it worths to extract an utility function for it? Or, including the waiting in SetBluetoothPoweredFast is also an option.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e16c9647_0f92b939",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "I\u0027m not very sure if we need to poll on this. i.e. can this fail after bluez already get the adapter powered on?",
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45bbf9aa_1b1f515d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/ping_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "nit: maybe remove this line?",
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2201b388_f0212cf0",
+        "filename": "src/chromiumos/tast/services/cros/network/bluetooth_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "nit: might be nice to also mention that this one is persistent setting and the other one is not? (I think the comments in bluetooth_service.go has this part, you can just sync them.)",
+      "range": {
+        "startLine": 14,
+        "startChar": 86,
+        "endLine": 14,
+        "endChar": 87
+      },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64dc83ec_d5a1e0de",
+        "filename": "src/chromiumos/tast/services/cros/network/bluetooth_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-03T03:24:59Z",
+      "side": 1,
+      "message": "Not sure if {Get,Set}BluetoothPoweredDBus might be more straight forward?",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
