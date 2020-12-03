@@ -4,10 +4,66 @@
 
 package arc
 
-import "testing"
+import (
+	"testing"
+
+	"chromiumos/tast/local/coords"
+)
 
 func TestDumpsysPhysicalDisplayP(t *testing.T) {
-	const output = `Display Devices: size=1
+	got, err := scrapeDensity([]byte(dumpsysDisplayP()), 0, SDKP)
+	if err != nil {
+		t.Fatal("scrapeDensity failed: ", err)
+	}
+	const want = 1.875
+	if got != want {
+		t.Fatalf("scrapeDensity() = %v; want %v", got, want)
+	}
+}
+
+func TestDumpsysPhysicalDisplayR(t *testing.T) {
+	gotDefaultDisp, err := scrapeDensity([]byte(dumpsysDisplayR()), 0, SDKR)
+	if err != nil {
+		t.Fatal("scrapeDensity failed: ", err)
+	}
+	gotExternalDisp, err := scrapeDensity([]byte(dumpsysDisplayR()), 2, SDKR)
+	if err != nil {
+		t.Fatal("scrapeDensity failed: ", err)
+	}
+	const wantDefaultDisp = 2.0
+	const wantExternalDisp = 1.33125
+	if gotDefaultDisp != wantDefaultDisp {
+		t.Fatalf("scrapeDensity(defaultDisp) = %v; want %v", gotDefaultDisp, wantDefaultDisp)
+	}
+	if gotExternalDisp != wantExternalDisp {
+		t.Fatalf("scrapeDensity(externalDisp) = %v; want %v", gotExternalDisp, wantExternalDisp)
+	}
+}
+
+func TestDumpsysDisplaySizeR(t *testing.T) {
+	got, err := scrapeDisplaySize([]byte(dumpsysDisplayR()), false, 0, SDKR)
+	if err != nil {
+		t.Fatal("scrapeDisplaySize failed: ", err)
+	}
+	want := coords.NewSize(2160, 3840)
+	if got != want {
+		t.Fatalf("scrapeDisplaySize() = %v; want %v", got, want)
+	}
+}
+
+func TestDumpsysDisplayStableSizeR(t *testing.T) {
+	got, err := scrapeDisplaySize([]byte(dumpsysDisplayR()), true, 0, SDKR)
+	if err != nil {
+		t.Fatal("scrapeDisplayStableSize failed: ", err)
+	}
+	want := coords.NewSize(3840, 2160)
+	if got != want {
+		t.Fatalf("scrapeDisplayStableSize() = %v; want %v", got, want)
+	}
+}
+
+func dumpsysDisplayP() string {
+	return `Display Devices: size=1
   DisplayDeviceInfo{"Built-in Screen": uniqueId="local:0", 2400 x 1600, modeId 1, defaultModeId 1, supportedModes [{id=1, width=2400, height=1600, fps=60.000004}], colorMode 0, supportedColorModes [0], HdrCapabilities android.view.Display$HdrCapabilities@40f16308, density 300, 300.295 x 301.037 dpi, appVsyncOff 1000000, presDeadline 5666666, touch INTERNAL, rotation 0, type BUILT_IN, state ON, FLAG_DEFAULT_DISPLAY, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS}
     mAdapter=LocalDisplayAdapter
     mUniqueId=local:0
@@ -29,19 +85,10 @@ func TestDumpsysPhysicalDisplayP(t *testing.T) {
     mSupportedModes=
       DisplayModeRecord{mMode={id=1, width=2400, height=1600, fps=60.000004}}
     mSupportedColorModes=[0]`
-
-	got, err := scrapeDensity([]byte(output), 0, SDKP)
-	if err != nil {
-		t.Fatal("scrapeDensity failed: ", err)
-	}
-	const want = 1.875
-	if got != want {
-		t.Fatalf("scrapeDensity() = %v; want %v", got, want)
-	}
 }
 
-func TestDumpsysPhysicalDisplayR(t *testing.T) {
-	const output = `Display Devices: size=3
+func dumpsysDisplayR() string {
+	return `Display Devices: size=3
   DisplayDeviceInfo{"Built-in Screen": uniqueId="local:21536137753913600", 3840 x 2160, modeId 1, defaultModeId 1, supportedModes [{id=1, width=3840, height=2160, fps=60.000004}], colorMode 0, supportedColorModes [0], HdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=500.0, mMaxAverageLuminance=500.0, mMinLuminance=0.0}, allmSupported false, gameContentTypeSupported false, density 320, 336.331 x 336.588 dpi, appVsyncOff 7500000, presDeadline 12666666, touch INTERNAL, rotation 0, type INTERNAL, address {port=0, model=0x4c8300d0a7e9}, deviceProductInfo DeviceProductInfo{name=, manufacturerPnpId=SDC, productId=16706, modelYear=null, manufactureDate=ManufactureDate{week=19, year=2019}, relativeAddress=null}, state OFF, FLAG_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS}
     mAdapter=LocalDisplayAdapter
     mUniqueId=local:21536137753913600
@@ -123,7 +170,7 @@ mDisplayId=0
     mDisplayScalingDisabled=false
     mPrimaryDisplayDevice=Built-in Screen
     mBaseDisplayInfo=DisplayInfo{"Built-in Screen", displayId 0, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_TRUSTED, real 3840 x 2160, largest app 3840 x 2160, smallest app 3840 x 2160, appVsyncOff 7500000, presDeadline 12666666, mode 1, defaultMode 1, modes [{id=1, width=3840, height=2160, fps=60.000004}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=500.0, mMaxAverageLuminance=500.0, mMinLuminance=0.0}, minimalPostProcessingSupported false, rotation 0, state OFF, type INTERNAL, uniqueId "local:21536137753913600", app 3840 x 2160, density 320 (336.331 x 336.588) dpi, layerStack 0, colorMode 0, supportedColorModes [0], address {port=0, model=0x4c8300d0a7e9}, deviceProductInfo DeviceProductInfo{name=, manufacturerPnpId=SDC, productId=16706, modelYear=null, manufactureDate=ManufactureDate{week=19, year=2019}, relativeAddress=null}, removeMode 0}
-    mOverrideDisplayInfo=DisplayInfo{"Built-in Screen", displayId 0, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_TRUSTED, real 3840 x 2160, largest app 3840 x 3840, smallest app 2160 x 2160, appVsyncOff 7500000, presDeadline 12666666, mode 1, defaultMode 1, modes [{id=1, width=3840, height=2160, fps=60.000004}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=500.0, mMaxAverageLuminance=500.0, mMinLuminance=0.0}, minimalPostProcessingSupported false, rotation 0, state ON, type INTERNAL, uniqueId "local:21536137753913600", app 3840 x 2160, density 400 (336.331 x 336.588) dpi, layerStack 0, colorMode 0, supportedColorModes [0], address {port=0, model=0x4c8300d0a7e9}, deviceProductInfo DeviceProductInfo{name=, manufacturerPnpId=SDC, productId=16706, modelYear=null, manufactureDate=ManufactureDate{week=19, year=2019}, relativeAddress=null}, removeMode 0}
+    mOverrideDisplayInfo=DisplayInfo{"Built-in Screen", displayId 0, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_TRUSTED, real 2160 x 3840, largest app 3840 x 3840, smallest app 2160 x 2160, appVsyncOff 7500000, presDeadline 12666666, mode 1, defaultMode 1, modes [{id=1, width=3840, height=2160, fps=60.000004}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=500.0, mMaxAverageLuminance=500.0, mMinLuminance=0.0}, minimalPostProcessingSupported false, rotation 0, state ON, type INTERNAL, uniqueId "local:21536137753913600", app 3840 x 2160, density 400 (336.331 x 336.588) dpi, layerStack 0, colorMode 0, supportedColorModes [0], address {port=0, model=0x4c8300d0a7e9}, deviceProductInfo DeviceProductInfo{name=, manufacturerPnpId=SDC, productId=16706, modelYear=null, manufactureDate=ManufactureDate{week=19, year=2019}, relativeAddress=null}, removeMode 0}
     mRequestedMinimalPostProcessing=false
   Display 1:
     mDisplayId=1
@@ -149,21 +196,4 @@ mDisplayId=0
     mBaseDisplayInfo=DisplayInfo{"HDMI Screen", displayId 2, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_PRESENTATION, FLAG_TRUSTED, real 1920 x 1080, largest app 1920 x 1080, smallest app 1920 x 1080, appVsyncOff 7500000, presDeadline 12666666, mode 3, defaultMode 3, modes [{id=3, width=1920, height=1080, fps=60.000004}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=500.0, mMaxAverageLuminance=500.0, mMinLuminance=0.0}, minimalPostProcessingSupported false, rotation 0, state OFF, type EXTERNAL, uniqueId "local:1886094531531010", app 1920 x 1080, density 213 (143.435 x 143.623) dpi, layerStack 2, colorMode 0, supportedColorModes [0], address {port=2, model=0x6b3649a9091}, deviceProductInfo DeviceProductInfo{name=ASUS MB16AMT, manufacturerPnpId=AUS, productId=5729, modelYear=null, manufactureDate=ManufactureDate{week=41, year=2019}, relativeAddress=[1, 0, 0, 0]}, removeMode 0}
     mOverrideDisplayInfo=DisplayInfo{"HDMI Screen", displayId 2, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_PRESENTATION, FLAG_TRUSTED, real 1920 x 1080, largest app 1920 x 1920, smallest app 1080 x 1080, appVsyncOff 7500000, presDeadline 12666666, mode 3, defaultMode 3, modes [{id=3, width=1920, height=1080, fps=60.000004}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=500.0, mMaxAverageLuminance=500.0, mMinLuminance=0.0}, minimalPostProcessingSupported false, rotation 0, state ON, type EXTERNAL, uniqueId "local:1886094531531010", app 1920 x 1080, density 213 (143.435 x 143.623) dpi, layerStack 2, colorMode 0, supportedColorModes [0], address {port=2, model=0x6b3649a9091}, deviceProductInfo DeviceProductInfo{name=ASUS MB16AMT, manufacturerPnpId=AUS, productId=5729, modelYear=null, manufactureDate=ManufactureDate{week=41, year=2019}, relativeAddress=[1, 0, 0, 0]}, removeMode 0}
     mRequestedMinimalPostProcessing=false`
-
-	gotDefaultDisp, err := scrapeDensity([]byte(output), 0, SDKR)
-	if err != nil {
-		t.Fatal("scrapeDensity failed: ", err)
-	}
-	gotExternalDisp, err := scrapeDensity([]byte(output), 2, SDKR)
-	if err != nil {
-		t.Fatal("scrapeDensity failed: ", err)
-	}
-	const wantDefaultDisp = 2.0
-	const wantExternalDisp = 1.33125
-	if gotDefaultDisp != wantDefaultDisp {
-		t.Fatalf("scrapeDensity(defaultDisp) = %v; want %v", gotDefaultDisp, wantDefaultDisp)
-	}
-	if gotExternalDisp != wantExternalDisp {
-		t.Fatalf("scrapeDensity(externalDisp) = %v; want %v", gotExternalDisp, wantExternalDisp)
-	}
 }
