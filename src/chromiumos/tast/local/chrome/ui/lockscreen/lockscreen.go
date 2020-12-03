@@ -109,5 +109,64 @@ func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
 
 // SubmitPIN submits the entered PIN.
 func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
-	return uig.Do(ctx, tconn, uig.FindWithTimeout(ui.FindParams{Name: "Submit", Role: ui.RoleTypeButton}, uiTimeout).LeftClick())
+	return uig.Do(ctx, tconn, uig.FindWithTimeout(SubmitBtnParams, uiTimeout).LeftClick())
+}
+
+// ShowPassword clicks the Show password button
+func ShowPassword(ctx context.Context, tconn *chrome.TestConn) error {
+	return uig.Do(ctx, tconn, uig.FindWithTimeout(ShowPasswordBtnParams, uiTimeout).LeftClick())
+}
+
+// HidePassword clicks the Hide password button
+func HidePassword(ctx context.Context, tconn *chrome.TestConn) error {
+	return uig.Do(ctx, tconn, uig.FindWithTimeout(HidePasswordBtnParams, uiTimeout).LeftClick())
+}
+
+// SwitchToPassword clicks the 'Switch to password' button
+func SwitchToPassword(ctx context.Context, tconn *chrome.TestConn) error {
+	return uig.Do(ctx, tconn, uig.FindWithTimeout(SwitchToPwdBtnParams, uiTimeout).LeftClick())
+}
+
+// GetUserPassword searches the password field for a given user pod and returns the password node
+func GetUserPassword(ctx context.Context, tconn *chrome.TestConn, username string) (*ui.Node, error) {
+	r, err := regexp.Compile(fmt.Sprintf("Password for %v", username))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to compile regexp for name attribute")
+	}
+	attributes := map[string]interface{}{
+		"name": r,
+	}
+	params := ui.FindParams{
+		Role:       ui.RoleTypeTextField,
+		Attributes: attributes,
+	}
+
+	return ui.Find(ctx, tconn, params)
+}
+
+// WaitForHidePassword checks that password/pin field is autohidden 5s after show password button is pressed
+func WaitForHidePassword(ctx context.Context, tconn *chrome.TestConn) bool {
+	if err := ShowPassword(ctx, tconn); err != nil {
+		errors.Wrap(err, "failed to click Show password button: ")
+		return false
+	}
+
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		flag, e := ui.Exists(ctx, tconn, HidePasswordBtnParams)
+		if e != nil {
+			return testing.PollBreak(e)
+		}
+		if flag {
+			return errors.New("Hide password button was found")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 6 * time.Second})
+
+	showPwd, e := ui.Exists(ctx, tconn, ShowPasswordBtnParams)
+
+	if err != nil || e != nil {
+		return false
+	}
+
+	return true && showPwd
 }
