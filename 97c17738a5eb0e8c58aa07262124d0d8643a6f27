@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe17a25_a980ce32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-12-03T12:33:02Z",
+      "side": 1,
+      "message": "+ruanc@, PTAL at clipboard.go.\n+tetsui@, PTAL at gamepad.go and ime_blocking.go\n+edcourtney@, PTAL at notification.go\n",
+      "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e6fca3f_9fc07efe",
@@ -65,6 +82,24 @@
       "writtenOn": "2020-12-02T16:13:22Z",
       "side": 1,
       "message": "Is \"Starting app\" still an accurate log, or should this be changed to \"Creating activity\"?",
+      "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7a09fc_f89076ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-12-03T12:33:02Z",
+      "side": 1,
+      "message": "I think it\u0027s correct because the next log message is \"Waiting for App showing up\".\nThe action taken between these logs are starting the app.",
+      "parentUuid": "0e6fca3f_9fc07efe",
       "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +121,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0997fed5_b924f4af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-12-03T12:33:02Z",
+      "side": 1,
+      "message": "It\u0027s still correct by the same reason I mentioned.",
+      "parentUuid": "b7197165_19ebabe3",
+      "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7d1cd79_5c0c7bc7",
@@ -103,6 +156,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb778f9_bc6543d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-12-03T12:33:02Z",
+      "side": 1,
+      "message": "It\u0027s still correct by the same reason I mentioned.",
+      "parentUuid": "a7d1cd79_5c0c7bc7",
+      "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca89634b_0ba0e4f5",
@@ -116,6 +187,24 @@
       "writtenOn": "2020-12-02T16:13:22Z",
       "side": 1,
       "message": "Is \"Launching app\" still an accurate log, or should this be changed to \"Creating activity\"?",
+      "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f681132_71029baa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-12-03T12:33:02Z",
+      "side": 1,
+      "message": "It\u0027s still correct by the same reason I mentioned.",
+      "parentUuid": "ca89634b_0ba0e4f5",
       "revId": "97c17738a5eb0e8c58aa07262124d0d8643a6f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
