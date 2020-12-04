@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88a9ec18_fb91e517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:06:24Z",
+      "side": 1,
+      "message": "Typically, you don\u0027t actually describe it if it implements an interface method.\n// Create implements tast.cros.cuj.LocalStoreService.Create.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91ee7ed1_f281ae28",
         "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
         "patchSetId": 1
@@ -54,6 +77,46 @@
         "endLine": 37,
         "endChar": 52
       },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "566dd02e_84a6ec94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:06:24Z",
+      "side": 1,
+      "message": "Why does this have to remove existing one?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee47ed5_5043a3c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cuj/local_store_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:06:24Z",
+      "side": 1,
+      "message": "ditto",
       "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -269,6 +332,64 @@
         "startChar": 79,
         "endLine": 14,
         "endChar": 89
+      },
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a477206a_88d42827",
+        "filename": "src/chromiumos/tast/services/cros/cuj/local_store_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:06:24Z",
+      "side": 1,
+      "message": "With the CL, it is not still clear to me what this service does. What type of data files are stored in the directory this service creates?  Who creates the file, and how?  Can we turn this service more specific to the context of usage?",
+      "parentUuid": "8a612a8c_394e7892",
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6763ff14_cfd029d0",
+        "filename": "src/chromiumos/tast/services/cros/cuj/local_store_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:06:24Z",
+      "side": 1,
+      "message": "The service implementation implicitly assumes that there is only a single client of this service, and so it can hold a single temp directory.  Please mention that explicitly here.",
+      "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7dd5699_46938fcf",
+        "filename": "src/chromiumos/tast/services/cros/cuj/local_store_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:06:24Z",
+      "side": 1,
+      "message": "questioned in the implementation side, but if the service can only keep a single temp directory, why does RemoveRequest have to specify the path?  Could it be simply be Empty?",
+      "range": {
+        "startLine": 20,
+        "startChar": 14,
+        "endLine": 20,
+        "endChar": 27
       },
       "revId": "4d7590abc1ed6d100c953a6d8cd3c2b2c29227ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
