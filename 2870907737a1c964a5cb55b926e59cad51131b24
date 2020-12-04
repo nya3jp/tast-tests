@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "502481e8_cd36aabc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-04T22:30:00Z",
+      "side": 1,
+      "message": "Is this always the same for lacros chrome. If so, do we even need to pass it into the function? Can it just be a constant somewhere?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 44
+      },
+      "revId": "2870907737a1c964a5cb55b926e59cad51131b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97963a73_c5d39866",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
         "patchSetId": 1
