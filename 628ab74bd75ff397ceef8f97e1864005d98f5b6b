@@ -299,6 +299,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cadc7d66_3841a5df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-04T09:00:00Z",
+      "side": 1,
+      "message": "Agree to enable the WiFi/Bluetooth at the defer function of the test.",
+      "parentUuid": "98cfdaf1_61de3978",
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d3c67a0_6b850269",
