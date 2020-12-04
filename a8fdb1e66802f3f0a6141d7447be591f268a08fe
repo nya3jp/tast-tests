@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d70af6_e6e5b551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-04T17:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c38ff63_4045ab46",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "a8fdb1e66802f3f0a6141d7447be591f268a08fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69017de1_318c35a1",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3714856_cc868dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-04T17:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69017de1_318c35a1",
+      "range": {
+        "startLine": 46,
+        "startChar": 120,
+        "endLine": 46,
+        "endChar": 131
+      },
+      "revId": "a8fdb1e66802f3f0a6141d7447be591f268a08fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d48cda17_5b807572",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-04T12:25:11Z",
       "side": 1,
       "message": "It might be nice to wrap a generic function here:\n\ncreateKey :\u003d func(ctx context.Context, kt KeyType, keyName, keyID string) (*pkcs11.KeyInfo, error) {\n    if kt \u003d\u003d RSAKey {\n        return pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, username, keyName, keyID, false, true)\n    } else if kt \u003d\u003d ECKey {\n        return pkcs11Util.CreateECSoftwareKey(ctx, scratchpadPath, username, keyName, keyID, false, true) else {\n        return nil, errors.Wrapf(err, \"invalid keyType %d\", keyType)\n    }\n}\n\n    importedKey, err :\u003d createKey(ctx, kt, \"testkey1\", importedKeyID)\n    ...\n    softwareKey, err :\u003d createKey(ctx, kt, \"testkey2\", softwareKeyID)\n    ...\n    generatedKey, err :\u003d createKey(ctx, kt, \"testkey2\", generatedKeyID)\n    \n}",
+      "range": {
+        "startLine": 64,
+        "startChar": 32,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "a8fdb1e66802f3f0a6141d7447be591f268a08fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b00f53c_ff9c4e87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-04T17:49:37Z",
+      "side": 1,
+      "message": "The reason why this is not done is because these 3 keys require different parameters/different method. We\u0027ll probably need 2 more parameters and another level of if/else to do it, at which point the generic function would be a bit too large.",
+      "parentUuid": "d48cda17_5b807572",
       "range": {
         "startLine": 64,
         "startChar": 32,
