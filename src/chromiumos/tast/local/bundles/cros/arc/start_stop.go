@@ -39,7 +39,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
-		Attr:    []string{"group:mainline"},
+		Attr:    []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testArgs{
