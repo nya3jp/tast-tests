@@ -52,6 +52,24 @@
       "parentUuid": "e410428f_7b69f3c7",
       "revId": "632b3988cc3a72ee84eaaabea8efb0d7f78a90f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cff5a58_65519bdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-04T01:19:23Z",
+      "side": 1,
+      "message": "yes, this only applies if the test hangs.  Pass or error path fail will happen immediately without waiting for timeout.",
+      "parentUuid": "dd49b372_9bb1eb26",
+      "revId": "632b3988cc3a72ee84eaaabea8efb0d7f78a90f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
