@@ -16,6 +16,40 @@
       "message": "Thanks for fixing this.",
       "revId": "bcaa9fa3563526e94cf50c51782032dee4a81dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df9a5ed_059c944e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-04T08:11:47Z",
+      "side": 1,
+      "message": "LGTM with comments.",
+      "revId": "bcaa9fa3563526e94cf50c51782032dee4a81dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de99889d_663e861e",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-04T08:11:47Z",
+      "side": 1,
+      "message": "eve and atlas are models of Poppy platform, so that works.\n\"hatch\" and \"nami\" are one of \"hatch\" board family and \"nami\" board family respectively.\nI.e., there are more model variations for those boards.\nCould you double check you\u0027re running \"hatch\" and \"nami\" models only, before submitting?",
+      "revId": "bcaa9fa3563526e94cf50c51782032dee4a81dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
