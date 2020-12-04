@@ -91,7 +91,6 @@ func launchAppForTurbotax(ctx context.Context, s *testing.State, tconn *chrome.T
 		passwordClassName        = "android.widget.EditText"
 		passwordID               = "com.intuit.turbotax.mobile:id/passwordEditText"
 		passwordText             = "Password"
-		selectEmailClassName     = "androidx.appcompat.app.ActionBar$Tab"
 		selectEmailDes           = "Email or user ID"
 		skipID                   = "com.intuit.turbotax.mobile:id/skip_TV"
 		signInClassName          = "android.widget.Button"
@@ -108,7 +107,7 @@ func launchAppForTurbotax(ctx context.Context, s *testing.State, tconn *chrome.T
 	}
 
 	// Select email.
-	selectEmail := d.Object(ui.ClassName(selectEmailClassName), ui.Description(selectEmailDes))
+	selectEmail := d.Object(ui.DescriptionMatches("(?i)" + selectEmailDes))
 	if err := selectEmail.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("selectEmail doesn't exists: ", err)
 	} else if err := selectEmail.Click(ctx); err != nil {
