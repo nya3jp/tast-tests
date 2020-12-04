@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c491835c_c8126ef0",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-12-04T16:17:21Z",
+      "side": 1,
+      "message": "nit: logGuestInfo",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 17
+      },
+      "revId": "70c41ca1c71f7b3f36741ebc1c232d9e019ea4fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7eebe70_9bf38672",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 7
@@ -42,6 +65,29 @@
         "startChar": 14,
         "endLine": 236,
         "endChar": 25
+      },
+      "revId": "70c41ca1c71f7b3f36741ebc1c232d9e019ea4fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8145554c_349cd4cc",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1443168
+      },
+      "writtenOn": "2020-12-04T16:17:21Z",
+      "side": 1,
+      "message": "nit: logGuestInfo",
+      "range": {
+        "startLine": 438,
+        "startChar": 11,
+        "endLine": 438,
+        "endChar": 27
       },
       "revId": "70c41ca1c71f7b3f36741ebc1c232d9e019ea4fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
