@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a048eba0_d83e6bed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-04T22:11:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14207e77_de3a1681",
+      "range": {
+        "startLine": 296,
+        "startChar": 63,
+        "endLine": 296,
+        "endChar": 65
+      },
+      "revId": "926f34101799bf25a529e4aae0d40099291945c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e293276_666036a2",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-04T21:57:42Z",
       "side": 1,
       "message": "a single period?",
+      "range": {
+        "startLine": 302,
+        "startChar": 46,
+        "endLine": 302,
+        "endChar": 48
+      },
+      "revId": "926f34101799bf25a529e4aae0d40099291945c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac638a33_def9c84b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-04T22:11:27Z",
+      "side": 1,
+      "message": "Brain dead copying. Fixed.",
+      "parentUuid": "8e293276_666036a2",
       "range": {
         "startLine": 302,
         "startChar": 46,
