@@ -29,6 +29,12 @@ import (
 // regExpFPS is the regexp to find the FPS output from the binary log.
 var regExpFPS = regexp.MustCompile(`Processed \d+ frames in \d+ ms \((\d+\.\d+) FPS\)`)
 
+// regExpSSIM is the regexp to find the SSIM output in the tiny_ssim log.
+var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
+
+// regExpPSNR is the regexp to find the PSNR output in the tiny_ssim log.
+var regExpPSNR = regexp.MustCompile(`\nGlbPSNR: (\d+\.\d+)`)
+
 // testParam is used to describe the config used to run each test.
 type testParam struct {
 	command  []string    // The command path to be run. This should be relative to /usr/local/bin.
@@ -94,7 +100,6 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 
 	testOpt.command = append(testOpt.command, strconv.Itoa(testOpt.size.Width), strconv.Itoa(testOpt.size.Height), yuvFile)
 
-	// TODO(mcasas): decode the output file and PSNR/SSIM-compare with input.
 	ivfFile := yuvFile + ".ivf"
 	testOpt.command = append(testOpt.command, ivfFile)
 
@@ -131,16 +136,40 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	fps, err := extractFPS(logFile)
+	fps, err := extractValue(logFile, regExpFPS)
 	if err != nil {
-		s.Fatal("extractFPS() failed: ", err)
+		s.Fatal("Failed to extract FPS: ", err)
 	}
+
+	SSIMFile, err := compareFiles(ctx, yuvFile, ivfFile, s.OutDir(), testOpt.size)
+	if err != nil {
+		s.Fatal("Failed to decode and compare results: ", err)
+	}
+	SSIM, err := extractValue(SSIMFile, regExpSSIM)
+	if err != nil {
+		s.Fatal("Failed to extract SSIM: ", err)
+	}
+	PSNR, err := extractValue(SSIMFile, regExpPSNR)
+	if err != nil {
+		s.Fatal("Failed to extract PSNR: ", err)
+	}
+
 	p := perf.NewValues()
 	p.Set(perf.Metric{
 		Name:      "fps",
 		Unit:      "fps",
 		Direction: perf.BiggerIsBetter,
 	}, fps)
+	p.Set(perf.Metric{
+		Name:      "SSIM",
+		Unit:      "percent",
+		Direction: perf.BiggerIsBetter,
+	}, SSIM*100)
+	p.Set(perf.Metric{
+		Name:      "PSNR",
+		Unit:      "dB",
+		Direction: perf.BiggerIsBetter,
+	}, PSNR)
 
 	if energyDiff != nil && energyErr == nil {
 		energyDiff.ReportWattPerfMetrics(p, "", timeDelta)
@@ -170,22 +199,54 @@ func runTest(ctx context.Context, outDir, exe string, args ...string) (logFile s
 	return logFile, nil
 }
 
-// extractFPS parses logFile and extracts the average frame rate.
-func extractFPS(logFile string) (fps float64, err error) {
+// extractValue parses logFile using r and returns a single float64 match.
+func extractValue(logFile string, r *regexp.Regexp) (value float64, err error) {
 	b, err := ioutil.ReadFile(logFile)
 	if err != nil {
 		return 0.0, errors.Wrapf(err, "failed to read file %s", logFile)
 	}
 
-	matches := regExpFPS.FindAllStringSubmatch(string(b), -1)
+	matches := r.FindAllStringSubmatch(string(b), -1)
 	if len(matches) != 1 {
-		return 0.0, errors.Errorf("found %d FPS matches in %q; want 1", len(matches), b)
+		return 0.0, errors.Errorf("found %d matches in %q; want 1", len(matches), b)
 	}
 
-	fpsString := matches[0][1]
-	fps, err = strconv.ParseFloat(fpsString, 64)
-	if err != nil {
-		return 0.0, errors.Wrapf(err, "failed to parse FPS value %q", fpsString)
+	matchString := matches[0][1]
+	if value, err = strconv.ParseFloat(matchString, 64); err != nil {
+		return 0.0, errors.Wrapf(err, "failed to parse value %q", matchString)
 	}
-	return fps, nil
+	return
+}
+
+// compareFiles decodes ivfFile using vpxdec and compares it with yuvFile using tiny_ssim.
+func compareFiles(ctx context.Context, yuvFile, ivfFile, outDir string, size coords.Size) (logFile string, err error) {
+	yuvFile2 := yuvFile + ".2"
+	tf, err := os.Create(yuvFile2)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create a temporary YUV file")
+	}
+	defer os.Remove(yuvFile2)
+	defer tf.Close()
+
+	testing.ContextLogf(ctx, "Executing vpxdec %s", filepath.Base(ivfFile))
+	vpxCmd := testexec.CommandContext(ctx, "vpxdec", ivfFile, "-o", yuvFile2)
+	if err := vpxCmd.Run(); err != nil {
+		vpxCmd.DumpLog(ctx)
+		return "", errors.Wrap(err, "vpxdec failed")
+	}
+
+	logFile = filepath.Join(outDir, "tiny_ssim.txt")
+	f, err := os.Create(logFile)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create log file")
+	}
+	defer f.Close()
+
+	SSIMCmd := testexec.CommandContext(ctx, "tiny_ssim", yuvFile, yuvFile2, strconv.Itoa(size.Width)+"x"+strconv.Itoa(size.Height))
+	SSIMCmd.Stdout = f
+	SSIMCmd.Stderr = f
+	if err := SSIMCmd.Run(testexec.DumpLogOnError); err != nil {
+		return "", errors.Wrap(err, "failed to run tiny_ssim")
+	}
+	return logFile, nil
 }
