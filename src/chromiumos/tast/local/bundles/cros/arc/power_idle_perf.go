@@ -118,7 +118,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	}()
 
 	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: args.setupOption}))
+		Wifi: setup.DisableWifiInterfaces, Battery: args.setupOption, NightLight: setup.DisableNightLight}))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}

@@ -89,7 +89,7 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
 	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: batteryMode}))
+		Wifi: setup.DisableWifiInterfaces, Battery: batteryMode, NightLight: setup.DisableNightLight}))
 
 	// Install GCA APK.
 	a := s.PreValue().(arc.PreData).ARC

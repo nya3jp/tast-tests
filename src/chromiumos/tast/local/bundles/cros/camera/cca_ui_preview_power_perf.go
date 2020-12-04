@@ -184,7 +184,7 @@ func CCAUIPreviewPowerPerf(ctx context.Context, s *testing.State) {
 
 	batteryMode := s.Param().(ccaUIPreviewPowerPerfParams).batteryMode
 	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: batteryMode}))
+		Wifi: setup.DisableWifiInterfaces, Battery: batteryMode, NightLight: setup.DisableNightLight}))
 
 	const (
 		iterationCount          = 30
