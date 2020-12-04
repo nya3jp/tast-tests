@@ -120,6 +120,24 @@
       "parentUuid": "81734cc1_78ff15ba",
       "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f03ae2f_d03f0e57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2020-12-04T00:14:17Z",
+      "side": 1,
+      "message": "responded in the doc ... defer to platform team on this as the implication is large and we should be all or not",
+      "parentUuid": "5877fc3f_3bccbad5",
+      "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
