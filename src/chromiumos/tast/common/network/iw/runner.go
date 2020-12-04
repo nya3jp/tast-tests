@@ -405,6 +405,19 @@ func (r *Runner) RadioConfig(ctx context.Context, iface string) (*ChannelConfig,
 	}, nil
 }
 
+// PhyRegulatoryDomain gets the phy-specific regulatory domain code.
+func (r *Runner) PhyRegulatoryDomain(ctx context.Context, phy string) (string, error) {
+	out, err := r.cmd.Output(ctx, "iw", "phy", phy, "reg", "get")
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get regulatory domain")
+	}
+	re := regexp.MustCompile(`(?m)^country (..):`)
+	if m := re.FindStringSubmatch(string(out)); m != nil {
+		return m[1], nil
+	}
+	return "", errors.New("could not find regulatory domain")
+}
+
 // RegulatoryDomain gets the regulatory domain code.
 func (r *Runner) RegulatoryDomain(ctx context.Context) (string, error) {
 	out, err := r.cmd.Output(ctx, "iw", "reg", "get")
