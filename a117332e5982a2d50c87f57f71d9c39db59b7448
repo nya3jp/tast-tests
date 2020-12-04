@@ -16,6 +16,24 @@
       "message": "This hunk should go into the other CL since it is not related to the NightLightMode addition.",
       "revId": "a117332e5982a2d50c87f57f71d9c39db59b7448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c7ef98_399fa73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-04T06:38:58Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "cdbc1ce8_5ef4ec5b",
+      "revId": "a117332e5982a2d50c87f57f71d9c39db59b7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
