@@ -20,6 +20,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a263b66_cbf68821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "Please add \u0027.\u0027 at the end.  Doc comment needs to be a full sentence.",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "709487e9_c591714d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "Are these really the latency metrics?  Do the existing jank criteria work with them?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd88bc7c_a0951ff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "FullscreenAllApps, FullscreenSearch too?",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3aa39e_39f1c5f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "MinimizedTabletMode too?",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8377e65a_1ba8cc48",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
@@ -43,6 +123,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a6bd4ce_50a11179",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "Why is histsCollector [][]*Histogram?  I think it\u0027s just fine as []*Histogram, and so r.histscollector \u003d append(r.histsCollector, hists...)",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ede14642_2bb0d546",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
@@ -54,6 +151,127 @@
       "writtenOn": "2020-12-04T16:26:02Z",
       "side": 1,
       "message": "Why do we need this to convert from \"watt\" to \"J\"? It seems elsewhere is just using \"watt\"/\"W\".",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a732925_804bdd32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "+1.  Also, rather than converting here, it\u0027s bette for the data provider (power.SysfsBatteryMetrics) to convert the unit.",
+      "parentUuid": "ede14642_2bb0d546",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afec413c_6120607b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "I am really confused by this.  What is the purpose of this?\nI think the number of buckets, size of buckets etc. will change over the run, and it won\u0027t provide any reliable data sources. I am afraid that it might provide rather noises than insights.  If some analyses will be made over the buckets, that analyses should be better be done somewhere in the test, like this file.",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 16
+      },
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa5430f_e1cc606e",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "Not sure why testing.Poll needs to be introduced.  The content is a simple file access to /sys file system which I assume stable.  Could you add comments why it needs to poll?  When can it be unstable so that retrying is needed?",
+      "range": {
+        "startLine": 104,
+        "startChar": 20,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37dfb215_4a60eaee",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "Why not returning an error?",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "face5452_868a7262",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f15abc_bcbd3087",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:41:46Z",
+      "side": 1,
+      "message": "ditto",
       "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
