@@ -16,6 +16,24 @@
       "message": "Hi Jesse,\n\nI think last failure on pyro is not a known issue. \"Failed to search and launch app: failed to launch app: TypeError: Cannot read property \u0027left\u0027 of undefined\". I believe it is not caused by your test. But it will bring you some CQ alerts if not solved ahead.\n\nThe reaon of this error is that the app shown in launcher is being refreshed again before click. Click function send the click event to the stored object, but the object is gone.",
       "revId": "fafb6f27fad115e9cdc6927ebb67065ab9dd01bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d17cd3_54a81572",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-12-04T01:06:00Z",
+      "side": 1,
+      "message": "Hello, Jun. The test hasn\u0027t failed on pryo: https://tastboard.corp.google.com/test/peripherals.LaunchAppFromLauncher.scan",
+      "parentUuid": "9782032c_1198a6a1",
+      "revId": "fafb6f27fad115e9cdc6927ebb67065ab9dd01bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
