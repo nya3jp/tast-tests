@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "460771d4_93c6004c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-04T16:01:35Z",
+      "side": 1,
+      "message": "Fixed. Copy-pasta error.",
+      "parentUuid": "a66f0125_8468ac03",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "ee3c38ef775996fccac26c0a5d984825cdf9489b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "904f2882_151e8fbe",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
