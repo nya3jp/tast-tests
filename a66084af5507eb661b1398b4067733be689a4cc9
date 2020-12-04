@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5c12878_8524fce2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2020-12-04T01:53:59Z",
+      "side": 1,
+      "message": "Please review the code submitted for this bug: https://crbug.com/1149690. Thanks!",
+      "revId": "a66084af5507eb661b1398b4067733be689a4cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
