@@ -34,6 +34,24 @@
       "parentUuid": "9782032c_1198a6a1",
       "revId": "fafb6f27fad115e9cdc6927ebb67065ab9dd01bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b41be13_c37dc3dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-04T01:09:21Z",
+      "side": 1,
+      "message": "oops. I was looking into https://tastboard.corp.google.com/test/peripherals.LaunchAppFromLauncher.diagnostics\n\nIf would be nice to attach the tastboard link in cl description next time. Thanks.",
+      "parentUuid": "24d17cd3_54a81572",
+      "revId": "fafb6f27fad115e9cdc6927ebb67065ab9dd01bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
