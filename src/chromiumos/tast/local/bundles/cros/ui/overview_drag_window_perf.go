@@ -156,7 +156,7 @@ func dragToSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 	}
 
 	// Drag to the left or top edge to snap it.
-	if err := stw.Swipe(ctx, x, y, tx, ty, 500*time.Millisecond); err != nil {
+	if err := stw.Swipe(ctx, x, y, tx, ty, 750*time.Millisecond); err != nil {
 		return errors.Wrap(err, "failed to swipe")
 	}
 
@@ -214,7 +214,7 @@ func clearSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 		return err
 	}
 
-	if err := stw.Swipe(ctx, x, y, tx, ty, 500*time.Millisecond); err != nil {
+	if err := stw.Swipe(ctx, x, y, tx, ty, 750*time.Millisecond); err != nil {
 		return errors.Wrap(err, "failed to swipe")
 	}
 
