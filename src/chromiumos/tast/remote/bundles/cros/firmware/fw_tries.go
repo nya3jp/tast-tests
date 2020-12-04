@@ -37,61 +37,57 @@ func FWTries(ctx context.Context, s *testing.State) {
 		s.Log("DUT does not use vboot2")
 	}
 
-	// Start the test at A/0 for consistency.
-	if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionA, fwCommon.RWSectionUnspecified, 0); err != nil {
-		s.Log("Unexpected DUT state at start of test: ", err)
-		if err := firmware.SetFWTries(ctx, d, fwCommon.RWSectionA, 0); err != nil {
-			s.Fatal("Setting FWTries to A/0: ", err)
-		}
-		s.Error("After setting FWTries to A/0 at start of test: ", err)
+	currentFW, nextFW, tryCount, err := r.FWTries(ctx)
+	if err != nil {
+		s.Fatal("Reporting FW Tries at start of test: ", err)
 	}
+	s.Logf("At start of test, currentFW/nextFW/tryCount are: %s/%s/%d", currentFW, nextFW, tryCount)
 
 	// Set next=B, tries=2.
 	if err := firmware.SetFWTries(ctx, d, fwCommon.RWSectionB, 2); err != nil {
 		s.Fatal("Setting FWTries to B/2: ", err)
 	}
 	if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionA, fwCommon.RWSectionB, 2); err != nil {
-		s.Error("After setting FWTries to B/2, before rebooting: ", err)
+		s.Fatal("After setting FWTries to B/2, before rebooting: ", err)
 	}
+	s.Log("nextFW/tryCount has been set to B/2")
 
 	// Reboot the DUT.
+	s.Log("Rebooting; expect to boot into B leaving tryCount=1 or 0")
 	if err := d.Reboot(ctx); err != nil {
 		s.Fatal("Rebooting: ", err)
 	}
 
-	// Post-reboot behavior changes based on the Vboot version.
-	if vboot2 {
-		// In Vboot2, booting into Firmware B should decrement fw_try_count.
-		// fw_try_next should not change unless fw_try_count reaches 0.
-		// So the DUT should now be in Firmware B with fw_try_count=1.
-		if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionB, fwCommon.RWSectionB, 1); err != nil {
-			s.Fatal("After rebooting from Firmware A with fw_try_next=B, fw_try_count=2: ", err)
-		}
-		// Next reboot should use Firmware B, and decrement fw_try_count to 0.
+	// DUT should have rebooted into firmware B, and tryCount should have decremented by 1.
+	// Occasionally, vboot needs an extra reboot along the way, so the tryCount decrements by 2 instead. This is OK.
+	currentFW, nextFW, tryCount, err = r.FWTries(ctx)
+	if err != nil {
+		s.Fatal("Reporting FW tries after first reboot: ", err)
+	}
+	if currentFW != fwCommon.RWSectionB {
+		s.Fatalf("After rebooting from A/B/2: unexpected currentFW: got %s; want B", currentFW)
+	}
+	if nextFW == fwCommon.RWSectionB && tryCount == 1 {
+		s.Log("DUT rebooted once. currentFW/nextFW/tryCount: B/B/1")
+		s.Log("Rebooting; expect to boot into B leaving tryCount=0")
 		if err := d.Reboot(ctx); err != nil {
 			s.Fatal("Rebooting: ", err)
 		}
 		if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionB, fwCommon.RWSectionUnspecified, 0); err != nil {
-			s.Fatal("After rebooting from Firmware B with fw_try_next=B, fw_try_count=1: ", err)
+			s.Fatal("After rebooting from B/B/1: ", err)
 		}
-		// Next reboot should return to Firmware A.
-		if err := d.Reboot(ctx); err != nil {
-			s.Fatal("Rebooting: ", err)
-		}
-		if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionA, fwCommon.RWSectionA, 0); err != nil {
-			s.Fatal("After rebooting from Firmware B with fw_try_next=A, fw_try_count=0: ", err)
-		}
+	} else if nextFW == fwCommon.RWSectionA && tryCount == 0 {
+		s.Log("DUT rebooted twice. currentFW/nextFW/tryCount: B/A/0")
 	} else {
-		// In Vboot1, booting into Firmware B should set fwb_tries=0.
-		if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionB, fwCommon.RWSectionA, 0); err != nil {
-			s.Fatal("After rebooting from Firmware A with fwb_tries=2: ", err)
-		}
-		// Next reboot should return to Firmware A.
-		if err := d.Reboot(ctx); err != nil {
-			s.Fatal("Rebooting: ", err)
-		}
-		if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionA, fwCommon.RWSectionA, 0); err != nil {
-			s.Fatal("After rebooting from firmware B with fwb_tries=0: ", err)
-		}
+		s.Fatalf("After setting FWTries to B/2 then rebooting: unexpected nextFW/tryCount: got %s/%d; want B/1 or A/0", nextFW, tryCount)
+	}
+
+	// Next reboot should return to Firmware A.
+	s.Log("Rebooting; expect to boot into A leaving tryCount=0")
+	if err := d.Reboot(ctx); err != nil {
+		s.Fatal("Rebooting: ", err)
+	}
+	if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionA, fwCommon.RWSectionA, 0); err != nil {
+		s.Fatal("After rebooting from B/A/0: ", err)
 	}
 }
