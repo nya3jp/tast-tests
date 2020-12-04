@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b93319_dc2612d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-04T14:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80198ad2_2a45e210",
+      "range": {
+        "startLine": 26,
+        "startChar": 22,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9cc672a_b3e992c0",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5fec34_4923a3d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-04T14:13:25Z",
+      "side": 1,
+      "message": "This is the format used by a companion Android app, I\u0027d prefer not to modify it at the moment. \n\nhttps://github.com/googleinterns/screen-latency-testing/blob/dc2cb05ecec985e07a5a858ee343495ac44cf0c6/Camera2SlowMotion/app/src/main/java/com/example/android/camera2/slowmo/VideoProcessor.java#L35",
+      "parentUuid": "e9cc672a_b3e992c0",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2880339_12ebb672",
@@ -88,6 +130,24 @@
       "writtenOn": "2020-11-25T17:46:34Z",
       "side": 1,
       "message": "This is a blocking call, right? What if ctx timeout reached? Would it stop? I think it is still blocked.",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eceb2a06_21a39193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-04T14:13:25Z",
+      "side": 1,
+      "message": "Replaced it with polling to first see whether we have incoming data or not. Should be more rubust now.",
+      "parentUuid": "f2880339_12ebb672",
       "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +171,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdb61a71_a76ddf22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-04T14:13:25Z",
+      "side": 1,
+      "message": "Currently it\u0027s shown on the screen `testing.ContextLog(ctx, \"Lag \u003d \", lagResults[i].Milliseconds(), \"ms\")`.\n\nCurrently this test requires to both manually operate the Android phone and to read the lag data.",
+      "parentUuid": "1b58d99d_1ddbf4d8",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea86676f_30a24837",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
         "patchSetId": 5
@@ -122,6 +200,24 @@
       "writtenOn": "2020-11-25T17:46:34Z",
       "side": 1,
       "message": "The maximum value of time.Duration is about 290 years. I think the code shall not live longer than year 2260 so it should be fine :)",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ad585f_db81ade5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-04T14:13:25Z",
+      "side": 1,
+      "message": "I was trying to convert Unix Epoch timestamp in milliseconds that\u0027s passed from an Android app to a time.Time.\n\nIt really looks very complicated and I\u0027d be happy to learn of a simpler way to do that!",
+      "parentUuid": "ea86676f_30a24837",
       "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +239,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb799f3_87a1abd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-04T14:13:25Z",
+      "side": 1,
+      "message": "Thanks! The tests were a really good idea.",
+      "parentUuid": "e7133f07_bbed362a",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec0b5439_bbd1d283",
@@ -156,6 +270,24 @@
       "writtenOn": "2020-11-25T17:46:34Z",
       "side": 1,
       "message": "Looks like the interval of keypress events are not the same. Is this expected?",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de345d35_126ecacd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-04T14:13:25Z",
+      "side": 1,
+      "message": "Ideally we should test with lots of keypresses to get better statistical data, but for now the main concern is to make sure different keypresses won\u0027t coalesce into a single paint operation.\n\nSo it\u0027s expected, yes.",
+      "parentUuid": "ec0b5439_bbd1d283",
       "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
