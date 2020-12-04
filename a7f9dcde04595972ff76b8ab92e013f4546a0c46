@@ -189,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06817554_b801a3cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-04T16:47:20Z",
+      "side": 1,
+      "message": "I see. Please comment this in function description like:\n\n// Note: the function only logs the screen latency. It does not fail because of latency value.",
+      "parentUuid": "fdb61a71_a76ddf22",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea86676f_30a24837",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
         "patchSetId": 5
@@ -218,6 +236,24 @@
       "side": 1,
       "message": "I was trying to convert Unix Epoch timestamp in milliseconds that\u0027s passed from an Android app to a time.Time.\n\nIt really looks very complicated and I\u0027d be happy to learn of a simpler way to do that!",
       "parentUuid": "ea86676f_30a24837",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0fe08b_a37bbc48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-04T16:47:20Z",
+      "side": 1,
+      "message": "I think this is the best way of converting a epoch in ms to time object.\n\nAlternative:\ntime.Unix(0, int64(time.Duration(ocrData.RecordingStartTimeUnixMs) * time.Millisecond))\n\nBut I prefer your version as it is self-explanatory.",
+      "parentUuid": "d8ad585f_db81ade5",
       "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

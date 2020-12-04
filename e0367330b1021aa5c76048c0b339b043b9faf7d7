@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41eff7c9_ee893468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-04T16:47:20Z",
+      "side": 1,
+      "message": "As you said \"Currently this test requires to both manually operate the Android phone and to read the lag data.\" So this is definitely not a test running in the lab without manual operation.\n\nWhat\u0027s the reason you want to add group:input-tools? I thought the test is run locally.",
+      "parentUuid": "68fb6237_deb15fc9",
+      "revId": "e0367330b1021aa5c76048c0b339b043b9faf7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08b952e4_02b74856",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
         "patchSetId": 3
