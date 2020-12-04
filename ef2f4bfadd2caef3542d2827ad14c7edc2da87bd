@@ -56,6 +56,30 @@
       },
       "revId": "ef2f4bfadd2caef3542d2827ad14c7edc2da87bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b383579_5d26749d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/enlight_facetune.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-12-04T23:55:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "89a3e5ac_a9938343",
+      "range": {
+        "startLine": 96,
+        "startChar": 25,
+        "endLine": 96,
+        "endChar": 57
+      },
+      "revId": "ef2f4bfadd2caef3542d2827ad14c7edc2da87bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
