@@ -30,7 +30,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -40,7 +40,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)

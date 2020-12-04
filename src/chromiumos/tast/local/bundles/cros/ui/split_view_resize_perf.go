@@ -35,7 +35,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      5 * time.Minute,
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -55,7 +55,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

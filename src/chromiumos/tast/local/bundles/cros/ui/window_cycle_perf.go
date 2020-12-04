@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
@@ -35,8 +34,8 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Val: lacros.ChromeTypeChromeOS,
-			Pre: chrome.LoggedIn(),
+			Val:     lacros.ChromeTypeChromeOS,
+			Fixture: "chromeLoggedIn",
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
@@ -53,7 +52,11 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr, l, cs, err := lacros.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+	pv := s.FixtValue()
+	if pv == nil {
+		pv = s.PreValue()
+	}
+	cr, l, cs, err := lacros.Setup(ctx, pv, s.Param().(lacros.ChromeType))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
