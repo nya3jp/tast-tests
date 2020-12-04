@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "cd8d125e46dfc7af20aa4f3539c92909c888a94b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2efa5138_b9888a58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-04T15:04:39Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective. Per go/tast-reviews, please also collect CR from a test owner.",
+      "revId": "cd8d125e46dfc7af20aa4f3539c92909c888a94b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
