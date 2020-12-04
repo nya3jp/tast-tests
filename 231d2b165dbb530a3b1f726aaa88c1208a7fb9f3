@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f593bda_b702f7ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-04T01:17:11Z",
+      "side": 1,
+      "message": "I\u0027m trying to add support for Crostini to the multivm package, so that we can eventually have tests that use ARCVM+Crostini+etc.\n\nI was unable to merge the initial version because changes to the Crostini precondition. I split this WIP change out to see if we can figure out the best way of getting Crostini support in multivm in isolation.",
+      "revId": "231d2b165dbb530a3b1f726aaa88c1208a7fb9f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
