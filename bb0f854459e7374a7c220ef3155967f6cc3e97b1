@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f7e051_2395fb6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_single_phy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-12-04T23:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "952ec371_ceea2751",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 34
+      },
+      "revId": "bb0f854459e7374a7c220ef3155967f6cc3e97b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51cf211e_e9d25f8f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e6024b_c78997bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_single_phy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-12-04T23:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51cf211e_e9d25f8f",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "bb0f854459e7374a7c220ef3155967f6cc3e97b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df89f230_f850c8b0",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-04T09:00:00Z",
       "side": 1,
       "message": "You have several set-assert logic for Bluetooth and Wifi. Consider extracting them as functions (and set enable/disable can share the same function). \nFor Wifi, as some place needs to assert on channel and some are not, we may consider using []int as the type of channel param so we can have an optional channel param.\n\nFor the beginning and end of the test, it shall call enable-assert Bluetooth and WiFi.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "bb0f854459e7374a7c220ef3155967f6cc3e97b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae58028_4dc8424a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_single_phy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-12-04T23:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df89f230_f850c8b0",
       "range": {
         "startLine": 117,
         "startChar": 0,
