@@ -79,7 +79,7 @@ func ChapsECDSA(ctx context.Context, s *testing.State) {
 	// Test the various keys.
 	for _, k := range keys {
 		// Test the various mechanisms.
-		for _, m := range []pkcs11.MechanismInfo{pkcs11.ECDSASHA1} {
+		for _, m := range []pkcs11.MechanismInfo{pkcs11.ECDSASHA1, pkcs11.ECDSASHA256} {
 			if err := pkcs11test.SignAndVerify(shortenedCtx, pkcs11Util, k, f1, f2, &m); err != nil {
 				s.Error("SignAndVerify failed: ", err)
 			}
