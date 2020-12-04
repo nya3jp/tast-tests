@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ee695c_98c23fd6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-04T22:25:36Z",
+      "side": 1,
+      "message": "if we keep this, can we rewrite it with a testing.Poll?\nJust and an if into the testing.Poll for time being after the timeout.",
+      "range": {
+        "startLine": 655,
+        "startChar": 1,
+        "endLine": 657,
+        "endChar": 6
+      },
+      "revId": "fb2d0a95256ecdf6630151c6f3f8e6539296c570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591a6f4d_2c61d67d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-04T22:25:36Z",
+      "side": 1,
+      "message": "What if the node appears for a second and then disappears again and never comes back, I am not sure if that should be a failure of this function. When things move around the screen, for example, it is not uncommon for a node to stop pop in and out of the UI tree.\n\nThis function feels like it should more just be a sleep for x and then check at the end if the node exists or not. I feel like it is more likely to belong in an individual test than here since we don\u0027t want to promote essentially sleeping.",
+      "range": {
+        "startLine": 658,
+        "startChar": 2,
+        "endLine": 660,
+        "endChar": 3
+      },
+      "revId": "fb2d0a95256ecdf6630151c6f3f8e6539296c570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4b1c3b_af06de04",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-04T22:25:36Z",
+      "side": 1,
+      "message": "I would check where this function is used, this seems like a change in functionality that does not match the intended purpose. The description of this function clearly stops polling once it reaches the desired state.\n\nAlso, it doesn\u0027t make since to just change one branch of the code. You should probably change WaitUntilExists to VerifyExists if this change is to go through. In its current state, it is inconsistent.",
+      "range": {
+        "startLine": 680,
+        "startChar": 5,
+        "endLine": 680,
+        "endChar": 26
+      },
+      "revId": "fb2d0a95256ecdf6630151c6f3f8e6539296c570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
