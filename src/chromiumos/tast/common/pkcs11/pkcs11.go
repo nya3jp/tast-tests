@@ -584,6 +584,17 @@ var ECDSASHA1 = MechanismInfo{
 	opensslDgstParam:           "-sha1",
 }
 
+// ECDSASHA256 represents the MechanismInfo that uses ECDSA signature scheme with SHA256.
+// Note that NIST P256 curve is used.
+var ECDSASHA256 = MechanismInfo{
+	Name:           "ECDSA-SHA256-P256",
+	toolMParam:     "ECDSA-SHA256",
+	toolExtraParam: []string{"--signature-format", "openssl"},
+	// Note that openssl format is required, otherwise it'll output raw rs format.
+	toolSignInputFileProcessor: NoOpFileProcessor,
+	opensslDgstParam:           "-sha256",
+}
+
 // Sign sign the input and write the signature to output, using the mechanism, and signed with key.
 // It'll return nil iff the signing is successful.
 func (p *Chaps) Sign(ctx context.Context, key *KeyInfo, input, output string, mechanism *MechanismInfo) error {
