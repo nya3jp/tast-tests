@@ -155,6 +155,24 @@
       "message": "I think this is the right effort, though a single CL is probably not the end of this. Given how this term is used in so many place, and maybe even in some business document we have with partners, I imagine this is a non-trivial project to replace this.\n\nLaurent: if you still want to do this, I suggest maybe start with a meeting with some platform folks to discuss how we should approach this?\n\nI would start with marcochen@, adurbin@..\n",
       "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89677eac_3b0e1ab3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-12-04T16:28:25Z",
+      "side": 1,
+      "message": "Right now I am strictly looking at the Tast repository. We completed all other terms.  We have TPM and PM working on Coil, and they are already working with all the eng teams to coordinate the clean up.",
+      "parentUuid": "19168012_f2453bd3",
+      "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
