@@ -111,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "562a65f2_9b9c5f47",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-04T05:48:40Z",
+      "side": 1,
+      "message": "Nice catch!",
+      "parentUuid": "739c5660_3a1051f2",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "f38bf2242d8c25da0b3a8c5ac3517793347430c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b2ac5c3_8319b36f",
@@ -152,6 +176,54 @@
         "startChar": 14,
         "endLine": 26,
         "endChar": 21
+      },
+      "revId": "f38bf2242d8c25da0b3a8c5ac3517793347430c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ca146e_04052e47",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-04T05:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "175d142c_a7b00189",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "f38bf2242d8c25da0b3a8c5ac3517793347430c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e599da13_67635a2f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-04T05:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b2ac5c3_8319b36f",
+      "range": {
+        "startLine": 26,
+        "startChar": 51,
+        "endLine": 26,
+        "endChar": 55
       },
       "revId": "f38bf2242d8c25da0b3a8c5ac3517793347430c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
