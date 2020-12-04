@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c08c4a0_276cb216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-04T01:21:57Z",
+      "side": 1,
+      "message": "okay. It is a bit weird. Anyway LGTM. Thanks",
+      "parentUuid": "bdf8ba13_ab3b0747",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "ee0f509ed483d7b0c7b3c1ced85803078493f2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c0df5d0_4f60c6e6",
