@@ -16,32 +16,32 @@ func init() {
 		Name:            "chromeLoggedIn",
 		Desc:            "Logged into a user session",
 		Contacts:        []string{"nya@chromium.org", "oka@chromium.org"},
-		Impl:            newLoggedInFixture(),
+		Impl:            NewLoggedInFixture(),
 		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: resetTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
 		Name:            "chromeLoggedInWith100DummyApps",
 		Desc:            "Logged into a user session with 100 dummy apps",
 		Contacts:        []string{"mukai@chromium.org"},
-		Impl:            newLoggedInFixture(),
+		Impl:            NewLoggedInFixture(),
 		Parent:          "install100Apps",
 		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: resetTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
 		Name:            "chromeLoggedInWith100DummyAppsSkiaRenderer",
 		Desc:            "Logged into a user session with 100 dummy apps",
 		Contacts:        []string{"mukai@chromium.org"},
-		Impl:            newLoggedInFixture(EnableFeatures("UseSkiaRenderer")),
+		Impl:            NewLoggedInFixture(EnableFeatures("UseSkiaRenderer")),
 		Parent:          "install100Apps",
 		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: resetTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 }
 
@@ -53,7 +53,8 @@ type loggedInFixture struct {
 	opts []Option
 }
 
-func newLoggedInFixture(opts ...Option) *loggedInFixture {
+// NewLoggedInFixture returns a FixtureImpl of creating a Chrome instance with the given options.
+func NewLoggedInFixture(opts ...Option) testing.FixtureImpl {
 	return &loggedInFixture{opts: opts}
 }
 
