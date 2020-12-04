@@ -47,7 +47,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name: "normal_drag",
@@ -285,7 +285,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
