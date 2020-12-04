@@ -65,7 +65,7 @@ func createKeysForTestingForUser(ctx context.Context, username string, pkcs11Uti
 	keys = append(keys, softwareKey)
 
 	// Create the TPM generated key.
-	generatedKey, err := pkcs11Util.CreateRsaGeneratedKey(ctx, scratchpadPath, username, "testkey3", generatedKeyID)
+	generatedKey, err := pkcs11Util.CreateGeneratedKey(ctx, scratchpadPath, pkcs11.GenRSA2048, username, "testkey3", generatedKeyID)
 	if err != nil {
 		return keys, errors.Wrap(err, "failed to create generated key")
 	}
