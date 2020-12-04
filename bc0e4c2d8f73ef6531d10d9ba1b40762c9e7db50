@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb49f48_fb23ac4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-04T08:31:05Z",
+      "side": 1,
+      "message": "this looks unsafe, because conn may be used in run() on another goroutine.\nInstead, could you cancel the read operation?\nIIUC, the intention of the original code was to handle such, though 2 secs may be too short practically.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "bc0e4c2d8f73ef6531d10d9ba1b40762c9e7db50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e951d7_b20dee52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-04T08:31:05Z",
+      "side": 1,
+      "message": "This looks unsafe, too. L48 may write some date to the closed channel, which will cause panic.\nCould you close in the goroutine side?",
+      "revId": "bc0e4c2d8f73ef6531d10d9ba1b40762c9e7db50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
