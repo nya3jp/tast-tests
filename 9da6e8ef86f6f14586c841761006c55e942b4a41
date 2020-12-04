@@ -33,6 +33,23 @@
       "message": "Adding more folks for review as I realize this is a large number of individual corpus files being added into tast data.",
       "revId": "9da6e8ef86f6f14586c841761006c55e942b4a41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9026111f_4d861c28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-12-04T19:19:44Z",
+      "side": 1,
+      "message": "If the corpus is bug enough, it might make sense to include it as an archive in gs://.\n\n+vapier@",
+      "revId": "9da6e8ef86f6f14586c841761006c55e942b4a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
