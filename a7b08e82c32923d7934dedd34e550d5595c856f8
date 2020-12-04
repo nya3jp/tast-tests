@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b417bf_cdb405d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-04T01:10:15Z",
+      "side": 1,
+      "message": "There are conflicts from ongoing work in the Crostini precondition code, so I split the Crostini part of this commit out to the top of the stack so we can work on it there.\n\nI\u0027ll commit this on Monday unless I get some objections.",
+      "revId": "a7b08e82c32923d7934dedd34e550d5595c856f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
