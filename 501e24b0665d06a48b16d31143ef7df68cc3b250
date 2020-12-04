@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83df52b_9ece4365",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302390
+      },
+      "writtenOn": "2020-12-04T18:47:09Z",
+      "side": 1,
+      "message": "deanliao@, \n\nCould you please also take a look at the follow-up CL with similar test? Thanks!",
+      "revId": "501e24b0665d06a48b16d31143ef7df68cc3b250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
