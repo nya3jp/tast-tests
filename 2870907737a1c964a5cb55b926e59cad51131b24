@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a37f036_aee3574c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-04T07:32:49Z",
+      "side": 1,
+      "message": "nit:\n\nconst userDataDir \u003d ...",
+      "revId": "2870907737a1c964a5cb55b926e59cad51131b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97963a73_c5d39866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-04T07:32:49Z",
+      "side": 1,
+      "message": "Could you close this?",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 5
+      },
+      "revId": "2870907737a1c964a5cb55b926e59cad51131b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a62c5da8_b17d1b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-04T07:32:49Z",
+      "side": 1,
+      "message": "l needs to be closed here, too?",
+      "revId": "2870907737a1c964a5cb55b926e59cad51131b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6e21e7_8e88eabd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-04T07:32:49Z",
+      "side": 1,
+      "message": "Could you handle error?",
+      "revId": "2870907737a1c964a5cb55b926e59cad51131b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d489ce15_42aee3ef",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-04T07:32:49Z",
+      "side": 1,
+      "message": "could you use filepath.Join?",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 57
+      },
+      "revId": "2870907737a1c964a5cb55b926e59cad51131b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
