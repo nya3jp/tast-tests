@@ -521,6 +521,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "087830c6_d41e34ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-04T23:08:37Z",
+      "side": 1,
+      "message": "It is hard to follow what does the \u0027local storage\u0027 mean.  This sentence would be fine as a doc string should start with a simple concise sentence, but could you add more descriptions in the following lines for what the local storage does, how it\u0027s used, etc.",
+      "range": {
+        "startLine": 156,
+        "startChar": 40,
+        "endLine": 156,
+        "endChar": 67
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24c25c43_e9b6a26b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
         "patchSetId": 1
