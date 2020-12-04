@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "904f2882_151e8fbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-04T00:14:22Z",
+      "side": 1,
+      "message": "Workaround to fix issue on \"reef\". I added my bisect result to the bug and asking the CL author to check whether we need to worry about have to swipe slower on \"reef\".",
+      "revId": "ee3c38ef775996fccac26c0a5d984825cdf9489b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
