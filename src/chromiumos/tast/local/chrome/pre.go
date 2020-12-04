@@ -13,8 +13,8 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// resetTimeout is the timeout durection to trying reset of the current precondition.
-const resetTimeout = 15 * time.Second
+// ResetTimeout is the timeout durection to trying reset of the current precondition.
+const ResetTimeout = 15 * time.Second
 
 // LoggedIn returns a precondition that Chrome is already logged in when a test is run.
 //
@@ -38,7 +38,7 @@ func LoggedIn() testing.Precondition { return loggedInPre }
 func NewPrecondition(suffix string, opts ...Option) testing.Precondition {
 	return &preImpl{
 		name:    "chrome_" + suffix,
-		timeout: resetTimeout + LoginTimeout,
+		timeout: ResetTimeout + LoginTimeout,
 		opts:    opts,
 	}
 }
@@ -64,7 +64,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	if p.cr != nil {
 		err := func() error {
-			ctx, cancel := context.WithTimeout(ctx, resetTimeout)
+			ctx, cancel := context.WithTimeout(ctx, ResetTimeout)
 			defer cancel()
 			ctx, st := timing.Start(ctx, "reset_"+p.name)
 			defer st.End()
