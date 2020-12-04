@@ -33,6 +33,24 @@
       "message": "Auto approve assuming \"direct copy\u0026paste\"\nTY!",
       "revId": "5ba61df0831fede80896cf936d1c2ad3c9a1c885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef206fb9_d57d4c33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-04T21:46:51Z",
+      "side": 1,
+      "message": "Worth noting (as mentioned in the commit description), is that patchset#0 is a direct copy\u0026paste, but the remaining changes patchsets are changes needed to make it compile with the Tast/AOSP SDK",
+      "parentUuid": "3f11077d_8c3b1fbe",
+      "revId": "5ba61df0831fede80896cf936d1c2ad3c9a1c885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
