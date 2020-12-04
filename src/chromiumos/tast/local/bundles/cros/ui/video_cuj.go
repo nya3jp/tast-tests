@@ -293,9 +293,15 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			// Attempt to dismiss floating surveys that could  cover the bottom-right
-			// and ignore the errors since the survey could not be there..
+			// and ignore the errors since the survey could not be there.
 			if err := tapYtElem("button[aria-label='Dismiss']"); err != nil {
 				s.Log("Failed to dismiss survey: ", err)
+			}
+
+			// Attempt to dismiss webfe served message box and ignore the errors
+			// since the message div could not be there.
+			if err := tapYtElem(".webfe-served-box"); err != nil {
+				s.Log("Failed to dismiss webfe served message: ", err)
 			}
 
 			// Tap the video to pause it to ensure the fullscreen button showing up.
