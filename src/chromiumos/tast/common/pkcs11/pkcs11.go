@@ -573,6 +573,18 @@ var GenericRSAPKCSPSSWithSHA256 = MechanismInfo{
 	opensslDgstExtraParam: []string{"-sigopt", "rsa_padding_mode:pss", "-sigopt", "digest:sha256"},
 }
 
+// ECDSASHA1 represents the MechanismInfo that uses ECDSA signature scheme with SHA1.
+// Note that NIST P256 curve is used.
+var ECDSASHA1 = MechanismInfo{
+	Name:           "ECDSA-SHA1-P256",
+	toolMParam:     "ECDSA-SHA1",
+	toolExtraParam: []string{"--signature-format", "openssl"},
+	// Note that openssl format is required, otherwise it'll output raw rs format.
+	toolSignInputFileProcessor: NoOpFileProcessor,
+	opensslDgstParam:           "-sha1",
+	opensslDgstExtraParam:      []string{},
+}
+
 // Sign sign the input and write the signature to output, using the mechanism, and signed with key.
 // It'll return nil iff the signing is successful.
 func (p *Chaps) Sign(ctx context.Context, key *KeyInfo, input, output string, mechanism *MechanismInfo) error {
