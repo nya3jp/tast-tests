@@ -16,6 +16,190 @@
       "message": "PTAL, thanks!",
       "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a70ef45d_d985cb45",
+        "filename": "android/ArcSensorLatencyTest/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T22:11:43Z",
+      "side": 1,
+      "message": "nit:\nmissing CR?\n\n\u003c!--\n Copyright 2020 Google LLC\n\n Licensed under the Apache License, Version 2.0 (the \"License\");\n you may not use this file except in compliance with the License.\n You may obtain a copy of the License at\n\n      http://www.apache.org/licenses/LICENSE-2.0\n\n Unless required by applicable law or agreed to in writing, software\n distributed under the License is distributed on an \"AS IS\" BASIS,\n WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n See the License for the specific language governing permissions and\n limitations under the License.\n--\u003e",
+      "range": {
+        "startLine": 1,
+        "startChar": 37,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1137e3_4476d253",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T22:11:43Z",
+      "side": 1,
+      "message": "nit: this and below might be public final long",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ecb3a1e_edad33c0",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T22:11:43Z",
+      "side": 1,
+      "message": "nit: likely private final",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "003191f0_8c5b7f81",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T22:11:43Z",
+      "side": 1,
+      "message": "nit: Usually onStart/onPause seq:\n\nbase::onStart()\nstart local listeners\n\nstop local listeners\nbase::onPaus\n\n\nwould this sequence apply?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11a09de_dd8fa21f",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T22:11:43Z",
+      "side": 1,
+      "message": "public or private? If public, could you please drop short comment?\nPlease check other methods as well.",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 11
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d0c442_db115ec3",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T22:11:43Z",
+      "side": 1,
+      "message": "nit: final here , L114,120",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6ea27c_9245265c",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T22:11:43Z",
+      "side": 1,
+      "message": "annotate this is main thread?",
+      "range": {
+        "startLine": 125,
+        "startChar": 16,
+        "endLine": 125,
+        "endChar": 30
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b45def_bd3a31ab",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T22:11:43Z",
+      "side": 1,
+      "message": "nit: check for final modificator for local variables here please.",
+      "range": {
+        "startLine": 133,
+        "startChar": 16,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
