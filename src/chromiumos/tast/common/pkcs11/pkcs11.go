@@ -274,8 +274,16 @@ func (p *Chaps) CreateRSASoftwareKey(ctx context.Context, scratchpadPath, userna
 	return result, nil
 }
 
-// CreateRsaGeneratedKey creates a key by generating it in TPM and insert it into the system token (if username is empty), or user token specified by username. The object will have an ID of objID, and the corresponding public key will be deposited in /tmp/$keyname.key.
-func (p *Chaps) CreateRsaGeneratedKey(ctx context.Context, scratchpadPath, username, keyname, objID string) (*KeyInfo, error) {
+const (
+	// GenRSA2048 is used to specify that we want to generate RSA 2048 key in CreateGeneratedKey.
+	GenRSA2048 = "rsa:2048"
+	// GenECP256 is used to specify that we want to generate elliptic curve key with P256 curve in CreateGeneratedKey.
+	GenECP256 = "EC:prime256v1"
+)
+
+// CreateGeneratedKey creates a key by generating it in TPM and insert it into the system token (if username is empty), or user token specified by username. The object will have an ID of objID, and the corresponding public key will be deposited in /tmp/$keyname.key.
+// Use GenRSA2048 or GenECP256 above for keyType.
+func (p *Chaps) CreateGeneratedKey(ctx context.Context, scratchpadPath, keyType, username, keyname, objID string) (*KeyInfo, error) {
 	// Get the corresponding slot.
 	slot, err := p.utility.GetTokenForUser(ctx, username)
 	if err != nil {
@@ -294,7 +302,7 @@ func (p *Chaps) CreateRsaGeneratedKey(ctx context.Context, scratchpadPath, usern
 	}
 
 	// Generate the key.
-	if _, err := p.RunPkcs11Tool(ctx, "--slot="+strconv.Itoa(slot), "--keypairgen", "--key-type", "rsa:2048", "--id="+result.objID); err != nil {
+	if _, err := p.RunPkcs11Tool(ctx, "--slot="+strconv.Itoa(slot), "--keypairgen", "--key-type", keyType, "--id="+result.objID); err != nil {
 		return nil, errors.Wrap(err, "failed to generate key with pkcs11-tool")
 	}
 
