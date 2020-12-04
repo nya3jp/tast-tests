@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7937a2ad_97498b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-04T21:12:18Z",
+      "side": 1,
+      "message": "I think closing the connection is the only way to cancel a blocking read operation.\nAccording to https://golang.org/pkg/net/#Conn,\nConn is a generic stream-oriented network connection.\nMultiple goroutines may invoke methods on a Conn simultaneously.\nClose closes the connection. Any blocked Read or Write operations will be unblocked and return errors.",
+      "parentUuid": "4cb49f48_fb23ac4f",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "bc0e4c2d8f73ef6531d10d9ba1b40762c9e7db50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e951d7_b20dee52",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-12-04T08:31:05Z",
       "side": 1,
       "message": "This looks unsafe, too. L48 may write some date to the closed channel, which will cause panic.\nCould you close in the goroutine side?",
+      "revId": "bc0e4c2d8f73ef6531d10d9ba1b40762c9e7db50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5302570d_a51df83a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-04T21:12:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74e951d7_b20dee52",
       "revId": "bc0e4c2d8f73ef6531d10d9ba1b40762c9e7db50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
