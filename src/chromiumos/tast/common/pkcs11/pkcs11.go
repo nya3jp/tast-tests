@@ -111,6 +111,90 @@ func (p *Chaps) DumpKeyInfo(k *KeyInfo) string {
 	return fmt.Sprintf("Slot %d, ID %q, PubKey %q", k.slot, k.objID, k.pubKeyPath)
 }
 
+// CreateECSoftwareKey create a key and insert it into the system token (if username is empty), or user token specified by username. The object will have an ID of objID, and the corresponding public key will be deposited in the scratchpad.
+func (p *Chaps) CreateECSoftwareKey(ctx context.Context, scratchpadPath, username, keyname, objID string, forceSoftwareBacked, checkSoftwareBacked bool) (*KeyInfo, error) {
+	// Get the corresponding slot.
+	slot, err := p.utility.GetTokenForUser(ctx, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get slot")
+	}
+
+	// Check that scratchpad is available.
+	keyPrefix := filepath.Join(scratchpadPath, keyname)
+	result := &KeyInfo{
+		keyPrefix:   keyPrefix,
+		privKeyPath: keyPrefix + "-priv.der",
+		pubKeyPath:  keyPrefix + "-pub.der",
+		certPath:    keyPrefix + "-cert.der",
+		objID:       objID,
+		slot:        slot,
+	}
+
+	// Note: This method calls openssl commands in order to ease debugging.
+	// When debugging tests that uses this method, key creation can be replayed
+	// on command line by copying and pasting the commands from test log.
+
+	// Create the private key.
+	privKeyPemPath := fmt.Sprintf("/tmp/%s-priv.key", keyname)
+	if _, err := p.runner.Run(ctx, "openssl", "ecparam", "-name", "prime256v1", "-genkey", "-noout", "-out", privKeyPemPath); err != nil {
+		return nil, errors.Wrap(err, "failed to genereate ecc key with openssl")
+	}
+
+	// Extract the public key from the private key.
+	pubKeyPemPath := fmt.Sprintf("/tmp/%s-pub.key", keyname)
+	if _, err := p.runner.Run(ctx, "openssl", "ec", "-in", privKeyPemPath, "-pubout", "-out", pubKeyPemPath); err != nil {
+		return nil, errors.Wrap(err, "failed to extract public key from private key with OpenSSL")
+	}
+
+	// Convert the private key to DER format.
+	if _, err := p.runner.Run(ctx, "openssl", "ec", "-inform", "pem", "-outform", "der", "-in", privKeyPemPath, "-out", result.privKeyPath); err != nil {
+		return nil, errors.Wrap(err, "failed to convert private key to DER format with OpenSSL")
+	}
+
+	// Convert the public key to DER format.
+	if _, err := p.runner.Run(ctx, "openssl", "ec", "-pubin", "-inform", "pem", "-outform", "der", "-in", pubKeyPemPath, "-out", result.pubKeyPath); err != nil {
+		return nil, errors.Wrap(err, "failed to convert private key to DER format with OpenSSL")
+	}
+
+	// Create the certificate
+	certPemPath := fmt.Sprintf("/tmp/%s-cert.crt", keyname)
+	if _, err := p.runner.Run(ctx, "openssl", "req", "-nodes", "-x509", "-sha1", "-key", privKeyPemPath, "-out", certPemPath, "-days", "365", "-subj", "/C=US/ST=CA/L=MTV/O=ChromiumOS/CN=chromiumos.example.com"); err != nil {
+		return nil, errors.Wrap(err, "failed to create certificate with openssl")
+	}
+
+	// Convert the cert to DER format.
+	if _, err := p.runner.Run(ctx, "openssl", "x509", "-in", certPemPath, "-outform", "der", "-out", result.certPath); err != nil {
+		return nil, errors.Wrap(err, "failed to convert cert to DER format with openssl")
+	}
+
+	// Import the private key into chaps.
+	args := []string{"--import", "--slot=" + strconv.Itoa(slot), "--path=" + result.privKeyPath, "--type=privkey", "--id=" + result.objID}
+	if forceSoftwareBacked {
+		args = append(args, "--force_software")
+	}
+	if _, err := p.runner.Run(ctx, "p11_replay", args...); err != nil {
+		return nil, errors.Wrap(err, "failed to import private key into chaps")
+	}
+
+	// Import the certificate into chaps.
+	if _, err := p.runner.Run(ctx, "p11_replay", "--import", "--slot="+strconv.Itoa(slot), "--path="+result.certPath, "--type=cert", "--id="+result.objID); err != nil {
+		return nil, errors.Wrap(err, "failed to import certificate into chaps")
+	}
+
+	// If required, check that it's software backed or not.
+	if checkSoftwareBacked {
+		isSoftwareBacked, err := p.IsSoftwareBacked(ctx, result)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get kKeyInSoftware attribute")
+		}
+
+		if isSoftwareBacked != forceSoftwareBacked {
+			return nil, errors.Errorf("mismatch in kKeyInSoftware attribute (%t) and force software backed parameter (%t)", isSoftwareBacked, forceSoftwareBacked)
+		}
+	}
+	return result, nil
+}
+
 // CreateRSASoftwareKey create a key and insert it into the system token (if username is empty), or user token specified by username. The object will have an ID of objID, and the corresponding public key will be deposited in /tmp/$keyname.key.
 func (p *Chaps) CreateRSASoftwareKey(ctx context.Context, scratchpadPath, username, keyname, objID string, forceSoftwareBacked, checkSoftwareBacked bool) (*KeyInfo, error) {
 	// Get the corresponding slot.
