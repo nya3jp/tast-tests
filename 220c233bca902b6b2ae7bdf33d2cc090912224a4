@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9409f9db_bdcb06d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302390
+      },
+      "writtenOn": "2020-12-04T18:29:27Z",
+      "side": 1,
+      "message": "Sorry for the delay from my side this time :)",
+      "parentUuid": "7cc4a914_a2c15b52",
+      "revId": "220c233bca902b6b2ae7bdf33d2cc090912224a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45575a77_ea69c700",
@@ -65,6 +83,30 @@
       "writtenOn": "2020-11-25T18:22:46Z",
       "side": 1,
       "message": "What if err !\u003d nil \u0026\u0026 !tc.allow ?  For disallow cookie case, eval cookiesAllowed should not return error, right? If so, we shall fail the test when err !\u003d nil.",
+      "range": {
+        "startLine": 85,
+        "startChar": 57,
+        "endLine": 85,
+        "endChar": 79
+      },
+      "revId": "220c233bca902b6b2ae7bdf33d2cc090912224a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da5e19e3_bb0572c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/cookies_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1302390
+      },
+      "writtenOn": "2020-12-04T18:29:27Z",
+      "side": 1,
+      "message": "Right, thanks for this catch! Changed it appropriately.",
+      "parentUuid": "45575a77_ea69c700",
       "range": {
         "startLine": 85,
         "startChar": 57,
