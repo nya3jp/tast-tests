@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5edff071_b5d07f2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-12-04T18:45:57Z",
+      "side": 1,
+      "message": "Nothing sticks out as wrong to me, but I would like someone else to confirm as I am unfamiliar with this.",
+      "revId": "9da6e8ef86f6f14586c841761006c55e942b4a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
