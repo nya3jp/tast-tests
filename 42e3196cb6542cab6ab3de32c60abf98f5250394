@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ed91ba_cd157d98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T21:20:19Z",
+      "side": 1,
+      "message": "lgtm % Q is answered.",
+      "revId": "42e3196cb6542cab6ab3de32c60abf98f5250394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca462e6_77718455",
+        "filename": "android/build/util/rules.gni",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T21:20:19Z",
+      "side": 1,
+      "message": "to confirm if is required or we can force requesting compile_sdk_version set.",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "42e3196cb6542cab6ab3de32c60abf98f5250394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
