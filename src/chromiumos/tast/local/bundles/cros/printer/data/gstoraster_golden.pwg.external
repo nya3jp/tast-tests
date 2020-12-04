@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/gstoraster_golden_20190807.pwg",
-  "size": 262747,
-  "sha256sum": "a58e363ef80e6f77108595fb26e8a0e42bbea8bd5724cb0b629a626e70471eea"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/gstoraster_golden_20201204.pwg",
+  "size": 655933,
+  "sha256sum": "89fbdf39a6077c1a552e06973a19d3db6de5f6d1c3f8fd6ffe05ede116795964"
 }
