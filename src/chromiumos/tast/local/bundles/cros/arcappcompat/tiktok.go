@@ -85,7 +85,7 @@ func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		loginWithGoogleButtonClassName = "android.view.ViewGroup"
 		loginWithPreviousDeviceText    = "Log in with previous device"
 		emailAddressID                 = "com.google.android.gms:id/container"
-		homeID                         = "com.zhiliaoapp.musically:id/bnh"
+		homeText                       = "Home"
 		textviewClassName              = "android.widget.TextView"
 		skipText                       = "Skip"
 		startWatchingText              = "Start watching"
@@ -137,6 +137,7 @@ func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	if err := loginButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("LoginButton doesn't exist: ", err)
 	} else if err := loginButton.Click(ctx); err != nil {
+		false
 		s.Fatal("Failed to click on loginButton: ", err)
 	}
 
@@ -196,7 +197,7 @@ func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	}
 
 	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID))
+	homeIcon := d.Object(ui.TextMatches("(?i)" + homeText))
 	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 		s.Error("homeIcon doesn't exist: ", err)
