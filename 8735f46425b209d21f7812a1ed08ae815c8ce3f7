@@ -16,6 +16,40 @@
       "message": "cwd, hikalium: Hikaru asked to change the default and moved the change to this CL (Reference: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2563484/5..6/src/chromiumos/tast/local/power/setup/setup.go#b142)",
       "revId": "8735f46425b209d21f7812a1ed08ae815c8ce3f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0c16e0_91844701",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-12-04T03:10:37Z",
+      "side": 1,
+      "message": "In addition to the comment I added, maybe you can reorder the relation chain and merge this CL first to simplify the history and relax the Cq-Depend (but it\u0027s optional).",
+      "revId": "8735f46425b209d21f7812a1ed08ae815c8ce3f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c449649e_3ab06287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-12-04T03:10:37Z",
+      "side": 1,
+      "message": "This hunk should go into the other CL, too. (see the comment above.)",
+      "revId": "8735f46425b209d21f7812a1ed08ae815c8ce3f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

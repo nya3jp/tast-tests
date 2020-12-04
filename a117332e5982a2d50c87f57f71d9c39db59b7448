@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdbc1ce8_5ef4ec5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-12-04T03:10:37Z",
+      "side": 0,
+      "message": "This hunk should go into the other CL since it is not related to the NightLightMode addition.",
+      "revId": "a117332e5982a2d50c87f57f71d9c39db59b7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
