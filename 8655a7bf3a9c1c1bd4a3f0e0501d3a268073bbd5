@@ -87,6 +87,24 @@
       "parentUuid": "1078f124_8cfa3f1a",
       "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e0ea46b_47b92f5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-04T00:17:54Z",
+      "side": 1,
+      "message": "I\u0027ll make a separate CL for that. For now, I left the two tests failing on kefka-kernelnext as informational and moved the rest to critical.",
+      "parentUuid": "acd6cc3b_7dbd989f",
+      "revId": "8655a7bf3a9c1c1bd4a3f0e0501d3a268073bbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
