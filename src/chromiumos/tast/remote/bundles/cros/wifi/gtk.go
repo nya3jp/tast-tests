@@ -6,11 +6,14 @@ package wifi
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/network/arping"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
 
@@ -69,9 +72,11 @@ func GTK(ctx context.Context, s *testing.State) {
 
 	s.Log("AP setup done")
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	connectResp, err := tf.ConnectWifiAP(ctx, ap)
+	if err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
+	servicePath := connectResp.ServicePath
 	defer func(ctx context.Context) {
 		if err := tf.CleanDisconnectWifi(ctx); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
@@ -81,8 +86,23 @@ func GTK(ctx context.Context, s *testing.State) {
 	defer cancel()
 	s.Log("Connected")
 
+	props := []*wificell.ShillProperty{
+		&wificell.ShillProperty{
+			Property:       shillconst.ServicePropertyIsConnected,
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			ExpectedValues: []interface{}{false},
+		},
+	}
+	waitCtx, cancel := context.WithTimeout(ctx, arpingCount*time.Second)
+	defer cancel()
+	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, []string{})
+
 	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
 		s.Fatal("Failed to ping from the DUT: ", err)
+	}
+
+	if _, err := waitForProps(); err == nil {
+		s.Error("Failed to stay connected during rekeying process")
 	}
 
 	// Test that network traffic goes through.
