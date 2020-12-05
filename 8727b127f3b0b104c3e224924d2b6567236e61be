@@ -173,6 +173,24 @@
       "parentUuid": "19168012_f2453bd3",
       "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7d63c4_072ab8af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128435
+      },
+      "writtenOn": "2020-12-05T15:59:29Z",
+      "side": 1,
+      "message": "This term is used consistently in many places, so I think we would have to coordinate across repos/directories if we want to change it.",
+      "parentUuid": "89677eac_3b0e1ab3",
+      "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
