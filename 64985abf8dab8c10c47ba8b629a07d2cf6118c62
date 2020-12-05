@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd03425b_fa795bdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-05T01:06:41Z",
+      "side": 1,
+      "message": "jchinlee@, pwang@ PTAL (going directly to you two since it builds on the previous CLs).\n\nLet me know if you want me to put the extractSingleValue() \nmethod mini refactor in a separate CL.\n\nchromeos-gfx-video@ FYI.",
+      "revId": "64985abf8dab8c10c47ba8b629a07d2cf6118c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
