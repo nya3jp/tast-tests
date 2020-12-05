@@ -16,6 +16,23 @@
       "message": "Mind taking another look? Found some flakiness on fast boards such as \"eve\" that we are tapping the button too early before its fade-in animation finishes. When that happens, the tap is ignored and we fail to change fullscreen state. The fade-in animation is 250ms, added a 500ms to be on the safe side.",
       "revId": "ab1cdd50642b89dfdbce45b8fff446f8af29bd16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f02034e_644c4c4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:58:54Z",
+      "side": 1,
+      "message": "LGTM++ assuming there\u0027s no other way to wait.  If it is waiting for the dismissing of some UI, maybe chrome/ui.WaitUntilGone might be better?",
+      "revId": "ab1cdd50642b89dfdbce45b8fff446f8af29bd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
