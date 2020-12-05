@@ -6,11 +6,16 @@ package wifi
 
 import (
 	"context"
+	"strings"
+	"time"
 
 	"chromiumos/tast/common/network/arping"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security/wpa"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
 
@@ -32,6 +37,7 @@ func GTK(ctx context.Context, s *testing.State) {
 		gtkRekeyPeriod = 5
 		gmkRekeyPeriod = 7
 		arpingCount    = 20
+		totalTestTime  = 45 * time.Second
 	)
 
 	tf := s.PreValue().(*wificell.TestFixture)
@@ -69,9 +75,11 @@ func GTK(ctx context.Context, s *testing.State) {
 
 	s.Log("AP setup done")
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	connectResp, err := tf.ConnectWifiAP(ctx, ap)
+	if err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
+	servicePath := connectResp.ServicePath
 	defer func(ctx context.Context) {
 		if err := tf.CleanDisconnectWifi(ctx); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
@@ -81,16 +89,39 @@ func GTK(ctx context.Context, s *testing.State) {
 	defer cancel()
 	s.Log("Connected")
 
-	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
+	props := []*wificell.ShillProperty{
+		&wificell.ShillProperty{
+			Property:       shillconst.ServicePropertyIsConnected,
+			Method:         network.ExpectShillPropertyRequest_CHECK_WAIT,
+			ExpectedValues: []interface{}{true},
+		},
+		&wificell.ShillProperty{
+			Property:       shillconst.ServicePropertyIsConnected,
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			ExpectedValues: []interface{}{false},
+		},
+	}
+	pingBuffer := 5 * time.Second
+	waitBuffer := 5 * time.Second
+	waitCtx, cancel := context.WithTimeout(ctx, totalTestTime+pingBuffer+waitBuffer)
+	defer cancel()
+	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, []string{})
+
+	pingCtx, cancel := ctxutil.Shorten(waitCtx, waitBuffer)
+	if err := tf.PingFromDUT(pingCtx, ap.ServerIP().String()); err != nil {
 		s.Fatal("Failed to ping from the DUT: ", err)
 	}
 
 	// Test that network traffic goes through.
-	if err := tf.ArpingFromDUT(ctx, ap.ServerIP().String(), arping.Count(arpingCount)); err != nil {
+	if err := tf.ArpingFromDUT(pingCtx, ap.ServerIP().String(), arping.Count(arpingCount)); err != nil {
 		s.Error("Failed to send broadcast packets to server: ", err)
 	}
-	if err := tf.ArpingFromServer(ctx, ap.Interface(), arping.Count(arpingCount)); err != nil {
+	if err := tf.ArpingFromServer(pingCtx, ap.Interface(), arping.Count(arpingCount)); err != nil {
 		s.Error("Failed to receive broadcast packets from server: ", err)
+	}
+
+	if _, err := waitForProps(); err == nil || !strings.Contains(err.Error(), context.DeadlineExceeded.Error()) {
+		s.Error("Failed to stay connected during rekeying process")
 	}
 
 	s.Log("Deconfiguring")
