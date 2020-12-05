@@ -88,15 +88,17 @@ const (
 	ServicePropertyConnectionID   = "ConnectionId"
 
 	// WiFi service property names.
-	ServicePropertyPassphrase        = "Passphrase"
-	ServicePropertySecurityClass     = "SecurityClass"
-	ServicePropertySSID              = "SSID"
-	ServicePropertyWiFiBSSID         = "WiFi.BSSID"
-	ServicePropertyWiFiFrequency     = "WiFi.Frequency"
-	ServicePropertyWiFiFrequencyList = "WiFi.FrequencyList"
-	ServicePropertyWiFiHexSSID       = "WiFi.HexSSID"
-	ServicePropertyWiFiHiddenSSID    = "WiFi.HiddenSSID"
-	ServicePropertyWiFiPhyMode       = "WiFi.PhyMode"
+	ServicePropertyPassphrase          = "Passphrase"
+	ServicePropertySecurityClass       = "SecurityClass"
+	ServicePropertySSID                = "SSID"
+	ServicePropertyWiFiBSSID           = "WiFi.BSSID"
+	ServicePropertyWiFiFrequency       = "WiFi.Frequency"
+	ServicePropertyWiFiFrequencyList   = "WiFi.FrequencyList"
+	ServicePropertyWiFiHexSSID         = "WiFi.HexSSID"
+	ServicePropertyWiFiHiddenSSID      = "WiFi.HiddenSSID"
+	ServicePropertyWiFiPhyMode         = "WiFi.PhyMode"
+	ServicePropertyWiFiRekeyInProgress = "WiFi.RekeyInProgress"
+	ServicePropertyWiFiRoamState       = "WiFi.RoamState"
 
 	// EAP service property names.
 	ServicePropertyEAPCACertPEM                   = "EAP.CACertPEM"
@@ -128,6 +130,14 @@ const (
 	ServiceStateDisconnect        = "disconnecting"
 	ServiceStateFailure           = "failure"
 	ServiceStateActivationFailure = "activation-failure"
+)
+
+// Roam state values defined in dbus-constants.h
+const (
+	RoamStateIdle          = "idle"
+	RoamStateAssociation   = "association"
+	RoamStateConfiguration = "configuration"
+	RoamStateReady         = "ready"
 )
 
 // ServiceConnectedStates is a list of service states that are considered connected.
