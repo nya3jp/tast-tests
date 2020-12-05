@@ -16,6 +16,46 @@
       "message": "jchinlee@, pwang@ PTAL (going directly to you two since it builds on the previous CLs).\n\nLet me know if you want me to put the extractSingleValue() \nmethod mini refactor in a separate CL.\n\nchromeos-gfx-video@ FYI.",
       "revId": "64985abf8dab8c10c47ba8b629a07d2cf6118c62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e186d1b2_9aea6921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-12-05T03:06:41Z",
+      "side": 1,
+      "message": "nit: this can be consolidated with the below, a la\n\n if value, err \u003d strconv.ParseFloat(matchString, 64); err !\u003d nil",
+      "revId": "64985abf8dab8c10c47ba8b629a07d2cf6118c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e5ac80_d0786945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-12-05T03:06:41Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary with the named return vars, but keeping it also parallels the returns above, so both are fine by me.",
+      "range": {
+        "startLine": 219,
+        "startChar": 7,
+        "endLine": 219,
+        "endChar": 18
+      },
+      "revId": "64985abf8dab8c10c47ba8b629a07d2cf6118c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
