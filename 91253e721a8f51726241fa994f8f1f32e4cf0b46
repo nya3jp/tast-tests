@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78cafedc_86888247",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-05T02:52:03Z",
+      "side": 1,
+      "message": "you probably want longer than a second, no? the rekey period is 5+ seconds",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 57
+      },
+      "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f10a178c_3c9e06d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-05T02:52:03Z",
+      "side": 1,
+      "message": "it feels a bit odd to treat all errors as passing; is there some better way of determining that it was definitely a timeout error? and can we guarantee that we\u0027ve flushed out any buffered property changes? It\u0027d also be nice if this could be checked after all the network tests (so down at line 115?), except then it\u0027d be nicer to have better answers to the previous two questions, so we can guarantee that if we see a timeout error, that means we\u0027ve really checked the property stream, and not just that the gRPC stream was too slow.\n\nSorry if those are too open-ended of questions; I genuinely don\u0027t have great solutions right now. Maybe those who\u0027ve developed the ExpectShillProperty() service would have better hints.",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
