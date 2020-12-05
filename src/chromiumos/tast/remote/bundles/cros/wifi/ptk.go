@@ -6,13 +6,16 @@ package wifi
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security/wpa"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
 
@@ -99,9 +102,11 @@ func PTK(ctx context.Context, s *testing.State) {
 
 	s.Log("AP setup done; connecting")
 
-	if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
+	connectResp, err := tf.ConnectWifiAP(ctx, ap)
+	if err != nil {
 		s.Fatal("Failed to connect to WiFi: ", err)
 	}
+	servicePath := connectResp.ServicePath
 	defer func(ctx context.Context) {
 		if err := tf.CleanDisconnectWifi(ctx); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
@@ -109,6 +114,17 @@ func PTK(ctx context.Context, s *testing.State) {
 	}(ctx)
 	ctx, cancel = tf.ReserveForDisconnect(ctx)
 	defer cancel()
+
+	props := []*wificell.ShillProperty{
+		&wificell.ShillProperty{
+			Property:       shillconst.ServicePropertyIsConnected,
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			ExpectedValues: []interface{}{false},
+		},
+	}
+	waitCtx, cancel := context.WithTimeout(ctx, time.Second)
+	defer cancel()
+	waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, []string{})
 
 	s.Logf("Pinging with count=%d interval=%g second(s)", param.pingCount, param.pingInterval)
 	// As we need to record ping loss, we cannot use tf.PingFromDUT() here.
@@ -122,6 +138,10 @@ func PTK(ctx context.Context, s *testing.State) {
 	lossCount := res.Sent - res.Received
 	if lossCount > param.allowedLossCount {
 		s.Errorf("Unexpected packet loss: got %d, want <= %d", lossCount, param.allowedLossCount)
+	}
+
+	if _, err := waitForProps(); err == nil {
+		s.Error("Failed to stay connected during rekeying process")
 	}
 
 	pv := perf.NewValues()
