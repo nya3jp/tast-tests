@@ -16,6 +16,447 @@
       "message": "+mukai",
       "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b74cb72c_27ba9183",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "Just a very earlier comments on a few files.  Further comments will follow in a couple of business days.",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a61e2f_9ccb78c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "Please be more descriptive.",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbefe896_b068ad3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "// New creates a Bluetooth instance.  It also enables bluetooth feature through quick settings if disabled.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a9d8433_7cba3b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "this doesn\u0027t look like what it does.  Also what does \u0027the App\u0027 mean in this context?",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322d9c3c_b4203d9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "This is extremely dangerous, please do not do this.\n\nThe name might be an invalid string from regexp syntax, which potentially leads to a crash of the entire program.  Also, I don\u0027t think it\u0027s a good design choice to use a regular expression here.  Why doing that?\n\nI would recommend to:\n- change the interface so that this accepts the regular expression as a parameter\n- if what you want is just a partial match, consider using regexp.QuoteMeta.",
+      "range": {
+        "startLine": 53,
+        "startChar": 45,
+        "endLine": 53,
+        "endChar": 69
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7056a747_ac35e330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "string?  Why not a bool (or an enum)?",
+      "range": {
+        "startLine": 59,
+        "startChar": 95,
+        "endLine": 59,
+        "endChar": 101
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05a2ec23_15591692",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "I am wildly guessing that there would be a lot of connection related things in the settings app. How can you say it is for the bluetooth?",
+      "range": {
+        "startLine": 67,
+        "startChar": 64,
+        "endLine": 67,
+        "endChar": 76
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a96e55_9d9b50c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "What is the purpose of sleeping?  Typically we should avoid use of testing.Sleep unless there\u0027s any other way to wait. Isn\u0027t ui.WaitUntilExists good enough?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 33
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8800db6_5b2811ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "why not just a string?",
+      "range": {
+        "startLine": 104,
+        "startChar": 73,
+        "endLine": 104,
+        "endChar": 98
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41eda584_3c113cda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "%q might be slightly better for logging and errors for a string value.",
+      "range": {
+        "startLine": 108,
+        "startChar": 46,
+        "endLine": 108,
+        "endChar": 48
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3d5c87_53e51cbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "Same, why sleep, why not other waiting mechanism?",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de8dba7_c2ba743d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "Why wrappers.BoolValue?  Isn\u0027t it good enough to use a bool?",
+      "range": {
+        "startLine": 140,
+        "startChar": 106,
+        "endLine": 140,
+        "endChar": 125
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5dc7412_7dab9fb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "same, why not other waiting?",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "348a4e11_4aa5077a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "tconn.Call(ctx, nil, `async () \u003d\u003e { ... }`)",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d6fbce_fdda985e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "tconn.Call(ctx, \u0026data, \u0027tast.proimsify(chrome.autotestPrivate.getClipboardTextData)\u0027)",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e62cfe_ec995a4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "Go doc string should start with a simple short sentence of what it does.  For example,\n\n// ForceClipboard forcibly sets the clipboard to data. Unlike setClipboardTextData, it\n// checks the clipboard data and if it\u0027s still not yet the specified one, it repeats the\n// setClipboardTextData.\n\n\n\nBy the way, is there really a chance that setClipboardTextData succeeds but it doesn\u0027t set the clipboard data?  How often does it happen?  Isn\u0027t it just a bug of autotestPrivate API?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 25
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f8e400_48f93cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "Basically this measures the time from the mouse click to the ash.AppShown.  I am afraid that it does not wait for the content of the window to be ready. Is it intended?",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6d5fd5_1804f66d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "Not sure why we use testing.Poll. So is it possible that the browser fails to start?  That sounds like a terrible situation. Do you have estimates why/when it happens?  Can\u0027t we resolve those problems?",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71f581c_5197e327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "why startTime here to be initialized as time.Now? Isn\u0027t it okay to initialize as:\n  var startTime time.Time\n?",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4f2265_2355b13f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "no colon at the end of errors.Wrap.\n\nPlease run tast-lint script and fix all warning messages.",
+      "range": {
+        "startLine": 81,
+        "startChar": 62,
+        "endLine": 81,
+        "endChar": 63
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47de50b1_b8479fcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-05T00:36:21Z",
+      "side": 1,
+      "message": "Is this going to be used rather than GetOpenBrowserStartTime()?  If not, consider moving ash.WaiForApp to GetOpenBrowserStartTime. That\u0027s clearer.",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
