@@ -15,7 +15,16 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "chromeLoggedIn",
 		Desc:            "Logged into a user session",
-		Impl:            &loggedInFixture{},
+		Impl:            newLoggedInFixture(),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "chromeLoggedInWithEnhancedDeskAnimations",
+		Desc:            "Logged into a user session with EnhancedDeskAnimations feature",
+		Impl:            newLoggedInFixture(EnableFeatures("EnhancedDeskAnimations")),
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -23,11 +32,16 @@ func init() {
 }
 
 type loggedInFixture struct {
-	cr *Chrome
+	cr   *Chrome
+	opts []Option
+}
+
+func newLoggedInFixture(opts ...Option) testing.FixtureImpl {
+	return &loggedInFixture{opts: opts}
 }
 
 func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	cr, err := New(ctx)
+	cr, err := New(ctx, f.opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

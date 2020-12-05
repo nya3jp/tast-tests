@@ -24,6 +24,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Fixture:      "chromeLoggedInWithEnhancedDeskAnimations",
 	})
 }
 
@@ -33,12 +34,8 @@ func DesksChainedAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	// TODO(sammiequon): When the feature is fully launched, use chrome.LoggedIn() precondition.
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=EnhancedDeskAnimations"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	// TODO(sammiequon): When the feature is fully launched, use chromeLoggedIn fixture.
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
