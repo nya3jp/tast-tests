@@ -35,6 +35,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79244e01_6ced4c8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-06T23:41:03Z",
+      "side": 1,
+      "message": "Will leave to Jun as he has already commented extensively.",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b66a85e0_d4c5c634",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-06T23:41:03Z",
+      "side": 1,
+      "message": "please use testing.WaitforLocationChangeCompleted instead for reduced flakiness.",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a61e2f_9ccb78c0",
