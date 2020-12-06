@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "25678adb_52c8fac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-06T01:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e186d1b2_9aea6921",
+      "revId": "64985abf8dab8c10c47ba8b629a07d2cf6118c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c3e5ac80_d0786945",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2020-12-05T03:06:41Z",
       "side": 1,
       "message": "This isn\u0027t necessary with the named return vars, but keeping it also parallels the returns above, so both are fine by me.",
+      "range": {
+        "startLine": 219,
+        "startChar": 7,
+        "endLine": 219,
+        "endChar": 18
+      },
+      "revId": "64985abf8dab8c10c47ba8b629a07d2cf6118c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3eaaef_8b74f2a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-06T01:11:56Z",
+      "side": 1,
+      "message": "You\u0027re right, done.",
+      "parentUuid": "c3e5ac80_d0786945",
       "range": {
         "startLine": 219,
         "startChar": 7,
