@@ -20,6 +20,7 @@ import (
 const (
 	mountPointTimeout = 15 * time.Second // timeout waiting for CrosDisks to mount Drivefs.
 	fuseIoTimeout     = 40 * time.Second // timeout waiting for the FUSE to be operational.
+	restartDelay      = 4 * time.Second  // delay waiting for DriveFS to restart.
 )
 
 // WaitForDriveFs checks that the Drivefs mount is ready for IO.
@@ -43,18 +44,22 @@ func WaitForDriveFs(ctx context.Context, username string) (string, error) {
 
 	// It takes some time for request to mount Drive to be handled by CrosDisks
 	// that creates the mount point. Poll for a mount point until timeout.
-	if err := waitForMatchingMount(ctx, mountPointTimeout, isDriveFs); err != nil {
-		return "", errors.Wrap(err, "failed with timeout while waiting for mountpoint creation")
-	}
-	mounts, err := findMatchingMount(isDriveFs)
+	mounts, err := waitForMatchingMount(ctx, mountPointTimeout, isDriveFs)
 	if err != nil {
-		return "", errors.Wrap(err, "failed obtaining matching mounts")
+		return "", errors.Wrap(err, "failed with timeout while waiting for mountpoint creation")
 	}
 	if len(mounts) != 1 {
 		return "", errors.Wrapf(err, "failed one drivefs mount expected found %d. Mounts found: %v", len(mounts), mounts)
 	}
 	mountPath := mounts[0].MountPath
 	testing.ContextLog(ctx, "drivefs is mounted into ", mountPath)
+
+	// On a clean start DriveFS would fetch some settings from the server and will
+	// want to restart to apply them. Let's wait for a bit to allow it to do this.
+	testing.ContextLogf(ctx, "Waiting %v for drivefs to stabilize", restartDelay)
+	if testing.Sleep(ctx, restartDelay) != nil {
+		return "", errors.Wrap(err, "failed while waiting for drivefs to stabilize")
+	}
 
 	// We expect to find at least this folder in the mount point.
 	drivefsRoot := path.Join(mountPath, "root")
@@ -90,10 +95,10 @@ func findMatchingMount(matcher func(sysutil.MountInfo) bool) (matches []sysutil.
 	return
 }
 
-func waitForMatchingMount(ctx context.Context, timeout time.Duration, matcher func(sysutil.MountInfo) bool) error {
+func waitForMatchingMount(ctx context.Context, timeout time.Duration, matcher func(sysutil.MountInfo) bool) (matches []sysutil.MountInfo, err error) {
 	testing.ContextLogf(ctx, "Waiting %v for a matching mount to appear", timeout)
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		matches, err := findMatchingMount(matcher)
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		matches, err = findMatchingMount(matcher)
 		if err != nil {
 			return errors.Wrap(err, "io error trying to list mounts")
 		}
@@ -102,6 +107,7 @@ func waitForMatchingMount(ctx context.Context, timeout time.Duration, matcher fu
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second})
+	return
 }
 
 func isDriveFs(info sysutil.MountInfo) bool {
