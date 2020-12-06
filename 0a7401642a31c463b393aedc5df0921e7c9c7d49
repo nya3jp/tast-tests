@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4777d1_f375a0d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-06T23:36:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20d55a8c_11bb9489",
+      "range": {
+        "startLine": 191,
+        "startChar": 106,
+        "endLine": 191,
+        "endChar": 130
+      },
+      "revId": "0a7401642a31c463b393aedc5df0921e7c9c7d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe987144_bbff0c6c",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df648595_31a948e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-06T23:36:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe987144_bbff0c6c",
+      "range": {
+        "startLine": 243,
+        "startChar": 35,
+        "endLine": 243,
+        "endChar": 52
+      },
+      "revId": "0a7401642a31c463b393aedc5df0921e7c9c7d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29c52e60_949b1e2f",
@@ -94,6 +142,24 @@
       "writtenOn": "2020-12-04T07:39:38Z",
       "side": 1,
       "message": "nit: not necessary in defer.\n\nmaybe\n\nif err :\u003d a.Close(); err !\u003d nil {\n  testing.ContextLogf(ctx, \"... error message with |err| ...\", ...)\n}",
+      "revId": "0a7401642a31c463b393aedc5df0921e7c9c7d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4cb59f_2e97d68a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-06T23:36:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29c52e60_949b1e2f",
       "revId": "0a7401642a31c463b393aedc5df0921e7c9c7d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
