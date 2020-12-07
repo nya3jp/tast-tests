@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5adf57b_189be080",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-12-07T08:29:39Z",
+      "side": 1,
+      "message": "Thanks for the change. I think the \"recommended\" metric should become a new enum value other than introducing a new boolean:\n\n* The 2 boolean flags are used for how we poll the metric, but actually they represent how mandatory the metric is. The 3 types of metrics are required, recommended and optional, from the strongest to the weakest in error handling.\n* There is no combination of \"required \u003d true and recommended \u003d true\". If there is, what does it mean? It looks to me that recommended \u003d true implies required \u003d false. Having dependency between the 2 boolean flags implies that they shouldn\u0027t be modeled using 2 variables.\n* The logic handling the recommended metrics is not clear to me as in the inline comments.",
+      "revId": "f9f6680756b797cc3f54d41a051270ecb5c37cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5de89a_13da1e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-12-07T08:29:39Z",
+      "side": 1,
+      "message": "I think this can be simplified in using enum. This logic should be clearer.",
+      "range": {
+        "startLine": 104,
+        "startChar": 23,
+        "endLine": 104,
+        "endChar": 54
+      },
+      "revId": "f9f6680756b797cc3f54d41a051270ecb5c37cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dacda6d_5661ea19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-12-07T08:29:39Z",
+      "side": 1,
+      "message": "This extra pollOnce() call passing useRecommended \u003d false is nontrivial and should be made clearer.",
+      "revId": "f9f6680756b797cc3f54d41a051270ecb5c37cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
