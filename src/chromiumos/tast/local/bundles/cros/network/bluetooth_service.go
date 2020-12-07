@@ -88,6 +88,28 @@ func (s *BluetoothService) SetBluetoothPowered(ctx context.Context, req *network
 		return nil, err
 	}
 
+	// Poll until the adapter state has been changed to the correct value.
+	adapters, err := bluetooth.Adapters(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get Bluetooth adapters")
+	}
+
+	if len(adapters) != 1 {
+		return nil, errors.Errorf("got %d adapters, expected 1 adapter", len(adapters))
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if res, err := adapters[0].Powered(ctx); err != nil {
+			return errors.Wrap(err, "could not get Bluetooth power state")
+		} else if res != req.Powered {
+			return errors.Errorf("Bluetooth adapter state not changed to %s after toggle", strconv.FormatBool(req.Powered))
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  10 * time.Second,
+		Interval: 100 * time.Millisecond,
+	}); err != nil {
+		return nil, err
+	}
 	return &empty.Empty{}, nil
 }
 
