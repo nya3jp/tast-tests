@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1623719_b7895f56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-12-07T20:21:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51639480_8b269258",
+      "range": {
+        "startLine": 197,
+        "startChar": 10,
+        "endLine": 199,
+        "endChar": 4
+      },
+      "revId": "101ca46f101ac8773951f3e0f024e49582634e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98e524b5_b512840d",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-30T13:59:50Z",
       "side": 1,
       "message": "The current function does not seem to simplify the existing code. Maybe add a FindSettingsNode where tests only need to check the result.",
+      "revId": "101ca46f101ac8773951f3e0f024e49582634e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec7864b_c8941b5e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-12-07T20:21:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98e524b5_b512840d",
       "revId": "101ca46f101ac8773951f3e0f024e49582634e74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
