@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "526a1c72_c78b827a",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-12-07T01:34:15Z",
+      "side": 1,
+      "message": "There is no straightforward way to check that. We can\u0027t be 100% sure that there will be a restart at this point - maybe it wasn\u0027t needed this time, or it might be that it already happened and we polled for the mount path a bit late.",
+      "parentUuid": "d9e4ac92_a6f4b618",
+      "revId": "4a4e1eef8508c054d23bacc4af52fdf2863ad51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c707e8f9_8af2be2c",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-07T00:27:50Z",
       "side": 1,
       "message": "I don\u0027t think you should use named result parameters here, although I will leave it to you.\n\nFrom the style guide:\n\nDon\u0027t name result parameters in order to avoid declaring a variable inside the function. This practice results in unnecessary API verbosity at the cost of minor implementation brevity.\n\nNaked returns are acceptable only in a small function. Once it\u0027s a medium-sized function, be explicit with your returned values. Similarly, do not name result parameters just because it enables you to use naked returns. Clarity is always more important than saving a few lines in your function.",
+      "revId": "4a4e1eef8508c054d23bacc4af52fdf2863ad51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cc821fd_1fc3391a",
+        "filename": "src/chromiumos/tast/local/drivefs/wait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-12-07T01:34:15Z",
+      "side": 1,
+      "message": "Done. Though looks a bit ugly.",
+      "parentUuid": "c707e8f9_8af2be2c",
       "revId": "4a4e1eef8508c054d23bacc4af52fdf2863ad51f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
