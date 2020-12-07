@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e3e59e_b9bd352a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-07T05:42:33Z",
+      "side": 1,
+      "message": "As the offline discussion with @shik, we will move all all alignment logic into javascript and the golang part will be greatly simplify to just bring up javascript code. But since the chrome javascript error log collecting is not support in remote test. Will upload another CL for supporting saving remote chrome log to remote temp dir.",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10d2ec67_a66786fd",
