@@ -63,6 +63,30 @@
       },
       "revId": "501e24b0665d06a48b16d31143ef7df68cc3b250",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aadaf10_44cd6061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/cookies_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1302390
+      },
+      "writtenOn": "2020-12-07T10:15:47Z",
+      "side": 1,
+      "message": "1) Yes, it\u0027s expected. Both \"block_single\" and \"block_multiple\" list the url as one of the blocked urls so allow is equal to false in those cases. For \"allow_multiple\" three different urls are listed but no one of them is server.URL, so allow is equal to true.\n\n2) As mentioned in the comment `allowCookies` stands for default cookie policy (i.e. if cookies should be allowed or disallowed for the sites that are not listed neither in allowlist nor in blocklist). We want to check that for \"allow\" default cookie policy url will be allowed to set the cookies.",
+      "parentUuid": "bf499827_bfc2a8c3",
+      "range": {
+        "startLine": 78,
+        "startChar": 37,
+        "endLine": 78,
+        "endChar": 55
+      },
+      "revId": "501e24b0665d06a48b16d31143ef7df68cc3b250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
