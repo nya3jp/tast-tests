@@ -39,6 +39,30 @@
       },
       "revId": "501e24b0665d06a48b16d31143ef7df68cc3b250",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf499827_bfc2a8c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/cookies_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-07T07:30:22Z",
+      "side": 1,
+      "message": "The policy shall be evaluated in line 74, policyutil.ServeAndVerify(). What\u0027s the difference between the verifier in  line 74 and line 85? Please append some comment.\n\nAlso, line 74 sets allowCookies without referencing tc.allow. Is that expected?",
+      "parentUuid": "9f1ce017_08af1946",
+      "range": {
+        "startLine": 78,
+        "startChar": 37,
+        "endLine": 78,
+        "endChar": 55
+      },
+      "revId": "501e24b0665d06a48b16d31143ef7df68cc3b250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
