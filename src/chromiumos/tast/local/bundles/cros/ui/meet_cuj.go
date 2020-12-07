@@ -28,6 +28,7 @@ import (
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
 )
@@ -58,11 +59,12 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
-		Timeout:      4 * time.Minute,
+		Timeout:      7 * time.Minute,
 		Pre:          cuj.LoggedInToCUJUser(),
 		Vars: []string{
 			"mute",
 			"record",
+			"power",
 			"ui.MeetCUJ.bond_credentials",
 			"ui.cuj_username",
 			"ui.cuj_password",
@@ -140,7 +142,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		botDuration = 2 * time.Minute
 		docsURL     = "https://docs.google.com/document/d/1qREN9w1WgjgdGYBT_eEtE6T21ErlW_4nQoBJVhrR1S0/edit"
 		notes       = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-		meetTimeout = 30 * time.Second
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
@@ -151,10 +152,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	meet := s.Param().(meetTest)
+	meetTimeout := 30 * time.Second
 
-	// Shorten context a bit to allow for cleanup.
+	// Shorten context to allow for cleanup. Revere one minute in case of power
+	// test.
 	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
@@ -211,6 +214,21 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx)
 	}
 
+	var powerTest bool
+	if _, ok := s.Var("power"); ok {
+		powerTest = true
+		meetTimeout = 3 * time.Minute
+
+		sup, cleanup := setup.New("meet call power")
+		sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+			Wifi: setup.DisableWifiInterfaces, Battery: setup.ForceBatteryDischarge, NightLight: setup.DisableNightLight}))
+		defer func() {
+			if err := cleanup(closeCtx); err != nil {
+				s.Error("Cleanup failed: ", err)
+			}
+		}()
+	}
+
 	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
 		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 		"percent", perf.SmallerIsBetter, []int64{50, 80})}
@@ -225,7 +243,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			[]int64{80000, 160000}))
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, tconn, configs...)
+	recorder, err := cuj.NewRecorderWithPower(ctx, tconn, powerTest, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

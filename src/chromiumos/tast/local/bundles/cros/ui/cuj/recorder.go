@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/load"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -113,10 +114,11 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 	return count
 }
 
-// NewRecorder creates a Recorder based on the configs. It also aggregates the
-// metrics of each category (animation smoothness and input latency) and creates
-// the aggregated reports.
-func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricConfig) (*Recorder, error) {
+// NewRecorderWithPower creates a Recorder based on the configs. If `pt`
+// is true, the recorder would capture power metrics in addition to the given
+// metric configs. It also aggregates the metrics of each category (animation
+// smoothness and input latency) and creates the aggregated reports.
+func NewRecorderWithPower(ctx context.Context, tconn *chrome.TestConn, pt bool, configs ...MetricConfig) (*Recorder, error) {
 	memDiff := newMemoryDiffDataSource("RAM.Diff.Absolute")
 	gpuDS := newGPUDataSource(tconn)
 	sources := []perf.TimelineDatasource{
@@ -126,6 +128,10 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		gpuDS,
 		memDiff,
 	}
+	if pt {
+		sources = append(sources, power.TestMetrics()...)
+	}
+
 	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
@@ -199,6 +205,11 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 	success = true
 
 	return r, nil
+}
+
+// NewRecorder is a convenience API when no power test is needed.
+func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricConfig) (*Recorder, error) {
+	return NewRecorderWithPower(ctx, tconn, false /* pt */, configs...)
 }
 
 // Close clears states for all trackers.
