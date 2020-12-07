@@ -16,6 +16,23 @@
       "message": "Note that, we have to wait until crrev.com/c/2563183 is landed on ChromeOS.",
       "revId": "687b07cc8e1bd9df7af706fe2049075f4f8d7f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dd7789f_3513e5e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-07T17:19:05Z",
+      "side": 1,
+      "message": "style lgtm",
+      "revId": "687b07cc8e1bd9df7af706fe2049075f4f8d7f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
