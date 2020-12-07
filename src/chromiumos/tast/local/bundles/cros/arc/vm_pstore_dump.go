@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Test of vm_pstore_dump command: check the kernel's console output after running vm_pstore_dump",
 		Contacts:     []string{"kimiyuki@google.com", "arcvm-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_vm", "amd64"}, // TODO(b/153934386): Add back arm64 when pstore works. "amd64" is specified because `vm_pstore_dump` command doesn't works on arm now.
+		SoftwareDeps: []string{"chrome", "android_vm", "arc_pstore"},
 		Pre:          arc.Booted(),
 	})
 }
