@@ -229,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdcab40d_883f2dfc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bluetooth_antenna_coex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-07T02:52:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4467ddc0_8a4b702d",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61bcc31a_69edc2ef",
@@ -600,6 +624,30 @@
       "side": 1,
       "message": "The normal GetBluetoothPowered routine also uses dbus to check the powered status, it just also returns the persistence setting. Because both the fast and normal versions both use D-Bus, I think renaming may make things more confusing.",
       "parentUuid": "64dc83ec_d5a1e0de",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "628ab74bd75ff397ceef8f97e1864005d98f5b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30209998_4bab3ebe",
+        "filename": "src/chromiumos/tast/services/cros/network/bluetooth_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-07T02:52:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33e722eb_db204aa6",
       "range": {
         "startLine": 16,
         "startChar": 24,
