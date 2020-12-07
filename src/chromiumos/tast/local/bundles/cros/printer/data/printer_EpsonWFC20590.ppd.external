@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_EpsonWFC20590_20201209.ppd",
+  "size": 86472,
+  "sha256sum": "11e2edba366ae31e1f3f02afc8cec01552d8572ad71148b1b93f87c85fa08bee"
+}

@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_collate_epson_hardware_uncollated_golden_20201209.ps",
+  "size": 171932,
+  "sha256sum": "f44e467b0f35348c8d0776d0a605296b594ae4f9818fc3fafe4ee50daa65408f"
+}

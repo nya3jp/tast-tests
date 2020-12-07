@@ -7,7 +7,7 @@ package printer
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/printer/proxyippprint"
+	"chromiumos/tast/local/bundles/cros/printer/ippprint"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -29,29 +29,29 @@ func init() {
 		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "600dpi",
-			Val: &proxyippprint.Params{
+			Val: &ippprint.Params{
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_resolution_lexmark_600dpi_golden.ps",
-				Options:      []proxyippprint.Option{proxyippprint.WithResolution("600dpi")},
+				Options:      []ippprint.Option{ippprint.WithResolution("600dpi")},
 			},
 			ExtraData: []string{"printer_resolution_lexmark_600dpi_golden.ps"},
 		}, {
 			Name: "1200dpi",
-			Val: &proxyippprint.Params{
+			Val: &ippprint.Params{
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_resolution_lexmark_1200dpi_golden.ps",
-				Options:      []proxyippprint.Option{proxyippprint.WithResolution("1200dpi")},
+				Options:      []ippprint.Option{ippprint.WithResolution("1200dpi")},
 			},
 			ExtraData: []string{"printer_resolution_lexmark_1200dpi_golden.ps"},
 		}, {
 			Name: "2400x600dpi",
-			Val: &proxyippprint.Params{
+			Val: &ippprint.Params{
 				PpdFile:      "printer_Lexmark.ppd",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_resolution_lexmark_2400x600dpi_golden.ps",
-				Options:      []proxyippprint.Option{proxyippprint.WithResolution("2400x600dpi")},
+				Options:      []ippprint.Option{ippprint.WithResolution("2400x600dpi")},
 			},
 			ExtraData: []string{"printer_resolution_lexmark_2400x600dpi_golden.ps"},
 		}},
@@ -59,7 +59,7 @@ func init() {
 }
 
 func ProxyResolutionLexmark(ctx context.Context, s *testing.State) {
-	testOpt := s.Param().(*proxyippprint.Params)
+	testOpt := s.Param().(*ippprint.Params)
 
-	proxyippprint.Run(ctx, s, testOpt)
+	ippprint.ProxyRun(ctx, s, testOpt)
 }
