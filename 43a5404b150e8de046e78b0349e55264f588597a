@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a388474a_1244cdef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-07T20:14:37Z",
+      "side": 1,
+      "message": "When you don\u0027t comment this out put run locally, the test would say it\u0027s downloading from gs bucket. I think this will work in a CQ build but we only know after submitting",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea1629b1_04dcdc49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-07T20:14:37Z",
+      "side": 1,
+      "message": "After running one test, the next always fails to flash the first time, but will work after 1~2 retries",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe8c3544_2bf7f4c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-07T20:14:37Z",
+      "side": 1,
+      "message": "These two tests seem to output \"Fail\" in the console. Haven\u0027t looked into details, but that\u0027s outside the scope of this CL.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "688de09b_3355bee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-07T20:14:37Z",
+      "side": 1,
+      "message": "This is ready on my side, passing to Tom to review",
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd45213_271297dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-07T20:14:37Z",
+      "side": 1,
+      "message": "Tom and I will need to figure out how to schedule this on our Dragonclaw setup only.",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b47bcaf_76e2f3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-07T20:14:37Z",
+      "side": 1,
+      "message": "I should remove this, so that we control informational/critical on a per-unittest basis below.",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
