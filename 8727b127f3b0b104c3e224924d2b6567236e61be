@@ -226,6 +226,24 @@
       "message": "There is currently plans to remove this test, IIRC.\n\nMy opinion would be to delete the whole sentence saying \"This identity will be expanded...\" as there is currently no plans to make this test any better.\n\nThis would solve your immediate need to delete the word, however would not guarantee this word would not need to be used again in the future.\n\nRight now there are no plans to stop using \"whitelabel\" in cros_config/unibuild architecture.  Suppose we made those plans *today*, we would still need to reference \"whitelabel_tag\" as this is the key that was burnt into RO VPD during the factory process until all devices which reference that go AUE... basically, we would have to continue planning to reference whitelabel_tag until the year 2029, or maybe even later.\n\nSo tast should be open to use this word again in the future as inevitably someone will write more tests for the unibuild architecture down the road and need to use this word.",
       "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8efd534_4fa67df9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128435
+      },
+      "writtenOn": "2020-12-07T22:04:40Z",
+      "side": 1,
+      "message": "I would vote for 3 \u0026 ask for help from PM folks to figure out a plan to purge white-label term from ChromeOS.",
+      "parentUuid": "24c2c0b0_21e1a6eb",
+      "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
