@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "501139d9_3829c298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1365161
+      },
+      "writtenOn": "2020-12-07T17:03:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd43420b_8efa6068",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 94
+      },
+      "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e621dc8c_2716bb7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1365161
+      },
+      "writtenOn": "2020-12-07T17:03:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09cf214e_3a0dd7d6",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cd3da59_ce652b21",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-03T23:30:05Z",
       "side": 1,
       "message": "You might want to comment where this magic string comes from.",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 59
+      },
+      "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0431f34_e8b4014e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1365161
+      },
+      "writtenOn": "2020-12-07T17:03:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd3da59_ce652b21",
       "range": {
         "startLine": 67,
         "startChar": 19,
@@ -106,6 +178,54 @@
       "writtenOn": "2020-12-03T23:30:05Z",
       "side": 1,
       "message": "Why is this file getting removed in general. Is it not useful if the test fails for debugging?",
+      "range": {
+        "startLine": 76,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 16
+      },
+      "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c745841_fb6d3c27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1365161
+      },
+      "writtenOn": "2020-12-07T17:03:26Z",
+      "side": 1,
+      "message": "This is the output from our fake flashrom binary: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/firmware/data/flashrom. I will define it properly.",
+      "parentUuid": "e8f1ce84_ca20622d",
+      "range": {
+        "startLine": 76,
+        "startChar": 17,
+        "endLine": 76,
+        "endChar": 80
+      },
+      "revId": "6b8d86aa3ab3ddcd58c388ecb89d5234dc6f0a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64ca98d8_a123503b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1365161
+      },
+      "writtenOn": "2020-12-07T17:03:26Z",
+      "side": 1,
+      "message": "I think on the match function, if the match fails, the output string is printed as part of the error message. So as long as we are module the fake binary to only record the calling parameter, it should be fine to delete the file?",
+      "parentUuid": "308a6125_a18193e6",
       "range": {
         "startLine": 76,
         "startChar": 7,
