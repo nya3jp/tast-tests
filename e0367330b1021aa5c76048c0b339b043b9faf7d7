@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7000c2a_b5090ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-07T09:49:04Z",
+      "side": 1,
+      "message": "In this use case, Attr should be empty.",
+      "parentUuid": "3748553a_067f16eb",
+      "revId": "e0367330b1021aa5c76048c0b339b043b9faf7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08b952e4_02b74856",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
         "patchSetId": 3
