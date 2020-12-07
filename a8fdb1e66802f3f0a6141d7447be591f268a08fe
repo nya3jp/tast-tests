@@ -157,6 +157,30 @@
       },
       "revId": "a8fdb1e66802f3f0a6141d7447be591f268a08fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06aac0d7_b75e9141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-07T00:30:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b00f53c_ff9c4e87",
+      "range": {
+        "startLine": 64,
+        "startChar": 32,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "a8fdb1e66802f3f0a6141d7447be591f268a08fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

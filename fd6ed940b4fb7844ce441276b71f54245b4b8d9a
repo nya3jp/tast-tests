@@ -62,6 +62,30 @@
       },
       "revId": "fd6ed940b4fb7844ce441276b71f54245b4b8d9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26922923_fbd6ab42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-07T00:30:32Z",
+      "side": 1,
+      "message": "I have made the same suggestions too. Maybe worth some consideration on it.",
+      "parentUuid": "81cd0370_4ddf0862",
+      "range": {
+        "startLine": 67,
+        "startChar": 53,
+        "endLine": 67,
+        "endChar": 122
+      },
+      "revId": "fd6ed940b4fb7844ce441276b71f54245b4b8d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
