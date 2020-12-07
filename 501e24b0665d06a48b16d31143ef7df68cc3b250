@@ -16,6 +16,29 @@
       "message": "deanliao@, \n\nCould you please also take a look at the follow-up CL with similar test? Thanks!",
       "revId": "501e24b0665d06a48b16d31143ef7df68cc3b250",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1ce017_08af1946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/cookies_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-07T07:15:56Z",
+      "side": 1,
+      "message": "It is not in the allow_multiple case value. Is that expected?",
+      "range": {
+        "startLine": 78,
+        "startChar": 37,
+        "endLine": 78,
+        "endChar": 55
+      },
+      "revId": "501e24b0665d06a48b16d31143ef7df68cc3b250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
