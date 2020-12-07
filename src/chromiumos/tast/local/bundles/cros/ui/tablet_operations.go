@@ -191,21 +191,34 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 				"name": regexp.MustCompile("(Chrome|Chromium)"),
 			},
 		}
-		button, err := chromeui.Find(ctx, tconn, findParams)
+		button, err := chromeui.FindWithTimeout(ctx, tconn, findParams, 10*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the Chrome icon")
 		}
 		defer button.Release(ctx)
+		if err := button.WaitLocationStable(ctx, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			return errors.Wrap(err, "Chrome button is not stabilized yet")
+		}
 		if err := stw.Move(tcc.ConvertLocation(button.Location.CenterPoint())); err != nil {
 			return errors.Wrap(err, "failed to tap the leftmost icon")
 		}
 		if err := stw.End(); err != nil {
 			return errors.Wrap(err, "failed to release the touch")
 		}
-		for _, w := range ws {
-			if err := ash.WaitWindowFinishAnimating(ctx, tconn, w.ID); err != nil {
-				return errors.Wrapf(err, "failed to wait for window (%d) animating", w.ID)
+		var wid int
+		// At least one of the windows should resume, i.e. not in minimized status.
+		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+			if w.State != ash.WindowStateMinimized {
+				wid = w.ID
+				return true
 			}
+			return false
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			return errors.Wrap(err, "no window is in normal state")
+		}
+		// The resumed window may be still animating; wait for the animation finishes.
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, wid); err != nil {
+			return errors.Wrapf(err, "failed to wait for window (%d) animating", wid)
 		}
 		return nil
 	},
