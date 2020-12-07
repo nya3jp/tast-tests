@@ -45,6 +45,13 @@ func computeCpuidleStateFiles() (map[string][]string, int, error) {
 		}
 
 		for _, cpuidle := range cpuidles {
+			// Match files with name state0, state1, ....
+			if match, err := regexp.MatchString(`^state\d+$`, cpuidle.Name()); err != nil {
+				return nil, 0, errors.Wrap(err, "error trying to match idle state name")
+			} else if !match {
+				continue
+			}
+
 			name, err := readFirstLine(path.Join(cpuDir, cpuidle.Name(), "name"))
 			if err != nil {
 				return nil, 0, errors.Wrap(err, "failed to read cpuidle name")
