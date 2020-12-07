@@ -908,7 +908,7 @@ func snappingOnDisplay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 					func(ctx context.Context, s *testing.State) error {
 						act := testappActivity{ctx, tconn, a, resizeable, handling, nil}
 						defer act.close()
-						dispID, err := arc.FirstDisplayIDByType(ctx, a, arc.ExternalDisplay)
+						dispID, err := arc.FirstDisplayIDByType(ctx, a, dispType)
 						if err != nil {
 							return err
 						}
