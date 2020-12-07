@@ -33,6 +33,24 @@
       "message": "LGTM++ assuming there\u0027s no other way to wait.  If it is waiting for the dismissing of some UI, maybe chrome/ui.WaitUntilGone might be better?",
       "revId": "ab1cdd50642b89dfdbce45b8fff446f8af29bd16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1972a369_a11e3706",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-07T16:01:42Z",
+      "side": 1,
+      "message": "We are waiting for the video control bar to show up. Unfortunately, I was not able to find a good way to wait. The button is there with non-zero opacity and ui.WaitUntilExist thinks it is there. The opacity animation is on its parent \u003cdiv\u003e. And the button is not clickable/tappable until the animation finishes. I did not dig hard on why.",
+      "parentUuid": "1f02034e_644c4c4f",
+      "revId": "ab1cdd50642b89dfdbce45b8fff446f8af29bd16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
