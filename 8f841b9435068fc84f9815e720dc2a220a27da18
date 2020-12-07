@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc59010d_17aa206d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-07T22:03:31Z",
+      "side": 1,
+      "message": "\u003e \"Uniqe\" is a possible misspelling of \"Unique\".\n\nnit: Please fix.",
+      "parentUuid": "0c240ae9_969ed2d0",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "8f841b9435068fc84f9815e720dc2a220a27da18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
