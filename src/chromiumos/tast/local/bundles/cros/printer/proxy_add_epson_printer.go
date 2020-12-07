@@ -29,9 +29,9 @@ func init() {
 
 const (
 	// epsonPPDFile is ppd.gz file to be registered via debugd.
-	proxyEpsonPPDFile = "printer_add_epson_printer_EpsonWF3620.ppd"
+	proxyEpsonPPDFile = "printer_EpsonWF3620.ppd"
 
-	proxyEpsonModPPD = "printer_add_epson_printer_EpsonGenericColorModel.ppd"
+	proxyEpsonModPPD = "printer_EpsonGenericColorModel.ppd"
 
 	// epsonToPrintFile is a PDF file to be printed.
 	proxyEpsonToPrintFile = "to_print.pdf"
