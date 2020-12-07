@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d7a177_85e53bf7",
+        "filename": "android/ArcSensorLatencyTest/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a70ef45d_d985cb45",
+      "range": {
+        "startLine": 1,
+        "startChar": 37,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a1137e3_4476d253",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-12-04T22:11:43Z",
       "side": 1,
       "message": "nit: this and below might be public final long",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22145a6c_11a13b53",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1137e3_4476d253",
       "range": {
         "startLine": 30,
         "startChar": 4,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef01d6c_066bb11d",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ecb3a1e_edad33c0",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "003191f0_8c5b7f81",
@@ -117,6 +189,30 @@
       "writtenOn": "2020-12-04T22:11:43Z",
       "side": 1,
       "message": "nit: Usually onStart/onPause seq:\n\nbase::onStart()\nstart local listeners\n\nstop local listeners\nbase::onPaus\n\n\nwould this sequence apply?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99068867_2f1e56eb",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "I don\u0027t think that would apply here, because we want to start listening only after the \"Start recording\" button is clicked.\nI added this because the Android docs recommend removing the listener when the app goes into pause, or it can cause unnecessary power consumption. This isn\u0027t stricly necessary for our usage though; the app is always in the foreground until the test is finished.",
+      "parentUuid": "003191f0_8c5b7f81",
       "range": {
         "startLine": 67,
         "startChar": 0,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43856979_928b64d0",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d11a09de_dd8fa21f",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 11
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63d0c442_db115ec3",
@@ -163,6 +283,30 @@
       "writtenOn": "2020-12-04T22:11:43Z",
       "side": 1,
       "message": "nit: final here , L114,120",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e36124d_b5881358",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63d0c442_db115ec3",
       "range": {
         "startLine": 112,
         "startChar": 8,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4eb66c6_fbe4b78f",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "Unfortunately it looks like the @MainThread/@UiThread annotations are in the AndroidX package (androidx.annotation) which don\u0027t seem to be included in the SDK that these apps are built with. I\u0027ve added comments on the relevant methods instead.",
+      "parentUuid": "2e6ea27c_9245265c",
+      "range": {
+        "startLine": 125,
+        "startChar": 16,
+        "endLine": 125,
+        "endChar": 30
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01b45def_bd3a31ab",
@@ -209,6 +377,30 @@
       "writtenOn": "2020-12-04T22:11:43Z",
       "side": 1,
       "message": "nit: check for final modificator for local variables here please.",
+      "range": {
+        "startLine": 133,
+        "startChar": 16,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a70e1db_959f9063",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01b45def_bd3a31ab",
       "range": {
         "startLine": 133,
         "startChar": 16,
@@ -242,6 +434,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cde371a_e5bac2a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sensor_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa819f96_dd5f2abd",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4648452e_7584ff3d",
@@ -265,6 +481,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c501f8dd_f0e6570a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sensor_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4648452e_7584ff3d",
+      "range": {
+        "startLine": 140,
+        "startChar": 103,
+        "endLine": 140,
+        "endChar": 110
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8600c682_d2a8efe3",
@@ -278,6 +518,30 @@
       "writtenOn": "2020-12-05T00:34:22Z",
       "side": 1,
       "message": "ditto above",
+      "range": {
+        "startLine": 146,
+        "startChar": 25,
+        "endLine": 146,
+        "endChar": 32
+      },
+      "revId": "35249edad6e0c7561620d718e4c0c82cd4a34a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1494d4b4_08932eba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sensor_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-07T21:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8600c682_d2a8efe3",
       "range": {
         "startLine": 146,
         "startChar": 25,
