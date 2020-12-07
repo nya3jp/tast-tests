@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Option is for supplying filter options
+// Option is for supplying filter options.
 type Option string
 
 // Params struct used by all ipp print tests for parameterized tests.
@@ -25,17 +25,27 @@ type Params struct {
 	Options      []Option // Options to be passed to the filter to change output.
 }
 
-// WithJobPassword properly formats a job-password option
+// Collate enables collation.
+func Collate() Option {
+	return Option("multiple-document-handling=separate-documents-collated-copies")
+}
+
+// WithCopies properly formats a copies option.
+func WithCopies(n int) Option {
+	return Option(fmt.Sprintf("copies=%d", n))
+}
+
+// WithJobPassword properly formats a job-password option.
 func WithJobPassword(pass string) Option {
 	return Option(fmt.Sprintf("job-password=%s", pass))
 }
 
-// WithResolution properly formats a printer-resolution option
+// WithResolution properly formats a printer-resolution option.
 func WithResolution(res string) Option {
 	return Option(fmt.Sprintf("printer-resolution=%s", res))
 }
 
-// optionsToString turns an array of options into a space-delimited string
+// optionsToString turns an array of options into a space-delimited string.
 func optionsToString(options []Option) string {
 	var arr []string
 	for _, o := range options {
