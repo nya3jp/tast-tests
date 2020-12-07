@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2162c35_8f0a70cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-12-07T20:20:20Z",
+      "side": 1,
+      "message": "In the long run, I would still prefer that we use ash.Window.CaptionHeight to get the caption height instead of hard-coding the 32 dp value. But since this is used in the arc code where the Chrome test connection is not available, LGTM.\n\nI\u0027ll give Ricardo the final approval.\n\nPlease fix the merge conflict.",
+      "revId": "39c4f0888bf465a9c050e90d6179a624f579bc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41822c18_1cc6a976",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-12-07T20:20:20Z",
+      "side": 1,
+      "message": "ChromeDP",
+      "range": {
+        "startLine": 24,
+        "startChar": 52,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "39c4f0888bf465a9c050e90d6179a624f579bc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df8ec7be_7d044f4c",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-12-07T20:20:20Z",
+      "side": 1,
+      "message": "nit: is defined in",
+      "range": {
+        "startLine": 24,
+        "startChar": 61,
+        "endLine": 24,
+        "endChar": 71
+      },
+      "revId": "39c4f0888bf465a9c050e90d6179a624f579bc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ff066c_3845c840",
+        "filename": "src/chromiumos/tast/local/arc/display_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-12-07T20:20:20Z",
+      "side": 1,
+      "message": "nit: remove whitespaces here and below",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 3
+      },
+      "revId": "39c4f0888bf465a9c050e90d6179a624f579bc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
