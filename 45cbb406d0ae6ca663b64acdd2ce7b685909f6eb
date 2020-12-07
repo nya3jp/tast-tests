@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ffda06_7f787bb4",
+        "filename": "src/chromiumos/tast/local/power/cpuidle_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-07T02:06:06Z",
+      "side": 1,
+      "message": "better to compile the regexp outside the loop.\n\ntypically you use a global variable to hold it:\n\nvar stateRegexp \u003d regexp.MustCompile(`^state\\d+$`)",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 49,
+        "endChar": 51
+      },
+      "revId": "45cbb406d0ae6ca663b64acdd2ce7b685909f6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
