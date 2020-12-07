@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d103e330_b7d07ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/regdb/regdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-07T20:07:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "089d79fc_eca519e9",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "e69e3cb0d39ad2eeda5a32b8bba7069728d6bff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0722998b_facc7bd8",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff17e3c_6fdf4edb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/regdb/regdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-07T20:07:26Z",
+      "side": 1,
+      "message": "Good catch. I kinda struggled on which way I wanted to write this, and this suggests I\u0027d be better off just validating each byte before doing the string() conversion. PTAL at version 3.",
+      "parentUuid": "0722998b_facc7bd8",
+      "revId": "e69e3cb0d39ad2eeda5a32b8bba7069728d6bff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be84d1b8_cce9f2b2",
@@ -71,6 +113,24 @@
       "writtenOn": "2020-12-07T06:18:37Z",
       "side": 1,
       "message": "nit: Not sure if we should also fail when db.Countries is shorted than countries.\n\nIf so, maybe we can:\n  var dbCountries []string\n  for _, c :\u003d range db.Countries {\n    dbCountries \u003d append(dbCountries, c.Alpha)\n  }\n  if diff :\u003d cmp.Diff(dbCountries, countries); diff !\u003d \"\" {\n    t.Errorf(\"Countries do not match, diff: %s\", diff)\n  }\n\nWDYT?",
+      "revId": "e69e3cb0d39ad2eeda5a32b8bba7069728d6bff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d352415_1d0678b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/regdb/regdb_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-07T20:07:26Z",
+      "side": 1,
+      "message": "Yeah, definitely should check both shorter and longer. Don\u0027t know why I missed that...\n\nNice tip, done.",
+      "parentUuid": "be84d1b8_cce9f2b2",
       "revId": "e69e3cb0d39ad2eeda5a32b8bba7069728d6bff5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
