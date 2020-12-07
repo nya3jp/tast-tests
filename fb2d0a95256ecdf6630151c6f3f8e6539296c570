@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9d36dd8_36ed4fe8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-07T09:27:25Z",
+      "side": 1,
+      "message": "This was written using testing.Poll and was both more complicated and leaky in the bug handling in our testing. We need an uprev of cdp to make it work.",
+      "parentUuid": "99ee695c_98c23fd6",
+      "range": {
+        "startLine": 655,
+        "startChar": 1,
+        "endLine": 657,
+        "endChar": 6
+      },
+      "revId": "fb2d0a95256ecdf6630151c6f3f8e6539296c570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "591a6f4d_2c61d67d",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-04T22:25:36Z",
       "side": 1,
       "message": "What if the node appears for a second and then disappears again and never comes back, I am not sure if that should be a failure of this function. When things move around the screen, for example, it is not uncommon for a node to stop pop in and out of the UI tree.\n\nThis function feels like it should more just be a sleep for x and then check at the end if the node exists or not. I feel like it is more likely to belong in an individual test than here since we don\u0027t want to promote essentially sleeping.",
+      "range": {
+        "startLine": 658,
+        "startChar": 2,
+        "endLine": 660,
+        "endChar": 3
+      },
+      "revId": "fb2d0a95256ecdf6630151c6f3f8e6539296c570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c531dbf8_0b1b8d50",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-07T09:27:25Z",
+      "side": 1,
+      "message": "This will fail early if the node does appear. We can also move the function to the policy package. Unfortunately there is no way around sleeping for those tests.",
+      "parentUuid": "591a6f4d_2c61d67d",
       "range": {
         "startLine": 658,
         "startChar": 2,
