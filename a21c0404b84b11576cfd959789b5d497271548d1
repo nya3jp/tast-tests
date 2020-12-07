@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cdc254_6af30e79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-07T18:47:43Z",
+      "side": 1,
+      "message": "LGTM but let\u0027s wait for benreich@ response. ",
+      "revId": "a21c0404b84b11576cfd959789b5d497271548d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
