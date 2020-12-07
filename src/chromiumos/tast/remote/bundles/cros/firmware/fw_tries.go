@@ -76,10 +76,10 @@ func FWTries(ctx context.Context, s *testing.State) {
 		if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionB, fwCommon.RWSectionUnspecified, 0); err != nil {
 			s.Fatal("After rebooting from B/B/1: ", err)
 		}
-	} else if nextFW == fwCommon.RWSectionA && tryCount == 0 {
-		s.Log("DUT rebooted twice. currentFW/nextFW/tryCount: B/A/0")
+	} else if tryCount == 0 {
+		s.Logf("DUT rebooted twice. currentFW/nextFW/tryCount: B/%s/0", nextFW)
 	} else {
-		s.Fatalf("After setting FWTries to B/2 then rebooting: unexpected nextFW/tryCount: got %s/%d; want B/1 or A/0", nextFW, tryCount)
+		s.Fatalf("After setting FWTries to B/2 then rebooting: unexpected nextFW/tryCount: got %s/%d; want B/1 or {either}/0", nextFW, tryCount)
 	}
 
 	// Next reboot should return to Firmware A.
