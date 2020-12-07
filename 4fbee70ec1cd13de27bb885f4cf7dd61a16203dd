@@ -16,6 +16,23 @@
       "message": "lgtm\n",
       "revId": "4fbee70ec1cd13de27bb885f4cf7dd61a16203dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3855e7f5_3cc9b7b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-07T22:38:30Z",
+      "side": 1,
+      "message": "LGTM.\n\nIn the long term, I guess it\u0027s better to adopt hardware dependencies, as it can cover various types of cameras on the device.",
+      "revId": "4fbee70ec1cd13de27bb885f4cf7dd61a16203dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
