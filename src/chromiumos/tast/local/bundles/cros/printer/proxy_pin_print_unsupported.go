@@ -7,7 +7,7 @@ package printer
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/printer/proxyippprint"
+	"chromiumos/tast/local/bundles/cros/printer/ippprint"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -30,7 +30,7 @@ func init() {
 		Pre:  chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "no_pin",
-			Val: &proxyippprint.Params{
+			Val: &ippprint.Params{
 				PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_unsupported_golden.ps",
@@ -38,11 +38,11 @@ func init() {
 			ExtraData: []string{},
 		}, {
 			Name: "pin",
-			Val: &proxyippprint.Params{
+			Val: &ippprint.Params{
 				PpdFile:      "printer_unsupported_GenericPostScript.ppd.gz",
 				PrintFile:    "to_print.pdf",
 				ExpectedFile: "printer_pin_print_unsupported_golden.ps",
-				Options:      []proxyippprint.Option{proxyippprint.WithJobPassword("1234")},
+				Options:      []ippprint.Option{ippprint.WithJobPassword("1234")},
 			},
 			ExtraData: []string{},
 		}},
@@ -50,7 +50,7 @@ func init() {
 }
 
 func ProxyPinPrintUnsupported(ctx context.Context, s *testing.State) {
-	testOpt := s.Param().(*proxyippprint.Params)
+	testOpt := s.Param().(*ippprint.Params)
 
-	proxyippprint.Run(ctx, s, testOpt)
+	ippprint.ProxyRun(ctx, s, testOpt)
 }
