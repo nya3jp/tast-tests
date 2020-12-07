@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3762d26_301e7732",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-07T06:18:37Z",
+      "side": 1,
+      "message": "Only minor comments.",
+      "revId": "e69e3cb0d39ad2eeda5a32b8bba7069728d6bff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089d79fc_eca519e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/regdb/regdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-07T06:18:37Z",
+      "side": 1,
+      "message": "nit: perhaps DB? as it is abbrev. of database, and according to https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "e69e3cb0d39ad2eeda5a32b8bba7069728d6bff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0722998b_facc7bd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/regdb/regdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-07T06:18:37Z",
+      "side": 1,
+      "message": "range-ing string is kind of tricky. Range will try to decode it as UTF-8 string and looping the runes instead of bytes, while len still returns length in bytes. As a result, something like \"Ö\" (0xD6), a 2 bytes UTF-8 rune, will pass the checking here. (example: https://play.golang.org/p/ifhAg4v_TZY) But, IIUC, alpha2 country should be two ascii letters?\n\nI guess one quick fix might be counting length in the loop instead of len(str) in line78.\n\nAbout range-ing string: https://blog.golang.org/strings (\"Range loops\" section)\nAbout len(string): https://golang.org/ref/spec#Length_and_capacity",
+      "revId": "e69e3cb0d39ad2eeda5a32b8bba7069728d6bff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be84d1b8_cce9f2b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/regdb/regdb_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-07T06:18:37Z",
+      "side": 1,
+      "message": "nit: Not sure if we should also fail when db.Countries is shorted than countries.\n\nIf so, maybe we can:\n  var dbCountries []string\n  for _, c :\u003d range db.Countries {\n    dbCountries \u003d append(dbCountries, c.Alpha)\n  }\n  if diff :\u003d cmp.Diff(dbCountries, countries); diff !\u003d \"\" {\n    t.Errorf(\"Countries do not match, diff: %s\", diff)\n  }\n\nWDYT?",
+      "revId": "e69e3cb0d39ad2eeda5a32b8bba7069728d6bff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
