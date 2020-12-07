@@ -68,6 +68,24 @@
       "parentUuid": "de99889d_663e861e",
       "revId": "bcaa9fa3563526e94cf50c51782032dee4a81dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f10da8_6450ee52",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-12-07T02:26:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b341d12d_ca2a0a63",
+      "revId": "bcaa9fa3563526e94cf50c51782032dee4a81dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
