@@ -351,6 +351,11 @@ func LoadSigninProfileExtension(key string) Option {
 	return func(c *Chrome) { c.signinExtKey = key }
 }
 
+// LogPath returns an Option that specify the alternative output path for saving logs.
+func LogPath(path string) Option {
+	return func(c *Chrome) { c.altLogPath = path }
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
@@ -394,6 +399,7 @@ type Chrome struct {
 
 	watcher       *browserWatcher   // tries to catch Chrome restarts
 	logAggregator *jslog.Aggregator // collects JS console output
+	altLogPath    string            // alternative log output path
 }
 
 // User returns the username that was used to log in to Chrome.
@@ -438,6 +444,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		breakpadTestMode:       true,
 		tracingStarted:         false,
 		logAggregator:          jslog.NewAggregator(),
+		altLogPath:             "",
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -606,9 +613,16 @@ func (c *Chrome) Close(ctx context.Context) error {
 		firstErr = c.watcher.close()
 	}
 
-	if dir, ok := testing.ContextOutDir(ctx); ok {
-		c.logAggregator.Save(filepath.Join(dir, "jslog.txt"))
+	logDir := c.altLogPath
+	if len(logDir) == 0 {
+		if dir, ok := testing.ContextOutDir(ctx); ok {
+			logDir = dir
+		}
 	}
+	if len(logDir) != 0 {
+		c.logAggregator.Save(filepath.Join(logDir, "jslog.txt"))
+	}
+
 	c.logAggregator.Close()
 
 	// As the chronos home directory is cleared during chrome.New(), we
