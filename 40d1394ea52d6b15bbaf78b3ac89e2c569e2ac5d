@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ff3102_4bb02959",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-07T07:12:21Z",
+      "side": 1,
+      "message": "+Judy: Maybe you could suggest the appropriate Attrs for this test.",
+      "revId": "40d1394ea52d6b15bbaf78b3ac89e2c569e2ac5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

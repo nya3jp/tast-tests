@@ -205,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ce5a03_cce1779d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-07T07:12:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06817554_b801a3cd",
+      "revId": "a7f9dcde04595972ff76b8ab92e013f4546a0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea86676f_30a24837",

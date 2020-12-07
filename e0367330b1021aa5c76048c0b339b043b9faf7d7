@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3748553a_067f16eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-07T07:12:21Z",
+      "side": 1,
+      "message": "It is supposed to be run locally in the current form. But I\u0027m not sure what attrs I should specify here as go/tast-attr doesn\u0027t seem to list my usecase.",
+      "parentUuid": "41eff7c9_ee893468",
+      "revId": "e0367330b1021aa5c76048c0b339b043b9faf7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08b952e4_02b74856",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/screen_latency.go",
         "patchSetId": 3
