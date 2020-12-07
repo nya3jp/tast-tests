@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef82b66_6ebb157b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-07T07:08:47Z",
+      "side": 1,
+      "message": "Timing issue.\np.conn is nil at beginning, so L58 check will pass. However, because run() runs in another goroutine, it will be assigned at L44, after the check. Could you ensure that won\u0027t happen?\n\nnit/style: p.conn.Close() Dereference should be automatically inserted by compiler.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "af43bbdd450492afce375de74b5ee9c6f4e396da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d0efa15_e955f787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-07T07:08:47Z",
+      "side": 1,
+      "message": "instead, could you add the buffer on channel creation, so that writing to the channel at L49 should not be blocked.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 7
+      },
+      "revId": "af43bbdd450492afce375de74b5ee9c6f4e396da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
