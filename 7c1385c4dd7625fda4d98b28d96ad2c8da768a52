@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b75e91_01bf9800",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-07T09:15:26Z",
+      "side": 1,
+      "message": "Does it make sense to add a TODO to remove this check once pstore is enabled on ARM?",
+      "revId": "7c1385c4dd7625fda4d98b28d96ad2c8da768a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
