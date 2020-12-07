@@ -27,9 +27,9 @@ func init() {
 
 const (
 	// epsonPPDFile is ppd.gz file to be registered via debugd.
-	epsonPPDFile = "printer_add_epson_printer_EpsonWF3620.ppd"
+	epsonPPDFile = "printer_EpsonWF3620.ppd"
 
-	epsonModPPD = "printer_add_epson_printer_EpsonGenericColorModel.ppd"
+	epsonModPPD = "printer_EpsonGenericColorModel.ppd"
 
 	// epsonToPrintFile is a PDF file to be printed.
 	epsonToPrintFile = "to_print.pdf"
