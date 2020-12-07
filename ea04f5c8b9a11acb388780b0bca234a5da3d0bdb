@@ -16,6 +16,24 @@
       "message": "I\u0027m still seeing (unexcused) flakes on some of these:\n\n* printer.AddDymoPrinter\n* printer.AddEpsonPrinter\n* printer.ProxyResolutionLexmark.1200dpi\n* printer.ResolutionLexmark.2400x600dpi",
       "revId": "ea04f5c8b9a11acb388780b0bca234a5da3d0bdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48717515_165f46a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-07T22:34:18Z",
+      "side": 1,
+      "message": "The flakes seem fairly uncommon (\u003c1%); hopefully crrev.com/c/2573378 should fix the ones failing with \"Fake printer didn\u0027t receive a request: ReadRequest timed out: context deadline exceeded\" (Unable to write print data: Broken pipe).",
+      "parentUuid": "c4cf603b_49ad645c",
+      "revId": "ea04f5c8b9a11acb388780b0bca234a5da3d0bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
