@@ -308,12 +308,14 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 		return nil, errors.Wrapf(err, "failed to get crash directory for user [%s]", opts.Username)
 	}
 	if !opts.Consent {
-		files, err := ioutil.ReadDir(crashDir)
+		filesAndDirs, err := ioutil.ReadDir(crashDir)
 		if err != nil && !os.IsNotExist(err) {
 			return nil, err
 		}
-		if len(files) != 0 {
-			return nil, errors.Wrapf(err, "crash directory %s was not empty", crashDir)
+		for _, f := range filesAndDirs {
+			if !f.IsDir() {
+				return nil, errors.Wrapf(err, "crash directory %s was not empty", crashDir)
+			}
 		}
 		return result, err
 	}
