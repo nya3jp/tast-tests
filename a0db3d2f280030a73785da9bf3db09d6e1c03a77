@@ -231,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "811f4970_bde6ed0b",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-07T19:35:12Z",
+      "side": 1,
+      "message": "Oh, I misunderstood your first comment.\nUnless we receive entirely rubbish data, numSamples \u003e len(samples) is impossible (as per comment in line 211). \nWe can receive samples consisting of TCP data (which contains only throughput) or UDP data (only transaction rate).\nWe can receive mix of TCP and UDP samples, but in no case a single sample would consist of both  throughput and transaction rate - it\u0027s guaranteed by parsing.",
+      "parentUuid": "e5f5d706_5d403c45",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64ef9dc1_f9a5c073",
         "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
         "patchSetId": 10
@@ -361,6 +379,30 @@
       "side": 1,
       "message": "Self answer: this is called Coefficient of Variation (CV) [1], a standardized measure of dispersion of a probability distribution or frequency distribution.\n\nHowever, you cannot compare two different measurements / units\u0027 CV. See the example of different CV for the same temperature reading using Celsius and Fahrenheit unit [2].\n\nIn sum, calculating CV is good, but different measurements (throughput, errors and transaction rate) should have different thresholds.\n\n[1] https://en.wikipedia.org/wiki/Coefficient_of_variation\n[2] https://en.wikipedia.org/wiki/Coefficient_of_variation#Examples_of_misuse",
       "parentUuid": "89ab0f24_fbe9915a",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "738b45c6_d096377d",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-07T19:35:12Z",
+      "side": 1,
+      "message": "I agree. Now that I fixed counting UDP errors, the outcome has been more severe, especially when there is only 1 error in sample group (this constitutes rather high deviation) - then we usually collect 10 samples instead of just 3.\nI decided to remove Errors from this comparison, as I would not be able to set a reasonable fraction target for this measurement).\nThe Throughput and Transaction Rate is comparable, so I left them as they are.\n\nThis algorithm was ported from the original autotest, I\u0027d prefer to keep parity with the original here as much as possible. \nOr, we may open bug to fix that in both autotest and tast at the same time. WDYT?",
+      "parentUuid": "d7ca5973_bd720e28",
       "range": {
         "startLine": 257,
         "startChar": 0,
@@ -726,6 +768,30 @@
       "side": 1,
       "message": "I know it looks weird to treat a verb as a sentence\u0027s subject. However, this is enforced by \"Go Code Review Comments\":\n\"Comments should begin with the name of the thing being described and end in a period.\"\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
       "parentUuid": "8e63404d_08961434",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e090a88_8d0f5d35",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-07T19:35:12Z",
+      "side": 1,
+      "message": "I don\u0027t see how it fails the requirement, but I yield. It\u0027s been discussed too long.",
+      "parentUuid": "d3464041_009fe964",
       "range": {
         "startLine": 60,
         "startChar": 7,
