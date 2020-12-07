@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "722d3a08_f8466ed7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-07T22:01:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9d36dd8_36ed4fe8",
+      "range": {
+        "startLine": 655,
+        "startChar": 1,
+        "endLine": 657,
+        "endChar": 6
+      },
+      "revId": "fb2d0a95256ecdf6630151c6f3f8e6539296c570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "591a6f4d_2c61d67d",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "This will fail early if the node does appear. We can also move the function to the policy package. Unfortunately there is no way around sleeping for those tests.",
       "parentUuid": "591a6f4d_2c61d67d",
+      "range": {
+        "startLine": 658,
+        "startChar": 2,
+        "endLine": 660,
+        "endChar": 3
+      },
+      "revId": "fb2d0a95256ecdf6630151c6f3f8e6539296c570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5901373_eb4efaf0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-07T22:01:33Z",
+      "side": 1,
+      "message": "I think that may be better, but if it stays here, we should just make sure this doesn\u0027t change functionality in unexpected ways for someone else. I\u0027m mostly worried about my comment below and how this function is used by others. Maybe change the may functions name and description assuming that you are the only consumers. If you aren\u0027t maybe just call this directly in your tests(or a wrapper that takes a bool) and leave WaitUntilExistsStatus as it is.",
+      "parentUuid": "c531dbf8_0b1b8d50",
       "range": {
         "startLine": 658,
         "startChar": 2,
