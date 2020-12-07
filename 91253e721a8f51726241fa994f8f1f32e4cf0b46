@@ -93,6 +93,30 @@
       },
       "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81ae773_e13fd72c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-07T02:26:48Z",
+      "side": 1,
+      "message": "Detecting specific errors from gRPC is difficult as the error will lose their type and the \"wrap\" structure after marshaling. i.e. caller cannot use errors.Is. I don\u0027t have a better solution than strings.Contains for the ExpectShillProperty usage here.\n\nOne alternative here is to create another watcher gRPC with a stop function (so it\u0027ll be a bi-directional streaming gRPC). This has a few benefits:\n  1. Caller can actively stop the watcher instead of waiting for the timeout. Also, we might be able to separate the \"no signal\" from other errors. e.g. return empty array + no error.\n  2. dbus signal and gRPC stream are both async, it is possible that ExpectShillProperty might miss a signal due to racing. With stop function, we can send out a dummy dbus signal and wait for that as boundary. (possible solution to Brian\u0027s \"check buffer flushed\" question)\n\nHowever, this might be quite much work, so I\u0027m not sure if it worth the effort/complexity.\n\n+Arowa as I remember we discussed a similar gRPC idea before. Maybe he had some old PoC that can be used here.",
+      "parentUuid": "9c5469ab_bedf58af",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
