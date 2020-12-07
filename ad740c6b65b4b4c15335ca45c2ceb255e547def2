@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae93109_601a7603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-07T03:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a76d4254_27ac8f81",
+      "range": {
+        "startLine": 29,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "ad740c6b65b4b4c15335ca45c2ceb255e547def2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74a9a009_2f9edf91",
