@@ -667,24 +667,26 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 			handled: true,
 			density: true,
 		}}},
-		{resizeable, handling, ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
-			handled:            true,
-			density:            true,
-			screenSize:         true,
-			smallestScreenSize: true,
-			orientation:        true,
-		}}},
+		// TODO(b/161859617): Drag maximized window is not allowed on ARC R currently.
+		// {resizeable, handling, ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
+		// 	handled:            true,
+		// 	density:            true,
+		// 	screenSize:         true,
+		// 	smallestScreenSize: true,
+		// 	orientation:        true,
+		// }}},
 		{resizeable, relaunching, ash.WindowStateNormal, shouldMove, []configChangeEvent{{
 			handled: false,
 			density: true,
 		}}},
-		{resizeable, relaunching, ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
-			handled:            false,
-			density:            true,
-			screenSize:         true,
-			smallestScreenSize: true,
-			orientation:        true,
-		}}},
+		// TODO(b/161859617): Drag maximized window is not allowed on ARC R currently.
+		// {resizeable, relaunching, ash.WindowStateMaximized, shouldMove, []configChangeEvent{{
+		// 	handled:            false,
+		// 	density:            true,
+		// 	screenSize:         true,
+		// 	smallestScreenSize: true,
+		// 	orientation:        true,
+		// }}},
 		{nonResizeable, handling, ash.WindowStateMaximized, shouldNotMove, nil},
 		{sizeCompat, handling, ash.WindowStateMaximized, shouldNotMove, nil},
 	} {
