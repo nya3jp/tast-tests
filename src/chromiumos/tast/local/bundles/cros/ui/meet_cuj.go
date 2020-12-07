@@ -28,6 +28,7 @@ import (
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
 )
@@ -49,6 +50,7 @@ type meetTest struct {
 	docs    bool           // Whether it is running with a Google Docs window.
 	split   bool           // Whether it is in split screen mode. It can not be true if docs is false.
 	cam     bool           // Whether the camera is on or not.
+	power   bool           // Whether to collect power metrics.
 }
 
 func init() {
@@ -58,7 +60,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
-		Timeout:      4 * time.Minute,
+		Timeout:      7 * time.Minute,
 		Pre:          cuj.LoggedInToCUJUser(),
 		Vars: []string{
 			"mute",
@@ -77,6 +79,7 @@ func init() {
 				docs:    false,
 				split:   false,
 				cam:     true,
+				power:   false,
 			},
 		}, {
 			// Worst case.
@@ -88,6 +91,7 @@ func init() {
 				docs:    true,
 				split:   true,
 				cam:     true,
+				power:   false,
 			},
 		}, {
 			// Big meeting.
@@ -99,6 +103,7 @@ func init() {
 				docs:    false,
 				split:   false,
 				cam:     true,
+				power:   false,
 			},
 		}, {
 			// Big meeting with notes.
@@ -110,6 +115,31 @@ func init() {
 				docs:    true,
 				split:   false,
 				cam:     true,
+				power:   false,
+			},
+		}, {
+			// 4p power test.
+			Name: "power_4p",
+			Val: meetTest{
+				num:     4,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   false,
+				cam:     true,
+				power:   true,
+			},
+		}, {
+			// 16p power test.
+			Name: "power_16p",
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				present: false,
+				docs:    true,
+				split:   false,
+				cam:     true,
+				power:   true,
 			},
 		}},
 	})
@@ -140,7 +170,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		botDuration = 2 * time.Minute
 		docsURL     = "https://docs.google.com/document/d/1qREN9w1WgjgdGYBT_eEtE6T21ErlW_4nQoBJVhrR1S0/edit"
 		notes       = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-		meetTimeout = 30 * time.Second
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
@@ -151,10 +180,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	meet := s.Param().(meetTest)
+	meetTimeout := 30 * time.Second
 
-	// Shorten context a bit to allow for cleanup.
+	// Shorten context to allow for cleanup. Reserve one minute in case of power
+	// test.
 	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
@@ -209,6 +240,38 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			screenRecorder.Release(ctx)
 		}()
 		screenRecorder.Start(ctx)
+	}
+
+	var pmTimeline *perf.Timeline
+	if meet.power {
+		meetTimeout = 3 * time.Minute
+
+		sup, cleanup := setup.New("meet call power")
+		sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+			Wifi:       setup.DisableWifiInterfaces,
+			Battery:    setup.ForceBatteryDischarge,
+			NightLight: setup.DisableNightLight}))
+		defer func() {
+			if err := cleanup(closeCtx); err != nil {
+				s.Error("Cleanup meet power setup failed: ", err)
+			}
+		}()
+
+		var err error
+		const tPowerSnapshotDuration = 5 * time.Second
+		pmTimeline, err = perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(tPowerSnapshotDuration), perf.Prefix("TPS."))
+		if err != nil {
+			s.Fatal("Failed to create power perf.Timeline: ", err)
+		}
+		if err = pmTimeline.Start(ctx); err != nil {
+			s.Fatal("Failed to start power perf.Timeline: ", err)
+		}
+		if err = pmTimeline.StartRecording(ctx); err != nil {
+			s.Fatal("Failed to start recording power perf.Timeline: ", err)
+		}
+		defer pmTimeline.StopRecording()
+
+		s.Log("Started power perf.Timeline")
 	}
 
 	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
@@ -595,6 +658,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}
+
+	if pmTimeline != nil {
+		vs, err := pmTimeline.StopRecording()
+		if err != nil {
+			s.Fatal("Failed to stop power perf.Timeline: ", err)
+		}
+		pv.Merge(vs)
+	}
+
 	if pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
 	}
