@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7a39c2_b3348032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-07T21:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ef82b66_6ebb157b",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "af43bbdd450492afce375de74b5ee9c6f4e396da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d0efa15_e955f787",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-07T07:08:47Z",
       "side": 1,
       "message": "instead, could you add the buffer on channel creation, so that writing to the channel at L49 should not be blocked.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 7
+      },
+      "revId": "af43bbdd450492afce375de74b5ee9c6f4e396da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cbfdbf8_5812d4aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-07T21:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d0efa15_e955f787",
       "range": {
         "startLine": 61,
         "startChar": 1,
