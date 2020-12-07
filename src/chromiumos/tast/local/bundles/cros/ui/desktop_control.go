@@ -72,6 +72,21 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close the connections: ", err)
 	}
 
+	// This test assumes shelf visibility, setting the shelf behavior explicitly.
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to find the primary display info: ", err)
+	}
+	shelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, info.ID)
+	if err != nil {
+		s.Fatal("Failed to get the shelf behavior for display ID ", info.ID)
+	}
+	if shelfBehavior != ash.ShelfBehaviorNeverAutoHide {
+		if err := ash.SetShelfBehavior(ctx, tconn, info.ID, ash.ShelfBehaviorNeverAutoHide); err != nil {
+			s.Fatal("Failed to sete the shelf behavior to 'never auto-hide' for display ID ", info.ID)
+		}
+	}
+
 	// Turn all windows into normal state.
 	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
 		return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal)
@@ -133,13 +148,6 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	// - drag up from the bottom of the screen to open the launcher
 	// - drag down from the top of the screen to close the launcher
 	s.Log("Open/close the launcher by drag")
-	// Assumes that there's only the chrome icon in the shelf, which is the
-	// default status of chrome.LoggedIn precondition. Just use 1/4 of the screen
-	// width can avoid any icons on the shelf and safely drag the lau5ncher.
-	info, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the primary display info")
-	}
 	dragStart := coords.NewPoint(info.Bounds.Left+info.Bounds.Width/4, info.Bounds.Bottom()-1)
 	dragEnd := coords.NewPoint(dragStart.X, info.Bounds.Top+1)
 	r.RunMultiple(ctx, s, "launcher-drag", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
@@ -173,11 +181,11 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 
 		// Seems that the quick settings open/close don't have metrics, but in case
 		// that's added in the future, it is noted here.
-		statusArea, err := ui.Find(ctx, tconn, ui.FindParams{ClassName: "ash/StatusAreaWidgetDelegate"})
+		statusArea, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "ash/StatusAreaWidgetDelegate"}, 10*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the status area")
 		}
-		if err := statusArea.LeftClick(ctx); err != nil {
+		if err := statusArea.StableLeftClick(ctx, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed to click the status area")
 		}
 		defer statusArea.Release(releaseCtx)
