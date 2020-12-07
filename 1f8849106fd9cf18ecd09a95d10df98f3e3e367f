@@ -22,6 +22,30 @@
       },
       "revId": "1f8849106fd9cf18ecd09a95d10df98f3e3e367f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6711a08_033c0152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-07T18:45:13Z",
+      "side": 1,
+      "message": "Makes sense, done.",
+      "parentUuid": "b38c1dbe_291d21d6",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 23
+      },
+      "revId": "1f8849106fd9cf18ecd09a95d10df98f3e3e367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
