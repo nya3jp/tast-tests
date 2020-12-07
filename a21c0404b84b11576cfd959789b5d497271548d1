@@ -16,6 +16,24 @@
       "message": "LGTM but let\u0027s wait for benreich@ response. ",
       "revId": "a21c0404b84b11576cfd959789b5d497271548d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9993bb9_89e65c3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-07T21:53:57Z",
+      "side": 1,
+      "message": "Suggest we disable in chromium cq as this test is stable in chromeos cq. Will investigate flakiness and attempt to re-enable.\n\nCL to disable: https://chromium-review.googlesource.com/c/chromium/src/+/2575522",
+      "parentUuid": "60cdc254_6af30e79",
+      "revId": "a21c0404b84b11576cfd959789b5d497271548d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
