@@ -8,8 +8,6 @@ import (
 	"context"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
@@ -83,28 +81,12 @@ func PersistenceWifiSansBluetooth(ctx context.Context, s *testing.State) {
 		}
 		defer r.Close(ctx)
 
-		// Assert Bluetooth is up.
+		// Disable Bluetooth and assert Bluetooth is down.
 		btClient := network.NewBluetoothServiceClient(r.Conn)
-		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
-			s.Fatal("Could not get Bluetooth status: ", err)
-		} else if !response.Powered {
-			s.Fatal("Bluetooth is off, expected to be on ")
-		}
-		if _, err := btClient.ValidateBluetoothFunctional(ctx, &empty.Empty{}); err != nil {
-			s.Fatal("Could not get validate Bluetooth status: ", err)
-		}
-
-		// Disable Bluetooth.
 		if _, err := btClient.SetBluetoothPowered(ctx, &network.SetBluetoothPoweredRequest{Powered: false, Credentials: credKey}); err != nil {
 			s.Fatal("Could not disable Bluetooth: ", err)
 		}
 
-		// Assert Bluetooth is down.
-		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
-			s.Fatal("Could not get Bluetooth status: ", err)
-		} else if response.Powered {
-			s.Fatal("Bluetooth is on, expected to be off ")
-		}
 	}(ctx)
 
 	// Reboot the DUT.
@@ -124,11 +106,11 @@ func PersistenceWifiSansBluetooth(ctx context.Context, s *testing.State) {
 	btClient := network.NewBluetoothServiceClient(r.Conn)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if response, err := btClient.GetBluetoothPowered(ctx, &network.GetBluetoothPoweredRequest{Credentials: credKey}); err != nil {
-			return errors.Wrap(err, "could not get Bluetooth status")
+			return errors.Wrap(err, "could not get Bluetooth status after boot")
 		} else if response.Persistent {
 			return testing.PollBreak(errors.Wrap(err, "Bluetooth is set to start on boot, should be off on boot"))
 		} else if response.Powered {
-			return errors.New("Bluetooth is on, expected to be off")
+			return errors.New("Bluetooth is on, expected to be off after boot")
 		}
 		return nil
 	}, &testing.PollOptions{
