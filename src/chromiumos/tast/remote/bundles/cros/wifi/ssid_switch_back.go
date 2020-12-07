@@ -143,14 +143,14 @@ func SSIDSwitchBack(ctx context.Context, s *testing.State) {
 	// a more precise timeout. (Otherwise, timeout will include the time used
 	// by ConfigureAP.)
 	s.Log("Waiting for DUT to auto reconnect")
-	ctx, cancel = context.WithTimeout(ctx, 30*time.Second)
+	waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 	props := []*wificell.ShillProperty{{
 		Property:       shillconst.ServicePropertyIsConnected,
 		ExpectedValues: []interface{}{true},
 		Method:         network.ExpectShillPropertyRequest_CHECK_WAIT,
 	}}
-	wait, err := tf.ExpectShillProperty(ctx, servicePath, props, nil)
+	wait, err := tf.ExpectShillProperty(waitCtx, servicePath, props, nil)
 	if err != nil {
 		s.Fatal("Failed to watch service state: ", err)
 	}
