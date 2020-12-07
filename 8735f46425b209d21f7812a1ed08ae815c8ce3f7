@@ -121,6 +121,24 @@
       "parentUuid": "a4cb1dfd_a963446d",
       "revId": "8735f46425b209d21f7812a1ed08ae815c8ce3f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5191a1ef_91812da4",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-07T13:34:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7eb3481f_d4780b54",
+      "revId": "8735f46425b209d21f7812a1ed08ae815c8ce3f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
