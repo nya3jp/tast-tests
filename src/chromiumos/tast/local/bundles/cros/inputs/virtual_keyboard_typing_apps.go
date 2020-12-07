@@ -47,7 +47,7 @@ func init() {
 
 func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 	// typingKeys indicates a key series that tapped on virtual keyboard.
-	const typingKeys = "go"
+	const typingKeys = "Input"
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
@@ -87,7 +87,7 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for virtual keyboard ready")
 	}
 
-	if err := vkb.TapKeys(ctx, tconn, strings.Split(typingKeys, "")); err != nil {
+	if err := vkb.TapKeysIgnoreCase(ctx, tconn, strings.Split(typingKeys, ""), true); err != nil {
 		s.Fatal("Failed to input with virtual keyboard: ", err)
 	}
 
