@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
@@ -41,7 +42,7 @@ const (
 	meetLayoutAuto      meetLayoutType = "Auto"
 )
 
-// meetTest specifies the setting of a Hangouts Meet journey.
+// meetTest specifies the setting of a Hangouts Meet journey. More info at go/cros-meet-tests.
 type meetTest struct {
 	num     int            // Number of the participants in the meeting.
 	layout  meetLayoutType // Type of the layout in the meeting.
@@ -57,8 +58,8 @@ func init() {
 		Desc:         "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "arc"},
-		Timeout:      3 * time.Minute,
+		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
+		Timeout:      4 * time.Minute,
 		Pre:          cuj.LoggedInToCUJUser(),
 		Vars: []string{
 			"mute",
@@ -68,7 +69,8 @@ func init() {
 			"ui.cuj_password",
 		},
 		Params: []testing.Param{{
-			Name: "base_case",
+			// Base case.
+			Name: "4p",
 			Val: meetTest{
 				num:     4,
 				layout:  meetLayoutTiled,
@@ -78,7 +80,8 @@ func init() {
 				cam:     true,
 			},
 		}, {
-			Name: "worst_case",
+			// Small meeting.
+			Name: "4p_present_notes_split",
 			Val: meetTest{
 				num:     4,
 				layout:  meetLayoutTiled,
@@ -88,7 +91,8 @@ func init() {
 				cam:     true,
 			},
 		}, {
-			Name: "big_meeting",
+			// Big meeting.
+			Name: "16p",
 			Val: meetTest{
 				num:     16,
 				layout:  meetLayoutTiled,
@@ -98,7 +102,8 @@ func init() {
 				cam:     true,
 			},
 		}, {
-			Name: "big_meeting_with_notes",
+			// Big meeting with notes.
+			Name: "16p_notes",
 			Val: meetTest{
 				num:     16,
 				layout:  meetLayoutTiled,
@@ -150,7 +155,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
@@ -225,7 +230,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
-	defer recorder.Close(closeCtx)
+	defer func() {
+		if err := recorder.Close(closeCtx); err != nil {
+			s.Error("Failed to stop recorder: ", err)
+		}
+	}()
 
 	meetConn, err := cr.NewConn(ctx, "https://meet.google.com/", cdputil.WithNewWindow())
 	if err != nil {
@@ -315,6 +324,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to find the container")
 		}
+		defer container.Release(closeCtx)
 		bubble, err := container.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "BubbleDialogDelegateView"}, 20*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find permission bubble")
