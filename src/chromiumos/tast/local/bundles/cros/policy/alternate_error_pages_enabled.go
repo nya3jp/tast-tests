@@ -6,8 +6,10 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
 	"chromiumos/tast/testing"
@@ -67,13 +69,21 @@ func AlternateErrorPagesEnabled(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			var line string
-			if err := conn.Eval(ctx, "document.querySelector('#suggestions-list li').innerText", &line); err != nil {
-				s.Fatal("Could not read error page suggestion: ", err)
-			}
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				var line string
+				if err := conn.Eval(ctx, "document.querySelector('#suggestions-list li').innerText", &line); err != nil {
+					return testing.PollBreak(errors.Wrap(err, "could not read error page suggestion"))
+				}
 
-			if line != tc.suggestion {
-				s.Fatalf("Unexpected suggestion on the error page; got %q, want %q", line, tc.suggestion)
+				if line != tc.suggestion {
+					return errors.Errorf("unexpected suggestion on the error page; got %q, want %q", line, tc.suggestion)
+				}
+
+				return nil
+			}, &testing.PollOptions{
+				Timeout: 5 * time.Second,
+			}); err != nil {
+				s.Error("Failed waiting for the correct error page: ", err)
 			}
 		})
 	}
