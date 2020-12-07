@@ -356,6 +356,12 @@ func saveARCVMConsole(outDir string) error {
 		return nil
 	}
 
+	const pstoreCommandPath = "/usr/bin/vm_pstore_dump"
+	// The pstore feature is enabled only on x86_64. It's not enabled on some architectures, and this `vm_pstore_dump` command doesn't exist on such architectures.
+	if _, err := os.Stat(pstoreCommandPath); os.IsNotExist(err) {
+		return nil
+	}
+
 	path := filepath.Join(outDir, arcvmConsoleName)
 	file, err := os.Create(path)
 	if err != nil {
@@ -363,7 +369,7 @@ func saveARCVMConsole(outDir string) error {
 	}
 	defer file.Close()
 
-	cmd := testexec.CommandContext(context.Background(), "/usr/bin/vm_pstore_dump") // NOLINT: process need to run after the context is canceled
+	cmd := testexec.CommandContext(context.Background(), pstoreCommandPath) // NOLINT: process need to run after the context is canceled
 	cmd.Stdout = file
 	return cmd.Run()
 }
