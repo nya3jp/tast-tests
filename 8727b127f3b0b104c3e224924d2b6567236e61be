@@ -191,6 +191,24 @@
       "parentUuid": "89677eac_3b0e1ab3",
       "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c2c0b0_21e1a6eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2020-12-07T21:50:02Z",
+      "side": 1,
+      "message": "The PM are coordinating the changes across repo, this is why we keep track of all the changes in go/tast-coil-status.\nwe have options here:\n  1 - add a bug / todo in the code and add it to the trix page as a future todo.\n      assign the bug to the test file owners.\n      keep term off from pre-submit.\n  2 - remove the term from the file, add the info to the bug and the trix page.\n      capture the dependencies in the trix page.\n      turn on term in pre-submit so no new terms are added to the code base.\n  3 - do nothing, leave the term as is. record the dependency in the trix page\n      and the bug. Abandon this CL.\n      turn on the term in pre-submit, it only exist in one place.\n\n the goal of this cl is to turn on the blocking term white.?label, which 3 does.",
+      "parentUuid": "bf7d63c4_072ab8af",
+      "revId": "8727b127f3b0b104c3e224924d2b6567236e61be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
