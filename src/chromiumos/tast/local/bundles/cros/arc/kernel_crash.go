@@ -25,16 +25,15 @@ func init() {
 		Desc:         "Test handling of a guest kernel crash",
 		Contacts:     []string{"kimiyuki@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "android_vm", "arc_pstore"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "real_consent",
-			ExtraSoftwareDeps: []string{"android_vm", "metrics_consent"},
+			ExtraSoftwareDeps: []string{"metrics_consent"},
 			Val:               crash.RealConsent,
 		}, {
-			Name:              "mock_consent",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               crash.MockConsent,
+			Name: "mock_consent",
+			Val:  crash.MockConsent,
 		}},
 	})
 }
