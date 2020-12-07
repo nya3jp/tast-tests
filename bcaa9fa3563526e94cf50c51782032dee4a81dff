@@ -50,6 +50,24 @@
       "message": "eve and atlas are models of Poppy platform, so that works.\n\"hatch\" and \"nami\" are one of \"hatch\" board family and \"nami\" board family respectively.\nI.e., there are more model variations for those boards.\nCould you double check you\u0027re running \"hatch\" and \"nami\" models only, before submitting?",
       "revId": "bcaa9fa3563526e94cf50c51782032dee4a81dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b341d12d_ca2a0a63",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-07T00:33:50Z",
+      "side": 1,
+      "message": "It is good enough for now to have at lease one model in one family.\nThe reason that we restrict the models is that the app testing requires large container but many devices in the lab do not have enough space.",
+      "parentUuid": "de99889d_663e861e",
+      "revId": "bcaa9fa3563526e94cf50c51782032dee4a81dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
