@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
@@ -57,7 +58,7 @@ func init() {
 		Desc:         "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "arc"},
+		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
 		Timeout:      4 * time.Minute,
 		Pre:          cuj.LoggedInToCUJUser(),
 		Vars: []string{
@@ -79,7 +80,7 @@ func init() {
 				cam:     true,
 			},
 		}, {
-			// Worst case.
+			// Small meeting.
 			Name: "4p_present_notes_split",
 			Val: meetTest{
 				num:     4,
