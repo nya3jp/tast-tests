@@ -103,6 +103,24 @@
       "message": "What\u0027s the best way to deal with this presubmit error?\n\n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/graphics/patrace/paretrace.go:32:38: \u0027testing.State\u0027 should not be used in support packages, except for precondition implementation\n\nIt\u0027s in this file but I haven\u0027t modified the offending line, so did `repo upload --no-verify`.",
       "revId": "8735f46425b209d21f7812a1ed08ae815c8ce3f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb3481f_d4780b54",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-12-07T09:08:59Z",
+      "side": 1,
+      "message": "I think it\u0027s fine to ignore it with --no-verify since you didn\u0027t modified that code.",
+      "parentUuid": "a4cb1dfd_a963446d",
+      "revId": "8735f46425b209d21f7812a1ed08ae815c8ce3f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
