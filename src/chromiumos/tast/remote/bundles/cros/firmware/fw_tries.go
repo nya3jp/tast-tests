@@ -47,7 +47,7 @@ func FWTries(ctx context.Context, s *testing.State) {
 	if err := firmware.SetFWTries(ctx, d, fwCommon.RWSectionB, 2); err != nil {
 		s.Fatal("Setting FWTries to B/2: ", err)
 	}
-	if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionA, fwCommon.RWSectionB, 2); err != nil {
+	if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionUnspecified, fwCommon.RWSectionB, 2); err != nil {
 		s.Fatal("After setting FWTries to B/2, before rebooting: ", err)
 	}
 	s.Log("nextFW/tryCount has been set to B/2")
