@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/dartmonkey_v2.0.2887-311310808_20201214.bin",
+  "size": 2097152,
+  "sha256sum": "90716b73d1db5a1b6108530be1d11addf3b13e643bc6f96d417cbce383f3cb18"
+}
