@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"sort"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -40,6 +41,7 @@ func init() {
 
 func MemoryAndroidPerf(ctx context.Context, s *testing.State) {
 	allocatedMetric := perf.Metric{Name: "allocated", Unit: "MiB", Direction: perf.BiggerIsBetter, Multiple: true}
+	allocatedP90Metric := perf.Metric{Name: "allocated_p90", Unit: "MiB", Direction: perf.BiggerIsBetter}
 	marginMetric := perf.Metric{Name: "critical_margin", Unit: "MiB"}
 
 	a := arcMemory.NewAndroidAllocator(s.PreValue().(arc.PreData).ARC)
@@ -63,10 +65,18 @@ func MemoryAndroidPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to allocate to critical margin: ", err)
 	}
-	const bytesInMiB = 1024 * 1024
-	for _, x := range allocated {
-		p.Append(allocatedMetric, float64(x)/bytesInMiB)
+	var allocatedFloat []float64
+	for _, a := range allocated {
+		const bytesInMiB = 1024 * 1024
+		aMiB := float64(a) / bytesInMiB
+		allocatedFloat = append(allocatedFloat, aMiB)
+		p.Append(allocatedMetric, aMiB)
 	}
+	sort.Float64s(allocatedFloat)
+	// There are 60 entries in allocatedFloat. 60 * 0.9 = 54, so the p90 value
+	// is at index 53.
+	p.Set(allocatedP90Metric, allocatedFloat[53])
+
 	if err := a.FreeAll(ctx); err != nil {
 		s.Fatal("Failed to free memory: ", err)
 	}

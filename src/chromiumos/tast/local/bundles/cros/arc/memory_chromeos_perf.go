@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"sort"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -44,6 +45,7 @@ func init() {
 
 func MemoryChromeOSPerf(ctx context.Context, s *testing.State) {
 	allocatedMetric := perf.Metric{Name: "allocated", Unit: "MiB", Direction: perf.BiggerIsBetter, Multiple: true}
+	allocatedP90Metric := perf.Metric{Name: "allocated_p90", Unit: "MiB", Direction: perf.BiggerIsBetter}
 	marginMetric := perf.Metric{Name: "critical_margin", Unit: "MiB"}
 	margin, err := memory.CriticalMargin()
 	if err != nil {
@@ -63,10 +65,18 @@ func MemoryChromeOSPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to allocate to critical margin: ", err)
 	}
+	var allocatedFloat []float64
 	for _, a := range allocated {
 		const bytesInMiB = 1024 * 1024
-		p.Append(allocatedMetric, float64(a)/bytesInMiB)
+		aMiB := float64(a) / bytesInMiB
+		allocatedFloat = append(allocatedFloat, aMiB)
+		p.Append(allocatedMetric, aMiB)
 	}
+	sort.Float64s(allocatedFloat)
+	// There are 60 entries in allocatedFloat. 60 * 0.9 = 54, so the p90 value
+	// is at index 53.
+	p.Set(allocatedP90Metric, allocatedFloat[53])
+
 	if _, err := c.FreeAll(); err != nil {
 		s.Fatal("Failed to free allocated memory: ")
 	}
