@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ddce0db_00e8cc02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-12-08T17:55:08Z",
+      "side": 1,
+      "message": "can we move this logic to apploadingperf.go or separate helper?\nThis file should probably contain top level and test logic.\nSomething similar we did for NetworkHelper\nWDYT?",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 4
+      },
+      "revId": "7bd72c0f8319d3dc031073728fa83124208906a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
