@@ -117,6 +117,30 @@
       },
       "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5882944c_40b0fbc5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-08T19:47:18Z",
+      "side": 1,
+      "message": "The implementaion of the bi-directional watcher (MonitorShillProperties) is in patchset8 in the CL:2417395\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2417395/8",
+      "parentUuid": "f81ae773_e13fd72c",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
