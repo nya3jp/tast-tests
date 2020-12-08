@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c60c72d_468864be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/regdb/regdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-08T01:08:12Z",
+      "side": 1,
+      "message": "Ugh, yes, you\u0027re right. Technically, we probably don\u0027t actually care that much to validate the country codes here at all, but to avoid appearing to be doing a check that I\u0027m not doing all that well, I\u0027ll take your suggestion.",
+      "parentUuid": "f6456e0d_2c8c25bb",
+      "revId": "e69e3cb0d39ad2eeda5a32b8bba7069728d6bff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be84d1b8_cce9f2b2",
