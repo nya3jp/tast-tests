@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ee82c7e_4d552a55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_regulatory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-08T06:35:32Z",
+      "side": 1,
+      "message": "Do we need polling here?\n\nI see there\u0027s a sleep in Autotest with comments:\n  # The kernel handles the user hint asynchronously (either calling out\n  # to udev/CRDA, or to the in-kernel database). Wait a bit.\n\nAnd IIUC, \"The kernel handles the user hint asynchronously\" is still true in current cfg80211 as I see the netlink call will queue the request (queue_regulatory_request) and return early.",
+      "revId": "853991e257eab629362f51910544def0b0937d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
