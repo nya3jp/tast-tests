@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fcc48e4_39a9851b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1379789
+      },
+      "writtenOn": "2020-12-08T07:17:49Z",
+      "side": 1,
+      "message": "Is it guaranteed to always be 60? Maybe we can calculate how many entries we need for p90 output, based on the current `p` size.",
+      "revId": "b5210213016bd3dd75fed5f3e3ce52ae78e255e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
