@@ -70,6 +70,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"shill", "shill", "shill", restrictCaps | noNewPrivs},
 		{"chapsd", "chaps", "chronos-access", restrictCaps | noNewPrivs},
 		{"cryptohomed", "root", "root", 0},
+		{"cryptohome-namespace-mounter", "root", "root", 0},
 		{"powerd", "power", "power", restrictCaps},
 		{"ModemManager", "modem", "modem", restrictCaps | noNewPrivs},
 		{"dhcpcd", "dhcp", "dhcp", restrictCaps},
