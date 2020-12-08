@@ -47,7 +47,8 @@ func init() {
 
 func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 	// typingKeys indicates a key series that tapped on virtual keyboard.
-	const typingKeys = "go"
+	// Input string should start with Capital letter because VK layout is auto-capitalized.
+	const typingKeys = "Language"
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
