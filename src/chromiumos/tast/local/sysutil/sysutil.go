@@ -7,12 +7,15 @@ package sysutil
 
 import (
 	"bytes"
+	"context"
 	"os/user"
 	"strconv"
+	"strings"
 
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -93,4 +96,24 @@ func convertUtsname(u *unix.Utsname) *Utsname {
 		Machine:    convert(u.Machine[:]),
 		Domainname: convert(u.Domainname[:]),
 	}
+}
+
+// IsKernelVersionAtLeast returns true if the Linux kernel version is at least
+// major.minor. If an error occurs, it return false.
+func IsKernelVersionAtLeast(ctx context.Context, major, minor int) (bool, error) {
+	u, err := Uname()
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get uname")
+	}
+	testing.ContextLogf(ctx, "Kernel version is %s", u.Release)
+	v := strings.SplitN(u.Release, ".", 3)
+	majorFound, err := strconv.Atoi(v[0])
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to convert major release %q to integer", v[0])
+	}
+	minorFound, err := strconv.Atoi(v[1])
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to convert minor release %q to integer", v[1])
+	}
+	return (majorFound > major || (majorFound == major && minorFound >= minor)), nil
 }
