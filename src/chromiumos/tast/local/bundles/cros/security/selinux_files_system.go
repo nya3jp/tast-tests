@@ -127,6 +127,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/usr/bin/start_bluetoothd.sh", Context: "cros_init_start_bluetoothd_shell_script"},
 		{Path: "/usr/bin/start_bluetoothlog.sh", Context: "cros_init_start_bluetoothlog_shell_script"},
 		{Path: "/usr/bin/tlsdated", Context: "cros_tlsdated_exec"},
+		{Path: "/usr/bin/usbguard", Context: "cros_usbguard_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/vm_cicerone", Context: "cros_vm_cicerone_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/vm_concierge", Context: "cros_vm_concierge_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/vmlog_forwarder", Context: "cros_vmlog_forwarder_exec", IgnoreErrors: true},
