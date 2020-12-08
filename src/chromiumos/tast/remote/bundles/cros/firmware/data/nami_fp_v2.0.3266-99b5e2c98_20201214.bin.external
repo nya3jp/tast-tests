@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/nami_fp_v2.0.3266-99b5e2c98_20201214.bin",
+  "size": 2097152,
+  "sha256sum": "115bca7045428ce6639b41cc0fdc13d1ca414f6e76842e805a9fbb798a9cd7ad"
+}

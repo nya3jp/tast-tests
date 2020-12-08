@@ -218,7 +218,7 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fpBoard, buildFwFile s
 	}
 
 	// Check RW version.
-	actualRwVersion, err := readFmapSection(ctx, d, buildFwFile, "RW_FWID")
+	actualRwVersion, err := GetBuildRWFirmwareVersion(ctx, d, buildFwFile)
 	if err != nil {
 		return err
 	}
@@ -232,6 +232,11 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fpBoard, buildFwFile s
 
 	testing.ContextLog(ctx, "Succeeded validating build firmware metadata")
 	return nil
+}
+
+// GetBuildRWFirmwareVersion returns the RW version of a given build firmware file on DUT.
+func GetBuildRWFirmwareVersion(ctx context.Context, d *dut.DUT, buildFWFile string) (string, error) {
+	return readFmapSection(ctx, d, buildFWFile, "RW_FWID")
 }
 
 // readFmapSection reads a section (e.g. RO_FRID) from a firmware file on device.
@@ -477,6 +482,18 @@ func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
 		return FWImageType(""), errors.New("cannot find firmware copy string")
 	}
 	return FWImageType(firmwareCopy), nil
+}
+
+// RunningRWVersion returns the RW version running on FPMCU.
+func RunningRWVersion(ctx context.Context, d *dut.DUT) (string, error) {
+	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
+	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
+	out, err := d.Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to query FPMCU version")
+	}
+	versionInfoMap := parseColonDelimitedOutput(string(out))
+	return versionInfoMap["RW version"], nil
 }
 
 // RollbackInfo returns the rollbackinfo of the fingerprint MCU.
