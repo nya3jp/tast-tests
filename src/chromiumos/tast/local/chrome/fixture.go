@@ -15,19 +15,55 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "chromeLoggedIn",
 		Desc:            "Logged into a user session",
+		Contacts:        []string{"nya@chromium.org", "oka@chromium.org"},
 		Impl:            &loggedInFixture{},
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "chromeLoggedInWith100DummyApps",
+		Desc:            "Logged into a user session with 100 dummy apps",
+		Contacts:        []string{"mukai@chromium.org"},
+		Impl:            &loggedInFixture{},
+		Parent:          "install100Apps",
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "chromeLoggedInWith100DummyAppsSkiaRenderer",
+		Desc:            "Logged into a user session with 100 dummy apps",
+		Contacts:        []string{"mukai@chromium.org"},
+		Impl:            newLoggedInFixture(EnableFeatures("UseSkiaRenderer")),
+		Parent:          "install100Apps",
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 }
 
+// loggedInFixture is a fixture to start Chrome with the given options.
+// If the parent is specified, and the parent returns a value of []Option, it
+// will also add those options when starting Chrome.
 type loggedInFixture struct {
-	cr *Chrome
+	cr   *Chrome
+	opts []Option
+}
+
+func newLoggedInFixture(opts ...Option) *loggedInFixture {
+	return &loggedInFixture{opts: opts}
 }
 
 func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	cr, err := New(ctx)
+	opts := f.opts
+	// If there's a parent fixture and the fixture supplies extra options, use them.
+	if extraOpts, ok := s.ParentValue().([]Option); ok {
+		opts = append(opts, extraOpts...)
+	}
+	cr, err := New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
