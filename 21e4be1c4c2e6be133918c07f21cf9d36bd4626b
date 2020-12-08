@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3feb24d_51e23c74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-12-08T23:29:31Z",
+      "side": 1,
+      "message": "Tryjob:\ncros tryjob --hwtest -g \u00272579891 2579893\u0027 amd64-generic-full-tryjob\nhttps://ci.chromium.org/ui/p/chromeos/builders/general/Try/b8861439101717428464/overview",
+      "revId": "21e4be1c4c2e6be133918c07f21cf9d36bd4626b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
