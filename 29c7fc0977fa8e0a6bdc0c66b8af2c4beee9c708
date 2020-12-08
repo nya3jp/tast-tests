@@ -16,6 +16,64 @@
       "message": "Hi, please take a look.\n\nQuestion: this is adding a new fixture to ash package, which reuses the implementation of chrome\u0027s loggedInFixture.  Do you think it should be in chrome package or is it fine with being in ash package?",
       "revId": "29c7fc0977fa8e0a6bdc0c66b8af2c4beee9c708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "922949be_5e60814f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-08T03:00:04Z",
+      "side": 1,
+      "message": "+oka for opinions.\n",
+      "revId": "29c7fc0977fa8e0a6bdc0c66b8af2c4beee9c708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5762634d_853a7d29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-08T03:00:04Z",
+      "side": 1,
+      "message": "It sounds fine to put the new fixture definition in the ash package since it needs to call utility functions in the package.",
+      "parentUuid": "78a8afe3_e2df171c",
+      "revId": "29c7fc0977fa8e0a6bdc0c66b8af2c4beee9c708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751b380d_b6680bd6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-08T03:00:04Z",
+      "side": 1,
+      "message": "This is an interesting usage!\n\nOur expectation is to specify a parent fixture name in testing.Fixture.Parent to compose fixtures. Then the framework takes care of setting up / tearing down parents. Fixture composition is similar to class inheritance in C++ (with limitation that a class may have up to one parent); the framework always calls the parent\u0027s setup before the its child\u0027s setup.\n\nI guess you chose the current approach because we have to set up fake apps before starting Chrome and pass their installed paths to chrome.New options. I believe this code works fine at this moment, but I\u0027m afraid that this fixture will break if we set a parent to the chromeLoggedIn fixture in the future.\n\nSo I\u0027m wondering what we can do to avoid this form of compositions. I can think of two possible approaches:\n\n1. Introduce a new option to chrome.Chrome that is similar to chrome.UnpackedExtension but takes a callback that returns extension directories to be managed by chrome.Chrome. Then we can use loggedInFixture itself with this option.\n\n // UnpackedExtensionsGenerator is an option to specify a callback function that is\n // called before starting Chrome to generate unpacked Chrome extension directories.\n // If f returns successfully, dirs are installed as unpacked extensions in chrome.New,\n // and they are removed on Chrome.Close.\n func UnpackedExtensionsGenerator(f func() (dirs []string, err error)) chrome.Option\n\n2. Introduce a new parameter to chrome.loggedInFixture that specifies a hook to be called before/after Chrome. Then we can use loggedInFixture itself with this parameter.\n\n // FixtureHook is called by loggedInFixture to perform some setup before calling chrome.New.\n // Chrome options returned from the hook are appended to the fixed options passed to NewLoggedInFixture.\n // If clean is not nil, it is called on teardown after Chrome.Close is called.\n type FixtureHook func() (opts []chrome.Option, clean func(), err error)\n\n func NewLoggedInFixture(opts []Option, hook FixtureHook) testing.FixtureImpl",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "29c7fc0977fa8e0a6bdc0c66b8af2c4beee9c708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
