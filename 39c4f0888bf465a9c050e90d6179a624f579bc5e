@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca34efa_e9c4cdb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-12-08T08:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2162c35_8f0a70cc",
+      "revId": "39c4f0888bf465a9c050e90d6179a624f579bc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41822c18_1cc6a976",
@@ -64,6 +82,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "991f1c3d_0f136f91",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-12-08T08:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df8ec7be_7d044f4c",
+      "range": {
+        "startLine": 24,
+        "startChar": 61,
+        "endLine": 24,
+        "endChar": 71
+      },
+      "revId": "39c4f0888bf465a9c050e90d6179a624f579bc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b21dbc1b_625ac5f8",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-12-08T08:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41822c18_1cc6a976",
+      "range": {
+        "startLine": 24,
+        "startChar": 52,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "39c4f0888bf465a9c050e90d6179a624f579bc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55ff066c_3845c840",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-12-07T20:20:20Z",
       "side": 1,
       "message": "nit: remove whitespaces here and below",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 3
+      },
+      "revId": "39c4f0888bf465a9c050e90d6179a624f579bc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf1f27f_296a5bab",
+        "filename": "src/chromiumos/tast/local/arc/display_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-12-08T08:54:20Z",
+      "side": 1,
+      "message": "Done.\n\nIt\u0027s raw output so I\u0027m not sure if remove whitespaces will affect test. But for current case I think it\u0027s fine for regex.",
+      "parentUuid": "55ff066c_3845c840",
       "range": {
         "startLine": 239,
         "startChar": 0,
