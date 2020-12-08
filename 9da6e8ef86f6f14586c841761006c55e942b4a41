@@ -85,6 +85,24 @@
       "parentUuid": "a018221e_68b76aba",
       "revId": "9da6e8ef86f6f14586c841761006c55e942b4a41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1398be61_9ebe5b42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-08T10:22:47Z",
+      "side": 1,
+      "message": "Ouch, sorry, it\u0027s crbug.com/1111251 - external data files are not working in remote tests.\n\nI can work on a fix but it will take some time - how urgent is this work?",
+      "parentUuid": "9719deb5_2c7c2451",
+      "revId": "9da6e8ef86f6f14586c841761006c55e942b4a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
