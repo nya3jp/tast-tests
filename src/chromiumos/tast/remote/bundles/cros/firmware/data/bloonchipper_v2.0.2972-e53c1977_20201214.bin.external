@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/bloonchipper_v2.0.2972-e53c1977_20201214.bin",
+  "size": 1048576,
+  "sha256sum": "769b772ea1bb9a0cfac6e10566a1bc299db87a8d432e650e78435bf716d149ec"
+}

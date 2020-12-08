@@ -65,14 +65,15 @@ const (
 	keyTypeMp    keyType = "mp"
 )
 
-type fpBoardName string
+// FPBoardName is the board name of the FPMCU.
+type FPBoardName string
 
+// Possible names for FPMCUs.
 const (
-	// EC board names for FPMCUs.
-	fpBoardNameBloonchipper fpBoardName = "bloonchipper"
-	fpBoardNameDartmonkey   fpBoardName = "dartmonkey"
-	fpBoardNameNocturne     fpBoardName = "nocturne_fp"
-	fpBoardNameNami         fpBoardName = "nami_fp"
+	FPBoardNameBloonchipper FPBoardName = "bloonchipper"
+	FPBoardNameDartmonkey   FPBoardName = "dartmonkey"
+	FPBoardNameNocturne     FPBoardName = "nocturne_fp"
+	FPBoardNameNami         FPBoardName = "nami_fp"
 )
 
 const (
@@ -110,8 +111,8 @@ var keyIDMap = map[string]keyType{
 //   1) Documents the exact versions and keys used for a given firmware file.
 //   2) Used to verify that files that end up in the build (and therefore
 //      what we release) is exactly what we expect.
-var firmwareVersionMap = map[fpBoardName]map[string]firmwareMetadata{
-	fpBoardNameBloonchipper: map[string]firmwareMetadata{
+var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
+	FPBoardNameBloonchipper: map[string]firmwareMetadata{
 		"bloonchipper_v2.0.4277-9f652bb3-RO_v2.0.7314-3dfc5ff6-RW.bin": firmwareMetadata{
 			sha256sum: "2bac89c16ad71986fe37ed651fe7dd6d5a3d039678d4a5f1d03c5a65a9f3bc3c",
 			roVersion: "bloonchipper_v2.0.4277-9f652bb3",
@@ -125,7 +126,7 @@ var firmwareVersionMap = map[fpBoardName]map[string]firmwareMetadata{
 			keyID:     "1c590ef36399f6a2b2ef87079c135b69ef89eb60",
 		},
 	},
-	fpBoardNameNocturne: map[string]firmwareMetadata{
+	FPBoardNameNocturne: map[string]firmwareMetadata{
 		"nocturne_fp_v2.2.64-58cf5974e-RO_v2.0.7304-441100b93-RW.bin": firmwareMetadata{
 			sha256sum: "569a191bd2ed25ce89b296f0ab8cd2ed567dbf6a8df3f6b3f82ad58c786d79a9",
 			roVersion: "nocturne_fp_v2.2.64-58cf5974e",
@@ -133,7 +134,7 @@ var firmwareVersionMap = map[fpBoardName]map[string]firmwareMetadata{
 			keyID:     "6f38c866182bd9bf7a4462c06ac04fa6a0074351",
 		},
 	},
-	fpBoardNameNami: map[string]firmwareMetadata{
+	FPBoardNameNami: map[string]firmwareMetadata{
 		"nami_fp_v2.2.144-7a08e07eb-RO_v2.0.7304-441100b93-RW.bin": firmwareMetadata{
 			sha256sum: "e7b23f5e585c47d24fe3696139b48c0bac8c43b025669f74aafbff4aa9cbbebd",
 			roVersion: "nami_fp_v2.2.144-7a08e07eb",
@@ -141,7 +142,7 @@ var firmwareVersionMap = map[fpBoardName]map[string]firmwareMetadata{
 			keyID:     "35486c0090ca390408f1fbbf2a182966084fe2f8",
 		},
 	},
-	fpBoardNameDartmonkey: map[string]firmwareMetadata{
+	FPBoardNameDartmonkey: map[string]firmwareMetadata{
 		"dartmonkey_v2.0.2887-311310808-RO_v2.0.7304-441100b93-RW.bin": firmwareMetadata{
 			sha256sum: "5127137655b4b13d7a86ba897b08a9957d36b74afb97558496c6fba98e808b7b",
 			roVersion: "dartmonkey_v2.0.2887-311310808",
@@ -152,7 +153,7 @@ var firmwareVersionMap = map[fpBoardName]map[string]firmwareMetadata{
 }
 
 // getExpectedFwInfo returns expected firmware info for a given firmware file name.
-func getExpectedFwInfo(fpBoard fpBoardName, buildFwFile string, infoType fwInfoType) (string, error) {
+func getExpectedFwInfo(fpBoard FPBoardName, buildFwFile string, infoType fwInfoType) (string, error) {
 	boardExpectedFwInfo, ok := firmwareVersionMap[fpBoard]
 	if !ok {
 		return "", errors.Errorf("failed to get firmware info for board %s", fpBoard)
@@ -176,7 +177,7 @@ func getExpectedFwInfo(fpBoard fpBoardName, buildFwFile string, infoType fwInfoT
 }
 
 // ValidateBuildFwFile checks that all attributes in the given firmware file match their expected values.
-func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fpBoard fpBoardName, buildFwFile string) error {
+func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, buildFwFile string) error {
 	// Check hash on device.
 	actualHash, err := calculateSha256sum(ctx, d, buildFwFile)
 	if err != nil {
@@ -226,7 +227,7 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fpBoard fpBoardName, b
 	}
 
 	// Check RW version.
-	actualRwVersion, err := readFmapSection(ctx, d, buildFwFile, "RW_FWID")
+	actualRwVersion, err := GetBuildRWFirmwareVersion(ctx, d, buildFwFile)
 	if err != nil {
 		return err
 	}
@@ -240,6 +241,11 @@ func ValidateBuildFwFile(ctx context.Context, d *dut.DUT, fpBoard fpBoardName, b
 
 	testing.ContextLog(ctx, "Succeeded validating build firmware metadata")
 	return nil
+}
+
+// GetBuildRWFirmwareVersion returns the RW version of a given build firmware file on DUT.
+func GetBuildRWFirmwareVersion(ctx context.Context, d *dut.DUT, buildFWFile string) (string, error) {
+	return readFmapSection(ctx, d, buildFWFile, "RW_FWID")
 }
 
 // readFmapSection reads a section (e.g. RO_FRID) from a firmware file on device.
@@ -292,23 +298,23 @@ func calculateSha256sum(ctx context.Context, d *dut.DUT, buildFwFile string) (st
 }
 
 // boardFromCrosConfig returns the fingerprint board name from cros_config.
-func boardFromCrosConfig(ctx context.Context, d *dut.DUT) (fpBoardName, error) {
+func boardFromCrosConfig(ctx context.Context, d *dut.DUT) (FPBoardName, error) {
 	out, err := d.Command("cros_config", "/fingerprint", "board").Output(ctx)
-	return fpBoardName(out), err
+	return FPBoardName(out), err
 }
 
 // Board returns the name of the fingerprint EC on the DUT
-func Board(ctx context.Context, d *dut.DUT) (fpBoardName, error) {
+func Board(ctx context.Context, d *dut.DUT) (FPBoardName, error) {
 	// For devices that don't have unibuild support (which is required to
 	// use cros_config).
 	// TODO(https://crbug.com/1030862): remove when nocturne has cros_config
 	// support.
 	board, err := reporters.New(d).Board(ctx)
 	if err != nil {
-		return fpBoardName(""), err
+		return FPBoardName(""), err
 	}
 	if board == "nocturne" {
-		return fpBoardName(board + fingerprintBoardNameSuffix), nil
+		return FPBoardName(board + fingerprintBoardNameSuffix), nil
 	}
 
 	// Use cros_config to get fingerprint board.
@@ -316,7 +322,7 @@ func Board(ctx context.Context, d *dut.DUT) (fpBoardName, error) {
 }
 
 // FirmwarePath returns the path to the fingerprint firmware file on device.
-func FirmwarePath(ctx context.Context, d *dut.DUT, fpBoard fpBoardName) (string, error) {
+func FirmwarePath(ctx context.Context, d *dut.DUT, fpBoard FPBoardName) (string, error) {
 	cmd := fmt.Sprintf("ls %s%s*.bin", fingerprintFirmwarePathBase, fpBoard)
 	out, err := d.Command("bash", "-c", cmd).Output(ctx)
 	if err != nil {
@@ -486,6 +492,18 @@ func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
 		return FWImageType(""), errors.New("cannot find firmware copy string")
 	}
 	return FWImageType(firmwareCopy), nil
+}
+
+// RunningRWVersion returns the RW version running on FPMCU.
+func RunningRWVersion(ctx context.Context, d *dut.DUT) (string, error) {
+	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
+	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
+	out, err := d.Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to query FPMCU version")
+	}
+	versionInfoMap := parseColonDelimitedOutput(string(out))
+	return versionInfoMap["RW version"], nil
 }
 
 // RollbackInfo returns the rollbackinfo of the fingerprint MCU.
