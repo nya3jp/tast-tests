@@ -137,6 +137,24 @@
       "parentUuid": "dae945fa_1b2d8ef9",
       "revId": "67b094893b25fbed59f1ac82d0553255ee41e97a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd79520_f9659e67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-08T09:23:24Z",
+      "side": 1,
+      "message": "Right, sadly the python2 will be removed at Q4. In that case, we still need to porting ITS to python3 before merge.",
+      "parentUuid": "e9cc3512_ef3e7197",
+      "revId": "67b094893b25fbed59f1ac82d0553255ee41e97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
