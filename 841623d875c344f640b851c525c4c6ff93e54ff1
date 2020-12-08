@@ -22,6 +22,30 @@
       },
       "revId": "841623d875c344f640b851c525c4c6ff93e54ff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5373b4bc_2efc0159",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-08T08:24:59Z",
+      "side": 1,
+      "message": "Ah, yes. Making a new feature \"pstore\" for SoftwareDeps seems more correct way.\nHowever while I read the documents of Tast, adding a new feature is not so easy.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/test_dependencies.md#example-changes\n\nSo, in this CL, I want to just fix the test failures.\nMaking a new feature is TODO for later CL (b/175089029). Is this Okay?",
+      "parentUuid": "09239157_9b1d3381",
+      "range": {
+        "startLine": 28,
+        "startChar": 49,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "841623d875c344f640b851c525c4c6ff93e54ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
