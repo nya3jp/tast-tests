@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b21a62bf_f70b9196",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-08T02:13:42Z",
+      "side": 1,
+      "message": "Hi reviewers,\nThe 1 min number is referenced from:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/chrome_login.go;rcl\u003d2e0331173a4a639f9bfc236075db609df153f2d3;l\u003d78",
+      "revId": "5e9d3609e1ce1b1ab5c8cb5111aea05466653fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
