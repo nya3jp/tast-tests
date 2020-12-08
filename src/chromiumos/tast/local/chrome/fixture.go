@@ -17,17 +17,24 @@ func init() {
 		Desc:            "Logged into a user session",
 		Impl:            &loggedInFixture{},
 		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: resetTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 }
 
 type loggedInFixture struct {
-	cr *Chrome
+	cr   *Chrome
+	opts []Option
+}
+
+// NewLoggedInFixture creates a new FixtureImpl for logging in to Chrome with
+// the given options.
+func NewLoggedInFixture(opts ...Option) testing.FixtureImpl {
+	return &loggedInFixture{opts: opts}
 }
 
 func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	cr, err := New(ctx)
+	cr, err := New(ctx, f.opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

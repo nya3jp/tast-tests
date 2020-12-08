@@ -51,14 +51,14 @@ func init() {
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name: "non_overflow_shelf",
-				Val:  nonOverflow,
-				Pre:  ash.LoggedInWith100FakeApps(),
+				Name:    "non_overflow_shelf",
+				Val:     nonOverflow,
+				Fixture: "chromeLoggedInWith100DummyApps",
 			},
 			{
-				Name: "overflow_shelf",
-				Val:  overflow,
-				Pre:  ash.LoggedInWith100FakeApps(),
+				Name:    "overflow_shelf",
+				Val:     overflow,
+				Fixture: "chromeLoggedInWith100DummyApps",
 			},
 
 			// TODO(https://crbug.com/1083068): when the flag shelf-hide-buttons-in-tablet is removed, delete this sub-test.
@@ -126,7 +126,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 
 		defer cr.Close(ctx)
 	} else {
-		cr = s.PreValue().(*chrome.Chrome)
+		cr = s.FixtValue().(*chrome.Chrome)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
