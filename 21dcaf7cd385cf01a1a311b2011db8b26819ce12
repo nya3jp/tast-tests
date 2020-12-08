@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daca1a87_b720b77e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-08T00:42:38Z",
+      "side": 1,
+      "message": "golang +2.\nplease, wait for Yury\u0027s review.",
+      "revId": "21dcaf7cd385cf01a1a311b2011db8b26819ce12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
