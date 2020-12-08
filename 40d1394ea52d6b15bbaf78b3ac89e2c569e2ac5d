@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e889b4_4b3b3e86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-08T11:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06df26e0_87be5a69",
+      "revId": "40d1394ea52d6b15bbaf78b3ac89e2c569e2ac5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecd930f0_8011772b",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-12-07T09:49:04Z",
       "side": 1,
       "message": "lag.Milliseconds()",
+      "range": {
+        "startLine": 119,
+        "startChar": 36,
+        "endLine": 119,
+        "endChar": 39
+      },
+      "revId": "40d1394ea52d6b15bbaf78b3ac89e2c569e2ac5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d087d60b_014f6fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/screenlatency/screenlatency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-08T11:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecd930f0_8011772b",
       "range": {
         "startLine": 119,
         "startChar": 36,
