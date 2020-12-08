@@ -84,6 +84,41 @@
       "message": "Note that this change is being put on hold due to the Python 2 dependency.\n\nChrome OS Build team would like to remove Python 2 completely.\nInker is talking to Android CameraITS owner at b/169303835 to figure out how to make CameraITS run with Python3.",
       "revId": "67b094893b25fbed59f1ac82d0553255ee41e97a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae945fa_1b2d8ef9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-08T08:14:08Z",
+      "side": 1,
+      "message": "Actually the vapier@ only revert the CL for installing package for full mode test(only enable on kukui so far). So if we merge this right now, it should be enable to pass in all our existing camerabox setup(all limited mode device).\nJaydeep and I want to see how it run in the lab first. So it should be good to merge this CL.",
+      "parentUuid": "825c1d1e_6882e409",
+      "revId": "67b094893b25fbed59f1ac82d0553255ee41e97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "859abecf_a6811bf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-08T08:14:08Z",
+      "side": 1,
+      "message": "Hi hidehiko@,\n\nPTAL.",
+      "revId": "67b094893b25fbed59f1ac82d0553255ee41e97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
