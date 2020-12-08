@@ -22,6 +22,30 @@
       },
       "revId": "7bd72c0f8319d3dc031073728fa83124208906a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b36cbd9_da5d81c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-12-08T22:49:38Z",
+      "side": 1,
+      "message": "This file is already app_loading_perf.go and the highlighted logic is specific for AppLoadingPerf.  Do you mean move UpdatePhenotypeFlagOverride to it\u0027s own file for handling phenotypes?\n\nI was also thinking IsKernelVersionAtLeast belongs better in sysutil.go.  Thoughts?",
+      "parentUuid": "8ddce0db_00e8cc02",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 4
+      },
+      "revId": "7bd72c0f8319d3dc031073728fa83124208906a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
