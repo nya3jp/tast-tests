@@ -46,6 +46,30 @@
       },
       "revId": "841623d875c344f640b851c525c4c6ff93e54ff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba9946e_e5f44c96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-08T08:35:02Z",
+      "side": 1,
+      "message": "Hmm... I don\u0027t think you need to much more effort on this.\n\nin your case, you need just two CLs.\none in platform/tast. It\u0027s likely a two line change, one in local_test_runner/main.go, and the other for document describing pstore.\nThe other CL is in platform/tast-tests, like this, but use \"pstore\" instead of amd64.\n\nSo, I prefer introducing it now.\nIf there\u0027s some significant amount of work you find, please let me know.",
+      "parentUuid": "5373b4bc_2efc0159",
+      "range": {
+        "startLine": 28,
+        "startChar": 49,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "841623d875c344f640b851c525c4c6ff93e54ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
