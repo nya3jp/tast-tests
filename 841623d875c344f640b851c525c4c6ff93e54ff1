@@ -94,6 +94,30 @@
       },
       "revId": "841623d875c344f640b851c525c4c6ff93e54ff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "809fcdbe_813ac41c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-08T09:37:27Z",
+      "side": 1,
+      "message": "I added the new feature \"arc_pstore\". It was easy.\nPlease also review crrev.com/c/2578619",
+      "parentUuid": "921a2a2a_fce56651",
+      "range": {
+        "startLine": 28,
+        "startChar": 49,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "841623d875c344f640b851c525c4c6ff93e54ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
