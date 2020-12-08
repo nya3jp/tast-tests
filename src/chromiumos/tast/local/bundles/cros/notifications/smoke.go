@@ -26,6 +26,7 @@ func init() {
 		Desc: "Checks that notifications appear in notification centre and can be interacted with",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
+			"amehfooz@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

@@ -24,6 +24,7 @@ func init() {
 		Desc: "Checks that the 'Clear all' button dismisses all notifications",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
+			"amehfooz@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
