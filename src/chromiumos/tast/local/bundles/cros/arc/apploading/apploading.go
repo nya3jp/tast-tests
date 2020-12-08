@@ -39,6 +39,16 @@ type TestConfig struct {
 	OutDir               string
 }
 
+// BroadcastIntent defines params for apploading.UpdatePhenotypeFlagOverride function.
+type BroadcastIntent struct {
+	Package  string
+	Action   string
+	Flags    string
+	Types    string
+	Values   string
+	Receiver string
+}
+
 const (
 	// NethelperPort is the port used for nethelper to listen for connections.
 	NethelperPort = 1235
@@ -95,6 +105,35 @@ func IsKernelVersionAtLeast(ctx context.Context, major, minor int) (bool, error)
 		return false, errors.Wrapf(err, "failed to convert minor release %q to integer", v[1])
 	}
 	return (majorFound > major || (majorFound == major && minorFound >= minor)), nil
+}
+
+// UpdatePhenotypeFlagOverride can be used to override phenotype flags to prevent certain
+// GMS services from running in the background for app loading performance measurements.
+func UpdatePhenotypeFlagOverride(ctx context.Context, intent BroadcastIntent, a *arc.ARC) error {
+	if intent.Package == "" || intent.Flags == "" || intent.Types == "" {
+		return errors.New("failed to update phenotype flag override, some required params are empty")
+	}
+
+	args := []string{"broadcast", "-a", "com.google.android.gms.phenotype.FLAG_OVERRIDE",
+		"--es", "package", intent.Package,
+		"--es", "user", "\"\\*\"",
+		"--esa", "flags", intent.Flags,
+		"--esa", "types", intent.Types}
+	if intent.Action != "" {
+		args = append(args, "--es", "action", intent.Action)
+	}
+	if intent.Values != "" {
+		args = append(args, "--esa", "values", intent.Values)
+	}
+	if intent.Receiver != "" {
+		args = append(args, intent.Receiver)
+	}
+
+	if err := a.Command(ctx, "am", args...).Run(); err != nil {
+		return errors.Wrap(err, "failed to send broadcast intent")
+	}
+
+	return nil
 }
 
 // RunTest executes subset of tests in APK determined by the test class name.
