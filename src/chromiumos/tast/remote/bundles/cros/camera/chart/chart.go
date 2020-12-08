@@ -183,7 +183,7 @@ func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string)
 		default:
 			return testing.PollBreak(err)
 		}
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for chart ready")
 	}
 	testing.ContextLog(ctx, "Display chart complete")
