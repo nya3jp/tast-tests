@@ -16,6 +16,52 @@
       "message": "golang +2.\nplease, wait for Yury\u0027s review.",
       "revId": "21dcaf7cd385cf01a1a311b2011db8b26819ce12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5825efa_69cacaff",
+        "filename": "android/ArcSensorLatencyTest/res/layout/activity_main.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-12-08T18:02:32Z",
+      "side": 1,
+      "message": "optional nit: I am not very sure if we have or not have CR message in these files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "21dcaf7cd385cf01a1a311b2011db8b26819ce12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70ada8c_024edb66",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-12-08T18:02:32Z",
+      "side": 1,
+      "message": "nit: it should be either inner (private static with public CTOR) class or to be declared in separate file.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "21dcaf7cd385cf01a1a311b2011db8b26819ce12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
