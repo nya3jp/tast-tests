@@ -74,6 +74,30 @@
       },
       "revId": "29c7fc0977fa8e0a6bdc0c66b8af2c4beee9c708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb52f96_a526f779",
+        "filename": "src/chromiumos/tast/local/chrome/ash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-12-08T04:02:39Z",
+      "side": 1,
+      "message": "I agree that calling a fixture method directly from a fixture should be prohibitted. We probably need some framework update to make it impossible.\n\nAs I understand what we want is a chrome fixture having a parent fixture which installs 100 apps.\nHowever it requires framework support, as we don\u0027t have a machinism to \"inject\" a parameter to a different fixture. We may want to implement something like the hypothetical testing.AddFixtureParam API in the following example.　WDYT nya@? Let\u0027s discuss offline.\n\nfunc init() {\n  testing.AddFixtureParam(\"chrome\", testing.FixtureParam {\n    Name: \"chromeInstall100Apps\", // tests use this fixture\n    Parant: \"install100Apps\",\n    ...\n  })\n\n  testing.AddFixture(testing.Fixture{\n    Name: \"install100Apps\",\n    ...\n  })\n}",
+      "parentUuid": "751b380d_b6680bd6",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "29c7fc0977fa8e0a6bdc0c66b8af2c4beee9c708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
