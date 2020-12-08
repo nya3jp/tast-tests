@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5e7a8f_fce021f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_updater_succeeded.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-08T21:33:16Z",
+      "side": 1,
+      "message": "Should we only check latest log here? (The case where previous succeeded, but latest failed)?\n\nOr will we never hit that case because we always do a reboot after updating? I guess that would mean success should be \"previous has success\" and \"latest has no update\"?\n\nWhatever is correct, let\u0027s add a comment mentioning the reboot since that\u0027s a subtle behavior that people reading this test might not understand.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 84
+      },
+      "revId": "acca45c7d2a422caa37adaad1f779fa689623dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
