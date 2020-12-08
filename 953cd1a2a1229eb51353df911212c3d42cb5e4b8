@@ -33,6 +33,24 @@
       "message": "I guess the purpose of the polling is only for the Powered part? i.e. persistent setting -\u003e bluez is async.\n\nIf so, as GetBluetoothPowered is quite heavy (new chrome once on each call), not sure if we can instead do either:\n1. Add a waiting for bluez Powered in SetBluetoothPowered.\n2. Poll with GetBluetoothPoweredFast only.\n\nWDYT?",
       "revId": "953cd1a2a1229eb51353df911212c3d42cb5e4b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51dca441_f1f2ea19",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2020-12-08T19:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1414183d_4b907e3a",
+      "revId": "953cd1a2a1229eb51353df911212c3d42cb5e4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
