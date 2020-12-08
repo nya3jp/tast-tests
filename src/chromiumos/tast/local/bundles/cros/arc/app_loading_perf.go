@@ -32,6 +32,7 @@ var (
 		UserVar: "arc.AppLoadingPerf.username",
 		PassVar: "arc.AppLoadingPerf.password",
 	}
+
 	// arcAppLoadingBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
 	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, arc.DisableSyncFlags()...)
@@ -191,6 +192,29 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 
 	finalPerfValues := perf.NewValues()
 	param := s.Param().(testParameters)
+	a := s.PreValue().(arc.PreData).ARC
+
+	// Override phenotype flags to prevent IpaGcmTaskService activities from repeatedly
+	// running in the background which can affect performance test.
+	addIntent := apploading.BroadcastIntent{
+		Package: "com.google.android.gms.ipa",
+		Flags:   "Ipa__enable_apps_corpus_indexing,Ipa__enable_sms_indexer,Ipa__enable_mediastore_indexing",
+		Types:   "boolean,boolean,boolean",
+		Values:  "false,false,false",
+	}
+	if err := apploading.UpdatePhenotypeFlagOverride(ctx, addIntent, a); err != nil {
+		s.Fatal("Failed to broadcast intent for adding phenotype flag override: ", err)
+	}
+	defer func() {
+		// Delete overrides for all flags.
+		deleteIntent := apploading.BroadcastIntent{
+			Package: "com.google.android.gms.ipa",
+			Action:  "delete",
+		}
+		if err := apploading.UpdatePhenotypeFlagOverride(ctx, deleteIntent, a); err != nil {
+			s.Fatal("Failed to broadcast intent for deleting phenotype flag override: ", err)
+		}
+	}()
 
 	// Geometric mean for tests in the same group are computed together.  All
 	// tests where group is not defined will be computed separately using the
@@ -236,7 +260,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		prefix: "ui",
 	}}
 
-	a := s.PreValue().(arc.PreData).ARC
+	// Obtain specific APK file name for the CPU architecture being tested.
 	apkName, err := apploading.ApkNameForArch(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to get APK name: ", err)
