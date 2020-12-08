@@ -6,10 +6,6 @@ package ui
 
 import (
 	"context"
-	"fmt"
-	"io/ioutil"
-	"os"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -51,20 +47,21 @@ func init() {
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name: "non_overflow_shelf",
-				Val:  nonOverflow,
-				Pre:  ash.LoggedInWith100FakeApps(),
+				Name:    "non_overflow_shelf",
+				Val:     nonOverflow,
+				Fixture: "chromeLoggedInWith100DummyApps",
 			},
 			{
-				Name: "overflow_shelf",
-				Val:  overflow,
-				Pre:  ash.LoggedInWith100FakeApps(),
+				Name:    "overflow_shelf",
+				Val:     overflow,
+				Fixture: "chromeLoggedInWith100DummyApps",
 			},
 
 			// TODO(https://crbug.com/1083068): when the flag shelf-hide-buttons-in-tablet is removed, delete this sub-test.
 			{
-				Name: "shelf_with_navigation_widget",
-				Val:  showNavigationWidget,
+				Name:    "shelf_with_navigation_widget",
+				Val:     showNavigationWidget,
+				Fixture: "install100Apps",
 			},
 		},
 	})
@@ -102,23 +99,9 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 
 	testType := s.Param().(hotseatTestType)
 	if testType == showNavigationWidget {
-		tmpdir, err := ioutil.TempDir("", "fakeApps")
-		if err != nil {
-			s.Fatal("Failed to create temp dir for app installation: ", err)
-		}
-		defer os.RemoveAll(tmpdir)
-
-		const numApps = 100
-		if _, err := ash.PrepareFakeApps(tmpdir, numApps); err != nil {
-			s.Fatalf("Failed to prepare %v fake apps under %v: %v", numApps, tmpdir, err)
-		}
-		var opts []chrome.Option
-		for i := 0; i < numApps; i++ {
-			opts = append(opts, chrome.UnpackedExtension(filepath.Join(tmpdir, fmt.Sprintf("fake_%d", i))))
-		}
-		opts = append(opts, chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode"))
-
-		// Install fake apps and disable flags.
+		opts := []chrome.Option{chrome.DisableFeatures("HideShelfControlsInTabletMode")}
+		opts = append(opts, s.FixtValue().([]chrome.Option)...)
+		var err error
 		cr, err = chrome.New(ctx, opts...)
 		if err != nil {
 			s.Fatal("Failed to connect to Chrome: ", err)
@@ -126,7 +109,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 
 		defer cr.Close(ctx)
 	} else {
-		cr = s.PreValue().(*chrome.Chrome)
+		cr = s.FixtValue().(*chrome.Chrome)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)

@@ -23,11 +23,9 @@ type preImpl struct {
 	prepared   bool
 }
 
-var fakeApps100Pre = NewFakeAppPrecondition("fake_apps", 100, chrome.NewPrecondition, false)
-var fakeApps100PreSkiaRenderer = NewFakeAppPrecondition("fake_apps", 100, chrome.NewPrecondition, true)
-
 // NewFakeAppPrecondition creates a Precondition with numApps number of fake apps, wrapping the Precondition
 // created by innerPre.
+// TODO(crbug.com/1155613): deprecated. Should use fixtures.
 func NewFakeAppPrecondition(name string, numApps int, innerPre func(name string, opts ...chrome.Option) testing.Precondition, skiaRenderer bool) *preImpl {
 	name = fmt.Sprintf("%s_%d", name, numApps)
 	tmpDir, err := ioutil.TempDir("", name)
@@ -44,19 +42,6 @@ func NewFakeAppPrecondition(name string, numApps int, innerPre func(name string,
 	}
 	crPre := innerPre(name, opts...)
 	return &preImpl{crPre: crPre, numApps: numApps, extDirBase: tmpDir, prepared: false}
-}
-
-// LoggedInWith100FakeApps returns the precondition that Chrome is already
-// logged in and 100 fake applications (extensions) are installed. PreValue for
-// the test with this precondition is an instance of *chrome.Chrome.
-func LoggedInWith100FakeApps() testing.Precondition {
-	return fakeApps100Pre
-}
-
-// LoggedInWith100FakeAppsWithSkiaRenderer creates a precondition similar
-// to LoggedInWith100FakeApps with the added feature SkiaRenderer enabled.
-func LoggedInWith100FakeAppsWithSkiaRenderer() testing.Precondition {
-	return fakeApps100PreSkiaRenderer
 }
 
 func (p *preImpl) String() string         { return p.crPre.String() }
