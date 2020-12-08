@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/nethelper"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/power/setup"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -32,17 +33,18 @@ var (
 		UserVar: "arc.AppLoadingPerf.username",
 		PassVar: "arc.AppLoadingPerf.password",
 	}
+
 	// arcAppLoadingBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, arc.DisableSyncFlags()...)
+	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--arc-disable-media-store-maintenance")...)
 	// arcAppLoadingHighmemBooted additionally adds feature to boot ARC with high-memory profile enabled
-	arcAppLoadingHighmemBooted = arc.NewPrecondition("arcapploading_highmem_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--enable-features=ArcUseHighMemoryDalvikProfile")...)
+	arcAppLoadingHighmemBooted = arc.NewPrecondition("arcapploading_highmem_booted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--arc-disable-media-store-maintenance", "--enable-features=ArcUseHighMemoryDalvikProfile")...)
 
 	// arcAppLoadingVMBooted is a precondition similar to arc.VMBooted(). The only difference from arc.VMBooted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf")...)
+	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf", "--arc-disable-media-store-maintenance")...)
 	// arcAppLoadingHighmemVMBooted additionally adds feature to boot ARC with high-memory profile enabled
-	arcAppLoadingHighmemVMBooted = arc.NewPrecondition("arcapploading_highmem_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf", "--enable-features=ArcUseHighMemoryDalvikProfile")...)
+	arcAppLoadingHighmemVMBooted = arc.NewPrecondition("arcapploading_highmem_vmbooted", arcAppLoadingGaia, append(arc.DisableSyncFlags(), "--ignore-arcvm-dev-conf", "--arc-disable-media-store-maintenance", "--enable-features=ArcUseHighMemoryDalvikProfile")...)
 )
 
 func init() {
@@ -181,9 +183,9 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	// TODO(b/169947243): Add initial traffic control queuing discipline settings
 	// for traffic shaping based on experiments with netem, RTT latency, and iperf3
 	// bandwidth measurements.  Only kernel version 4.4+ with ARCVM supports tc-tbf.
-	if kernelSupported, err := apploading.IsKernelVersionAtLeast(ctx, 4, 4); err != nil {
-		s.Fatal("Failed to check kernel version: ", err)
-	} else if kernelSupported {
+	if ver, _, err := sysutil.KernelVersionAndArch(); err != nil {
+		s.Fatal("Failed to get kernel version: ", err)
+	} else if ver.IsOrLater(4, 4) {
 		if err := conn.AddTcTbf(ctx, tbfRateMbit, tbfLatencyMs, tbfBurstKb); err != nil {
 			s.Fatal("Failed to add tc-tbf: ", err)
 		}
@@ -236,6 +238,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		prefix: "ui",
 	}}
 
+	// Obtain specific APK file name for the CPU architecture being tested.
 	a := s.PreValue().(arc.PreData).ARC
 	apkName, err := apploading.ApkNameForArch(ctx, a)
 	if err != nil {

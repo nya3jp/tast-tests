@@ -9,6 +9,7 @@ import (
 	"bytes"
 	"os/user"
 	"strconv"
+	"strings"
 
 	"golang.org/x/sys/unix"
 
@@ -93,4 +94,42 @@ func convertUtsname(u *unix.Utsname) *Utsname {
 		Machine:    convert(u.Machine[:]),
 		Domainname: convert(u.Domainname[:]),
 	}
+}
+
+// KernelVersion contains the Linux kernel major and minor revisions.
+type KernelVersion struct {
+	major, minor int
+}
+
+// Is returns true if the kernel version is major.minor else false.
+func (v *KernelVersion) Is(major, minor int) bool {
+	return v.major == major && v.minor == minor
+}
+
+// IsOrLater returns true if the kernel version is at least major.minor else false.
+func (v *KernelVersion) IsOrLater(major, minor int) bool {
+	return v.major > major || v.major == major && v.minor >= minor
+}
+
+// IsOrLess returns true if the kernel version is at most major.minor else false.
+func (v *KernelVersion) IsOrLess(major, minor int) bool {
+	return v.major < major || v.major == major && v.minor <= minor
+}
+
+// KernelVersionAndArch reads the Linux kernel version and arch of the system.
+func KernelVersionAndArch() (*KernelVersion, string, error) {
+	u, err := Uname()
+	if err != nil {
+		return nil, "", errors.Wrap(err, "failed to get uname")
+	}
+	t := strings.SplitN(u.Release, ".", 3)
+	major, err := strconv.Atoi(t[0])
+	if err != nil {
+		return nil, "", errors.Wrapf(err, "wrong release format %q", u.Release)
+	}
+	minor, err := strconv.Atoi(t[1])
+	if err != nil {
+		return nil, "", errors.Wrapf(err, "wrong release format %q", u.Release)
+	}
+	return &KernelVersion{major: major, minor: minor}, u.Machine, nil
 }

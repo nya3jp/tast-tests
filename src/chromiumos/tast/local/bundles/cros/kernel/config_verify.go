@@ -11,7 +11,6 @@ import (
 	"io/ioutil"
 	"os"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -33,8 +32,10 @@ func init() {
 	})
 }
 
+// ConfigVerify reads the Linux kernel version and arch to verify validity of
+// the information returned depending on version.
 func ConfigVerify(ctx context.Context, s *testing.State) {
-	ver, arch, err := kernelVersionAndArch()
+	ver, arch, err := sysutil.KernelVersionAndArch()
 	if err != nil {
 		s.Fatal("Failed to get kernel version and arch: ", err)
 	}
@@ -45,23 +46,6 @@ func ConfigVerify(ctx context.Context, s *testing.State) {
 	}
 
 	newKernelConfigCheck(ver, arch).test(conf, s)
-}
-
-func kernelVersionAndArch() (*kernelVersion, string, error) {
-	u, err := sysutil.Uname()
-	if err != nil {
-		return nil, "", errors.Wrap(err, "failed to get uname")
-	}
-	t := strings.SplitN(u.Release, ".", 3)
-	major, err := strconv.Atoi(t[0])
-	if err != nil {
-		return nil, "", errors.Wrapf(err, "wrong release format %q", u.Release)
-	}
-	minor, err := strconv.Atoi(t[1])
-	if err != nil {
-		return nil, "", errors.Wrapf(err, "wrong release format %q", u.Release)
-	}
-	return &kernelVersion{major: major, minor: minor}, u.Machine, nil
 }
 
 // readKernelConfig reads the kernel config key value pairs trimming CONFIG_ prefix from the keys.
@@ -124,22 +108,6 @@ func readKernelConfigBytes(ctx context.Context) ([]byte, error) {
 	return configs, nil
 }
 
-type kernelVersion struct {
-	major, minor int
-}
-
-func (v *kernelVersion) is(major, minor int) bool {
-	return v.major == major && v.minor == minor
-}
-
-func (v *kernelVersion) isOrLater(major, minor int) bool {
-	return v.major > major || v.major == major && v.minor >= minor
-}
-
-func (v *kernelVersion) isOrLess(major, minor int) bool {
-	return v.major < major || v.major == major && v.minor <= minor
-}
-
 // kernelConfigCheck contains configs to check.
 type kernelConfigCheck struct {
 	// exclusive contains regexes. The kernel config keys matching a regex should be listed in one of the following fields except missing. The keys are compared with removing the CONFIG_ prefix.
@@ -160,7 +128,7 @@ type kernelConfigCheck struct {
 	missing []string
 }
 
-func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
+func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfigCheck {
 	exclusive := []*regexp.Regexp{
 		// Security; no surprise binary formats.
 		regexp.MustCompile(`^BINFMT_`),
@@ -293,11 +261,11 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		"IMPOSSIBLE_PARTITION",
 	}
 
-	if ver.isOrLater(3, 10) {
+	if ver.IsOrLater(3, 10) {
 		builtin = append(builtin, "BINFMT_SCRIPT")
 	}
 
-	if ver.isOrLater(3, 14) {
+	if ver.IsOrLater(3, 14) {
 		builtin = append(builtin, "BINFMT_SCRIPT", "BINFMT_MISC")
 		builtin = append(builtin, "HARDENED_USERCOPY")
 		module = append(module, "TEST_ASYNC_DRIVER_PROBE", "NFS_FS")
@@ -306,7 +274,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		missing = append(missing, "INET_DIAG")
 	}
 
-	if ver.isOrLater(3, 18) {
+	if ver.IsOrLater(3, 18) {
 		builtin = append(builtin, "SND_PROC_FS", "USB_CONFIGFS_F_FS", "ESD_FS")
 		module = append(module, "USB_F_FS")
 		enabled = append(enabled, "CONFIGFS_FS")
@@ -316,7 +284,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		missing = append(missing, "UEVENT_HELPER", "UEVENT_HELPER_PATH")
 	}
 
-	if ver.isOrLater(4, 4) {
+	if ver.IsOrLater(4, 4) {
 		// Security; make sure usermode helper is our tool for linux-4.4+.
 		builtin = append(builtin, "STATIC_USERMODEHELPER")
 		value["STATIC_USERMODEHELPER_PATH"] = `"/sbin/usermode-helper"`
@@ -328,7 +296,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 	}
 
 	// Security; marks data segments as RO/NX, text as RO.
-	if ver.isOrLater(4, 11) {
+	if ver.IsOrLater(4, 11) {
 		builtin = append(builtin, "STRICT_KERNEL_RWX", "STRICT_MODULE_RWX")
 	} else {
 		builtin = append(builtin, "DEBUG_RODATA", "DEBUG_SET_MODULE_RONX")
@@ -337,7 +305,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		builtin = append(builtin, "DEBUG_ALIGN_RODATA")
 	}
 
-	if ver.isOrLater(4, 14) {
+	if ver.IsOrLater(4, 14) {
 		// Security; harden the SLAB/SLUB allocators against common freelist exploit methods.
 		builtin = append(builtin, "SLAB_FREELIST_RANDOM")
 		builtin = append(builtin, "SLAB_FREELIST_HARDENED")
@@ -352,7 +320,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		}
 	}
 
-	if ver.isOrLater(4, 19) {
+	if ver.IsOrLater(4, 19) {
 		builtin = append(builtin, "HAVE_EBPF_JIT", "BPF_JIT_ALWAYS_ON", "STACKPROTECTOR")
 	} else {
 		// Security; adds stack buffer overflow protections.
@@ -365,7 +333,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 	if isX86Family {
 		// Kernel: make sure port 0xED is the one used for I/O delay.
 		builtin = append(builtin, "IO_DELAY_0XED")
-		if ver.isOrLess(4, 19) {
+		if ver.IsOrLess(4, 19) {
 			same = append(same, [2]string{"IO_DELAY_TYPE_0XED", "DEFAULT_IO_DELAY_TYPE"})
 		}
 
@@ -381,7 +349,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		// builtin = append(builtin, "RANDOMIZE_MEMORY")
 
 		// Retpoline is a Spectre v2 mitigation.
-		if ver.isOrLater(3, 18) {
+		if ver.IsOrLater(3, 18) {
 			builtin = append(builtin, "RETPOLINE")
 		}
 		// Dangerous; disables VDSO ASLR.
