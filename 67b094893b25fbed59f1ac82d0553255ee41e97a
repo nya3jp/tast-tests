@@ -119,6 +119,24 @@
       "message": "Hi hidehiko@,\n\nPTAL.",
       "revId": "67b094893b25fbed59f1ac82d0553255ee41e97a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9cc3512_ef3e7197",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-12-08T08:24:31Z",
+      "side": 1,
+      "message": "Hmm... Thanks for the information there.\n\nI think it\u0027s still an issue because they\u0027re planning on removing Python2 from the DUT (see go/chromeos-python3).\n\nI\u0027m referring to the \"hijack\" in its_pre.go quoted below. I think this will fail as soon as they remove Python2 from the DUT.\n\n```\n\t// Hijack default python path with a symbolic link to python2.\n\tpy2Path, err :\u003d binPath(ctx, \"python2\")\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to get python2 path: \", err)\n\t}\n\ttempPyPath :\u003d path.Join(p.dir, \"python\")\n\tif err :\u003d os.Symlink(py2Path, tempPyPath); err !\u003d nil {\n\t\ts.Fatalf(\"Failed to create symlink for python2 path %v: %v\", py2Path, err)\n\t}\n\tif pyPath, err :\u003d binPath(ctx, \"python\"); err !\u003d nil {\n\t\ts.Fatal(\"Failed to get python path: \", err)\n\t} else if pyPath !\u003d tempPyPath {\n\t\ts.Fatalf(\"Failed to hijack python path from %v to %v\", pyPath, tempPyPath)\n\t}\n```",
+      "parentUuid": "dae945fa_1b2d8ef9",
+      "revId": "67b094893b25fbed59f1ac82d0553255ee41e97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
