@@ -103,6 +103,24 @@
       "parentUuid": "9719deb5_2c7c2451",
       "revId": "9da6e8ef86f6f14586c841761006c55e942b4a41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74cd199_18092f3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2020-12-08T16:20:18Z",
+      "side": 1,
+      "message": "That\u0027s fine, even if we end up fetching from GCS it might not be a long term solution as we are looking into b/173620903#comment8.\n\nFor now, I\u0027ll just abandon this change.",
+      "parentUuid": "1398be61_9ebe5b42",
+      "revId": "9da6e8ef86f6f14586c841761006c55e942b4a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
