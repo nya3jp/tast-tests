@@ -17,8 +17,17 @@ func init() {
 		Desc:         "Demonstrates ARC fixture",
 		Contacts:     []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_p"},
+		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
+		Params: []testing.Param{
+			{
+				ExtraSoftwareDeps: []string{"android_p"},
+			},
+			{
+				Name:              "vm",
+				ExtraSoftwareDeps: []string{"android_vm"},
+			},
+		},
 	})
 }
 
