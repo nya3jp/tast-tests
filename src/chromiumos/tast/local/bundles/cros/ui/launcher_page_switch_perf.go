@@ -34,7 +34,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Pre:          ash.LoggedInWith100FakeApps(),
+		Fixture:      "chromeLoggedInWith100DummyApps",
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -57,7 +57,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	}
 
 	const dragDuration = 2 * time.Second
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)

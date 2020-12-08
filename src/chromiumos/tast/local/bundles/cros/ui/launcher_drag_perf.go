@@ -38,10 +38,10 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Pre: ash.LoggedInWith100FakeApps(),
+			Fixture: "chromeLoggedInWith100DummyApps",
 		}, {
-			Name: "skia_renderer",
-			Pre:  ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
+			Name:    "skia_renderer",
+			Fixture: "chromeLoggedInWith100DummyAppsSkiaRenderer",
 		}},
 	})
 }
@@ -52,7 +52,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
