@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "676d58a1_d7891957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-08T22:21:15Z",
+      "side": 1,
+      "message": "What would happen if we submitted it now? I guess it will try to run on a regular DUT?",
+      "parentUuid": "5dd45213_271297dd",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b47bcaf_76e2f3f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
         "patchSetId": 5
@@ -128,6 +152,121 @@
         "startChar": 35,
         "endLine": 30,
         "endChar": 50
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e44be415_9da40ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-08T22:21:15Z",
+      "side": 1,
+      "message": "It might be nice to construct the set of tests dynamically from the tarball of tests so that we don\u0027t have to update the list every time we add a new test. On the other hand, I don\u0027t want a bug in the tarball (doesn\u0027t include a test) to prevent the test from running, so I guess it\u0027s better to keep it hardcoded.",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 4
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0db833f_52f4584e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-08T22:21:15Z",
+      "side": 1,
+      "message": "Technically a PTY (pseudoterminal)",
+      "range": {
+        "startLine": 149,
+        "startChar": 52,
+        "endLine": 149,
+        "endChar": 67
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd2bba39_97ca9c4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-08T22:21:15Z",
+      "side": 1,
+      "message": "nit: you could open the PTY directly and use native Go to write \"runtest\" to the console. The main advantage is that it\u0027s easier to handle and report errors than using shell commands.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 2
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91371be1_11fc4e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-08T22:21:15Z",
+      "side": 1,
+      "message": "Is there a race here between starting the test and opening the console to capture the results?\n\nYou can open the console and set up the scanner before and then write \"runtest\" directly to the console.",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 37
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1ddf6b_274d3e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-08T22:21:15Z",
+      "side": 1,
+      "message": "Check for error?",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 36
       },
       "revId": "43a5404b150e8de046e78b0349e55264f588597a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
