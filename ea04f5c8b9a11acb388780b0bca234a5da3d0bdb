@@ -34,6 +34,23 @@
       "parentUuid": "c4cf603b_49ad645c",
       "revId": "ea04f5c8b9a11acb388780b0bca234a5da3d0bdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b82c889_ef9c1369",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-12-08T18:40:53Z",
+      "side": 1,
+      "message": "OK, well if we split the CL so those flakes are in a different one we can push the rest now. Otherwise we\u0027ll have to wait for 20 green runs on all of them.",
+      "revId": "ea04f5c8b9a11acb388780b0bca234a5da3d0bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
