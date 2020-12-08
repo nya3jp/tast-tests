@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -25,35 +24,35 @@ func init() {
 		Func:         VirtualKeyboardJapaneseInputs,
 		Desc:         "Checks switching between Romaji and Kana mode for Japanese inputs",
 		Contacts:     []string{"myy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "stable",
-			ExtraAttr:         []string{"group:input-tools-upstream"},
+			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: pre.InputsStableModels,
+			ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 		}, {
 			Name:              "unstable",
+			Pre:               pre.VKEnabledTablet,
 			ExtraHardwareDeps: pre.InputsUnstableModels,
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "exp",
+			Pre:               pre.VKEnabledTabletExp,
+			ExtraSoftwareDeps: []string{"gboard_decoder"},
+			ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 		}},
 	})
 }
 
 func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.Region("jp"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	imeCode := ime.IMEPrefix + string(ime.INPUTMETHOD_NACL_MOZC_JP)
-	if err := ime.SetCurrentInputMethod(ctx, tconn, imeCode); err != nil {
+	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.IMEPrefix+string(ime.INPUTMETHOD_NACL_MOZC_JP)); err != nil {
 		s.Fatal("Failed to set input method: ", err)
 	}
 
@@ -117,7 +116,7 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 		}
 
 		// Delete input in omnibox.
-		if err := vkb.TapKey(ctx, tconn, "Backspace"); err != nil {
+		if err := vkb.TapKey(ctx, tconn, "backspace"); err != nil {
 			s.Fatal("Failed to delete with virtual keyboard: ", err)
 		}
 
@@ -131,9 +130,10 @@ func VirtualKeyboardJapaneseInputs(ctx context.Context, s *testing.State) {
 
 		// Click page header to deactive virtualkeyboard.
 		// Note: vkb.HideVirtualKeyboard() will not trigger reloading of setting changes.
-		header, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeHeading, Name: "日本語入力の設定"}, 20*time.Second)
+		pageHeader := "Japanese input settings"
+		header, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeHeading, Name: pageHeader}, 20*time.Second)
 		if err != nil {
-			s.Fatal("Failed to find header 日本語入力の設定: ", err)
+			s.Fatalf("Failed to find header %s: %v", pageHeader, err)
 		}
 
 		condition := func(ctx context.Context) (bool, error) {
