@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6456e0d_2c8c25bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/regdb/regdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-08T00:35:47Z",
+      "side": 1,
+      "message": "Yeah, it is kind of awkward here that golang don\u0027t have built-in \"ascii\" package. :P\n\nPatchset3 LGTM % one minor case that might not matter much: As rune is just int32, when 256 \u003e b \u003e 127, it might still be a valid rune+letter. e.g. \"Ö\" (0xD6) again. Not sure if we want to also assert \"b \u003c 128\".",
+      "parentUuid": "2ff17e3c_6fdf4edb",
+      "revId": "e69e3cb0d39ad2eeda5a32b8bba7069728d6bff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be84d1b8_cce9f2b2",
