@@ -33,6 +33,121 @@
       "message": "Ping :) ",
       "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d43615_14d13aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-08T21:27:34Z",
+      "side": 1,
+      "message": "Can this be done in the precondition?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 104
+      },
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caedafa3_97caa9d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-08T21:27:34Z",
+      "side": 1,
+      "message": "style nit:\n matches, err :\u003d ...\n if err !\u003d nil {\n  ...\n }",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 93
+      },
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3ef20fc_500a3ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-08T21:27:34Z",
+      "side": 1,
+      "message": "nit: BinaryPath in caps like below? or all lowercase",
+      "range": {
+        "startLine": 55,
+        "startChar": 29,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a730485_ee619da0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-08T21:27:34Z",
+      "side": 1,
+      "message": "This is the entire test timeout. Is that what you want? If so I believe you can also just have no timeout for unlimited.",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3781fc8_961d6bb3",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-08T21:27:34Z",
+      "side": 1,
+      "message": "nit: Make the entire iota either public or private. So all lowercase or all uppercase.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
