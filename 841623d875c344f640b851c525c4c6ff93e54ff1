@@ -70,6 +70,30 @@
       },
       "revId": "841623d875c344f640b851c525c4c6ff93e54ff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "921a2a2a_fce56651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kernel_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-08T08:58:14Z",
+      "side": 1,
+      "message": "I see. I thought it requires also make a new IUSE flag, but it\u0027s unnecesary in this case. Thanks. I\u0027ll try it in this CL.",
+      "parentUuid": "bba9946e_e5f44c96",
+      "range": {
+        "startLine": 28,
+        "startChar": 49,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "841623d875c344f640b851c525c4c6ff93e54ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
