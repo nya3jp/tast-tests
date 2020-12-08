@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56d85e3_409cb513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-12-08T06:49:33Z",
+      "side": 0,
+      "message": "deleted by accident?",
+      "revId": "212c153b161a2fb7b0337793779aa64964d8534f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
