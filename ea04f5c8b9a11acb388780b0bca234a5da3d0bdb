@@ -68,6 +68,42 @@
       "message": "(In the future, I would recommend not bundling so many promotions together so they can go in more quickly...)",
       "revId": "ea04f5c8b9a11acb388780b0bca234a5da3d0bdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f99b1c6_215349f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-08T20:53:24Z",
+      "side": 1,
+      "message": "Sounds good; I removed the four tests that you mentioned were flaking (printer.AddDymoPrinter, printer.AddEpsonPrinter, printer.ProxyResolutionLexmark,\nprinter.ResolutionLexmark) and will create a separate CL for them.",
+      "parentUuid": "6b82c889_ef9c1369",
+      "revId": "ea04f5c8b9a11acb388780b0bca234a5da3d0bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8e5f63a_96b380fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-08T20:53:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1d1bfad0_12acfda3",
+      "revId": "ea04f5c8b9a11acb388780b0bca234a5da3d0bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
