@@ -67,6 +67,23 @@
       "message": "Thanks Inker@ \n",
       "revId": "67b094893b25fbed59f1ac82d0553255ee41e97a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "825c1d1e_6882e409",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-12-08T08:11:21Z",
+      "side": 1,
+      "message": "Note that this change is being put on hold due to the Python 2 dependency.\n\nChrome OS Build team would like to remove Python 2 completely.\nInker is talking to Android CameraITS owner at b/169303835 to figure out how to make CameraITS run with Python3.",
+      "revId": "67b094893b25fbed59f1ac82d0553255ee41e97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
