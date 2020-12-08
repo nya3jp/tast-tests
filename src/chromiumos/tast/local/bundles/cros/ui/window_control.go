@@ -216,8 +216,14 @@ func WindowControl(ctx context.Context, s *testing.State) {
 	// Assumes the window is already in normal state for the preparation of the
 	// previous step.  Also assumes the ws[0] is the topmost window.
 	r.RunMultiple(ctx, s, "resize", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return ws[0].ID == w.ID })
-		if err != nil {
+		var w *ash.Window
+		if err := ash.WaitForCondition(ctx, tconn, func(window *ash.Window) bool {
+			if ws[0].ID == window.ID && window.State == ash.WindowStateNormal && window.OverviewInfo == nil && !window.IsAnimating {
+				w = window
+				return true
+			}
+			return false
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrapf(err, "failed to find the window %d", w.ID)
 		}
 		bounds := w.BoundsInRoot
