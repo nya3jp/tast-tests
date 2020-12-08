@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TaskManager,
 		Desc:         "Tests Crostini integration with the task manager",
-		Contacts:     []string{"davidmunro@chromium.org", "cros-containers-dev@google.com"},
+		Contacts:     []string{"davidmunro@google.com", "cros-containers-dev@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState"},
