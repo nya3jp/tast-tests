@@ -6,10 +6,13 @@ package firmware
 
 import (
 	"context"
+	"time"
 
 	fwCommon "chromiumos/tast/common/firmware"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/reporters"
+	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 )
 
@@ -20,12 +23,37 @@ func init() {
 		Contacts:     []string{"cros-fw-engprod@google.com"},
 		SoftwareDeps: []string{"crossystem"},
 		Attr:         []string{"group:mainline", "informational", "group:firmware", "firmware_smoke"},
+		Vars:         []string{"servo"},
 	})
 }
 
 func FWTries(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 	r := reporters.New(d)
+
+	// Sometimes the reboots error, leaving the DUT powered-off at end-of-test.
+	// This prevents Tast from reconnecting to the DUT for future tests, and from reporting results after all tests are finished.
+	// To address this, use Servo to defer a power-mode reset at end-of-test.
+	ctxForCleanup := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+	defer func(ctx context.Context) {
+		if d.Connected(ctx) {
+			return
+		}
+		s.Log("DUT not connected at end-of-test. Cold-resetting")
+		pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), d.KeyFile(), d.KeyDir())
+		if err != nil {
+			s.Fatal("Failed to connect to servo: ", err)
+		}
+		defer pxy.Close(ctx)
+		if err := pxy.Servo().SetPowerState(ctx, servo.PowerStateReset); err != nil {
+			s.Fatal("Resetting DUT during cleanup: ", err)
+		}
+		if err := d.WaitConnect(ctx); err != nil {
+			s.Fatal("Reconnecting to DUT during cleanup: ", err)
+		}
+	}(ctxForCleanup)
 
 	vboot2, err := r.Vboot2(ctx)
 	if err != nil {
