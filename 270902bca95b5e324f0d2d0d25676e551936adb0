@@ -16,6 +16,40 @@
       "message": "Not sure how we want to the results of the power test. Put it behind a \u0027power\u0027 var so that interested parties could run it manually.",
       "revId": "270902bca95b5e324f0d2d0d25676e551936adb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b304f9dc_17b51ea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-08T01:51:30Z",
+      "side": 1,
+      "message": "Rather than doing this, can you start yet another timeline object in meet test?",
+      "revId": "270902bca95b5e324f0d2d0d25676e551936adb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58cd860e_775353d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-08T01:51:30Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not sure either if this is the right way. Variables are usually not set by anyone automatically, which means that this variation stays as a hidden flag. Let\u0027s discuss in the issue page for what is the wanted features.",
+      "revId": "270902bca95b5e324f0d2d0d25676e551936adb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
