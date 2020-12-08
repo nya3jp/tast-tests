@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "dd58ce7b_40155c31",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Here\u0027s the third pending Tast CL",
       "revId": "e965df00eb68f4a71c48bf2c2629828b8b94b252",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "de595132_7db283ac",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "Adding Craig since he wrote the updater",
       "revId": "e965df00eb68f4a71c48bf2c2629828b8b94b252",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7049574c_857ef70c",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_updater_succeeded.go",
@@ -54,8 +55,31 @@
         "endChar": 49
       },
       "revId": "e965df00eb68f4a71c48bf2c2629828b8b94b252",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3421138e_524ce5cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_updater_succeeded.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-08T00:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7049574c_857ef70c",
+      "range": {
+        "startLine": 43,
+        "startChar": 37,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "e965df00eb68f4a71c48bf2c2629828b8b94b252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
