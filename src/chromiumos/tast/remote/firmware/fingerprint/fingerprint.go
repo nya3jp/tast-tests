@@ -355,6 +355,10 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string, pxy *s
 			return errors.Wrap(err, "failed to reboot DUT")
 		}
 	}
+	// Enable hardware write protect so that we are in the same state as the end user.
+	if err := pxy.Servo().SetStringAndCheck(ctx, servo.FWWPState, "force_on"); err != nil {
+		return errors.Wrap(err, "failed to enable HW write protect")
+	}
 	return nil
 }
 
