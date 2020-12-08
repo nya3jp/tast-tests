@@ -16,6 +16,29 @@
       "message": "Hi Brendan,\n\nPlease review it. Thanks.\n\nRegards,\nMeena",
       "revId": "c71863ae81db07eeb338b2935295b344f3bd3eb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b169ed4_81d50983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/apple_music.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-08T21:50:24Z",
+      "side": 1,
+      "message": "Can this return an error? If so, we should handle it.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 40
+      },
+      "revId": "c71863ae81db07eeb338b2935295b344f3bd3eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
