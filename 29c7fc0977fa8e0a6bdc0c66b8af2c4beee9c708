@@ -98,6 +98,30 @@
       },
       "revId": "29c7fc0977fa8e0a6bdc0c66b8af2c4beee9c708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c024c9c_3d8e28ff",
+        "filename": "src/chromiumos/tast/local/chrome/ash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-08T21:14:26Z",
+      "side": 1,
+      "message": "Ah, wait.  Since FixtState can check the ParentValue, it can be implemented without any additions. Sorry for the confusion.  Just make as \"install100Apps\" to create directories, and supply the result as []chrome.Option.\n\nPlease take another look!",
+      "parentUuid": "5eb52f96_a526f779",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "29c7fc0977fa8e0a6bdc0c66b8af2c4beee9c708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
