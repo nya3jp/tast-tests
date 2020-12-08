@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin",
+  "size": 2097152,
+  "sha256sum": "73d822071518cf1b6e705d9c5903c2bcf37bae536784b275b96d916c44d3b6b7"
+}
