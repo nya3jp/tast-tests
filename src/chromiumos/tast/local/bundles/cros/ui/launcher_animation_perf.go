@@ -36,12 +36,12 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Val: lacros.ChromeTypeChromeOS,
-			Pre: ash.LoggedInWith100FakeApps(),
+			Val:     lacros.ChromeTypeChromeOS,
+			Fixture: "chromeLoggedInWith100DummyApps",
 		}, {
-			Name: "skia_renderer",
-			Val:  lacros.ChromeTypeChromeOS,
-			Pre:  ash.LoggedInWith100FakeAppsWithSkiaRenderer(),
+			Name:    "skia_renderer",
+			Val:     lacros.ChromeTypeChromeOS,
+			Fixture: "chromeLoggedInWith100DummyAppsSkiaRenderer",
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
@@ -112,7 +112,11 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr, err := lacros.GetChrome(ctx, s.PreValue())
+	preValue := s.PreValue()
+	if preValue == nil {
+		preValue = s.FixtValue()
+	}
+	cr, err := lacros.GetChrome(ctx, preValue)
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -145,7 +149,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
 	for _, windows := range []int{0, 2} {
 		func() {
-			_, l, cs, err := lacros.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+			_, l, cs, err := lacros.Setup(ctx, preValue, s.Param().(lacros.ChromeType))
 			if err != nil {
 				s.Fatal("Failed to setup lacrostest: ", err)
 			}
