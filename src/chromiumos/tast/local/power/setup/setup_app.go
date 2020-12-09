@@ -6,6 +6,7 @@ package setup
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -92,6 +93,10 @@ func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg,
 	if err := activity.StartWithArgs(ctx, tconn, args.Prefixes, args.Suffixes); err != nil {
 		return nil, errors.Wrapf(err, "failed to start activity %q in package %q", activityName, pkg)
 	}
+
+	// Give the app some time to initialize before changing the layout.
+	testing.Sleep(ctx, time.Second)
+
 	if err := activity.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
 		return nil, errors.Wrapf(err, "failed to make activity %q in package %q fullscreen", activityName, pkg)
 	}
