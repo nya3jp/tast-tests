@@ -98,6 +98,24 @@
       "message": "This is created by a script (find reference at the file header. You should modify that one as well, or this change will be deleted.",
       "revId": "101ca46f101ac8773951f3e0f024e49582634e74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0097ed2b_9f134f68",
+        "filename": "src/chromiumos/tast/local/chrome/ui/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-12-09T10:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deb5573f_899e2abb",
+      "revId": "101ca46f101ac8773951f3e0f024e49582634e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
