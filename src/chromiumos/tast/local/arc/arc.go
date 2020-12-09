@@ -11,6 +11,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"time"
 
@@ -36,6 +37,9 @@ const (
 	androidInitTimeout = 60 * time.Second
 
 	intentHelperTimeout = 20 * time.Second
+
+	// Time waiting for packages to install, for example enterprise auto install.
+	waitPackagesTimeout = 5 * time.Minute
 
 	arcvmConsoleName = "arcvm-console.txt"
 	logcatName       = "logcat.txt"
@@ -519,4 +523,47 @@ func waitProp(ctx context.Context, name, value string, tm timingMode) error {
 // APKPath returns the absolute path to a helper APK.
 func APKPath(value string) string {
 	return adb.APKPath(value)
+}
+
+// makeList returns a list of keys from map.
+func makeList(packages map[string]bool) []string {
+	var packagesList []string
+	for pkg := range packages {
+		packagesList = append(packagesList, pkg)
+	}
+	sort.Strings(packagesList)
+	return packagesList
+}
+
+// WaitForPackages waits for Android packages being installed.
+func (a *ARC) WaitForPackages(ctx context.Context, packages []string) error {
+	ctx, st := timing.Start(ctx, "wait_packages")
+	defer st.End()
+
+	ctx, cancel := context.WithTimeout(ctx, waitPackagesTimeout)
+	defer cancel()
+
+	notInstalledPackages := make(map[string]bool)
+	for _, p := range packages {
+		notInstalledPackages[p] = true
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		pkgs, err := a.InstalledPackages(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		for p := range pkgs {
+			if notInstalledPackages[p] {
+				delete(notInstalledPackages, p)
+			}
+		}
+		if len(notInstalledPackages) != 0 {
+			return errors.Errorf("%d package(s) are not installed yet: %s",
+				len(notInstalledPackages),
+				strings.Join(makeList(notInstalledPackages), ", "))
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second})
 }
