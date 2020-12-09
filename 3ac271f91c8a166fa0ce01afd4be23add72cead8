@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9414078_eaa50955",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-09T00:10:00Z",
+      "side": 1,
+      "message": "just noticed this: contact\n\nnot that it really matters",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "3ac271f91c8a166fa0ce01afd4be23add72cead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "818e8711_a9077149",
         "filename": "src/chromiumos/tast/local/bundles/cros/notifications/clear_all.go",
         "patchSetId": 1
