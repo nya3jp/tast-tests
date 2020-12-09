@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -37,97 +36,97 @@ func init() {
 			Val:       playParams{fileName: "bear-320x240.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
-			Pre:       pre.ChromeVideoWithHWAV1Decoding(),
+			Fixture:   "chromeVideoWithHWAV1Decoding",
 		}, {
 			Name:              "h264",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:      "vp8",
 			Val:       playParams{fileName: "bear-320x240.vp8.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
-			Pre:       pre.ChromeVideo(),
+			Fixture:   "chromeVideo",
 		}, {
 			Name:      "vp9",
 			Val:       playParams{fileName: "bear-320x240.vp9.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
-			Pre:       pre.ChromeVideo(),
+			Fixture:   "chromeVideo",
 		}, {
 			Name:      "vp9_hdr",
 			Val:       playParams{fileName: "peru.8k.cut.hdr.vp9.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
-			Pre:       pre.ChromeVideoWithHDRScreen(),
+			Fixture:   "chromeVideoWithHDRScreen",
 		}, {
 			Name:      "av1_sw",
 			Val:       playParams{fileName: "bear-320x240.av1.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
-			Pre:       pre.ChromeVideoWithSWDecoding(),
+			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name:              "h264_sw",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithSWDecoding(),
+			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name:      "vp8_sw",
 			Val:       playParams{fileName: "bear-320x240.vp8.webm", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
-			Pre:       pre.ChromeVideoWithSWDecoding(),
+			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name:      "vp9_sw",
 			Val:       playParams{fileName: "bear-320x240.vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
-			Pre:       pre.ChromeVideoWithSWDecoding(),
+			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name:      "vp9_2_sw",
 			Val:       playParams{fileName: "bear-320x240.vp9.2.webm", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
-			Pre:       pre.ChromeVideoWithSWDecoding(),
+			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name:      "vp9_sw_hdr",
 			Val:       playParams{fileName: "peru.8k.cut.hdr.vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
-			Pre:       pre.ChromeVideoWithSWDecodingAndHDRScreen(),
+			Fixture:   "chromeVideoWithSWDecodingAndHDRScreen",
 		}, {
 			Name:              "av1_hw",
 			Val:               playParams{fileName: "bear-320x240.av1.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
-			Pre:               pre.ChromeVideoWithHWAV1Decoding(),
+			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
 			Name:              "h264_hw",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "vp8_hw",
 			Val:               playParams{fileName: "bear-320x240.vp8.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "vp9_hw",
 			Val:               playParams{fileName: "bear-320x240.vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:      "vp9_2_hw",
 			Val:       playParams{fileName: "bear-320x240.vp9.2.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
@@ -135,7 +134,7 @@ func init() {
 			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
 			// VP9 Profile 2 is only supported by the direct Video Decoder.
 			ExtraSoftwareDeps: []string{"video_decoder_direct", caps.HWDecodeVP9_2},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:      "vp9_hw_hdr",
 			Val:       playParams{fileName: "peru.8k.cut.hdr.vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
@@ -144,74 +143,74 @@ func init() {
 			// TODO(crbug.com/1057870): filter this by Intel SoC generation: KBL+. For now, kohaku will do.
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku")),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
-			Pre:               pre.ChromeVideoWithHDRScreen(),
+			Fixture:           "chromeVideoWithHDRScreen",
 		}, {
 			Name:              "h264_hw_mse",
 			Val:               playParams{fileName: "bear-320x240.h264.mpd", videoType: play.MSEVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.h264.mp4", "bear-320x240-audio-only.aac.mp4", "bear-320x240.h264.mpd"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "vp8_hw_mse",
 			Val:               playParams{fileName: "bear-320x240.vp8.mpd", videoType: play.MSEVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.vp8.webm", "bear-320x240-audio-only.vorbis.webm", "bear-320x240.vp8.mpd"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "vp9_hw_mse",
 			Val:               playParams{fileName: "bear-320x240.vp9.mpd", videoType: play.MSEVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.vp9.webm", "bear-320x240-audio-only.opus.webm", "bear-320x240.vp9.mpd"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:      "av1_guest",
 			Val:       playParams{fileName: "bear-320x240.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
-			Pre:       pre.ChromeVideoWithGuestLoginAndHWAV1Decoding(),
+			Fixture:   "chromeVideoWithGuestLoginAndHWAV1Decoding",
 		}, {
 			Name:              "h264_guest",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithGuestLogin(),
+			Fixture:           "chromeVideoWithGuestLogin",
 		}, {
 			Name:      "vp8_guest",
 			Val:       playParams{fileName: "bear-320x240.vp8.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
-			Pre:       pre.ChromeVideoWithGuestLogin(),
+			Fixture:   "chromeVideoWithGuestLogin",
 		}, {
 			Name:      "vp9_guest",
 			Val:       playParams{fileName: "bear-320x240.vp9.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
-			Pre:       pre.ChromeVideoWithGuestLogin(),
+			Fixture:   "chromeVideoWithGuestLogin",
 		}, {
 			Name:              "h264_hw_alt",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:              "vp8_hw_alt",
 			Val:               playParams{fileName: "bear-320x240.vp8.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:              "vp9_hw_alt",
 			Val:               playParams{fileName: "bear-320x240.vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:      "vp9_2_hw_alt",
 			Val:       playParams{fileName: "bear-320x240.vp9.2.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
@@ -221,7 +220,7 @@ func init() {
 			// want to run this case if that is not enabled by default, i.e. if the
 			// platform is configured to use the legacy video decoder by default.
 			ExtraSoftwareDeps: []string{"video_decoder_legacy", "video_decoder_legacy_supported", caps.HWDecodeVP9_2},
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}},
 	})
 }
@@ -235,7 +234,7 @@ func init() {
 // DASH MPD file).
 func Play(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(playParams)
-	if err := play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, testOpt.verifyMode); err != nil {
+	if err := play.TestPlay(ctx, s, s.FixtValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, testOpt.verifyMode); err != nil {
 		s.Fatal("TestPlay failed: ", err)
 	}
 }
