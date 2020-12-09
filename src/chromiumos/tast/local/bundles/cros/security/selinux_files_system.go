@@ -65,6 +65,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/run/metrics/external", Context: "cros_run_metrics_external"},
 		{Path: "/run/metrics/external/crash-reporter", Context: "cros_run_metrics_external_crash"},
 		{Path: "/run/power_manager", Context: "cros_run_power_manager", Recursive: true},
+		{Path: "/run/rsyslogd", Context: "cros_run_rsyslogd"},
 		{Path: "/run/udev", Context: "cros_run_udev", Recursive: true, IgnoreErrors: true},
 		{Path: "/sbin/chromeos_startup", Context: "chromeos_startup_script_exec"},
 		{Path: "/sbin/crash_reporter", Context: "cros_crash_reporter_exec"},
