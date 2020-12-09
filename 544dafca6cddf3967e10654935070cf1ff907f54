@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023349d8_a0f87527",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-12-09T14:47:41Z",
+      "side": 1,
+      "message": "In general, use of condition polling is preferred instead of sleep so as to make tests more robust.\nDoes the app have any signal (e.g. certain view created?) that tests can read?",
+      "revId": "544dafca6cddf3967e10654935070cf1ff907f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
