@@ -35,6 +35,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "008dcb90_11580aff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-09T14:52:26Z",
+      "side": 1,
+      "message": "Sorry for delay. Most my comments are already covered Brendan\u0027s review.",
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72e4da3_6870c601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-09T14:52:26Z",
+      "side": 1,
+      "message": "Could you comment the reason of hardware deps here?",
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0d43615_14d13aa7",
