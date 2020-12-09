@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0492d9_8e26835d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-09T19:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b72e4da3_6870c601",
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0d43615_14d13aa7",
@@ -82,6 +100,30 @@
       "writtenOn": "2020-12-08T21:27:34Z",
       "side": 1,
       "message": "Can this be done in the precondition?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 104
+      },
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2698b61_f7b44d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-09T19:41:01Z",
+      "side": 1,
+      "message": "Yes. Moved.",
+      "parentUuid": "a0d43615_14d13aa7",
       "range": {
         "startLine": 47,
         "startChar": 1,
@@ -115,6 +157,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c6e2238_d4ee3fdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-09T19:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caedafa3_97caa9d8",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 93
+      },
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3ef20fc_500a3ab4",
@@ -128,6 +194,30 @@
       "writtenOn": "2020-12-08T21:27:34Z",
       "side": 1,
       "message": "nit: BinaryPath in caps like below? or all lowercase",
+      "range": {
+        "startLine": 55,
+        "startChar": 29,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5552c4b3_e20880b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-09T19:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ef20fc_500a3ab4",
       "range": {
         "startLine": 55,
         "startChar": 29,
@@ -161,6 +251,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d54d47_40450257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-09T19:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a730485_ee619da0",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3781fc8_961d6bb3",
@@ -174,6 +288,30 @@
       "writtenOn": "2020-12-08T21:27:34Z",
       "side": 1,
       "message": "nit: Make the entire iota either public or private. So all lowercase or all uppercase.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "f07f79b42c12e1204fa1da7fd04381b1bbbd04c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9fa17b6_9001d528",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-09T19:41:01Z",
+      "side": 1,
+      "message": "Moving the lacros wait to precondition means I can undo this change. All lowercase now. Thanks",
+      "parentUuid": "f3781fc8_961d6bb3",
       "range": {
         "startLine": 94,
         "startChar": 1,
