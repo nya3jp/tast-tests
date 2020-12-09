@@ -24,7 +24,7 @@ func init() {
 		Desc:         "Verifies the BarcodeDetector API used in CCA",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"cca_qrcode.html", "cca_qrcode.js", "qrcode_3024x3024.jpg"},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      4 * time.Minute,
