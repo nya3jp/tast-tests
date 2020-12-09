@@ -134,9 +134,27 @@ func init() {
 				Name: "smartdim_no_nnapi",
 				Val: benchmarkParams{
 					// This driver isn't installed in the standard lib dir.
-					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so ",
+					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so",
 					configFile: "ml_benchmark_smartdim_drivers_20201021.config",
 					scenario:   "smartdim_no_nnapi",
+				},
+			},
+			{
+				Name: "mobilenet_v2_no_nnapi",
+				Val: benchmarkParams{
+					// This driver isn't installed in the standard lib dir.
+					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so",
+					configFile: "ml_benchmark_mobilenet_drivers_v2_1.0_224.config",
+					scenario:   "mobilenet_v2_no_nnapi",
+				},
+			},
+			{
+				Name: "mobilenet_v2_quant_no_nnapi",
+				Val: benchmarkParams{
+					// This driver isn't installed in the standard lib dir.
+					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so",
+					configFile: "ml_benchmark_mobilenet_drivers_v2_1.0_224_quant.config",
+					scenario:   "mobilenet_v2_quant_no_nnapi",
 				},
 			},
 		},
