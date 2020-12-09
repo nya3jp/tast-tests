@@ -16,6 +16,24 @@
       "message": "Do we need polling here?\n\nI see there\u0027s a sleep in Autotest with comments:\n  # The kernel handles the user hint asynchronously (either calling out\n  # to udev/CRDA, or to the in-kernel database). Wait a bit.\n\nAnd IIUC, \"The kernel handles the user hint asynchronously\" is still true in current cfg80211 as I see the netlink call will queue the request (queue_regulatory_request) and return early.",
       "revId": "853991e257eab629362f51910544def0b0937d35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bc3c6c0_33e31b8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_regulatory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-09T03:13:33Z",
+      "side": 1,
+      "message": "Right, I had that in my head somewhere to still address, but then I found that it never occurred in practice (testing a few hundred test runs over a few devices). I thought perhaps this no longer is the case with the new database (because that is all present in-memory, and doesn\u0027t really *require* asynchronous handling), but I think your code inspection claim is still true. Thanks for calling it out.\n\nI guess a quick poll might be OK, rather than trying to listen to nl80211 events (which might be overkill). I\u0027ll take another look at this tomorrow and update this CL if I can\u0027t convince myself that this is correct *without* the polling/waiting.",
+      "parentUuid": "7ee82c7e_4d552a55",
+      "revId": "853991e257eab629362f51910544def0b0937d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
