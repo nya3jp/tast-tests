@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a56c2a27_7646f1ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "LGTM % nits. Lets wait for the others to review.",
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "629792f9_8bffafa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "nit: maybe \"Unexpected settings state\". Same for all other messages below.",
+      "range": {
+        "startLine": 147,
+        "startChar": 14,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "937b5cf6_2d58ed99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_deleting_browser_history.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef1afe1_358e8a1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoclick_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 143,
+        "startChar": 6,
+        "endLine": 143,
+        "endChar": 11
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fe28b1_ac251c99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_os_lock_on_idle_suspend.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 119,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 11
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0d6b49_56f1a290",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 185,
+        "startChar": 6,
+        "endLine": 185,
+        "endChar": 11
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2334df6_e482f025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_notifications_setting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 11
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82d3cbb9_617f1b0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 11
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84438c95_dd04b6d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/prompt_for_download_location.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 128,
+        "startChar": 6,
+        "endLine": 128,
+        "endChar": 11
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd9b55b_d192adef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 11
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "556d8a17_225215b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 103,
+        "startChar": 6,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c021585_44cbd8bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "nit: maybe \"Unexpected settings state\"",
+      "range": {
+        "startLine": 103,
+        "startChar": 13,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7212ea_5664d682",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "nit: maybe VerifySettingsNode? This works differently than the existing Find functions.",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a640da06_cc768962",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "Give an example for this parameter.",
+      "range": {
+        "startLine": 50,
+        "startChar": 66,
+        "endLine": 50,
+        "endChar": 78
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b521a484_64ea165a",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-12-09T09:54:08Z",
+      "side": 1,
+      "message": "nit: maybe VerifySettingsState?",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "b5987864837121c012fa0c15b8216d82b2cf325e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
