@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4be8ec5_60cd5fc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368300
+      },
+      "writtenOn": "2020-12-09T03:59:06Z",
+      "side": 1,
+      "message": "Hi Polina,\n\nI moved the ARCInstallLogging test here as you suggested. Please take a look! Thanks!",
+      "revId": "9a416c85dff7c78091e9cf435caff847fb42d511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
