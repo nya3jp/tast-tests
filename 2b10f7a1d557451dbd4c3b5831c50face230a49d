@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e5387f_db51249d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoclick_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-12-09T14:52:19Z",
+      "side": 1,
+      "message": "I realized this function can not handle errors (invalid input), so you can skip this.\nIt would be nice to find a solution to shorten the function call though.",
+      "parentUuid": "02f823d8_c8f15707",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 6
+      },
+      "revId": "2b10f7a1d557451dbd4c3b5831c50face230a49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86157b72_a0f0235d",
