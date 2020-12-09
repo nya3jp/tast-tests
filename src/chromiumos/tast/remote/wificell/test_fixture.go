@@ -253,11 +253,16 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		return false
 	}
 
+	useDefaultPcap := false
 	if tf.pcapTarget == "" {
 		testing.ContextLog(ctx, "Using default pcap name")
 		tf.pcapTarget, err = tf.dut.CompanionDeviceHostname(dut.CompanionSuffixPcap)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to synthesize default pcap name")
+			// DUT might be specified with IP. As the routers are available,
+			// fallback to use router as pcap in this case.
+			tf.pcapTarget = ""
+		} else {
+			useDefaultPcap = true
 		}
 	}
 
@@ -275,16 +280,13 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		}
 	}
 
-	// Finally, if pcap name is unique we can connect it.
-	if tf.pcapHost == nil {
+	// If pcap name is available and unique, try to connect it.
+	if tf.pcapHost == nil && tf.pcapTarget != "" {
 		tf.pcapHost, err = tf.connectCompanion(ctx, tf.pcapTarget)
 		if err != nil {
-			if errInvalidHost(err) {
-				testing.ContextLog(ctx,
-					"Use router 0 as pcap because default pcap is not reachable: ", err)
-				tf.pcapHost = tf.routers[0].host
-				tf.pcap = tf.routers[0].object
-			} else {
+			// We want to fallback to use router as pcap iff the default
+			// pcap hostname is invalid. Fail here if it's not the case.
+			if !useDefaultPcap || !errInvalidHost(err) {
 				return nil, errors.Wrap(err, "failed to connect to pcap")
 			}
 		} else {
@@ -293,6 +295,13 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 				return nil, errors.Wrap(err, "failed to create a router object for pcap")
 			}
 		}
+	}
+
+	// Finally, fallback to use the first router as pcap if needed.
+	if tf.pcapHost == nil {
+		testing.ContextLog(ctx, "Fallback to use router 0 as pcap")
+		tf.pcapHost = tf.routers[0].host
+		tf.pcap = tf.routers[0].object
 	}
 
 	if tf.attenuatorTarget != "" {
