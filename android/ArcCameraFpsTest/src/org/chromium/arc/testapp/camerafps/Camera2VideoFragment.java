@@ -421,7 +421,6 @@ public class Camera2VideoFragment extends Fragment {
                             mCameraOpenTime = SystemClock.elapsedRealtime() - mCameraStartTime;
                             mCameraDevice = cameraDevice;
                             startPreview();
-                            mCameraOpenCloseLock.release();
                             configureTransform(mTextureView.getWidth(), mTextureView.getHeight());
                         }
 
@@ -440,7 +439,7 @@ public class Camera2VideoFragment extends Fragment {
                             throw new RuntimeException("Cannot open camera: Error code " + error);
                         }
                     },
-                    null);
+                    mBackgroundHandler);
         } catch (Exception e) {
             getActivity().finish();
             throw new RuntimeException(e);
@@ -502,10 +501,12 @@ public class Camera2VideoFragment extends Fragment {
                         public void onConfigured(CameraCaptureSession cameraCaptureSession) {
                             mPreviewSession = cameraCaptureSession;
                             updatePreview();
+                            mCameraOpenCloseLock.release();
                         }
 
                         @Override
                         public void onConfigureFailed(CameraCaptureSession cameraCaptureSession) {
+                            mCameraOpenCloseLock.release();
                             throw new RuntimeException("Failed to configure capture session.");
                         }
                     },
