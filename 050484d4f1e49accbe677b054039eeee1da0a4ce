@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de0380f6_7047d97a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-09T14:43:33Z",
+      "side": 1,
+      "message": "Cq-Depend: chrome-internal:3456943",
+      "revId": "050484d4f1e49accbe677b054039eeee1da0a4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b700c166_7e0f6c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-09T14:43:33Z",
+      "side": 1,
+      "message": "Jim suggested that we stop using \"drivers\" as part of these model names. I\u0027ll re-upload everything tomorrow.",
+      "revId": "050484d4f1e49accbe677b054039eeee1da0a4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
