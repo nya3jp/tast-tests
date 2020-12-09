@@ -1,0 +1,20 @@
+{
+	"profile": "AV1PROFILE_PROFILE_MAIN",
+	"width": 432,
+	"height": 240,
+	"frame_rate": 30,
+	"num_frames": 10,
+	"num_fragments": 10,
+	"md5_checksums": [
+		"59f51978a080d30e486fb952c0ccc3c1",
+		"06d88f64259614b240a652c857b093e4",
+		"b0d578be83b57b475be87a802004f084",
+		"2c557912280fefa0af3231ab17f5bad4",
+		"8ff3d53bd2f6357235b5e2fc8e2da49c",
+		"310d41ea7084002919a94a5a8316b380",
+		"3ebcecdf9533f8b2d8f35dc2fe0a4bc5",
+		"80e46cc97de7ab0fb0f5c4db1b9d8ce7",
+		"093d77b73f7fcb05b27ef165f2f2c208",
+		"d02cb743dcf99f3beffa648e2c2ac6aa"
+	]
+}

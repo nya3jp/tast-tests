@@ -1,0 +1,12 @@
+{
+	"profile": "AV1PROFILE_PROFILE_MAIN",
+	"width": 224,
+	"height": 210,
+	"frame_rate": 30,
+	"num_frames": 2,
+	"num_fragments": 2,
+	"md5_checksums": [
+		"6e84fcc285438c02de3b3fb770bddfe1",
+		"838ffb5e697f37a83f43606baa6a9f20"
+	]
+}

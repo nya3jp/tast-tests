@@ -1,0 +1,30 @@
+{
+	"profile": "AV1PROFILE_PROFILE_MAIN",
+	"width": 208,
+	"height": 144,
+	"frame_rate": 30,
+	"num_frames": 20,
+	"num_fragments": 20,
+	"md5_checksums": [
+		"c2ea6bd029029e4aecf0abd205966a2f",
+		"4191e77d3cd1820a8d7d1a3a8edd53fc",
+		"e8e092b5c8ba11ace252ebdd4b378351",
+		"60701146d12af854c8cdf0263d0d0670",
+		"90cf91b0c79d17b34ba9b41a79a2d6c5",
+		"949dcfceb4bb95d0b03eee5625662595",
+		"b14f40c38fa8f8fe28f518ad72f42d44",
+		"65381dfd42b0117c5bc95f073cf00168",
+		"4428042d6d2458f5725808488c952363",
+		"a7cccc9a9bafc99be230e3d118563c62",
+		"f3c622ad063a09e6be7ce45c86d05a90",
+		"26437ba01ad0eb6728ca05c66264f408",
+		"4dcc03a2c638360d4af5edec1560c1b5",
+		"24eff55618ea54d10f9422f6f94ffb1c",
+		"4ca38aa0580e70da449b5d1c91e75e94",
+		"9b64448e2011b3542e262c055f3a6920",
+		"0ded3709af338a138df1216fd0cfa274",
+		"73f9d309b7aa61837d9d7efcbe748d22",
+		"02b9b8af824ed68ce5246dd5d116dd2c",
+		"cf9b85073b01faa70c44080529ec05e1"
+	]
+}
