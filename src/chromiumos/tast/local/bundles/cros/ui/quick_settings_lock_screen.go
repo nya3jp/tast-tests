@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -26,7 +27,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"amehfooz@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.Battery()),
@@ -41,7 +42,14 @@ func init() {
 // QuickSettingsLockScreen tests that the screen can be locked from Quick Settings
 // and verifies its contents when the screen is locked.
 func QuickSettingsLockScreen(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
+	const (
+		username = "testuser@gmail.com"
+		password = "pass"
+
+		lockTimeout = 30 * time.Second
+	)
+
+	cr, err := chrome.New(ctx, chrome.Auth(username, password, "1234"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -138,5 +146,27 @@ func QuickSettingsLockScreen(ctx context.Context, s *testing.State) {
 		} else if !shown {
 			s.Errorf("%v was not found in the UI", node)
 		}
+	}
+
+	// Unlock the screen to ensure subsequent tests aren't affected by the screen remaining locked.
+	// TODO(crbug/1156812): Remove once chrome.go has a way to clean up the lock screen state.
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, lockTimeout); err != nil {
+		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
+	}
+
+	// TODO(crbug/1109381): the password field isn't actually ready just yet when WaitState returns.
+	// This causes it to miss some of the keyboard input, so the password will be wrong.
+	// We can check in the UI for the password field to exist, which seems to be a good enough indicator that
+	// the field is ready for keyboard input.
+	if err := lockscreen.WaitForPasswordField(ctx, tconn, username, 5*time.Second); err != nil {
+		s.Fatal("Password text field did not appear in the UI: ", err)
+	}
+
+	if err := lockscreen.EnterPassword(ctx, tconn, username, password+"\n", keyboard); err != nil {
+		s.Fatal("Entering password failed: ", err)
+	}
+
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.LoggedIn }, 30*time.Second); err != nil {
+		s.Fatalf("Failed waiting to log in: %v, last state: %+v", err, st)
 	}
 }

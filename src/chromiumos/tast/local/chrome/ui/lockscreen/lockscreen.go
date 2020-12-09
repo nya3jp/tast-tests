@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -62,24 +63,56 @@ func WaitState(ctx context.Context, tconn *chrome.TestConn, check func(st State)
 	return st, err
 }
 
-// WaitForPasswordField waits for the password text field for a given user pod to appear in the UI.
+// PasswordFieldParams generates FindParams for the password field.
 // The password field node can be uniquely identified by its name attribute, which includes the username,
-// such as "Password for username@gmail.com". We'll wait for the node whose name matches the regex
+// such as "Password for username@gmail.com". The FindParams will find the node whose name matches the regex
 // /Password for <username>/, so the domain can be omitted, or the username argument can be an empty
-// string to wait for any password field to appear.
-func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username string, timeout time.Duration) error {
+// string to find the first password field in the hierarchy.
+func PasswordFieldParams(ctx context.Context, tconn *chrome.TestConn, username string) (ui.FindParams, error) {
+	var params ui.FindParams
 	r, err := regexp.Compile(fmt.Sprintf("Password for %v", username))
 	if err != nil {
-		return errors.Wrap(err, "failed to compile regexp for name attribute")
+		return params, errors.Wrap(err, "failed to compile regexp for name attribute")
 	}
 	attributes := map[string]interface{}{
 		"name": r,
 	}
-	params := ui.FindParams{
+	params = ui.FindParams{
 		Role:       ui.RoleTypeTextField,
 		Attributes: attributes,
 	}
+	return params, nil
+}
+
+// WaitForPasswordField waits for the password text field for a given user pod to appear in the UI.
+func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username string, timeout time.Duration) error {
+	params, err := PasswordFieldParams(ctx, tconn, username)
+	if err != nil {
+		return err
+	}
 	return ui.WaitUntilExists(ctx, tconn, params, timeout)
+}
+
+// EnterPassword enters and submits the given password. Refer to PasswordFieldParams for username options.
+// It doesn't make any assumptions about the password being correct, so callers should verify the login/lock state afterwards.
+func EnterPassword(ctx context.Context, tconn *chrome.TestConn, username, password string, kb *input.KeyboardEventWriter) error {
+	params, err := PasswordFieldParams(ctx, tconn, username)
+	if err != nil {
+		return err
+	}
+	field, err := ui.FindWithTimeout(ctx, tconn, params, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find password box")
+	}
+	defer field.Release(ctx)
+	if err := field.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click password box")
+	}
+
+	if err := kb.Type(ctx, password+"\n"); err != nil {
+		return errors.Wrap(err, "failed to enter and submit password")
+	}
+	return nil
 }
 
 // Lock locks the screen.
