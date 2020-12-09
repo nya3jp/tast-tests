@@ -16,6 +16,23 @@
       "message": "Change the way specifying ciphers in mkOps in simpleConnectWPA.",
       "revId": "35a498291584899469e64d3dbb6bb93c92e78c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f77df03_3a4583df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-09T04:48:16Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027m not sure if this might be over-engineering. Need second opinion.\n\n@Dean, would you like to also take a look?\n\n\n",
+      "revId": "35a498291584899469e64d3dbb6bb93c92e78c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
