@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -40,49 +39,49 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
-			Pre:               pre.ChromeVideoWithHWAV1Decoding(),
+			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
 			Name:              "h264",
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "vp8",
 			Val:               seekTest{filename: "720_vp8.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "vp9",
 			Val:               seekTest{filename: "720_vp9.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "switch_h264",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "switch_vp8",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.vp8.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "switch_vp9",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.vp9.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "stress_av1",
 			Val:               seekTest{filename: "720_av1.mp4", numSeeks: 1000},
@@ -90,7 +89,7 @@ func init() {
 			ExtraData:         []string{"720_av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			Timeout:           20 * time.Minute,
-			Pre:               pre.ChromeVideoWithHWAV1Decoding(),
+			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
 			Name:              "stress_vp8",
 			Val:               seekTest{filename: "720_vp8.webm", numSeeks: 1000},
@@ -98,7 +97,7 @@ func init() {
 			ExtraData:         []string{"720_vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			Timeout:           20 * time.Minute,
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "stress_vp9",
 			Val:               seekTest{filename: "720_vp9.webm", numSeeks: 1000},
@@ -106,7 +105,7 @@ func init() {
 			ExtraData:         []string{"720_vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Timeout:           20 * time.Minute,
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "stress_h264",
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 1000},
@@ -114,49 +113,49 @@ func init() {
 			ExtraData:         []string{"720_h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Timeout:           20 * time.Minute,
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "h264_alt",
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:              "vp8_alt",
 			Val:               seekTest{filename: "720_vp8.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:              "vp9_alt",
 			Val:               seekTest{filename: "720_vp9.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:              "switch_h264_alt",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:              "switch_vp8_alt",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.vp8.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:              "switch_vp9_alt",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.vp9.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:              "stress_vp8_alt",
 			Val:               seekTest{filename: "720_vp8.webm", numSeeks: 1000},
@@ -164,7 +163,7 @@ func init() {
 			ExtraData:         []string{"720_vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
 			Timeout:           20 * time.Minute,
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:              "stress_vp9_alt",
 			Val:               seekTest{filename: "720_vp9.webm", numSeeks: 1000},
@@ -172,7 +171,7 @@ func init() {
 			ExtraData:         []string{"720_vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
 			Timeout:           20 * time.Minute,
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
 			Name:              "stress_h264_alt",
 			Val:               seekTest{filename: "720_h264.mp4", numSeeks: 1000},
@@ -180,7 +179,7 @@ func init() {
 			ExtraData:         []string{"720_h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
 			Timeout:           20 * time.Minute,
-			Pre:               pre.ChromeAlternateVideoDecoder(),
+			Fixture:           "chromeAlternateVideoDecoder",
 		}},
 	})
 }
@@ -188,7 +187,7 @@ func init() {
 // Seek plays a file with Chrome and checks that it can safely be seeked into.
 func Seek(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(seekTest)
-	if err := play.TestSeek(ctx, http.FileServer(s.DataFileSystem()), s.PreValue().(*chrome.Chrome), testOpt.filename, testOpt.numSeeks); err != nil {
+	if err := play.TestSeek(ctx, http.FileServer(s.DataFileSystem()), s.FixtValue().(*chrome.Chrome), testOpt.filename, testOpt.numSeeks); err != nil {
 		s.Fatal("TestSeek failed: ", err)
 	}
 }
