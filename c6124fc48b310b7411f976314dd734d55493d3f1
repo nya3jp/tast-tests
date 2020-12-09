@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46936ce7_5880f4e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-09T00:37:01Z",
+      "side": 1,
+      "message": "Sorry, did not pay attention here.  Could you explain why we need such a long time for shutting down of power monitoring?  5 seconds might be too short but I think 1 minute would be too long.",
+      "revId": "c6124fc48b310b7411f976314dd734d55493d3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fbc4990_45c7befa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-09T00:37:01Z",
+      "side": 1,
+      "message": "Sorry I was not clear; my suggestion was *not* specifying TPS prefix here. This pmTimeline will run independently from the timeline of cuj.Recorder.  Note that each timeline instance produces prefix+\u0027t\u0027 metric which records the timestamp.  So use of same prefix confuses the timestamp data.\n\nOr, alternatively, I guess it might be simply okay to always collect those power metrics on cuj.Recorder under the TPS. prefix, even though we don\u0027t actually use those power data for our TPS calculation (for now).",
+      "range": {
+        "startLine": 264,
+        "startChar": 102,
+        "endLine": 264,
+        "endChar": 122
+      },
+      "revId": "c6124fc48b310b7411f976314dd734d55493d3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
