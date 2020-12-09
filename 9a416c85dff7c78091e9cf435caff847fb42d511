@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "792206c9_307971c4",
+        "filename": "src/chromiumos/tast/local/arc/force_install.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-12-09T16:19:21Z",
+      "side": 1,
+      "message": "I think it is necessary, since it is in arc package now.",
+      "parentUuid": "a1b6b1e1_2677c52e",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "9a416c85dff7c78091e9cf435caff847fb42d511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d59e10c_c0d5ee73",
