@@ -11,6 +11,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"time"
 
@@ -512,4 +513,44 @@ func waitProp(ctx context.Context, name, value string, tm timingMode) error {
 // APKPath returns the absolute path to a helper APK.
 func APKPath(value string) string {
 	return adb.APKPath(value)
+}
+
+// makeList returns a list of keys from map.
+func makeList(packages map[string]bool) []string {
+	var packagesList []string
+	for pkg := range packages {
+		packagesList = append(packagesList, pkg)
+	}
+	sort.Strings(packagesList)
+	return packagesList
+}
+
+// WaitForPackages waits for Android packages being installed.
+func (a *ARC) WaitForPackages(ctx context.Context, packages []string) error {
+	ctx, st := timing.Start(ctx, "wait_packages")
+	defer st.End()
+
+	notInstalledPackages := make(map[string]bool)
+	for _, p := range packages {
+		notInstalledPackages[p] = true
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		pkgs, err := a.InstalledPackages(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get installed packages")
+		}
+
+		for p := range pkgs {
+			if notInstalledPackages[p] {
+				delete(notInstalledPackages, p)
+			}
+		}
+		if len(notInstalledPackages) != 0 {
+			return errors.Errorf("%d package(s) are not installed yet: %s",
+				len(notInstalledPackages),
+				strings.Join(makeList(notInstalledPackages), ", "))
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second})
 }
