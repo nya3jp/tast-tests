@@ -69,6 +69,30 @@
       },
       "revId": "2b10f7a1d557451dbd4c3b5831c50face230a49d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009449d9_94fc2a47",
+        "filename": "tools/generate_automation_constants.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-12-09T14:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86157b72_a0f0235d",
+      "range": {
+        "startLine": 54,
+        "startChar": 75,
+        "endLine": 54,
+        "endChar": 86
+      },
+      "revId": "2b10f7a1d557451dbd4c3b5831c50face230a49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
