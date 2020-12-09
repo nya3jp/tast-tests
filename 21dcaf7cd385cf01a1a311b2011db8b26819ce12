@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bedad6b_bc84b4fd",
+        "filename": "android/ArcSensorLatencyTest/res/layout/activity_main.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-09T18:51:20Z",
+      "side": 1,
+      "message": "I see it in other xml files in android/, so I\u0027ve added them here too.",
+      "parentUuid": "e5825efa_69cacaff",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "21dcaf7cd385cf01a1a311b2011db8b26819ce12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f70ada8c_024edb66",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-08T18:02:32Z",
       "side": 1,
       "message": "nit: it should be either inner (private static with public CTOR) class or to be declared in separate file.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "21dcaf7cd385cf01a1a311b2011db8b26819ce12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df905a4_9a5f95d0",
+        "filename": "android/ArcSensorLatencyTest/src/org/chromium/arc/testapp/sensorlatency/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-09T18:51:20Z",
+      "side": 1,
+      "message": "Changed to private static.",
+      "parentUuid": "f70ada8c_024edb66",
       "range": {
         "startLine": 28,
         "startChar": 0,
