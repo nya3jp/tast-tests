@@ -39,6 +39,29 @@
       },
       "revId": "07b7094af58d246b5c63f296fa7457d4de1b3d53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "465e35e8_f24890a3",
+        "filename": "android/ArcIntentPickerTest/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1130680
+      },
+      "writtenOn": "2020-12-09T06:25:03Z",
+      "side": 1,
+      "message": "This attribute might be invalid. pathPrefix is a literal prefix match, so I think what you want is `android:pathPrefix\u003d\"/\"`. Or alternatively you can use pathPattern if you want to specify .* wildcards.",
+      "range": {
+        "startLine": 25,
+        "startChar": 20,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "07b7094af58d246b5c63f296fa7457d4de1b3d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
