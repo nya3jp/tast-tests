@@ -37,6 +37,7 @@ func init() {
 			"group:crosbolt",
 			"crosbolt_nightly",
 		},
+		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"ml_benchmark"},
 		HardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 		Params: []testing.Param{
