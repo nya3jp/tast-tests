@@ -141,6 +141,30 @@
       },
       "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d27fcf_1e2dc9f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-12-09T05:46:27Z",
+      "side": 1,
+      "message": "Hmm, I think it\u0027s probably a bit excessive to create this watcher just because we can\u0027t check an error type. I may just do strings.Contains(err.Error(), context.DeadlineExceeded.Error()). Re the property buffering issue, I\u0027m thinking that after resolving b/171086223 by exposing the is_{roaming,rekey}_in_progress_ flags via D-Bus, I can just check that the rekey flag is toggling back and forth and use the monitor properties returned by ExpectShillProperty to make sure that IsConnected is never false. LMKWYT",
+      "parentUuid": "5882944c_40b0fbc5",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
