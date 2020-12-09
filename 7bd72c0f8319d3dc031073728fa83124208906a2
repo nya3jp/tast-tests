@@ -46,6 +46,30 @@
       },
       "revId": "7bd72c0f8319d3dc031073728fa83124208906a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcdaed2d_7fc5173a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-09T04:53:26Z",
+      "side": 1,
+      "message": "\u003e\u003e Do you mean move UpdatePhenotypeFlagOverride to it\u0027s own file for handling phenotypes?\n\nYes, and may be more generic helper like arc_flag_override or so. I also left suggestion in bug to have chromium switch for this. I am also ok to go as is if you think it is better solution in current conditions.\n\n\u003e\u003e I was also thinking IsKernelVersionAtLeast belongs better in sysutil.go. \nThis SG however TAST owner point of view might be better in this case.",
+      "parentUuid": "7b36cbd9_da5d81c5",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 4
+      },
+      "revId": "7bd72c0f8319d3dc031073728fa83124208906a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
