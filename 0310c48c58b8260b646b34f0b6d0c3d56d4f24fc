@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09e3a40_d9fd4de7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-09T03:27:46Z",
+      "side": 1,
+      "message": "Still LGTM.",
+      "revId": "0310c48c58b8260b646b34f0b6d0c3d56d4f24fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57f8b759_b68a26c0",
@@ -31,6 +48,30 @@
       "writtenOn": "2020-12-09T01:12:04Z",
       "side": 1,
       "message": "Does it assert Bluetooth is down?",
+      "range": {
+        "startLine": 84,
+        "startChar": 27,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "0310c48c58b8260b646b34f0b6d0c3d56d4f24fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a29bd79_554fd129",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_wifi_sans_bluetooth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-09T03:27:46Z",
+      "side": 1,
+      "message": "The Setter now will wait for the expected state (in both storage and bluez), which has the same coverage as Getter. That can be served as an implicit assertion and I guess that\u0027s why Billy removed the get+check below.",
+      "parentUuid": "4cb74e20_e70fc2ea",
       "range": {
         "startLine": 84,
         "startChar": 27,
