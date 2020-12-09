@@ -1,0 +1,207 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package enterprise
+
+import (
+	"bytes"
+	"context"
+	"fmt"
+	"io/ioutil"
+	"path/filepath"
+	"time"
+
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         ARCInstallLogging,
+		Desc:         "Checks that log is uploaded after forced app installation in ARC",
+		Contacts:     []string{"yixie@chromium.org", "arc-eng-muc@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      8 * time.Minute,
+		Vars:         []string{"enterprise.ARCInstallLogging.user", "enterprise.ARCInstallLogging.password"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+	})
+}
+
+// ARCInstallLogging runs the install event logging test:
+// - login with managed account,
+// - check that ARC is launched by user policy,
+// - check ArcEnabled is true and test app is set to force-installed by policy,
+// - check that the test app is installed,
+// - upload a log from the test app to test server for comparison,
+// - check that app installation log is uploaded from Chrome.
+func ARCInstallLogging(ctx context.Context, s *testing.State) {
+	const testPackage = "com.managedchrome.arcloggingtest"
+
+	user := s.RequiredVar("enterprise.ARCInstallLogging.user")
+	password := s.RequiredVar("enterprise.ARCInstallLogging.password")
+
+	// Log-in to Chrome and allow to launch ARC if allowed by user policy. Flag --install-log-fast-upload-for-tests reduces delay of uploading chrome log.
+	cr, err := chrome.New(
+		ctx,
+		chrome.Auth(user, password, "gaia-id"),
+		chrome.GAIALogin(),
+		chrome.ARCSupported(),
+		chrome.ProdPolicy(),
+		chrome.ExtraArgs("--install-log-fast-upload-for-tests"))
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	// Ensure that ARC is launched.
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC by user policy: ", err)
+	}
+	defer a.Close()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// Ensure chrome://policy shows correct ArcEnabled and ArcPolicy values.
+	if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.ArcEnabled{Val: true}}); err != nil {
+		s.Fatal("Failed to verify ArcEnabled: ", err)
+	}
+
+	if err := arc.VerifyArcPolicyForceInstalled(ctx, tconn, []string{testPackage}); err != nil {
+		s.Fatal("Failed to verify force-installed apps in ArcPolicy: ", err)
+	}
+
+	// Ensure that test app is force-installed by ARC policy.
+	if err := a.WaitForPackages(ctx, []string{testPackage}); err != nil {
+		s.Fatal("Failed to force install packages: ", err)
+	}
+
+	// Launch test app.
+	s.Log("Starting log test app")
+	act, err := arc.NewActivity(a, testPackage, ".MainActivity")
+	if err != nil {
+		s.Fatal("Failed to create new activity: ", err)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed starting test app: ", err)
+	}
+
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+	defer d.Close(ctx)
+
+	// Select current account in the account selection UI.
+	s.Log("Selecting android account")
+	accountSelection := d.Object(ui.ResourceIDMatches("(android:id/text1)"))
+	if err := accountSelection.WaitForExists(ctx, time.Second); err != nil {
+		s.Fatal("Failed to find account selection: ", err)
+	}
+	if err := accountSelection.Click(ctx); err != nil {
+		s.Fatal("Failed to select account: ", err)
+	}
+
+	doneButton := d.Object(ui.ResourceIDMatches("(android:id/button1)"))
+	if err := doneButton.WaitForExists(ctx, time.Second); err != nil {
+		s.Fatal("Failed to find done button: ", err)
+	}
+	if err := doneButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click done: ", err)
+	}
+
+	// Start uploading logs to test server by clicking "UPLOAD" button.
+	s.Log("Starting log upload")
+	uploadButtonID := fmt.Sprintf("(%s:id/uploadButton)", testPackage)
+	uploadButton := d.Object(ui.ResourceIDMatches(uploadButtonID))
+	if err := uploadButton.WaitForExists(ctx, time.Second); err != nil {
+		s.Fatal("Failed to find upload button: ", err)
+	}
+	if err := uploadButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click upload button: ", err)
+	}
+
+	// Wait for status label in the test app to show "SUCCESS".
+	s.Log("Checking for app log upload status")
+	uploadStatusLabelID := fmt.Sprintf("(%s:id/uploadStatusLabel)", testPackage)
+	if err := waitForAppLogUpload(ctx, d, uploadStatusLabelID); err != nil {
+		s.Fatal("Failed to upload app log: ", err)
+	}
+
+	// Wait for chrome to upload logs to enterprise management server.
+	s.Log("Checking for chrome log upload status")
+	if err := waitForChromeLogUpload(ctx, cr, testPackage); err != nil {
+		s.Fatal("Chrome log not uploaded: ", err)
+	}
+}
+
+// waitForAppLogUpload waits for test app to upload logs to test server. Status label will show "SUCCESS" after successful upload.
+func waitForAppLogUpload(ctx context.Context, d *ui.Device, uploadStatusLabelID string) error {
+	ctx, st := timing.Start(ctx, "wait_app_log_upload")
+	defer st.End()
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		text, err := d.Object(ui.ResourceIDMatches(uploadStatusLabelID)).GetText(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get status"))
+		}
+
+		if text == "UPLOADING" {
+			return errors.New("Log upload not finished yet")
+		} else if text == "SUCCESS" {
+			return nil
+		}
+		return testing.PollBreak(errors.Wrap(err, "unknown log upload status: "+text))
+	}, nil)
+}
+
+// readChromeLogFile reads content of serialized installation events log file.
+func readChromeLogFile(ctx context.Context, cr *chrome.Chrome) ([]byte, error) {
+	const logFilePath = "/app_push_install_log"
+
+	// Cryptohome dir for the current user.
+	rootCryptDir, err := cryptohome.UserPath(ctx, cr.User())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
+	}
+
+	return ioutil.ReadFile(filepath.Join(rootCryptDir, logFilePath))
+}
+
+// waitForChromeLogUpload waits for chrome to upload logs to the server. After the logs are successfully uploaded contents of the log file will be cleared.
+func waitForChromeLogUpload(ctx context.Context, cr *chrome.Chrome, packageName string) error {
+	ctx, st := timing.Start(ctx, "wait_chrome_log_upload")
+	defer st.End()
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		chromeLog, err := readChromeLogFile(ctx, cr)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to read app_push_install_log"))
+		}
+
+		if bytes.Contains(chromeLog, []byte(packageName)) {
+			return errors.New("Chrome log not uploaded yet")
+		}
+
+		return nil
+	}, nil)
+}
