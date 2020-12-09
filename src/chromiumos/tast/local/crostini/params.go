@@ -182,7 +182,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 	}
 	var it = []iterator{}
 
-	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianBuster} {
+	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
 		for _, arch := range []string{"amd64", "arm"} {
 			for _, stable := range []bool{true, false} {
 				it = append(it, iterator{
@@ -271,6 +271,8 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			var precondition string
 			if testCase.Preconditions != nil {
 				precondition = testCase.Preconditions[i.debianVersion]
+			} else if i.debianVersion == vm.DebianStretch {
+				precondition = "crostini.StartedByComponentStretch()"
 			} else {
 				precondition = "crostini.StartedByComponentBuster()"
 			}

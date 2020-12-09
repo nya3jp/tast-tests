@@ -210,12 +210,27 @@ type PreData struct {
 	Keyboard    *input.KeyboardEventWriter
 }
 
+// StartedByComponentStretch ensures that a VM running stretch has
+// started before the test runs. This precondition has complex
+// requirements to use that are best met using the test parameter
+// generator in params.go.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedByComponentStretch() testing.Precondition { return startedByComponentStretchPre }
+
 // StartedByComponentBuster ensures that a VM running buster has
 // started before the test runs. This precondition has complex
 // requirements to use that are best met using the test parameter
 // generator in params.go.
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByComponentBuster() testing.Precondition { return startedByComponentBusterPre }
+
+// StartedByComponentWithGaiaLoginStretch is similar to
+// StartedByComponentStretch, but will log in Chrome with Gaia with
+// Auth() option.
+// Tip: Run tests with -var=keepState=true to speed up local development
+func StartedByComponentWithGaiaLoginStretch() testing.Precondition {
+	return startedByComponentWithGaiaLoginStretchPre
+}
 
 // StartedByComponentWithGaiaLoginBuster is similar to
 // StartedByComponentBuster, but will log in Chrome with Gaia with
@@ -252,12 +267,29 @@ const (
 	loginGaia
 )
 
+var startedByComponentStretchPre = &preImpl{
+	name:          "crostini_started_by_component_stretch",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	vmMode:        component,
+	container:     normal,
+	debianVersion: vm.DebianStretch,
+}
+
 var startedByComponentBusterPre = &preImpl{
 	name:          "crostini_started_by_component_buster",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
 	vmMode:        component,
 	container:     normal,
 	debianVersion: vm.DebianBuster,
+}
+
+var startedByComponentWithGaiaLoginStretchPre = &preImpl{
+	name:          "crostini_started_by_component_gaialogin_stretch",
+	timeout:       chrome.LoginTimeout + 7*time.Minute,
+	vmMode:        component,
+	container:     normal,
+	debianVersion: vm.DebianStretch,
+	loginType:     loginGaia,
 }
 
 var startedByComponentWithGaiaLoginBusterPre = &preImpl{

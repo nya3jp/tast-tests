@@ -117,7 +117,8 @@ func TestGaiaLoginParams(t *testing.T) {
 	for _, filename := range gaiaLoginTests {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
 			Preconditions: map[vm.ContainerDebianVersion]string{
-				vm.DebianBuster: "crostini.StartedByComponentWithGaiaLoginBuster()",
+				vm.DebianStretch: "crostini.StartedByComponentWithGaiaLoginStretch()",
+				vm.DebianBuster:  "crostini.StartedByComponentWithGaiaLoginBuster()",
 			}}})
 		genparams.Ensure(t, filename, params)
 	}
