@@ -22,6 +22,30 @@
       },
       "revId": "3ac271f91c8a166fa0ce01afd4be23add72cead8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cda3079_1b91026a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/clear_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-09T00:04:44Z",
+      "side": 1,
+      "message": "2nd is fine for now since we wrote the tests",
+      "parentUuid": "818e8711_a9077149",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "3ac271f91c8a166fa0ce01afd4be23add72cead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
