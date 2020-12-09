@@ -16,6 +16,23 @@
       "message": "Found the bug when looking at recent flake, example: [1].\n\n[1] https://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2020-12-05/210dde14-244d-4d36-ab6f-5c670b6f4b9a/",
       "revId": "af0d9eb40cf05eb0e5a28dd75f190893d5b8ae2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b42128d_45d5198d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-09T01:22:46Z",
+      "side": 1,
+      "message": "Awesome! Thanks for the fix.",
+      "revId": "af0d9eb40cf05eb0e5a28dd75f190893d5b8ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
