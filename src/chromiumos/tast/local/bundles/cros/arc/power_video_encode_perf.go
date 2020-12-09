@@ -57,7 +57,7 @@ func init() {
 			},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		}, {
 			Name: "h264_1080p_i420_vm",
 			Val: video.EncodeTestOptions{
