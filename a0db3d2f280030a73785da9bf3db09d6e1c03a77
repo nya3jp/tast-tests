@@ -131,6 +131,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b81167a_2cc51b31",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-09T01:05:09Z",
+      "side": 1,
+      "message": "Just found a wording issue: be inclusive\nhttps://developers.google.com/style/inclusive-documentation?hl\u003den\n\n// Check correctness of input.",
+      "range": {
+        "startLine": 191,
+        "startChar": 13,
+        "endLine": 191,
+        "endChar": 25
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac1c9fe8_a52f9ae0",
         "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
         "patchSetId": 10
@@ -243,6 +266,24 @@
       "side": 1,
       "message": "Oh, I misunderstood your first comment.\nUnless we receive entirely rubbish data, numSamples \u003e len(samples) is impossible (as per comment in line 211). \nWe can receive samples consisting of TCP data (which contains only throughput) or UDP data (only transaction rate).\nWe can receive mix of TCP and UDP samples, but in no case a single sample would consist of both  throughput and transaction rate - it\u0027s guaranteed by parsing.",
       "parentUuid": "e5f5d706_5d403c45",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21908778_4a32aa95",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-09T01:05:09Z",
+      "side": 1,
+      "message": "So you mean that for samples, either it has CategoryThroughput or CategoryTransactionRate, right?\nIf so, please move the comment and restructure if-blocks like:\n\n// The result of the same type consists of either throughput or transaction rate.\n// We may easily use sum to get total number of valid samples.\nif hasCategory(samples, CategoryThroughput) {\n  // ...\n} else if hasCategory(samples, CategoryTransactionRate) {\n  // ...\n}",
+      "parentUuid": "811f4970_bde6ed0b",
       "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -403,6 +444,30 @@
       "side": 1,
       "message": "I agree. Now that I fixed counting UDP errors, the outcome has been more severe, especially when there is only 1 error in sample group (this constitutes rather high deviation) - then we usually collect 10 samples instead of just 3.\nI decided to remove Errors from this comparison, as I would not be able to set a reasonable fraction target for this measurement).\nThe Throughput and Transaction Rate is comparable, so I left them as they are.\n\nThis algorithm was ported from the original autotest, I\u0027d prefer to keep parity with the original here as much as possible. \nOr, we may open bug to fix that in both autotest and tast at the same time. WDYT?",
       "parentUuid": "d7ca5973_bd720e28",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59151e5_9e69774c",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-09T01:05:09Z",
+      "side": 1,
+      "message": "Based on the discussion, how about renaming the function as\n\"WithinCoefficientVariation(cv float64)\"?",
+      "parentUuid": "738b45c6_d096377d",
       "range": {
         "startLine": 257,
         "startChar": 0,
