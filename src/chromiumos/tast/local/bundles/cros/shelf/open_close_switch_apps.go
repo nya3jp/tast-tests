@@ -127,7 +127,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 			}
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 				return w.IsActive && strings.Contains(w.Title, app.WindowTitle)
-			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 				if i == 0 {
 					s.Fatalf("%v app window not opened after clicking shelf icon: %v", app.Name, err)
 				} else {
