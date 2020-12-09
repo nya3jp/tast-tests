@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd03c8d0_909e3072",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-09T19:32:11Z",
+      "side": 1,
+      "message": "The code is fine, but I guess this type of thing should be taken care of by the tast framework itself rather than having extra flags like this.  nya, can you take a look?",
+      "revId": "00f0c08cd16405324e8b60b71ff7d5a8bf272f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
