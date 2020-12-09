@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -41,7 +40,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_av1.mp4"},
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeAV1},
-			Pre:               pre.ChromeVideoWithGuestLoginAndHWAV1Decoding(),
+			Fixture:           "chromeVideoWithGuestLoginAndHWAV1Decoding",
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "h264_hw",
@@ -49,7 +48,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_h264.mp4"},
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithGuestLogin(),
+			Fixture:           "chromeVideoWithGuestLogin",
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "vp8_hw",
@@ -57,7 +56,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_vp8.webm"},
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeVP8},
-			Pre:               pre.ChromeVideoWithGuestLogin(),
+			Fixture:           "chromeVideoWithGuestLogin",
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "vp9_hw",
@@ -65,7 +64,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_vp9.webm"},
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeVP9},
-			Pre:               pre.ChromeVideoWithGuestLogin(),
+			Fixture:           "chromeVideoWithGuestLogin",
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "h264_hw_switch",
@@ -73,7 +72,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         append(play.MSEDataFiles(), "cars_dash_mp4.mpd", "cars_144_h264.mp4", "cars_240_h264.mp4"),
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithGuestLogin(),
+			Fixture:           "chromeVideoWithGuestLogin",
 			Timeout:           10 * time.Minute,
 		}},
 	})
@@ -85,7 +84,7 @@ func MemCheck(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(memCheckParams)
 
 	testPlay := func() error {
-		return play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, play.VerifyHWAcceleratorUsed)
+		return play.TestPlay(ctx, s, s.FixtValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, play.VerifyHWAcceleratorUsed)
 	}
 
 	backend, err := graphics.GetBackend()
