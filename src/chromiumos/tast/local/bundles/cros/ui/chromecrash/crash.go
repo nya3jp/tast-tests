@@ -537,7 +537,7 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs []string) error 
 	case NoCrashFile:
 		return nil
 	default:
-		return errors.New("unexpected CrashFileType " + string(ct.waitFor))
+		return errors.Errorf("unexpected CrashFileType %d", ct.waitFor)
 	}
 
 	return nil
