@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd0c519_75a366a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-09T01:19:36Z",
+      "side": 1,
+      "message": "A string literal suggestion.",
+      "revId": "cf57d1395612183624ebaf98dcfb809db7235de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac95efa_46f1e932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_install_rtd2142.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-09T01:19:36Z",
+      "side": 1,
+      "message": "Since you use + to concatenate string literals here, how about splitting the lines by parameters so that it is easer to read?\n \n`^-p realtek_mst_i2c_spi:bus\u003d8,reset-mcu\u003d1,enter-isp\u003d1` +\n` --flash-size[\\n]` +\n` -p realtek_mst_i2c_spi:bus\u003d8,reset-mcu\u003d0,enter-isp\u003d1` +\n...",
+      "range": {
+        "startLine": 38,
+        "startChar": 82,
+        "endLine": 38,
+        "endChar": 99
+      },
+      "revId": "cf57d1395612183624ebaf98dcfb809db7235de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
