@@ -19,7 +19,7 @@ func init() {
 		Func:         CCAQRCode,
 		Desc:         "Verifies the BarcodeDetector API used in CCA",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"cca_qrcode.html", "cca_qrcode.js", "qrcode_3024x3024.jpg"},
 		Pre:          chrome.LoggedIn(),
