@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4494fefd_dc030d6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-09T16:04:51Z",
+      "side": 1,
+      "message": "setup.PowerTest() at L252 prepares the DUT for power tests. The one minute is needed for its cleanup call. The cleanup needs to restart the system services it stops during preparation. There would be about 10 such services  [1]. The go/tast-power-measurements uses 1 min in its sample code and all power perf tests are following that sample.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/power/setup/setup.go;l\u003d154?q\u003dsetup.PowerTest\u0026sq\u003dfile:%5Esrc%20package:%5Echromeos_(internal%7Cpublic)$",
+      "parentUuid": "46936ce7_5880f4e6",
+      "revId": "c6124fc48b310b7411f976314dd734d55493d3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fbc4990_45c7befa",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-09T00:37:01Z",
       "side": 1,
       "message": "Sorry I was not clear; my suggestion was *not* specifying TPS prefix here. This pmTimeline will run independently from the timeline of cuj.Recorder.  Note that each timeline instance produces prefix+\u0027t\u0027 metric which records the timestamp.  So use of same prefix confuses the timestamp data.\n\nOr, alternatively, I guess it might be simply okay to always collect those power metrics on cuj.Recorder under the TPS. prefix, even though we don\u0027t actually use those power data for our TPS calculation (for now).",
+      "range": {
+        "startLine": 264,
+        "startChar": 102,
+        "endLine": 264,
+        "endChar": 122
+      },
+      "revId": "c6124fc48b310b7411f976314dd734d55493d3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3569db_4f8979f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-09T16:04:51Z",
+      "side": 1,
+      "message": "Thanks for the timeline tip. Let me change the prefix to \"Power.\".\n\nMoving this into cuj.Recorder sounds good but we might want to make it optional because we need setup.PowerTest() to put the DUT into a proper state to collect stable/reliable power metrics. These setup would have impacts on the performance. For example, when we force to use battery, cpu might be throttled to save energy. So we should probably separate regular performance test and power test.\n\nBTW, which way would you prefer to add option to cuj.Recorder. My PS1 did that by adding a new NewRecorderWithPower method to pass that in as a bool and avoided changing existing NewRecorder calls. Ideally, we might want to change NewRecorder call to take Option instead of Config and one of the Option is to enable power metrics. What do you think?",
+      "parentUuid": "1fbc4990_45c7befa",
       "range": {
         "startLine": 264,
         "startChar": 102,
