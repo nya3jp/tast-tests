@@ -16,6 +16,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/storage/stress"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -64,6 +65,16 @@ func init() {
 			Timeout: 1 * time.Hour,
 		}},
 	})
+}
+
+func swapoff(ctx context.Context) error {
+	testing.ContextLog(ctx, "Disabling swap")
+	err := testexec.CommandContext(ctx, "swapoff", "-a").Run(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to turn swap off")
+	}
+
+	return nil
 }
 
 func setupChecks(ctx context.Context, s *testing.State) {
@@ -494,6 +505,9 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 			// Run tests to collect metrics for Slc device.
 			if slcConfig.device, err = slcDevice(ctx); err != nil {
 				s.Fatal("Failed to get slc device: ", err)
+			}
+			if err = swapoff(ctx); err != nil {
+				s.Fatal("Failed to turn off the swap: ", err)
 			}
 		}
 	}
