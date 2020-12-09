@@ -193,6 +193,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/var/log", Context: "cros_var_log", Log: true},
 		{Path: "/var/log/asan", Context: "cros_var_log_asan", Recursive: true, Log: true},
 		{Path: "/var/log/authpolicy.log", Context: "cros_authpolicy_log", Log: true},
+		{Path: "/var/log/bluetooth.log", Context: "cros_var_log_bluetooth", Log: true},
 		{Path: "/var/log/eventlog.txt", Context: "cros_var_log_eventlog", Log: true},
 		{Path: "/var/log/mount-encrypted.log", Context: "cros_var_log", IgnoreErrors: true, Log: true},
 		{Path: "/var/log/tlsdate.log", Context: "cros_tlsdate_log", Log: true},
