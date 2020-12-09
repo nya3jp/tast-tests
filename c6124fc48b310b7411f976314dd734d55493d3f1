@@ -81,6 +81,30 @@
       },
       "revId": "c6124fc48b310b7411f976314dd734d55493d3f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d004aebb_b48bc721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-09T21:31:56Z",
+      "side": 1,
+      "message": "I ended up simply collecting power metrics in cuj.Recorder with a comment that \"setup.PowerTest()\" is needed to get better numbers. Let me know if we want to make it optional.",
+      "parentUuid": "9c3569db_4f8979f7",
+      "range": {
+        "startLine": 264,
+        "startChar": 102,
+        "endLine": 264,
+        "endChar": 122
+      },
+      "revId": "c6124fc48b310b7411f976314dd734d55493d3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
