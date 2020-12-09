@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46fe9081_8d4ae07e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-09T11:03:30Z",
+      "side": 1,
+      "message": "Done by moving all logic into preview.js",
+      "parentUuid": "c048b519_bc872796",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "478fd2ab_ad0cb5db",
@@ -106,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f89824_666274c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-09T11:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87916463_e8068341",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06851c0e_db7ba4a2",
@@ -123,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07a75a7a_2fb2ae06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-09T11:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06851c0e_db7ba4a2",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f3c8a2b_7f4569f9",
@@ -136,6 +190,24 @@
       "writtenOn": "2020-12-01T02:53:34Z",
       "side": 1,
       "message": "Do we need to do jpeg encode/decode here? getImageData() could get the raw pixel data directly.",
+      "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3090e96f_2508c906",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-09T11:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f3c8a2b_7f4569f9",
       "revId": "d0f8201cab057293de8f7c71e90bee01fa05fae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
