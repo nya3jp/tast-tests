@@ -34,6 +34,24 @@
       "parentUuid": "7ee82c7e_4d552a55",
       "revId": "853991e257eab629362f51910544def0b0937d35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee56f87e_250bc47b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_regulatory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-09T20:00:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bc3c6c0_33e31b8c",
+      "revId": "853991e257eab629362f51910544def0b0937d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
