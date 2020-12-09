@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de60386_09237cdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-09T01:05:09Z",
+      "side": 1,
+      "message": "Sorry for delay. Please address the comments and it is okay to go.",
+      "revId": "61ae126230b9c25320949765f4a4db48a8ba5cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb0c9e90_6a834d7c",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-09T01:05:09Z",
+      "side": 1,
+      "message": "Based on the discussion in patchset 10 line 257, how about renaming it as\n\"WithinCoefficientVariation(cv float64)\"?",
+      "range": {
+        "startLine": 228,
+        "startChar": 17,
+        "endLine": 228,
+        "endChar": 46
+      },
+      "revId": "61ae126230b9c25320949765f4a4db48a8ba5cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
