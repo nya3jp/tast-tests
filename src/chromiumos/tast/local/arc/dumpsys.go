@@ -104,7 +104,7 @@ const (
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`.*\s+idle=(\S+)` // Idle state (group 13).
 
-	regStrForActivitiesP = `ActivityRecord{[0-9a-fA-F]* u[0-9]* ([^,]*)\/([^,]*) t[0-9]*}`
+	regStrForActivitiesP = `ActivityRecord{[0-9a-fA-F]* u[0-9]* ([^,]*)\/([^,]*) t[0-9]*(?: f)?}`
 )
 
 var (
