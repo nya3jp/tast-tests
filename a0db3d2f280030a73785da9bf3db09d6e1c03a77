@@ -152,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0bfa17d_611d2762",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-09T17:21:58Z",
+      "side": 1,
+      "message": "I never imagined this could be offensive. Done",
+      "parentUuid": "0b81167a_2cc51b31",
+      "range": {
+        "startLine": 191,
+        "startChar": 13,
+        "endLine": 191,
+        "endChar": 25
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac1c9fe8_a52f9ae0",
@@ -284,6 +308,24 @@
       "side": 1,
       "message": "So you mean that for samples, either it has CategoryThroughput or CategoryTransactionRate, right?\nIf so, please move the comment and restructure if-blocks like:\n\n// The result of the same type consists of either throughput or transaction rate.\n// We may easily use sum to get total number of valid samples.\nif hasCategory(samples, CategoryThroughput) {\n  // ...\n} else if hasCategory(samples, CategoryTransactionRate) {\n  // ...\n}",
       "parentUuid": "811f4970_bde6ed0b",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "566fa41e_5cd3e9d7",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-09T17:21:58Z",
+      "side": 1,
+      "message": "Not quite. Each single sample can have either CategoryThroughput or CategoryTransactionRate data (never both). But the function is prepared to process the slice that have multiple different samples (each having *either* CategoryThroughput or CategoryTransactionRate), thus it can happen that the slice has both categories, so I cannot use `else` clause.\nExample:\nThe slice has 4 TCP results, and 6 UDP results, thus:\nhasCategory(samples, CategoryThroughput) \u003d\u003d true\ncalculateStats(samples, CategoryTransactionRate) returns _,_,4\nhasCategory(samples, CategoryTransactionRate) \u003d\u003d true\ncalculateStats(samples, CategoryTransactionRate) returns _,_,6\nAt the end numSamples \u003d\u003d 10 and all means and deviations are calcualted correctly.",
+      "parentUuid": "21908778_4a32aa95",
       "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -468,6 +510,30 @@
       "side": 1,
       "message": "Based on the discussion, how about renaming the function as\n\"WithinCoefficientVariation(cv float64)\"?",
       "parentUuid": "738b45c6_d096377d",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07b4fc1_25c5e4c2",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-09T17:21:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a59151e5_9e69774c",
       "range": {
         "startLine": 257,
         "startChar": 0,
