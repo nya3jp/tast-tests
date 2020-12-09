@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -40,7 +39,7 @@ func init() {
 			ExtraData:         []string{"video.html", "still-colors-360p.h264.mp4", "still-colors-360p.ref.png"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			// TODO(andrescj): move to graphics_nightly after the test is stabilized.
 			Name: "h264_360p_exotic_crop_hw",
@@ -52,7 +51,7 @@ func init() {
 			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_480p_hw",
 			Val: contentsParams{
@@ -63,7 +62,7 @@ func init() {
 			ExtraData:         []string{"video.html", "still-colors-480p.h264.mp4", "still-colors-480p.ref.png"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_720p_hw",
 			Val: contentsParams{
@@ -74,7 +73,7 @@ func init() {
 			ExtraData:         []string{"video.html", "still-colors-720p.h264.mp4", "still-colors-720p.ref.png"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_1080p_hw",
 			Val: contentsParams{
@@ -85,7 +84,7 @@ func init() {
 			ExtraData:         []string{"video.html", "still-colors-1080p.h264.mp4", "still-colors-1080p.ref.png"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_360p_composited_hw",
 			Val: contentsParams{
@@ -95,7 +94,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-360p.h264.mp4", "still-colors-360p.ref.png"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeCompositedVideo(),
+			Fixture:           "chromeCompositedVideo",
 		}, {
 			// TODO(andrescj): move to graphics_nightly after the test is stabilized.
 			Name: "h264_360p_exotic_crop_composited_hw",
@@ -106,7 +105,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeCompositedVideo(),
+			Fixture:           "chromeCompositedVideo",
 		}, {
 			Name: "h264_480p_composited_hw",
 			Val: contentsParams{
@@ -116,7 +115,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-480p.h264.mp4", "still-colors-480p.ref.png"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeCompositedVideo(),
+			Fixture:           "chromeCompositedVideo",
 		}, {
 			Name: "h264_720p_composited_hw",
 			Val: contentsParams{
@@ -126,7 +125,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720p.h264.mp4", "still-colors-720p.ref.png"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeCompositedVideo(),
+			Fixture:           "chromeCompositedVideo",
 		}, {
 			Name: "h264_1080p_composited_hw",
 			Val: contentsParams{
@@ -136,7 +135,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-1080p.h264.mp4", "still-colors-1080p.ref.png"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeCompositedVideo(),
+			Fixture:           "chromeCompositedVideo",
 		}},
 		// TODO(andrescj): add tests for VP8 and VP9.
 		// TODO(andrescj): for non-composited tests, check that overlays were used.
@@ -146,7 +145,7 @@ func init() {
 // Contents starts playing a video, takes a screenshot, and checks a few interesting pixels.
 func Contents(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(contentsParams)
-	if err := play.TestPlayAndScreenshot(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.refFileName); err != nil {
+	if err := play.TestPlayAndScreenshot(ctx, s, s.FixtValue().(*chrome.Chrome), testOpt.fileName, testOpt.refFileName); err != nil {
 		s.Fatal("TestPlayAndScreenshot failed: ", err)
 	}
 }

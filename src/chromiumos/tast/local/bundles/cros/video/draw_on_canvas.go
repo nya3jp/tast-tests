@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -32,7 +31,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video-on-canvas.html", "still-colors-360p.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			// TODO(andrescj): move to graphics_nightly after the test is stabilized.
 			Name:              "h264_360p_exotic_crop_hw",
@@ -40,28 +39,28 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video-on-canvas.html", "still-colors-720x480-cropped-to-640x360.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "h264_480p_hw",
 			Val:               "still-colors-480p.h264.mp4",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video-on-canvas.html", "still-colors-480p.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "h264_720p_hw",
 			Val:               "still-colors-720p.h264.mp4",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video-on-canvas.html", "still-colors-720p.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}, {
 			Name:              "h264_1080p_hw",
 			Val:               "still-colors-1080p.h264.mp4",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video-on-canvas.html", "still-colors-1080p.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideo(),
+			Fixture:           "chromeVideo",
 		}},
 		// TODO(andrescj): add tests for VP8 and VP9.
 	})
@@ -71,7 +70,7 @@ func init() {
 func DrawOnCanvas(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 	url := path.Join(server.URL, "video-on-canvas.html")
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
