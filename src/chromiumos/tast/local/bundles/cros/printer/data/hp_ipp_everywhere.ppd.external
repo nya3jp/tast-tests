@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/hp_ipp_everywhere_20201209.ppd",
+  "size": 10822,
+  "sha256sum": "8fe8667636468201ca2a3167744c3bfea6b9f5f673dd0f9f22bdbfba92eb049d"
+}
