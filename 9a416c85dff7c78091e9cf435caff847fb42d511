@@ -16,6 +16,92 @@
       "message": "Hi Polina,\n\nI moved the ARCInstallLogging test here as you suggested. Please take a look! Thanks!",
       "revId": "9a416c85dff7c78091e9cf435caff847fb42d511",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5feaa957_2db88f2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-12-09T12:11:46Z",
+      "side": 1,
+      "message": "Thanks, Yi, looks almost good.\n\nBTW, are there any plans to refactor arc_provisioning test to be using these helper functions as well in the future?",
+      "revId": "9a416c85dff7c78091e9cf435caff847fb42d511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c9c5e0_c5bb9c2f",
+        "filename": "src/chromiumos/tast/local/arc/force_install.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-12-09T12:11:46Z",
+      "side": 1,
+      "message": "(optional) WDYT of moving this method to arc package? arc.WaitForPackages ? It\u0027s not about force installed packages only and other arc tests may benefit from this function.\nAlso what is a timeout here?",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "9a416c85dff7c78091e9cf435caff847fb42d511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d59e10c_c0d5ee73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-12-09T12:11:46Z",
+      "side": 1,
+      "message": "Should we enable it for arcvm as well? (android_vm software dep)",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "9a416c85dff7c78091e9cf435caff847fb42d511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af7de399_0e7b2eeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-12-09T12:11:46Z",
+      "side": 1,
+      "message": "Are there any plans to extend the test with other packages?\n\nnit: I think there is nothing secret in gaia id and package name and these values could be just constants located in this test (not in secret vars)...",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 73
+      },
+      "revId": "9a416c85dff7c78091e9cf435caff847fb42d511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
