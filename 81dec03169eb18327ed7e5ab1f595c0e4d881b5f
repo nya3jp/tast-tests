@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92df5b17_82644d7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-10T04:29:53Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll make the follow up CL.",
+      "parentUuid": "02c05553_0700f3a0",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "81dec03169eb18327ed7e5ab1f595c0e4d881b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e03d950_d0fc13e3",
         "filename": "src/chromiumos/tast/local/chrome/fixture.go",
         "patchSetId": 3
@@ -60,6 +84,24 @@
       "writtenOn": "2020-12-10T02:48:06Z",
       "side": 1,
       "message": "nit: we need to carry over the TODO\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/media/pre/pre.go;l\u003d52?q\u003dTODO\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fmedia%2Fpre%2F",
+      "revId": "81dec03169eb18327ed7e5ab1f595c0e4d881b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71d1d9a_05095c41",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-10T04:29:53Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1338ef9e_b92ec637",
       "revId": "81dec03169eb18327ed7e5ab1f595c0e4d881b5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
