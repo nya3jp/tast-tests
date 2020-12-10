@@ -454,6 +454,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d588d6ac_e605935d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-10T17:05:18Z",
+      "side": 1,
+      "message": "If the error is from \"rpc.Dial\", `m` would have less DUTs than specified. If the error is from \"cr.Create\", `p` and `m` would have a record with an invalid res.Path (empty?). \n\nFrom what you described, maybe we could ignore the \"rpc.Dial\" error. But could we safely ignore the 2nd one?",
+      "parentUuid": "e0b1053d_4de4bbe4",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28b94215_5e6d990d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
         "patchSetId": 1
@@ -569,6 +587,24 @@
       "side": 1,
       "message": "We just give a warning log to user, let them know some DUTs had something wrong when pulling file back. We did think that just terminate the action when error, but it\u0027s not fair for other DUTs, maybe they don\u0027t have TCP connection/data transfer issue.",
       "parentUuid": "6c35f956_6d0051ca",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42577481_c03efb8a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-10T17:05:18Z",
+      "side": 1,
+      "message": "I did not ask to terminate the loop on first error so we would still try to fetch files for all DUTs. We should probably track the errors that has happened (at least the first error) and handle it after the dwg.Wait().\n\nPersonally, I would prefer to fail the test when there is an error so that the data are more aligned. Comparing data with different comp DUTs might not be very useful IMHO. For example, we have a test to run a 4-party meeting but one DUT is dead and we end up running a 3-party meeting. The performance data would be different. Comparing the 3-party meeting data with 4-party meeting data could be mis-leading.",
+      "parentUuid": "41fd328a_7ef5bc6f",
       "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
