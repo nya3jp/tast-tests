@@ -1,0 +1,267 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb39104c_b6da2f18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "I am not sure if chrome/ui/crd is the best place for it. Defer the judgement to Tast Owners.",
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b3f5465_986b8bd2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "\"Chrome Remote Desktop\" for consistency",
+      "range": {
+        "startLine": 5,
+        "startChar": 44,
+        "endLine": 5,
+        "endChar": 65
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "439d4ac2_f0a6bfdb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "\"Chrome Remote Desktop\" for consistency",
+      "range": {
+        "startLine": 138,
+        "startChar": 23,
+        "endLine": 138,
+        "endChar": 44
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37885e63_04ecb533",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "nit: crd.PrepareCRD looks unnecessarily repetitive. How about simply \"Launch\"?",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a2fc02_d689d644",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "Unused?",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e77115_61fa8899",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "huge nit: wrap the line by adding newline for each field of ManualAlignRequest to make it more readable.",
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd41d5c_97608cad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.css",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca89ed56_9be96b34",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "Let\u0027s have a consistent naming. How about camerabox_align.{html,js.css,svg} here?",
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5a225e_05a649e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "nit: Add |\u003c!doctype html\u003e| before the license.",
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85da8706_140e24fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "Do we need this?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1990230_d3d00b64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "nit: Move these enum/class/helper functions out of manualAlign().",
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30af2b99_71176f14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "nit: class Preview",
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9bb73f6_8736fddc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-10T04:57:02Z",
+      "side": 1,
+      "message": "Use ms directly here. In JS it\u0027s more common to always use a duration number as ms.",
+      "range": {
+        "startLine": 82,
+        "startChar": 23,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
