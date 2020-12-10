@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30fa4d39_2104727b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2251858_33a6bd07",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "ff68be022cbed40403fb1b6d885f11699858074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59864afa_fd8794c0",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-10T08:05:21Z",
       "side": 1,
       "message": "Can we call newLoggedInFixture consistently?",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "ff68be022cbed40403fb1b6d885f11699858074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08896394_78f0d965",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59864afa_fd8794c0",
       "range": {
         "startLine": 19,
         "startChar": 19,
