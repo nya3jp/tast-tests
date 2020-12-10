@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7378a04a_ee097252",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-10T21:10:58Z",
+      "side": 1,
+      "message": "+2 assuming all comments will be addressed.",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5abe727_ac9861bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-10T21:10:58Z",
+      "side": 1,
+      "message": "golang sure has a weird way of specifying time formats.",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6588ed_5f17b6a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-10T21:10:58Z",
+      "side": 1,
+      "message": "so these reportNow and reportNewEvents functions seem to be good candidates for putting under reporters/",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea19504_a1b908a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-10T21:10:58Z",
+      "side": 1,
+      "message": "... that occurred at or after a specified time.",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c94321_6e9840fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-10T21:10:58Z",
+      "side": 1,
+      "message": "create an event struct instead of using a string slice.",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9807d7cd_4bbb3399",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-10T21:10:58Z",
+      "side": 1,
+      "message": "please clarify by saying that output is already ordered from most recent to least.",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e11ae448_034f61d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-10T21:10:58Z",
+      "side": 1,
+      "message": "do we really need to check this?",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573a36d5_7a15459f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-10T21:10:58Z",
+      "side": 1,
+      "message": "if you create an EventLog struct, then you can make this a method.",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a35bc6_eb0832d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-10T21:10:58Z",
+      "side": 1,
+      "message": "no need, precondition takes care of it.",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc5b8ab8_74f8f300",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-10T21:10:58Z",
+      "side": 1,
+      "message": "put these regexps into named constants.",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
