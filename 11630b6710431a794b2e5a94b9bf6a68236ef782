@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59439727_525a14be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-10T03:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29e684b6_f7f9ad6e",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 12
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68f0e7cb_8afb5e83",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-10T02:49:41Z",
       "side": 1,
       "message": "vksTestParams is too general in this package. Since it cannot be reused, using speechTestParams to be specific.",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d86607d_8eace42b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-10T03:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68f0e7cb_8afb5e83",
       "range": {
         "startLine": 31,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a970bf_09b3f317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-10T03:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "933315df_2fbfb899",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6db39c46_a378b0ad",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6bd3f4_44fe65b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-10T03:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db39c46_a378b0ad",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 27
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a035f4b9_2c169949",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-12-10T02:49:41Z",
       "side": 1,
       "message": "nit: Can you group together these reading of test params to local vars. It is good for readability.\n\naudioFile :\u003d s.Param().(vksTestParams).audioFile\ntestIME :\u003d ime.IMEPrefix + s.Param().(vksTestParams).imeId\nexpectedText :\u003d s.Param().(vksTestParams).expectedText",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 49
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db2238a_0c7c2478",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-10T03:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a035f4b9_2c169949",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -163,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b442ce_e0668373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-10T03:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f646b99_b7332037",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 20
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2be2abf6_9227f858",
@@ -188,6 +332,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "485fbeec_e8aaab8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-10T03:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be2abf6_9227f858",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 28
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a7cd19d8_68b0d058",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
         "patchSetId": 1
@@ -199,6 +367,30 @@
       "writtenOn": "2020-12-10T02:49:41Z",
       "side": 1,
       "message": "IIUC, SwitchToVoiceInput will handle the privacy confirmation dialog. It should work the first time. Once it continues the second IME, this dialog might not appear any more. Just FYI to consider it in following changes.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c023b99_50cfa156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-10T03:26:35Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve just confirmed that the dialog doesn\u0027t appear after the initial test. I\u0027ll be sure to consider this in my following changes.",
+      "parentUuid": "a7cd19d8_68b0d058",
       "range": {
         "startLine": 128,
         "startChar": 1,
