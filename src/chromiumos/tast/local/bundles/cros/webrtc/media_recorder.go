@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/webrtc/mediarecorder"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 )
@@ -33,25 +32,25 @@ func init() {
 			Val:               videotype.H264,
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp8",
 			Val:               videotype.VP8,
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp9",
 			Val:               videotype.VP9,
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp8_cam",
 			Val:               videotype.VP8,
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeVP8},
-			Pre:               pre.ChromeCameraPerf(),
+			Fixture:           "chromeCameraPerf",
 		}},
 	})
 }
@@ -64,7 +63,7 @@ func MediaRecorder(ctx context.Context, s *testing.State) {
 		recordDuration = 100 * time.Millisecond
 	)
 
-	if err := mediarecorder.VerifyMediaRecorderUsesEncodeAccelerator(ctx, s.PreValue().(*chrome.Chrome), s.DataFileSystem(), s.Param().(videotype.Codec), recordDuration); err != nil {
+	if err := mediarecorder.VerifyMediaRecorderUsesEncodeAccelerator(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), s.Param().(videotype.Codec), recordDuration); err != nil {
 		s.Error("Failed to run VerifyMediaRecorderUsesEncodeAccelerator: ", err)
 	}
 }

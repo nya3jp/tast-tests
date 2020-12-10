@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -27,7 +26,7 @@ func init() {
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		Data:         []string{"media_recorder.html", "media_recorder.js"},
-		Pre:          pre.ChromeVideoWithFakeWebcam(),
+		Fixture:      "chromeVideoWithFakeWebcam",
 		Timeout:      3 * time.Minute,
 	})
 }
@@ -36,7 +35,7 @@ func init() {
 // start, stop, pause, resume. The test fails if the media recorder cannot
 // exercise these basic functions.
 func MediaRecorderAPI(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
