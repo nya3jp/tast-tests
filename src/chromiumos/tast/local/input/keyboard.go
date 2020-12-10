@@ -244,3 +244,14 @@ func (kw *KeyboardEventWriter) sleepAfterType(ctx context.Context, firstErr *err
 		*firstErr = errors.Wrap(err, "timeout while typing")
 	}
 }
+
+// TypeKey injects a pair of a keypress event and a keyrelease keyevent.
+// It can be used to inject non-character key events.
+func (kw *KeyboardEventWriter) TypeKey(ctx context.Context, ec EventCode) error {
+	firstErr := ctx.Err()
+	kw.sendKey(ec, 1, &firstErr)
+	kw.sleepAfterType(ctx, &firstErr)
+	kw.sendKey(ec, 0, &firstErr)
+	kw.sleepAfterType(ctx, &firstErr)
+	return firstErr
+}
