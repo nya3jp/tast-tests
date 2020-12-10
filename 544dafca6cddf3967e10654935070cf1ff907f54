@@ -16,6 +16,24 @@
       "message": "In general, use of condition polling is preferred instead of sleep so as to make tests more robust.\nDoes the app have any signal (e.g. certain view created?) that tests can read?",
       "revId": "544dafca6cddf3967e10654935070cf1ff907f54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2458f8ab_37445d48",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-12-10T04:11:34Z",
+      "side": 1,
+      "message": "Unfortunately, there\u0027s no signal from the app to wait for. Also, in this particular location, we may be launching any kind of app, not necessarily the camera testing app.",
+      "parentUuid": "023349d8_a0f87527",
+      "revId": "544dafca6cddf3967e10654935070cf1ff907f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
