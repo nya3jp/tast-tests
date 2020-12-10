@@ -399,6 +399,30 @@
       },
       "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace38e6d_e8e9d1c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-10T03:44:58Z",
+      "side": 1,
+      "message": "SwitchToVoiceInput is returning an error if it can\u0027t find the dialog even though the voice input is working. \n\nUsing s.Log() instead of s.Fatal() when an error is received from SwitchToVoiceInput will temporarily fix this issue as the SwitchToVoiceInput is identifying a false error.\nHowever, if there was an actual error when activating the voice input, s.Fatal() won\u0027t be called until we verify the derived text to the expected text.\n\nI\u0027ll think deeper on how I can go about this issue.",
+      "parentUuid": "9c023b99_50cfa156",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
