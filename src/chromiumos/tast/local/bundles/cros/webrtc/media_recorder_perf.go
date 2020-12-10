@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/webrtc/mediarecorder"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -38,30 +37,30 @@ func init() {
 			Name:              "h264_sw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: false, profile: "H264"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithFakeWebcamAndSWEncoding(),
+			Fixture:           "chromeVideoWithFakeWebcamAndSWEncoding",
 		}, {
-			Name: "vp8_sw",
-			Val:  mediaRecorderPerfTest{enableHWAccel: false, profile: "VP8"},
-			Pre:  pre.ChromeVideoWithFakeWebcamAndSWEncoding(),
+			Name:    "vp8_sw",
+			Val:     mediaRecorderPerfTest{enableHWAccel: false, profile: "VP8"},
+			Fixture: "chromeVideoWithFakeWebcamAndSWEncoding",
 		}, {
-			Name: "vp9_sw",
-			Val:  mediaRecorderPerfTest{enableHWAccel: false, profile: "VP9"},
-			Pre:  pre.ChromeVideoWithFakeWebcamAndSWEncoding(),
+			Name:    "vp9_sw",
+			Val:     mediaRecorderPerfTest{enableHWAccel: false, profile: "VP9"},
+			Fixture: "chromeVideoWithFakeWebcamAndSWEncoding",
 		}, {
 			Name:              "h264_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "H264"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp8_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP8"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp9_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP9"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}},
 	})
 }
@@ -70,7 +69,7 @@ func init() {
 // cases with a given codec and uploads to server.
 func MediaRecorderPerf(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(mediaRecorderPerfTest)
-	if err := mediarecorder.MeasurePerf(ctx, s.PreValue().(*chrome.Chrome), s.DataFileSystem(), s.OutDir(), testOpt.profile, testOpt.enableHWAccel); err != nil {
+	if err := mediarecorder.MeasurePerf(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), s.OutDir(), testOpt.profile, testOpt.enableHWAccel); err != nil {
 		s.Error("Failed to measure performance: ", err)
 	}
 }
