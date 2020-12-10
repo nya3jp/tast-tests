@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9681e16d_281d4383",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-10T19:28:27Z",
+      "side": 1,
+      "message": "(restoring CR+2, per https://groups.google.com/a/chromium.org/g/chromium-os-dev/c/OD08YPHDp8Y/m/l5cMw4CGAgAJ ; there are still a handful of small things to address though)",
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a23e3c30_03a13ada",
@@ -76,6 +93,29 @@
         "startChar": 10,
         "endLine": 57,
         "endChar": 12
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f06f271c_e0e68f50",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-10T19:28:27Z",
+      "side": 1,
+      "message": "I happen to be playing with the autotest version, and I noticed that I see this error occasionally:\n\n  command execution error (4): \u0027Another app is currently holding the xtables lock. Perhaps you want to use the -w option?\u0027\n\nand apparently there\u0027s a few flakes in the lab too:\n\nhttps://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2020-11-27\u0026last_date\u003d2020-12-10\u0026suite\u003d%5Ewifi_perf%24\u0026test\u003dnetwork_WiFi_Perf\u0026reason\u003dxtables\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nProbably want to throw a \u0027-w 10\u0027 or similar in here? As networking gets more and more complex in CrOS, we\u0027ll have more chance of collision between iptables operations, I expect.\n\n+ Hugo, FYI",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 19
       },
       "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
