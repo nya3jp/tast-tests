@@ -401,6 +401,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f8a0bb6_701e9cc8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-10T04:15:59Z",
+      "side": 1,
+      "message": "For creating temporary folder (in Prepare method), maybe we don\u0027t need, it may just take few milliseconds, but not for Close method. The remote cases maybe save large files (e.g. binaries, pictures), pull it back would take a time (few seconds/minutes). So we made it parallel.",
+      "parentUuid": "b01146da_6d345a6b",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "043c4eed_d00359c1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
         "patchSetId": 1
@@ -412,6 +430,24 @@
       "writtenOn": "2020-11-30T18:30:14Z",
       "side": 1,
       "message": "What if there are errors?",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b1053d_4de4bbe4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-10T04:15:59Z",
+      "side": 1,
+      "message": "Here we just give error message for hint. because we don\u0027t really want to interrupt other DUTs create its own temporary directory. The group of companion DUTs like a pool, if we failed on, we still had other could use.",
+      "parentUuid": "043c4eed_d00359c1",
       "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -515,6 +551,24 @@
       "writtenOn": "2020-11-30T18:30:14Z",
       "side": 1,
       "message": "ditto, handle the errors in fetching local storage files?",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41fd328a_7ef5bc6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-10T04:15:59Z",
+      "side": 1,
+      "message": "We just give a warning log to user, let them know some DUTs had something wrong when pulling file back. We did think that just terminate the action when error, but it\u0027s not fair for other DUTs, maybe they don\u0027t have TCP connection/data transfer issue.",
+      "parentUuid": "6c35f956_6d0051ca",
       "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
