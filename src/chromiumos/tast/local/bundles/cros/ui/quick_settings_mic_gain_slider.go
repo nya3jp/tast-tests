@@ -35,7 +35,6 @@ func QuickSettingsMicGainSlider(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Set up the keyboard, which is used to increment/decrement the slider.
 	// TODO(crbug/1123231): use better slider automation controls if possible, instead of keyboard controls.
@@ -49,6 +48,7 @@ func QuickSettingsMicGainSlider(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show Quick Settings: ", err)
 	}
 	defer quicksettings.Hide(ctx, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	initial, err := quicksettings.SliderValue(ctx, tconn, quicksettings.SliderTypeMicGain)
 	if err != nil {
