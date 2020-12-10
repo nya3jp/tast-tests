@@ -1,0 +1,215 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Package arcappcompat will have tast tests for android apps on Chromebooks.
+package arcappcompat
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
+	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
+)
+
+// ClamshellTests are placed here.
+var clamshellTestsForTwitch = []testutil.TestCase{
+	{Name: "Launch app in Clamshell", Fn: launchAppForTwitch},
+	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
+	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
+	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
+}
+
+// TouchviewTests are placed here.
+var touchviewTestsForTwitch = []testutil.TestCase{
+	{Name: "Launch app in Touchview", Fn: launchAppForTwitch},
+	{Name: "Touchview: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: testutil.ReOpenWindow},
+}
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         Twitch,
+		Desc:         "Functional test for Twitch that installs the app also verifies it is logged in and that the main page is open, checks Twitch correctly changes the window state in both clamshell and touchview mode",
+		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
+		Attr:         []string{"group:appcompat"},
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Val:               clamshellTestsForTwitch,
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               pre.AppCompatBooted,
+		}, {
+			Name:              "tablet_mode",
+			Val:               touchviewTestsForTwitch,
+			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			Pre:               pre.AppCompatBootedInTabletMode,
+		}, {
+			Name:              "vm",
+			Val:               clamshellTestsForTwitch,
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               pre.AppCompatBooted,
+		}, {
+			Name:              "vm_tablet_mode",
+			Val:               touchviewTestsForTwitch,
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			Pre:               pre.AppCompatBootedInTabletMode,
+		}},
+		Timeout: 10 * time.Minute,
+		Vars:    []string{"arcappcompat.username", "arcappcompat.password", "arcappcompat.Twitch.username", "arcappcompat.Twitch.password"},
+	})
+}
+
+// Twitch test uses library for opting into the playstore and installing app.
+// Checks Twitch correctly changes the window states in both clamshell and touchview mode.
+func Twitch(ctx context.Context, s *testing.State) {
+	const (
+		appPkgName  = "tv.twitch.android.app"
+		appActivity = ".core.LandingActivity"
+	)
+
+	testCases := s.Param().([]testutil.TestCase)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
+}
+
+// launchAppForTwitch verifies Twitch is logged in and
+// verify Twitch reached main activity page of the app.
+func launchAppForTwitch(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		continueButtonText    = "Continue"
+		enterEmailAddressText = "Username"
+		loginText             = "Log in"
+		notNowID              = "android:id/autofill_save_no"
+		neverButtonID         = "com.google.android.gms:id/credential_save_reject"
+		passwordText          = "Password"
+		homeiconID            = "tv.twitch.android.app:id/profile_pic_toolbar_image"
+		resendCodeText        = "Resend code"
+		shortTimeInterval     = 300 * time.Millisecond
+	)
+
+	// Click on login button.
+	clickOnLoginButton := d.Object(ui.TextMatches("(?i)" + loginText))
+	if err := clickOnLoginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Fatal("clickOnLoginButton doesn't exist: ", err)
+	} else if err := clickOnLoginButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnLoginButton: ", err)
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+
+	enterEmailAddress := d.Object(ui.TextMatches("(?i)" + enterEmailAddressText))
+	if err := enterEmailAddress.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("EnterEmailAddress does not exist: ", err)
+	}
+
+	// Enter email address.
+	TwitchEmailID := s.RequiredVar("arcappcompat.Twitch.username")
+	if err := kb.Type(ctx, TwitchEmailID); err != nil {
+		s.Fatal("Failed to enter enterEmail: ", err)
+	}
+	s.Log("Entered enterEmail")
+
+	enterPassword := d.Object(ui.TextMatches("(?i)" + passwordText))
+	if err := enterPassword.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("EnterPassword does not exist: ", err)
+	}
+
+	// Press tab to click on password field.
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_TAB: ", err)
+	} else {
+		s.Log("Entered KEYCODE_TAB")
+	}
+
+	password := s.RequiredVar("arcappcompat.Twitch.password")
+	if err := kb.Type(ctx, password); err != nil {
+		s.Fatal("Failed to enter password: ", err)
+	}
+	s.Log("Entered password")
+
+	// Click on Login button.
+	loginButton := d.Object(ui.TextMatches("(?i)" + loginText))
+	if err := loginButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Error("Login Button doesn't exist: ", err)
+	} else {
+		s.Log("Login Button does exist")
+		// Press tab thrice to click on select login button.
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_TAB: ", err)
+		} else {
+			s.Log("Entered KEYCODE_TAB")
+			d.WaitForIdle(ctx, shortTimeInterval)
+		}
+
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_TAB: ", err)
+		} else {
+			s.Log("Entered KEYCODE_TAB")
+			d.WaitForIdle(ctx, shortTimeInterval)
+		}
+
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_TAB: ", err)
+		} else {
+			s.Log("Entered KEYCODE_TAB")
+			d.WaitForIdle(ctx, shortTimeInterval)
+		}
+
+		// Press enter to click on login button.
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_ENTER: ", err)
+		} else {
+			s.Log("Entered KEYCODE_ENTER")
+		}
+	}
+
+	// Check for OTP
+	checkForOTP := d.Object(ui.TextMatches("(?i)" + resendCodeText))
+	if err := checkForOTP.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("checkForOTP doesn't exist: ", err)
+	} else {
+		s.Log("checkForOTP does exist")
+		return
+	}
+
+	// Click on never button.
+	neverButton := d.Object(ui.ID(neverButtonID))
+	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Never Button doesn't exist: ", err)
+	} else if err := neverButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on neverButton: ", err)
+	}
+
+	// Click on no thanks button.
+	clickOnNoThanksButton := d.Object(ui.ID(notNowID))
+	if err := clickOnNoThanksButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnNoThanksButton doesn't exist: ", err)
+	} else if err := clickOnNoThanksButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
+	}
+
+	// Click on continue button.
+	continueButton := d.Object(ui.TextMatches("(?i)" + continueButtonText))
+	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("continueButton doesn't exist: ", err)
+	} else if err := continueButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on continueButton: ", err)
+	}
+
+	// Check for home icon.
+	homeIcon := d.Object(ui.ID(homeiconID))
+	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Error("home icon doesn't exist: ", err)
+	}
+
+}
