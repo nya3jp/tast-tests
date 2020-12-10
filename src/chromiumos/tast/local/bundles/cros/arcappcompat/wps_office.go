@@ -84,14 +84,13 @@ func launchAppForWPSOffice(ctx context.Context, s *testing.State, tconn *chrome.
 
 	const (
 		agreeText = "AGREE"
-		agreeID   = "cn.wps.moffice_eng:id/start_page_agree_btn"
 		startText = "Start WPS Office"
 		allowText = "ALLOW"
 		homeID    = "cn.wps.moffice_eng:id/home_my_roaming_userinfo_pic"
 	)
 
 	// Click on agree button.
-	agreeButton := d.Object(ui.Text(agreeText), ui.ID(agreeID))
+	agreeButton := d.Object(ui.Text(agreeText))
 	if err := agreeButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log(" agree button doesn't exists: ", err)
 	} else if err := agreeButton.Click(ctx); err != nil {
