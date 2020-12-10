@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c35b08_ec956077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-12-10T11:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8bddfd3_0958728f",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 11
+      },
+      "revId": "6196ae306bacf32c292596774e2f76713d415238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1653057b_f9ac3d2f",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-10T09:35:49Z",
       "side": 1,
       "message": "nit: This can be obtained from the Chrome instance.",
+      "range": {
+        "startLine": 51,
+        "startChar": 86,
+        "endLine": 51,
+        "endChar": 108
+      },
+      "revId": "6196ae306bacf32c292596774e2f76713d415238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33127f89_6c9845b2",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-12-10T11:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1653057b_f9ac3d2f",
       "range": {
         "startLine": 51,
         "startChar": 86,
