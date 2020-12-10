@@ -141,6 +141,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f646b99_b7332037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:54:00Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "parentUuid": "722609d6_6babe5d1",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 20
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2be2abf6_9227f858",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
         "patchSetId": 1
