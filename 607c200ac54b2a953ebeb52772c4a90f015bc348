@@ -16,6 +16,23 @@
       "message": "I found a better way to fix this directly in the app.",
       "revId": "607c200ac54b2a953ebeb52772c4a90f015bc348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a5aa85e_8f212368",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-12-10T06:25:52Z",
+      "side": 1,
+      "message": "Will you add another reviewer who is more familiar with the test and the app logic?",
+      "revId": "607c200ac54b2a953ebeb52772c4a90f015bc348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
