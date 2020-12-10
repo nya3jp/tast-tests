@@ -220,7 +220,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	if _, ok := s.Var("record"); ok {
-		screenRecorder, err := cuj.NewScreenRecorder(ctx, tconn)
+		screenRecorder, err := ui.NewScreenRecorder(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to create ScreenRecorder: ", err)
 		}
