@@ -67,6 +67,24 @@
       "message": "Add\n// Refer to go/tast-generate-param",
       "revId": "35a498291584899469e64d3dbb6bb93c92e78c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88969e10_4526448b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-10T08:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a58a8f13_e1cd25a9",
+      "revId": "35a498291584899469e64d3dbb6bb93c92e78c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
