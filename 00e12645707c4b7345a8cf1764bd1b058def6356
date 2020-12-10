@@ -281,6 +281,30 @@
       },
       "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87d1a2fb_ba20b265",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-10T21:33:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e954cf3c_d1f260d6",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
