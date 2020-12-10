@@ -33,6 +33,40 @@
       "message": "LGTM, but I\u0027m not sure if this might be over-engineering. Need second opinion.\n\n@Dean, would you like to also take a look?\n\n\n",
       "revId": "35a498291584899469e64d3dbb6bb93c92e78c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c87c725_e02f1bca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-10T08:00:45Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "35a498291584899469e64d3dbb6bb93c92e78c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a58a8f13_e1cd25a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-10T08:00:45Z",
+      "side": 1,
+      "message": "Add\n// Refer to go/tast-generate-param",
+      "revId": "35a498291584899469e64d3dbb6bb93c92e78c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
