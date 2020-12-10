@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d4a8386_c537ae2a",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-10T21:29:25Z",
+      "side": 1,
+      "message": "Wathdog sounds good. Done.",
+      "parentUuid": "a7fdea82_3bd2d9be",
+      "range": {
+        "startLine": 22,
+        "startChar": 20,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7631414_ba538ac6",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-10T20:00:44Z",
       "side": 1,
       "message": "Check if there are any GPU related problems observed during a test.",
+      "range": {
+        "startLine": 23,
+        "startChar": 29,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef61daf_f5a25bbb",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-10T21:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7631414_ba538ac6",
       "range": {
         "startLine": 23,
         "startChar": 29,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20211f7b_0d2a1aa7",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-10T21:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01725a61_63f7fbd9",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "427ff5fe_4a5313b1",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-10T20:00:44Z",
       "side": 1,
       "message": "detected a GPU",
+      "range": {
+        "startLine": 100,
+        "startChar": 24,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "471684d2_4d96a566",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-10T21:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "427ff5fe_4a5313b1",
       "range": {
         "startLine": 100,
         "startChar": 24,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc2b370_461969f3",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-10T21:29:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "95596034_1d5000ea",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 3
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30770a6d_bad36962",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-12-10T20:00:44Z",
       "side": 1,
       "message": "I do have a question:\nWe want to only login once for say 10 tests. Which is what chromeVideo does.\nBut we want to run gpuMonitor before/after every test to figure out which test caused GPU problems. Does the Parent relationship compose these two things properly?",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e954cf3c_d1f260d6",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-10T21:29:25Z",
+      "side": 1,
+      "message": "PreTest/PostTest is guranteed to run before/after test. PreTest is called from parent to child and PostTest is called from child to parent.\n\nChrome is initialized in chromeVideo\u0027s SetUp/TearDown method, which is only called in the very beginning/end of the tests or the Reset method is failed in either chromeVideo or gpuWatchDog.\n\n\nwatch.SetUp  \u003c- Initialize new chrome\n  cVideo.Setup\n    watch.PreTest \n      cVideo.PreTest\n        test1\n      cVideo.PostTest\n    watch.PostTest\n    watch.Reset\n      cVideo.Reset\n    watch.PreTest\n      cVideo.PreTest\n        test2\n      cVideo.PostTest\n    watch.PostTest\n  cVideo.TearDown\nwatch.TearDown \u003c- chrome got destroyed",
+      "parentUuid": "30770a6d_bad36962",
       "range": {
         "startLine": 24,
         "startChar": 2,
