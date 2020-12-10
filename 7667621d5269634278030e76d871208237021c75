@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "373065d0_c9c78354",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T21:06:59Z",
+      "side": 1,
+      "message": "Rather than using sync.WaitGroup, I guess it\u0027s better to use errgroup package.  It\u0027s already in the dependency so you can just use it.\nhttps://godoc.org/golang.org/x/sync/errgroup",
+      "revId": "7667621d5269634278030e76d871208237021c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d882671_8fee6da9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T21:06:59Z",
+      "side": 1,
+      "message": "Is there any particular reason why this needs to be a goroutine?  The inner goroutine would be good to parallelize the task but this outer routine wouldn\u0027t be beneficial. Can you simply remove this?  i.e.\n  for _, duts :\u003d range mduts {\n    for _, d :\u003d range duts {\n      dwg.Add(1)\n      go func(d *dut.DUT) {\n        defer dwg.Done()\n        ...\n      }(d)\n    }\n  }",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 26
+      },
+      "revId": "7667621d5269634278030e76d871208237021c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fafa590_79cd45b0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
         "patchSetId": 3
@@ -14,6 +54,63 @@
       "writtenOn": "2020-12-10T17:05:18Z",
       "side": 1,
       "message": "Should this be inside the loop below ?",
+      "revId": "7667621d5269634278030e76d871208237021c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50560458_7cd126fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T21:06:59Z",
+      "side": 1,
+      "message": "If rpc.Dial fails, it is still not considered to be an error.  Is that really what you want?\nWhy not s.Errorf?",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 12
+      },
+      "revId": "7667621d5269634278030e76d871208237021c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee62877_b7a3b97d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T21:06:59Z",
+      "side": 1,
+      "message": "Similarly, when it fails to create a tempdir, it still just log the error message and does not fail, and move on.  Is this really what you want?",
+      "revId": "7667621d5269634278030e76d871208237021c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ce0f97_f51363d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T21:06:59Z",
+      "side": 1,
+      "message": "Similarly, I don\u0027t think this provides any benefits.",
       "revId": "7667621d5269634278030e76d871208237021c75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
