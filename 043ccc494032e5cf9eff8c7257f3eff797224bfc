@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116df0e7_bce287a3",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-10T00:39:58Z",
+      "side": 1,
+      "message": "having separate \u0027extract...()\u0027 functions is mostly for the sake of unit tests; might as well extend TestExtractBSSID()?",
+      "range": {
+        "startLine": 716,
+        "startChar": 5,
+        "endLine": 716,
+        "endChar": 23
+      },
+      "revId": "043ccc494032e5cf9eff8c7257f3eff797224bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f5d2cb_a5b4cd5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-10T00:39:58Z",
+      "side": 1,
+      "message": "Tast is already producing results-chart.json via the standard Tast perf package; does this provide a lot more value? Is it that much easier to parse TSV for making plots, vs. JSON?",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 58
+      },
+      "revId": "043ccc494032e5cf9eff8c7257f3eff797224bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b45781cd_472f1675",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-10T00:39:58Z",
+      "side": 1,
+      "message": "is there a good reason for logging the board name in here? there\u0027s a lot of details about the system that we want to associate with performance metrics, but those are handled outside the test through other metadata, IIUC, so this seems a little redundant.\n\nI mention this, because parsing /etc/lsb-release is generally frowned on for non-test code; for test code it\u0027s a bit less harmful, I guess.",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 47
+      },
+      "revId": "043ccc494032e5cf9eff8c7257f3eff797224bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
