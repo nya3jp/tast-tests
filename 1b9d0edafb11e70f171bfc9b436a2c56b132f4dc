@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f955f1c4_7c5b6211",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T02:19:30Z",
+      "side": 1,
+      "message": "LGTM.  I wish if it\u0027s okay to simply enhance existing cases rather than adding new cases, but maybe this is a better approach.",
+      "revId": "1b9d0edafb11e70f171bfc9b436a2c56b132f4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88c4754_9f926296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T02:19:30Z",
+      "side": 1,
+      "message": "This is a note that intuitively, rather than separating power_4p, it might be good enough to bring the same data points to existing test cases.  Can I ask why you want to create new subtests?\n\nI guess the reason whould be, those power tests want setup.PowerTest which disables several services (like bluetooth / wifi) to reduce the possible noises from the results, while we want to keep those services for our CUJ tests as they\u0027re a part of the realistic user environment. Or do we have any other reasons?",
+      "revId": "1b9d0edafb11e70f171bfc9b436a2c56b132f4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
