@@ -50,6 +50,24 @@
       "message": "Still LGTM!",
       "revId": "687b07cc8e1bd9df7af706fe2049075f4f8d7f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf7ce2d1_64605954",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-10T00:54:48Z",
+      "side": 1,
+      "message": "Landed. Let\u0027s submit this CL.",
+      "parentUuid": "e9062ca3_4861513b",
+      "revId": "687b07cc8e1bd9df7af706fe2049075f4f8d7f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
