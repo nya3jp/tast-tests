@@ -16,6 +16,24 @@
       "message": "last minor nit 😊: Remove the comment.",
       "revId": "1abf60538398a09e0b4072ca7fb5449450b35927",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d79b2d_db20f97e",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2020-12-10T12:17:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2923824_17ece8d7",
+      "revId": "1abf60538398a09e0b4072ca7fb5449450b35927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
