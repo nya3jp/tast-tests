@@ -176,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f381440_c1873eee",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-10T07:10:23Z",
+      "side": 1,
+      "message": "So did I... but someone told me so.",
+      "parentUuid": "e0bfa17d_611d2762",
+      "range": {
+        "startLine": 191,
+        "startChar": 13,
+        "endLine": 191,
+        "endChar": 25
+      },
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac1c9fe8_a52f9ae0",
@@ -326,6 +350,24 @@
       "side": 1,
       "message": "Not quite. Each single sample can have either CategoryThroughput or CategoryTransactionRate data (never both). But the function is prepared to process the slice that have multiple different samples (each having *either* CategoryThroughput or CategoryTransactionRate), thus it can happen that the slice has both categories, so I cannot use `else` clause.\nExample:\nThe slice has 4 TCP results, and 6 UDP results, thus:\nhasCategory(samples, CategoryThroughput) \u003d\u003d true\ncalculateStats(samples, CategoryTransactionRate) returns _,_,4\nhasCategory(samples, CategoryTransactionRate) \u003d\u003d true\ncalculateStats(samples, CategoryTransactionRate) returns _,_,6\nAt the end numSamples \u003d\u003d 10 and all means and deviations are calcualted correctly.",
       "parentUuid": "21908778_4a32aa95",
+      "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b735e4_18c05ee6",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-10T07:10:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "566fa41e_5cd3e9d7",
       "revId": "a0db3d2f280030a73785da9bf3db09d6e1c03a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
