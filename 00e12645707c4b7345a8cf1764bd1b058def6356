@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7fdea82_3bd2d9be",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-10T20:00:44Z",
+      "side": 1,
+      "message": "gpuMonitor might be slighly ambiguous a word. How about gpuObserver, gpuWatcher, gpuWatchdog, gpuChecker? But if you like gpuMonitor keep it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 20,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7631414_ba538ac6",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-10T20:00:44Z",
+      "side": 1,
+      "message": "Check if there are any GPU related problems observed during a test.",
+      "range": {
+        "startLine": 23,
+        "startChar": 29,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01725a61_63f7fbd9",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-10T20:00:44Z",
+      "side": 1,
+      "message": "Add comment:\nThis needs to be kept in sync for new drivers, especially ARM.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427ff5fe_4a5313b1",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-10T20:00:44Z",
+      "side": 1,
+      "message": "detected a GPU",
+      "range": {
+        "startLine": 100,
+        "startChar": 24,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95596034_1d5000ea",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-10T20:00:44Z",
+      "side": 1,
+      "message": "Could you make this a helper function, call it twice, and then just compare two lists in checkNewHangs?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 3
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30770a6d_bad36962",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-10T20:00:44Z",
+      "side": 1,
+      "message": "I do have a question:\nWe want to only login once for say 10 tests. Which is what chromeVideo does.\nBut we want to run gpuMonitor before/after every test to figure out which test caused GPU problems. Does the Parent relationship compose these two things properly?",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "00e12645707c4b7345a8cf1764bd1b058def6356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
