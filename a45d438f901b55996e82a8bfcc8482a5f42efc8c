@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5853a9_86372768",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:30:25Z",
+      "side": 1,
+      "message": "Seems like it manipulates 2 lists, I would like an golang expertise to answer this queston 😊",
+      "range": {
+        "startLine": 539,
+        "startChar": 1,
+        "endLine": 542,
+        "endChar": 2
+      },
+      "revId": "a45d438f901b55996e82a8bfcc8482a5f42efc8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d2a70e_fb9287cb",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:30:25Z",
+      "side": 1,
+      "message": "Is it nice to use PollBreak if failed to get installed package?",
+      "range": {
+        "startLine": 546,
+        "startChar": 2,
+        "endLine": 548,
+        "endChar": 3
+      },
+      "revId": "a45d438f901b55996e82a8bfcc8482a5f42efc8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5559779f_0f8a0b2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:30:25Z",
+      "side": 1,
+      "message": "Login?",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "a45d438f901b55996e82a8bfcc8482a5f42efc8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
