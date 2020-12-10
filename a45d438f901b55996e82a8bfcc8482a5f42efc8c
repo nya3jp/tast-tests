@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65396a4f_425146bb",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2020-12-10T03:02:16Z",
+      "side": 1,
+      "message": "Done. PollBreak definitely makes more sense in this context.",
+      "parentUuid": "29d2a70e_fb9287cb",
+      "range": {
+        "startLine": 546,
+        "startChar": 2,
+        "endLine": 548,
+        "endChar": 3
+      },
+      "revId": "a45d438f901b55996e82a8bfcc8482a5f42efc8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5559779f_0f8a0b2f",
@@ -60,6 +84,30 @@
       "writtenOn": "2020-12-10T02:30:25Z",
       "side": 1,
       "message": "Login?",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "a45d438f901b55996e82a8bfcc8482a5f42efc8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b5c1d2_0a7c7f7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2020-12-10T03:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5559779f_0f8a0b2f",
       "range": {
         "startLine": 57,
         "startChar": 4,
