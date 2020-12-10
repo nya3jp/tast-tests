@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -43,89 +42,89 @@ func init() {
 			Name:              "vp8_enc",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp8_dec",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP8", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp9_dec",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP9", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp9_enc",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "h264_enc",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "H264", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "h264_dec",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "H264", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
-			Name: "vp8",
-			Val:  rtcTest{verifyMode: peerconnection.NoVerifyHWAcceleratorUsed, profile: "VP8", simulcast: false},
-			Pre:  pre.ChromeVideoWithFakeWebcam(),
+			Name:    "vp8",
+			Val:     rtcTest{verifyMode: peerconnection.NoVerifyHWAcceleratorUsed, profile: "VP8", simulcast: false},
+			Fixture: "chromeVideoWithFakeWebcam",
 		}, {
-			Name: "vp9",
-			Val:  rtcTest{verifyMode: peerconnection.NoVerifyHWAcceleratorUsed, profile: "VP9", simulcast: false},
-			Pre:  pre.ChromeVideoWithFakeWebcam(),
+			Name:    "vp9",
+			Val:     rtcTest{verifyMode: peerconnection.NoVerifyHWAcceleratorUsed, profile: "VP9", simulcast: false},
+			Fixture: "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "h264",
 			Val:               rtcTest{verifyMode: peerconnection.NoVerifyHWAcceleratorUsed, profile: "H264", simulcast: false},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
-			Name: "vp8_simulcast",
-			Val:  rtcTest{verifyMode: peerconnection.NoVerifyHWAcceleratorUsed, profile: "VP8", simulcast: true},
-			Pre:  pre.ChromeVideoWithFakeWebcam(),
+			Name:    "vp8_simulcast",
+			Val:     rtcTest{verifyMode: peerconnection.NoVerifyHWAcceleratorUsed, profile: "VP8", simulcast: true},
+			Fixture: "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp8_enc_simulcast",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", simulcast: true},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp9_enc_temporal_layer",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			Pre:               pre.ChromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers(),
+			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers",
 		}, {
 			Name:              "vp8_enc_cam",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeVP8},
-			Pre:               pre.ChromeCameraPerf(),
+			Fixture:           "chromeCameraPerf",
 		}, {
 			Name:              "h264_enc_cam",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "H264", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeCameraPerf(),
+			Fixture:           "chromeCameraPerf",
 		}, {
 			Name:              "vp9_enc_cam",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeVP9},
-			Pre:               pre.ChromeCameraPerf(),
+			Fixture:           "chromeCameraPerf",
 		}, {
 			Name:              "vp8_dec_alt",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP8", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
-			Pre:               pre.ChromeVideoWithFakeWebcamAndAlternateVideoDecoder(),
+			Fixture:           "chromeVideoWithFakeWebcamAndAlternateVideoDecoder",
 		}, {
 			Name:              "vp9_dec_alt",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP9", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
-			Pre:               pre.ChromeVideoWithFakeWebcamAndAlternateVideoDecoder(),
+			Fixture:           "chromeVideoWithFakeWebcamAndAlternateVideoDecoder",
 		}, {
 			Name:              "h264_dec_alt",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "H264", simulcast: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithFakeWebcamAndAlternateVideoDecoder(),
+			Fixture:           "chromeVideoWithFakeWebcamAndAlternateVideoDecoder",
 		}},
 	})
 }
@@ -134,7 +133,7 @@ func init() {
 // specified, verifies it uses accelerated encoding / decoding.
 func RTCPeerConnection(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcTest)
-	if err := peerconnection.RunRTCPeerConnection(ctx, s.PreValue().(*chrome.Chrome), s.DataFileSystem(), testOpt.verifyMode, testOpt.profile, testOpt.simulcast); err != nil {
+	if err := peerconnection.RunRTCPeerConnection(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), testOpt.verifyMode, testOpt.profile, testOpt.simulcast); err != nil {
 		s.Error("Failed to run RunRTCPeerConnection: ", err)
 	}
 }

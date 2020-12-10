@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/constants"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 )
@@ -35,17 +34,17 @@ func init() {
 			Name:              "vp8_vp8",
 			Val:               []videotype.Codec{videotype.VP8, videotype.VP8},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp8_h264",
 			Val:               []videotype.Codec{videotype.H264, videotype.VP8},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, caps.HWEncodeVP8, "proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "h264_h264",
 			Val:               []videotype.Codec{videotype.H264, videotype.H264},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Fixture:           "chromeVideoWithFakeWebcam",
 		}},
 	})
 }
@@ -60,7 +59,7 @@ func MediaRecorderMulti(ctx context.Context, s *testing.State) {
 		recordDuration = 10 * time.Second
 	)
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 	codecs := s.Param().([]videotype.Codec)
 
 	tconn, err := cr.TestAPIConn(ctx)
