@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/webrtc/getdisplaymedia"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -31,19 +30,19 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "monitor",
 			Val:               "monitor",
-			Pre:               pre.ChromeScreenCapture(),
+			Fixture:           "chromeScreenCapture",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}, {
-			Name: "window",
-			Val:  "window",
-			Pre:  pre.ChromeWindowCapture(),
+			Name:    "window",
+			Val:     "window",
+			Fixture: "chromeWindowCapture",
 		}},
 	})
 }
 
 // GetDisplayMedia verifies that the homonymous API works as expected.
 func GetDisplayMedia(ctx context.Context, s *testing.State) {
-	if err := getdisplaymedia.RunGetDisplayMedia(ctx, s, s.PreValue().(*chrome.Chrome), s.Param().(string)); err != nil {
+	if err := getdisplaymedia.RunGetDisplayMedia(ctx, s, s.FixtValue().(*chrome.Chrome), s.Param().(string)); err != nil {
 		s.Fatal("TestPlay failed: ", err)
 	}
 }
