@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "058c2995_eb738e7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T22:30:17Z",
+      "side": 1,
+      "message": "slgtm",
+      "revId": "1a07a552678b7780f1fedfd3d06d975959aab53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e4b744a_3b9641b0",
@@ -70,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e9f897_c530fb68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T22:30:17Z",
+      "side": 1,
+      "message": "ah, you\u0027re right. It is s.Log.",
+      "parentUuid": "5e715cce_6da4f87f",
+      "revId": "1a07a552678b7780f1fedfd3d06d975959aab53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f66c468a_48974dbe",
@@ -101,6 +136,24 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "f66c468a_48974dbe",
+      "revId": "1a07a552678b7780f1fedfd3d06d975959aab53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d8f642_b557c866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-10T22:30:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6c9a4bd_7788fde4",
       "revId": "1a07a552678b7780f1fedfd3d06d975959aab53b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
