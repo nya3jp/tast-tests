@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c263f9_ad1cc3ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-10T17:27:54Z",
+      "side": 1,
+      "message": "Pivoted to use hwdep.SkipOnModel() as per suggestion elsewhere.\n\nPTAL!",
+      "revId": "030be746557ace867ecf70b02ee05aa055fe42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
