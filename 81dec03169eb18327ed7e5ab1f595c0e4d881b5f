@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e03d950_d0fc13e3",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-10T01:44:12Z",
+      "side": 1,
+      "message": "As discussed I am not sure what to think of a \"NewFixture\" name here.",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "81dec03169eb18327ed7e5ab1f595c0e4d881b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
