@@ -235,11 +235,11 @@ func readRAPLValues(dirsToParse []string) (*RAPLValues, time.Time, error) {
 		rapl.joules[name] = e
 
 		if name == package0 {
-			c, err := readRAPLPowerConstraint(dir)
-			if err != nil {
-				return nil, time.Time{}, err
+			// Some devices (i.e. AMD) have a partial rapl implementation, so
+			// this isn't a fatal error.
+			if c, err := readRAPLPowerConstraint(dir); err != nil {
+				rapl.package0PowerConstraint = c
 			}
-			rapl.package0PowerConstraint = c
 		}
 	}
 	return rapl, time.Now(), nil
