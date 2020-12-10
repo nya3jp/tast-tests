@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3e62d21_00725c86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-10T17:45:57Z",
+      "side": 1,
+      "message": "thought that this placeholder was needed for all tast tests.\nbut yes, let me remove this.",
+      "parentUuid": "91c2c983_d78349f5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f54dcd5_565b0fe0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
         "patchSetId": 1
@@ -89,6 +113,30 @@
       "writtenOn": "2020-12-10T02:41:47Z",
       "side": 1,
       "message": "Looking at other names in the folder\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/\nthey don\u0027t explicit \"test\" because, well, it\u0027s understood :-)\n\nSo what about, e.g. VAAPIUnitttest ? \n\nNote that the file name has to match the \"Func\" name.",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13135d69_bd6c4918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-10T17:45:57Z",
+      "side": 1,
+      "message": "agreed. I also thought strange to have \"test\" in the name. \nI was just following binary file name. VAAPIUnittest sounds fine. \nlet me check uppercase \u0026 lowercase letters convention as well as \"_\" usage in naming convention.",
+      "parentUuid": "3f54dcd5_565b0fe0",
       "range": {
         "startLine": 24,
         "startChar": 8,
@@ -124,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2423939_a71cf889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-10T17:45:57Z",
+      "side": 1,
+      "message": "true. Thanks.",
+      "parentUuid": "5fadad64_7fcb9ddf",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fdc14fd_a8177914",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
         "patchSetId": 1
@@ -135,6 +207,30 @@
       "writtenOn": "2020-12-10T02:41:47Z",
       "side": 1,
       "message": "Better use:\n\n  ExtraAttr:         []string{\"group:graphics\", \"graphics_video\", \"graphics_nightly\"},\n\nsince this test will be under video/",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 60
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3c1372_702f939e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-10T17:45:57Z",
+      "side": 1,
+      "message": "got it. thanks. \n\nyou explained last one being frequency of build. \n\ndo we have \"video\" group?\nwhen is \"mainline\" used? some gfx tast seems to have that.",
+      "parentUuid": "9fdc14fd_a8177914",
       "range": {
         "startLine": 30,
         "startChar": 2,
@@ -170,6 +266,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca9515c3_6ed3e764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-10T17:45:57Z",
+      "side": 1,
+      "message": "got it. thanks.",
+      "parentUuid": "ecea3724_ea3c172b",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbf533c6_6a958408",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
         "patchSetId": 1
@@ -181,6 +301,30 @@
       "writtenOn": "2020-12-10T02:41:47Z",
       "side": 1,
       "message": "nit: I\u0027d add here where it comes from and that\u0027s a GTest based\nbinary e.g. \n // TestVAAPI runs the \"test_va_api\" GTtest binary from the libva-test\n // package, see https://github.com/intel/libva-utils.",
+      "range": {
+        "startLine": 39,
+        "startChar": 57,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84bc8078_a642ff84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-10T17:45:57Z",
+      "side": 1,
+      "message": "will do. thank you.",
+      "parentUuid": "dbf533c6_6a958408",
       "range": {
         "startLine": 39,
         "startChar": 57,
