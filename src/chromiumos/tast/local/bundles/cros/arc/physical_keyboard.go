@@ -6,12 +6,14 @@ package arc
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -35,6 +37,10 @@ var stablePkTests = []pkTestParams{
 	{"Editing on TYPE_NULL", physicalKeyboardOnTypeNullTextFieldTest},
 }
 
+var unstablePkTests = []pkTestParams{
+	{"All keycodes", physicalKeyboardAllKeycodesTypingTest},
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboard,
@@ -43,12 +49,23 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline"},
+		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stablePkTests,
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			Val:               stablePkTests,
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name:              "unstable",
+			Val:               unstablePkTests,
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "unstable_vm",
+			Val:               unstablePkTests,
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -113,6 +130,133 @@ func physicalKeyboardBasicEditingTest(ctx context.Context, st pkTestState, s *te
 func physicalKeyboardOnTypeNullTextFieldTest(ctx context.Context, st pkTestState, s *testing.State) {
 	if err := testTextField(ctx, st, s, ".NullEditTextActivity", "abcdef\b\b\bghi", "abcghi"); err != nil {
 		s.Error("Failed to type in TYPE_NULL text field: ", err)
+	}
+}
+
+func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, s *testing.State) {
+	const (
+		activityName = ".MainActivity"
+		pkg          = "org.chromium.arc.testapp.keyboard"
+		fieldID      = "org.chromium.arc.testapp.keyboard:id/text"
+	)
+
+	a := st.a
+	tconn := st.tconn
+	d := st.d
+	kb := st.kb
+
+	act, err := arc.NewActivity(a, pkg, activityName)
+	if err != nil {
+		s.Fatalf("Failed to create a new activity %q: %v", activityName, err)
+	}
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatal("Failed to start the activity before typing:")
+	}
+	defer act.Stop(ctx, tconn)
+
+	focusField := func() error {
+		field := d.Object(ui.ID(fieldID))
+		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the window info")
+		}
+		if !info.IsVisible || !info.HasFocus || !info.IsActive {
+			return errors.New("the app window is not focused")
+		}
+		if err := field.WaitForExists(ctx, 10*time.Second); err != nil {
+			return errors.Wrap(err, "failed to find the field")
+		}
+		if err := d.Object(ui.ID(fieldID), ui.Focused(true)).Exists(ctx); err != nil {
+			if err := field.Click(ctx); err != nil {
+				return errors.Wrap(err, "failed to click the field")
+			}
+		}
+		if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 10*time.Second); err != nil {
+			return errors.Wrap(err, "failed to focus the field")
+		}
+		return nil
+	}
+
+	// The channel to make the logcat monitor stop monitoring.
+	done := make(chan bool, 1)
+	// The channel to make the logcat monitor report any failure in logcat while monitoring.
+	result := make(chan error)
+	// This goroutine monitors logcat output to find any mojo connection errors of ArcInputMethodService.
+	go func(done chan bool) {
+		exp := regexp.MustCompile(`ArcInputMethod: Mojo connection error`)
+
+		notFound := make(chan bool, 1)
+		isFinished := func() bool {
+			select {
+			case <-done:
+				notFound <- true
+				return true
+			default:
+				return false
+			}
+		}
+
+		if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp), isFinished); err != nil {
+			result <- errors.Wrap(err, "failed to wait for logcat output")
+			return
+		}
+		select {
+		case <-notFound:
+			result <- nil
+		default:
+			result <- errors.New("mojo connection error is detected")
+		}
+	}(done)
+
+	// TODO(b:174259561): There are some edge cases which this test cannot catch the actual failure. For example,
+	// case #1:
+	//
+	// 1. A key (e.g. back button) is pressed that closes the activity
+	// 2. focusField() runs before the key #1 is processed by Android and succeeds, because there's no wait
+	// 3. A key that leads to ARC crash or mojo disconnection is sent, but it's not sent to Android
+	// 4. Because it's not received by Android, it fails to catch the regression
+	//
+	// case #2:
+	//
+	// 1. A key that leads to ARC crash or mojo disconnection is sent as a last case
+	// 2. As there's no wait after the loop, done is sent to the logcat goroutine before the crash message is received
+	// 3. Because the test returns without error, it fails to catch the regression
+	s.Log("Start typing all keys")
+	defer func() {
+		done <- true
+	}()
+	for scancode := input.EventCode(0x01); scancode < 0x220; scancode++ {
+		if scancode >= 0x80 && scancode < 0x160 {
+			continue
+		}
+		// Check whether the mojo connection is already broken or not.
+		select {
+		case err := <-result:
+			s.Fatalf("ArcInputMethod mojo connection is broken before typing %d: %v", scancode, err)
+		default:
+		}
+
+		if err := focusField(); err != nil {
+			// Cannot find the text field. Restart the activity.
+			act.Stop(ctx, tconn)
+			if err := act.Start(ctx, tconn); err != nil {
+				s.Fatalf("Failed to restart the activity before typing %d: %v", scancode, err)
+			}
+			if err := focusField(); err != nil {
+				s.Fatalf("Failed to focus the field before typing %d: %v", scancode, err)
+			}
+		}
+
+		if err := kb.TypeKey(ctx, scancode); err != nil {
+			s.Fatalf("Failed to send the scancode %d: %v", scancode, err)
+		}
+	}
+	s.Log("Finish typing all keys")
+
+	done <- true
+	if err := <-result; err != nil {
+		s.Fatal("ArcInputMethod mojo connection is broken while typing test: ", err)
 	}
 }
 
