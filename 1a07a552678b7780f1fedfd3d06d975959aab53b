@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e715cce_6da4f87f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-10T22:14:53Z",
+      "side": 1,
+      "message": "It is possible because of line 91. The screen recording is just for debugging, so the case keeps running if it fails to create a screen recorder.",
+      "parentUuid": "0e4b744a_3b9641b0",
+      "revId": "1a07a552678b7780f1fedfd3d06d975959aab53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f66c468a_48974dbe",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2020-12-10T20:46:41Z",
       "side": 1,
       "message": "ditto",
+      "revId": "1a07a552678b7780f1fedfd3d06d975959aab53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c9a4bd_7788fde4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-10T22:14:53Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "f66c468a_48974dbe",
       "revId": "1a07a552678b7780f1fedfd3d06d975959aab53b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
