@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb483a68_d22e65be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-10T08:05:21Z",
+      "side": 1,
+      "message": "LGTM with nits, thanks for the change!\n",
+      "revId": "ff68be022cbed40403fb1b6d885f11699858074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2251858_33a6bd07",
+        "filename": "src/chromiumos/tast/local/chrome/ash/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-10T08:05:21Z",
+      "side": 1,
+      "message": "huge nit: We can omit this field; the default timeout is zero actually.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "ff68be022cbed40403fb1b6d885f11699858074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59864afa_fd8794c0",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-10T08:05:21Z",
+      "side": 1,
+      "message": "Can we call newLoggedInFixture consistently?",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "ff68be022cbed40403fb1b6d885f11699858074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "642ab801_de33d296",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-10T08:05:21Z",
+      "side": 1,
+      "message": "This is an interesting approach. I\u0027m still not 100% sure if this is a good direction, but I think it\u0027s fine and let\u0027s see more examples.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "ff68be022cbed40403fb1b6d885f11699858074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
