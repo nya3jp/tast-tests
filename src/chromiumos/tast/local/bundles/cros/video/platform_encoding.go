@@ -26,8 +26,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// regExpFPS is the regexp to find the FPS output from the binary log.
-var regExpFPS = regexp.MustCompile(`Processed \d+ frames in \d+ ms \((\d+\.\d+) FPS\)`)
+// regExpFPSVP8 is the regexp to find the FPS output from the VP8 binary log.
+var regExpFPSVP8 = regexp.MustCompile(`Processed \d+ frames in \d+ ms \((\d+\.\d+) FPS\)`)
 
 // regExpSSIM is the regexp to find the SSIM output in the tiny_ssim log.
 var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
@@ -35,11 +35,16 @@ var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
 // regExpPSNR is the regexp to find the PSNR output in the tiny_ssim log.
 var regExpPSNR = regexp.MustCompile(`\nGlbPSNR: (\d+\.\d+)`)
 
+// fn is the function type to generate the command line with arguments.
+type fn func(exe, yuvFile string, size coords.Size) (command []string, ivfFile string)
+
 // testParam is used to describe the config used to run each test.
 type testParam struct {
-	command  []string    // The command path to be run. This should be relative to /usr/local/bin.
-	filename string      // Input file name.
-	size     coords.Size // Width x Height in pixels of the input file.
+	command   string         // The command path to be run. This should be relative to /usr/local/bin.
+	filename  string         // Input file name.
+	size      coords.Size    // Width x Height in pixels of the input file.
+	argsFn    fn             // Function to create the command line arguments.
+	regExpFPS *regexp.Regexp // Regexp to find the FPS from output.
 }
 
 func init() {
@@ -55,27 +60,33 @@ func init() {
 		Params: []testing.Param{{
 			Name: "vp8_180",
 			Val: testParam{
-				command:  []string{"vp8enc"},
-				filename: "tulip2-320x180.vp9.webm",
-				size:     coords.NewSize(320, 180),
+				command:   "vp8enc",
+				filename:  "tulip2-320x180.vp9.webm",
+				size:      coords.NewSize(320, 180),
+				argsFn:    vp8args,
+				regExpFPS: regExpFPSVP8,
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
 			Name: "vp8_360",
 			Val: testParam{
-				command:  []string{"vp8enc"},
-				filename: "tulip2-640x360.vp9.webm",
-				size:     coords.NewSize(640, 360),
+				command:   "vp8enc",
+				filename:  "tulip2-640x360.vp9.webm",
+				size:      coords.NewSize(640, 360),
+				argsFn:    vp8args,
+				regExpFPS: regExpFPSVP8,
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
 			Name: "vp8_720",
 			Val: testParam{
-				command:  []string{"vp8enc"},
-				filename: "tulip2-1280x720.vp9.webm",
-				size:     coords.NewSize(1280, 720),
+				command:   "vp8enc",
+				filename:  "tulip2-1280x720.vp9.webm",
+				size:      coords.NewSize(1280, 720),
+				argsFn:    vp8args,
+				regExpFPS: regExpFPSVP8,
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
@@ -98,21 +109,7 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	}
 	defer os.Remove(yuvFile)
 
-	testOpt.command = append(testOpt.command, strconv.Itoa(testOpt.size.Width), strconv.Itoa(testOpt.size.Height), yuvFile)
-
-	ivfFile := yuvFile + ".ivf"
-	testOpt.command = append(testOpt.command, ivfFile)
-
-	// WebRTC uses Constant BitRate (CBR) with a very large intra-frame
-	// period, error resiliency and a certain quality parameter and target
-	// bitrate.
-	testOpt.command = append(testOpt.command, "--intra_period", "3000")
-	testOpt.command = append(testOpt.command, "--qp", "28" /* Quality Parameter */)
-	testOpt.command = append(testOpt.command, "--rcmode", "1" /* For Constant BitRate (CBR) */)
-	testOpt.command = append(testOpt.command, "--error_resilient" /* Off by default, enable. */)
-
-	bitrate := 256 * testOpt.size.Width * testOpt.size.Height / (320.0 * 240.0)
-	testOpt.command = append(testOpt.command, "--fb", strconv.Itoa(bitrate) /* From Chromecast */)
+	command, ivfFile := testOpt.argsFn(testOpt.command, yuvFile, testOpt.size)
 
 	energy, raplErr := power.NewRAPLSnapshot()
 	if raplErr != nil || energy == nil {
@@ -120,8 +117,8 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	}
 	startTime := time.Now()
 
-	s.Log("Running ", shutil.EscapeSlice(testOpt.command))
-	logFile, err := runTest(ctx, s.OutDir(), testOpt.command[0], testOpt.command[1:]...)
+	s.Log("Running ", shutil.EscapeSlice(command))
+	logFile, err := runTest(ctx, s.OutDir(), command[0], command[1:]...)
 	if err != nil {
 		s.Fatal("Failed to run binary: ", err)
 	}
@@ -136,7 +133,7 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	fps, err := extractValue(logFile, regExpFPS)
+	fps, err := extractValue(logFile, testOpt.regExpFPS)
 	if err != nil {
 		s.Fatal("Failed to extract FPS: ", err)
 	}
@@ -249,4 +246,24 @@ func compareFiles(ctx context.Context, yuvFile, ivfFile, outDir string, size coo
 		return "", errors.Wrap(err, "failed to run tiny_ssim")
 	}
 	return logFile, nil
+}
+
+// vp8args constructs the command line for the VP8 encoding binary exe.
+func vp8args(exe, yuvFile string, size coords.Size) (command []string, ivfFile string) {
+	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
+
+	ivfFile = yuvFile + ".ivf"
+	command = append(command, ivfFile)
+
+	// WebRTC uses Constant BitRate (CBR) with a very large intra-frame
+	// period, error resiliency and a certain quality parameter and target
+	// bitrate.
+	command = append(command, "--intra_period", "3000")
+	command = append(command, "--qp", "28" /* Quality Parameter */)
+	command = append(command, "--rcmode", "1" /* For Constant BitRate (CBR) */)
+	command = append(command, "--error_resilient" /* Off by default, enable. */)
+
+	bitrate := 256 * size.Width * size.Height / (320.0 * 240.0)
+	command = append(command, "--fb", strconv.Itoa(bitrate) /* From Chromecast */)
+	return
 }
