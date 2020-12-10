@@ -5,9 +5,16 @@
 package pre
 
 import (
+	"context"
+	"io/ioutil"
 	"strings"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crash"
+	"chromiumos/tast/local/graphics"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -21,6 +28,7 @@ func init() {
 			chromeBypassPermissionsArgs,
 			chromeSuppressNotificationsArgs,
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -36,6 +44,7 @@ func init() {
 			chromeSuppressNotificationsArgs,
 			chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -50,6 +59,7 @@ func init() {
 			chromeSuppressNotificationsArgs,
 			chrome.GuestLogin(),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -65,6 +75,7 @@ func init() {
 			chromeSuppressNotificationsArgs,
 			chrome.EnableFeatures("UseHDRTransferFunction"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -79,6 +90,7 @@ func init() {
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -93,6 +105,7 @@ func init() {
 			chromeSuppressNotificationsArgs,
 			chromeFakeWebcamArgs,
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -108,6 +121,7 @@ func init() {
 			chromeFakeWebcamArgs,
 			chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -122,6 +136,7 @@ func init() {
 			chromeFakeWebcamArgs,
 			chrome.ExtraArgs("--force-fieldtrials=WebRTC-SupportVP9SVC/EnabledByFlag_1SL3TL/"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -136,6 +151,7 @@ func init() {
 			chromeFakeWebcamArgs,
 			chrome.ExtraArgs("--disable-accelerated-video-decode"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -150,6 +166,7 @@ func init() {
 			chromeFakeWebcamArgs,
 			chrome.ExtraArgs("--disable-accelerated-video-encode"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -162,6 +179,7 @@ func init() {
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs(`--auto-select-desktop-capture-source=display`),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -174,6 +192,7 @@ func init() {
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs(`--auto-select-desktop-capture-source=Chrome`),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -186,6 +205,7 @@ func init() {
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs("--disable-accelerated-video-decode"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -199,6 +219,7 @@ func init() {
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs("--disable-accelerated-video-decode", "--enable-features=Gav1VideoDecoder"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -214,6 +235,7 @@ func init() {
 			chromeSuppressNotificationsArgs,
 			chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -229,6 +251,7 @@ func init() {
 			chrome.GuestLogin(),
 			chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -244,6 +267,7 @@ func init() {
 			chrome.ExtraArgs("--disable-accelerated-video-decode"),
 			chrome.EnableFeatures("UseHDRTransferFunction"),
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -256,6 +280,7 @@ func init() {
 			chromeBypassPermissionsArgs,
 			chromeSuppressNotificationsArgs,
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -268,10 +293,153 @@ func init() {
 			chromeFakeWebcamArgs,
 			chromeSuppressNotificationsArgs,
 		),
+		Parent:          "gpuMonitor",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "gpuMonitor",
+		Desc:            "Check if there's any gpu crash file generated during the test.",
+		Impl:            &gpuMonitorFixture{},
+		PreTestTimeout:  5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+	})
+}
+
+type gpuMonitorFixture struct {
+	hangPatterns []string
+	postFunc     []func(ctx context.Context) error
+}
+
+func (f *gpuMonitorFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	f.hangPatterns = []string{
+		"drm:i915_hangcheck_elapsed",
+		"drm:i915_hangcheck_hung",
+		"Hangcheck timer elapsed...",
+		"drm/i915: Resetting chip after gpu hang",
+	}
+	return nil
+}
+
+func (f *gpuMonitorFixture) TearDown(ctx context.Context, s *testing.FixtState) {}
+
+func (f *gpuMonitorFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+func (f *gpuMonitorFixture) getGPUCrash() ([]string, error) {
+	crashFiles, err := crash.GetCrashes(crash.DefaultDirs()...)
+	if err != nil {
+		return nil, err
+	}
+	// Filter the gpu related crash.
+	var crashes []string
+	for _, file := range crashFiles {
+		if strings.HasSuffix(file, crash.GPUStateExt) {
+			crashes = append(crashes, file)
+		}
+	}
+	return crashes, nil
+}
+
+// checkNewCrashes checkes the difference between the oldCrashes and the current crashes. Return error if failed to retrieve current crashes or the list is mismatch.
+func (f *gpuMonitorFixture) checkNewCrashes(ctx context.Context, oldCrashes []string) error {
+	crashes, err := f.getGPUCrash()
+	if err != nil {
+		return err
+	}
+
+	// Check if there're new crash files got generated during the test.
+	for _, crash := range crashes {
+		found := false
+		for _, preTestCrash := range oldCrashes {
+			if preTestCrash == crash {
+				found = true
+				break
+			}
+		}
+		if !found {
+			return errors.Errorf("found gpu crash file: %s", crash)
+		}
+	}
+	return nil
+}
+
+// checkNewHangs checks the oldHangLine with the current hangs in syslog.MessageFile. It returns error if failed to read the file or the lines are mismatch.
+func (f *gpuMonitorFixture) checkNewHangs(ctx context.Context, oldHangLines map[string]bool) error {
+	out, err := ioutil.ReadFile(syslog.MessageFile)
+	if err != nil {
+		return err
+	}
+
+	for _, line := range strings.Split(string(out), "\n") {
+		for _, pattern := range f.hangPatterns {
+			if strings.Contains(line, pattern) {
+				if _, ok := oldHangLines[line]; !ok {
+					return errors.New("detect gpu hang during test")
+				}
+			}
+		}
+	}
+	return nil
+}
+
+func (f *gpuMonitorFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	f.postFunc = nil
+	// Attempt flushing system logs every second instead of every 10 minutes.
+	dirtyWritebackDuration, err := graphics.GetDirtyWritebackDuration()
+	if err != nil {
+		s.Log("Failed to set get dirty writeback duration: ", err)
+	} else {
+		if err := graphics.SetDirtyWritebackDuration(ctx, 1*time.Second); err != nil {
+			f.postFunc = append(f.postFunc, func(ctx context.Context) error {
+				s.Log("set back dirty writeback")
+				return graphics.SetDirtyWritebackDuration(ctx, dirtyWritebackDuration)
+			})
+		}
+	}
+
+	// Record PreTest crashes.
+	crashes, err := f.getGPUCrash()
+	if err != nil {
+		s.Log("Failed to get gpu crashes: ", err)
+	} else {
+		f.postFunc = append(f.postFunc, func(ctx context.Context) error {
+			return f.checkNewCrashes(ctx, crashes)
+		})
+	}
+
+	// Record PreTest GPU hangs.
+	out, err := ioutil.ReadFile(syslog.MessageFile)
+	if err != nil {
+		s.Log("Failed to read message file: ", err)
+	} else {
+		hangLine := make(map[string]bool)
+		for _, line := range strings.Split(string(out), "\n") {
+			for _, pattern := range f.hangPatterns {
+				if strings.Contains(line, pattern) {
+					hangLine[line] = true
+				}
+			}
+		}
+		f.postFunc = append(f.postFunc, func(ctx context.Context) error {
+			return f.checkNewHangs(ctx, hangLine)
+		})
+	}
+}
+
+func (f *gpuMonitorFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	var postErr error
+	for i := len(f.postFunc) - 1; i >= 0; i-- {
+		if err := f.postFunc[i](ctx); err != nil {
+			postErr = errors.Wrap(postErr, err.Error())
+		}
+	}
+	if postErr != nil {
+		s.Error("PostTest failed: ", postErr)
+	}
 }
 
 var chromeVModuleArgs = chrome.ExtraArgs(
