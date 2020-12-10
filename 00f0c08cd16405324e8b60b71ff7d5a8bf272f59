@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7453a3_e56dbd75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-10T08:40:17Z",
+      "side": 1,
+      "message": "Do you mean that ContextOutDir not available in gRPC services?\n\nActually I have an in-flight CL to support ContextOutDir in gRPC services. Does it work for you?\ncrrev.com/c/2566544",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "00f0c08cd16405324e8b60b71ff7d5a8bf272f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bd03c8d0_909e3072",
