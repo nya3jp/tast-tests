@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/vkb"
@@ -21,19 +22,46 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const enTestFile = "voice_en_hello_20201021.wav"
-const expectedText = "Hello"
+const (
+	audioFileEn = "voice_en_hello_20201021.wav"
+	audioFileCn = "voice_cn_hello_20201021.wav"
+)
+
+// struct to contain the virtual keyboard speech test parameters
+type vksTestParams struct {
+	audioFile    string
+	expectedText string
+	imeID        string
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardSpeech,
-		Desc:         "Tests that user can input in speech on virtual keyboard",
+		Desc:         "Test voice input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		// This test is a technical experiment. It is very flaky at the moment.
-		// Attr:         []string{"group:mainline", "informational", "group:essential-inputs"},
-		Data: []string{enTestFile},
-		Pre:  pre.VKEnabledTablet,
+		// Attr:         []string{"group:mainline", "informational", "group:essential-inputs"}
+		Pre: pre.VKEnabledTablet,
+		Params: []testing.Param{
+			{
+				Name:      "hello_en",
+				ExtraData: []string{audioFileEn},
+				Val: vksTestParams{
+					audioFile:    audioFileEn,
+					expectedText: "Hello",
+					imeID:        string(ime.INPUTMETHOD_XKB_US_ENG),
+				},
+			}, {
+				Name:      "hello_cn",
+				ExtraData: []string{audioFileCn},
+				Val: vksTestParams{
+					audioFile:    audioFileCn,
+					expectedText: "你好",
+					imeID:        string(ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED),
+				},
+			},
+		},
 	})
 }
 
@@ -54,9 +82,12 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
+	// Get the audio file name
+	audioFile := s.Param().(vksTestParams).audioFile
+
 	// Set up the test audio file.
-	testFileLocation := filepath.Join(filesapp.DownloadPath, enTestFile)
-	if err := fsutil.CopyFile(s.DataPath(enTestFile), testFileLocation); err != nil {
+	testFileLocation := filepath.Join(filesapp.DownloadPath, audioFile)
+	if err := fsutil.CopyFile(s.DataPath(audioFile), testFileLocation); err != nil {
 		s.Fatalf("Failed to copy the test image to %s: %s", testFileLocation, err)
 	}
 	defer os.Remove(testFileLocation)
@@ -68,24 +99,46 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	}
 	defer ts.Close()
 
+	// Select the input field
 	inputField := testserver.TextAreaInputField
 
+	// Open the virtual keyboard
 	if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
 		s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 	}
+	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	defer func() {
-		if err := vkb.HideVirtualKeyboard(cleanupCtx, tconn); err != nil {
-			s.Log("Failed to hide virtual keyboard: ", err)
+	// Get the ime code
+	testIME := ime.IMEPrefix + s.Param().(vksTestParams).imeID
+
+	// Get the current ime code
+	currentIME, err := ime.GetCurrentInputMethod(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get current ime: ", err)
+	}
+
+	// Only install input when the current ime is different to the ime we want
+	if testIME != currentIME {
+		// Add the ime input being tested to the test device
+		if err := ime.AddAndSetInputMethod(ctx, tconn, testIME); err != nil {
+			s.Fatalf("Failed to set input method to %s: %v: ", testIME, err)
 		}
-	}()
+	}
 
-	vkb.SwitchToVoiceInput(ctx, tconn)
+	// Activate voice input
+	if err := vkb.SwitchToVoiceInput(ctx, tconn); err != nil {
+		s.Fatal("Failed to switch on voice input: ", err)
+	}
 
+	// Playback the audio into the voice input
 	if err := input.AudioFromFile(ctx, testFileLocation); err != nil {
 		s.Fatal("Failed to input audio: ", err)
 	}
 
+	// Get the expected text
+	expectedText := s.Param().(vksTestParams).expectedText
+
+	// Verify if the derived text is equal to the expected text
 	if err := inputField.WaitForValueToBe(ctx, tconn, expectedText); err != nil {
 		s.Fatal("Failed to verify input: ", err)
 	}
