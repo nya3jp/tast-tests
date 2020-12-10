@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d17f91_c02900c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-10T12:29:42Z",
+      "side": 1,
+      "message": "It is noticed in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2579894/8 dryrun.",
+      "revId": "ded3cf88d23d033510e1612416e4d9e9c57e0cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
