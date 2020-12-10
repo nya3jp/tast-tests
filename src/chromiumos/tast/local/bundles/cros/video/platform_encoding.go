@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // regExpFPS is the regexp to find the FPS output from the binary log.
@@ -50,7 +51,10 @@ func init() {
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",
 		},
-		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+		Attr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+		// Guado, buddy and rikku have a companion video acceleration chip
+		// (called Kepler), skip this test in these models.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("guado", "buddy", "rikku")),
 		SoftwareDeps: []string{"vaapi"},
 		Params: []testing.Param{{
 			Name: "vp8_180",
