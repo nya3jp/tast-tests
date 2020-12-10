@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94691b9d_db745eed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-10T17:15:47Z",
+      "side": 1,
+      "message": "Thank you Miguel. You are more than welcome to do that!\nIf my Google \u0026 Chromium account is linked together successfully, \nam I supposed to get update emails from code reviews even with Google email?\nAnyway, let me check whether link request went through successfully. \nWill probably want to forward all emails to Google email regardless.",
+      "parentUuid": "7e38483b_5e0dc79e",
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91c2c983_d78349f5",
