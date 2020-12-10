@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package cuj
+package ui
 
 import (
 	"bytes"
@@ -14,7 +14,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 )
 
 const (
@@ -83,17 +82,17 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 	}
 
 	// Choose to record the entire desktop/screen with no audio.
-	mediaview, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: "Share your screen", ClassName: "DesktopMediaPickerDialogView"}, timeout)
+	mediaview, err := FindWithTimeout(ctx, tconn, FindParams{Name: "Share your screen", ClassName: "DesktopMediaPickerDialogView"}, timeout)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find media picker view")
 	}
 	defer mediaview.Release(ctx)
 
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+	if err := WaitForLocationChangeCompleted(ctx, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for animation finished")
 	}
 
-	desktopView, err := mediaview.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "DesktopMediaPicker_DesktopMediaSourceView", Role: ui.RoleTypeButton}, timeout)
+	desktopView, err := mediaview.DescendantWithTimeout(ctx, FindParams{ClassName: "DesktopMediaPicker_DesktopMediaSourceView", Role: RoleTypeButton}, timeout)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find the desktop view")
 	}
@@ -105,7 +104,7 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 		return nil, errors.Wrap(err, "failed to click the desktop view")
 	}
 
-	shareButton, err := mediaview.DescendantWithTimeout(ctx, ui.FindParams{Name: "Share", Role: ui.RoleTypeButton}, timeout)
+	shareButton, err := mediaview.DescendantWithTimeout(ctx, FindParams{Name: "Share", Role: RoleTypeButton}, timeout)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find the share button")
 	}
