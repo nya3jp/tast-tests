@@ -5,6 +5,8 @@
 package pre
 
 import (
+	"strings"
+
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -271,3 +273,34 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 }
+
+var chromeVModuleArgs = chrome.ExtraArgs(
+	// Enable verbose log messages for video components.
+	"--vmodule=" + strings.Join([]string{
+		"*/media/gpu/chromeos/*=2",
+		"*/media/gpu/vaapi/*=2",
+		"*/media/gpu/v4l2/*=2"}, ","))
+
+var chromeUseHWCodecsForSmallResolutions = chrome.ExtraArgs(
+	// The Renderer video stack might have a policy of not using hardware
+	// accelerated decoding for certain small resolutions (see crbug.com/684792).
+	// Disable that for testing.
+	"--disable-features=ResolutionBasedDecoderPriority",
+	// VA-API HW decoder and encoder might reject small resolutions for
+	// performance (see crbug.com/1008491 and b/171041334).
+	// Disable that for testing.
+	"--disable-features=VaapiEnforceVideoMinMaxResolution")
+
+var chromeFakeWebcamArgs = chrome.ExtraArgs(
+	// Use a fake media capture device instead of live webcam(s)/microphone(s).
+	"--use-fake-device-for-media-stream",
+	// Avoid the need to grant camera/microphone permissions.
+	"--use-fake-ui-for-media-stream")
+
+var chromeBypassPermissionsArgs = chrome.ExtraArgs(
+	// Avoid the need to grant camera/microphone permissions.
+	"--use-fake-ui-for-media-stream")
+
+var chromeSuppressNotificationsArgs = chrome.ExtraArgs(
+	// Do not show message center notifications.
+	"--suppress-message-center-popups")
