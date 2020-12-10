@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed38241f_d0665688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_lock_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-10T02:19:37Z",
+      "side": 1,
+      "message": "this should probably all be in a deferred function with a cleanup context to make sure it always runs?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 2
+      },
+      "revId": "26fa24a67c6d57703eecc0e9987dc998f221169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9643d748_a0f5c5d6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-10T02:19:37Z",
+      "side": 1,
+      "message": "can we just put this in EnterPassword with the bug comment? Does it need to be separate?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "26fa24a67c6d57703eecc0e9987dc998f221169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e514795_db6c6157",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-10T02:19:37Z",
+      "side": 1,
+      "message": "Do we need to wait for focus or anything here?",
+      "revId": "26fa24a67c6d57703eecc0e9987dc998f221169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
