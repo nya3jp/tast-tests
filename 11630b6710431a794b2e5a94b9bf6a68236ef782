@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e684b6_f7f9ad6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:49:41Z",
+      "side": 1,
+      "message": "for variable name using abbreviation, it should be all uppercase or lowercase. Using audioFileEN and audioFileCN instead.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 12
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f0e7cb_8afb5e83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:49:41Z",
+      "side": 1,
+      "message": "vksTestParams is too general in this package. Since it cannot be reused, using speechTestParams to be specific.",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933315df_2fbfb899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:49:41Z",
+      "side": 1,
+      "message": "you can keep imeID type as ime.InputMethodCode, and convert it to string. We can expect 20+ languages in the param area.",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db39c46_a378b0ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:49:41Z",
+      "side": 1,
+      "message": "nit: It is not encouraged to add comments to simple code. The code itself should be self explained. Same as below.",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 27
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a035f4b9_2c169949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:49:41Z",
+      "side": 1,
+      "message": "nit: Can you group together these reading of test params to local vars. It is good for readability.\n\naudioFile :\u003d s.Param().(vksTestParams).audioFile\ntestIME :\u003d ime.IMEPrefix + s.Param().(vksTestParams).imeId\nexpectedText :\u003d s.Param().(vksTestParams).expectedText",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 49
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "722609d6_6babe5d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:49:41Z",
+      "side": 1,
+      "message": "nit: comment should finish with period.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 20
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be2abf6_9227f858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:49:41Z",
+      "side": 1,
+      "message": "ditto, and the rest.",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 28
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7cd19d8_68b0d058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-10T02:49:41Z",
+      "side": 1,
+      "message": "IIUC, SwitchToVoiceInput will handle the privacy confirmation dialog. It should work the first time. Once it continues the second IME, this dialog might not appear any more. Just FYI to consider it in following changes.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "11630b6710431a794b2e5a94b9bf6a68236ef782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
