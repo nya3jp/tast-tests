@@ -136,7 +136,7 @@ func init() {
 				Val: benchmarkParams{
 					// This driver isn't installed in the standard lib dir.
 					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so",
-					configFile: "ml_benchmark_smartdim_drivers_20201021.config",
+					configFile: "ml_benchmark_smartdim_20201021.config",
 					scenario:   "smartdim_no_nnapi",
 				},
 			},
