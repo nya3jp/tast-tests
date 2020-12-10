@@ -145,7 +145,7 @@ func init() {
 				Val: benchmarkParams{
 					// This driver isn't installed in the standard lib dir.
 					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so",
-					configFile: "ml_benchmark_mobilenet_drivers_v2_1.0_224.config",
+					configFile: "ml_benchmark_mobilenet_v2_1.0_224.config",
 					scenario:   "mobilenet_v2_no_nnapi",
 				},
 			},
@@ -154,7 +154,7 @@ func init() {
 				Val: benchmarkParams{
 					// This driver isn't installed in the standard lib dir.
 					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so",
-					configFile: "ml_benchmark_mobilenet_drivers_v2_1.0_224_quant.config",
+					configFile: "ml_benchmark_mobilenet_v2_1.0_224_quant.config",
 					scenario:   "mobilenet_v2_quant_no_nnapi",
 				},
 			},
