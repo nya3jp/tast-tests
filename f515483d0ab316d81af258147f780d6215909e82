@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75a9cd0e_1097e191",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-10T01:42:40Z",
+      "side": 1,
+      "message": "mcasas@ can we delete this?",
+      "revId": "f515483d0ab316d81af258147f780d6215909e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
