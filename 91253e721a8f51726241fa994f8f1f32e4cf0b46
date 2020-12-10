@@ -213,6 +213,30 @@
       },
       "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60523247_6261ada1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-10T02:33:16Z",
+      "side": 1,
+      "message": "A rough idea to restrict the time used by PingFromDUT and to secure time for processing reply:\n\n  pingBuffer :\u003d 5 * time.Second\n  waitBuffer :\u003d 5 * time.Second\n  waitCtx, cancel :\u003d context.WithTimeout(ctx, arpingCount*time.Second + pingBuffer + waitBuffer)\n  defer cancel()\n  waitForProps, err :\u003d tf.ExpectShillProperty(waitCtx, servicePath, props, []string{})\n\n  pingCtx, cancel :\u003d ctxutil.Shorten(waitCtx, waitBuffer)\n  defer cancel()\n  if err :\u003d tf.PingFromDUT(pingCtx, ap.ServerIP().String()); err !\u003d nil {\n    s.Fatal(\"Failed to ping from the DUT: \", err)\n  }\n\n  if _, err :\u003d waitForProps(); err \u003d\u003d nil || !isTimeout(err) {\n    s.Fatal(\"Failed to stay connected during rekeying process\")\n  }\n\nIf ping somehow takes much more time than expected, it should fail due to context timeout, then we can have more confidence that waitForProps can really get ~waitBuffer time to process the reply, if available.\n\nWDYT?",
+      "parentUuid": "700e1cd7_bd7a029e",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
