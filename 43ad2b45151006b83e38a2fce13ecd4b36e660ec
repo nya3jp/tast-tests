@@ -16,6 +16,161 @@
       "message": "mcasas@ not yet PTAL :)\n\n- want to add test result summary using regex",
       "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e38483b_5e0dc79e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-10T02:41:47Z",
+      "side": 1,
+      "message": "Got some early feedback, couldn\u0027t help myself :- )",
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c2c983_d78349f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-10T02:41:47Z",
+      "side": 1,
+      "message": "If there\u0027s no parameters to the test, don\u0027t define the struct;\nso: remove this block entirely.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f54dcd5_565b0fe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-10T02:41:47Z",
+      "side": 1,
+      "message": "Looking at other names in the folder\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/\nthey don\u0027t explicit \"test\" because, well, it\u0027s understood :-)\n\nSo what about, e.g. VAAPIUnitttest ? \n\nNote that the file name has to match the \"Func\" name.",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fadad64_7fcb9ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-10T02:41:47Z",
+      "side": 1,
+      "message": "s/chromeos-gfx/chromeos-gfx-video/",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fdc14fd_a8177914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-10T02:41:47Z",
+      "side": 1,
+      "message": "Better use:\n\n  ExtraAttr:         []string{\"group:graphics\", \"graphics_video\", \"graphics_nightly\"},\n\nsince this test will be under video/",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 60
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecea3724_ea3c172b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-10T02:41:47Z",
+      "side": 1,
+      "message": "If the test has no variants, then we don\u0027t need parameters, remove all \nthis part.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf533c6_6a958408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-10T02:41:47Z",
+      "side": 1,
+      "message": "nit: I\u0027d add here where it comes from and that\u0027s a GTest based\nbinary e.g. \n // TestVAAPI runs the \"test_va_api\" GTtest binary from the libva-test\n // package, see https://github.com/intel/libva-utils.",
+      "range": {
+        "startLine": 39,
+        "startChar": 57,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
