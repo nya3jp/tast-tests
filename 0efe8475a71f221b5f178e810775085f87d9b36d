@@ -16,6 +16,29 @@
       "message": "Looks good to me (from a person who knows the arc.PowerIdlePerf test)\n\nI wish the diff algorithm did a better job, as there really shouldn\u0027t be a change to the actual test...",
       "revId": "0efe8475a71f221b5f178e810775085f87d9b36d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1160063_db3f8f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-10T18:09:51Z",
+      "side": 1,
+      "message": "this is a bit confusing:\n\nFrom[1]:\narc - The ability to run Android apps in any way, in VM or container, with any Android version. This is intended to be used to run non-ARC tests only when ARC is supported on the board.\n\nWhat\u0027s the intention? To run the test on devices that don\u0027t support ARC? or something else?\n\n\n[1]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "range": {
+        "startLine": 61,
+        "startChar": 14,
+        "endLine": 61,
+        "endChar": 68
+      },
+      "revId": "0efe8475a71f221b5f178e810775085f87d9b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
