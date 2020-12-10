@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dfadb94_87310cb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-10T22:24:33Z",
+      "side": 1,
+      "message": "tast-remote-tests-cros-0.0.1-r4676:  * Vetting \"chromiumos/tast/...\"\ntast-remote-tests-cros-0.0.1-r4676: warning: ignoring symlink /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.1-r4676/work/tast-remote-tests-cros-0.0.1/src/chromiumos/tast/remote/bundles/cros/firmware/data/fw-testing-configs\ntast-remote-tests-cros-0.0.1-r4676: # chromiumos/tast/local/graphics\ntast-remote-tests-cros-0.0.1-r4676: src/chromiumos/tast/local/graphics/fixture.go:24:3: cannot use \u0026gpuWatchDogFixture literal (type *gpuWatchDogFixture) as type \"chromiumos/tast/internal/testing\".FixtureImpl in field value:\ntast-remote-tests-cros-0.0.1-r4676: \t*gpuWatchDogFixture does not implement \"chromiumos/tast/internal/testing\".FixtureImpl (missing SetUp method)\ntast-remote-tests-cros-0.0.1-r4676: # chromiumos/tast/local/graphics\ntast-remote-tests-cros-0.0.1-r4676: vet: src/chromiumos/tast/local/graphics/fixture.go:24:20: cannot use \u0026(gpuWatchDogFixture literal) (value of type *gpuWatchDogFixture) as testing.FixtureImpl value in struct literal: missing method SetUp\ntast-remote-tests-cros-0.0.1-r4676:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.1-r4676::chromiumos failed (compile phase):\ntast-remote-tests-cros-0.0.1-r4676:  *   (no error message)",
+      "revId": "8e213e5b61a5e1fd07892c1ee3a2ae540d414307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
