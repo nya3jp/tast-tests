@@ -16,6 +16,23 @@
       "message": "Hi Jesse, sorry for the delayed review, I\u0027m a bit busy this week...\n\nCan you also ask for reviews to one of your team mate? Tast reviewers can give general comments about Tast tests but we\u0027re not familiar with all Chrome OS areas, so it\u0027s nice to have another set of eyes from experts.\n\nAnyway the code looks great, thank you!\n",
       "revId": "747ab32ec2bc1c9d9d629a2ff84f2e6cb4cbe8f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c602c1b3_1fa20c3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-10T17:57:22Z",
+      "side": 1,
+      "message": "Readding tast-reviewer +2 since it was moved by change from master to main branch.",
+      "revId": "747ab32ec2bc1c9d9d629a2ff84f2e6cb4cbe8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
