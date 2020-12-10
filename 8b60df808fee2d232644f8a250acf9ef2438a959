@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54aca619_1d4ed7cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-12-10T18:55:04Z",
+      "side": 1,
+      "message": "Alexander -- can you re-+2? Votes got lost when the destination changes master-\u003emain.\n\nThanks",
+      "revId": "8b60df808fee2d232644f8a250acf9ef2438a959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
