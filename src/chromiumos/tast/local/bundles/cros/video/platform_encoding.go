@@ -51,7 +51,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-		SoftwareDeps: []string{"vaapi"},
+		SoftwareDeps: []string{"vaapi", "no_kepler"},
 		Params: []testing.Param{{
 			Name: "vp8_180",
 			Val: testParam{
