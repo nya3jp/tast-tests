@@ -302,6 +302,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c82dd0e7_5c889d49",
+        "filename": "src/chromiumos/tast/remote/network/cmd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-10T00:09:54Z",
+      "side": 1,
+      "message": "This seemed over-designed to me (and I always thought this was a bit silly in the old Autotest stuff too), but I won\u0027t insist.\n\nIn fact, I was about ready to comment the same as Yen-lin without having read this conversation.",
+      "parentUuid": "7e46dc54_2a660fff",
+      "revId": "ca79829180e24616d128b96fe6065530f099d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ddd70ed_66058e85",
