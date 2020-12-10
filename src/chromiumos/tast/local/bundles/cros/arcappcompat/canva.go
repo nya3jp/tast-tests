@@ -81,54 +81,16 @@ func Canva(ctx context.Context, s *testing.State) {
 // verify Canva reached main activity page of the app.
 func launchAppForCanva(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInText     = "Continue with email"
-		emailAddressID = "com.canva.editor:id/email"
-		continueText   = "Continue"
-		passwordID     = "com.canva.editor:id/password"
-		logInText      = "Log in"
-		homeIconText   = "Create a design"
+		googleSignInText = "Continue with Google"
+		homeIconText     = "Create a design"
 	)
 
 	// Click on sign in button.
-	signInButton := d.Object(ui.Text(signInText))
-	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	googleSignInButton := d.Object(ui.Text(googleSignInText))
+	if err := googleSignInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("sign in button doesn't exist: ", err)
-	} else if err := signInButton.Click(ctx); err != nil {
+	} else if err := googleSignInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on sign in button: ", err)
-	}
-
-	// Enter email address.
-	CanvaEmailID := s.RequiredVar("arcappcompat.Canva.emailid")
-	enterEmailAddress := d.Object(ui.ID(emailAddressID))
-	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("EnterEmailAddress doesn't exist: ", err)
-	} else if err := enterEmailAddress.SetText(ctx, CanvaEmailID); err != nil {
-		s.Fatal("Failed to enterEmailAddress: ", err)
-	}
-
-	//Click continue button
-	continueButton := d.Object(ui.Text(continueText))
-	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("continue button doesn't exist: ", err)
-	} else if err := continueButton.Click(ctx); err != nil {
-		s.Fatal("Failed to continue button: ", err)
-	}
-
-	// Enter password.
-	CanvaPassword := s.RequiredVar("arcappcompat.Canva.password")
-	enterPassword := d.Object(ui.ID(passwordID))
-	if err := enterPassword.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("enterPassword doesn't exist: ", err)
-	} else if err := enterPassword.SetText(ctx, CanvaPassword); err != nil {
-		s.Fatal("Failed to enterPassword: ", err)
-	}
-
-	// Click on log in button
-	logInButton := d.Object(ui.Text(logInText))
-	if err := logInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("LogIn button doesn't exist: ", err)
-	} else if err := logInButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on LogIn button: ", err)
 	}
 
 	// Check for home icon.
