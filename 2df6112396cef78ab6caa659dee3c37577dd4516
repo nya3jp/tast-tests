@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3d28a14_f594c88b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-10T04:12:56Z",
+      "side": 1,
+      "message": "ihf@, tast-owners@ PTAL\n\nchromeos-gfx-video@ FYI or PTAL if you want.",
+      "revId": "2df6112396cef78ab6caa659dee3c37577dd4516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
