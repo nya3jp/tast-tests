@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf6dec0_310e2303",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-10T18:03:20Z",
+      "side": 1,
+      "message": "seems that it is recommended to start review when there is discussion although I can still save comments. ",
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91c2c983_d78349f5",
@@ -278,6 +295,30 @@
       "side": 1,
       "message": "got it. thanks.",
       "parentUuid": "ecea3724_ea3c172b",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba9a0fe_0260caf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-10T18:03:20Z",
+      "side": 1,
+      "message": "\"test_va_api\" is the name we use to run video.TestVAAPI.test_va_api\n\nchecked that we can run instead as \"video.TestVAAPI\" after removing this part. \n\nI thought we need to have 3 layers for test name, but good to know that it is not required.",
+      "parentUuid": "ca9515c3_6ed3e764",
       "range": {
         "startLine": 32,
         "startChar": 2,
