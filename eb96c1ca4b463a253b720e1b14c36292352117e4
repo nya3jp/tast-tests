@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c283db7b_e824d818",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-10T03:50:27Z",
+      "side": 1,
+      "message": "What about log the err for tracking and debugging?",
+      "range": {
+        "startLine": 240,
+        "startChar": 46,
+        "endLine": 240,
+        "endChar": 49
+      },
+      "revId": "eb96c1ca4b463a253b720e1b14c36292352117e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
