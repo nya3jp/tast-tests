@@ -189,6 +189,30 @@
       },
       "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "700e1cd7_bd7a029e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-10T02:04:48Z",
+      "side": 1,
+      "message": "I think I\u0027m with Yen-lin too (timeout check can be OK for now), and I\u0027ll scale back the other buffering concerns, but one thing:\n\nwhat happens if line 100 eats most of our deadline? do we still grab any queued stream events and handle them, or will we get a meaningless timeout without actually checking anything?",
+      "parentUuid": "df1f43cc_117318fe",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
