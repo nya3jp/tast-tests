@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7ac515_c7391ab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-12-10T17:18:38Z",
+      "side": 1,
+      "message": "Sorry, I uploaded the CL by accident. Thanks. ",
+      "revId": "8f83755861031bd4a7e8d438ea72fcacea9156ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
