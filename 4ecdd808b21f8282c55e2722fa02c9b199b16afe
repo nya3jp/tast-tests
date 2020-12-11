@@ -16,6 +16,23 @@
       "message": "\nThe failures are unrelated, wooten-cq has been failing for a while, I would chump this.",
       "revId": "4ecdd808b21f8282c55e2722fa02c9b199b16afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c98056f6_5733daaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-12-11T16:15:04Z",
+      "side": 1,
+      "message": "Submitting because the failures are unrelated and this change should make the SELinux tast tests less likely to fail.",
+      "revId": "4ecdd808b21f8282c55e2722fa02c9b199b16afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
