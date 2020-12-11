@@ -56,6 +56,30 @@
       },
       "revId": "8bce606dd0d7d0e117e2c1159bbbdbc225f6e9c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e563ddfe_780cec6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-11T22:21:24Z",
+      "side": 1,
+      "message": "Yeah I thought about it - my Chromium foo would call this \n|commandBuilderFn| and the associated member |commandBuilder| (or\n\"commandArgsBuilder...|), but thought the Go style would say njet.",
+      "parentUuid": "8ab9221e_ff506961",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 7
+      },
+      "revId": "8bce606dd0d7d0e117e2c1159bbbdbc225f6e9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
