@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7517b46a_1e10da41",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T15:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "116df0e7_bce287a3",
+      "range": {
+        "startLine": 716,
+        "startChar": 5,
+        "endLine": 716,
+        "endChar": 23
+      },
+      "revId": "043ccc494032e5cf9eff8c7257f3eff797224bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31f5d2cb_a5b4cd5b",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1789564c_4ca2f42c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T15:55:53Z",
+      "side": 1,
+      "message": "While porting, I tried to keep functional parity, thus these files. If they are already here, we may keep them as well. It is far more convenient for me to see the data in TSV, rather than fishing it out of the one \"uberfile\", but I\u0027m also not a strong proponent of keeping TSVs. Whatever suits you.",
+      "parentUuid": "31f5d2cb_a5b4cd5b",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 58
+      },
+      "revId": "043ccc494032e5cf9eff8c7257f3eff797224bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b45781cd_472f1675",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 9
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-10T00:39:58Z",
       "side": 1,
       "message": "is there a good reason for logging the board name in here? there\u0027s a lot of details about the system that we want to associate with performance metrics, but those are handled outside the test through other metadata, IIUC, so this seems a little redundant.\n\nI mention this, because parsing /etc/lsb-release is generally frowned on for non-test code; for test code it\u0027s a bit less harmful, I guess.",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 47
+      },
+      "revId": "043ccc494032e5cf9eff8c7257f3eff797224bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e448b2_14384ba4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T15:55:53Z",
+      "side": 1,
+      "message": "I\u0027m quite aware /etc/lsb-release should not be parsed to influence test outcome.\n\nHere I\u0027m using it only to include boardname in output file (like the original test did) and keep it private.",
+      "parentUuid": "b45781cd_472f1675",
       "range": {
         "startLine": 354,
         "startChar": 0,
