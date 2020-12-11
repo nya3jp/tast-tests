@@ -33,8 +33,8 @@ func ShowBookmarksBar(ctx context.Context, tconn *chrome.TestConn, keyboard *inp
 		return errors.Wrap(err, "could not toggle bookmarks bar")
 	}
 
-	if err := ui.WaitUntilExists(ctx, tconn, bbFindParams, shortTimeout); err != nil {
-		return errors.Wrapf(err, "bookmarks bar didn't appear within %s", shortTimeout)
+	if err := ui.WaitUntilExists(ctx, tconn, bbFindParams, mediumTimeout); err != nil {
+		return errors.Wrapf(err, "bookmarks bar didn't appear within %s", mediumTimeout)
 	}
 
 	return nil
