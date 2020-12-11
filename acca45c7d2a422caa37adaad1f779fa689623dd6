@@ -22,6 +22,30 @@
       },
       "revId": "acca45c7d2a422caa37adaad1f779fa689623dd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe7ee67c_924e84c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_updater_succeeded.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-11T21:56:09Z",
+      "side": 1,
+      "message": "Did an experiment and it seems there\u0027s always a reboot after success. Done.",
+      "parentUuid": "ee5e7a8f_fce021f9",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 84
+      },
+      "revId": "acca45c7d2a422caa37adaad1f779fa689623dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
