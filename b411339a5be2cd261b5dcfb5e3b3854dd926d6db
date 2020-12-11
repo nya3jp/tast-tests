@@ -50,6 +50,24 @@
       "message": "Nit: This actually waits for events with metric requirement \u003e\u003d Recommended, that is, recommended *and* required events for 60 seconds.\nAlso the comment says the first 60 seconds, but there is no subsequent timeout. Please update the comment for this.",
       "revId": "b411339a5be2cd261b5dcfb5e3b3854dd926d6db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "360189f2_9f44a8c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-11T19:47:14Z",
+      "side": 1,
+      "message": "\u003e Nit: This actually waits for events with metric requirement \u003e\u003d Recommended, that is, recommended *and* required events for 60 seconds.\n\nSure, fixed.\n\n\u003e Also the comment says the first 60 seconds, but there is no subsequent timeout. Please update the comment for this.\n\nI\u0027m not really sure what you mean here. There isn\u0027t really a subsequent \"timeout\", but there is a potential next step -- the comment at line 164. So \"first 60 seconds\" seems like a perfectly fine characterization to me.\n\nIf you want this comment written differently, please spell it out, and I (or you) can submit a follow-up.",
+      "parentUuid": "0897010a_8d705584",
+      "revId": "b411339a5be2cd261b5dcfb5e3b3854dd926d6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
