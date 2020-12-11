@@ -16,6 +16,23 @@
       "message": "Alexander -- can you re-+2? Votes got lost when the destination changes master-\u003emain.\n\nThanks",
       "revId": "8b60df808fee2d232644f8a250acf9ef2438a959",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1582b58a_1d669d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001271
+      },
+      "writtenOn": "2020-12-11T22:17:25Z",
+      "side": 1,
+      "message": "ping for merge please?\nAlexander gave the CR+2 for this that was lost for unrelated reasons.\nCan you overwrite the owner review vote?",
+      "revId": "8b60df808fee2d232644f8a250acf9ef2438a959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
