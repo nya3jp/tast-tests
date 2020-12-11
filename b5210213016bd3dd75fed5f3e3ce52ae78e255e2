@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "366c3f5b_1d3c8460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T16:16:35Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective % Sergey\u0027s comment",
+      "revId": "b5210213016bd3dd75fed5f3e3ce52ae78e255e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fcc48e4_39a9851b",
@@ -31,6 +48,24 @@
       "writtenOn": "2020-12-08T07:17:49Z",
       "side": 1,
       "message": "Is it guaranteed to always be 60? Maybe we can calculate how many entries we need for p90 output, based on the current `p` size.",
+      "revId": "b5210213016bd3dd75fed5f3e3ce52ae78e255e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "725a56af_8019357d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T16:16:35Z",
+      "side": 1,
+      "message": "Agreed, that seems stabler. Something like:\n\n    p90Index :\u003d int(len(allocatedFloat) * 0.9 - 1)\n    p.Set(allocatedP90Metric, allocatedFloat[p90Index])\n\nOptionally, provide a check to ensure that allocatedFloat is the expected length, just to make sure there are no surprises:\n\n    if len(allocatedFloat) !\u003d 60 {\n        s.Error(\"Unexpected allocatedFloat length: got %d; want 60\", len(allocatedFloat))\n    )",
+      "parentUuid": "0fcc48e4_39a9851b",
       "revId": "b5210213016bd3dd75fed5f3e3ce52ae78e255e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
