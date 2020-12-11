@@ -352,11 +352,13 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 
 // CurrentAppPackage func to get info on current package name
 func CurrentAppPackage(ctx context.Context, d *ui.Device) (string, error) {
+
+	// Wait for app to launch.
+	d.WaitForIdle(ctx, ShortUITimeout)
 	info, err := d.GetInfo(ctx)
 	if err != nil {
 		return "", err
 	}
-	// s.Logf("Current app package name %+v", info.CurrentPackagename)
 	return info.CurrentPackagename, nil
 }
 
