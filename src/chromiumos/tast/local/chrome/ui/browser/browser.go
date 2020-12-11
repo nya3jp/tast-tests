@@ -53,9 +53,9 @@ func openBookmarkThisTabDialog(ctx context.Context, tconn *chrome.TestConn, keyb
 		return errors.Wrapf(err, "failed to write events %s", "Ctrl+d")
 	}
 
-	if err := ui.WaitUntilExists(ctx, tconn, bookmarkNameTextFieldFP, shortTimeout); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, bookmarkNameTextFieldFP, mediumTimeout); err != nil {
 		// Shorter timeout. If bookmark menu is opened this is already rendered.
-		return errors.Wrap(err, "failed to find the Bookmark name text field")
+		return errors.Wrapf(err, "failed to find the Bookmark name text field within %s", mediumTimeout)
 	}
 	return nil
 }
@@ -128,7 +128,7 @@ func CurrentTabBookmarkName(ctx context.Context, tconn *chrome.TestConn, keyboar
 		Name: "Bookmark name",
 	}, mediumTimeout)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to find the Bookmark name text field")
+		return "", errors.Wrapf(err, "failed to find the Bookmark name text field within %s", mediumTimeout)
 	}
 	defer bookmarkNameTbx.Release(ctx)
 
