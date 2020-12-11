@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9b7047_0c3ba474",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-11T10:13:00Z",
+      "side": 1,
+      "message": "Jim suggested that we move this metric gathering to C++ ml_benchmark tool (and it\u0027ll automatically be reported in Tast/Crosbolt as well then).\n\nAbandoning this CL.",
+      "revId": "0d90d132d77fbdfbaa1393e59240fa5685230f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
