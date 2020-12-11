@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f6e25b_840720f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-11T11:57:11Z",
+      "side": 1,
+      "message": "PTAL. Migrating off installing external apps via Play Store.",
+      "revId": "7243120a3a5d73307eab253447b94824ed741b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
