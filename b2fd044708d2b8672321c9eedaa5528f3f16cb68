@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be42c84c_4a355a2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-11T18:37:11Z",
+      "side": 1,
+      "message": "lgtm\n\nThe speculative fix is included in 13652.0.0. The recent failures are probably before the fix.",
+      "revId": "b2fd044708d2b8672321c9eedaa5528f3f16cb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
