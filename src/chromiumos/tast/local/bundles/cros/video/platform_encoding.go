@@ -29,6 +29,9 @@ import (
 // regExpFPSVP8 is the regexp to find the FPS output from the VP8 binary log.
 var regExpFPSVP8 = regexp.MustCompile(`Processed \d+ frames in \d+ ms \((\d+\.\d+) FPS\)`)
 
+// regExpFPSVP9 is the regexp to find the FPS output from the VP9 binary log.
+var regExpFPSVP9 = regexp.MustCompile(`encode \d+ frames in \d+.\d+ secondes, FPS is (\d+\.\d+)`)
+
 // regExpSSIM is the regexp to find the SSIM output in the tiny_ssim log.
 var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
 
@@ -90,6 +93,39 @@ func init() {
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+		}, {
+			Name: "vp9_180",
+			Val: testParam{
+				command:        "vp9enc",
+				filename:       "tulip2-320x180.vp9.webm",
+				size:           coords.NewSize(320, 180),
+				commandBuilder: vp9args,
+				regExpFPS:      regExpFPSVP9,
+			},
+			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+		}, {
+			Name: "vp9_360",
+			Val: testParam{
+				command:        "vp9enc",
+				filename:       "tulip2-640x360.vp9.webm",
+				size:           coords.NewSize(640, 360),
+				commandBuilder: vp9args,
+				regExpFPS:      regExpFPSVP9,
+			},
+			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+		}, {
+			Name: "vp9_720",
+			Val: testParam{
+				command:        "vp9enc",
+				filename:       "tulip2-1280x720.vp9.webm",
+				size:           coords.NewSize(1280, 720),
+				commandBuilder: vp9args,
+				regExpFPS:      regExpFPSVP9,
+			},
+			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}},
 		Timeout: 20 * time.Minute,
 	})
@@ -265,5 +301,26 @@ func vp8args(exe, yuvFile string, size coords.Size) (command []string, ivfFile s
 
 	bitrate := 256 * size.Width * size.Height / (320.0 * 240.0)
 	command = append(command, "--fb", strconv.Itoa(bitrate) /* From Chromecast */)
+	return
+}
+
+// vp9args constructs the command line for the VP9 encoding binary exe.
+func vp9args(exe, yuvFile string, size coords.Size) (command []string, ivfFile string) {
+	command = append(command, exe, strconv.Itoa(size.Width), strconv.Itoa(size.Height), yuvFile)
+
+	ivfFile = yuvFile + ".ivf"
+	command = append(command, ivfFile)
+
+	// WebRTC uses Constant BitRate (CBR) with a very large intra-frame
+	// period and a certain quality parameter target, loop filter level
+	// and bitrate.
+	command = append(command, "--intra_period", "3000")
+	command = append(command, "--qp", "24" /* Quality Parameter */)
+	command = append(command, "--rcmode", "1" /* For Constant BitRate (CBR) */)
+	command = append(command, "--lf_level", "10" /* Loop filter level. */)
+	command = append(command, "--low_power", "0" /* Prefer non Low-Power mode */)
+
+	bitrate := int(1.3 * float64(size.Width) * float64(size.Height) / 1000.0)
+	command = append(command, "--fb", strconv.Itoa(bitrate))
 	return
 }
