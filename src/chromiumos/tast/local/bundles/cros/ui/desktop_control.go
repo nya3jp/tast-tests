@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -63,6 +64,8 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure into the clamshell mode: ", err)
 	}
 	defer cleanup(ctx)
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	conns, err := ash.CreateWindows(ctx, tconn, cr, "", 2)
 	if err != nil {
