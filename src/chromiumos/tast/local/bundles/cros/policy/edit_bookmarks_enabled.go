@@ -93,7 +93,7 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name+".txt")
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fakeDMS, cr); err != nil {
