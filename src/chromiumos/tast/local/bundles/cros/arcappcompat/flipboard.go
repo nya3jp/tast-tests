@@ -83,7 +83,7 @@ func Flipboard(ctx context.Context, s *testing.State) {
 // verify Flipboard reached main activity page of the app.
 func launchAppForFlipboard(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInButtonID           = "flipboard.app:id/first_launch_cover_sign_in"
+		signInButtonID           = "flipboard.app:id/first_launch_cover_swipe_or_sign_in"
 		EmailButtonID            = "flipboard.app:id/account_login_email_button"
 		editTextClassName        = "android.widget.EditText"
 		emailText                = "Email"
@@ -94,10 +94,11 @@ func launchAppForFlipboard(ctx context.Context, s *testing.State, tconn *chrome.
 		noneOFTheAboveButtonText = "None Of The Above"
 		notNowID                 = "android:id/autofill_save_no"
 	)
+
 	// Click on sign in button.
 	clickOnSignInButton := d.Object(ui.ID(signInButtonID))
 	if err := clickOnSignInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("clickOnSignInButton doesn't exist: ", err)
+		s.Fatal("clickOnSignInButton doesn't exist: ", err)
 	} else if err := clickOnSignInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnSignInButton: ", err)
 	}
