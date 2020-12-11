@@ -16,6 +16,23 @@
       "message": "Hidehiko-san, could you give this CL (and crrev/c/2578619) LGTM again? The rename of the branch removed all labels.",
       "revId": "628197fbe7b506002a036a60ac06039acceedb76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00df0253_0cc1d210",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-11T09:42:53Z",
+      "side": 1,
+      "message": "SLGTM",
+      "revId": "628197fbe7b506002a036a60ac06039acceedb76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
