@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-"""Hook to stop people from running `git cl`."""
+"""Hook to stop users from running `git cl`."""
 
 from __future__ import print_function
 
