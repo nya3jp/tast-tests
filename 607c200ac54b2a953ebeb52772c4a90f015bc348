@@ -33,6 +33,24 @@
       "message": "Will you add another reviewer who is more familiar with the test and the app logic?",
       "revId": "607c200ac54b2a953ebeb52772c4a90f015bc348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "759b111d_578cd8cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-12-11T01:46:50Z",
+      "side": 1,
+      "message": "I\u0027m the single author of this app (though mostly copied from the Android example repo on Github). I could add somebody with Java readability, but I\u0027m afraid nobody else knows this app well enough.",
+      "parentUuid": "9a5aa85e_8f212368",
+      "revId": "607c200ac54b2a953ebeb52772c4a90f015bc348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
