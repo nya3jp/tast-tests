@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3716897_0a67c502",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-11T23:06:04Z",
+      "side": 1,
+      "message": "I was blocked by git branch master -\u003e main change earlier. \nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1157593\n\nMain thing was that I had to delete older branches (created under master), \nwhich might still have some invisible links to master even after transition to main.\nEven though they were showing correct info (pointing to main) with git branch -vv cmd.\n\n",
+      "revId": "d76956c51e9033c5152d5fe485dade57e0399ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
