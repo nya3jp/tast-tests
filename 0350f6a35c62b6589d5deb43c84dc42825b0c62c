@@ -121,6 +121,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e7d78ab_219aed2e",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T07:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a23e3c30_03a13ada",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8de254d9_7658748a",
@@ -134,6 +158,30 @@
       "writtenOn": "2020-12-10T00:09:54Z",
       "side": 1,
       "message": "sp: are",
+      "range": {
+        "startLine": 57,
+        "startChar": 10,
+        "endLine": 57,
+        "endChar": 12
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72ffe71_c5aacb1b",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T07:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de254d9_7658748a",
       "range": {
         "startLine": 57,
         "startChar": 10,
@@ -215,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f790694e_fc747b82",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T07:47:58Z",
+      "side": 1,
+      "message": "OK, It never happened to me when testing tast version but perhaps better safe than sorry. Added option wrapper and used in netperf runner.\nIndefinite `-w` won\u0027t work because I set a time limit on ctx level for these commands.",
+      "parentUuid": "f06f271c_e0e68f50",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e66258b4_6d0667eb",
@@ -228,6 +300,30 @@
       "writtenOn": "2020-12-10T00:09:54Z",
       "side": 1,
       "message": "does this actually need to be public? IIUC, it\u0027s only used by nerperf package implementation details, to flip the UDP_MAERTS type around",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48de19b9_175bec07",
+        "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T07:47:58Z",
+      "side": 1,
+      "message": "I\u0027d rather not mix public and private elements in a public struct, but I have no strong opinion on this one. It can be conveniently used in other tests, too.",
+      "parentUuid": "e66258b4_6d0667eb",
       "range": {
         "startLine": 54,
         "startChar": 1,
@@ -285,6 +381,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5b9b26_e50e1e2a",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T07:47:58Z",
+      "side": 1,
+      "message": "I have never in my career written a unit test for a test, but I guess there\u0027s always a first time for everything.\nWe\u0027re pretty much safe from error text insertions as Command().Output() collects only stdout AFAIK.",
+      "parentUuid": "5aef51e5_4f3fb378",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2206bd2_4b145b00",
@@ -298,6 +418,30 @@
       "writtenOn": "2020-12-10T00:09:54Z",
       "side": 1,
       "message": "Golang has no line limits, so no need to wrap this. Same on a few others.",
+      "range": {
+        "startLine": 68,
+        "startChar": 78,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c673727_6162e452",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T07:47:58Z",
+      "side": 1,
+      "message": "I thought line limits are not language limitation but rather meant to fit editor width conveniently? This one will be broken anyway in Gerrit view and makes me uncomfortable to read in my editor (VC Code on pivoted monitor). I can agree to others, though - they were victims of multiple refactoring.",
+      "parentUuid": "e2206bd2_4b145b00",
       "range": {
         "startLine": 68,
         "startChar": 78,
@@ -331,6 +475,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01024211_3ee0705f",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T07:47:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9cc1afb0_66d43d9a",
+      "range": {
+        "startLine": 228,
+        "startChar": 17,
+        "endLine": 228,
+        "endChar": 43
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1c546c8_7f362435",
@@ -344,6 +512,30 @@
       "writtenOn": "2020-12-10T00:09:54Z",
       "side": 1,
       "message": "1 line",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3200973e_86c98ece",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T07:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1c546c8_7f362435",
       "range": {
         "startLine": 94,
         "startChar": 0,
@@ -377,6 +569,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07907915_844e5df3",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T07:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "953b83ac_3dc062c4",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 14
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5579c189_a8d0ee36",
@@ -390,6 +606,30 @@
       "writtenOn": "2020-12-10T00:09:54Z",
       "side": 1,
       "message": "no need to break this line",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 32
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2820cd2c_963f335f",
+        "filename": "src/chromiumos/tast/remote/network/netperf/session.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T07:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5579c189_a8d0ee36",
       "range": {
         "startLine": 164,
         "startChar": 0,
