@@ -39,6 +39,30 @@
       },
       "revId": "0efe8475a71f221b5f178e810775085f87d9b36d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffba2436_e53efcd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-12-11T03:45:19Z",
+      "side": 1,
+      "message": "This is used to get results from ARC boards(both VM and container) without running ARC and the result will be used as a baseline of the performance. For example, if the performance regression happens, there are three possibilities: 1.due to VM or container specific bug, 2.due to bug in ChromeOS itself or 3.due to Android\u0027s variance between versions. _noarc results are used to eliminate case 2 and also it is a lower limit of power consumption, so we are trying to reduce the overhead of VM and container as lower as this line.",
+      "parentUuid": "c1160063_db3f8f7f",
+      "range": {
+        "startLine": 61,
+        "startChar": 14,
+        "endLine": 61,
+        "endChar": 68
+      },
+      "revId": "0efe8475a71f221b5f178e810775085f87d9b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
