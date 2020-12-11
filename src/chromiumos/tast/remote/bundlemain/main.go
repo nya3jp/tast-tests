@@ -96,6 +96,9 @@ func beforeReboot(ctx context.Context, d *dut.DUT) error {
 	if err := os.MkdirAll(outDir, 0755); err != nil {
 		testing.ContextLog(ctx, "Failed to make output subdirectory: ", err)
 	}
+	if err := d.Conn().Command("journalctl", "--flush").Run(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to flush journal: ", err)
+	}
 	if err := d.GetFile(ctx, "/var/log/messages", filepath.Join(outDir, "messages")); err != nil {
 		testing.ContextLog(ctx, "Failed to copy syslog: ", err)
 	}
