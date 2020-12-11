@@ -16,6 +16,194 @@
       "message": "David, can you review this CL?",
       "revId": "26f641325c2280e30930cc432f8c78765f331f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3510181_fb35fe0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-11T01:20:37Z",
+      "side": 1,
+      "message": "prepareTestExecution",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "26f641325c2280e30930cc432f8c78765f331f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b2f0ef_07049a4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-11T01:20:37Z",
+      "side": 1,
+      "message": "It\u0027s not at all clear from the function name that this function returns a codec object, and this function does two very different things.\nMaybe it\u0027s better to just not use a helper function here? This only saves a few lines of code, and a bit of duplication is OK in test code.",
+      "revId": "26f641325c2280e30930cc432f8c78765f331f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca8bea0_0d912328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-11T01:20:37Z",
+      "side": 1,
+      "message": "Add documentation here, explaining what objects are returned by this function, as it\u0027s not clear from the name.",
+      "revId": "26f641325c2280e30930cc432f8c78765f331f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c578e0_3ffd30fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-11T01:20:37Z",
+      "side": 1,
+      "message": "What about capped performance?",
+      "revId": "26f641325c2280e30930cc432f8c78765f331f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb0ba124_04280f17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-11T01:20:37Z",
+      "side": 1,
+      "message": "explain which metrics are collected.",
+      "range": {
+        "startLine": 144,
+        "startChar": 24,
+        "endLine": 144,
+        "endChar": 25
+      },
+      "revId": "26f641325c2280e30930cc432f8c78765f331f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba313e32_ccfc2bdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-11T01:20:37Z",
+      "side": 1,
+      "message": "Add a TODO that we should remove \"new\" from the test name once the old tests have been replaced.",
+      "revId": "26f641325c2280e30930cc432f8c78765f331f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d13040_ff6d1271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-11T01:20:37Z",
+      "side": 1,
+      "message": "Maybe you could define this variable at the top of the testcase itself? e.g. like the PowerVideoDecodePerf test.",
+      "revId": "26f641325c2280e30930cc432f8c78765f331f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b91138_2891e048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-11T01:20:37Z",
+      "side": 1,
+      "message": "nit: \"to prepare\" or \"preparing\"",
+      "range": {
+        "startLine": 170,
+        "startChar": 18,
+        "endLine": 170,
+        "endChar": 30
+      },
+      "revId": "26f641325c2280e30930cc432f8c78765f331f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2360aef_b7a03d96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-11T01:20:37Z",
+      "side": 1,
+      "message": "Add similar documentation to the first test run",
+      "revId": "26f641325c2280e30930cc432f8c78765f331f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c5044c_bd2d329e",
+        "filename": "src/chromiumos/tast/local/media/encoding/new_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-11T01:20:37Z",
+      "side": 1,
+      "message": "Add a TODO that we should rename this file once the old tests have been deprecated. Alternatively we could just put these functions in perf.go.",
+      "revId": "26f641325c2280e30930cc432f8c78765f331f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
