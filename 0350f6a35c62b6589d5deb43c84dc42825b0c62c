@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f026dd_c5a142a0",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T10:34:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1d3a6fc_49e46043",
+      "range": {
+        "startLine": 41,
+        "startChar": 25,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7687816c_0c0d6d17",
@@ -88,6 +112,30 @@
       "writtenOn": "2020-12-11T01:20:38Z",
       "side": 1,
       "message": "note that a rule does not necessarily need a target",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87b6282c_1ee7823d",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T10:34:11Z",
+      "side": 1,
+      "message": "Sure, it\u0027s optional.",
+      "parentUuid": "7687816c_0c0d6d17",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -277,6 +325,30 @@
       "side": 1,
       "message": "OK, It never happened to me when testing tast version but perhaps better safe than sorry. Added option wrapper and used in netperf runner.\nIndefinite `-w` won\u0027t work because I set a time limit on ctx level for these commands.",
       "parentUuid": "f06f271c_e0e68f50",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6222d382_b542e901",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-11T10:34:11Z",
+      "side": 1,
+      "message": "While understanding arguments for using dbus, for test harness I\u0027d rather keep operations as low as possible, to not disturb DUT itself and reuse the code on other devices (e.g. in Roaming Continuity test).",
+      "parentUuid": "f790694e_fc747b82",
       "range": {
         "startLine": 64,
         "startChar": 5,
