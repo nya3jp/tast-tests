@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b0e3e3_5cb8b221",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T00:02:17Z",
+      "side": 1,
+      "message": "Agreed. This is the first time I\u0027ve ever worked with time.Parse. It gave me bad feelings.",
+      "parentUuid": "c5abe727_ac9861bb",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b6588ed_5f17b6a8",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-10T21:10:58Z",
       "side": 1,
       "message": "so these reportNow and reportNewEvents functions seem to be good candidates for putting under reporters/",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c1f3352_1ac9d10c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T00:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b6588ed_5f17b6a8",
       "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "208f8bd5_2def182d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T00:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ea19504_a1b908a6",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c94321_6e9840fb",
@@ -82,6 +136,24 @@
       "writtenOn": "2020-12-10T21:10:58Z",
       "side": 1,
       "message": "create an event struct instead of using a string slice.",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b91ce6_9dee8d0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T00:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c94321_6e9840fb",
       "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e347e74b_1267c89b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T00:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9807d7cd_4bbb3399",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e11ae448_034f61d7",
@@ -116,6 +206,24 @@
       "writtenOn": "2020-12-10T21:10:58Z",
       "side": 1,
       "message": "do we really need to check this?",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10fba247_09c8e12a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T00:02:17Z",
+      "side": 1,
+      "message": "It\u0027s checked by the existing Tauto test firmware_EventLog, so I put it in for feature parity. I\u0027m not sure how necessary it is.",
+      "parentUuid": "e11ae448_034f61d7",
       "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "965edffa_5511304a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T00:02:17Z",
+      "side": 1,
+      "message": "Ack. Per your other comment I created an Event struct, but creating an EventLog struct seems like overkill. Simpler to just use []Event.",
+      "parentUuid": "573a36d5_7a15459f",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77a35bc6_eb0832d9",
@@ -154,6 +280,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55960efe_224e30c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T00:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a35bc6_eb0832d9",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc5b8ab8_74f8f300",
@@ -167,6 +311,24 @@
       "writtenOn": "2020-12-10T21:10:58Z",
       "side": 1,
       "message": "put these regexps into named constants.",
+      "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f3ddc82_13e49ebe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-11T00:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc5b8ab8_74f8f300",
       "revId": "232fbd0e0a7f515cac9c6b1e261c29ba7eaa38d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
