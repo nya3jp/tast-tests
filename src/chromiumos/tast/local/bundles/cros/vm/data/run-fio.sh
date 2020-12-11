@@ -12,7 +12,8 @@ die() {
 }
 
 usage() {
-  die "Usage: $(basename "$0") <block|fs|p9> <src> <mountpoint> <output> <jobs>"
+  die "Usage: $(basename "$0") <block|virtiofs|p9> <src> <mountpoint> " \
+      "<output> <jobs>"
 }
 
 main() {
@@ -47,7 +48,7 @@ main() {
             -o "trans=virtio,version=9p2000.L,access=client,cache=loose" \
             "${src}" "${mountpoint}"
       ;;
-    fs)
+    virtiofs)
       mount -t virtiofs "${src}" "${mountpoint}"
       ;;
     *)
