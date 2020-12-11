@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "033e8230_16744aba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-11T07:51:43Z",
+      "side": 1,
+      "message": "Thanks for the CL. Tried that it does work.",
+      "parentUuid": "fa7453a3_e56dbd75",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "00f0c08cd16405324e8b60b71ff7d5a8bf272f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bd03c8d0_909e3072",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
