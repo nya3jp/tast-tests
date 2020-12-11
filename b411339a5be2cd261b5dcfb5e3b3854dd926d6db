@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "508e661c_2ae19244",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-12-11T11:19:57Z",
+      "side": 1,
+      "message": "Thanks for the patch. Looks good to me with a nit.\nWe still need one of tast-owners for a look.",
+      "revId": "b411339a5be2cd261b5dcfb5e3b3854dd926d6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0897010a_8d705584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/bootperf/metrics_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2020-12-11T11:19:57Z",
+      "side": 1,
+      "message": "Nit: This actually waits for events with metric requirement \u003e\u003d Recommended, that is, recommended *and* required events for 60 seconds.\nAlso the comment says the first 60 seconds, but there is no subsequent timeout. Please update the comment for this.",
+      "revId": "b411339a5be2cd261b5dcfb5e3b3854dd926d6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
