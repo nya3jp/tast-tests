@@ -22,8 +22,8 @@ var clamshellTestsForSquid = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForSquid},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 }
 
 // TouchviewTests are placed here.
