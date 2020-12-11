@@ -147,6 +147,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea84bacb_34041268",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-12-11T01:17:41Z",
+      "side": 1,
+      "message": "You absolutely need to add -w otherwise there is a high chance the commands will fail when they collide with other iptables commands done by the platform, now or at a later point.\n\nThe better approach is to not touch iptables directly at all and use the permission broker dbus api.",
+      "parentUuid": "7a1324d6_b0095ea3",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e66258b4_6d0667eb",
         "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
         "patchSetId": 14
