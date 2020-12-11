@@ -16,6 +16,23 @@
       "message": "Rebased. Note that a new test wpa3 was added.",
       "revId": "bb3671bf55aaf9b2e9bde7f66934e0232a979e2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21e8215_a3ca861f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-11T09:26:59Z",
+      "side": 1,
+      "message": "Hi reviewers, your votes have been removed. Please re-vote, thanks.",
+      "revId": "bb3671bf55aaf9b2e9bde7f66934e0232a979e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
