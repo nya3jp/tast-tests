@@ -117,6 +117,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f87e926_16c7280e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-11T23:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3e62d21_00725c86",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f54dcd5_565b0fe0",
@@ -211,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "327e3ce4_2252f7b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-11T23:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2423939_a71cf889",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fdc14fd_a8177914",
@@ -248,6 +296,30 @@
       "side": 1,
       "message": "got it. thanks. \n\nyou explained last one being frequency of build. \n\ndo we have \"video\" group?\nwhen is \"mainline\" used? some gfx tast seems to have that.",
       "parentUuid": "9fdc14fd_a8177914",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 60
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "defdf9f1_e139fabf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-11T23:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3c1372_702f939e",
       "range": {
         "startLine": 30,
         "startChar": 2,
@@ -329,6 +401,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4422f5f_5838375f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-11T23:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ba9a0fe_0260caf0",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbf533c6_6a958408",
@@ -366,6 +462,30 @@
       "side": 1,
       "message": "will do. thank you.",
       "parentUuid": "dbf533c6_6a958408",
+      "range": {
+        "startLine": 39,
+        "startChar": 57,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "410c5747_fda93486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-11T23:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84bc8078_a642ff84",
       "range": {
         "startLine": 39,
         "startChar": 57,
