@@ -6,22 +6,18 @@ package arc
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/fsutil"
 	arcui "chromiumos/tast/local/android/ui"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/optin"
-	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -35,7 +31,6 @@ func init() {
 			"chromeos-apps-foundation-team@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{"capybara.jpg"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{{
@@ -58,9 +53,10 @@ const (
 
 func Sharesheet(ctx context.Context, s *testing.State) {
 	const (
-		appPkgName    = "com.iudesk.android.photo.editor"
-		appShareLabel = "Photo Editor"
-		imageFileName = "capybara.jpg"
+		appShareLabel        = "ARC Chrome Sharesheet Test"
+		expectedFileName     = "test.txt"
+		expectedFileContents = "test file contents"
+		fileContentsID       = "org.chromium.arc.testapp.chromesharesheet:id/file_content"
 	)
 
 	username := s.RequiredVar("arc.Sharesheet.username")
@@ -68,19 +64,19 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 	pollOpts := testing.PollOptions{Interval: arcSharesheetPollInterval, Timeout: arcSharesheetUITimeout}
 
 	// Setup Chrome.
-	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
+	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCEnabled(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
 
-	// Transfer the test image to share into Downloads.
-	imageFileLocation := filepath.Join(filesapp.DownloadPath, imageFileName)
-	if err := fsutil.CopyFile(s.DataPath(imageFileName), imageFileLocation); err != nil {
-		s.Fatalf("Failed to copy the test image to %s: %s", imageFileLocation, err)
+	// Setup the test file.
+	testFileLocation := filepath.Join(filesapp.DownloadPath, expectedFileName)
+	if err := ioutil.WriteFile(testFileLocation, []byte(expectedFileContents), 0644); err != nil {
+		s.Fatalf("Failed to create file %q: %s", testFileLocation, err)
 	}
-	defer os.Remove(imageFileLocation)
+	defer os.Remove(testFileLocation)
 
 	// Setup Test API Connection.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -89,17 +85,16 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// Setup Play Store, ARC and the UI Automator.
-	a, d, err := setUpARC(ctx, cr, tconn, s.OutDir())
+	// Setup ARC device and UI Automator.
+	arcDevice, uiAutomator, err := setUpARC(ctx, cr, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed setting up ARC: ", err)
 	}
-	defer a.Close()
-	defer d.Close(ctx)
+	defer arcDevice.Close()
+	defer uiAutomator.Close(ctx)
 
-	// TODO(crbug.com/1153218): Replace this app with a Tast Android app.
-	if err := installARCApp(ctx, tconn, a, d, appPkgName); err != nil {
-		s.Fatalf("Failed trying to install %q: %v", appPkgName, err)
+	if err := arcDevice.Install(ctx, arc.APKPath("ArcChromeSharesheetTest.apk")); err != nil {
+		s.Fatal("Failed to install the APK: ", err)
 	}
 
 	// Open the Files App.
@@ -113,8 +108,8 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed navigating to Downloads directory: ", err)
 	}
 
-	if err := files.SelectFile(ctx, imageFileName); err != nil {
-		s.Fatalf("Failed selecting file %q: %v", imageFileName, err)
+	if err := files.SelectFile(ctx, expectedFileName); err != nil {
+		s.Fatalf("Failed selecting file %q: %v", expectedFileName, err)
 	}
 
 	if err := waitForActionBarStabilized(ctx, tconn, files, &pollOpts); err != nil {
@@ -129,14 +124,10 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for app to appear on sharesheet: ", err)
 	}
 
-	if err := allowARCAppFileAccess(ctx, d); err != nil {
-		s.Fatalf("Failed granting %q file access: %v", appShareLabel, err)
-	}
-
-	// Wait for the file name to be available in the top left of the ARC app.
-	imageTextView := d.Object(arcui.ClassName("android.widget.TextView"), arcui.Text(imageFileName))
-	if err := imageTextView.WaitForExists(ctx, arcSharesheetUITimeout); err != nil {
-		s.Fatalf("Failed waiting for file name %q to appear in ARC window: %v", imageFileName, err)
+	// Wait for the file contents to show in the Android test app.
+	fileContentField := uiAutomator.Object(arcui.ID(fileContentsID), arcui.Text(expectedFileContents))
+	if err := fileContentField.WaitForExists(ctx, arcSharesheetUITimeout); err != nil {
+		s.Fatalf("Failed waiting for file contents %q to appear in ARC window: %v", expectedFileContents, err)
 	}
 }
 
@@ -239,59 +230,26 @@ func waitForAppOnStableSharesheet(ctx context.Context, f *filesapp.FilesApp, tco
 	return appButton, nil
 }
 
-// setUpARC opts in to Play Store, starts an ARC device and start UI automator.
-func setUpARC(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, outDir string) (*arc.ARC, *arcui.Device, error) {
-	// Optin to Play Store.
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to optin to the Play Store")
-	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to wait for Play Store to show")
-	}
-
+// setUpARC starts an ARC device and starts UI automator.
+func setUpARC(ctx context.Context, cr *chrome.Chrome, outDir string) (*arc.ARC, *arcui.Device, error) {
 	// Setup ARC device.
-	a, err := arc.New(ctx, outDir)
+	arcDevice, err := arc.New(ctx, outDir)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to start ARC")
 	}
 
 	// Start up UI automator.
-	d, err := a.NewUIDevice(ctx)
+	uiAutomator, err := arcDevice.NewUIDevice(ctx)
 	if err != nil {
-		if err := a.Close(); err != nil {
+		if err := arcDevice.Close(); err != nil {
 			testing.ContextLog(ctx, "Failed closing UI automator: ", err)
 		}
 		return nil, nil, errors.Wrap(err, "failed initializing UI automator")
 	}
 
-	return a, d, nil
-}
-
-// installARCApp installs the supplied ARC app and closes Play Store upon installation.
-func installARCApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *arcui.Device, appPkgName string) error {
-	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
-	if err := power.TurnOnDisplay(ctx); err != nil {
-		return errors.Wrap(err, "failed to ensure the display is on")
-	}
-	if err := playstore.InstallApp(ctx, a, d, appPkgName, 3); err != nil {
-		return errors.Wrapf(err, "failed installing app %q", appPkgName)
+	if err := arcDevice.WaitIntentHelper(ctx); err != nil {
+		return nil, nil, errors.Wrap(err, "failed waiting for intent helper")
 	}
 
-	return apps.Close(ctx, tconn, apps.PlayStore.ID)
-}
-
-// allowARCAppFileAccess clicks the Allow file permission button.
-func allowARCAppFileAccess(ctx context.Context, d *arcui.Device) error {
-	const permissionButtonResourceID = "com.android.packageinstaller:id/permission_allow_button"
-
-	// Click on ALLOW button for edit file access.
-	allowButton := d.Object(arcui.ResourceIDMatches(permissionButtonResourceID), arcui.Text("ALLOW"))
-	if err := allowButton.WaitForExists(ctx, arcSharesheetUITimeout); err != nil {
-		return errors.Wrap(err, "failed as allow file permissions button was not present")
-	}
-	if err := allowButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed clicking on allow file permissions button")
-	}
-
-	return nil
+	return arcDevice, uiAutomator, nil
 }
