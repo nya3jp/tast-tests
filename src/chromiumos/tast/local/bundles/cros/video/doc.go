@@ -3,4 +3,4 @@
 // found in the LICENSE file.
 
 // Package video contains local Tast tests that exercise video encoding and decoding.
-package video
+package video // test
