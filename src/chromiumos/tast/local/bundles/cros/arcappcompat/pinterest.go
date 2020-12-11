@@ -22,8 +22,8 @@ var clamshellTestsForPinterest = []testutil.TestCase{
 	{Name: "Launch app in Clamshell", Fn: launchAppForPinterest},
 	{Name: "Clamshell: Fullscreen app", Fn: testutil.ClamshellFullscreenApp},
 	{Name: "Clamshell: Minimise and Restore", Fn: testutil.MinimizeRestoreApp},
-	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 	{Name: "Clamshell: Reopen app", Fn: testutil.ReOpenWindow},
+	{Name: "Clamshell: Resize window", Fn: testutil.ClamshellResizeWindow},
 }
 
 // TouchviewTests are placed here.
@@ -87,6 +87,7 @@ func launchAppForPinterest(ctx context.Context, s *testing.State, tconn *chrome.
 		profileIconID                  = "com.pinterest:id/profile_menu_view"
 		turnOnLocationText             = "Turn on location services"
 		nextText                       = "NEXT"
+		whileUsingThisAppButtonText    = "WHILE USING THE APP"
 	)
 
 	loginWithGoogleButton := d.Object(ui.ClassName(loginWithGoogleButtonClassName), ui.Text(loginWithGoogleButtonText))
@@ -124,6 +125,14 @@ func launchAppForPinterest(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Fatal("Failed to click on turnOnLocationButton: ", err)
 	}
 
+	// Click on allow while using this app button to access files.
+	clickOnWhileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+	if err := clickOnWhileUsingThisAppButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnWhileUsingThisApp Button doesn't exists: ", err)
+	} else if err := clickOnWhileUsingThisAppButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnWhileUsingThisApp Button: ", err)
+	}
+
 	// Click on allow button until profile icon exists.
 	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowButtonText))
 	profileIcon := d.Object(ui.ID(profileIconID))
@@ -154,7 +163,7 @@ func signOutOfPinterest(ctx context.Context, s *testing.State, a *arc.ARC, d *ui
 
 	// Click on account icon.
 	accountIcon := d.Object(ui.ID(accountIconID))
-	if err := accountIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := accountIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("AccountIcon doesn't exist: ", err)
 	} else if err := accountIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click on accountIcon: ", err)
@@ -162,15 +171,15 @@ func signOutOfPinterest(ctx context.Context, s *testing.State, a *arc.ARC, d *ui
 
 	// Click on profile icon.
 	profileIcon := d.Object(ui.ID(profileIconID))
-	if err := profileIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := profileIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("ProfileIcon doesn't exist: ", err)
 	} else if err := profileIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click on ProfileIcon: ", err)
 	}
 
 	// Click on settings icon.
-	settingsIcon := d.Object(ui.ClassName(settingsIconClassName), ui.Description(settingsIconDescription))
-	if err := settingsIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	settingsIcon := d.Object(ui.DescriptionMatches("(?i)" + settingsIconDescription))
+	if err := settingsIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("SettingsIcon doesn't exist: ", err)
 	} else if err := settingsIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click on settingsIcon: ", err)
@@ -178,7 +187,7 @@ func signOutOfPinterest(ctx context.Context, s *testing.State, a *arc.ARC, d *ui
 
 	// Click on log out of Pinterest.
 	logOutOfPinterest := d.Object(ui.ClassName(logOutOfPinterestClassName), ui.Text(logOutOfPinterestText))
-	if err := logOutOfPinterest.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := logOutOfPinterest.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("LogOutOfPinterest doesn't exist: ", err)
 	} else if err := logOutOfPinterest.Click(ctx); err != nil {
 		s.Fatal("Failed to click on logOutOfPinterest: ", err)
