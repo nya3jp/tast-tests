@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19173f7a_9e71d92b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-11T04:57:41Z",
+      "side": 1,
+      "message": "Hi Shuhei, more context here: I submitted a cl https://crrev.com/c/2575495 to temporarily to fix VirtualKeyboardTypingApps. After discussed with SWE, we all agreed that auto-capitalization should be disabled in search field https://crrev.com/c/2584724.\n\nThis cl is to change back typing letters to lowercase to verify the new behavior.\nThanks to John for updating the test after code change.",
+      "revId": "6c477e22edfb1a3889beca554d472a7a5b4e5b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
