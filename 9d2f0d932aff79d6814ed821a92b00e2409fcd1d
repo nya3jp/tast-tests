@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea1f77b_9d9cc686",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-11T03:26:55Z",
+      "side": 1,
+      "message": "Katherine, Judy, could any of you approve this change?",
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "258253db_e2e229dc",
