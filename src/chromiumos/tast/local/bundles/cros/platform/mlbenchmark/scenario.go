@@ -33,7 +33,7 @@ type latencyPercentiles struct {
 
 type metric struct {
 	Name                 string    `json:"name"`
-	Units                string    `json:"units"`
+	Units                string    `json:"units"` // Maps to supportedUnits from chromiumos/tast/common/perf/perf.go.
 	ImprovementDirection string    `json:"improvement_direction"`
 	Cardinality          string    `json:"cardinality"`
 	Values               []float64 `json:"values"`
@@ -159,6 +159,8 @@ func ExecuteScenario(ctx context.Context, outDir, workspacePath, driver, configF
 	cmd.Stderr = logFile
 	cmd.Stdout = logFile
 
+	startTime := time.Now()
+
 	quitSampling := make(chan struct{}, 1)
 	samplingResult := make(chan SamplingResult)
 	samplingInterval := time.Second
@@ -204,6 +206,12 @@ func ExecuteScenario(ctx context.Context, outDir, workspacePath, driver, configF
 		ImprovementDirection: "smaller_is_better",
 		Cardinality:          "single",
 		Values:               []float64{raplPower},
+	}, {
+		Name:                 "benchmark_duration",
+		Units:                "ms",
+		ImprovementDirection: "smaller_is_better",
+		Cardinality:          "single",
+		Values:               []float64{float64(time.Now().Sub(startTime).Milliseconds())},
 	}}
 
 	return processOutputFile(scenario, outDir, outputFile.Name(), additionalMetrics)
