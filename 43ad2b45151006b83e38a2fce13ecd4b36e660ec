@@ -188,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b31c86_08f62911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/test_va_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-11T23:20:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13135d69_bd6c4918",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "43ad2b45151006b83e38a2fce13ecd4b36e660ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fadad64_7fcb9ddf",
