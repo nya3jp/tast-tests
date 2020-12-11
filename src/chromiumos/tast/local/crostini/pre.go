@@ -36,14 +36,10 @@ var UnstableModels = []string{
 	// Platform auron
 	"paine", // crbug.com/1072877
 	"yuna",  // crbug.com/1072877
-	// Platform banon
-	"banon",
 	// Platform bob
 	"bob",
 	// Platform buddy
 	"buddy",
-	// Platform celes
-	"celes",
 	// Platform coral
 	"astronaut",
 	"blacktip360",
@@ -51,8 +47,6 @@ var UnstableModels = []string{
 	"bruce",
 	"lava",
 	"nasher",
-	// Platform cyan
-	"cyan",
 	// Platform elm
 	"elm",
 	// Platform fiss-moblab
@@ -71,8 +65,6 @@ var UnstableModels = []string{
 	"guado", // crbug.com/1072877
 	// Platform hana
 	"hana",
-	// Platform kefka
-	"kefka",
 	// Platform kevin
 	"kevin",
 	"kevin1", // crbug.com/1140145
@@ -101,10 +93,6 @@ var UnstableModels = []string{
 	"vortininja",
 	// Platform reef
 	"electro",
-	// Platform reks
-	"reks",
-	// Platform relm
-	"relm",
 	// Platform sarien
 	"arcada",
 	// Platform scarlet
@@ -112,12 +100,18 @@ var UnstableModels = []string{
 	"dumo",
 	// Platform samus
 	"samus", // crbug.com/1072877
-	// Platform terra
+	// Platform stratego
+	"banon",
+	"celes",
+	"cyan",
+	"kefka",
+	"reks",
+	"relm",
 	"terra",
+	"wizpig", // crbug.com/1156411
+	"ultima",
 	// Platform tidus
 	"tidus", // crbug.com/1072877
-	// Platform ultima
-	"ultima",
 }
 
 // CrostiniStable is a hardware dependency that only runs a test on models that can run Crostini tests without
