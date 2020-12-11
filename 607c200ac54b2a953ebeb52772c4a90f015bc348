@@ -51,6 +51,24 @@
       "parentUuid": "9a5aa85e_8f212368",
       "revId": "607c200ac54b2a953ebeb52772c4a90f015bc348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66de60cd_75730feb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-12-11T07:25:59Z",
+      "side": 1,
+      "message": "OK, I understood it.\nI have Java readability although not very familiar with Android apps.\nThe changed logic LGTM.",
+      "parentUuid": "759b111d_578cd8cf",
+      "revId": "607c200ac54b2a953ebeb52772c4a90f015bc348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
