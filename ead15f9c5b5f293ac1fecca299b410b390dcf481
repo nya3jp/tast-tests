@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d16596_87d715b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-12-11T02:01:36Z",
+      "side": 1,
+      "message": "Hi Brendan, \n\nPlease review it. Thanks.\n\nRegards,\nMeena",
+      "revId": "ead15f9c5b5f293ac1fecca299b410b390dcf481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
