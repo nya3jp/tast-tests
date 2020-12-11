@@ -86,6 +86,23 @@
       "parentUuid": "fc65d6b5_7f1603fa",
       "revId": "c93f8779e1991efe62aeacea96276d871cbe755a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b190f539_1bc4568f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-11T10:05:36Z",
+      "side": 1,
+      "message": "Adding Matthias as a test owner.",
+      "revId": "c93f8779e1991efe62aeacea96276d871cbe755a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
