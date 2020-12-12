@@ -33,6 +33,24 @@
       "message": "I am not sure if I can understand correctly. Those tests already have \"chrome_internal\" dependency, thus this CL won\u0027t solve any problems.",
       "revId": "c75ac95f0800f6b6a65e50be97af63fe9c52ba6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a38e1e5_98ddfee7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2020-12-12T01:27:56Z",
+      "side": 1,
+      "message": "Only CCAQRCode has \"chrome_internal\", though. The other two don\u0027t.",
+      "parentUuid": "b31dcc20_b0f48eb6",
+      "revId": "c75ac95f0800f6b6a65e50be97af63fe9c52ba6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
