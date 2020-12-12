@@ -15,7 +15,7 @@ import (
 )
 
 const onErrorOccurred = "OnErrorOccurred:"
-const latencyExceedsTolerance = "Max Latency exceeds Latency Tolerance."
+const latencyExceedsTolerance = "Max latency exceeds latency tolerance."
 const succeedReadingSamples = "Number of success reads"
 
 func init() {
