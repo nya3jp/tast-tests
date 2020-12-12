@@ -114,25 +114,34 @@ func launchAppForAppleMusic(ctx context.Context, s *testing.State, tconn *chrome
 		s.Fatal("Failed to click on continueButton: ", err)
 	}
 
+	// Click on donot send button for diagnostics.
+	donotSendButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+donotSendButtonText))
+	if err := donotSendButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("donotSendButton doesn't exist: ", err)
+
+	} else if err := donotSendButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on donotSendButton: ", err)
+	}
+
 	// Click on cancel button to skip subscription.
 	cancelButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+cancelButtonText))
 	if err := cancelButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("cancelButton doesn't exist: ", err)
+		s.Log("cancelButton doesn't exist and press back: ", err)
+		d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0)
 	} else if err := cancelButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on cancelButton: ", err)
 	}
 
-	// Click on donot send button for diagnostics.
-	donotSendButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+donotSendButtonText))
-	if err := donotSendButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	// Check for donot send button for diagnostics and press back to skip it.
+	if err := donotSendButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("donotSendButton doesn't exist: ", err)
-	} else if err := donotSendButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on donotSendButton: ", err)
+	} else if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+		s.Log("Failed to press back button: ", err)
 	}
 
 	// Check for homeIcon on homePage.
 	homeIcon := d.Object(ui.ID(homeID))
 	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("homeIcon doesn't exists: ", err)
+		s.Fatal("homeIcon doesn't exists: ", err)
 	}
 }
