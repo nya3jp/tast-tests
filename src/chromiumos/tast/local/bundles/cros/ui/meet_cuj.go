@@ -114,7 +114,7 @@ func init() {
 				layout:  meetLayoutTiled,
 				present: false,
 				docs:    true,
-				split:   false,
+				split:   true,
 				cam:     true,
 				power:   false,
 			},
