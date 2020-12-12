@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f26b4a_2c38b5b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-12T01:22:18Z",
+      "side": 1,
+      "message": "had some error if \"informational\" is not there. \n\n[FAILED] chromiumos/platform/tast-tests: tast_lint                        \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        -: Newly added tests should be marked as \u0027informational\u0027.\n        -: Newly added tests should be marked as \u0027informational\u0027.\n      \n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-registration\n\nFATAL: Preupload failed due to above error(s).        \n- To disable some source style checks, and for other hints, see \u003ccheckout_dir\u003e/src/repohooks/README.md\n- To upload only current project, run \u0027repo upload .\u0027\nERROR: pre-upload hooks exited with exit code: 1",
+      "revId": "a99df9a725ae11213038abe167ac98d13baf37a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
