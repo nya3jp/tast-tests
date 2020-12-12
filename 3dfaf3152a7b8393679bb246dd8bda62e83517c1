@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bede392_ed85b635",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-12T01:29:22Z",
+      "side": 1,
+      "message": "Much better! Just a couple of nits.",
+      "revId": "3dfaf3152a7b8393679bb246dd8bda62e83517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a0871a_e66b7a98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_unittest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-12T01:29:22Z",
+      "side": 1,
+      "message": "nit: this sentence sounds strange, what about:\n  \n  \"Runs test_va_api, a shallow libva API test.\"\n\nOr something like that?",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "3dfaf3152a7b8393679bb246dd8bda62e83517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a0061b_d92f81ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_unittest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-12T01:29:22Z",
+      "side": 1,
+      "message": "Superfluous, consider removing.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "3dfaf3152a7b8393679bb246dd8bda62e83517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1983726_ee824fca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_unittest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-12T01:29:22Z",
+      "side": 1,
+      "message": "We talked about this message offline: Run() can failed because it failed to\nrun (e.g. file not found) or because a test case failed. In the latter case,\nit\u0027d read weird that\n  Failed to run test_va_api: Blabla test failed\n\nThis message is also misleading in other unittests Tast wrappers.\n\nSo I\u0027d suggest just writing here:\n  s.Errorf(\"%v failed: %v\", exec, err)",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "3dfaf3152a7b8393679bb246dd8bda62e83517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
