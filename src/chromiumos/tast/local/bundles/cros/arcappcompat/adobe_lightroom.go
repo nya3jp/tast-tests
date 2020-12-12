@@ -37,7 +37,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AdobeLightroom,
 		Desc:         "Functional test for AdobeLightroom that installs the app also verifies it is logged in and that the main page is open, checks AdobeLightroom correctly changes the window state in both clamshell and touchview mode",
-		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
+		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
@@ -80,15 +80,17 @@ func AdobeLightroom(ctx context.Context, s *testing.State) {
 // verify AdobeLightroom reached main activity page of the app.
 func launchAppForAdobeLightroom(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		skipID     = "com.adobe.lrmobile:id/gotoLastPage"
-		googleID   = "com.adobe.lrmobile:id/google"
-		addPhotoID = "com.adobe.lrmobile:id/addPhotosButton"
+		skipID         = "com.adobe.lrmobile:id/gotoLastPage"
+		googleID       = "com.adobe.lrmobile:id/google"
+		addPhotoID     = "com.adobe.lrmobile:id/addPhotosButton"
+		emailAddressID = "com.google.android.gms:id/container"
 	)
+	var loginWithGoogleIndex int
 
 	// Click on skip button.
 	skipButton := d.Object(ui.ID(skipID))
 	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("skip button doesn't exist: ", err)
+		s.Log("skip button doesn't exist: ", err)
 	} else if err := skipButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on skip in button: ", err)
 	}
@@ -99,6 +101,14 @@ func launchAppForAdobeLightroom(ctx context.Context, s *testing.State, tconn *ch
 		s.Error("Google button doesn't exist: ", err)
 	} else if err := googleButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on google button: ", err)
+	}
+
+	// Click on email address.
+	emailAddress := d.Object(ui.ID(emailAddressID), ui.Index(loginWithGoogleIndex))
+	if err := emailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("EmailAddress doesn't exist: ", err)
+	} else if err := emailAddress.Click(ctx); err != nil {
+		s.Fatal("Failed to click on EmailAddress: ", err)
 	}
 
 	// Check for add icon.
