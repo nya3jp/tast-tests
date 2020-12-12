@@ -16,6 +16,24 @@
       "message": "I think we want to keep both dep:chrome and dep:chrome_internal (eg: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/assistant/time_query.go;drc\u003dcafeeaad50f1a3f8b6bc8a130c6b8c7fb91e6f99;l\u003d28)\n\n(I\u0027m not sure what happens if you only have \"chrome_internal\")",
       "revId": "ea1de8f5e3703440334d65b6c14e4ac83b068b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0dcad46_5f4ea40d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-12T01:17:07Z",
+      "side": 0,
+      "message": "+1 to Ben. I posted a reply on the bug, but keeping both makes sense to me, and thus I think these failures happen with internal builds of chrome.\n\nIf uprev is blocked, I recommend to simply suppress them (i.e. add \"informational\" to their Attrs), rather than trying to fix the problem.",
+      "parentUuid": "a5b80d57_11c79275",
+      "revId": "ea1de8f5e3703440334d65b6c14e4ac83b068b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
