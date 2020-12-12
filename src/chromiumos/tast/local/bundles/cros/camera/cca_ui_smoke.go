@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Smoke test for Chrome Camera App",
 		Contacts:     []string{"inker@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome_internal"},
 		Data:         []string{"cca_ui.js"},
 		Params: []testing.Param{{
 			Name:              "real",
