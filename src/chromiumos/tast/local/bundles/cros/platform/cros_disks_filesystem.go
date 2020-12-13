@@ -16,6 +16,7 @@ func init() {
 		Func: CrosDisksFilesystem,
 		Desc: "Verifies CrosDisks mounts various removable media",
 		Contacts: []string{
+			"chromeos-files-syd@google.com",
 			"dats@chromium.org",
 			"fdegros@chromium.org",
 		},

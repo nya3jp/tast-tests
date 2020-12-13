@@ -16,10 +16,11 @@ func init() {
 		Func: CrosDisksRename,
 		Desc: "Verifies CrosDisks renames labels of removable media",
 		Contacts: []string{
+			"chromeos-files-syd@google.com",
 			"dats@chromium.org",
 			"fdegros@chromium.org",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
