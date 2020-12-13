@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf57a09_0585c13a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-13T23:04:14Z",
+      "side": 0,
+      "message": "If this bug is solved in this cl. Can you add it in the submit message? I remember it is supported to link multiple bugs.\nBUG\u003dchromium:1156310, chromium:1153218",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 70
+      },
+      "revId": "4547400519b18aeaa1d8d3a60b0b82f32b3c412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee089c31_32830bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-13T23:04:14Z",
+      "side": 0,
+      "message": "It would be nice to clarify changes in the submit message. For example why it is no longer required to go through play store.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 2
+      },
+      "revId": "4547400519b18aeaa1d8d3a60b0b82f32b3c412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
