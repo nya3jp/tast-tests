@@ -16,10 +16,11 @@ func init() {
 		Func: CrosDisksSSHFS,
 		Desc: "Verifies CrosDisks mounts a network server over ssh",
 		Contacts: []string{
+			"chromeos-files-syd@google.com",
 			"dats@chromium.org",
 			"joelhockey@chromium.org",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
