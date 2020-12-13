@@ -48,7 +48,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         []string{encode.Tulip360P.Name},
 		}, {
-			Name: "h264_720p_i420_tulip",
+			Name: "h264_720p_i420",
 			Val: encoding.TestOptions{
 				Profile:     videotype.H264Prof,
 				Params:      encode.Tulip720P,
@@ -108,7 +108,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Tulip360P.Name},
 		}, {
-			Name: "vp8_720p_i420_tulip",
+			Name: "vp8_720p_i420",
 			Val: encoding.TestOptions{
 				Profile:     videotype.VP8Prof,
 				Params:      encode.Tulip720P,
