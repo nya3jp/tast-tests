@@ -93,6 +93,29 @@
       },
       "revId": "4547400519b18aeaa1d8d3a60b0b82f32b3c412f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9ba658_338fa404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-14T00:23:50Z",
+      "side": 0,
+      "message": "Can you remove the data?",
+      "range": {
+        "startLine": 80,
+        "startChar": 38,
+        "endLine": 80,
+        "endChar": 51
+      },
+      "revId": "4547400519b18aeaa1d8d3a60b0b82f32b3c412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
