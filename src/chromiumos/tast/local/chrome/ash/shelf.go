@@ -263,6 +263,7 @@ type ChromeApp struct {
 	AppID                 string       `json:"appId"`
 	Name                  string       `json:"name"`
 	ShortName             string       `json:"shortName"`
+	PublisherID           string       `json:"publisherId"`
 	Type                  AppType      `json:"type"`
 	Readiness             AppReadiness `json:"readiness"`
 	AdditionalSearchTerms []string     `json:"additionalSearchTerms"`
