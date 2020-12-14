@@ -87,6 +87,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feef0a99_bb3bf54b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-14T07:30:28Z",
+      "side": 1,
+      "message": "Sorry for the delay! Reviewing instead for Katherine.\n\nLGTM with relatively minor comments.\n",
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ff9fb5_0223fa97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-14T07:30:28Z",
+      "side": 1,
+      "message": "nit: It would be nice to add a brief comment here that \"a\" will be closed later after rebooting Android.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 15
+      },
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c596a35_70d565f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-14T07:30:28Z",
+      "side": 1,
+      "message": "InitExists may return true forever if init restarts very fast (race condition).\n\nWhy don\u0027t we wait until arc.InitPID() returns an error or a PID different from pid?",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "258253db_e2e229dc",
