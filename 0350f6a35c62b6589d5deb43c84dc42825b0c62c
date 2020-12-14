@@ -359,6 +359,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d57a1fb_bdd54969",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T18:52:40Z",
+      "side": 1,
+      "message": "\u003e OK, It never happened to me when testing tast version but perhaps better safe than sorry.\n\nYeah, I only mentioned this because I noticed it in parallel. It really depends on the behavior of the rest of the OS, so maybe it depends on what else your DUT is (or isn\u0027t) doing, or what particular version you\u0027re running (e.g., with patchpaneld bugs?).",
+      "parentUuid": "6222d382_b542e901",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e66258b4_6d0667eb",
@@ -396,6 +420,30 @@
       "side": 1,
       "message": "I\u0027d rather not mix public and private elements in a public struct, but I have no strong opinion on this one. It can be conveniently used in other tests, too.",
       "parentUuid": "e66258b4_6d0667eb",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b9fca1c_0e9e2efe",
+        "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T18:52:40Z",
+      "side": 1,
+      "message": "I guess my point was that the public \"API\" here is that consumers should always use the TestType field. Publishing the boolean appears to create 4 new combinations of test types, when those are actually redundant.\n\nI don\u0027t really get the public/private complaint; that\u0027s like saying there should never be private fields in a C++ class. I thought private fields are there for exactly this purpose, but I\u0027m admittedly not a Golang expert.\n\nI guess I\u0027ll mark this resolved, if you\u0027re rejecting the suggestion.",
+      "parentUuid": "48de19b9_175bec07",
       "range": {
         "startLine": 54,
         "startChar": 1,
@@ -514,6 +562,30 @@
       "side": 1,
       "message": "I thought line limits are not language limitation but rather meant to fit editor width conveniently? This one will be broken anyway in Gerrit view and makes me uncomfortable to read in my editor (VC Code on pivoted monitor). I can agree to others, though - they were victims of multiple refactoring.",
       "parentUuid": "e2206bd2_4b145b00",
+      "range": {
+        "startLine": 68,
+        "startChar": 78,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c250c37_22dca152",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T18:52:40Z",
+      "side": 1,
+      "message": "I guess there really is no standard here. Just whatever \"uncomfortable\" means:\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length\n\nI\u0027ll admit, I\u0027ve never seen a function declaration split in Golang, and that\u0027s called out there.\n\nRegarding Gerrit: that\u0027s configurable. I don\u0027t think I ever allow Gerrit to wrap things for me, but I guess maybe I changed my settings.\n\nBecause there\u0027s no clear rule, I\u0027ll mark this resolved.",
+      "parentUuid": "3c673727_6162e452",
       "range": {
         "startLine": 68,
         "startChar": 78,

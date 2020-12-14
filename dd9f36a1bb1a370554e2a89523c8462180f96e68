@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d7b2f3_0aabdddd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T18:52:40Z",
+      "side": 1,
+      "message": "Mostly just small issues in the unit test. Otherwise LGTM.\n\nCalling back to Yen-lin\u0027s attention set, because the master-\u003emain move dropped his CR+2.",
+      "revId": "dd9f36a1bb1a370554e2a89523c8462180f96e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eafa6ef_de055233",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result_test.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T18:52:40Z",
+      "side": 1,
+      "message": "I believe all this leading space is unnatural; it\u0027s nice that the parser can handle that, but it\u0027s not how the input data really looks.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "dd9f36a1bb1a370554e2a89523c8462180f96e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a7870c_9c2264d3",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result_test.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T18:52:40Z",
+      "side": 1,
+      "message": "continue ?",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 9
+      },
+      "revId": "dd9f36a1bb1a370554e2a89523c8462180f96e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c854da26_3cd00d30",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result_test.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T18:52:40Z",
+      "side": 1,
+      "message": "does this need a math.Abs()?",
+      "range": {
+        "startLine": 85,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 71
+      },
+      "revId": "dd9f36a1bb1a370554e2a89523c8462180f96e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06fbb039_a97b6c11",
+        "filename": "src/chromiumos/tast/remote/network/netperf/runner.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T18:52:40Z",
+      "side": 1,
+      "message": "need an OptionWait() in here too?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 79
+      },
+      "revId": "dd9f36a1bb1a370554e2a89523c8462180f96e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
