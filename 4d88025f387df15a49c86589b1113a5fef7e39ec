@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a802d8e_5d077082",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T23:00:31Z",
+      "side": 1,
+      "message": "you\u0027ll need OWNERS approval eventually (by adding tast-owners@ gwsq group); but this also will need to wait until https://chromium-review.googlesource.com/c/chromiumos/overlays/board-overlays/+/2587544 lands and we get a BIOS update into the lab\n\npending all that, CR+2",
+      "revId": "4d88025f387df15a49c86589b1113a5fef7e39ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
