@@ -68,6 +68,23 @@
       "message": "The CL says that CQ passed but I see bunch of red boxes in the tryjobs. \nDo you understand why?",
       "revId": "8b60df808fee2d232644f8a250acf9ef2438a959",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0174c30_5d0c2e2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001271
+      },
+      "writtenOn": "2020-12-14T07:44:46Z",
+      "side": 1,
+      "message": "I think the redboxes are from testing I tried to do of this CL together with \nhttps://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/2581324\n\nSo, I think this CL by itself passes the CQ. \n\nAlexander, please CQ+2 again.\n",
+      "revId": "8b60df808fee2d232644f8a250acf9ef2438a959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
