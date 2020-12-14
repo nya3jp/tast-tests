@@ -33,6 +33,23 @@
       "message": "LGTM",
       "revId": "9837bca691b74f93c098c154b7072c6f2933c452",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51ddbe5_0660b85a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-12-14T00:58:28Z",
+      "side": 1,
+      "message": "Re-adding tast-owners due to unresponsive reviewer",
+      "revId": "9837bca691b74f93c098c154b7072c6f2933c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
