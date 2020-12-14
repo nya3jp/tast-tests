@@ -22,6 +22,30 @@
       },
       "revId": "15a2272d24daf21e48ef345c6d1066f052804d4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b8910bb_f2e9bedb",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-14T01:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1a64313_9cb6c412",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "15a2272d24daf21e48ef345c6d1066f052804d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
