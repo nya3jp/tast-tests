@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<resources>
+    <string name="app_name">ArcBackupTest</string>
+    <string name="edit_message_hint">Enter a message</string>
+    <string name="save_button">Save</string>
+    <string name="load_button">Load</string>
+    <string name="clear_button">Clear</string>
+</resources>
