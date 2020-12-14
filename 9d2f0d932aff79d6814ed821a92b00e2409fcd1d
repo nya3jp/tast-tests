@@ -127,6 +127,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "296a6566_284f5908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-14T11:31:32Z",
+      "side": 1,
+      "message": "Added a note about |a|.",
+      "parentUuid": "b9ff9fb5_0223fa97",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 15
+      },
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c596a35_70d565f3",
@@ -140,6 +164,30 @@
       "writtenOn": "2020-12-14T07:30:28Z",
       "side": 1,
       "message": "InitExists may return true forever if init restarts very fast (race condition).\n\nWhy don\u0027t we wait until arc.InitPID() returns an error or a PID different from pid?",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "9d2f0d932aff79d6814ed821a92b00e2409fcd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c890ce7_b6d482a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-14T11:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c596a35_70d565f3",
       "range": {
         "startLine": 75,
         "startChar": 2,
