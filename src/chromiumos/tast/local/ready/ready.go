@@ -75,10 +75,12 @@ func Wait(ctx context.Context) error {
 	// Make a best effort for important daemon jobs that start later, but just log errors instead of failing.
 	// We don't want to abort the whole test run if there's a bug in a daemon that prevents it from starting.
 	var daemonJobs = []string{
+		"attestationd",
 		"cryptohomed",
 		"debugd",
 		"metrics_daemon",
 		"shill",
+		"tpm_managerd",
 	}
 	type jobError struct {
 		job string
@@ -266,10 +268,12 @@ func getCryptohomedUptime() (time.Duration, error) {
 	return time.Since(ct), nil
 }
 
-// These match lines in the output from "cryptohome --action=tpm_more_status".
-var tpmEnabledRegexp = regexp.MustCompile(`(?m)^\s*enabled:\s*true\s*$`)
-var tpmInitializedRegexp = regexp.MustCompile(`(?m)^\s*attestation_prepared:\s*true\s*$`)
-var tpmOwnedRegexp = regexp.MustCompile(`(?m)^\s*owned:\s*true\s*$`)
+// These match lines in the output from "tpm_manager_client status --nonsensitive".
+var tpmEnabledRegexp = regexp.MustCompile(`(?m)^\s*is_enabled:\s*true\s*$`)
+var tpmOwnedRegexp = regexp.MustCompile(`(?m)^\s*is_owned:\s*true\s*$`)
+
+// These match lines in the output from "attestation_client status".
+var tpmInitializedRegexp = regexp.MustCompile(`(?m)^\s*prepared_for_enrollment:\s*true\s*$`)
 
 // ensureTPMInitialized checks if the TPM is already initialized and tries to take ownership if not.
 // nil is returned if the TPM is not enabled (as is the case on VMs).
@@ -278,11 +282,15 @@ func ensureTPMInitialized(ctx context.Context) error {
 	defer cancel()
 
 	tpmStatus := func(ctx context.Context) (enabled, initialized, owned bool, err error) {
-		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_more_status").Output()
+		tpmOut, err := testexec.CommandContext(ctx, "tpm_manager_client", "status", "--nonsensitive").Output()
 		if err != nil {
 			return false, false, false, err
 		}
-		return tpmEnabledRegexp.Match(out), tpmInitializedRegexp.Match(out), tpmOwnedRegexp.Match(out), nil
+		attestOut, err := testexec.CommandContext(ctx, "attestation_client", "status").Output()
+		if err != nil {
+			return false, false, false, err
+		}
+		return tpmEnabledRegexp.Match(tpmOut), tpmInitializedRegexp.Match(attestOut), tpmOwnedRegexp.Match(tpmOut), nil
 	}
 
 	// Check if the TPM is disabled or already initialized.
@@ -297,7 +305,7 @@ func ensureTPMInitialized(ctx context.Context) error {
 	if owned {
 		testing.ContextLog(ctx, "TPM is already owned; finishing initialization")
 	}
-	if err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_take_ownership").Run(); err != nil {
+	if err := testexec.CommandContext(ctx, "tpm_manager_client", "take_ownership").Run(); err != nil {
 		return err
 	}
 	return testing.Poll(ctx, func(ctx context.Context) error {
