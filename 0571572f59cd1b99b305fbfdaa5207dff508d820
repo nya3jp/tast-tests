@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be969d43_7d5f4862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-14T02:46:15Z",
+      "side": 1,
+      "message": "We have to figure out why models are added to the CQ without passing the CQ first.\noctopus/dorp is failing but other octopus models are passing. ",
+      "revId": "0571572f59cd1b99b305fbfdaa5207dff508d820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bae59f15_da665ca0",
