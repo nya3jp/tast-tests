@@ -33,6 +33,23 @@
       "message": "I\u0027m confused. I thought I added madoo in crrev.com/c/2584124",
       "revId": "894ec2c692edd4655b53cd7ba73ab339e0c4bad9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76063674_c90496af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-14T01:23:46Z",
+      "side": 1,
+      "message": "Oh cool, thanks Po-Hsien!",
+      "revId": "894ec2c692edd4655b53cd7ba73ab339e0c4bad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
