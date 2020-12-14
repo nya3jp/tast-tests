@@ -16,6 +16,29 @@
       "message": "PTAL, thanks!",
       "revId": "7699ebe56c7c874836b25f3ad8073b095b7f1311",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d357c2bb_c05585fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-12-14T06:25:37Z",
+      "side": 1,
+      "message": "You can put these table into Param of the tests like following:\n```\nvar generalTests \u003d ...\nvar arcPOnlyTests \u003d ...\n\nfunc init() {\n\ttesting.AddTest(\u0026testing.Test{\n...\n\t\tParams: []testing.Param{{\n\t\t\t// Use the android_p dep for running on android P of the container.\n\t\t\tExtraSoftwareDeps: []string{\"android_p\"},\n                        Val: append(generalTests, arcPOnlyTests),\n\t\t}, {\n\t\t\t// Use the android_vm dep for running on android P and R of the vm.\n\t\t\tName:              \"vm\",\n\t\t\tExtraSoftwareDeps: []string{\"android_vm\"},\n                        Val: generalTests\n\t\t}},\n\t\tTimeout: 5 * time.Minute,\n\t})\n}\n\n\nfunc CompanionLibrary(ctx context.Context, s *testing.State) {\n...\n  for _, tc :\u003d range s.Param()([]companionLibTestEntry) {\n    s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {\n      ...\n    }\n  }\n...\n```\n\nBy doing this, you don\u0027t have to check the SDK version manually. Tast runner takes care of it.",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "7699ebe56c7c874836b25f3ad8073b095b7f1311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
