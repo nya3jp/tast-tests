@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/inputlatency"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -129,7 +130,13 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgTouchscreenMoveLatency", pv); err != nil {
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check install type of ARC: ", err)
+	}
+
+	vmAdjust, err := inputlatency.EvaluateLatency(ctx, s, d, vmEnabled, numEvents, eventTimes, "avgTouchscreenMoveLatency", pv)
+	if err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
@@ -159,8 +166,41 @@ func TouchPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgTouchscreenPressLatency", pv); err != nil {
+	if _, err := inputlatency.EvaluateLatency(ctx, s, d, vmEnabled, numEvents, eventTimes, "avgTouchscreenPressLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
+	}
+
+	if err := inputlatency.WaitForClearUI(ctx, d); err != nil {
+		s.Fatal("Failed to clear UI: ", err)
+	}
+
+	// Test touch screen move latency by replay.
+	s.Log("Injecting touch move events by replay circle movement")
+	replayComm := s.DataPath("arc_inputlatency_replay.sh")
+	touchDev := ts.DevPath()
+	circleReplay := s.DataPath("arc_inputlatency_touch_move_circle")
+
+	if err := testexec.CommandContext(ctx, replayComm, touchDev, circleReplay).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to run replay command: ", err)
+	}
+
+	action := "ACTION_MOVE"
+	if err := inputlatency.EvaluateLatencyReplay(ctx, s, d, vmEnabled, &action, vmAdjust, "avgTouchscreenMoveCircleReplayLatency", pv); err != nil {
+		s.Fatal("Failed to evaluate the replay: ", err)
+	}
+
+	if err := inputlatency.WaitForClearUI(ctx, d); err != nil {
+		s.Fatal("Failed to clear UI: ", err)
+	}
+
+	s.Log("Injecting touch move events by replay line movement")
+	lineReplay := s.DataPath("arc_inputlatency_touch_move_line")
+	if err := testexec.CommandContext(ctx, replayComm, touchDev, lineReplay).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to run replay command: ", err)
+	}
+
+	if err := inputlatency.EvaluateLatencyReplay(ctx, s, d, vmEnabled, &action, vmAdjust, "avgTouchscreenMoveLineReplayLatency", pv); err != nil {
+		s.Fatal("Failed to evaluate the replay: ", err)
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
