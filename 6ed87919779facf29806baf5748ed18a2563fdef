@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba0e921_fc250b7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-12-14T23:51:01Z",
+      "side": 1,
+      "message": "Sorry for the delay, I hadn\u0027t noticed this CL in my queue. LGTM % a question about potentially needing to reserve time to restart the UI.",
+      "revId": "6ed87919779facf29806baf5748ed18a2563fdef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8c8e301_d0b1c39b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-12-14T23:51:01Z",
+      "side": 1,
+      "message": "runs DRM/KMS tests",
+      "range": {
+        "startLine": 75,
+        "startChar": 7,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "6ed87919779facf29806baf5748ed18a2563fdef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e8f107_85a39791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-12-14T23:51:01Z",
+      "side": 1,
+      "message": "Do we need to reserve some time to restart the ui at the end? Something similar to [1]?\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/media/decoding/accel_video.go?l\u003d81\u0026rcl\u003d634db1a8e1fc9b192f3ddbb8f83b179ddb95c120",
+      "range": {
+        "startLine": 80,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 42
+      },
+      "revId": "6ed87919779facf29806baf5748ed18a2563fdef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
