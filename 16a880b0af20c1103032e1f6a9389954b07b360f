@@ -112,6 +112,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e855756a_ff7e624d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-14T00:24:46Z",
+      "side": 1,
+      "message": "may want to give these longer names, line 128 was a little confusing with just \"d\"",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 5
+      },
+      "revId": "16a880b0af20c1103032e1f6a9389954b07b360f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "335b2727_416c96e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/sharesheet.go",
         "patchSetId": 3
