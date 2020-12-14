@@ -16,6 +16,8 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -686,7 +688,19 @@ func (f *FilesApp) Search(ctx context.Context, searchTerms string) error {
 	}
 	defer listBox.Release(ctx)
 
-	// Setup a watcher to wait for search results to populate.
+	return f.waitForListBox(ctx)
+}
+
+// waitForListBox waits for the files app listbox to stabilize.
+func (f *FilesApp) waitForListBox(ctx context.Context) error {
+	// Get the listbox which has the list of files.
+	listBox, err := f.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, 15*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find listbox")
+	}
+	defer listBox.Release(ctx)
+
+	// Setup a watcher to wait for the selected files to stabilize.
 	ew, err := ui.NewWatcher(ctx, listBox, ui.EventTypeActiveDescendantChanged)
 	if err != nil {
 		return errors.Wrap(err, "failed getting a watcher for the files listbox")
@@ -698,8 +712,70 @@ func (f *FilesApp) Search(ctx context.Context, searchTerms string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return ew.EnsureNoEvents(ctx, 2*time.Second)
 	}, &testing.PollOptions{Timeout: uiTimeout}); err != nil {
-		return errors.Wrapf(err, "failed waiting %v for listbox to stabilize", uiTimeout)
+		return errors.Wrapf(err, "failed waiting %v for listbox to stabilize", 10*time.Second)
 	}
 
 	return nil
+}
+
+// tickCheckboxForFile clicks the checkbox on a file and waits for selected label.
+func (f *FilesApp) tickCheckboxForFile(ctx context.Context, fileName string) (coords.Point, error) {
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to create keyboard")
+	}
+	defer ew.Close()
+
+	// Hold Ctrl during selection.
+	if err := ew.AccelPress(ctx, "Ctrl"); err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to press Ctrl")
+	}
+	defer ew.AccelRelease(ctx, "Ctrl")
+
+	// Wait for the file.
+	params := ui.FindParams{
+		Name: fileName,
+		Role: ui.RoleTypeStaticText,
+	}
+	file, err := f.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
+	if err != nil {
+		return coords.Point{}, errors.Wrapf(err, "failed finding file %q: %v", fileName, err)
+	}
+	defer file.Release(ctx)
+
+	if err := file.LeftClick(ctx); err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to left click file")
+	}
+
+	params = ui.FindParams{
+		Role: ui.RoleTypeStaticText,
+		Name: "1 file selected",
+	}
+	if err := f.Root.WaitUntilDescendantExists(ctx, params, 5*time.Second); err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to find expected selection label")
+	}
+
+	return file.Location.CenterPoint(), nil
+}
+
+// DragAndDropFile selects the specified file and does a drag and drop to the specified point.
+func (f *FilesApp) DragAndDropFile(ctx context.Context, tconn *chrome.TestConn, fileName string, dropPoint coords.Point) error {
+	// Clicking on a file is not enough as the clicks can be too quick for FileInfo
+	// to be added to the drop event, this leads to an empty event. Clicking the
+	// file and checking the Action Bar we can guarantee FileInfo exists on the
+	// drop event.
+	srcPoint, err := f.tickCheckboxForFile(ctx, fileName)
+	if err != nil {
+		return errors.Wrap(err, "failed selecting file for drag and drop")
+	}
+
+	if err := f.waitForListBox(ctx); err != nil {
+		return errors.Wrap(err, "failed waiting for drag and drop file selection")
+	}
+
+	if err := mouse.Drag(ctx, tconn, srcPoint, dropPoint, time.Second); err != nil {
+		return errors.Wrap(err, "failed mouse drag")
+	}
+
+	return f.waitForListBox(ctx)
 }
