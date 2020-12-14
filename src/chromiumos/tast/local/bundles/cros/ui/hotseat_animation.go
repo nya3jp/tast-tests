@@ -93,6 +93,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		shownWidgetHistogram  = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToShownHotseat"
 
 		overviewTimeout = 10 * time.Second
+		swipeDuration   = 500 * time.Millisecond
 	)
 
 	var cr *chrome.Chrome
@@ -270,7 +271,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		// Enter home launcher from overview by gesture tap.
 		pressX, pressY := tcc.ConvertLocation(touchPoint)
 
-		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY+5, 200*time.Millisecond); err != nil {
+		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY+5, swipeDuration); err != nil {
 			return errors.Wrap(err, "failed to tap")
 		}
 		if err := stw.End(); err != nil {
@@ -296,7 +297,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		touchPoint = window.OverviewInfo.Bounds.CenterPoint()
 		pressX, pressY = tcc.ConvertLocation(touchPoint)
 
-		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY-5, 200*time.Millisecond); err != nil {
+		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY-5, swipeDuration); err != nil {
 			return errors.Wrap(err, "failed to tap")
 		}
 		if err := stw.End(); err != nil {
@@ -324,7 +325,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		end := displayInfo.Bounds.CenterPoint()
 		endX, endY := tcc.ConvertLocation(end)
 
-		if err := stw.Swipe(ctx, startX, startY-1, endX, endY, 200*time.Millisecond); err != nil {
+		if err := stw.Swipe(ctx, startX, startY-1, endX, endY, swipeDuration); err != nil {
 			return errors.Wrap(err, "failed to swipe")
 		}
 		if err := stw.End(); err != nil {
