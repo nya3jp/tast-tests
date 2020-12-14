@@ -14,12 +14,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -77,15 +74,6 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 	defer files.Release(ctx)
 
-	// Clicking on a file is not enough as the clicks can be too quick for FileInfo
-	// to be added to the drop event, this leads to an empty event. Clicking the
-	// file and checking the Action Bar we can guarantee FileInfo exists on the
-	// drop event.
-	srcPoint, err := tickCheckboxForFile(ctx, files, textFile)
-	if err != nil {
-		s.Fatal("Failed selecting file: ", err)
-	}
-
 	// Get connection to foreground extension to verify changes.
 	dropTargetURL := "chrome-extension://" + dropTargetExtID + "/window.html"
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(dropTargetURL))
@@ -94,13 +82,14 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	if err := waitForFileToBeSelected(ctx, conn, files); err != nil {
-		s.Fatal("Failed waiting for the drag drop extension to be ready: ", err)
+	// Make sure the extension title has loaded JavaScript properly.
+	if err := conn.WaitForExprFailOnErrWithTimeout(ctx, "window.document.title == 'awaiting drop.'", 5*time.Second); err != nil {
+		s.Fatal("Failed waiting for javascript to update window.document.title: ", err)
 	}
 
 	dstPoint := coords.Point{X: 100, Y: 100}
-	if err := mouse.Drag(ctx, tconn, srcPoint, dstPoint, time.Second); err != nil {
-		s.Fatal("Failed to send drag events: ", err)
+	if err := files.DragAndDropFile(ctx, textFile, dstPoint); err != nil {
+		s.Fatal("Failed to drag and drop: ", err)
 	}
 
 	if err := verifyDroppedFileMatchesDraggedFile(ctx, conn, textFile); err != nil {
@@ -140,76 +129,4 @@ func verifyDroppedFileMatchesDraggedFile(ctx context.Context, conn *chrome.Conn,
 	}
 
 	return nil
-}
-
-// waitForFileToBeSelected makes sure the extension title has loaded JavaScript properly.
-// This also waits for the files app listbox to stabilize.
-func waitForFileToBeSelected(ctx context.Context, conn *chrome.Conn, f *filesapp.FilesApp) error {
-	if err := conn.WaitForExprFailOnErrWithTimeout(ctx, "window.document.title == 'awaiting drop.'", 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed waiting for javascript to update window.document.title")
-	}
-
-	// Get the listbox which has the list of files.
-	listBox, err := f.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, 15*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find listbox")
-	}
-	defer listBox.Release(ctx)
-
-	// Setup a watcher to wait for the selected files to stabilize.
-	ew, err := ui.NewWatcher(ctx, listBox, ui.EventTypeActiveDescendantChanged)
-	if err != nil {
-		return errors.Wrap(err, "failed getting a watcher for the files listbox")
-	}
-	defer ew.Release(ctx)
-
-	// Check the listbox for any Activedescendantchanged events occurring in a 2 second interval.
-	// If any events are found continue polling until 10s is reached.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return ew.EnsureNoEvents(ctx, 2*time.Second)
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return errors.Wrapf(err, "failed waiting %v for listbox to stabilize", 10*time.Second)
-	}
-
-	return nil
-}
-
-// tickCheckboxForFile clicks the checkbox on a file and waits for selected label.
-func tickCheckboxForFile(ctx context.Context, f *filesapp.FilesApp, fileName string) (coords.Point, error) {
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		return coords.Point{}, errors.Wrap(err, "failed to create keyboard")
-	}
-	defer ew.Close()
-
-	// Hold Ctrl during selection.
-	if err := ew.AccelPress(ctx, "Ctrl"); err != nil {
-		return coords.Point{}, errors.Wrap(err, "failed to press Ctrl")
-	}
-	defer ew.AccelRelease(ctx, "Ctrl")
-
-	// Wait for the file.
-	params := ui.FindParams{
-		Name: fileName,
-		Role: ui.RoleTypeStaticText,
-	}
-	file, err := f.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
-	if err != nil {
-		return coords.Point{}, errors.Wrapf(err, "failed finding file %q: %v", fileName, err)
-	}
-	defer file.Release(ctx)
-
-	if err := file.LeftClick(ctx); err != nil {
-		return coords.Point{}, errors.Wrap(err, "failed to left click file")
-	}
-
-	params = ui.FindParams{
-		Role: ui.RoleTypeStaticText,
-		Name: "1 file selected",
-	}
-	if err := f.Root.WaitUntilDescendantExists(ctx, params, 5*time.Second); err != nil {
-		return coords.Point{}, errors.Wrap(err, "failed to find expected selection label")
-	}
-
-	return file.Location.CenterPoint(), nil
 }
