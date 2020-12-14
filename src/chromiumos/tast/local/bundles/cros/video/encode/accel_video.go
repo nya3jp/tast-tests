@@ -249,15 +249,15 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts encoding.
 
 	p := perf.NewValues()
 
-	if err := encoding.ReportFPS(p, schemaName, fpsLogPath); err != nil {
+	if err := encoding.ReportFPS(ctx, p, schemaName, fpsLogPath); err != nil {
 		s.Fatal("Failed to report FPS value: ", err)
 	}
 
-	if err := encoding.ReportEncodeLatency(p, schemaName, latencyLogPath); err != nil {
+	if err := encoding.ReportEncodeLatency(ctx, p, schemaName, latencyLogPath); err != nil {
 		s.Fatal("Failed to report encode latency: ", err)
 	}
 
-	if err := encoding.ReportCPUUsage(p, schemaName, cpuLogPath); err != nil {
+	if err := encoding.ReportCPUUsage(ctx, p, schemaName, cpuLogPath); err != nil {
 		s.Fatal("Failed to report CPU usage: ", err)
 	}
 
@@ -265,7 +265,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts encoding.
 	if _, err := os.Stat(powerLogPath); os.IsNotExist(err) {
 		s.Logf("Skipped reporting power consumption because %s does not exist", powerLog)
 	} else {
-		if err := encoding.ReportPowerConsumption(p, schemaName, powerLogPath); err != nil {
+		if err := encoding.ReportPowerConsumption(ctx, p, schemaName, powerLogPath); err != nil {
 			s.Fatal("Failed to report power consumption: ", err)
 		}
 	}

@@ -5,6 +5,7 @@
 package encoding
 
 import (
+	"context"
 	"encoding/json"
 	"io/ioutil"
 	"os"
@@ -72,17 +73,18 @@ func saveAndCompare(t *testing.T, p *perf.Values, goldenPath string) {
 
 func TestReportMetrics(t *testing.T) {
 	const name = "crowd-1920x1080_h264"
+	ctx := context.Background()
 
 	p := perf.NewValues()
-	if err := ReportFPS(p, name, "testdata/TestFPS.log"); err != nil {
+	if err := ReportFPS(ctx, p, name, "testdata/TestFPS.log"); err != nil {
 		t.Error("Failed at ReportFPS(): ", err)
 	}
 
-	if err := ReportEncodeLatency(p, name, "testdata/TestLatency.log"); err != nil {
+	if err := ReportEncodeLatency(ctx, p, name, "testdata/TestLatency.log"); err != nil {
 		t.Error("Failed at ReportEncodeLatency(): ", err)
 	}
 
-	if err := ReportCPUUsage(p, name, "testdata/TestCPU.log"); err != nil {
+	if err := ReportCPUUsage(ctx, p, name, "testdata/TestCPU.log"); err != nil {
 		t.Error("Failed at ReportCPUUsage(): ", err)
 	}
 
