@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae59f15_da665ca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-14T01:28:24Z",
+      "side": 1,
+      "message": "This is incredibly fragile, and this (and the others) are another breakage waiting to happen...\n\nCan we use SkipOnPlatform to skip all dedede models? (I\u0027m not 100% sure if that does the right thing)",
+      "revId": "0571572f59cd1b99b305fbfdaa5207dff508d820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
