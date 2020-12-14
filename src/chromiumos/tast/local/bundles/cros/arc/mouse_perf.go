@@ -120,7 +120,12 @@ func MousePerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgMouseLeftMoveLatency", pv); err != nil {
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check install type of ARC: ", err)
+	}
+
+	if _, err := inputlatency.EvaluateLatency(ctx, s, d, vmEnabled, numEvents, eventTimes, "avgMouseLeftMoveLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
@@ -170,7 +175,7 @@ func MousePerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, numEvents, eventTimes, "avgMouseLeftClickLatency", pv); err != nil {
+	if _, err := inputlatency.EvaluateLatency(ctx, s, d, vmEnabled, numEvents, eventTimes, "avgMouseLeftClickLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 

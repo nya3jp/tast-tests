@@ -120,7 +120,12 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, repeat*2, eventTimes, "avgGamepadButtonLatency", pv); err != nil {
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check install type of ARC: ", err)
+	}
+
+	if _, err := inputlatency.EvaluateLatency(ctx, s, d, vmEnabled, repeat*2, eventTimes, "avgGamepadButtonLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
@@ -150,7 +155,7 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, repeat*2, eventTimes, "avgGamepadStickLatency", pv); err != nil {
+	if _, err := inputlatency.EvaluateLatency(ctx, s, d, vmEnabled, repeat*2, eventTimes, "avgGamepadStickLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
@@ -190,7 +195,7 @@ func GamepadPerf(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := inputlatency.EvaluateLatency(ctx, s, d, repeat*4, eventTimes, "avgGamepadMixLatency", pv); err != nil {
+	if _, err := inputlatency.EvaluateLatency(ctx, s, d, vmEnabled, repeat*4, eventTimes, "avgGamepadMixLatency", pv); err != nil {
 		s.Fatal("Failed to evaluate: ", err)
 	}
 
