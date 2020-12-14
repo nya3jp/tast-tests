@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eacdb8b4_139c3de6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-14T18:54:18Z",
+      "side": 1,
+      "message": "Hi Yury / Tast owners,\n\ncould you PTAL? Thanks!",
+      "revId": "04cd8e7efb12b14541ba453cdea39812da782ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
