@@ -16,6 +16,23 @@
       "message": "(this is CQ breaking, if I don\u0027t get reviews in 15 to 30\u0027, I\u0027ll add owner exempt and chump it)",
       "revId": "894ec2c692edd4655b53cd7ba73ab339e0c4bad9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf4b84b_be1c1d07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-14T01:19:27Z",
+      "side": 1,
+      "message": "I\u0027m confused. I thought I added madoo in crrev.com/c/2584124",
+      "revId": "894ec2c692edd4655b53cd7ba73ab339e0c4bad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
