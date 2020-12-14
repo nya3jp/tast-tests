@@ -23,7 +23,7 @@ func init() {
 		Func:        FunctionalAfterCSA,
 		Desc:        "Verifies that the DUT can still connect to the AP when it is disconnected right after receiving a CSA message. This is to make sure the MAC 80211 queues are not stuck after receiving CSA and disconnect events consecutively. Refer to crbug.com/408370 for more information to the test description",
 		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
