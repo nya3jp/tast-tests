@@ -33,6 +33,8 @@ class EventListAdapter extends BaseAdapter {
         ((TextView) view.findViewById(R.id.source)).setText(item.source);
         ((TextView) view.findViewById(R.id.code)).setText(item.code);
         ((TextView) view.findViewById(R.id.action)).setText(item.action);
+        ((TextView) view.findViewById(R.id.event_time)).setText(item.eventTime.toString());
+        ((TextView) view.findViewById(R.id.latency)).setText(item.latency.toString());
         ((TextView) view.findViewById(R.id.app_time)).setText(item.receiveTimeNs.toString());
         return view;
     }
