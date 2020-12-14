@@ -88,20 +88,10 @@ func BluetoothXorWifi(ctx context.Context, s *testing.State) {
 	}
 	defer r.Close(ctx)
 
-	// Assert Bluetooth is up.
-	btClient := network.NewBluetoothServiceClient(r.Conn)
-	if response, err := btClient.GetBluetoothPoweredFast(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Could not get Bluetooth status: ", err)
-	} else if !response.Powered {
-		s.Fatal("Bluetooth is off, expected to be on ")
-	}
-	if _, err := btClient.ValidateBluetoothFunctional(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Could not get validate Bluetooth status: ", err)
-	}
-
 	// Validate phys can function without the other on multiple channels
 	channels := [4]int{36, 149, 1, 11}
 	wifiClient := network.NewWifiServiceClient(r.Conn)
+	btClient := network.NewBluetoothServiceClient(r.Conn)
 	for _, ch := range channels {
 		if err := togglePhys(ctx, ch, btClient, tf, wifiClient, true); err != nil {
 			s.Fatalf("Failed to run WiFi without Bluetooth path on channel %d: %v", ch, err)
