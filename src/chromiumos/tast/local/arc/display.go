@@ -255,7 +255,7 @@ func (d *Display) Size(ctx context.Context) (s coords.Size, err error) {
 	if sdkVersion <= SDKP {
 		cmd = d.a.Command(ctx, "dumpsys", "window", "displays")
 	} else {
-		cmd = d.a.Command(ctx, "dumpsys", "displays")
+		cmd = d.a.Command(ctx, "dumpsys", "display")
 	}
 
 	output, err := cmd.Output(testexec.DumpLogOnError)
