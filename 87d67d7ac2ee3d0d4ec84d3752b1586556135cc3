@@ -16,6 +16,24 @@
       "message": "LGTM. Better to notify hotseat folks (cc-ed)",
       "revId": "87d67d7ac2ee3d0d4ec84d3752b1586556135cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6c9ebe2_5ab33a72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-12-14T23:28:15Z",
+      "side": 1,
+      "message": "Thanks! Does //ash/shelf reject the touch sequence, or is it something else?",
+      "parentUuid": "0454d325_25c110a0",
+      "revId": "87d67d7ac2ee3d0d4ec84d3752b1586556135cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
