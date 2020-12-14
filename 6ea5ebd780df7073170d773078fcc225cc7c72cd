@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0c4015_2db54bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-14T20:06:16Z",
+      "side": 1,
+      "message": "Fixed.\n\nFile-scope variables go here in Go. Since it\u0027s a lower case name, it\u0027s\nprivate to the file. If we need it in the future we can move it to a\ncommon place, e.g. tast/local/media.",
+      "parentUuid": "c9dac8a8_b74de674",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "777460c2_58908926",
@@ -65,6 +83,24 @@
       "writtenOn": "2020-12-14T19:06:08Z",
       "side": 1,
       "message": "could we add description here or PlatformEncoding function\nabout this change to use decoder?",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e444195_24fc2da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-14T20:06:16Z",
+      "side": 1,
+      "message": "Added some documentation to the function itself.",
+      "parentUuid": "777460c2_58908926",
       "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e85192_d98a0c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-14T20:06:16Z",
+      "side": 1,
+      "message": "Added some literature in the struct |filename| entry.",
+      "parentUuid": "09aaed07_e59d4f03",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45022f68_b0960871",
@@ -99,6 +153,24 @@
       "writtenOn": "2020-12-14T19:06:08Z",
       "side": 1,
       "message": "what does it mean that \"From Chromecast\"?",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fad0a7f_02d2c5fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-14T20:06:16Z",
+      "side": 1,
+      "message": "I took these numbers from the Chromecast target bitrate. I think \nwe\u0027ll need to change them a bit for WebRTC specific in the near future.",
+      "parentUuid": "45022f68_b0960871",
       "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +192,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ff7da2_60d4b545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-14T20:06:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aa5a5b1_8f27c420",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d68676f6_7adc8550",
@@ -133,6 +223,24 @@
       "writtenOn": "2020-12-14T19:06:08Z",
       "side": 1,
       "message": "why do we have \"initialqp\" twice? is this intended?",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f8ae1c_3df5c435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-14T20:06:16Z",
+      "side": 1,
+      "message": "My bad, removed.",
+      "parentUuid": "d68676f6_7adc8550",
       "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
