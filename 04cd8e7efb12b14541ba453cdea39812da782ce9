@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc63ccc_cd71a976",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-14T19:16:14Z",
+      "side": 1,
+      "message": "Removing myself from the reviewers as this CL changes java files only, which should be approved by android/OWNERS.",
+      "revId": "04cd8e7efb12b14541ba453cdea39812da782ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e54e498_b44ae723",
