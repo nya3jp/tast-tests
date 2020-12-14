@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "7cf91cac83ac30ad694e7ae3bb0db270c27f7999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "830e8406_51aacae6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-14T15:12:23Z",
+      "side": 1,
+      "message": "Somehow the CR+2 flag got removed, so I might need you folks to CR+2 again. Sorry for the inconveniences.",
+      "revId": "7cf91cac83ac30ad694e7ae3bb0db270c27f7999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
