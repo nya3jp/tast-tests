@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f5fade61_d23840b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-14T15:18:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bb9d364_ace16f98",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "bf9403195677f6ac3c535d4958ebea57fbc69fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b3d1e22c_4360c520",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "195e8dbf_847b7756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_ecdsa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-14T15:18:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579151d0_1a64b745",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "bf9403195677f6ac3c535d4958ebea57fbc69fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0240adaa_a96b4e77",
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7295d968_0f2cfa8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_ecdsa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-14T15:18:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0240adaa_a96b4e77",
+      "revId": "bf9403195677f6ac3c535d4958ebea57fbc69fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d954d4d_eab78ed6",
@@ -111,6 +177,30 @@
       "writtenOn": "2020-12-10T09:17:20Z",
       "side": 1,
       "message": "If this step fails, can it cause problems for the next test run?\nIf it does, can the keys be removed before creation?",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "bf9403195677f6ac3c535d4958ebea57fbc69fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e42fb851_0229bc18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_ecdsa.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-14T15:18:17Z",
+      "side": 1,
+      "message": "That is what we are doing on L55. We remove all possible testing key IDs before we actually create the keys on L66.",
+      "parentUuid": "5d954d4d_eab78ed6",
       "range": {
         "startLine": 71,
         "startChar": 17,
