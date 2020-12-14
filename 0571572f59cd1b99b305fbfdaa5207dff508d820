@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b8efba_df5526a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-14T02:50:42Z",
+      "side": 1,
+      "message": "I might be wrong here, but I don\u0027t think we explicitly add specific models to the CQ, or, if, when a given board is added, all models can be scheduled (so when a new model shows up in the lab, some tests will be run on that model)",
+      "parentUuid": "be969d43_7d5f4862",
+      "revId": "0571572f59cd1b99b305fbfdaa5207dff508d820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bae59f15_da665ca0",
