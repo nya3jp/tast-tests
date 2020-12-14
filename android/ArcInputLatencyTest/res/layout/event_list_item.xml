@@ -81,7 +81,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Kernel Timestamp"
+            android:text="Kernel Timestamp (Android)"
             android:textStyle="bold" />
 
         <TextView
@@ -126,7 +126,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Latency (difference)"
+            android:text="Latency in Android (difference)"
             android:textStyle="bold" />
 
         <TextView

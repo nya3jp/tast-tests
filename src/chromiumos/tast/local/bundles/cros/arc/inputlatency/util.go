@@ -27,7 +27,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const arcHostClockFmt = "arc-host-clock-client_%s_20200923"
+const (
+	arcHostClockFmt = "arc-host-clock-client_%s_20200923"
+	eventCountUI    = "org.chromium.arc.testapp.inputlatency:id/event_count"
+)
 
 var supportedArchs = []string{
 	"x86",
@@ -47,6 +50,9 @@ func AndroidData() []string {
 	for _, arch := range supportedArchs {
 		data = append(data, fmt.Sprintf(arcHostClockFmt, arch))
 	}
+	data = append(data, "arc_inputlatency_touch_move_circle")
+	data = append(data, "arc_inputlatency_touch_move_line")
+	data = append(data, "arc_inputlatency_replay.sh")
 	return data
 }
 
@@ -80,9 +86,12 @@ func InstallArcHostClockClient(ctx context.Context, a *arc.ARC, s *testing.State
 // InputEvent represents a single input event received by the helper app.
 type InputEvent struct {
 	// Time (in ns) that the event was sent by the kernel (filled by host).
-	EventTimeNS int64
+	EventTimeNS     int64
+	Action          string `json:"action"`
+	ClientEventTime int64  `json:"clientEventTime"`
 	// Time (in ns) that the event was received by the app.
-	RecvTimeNS int64 `json:"receiveTimeNs"`
+	RecvTimeNS int64   `json:"receiveTimeNs"`
+	Latency    float64 `json:"latency"`
 }
 
 // CalculateMetrics calculates mean, median, std dev, max and min for the given
@@ -107,27 +116,8 @@ func CalculateMetrics(events []InputEvent, getValue func(int) float64) (mean, me
 	return
 }
 
-// WaitForEvents polls until the counter in the app UI is equal to count, then
-// returns the input events from the helper app.
-func WaitForEvents(ctx context.Context, d *ui.Device, count int) (string, error) {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		v := d.Object(ui.ID("org.chromium.arc.testapp.inputlatency:id/event_count"))
-		txt, err := v.GetText(ctx)
-		if err != nil {
-			return err
-		}
-		num, err := strconv.ParseInt(txt, 10, 64)
-		if err != nil {
-			return err
-		}
-		if num != int64(count) {
-			return errors.Errorf("unexpected event count; got %d, want %d", num, count)
-		}
-		return nil
-	}, nil); err != nil {
-		return "", err
-	}
-
+// generateJSON generates JSON data of the events.
+func generateJSON(ctx context.Context, d *ui.Device) (string, error) {
 	// Press ESC key to finish event trace and generate JSON data.
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_ESCAPE, 0x0); err != nil {
 		return "", err
@@ -151,6 +141,56 @@ func WaitForEvents(ctx context.Context, d *ui.Device, count int) (string, error)
 	return txt, nil
 }
 
+// waitForEvents polls until the counter in the app UI is equal to count, then
+// returns the input events from the helper app.
+func waitForEvents(ctx context.Context, d *ui.Device, count int) (string, error) {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		v := d.Object(ui.ID(eventCountUI))
+		txt, err := v.GetText(ctx)
+		if err != nil {
+			return err
+		}
+		num, err := strconv.ParseInt(txt, 10, 64)
+		if err != nil {
+			return err
+		}
+		if num != int64(count) {
+			return errors.Errorf("unexpected event count; got %d, want %d", num, count)
+		}
+		return nil
+	}, nil); err != nil {
+		return "", err
+	}
+
+	return generateJSON(ctx, d)
+}
+
+// waitForEventsReplay waits until no new event injecting and the number of events is not required.
+func waitForEventsReplay(ctx context.Context, d *ui.Device) (string, error) {
+	if err := testing.Poll(ctx, func(context.Context) error {
+		preCount := "0"
+		for {
+			if err := testing.Sleep(ctx, time.Second); err != nil {
+				return err
+			}
+			v := d.Object(ui.ID(eventCountUI))
+			count, err := v.GetText(ctx)
+			if err != nil {
+				return err
+			}
+			if count != preCount {
+				preCount = count
+				continue
+			}
+			return nil
+		}
+	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
+		return "", err
+	}
+
+	return generateJSON(ctx, d)
+}
+
 // WaitForClearUI clears the event data in ArcInputLatencyTest.apk to get ready for next event tracing.
 func WaitForClearUI(ctx context.Context, d *ui.Device) error {
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_DEL, 0x0); err != nil {
@@ -159,7 +199,7 @@ func WaitForClearUI(ctx context.Context, d *ui.Device) error {
 
 	// Check whether events are cleared.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		v := d.Object(ui.ID("org.chromium.arc.testapp.inputlatency:id/event_count"))
+		v := d.Object(ui.ID(eventCountUI))
 		txt, err := v.GetText(ctx)
 		if err != nil {
 			return err
@@ -179,10 +219,57 @@ func WaitForClearUI(ctx context.Context, d *ui.Device) error {
 }
 
 // EvaluateLatency gets event data, calculates the latency, and adds the result to performance metrics.
-func EvaluateLatency(ctx context.Context, s *testing.State, d *ui.Device,
-	numEvents int, eventTimes []int64, perfName string, pv *perf.Values) error {
+func EvaluateLatency(ctx context.Context, s *testing.State, d *ui.Device, vmEnabled bool,
+	numEvents int, eventTimes []int64, perfName string, pv *perf.Values) (float64, error) {
 	s.Log("Collecting results")
-	txt, err := WaitForEvents(ctx, d, numEvents)
+	txt, err := waitForEvents(ctx, d, numEvents)
+	if err != nil {
+		return 0., errors.Wrap(err, "unable to wait for events")
+	}
+	var events []InputEvent
+	if err := json.Unmarshal([]byte(txt), &events); err != nil {
+		return 0., errors.Wrap(err, "could not ummarshal events from app")
+	}
+
+	// Assign event RTC time.
+	diff := make([]float64, 0.0, numEvents)
+	for i := range events {
+		events[i].EventTimeNS = eventTimes[i]
+		diff = append(diff, float64(events[i].EventTimeNS)/1000000.-float64(events[i].ClientEventTime))
+	}
+
+	vmAdjust := 0.
+	if vmEnabled {
+		diff := make([]float64, 0.0, numEvents)
+		for i := range events {
+			diff = append(diff, float64(events[i].EventTimeNS)/1000000.-float64(events[i].ClientEventTime))
+		}
+		diffMean, diffMedian, diffStdDev, diffMax, diffMin := CalculateMetrics(events, func(i int) float64 {
+			return diff[i]
+		})
+		vmAdjust = diffMean
+		// if the value < 0, it means host time is earlier than client time. value < 0 is expected.
+		s.Logf("Host/Client diff (ms): mean %f median %f std %f max %f min %f", diffMean, diffMedian, diffStdDev, diffMax, diffMin)
+	}
+
+	mean, median, stdDev, max, min := CalculateMetrics(events, func(i int) float64 {
+		return float64(events[i].RecvTimeNS-events[i].EventTimeNS) / 1000000.
+	})
+	s.Logf("Latency (ms): mean %f median %f std %f max %f min %f (total events %d)", mean, median, stdDev, max, min, len(events))
+
+	pv.Set(perf.Metric{
+		Name:      perfName,
+		Unit:      "milliseconds",
+		Direction: perf.SmallerIsBetter,
+	}, mean)
+	return vmAdjust, nil
+}
+
+// EvaluateLatencyReplay calculates.
+func EvaluateLatencyReplay(ctx context.Context, s *testing.State, d *ui.Device, vmEnabled bool,
+	action *string, vmAdjust float64, perfName string, pv *perf.Values) error {
+	s.Log("Collecting results")
+	txt, err := waitForEventsReplay(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "unable to wait for events")
 	}
@@ -191,15 +278,22 @@ func EvaluateLatency(ctx context.Context, s *testing.State, d *ui.Device,
 		return errors.Wrap(err, "could not ummarshal events from app")
 	}
 
-	// Assign event RTC time.
-	for i := range events {
-		events[i].EventTimeNS = eventTimes[i]
+	// Filter the events by action and adjust the VM time if necessary.
+	for i := 0; i < len(events); i++ {
+		if events[i].Action != *action {
+			events = append(events[:i], events[i+1:]...)
+			i--
+		} else if vmEnabled {
+			// events[i].EventTimeNS = int64(adjust * 1000000.0) + events[i].ClientEventTime * 1000000
+			events[i].Latency -= vmAdjust
+		}
 	}
 
 	mean, median, stdDev, max, min := CalculateMetrics(events, func(i int) float64 {
-		return float64(events[i].RecvTimeNS-events[i].EventTimeNS) / 1000000.
+		return events[i].Latency
 	})
-	s.Logf("Latency (ms): mean %f median %f std %f max %f min %f", mean, median, stdDev, max, min)
+
+	s.Logf("Latency (ms): mean %f median %f std %f max %f min %f (total events %d)", mean, median, stdDev, max, min, len(events))
 
 	pv.Set(perf.Metric{
 		Name:      perfName,

@@ -21,6 +21,7 @@ import (
 type RawEventWriter struct {
 	w       io.WriteCloser // device
 	nowFunc func() time.Time
+	path    string
 }
 
 // Device returns a RawEventWriter for injecting input events into the input event device at path.
@@ -29,7 +30,7 @@ func Device(ctx context.Context, path string) (*RawEventWriter, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &RawEventWriter{f, time.Now}, nil
+	return &RawEventWriter{f, time.Now, path}, nil
 }
 
 // Close closes the device.
