@@ -34,6 +34,24 @@
       "parentUuid": "0454d325_25c110a0",
       "revId": "87d67d7ac2ee3d0d4ec84d3752b1586556135cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "629b655d_0cf1ed03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-12-14T23:34:45Z",
+      "side": 1,
+      "message": "It is related to our evdev touch event filter. https://crrev.com/c/2521880 somehow makes reef rejects fast touch moves. I don\u0027t know exactly why but that is what my bisected to [1].\n\n[1] https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1152069#c2",
+      "parentUuid": "f6c9ebe2_5ab33a72",
+      "revId": "87d67d7ac2ee3d0d4ec84d3752b1586556135cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
