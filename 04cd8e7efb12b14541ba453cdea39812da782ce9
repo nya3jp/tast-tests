@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e177faa5_c28ee76b",
+        "filename": "android/ArcGamePerformanceTest/src/org/chromium/arc/testapp/gameperformance/GLESMinReqTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-14T22:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e54e498_b44ae723",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "04cd8e7efb12b14541ba453cdea39812da782ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6591b013_bfa28425",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-12-14T19:13:04Z",
       "side": 1,
       "message": "minor nit: maybe final or inline at L63",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "04cd8e7efb12b14541ba453cdea39812da782ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89616d33_4c9e58e1",
+        "filename": "android/ArcGamePerformanceTest/src/org/chromium/arc/testapp/gameperformance/GLESMinReqTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-14T22:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6591b013_bfa28425",
       "range": {
         "startLine": 56,
         "startChar": 8,
