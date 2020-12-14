@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d745f48_c98bdd18",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T19:06:10Z",
+      "side": 1,
+      "message": "Oh wow, I\u0027ll admit I didn\u0027t even know those existed in the original. I think I\u0027ve only ever consumed this test either through official dashboards (crosbolt, chromeperf -- which use the perf metric) or others\u0027 analysis of those runs. I thought you were just adding it for fun :)\n\nIgnore me for now, then; if we decide it\u0027s not a useful test output in the future, we can always remove the code.",
+      "parentUuid": "1789564c_4ca2f42c",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 58
+      },
+      "revId": "043ccc494032e5cf9eff8c7257f3eff797224bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b45781cd_472f1675",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I\u0027m quite aware /etc/lsb-release should not be parsed to influence test outcome.\n\nHere I\u0027m using it only to include boardname in output file (like the original test did) and keep it private.",
       "parentUuid": "b45781cd_472f1675",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 47
+      },
+      "revId": "043ccc494032e5cf9eff8c7257f3eff797224bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0613f5bd_742fc32b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T19:06:10Z",
+      "side": 1,
+      "message": "Ack. Marking resolved.",
+      "parentUuid": "78e448b2_14384ba4",
       "range": {
         "startLine": 354,
         "startChar": 0,

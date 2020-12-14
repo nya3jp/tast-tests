@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b49f74_14fc181b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-14T19:06:10Z",
+      "side": 1,
+      "message": "I believe this will not run anywhere automatically, yet. I guess that\u0027s OK for now (so, marking this Resolved), but eventually we\u0027ll want to get this scheduled, and when we\u0027re happy, replace the Autotest version.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 63
+      },
+      "revId": "c93b99718ccaa8b6d2b3a0e4039c7c2e89087ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
