@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e431bb68_318661e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-14T15:18:17Z",
+      "side": 1,
+      "message": "Hello, somehow CR+2 got wiped, so I might need you folks to CR+2 again. Sorry for the inconveniences caused.",
+      "revId": "d991947a8a3ad62369471e159fc2fde24dc283b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
