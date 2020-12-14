@@ -16,6 +16,108 @@
       "message": "stevecho@ PTAL. This CL cannot land before crrev.com/c/2587242\nbut we can start reviewing it.\n\nOthers FYI",
       "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9dac8a8_b74de674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-14T19:06:08Z",
+      "side": 1,
+      "message": "nit: no space before \"is\"\n\nare we putting this here to use this again perhaps in another file in the future?",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777460c2_58908926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-14T19:06:08Z",
+      "side": 1,
+      "message": "could we add description here or PlatformEncoding function\nabout this change to use decoder?",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09aaed07_e59d4f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-14T19:06:08Z",
+      "side": 1,
+      "message": "I think you mentioned that vp9 is just used as input \nas we can\u0027t store input file as it is due to size. \nMaybe can we add this description somewhere?\nSome people might wonder why vp9 for h264 tests.",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45022f68_b0960871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-14T19:06:08Z",
+      "side": 1,
+      "message": "what does it mean that \"From Chromecast\"?",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa5a5b1_8f27c420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-14T19:06:08Z",
+      "side": 1,
+      "message": "nit: VP9 -\u003e h264?",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d68676f6_7adc8550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-14T19:06:08Z",
+      "side": 1,
+      "message": "why do we have \"initialqp\" twice? is this intended?",
+      "revId": "6ea5ebd780df7073170d773078fcc225cc7c72cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
