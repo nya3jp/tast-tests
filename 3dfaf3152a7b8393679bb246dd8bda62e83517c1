@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92de45f3_0b468451",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-14T17:43:40Z",
+      "side": 1,
+      "message": "Thank you Miguel. Let me follow up. \nNot getting notification emails from Chromium Gerrit in Google email. \nWill fix this as well.\n\n",
+      "revId": "3dfaf3152a7b8393679bb246dd8bda62e83517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55a0871a_e66b7a98",
