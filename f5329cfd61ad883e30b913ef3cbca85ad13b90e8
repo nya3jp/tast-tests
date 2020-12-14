@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a56ef5_0ac4bb85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-14T23:27:47Z",
+      "side": 1,
+      "message": "How about Cq-Depend?",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "f5329cfd61ad883e30b913ef3cbca85ad13b90e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a224f2f2_18a219b2",
@@ -14,6 +37,29 @@
       "writtenOn": "2020-12-14T21:21:14Z",
       "side": 1,
       "message": "Got it. Thank you for the update.",
+      "revId": "f5329cfd61ad883e30b913ef3cbca85ad13b90e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec1b42b_f9c97960",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-14T23:27:47Z",
+      "side": 1,
+      "message": "Just some idea, the size seems tied to the filename. How about have a mapping from filename-\u003esize? \nSame situation applies to regExpFPS and commandBuilder. So that testParam only need to hold command/filename/decoder/encodeType.\n\nEither way looks good to me though.",
+      "range": {
+        "startLine": 147,
+        "startChar": 20,
+        "endLine": 148,
+        "endChar": 44
+      },
       "revId": "f5329cfd61ad883e30b913ef3cbca85ad13b90e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
