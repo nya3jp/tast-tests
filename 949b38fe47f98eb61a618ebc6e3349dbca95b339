@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49190f3a_ff5d7c84",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-14T02:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b3f5465_986b8bd2",
+      "range": {
+        "startLine": 5,
+        "startChar": 44,
+        "endLine": 5,
+        "endChar": 65
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "439d4ac2_f0a6bfdb",
@@ -87,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f091cb40_a6fe4357",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-14T02:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "439d4ac2_f0a6bfdb",
+      "range": {
+        "startLine": 138,
+        "startChar": 23,
+        "endLine": 138,
+        "endChar": 44
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde1b6b2_508cd9d7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/crd/crd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-14T02:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37885e63_04ecb533",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64a2fc02_d689d644",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-12-10T04:57:02Z",
       "side": 1,
       "message": "Unused?",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6bb71f7_ac31cb5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-14T02:21:55Z",
+      "side": 1,
+      "message": "Its used in precondition here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go;rcl\u003d4373e26e76a09eeaac4510272605b7454b72745e;l\u003d44",
+      "parentUuid": "64a2fc02_d689d644",
       "range": {
         "startLine": 29,
         "startChar": 26,
@@ -127,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8933df74_f8050eb2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-14T02:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23e77115_61fa8899",
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cd41d5c_97608cad",
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd12e4b_6484e903",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.css",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-14T02:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cd41d5c_97608cad",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca89ed56_9be96b34",
@@ -163,6 +301,24 @@
       "writtenOn": "2020-12-10T04:57:02Z",
       "side": 1,
       "message": "Let\u0027s have a consistent naming. How about camerabox_align.{html,js.css,svg} here?",
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caef28d1_a38f8081",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-14T02:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca89ed56_9be96b34",
       "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -224,6 +380,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39cb4897_0350b64e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-14T02:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1990230_d3d00b64",
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30af2b99_71176f14",
@@ -241,6 +415,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3291663_f5331afa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-14T02:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30af2b99_71176f14",
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9bb73f6_8736fddc",
@@ -254,6 +446,30 @@
       "writtenOn": "2020-12-10T04:57:02Z",
       "side": 1,
       "message": "Use ms directly here. In JS it\u0027s more common to always use a duration number as ms.",
+      "range": {
+        "startLine": 82,
+        "startChar": 23,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "949b38fe47f98eb61a618ebc6e3349dbca95b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e489fe_03f38c80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/preview.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-14T02:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9bb73f6_8736fddc",
       "range": {
         "startLine": 82,
         "startChar": 23,
