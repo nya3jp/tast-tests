@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9b0249_05141ca3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-14T01:14:51Z",
+      "side": 1,
+      "message": "(this is CQ breaking, if I don\u0027t get reviews in 15 to 30\u0027, I\u0027ll add owner exempt and chump it)",
+      "revId": "894ec2c692edd4655b53cd7ba73ab339e0c4bad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
