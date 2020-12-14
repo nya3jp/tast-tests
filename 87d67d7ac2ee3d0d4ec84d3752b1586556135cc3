@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0454d325_25c110a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-14T22:03:28Z",
+      "side": 1,
+      "message": "LGTM. Better to notify hotseat folks (cc-ed)",
+      "revId": "87d67d7ac2ee3d0d4ec84d3752b1586556135cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
