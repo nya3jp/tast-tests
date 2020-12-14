@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37a5047_367c7b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_unittest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-14T18:50:10Z",
+      "side": 1,
+      "message": "Reflected. Just removed \".\"\n\nsrc/chromiumos/tast/local/bundles/cros/video/vaapi_unittest.go:20:9: Test descriptions should be capitalized phrases without trailing punctuation, e.g. \"Checks that foo is bar\"",
+      "parentUuid": "55a0871a_e66b7a98",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "3dfaf3152a7b8393679bb246dd8bda62e83517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13a0061b_d92f81ea",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9187e385_1a1bf2c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_unittest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-14T18:50:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a0061b_d92f81ea",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "3dfaf3152a7b8393679bb246dd8bda62e83517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1983726_ee824fca",
@@ -94,6 +142,30 @@
       "writtenOn": "2020-12-12T01:29:22Z",
       "side": 1,
       "message": "We talked about this message offline: Run() can failed because it failed to\nrun (e.g. file not found) or because a test case failed. In the latter case,\nit\u0027d read weird that\n  Failed to run test_va_api: Blabla test failed\n\nThis message is also misleading in other unittests Tast wrappers.\n\nSo I\u0027d suggest just writing here:\n  s.Errorf(\"%v failed: %v\", exec, err)",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "3dfaf3152a7b8393679bb246dd8bda62e83517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a7cc10_9a46e675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_unittest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-14T18:50:10Z",
+      "side": 1,
+      "message": "Yes, makes sense.",
+      "parentUuid": "c1983726_ee824fca",
       "range": {
         "startLine": 40,
         "startChar": 12,
