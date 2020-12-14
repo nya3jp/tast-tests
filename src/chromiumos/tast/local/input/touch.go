@@ -96,6 +96,10 @@ func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 				infoTrackingID.maximum, infoSlot.maximum)
 		}
 
+		if infoX.maximum == 0 || infoY.maximum == 0 {
+			return nil, errors.Errorf("invalid screen size (%d, %d)", infoX.maximum, infoY.maximum)
+		}
+
 		device, err := Device(ctx, info.path)
 		if err != nil {
 			return nil, err
