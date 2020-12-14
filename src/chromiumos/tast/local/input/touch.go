@@ -241,6 +241,11 @@ func (tsw *TouchscreenEventWriter) Height() TouchCoord {
 	return tsw.height
 }
 
+// DevPath returns the path of the touchscreen device.
+func (tsw *TouchscreenEventWriter) DevPath() string {
+	return tsw.rw.path
+}
+
 // SetRotation changes the orientation of the touch screen's event to the
 // specified degree. The locations of further touch events will be rotated by
 // the specified rotation. It will return an error if the specified rotation is
