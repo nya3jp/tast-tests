@@ -86,6 +86,30 @@
       },
       "revId": "6ed87919779facf29806baf5748ed18a2563fdef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e68efa8_e33dd7a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-12-15T22:45:53Z",
+      "side": 1,
+      "message": "Po-Hsien, you forgot to address this comment.",
+      "parentUuid": "a4e8f107_85a39791",
+      "range": {
+        "startLine": 80,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 42
+      },
+      "revId": "6ed87919779facf29806baf5748ed18a2563fdef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
