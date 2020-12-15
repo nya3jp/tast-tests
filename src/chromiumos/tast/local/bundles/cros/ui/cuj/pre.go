@@ -53,11 +53,15 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		defer cancel()
 		ctx, st := timing.Start(ctx, "reset_"+p.name)
 		defer st.End()
-		if err := p.resetState(ctx); err != nil {
-			p.closeInternal(ctx)
-			s.Fatal("Failed to reset: ", err)
+
+		err := p.resetState(ctx)
+		if err == nil {
+			s.Log("Reusing existing session")
+			return PreData{Chrome: p.cr, ARC: p.arc}
 		}
-		return PreData{Chrome: p.cr, ARC: p.arc}
+
+		s.Log("Failed to reuse existing session: ", err)
+		p.closeInternal(ctx)
 	}
 
 	func() {
@@ -157,7 +161,22 @@ func (p *preImpl) resetState(ctx context.Context) error {
 	// Unlike ARC.preImpl, this does not uninstall apps. This is because we
 	// typically want to reuse the same list of applications, and additional
 	// installed apps wouldn't affect the test scenarios.
-	return p.cr.ResetState(ctx)
+	if err = p.cr.ResetState(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset chrome")
+	}
+
+	// Ensures that there are no toplevel windows left open.
+	tconn, err := p.cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the test conn")
+	}
+	if all, err := ash.GetAllWindows(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to call ash.GetAllWindows")
+	} else if len(all) != 0 {
+		return errors.Wrapf(err, "toplevel window (%q) stayed open, total %d left", all[0].Name, len(all))
+	}
+
+	return nil
 }
 
 func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
@@ -183,6 +202,8 @@ func (p *preImpl) closeInternal(ctx context.Context) {
 		}
 		p.cr = nil
 	}
+
+	p.optinCompleted = false
 }
 
 var loggedInToCUJUser = &preImpl{name: "logged_in_to_cuj_user", timeout: chrome.LoginTimeout + optin.OptinTimeout + arc.BootTimeout + 10*time.Second}
