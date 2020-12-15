@@ -170,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "241c7948_28a36279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T18:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd5ceb6_cba7f224",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e1ed6e0_d4e7e75a",
@@ -331,6 +355,30 @@
       "side": 1,
       "message": "Thank you Miguel. I see your point. \n\nProblem here is that number 1 is a subset of number 2. \nSo there will be duplicate tests between 1 and 2. \nIn fact, most tests are redundant between 1 and 2 except few additional streaming tests. \n\n1. have a test case without -s\n2. have _another_ test case with s\n\nDo we have a way to make them non-overlapping?\nI don\u0027t find there is a way to do so.\n\nLet me think about what to do.",
       "parentUuid": "d505f8fb_6646f811",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a33d1fd_bc47060e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T18:45:03Z",
+      "side": 1,
+      "message": "I also discussed with Alex yesterday. \nHe also confirmed that there is no way to make them non-overlapping. \n\nHis suggestion is to have 2 tests: 1 for encode with -s, 1 for decode without -s.\n\nWhy decode without -s? \n\nQuoting his explanation here. \nwhen streaming, v4l2-compliance generates some input content, and makes sure that it receives an output from the device when queuing. \nbut for a decoder, valid input must be a valid h.264, vp8 or vp9 stream, which is hard to generate without any external help\nv4l2-compliance being a standalone tool without any dependency, that use-case is not well supported\nbut our other tests do exercice streaming with pre-generated content, so not supporting -s is not really a big problem",
+      "parentUuid": "30a128b2_df6ef883",
       "range": {
         "startLine": 36,
         "startChar": 0,
