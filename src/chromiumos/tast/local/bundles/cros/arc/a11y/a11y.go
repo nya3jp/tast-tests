@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package accessibility provides functions to assist with interacting with accessibility settings
+// Package a11y provides functions to assist with interacting with accessibility settings
 // in ARC accessibility tests.
-package accessibility
+package a11y
 
 import (
 	"context"
@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
@@ -31,8 +32,6 @@ const (
 	// ApkName is the name of apk which is used in ARC++ accessibility tests.
 	ApkName     = "ArcAccessibilityTest.apk"
 	packageName = "org.chromium.arc.testapp.accessibilitytest"
-
-	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/chromevox/background/background.html"
 
 	// CheckBox class name.
 	CheckBox = "android.widget.CheckBox"
@@ -58,29 +57,6 @@ var MainActivity = TestActivity{".MainActivity", "Main Activity"}
 // EditTextActivity is the struct for the edit text activity used in test cases.
 var EditTextActivity = TestActivity{".EditTextActivity", "Edit Text Activity"}
 
-// Feature represents an accessibility feature in Chrome OS.
-type Feature string
-
-// List of accessibility features that interacts with ARC.
-const (
-	SpokenFeedback  Feature = "spokenFeedback"
-	SwitchAccess            = "switchAccess"
-	SelectToSpeak           = "selectToSpeak"
-	FocusHighlight          = "focusHighlight"
-	DockedMagnifier         = "dockedMagnifier"
-	ScreenMagnifier         = "screenMagnifier"
-)
-
-// focusedNode returns the currently focused node of ChromeVox.
-// The returned node should be release by the caller.
-func focusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn) (*ui.Node, error) {
-	obj := &chrome.JSObject{}
-	if err := cvconn.Eval(ctx, "ChromeVoxState.instance.currentRange.start.node", obj); err != nil {
-		return nil, err
-	}
-	return ui.NewNode(ctx, tconn, obj)
-}
-
 // IsEnabledAndroid checks if accessibility is enabled in Android.
 func IsEnabledAndroid(ctx context.Context, a *arc.ARC) (bool, error) {
 	res, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled").Output(testexec.DumpLogOnError)
@@ -99,40 +75,6 @@ func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) ([]str
 	return strings.Split(strings.TrimSpace(string(res)), ":"), nil
 }
 
-// chromeVoxExtConn returns a connection to the ChromeVox extension's background page.
-// If the extension is not ready, the connection will be closed before returning.
-// Otherwise the calling function will close the connection.
-func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
-	extConn, err := c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
-	if err != nil {
-		return nil, err
-	}
-
-	// Ensure that we don't attempt to use the extension before its APIs are
-	// available: https://crbug.com/789313.
-	if err := extConn.WaitForExpr(ctx, "ChromeVoxState.instance"); err != nil {
-		extConn.Close()
-		return nil, errors.Wrap(err, "ChromeVox unavailable")
-	}
-
-	if err := chrome.AddTastLibrary(ctx, extConn); err != nil {
-		extConn.Close()
-		return nil, errors.Wrap(err, "failed to introduce tast library")
-	}
-
-	return extConn, nil
-}
-
-// SetFeatureEnabled sets the specified accessibility feature enabled/disabled using the provided connection to the extension.
-func SetFeatureEnabled(ctx context.Context, tconn *chrome.TestConn, feature Feature, enable bool) error {
-	if err := tconn.Call(ctx, nil, `(feature, enable) => {
-		  return tast.promisify(tast.bind(chrome.accessibilityFeatures[feature], "set"))({value: enable});
-		}`, feature, enable); err != nil {
-		return errors.Wrapf(err, "failed to toggle %v to %t", feature, enable)
-	}
-	return nil
-}
-
 // waitForSpokenFeedbackReady enables spoken feedback.
 // A connection to the ChromeVox extension background page is returned, and this will be
 // closed by the calling function.
@@ -149,40 +91,12 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled: ")
 	}
 
-	cvconn, err := chromeVoxExtConn(ctx, cr)
+	cvconn, err := a11y.ChromeVoxExtConn(ctx, cr)
 	if err != nil {
 		return nil, errors.Wrap(err, "creating connection to ChromeVox extension failed: ")
 	}
 
-	// Poll until ChromeVox connection finishes loading.
-	if err := cvconn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		return nil, errors.Wrap(err, "timed out waiting for ChromeVox connection to be ready")
-	}
-
 	return cvconn, nil
-}
-
-// WaitForFocusedNode polls until the properties of the focused node matches the given params.
-// timeout specifies the timeout to use when polling.
-func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams, timeout time.Duration) error {
-	// Wait for focusClassName to receive focus.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		focused, err := focusedNode(ctx, cvconn, tconn)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		defer focused.Release(ctx)
-
-		if match, err := focused.Matches(ctx, *params); err != nil {
-			return testing.PollBreak(err)
-		} else if !match {
-			return errors.Errorf("focused node is incorrect: got %v, want %v", focused, params)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to get current focus")
-	}
-	return nil
 }
 
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
@@ -207,11 +121,11 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	if err := SetFeatureEnabled(ctx, tconn, SpokenFeedback, true); err != nil {
+	if err := a11y.SetFeatureEnabled(ctx, tconn, a11y.SpokenFeedback, true); err != nil {
 		s.Fatal("Failed to enable spoken feedback: ", err)
 	}
 	defer func() {
-		if err := SetFeatureEnabled(fullCtx, tconn, SpokenFeedback, false); err != nil {
+		if err := a11y.SetFeatureEnabled(fullCtx, tconn, a11y.SpokenFeedback, false); err != nil {
 			s.Fatal("Failed to disable spoken feedback: ", err)
 		}
 	}()
@@ -255,7 +169,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, &chrome.TestConn{Conn: cvconn}, "ui_tree"+activity.Name+".txt")
 
 			if err := func() error {
-				if err = WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
+				if err = a11y.WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
 					Name: activity.Title,
 					Role: ui.RoleTypeApplication,
 				}, 10*time.Second); err != nil {
