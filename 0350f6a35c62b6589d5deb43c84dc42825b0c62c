@@ -454,6 +454,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a07e5dab_98239daf",
+        "filename": "src/chromiumos/tast/remote/network/netperf/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-12-15T19:34:10Z",
+      "side": 1,
+      "message": "This actually shows my C++ bias ;) : in theory you can have there both public and private members in both class and struct. But in practice (except very specific cases) it turns out you have either all-private members (class) or all-public (struct).\n\nBut anyway, as you\u0027ve closed this, I won\u0027t complain.",
+      "parentUuid": "6b9fca1c_0e9e2efe",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aa0dbc6_e97610ea",
