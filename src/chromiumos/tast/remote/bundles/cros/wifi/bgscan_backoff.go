@@ -32,7 +32,7 @@ func init() {
 		Func:        BgscanBackoff,
 		Desc:        "Verifies that bgscan aborts and/or backs off when there is consistent outgoing traffic",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
