@@ -24,6 +24,7 @@ type Params struct {
 	PrintFile    string   // PS file to print.
 	ExpectedFile string   // PS file output should be compared to.
 	Options      []Option // Options to be passed to the filter to change output.
+	UseProxy     bool     // If enabled, print via the CUPS proxy.
 }
 
 // Collate enables collation.
@@ -57,10 +58,9 @@ func optionsToString(options []Option) string {
 
 // Run executes the main test logic with |p.Options| included in the lp command.
 func Run(ctx context.Context, s *testing.State, p *Params) {
-	lpprint.RunWithOptions(ctx, s, p.PpdFile, p.PrintFile, p.ExpectedFile, optionsToString(p.Options))
-}
-
-// ProxyRun is similar to Run but uses proxylppprint instead of lpprint.
-func ProxyRun(ctx context.Context, s *testing.State, p *Params) {
-	proxylpprint.RunWithOptions(ctx, s, p.PpdFile, p.PrintFile, p.ExpectedFile, optionsToString(p.Options))
+	run := lpprint.RunWithOptions
+	if p.UseProxy {
+		run = proxylpprint.RunWithOptions
+	}
+	run(ctx, s, p.PpdFile, p.PrintFile, p.ExpectedFile, optionsToString(p.Options))
 }

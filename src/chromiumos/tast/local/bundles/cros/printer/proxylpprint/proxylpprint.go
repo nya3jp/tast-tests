@@ -22,16 +22,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// cleanPSContents filters any unwanted lines from content to ensure a stable
-// diff.
-func cleanPSContents(content string) string {
-	// Ignore byte 0x79 so that the Epson tests pass.
-	if len(content) > 0x79 && content[0x79] == 1 {
-		content = content[:0x79] + "\x00" + content[0x7a:]
-	}
-	return lpprint.CleanPSContents(content)
-}
-
 // Run executes the main test logic with given parameters.
 func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile string) {
 	RunWithOptions(ctx, s, ppdFile, toPrintFile, goldenFile, "")
@@ -103,7 +93,7 @@ func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile,
 		s.Fatal("Fake printer didn't receive a request: ", err)
 	}
 
-	if cleanPSContents(string(expect)) != cleanPSContents(string(request)) {
+	if lpprint.CleanPSContents(string(expect)) != lpprint.CleanPSContents(string(request)) {
 		outPath := filepath.Join(s.OutDir(), goldenFile)
 		if err := ioutil.WriteFile(outPath, request, 0644); err != nil {
 			s.Error("Failed to dump output: ", err)
