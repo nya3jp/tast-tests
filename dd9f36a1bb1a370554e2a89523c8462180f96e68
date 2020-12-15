@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10acd9da_8556b047",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-15T02:10:22Z",
+      "side": 1,
+      "message": "Thanks for the heads-up. I\u0027ll go through these commits again maybe later today.",
+      "parentUuid": "82d7b2f3_0aabdddd",
+      "revId": "dd9f36a1bb1a370554e2a89523c8462180f96e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eafa6ef_de055233",
