@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2826cf4a_3bec2b27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-15T05:50:19Z",
+      "side": 1,
+      "message": "Please look at the logs before pressing CQ+2 again (also, are you using a bot?)\n\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket.appspot.com/8860880633920301600/+/steps/init_sdk/0/steps/call_chromite.api.SdkService_Create/0/steps/call_build_API_script/0/stdout\n\n tast-remote-tests-cros-0.0.1-r4700: src/chromiumos/tast/local/bundles/cros/arcappcompat/bandlab.go:126:12: undefined: logIn_Btn\n tast-remote-tests-cros-0.0.1-r4700: src/chromiumos/tast/local/bundles/cros/arcappcompat/bandlab.go:128:19: undefined: logIn_Btn",
+      "revId": "bbdc8adbae9364b8e745ed95d2db25fede5c2307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
