@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dea24575_87327468",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-15T05:58:26Z",
+      "side": 1,
+      "message": "LGTM % some minor comments. The design of ConfigureLogging might change depending on the usage in the next CL.",
+      "revId": "18443b2fa88d6a5e39d0de1594a39bcff630c07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c8a600_dc7429a7",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-15T05:58:26Z",
+      "side": 1,
+      "message": "nit: not sure if it is easier to use if we take []string here and strings.Join inside the function. (similar in other wrapping)",
+      "range": {
+        "startLine": 294,
+        "startChar": 52,
+        "endLine": 294,
+        "endChar": 66
+      },
+      "revId": "18443b2fa88d6a5e39d0de1594a39bcff630c07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c61fb3b_92d417e1",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-15T05:58:26Z",
+      "side": 1,
+      "message": "nit: Similar to the nit above, not sure if it is easier to use if we strings.Split(tags, \"+\"). (similar in other related functions)",
+      "range": {
+        "startLine": 299,
+        "startChar": 53,
+        "endLine": 299,
+        "endChar": 59
+      },
+      "revId": "18443b2fa88d6a5e39d0de1594a39bcff630c07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
