@@ -16,6 +16,69 @@
       "message": "PTAL.",
       "revId": "1bb9c52a93379c5df882a4f45df7e9a9e2c03fb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35776b70_0c3585c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-15T20:23:38Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "1bb9c52a93379c5df882a4f45df7e9a9e2c03fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7715dc31_3d26db38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-15T20:23:38Z",
+      "side": 1,
+      "message": "nit: update the comment here, e.g. \"in order to use arc-host-clock-client and evemu-replay\".",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 59
+      },
+      "revId": "1bb9c52a93379c5df882a4f45df7e9a9e2c03fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f35d6d0e_32d592e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputlatency/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-15T20:23:38Z",
+      "side": 1,
+      "message": "optional nit: It might be simpler to check arc.VMEnabled() right here in the function (like on L341) than updating all of the call sites.",
+      "range": {
+        "startLine": 244,
+        "startChar": 73,
+        "endLine": 244,
+        "endChar": 88
+      },
+      "revId": "1bb9c52a93379c5df882a4f45df7e9a9e2c03fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
