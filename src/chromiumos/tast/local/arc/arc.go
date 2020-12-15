@@ -279,6 +279,7 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 var androidDeps = []string{
 	"android_vm",
 	"android_vm_r",
+	"android_vm_userdebug",
 	"android_p",
 	"arc",
 }

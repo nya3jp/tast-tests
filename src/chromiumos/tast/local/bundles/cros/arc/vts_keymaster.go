@@ -39,7 +39,7 @@ func init() {
 			},
 		}, {
 			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm_userdebug"},
 			ExtraData:         []string{"VtsHalKeymasterV3_0TargetTest_rvc_bertha_x86_64"},
 		}},
 	})
@@ -93,7 +93,7 @@ func VTSKeymaster(ctx context.Context, s *testing.State) {
 // isARCVM returns true if the test software dependencies include "android_vm".
 func isARCVM(softwareDeps []string) bool {
 	for _, dep := range softwareDeps {
-		if dep == "android_vm" {
+		if dep == "android_vm_userdebug" {
 			return true
 		}
 	}
