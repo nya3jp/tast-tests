@@ -60,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56e41447_eb4efd91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:31:16Z",
+      "side": 1,
+      "message": "If we decide to only run with other video tests, use the following instead of mainline/informational\nAttr:         []string{\"group:graphics\", \"graphics_video\", \"graphics_perbuild\"},",
+      "parentUuid": "b1a6dddd_db84c8fb",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecd0e5a3_d283f9a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
