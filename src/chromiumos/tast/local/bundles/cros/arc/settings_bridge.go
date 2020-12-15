@@ -11,8 +11,9 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/accessibility"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/accessibility"
+	arcaccessibility "chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/bundles/cros/arc/chromeproxy"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
@@ -72,17 +73,17 @@ func init() {
 
 // checkAndroidAccessibility checks that Android accessibility Settings is expectedly enabled/disabled.
 func checkAndroidAccessibility(ctx context.Context, a *arc.ARC, enable bool) error {
-	if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
+	if res, err := arcaccessibility.IsEnabledAndroid(ctx, a); err != nil {
 		return err
 	} else if res != enable {
 		return errors.Errorf("accessibility_enabled is %t in Android", res)
 	}
 
-	services, err := accessibility.EnabledAndroidAccessibilityServices(ctx, a)
+	services, err := arcaccessibility.EnabledAndroidAccessibilityServices(ctx, a)
 	if err != nil {
 		return err
 	}
-	enabled := len(services) == 1 && services[0] == accessibility.ArcAccessibilityHelperService
+	enabled := len(services) == 1 && services[0] == arcaccessibility.ArcAccessibilityHelperService
 	disabled := len(services) == 1 && len(services[0]) == 0
 	if (enable && !enabled) || (!enable && !disabled) {
 		return errors.Errorf("enabled accessibility services are not expected: %v", services)
@@ -114,7 +115,7 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
 
-	if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
+	if res, err := arcaccessibility.IsEnabledAndroid(ctx, a); err != nil {
 		return err
 	} else if res {
 		return errors.New("accessibility is unexpectedly enabled on boot")
