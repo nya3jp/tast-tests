@@ -24,6 +24,7 @@ func init() {
 			"edcourtney@chromium.org", // Notification owner.
 			"arc-framework+tast@google.com",
 			"hidehiko@chromium.org", // Tast port author.
+			"cros-arc-te@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},

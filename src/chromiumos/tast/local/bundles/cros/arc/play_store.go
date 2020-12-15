@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     PlayStore,
 		Desc:     "A functional test of the Play Store that installs Google Calendar",
-		Contacts: []string{"bhansknecht@chromium.org", "arc-core@google.com"},
+		Contacts: []string{"bhansknecht@chromium.org", "arc-core@google.com", "cros-arc-te@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
