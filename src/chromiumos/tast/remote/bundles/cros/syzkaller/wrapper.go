@@ -23,7 +23,7 @@ import (
 const (
 	kcovPath             = "/sys/kernel/debug/kcov"
 	kasanInitMsg         = "KernelAddressSanitizer initialized"
-	syzkallerRunDuration = 10 * time.Minute
+	syzkallerRunDuration = 30 * time.Minute
 )
 
 const startupScriptContents = `
@@ -67,8 +67,8 @@ func init() {
 			"chromeos-kernel@google.com",
 		},
 		SoftwareDeps: []string{"pstore", "reboot"},
-		// This wrapper runs syzkaller against the DUT for a duration of 10 minutes before
-		// stopping. The overall test duration is 12 minutes.
+		// This wrapper runs syzkaller against the DUT for a duration of 30 minutes before
+		// stopping. The overall test duration is 32 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
 		Data:    []string{"testing_rsa", "enabled_syscalls.txt", "corpus.db"},
@@ -128,7 +128,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	// Create syzkaller configuration file.
 	// Generating reproducers is unlikely to work as :
 	// [1] Corpus is not shared across two runs of the test.
-	// [2] A test is run for a short duration(10 minutes).
+	// [2] A test is run for a short duration(30 minutes).
 	// Hence, set Reproduce:false.
 	config := syzkallerConfig{
 		Name:      "syzkaller_tast",
