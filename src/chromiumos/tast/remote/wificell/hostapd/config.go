@@ -30,7 +30,9 @@ const (
 	Mode80211nMixed  ModeEnum = "n-mixed"
 	Mode80211nPure   ModeEnum = "n-only"
 	Mode80211acMixed ModeEnum = "ac-mixed"
+	Mode80211axMixed ModeEnum = "ax-mixed"
 	Mode80211acPure  ModeEnum = "ac-only"
+	Mode80211axPure  ModeEnum = "ax-only"
 )
 
 // HTCap is the type for specifying HT capabilities in hostapd config (ht_capab=).
@@ -391,7 +393,7 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 			configure("vht_oper_centr_freq_seg0_idx", strconv.Itoa(c.VHTCenterChannel))
 		}
 		configure("vht_capab", c.vhtCapsString())
-		if c.Mode == Mode80211acPure {
+		if c.Mode == Mode80211acPure || c.Mode == Mode80211axPure {
 			configure("require_vht", "1")
 		}
 	}
@@ -692,6 +694,10 @@ func (c *Config) is80211n() bool {
 
 func (c *Config) is80211ac() bool {
 	return c.Mode == Mode80211acMixed || c.Mode == Mode80211acPure
+}
+
+func (c *Config) is80211ax() bool {
+	return c.Mode == Mode80211axMixed || c.Mode == Mode80211axPure
 }
 
 func (c *Config) hwMode() (string, error) {
