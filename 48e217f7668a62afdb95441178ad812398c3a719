@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc9c6bf_6b1010de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-15T07:43:24Z",
+      "side": 1,
+      "message": "some comment in b/175541101#comment2, but the change looks OK to me. I\u0027ll let Dean approve.",
+      "revId": "48e217f7668a62afdb95441178ad812398c3a719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
