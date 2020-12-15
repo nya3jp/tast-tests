@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8711fe0_d1010436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T18:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8c8e301_d0b1c39b",
+      "range": {
+        "startLine": 75,
+        "startChar": 7,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "6ed87919779facf29806baf5748ed18a2563fdef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4e8f107_85a39791",
