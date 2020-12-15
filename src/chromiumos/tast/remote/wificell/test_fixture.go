@@ -169,6 +169,16 @@ func (tf *TestFixture) resetNetCertStore(ctx context.Context) error {
 	return err
 }
 
+const (
+	// Default log level used in WiFi tests.
+	logLevel = -4
+	// Default log tags used in WiFi tests. The tags (connection + dbus + device + link + manager + portal + service)
+	// are default for all connectivity tests.
+	logTags = "connection+dbus+device+link+manager+portal+service+wifi"
+	// If true will set the default debug values on the DUT.
+	setLogging = true
+)
+
 // NewTestFixture creates a TestFixture.
 // The TestFixture contains a gRPC connection to the DUT and a SSH connection to the router.
 // The method takes two context: ctx and daemonCtx, the first one is the context for the operation and
@@ -213,6 +223,12 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
 	if _, err := tf.wifiClient.InitDUT(ctx, &network.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
 		return nil, errors.Wrap(err, "failed to InitDUT")
+	}
+
+	if setLogging {
+		if err := tf.SetLoggingConfig(ctx, logLevel, strings.Split(logTags, "+")); err != nil {
+			return nil, err
+		}
 	}
 
 	// Wificell precondition always provides us with router name, but we need
@@ -397,6 +413,11 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 		router.host = nil
 	}
 	if tf.wifiClient != nil {
+		if setLogging {
+			if err := tf.SetLoggingConfig(ctx, 0, []string{}); err != nil {
+				return err
+			}
+		}
 		if _, err := tf.wifiClient.TearDown(ctx, &empty.Empty{}); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
 		}
@@ -1365,4 +1386,20 @@ func (tf *TestFixture) DisablePowersaveMode(ctx context.Context) (shortenCtx con
 
 	// Power saving mode already disabled.
 	return ctxForResetingPowersaveMode, func() error { return nil }, nil
+}
+
+// SetLoggingConfig configures the logging setting with the specified values (level and tags).
+func (tf *TestFixture) SetLoggingConfig(ctx context.Context, level int, tags []string) error {
+	testing.ContextLogf(ctx, "Configured logging level = %d, tags = %v", level, tags)
+	_, err := tf.wifiClient.SetLoggingConfig(ctx, &network.SetLoggingConfigRequest{DebugLevel: int32(level), DebugTags: tags})
+	return err
+}
+
+// GetLoggingConfig returns the current DUT's logging setting (level and tags).
+func (tf *TestFixture) GetLoggingConfig(ctx context.Context) (int, []string, error) {
+	currentConfig, err := tf.wifiClient.GetLoggingConfig(ctx, &empty.Empty{})
+	if err != nil {
+		return 0, nil, err
+	}
+	return int(currentConfig.DebugLevel), currentConfig.DebugTags, err
 }
