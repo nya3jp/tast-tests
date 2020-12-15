@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66412f19_bdfa38ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-15T04:24:24Z",
+      "side": 1,
+      "message": "Done, also updated copy_paste.go where I copied from.",
+      "parentUuid": "6627111a_3bbd0755",
+      "range": {
+        "startLine": 26,
+        "startChar": 20,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa0cd9d8_afd8b190",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-15T03:45:43Z",
       "side": 1,
       "message": "Would be good to indicate what is being dragged and dropped, which direction, and which protocol i.e. files, from chrome to crostini, via wayland",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeae0c27_0a558e8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-15T04:24:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa0cd9d8_afd8b190",
       "range": {
         "startLine": 37,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "105fb4cb_4e116bbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-15T04:24:24Z",
+      "side": 1,
+      "message": "Removed here and in copy_paste.go - seems to work fine without this.",
+      "parentUuid": "50c109aa_0f0bd83c",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81571b63_897e8971",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb9ff3a8_27c6e142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-15T04:24:24Z",
+      "side": 1,
+      "message": "It is the sharing which is important to validate.  I validate by checking the file contents.",
+      "parentUuid": "81571b63_897e8971",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 28
+      },
+      "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22f80051_8ce93108",
@@ -106,6 +202,24 @@
       "writtenOn": "2020-12-15T03:45:43Z",
       "side": 1,
       "message": "Are we expecting the file to be writable too? If so, we should test that.",
+      "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52386c55_12a056bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-15T04:24:24Z",
+      "side": 1,
+      "message": "The file will be writable, but the file sharing tests already cover that sort of thing.",
+      "parentUuid": "22f80051_8ce93108",
       "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
