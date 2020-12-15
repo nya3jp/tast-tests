@@ -65,6 +65,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f57b60_43d25f3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T20:46:11Z",
+      "side": 1,
+      "message": "Sending this since the current Canary images already have openh264dec.",
+      "revId": "f5329cfd61ad883e30b913ef3cbca85ad13b90e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ec1b42b_f9c97960",
