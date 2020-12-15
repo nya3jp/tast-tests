@@ -16,6 +16,46 @@
       "message": "PTAL. Thanks!",
       "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e7a1b7e_f11efc86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-12-15T06:26:47Z",
+      "side": 1,
+      "message": "What causes this to happen? Does this also happen in other tests, or is it specific to this  test? Also, perhaps we should handle the returned error.",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 4
+      },
+      "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c32797_9731b215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-12-15T06:26:47Z",
+      "side": 1,
+      "message": "Is there a way to wait for the key to be delivered to the activity (perhaps it\u0027s difficult because some keys are simply discarded by Android framework)?",
+      "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
