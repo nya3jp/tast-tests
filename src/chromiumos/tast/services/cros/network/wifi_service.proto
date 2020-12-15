@@ -165,6 +165,12 @@ service WifiService {
   // the WiFi device back, it treats the DUT as unhealthy. Testing host needs
   // to reboot the DUT to refrain it from affecting the following tests.
   rpc HealthCheck(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // GetLoggingConfig returns the logging configuration the device currently uses.
+  rpc GetLoggingConfig(google.protobuf.Empty) returns (GetLoggingConfigResponse) {}
+
+  // SetLoggingConfig sets the device logging configuration.
+  rpc SetLoggingConfig(SetLoggingConfigRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -468,4 +474,14 @@ message FlushBSSRequest {
 message ResetTestRequest {
   string service_path = 1;
   string server_ip = 2;
+}
+
+message SetLoggingConfigRequest {
+  int32 debug_level = 1;
+  repeated string debug_tags = 2;
+}
+
+message GetLoggingConfigResponse {
+  int32 debug_level = 1;
+  repeated string debug_tags = 2;
 }

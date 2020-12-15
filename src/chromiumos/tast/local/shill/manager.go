@@ -6,6 +6,7 @@ package shill
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -337,4 +338,34 @@ func (m *Manager) WaitForDeviceByName(ctx context.Context, iface string, timeout
 			return nil, err
 		}
 	}
+}
+
+// SetDebugTags sets the debug tags that are enabled for logging. "tags" is a list of valid tag names separated by "+".
+// Shill silently ignores invalid flags.
+func (m *Manager) SetDebugTags(ctx context.Context, tags []string) error {
+	return m.dbusObject.Call(ctx, "SetDebugTags", strings.Join(tags, "+")).Err
+}
+
+// GetDebugTags gets the list of enabled debug tags. The list is represented as a string of tag names separated by "+".
+func (m *Manager) GetDebugTags(ctx context.Context) ([]string, error) {
+	var tags string
+	if err := m.dbusObject.Call(ctx, "GetDebugTags").Store(&tags); err != nil {
+		return nil, err
+	}
+	tagsArr := strings.Split(tags, "+")
+	return tagsArr, nil
+}
+
+// SetDebugLevel sets the debugging level.
+func (m *Manager) SetDebugLevel(ctx context.Context, level int) error {
+	return m.dbusObject.Call(ctx, "SetDebugLevel", level).Err
+}
+
+// GetDebugLevel gets the enabled debug level.
+func (m *Manager) GetDebugLevel(ctx context.Context) (int, error) {
+	var level int
+	if err := m.dbusObject.Call(ctx, "GetDebugLevel").Store(&level); err != nil {
+		return 0, err
+	}
+	return level, nil
 }

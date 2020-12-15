@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/local/bundles/cros/network/pre"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -18,6 +19,7 @@ func init() {
 		Desc:     "Test that shill's DBus properties for profiles work",
 		Contacts: []string{"arowa@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:     []string{"group:mainline"},
+		Pre:      pre.SetLoggingWiFi(),
 	})
 }
 
