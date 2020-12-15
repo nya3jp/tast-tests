@@ -1366,3 +1366,19 @@ func (tf *TestFixture) DisablePowersaveMode(ctx context.Context) (shortenCtx con
 	// Power saving mode already disabled.
 	return ctxForResetingPowersaveMode, func() error { return nil }, nil
 }
+
+// SetLoggingConfig configures the logging setting with the specified values (level and tags).
+func (tf *TestFixture) SetLoggingConfig(ctx context.Context, level int, tags []string) error {
+	testing.ContextLogf(ctx, "Configure the logging setting: level = %d, tags = %v", level, tags)
+	_, err := tf.wifiClient.SetLoggingConfig(ctx, &network.SetLoggingConfigRequest{DebugLevel: int32(level), DebugTags: tags})
+	return err
+}
+
+// GetLoggingConfig returns the current DUT's logging setting (level and tags).
+func (tf *TestFixture) GetLoggingConfig(ctx context.Context) (int, []string, error) {
+	currentConfig, err := tf.wifiClient.GetLoggingConfig(ctx, &empty.Empty{})
+	if err != nil {
+		return 0, nil, err
+	}
+	return int(currentConfig.DebugLevel), currentConfig.DebugTags, err
+}

@@ -56,6 +56,19 @@ func init() {
 // wifiTestProfileName is the profile we create and use for WiFi tests.
 const wifiTestProfileName = "test"
 
+const (
+	defaultDebugLevel = 1
+	// Add more tags by modifying the string such as "wifi+vpn"
+	defaultDebugTags = "wifi"
+	// If true will set the default debug values (level=1, tags= "wifi") on the DUT.
+	setDebug = true
+)
+
+var (
+	originalDebugLevel int
+	originalDebugTags  []string
+)
+
 // WifiService implements tast.cros.network.Wifi gRPC service.
 type WifiService struct {
 	s *testing.ServiceState
@@ -71,6 +84,26 @@ func (s *WifiService) InitDUT(ctx context.Context, req *network.InitDUTRequest) 
 	} else {
 		if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
 			return nil, errors.Wrap(err, "failed to start ui")
+		}
+	}
+
+	if setDebug {
+		manager, err := shill.NewManager(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to create shill manager proxy")
+		}
+		if originalDebugLevel, err = manager.GetDebugLevel(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to get the debug level")
+		}
+		if originalDebugTags, err = manager.GetDebugTags(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to get the debug tags")
+		}
+		// Set the default debug level and tags.
+		if err := manager.SetDebugLevel(ctx, defaultDebugLevel); err != nil {
+			return nil, errors.Wrap(err, "failed to set the debug level")
+		}
+		if err := manager.SetDebugTags(ctx, strings.Split(defaultDebugTags, "+")); err != nil {
+			return nil, errors.Wrap(err, "failed to set the debug tags")
 		}
 	}
 
@@ -120,6 +153,23 @@ func (s *WifiService) ReinitTestState(ctx context.Context, _ *empty.Empty) (*emp
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
 	}
+
+	if setDebug {
+		if originalDebugLevel, err = m.GetDebugLevel(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to get the debug level")
+		}
+		if originalDebugTags, err = m.GetDebugTags(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to get the debug tags")
+		}
+		// Set the default debug level and tags.
+		if err := m.SetDebugLevel(ctx, defaultDebugLevel); err != nil {
+			return nil, errors.Wrap(err, "failed to set the debug level")
+		}
+		if err := m.SetDebugTags(ctx, strings.Split(defaultDebugTags, "+")); err != nil {
+			return nil, errors.Wrap(err, "failed to set the debug tags")
+		}
+	}
+
 	if err := s.reinitTestState(ctx, m); err != nil {
 		return nil, err
 	}
@@ -131,6 +181,14 @@ func (s *WifiService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Empt
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+
+	// Restore the original debug values.
+	if err := m.SetDebugLevel(ctx, originalDebugLevel); err != nil {
+		return nil, errors.Wrap(err, "failed to set the debug level")
+	}
+	if err := m.SetDebugTags(ctx, originalDebugTags); err != nil {
+		return nil, errors.Wrap(err, "failed to set the debug tags")
 	}
 
 	var retErr error
@@ -2364,5 +2422,46 @@ func (s *WifiService) ResetTest(ctx context.Context, req *network.ResetTestReque
 			return nil, errors.Wrap(err, "failed to verify connection after suspend")
 		}
 	}
+	return &empty.Empty{}, nil
+}
+
+// GetLoggingConfig returns the logging configuration the device currently uses.
+func (s *WifiService) GetLoggingConfig(ctx context.Context, e *empty.Empty) (*network.GetLoggingConfigResponse, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+
+	level, err := manager.GetDebugLevel(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the debug level")
+	}
+
+	tags, err := manager.GetDebugTags(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the debug tags")
+	}
+
+	return &network.GetLoggingConfigResponse{
+		DebugLevel: int32(level),
+		DebugTags:  tags,
+	}, nil
+}
+
+// SetLoggingConfig sets the device logging configuration.
+func (s *WifiService) SetLoggingConfig(ctx context.Context, req *network.SetLoggingConfigRequest) (*empty.Empty, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+
+	if err := manager.SetDebugLevel(ctx, int(req.DebugLevel)); err != nil {
+		return nil, errors.Wrap(err, "failed to set the debug level")
+	}
+
+	if err := manager.SetDebugTags(ctx, req.DebugTags); err != nil {
+		return nil, errors.Wrap(err, "failed to set the debug tags")
+	}
+
 	return &empty.Empty{}, nil
 }
