@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6375a3c_0ef4cbc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-15T23:52:52Z",
+      "side": 1,
+      "message": "Please also test printer.ProxyAdd*",
+      "revId": "343c2649c236a36ad56e256a5d4f6e3697353498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84595d3_35e81613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-15T23:52:52Z",
+      "side": 1,
+      "message": "nit/style: \"i\" and \"test\" are separate words, so the proper camel-case would be iTest. Likewise, \"itest2\" should become \"iTest2\".",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "343c2649c236a36ad56e256a5d4f6e3697353498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4cb5c0f_508356ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-15T23:52:52Z",
+      "side": 1,
+      "message": "It looks like test2 is unused.",
+      "revId": "343c2649c236a36ad56e256a5d4f6e3697353498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
