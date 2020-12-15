@@ -69,6 +69,24 @@
       "parentUuid": "2f73cc94_d14bf678",
       "revId": "f515483d0ab316d81af258147f780d6215909e82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efd131a5_a3a55668",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T18:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdd15f02_9d72028c",
+      "revId": "f515483d0ab316d81af258147f780d6215909e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
