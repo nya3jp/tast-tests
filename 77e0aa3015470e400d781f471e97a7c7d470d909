@@ -43,6 +43,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45d86b70_10967b9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-15T01:46:42Z",
+      "side": 1,
+      "message": "How long does the test normally run? Timeouts are determined by the slowest devices, times a good factor (say 5x). So if the test normally runs 10s making this a minute or two sounds good. The idea is to be very sure when a timeout happened that it was a hang, not just some temporary (or device) slowness. Also consider that the v4l2-compliance binary may run more and more in the future.",
+      "range": {
+        "startLine": 41,
+        "startChar": 108,
+        "endLine": 41,
+        "endChar": 134
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63bfabe4_6e6efb2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-15T01:46:42Z",
+      "side": 1,
+      "message": "As mentioned I don\u0027t mind generous timeouts, but should this not just roughly be the sum of all subtest timeouts plus a little extra?",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1a6dddd_db84c8fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -72,6 +118,24 @@
       "side": 1,
       "message": "If we decide to only run with other video tests, use the following instead of mainline/informational\nAttr:         []string{\"group:graphics\", \"graphics_video\", \"graphics_perbuild\"},",
       "parentUuid": "b1a6dddd_db84c8fb",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d4b96ee_0c6d51c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-15T01:46:42Z",
+      "side": 1,
+      "message": "Considering it is freedreno specific I would not put it in the CQ as there is no guarantee it will run on trogdor et al. Lets using group:graphics... for now. If it turns out to be super stable we can add it to the CQ later.",
+      "parentUuid": "56e41447_eb4efd91",
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
