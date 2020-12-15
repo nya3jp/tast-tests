@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6627111a_3bbd0755",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-12-15T03:45:43Z",
+      "side": 1,
+      "message": "Rather than hard-coding the home directory (which will change if/when I make gaia logins the default), just push the file to \"drop_applet.py\" so it lands in whatever the cwd is",
+      "range": {
+        "startLine": 26,
+        "startChar": 20,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa0cd9d8_afd8b190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-12-15T03:45:43Z",
+      "side": 1,
+      "message": "Would be good to indicate what is being dragged and dropped, which direction, and which protocol i.e. files, from chrome to crostini, via wayland",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50c109aa_0f0bd83c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-12-15T03:45:43Z",
+      "side": 1,
+      "message": "I believe we pre-install these on our test containers. If that\u0027s not the case we should fix that rather then running the install here.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81571b63_897e8971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-12-15T03:45:43Z",
+      "side": 1,
+      "message": "\"Validate file contents.\" ?",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 28
+      },
+      "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f80051_8ce93108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-12-15T03:45:43Z",
+      "side": 1,
+      "message": "Are we expecting the file to be writable too? If so, we should test that.",
+      "revId": "a9ca88f37156e239f39c0432f28232f436943b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
