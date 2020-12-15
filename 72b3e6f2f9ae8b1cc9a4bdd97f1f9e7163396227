@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c51de5_674e3e2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T23:56:25Z",
+      "side": 1,
+      "message": "@ddmail\n\nI left some comments earlier regarding your comments.\nAs you left other comments without adding something to existing discussion (e.g. \"Failed to run\" comment), I assume that you don\u0027t have further comments. \n\nIf that\u0027s the case, then we can leave code as it is. ",
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "133b8ec2_455b2db3",
@@ -14,6 +31,30 @@
       "writtenOn": "2020-12-15T23:18:37Z",
       "side": 1,
       "message": "I thought we were not going to run the streaming tests just yet? \nIn particular for the first CL we could just try and run something\nsimple, e.g. no \"-s\", \"-f\", \"-a\", just run the compliance and see\nwhat comes out. \n\nWe can add a new case e.g. \"decoder_streaming\" with these options in\na subsequent CL. They won\u0027t be orthogonal, but at least the one would\ninclude the other?",
+      "range": {
+        "startLine": 41,
+        "startChar": 6,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68271de3_81ee255d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T23:56:25Z",
+      "side": 1,
+      "message": "yes, let\u0027s do that. in fact, line 46 doesn\u0027t have \"streaming\". \nI can remove \"-f\" and \"-a\" as well.",
+      "parentUuid": "133b8ec2_455b2db3",
       "range": {
         "startLine": 41,
         "startChar": 6,
@@ -49,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eaff6500_3e737e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T23:56:25Z",
+      "side": 1,
+      "message": "got it. thanks.",
+      "parentUuid": "a73267a1_a71abbf5",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98251c0b_6f304b10",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
         "patchSetId": 8
@@ -60,6 +125,30 @@
       "writtenOn": "2020-12-15T23:18:37Z",
       "side": 1,
       "message": "nit: I think you can do here \n  shutil.EscapeSlice(command)",
+      "range": {
+        "startLine": 60,
+        "startChar": 18,
+        "endLine": 60,
+        "endChar": 74
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89cc8d8f_5a3b01a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T23:56:25Z",
+      "side": 1,
+      "message": "thank you. this format assumed multiple parameters. \nbut we can make it simple as you mentioned.",
+      "parentUuid": "98251c0b_6f304b10",
       "range": {
         "startLine": 60,
         "startChar": 18,
