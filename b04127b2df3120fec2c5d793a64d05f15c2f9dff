@@ -22,6 +22,30 @@
       },
       "revId": "b04127b2df3120fec2c5d793a64d05f15c2f9dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b139ebdb_68902761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/drag_applet.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-15T05:42:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e8a251b_79716d27",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 57
+      },
+      "revId": "b04127b2df3120fec2c5d793a64d05f15c2f9dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
