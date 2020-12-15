@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d3e92b6_0d95c650",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:37:20Z",
+      "side": 1,
+      "message": "pwang@, ihf@ PTAL\n  \n  (This CL is closer to being landed than the v4l2_compliance one).\n\nOthers FYI",
+      "revId": "28aee1ca37298e8062c84469ed2ec77f8e6808fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00cce5f3_9282e619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:37:20Z",
+      "side": 1,
+      "message": "Following offline conversation, let\u0027s call this\n  PlatformVAAPIUnittest\n\nfor example?",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "28aee1ca37298e8062c84469ed2ec77f8e6808fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
