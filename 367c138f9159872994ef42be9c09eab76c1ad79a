@@ -16,6 +16,75 @@
       "message": "Done.",
       "revId": "367c138f9159872994ef42be9c09eab76c1ad79a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9c89bf_5f4f8137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-12-15T23:06:47Z",
+      "side": 1,
+      "message": "I think adding 10 seconds to the tests is fine, but I don\u0027t know if 10 minutes is too much. I don\u0027t feel strongly about it, just be aware.",
+      "range": {
+        "startLine": 32,
+        "startChar": 22,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "367c138f9159872994ef42be9c09eab76c1ad79a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fc87743_f614a9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-12-15T23:06:47Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 54,
+        "startChar": 22,
+        "endLine": 54,
+        "endChar": 39
+      },
+      "revId": "367c138f9159872994ef42be9c09eab76c1ad79a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390a1a38_1408379b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-12-15T23:06:47Z",
+      "side": 1,
+      "message": "times out",
+      "range": {
+        "startLine": 83,
+        "startChar": 54,
+        "endLine": 83,
+        "endChar": 62
+      },
+      "revId": "367c138f9159872994ef42be9c09eab76c1ad79a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
