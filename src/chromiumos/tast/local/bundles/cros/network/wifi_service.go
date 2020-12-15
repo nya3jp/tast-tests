@@ -120,6 +120,7 @@ func (s *WifiService) ReinitTestState(ctx context.Context, _ *empty.Empty) (*emp
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
 	}
+
 	if err := s.reinitTestState(ctx, m); err != nil {
 		return nil, err
 	}
@@ -2377,5 +2378,47 @@ func (s *WifiService) HealthCheck(ctx context.Context, _ *empty.Empty) (*empty.E
 	if err != nil {
 		return nil, errors.Wrap(err, "could not get a WiFi interface")
 	}
+
+	return &empty.Empty{}, nil
+}
+
+// GetLoggingConfig returns the logging configuration the device currently uses.
+func (s *WifiService) GetLoggingConfig(ctx context.Context, e *empty.Empty) (*network.GetLoggingConfigResponse, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+
+	level, err := manager.GetDebugLevel(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the debug level")
+	}
+
+	tags, err := manager.GetDebugTags(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the debug tags")
+	}
+
+	return &network.GetLoggingConfigResponse{
+		DebugLevel: int32(level),
+		DebugTags:  tags,
+	}, nil
+}
+
+// SetLoggingConfig sets the device logging configuration.
+func (s *WifiService) SetLoggingConfig(ctx context.Context, req *network.SetLoggingConfigRequest) (*empty.Empty, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+
+	if err := manager.SetDebugLevel(ctx, int(req.DebugLevel)); err != nil {
+		return nil, errors.Wrap(err, "failed to set the debug level")
+	}
+
+	if err := manager.SetDebugTags(ctx, req.DebugTags); err != nil {
+		return nil, errors.Wrap(err, "failed to set the debug tags")
+	}
+
 	return &empty.Empty{}, nil
 }
