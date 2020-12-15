@@ -29,7 +29,7 @@ func init() {
 		Func:        OverlappingBSSScan,
 		Desc:        "Verifies that OBSS scan aborts and/or backs off when there is consistent outgoing traffic",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		Timeout:     5 * time.Minute,
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
