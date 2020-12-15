@@ -16,6 +16,24 @@
       "message": "Can you add the reason for this change to the description?\n\nI believe the install is there so that the test can be run on a non-test crostini container. Not sure whether that is required though.",
       "revId": "5e03ed7490b4e9b89327f59b5c1abd54591b7464",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4106bdb3_c4646038",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-12-15T04:38:49Z",
+      "side": 1,
+      "message": "I think it\u0027s just because this test was written before we started pre-installing those dependencies",
+      "parentUuid": "497bc77f_18ac9769",
+      "revId": "5e03ed7490b4e9b89327f59b5c1abd54591b7464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
