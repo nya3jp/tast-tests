@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -20,12 +19,10 @@ const (
 
 	// copyApplet is the data dependency needed to run a copy operation.
 	copyApplet      = "copy_applet.py"
-	copyAppletDest  = "/home/testuser/copy_applet.py"
 	copyAppletTitle = "gtk3_copy_demo"
 
 	// pasteApplet is the data dependency needed to run a paste operation.
 	pasteApplet      = "paste_applet.py"
-	pasteAppletDest  = "/home/testuser/paste_applet.py"
 	pasteAppletTitle = "gtk3_paste_demo"
 )
 
@@ -39,14 +36,14 @@ type copyConfig struct {
 // a wayland application.
 var waylandCopyConfig = &copyConfig{
 	gdkBackend: "wayland",
-	cmdArgs:    []string{"env", "GDK_BACKEND=wayland", "python3", copyAppletDest},
+	cmdArgs:    []string{"env", "GDK_BACKEND=wayland", "python3", copyApplet},
 }
 
 // x11CopyConfig is the configuration needed to test copying from
 // an X11 application.
 var x11CopyConfig = &copyConfig{
 	gdkBackend: "x11",
-	cmdArgs:    []string{"env", "GDK_BACKEND=x11", "python3", copyAppletDest},
+	cmdArgs:    []string{"env", "GDK_BACKEND=x11", "python3", copyApplet},
 }
 
 // PasteConfig holds the configuration for the paste half of the test.
@@ -59,14 +56,14 @@ type pasteConfig struct {
 // a wayland application.
 var waylandPasteConfig = &pasteConfig{
 	gdkBackend: "wayland",
-	cmdArgs:    []string{"env", "GDK_BACKEND=wayland", "python3", pasteAppletDest},
+	cmdArgs:    []string{"env", "GDK_BACKEND=wayland", "python3", pasteApplet},
 }
 
 // x11PasteConfig is the configuration needed to test pasting into
 // a x11 application.
 var x11PasteConfig = &pasteConfig{
 	gdkBackend: "x11",
-	cmdArgs:    []string{"env", "GDK_BACKEND=x11", "python3", pasteAppletDest},
+	cmdArgs:    []string{"env", "GDK_BACKEND=x11", "python3", pasteApplet},
 }
 
 // testParameters contains all the data needed to run a single test iteration.
@@ -467,17 +464,11 @@ func CopyPaste(ctx context.Context, s *testing.State) {
 	cont := pre.Container
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
-	s.Log("Installing GTK3 dependencies")
-	cmd := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to install required dependencies: ", err)
-	}
-
 	s.Log("Copying testing applets to container")
-	if err := cont.PushFile(ctx, s.DataPath(copyApplet), copyAppletDest); err != nil {
+	if err := cont.PushFile(ctx, s.DataPath(copyApplet), copyApplet); err != nil {
 		s.Fatal("Failed to push copy applet to container: ", err)
 	}
-	if err := cont.PushFile(ctx, s.DataPath(pasteApplet), pasteAppletDest); err != nil {
+	if err := cont.PushFile(ctx, s.DataPath(pasteApplet), pasteApplet); err != nil {
 		s.Fatal("Failed to push paste applet to container: ", err)
 	}
 
