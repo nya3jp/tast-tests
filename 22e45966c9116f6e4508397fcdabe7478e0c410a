@@ -16,6 +16,92 @@
       "message": "Hi Sara and Hiroki,\n\nHere is my WIP refactor change. It should be ready for a first look, let me know what you think. \n\nThanks!",
       "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "671d3f85_06edb512",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-12-15T22:14:05Z",
+      "side": 1,
+      "message": "thanks for sharing this CL. A few suggested comments 😊\nBut overall, it\u0027s looking good! ",
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5abed8_181bc0a7",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-12-15T22:14:05Z",
+      "side": 1,
+      "message": "unrelated, but I think this is a good opportunity to reorder these alphabetically",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051d5b50_e4c2a1d4",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-12-15T22:14:05Z",
+      "side": 1,
+      "message": "nit: should be lowercase",
+      "range": {
+        "startLine": 40,
+        "startChar": 32,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e68a52_dd88e183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-12-15T22:14:05Z",
+      "side": 1,
+      "message": "(ditto this comment to other files which import both c/t/c/a11y and c/t/l/bundles/cros/arc/a11y).\n\nmaybe we should name the imports, to make it clearer where the names \"a11yutils\" and \"arca11y\" originates from.\neg:\nimport (\n...\naccessibilityutils \"chromiumos/tast/local/accessibility\"\"\n....\narcaccessibility \"chromiumos/tast/local/bundles/cros/arc/accessibility\"\n)\nHere is an example of using screenshot (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/companion_library.go;l\u003d31?q\u003d%22chromiumos%2Ftast%2Flocal%2Fscreenshot%22\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2F\u0026start\u003d21)\n\nor alternatively rename the files to make it clearer.",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
