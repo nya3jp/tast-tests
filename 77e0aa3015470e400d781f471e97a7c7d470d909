@@ -437,6 +437,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c422ceb6_d6ab3c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T18:42:43Z",
+      "side": 1,
+      "message": "Test without Timeout got default timeout, AFAIR, it\u0027s around 20-30 seconds. Of course things can be changed from time to time, so it\u0027s better to define your own timeout if possible.",
+      "parentUuid": "e86554f9_1bfbdb40",
+      "range": {
+        "startLine": 41,
+        "startChar": 108,
+        "endLine": 41,
+        "endChar": 134
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "079224d1_d9566cc9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -638,6 +662,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "2f0b447e_b189f542",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1aa501f_64526e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T18:42:43Z",
+      "side": 1,
+      "message": "drm.go is added before the parameterized test got introduced. Some of the code is kind of old. I plan to do some cleaning in crrev.com/c/2575839",
+      "parentUuid": "27a61db1_3aa761a9",
       "range": {
         "startLine": 52,
         "startChar": 11,
