@@ -16,6 +16,23 @@
       "message": "There are now 20 consecutively green runs in https://tastboard.corp.google.com/test/arc.MouseInput\n\nPromoting to critical, PTAL. Thanks.",
       "revId": "05752a423702212c949d7b608123dbffeae25f03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a082a1_ff70215e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-15T21:53:20Z",
+      "side": 1,
+      "message": "let\u0027s wait 2 more builds.\n\nAccording to this it only passed 18:\nhttps://tastboard.corp.google.com/test/arc.MouseInput\n\n",
+      "revId": "05752a423702212c949d7b608123dbffeae25f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
