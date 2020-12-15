@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e22e09_173a3b43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-12-15T15:48:24Z",
+      "side": 1,
+      "message": "PTAL. The vmc tests are now stable.\ne.g. https://tastboard.corp.google.com/test/crostini.VmcStart.buster_amd64_stable\n",
+      "revId": "0920d7ce283c9bf17e88910e4741ed5275b8f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
