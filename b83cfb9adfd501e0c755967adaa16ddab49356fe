@@ -16,6 +16,24 @@
       "message": "+2\n\nside note: info.maximum should never be 0... seems like a kernel driver bug (?)\nperhaps filing a bug for kernel maintainers?\nwonder if \"evtest\" also reports maximium \u003d\u003d 0",
       "revId": "b83cfb9adfd501e0c755967adaa16ddab49356fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f8a01c_6a2541e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-15T00:55:20Z",
+      "side": 1,
+      "message": "It could be actually a hardware malfunction on a certain unit; when I tried it through skylab earlier today, it reproduced, but I just realized that my leased device happened to be the same device as the one where the failure happened (chromeos6-row8-rack11-host3).  It does not reproduce on another unit of sparky360.\n\nI also double-checked the behavior on the problematic unit; evtest also reports 0 there.\n\nSupported events:\n  Event type 0 (EV_SYN)\n  Event type 1 (EV_KEY)\n    Event code 330 (BTN_TOUCH)\n  Event type 3 (EV_ABS)\n    Event code 0 (ABS_X)\n      Value      0\n      Min        0\n      Max        0\n    Event code 1 (ABS_Y)\n      Value      0\n      Min        0\n      Max        0\n...",
+      "parentUuid": "cfb1d84f_93d4564c",
+      "revId": "b83cfb9adfd501e0c755967adaa16ddab49356fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
