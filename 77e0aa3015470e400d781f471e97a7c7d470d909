@@ -389,6 +389,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70cbf172_1e2391d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T22:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a33d1fd_bc47060e",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "028db4a8_7c372607",
@@ -548,6 +572,30 @@
       "range": {
         "startLine": 41,
         "startChar": 109,
+        "endLine": 41,
+        "endChar": 134
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cccfe28a_c26672dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T22:49:02Z",
+      "side": 1,
+      "message": "Thank you Po-Hsien. It was 2.33 sec for the run. So put 10 secs as Ilja suggested 5x time.",
+      "parentUuid": "c422ceb6_d6ab3c4a",
+      "range": {
+        "startLine": 41,
+        "startChar": 108,
         "endLine": 41,
         "endChar": 134
       },
@@ -859,6 +907,24 @@
       "side": 1,
       "message": "Note: v4l2_compliance is not QC specific (and shouldn\u0027t touch freedreno),\nit\u0027ll be run on all ARM devices.",
       "parentUuid": "0d4b96ee_0c6d51c6",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7bb6fb8_aafcaebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T22:49:02Z",
+      "side": 1,
+      "message": "So consensus seems to be not put it the CQ. And I did add below as Po-Hsien suggested. \nAttr:         []string{\"group:graphics\", \"graphics_video\", \"graphics_perbuild\"},",
+      "parentUuid": "bcb49d68_a81cea20",
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
