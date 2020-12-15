@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Downloads,
 		Desc:         "Checks Downloads integration is working",
-		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com", "cros-arc-te@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          arc.Booted(),
 		Data:         []string{"capybara.jpg"},
