@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/accessibility"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
@@ -93,7 +94,7 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	}
 
 	// Wait for the focused element to match the expected.
-	if err := accessibility.WaitForFocusedNode(ctx, cvconn, tconn, &test.Params, 10*time.Second); err != nil {
+	if err := accessibilityutils.WaitForFocusedNode(ctx, cvconn, tconn, &test.Params, 10*time.Second); err != nil {
 		return err
 	}
 
@@ -143,7 +144,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "Tab",
 			Params: ui.FindParams{
-				ClassName: accessibility.ToggleButton,
+				ClassName: arcaccessibility.ToggleButton,
 				Name:      "OFF",
 				Role:      ui.RoleTypeToggleButton,
 				Attributes: map[string]interface{}{
@@ -158,7 +159,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "Search+Space",
 			Params: ui.FindParams{
-				ClassName: accessibility.ToggleButton,
+				ClassName: arcaccessibility.ToggleButton,
 				Name:      "ON",
 				Role:      ui.RoleTypeToggleButton,
 				Attributes: map[string]interface{}{
@@ -173,7 +174,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "Tab",
 			Params: ui.FindParams{
-				ClassName: accessibility.CheckBox,
+				ClassName: arcaccessibility.CheckBox,
 				Name:      "CheckBox",
 				Role:      ui.RoleTypeCheckBox,
 				Attributes: map[string]interface{}{
@@ -188,7 +189,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "Search+Space",
 			Params: ui.FindParams{
-				ClassName: accessibility.CheckBox,
+				ClassName: arcaccessibility.CheckBox,
 				Name:      "CheckBox",
 				Role:      ui.RoleTypeCheckBox,
 				Attributes: map[string]interface{}{
@@ -203,7 +204,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "Tab",
 			Params: ui.FindParams{
-				ClassName: accessibility.SeekBar,
+				ClassName: arcaccessibility.SeekBar,
 				Name:      "seekBar",
 				Role:      ui.RoleTypeSlider,
 				Attributes: map[string]interface{}{
@@ -218,7 +219,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "=",
 			Params: ui.FindParams{
-				ClassName: accessibility.SeekBar,
+				ClassName: arcaccessibility.SeekBar,
 				Name:      "seekBar",
 				Role:      ui.RoleTypeSlider,
 				Attributes: map[string]interface{}{
@@ -233,7 +234,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "Tab",
 			Params: ui.FindParams{
-				ClassName: accessibility.SeekBar,
+				ClassName: arcaccessibility.SeekBar,
 				Role:      ui.RoleTypeSlider,
 				Attributes: map[string]interface{}{
 					"valueForRange": 3,
@@ -246,7 +247,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "-",
 			Params: ui.FindParams{
-				ClassName: accessibility.SeekBar,
+				ClassName: arcaccessibility.SeekBar,
 				Role:      ui.RoleTypeSlider,
 				Attributes: map[string]interface{}{
 					"valueForRange": 2,
@@ -261,7 +262,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "Tab",
 			Params: ui.FindParams{
-				ClassName: accessibility.EditText,
+				ClassName: arcaccessibility.EditText,
 				Name:      "contentDescription",
 				Role:      ui.RoleTypeTextField,
 			},
@@ -273,7 +274,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "a",
 			Params: ui.FindParams{
-				ClassName: accessibility.EditText,
+				ClassName: arcaccessibility.EditText,
 				Name:      "contentDescription",
 				Role:      ui.RoleTypeTextField,
 				Attributes: map[string]interface{}{
@@ -286,17 +287,17 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 		},
 	}
-	testActivities := []accessibility.TestActivity{accessibility.MainActivity, accessibility.EditTextActivity}
+	testActivities := []arcaccessibility.TestActivity{arcaccessibility.MainActivity, arcaccessibility.EditTextActivity}
 	events := make(map[string][]axEventTestStep)
-	events[accessibility.MainActivity.Name] = MainActivityTestSteps
-	events[accessibility.EditTextActivity.Name] = EditTextActivityTestSteps
+	events[arcaccessibility.MainActivity.Name] = MainActivityTestSteps
+	events[arcaccessibility.EditTextActivity.Name] = EditTextActivityTestSteps
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Error with creating EventWriter from keyboard: ", err)
 	}
 	defer ew.Close()
 
-	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
+	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity arcaccessibility.TestActivity) error {
 		testSteps := events[currentActivity.Name]
 		cleanup, err := setupEventStreamLogging(ctx, cvconn, currentActivity.Name, testSteps)
 		if err != nil {
@@ -316,5 +317,5 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}
-	accessibility.RunTest(ctx, s, testActivities, testFunc)
+	arcaccessibility.RunTest(ctx, s, testActivities, testFunc)
 }
