@@ -16,6 +16,23 @@
       "message": "I did some more testing and found that https://crrev.com/c/2580483 is the culprit and camera.CCAQRCode actually catch a real regression on Chromium when it\u0027s being promoted. I would prefer to land the revert https://crrev.com/c/2591841 of culprit instead marking CCAQRCode as informational.\n\nIf we mark CCAQRCode as informational, the regression might land in CrOS and break QR code scanning functionality on Chrome OS devices.",
       "revId": "b8ddbae002bbe4c5977baaaa8cde9275ceb0628c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b65e838_55ef10d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-12-15T17:01:06Z",
+      "side": 1,
+      "message": "thanks, abandoned",
+      "revId": "b8ddbae002bbe4c5977baaaa8cde9275ceb0628c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
