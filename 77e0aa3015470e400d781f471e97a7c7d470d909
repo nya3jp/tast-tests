@@ -16,6 +16,212 @@
       "message": "@Miguel PTAL\n\nchecking about few advanced options\nbut initial version should be fine with these options.\n",
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "028db4a8_7c372607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:28:50Z",
+      "side": 1,
+      "message": "testing.Param has Timeout attribute. How about use it?\n/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/test.go",
+      "range": {
+        "startLine": 41,
+        "startChar": 109,
+        "endLine": 41,
+        "endChar": 134
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a6dddd_db84c8fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:28:50Z",
+      "side": 1,
+      "message": "put informational here.\n\n[]string{\"gorup:mainline\", \"informational\"}\n\nbtw, shouldn\u0027t we put new test into our video fleet? Or do we plan to put it into CQ?",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd0e5a3_d283f9a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:28:50Z",
+      "side": 1,
+      "message": "No need.",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 129
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3664828c_6a2e8e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:28:50Z",
+      "side": 1,
+      "message": "you can put it into global.",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd22905e_93b3e2c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:28:50Z",
+      "side": 1,
+      "message": "cmd.Run(testexec.DumpLogOnError)\nthen you don\u0027t have to call DumpLog below.",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719e13e4_5a2ee3d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:28:50Z",
+      "side": 1,
+      "message": "Don\u0027t need",
+      "range": {
+        "startLine": 92,
+        "startChar": 55,
+        "endLine": 92,
+        "endChar": 121
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96eab2bc_9c3ff697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:28:50Z",
+      "side": 1,
+      "message": "How about s.Fatalf(\"Failed to run %s: %v\", exe, err)",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab857a2_4ed4dc15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:28:50Z",
+      "side": 1,
+      "message": "Shouldn\u0027t proceed here. Can you add a return if failed to read the file?",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087a247c_40743aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:28:50Z",
+      "side": 1,
+      "message": "How large is the output? Chances are we don\u0027t really need to double log it (one in test log, one in ${exe}.txt)",
+      "range": {
+        "startLine": 100,
+        "startChar": 14,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e925b30d_d1395e5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T01:28:50Z",
+      "side": 1,
+      "message": "How about parse the Succeeded/Failed/Warnings out and fails the test if Failed is not 0?\n\n\tvar regExp \u003d regexp.MustCompile(`Total.*: (\\d+), Succeeded: (\\d+), Failed: (\\d+), Warnings: (\\d+)`)\n\tmatches :\u003d regExp.FindAllStringSubmatch(string(contents), -1)\n\tif matches \u003d\u003d nil {\n\t\ts.Fatal(\"...\")\n\t}\n\tif len(matches) !\u003d 0 {\n\t\ts.Fatal(\"...\")\n\t}\n\tsucceeded, failed, warnings :\u003d matches[0][1],matches[0][2],matches[0][3]",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
