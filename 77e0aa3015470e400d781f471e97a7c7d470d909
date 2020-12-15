@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45069fd1_214cdf74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Thanks a million for all the comments. \nReplied some of comments. Let me follow up.",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1af3badd_1b95cbfb",
@@ -83,6 +100,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbd5ceb6_cba7f224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Yes, let me change to use \"Platform\".",
+      "parentUuid": "dd8294ac_f85b4db6",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bb3785_5d214f85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "I added v4l2_ctl temporarily to check to see whether tast handles passing case correctly. \nLet me remove v4l2_ctl",
+      "parentUuid": "1af3badd_1b95cbfb",
+      "range": {
+        "startLine": 29,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 88
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e1ed6e0_d4e7e75a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -94,6 +159,30 @@
       "writtenOn": "2020-12-15T02:34:09Z",
       "side": 1,
       "message": "nit: consider \"Runs v4l2 compatibility tests\".",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 39
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e9fb59a_aa344992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "3e1ed6e0_d4e7e75a",
       "range": {
         "startLine": 30,
         "startChar": 9,
@@ -123,6 +212,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13790a11_78faea5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Got it. Thank you.",
+      "parentUuid": "cfc0adc9_cb4430de",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d505f8fb_6646f811",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -134,6 +241,30 @@
       "writtenOn": "2020-12-15T02:34:09Z",
       "side": 1,
       "message": "Recommendation:\n- have a test case without -s and without -f\n- have _another_ test case with f\n- have _another_ test case with s\n\nAlso note that \"video_...\" is redundant in the names (full test name would \nbe video.V4l2Compliance.video_encoder). So what about test cases named e.g. \n\"encoder\", \"encoder_streaming\" and \"encoder_formats\" or some such? Same for\ndecoding.\n\nIn general it\u0027d be great to reduce the granularity of the test cases so they\ncan fail independently, helping triage.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a128b2_df6ef883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Thank you Miguel. I see your point. \n\nProblem here is that number 1 is a subset of number 2. \nSo there will be duplicate tests between 1 and 2. \nIn fact, most tests are redundant between 1 and 2 except few additional streaming tests. \n\n1. have a test case without -s\n2. have _another_ test case with s\n\nDo we have a way to make them non-overlapping?\nI don\u0027t find there is a way to do so.\n\nLet me think about what to do.",
+      "parentUuid": "d505f8fb_6646f811",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -192,6 +323,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8ef1620_95350939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Thank you. Let me check this.",
+      "parentUuid": "028db4a8_7c372607",
+      "range": {
+        "startLine": 41,
+        "startChar": 109,
+        "endLine": 41,
+        "endChar": 134
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86554f9_1bfbdb40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Thank you. Should we always have timeout feature for all tast?\nI noticed some tasts under gfx or video has it, but not all. \n\nIf this test execution only takes few secs, is it still meaningful to have time out?",
+      "parentUuid": "45d86b70_10967b9b",
+      "range": {
+        "startLine": 41,
+        "startChar": 108,
+        "endLine": 41,
+        "endChar": 134
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "079224d1_d9566cc9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -203,6 +382,30 @@
       "writtenOn": "2020-12-15T02:34:09Z",
       "side": 1,
       "message": "Remove ExtraAttr and Attr (l.53)and use a single\n  Attr: []string{\"group:graphics\", \"graphics_video\", \"graphics_perbuild\"},\n\ne.g. on l.35.",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c11cd41_1d209873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Yes, I was trying this earlier as another change, but had some build errors. \nLet me try it again.",
+      "parentUuid": "079224d1_d9566cc9",
       "range": {
         "startLine": 42,
         "startChar": 3,
@@ -238,6 +441,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08879ef5_853578f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Yes, this is intended. Checked with Alex as well. \ndec0 exists, but enc0 doen\u0027t exist. There seems to be \"udev\" rule for this according to Alex.",
+      "parentUuid": "db4f40c8_95c70c6e",
+      "range": {
+        "startLine": 45,
+        "startChar": 81,
+        "endLine": 45,
+        "endChar": 83
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63bfabe4_6e6efb2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -249,6 +476,30 @@
       "writtenOn": "2020-12-15T01:46:42Z",
       "side": 1,
       "message": "As mentioned I don\u0027t mind generous timeouts, but should this not just roughly be the sum of all subtest timeouts plus a little extra?",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f0b447e_b189f542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Yes, makes sense. Should be few seconds at most. \nLet me change this. I started from graphics/drm.go, \nand looks like I didn\u0027t pay attention to this setting.",
+      "parentUuid": "63bfabe4_6e6efb2c",
       "range": {
         "startLine": 52,
         "startChar": 11,
@@ -401,6 +652,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17ba5d1f_eb21fdaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "I thought it was strange to put just this in front of file as global. \nBut yes, let\u0027s do that. I saw that convention in other files as well.",
+      "parentUuid": "3664828c_6a2e8e8f",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd22905e_93b3e2c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -412,6 +687,24 @@
       "writtenOn": "2020-12-15T01:28:50Z",
       "side": 1,
       "message": "cmd.Run(testexec.DumpLogOnError)\nthen you don\u0027t have to call DumpLog below.",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e78867_c7012ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "Thank you. Yes, I noticed that some codes were doing that. \nI can change to that way.",
+      "parentUuid": "fd22905e_93b3e2c3",
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -458,6 +751,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "444d5479_c70416ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "I discussed this with error with Miguel. \nThis message \"Failed to run\" was mis-leading to us. \nBecause the test did run and failed, but it is still mentioning \"Failed to run\".\nWill there be better wording then this one?",
+      "parentUuid": "96eab2bc_9c3ff697",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ab857a2_4ed4dc15",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -469,6 +780,30 @@
       "writtenOn": "2020-12-15T01:28:50Z",
       "side": 1,
       "message": "Shouldn\u0027t proceed here. Can you add a return if failed to read the file?",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2056d90a_16c3013e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "That\u0027s true. Thank you for catching it.",
+      "parentUuid": "6ab857a2_4ed4dc15",
       "range": {
         "startLine": 98,
         "startChar": 2,
@@ -504,6 +839,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69e2ca52_309b3efb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "I intentionally did it this way, \nbut yes, it is duplicated.\n\nAssuming it is clear to everyone where ${exe}.txt exists, \nlet me remove this line.",
+      "parentUuid": "087a247c_40743aff",
+      "range": {
+        "startLine": 100,
+        "startChar": 14,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e925b30d_d1395e5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -515,6 +874,24 @@
       "writtenOn": "2020-12-15T01:28:50Z",
       "side": 1,
       "message": "How about parse the Succeeded/Failed/Warnings out and fails the test if Failed is not 0?\n\n\tvar regExp \u003d regexp.MustCompile(`Total.*: (\\d+), Succeeded: (\\d+), Failed: (\\d+), Warnings: (\\d+)`)\n\tmatches :\u003d regExp.FindAllStringSubmatch(string(contents), -1)\n\tif matches \u003d\u003d nil {\n\t\ts.Fatal(\"...\")\n\t}\n\tif len(matches) !\u003d 0 {\n\t\ts.Fatal(\"...\")\n\t}\n\tsucceeded, failed, warnings :\u003d matches[0][1],matches[0][2],matches[0][3]",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220fd934_34d60077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T05:23:01Z",
+      "side": 1,
+      "message": "looks elegant. let me check this. thank you.",
+      "parentUuid": "e925b30d_d1395e5a",
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
