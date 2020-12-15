@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccfffe04_dc730e1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-15T04:10:08Z",
+      "side": 1,
+      "message": "This took a lot longer to debug then I initially thought. Turns out this breaks the assumptions for a few tests and some boards show 5 apps NOT 2. I\u0027ve now updated to accept either 2 or 5 apps in the specific configuration. Have also minimized the blast radius back to shelf.LaunchedApps to get this back on the CQ and will investigate the failing tests as a follow up",
+      "revId": "9c591a5fbb4b14611126eb6a85048a70659f3f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
