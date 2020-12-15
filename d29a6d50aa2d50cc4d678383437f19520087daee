@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c589fbf6_8f20fdfb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-15T07:04:06Z",
+      "side": 1,
+      "message": "Is this already available in the struct? f.tconn should be sufficient.",
+      "range": {
+        "startLine": 755,
+        "startChar": 56,
+        "endLine": 755,
+        "endChar": 78
+      },
+      "revId": "d29a6d50aa2d50cc4d678383437f19520087daee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
