@@ -16,6 +16,24 @@
       "message": "will enable \"encoder\" later following Miguel\u0027s suggestion.\nadding his comments for the perspective.\n\nmy comment about landing it in steps\nI meant that if you land the v4l2_compliance Tast wrapper as is (one big encoder and one big decoder)\nthe granularity would be such, that it\u0027ll fail in very many boards for different reasons\nSo I\u0027d first land e.g. decoding\nthen see how it behaves on all platforms\nthen land the encoding CL",
       "revId": "194fff0678d68b5f77637aa9c4a0c568c504336e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b301b91c_16530fa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T22:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "238ca8aa_7288cb1b",
+      "revId": "194fff0678d68b5f77637aa9c4a0c568c504336e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
