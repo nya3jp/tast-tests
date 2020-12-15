@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f9e7cd_4c5d7122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-15T04:28:20Z",
+      "side": 1,
+      "message": "It\u0027s actually 6 apps but Play Store only shows when ARC is enabled. Default is defined here: https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/ui/ash/chrome_launcher_prefs.cc;l\u003d51-54;drc\u003d77a9f6d7b873b92d8fe606168466c0acadf5a135\n\nThere seems to be a feature (disabled by default) trying out 7 and 10 icon layouts as well.",
+      "parentUuid": "fd019267_8fe2c891",
+      "revId": "9c591a5fbb4b14611126eb6a85048a70659f3f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11b09e6a_91ea5036",
@@ -49,6 +67,30 @@
       "writtenOn": "2020-12-15T04:18:52Z",
       "side": 1,
       "message": "Keep this file alphabetical",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "9c591a5fbb4b14611126eb6a85048a70659f3f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "474c0750_1a7a368a",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-15T04:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b09e6a_91ea5036",
       "range": {
         "startLine": 75,
         "startChar": 1,
