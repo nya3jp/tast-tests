@@ -17,8 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -485,14 +483,8 @@ func SecureCopyPaste(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set clipboard data: ", err)
 	}
 
-	// Install dependencies.
-	aptCmd := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0")
-	if err := aptCmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatalf("Failed to run %s: %v", shutil.EscapeSlice(aptCmd.Args), err)
-	}
-
 	// Launch the app.
-	if err := cont.PushFile(ctx, s.DataPath(conf.app), "/home/testuser/"+conf.app); err != nil {
+	if err := cont.PushFile(ctx, s.DataPath(conf.app), conf.app); err != nil {
 		s.Fatalf("Failed to push %v to container: %v", conf.app, err)
 	}
 	appID, exitCallback, err := crostini.LaunchGUIApp(ctx, tconn, cont.Command(ctx, "env", "GDK_BACKEND="+conf.backend, "python3", conf.app))
