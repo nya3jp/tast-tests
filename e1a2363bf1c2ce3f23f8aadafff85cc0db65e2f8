@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "209c2e58_97329a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-12-15T14:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00127612_75dabe98",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 4
+      },
+      "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c32797_9731b215",
