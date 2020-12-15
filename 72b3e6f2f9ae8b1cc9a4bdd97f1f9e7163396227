@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "133b8ec2_455b2db3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T23:18:37Z",
+      "side": 1,
+      "message": "I thought we were not going to run the streaming tests just yet? \nIn particular for the first CL we could just try and run something\nsimple, e.g. no \"-s\", \"-f\", \"-a\", just run the compliance and see\nwhat comes out. \n\nWe can add a new case e.g. \"decoder_streaming\" with these options in\na subsequent CL. They won\u0027t be orthogonal, but at least the one would\ninclude the other?",
+      "range": {
+        "startLine": 41,
+        "startChar": 6,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73267a1_a71abbf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T23:18:37Z",
+      "side": 1,
+      "message": "nit: move this to l.60 (right before it\u0027s used).",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98251c0b_6f304b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T23:18:37Z",
+      "side": 1,
+      "message": "nit: I think you can do here \n  shutil.EscapeSlice(command)",
+      "range": {
+        "startLine": 60,
+        "startChar": 18,
+        "endLine": 60,
+        "endChar": 74
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c24435_171396c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T23:18:37Z",
+      "side": 1,
+      "message": "I think you need here:\n , testOpt.command[1]...)\n\nto get the flags.",
+      "range": {
+        "startLine": 71,
+        "startChar": 55,
+        "endLine": 71,
+        "endChar": 56
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
