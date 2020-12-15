@@ -169,6 +169,16 @@ func (tf *TestFixture) resetNetCertStore(ctx context.Context) error {
 	return err
 }
 
+const (
+	// Default log level used in WiFi tests.
+	logLevel = -4
+	// Default log scopes used in WiFi tests. The scopes (connection + dbus + device + link + manager + portal + service)
+	// are default for all connectivity tests.
+	logScopes = "connection+dbus+device+link+manager+portal+service+wifi"
+	// If true will set the default debug values on the DUT.
+	setLogging = true
+)
+
 // NewTestFixture creates a TestFixture.
 // The TestFixture contains a gRPC connection to the DUT and a SSH connection to the router.
 // The method takes two context: ctx and daemonCtx, the first one is the context for the operation and
@@ -213,6 +223,17 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
 	if _, err := tf.wifiClient.InitDUT(ctx, &network.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
 		return nil, errors.Wrap(err, "failed to InitDUT")
+	}
+
+	if setLogging {
+		if err := tf.SetLoggingConfig(ctx, logLevel, strings.Split(logScopes, "+")); err != nil {
+			return nil, err
+		}
+		changedLoggingLevel, changedLoggingScopes, err := tf.GetLoggingConfig(ctx)
+		if err != nil {
+			return nil, err
+		}
+		testing.ContextLogf(ctx, "The changed Logging level = %d, scopes = %v", changedLoggingLevel, changedLoggingScopes)
 	}
 
 	// Wificell precondition always provides us with router name, but we need
@@ -397,6 +418,16 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 		router.host = nil
 	}
 	if tf.wifiClient != nil {
+		if setLogging {
+			if err := tf.SetLoggingConfig(ctx, 0, []string{}); err != nil {
+				return err
+			}
+			finalLoggingLevel, finalLoggingScopes, err := tf.GetLoggingConfig(ctx)
+			if err != nil {
+				return err
+			}
+			testing.ContextLogf(ctx, "The final Logging level = %d, scopes = %v", finalLoggingLevel, finalLoggingScopes)
+		}
 		if _, err := tf.wifiClient.TearDown(ctx, &empty.Empty{}); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
 		}
@@ -1365,4 +1396,20 @@ func (tf *TestFixture) DisablePowersaveMode(ctx context.Context) (shortenCtx con
 
 	// Power saving mode already disabled.
 	return ctxForResetingPowersaveMode, func() error { return nil }, nil
+}
+
+// SetLoggingConfig configures the logging setting with the specified values (level and tags).
+func (tf *TestFixture) SetLoggingConfig(ctx context.Context, level int, tags []string) error {
+	testing.ContextLogf(ctx, "Configure the logging setting: level = %d, tags = %v", level, tags)
+	_, err := tf.wifiClient.SetLoggingConfig(ctx, &network.SetLoggingConfigRequest{DebugLevel: int32(level), DebugTags: tags})
+	return err
+}
+
+// GetLoggingConfig returns the current DUT's logging setting (level and tags).
+func (tf *TestFixture) GetLoggingConfig(ctx context.Context) (int, []string, error) {
+	currentConfig, err := tf.wifiClient.GetLoggingConfig(ctx, &empty.Empty{})
+	if err != nil {
+		return 0, nil, err
+	}
+	return int(currentConfig.DebugLevel), currentConfig.DebugTags, err
 }
