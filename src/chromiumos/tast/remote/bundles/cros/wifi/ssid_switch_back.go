@@ -22,7 +22,7 @@ func init() {
 		Func:        SSIDSwitchBack,
 		Desc:        "Verifies that the DUT can rejoin a previously connected AP when it loses connectivity to its current AP",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
