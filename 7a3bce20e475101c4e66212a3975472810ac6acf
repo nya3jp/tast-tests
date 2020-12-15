@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d4eac09_9bfb44be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-15T07:22:42Z",
+      "side": 1,
+      "message": "Might want to avoid polluting the crostini namespace with generic sounding var names",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "7a3bce20e475101c4e66212a3975472810ac6acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b9a7288_f125604a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-15T07:22:42Z",
+      "side": 1,
+      "message": "right",
+      "range": {
+        "startLine": 164,
+        "startChar": 36,
+        "endLine": 164,
+        "endChar": 40
+      },
+      "revId": "7a3bce20e475101c4e66212a3975472810ac6acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
