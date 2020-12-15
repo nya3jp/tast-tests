@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01351edc_5f7bafcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-12-15T20:22:36Z",
+      "side": 1,
+      "message": "There are now 20 consecutively green runs in https://tastboard.corp.google.com/test/arc.MouseInput\n\nPromoting to critical, PTAL. Thanks.",
+      "revId": "05752a423702212c949d7b608123dbffeae25f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
