@@ -18,6 +18,132 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53076899_816e6684",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:34:09Z",
+      "side": 1,
+      "message": "My comments too.\n\nI wanted to get it reviewed by myself first before piling up\nother reviewers\u0027 comments 😅 but they were too eager !",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af3badd_1b95cbfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:34:09Z",
+      "side": 1,
+      "message": "If we run \"v4l2_ctl\" (l.48) then this doesn\u0027t apply.",
+      "range": {
+        "startLine": 29,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 88
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8294ac_f85b4db6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:34:09Z",
+      "side": 1,
+      "message": "nit: s/V4L2Compliance/PlatformV4L2/ ? As per offline discussion and since\nyou\u0027re running v4l2_ctl as well (l.48).",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e1ed6e0_d4e7e75a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:34:09Z",
+      "side": 1,
+      "message": "nit: consider \"Runs v4l2 compatibility tests\".",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 39
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc0adc9_cb4430de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:34:09Z",
+      "side": 1,
+      "message": "We need to add a SoftwareDeps entry here so that this test would run only\non ARM boards. Ideally we\u0027d use something v4l2 related, but we\u0027ll get to\nthat. For the time being you can just add here:\n  SoftwareDeps: []string{\"arm\"},",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d505f8fb_6646f811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:34:09Z",
+      "side": 1,
+      "message": "Recommendation:\n- have a test case without -s and without -f\n- have _another_ test case with f\n- have _another_ test case with s\n\nAlso note that \"video_...\" is redundant in the names (full test name would \nbe video.V4l2Compliance.video_encoder). So what about test cases named e.g. \n\"encoder\", \"encoder_streaming\" and \"encoder_formats\" or some such? Same for\ndecoding.\n\nIn general it\u0027d be great to reduce the granularity of the test cases so they\ncan fail independently, helping triage.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "028db4a8_7c372607",
@@ -59,6 +185,52 @@
         "startChar": 108,
         "endLine": 41,
         "endChar": 134
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079224d1_d9566cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:34:09Z",
+      "side": 1,
+      "message": "Remove ExtraAttr and Attr (l.53)and use a single\n  Attr: []string{\"group:graphics\", \"graphics_video\", \"graphics_perbuild\"},\n\ne.g. on l.35.",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4f40c8_95c70c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:34:09Z",
+      "side": 1,
+      "message": "Curious: here there\u0027s a 0 index, but no 0 in l.41, is that intended?",
+      "range": {
+        "startLine": 45,
+        "startChar": 81,
+        "endLine": 45,
+        "endChar": 83
       },
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -136,6 +308,47 @@
       "side": 1,
       "message": "Considering it is freedreno specific I would not put it in the CQ as there is no guarantee it will run on trogdor et al. Lets using group:graphics... for now. If it turns out to be super stable we can add it to the CQ later.",
       "parentUuid": "56e41447_eb4efd91",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb49d68_a81cea20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:34:09Z",
+      "side": 1,
+      "message": "Note: v4l2_compliance is not QC specific (and shouldn\u0027t touch freedreno),\nit\u0027ll be run on all ARM devices.",
+      "parentUuid": "0d4b96ee_0c6d51c6",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b325d462_3eec3fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T02:34:09Z",
+      "side": 1,
+      "message": "Since this method is so short, consider just removing runTestStart and merging\nit here.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 13
+      },
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
