@@ -509,6 +509,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee51acd3_69a84301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T22:12:47Z",
+      "side": 1,
+      "message": "yes, let me do that. build working fine after the change.",
+      "parentUuid": "c8ef1620_95350939",
+      "range": {
+        "startLine": 41,
+        "startChar": 109,
+        "endLine": 41,
+        "endChar": 134
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "079224d1_d9566cc9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -840,6 +864,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b15807e1_dfa68892",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T22:12:47Z",
+      "side": 1,
+      "message": "fair concern. removing \"runTestStart\".",
+      "parentUuid": "b325d462_3eec3fa4",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecd0e5a3_d283f9a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -1140,6 +1188,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53f453eb_68a30e36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T22:12:47Z",
+      "side": 1,
+      "message": "Changing to s.Fatal",
+      "parentUuid": "2056d90a_16c3013e",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "087a247c_40743aff",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -1240,6 +1312,24 @@
       "side": 1,
       "message": "looks elegant. let me check this. thank you.",
       "parentUuid": "e925b30d_d1395e5a",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09343efc_a10f3366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T22:12:47Z",
+      "side": 1,
+      "message": "This seems redundant to me because v4l2-compatible binary returns value other than 0 if there is any failure. So this code is already doing what this code is trying to do. Let me know if I am missing something here.",
+      "parentUuid": "220fd934_34d60077",
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
