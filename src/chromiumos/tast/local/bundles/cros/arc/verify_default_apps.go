@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VerifyDefaultApps,
 		Desc:         "Verifies Default arc apps are installed",
-		Contacts:     []string{"vkrishan@google.com", "rohitbm@google.com", "arc-eng@google.com"},
+		Contacts:     []string{"vkrishan@google.com", "rohitbm@google.com", "arc-eng@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
