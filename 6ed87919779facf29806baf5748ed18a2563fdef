@@ -110,6 +110,30 @@
       },
       "revId": "6ed87919779facf29806baf5748ed18a2563fdef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69888e7d_349dbb2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T22:52:03Z",
+      "side": 1,
+      "message": "Oops. Sorry.\nYes, it\u0027s nicer to reserve some time for the ui to be back. Let me upload another patch.",
+      "parentUuid": "5e68efa8_e33dd7a3",
+      "range": {
+        "startLine": 80,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 42
+      },
+      "revId": "6ed87919779facf29806baf5748ed18a2563fdef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
