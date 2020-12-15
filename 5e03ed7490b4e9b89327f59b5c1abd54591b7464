@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "497bc77f_18ac9769",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-15T04:33:56Z",
+      "side": 1,
+      "message": "Can you add the reason for this change to the description?\n\nI believe the install is there so that the test can be run on a non-test crostini container. Not sure whether that is required though.",
+      "revId": "5e03ed7490b4e9b89327f59b5c1abd54591b7464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
