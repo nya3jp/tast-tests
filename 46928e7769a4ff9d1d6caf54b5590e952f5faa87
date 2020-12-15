@@ -39,6 +39,99 @@
       },
       "revId": "46928e7769a4ff9d1d6caf54b5590e952f5faa87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfc7f2c_48afdb97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-15T22:58:49Z",
+      "side": 1,
+      "message": "These are only used in this file, suggest to make them inside the test func.",
+      "parentUuid": "84d34a2e_b75cbda5",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "46928e7769a4ff9d1d6caf54b5590e952f5faa87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3787ae8e_5c674464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-15T22:58:49Z",
+      "side": 1,
+      "message": "Since this tests drag and drop a file, suggest to rename to DragFileDropApplet or something similar but more meaningful",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "46928e7769a4ff9d1d6caf54b5590e952f5faa87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ceade2_a08db973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-15T22:58:49Z",
+      "side": 1,
+      "message": "a file.",
+      "range": {
+        "startLine": 36,
+        "startChar": 21,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "46928e7769a4ff9d1d6caf54b5590e952f5faa87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212230d6_f765a0df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-15T22:58:49Z",
+      "side": 1,
+      "message": "If the Files app is not opened in My files, you might need to call filesapp.OpenDir to open it.",
+      "range": {
+        "startLine": 134,
+        "startChar": 15,
+        "endLine": 134,
+        "endChar": 31
+      },
+      "revId": "46928e7769a4ff9d1d6caf54b5590e952f5faa87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
