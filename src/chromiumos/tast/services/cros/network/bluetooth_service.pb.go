@@ -285,13 +285,13 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type BluetoothServiceClient interface {
-	// SetBluetoothPowered enables/disables the Bluetooth device through dbus.
+	// SetBluetoothPowered sets the Bluetooth adapter power status via settingsPrivate. This setting persists across reboots.
 	SetBluetoothPowered(ctx context.Context, in *SetBluetoothPoweredRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// SetBluetoothPoweredFast enables/disables the Bluetooth device through dbus.
+	// SetBluetoothPoweredFast sets the Bluetooth adapter power status via D-Bus. This setting does not persist across boots.
 	SetBluetoothPoweredFast(ctx context.Context, in *SetBluetoothPoweredFastRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// GetBluetoothPowered returns the status of the bluetooth adapter as well as the machine's Bluetooth boot preference.
+	// GetBluetoothPowered checks whether the Bluetooth adapter is enabled as well as the Bluetooth boot preference.
 	GetBluetoothPowered(ctx context.Context, in *GetBluetoothPoweredRequest, opts ...grpc.CallOption) (*GetBluetoothPoweredResponse, error)
-	// GetBluetoothPoweredFast returns the status of the bluetooth adapter as well as the machine's Bluetooth boot preference.
+	// GetBluetoothPoweredFast checks whether the Bluetooth adapter is enabled.
 	GetBluetoothPoweredFast(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetBluetoothPoweredFastResponse, error)
 	// ValidateBluetoothFunctional checks to see whether the Bluetooth device is usable.
 	ValidateBluetoothFunctional(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
@@ -352,13 +352,13 @@ func (c *bluetoothServiceClient) ValidateBluetoothFunctional(ctx context.Context
 
 // BluetoothServiceServer is the server API for BluetoothService service.
 type BluetoothServiceServer interface {
-	// SetBluetoothPowered enables/disables the Bluetooth device through dbus.
+	// SetBluetoothPowered sets the Bluetooth adapter power status via settingsPrivate. This setting persists across reboots.
 	SetBluetoothPowered(context.Context, *SetBluetoothPoweredRequest) (*empty.Empty, error)
-	// SetBluetoothPoweredFast enables/disables the Bluetooth device through dbus.
+	// SetBluetoothPoweredFast sets the Bluetooth adapter power status via D-Bus. This setting does not persist across boots.
 	SetBluetoothPoweredFast(context.Context, *SetBluetoothPoweredFastRequest) (*empty.Empty, error)
-	// GetBluetoothPowered returns the status of the bluetooth adapter as well as the machine's Bluetooth boot preference.
+	// GetBluetoothPowered checks whether the Bluetooth adapter is enabled as well as the Bluetooth boot preference.
 	GetBluetoothPowered(context.Context, *GetBluetoothPoweredRequest) (*GetBluetoothPoweredResponse, error)
-	// GetBluetoothPoweredFast returns the status of the bluetooth adapter as well as the machine's Bluetooth boot preference.
+	// GetBluetoothPoweredFast checks whether the Bluetooth adapter is enabled.
 	GetBluetoothPoweredFast(context.Context, *empty.Empty) (*GetBluetoothPoweredFastResponse, error)
 	// ValidateBluetoothFunctional checks to see whether the Bluetooth device is usable.
 	ValidateBluetoothFunctional(context.Context, *empty.Empty) (*empty.Empty, error)
