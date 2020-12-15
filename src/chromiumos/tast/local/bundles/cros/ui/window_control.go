@@ -227,15 +227,15 @@ func WindowControl(ctx context.Context, s *testing.State) {
 			return errors.Wrapf(err, "failed to find the window %d", w.ID)
 		}
 		bounds := w.BoundsInRoot
-		br := bounds.BottomRight()
-		if err := mouse.Move(ctx, tconn, br, 0); err != nil {
+		tr := bounds.TopRight()
+		if err := mouse.Move(ctx, tconn, tr, 0); err != nil {
 			return errors.Wrap(err, "failed to move the mouse to the initial location")
 		}
 		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
 			return errors.Wrap(err, "failed to press the left button")
 		}
 		defer mouse.Release(ctx, tconn, mouse.LeftButton)
-		for i, point := range []coords.Point{bounds.CenterPoint(), br} {
+		for i, point := range []coords.Point{bounds.CenterPoint(), tr} {
 			if err := mouse.Move(ctx, tconn, point, 500*time.Millisecond); err != nil {
 				return errors.Wrapf(err, "failed to move the mouse to %v at step %d", point, i)
 			}
