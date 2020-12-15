@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f659be1c_b8809b32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-15T09:59:05Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "2ca0e970_e8ba001c",
+      "revId": "d29a6d50aa2d50cc4d678383437f19520087daee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d66e0a71_804ecbee",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7646178c_829835c7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-15T09:59:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d66e0a71_804ecbee",
+      "range": {
+        "startLine": 744,
+        "startChar": 0,
+        "endLine": 745,
+        "endChar": 26
+      },
+      "revId": "d29a6d50aa2d50cc4d678383437f19520087daee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c589fbf6_8f20fdfb",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-12-15T07:04:06Z",
       "side": 1,
       "message": "Is this already available in the struct? f.tconn should be sufficient.",
+      "range": {
+        "startLine": 755,
+        "startChar": 56,
+        "endLine": 755,
+        "endChar": 78
+      },
+      "revId": "d29a6d50aa2d50cc4d678383437f19520087daee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c33534_a446c208",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-15T09:59:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c589fbf6_8f20fdfb",
       "range": {
         "startLine": 755,
         "startChar": 56,
