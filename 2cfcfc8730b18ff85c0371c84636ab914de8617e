@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b6b301_aa4fb146",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T22:49:02Z",
+      "side": 1,
+      "message": "I uploaded changes to reflect all of comments. And asked few questions if I thought some comments are not applicable. And let me do +2 button as well. (I think +2 got enabled for me with Po-Hsien\u0027s +2 earlier with LGTM.)\n",
+      "revId": "2cfcfc8730b18ff85c0371c84636ab914de8617e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
