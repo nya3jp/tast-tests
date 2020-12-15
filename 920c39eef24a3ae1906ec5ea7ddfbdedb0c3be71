@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba54ad46_b2c80889",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2020-12-15T08:46:43Z",
+      "side": 1,
+      "message": "Hi, I noticed the breakage on TreeHugger which made tests take 1.5x more time than before. Can we revert crrev.com/c/2232379 for now?",
+      "revId": "920c39eef24a3ae1906ec5ea7ddfbdedb0c3be71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a2fb39_4e2a0b2b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2020-12-15T08:46:43Z",
+      "side": 0,
+      "message": "It appears that |a.outDir| isn\u0027t available at this point when called from preImpl.Prepare().",
+      "revId": "cd4a881c622b45fc95ed31558066fc1b1f1d5b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
