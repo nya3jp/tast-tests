@@ -62,6 +62,30 @@
       },
       "revId": "18443b2fa88d6a5e39d0de1594a39bcff630c07e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16449718_030432b3",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-15T06:00:20Z",
+      "side": 1,
+      "message": "I wrongly delete part of the message, should be: \"if we strings.Split(tags, \"+\") inside and return []string.\"",
+      "parentUuid": "1c61fb3b_92d417e1",
+      "range": {
+        "startLine": 299,
+        "startChar": 53,
+        "endLine": 299,
+        "endChar": 59
+      },
+      "revId": "18443b2fa88d6a5e39d0de1594a39bcff630c07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
