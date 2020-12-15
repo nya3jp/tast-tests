@@ -16,6 +16,52 @@
       "message": "updated some of them. will update remaining ones as well.",
       "revId": "27364a60d1f6cacdc96cff4576cb38b55b720f90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34aac874_ec5115d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T18:42:43Z",
+      "side": 1,
+      "message": "How about v4l2SummaryRegExp?",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "27364a60d1f6cacdc96cff4576cb38b55b720f90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a48f67_35947ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T18:42:43Z",
+      "side": 1,
+      "message": "If you decide to use the timeout for the whole test, this should be larger or equal to any of the subtest timeout.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "27364a60d1f6cacdc96cff4576cb38b55b720f90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
