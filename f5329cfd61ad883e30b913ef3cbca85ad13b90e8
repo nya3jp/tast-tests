@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0de532dc_cb3ba3e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T16:29:18Z",
+      "side": 1,
+      "message": "I thought Cq-Depend didn\u0027t work across repos? Anyway it has landed\nalready.",
+      "parentUuid": "56a56ef5_0ac4bb85",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "f5329cfd61ad883e30b913ef3cbca85ad13b90e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a224f2f2_18a219b2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-14T23:27:47Z",
       "side": 1,
       "message": "Just some idea, the size seems tied to the filename. How about have a mapping from filename-\u003esize? \nSame situation applies to regExpFPS and commandBuilder. So that testParam only need to hold command/filename/decoder/encodeType.\n\nEither way looks good to me though.",
+      "range": {
+        "startLine": 147,
+        "startChar": 20,
+        "endLine": 148,
+        "endChar": 44
+      },
+      "revId": "f5329cfd61ad883e30b913ef3cbca85ad13b90e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad2ce12c_7f587cad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-15T16:29:18Z",
+      "side": 1,
+      "message": "Such a mapping is what has been done for e.g. video.EncodeAccel [1]:\ne.g. encode.Tulip720P as part of the encoding.TestOptions. Personally I\nthink it\u0027s more confusing than clarifying: reading encode.Tulip720p\nforces the reader to go up the file to find encoding.TestOptions\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/media/encoding/test_options.go;l\u003d24\nwhich then guides the reader to look for StreamParams\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/media/encoding/stream_params.go;l\u003d15\nbut that still leaves the question of the data to be used, which is\ndefined yet elsewhere \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/encode/test_cases.go;l\u003d27\nIOW this is a case of good intentions gone wrong IMHO. Since these\ntest cases are very shallow, I\u0027d rather leave here all parameters\nspelled out.\n\nUnless you mean parsing the filename string to extract the size?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/encode_accel.go;l\u003d271",
+      "parentUuid": "7ec1b42b_f9c97960",
       "range": {
         "startLine": 147,
         "startChar": 20,
