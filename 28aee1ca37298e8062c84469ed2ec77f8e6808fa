@@ -56,6 +56,30 @@
       },
       "revId": "28aee1ca37298e8062c84469ed2ec77f8e6808fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea99536_18d90824",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-15T21:44:27Z",
+      "side": 1,
+      "message": "Thank you Miguel. Updated together with needed file name change and commit comments.",
+      "parentUuid": "00cce5f3_9282e619",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "28aee1ca37298e8062c84469ed2ec77f8e6808fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
