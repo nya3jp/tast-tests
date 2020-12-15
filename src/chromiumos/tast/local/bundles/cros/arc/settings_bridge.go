@@ -11,8 +11,9 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/accessibility"
+	arca11y "chromiumos/tast/local/bundles/cros/arc/a11y"
 	"chromiumos/tast/local/bundles/cros/arc/chromeproxy"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
@@ -20,24 +21,24 @@ import (
 )
 
 type settingsBridgeParam struct {
-	accessibilityFeatures []accessibility.Feature
+	accessibilityFeatures []a11y.Feature
 	runProxySync          bool
 }
 
 var stableSettingsBridgeParam = settingsBridgeParam{
-	accessibilityFeatures: []accessibility.Feature{
-		accessibility.SpokenFeedback,
+	accessibilityFeatures: []a11y.Feature{
+		a11y.SpokenFeedback,
 	},
 	runProxySync: true,
 }
 
 var unstableSettingsBridgeParam = settingsBridgeParam{
-	accessibilityFeatures: []accessibility.Feature{
-		accessibility.SwitchAccess,
-		accessibility.SelectToSpeak,
-		accessibility.FocusHighlight,
-		accessibility.ScreenMagnifier,
-		accessibility.DockedMagnifier,
+	accessibilityFeatures: []a11y.Feature{
+		a11y.SwitchAccess,
+		a11y.SelectToSpeak,
+		a11y.FocusHighlight,
+		a11y.ScreenMagnifier,
+		a11y.DockedMagnifier,
 	},
 	runProxySync: false,
 }
@@ -72,17 +73,17 @@ func init() {
 
 // checkAndroidAccessibility checks that Android accessibility Settings is expectedly enabled/disabled.
 func checkAndroidAccessibility(ctx context.Context, a *arc.ARC, enable bool) error {
-	if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
+	if res, err := arca11y.IsEnabledAndroid(ctx, a); err != nil {
 		return err
 	} else if res != enable {
 		return errors.Errorf("accessibility_enabled is %t in Android", res)
 	}
 
-	services, err := accessibility.EnabledAndroidAccessibilityServices(ctx, a)
+	services, err := arca11y.EnabledAndroidAccessibilityServices(ctx, a)
 	if err != nil {
 		return err
 	}
-	enabled := len(services) == 1 && services[0] == accessibility.ArcAccessibilityHelperService
+	enabled := len(services) == 1 && services[0] == arca11y.ArcAccessibilityHelperService
 	disabled := len(services) == 1 && len(services[0]) == 0
 	if (enable && !enabled) || (!enable && !disabled) {
 		return errors.Errorf("enabled accessibility services are not expected: %v", services)
@@ -92,10 +93,10 @@ func checkAndroidAccessibility(ctx context.Context, a *arc.ARC, enable bool) err
 }
 
 // disableAccessibilityFeatures disables the features specified in features.
-func disableAccessibilityFeatures(ctx context.Context, tconn *chrome.TestConn, features []accessibility.Feature) error {
+func disableAccessibilityFeatures(ctx context.Context, tconn *chrome.TestConn, features []a11y.Feature) error {
 	var failedFeatures []string
 	for _, feature := range features {
-		if err := accessibility.SetFeatureEnabled(ctx, tconn, feature, false); err != nil {
+		if err := a11y.SetFeatureEnabled(ctx, tconn, feature, false); err != nil {
 			failedFeatures = append(failedFeatures, string(feature))
 			testing.ContextLogf(ctx, "Failed disabling %s: %v", feature, err)
 		}
@@ -109,12 +110,12 @@ func disableAccessibilityFeatures(ctx context.Context, tconn *chrome.TestConn, f
 
 // testAccessibilitySync runs the test to ensure spoken feedback settings
 // are synchronized between Chrome and Android.
-func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, features []accessibility.Feature) (retErr error) {
+func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, features []a11y.Feature) (retErr error) {
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
 
-	if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
+	if res, err := arca11y.IsEnabledAndroid(ctx, a); err != nil {
 		return err
 	} else if res {
 		return errors.New("accessibility is unexpectedly enabled on boot")
@@ -132,7 +133,7 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 
 	for _, feature := range features {
 		testing.ContextLog(ctx, "Testing ", feature)
-		if feature == accessibility.SwitchAccess {
+		if feature == a11y.SwitchAccess {
 			// Ensure that disable switch access confirmation dialog does not get shown.
 			// If there is an err here, switch access will not be enabled, meaning that switch access
 			// will not be disabled in the above disableA11yFeatures(). In this situation, the "switch access
@@ -142,7 +143,7 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 			}
 		}
 		for _, enable := range []bool{true, false} {
-			if err := accessibility.SetFeatureEnabled(ctx, tconn, feature, enable); err != nil {
+			if err := a11y.SetFeatureEnabled(ctx, tconn, feature, enable); err != nil {
 				return err
 			}
 

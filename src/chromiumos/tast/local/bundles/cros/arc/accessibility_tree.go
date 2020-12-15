@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/accessibility"
+	"chromiumos/tast/local/bundles/cros/arc/a11y"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
@@ -164,11 +164,11 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 	}
 
 	trees := make(map[string]*axTreeNode)
-	trees[accessibility.MainActivity.Name] = MainActivityTree
-	trees[accessibility.EditTextActivity.Name] = EditTextActivityTree
-	testActivities := []accessibility.TestActivity{accessibility.MainActivity, accessibility.EditTextActivity}
+	trees[a11y.MainActivity.Name] = MainActivityTree
+	trees[a11y.EditTextActivity.Name] = EditTextActivityTree
+	testActivities := []a11y.TestActivity{a11y.MainActivity, a11y.EditTextActivity}
 
-	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
+	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity a11y.TestActivity) error {
 		var appRoot *ui.Node
 		var err error
 		// Find the root node of Android application.
@@ -182,5 +182,5 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}
-	accessibility.RunTest(ctx, s, testActivities, testFunc)
+	a11y.RunTest(ctx, s, testActivities, testFunc)
 }
