@@ -22,6 +22,30 @@
       },
       "revId": "8c189effcc68e0c85602ff2ca755e42cd5fe96a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3752584e_8438b234",
+        "filename": "src/chromiumos/tast/remote/network/netperf/result_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1408947
+      },
+      "writtenOn": "2020-12-15T20:36:31Z",
+      "side": 1,
+      "message": "Solar flare must have struck right between I tested and committed it. :)",
+      "parentUuid": "d3077203_bc03f381",
+      "range": {
+        "startLine": 88,
+        "startChar": 26,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "8c189effcc68e0c85602ff2ca755e42cd5fe96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
