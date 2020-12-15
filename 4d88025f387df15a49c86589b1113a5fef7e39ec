@@ -81,6 +81,30 @@
       },
       "revId": "4d88025f387df15a49c86589b1113a5fef7e39ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef83a55b_20c3bc9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2020-12-15T01:25:01Z",
+      "side": 1,
+      "message": "Should we land CL:2587544 first to ensure the devices not using the tablet mode?",
+      "parentUuid": "a86cea4f_6ed4bff4",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 126
+      },
+      "revId": "4d88025f387df15a49c86589b1113a5fef7e39ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
