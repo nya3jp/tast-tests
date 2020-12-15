@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95dfd9b_ae0d47dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T21:58:12Z",
+      "side": 1,
+      "message": "LGTM % comment.",
+      "revId": "46928e7769a4ff9d1d6caf54b5590e952f5faa87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d34a2e_b75cbda5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-15T21:58:12Z",
+      "side": 1,
+      "message": "Kind of too generic. Do mind that this is package-scope shared and it might collide with other test under crostini. How about dropAppletTestFileName and dropAppletTestFileContent?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "46928e7769a4ff9d1d6caf54b5590e952f5faa87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
