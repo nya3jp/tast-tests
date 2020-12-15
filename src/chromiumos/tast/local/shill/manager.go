@@ -288,3 +288,65 @@ func (m *Manager) WaitForDeviceByName(ctx context.Context, iface string, timeout
 		}
 	}
 }
+
+// SetDebugTags sets the debug tags that are enabled for logging to syslog. "taglist" is a list of valid tag names separated by "+".
+// Shill silently ignores invalid flags.
+func (m *Manager) SetDebugTags(ctx context.Context, taglist string) error {
+	return m.dbusObject.Call(ctx, "SetDebugTags", taglist).Err
+}
+
+// GetDebugTags gets the list of enabled debug tags. The list is represented as a string of tag names separated by "+".
+func (m *Manager) GetDebugTags(ctx context.Context) (string, error) {
+	var tags string
+	if err := m.dbusObject.Call(ctx, "GetDebugTags").Store(&tags); err != nil {
+		return "", err
+	}
+	return tags, nil
+}
+
+// ListDebugTags gets the list of all debug tags that can be enabled. The list is represented as a string of tag names separated by "+".
+func (m *Manager) ListDebugTags(ctx context.Context) (string, error) {
+	var list string
+	if err := m.dbusObject.Call(ctx, "ListDebugTags").Store(&list); err != nil {
+		return "", errors.Wrap(err, "failed to get the list of debug tags")
+	}
+	return list, nil
+}
+
+// SetDebugLevel sets the debugging level.
+func (m *Manager) SetDebugLevel(ctx context.Context, level int) error {
+	return m.dbusObject.Call(ctx, "SetDebugLevel", level).Err
+}
+
+// GetDebugLevel gets the enabled debug level.
+func (m *Manager) GetDebugLevel(ctx context.Context) (int, error) {
+	var level int
+	if err := m.dbusObject.Call(ctx, "GetDebugLevel").Store(&level); err != nil {
+		return 0, err
+	}
+	return level, nil
+}
+
+// SetLoggingConfig sets the logging level in shill to the specified "level" and "scopes".
+func (m *Manager) SetLoggingConfig(ctx context.Context, level int, scopes string) error {
+	if err := m.SetDebugLevel(ctx, level); err != nil {
+		return err
+	}
+	if err := m.SetDebugTags(ctx, scopes); err != nil {
+		return err
+	}
+	return nil
+}
+
+// GetLoggingConfig gets the logging configuration the DUT currently uses.
+func (m *Manager) GetLoggingConfig(ctx context.Context) (int, string, error) {
+	level, err := m.GetDebugLevel(ctx)
+	if err != nil {
+		return 0, "", err
+	}
+	tags, err := m.GetDebugTags(ctx)
+	if err != nil {
+		return 0, "", err
+	}
+	return level, tags, nil
+}

@@ -1366,3 +1366,26 @@ func (tf *TestFixture) DisablePowersaveMode(ctx context.Context) (shortenCtx con
 	// Power saving mode already disabled.
 	return ctxForResetingPowersaveMode, func() error { return nil }, nil
 }
+
+// ConfigureLogging configures the logging level and tags.
+func (tf *TestFixture) ConfigureLogging(ctx context.Context, level int, tags []string) (context.Context, func() error, error) {
+	ctxForRestoreLoggingConfig := ctx
+	ctx, cancel := ctxutil.Shorten(ctxForRestoreLoggingConfig, 2*time.Second)
+
+	testing.ContextLogf(ctx, "Configure the logging setting: level = %d, tags = %s", level, strings.Join(tags, "+"))
+	loggingConfigResp, err := tf.wifiClient.GetLoggingConfig(ctx, &empty.Empty{})
+	if err != nil {
+		return ctxForRestoreLoggingConfig, nil, err
+	}
+
+	if _, err := tf.wifiClient.SetLoggingConfig(ctx, &network.SetLoggingConfigRequest{DebugLevel: int32(level), DebugTags: strings.Join(tags, "+")}); err != nil {
+		return ctxForRestoreLoggingConfig, nil, err
+	}
+
+	return ctx, func() error {
+		cancel()
+		testing.ContextLogf(ctxForRestoreLoggingConfig, "Restore the DUT's logging config: level = %d, tags = %s", int32(loggingConfigResp.DebugLevel), loggingConfigResp.DebugTags)
+		_, err := tf.wifiClient.SetLoggingConfig(ctxForRestoreLoggingConfig, &network.SetLoggingConfigRequest{DebugLevel: loggingConfigResp.DebugLevel, DebugTags: loggingConfigResp.DebugTags})
+		return err
+	}, nil
+}

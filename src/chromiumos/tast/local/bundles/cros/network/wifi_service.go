@@ -2366,3 +2366,35 @@ func (s *WifiService) ResetTest(ctx context.Context, req *network.ResetTestReque
 	}
 	return &empty.Empty{}, nil
 }
+
+// GetLoggingConfig returns the logging configuration the device currently uses.
+func (s *WifiService) GetLoggingConfig(ctx context.Context, e *empty.Empty) (*network.GetLoggingConfigResponse, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+
+	level, tags, err := manager.GetLoggingConfig(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the logging configuration")
+	}
+
+	return &network.GetLoggingConfigResponse{
+		DebugLevel: int32(level),
+		DebugTags:  tags,
+	}, nil
+}
+
+// SetLoggingConfig sets the device logging configuration.
+func (s *WifiService) SetLoggingConfig(ctx context.Context, req *network.SetLoggingConfigRequest) (*empty.Empty, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+
+	if err := manager.SetLoggingConfig(ctx, int(req.DebugLevel), req.DebugTags); err != nil {
+		return nil, errors.Wrap(err, "failed to set the logging configuration")
+	}
+
+	return &empty.Empty{}, nil
+}
