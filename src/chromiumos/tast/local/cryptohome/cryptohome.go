@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/disk"
@@ -53,7 +54,11 @@ var shadowRegexp *regexp.Regexp  // matches a path to vault under /home/shadow.
 var devRegexp *regexp.Regexp     // matches a path to /dev/*.
 var devLoopRegexp *regexp.Regexp // matches a path to /dev/loop\d+.
 
-const shadowRoot = "/home/.shadow" // is a root directory of vault.
+const shadowRoot = "/home/.shadow"               // is a root directory of vault.
+const mountNsPath = "/run/namespaces/mnt_chrome" // is the user session mount namespace path.
+// nsfsMagic is an int64 value returned by statfs syscall in the |Type| field of the
+// returned buffer. This value is returned if the filesystem type of the path is nsfs.
+const nsfsMagic = 0x6e736673
 
 func init() {
 	hashRegexp = regexp.MustCompile("^/home/user/([[:xdigit:]]+)$")
@@ -391,6 +396,18 @@ func MountGuest(ctx context.Context) error {
 
 	if err := WaitForUserMount(ctx, GuestUser); err != nil {
 		return errors.Wrap(err, "failed to mount guest vault")
+	}
+	return nil
+}
+
+// CheckMountNamespace checks whether the user session mount namespace has been created.
+func CheckMountNamespace(ctx context.Context) error {
+	var buff *syscall.Statfs_t
+	if err := syscall.Statfs(mountNsPath, buff); err != nil {
+		return errors.Wrapf(err, "failed to stat mount namespace file at %s", mountNsPath)
+	}
+	if buff.Type != nsfsMagic {
+		return errors.Errorf("user session mount namespace has not been created at %s", mountNsPath)
 	}
 	return nil
 }
