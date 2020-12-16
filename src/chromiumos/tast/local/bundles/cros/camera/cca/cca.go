@@ -9,6 +9,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"image"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -19,9 +20,11 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -127,6 +130,8 @@ var (
 	VideoSnapshotButton = UIComponent{"video snapshot button", []string{"#video-snapshot"}}
 	// VideoPauseResumeButton is button for pausing or resuming video recording.
 	VideoPauseResumeButton = UIComponent{"video pause/resume button", []string{"#pause-recordvideo"}}
+	// CloseBannerButton is button for closing popup banner.
+	CloseBannerButton = UIComponent{"close banner button", []string{"#banner-close"}}
 
 	// SettingsBackButton is back button for closing primary setting menu.
 	SettingsBackButton = UIComponent{"settings back button", []string{
@@ -1399,4 +1404,40 @@ func (a *App) InnerResolutionSettingButton(ctx context.Context, facing Facing, r
 	selector := fmt.Sprintf("button[aria-describedby='%s-%sres-desc']", ariaPrefix, rt)
 
 	return &UIComponent{name, []string{selector}}, nil
+}
+
+// Screenshot returns screenshot of app window.
+func (a *App) Screenshot(ctx context.Context) (*image.Image, error) {
+	getWindowProperty := func(name string) (int, error) {
+		var v int
+		if err := a.conn.Eval(ctx, name, &v); err != nil {
+			return 0, errors.Wrapf(err, "failed to get %v", name)
+		}
+		return v, nil
+	}
+	x, err := getWindowProperty("screenX")
+	if err != nil {
+		return nil, err
+	}
+	y, err := getWindowProperty("screenY")
+	if err != nil {
+		return nil, err
+	}
+	w, err := getWindowProperty("outerWidth")
+	if err != nil {
+		return nil, err
+	}
+	h, err := getWindowProperty("outerHeight")
+	if err != nil {
+		return nil, err
+	}
+	r, err := getWindowProperty("devicePixelRatio")
+	if err != nil {
+		return nil, err
+	}
+	img, err := screenshot.GrabAndCropScreenshot(ctx, a.cr, coords.NewRect(x*r, y*r, w*r, h*r))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get screenshot of app window")
+	}
+	return &img, nil
 }

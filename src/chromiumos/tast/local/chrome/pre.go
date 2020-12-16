@@ -43,6 +43,21 @@ func NewPrecondition(suffix string, opts ...Option) testing.Precondition {
 	}
 }
 
+// NewPrecondition creates a new precondition that can be shared by tests
+// that require an already-started Chrome object that was created with opts.
+// suffix is appended to precondition's name.
+func NewPrecondition2(suffix string, opts ...Option) testing.Precondition {
+	return &preImpl{
+		name:    "chrome_" + suffix,
+		timeout: resetTimeout + LoginTimeout,
+		opts:    opts,
+                extraOpt: func(s *testing.PreState) Option {
+                        // return ExtraArgs("--use-file-for-fake-video-capture="+s.DataPath("cat.png"))
+                        return ExtraArgs("--use-fake-device-for-media-stream=fps=30", "--use-file-for-fake-video-capture="+s.DataPath("cat.y4m"))
+                },
+	}
+}
+
 var loggedInPre = NewPrecondition("logged_in")
 
 // preImpl implements testing.Precondition.
@@ -51,6 +66,7 @@ type preImpl struct {
 	timeout time.Duration // testing.Precondition.Timeout
 	cr      *Chrome       // underlying Chrome instance
 	opts    []Option      // Options that should be passed to New
+	extraOpt func(s *testing.PreState) Option
 }
 
 func (p *preImpl) String() string         { return p.name }
@@ -88,8 +104,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	ctx, cancel := context.WithTimeout(ctx, LoginTimeout)
 	defer cancel()
 
+	lastOpts := p.opts
+        if p.extraOpt != nil {
+                lastOpts = append(lastOpts, p.extraOpt(s))
+        }
+
 	var err error
-	if p.cr, err = New(ctx, p.opts...); err != nil {
+	if p.cr, err = New(ctx, lastOpts...); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	Lock()

@@ -32,6 +32,7 @@ var (
 	chromeWithPlatformApp              = chrome.NewPrecondition("cca_platform_app", chrome.DisableFeatures("CameraSystemWebApp"))
 	chromeWithPlatformAppAndFakeCamera = chrome.NewPrecondition("cca_fake_camera_platform_app", chrome.DisableFeatures("CameraSystemWebApp"), fakeCameraOptions)
 	arcWithPlatformApp                 = arc.NewPrecondition("arc_cca_platform_app", nil, "--disable-features=CameraSystemWebApp")
+        ChromeWithSWAAndFakeCamera2         = chrome.NewPrecondition2("cca_fake_camera_swa2", chrome.EnableFeatures("CameraSystemWebApp"),)
 )
 
 // CCAAppType determines whether CCA is a platform app or an SWA.
