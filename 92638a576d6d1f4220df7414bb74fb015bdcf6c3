@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a941ffaa_3f0ef795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/drag_applet.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-16T02:33:18Z",
+      "side": 1,
+      "message": "I can\u0027t see any printing, is this still accurate or is the printing in a library?",
+      "range": {
+        "startLine": 6,
+        "startChar": 5,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "92638a576d6d1f4220df7414bb74fb015bdcf6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
