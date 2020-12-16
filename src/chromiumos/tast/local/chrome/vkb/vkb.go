@@ -6,8 +6,12 @@
 package vkb
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+	"io"
+	"math"
+	"os"
 	"strings"
 	"time"
 
@@ -16,6 +20,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -371,4 +377,163 @@ func SelectFromSuggestion(ctx context.Context, tconn *chrome.TestConn, candidate
 
 	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
 	return ui.StableFindAndClick(ctx, tconn, candidateFindParams, &opts)
+}
+
+// SwitchToHandwritingInput changes virtual keyboard to handwriting input layout.
+func SwitchToHandwritingInput(ctx context.Context, tconn *chrome.TestConn) error {
+	params := ui.FindParams{
+		Role:      ui.RoleTypeButton,
+		Name:      "switch to handwriting, not compatible with ChromeVox",
+		ClassName: "sk icon-key",
+	}
+	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
+
+	return ui.StableFindAndClick(ctx, tconn, params, &opts)
+}
+
+// ClickAccessPoint changes the suggestion bar to input icons.
+func ClickAccessPoint(ctx context.Context, tconn *chrome.TestConn) error {
+	params := ui.FindParams{
+		Role:      ui.RoleTypeButton,
+		Name:      "Show access points",
+		ClassName: "sk icon-key",
+	}
+	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
+
+	return ui.StableFindAndClick(ctx, tconn, params, &opts)
+}
+
+// FindHandwritingCanvas finds the handwriting canvas to draw on it.
+func FindHandwritingCanvas(ctx context.Context, tconn *chrome.TestConn) (node *ui.Node, err error) {
+	params := ui.FindParams{
+		Role:      ui.RoleTypeGenericContainer,
+		ClassName: "goog-container goog-container-vertical canvas",
+	}
+	opts := testing.PollOptions{Timeout: 3 * time.Second, Interval: 500 * time.Millisecond}
+
+	return ui.StableFind(ctx, tconn, params, &opts)
+}
+
+// Point represents a float point on the path.
+type Point struct {
+	x float64
+	y float64
+}
+
+// Path represents a trajectory.
+type Path struct {
+	Points []Point
+}
+
+// PathGroup represents multiple trajectories and width and height
+// of the trajectories.
+type PathGroup struct {
+	Width  float64
+	Height float64
+	Paths  []Path
+}
+
+// Transform path group to fit in the given rectangle.
+func (pathGroup *PathGroup) Transform(rect coords.Rect) {
+	scaleRatio :=
+		math.Min(float64(rect.Width)*0.6/pathGroup.Width,
+			float64(rect.Height)*0.6/pathGroup.Height)
+
+	pathGroup.Width *= scaleRatio
+	pathGroup.Height *= scaleRatio
+	for i := 0; i < len(pathGroup.Paths); i++ {
+		for j := 0; j < len(pathGroup.Paths[i].Points); j++ {
+			pathGroup.Paths[i].Points[j].x =
+				pathGroup.Paths[i].Points[j].x*scaleRatio +
+					float64(rect.Left) + (float64(rect.Width)-pathGroup.Width)/2.0
+			pathGroup.Paths[i].Points[j].y =
+				pathGroup.Paths[i].Points[j].y*scaleRatio +
+					float64(rect.Top) + (float64(rect.Height)-pathGroup.Height)/2.0
+		}
+	}
+}
+
+// ToCoordsPoint changes points with float64 coordinates to coords.Point int
+//  coordinates.
+func (p Point) ToCoordsPoint() coords.Point {
+	return coords.Point{int(p.x + 0.5), int(p.y + 0.5)}
+}
+
+// ReadHandwritingFile read handwriting trajactories from files.
+func ReadHandwritingFile(ctx context.Context, tconn *chrome.TestConn, filename string) (*PathGroup, error) {
+
+	pathGroup := &PathGroup{}
+	file, err := os.Open(filename)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read handwriting file")
+	}
+	defer file.Close()
+
+	// Start reading from the file with a reader.
+	reader := bufio.NewReader(file)
+	var line string
+	line, err = reader.ReadString('\n')
+	in := strings.NewReader(line)
+	_, err = fmt.Fscanf(in, "%f%f", &pathGroup.Width, &pathGroup.Height)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read handwriting file")
+	}
+
+	for {
+		line, err = reader.ReadString('\n')
+		if err != nil && err != io.EOF {
+			break
+		}
+
+		// Process the line here.
+		var point Point
+		var path Path
+		in := strings.NewReader(line)
+		for {
+			_, err := fmt.Fscanf(in, "%f%f", &point.x, &point.y)
+			if err != nil {
+				break
+			}
+			path.Points = append(path.Points, point)
+		}
+		if len(path.Points) > 0 {
+			pathGroup.Paths = append(pathGroup.Paths, path)
+		}
+
+		if err != nil {
+			break
+		}
+	}
+	if err != io.EOF {
+		return nil, errors.Wrap(err, "failed to read handwriting file")
+	}
+	return pathGroup, nil
+}
+
+// DrawHandwritingOnCanvas draws handwriting trajactories on the canvas.
+func DrawHandwritingOnCanvas(ctx context.Context, tconn *chrome.TestConn, pathGroup *PathGroup, rect coords.Rect) (err error) {
+	// Transform the paths to fit into the rect.
+	pathGroup.Transform(rect)
+
+	for i := 0; i < len(pathGroup.Paths); i++ {
+		points := pathGroup.Paths[i].Points
+
+		if err := mouse.Move(ctx, tconn, points[0].ToCoordsPoint(), 50*time.Millisecond); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+			return errors.Wrap(err, "failed to press the mouse")
+		}
+
+		for j := 1; j < len(points); j++ {
+			if err := mouse.Move(ctx, tconn, points[j].ToCoordsPoint(), 50*time.Millisecond); err != nil {
+				return errors.Wrap(err, "failed to move the mouse")
+			}
+		}
+		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+			return errors.Wrap(err, "failed to release the mouse")
+		}
+	}
+	return
 }
