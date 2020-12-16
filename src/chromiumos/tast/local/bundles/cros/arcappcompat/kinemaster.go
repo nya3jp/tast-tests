@@ -84,12 +84,23 @@ func launchAppForKinemaster(ctx context.Context, s *testing.State, tconn *chrome
 		allowButtonText         = "ALLOW"
 		cancelText              = "Cancel"
 		continueToAppID         = "close-button"
-		closeID                 = "com.nexstreaming.app.kinemasterfree:id/tv_subscribe_skip"
+		closeID                 = "com.nexstreaming.app.kinemasterfree:id/skip_ad_button"
+		noText                  = "No"
+		okText                  = "OK"
+		homeID                  = "com.nexstreaming.app.kinemasterfree:id/mediaListView"
 		remindMelaterButtonText = "Remind Me Later"
 		startText               = "Start"
 		selectLayoutID          = "com.nexstreaming.app.kinemasterfree:id/ratio16v9"
-		homeID                  = "com.nexstreaming.app.kinemasterfree:id/mediaListView"
+		shortTimeInterval       = 300 * time.Millisecond
 	)
+
+	// Click on OK Button.
+	clickOnOkButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+okText))
+	if err := clickOnOkButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("clickOnOkButton doesn't exists: ", err)
+	} else if err := clickOnOkButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnOkButton: ", err)
+	}
 
 	// Click on allow button to access your photos, media and files.
 	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+allowButtonText))
@@ -105,6 +116,7 @@ func launchAppForKinemaster(ctx context.Context, s *testing.State, tconn *chrome
 		if err := startButton.Exists(ctx); err != nil {
 			s.Log(" Press KEYCODE_DPAD_RIGHT to swipe until Start button exist")
 			d.PressKeyCode(ctx, ui.KEYCODE_DPAD_RIGHT, 0)
+			d.WaitForIdle(ctx, shortTimeInterval)
 			return err
 		}
 		return nil
@@ -121,6 +133,14 @@ func launchAppForKinemaster(ctx context.Context, s *testing.State, tconn *chrome
 		d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0)
 	} else if err := clickOnCloseButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnCloseButton: ", err)
+	}
+
+	// Click on no button.
+	clickOnNoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+noText))
+	if err := clickOnNoButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("clickOnNoButton doesn't exists: ", err)
+	} else if err := clickOnNoButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnNoButton: ", err)
 	}
 
 	// Click on continue to app button.
