@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "526746c3_f96f9902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95bf37d1_439c9eaf",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fc7557f_a350a778",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-16T19:51:20Z",
       "side": 1,
       "message": "Looks like you don\u0027t need to export this? Am I missing something?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d4394d_afec2f56",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "I was told to have \u0027New\u0027 methods return concrete types over interfaces, so we need to export this for that.\n\nI could just be misunderstanding best practices.",
+      "parentUuid": "2fc7557f_a350a778",
       "range": {
         "startLine": 22,
         "startChar": 5,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70502b2c_628ba595",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "This is a helper function, why should it be exported?",
+      "parentUuid": "bde57514_35b09864",
+      "range": {
+        "startLine": 40,
+        "startChar": 82,
+        "endLine": 40,
+        "endChar": 87
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70371f02_9654f3f7",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
         "patchSetId": 19
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-16T19:51:20Z",
       "side": 1,
       "message": "t.packageName()",
+      "range": {
+        "startLine": 41,
+        "startChar": 46,
+        "endLine": 41,
+        "endChar": 71
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "610a9db6_2266d8fb",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70371f02_9654f3f7",
       "range": {
         "startLine": 41,
         "startChar": 46,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56a62b7_54833997",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fc9a1d9_f122f160",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 58
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79511c1f_698faa7b",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce534abf_9b428190",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79511c1f_698faa7b",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d1d1a8b_0cb00c24",
@@ -152,6 +296,30 @@
       "writtenOn": "2020-11-16T19:51:20Z",
       "side": 1,
       "message": "done :\u003d t.StillAlive(ctx, testEnv)",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c05e46_2daa336e",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "Oh, that\u0027s a bug in StillAlive. It should return true even if we\u0027re not done allocating.\n\nI\u0027ll factor these two into a `doneAllocating() bool, err` helper.",
+      "parentUuid": "8d1d1a8b_0cb00c24",
       "range": {
         "startLine": 82,
         "startChar": 2,
@@ -187,6 +355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9a94888_318a5f9c",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "It\u0027s long and leads to lots of wrapping in the log unless your terminal is really wide.",
+      "parentUuid": "8b013f3d_3df95df6",
+      "range": {
+        "startLine": 110,
+        "startChar": 35,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8d9f98f_2fe7fd04",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
         "patchSetId": 19
@@ -198,6 +390,30 @@
       "writtenOn": "2020-11-16T19:51:20Z",
       "side": 1,
       "message": "How do you distinguish an error or the app is still running?",
+      "range": {
+        "startLine": 119,
+        "startChar": 77,
+        "endLine": 119,
+        "endChar": 81
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b18ea452_388d44ba",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "An error means we assume the app is not running.",
+      "parentUuid": "b8d9f98f_2fe7fd04",
       "range": {
         "startLine": 119,
         "startChar": 77,
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ef837b_200222e6",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c5b3535_5b407e05",
+      "range": {
+        "startLine": 147,
+        "startChar": 66,
+        "endLine": 147,
+        "endChar": 73
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f326665_54c4569d",
@@ -244,6 +484,30 @@
       "writtenOn": "2020-11-16T19:51:20Z",
       "side": 1,
       "message": "can you implement this in this patch? Otherwise, other tests using the same precondition would likely fails.",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 20
+      },
+      "revId": "f35835c7fe182acd45335a9348aacd2bfa0a2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f37d47_42333960",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "The precondition actually tracks which apps were installed by each test and uninstalls them before the next test.\n\nI will try pulling this into a fixture when we move to them, since installing 100 apps can take a few minutes.\n\nI will remove the TODO.",
+      "parentUuid": "8f326665_54c4569d",
       "range": {
         "startLine": 148,
         "startChar": 1,

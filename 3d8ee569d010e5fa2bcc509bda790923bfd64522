@@ -33,6 +33,24 @@
       "message": "Can you add a group alias here as a backup?",
       "revId": "3d8ee569d010e5fa2bcc509bda790923bfd64522",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5148867_cfc7abe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T12:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9232bd3d_a2b919af",
+      "revId": "3d8ee569d010e5fa2bcc509bda790923bfd64522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
