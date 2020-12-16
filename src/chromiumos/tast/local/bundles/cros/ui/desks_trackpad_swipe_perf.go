@@ -6,12 +6,15 @@ package ui
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
@@ -43,6 +46,26 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	screenRecorder, err := ui.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to create ScreenRecorder: ", err)
+	}
+	defer func() {
+		screenRecorder.Stop(ctx)
+		dir := "/usr/local/tmp"
+		if _, err := os.Stat(dir); err == nil {
+			testing.ContextLogf(ctx, "Saving screen record to %s", dir)
+			if err := screenRecorder.SaveInString(ctx, filepath.Join(dir, "screen_record.txt")); err != nil {
+				s.Fatal("Failed to save screen record in string: ", err)
+			}
+			if err := screenRecorder.SaveInBytes(ctx, filepath.Join(dir, "screen_record.webm")); err != nil {
+				s.Fatal("Failed to save screen record in bytes: ", err)
+			}
+		}
+		screenRecorder.Release(ctx)
+	}()
+	screenRecorder.Start(ctx)
+
 	// Add a extra desk and remove it at the end of the test.
 	if err = ash.CreateNewDesk(ctx, tconn); err != nil {
 		s.Fatal("Failed to create a new desk: ", err)
@@ -72,7 +95,7 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 	fingerSpacing := tpw.Width() / 16
 	doTrackpadFourFingerSwipeScroll := func(ctx context.Context, x0, x1 input.TouchCoord) error {
 		y := tpw.Height() / 2
-		const t = time.Second * 2
+		const t = time.Second
 		return tw.Swipe(ctx, x0, y, x1, y, fingerSpacing, 4, t)
 	}
 
