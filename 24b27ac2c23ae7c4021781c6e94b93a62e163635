@@ -25,6 +25,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8df41972_abc9590d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2020-12-16T03:55:28Z",
+      "side": 1,
+      "message": "This looks good, however have you considered the two different handwriting input methods that are available in the VK? Some boards support one handwriting input method, and other boards support a newer version. Does this test cover both versions of handwriting?",
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bffacbb_1fbc7626",
@@ -50,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c149dc44_1b0d7239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2020-12-16T03:55:28Z",
+      "side": 1,
+      "message": "nit: handwriting?",
+      "range": {
+        "startLine": 28,
+        "startChar": 42,
+        "endLine": 28,
+        "endChar": 48
+      },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea13cacf_4eb3624e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
         "patchSetId": 1
@@ -67,6 +107,23 @@
         "endLine": 45,
         "endChar": 43
       },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9578204_72ffd687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2020-12-16T03:55:28Z",
+      "side": 1,
+      "message": "nit: Is this downloading a file or just simply copying on disk? If it is just copying, maybe we can simply read the handwriting file data directly below without the file copy?",
       "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +194,57 @@
         "endLine": 129,
         "endChar": 2
       },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba3ccb6_222b95e0",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2020-12-16T03:55:28Z",
+      "side": 1,
+      "message": "nit: This seems like quite a brittle way to find the correct element to click, what if the name  attribute on the element changes? A more unique classname seems like it would provide a bit more of stable identifier.",
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6506151a_4618ca8d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2020-12-16T03:55:28Z",
+      "side": 1,
+      "message": "nit: same as above",
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46bf5bbf_51d24554",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2020-12-16T03:55:28Z",
+      "side": 1,
+      "message": "nit: same as above",
       "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
