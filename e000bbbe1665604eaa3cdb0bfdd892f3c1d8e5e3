@@ -16,6 +16,46 @@
       "message": "Thanks for reviewing.",
       "revId": "e000bbbe1665604eaa3cdb0bfdd892f3c1d8e5e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f2562b_ae2d43bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-16T16:42:47Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective.",
+      "revId": "e000bbbe1665604eaa3cdb0bfdd892f3c1d8e5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f53bd76b_f540f109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-16T16:42:47Z",
+      "side": 1,
+      "message": "nit: I think measureInterval would be a more precise name.",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "e000bbbe1665604eaa3cdb0bfdd892f3c1d8e5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
