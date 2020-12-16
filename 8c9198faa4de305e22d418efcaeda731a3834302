@@ -20,6 +20,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97db5a48_1c054a3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T05:47:45Z",
+      "side": 1,
+      "message": "nit: can you make this one line.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e520cc22_5f34d80b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T05:47:45Z",
+      "side": 1,
+      "message": "It is not enouraged to pass through testing.State when not necessary. Especially terminate a test outside the test function itself.\n\nIt is not good for code readability. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 75,
+        "startChar": 42,
+        "endLine": 75,
+        "endChar": 58
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97975ed_ded09602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T05:47:45Z",
+      "side": 1,
+      "message": "refer to last comment, returns error should be better than failing the test.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 47
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1deca964_cd78063b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
         "patchSetId": 3
@@ -43,6 +112,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e45d6d20_b327d12a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T05:47:45Z",
+      "side": 1,
+      "message": "comment should finish with period.",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 32
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbe146a3_3bb4397b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
         "patchSetId": 3
@@ -59,6 +151,52 @@
         "startChar": 40,
         "endLine": 190,
         "endChar": 49
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed6d1a5_76799a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T05:47:45Z",
+      "side": 1,
+      "message": "can the log file name be more meaningful for test 1 and 2?",
+      "range": {
+        "startLine": 199,
+        "startChar": 49,
+        "endLine": 199,
+        "endChar": 50
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a90224_28ba9fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T05:47:45Z",
+      "side": 1,
+      "message": "Only see one param in the list. I assume you are going to add more code into it.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 5
       },
       "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
