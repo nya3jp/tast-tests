@@ -4,6 +4,10 @@
 
 package hal3
 
+import (
+	"fmt"
+)
+
 // TestConfig is the config for HAL3 tests.
 type TestConfig struct {
 	// CameraHALs is a list of camera HALs to test, such as "usb".  If
@@ -35,6 +39,10 @@ type TestConfig struct {
 	// PortraitModeTestData is the portrait mode test data to be downloaded.
 	PortraitModeTestData string
 }
+
+const (
+	zslGtestFilter = "Camera3StillCaptureTest/Camera3SimpleStillCaptureTest.TakePictureZslTest/*"
+)
 
 // DeviceTestConfig returns test config for running HAL3Device test.
 func DeviceTestConfig(outDir string) TestConfig {
@@ -110,7 +118,8 @@ func RecordingTestConfig(outDir string) TestConfig {
 // StillCaptureTestConfig returns test config for running HAL3StillCapture test.
 func StillCaptureTestConfig(outDir string) TestConfig {
 	return TestConfig{
-		GtestFilter: "Camera3StillCaptureTest/*",
+		// Test ZSL only on supported devices.
+		GtestFilter: fmt.Sprintf("Camera3StillCaptureTest/*:-%s", zslGtestFilter),
 		OutDir:      outDir,
 	}
 }
@@ -130,6 +139,15 @@ func PortraitModeTestConfig(outDir string, generatePerfLog bool, portraitModeTes
 		ConnectToCameraService: true,
 		GeneratePerfLog:        generatePerfLog,
 		PortraitModeTestData:   portraitModeTestFile,
+		OutDir:                 outDir,
+	}
+}
+
+// StillCaptureZSLTestConfig returns test config for running HAL3StillCaptureZSL test.
+func StillCaptureZSLTestConfig(outDir string) TestConfig {
+	return TestConfig{
+		GtestFilter:            zslGtestFilter,
+		ConnectToCameraService: true,
 		OutDir:                 outDir,
 	}
 }

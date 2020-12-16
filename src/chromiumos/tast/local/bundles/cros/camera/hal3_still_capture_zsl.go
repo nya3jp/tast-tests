@@ -1,0 +1,35 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package camera
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/local/bundles/cros/camera/hal3"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         HAL3StillCaptureZSL,
+		Desc:         "Verifies camera still capture with ZSL function with HAL3 interface",
+		Contacts:     []string{"lnishan@chromium.org", "chromeos-camera-eng@google.com"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
+		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},
+		HardwareDeps: hwdep.D(hwdep.Platform("kukui")),
+		Pre:          chrome.LoggedIn(),
+		Timeout:      3 * time.Minute,
+	})
+}
+
+func HAL3StillCaptureZSL(ctx context.Context, s *testing.State) {
+	if err := hal3.RunTest(ctx, hal3.StillCaptureZSLTestConfig(s.OutDir())); err != nil {
+		s.Error("Test failed: ", err)
+	}
+}
