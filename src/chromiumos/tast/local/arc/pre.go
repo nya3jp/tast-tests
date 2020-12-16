@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"path/filepath"
 	"strings"
 	"time"
 
@@ -148,8 +147,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			if err := p.cr.ResetState(ctx); err != nil {
 				return nil, errors.Wrap(err, "failed to reset Chrome")
 			}
-			if err := p.arc.setLogcatFile(filepath.Join(s.OutDir(), logcatName)); err != nil {
-				return nil, errors.Wrap(err, "failed to update logcat output file")
+			if err := p.arc.resetOutDir(ctx, s.OutDir()); err != nil {
+				return nil, errors.Wrap(err, "failed to update the connection to ARC")
 			}
 			return PreData{p.cr, p.arc}, nil
 		}()
