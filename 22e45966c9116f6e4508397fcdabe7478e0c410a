@@ -35,6 +35,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f7149a_497f36ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-16T00:43:07Z",
+      "side": 1,
+      "message": "Thanks for doing this! I added some comments.",
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4093d75_d355e846",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-16T00:43:07Z",
+      "side": 1,
+      "message": "fully optional:\nARC accessibility tests only used ChromeVox, but I think we\u0027re doing more stuff with various extensions. How about creating \u0027ChromeVoxConn\u0027 type as an alias to chrome.Conn, and making ChromeVox specific functions a method of ChromeVoxConn?\n\ni.e. We can use ChromeVoxExtConn() as a factory method of ChromeVoxConn, and set ChromeVoxConn as a receiver of WaitForFocusedNode() and focusedNode().\n\nIt\u0027s okay to do it when we adds test cases for other extensions.",
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c5abed8_181bc0a7",
@@ -83,6 +117,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a321e35d_232af1b3",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-16T00:43:07Z",
+      "side": 1,
+      "message": "Can we merge this into chromeVoxExtCon()?\n\nAlso, thinking the logic here again, checking document.readyState AFTER ChromeVoxState.instance looks meaningless... I added this check when the tests are flaky, but it no longer make sense now.\n\nSo, we can just skip whole content in this function, or put document.readyState check before ChromeVoxState.instance.\n\nI prefer to put document.readyState before ChromeVoxState.instance because we can distinguish chrome extension error and chromeVox initialization error.",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a062cfb_45d88ae3",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-16T00:43:07Z",
+      "side": 1,
+      "message": "Do we need this?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3e68a52_dd88e183",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 2
@@ -94,6 +174,30 @@
       "writtenOn": "2020-12-15T22:14:05Z",
       "side": 1,
       "message": "(ditto this comment to other files which import both c/t/c/a11y and c/t/l/bundles/cros/arc/a11y).\n\nmaybe we should name the imports, to make it clearer where the names \"a11yutils\" and \"arca11y\" originates from.\neg:\nimport (\n...\naccessibilityutils \"chromiumos/tast/local/accessibility\"\"\n....\narcaccessibility \"chromiumos/tast/local/bundles/cros/arc/accessibility\"\n)\nHere is an example of using screenshot (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/companion_library.go;l\u003d31?q\u003d%22chromiumos%2Ftast%2Flocal%2Fscreenshot%22\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2F\u0026start\u003d21)\n\nor alternatively rename the files to make it clearer.",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6a2ad1_2d7447f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-16T00:43:07Z",
+      "side": 1,
+      "message": "Both .../tast/local/accessibility and .../tast/local/bundles/cros/arc/accessibility can be \"accessibility\" package. And when importing both, arc accessibility package can be named as arcaccessibility.",
+      "parentUuid": "c3e68a52_dd88e183",
       "range": {
         "startLine": 13,
         "startChar": 1,
