@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
+	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/attenuator"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -29,8 +30,8 @@ type roamDiagnosticsTestcase struct {
 }
 
 const (
-	roamDiagnosticsMaxAttenuation   float64 = 96
-	roamDiagnosticsMinAttenuation   float64 = 56
+	roamDiagnosticsMaxAttenuation   float64 = 97
+	roamDiagnosticsMinAttenuation   float64 = 57
 	roamDiagnosticsAttenuationStep  float64 = 4
 	roamDiagnosticsAttenuationRange float64 = 12
 	roamDiagnosticsRoamBuckets              = 7
@@ -38,7 +39,7 @@ const (
 	roamDiagnosticsScanCount                = 2
 
 	roamDiagnosticsRoamTimeout  = 5 * time.Second
-	roamDiagnosticsScansTimeout = 10 * time.Second
+	roamDiagnosticsScansTimeout = 20 * time.Second
 
 	roamDiagnosticsLogFilePerm  os.FileMode = 0644
 	roamDiagnosticsLogFileFlags             = os.O_WRONLY | os.O_CREATE | os.O_TRUNC
@@ -206,6 +207,20 @@ func executeRoamDiagnosticsTest(ctx context.Context, s *testing.State, ap0Params
 		s.Fatal("Failed to verify connection: ", err)
 	}
 
+	verifyF := func() (n wificell.ResultType, err error) {
+		pr := remoteping.NewRemoteRunner(s.DUT().Conn())
+		res, err := pr.Ping(ctx, ap0.ServerIP().String())
+		if err != nil {
+			testing.ContextLog(ctx, "ping error, ", err)
+			return 0, err
+		}
+		testing.ContextLogf(ctx, "ping statistics=%+v", res)
+
+		return wificell.ResultType(res.Loss), nil
+	}
+	vf := wificell.NewVerifier(ctx, verifyF)
+	vf.StartJob()
+
 	ap1, freq1, deconfig := wifiutil.ConfigureAP(ctx, s, ap1Params, 1, secConfFac)
 	defer deconfig(ctx, ap1)
 	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
@@ -258,6 +273,11 @@ func executeRoamDiagnosticsTest(ctx context.Context, s *testing.State, ap0Params
 			}
 		}
 	}
+	results, err := vf.StopJob()
+	for i, ret := range results {
+		testing.ContextLogf(ctx, "Iteration %d Loss rate=%+v", i+1, ret)
+	}
+
 }
 
 // dumpRoamDiagnosticsStats prints statistics to log and to performance metrics system.
