@@ -54,6 +54,10 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	if err := assistant.SetBetterOnboardingEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to disable better onboarding: ", err)
+	}
+
 	pv := perf.NewValues()
 	for nWindows := 0; nWindows < 3; nWindows++ {
 		if nWindows > 0 {
