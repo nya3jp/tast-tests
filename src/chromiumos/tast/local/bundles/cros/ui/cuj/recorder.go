@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/load"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -118,14 +117,12 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
 func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricConfig) (*Recorder, error) {
-	memDiff := newMemoryDiffDataSource("RAM.Diff.Absolute")
 	gpuDS := newGPUDataSource(tconn)
 	sources := []perf.TimelineDatasource{
-		load.NewCPUUsageSource("CPU", false),
-		load.NewMemoryUsageSource("RAM.Absolute", "RAM"),
+		NewCPUUsageSource("CPU"),
 		newThermalDataSource(ctx),
 		gpuDS,
-		memDiff,
+		newMemoryDataSource("RAM.Absolute", "RAM.Diff.Absolute", "RAM"),
 	}
 	// Note setup.PowerTest() is needed to for stable/reliable power metrics.
 	sources = append(sources, power.TestMetrics()...)
@@ -190,10 +187,6 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 
 	if err := r.zramInfoTracker.Start(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start ZramInfoTracker")
-	}
-
-	if err := memDiff.SetPrevious(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to prepare baseline for memory diff calcuation")
 	}
 
 	if err := r.timeline.StartRecording(ctx); err != nil {
