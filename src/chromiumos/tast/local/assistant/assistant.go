@@ -86,10 +86,20 @@ func SetVoiceInteractionConsentValue(ctx context.Context, tconn *chrome.TestConn
 	return setPrefValue(ctx, tconn, "settings.voice_interaction.activity_control.consent_status", value)
 }
 
-// SetNumSessionsOnboardingShown enables/disables the Assistant onboarding feature by controlling the number
-// of sessions where onboarding screen has shown. Note that true pref value will *not* be restored later, so
-// tests that need this feature must explicitly enable it during setup.
-func SetNumSessionsOnboardingShown(ctx context.Context, tconn *chrome.TestConn, value int) error {
+// SetBetterOnboardingEnabled enables/disables the Assistant onboarding feature
+// by controlling the number of sessions where onboarding screen has shown.
+// Note that true pref value will *not* be restored later, so tests that need
+// this feature must explicitly enable it during setup. It is recommended to
+// disable Better Onboarding for Assistant performance tests that are not
+// explicitly testing the Better Onboarding feature.
+func SetBetterOnboardingEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
+	// The maximum number of user sessions in which to show Assistant onboarding.
+	// Please keep it synced to |kOnboardingMaxSessionsShown| stored in
+	// ash/assistant/ui/assistant_ui_constants.h.
+	value := 3
+	if enabled {
+		value = 0
+	}
 	return setPrefValue(ctx, tconn, "ash.assistant.num_sessions_where_onboarding_shown", value)
 }
 

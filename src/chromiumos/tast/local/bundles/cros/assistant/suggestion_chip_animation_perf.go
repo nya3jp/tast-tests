@@ -58,6 +58,10 @@ func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	if err := assistant.SetBetterOnboardingEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to disable better onboarding: ", err)
+	}
+
 	if err := assistant.SetVoiceInteractionConsentValue(ctx, tconn, 1); err != nil {
 		s.Fatal("Failed to set voice interaction consent value: ", err)
 	}

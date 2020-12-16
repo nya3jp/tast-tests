@@ -52,6 +52,10 @@ func LauncherToPeekingAnimationPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	if err := assistant.SetBetterOnboardingEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to disable better onboarding: ", err)
+	}
+
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
