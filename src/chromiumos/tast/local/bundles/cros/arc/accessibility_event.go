@@ -57,9 +57,9 @@ func init() {
 
 // verifyLog gets the current ChromeVox log and checks that it matches with expected log.
 // Note that as the initial a11y focus is unstable, checkOnlyLatest=true can be used to check only the latest log.
-func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog axEventLog, checkOnlyLatest bool) error {
+func verifyLog(ctx context.Context, cvconn *accessibility.ChromeVoxConn, expectedLog axEventLog, checkOnlyLatest bool) error {
 	var logs []axEventLog
-	if err := cvconn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.EVENT)", &logs); err != nil {
+	if err := cvconn.GetChromeConn().Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.EVENT)", &logs); err != nil {
 		return errors.Wrap(err, "failed to get event logs")
 	}
 
@@ -82,9 +82,9 @@ func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog axEventLog,
 	return nil
 }
 
-func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test axEventTestStep, isFirstStep bool) error {
+func runTestStep(ctx context.Context, cvconn *accessibility.ChromeVoxConn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test axEventTestStep, isFirstStep bool) error {
 	// Ensure that ChromeVox log is cleared before proceeding.
-	if err := cvconn.Eval(ctx, "LogStore.instance.clearLog()", nil); err != nil {
+	if err := cvconn.GetChromeConn().Eval(ctx, "LogStore.instance.clearLog()", nil); err != nil {
 		return errors.Wrap(err, "error with clearing ChromeVox log")
 	}
 
@@ -94,7 +94,7 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	}
 
 	// Wait for the focused element to match the expected.
-	if err := accessibility.WaitForFocusedNode(ctx, cvconn, tconn, &test.Params, 10*time.Second); err != nil {
+	if err := cvconn.WaitForFocusedNode(ctx, tconn, &test.Params, 10*time.Second); err != nil {
 		return err
 	}
 
@@ -108,7 +108,7 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	return nil
 }
 
-func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityName string, axEventTestSteps []axEventTestStep) (func(context.Context, *chrome.Conn) error, error) {
+func setupEventStreamLogging(ctx context.Context, cvconn *accessibility.ChromeVoxConn, activityName string, axEventTestSteps []axEventTestStep) (func(context.Context, *accessibility.ChromeVoxConn) error, error) {
 	eventsSeen := make(map[ui.EventType]bool)
 	var events []ui.EventType
 	for _, test := range axEventTestSteps {
@@ -119,7 +119,7 @@ func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityN
 		}
 	}
 
-	if err := cvconn.Call(ctx, nil, `async (events) => {
+	if err := cvconn.GetChromeConn().Call(ctx, nil, `async (events) => {
 		  let desktop = await tast.promisify(chrome.automation.getDesktop)();
 		  EventStreamLogger.instance = new EventStreamLogger(desktop);
 		  for (const event of events) {
@@ -129,8 +129,8 @@ func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityN
 		return nil, errors.Wrap(err, "enabling event stream logging failed")
 	}
 
-	cleanup := func(ctx context.Context, cvconn *chrome.Conn) error {
-		return cvconn.Call(ctx, nil, `async (events) => {
+	cleanup := func(ctx context.Context, cvconn *accessibility.ChromeVoxConn) error {
+		return cvconn.GetChromeConn().Call(ctx, nil, `async (events) => {
 		  for (const event of events) {
 		    EventStreamLogger.instance.notifyEventStreamFilterChanged(event, false);
 		  }
@@ -297,7 +297,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	}
 	defer ew.Close()
 
-	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity arcaccessibility.TestActivity) error {
+	testFunc := func(ctx context.Context, cvconn *accessibility.ChromeVoxConn, tconn *chrome.TestConn, currentActivity arcaccessibility.TestActivity) error {
 		testSteps := events[currentActivity.Name]
 		cleanup, err := setupEventStreamLogging(ctx, cvconn, currentActivity.Name, testSteps)
 		if err != nil {
