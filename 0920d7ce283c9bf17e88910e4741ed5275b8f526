@@ -16,6 +16,23 @@
       "message": "PTAL. The vmc tests are now stable.\ne.g. https://tastboard.corp.google.com/test/crostini.VmcStart.buster_amd64_stable\n",
       "revId": "0920d7ce283c9bf17e88910e4741ed5275b8f526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f08d89_13a819aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-16T01:29:56Z",
+      "side": 1,
+      "message": "seems ok.  The one failure is a known flake and happens before any crostini code.\n",
+      "revId": "0920d7ce283c9bf17e88910e4741ed5275b8f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
