@@ -15,6 +15,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/crypto/certificate"
+	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/wpa"
@@ -22,6 +23,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
+	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -191,6 +193,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 			id0 = hex.EncodeToString(mac0)
 			id1 = hex.EncodeToString(mac1)
 		)
+		mac := []net.HardwareAddr{mac0, mac1}
 		const (
 			key0 = "1f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100"
 			key1 = "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
@@ -231,16 +234,18 @@ func RoamFT(ctx context.Context, s *testing.State) {
 
 		s.Log("Starting the first AP on ", br[0])
 		ap0Name := uniqueAPName()
+		var ap []*hostapd.Server
 		ap0, err := tf.Router().StartHostapd(ctx, ap0Name, ap0Conf)
 		if err != nil {
 			s.Fatal("Failed to start the hostapd server on the first AP: ", err)
 		}
+		ap = append(ap, ap0)
 		defer func(ctx context.Context) {
-			if err := tf.Router().StopHostapd(ctx, ap0); err != nil {
+			if err := tf.Router().StopHostapd(ctx, ap[0]); err != nil {
 				s.Error("Failed to stop the hostapd server on the first AP: ", err)
 			}
 		}(ctx)
-		ctx, cancel = ap0.ReserveForClose(ctx)
+		ctx, cancel = ap[0].ReserveForClose(ctx)
 		defer cancel()
 
 		var (
@@ -262,8 +267,21 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}(ctx)
 		ctx, cancel = ds.ReserveForClose(ctx)
 		defer cancel()
+		pingF := func() (wificell.ResultType, error) {
+			pr := remoteping.NewRemoteRunner(s.DUT().Conn())
+			//ap0.ServerIP().String()
+			res, err := pr.Ping(ctx, serverIP.String(), ping.Count(100))
+			if err != nil {
+				testing.ContextLog(ctx, "ping error, ", err)
+				return wificell.ResultType{}, err
+			}
+			testing.ContextLogf(ctx, "ping statistics=%+v", res)
 
-		connResp, err := tf.ConnectWifi(ctx, ap0.Config().SSID, wificell.ConnSecurity(ap0SecConf))
+			return wificell.ResultType{Data: res.Loss, Timestamp: time.Now()}, nil
+		}
+		vf := wificell.NewVerifier(ctx, pingF)
+
+		connResp, err := tf.ConnectWifi(ctx, ap[0].Config().SSID, wificell.ConnSecurity(ap0SecConf))
 		if err != nil {
 			if expectedFailure {
 				s.Log("Failed to connect to the AP as expected; Tearing down")
@@ -288,17 +306,17 @@ func RoamFT(ctx context.Context, s *testing.State) {
 
 		s.Log("Connected to the first AP; Start roaming")
 		// TODO(b/171086223): The changing of BSSID only means we've initiated the roam attempt, as opposed to be actually L3 connected. Remove the polling below once the bug is addressed.
-		props := []*wificell.ShillProperty{{
+		props := [][]*wificell.ShillProperty{{{
 			Property:       shillconst.ServicePropertyWiFiBSSID,
 			ExpectedValues: []interface{}{mac1.String()},
 			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		}}
-		waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
-		defer cancel()
-		waitForProps, err := tf.ExpectShillProperty(waitCtx, connResp.ServicePath, props, []string{shillconst.ServicePropertyIsConnected})
-		if err != nil {
-			s.Fatal("Failed to create a property watcher: ", err)
-		}
+		}}, {{
+			Property:       shillconst.ServicePropertyWiFiBSSID,
+			ExpectedValues: []interface{}{mac0.String()},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}}}
+
+		vf.StartJob()
 
 		s.Log("Starting the second AP on ", br[1])
 		ap1Name := uniqueAPName()
@@ -306,63 +324,75 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to start the hostapd server on the second AP: ", err)
 		}
+		ap = append(ap, ap1)
 		defer func(ctx context.Context) {
-			if err := tf.Router().StopHostapd(ctx, ap1); err != nil {
+			if err := tf.Router().StopHostapd(ctx, ap[1]); err != nil {
 				s.Error("Failed to stop the hostapd server on the second AP: ", err)
 			}
 		}(ctx)
-		ctx, cancel = ap1.ReserveForClose(ctx)
+		ctx, cancel = ap[1].ReserveForClose(ctx)
 		defer cancel()
 
 		iface, err := tf.ClientInterface(ctx)
 		if err != nil {
 			s.Fatal("Failed to get interface from the DUT: ", err)
 		}
-		discCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
-		defer cancel()
-		if err := tf.DiscoverBSSID(discCtx, mac1.String(), iface, []byte(ap1.Config().SSID)); err != nil {
-			s.Fatalf("Failed to discover the BSSID %s: %v", mac1.String(), err)
-		}
 
-		s.Logf("Requesting roam from %s to %s", mac0, mac1)
-		// Request shill to send D-Bus roam request to wpa_supplicant.
-		if err := tf.RequestRoam(ctx, iface, mac1.String(), 15*time.Second); err != nil {
-			s.Fatalf("Failed to roam from %s to %s: %v", mac0, mac1, err)
-		}
+		for i := 0; i < 10; i++ {
+			waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+			defer cancel()
+			waitForProps, err := tf.ExpectShillProperty(waitCtx, connResp.ServicePath, props[i%2], []string{shillconst.ServicePropertyIsConnected})
+			if err != nil {
+				s.Fatal("Failed to create a property watcher: ", err)
+			}
 
-		monitorResult, err := waitForProps()
-		if err != nil {
-			s.Fatal("Failed to wait for the properties: ", err)
-		}
-		// Check that we don't disconnect along the way here, in case we're ping-ponging around APs --
-		// and after the first (failed) roam, the second re-connection will not be testing FT at all.
-		for _, ph := range monitorResult {
-			if ph.Name == shillconst.ServicePropertyIsConnected {
-				if !ph.Value.(bool) {
-					s.Error("Failed to stay connected during the roaming process")
+			discCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+			defer cancel()
+			if err := tf.DiscoverBSSID(discCtx, mac[(i+1)%2].String(), iface, []byte(ap[(i+1)%2].Config().SSID)); err != nil {
+				s.Fatalf("Failed to discover the BSSID %s: %v", mac[(i+1)%2].String(), err)
+			}
+
+			s.Logf("Step %d. Requesting roam from %s to %s", i, mac[i%2], mac[(i+1)%2])
+			// Request shill to send D-Bus roam request to wpa_supplicant.
+			if err := tf.RequestRoam(ctx, iface, mac[(i+1)%2].String(), 15*time.Second); err != nil {
+				s.Fatalf("Failed to roam from %s to %s: %v", mac[i%2], mac[(i+1)%2], err)
+			}
+
+			monitorResult, err := waitForProps()
+			if err != nil {
+				s.Fatal("Failed to wait for the properties: ", err)
+			}
+			// Check that we don't disconnect along the way here, in case we're ping-ponging around APs --
+			// and after the first (failed) roam, the second re-connection will not be testing FT at all.
+			for _, ph := range monitorResult {
+				if ph.Name == shillconst.ServicePropertyIsConnected {
+					if !ph.Value.(bool) {
+						s.Error("Failed to stay connected during the roaming process")
+					}
 				}
 			}
-		}
 
-		// Verify the L3 connectivity and make sure that the DUT stays connected to the second AP.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := tf.PingFromDUT(ctx, serverIP.String()); err != nil {
-				return err
+			// Verify the L3 connectivity and make sure that the DUT stays connected to the second AP.
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if err := tf.PingFromDUT(ctx, serverIP.String()); err != nil {
+					return err
+				}
+				dutState, err := tf.QueryService(ctx)
+				if err != nil {
+					return err
+				}
+				if dutState.Wifi.Bssid != mac[(i+1)%2].String() {
+					return testing.PollBreak(errors.Errorf("unexpected BSSID: got %s, want %s", dutState.Wifi.Bssid, mac[(i+1)%2]))
+				}
+				return nil
+			}, &testing.PollOptions{
+				Timeout:  30 * time.Second,
+				Interval: time.Second,
+			}); err != nil {
+				s.Error("Failed to verify the connection: ", err)
 			}
-			dutState, err := tf.QueryService(ctx)
-			if err != nil {
-				return err
-			}
-			if dutState.Wifi.Bssid != mac1.String() {
-				return testing.PollBreak(errors.Errorf("unexpected BSSID: got %s, want %s", dutState.Wifi.Bssid, mac1))
-			}
-			return nil
-		}, &testing.PollOptions{
-			Timeout:  30 * time.Second,
-			Interval: time.Second,
-		}); err != nil {
-			s.Error("Failed to verify the connection: ", err)
 		}
+		verificatonResults(ctx, vf)
 	}
 	hasFTSupport := func(ctx context.Context) bool {
 		phys, err := iw.NewRemoteRunner(s.DUT().Conn()).ListPhys(ctx)

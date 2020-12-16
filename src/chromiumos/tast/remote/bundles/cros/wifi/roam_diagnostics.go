@@ -12,9 +12,11 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
+	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/attenuator"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -22,15 +24,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type verificationType int
+
 type roamDiagnosticsTestcase struct {
-	apOpts1    []hostapd.Option
-	apOpts2    []hostapd.Option
-	secConfFac security.ConfigFactory
+	apOpts1      []hostapd.Option
+	apOpts2      []hostapd.Option
+	secConfFac   security.ConfigFactory
+	verification verificationType
 }
 
 const (
-	roamDiagnosticsMaxAttenuation   float64 = 96
-	roamDiagnosticsMinAttenuation   float64 = 56
+	roamDiagnosticsMaxAttenuation   float64 = 97
+	roamDiagnosticsMinAttenuation   float64 = 57
 	roamDiagnosticsAttenuationStep  float64 = 4
 	roamDiagnosticsAttenuationRange float64 = 12
 	roamDiagnosticsRoamBuckets              = 7
@@ -38,10 +43,16 @@ const (
 	roamDiagnosticsScanCount                = 2
 
 	roamDiagnosticsRoamTimeout  = 5 * time.Second
-	roamDiagnosticsScansTimeout = 10 * time.Second
+	roamDiagnosticsScansTimeout = 20 * time.Second
 
 	roamDiagnosticsLogFilePerm  os.FileMode = 0644
 	roamDiagnosticsLogFileFlags             = os.O_WRONLY | os.O_CREATE | os.O_TRUNC
+)
+
+const (
+	roamDiagnosticNoVerification verificationType = iota
+	pingVerification
+	// May add more later, e.g. netperf.
 )
 
 type roamDiagnosticsFreqPair [2]int
@@ -83,9 +94,23 @@ func init() {
 		Vars:        []string{"routers", "pcap", "attenuator"},
 		Params: []testing.Param{
 			{
+				Name: "normal",
 				Val: []roamDiagnosticsTestcase{
 					{apOpts1: roamDiagnosticsAP1Opts, apOpts2: roamDiagnosticsAP2Opts, secConfFac: nil},
 					{apOpts1: roamDiagnosticsAP1Opts, apOpts2: roamDiagnosticsAP36Opts, secConfFac: nil},
+				},
+			},
+			{
+				Name: "ping",
+				Val: []roamDiagnosticsTestcase{
+					{apOpts1: roamDiagnosticsAP1Opts,
+						apOpts2:      roamDiagnosticsAP2Opts,
+						secConfFac:   nil,
+						verification: roamDiagnosticNoVerification},
+					{apOpts1: roamDiagnosticsAP1Opts,
+						apOpts2:      roamDiagnosticsAP36Opts,
+						secConfFac:   nil,
+						verification: roamDiagnosticNoVerification},
 				},
 			},
 		},
@@ -182,10 +207,49 @@ func setTotalAttenuation(ctx context.Context, s *testing.State, attenuator *atte
 	s.Logf("Set attenuation ap%d, f=%d a=%f", apIdx, freq, atten)
 }
 
+func getVerifier(ctx context.Context, s *testing.State,
+	verification verificationType) *wificell.Verifier {
+	// There should go a list of verification functions.
+	pingF := func() (wificell.ResultType, error) {
+		pr := remoteping.NewRemoteRunner(s.DUT().Conn())
+		//ap0.ServerIP().String()
+		res, err := pr.Ping(ctx, "192.168.234.1", ping.Count(60))
+		if err != nil {
+			testing.ContextLog(ctx, "ping error, ", err)
+			return wificell.ResultType{}, err
+		}
+		testing.ContextLogf(ctx, "ping statistics=%+v", res)
+
+		return wificell.ResultType{Data: res.Loss, Timestamp: time.Now()}, nil
+	}
+	switch verification {
+	case pingVerification:
+		vf := wificell.NewVerifier(ctx, pingF)
+		vf.StartJob()
+		return vf
+	default:
+		return nil
+	}
+}
+
+func verificatonResults(ctx context.Context, vf *wificell.Verifier) {
+	if vf != nil {
+		results, err := vf.StopJob()
+		if err != nil {
+			testing.ContextLog(ctx, "Error while receiving verification results, ", err)
+			return
+		}
+		for i, ret := range results {
+			testing.ContextLogf(ctx, "Iteration %d: Time=%s, Loss rate=%+v",
+				i+1, ret.Timestamp.Format("15:04:05.000"), ret.Data)
+		}
+	}
+}
+
 // executeRoamDiagnosticsTest executes the test once with given parameters.
 // Updates statistics.
 func executeRoamDiagnosticsTest(ctx context.Context, s *testing.State, ap0Params, ap1Params []hostapd.Option, runIdx int,
-	secConfFac security.ConfigFactory, stats *roamDiagnosticsStatsMap) {
+	secConfFac security.ConfigFactory, verification verificationType, stats *roamDiagnosticsStatsMap) {
 
 	tf := s.PreValue().(*wificell.TestFixture)
 
@@ -205,6 +269,8 @@ func executeRoamDiagnosticsTest(ctx context.Context, s *testing.State, ap0Params
 	if err := tf.VerifyConnection(ctx, ap0); err != nil {
 		s.Fatal("Failed to verify connection: ", err)
 	}
+
+	vf := getVerifier(ctx, s, verification)
 
 	ap1, freq1, deconfig := wifiutil.ConfigureAP(ctx, s, ap1Params, 1, secConfFac)
 	defer deconfig(ctx, ap1)
@@ -258,6 +324,7 @@ func executeRoamDiagnosticsTest(ctx context.Context, s *testing.State, ap0Params
 			}
 		}
 	}
+	verificatonResults(ctx, vf)
 }
 
 // dumpRoamDiagnosticsStats prints statistics to log and to performance metrics system.
@@ -321,7 +388,7 @@ func RoamDiagnostics(ctx context.Context, s *testing.State) {
 
 	testCases := s.Param().([]roamDiagnosticsTestcase)
 	for i, tc := range testCases {
-		executeRoamDiagnosticsTest(ctx, s, tc.apOpts1, tc.apOpts2, i, tc.secConfFac, &stats)
+		executeRoamDiagnosticsTest(ctx, s, tc.apOpts1, tc.apOpts2, i, tc.secConfFac, tc.verification, &stats)
 	}
 
 	dumpRoamDiagnosticsStats(ctx, s, &stats)

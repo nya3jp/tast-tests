@@ -711,6 +711,10 @@ func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options .
 	return tf.ConnectWifi(ctx, conf.SSID, opts...)
 }
 
+func (tf *TestFixture) WifiService(ctx context.Context) (*network.SelectedServiceResponse, error) {
+	return tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+}
+
 func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) error {
 	ctx, st := timing.Start(ctx, "tf.disconnectWifi")
 	defer st.End()
