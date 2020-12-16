@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62679146_213ddc21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68271de3_81ee255d",
+      "range": {
+        "startLine": 41,
+        "startChar": 6,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a73267a1_a71abbf5",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "got it. thanks.",
       "parentUuid": "a73267a1_a71abbf5",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "556e8339_63b3d6f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaff6500_3e737e7d",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -159,6 +207,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef830601_cd88c0a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89cc8d8f_5a3b01a9",
+      "range": {
+        "startLine": 60,
+        "startChar": 18,
+        "endLine": 60,
+        "endChar": 74
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5c24435_171396c1",
@@ -172,6 +244,30 @@
       "writtenOn": "2020-12-15T23:18:37Z",
       "side": 1,
       "message": "I think you need here:\n , testOpt.command[1]...)\n\nto get the flags.",
+      "range": {
+        "startLine": 71,
+        "startChar": 55,
+        "endLine": 71,
+        "endChar": 56
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "979f270f_84dd20ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:09:37Z",
+      "side": 1,
+      "message": "Thank you Miguel. \nYes, I found below code is needed to have arguments. \n, testOpt.command[1:]...)",
+      "parentUuid": "c5c24435_171396c1",
       "range": {
         "startLine": 71,
         "startChar": 55,
