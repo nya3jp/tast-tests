@@ -1255,6 +1255,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48b5ab8e_587f44f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-16T21:46:00Z",
+      "side": 1,
+      "message": "Some situation I can think of that the command will return an error.\n1) command not found\n2) IO error\n3) got killed by context timeout\n4) runs and return non-zero exit\n\nI think 1) 2) 3) can be classified to \"Failed to run\".\nOr you can use testexec.ExitCode to get the exit code here?",
+      "parentUuid": "444d5479_c70416ba",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ab857a2_4ed4dc15",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -1468,6 +1486,24 @@
       "side": 1,
       "message": "This seems redundant to me because v4l2-compatible binary returns value other than 0 if there is any failure. So this code is already doing what this code is trying to do. Let me know if I am missing something here.",
       "parentUuid": "220fd934_34d60077",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf8bb86_57e69c05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-16T21:46:00Z",
+      "side": 1,
+      "message": "Just do a double check. \nAs you are already grepping the summary line. I feel like it shouldn\u0027t be much trouble to grep the numbers out? If you think grepping the summary is good enough, I\u0027m fine with that too.\n \nBTW, will the return code !\u003d 0 if there are warning?",
+      "parentUuid": "09343efc_a10f3366",
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
