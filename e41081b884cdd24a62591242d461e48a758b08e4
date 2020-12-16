@@ -16,6 +16,75 @@
       "message": "First ax test! So, I spent a long time trying to extend test_fixture.go to allow a non-Google ax router and pcap, but by the end of it, I had commented out all of TestFixture\u0027s code, so I put it in my test raw. I can still go through the effort of cleaning all that up and checking it in, if you think it\u0027d be useful for more than just me. I suspect we\u0027ll have a Google-router that we can ssh into before too long, so it doesn\u0027t seem to be a useful operation.\n\nBut anyway, that\u0027s not the point.  This test simply connects to each of our 4 ax routers in our lab. I need to make a pool label for the ax DUTs before I check this in, but I figured I\u0027d let you guys review it first. Once this gets in, the multi-peer connection validation is soon to follow. \n\n",
       "revId": "e41081b884cdd24a62591242d461e48a758b08e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5dfb9f4_d9f560c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-16T15:59:38Z",
+      "side": 1,
+      "message": "You may want to make this a table driven test?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "e41081b884cdd24a62591242d461e48a758b08e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9efebe84_1f217904",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-16T15:59:38Z",
+      "side": 1,
+      "message": "This should probably go farther down and use the same rpc and wificlient generated farther down in this function.\n\nOn another note, it may be most correct to just put this at the end of the function since the very last thing you do in the function is connect. Before that point, you shouldn\u0027t be connected and need to run this disconnect function.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 7
+      },
+      "revId": "e41081b884cdd24a62591242d461e48a758b08e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e445df0_f84d0482",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-16T15:59:38Z",
+      "side": 1,
+      "message": "nit: merge lines\n\nAlso, it may be good to add a comment about why you are using \"err \u003d\u003d nil\". It is pretty uncommon in Go, so someone may think it is a bug at first glance.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 16
+      },
+      "revId": "e41081b884cdd24a62591242d461e48a758b08e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
