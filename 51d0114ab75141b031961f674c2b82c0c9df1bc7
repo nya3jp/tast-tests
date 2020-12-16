@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b79888_b243a338",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-12-16T03:29:51Z",
+      "side": 1,
+      "message": "Yamaguchi-san, PTAL. Thanks.",
+      "revId": "51d0114ab75141b031961f674c2b82c0c9df1bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
