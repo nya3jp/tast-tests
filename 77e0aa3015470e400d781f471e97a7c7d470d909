@@ -1542,6 +1542,24 @@
       "parentUuid": "ebf8bb86_57e69c05",
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3205054d_1f843292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T23:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c20e279_5204b420",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
