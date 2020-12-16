@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "393c6311_4d1f65bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-12-16T13:29:37Z",
+      "side": 1,
+      "message": "also, it looks like evdev scancode does not satisfy \u003c 0x80 unlike ASCII:\n\nhttp://cs/chromeos_public/src/third_party/kernel/v3.18/include/uapi/linux/input.h",
+      "range": {
+        "startLine": 213,
+        "startChar": 49,
+        "endLine": 213,
+        "endChar": 53
+      },
+      "revId": "6c38f2034b2b0202471018350bf4c6039e5e9689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3d63d4_7ad75d38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-12-16T13:29:37Z",
+      "side": 1,
+      "message": "nit: scancode?",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 12
+      },
+      "revId": "6c38f2034b2b0202471018350bf4c6039e5e9689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d30c8ae6_2de92dc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-12-16T13:29:37Z",
+      "side": 1,
+      "message": "nit: probably %d if it is an evdev scancode? (%q is for ASCII character)",
+      "range": {
+        "startLine": 217,
+        "startChar": 69,
+        "endLine": 217,
+        "endChar": 70
+      },
+      "revId": "6c38f2034b2b0202471018350bf4c6039e5e9689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f929ab_e5fc12a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-12-16T13:29:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 225,
+        "startChar": 60,
+        "endLine": 225,
+        "endChar": 61
+      },
+      "revId": "6c38f2034b2b0202471018350bf4c6039e5e9689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "378cd9ba_858c036e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-12-16T13:29:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 228,
+        "startChar": 55,
+        "endLine": 228,
+        "endChar": 56
+      },
+      "revId": "6c38f2034b2b0202471018350bf4c6039e5e9689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -122,6 +122,24 @@
       "parentUuid": "12c32797_9731b215",
       "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e15cab4_373d6d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-12-16T13:29:37Z",
+      "side": 1,
+      "message": "How about that: It is roughly guaranteed* that the input is processed in order, so inject KEY_A or some visible character before every key input, then check that it\u0027s received by the app.\n\nThere are some corner cases to the approach e.g. BACK key so how about explicitly listing these keys in the test and do special-case handling along with act.Start()?\n\n*) subsequent action e.g. closing the activity from BACK press may run asynchronously but events should at least reach Ozone or InputReaderArc in order.",
+      "parentUuid": "baf107fa_8111ddff",
+      "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
