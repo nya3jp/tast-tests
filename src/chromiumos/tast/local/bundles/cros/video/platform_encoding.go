@@ -380,7 +380,10 @@ func vp9args(exe, yuvFile string, size coords.Size) (command []string, ivfFile s
 	command = append(command, "--qp", "24" /* Quality Parameter */)
 	command = append(command, "--rcmode", "1" /* For Constant BitRate (CBR) */)
 	command = append(command, "--lf_level", "10" /* Loop filter level. */)
-	command = append(command, "--low_power", "0" /* Prefer non Low-Power mode */)
+
+	// Intel Gen 11 and later (JSL, TGL, etc) only support Low-Power
+	// encoding. Let exe decide which one to use (auto mode).
+	command = append(command, "--low_power", "-1")
 
 	bitrate := int(1.3 * float64(size.Width) * float64(size.Height) / 1000.0)
 	command = append(command, "--fb", strconv.Itoa(bitrate) /* Kbps */)
