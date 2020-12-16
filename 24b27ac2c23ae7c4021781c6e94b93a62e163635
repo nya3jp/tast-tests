@@ -1,0 +1,166 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bffacbb_1fbc7626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T03:29:53Z",
+      "side": 1,
+      "message": "txt is not an ideal file extension, since it is not a free text for description.\nHow about using .hw which is more meanningful.",
+      "range": {
+        "startLine": 25,
+        "startChar": 52,
+        "endLine": 25,
+        "endChar": 55
+      },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea13cacf_4eb3624e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T03:29:53Z",
+      "side": 1,
+      "message": "Nice to use google storage rather than native test data file in code base.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c8da46_75ae91d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T03:29:53Z",
+      "side": 1,
+      "message": "nit: handwriting file",
+      "range": {
+        "startLine": 75,
+        "startChar": 36,
+        "endLine": 75,
+        "endChar": 41
+      },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3343e832_a25d3f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T03:29:53Z",
+      "side": 1,
+      "message": "\u003e \"sugguestion\" is a possible misspelling of \"suggestion\".\n\nPlease fix.",
+      "parentUuid": "de76961e_47c36bb2",
+      "range": {
+        "startLine": 115,
+        "startChar": 53,
+        "endLine": 115,
+        "endChar": 64
+      },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39fe2f2_c601147f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T03:29:53Z",
+      "side": 1,
+      "message": "handwritingCanvas is not necessary to expose to tests. A function likes vkb.DrawHandWritingFromFile should be good enough to wrap reading file to drawing on screen.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1df502b_c91630fc",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T03:29:53Z",
+      "side": 1,
+      "message": "Can you please add more comments on this algorithm?",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 54
+      },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540e59db_bf496435",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T03:29:53Z",
+      "side": 1,
+      "message": "reads handwriting trajactories from given file",
+      "range": {
+        "startLine": 462,
+        "startChar": 23,
+        "endLine": 462,
+        "endChar": 63
+      },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
