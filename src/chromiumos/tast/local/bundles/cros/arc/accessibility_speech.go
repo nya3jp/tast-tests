@@ -13,8 +13,9 @@ import (
 	"github.com/google/go-cmp/cmp"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/a11y"
+	arca11y "chromiumos/tast/local/bundles/cros/arc/a11y"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -72,7 +73,7 @@ type axSpeechTestStep struct {
 }
 
 // speechLog obtains the speech log of ChromeVox.
-func speechLog(ctx context.Context, cvconn *chrome.Conn) ([]string, error) {
+func speechLog(ctx context.Context, cvconn *a11y.ChromeVoxConn) ([]string, error) {
 	// speechLog represents a log of accessibility speech.
 	type speechLog struct {
 		Text string `json:"textString_"`
@@ -125,10 +126,11 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			[]string{"test toast"},
 		},
 	}
-	testActivities := []a11y.TestActivity{a11y.MainActivity}
+
+	testActivities := []arca11y.TestActivity{arca11y.MainActivity}
 	speechTestSteps := make(map[string][]axSpeechTestStep)
-	speechTestSteps[a11y.MainActivity.Name] = MainActivityTestSteps
-	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity a11y.TestActivity) error {
+	speechTestSteps[arca11y.MainActivity.Name] = MainActivityTestSteps
+	testFunc := func(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, currentActivity arca11y.TestActivity) error {
 		// Enable speech logging.
 		if err := cvconn.Eval(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`, nil); err != nil {
 			return errors.Wrap(err, "could not enable speech logging")
@@ -176,5 +178,5 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}
-	a11y.RunTest(ctx, s, testActivities, testFunc)
+	arca11y.RunTest(ctx, s, testActivities, testFunc)
 }
