@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "639748a7_03611008",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-16T02:02:24Z",
+      "side": 1,
+      "message": "The followup crrev.com/c/2592176 adds more test cases.  For now, I like DragDrop since it is what filemanager and arc are using. If we add further drag drop cases which are not for files, we can change the name.",
+      "parentUuid": "3787ae8e_5c674464",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "46928e7769a4ff9d1d6caf54b5590e952f5faa87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01ceade2_a08db973",
@@ -101,6 +125,30 @@
       "writtenOn": "2020-12-15T22:58:49Z",
       "side": 1,
       "message": "a file.",
+      "range": {
+        "startLine": 36,
+        "startChar": 21,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "46928e7769a4ff9d1d6caf54b5590e952f5faa87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a48597_b10ed33b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2020-12-16T02:02:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01ceade2_a08db973",
       "range": {
         "startLine": 36,
         "startChar": 21,
