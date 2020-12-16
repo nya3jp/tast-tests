@@ -133,3 +133,12 @@ func PortraitModeTestConfig(outDir string, generatePerfLog bool, portraitModeTes
 		OutDir:                 outDir,
 	}
 }
+
+// StillCaptureZSLTestConfig returns test config for running HAL3StillCaptureZSL test.
+func StillCaptureZSLTestConfig(outDir string) TestConfig {
+	return TestConfig{
+		GtestFilter:            "Camera3StillCaptureTest/Camera3SimpleStillCaptureTest.TakePictureZslTest/*",
+		ConnectToCameraService: true,
+		OutDir:                 outDir,
+	}
+}
