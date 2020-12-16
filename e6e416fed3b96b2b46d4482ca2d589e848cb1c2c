@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9a44c3_18988769",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-16T05:00:57Z",
+      "side": 1,
+      "message": "Can wificell suite run a test that needs attenuator?",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "e6e416fed3b96b2b46d4482ca2d589e848cb1c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b58cff_e29fa091",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-16T05:00:57Z",
+      "side": 1,
+      "message": "Golang sets package level visibility for constants, variables, types and functions in top level of files. So unless they are going to share within the package, it is better to be placed in main test function or move the main logic to sub package. In this case I would suggest the later (to avoid lengthy AttenuatedPerf).",
+      "revId": "e6e416fed3b96b2b46d4482ca2d589e848cb1c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
