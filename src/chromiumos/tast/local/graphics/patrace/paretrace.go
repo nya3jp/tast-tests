@@ -136,9 +136,26 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string, 
 		versionOkButton.Click(ctx)
 	}
 
+	crashOrOOM := false
+	quitFunc := func() bool {
+		isRunning, err := act.IsRunning(ctx)
+		if err != nil {
+			return false
+		}
+		if !isRunning {
+			testing.ContextLog(ctx, "Activity is no longer running.")
+			crashOrOOM = true
+			return true
+		}
+		return false
+	}
+
 	exp := regexp.MustCompile(`paretrace(32|64)\s*:.*=+\sStart\stimer.*=+`)
-	if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp)); err != nil {
+	if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp), quitFunc); err != nil {
 		s.Fatal("WaitForLogcat failed: ", err)
+	}
+	if crashOrOOM {
+		s.Fatal("There was either a crash or an OOM.")
 	}
 
 	if err := metrics.Start(ctx); err != nil {
@@ -150,8 +167,11 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string, 
 	}
 
 	exp = regexp.MustCompile(`paretrace(32|64)\s*:.*=+\sEnd\stimer.*=+`)
-	if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp)); err != nil {
+	if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp), quitFunc); err != nil {
 		s.Fatal("WaitForLogcat failed: ", err)
+	}
+	if crashOrOOM {
+		s.Fatal("There was either a crash or an OOM.")
 	}
 
 	perfValues, err := metrics.StopRecording()
