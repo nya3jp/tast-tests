@@ -1273,6 +1273,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aeeab732_ec8cac40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T23:12:01Z",
+      "side": 1,
+      "message": "Thank you for explanation. \nYes, I was think of 4).\n\nAre you suggesting to use \u0027testexec.ExitCode(err)\u0027 instead of \u0027err\u0027?\nI thought \u0027err\u0027 is still giving me some error code here. \nHow will this be different?",
+      "parentUuid": "48b5ab8e_587f44f4",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ab857a2_4ed4dc15",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
@@ -1504,6 +1522,24 @@
       "side": 1,
       "message": "Just do a double check. \nAs you are already grepping the summary line. I feel like it shouldn\u0027t be much trouble to grep the numbers out? If you think grepping the summary is good enough, I\u0027m fine with that too.\n \nBTW, will the return code !\u003d 0 if there are warning?",
       "parentUuid": "09343efc_a10f3366",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c20e279_5204b420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T23:12:01Z",
+      "side": 1,
+      "message": "sure, I can do the double check here. \n\nYes, grepping the summary line was the purpose here. I don\u0027t have that plan to use the numbers. If we usually grep numbers out for some purpose, then I can definitely grep the numbers for the purpose.\n\nwarnings should not affect return code.\nfrom the code, total consists of success and fail only. \n\nhttps://git.linuxtv.org/v4l-utils.git/tree/utils/v4l2-compliance/v4l2-compliance.cpp\n\nI think len(matches) \u003d\u003d 1 should be valid case, right?",
+      "parentUuid": "ebf8bb86_57e69c05",
       "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
