@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8fdf11_14121b6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-16T22:03:29Z",
+      "side": 1,
+      "message": "Looks good to tast",
+      "revId": "ba7e2d05b2af624f10a4c36b48a1789f6f3024db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "325e79a2_3feba1f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-16T22:03:29Z",
+      "side": 1,
+      "message": "can you add some comment describing how the ratio is determined?",
+      "range": {
+        "startLine": 83,
+        "startChar": 57,
+        "endLine": 83,
+        "endChar": 61
+      },
+      "revId": "ba7e2d05b2af624f10a4c36b48a1789f6f3024db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff912c77_23aefda3",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-16T22:03:29Z",
+      "side": 1,
+      "message": "Should this be MainActivity?",
+      "range": {
+        "startLine": 41,
+        "startChar": 82,
+        "endLine": 41,
+        "endChar": 87
+      },
+      "revId": "ba7e2d05b2af624f10a4c36b48a1789f6f3024db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
