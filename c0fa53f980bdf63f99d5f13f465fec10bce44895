@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d8fe2a_484b20e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-16T13:10:37Z",
+      "side": 1,
+      "message": "We could upload files to both public and private buckets. In this CL the mobilenet is public and smartdim is private.\n\nPotentially we could do this for non-TFlite models as well.\n\nI\u0027ve simplified the archive structure as compared to ml-benchmark-drivers requirements to make them easier to unpack.",
+      "revId": "c0fa53f980bdf63f99d5f13f465fec10bce44895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
