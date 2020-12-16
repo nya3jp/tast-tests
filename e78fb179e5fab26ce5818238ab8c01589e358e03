@@ -16,6 +16,69 @@
       "message": "Thanks for the feedback! Responded to comments, let me know how it looks!",
       "revId": "e78fb179e5fab26ce5818238ab8c01589e358e03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8867360d_40863e75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-12-16T23:04:01Z",
+      "side": 1,
+      "message": "looks much better!\nafter getting lgtm from Hiroki, please add tast-owners@ to reviewers",
+      "revId": "e78fb179e5fab26ce5818238ab8c01589e358e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54bd45a9_33352b2e",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-12-16T23:04:01Z",
+      "side": 1,
+      "message": "I think we need to add `extConn.Close()` here too",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "e78fb179e5fab26ce5818238ab8c01589e358e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a6f016_ea616742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-12-16T23:04:01Z",
+      "side": 1,
+      "message": "should be nil? \n(since the err is being return above)",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "e78fb179e5fab26ce5818238ab8c01589e358e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
