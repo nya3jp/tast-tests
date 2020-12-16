@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b07981_f9c657b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-16T20:23:55Z",
+      "side": 1,
+      "message": "pwang@ PTAL (tiny fix CL).\n\nOthers FYI.",
+      "revId": "0cc2fc71de0e8257ac7d59354a6cacca591b85d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
