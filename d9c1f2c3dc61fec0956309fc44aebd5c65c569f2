@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61bb92f2_6ab5c985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_intent_picker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T00:24:53Z",
+      "side": 1,
+      "message": "For defer functions, using cleanupCtx as well.",
+      "range": {
+        "startLine": 122,
+        "startChar": 35,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "d9c1f2c3dc61fec0956309fc44aebd5c65c569f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f51ad8_be8d7c17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_intent_picker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T00:24:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 129,
+        "startChar": 18,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "d9c1f2c3dc61fec0956309fc44aebd5c65c569f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197fb527_f19695f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_intent_picker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T00:24:53Z",
+      "side": 1,
+      "message": "nit: For consistency, using \"failed finding\"",
+      "range": {
+        "startLine": 161,
+        "startChar": 34,
+        "endLine": 161,
+        "endChar": 41
+      },
+      "revId": "d9c1f2c3dc61fec0956309fc44aebd5c65c569f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99434ab3_3ee31564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_intent_picker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T00:24:53Z",
+      "side": 1,
+      "message": "nit: failed clicking",
+      "range": {
+        "startLine": 166,
+        "startChar": 27,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "d9c1f2c3dc61fec0956309fc44aebd5c65c569f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
