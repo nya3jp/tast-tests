@@ -161,6 +161,30 @@
       },
       "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1013ae8b_353b0767",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2020-12-16T03:42:00Z",
+      "side": 1,
+      "message": "*trajectories",
+      "parentUuid": "540e59db_bf496435",
+      "range": {
+        "startLine": 462,
+        "startChar": 23,
+        "endLine": 462,
+        "endChar": 63
+      },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
