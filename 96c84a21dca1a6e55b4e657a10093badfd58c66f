@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4c8df3_79f58c17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-16T14:11:58Z",
+      "side": 1,
+      "message": "Could you explain more background?\nWhy this is necessary? Any crash/OOM are expected? If not, why not fix the issue rather than just checking?\n\nor, is it a way to investigate? Or ... something else?",
+      "revId": "96c84a21dca1a6e55b4e657a10093badfd58c66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11df166b_78367354",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-16T14:11:58Z",
+      "side": 1,
+      "message": "So, it\u0027s worth having a tracking issue. It\u0027d be better to link of the failure instances, such as a link to the filing bot etc..",
+      "revId": "96c84a21dca1a6e55b4e657a10093badfd58c66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da8c7c3_aff00585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-16T14:11:58Z",
+      "side": 1,
+      "message": "the code itself LG.",
+      "revId": "96c84a21dca1a6e55b4e657a10093badfd58c66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
