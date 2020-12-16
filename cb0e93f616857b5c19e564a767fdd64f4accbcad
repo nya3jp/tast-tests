@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "def3915f_0bb5fcf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-16T12:39:04Z",
+      "side": 1,
+      "message": "This commit fix the bug reported at http://b/149921859#comment9 and reverts the commit again.\nThe diff from previous commit (https://crrev.com/c/2232379) is http://crrev/c/2594929/1..2\n\nShao-Chuan, could I ask you to check whether it\u0027s correctly fixed, or tell me environments which you could reproduce it on? I couldn\u0027t reproduce the bug on my DUTs (rammus-arc-r and kukui-arc-r) with just `$ tast run localhost:9222 arc.BuildProperties.vm arc.CheckAndroidVersion.vm`. Thank you!",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
