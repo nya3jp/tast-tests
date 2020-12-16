@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "411a909a_b3938185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2020-12-16T22:24:02Z",
+      "side": 1,
+      "message": "Verified from the tryjob,\n\nhttps://ci.chromium.org/p/chromeos/builders/general/Try/b8860820809120201488?\n\n",
+      "revId": "9973b5d77ce989576221c1c2d8e7a9bedc4b0663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
