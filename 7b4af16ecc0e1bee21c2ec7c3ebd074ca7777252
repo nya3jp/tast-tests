@@ -16,6 +16,29 @@
       "message": "Looks like VTSKeymaster is still broken in the userdebug boards (tested on hatch-arc-r-userdebug).\n",
       "revId": "7b4af16ecc0e1bee21c2ec7c3ebd074ca7777252",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ff876b_d0dd1b25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2020-12-16T18:06:09Z",
+      "side": 1,
+      "message": "nit: this comment is no longer correct. can you update or reword?",
+      "range": {
+        "startLine": 93,
+        "startChar": 67,
+        "endLine": 93,
+        "endChar": 77
+      },
+      "revId": "7b4af16ecc0e1bee21c2ec7c3ebd074ca7777252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
