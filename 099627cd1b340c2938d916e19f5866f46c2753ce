@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "384a9bb7_750f8f2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_intent_picker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-16T00:21:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21973ea2_088694d4",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "099627cd1b340c2938d916e19f5866f46c2753ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32c750bd_a5373ab1",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-15T23:58:43Z",
       "side": 1,
       "message": "nice to have a cleanupCtx for dumping errors if test fails. This function would not work if test fails on timeout if using the same context.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 61,
+        "startChar": 33,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "099627cd1b340c2938d916e19f5866f46c2753ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3abd758_369a5495",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_intent_picker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-16T00:21:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32c750bd_a5373ab1",
       "range": {
         "startLine": 61,
         "startChar": 33,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0434301_50814483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_intent_picker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-16T00:21:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "472e34a8_afc8ab78",
+      "range": {
+        "startLine": 114,
+        "startChar": 27,
+        "endLine": 114,
+        "endChar": 36
+      },
+      "revId": "099627cd1b340c2938d916e19f5866f46c2753ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69fbcaa2_4bff1afd",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-15T23:58:43Z",
       "side": 1,
       "message": "I am not familar with ARC tests. IIUC, an instance from precondition should not be closed inside test.",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 29
+      },
+      "revId": "099627cd1b340c2938d916e19f5866f46c2753ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8579127a_6053c6a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_intent_picker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-12-16T00:21:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69fbcaa2_4bff1afd",
       "range": {
         "startLine": 171,
         "startChar": 12,
