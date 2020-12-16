@@ -22,6 +22,30 @@
       },
       "revId": "5375b7294b2b32fa7691718d87ed8c28abe82956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2062fd3_5f19bb07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T23:12:01Z",
+      "side": 1,
+      "message": "Yes, it ended up left with one component. Let me change this as suggested.\n\nused \"command\" instead as \"cmd\" is already used.",
+      "parentUuid": "e4462dac_39c24d78",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "5375b7294b2b32fa7691718d87ed8c28abe82956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
