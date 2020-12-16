@@ -43,7 +43,7 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	// Add a extra desk and remove it at the end of the test.
+	// Add an extra desk and remove it at the end of the test.
 	if err = ash.CreateNewDesk(ctx, tconn); err != nil {
 		s.Fatal("Failed to create a new desk: ", err)
 	}
@@ -72,7 +72,7 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 	fingerSpacing := tpw.Width() / 16
 	doTrackpadFourFingerSwipeScroll := func(ctx context.Context, x0, x1 input.TouchCoord) error {
 		y := tpw.Height() / 2
-		const t = time.Second * 2
+		const t = time.Second
 		return tw.Swipe(ctx, x0, y, x1, y, fingerSpacing, 4, t)
 	}
 
