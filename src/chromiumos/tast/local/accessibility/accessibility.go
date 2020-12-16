@@ -33,10 +33,25 @@ const (
 	SwitchAccess            = "switchAccess"
 )
 
-// ChromeVoxExtConn returns a connection to the ChromeVox extension's background page.
+// SetFeatureEnabled sets the specified accessibility feature enabled/disabled using the provided connection to the extension.
+func SetFeatureEnabled(ctx context.Context, tconn *chrome.TestConn, feature Feature, enable bool) error {
+	if err := tconn.Call(ctx, nil, `(feature, enable) => {
+		  return tast.promisify(tast.bind(chrome.accessibilityFeatures[feature], "set"))({value: enable});
+		}`, feature, enable); err != nil {
+		return errors.Wrapf(err, "failed to toggle %v to %t", feature, enable)
+	}
+	return nil
+}
+
+// ChromeVoxConn represents a connection to the ChromeVox background page.
+type ChromeVoxConn struct {
+	*chrome.Conn
+}
+
+// NewChromeVoxConn returns a connection to the ChromeVox extension's background page.
 // If the extension is not ready, the connection will be closed before returning.
 // Otherwise the calling function will close the connection.
-func ChromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
+func NewChromeVoxConn(ctx context.Context, c *chrome.Chrome) (*ChromeVoxConn, error) {
 	extConn, err := c.NewConnForTarget(ctx, chrome.MatchTargetURL(chromeVoxExtensionURL))
 	if err != nil {
 		return nil, err
@@ -63,22 +78,12 @@ func ChromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 		return nil, err
 	}
 
-	return extConn, nil
-}
-
-// SetFeatureEnabled sets the specified accessibility feature enabled/disabled using the provided connection to the extension.
-func SetFeatureEnabled(ctx context.Context, tconn *chrome.TestConn, feature Feature, enable bool) error {
-	if err := tconn.Call(ctx, nil, `(feature, enable) => {
-		  return tast.promisify(tast.bind(chrome.accessibilityFeatures[feature], "set"))({value: enable});
-		}`, feature, enable); err != nil {
-		return errors.Wrapf(err, "failed to toggle %v to %t", feature, enable)
-	}
-	return nil
+	return &ChromeVoxConn{extConn}, nil
 }
 
 // focusedNode returns the currently focused node of ChromeVox.
 // The returned node should be release by the caller.
-func focusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn) (*ui.Node, error) {
+func (cvconn *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
 	obj := &chrome.JSObject{}
 	if err := cvconn.Eval(ctx, "ChromeVoxState.instance.currentRange.start.node", obj); err != nil {
 		return nil, err
@@ -88,10 +93,10 @@ func focusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 
 // WaitForFocusedNode polls until the properties of the focused node matches the given params.
 // timeout specifies the timeout to use when polling.
-func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams, timeout time.Duration) error {
+func (cvconn *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.TestConn, params *ui.FindParams, timeout time.Duration) error {
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		focused, err := focusedNode(ctx, cvconn, tconn)
+		focused, err := cvconn.focusedNode(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -107,4 +112,10 @@ func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.
 		return errors.Wrap(err, "failed to get current focus")
 	}
 	return nil
+}
+
+// ChromeConn returns the underlying connection to ChromeVox's background
+// page.
+func (cvconn *ChromeVoxConn) ChromeConn() *chrome.Conn {
+	return cvconn.Conn
 }
