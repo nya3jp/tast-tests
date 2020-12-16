@@ -3,6 +3,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94311ffb_e0ce3773",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-16T03:53:55Z",
+      "side": 1,
+      "message": "\u003e \"swtich\" is a possible misspelling of \"switch\".\n\nPlease fix.",
+      "parentUuid": "ae8577f8_f6505453",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "24b27ac2c23ae7c4021781c6e94b93a62e163635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bffacbb_1fbc7626",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
         "patchSetId": 1
