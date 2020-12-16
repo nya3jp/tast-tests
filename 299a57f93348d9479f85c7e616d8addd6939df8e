@@ -46,6 +46,30 @@
       },
       "revId": "299a57f93348d9479f85c7e616d8addd6939df8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e2b4e0_426fef2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2020-12-16T20:55:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f22ea27_4cc0bb45",
+      "range": {
+        "startLine": 24,
+        "startChar": 44,
+        "endLine": 24,
+        "endChar": 66
+      },
+      "revId": "299a57f93348d9479f85c7e616d8addd6939df8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
