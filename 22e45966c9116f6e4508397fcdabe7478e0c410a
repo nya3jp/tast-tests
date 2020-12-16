@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f58fb6_2fdf10db",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-16T20:58:18Z",
+      "side": 1,
+      "message": "I like that idea! It probably makes sense to do something like cvconn.WaitForFocusedNode() instead of WaitForFocusedNode(cvconn). I will upload a separate change for it, so let\u0027s discuss more on that change 😊",
+      "parentUuid": "f4093d75_d355e846",
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c5abed8_181bc0a7",
@@ -82,6 +100,30 @@
       "writtenOn": "2020-12-15T22:14:05Z",
       "side": 1,
       "message": "unrelated, but I think this is a good opportunity to reorder these alphabetically",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39ba124f_4419ae89",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-16T20:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c5abed8_181bc0a7",
       "range": {
         "startLine": 26,
         "startChar": 1,
@@ -115,6 +157,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57933458_173a7faa",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-16T20:58:18Z",
+      "side": 1,
+      "message": "Done, removed this since I added it when debugging.",
+      "parentUuid": "051d5b50_e4c2a1d4",
+      "range": {
+        "startLine": 40,
+        "startChar": 32,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a321e35d_232af1b3",
@@ -138,6 +204,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4acbbc0_6642ad80",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-16T20:58:18Z",
+      "side": 1,
+      "message": "Done, moved the document.readyState check before ChromeVoxState.instance check. I also removed this method (since it wasn\u0027t doing anything anymore) and made ChromeVoxExtConn public.",
+      "parentUuid": "a321e35d_232af1b3",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a062cfb_45d88ae3",
@@ -151,6 +241,30 @@
       "writtenOn": "2020-12-16T00:43:07Z",
       "side": 1,
       "message": "Do we need this?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8b2405_37c769a7",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-16T20:58:18Z",
+      "side": 1,
+      "message": "No we don\u0027t, sorry I forgot to remove this before uploading.",
+      "parentUuid": "6a062cfb_45d88ae3",
       "range": {
         "startLine": 84,
         "startChar": 0,
@@ -198,6 +312,30 @@
       "side": 1,
       "message": "Both .../tast/local/accessibility and .../tast/local/bundles/cros/arc/accessibility can be \"accessibility\" package. And when importing both, arc accessibility package can be named as arcaccessibility.",
       "parentUuid": "c3e68a52_dd88e183",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c00d7fd_fcfe3f65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-16T20:58:18Z",
+      "side": 1,
+      "message": "Done. Renamed accessibility_utils.go to accessibility.go. Made both .go files use package \"accessibility\". And renamed arc .go file to \"arcaccessibility\" when importing both accessibility packages.",
+      "parentUuid": "8b6a2ad1_2d7447f2",
       "range": {
         "startLine": 13,
         "startChar": 1,
