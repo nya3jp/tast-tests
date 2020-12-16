@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,6 +26,8 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "audio_record"},
 		Pre:          chrome.LoggedIn(),
+		// kakadu audio is currently broken: https://crbug.com/1153016
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kakadu")),
 	})
 }
 
