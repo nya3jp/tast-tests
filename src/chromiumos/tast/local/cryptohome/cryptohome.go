@@ -395,6 +395,18 @@ func MountGuest(ctx context.Context) error {
 	return nil
 }
 
+// CheckMountNamespace sends a request to cryptohome to check whether user
+// session mount namespace is created.
+func CheckMountNamespace(ctx context.Context) error {
+	testing.ContextLog(ctx, "Checking user session mount namespace")
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=check_mount_namespace")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrap(err, "failed to request checking mount namespace")
+	}
+	return nil
+}
+
 // CheckService performs high-level verification of cryptohomed.
 // If an error is returned, CheckDeps can be called to return additional
 // information pointing to the cause of the problem.
