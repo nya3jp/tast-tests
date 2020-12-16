@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a365fa5_9f169673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:42:43Z",
+      "side": 1,
+      "message": "as we are deleting log in the end as you suggested, \nI assume this can stay as it is.",
+      "parentUuid": "5bfda9a1_ceeb57bd",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 82
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b287c426_9cc41210",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
         "patchSetId": 8
@@ -89,6 +113,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1925286_fc204b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:42:43Z",
+      "side": 1,
+      "message": "I assume you are suggesting to update comment with this.",
+      "parentUuid": "b287c426_9cc41210",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1bea548_a58a4454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:42:43Z",
+      "side": 1,
+      "message": "this seems to be there for many other tast files under gfx \u0026 video. \nbut I can delete them",
+      "parentUuid": "93c10875_9560b605",
+      "range": {
+        "startLine": 26,
+        "startChar": 48,
+        "endLine": 26,
+        "endChar": 91
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6158bb3_dc30b787",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
         "patchSetId": 8
@@ -100,6 +172,30 @@
       "writtenOn": "2020-12-16T00:16:10Z",
       "side": 1,
       "message": "This comment seems in contradiction to the Params below?",
+      "range": {
+        "startLine": 31,
+        "startChar": 22,
+        "endLine": 31,
+        "endChar": 84
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e5e7d7_a92f10a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:42:43Z",
+      "side": 1,
+      "message": "below param is one we are using. this is noting default option. \nbut yes, we can delete this. not necessary.",
+      "parentUuid": "e6158bb3_dc30b787",
       "range": {
         "startLine": 31,
         "startChar": 22,
@@ -194,6 +290,30 @@
       "writtenOn": "2020-12-16T00:16:10Z",
       "side": 1,
       "message": "Why \"exe\", it seems redundant?",
+      "range": {
+        "startLine": 51,
+        "startChar": 25,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d32ec78_72602bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:42:43Z",
+      "side": 1,
+      "message": "will substituting to v4l2-compliance work?",
+      "parentUuid": "46dd095a_795f8143",
       "range": {
         "startLine": 51,
         "startChar": 25,
@@ -371,6 +491,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "986dfa1a_5c891779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:42:43Z",
+      "side": 1,
+      "message": "this kind of log is helpful to me, but let me delete it following convention.",
+      "parentUuid": "057c3ae2_96f999cd",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5c24435_171396c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
         "patchSetId": 8
@@ -441,6 +585,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b38ec17_b1447663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:42:43Z",
+      "side": 1,
+      "message": "yes, we are expecting 1 summary from the log. if not, it is something wrong.",
+      "parentUuid": "ced0e09d_9287e0b5",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 69
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8683a34d_49081f30",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
         "patchSetId": 8
@@ -452,6 +620,30 @@
       "writtenOn": "2020-12-16T00:16:10Z",
       "side": 1,
       "message": "Delete.",
+      "range": {
+        "startLine": 88,
+        "startChar": 23,
+        "endLine": 88,
+        "endChar": 78
+      },
+      "revId": "72b3e6f2f9ae8b1cc9a4bdd97f1f9e7163396227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e5305d_bb8c6997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-16T00:42:43Z",
+      "side": 1,
+      "message": "sure, thank you.",
+      "parentUuid": "8683a34d_49081f30",
       "range": {
         "startLine": 88,
         "startChar": 23,
