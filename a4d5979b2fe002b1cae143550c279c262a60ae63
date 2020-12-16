@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a630f747_c856d69c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-16T00:16:10Z",
+      "side": 1,
+      "message": "A minor issue. Good comments are great to have. Ideally they explain on a high level what is going on. Several of the comments here just restate a single statement with no additional information. I feel those can be removed.",
+      "revId": "a4d5979b2fe002b1cae143550c279c262a60ae63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
