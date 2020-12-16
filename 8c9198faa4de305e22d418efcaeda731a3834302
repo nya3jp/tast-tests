@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6fd02db_670b747c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-16T05:13:58Z",
+      "side": 1,
+      "message": "Thanks for the changes! Looks good, just two small nits!",
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1deca964_cd78063b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-16T05:13:58Z",
+      "side": 1,
+      "message": "\"at 30 fps\", or \"at a rate of 30 fps\"",
+      "range": {
+        "startLine": 144,
+        "startChar": 100,
+        "endLine": 144,
+        "endChar": 114
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe146a3_3bb4397b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-12-16T05:13:58Z",
+      "side": 1,
+      "message": "nit: quality",
+      "range": {
+        "startLine": 190,
+        "startChar": 40,
+        "endLine": 190,
+        "endChar": 49
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
