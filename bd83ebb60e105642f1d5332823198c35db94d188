@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc30f6e9_aab0e776",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-12-16T23:42:56Z",
+      "side": 1,
+      "message": "This is just like the Lifecycle tests above, but launches tabs/apps in streaks instead of alternating.\n\nDesign: https://docs.google.com/document/d/1nfMI8c1K9ukk_XaiTxiJdbv5lAdsNnCZdeUClf3Xl08/edit#heading\u003dh.n5kpdatg6s1o",
+      "revId": "bd83ebb60e105642f1d5332823198c35db94d188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
