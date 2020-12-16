@@ -134,6 +134,30 @@
       },
       "revId": "9dda3469610b994474a468b5207baa208214b332",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cda6c534_da6d9c5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/edjing_mix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-16T17:34:00Z",
+      "side": 1,
+      "message": "Ok. Can you just add a comment about why count is 1?",
+      "parentUuid": "8623c266_82d9c345",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 3
+      },
+      "revId": "9dda3469610b994474a468b5207baa208214b332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
