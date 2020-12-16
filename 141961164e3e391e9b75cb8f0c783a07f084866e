@@ -16,6 +16,23 @@
       "message": "mukai-san: Could you help review this patch? thanks!",
       "revId": "141961164e3e391e9b75cb8f0c783a07f084866e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2214e58b_b18731b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-16T22:04:02Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "141961164e3e391e9b75cb8f0c783a07f084866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
