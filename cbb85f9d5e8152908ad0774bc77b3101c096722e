@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86bd0133_97228154",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-16T22:06:38Z",
+      "side": 1,
+      "message": "Hi Hiroki and Sara,\n\nHere\u0027s a follow-up that adds a ChromeVoxConn type. Let me know if this is what you had in mind 😊",
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac56ffab_d8699817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-16T22:06:38Z",
+      "side": 1,
+      "message": "Not sure what the style is in Go; is it better to do the above, or create an Eval method that takes *ChromeVoxConn as a receiver? That way we could just do:\n\ncvconn.Eval(...)",
+      "range": {
+        "startLine": 62,
+        "startChar": 18,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
