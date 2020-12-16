@@ -78,7 +78,7 @@ func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) ([]str
 // waitForSpokenFeedbackReady enables spoken feedback.
 // A connection to the ChromeVox extension background page is returned, and this will be
 // closed by the calling function.
-func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) (*chrome.Conn, error) {
+func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) (*a11y.ChromeVoxConn, error) {
 	// Wait until spoken feedback is enabled in Android side.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if res, err := IsEnabledAndroid(ctx, a); err != nil {
@@ -91,7 +91,7 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled: ")
 	}
 
-	cvconn, err := a11y.ChromeVoxExtConn(ctx, cr)
+	cvconn, err := a11y.NewChromeVoxConn(ctx, cr)
 	if err != nil {
 		return nil, errors.Wrap(err, "creating connection to ChromeVox extension failed: ")
 	}
@@ -102,7 +102,7 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
 // for ChromeVox to be ready. It requires an array activities containing the list of activities
 // to run the test cases over, and the currently running activity is passed as a string to f().
-func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f func(context.Context, *chrome.Conn, *chrome.TestConn, TestActivity) error) {
+func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f func(context.Context, *a11y.ChromeVoxConn, *chrome.TestConn, TestActivity) error) {
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
@@ -166,10 +166,10 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 			defer act.Stop(ctx, tconn)
 
 			// TODO(b/161864703): Use chrome.Conn instead of TestConn.
-			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, &chrome.TestConn{Conn: cvconn}, "ui_tree"+activity.Name+".txt")
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, &chrome.TestConn{Conn: cvconn.Conn}, "ui_tree"+activity.Name+".txt")
 
 			if err := func() error {
-				if err = a11y.WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
+				if err = cvconn.WaitForFocusedNode(ctx, tconn, &ui.FindParams{
 					Name: activity.Title,
 					Role: ui.RoleTypeApplication,
 				}, 10*time.Second); err != nil {
