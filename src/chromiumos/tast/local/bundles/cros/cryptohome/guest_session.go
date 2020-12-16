@@ -24,6 +24,11 @@ func init() {
 }
 
 func GuestSession(ctx context.Context, s *testing.State) {
+	// Guest session is mounted in the user session mount namespace, so first
+	// check whether the namespace is created.
+	if err := cryptohome.CheckMountNamespace(ctx); err != nil {
+		s.Log("Mount namespace is not ready: ", err)
+	}
 	if err := cryptohome.MountGuest(ctx); err != nil {
 		s.Fatal("Failed to mount guest: ", err)
 	}
