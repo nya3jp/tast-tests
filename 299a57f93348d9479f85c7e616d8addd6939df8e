@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc712be5_64907a17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-16T16:32:52Z",
+      "side": 1,
+      "message": "nit: with this changes, we may want to remove rohit from these tests.",
+      "range": {
+        "startLine": 24,
+        "startChar": 44,
+        "endLine": 24,
+        "endChar": 66
+      },
+      "revId": "299a57f93348d9479f85c7e616d8addd6939df8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
