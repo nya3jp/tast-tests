@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "311c2c7d_c57666b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-16T00:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6375a3c_0ef4cbc5",
+      "revId": "343c2649c236a36ad56e256a5d4f6e3697353498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7c14352b_885c9444",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a66fb8_0d675677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-16T00:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e84595d3_35e81613",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "343c2649c236a36ad56e256a5d4f6e3697353498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4cb5c0f_508356ba",
@@ -71,6 +113,24 @@
       "writtenOn": "2020-12-15T23:52:52Z",
       "side": 1,
       "message": "It looks like test2 is unused.",
+      "revId": "343c2649c236a36ad56e256a5d4f6e3697353498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f9ddb3_0081c145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2020-12-16T00:35:13Z",
+      "side": 1,
+      "message": "It will be used in the future when the iTest2 tests are promoted to test2 (non-informational).",
+      "parentUuid": "b4cb5c0f_508356ba",
       "revId": "343c2649c236a36ad56e256a5d4f6e3697353498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
