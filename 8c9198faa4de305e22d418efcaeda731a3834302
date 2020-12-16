@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "672087c4_547fcda3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-16T08:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97db5a48_1c054a3e",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e520cc22_5f34d80b",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-16T05:47:45Z",
       "side": 1,
       "message": "It is not enouraged to pass through testing.State when not necessary. Especially terminate a test outside the test function itself.\n\nIt is not good for code readability. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 75,
+        "startChar": 42,
+        "endLine": 75,
+        "endChar": 58
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a623ba5_58ed0b25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-16T08:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e520cc22_5f34d80b",
       "range": {
         "startLine": 75,
         "startChar": 42,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02bde062_f44c05fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-16T08:30:13Z",
+      "side": 1,
+      "message": "In this CL, I focus on RunNewAccelVideoPerfTest.\nI will change RunNewAccelVideoTest in a follow-up CL.",
+      "parentUuid": "d97975ed_ded09602",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 47
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1deca964_cd78063b",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-12-16T05:13:58Z",
       "side": 1,
       "message": "\"at 30 fps\", or \"at a rate of 30 fps\"",
+      "range": {
+        "startLine": 144,
+        "startChar": 100,
+        "endLine": 144,
+        "endChar": 114
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a7bc04_8d3f0768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-16T08:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1deca964_cd78063b",
       "range": {
         "startLine": 144,
         "startChar": 100,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52da934b_031a6859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-16T08:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e45d6d20_b327d12a",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 32
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbe146a3_3bb4397b",
@@ -146,6 +266,30 @@
       "writtenOn": "2020-12-16T05:13:58Z",
       "side": 1,
       "message": "nit: quality",
+      "range": {
+        "startLine": 190,
+        "startChar": 40,
+        "endLine": 190,
+        "endChar": 49
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c706e37_6889590b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-16T08:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbe146a3_3bb4397b",
       "range": {
         "startLine": 190,
         "startChar": 40,
@@ -181,6 +325,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "04b4fe19_92a79083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-16T08:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ed6d1a5_76799a1e",
+      "range": {
+        "startLine": 199,
+        "startChar": 49,
+        "endLine": 199,
+        "endChar": 50
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b0a90224_28ba9fea",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new_perf.go",
         "patchSetId": 3
@@ -192,6 +360,30 @@
       "writtenOn": "2020-12-16T05:47:45Z",
       "side": 1,
       "message": "Only see one param in the list. I assume you are going to add more code into it.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "8c9198faa4de305e22d418efcaeda731a3834302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6987f1_2a3b547a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-16T08:30:13Z",
+      "side": 1,
+      "message": "Yes, I am going to add other codecs and other resolutions, e.g. vp9_720p and h264_1080p.",
+      "parentUuid": "b0a90224_28ba9fea",
       "range": {
         "startLine": 27,
         "startChar": 2,
