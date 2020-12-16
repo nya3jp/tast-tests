@@ -6,21 +6,37 @@ package platform
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/platform/mlbenchmark"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
+const (
+	// This driver isn't installed in the standard lib dir.
+	tfliteDriverPath = "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so"
+)
+
 type benchmarkParams struct {
-	driver     string // name of the driver (.so file)
-	configFile string // config file for the driver
-	scenario   string // name of the scenario
+	driver     string        // name of the driver (.so file)
+	configFile string        // config file for the driver
+	scenario   string        // name of the scenario
+	tflite     *tfliteParams // if non-nil, then points to the TFlite-specific configuration.
+}
+
+type tfliteParams struct {
+	archive string // name of the ExtraData archive.
+	numRuns int    // number of times to run the model.
 }
 
 func init() {
@@ -132,30 +148,36 @@ func init() {
 				},
 			},
 			{
-				Name: "smartdim_no_nnapi",
+				Name:      "smartdim_no_nnapi",
+				ExtraData: []string{"ml_benchmark_smartdim.tar.xz"},
 				Val: benchmarkParams{
-					// This driver isn't installed in the standard lib dir.
-					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so",
-					configFile: "ml_benchmark_smartdim_20201021.config",
-					scenario:   "smartdim_no_nnapi",
+					tflite: &tfliteParams{
+						archive: "ml_benchmark_smartdim.tar.xz",
+						numRuns: 1000,
+					},
+					scenario: "smartdim_no_nnapi",
 				},
 			},
 			{
-				Name: "mobilenet_v2_no_nnapi",
+				Name:      "mobilenet_v2_no_nnapi",
+				ExtraData: []string{"ml_benchmark_mobilenet_v2.tar.xz"},
 				Val: benchmarkParams{
-					// This driver isn't installed in the standard lib dir.
-					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so",
-					configFile: "ml_benchmark_mobilenet_v2_1.0_224.config",
-					scenario:   "mobilenet_v2_no_nnapi",
+					tflite: &tfliteParams{
+						archive: "ml_benchmark_mobilenet_v2.tar.xz",
+						numRuns: 1000,
+					},
+					scenario: "mobilenet_v2_no_nnapi",
 				},
 			},
 			{
-				Name: "mobilenet_v2_quant_no_nnapi",
+				Name:      "mobilenet_v2_quant_no_nnapi",
+				ExtraData: []string{"ml_benchmark_mobilenet_v2_quant.tar.xz"},
 				Val: benchmarkParams{
-					// This driver isn't installed in the standard lib dir.
-					driver:     "/usr/local/ml_benchmark/ml_service/libml_for_benchmark.so",
-					configFile: "ml_benchmark_mobilenet_v2_1.0_224_quant.config",
-					scenario:   "mobilenet_v2_quant_no_nnapi",
+					tflite: &tfliteParams{
+						archive: "ml_benchmark_mobilenet_v2_quant.tar.xz",
+						numRuns: 1000,
+					},
+					scenario: "mobilenet_v2_quant_no_nnapi",
 				},
 			},
 		},
@@ -176,6 +198,50 @@ func MLBenchmark(ctx context.Context, s *testing.State) {
 			s.Fatal("Cleanup failed: ", err)
 		}
 	}()
+
+	p, ok := s.Param().(benchmarkParams)
+	if !ok {
+		s.Fatal("Failed to convert test params to benchmarkParams")
+	}
+
+	workspacePath := "/usr/local/ml_benchmark"
+	driver := p.driver
+	configFile := p.configFile
+	scenario := p.scenario
+
+	if p.tflite != nil {
+		if len(driver) > 0 {
+			s.Fatal("in TFlite configs we expect benchmarkParams.driver to be empty, got ", driver)
+		}
+		if len(configFile) > 0 {
+			s.Fatal("in TFlite configs we expect benchmarkParams.configFile to be empty, got ", configFile)
+		}
+
+		archive := s.DataPath(p.tflite.archive)
+		tmpDir, err := ioutil.TempDir("", "ml_benchmark")
+		if err != nil {
+			s.Fatal(err, "failed to create test directory")
+		}
+		defer os.RemoveAll(tmpDir)
+
+		// --strip-components=1 is to remove the top-level directory that's expected be present in the archive.
+		tarCmd := testexec.CommandContext(ctx, "tar", "--strip-components=1", "-xvf", archive, "-C", tmpDir)
+		if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal(err, "failed to untar test artifacts")
+		}
+
+		configText := fmt.Sprintf("tflite_model_filepath: \"%s\"\n", filepath.Join(tmpDir, "model_spec.pb"))
+		configText += fmt.Sprintf("input_output_filepath: \"%s\"\n", filepath.Join(tmpDir, "input_output.pb"))
+		configText += fmt.Sprintf("num_runs: %d\n", p.tflite.numRuns)
+
+		configFile = "tflite.config"
+		if err := ioutil.WriteFile(filepath.Join(tmpDir, configFile), []byte(configText), 0644); err != nil {
+			s.Fatal(err, "failed saving perf data")
+		}
+
+		workspacePath = tmpDir
+		driver = tfliteDriverPath
+	}
 
 	// Add the default power test configuration.
 	sup.Add(setup.PowerTest(ctx, nil, setup.PowerTestOptions{
@@ -198,14 +264,7 @@ func MLBenchmark(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait CPU cool down: ", err)
 	}
 
-	const workspacePath = "/usr/local/ml_benchmark"
-
-	p, ok := s.Param().(benchmarkParams)
-	if !ok {
-		s.Fatal("Failed to convert test params to benchmarkParams")
-	}
-
-	if err := mlbenchmark.ExecuteScenario(ctx, s.OutDir(), workspacePath, p.driver, p.configFile, p.scenario); err != nil {
-		s.Fatalf("Error occurred running the benchmark %+v", err)
+	if err := mlbenchmark.ExecuteScenario(ctx, s.OutDir(), workspacePath, driver, configFile, scenario); err != nil {
+		s.Fatalf("Error occurred running the benchmark: %+v", err)
 	}
 }
