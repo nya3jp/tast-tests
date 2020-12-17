@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "261a4262_0de836c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2020-12-17T22:50:42Z",
+      "side": 1,
+      "message": "I\u0027m not that familiar with Tast or Go, but if it works on device, LGTM",
+      "revId": "699907627c285d85224730169f1f7c05db1c703f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
