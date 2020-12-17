@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f8a8581_3ed1ca87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3_test_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-12-17T09:15:04Z",
+      "side": 1,
+      "message": "No need to filter the ZSL test since we\u0027ll work on skipping the test on devices that do not support ZSL, right?",
+      "parentUuid": "31b1ddc4_2f2d70ee",
+      "range": {
+        "startLine": 122,
+        "startChar": 15,
+        "endLine": 122,
+        "endChar": 75
+      },
+      "revId": "28d07dd1323391d3038fbd2612be1dc6c2092fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "639092b9_467ee4d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_still_capture_zsl.go",
         "patchSetId": 3
@@ -125,6 +149,24 @@
       "side": 1,
       "message": "Thanks for pointing that out. I wasn\u0027t aware this is discouraged.\nTo answer your first question, ZSL requires some advanced capabilities not present on most devices.\n\nTechnically all platforms should pass this test without an issue (but only a few devices will have ZSL turned on). The concern was from a lab resource perspective.\n\nI suppose the router I could instead take (thanks kamesan@ for talking to me offline about it): Determine in the capability in gtest (cros-camera-test) and skip the test if devices don\u0027t support that advanced capability.\nThis is currently being used by portrait mode test: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/camera/camera3_test/camera3_frame_test.cc;l\u003d1893-1896;drc\u003d34d10525925863b7dddb3db830d45365b2d7e25a",
       "parentUuid": "f36178b4_8e29a148",
+      "revId": "28d07dd1323391d3038fbd2612be1dc6c2092fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb29f03e_6b360fe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_still_capture_zsl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-12-17T09:15:04Z",
+      "side": 1,
+      "message": "Agree. I think we can differentiate it by having ENABLE_ZSL set accordingly in the still capture template.",
+      "parentUuid": "1afb01c1_b2a762df",
       "revId": "28d07dd1323391d3038fbd2612be1dc6c2092fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
