@@ -39,6 +39,11 @@ var appcompatArtrage = &arc.GaiaVars{
 	PassVar: "arcappcompat.Artrage.password",
 }
 
+var appcompatCrossDJ = &arc.GaiaVars{
+	UserVar: "arcappcompat.CrossDJ.username",
+	PassVar: "arcappcompat.CrossDJ.password",
+}
+
 // AppCompatBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the app compat credentials, and opt-in to the Play Store.
 var AppCompatBooted = arc.NewPrecondition("arcappcompat_booted", appcompatGaia, arc.DisableSyncFlags()...)
@@ -86,3 +91,11 @@ var AppCompatBootedForArtrage = arc.NewPrecondition("arcappcompat_bootedForArtra
 // AppCompatBootedInTabletModeForArtrage returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
 var AppCompatBootedInTabletModeForArtrage = arc.NewPrecondition("arcappcompat_booted_in_tablet_modeForArtrage", appcompatArtrage, append(arc.DisableSyncFlags(), "--force-tablet-mode=touch_view", "--enable-virtual-keyboard")...)
+
+// AppCompatBootedForCrossDJ is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
+// that it will GAIA login with the CrossDJ credentials, and opt-in to the Play Store.
+var AppCompatBootedForCrossDJ = arc.NewPrecondition("arcappcompat_bootedForCrossDJ", appcompatCrossDJ, arc.DisableSyncFlags()...)
+
+// AppCompatBootedInTabletModeForCrossDJ returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
+// that Chrome is launched in tablet mode in this precondition.
+var AppCompatBootedInTabletModeForCrossDJ = arc.NewPrecondition("arcappcompat_booted_in_tablet_modeForCrossDJ", appcompatCrossDJ, append(arc.DisableSyncFlags(), "--force-tablet-mode=touch_view", "--enable-virtual-keyboard")...)
