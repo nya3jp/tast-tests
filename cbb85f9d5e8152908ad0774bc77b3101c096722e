@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04a49c39_809e3651",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-17T00:28:56Z",
+      "side": 1,
+      "message": "nit: only this function is not related to ChromeVoxConn. How about moving this function between \"Features\" definition and \"ChromeVoxConn\" definition?",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 1
+      },
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "baa8efda_1187ace8",
         "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
         "patchSetId": 1
