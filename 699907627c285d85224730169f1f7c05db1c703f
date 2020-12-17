@@ -16,6 +16,29 @@
       "message": "I\u0027m not that familiar with Tast or Go, but if it works on device, LGTM",
       "revId": "699907627c285d85224730169f1f7c05db1c703f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89290839_8b54f839",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T23:08:36Z",
+      "side": 1,
+      "message": "For tast-owners: we were wondering if it\u0027s acceptable to name packages like nearby_share; see discussion of this file on patchset 3.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "699907627c285d85224730169f1f7c05db1c703f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
