@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b3774d7_95ccb47f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T20:22:55Z",
+      "side": 1,
+      "message": "That\u0027d be fine with me, but it seems like the golang style conventions are against underscores in package names: \"By convention, packages are given lower case, single-word names; there should be no need for underscores or mixedCaps.\" (https://golang.org/doc/effective_go.html#package-names). Although I guess it\u0027s not a single word here either haha.\n\nMaybe Brendan or another Tast reviewer can weigh in from a tast style perspective.",
+      "parentUuid": "8d75a027_5b4e12b3",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c1fcad9_42076e87",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-17T17:39:51Z",
       "side": 1,
       "message": "do we need to mention UI here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4dd656f_4f776a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T20:22:55Z",
+      "side": 1,
+      "message": "I added it to try and make it clear we\u0027re just checking the UI, not actually doing any high-vis receiving. Is it clear without it?",
+      "parentUuid": "0c1fcad9_42076e87",
       "range": {
         "startLine": 21,
         "startChar": 22,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4402ce6c_c3a8e34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T20:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "256e074c_7acf3abf",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "009e0718_067c4b74",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed6aac89_6043a8f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T20:22:55Z",
+      "side": 1,
+      "message": "I can add the \u0027cancel-button\u0027 classname, but I think this should be enough since we\u0027re restricted to child nodes of the receiving UI already. Let me know if you wanna add the classname though.",
+      "parentUuid": "009e0718_067c4b74",
+      "range": {
+        "startLine": 59,
+        "startChar": 100,
+        "endLine": 59,
+        "endChar": 114
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "704ae07b_aface5ec",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-12-17T17:39:51Z",
       "side": 1,
       "message": "comment",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0161db31_52387ec0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T20:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "704ae07b_aface5ec",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7704fd15_6c541785",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T20:22:55Z",
+      "side": 1,
+      "message": "Yeah, I was going to put the Android ones here as well (unfortunately they don\u0027t map exactly to the CrOS settings). I could split the android stuff into a different package maybe, but the names might still be kinda gross (nearbyshare.VisibilitySelectedContacts/nearbyandroid.VisibilitySelectedContacts). Not sure what the best way would be, I\u0027m open to suggestions haha",
+      "parentUuid": "04547f6a_b79fcfc3",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7c83b87_636952b6",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
         "patchSetId": 3
@@ -152,6 +296,30 @@
       "writtenOn": "2020-12-17T17:39:51Z",
       "side": 1,
       "message": "You can avoid having to write the 0,1,2,3 by replacing it with \nCrOSDataUsageUnknown CrOSDataUsage \u003d iota\nCrOSDataUsageOffline  CrOSDataUsage\nCrOSDataUsageOnline   CrOSDataUsage\nCrOSDataUsageWifiOnly CrOSDataUsage",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abfa88e7_1b650008",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T20:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7c83b87_636952b6",
       "range": {
         "startLine": 19,
         "startChar": 23,
@@ -175,6 +343,30 @@
       "writtenOn": "2020-12-17T17:39:51Z",
       "side": 1,
       "message": "Do you have other plans for this? Why not just return the node in the method below?\n\nThen you don\u0027t need a release method and clients don\u0027t have to do ReceiveUI.Root.FindParams(",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a5365b_6c3110e0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T20:22:55Z",
+      "side": 1,
+      "message": "If we extend the UI controls later, it might be good to keep this around as the interface for other UI interaction, something like:\n```\nfunc (r *ReceiveUI) WaitForSender(...) error {/*do stuff in the UI to look for a sender*/}\nfunc (r *ReceiveUI) ReadToken(...) (string, error) {/*find the secure sharing token in the UI*/}\n\nr, _ :\u003d EnterHighVisibility(...)\nr.WaitForSender() // wait for the sender to show up in the receive UI\ntoken, _ :\u003d r.ReadToken() // get the secure sharing token from the UI\n...\n```\n\nThat\u0027s what I had in mind for wrapping it in a struct here. Maybe I\u0027m thinking too far ahead?",
+      "parentUuid": "dd6dcf18_57bb0e6c",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -221,6 +413,30 @@
       "writtenOn": "2020-12-17T20:04:37Z",
       "side": 1,
       "message": "Yes this was recently change to \"Nearby Visibility\" which actually gets cut off to \"Nearby visibi...\"",
+      "parentUuid": "898707a3_93e80102",
+      "range": {
+        "startLine": 112,
+        "startChar": 38,
+        "endLine": 112,
+        "endChar": 52
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47ddbc0_fc2608e0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T20:22:55Z",
+      "side": 1,
+      "message": "Yeah I\u0027m seeing \"Nearby visibi...\". The UI FindParams are a little weird for pods though, the button node\u0027s Name attribute is \"Toggle Nearby Share high visibility.\" We\u0027re checking that this string is a substring of the node\u0027s Name attribute (http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go?l\u003d139) so this still works.\n\nThe node names for most of the pods change based on their state (i.e. \"Toggle Bluetooth. Bluetooth is on\"/\"Toggle Bluetooth. Bluetooth is off\"), so we just match the setting name when locating them.",
       "parentUuid": "898707a3_93e80102",
       "range": {
         "startLine": 112,
