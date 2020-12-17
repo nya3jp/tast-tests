@@ -16,6 +16,115 @@
       "message": "ddmail@ PTAL \n  replied to your comments and uploaded change.",
       "revId": "b002dbc55c843ce905e762382f61952f100ae813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "690e9755_91e27204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-17T21:44:17Z",
+      "side": 1,
+      "message": "Looks good modulo a few nits.",
+      "revId": "b002dbc55c843ce905e762382f61952f100ae813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d2f532_c89503d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-17T21:44:17Z",
+      "side": 1,
+      "message": "s/compatible/compatibility/ ?",
+      "range": {
+        "startLine": 27,
+        "startChar": 19,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "b002dbc55c843ce905e762382f61952f100ae813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97caaf2_705dbf7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-17T21:44:17Z",
+      "side": 1,
+      "message": "Would you mind leaving a comment here like e.g.\n\n  // TODO(b/173552528): Use |v4l2_codec| when available.\n\nI\u0027ll explain offline.",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "b002dbc55c843ce905e762382f61952f100ae813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269c933d_7a5bd0eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-17T21:44:17Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this be a wee restrictive? I\u0027d leave it at e.g. 2 minutes\nsince it\u0027s just meant to catch tests never ending, not slow ones.",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "b002dbc55c843ce905e762382f61952f100ae813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5a8d23_3ffcaac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-17T21:44:17Z",
+      "side": 1,
+      "message": "nit: s/returns the/finished with/ ?",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "b002dbc55c843ce905e762382f61952f100ae813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
