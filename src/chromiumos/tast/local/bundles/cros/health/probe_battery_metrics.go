@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package health
 
 import (
 	"context"
@@ -15,7 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrosHealthdProbeBatteryMetrics,
+		Func: ProbeBatteryMetrics,
 		Desc: "Check that we can probe cros_healthd for battery metrics",
 		Contacts: []string{
 			"pmoy@google.com",
@@ -27,7 +27,7 @@ func init() {
 	})
 }
 
-func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
+func ProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryBattery, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get battery telemetry info: ", err)
