@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e25d5b_8289ef99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/ml_benchmark_smartdim.tar.xz.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-17T06:37:36Z",
+      "side": 1,
+      "message": "Originally this model was added here: https://crrev.com/i/3367488/3. I re-ran the script from go/ml-benchmark-add-tflite-scenario to re-package it. The model inside should be the same, but the input_output.pb is different.\n\nI decided to leave the original date to indicate that the model is still the same.",
+      "parentUuid": "14d802b5_1276ef3d",
+      "range": {
+        "startLine": 2,
+        "startChar": 102,
+        "endLine": 2,
+        "endChar": 106
+      },
+      "revId": "c0fa53f980bdf63f99d5f13f465fec10bce44895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72e07735_014cb19f",
@@ -93,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f81678f_a9d00a09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-17T06:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72e07735_014cb19f",
+      "revId": "c0fa53f980bdf63f99d5f13f465fec10bce44895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e6ff310_93c17c66",
@@ -106,6 +148,30 @@
       "writtenOn": "2020-12-17T06:17:14Z",
       "side": 1,
       "message": "nit. Let\u0027s combine them.\nMultiline string (i.e. `...`) may help you to simplify.",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 63
+      },
+      "revId": "c0fa53f980bdf63f99d5f13f465fec10bce44895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9429a5_1367c334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-17T06:37:36Z",
+      "side": 1,
+      "message": "Thanks! Looks much better now.",
+      "parentUuid": "5e6ff310_93c17c66",
       "range": {
         "startLine": 233,
         "startChar": 2,
