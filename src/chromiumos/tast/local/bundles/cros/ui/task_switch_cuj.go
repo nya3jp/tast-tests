@@ -35,14 +35,8 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      8 * time.Minute,
-		Vars: []string{
-			"mute",
-			"ui.TaskSwitchCUJ.username",
-			"ui.TaskSwitchCUJ.password",
-			"ui.cuj_username",
-			"ui.cuj_password",
-		},
-		Pre: cuj.LoggedInToCUJUser(),
+		Vars:         []string{"mute"},
+		Fixture:      "loggedInToCUJUser",
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -84,8 +78,8 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	cr := s.PreValue().(cuj.PreData).Chrome
-	a := s.PreValue().(cuj.PreData).ARC
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
+	a := s.FixtValue().(cuj.FixtureData).ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
