@@ -33,6 +33,23 @@
       "message": "\u003cCleaning up my queue\u003e Since this CL is blocked by a P3 bug, removing myself from the reviewers. Feel free to send it for review again when it\u0027s ready to land",
       "revId": "01790cff4f51ad3821c44f7a2b4666a6c72922eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7456261f_2883ce26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-12-17T18:35:45Z",
+      "side": 1,
+      "message": "Blocked by b/172972948",
+      "revId": "01790cff4f51ad3821c44f7a2b4666a6c72922eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
