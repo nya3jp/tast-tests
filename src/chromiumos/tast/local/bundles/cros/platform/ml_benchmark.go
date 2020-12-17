@@ -174,6 +174,28 @@ func init() {
 					scenario: "mobilenet_v2_quant_no_nnapi",
 				},
 			},
+			{
+				Name:      "inception_v4_no_nnapi",
+				ExtraData: []string{"ml_benchmark_inception_v4.tar.xz"},
+				Val: benchmarkParams{
+					tflite: &tfliteParams{
+						archive: "ml_benchmark_inception_v4.tar.xz",
+						numRuns: 100,
+					},
+					scenario: "inception_v4_no_nnapi",
+				},
+			},
+			{
+				Name:      "inception_v4_quant_no_nnapi",
+				ExtraData: []string{"ml_benchmark_inception_v4_quant.tar.xz"},
+				Val: benchmarkParams{
+					tflite: &tfliteParams{
+						archive: "ml_benchmark_inception_v4_quant.tar.xz",
+						numRuns: 100,
+					},
+					scenario: "inception_v4_quant_no_nnapi",
+				},
+			},
 		},
 	})
 }
