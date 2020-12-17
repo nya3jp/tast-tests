@@ -16,6 +16,23 @@
       "message": "Thanks for reviewing. Greg, can you give me CR+2?",
       "revId": "be47f9b77e7ed8a0cdf0458416dcb9dfd3ba3416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b304b134_e02672b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-17T16:10:14Z",
+      "side": 1,
+      "message": "Sorry for the +1 earlier, I didn\u0027t realize David had already completed CR.",
+      "revId": "be47f9b77e7ed8a0cdf0458416dcb9dfd3ba3416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
