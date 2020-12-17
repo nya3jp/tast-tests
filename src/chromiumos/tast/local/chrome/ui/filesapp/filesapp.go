@@ -589,12 +589,12 @@ func (f *FilesApp) SelectDirectoryContextMenuItem(ctx context.Context, dirName, 
 		return errors.Wrap(err, "failed to wait for animation finished")
 	}
 
-	// Left click menuItem.
-	if err := f.LeftClickItem(ctx, menuItem, ui.RoleTypeMenuItem); err != nil {
-		return errors.Wrapf(err, "failed to click %s in context menu", menuItem)
+	item, err := f.Root.DescendantWithTimeout(ctx, ui.FindParams{Name: menuItem, Role: ui.RoleTypeMenuItem}, 2*time.Minute)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find %s", menuItem)
 	}
-
-	return nil
+	defer item.Release(ctx)
+	return item.StableLeftClick(ctx, f.stablePollOpts)
 }
 
 // SelectEnclosingFolder clicks the enclosing folder via the breadcrumbs.

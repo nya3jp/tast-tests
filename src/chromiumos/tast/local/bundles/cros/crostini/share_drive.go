@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
 	"chromiumos/tast/local/drivefs"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -156,9 +155,6 @@ func ShareDrive(ctx context.Context, s *testing.State) {
 	}()
 
 	if err := sharedFolders.ShareDriveOK(ctx, filesApp, tconn); err != nil {
-		if err := screenshot.Capture(ctx, filepath.Join(s.OutDir(), "shareDrive.png")); err != nil {
-			s.Log("Failed to take screenshot: ", err)
-		}
 		s.Fatal("Failed to share Google Drive: ", err)
 	}
 
