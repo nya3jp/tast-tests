@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d75a027_5b4e12b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2020-12-17T19:02:34Z",
+      "side": 1,
+      "message": "super nit: I would prefer we name this \"nearby_share\" (and similar instances in this CL) to align with existing directories: https://source.chromium.org/search?q\u003dfile:nearby_share\u0026sq\u003d",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c1fcad9_42076e87",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
         "patchSetId": 3
@@ -157,6 +180,29 @@
         "startChar": 0,
         "endLine": 23,
         "endChar": 1
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898707a3_93e80102",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2020-12-17T19:02:34Z",
+      "side": 1,
+      "message": "@vecore can you comment if this is still correct? On ToT I\u0027m now seeing \"Nearby visibility\" in the pod?",
+      "range": {
+        "startLine": 112,
+        "startChar": 38,
+        "endLine": 112,
+        "endChar": 52
       },
       "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
