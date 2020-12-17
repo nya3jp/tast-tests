@@ -16,6 +16,58 @@
       "message": "This commit fix the bug reported at http://b/149921859#comment9 and reverts the commit again.\nThe diff from previous commit (https://crrev.com/c/2232379) is http://crrev/c/2594929/1..2\n\nShao-Chuan, could I ask you to check whether it\u0027s correctly fixed, or tell me environments which you could reproduce it on? I couldn\u0027t reproduce the bug on my DUTs (rammus-arc-r and kukui-arc-r) with just `$ tast run localhost:9222 arc.BuildProperties.vm arc.CheckAndroidVersion.vm`. Thank you!",
       "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2402d1ca_0b61b0a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2020-12-17T01:04:02Z",
+      "side": 1,
+      "message": "Without the revert I was able to reproduce said failure on both rammus-arc-r and betty-arc-r R89-13666.0.0.\nIt\u0027s *not* that tests themselves are failing, but the arc_booted precondition is not being reused across tests, resulting in ui restart before running each test.\n\nRunning arc.BuildProperties.vm and arc.CheckAndroidVersion.vm is sufficient to reproduce this since the latter will attempt to reuse the ARC session from the former. If the session is being reused you\u0027ll see the following in logs\n\n2020/12/17 09:52:12 Started test arc.CheckAndroidVersion.vm\n2020/12/17 09:52:12 [09:52:12.275] Preparing precondition \"arc_booted\"\n2020/12/17 09:52:12 [09:52:12.394] Resetting Chrome\u0027s state\n2020/12/17 09:52:12 [09:52:12.400] Reloading the extension process\n2020/12/17 09:52:12 [09:52:12.429] Reusing existing ARC session\n\nWithout the revert Tast is unable to reuse the precondition, logs show\n\n2020/12/17 09:43:49 Started test arc.CheckAndroidVersion.vm\n2020/12/17 09:43:49 [09:43:49.050] Preparing precondition \"arc_booted\"\n2020/12/17 09:43:49 [09:43:49.174] Resetting Chrome\u0027s state\n2020/12/17 09:43:49 [09:43:49.180] Reloading the extension process\n2020/12/17 09:43:49 [09:43:49.209] Failed to reuse existing ARC session: failed to update the connection to ARC: failed to save logfiles: [failed to exec the command to save console output: open /usr/local/tmp/tast_out.20201217-094254.887331107/arc.BuildProperties.vm/arcvm-console.txt: no such file or directory]\n2020/12/17 09:43:49 [09:43:49.228] Restarting ui job",
+      "parentUuid": "def3915f_0bb5fcf8",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb146b8b_406beddc",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2020-12-17T01:04:02Z",
+      "side": 1,
+      "message": "This is *not* where it failed. See following.",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a1ad44_0e2482d2",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2020-12-17T01:04:02Z",
+      "side": 1,
+      "message": "The failure happens here. In my example running arc.BuildProperties.vm and arc.CheckAndroidVersion.vm, when resetOutDir is called from preImpl.Prepare(), |outDir| is the tempdir for arc.CheckAndroidVersion.vm while |a.outDir| is the previous tempdir for arc.BuildProperties.vm.\n\nI\u0027m suspecting that when Tast reaches here |a.outDir| is already cleaned up, resulting in the error. You probably don\u0027t want to simply skip if |a.outDir| exists, which means to drop arcvm-console.txt for all but the last test reusing the same precondition.",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
