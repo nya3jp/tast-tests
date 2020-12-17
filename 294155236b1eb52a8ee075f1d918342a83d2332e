@@ -52,6 +52,23 @@
       "parentUuid": "88eca1c2_05e2e0fa",
       "revId": "294155236b1eb52a8ee075f1d918342a83d2332e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2882b474_7d912248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-17T17:18:41Z",
+      "side": 1,
+      "message": "Based on this comment https://buganizer.corp.google.com/issues/173723099#comment3 the veyron_mickey has been removed from the lab, so this change can be merged. ",
+      "revId": "294155236b1eb52a8ee075f1d918342a83d2332e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
