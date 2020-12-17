@@ -10,7 +10,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/dut"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -71,9 +76,9 @@ func (p *testFixturePreImpl) String() string {
 func (p *testFixturePreImpl) Timeout() time.Duration {
 	// When connecting to devices with slower SSH, e.g. in lab, the first
 	// Prepare might take up to 30 seconds. Also, it is possible that
-	// something is broken and we'll have to reconstruct the TestFixture.
-	// Set a sufficient timeout for these cases.
-	return 2 * time.Minute
+	// something is broken and we'll have to reconstruct the TestFixture,
+	// or even reboot. Set a sufficient timeout for these cases.
+	return 4 * time.Minute
 }
 
 // companionName facilitates obtaining of the companion device's hostname.
@@ -85,6 +90,29 @@ func companionName(s *testing.PreState, suffix string) string {
 	return name
 }
 
+func (p *testFixturePreImpl) dutHealthCheck(ctx context.Context, s *testing.PreState) error {
+	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+
+	// The reasons why we create a new gRPC session here for checking DUT's health are:
+	// 1. For the very first test of the Precondition, Prepare() does not have a gRPC yet.
+	// 2. For the rest of tests, p.tf might be broken such as DUT unexpected rebooted in
+	//    the previous test. So checking the DUT's health without using the existing gRPC
+	//    session can avoid the problem. Note that the broken p.tf is already handled in
+	//    Prepare().
+	rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		return errors.Wrap(err, "cannot create gRPC client")
+	}
+	defer rpcClient.Close(ctx)
+
+	wifiClient := network.NewWifiServiceClient(rpcClient.Conn)
+	if _, err := wifiClient.HealthCheck(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "health check failed")
+	}
+	return nil
+}
+
 // Prepare initializes the shared TestFixture if not yet created and returns it
 // as precondition value.
 // Note that the test framework already reserves p.Timeout() for both Prepare
@@ -93,6 +121,21 @@ func companionName(s *testing.PreState, suffix string) string {
 func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 	ctx, st := timing.Start(ctx, p.String()+"_prepare")
 	defer st.End()
+
+	if err := p.dutHealthCheck(ctx, s); err != nil {
+		s.Log("Rebooting the DUT due to health check err: ", err)
+		// As reboot will at least break tf.rpc, no reason to keep
+		// the existing p.tf. Close it before reboot.
+		if p.tf != nil {
+			if err := p.tf.Close(ctx); err != nil {
+				s.Log("Failed to close TestFixture before DUT reboot recovery: ", err)
+			}
+			p.tf = nil
+		}
+		if err := s.DUT().Reboot(ctx); err != nil {
+			s.Fatal("Failed to recovery DUT with reboot: ", err)
+		}
+	}
 
 	if p.tf != nil {
 		err := p.tf.Reinit(ctx)
