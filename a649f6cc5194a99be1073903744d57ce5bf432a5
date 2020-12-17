@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3b020f_1b06ba6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-17T19:17:35Z",
+      "side": 1,
+      "message": "Looks good.",
+      "revId": "a649f6cc5194a99be1073903744d57ce5bf432a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c1d3524_6c219fc2",
@@ -36,6 +53,29 @@
         "startChar": 4,
         "endLine": 39,
         "endChar": 53
+      },
+      "revId": "a649f6cc5194a99be1073903744d57ce5bf432a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7bb0fc9_d56e1bd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-17T19:17:35Z",
+      "side": 1,
+      "message": "Should this depends on chrome? Isn\u0027t it a platform test?",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 39
       },
       "revId": "a649f6cc5194a99be1073903744d57ce5bf432a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
