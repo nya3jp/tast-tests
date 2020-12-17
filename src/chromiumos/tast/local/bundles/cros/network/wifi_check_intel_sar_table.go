@@ -28,7 +28,7 @@ func init() {
 			"kglund@google.com",               // Author
 			"chromeos-kernel-wifi@google.com", // WiFi team
 		},
-		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		SoftwareDeps: []string{"wifi", "shill-wifi", "intel_wifi_chip"},
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }
