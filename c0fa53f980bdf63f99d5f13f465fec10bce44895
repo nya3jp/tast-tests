@@ -33,6 +33,24 @@
       "message": "Seems fine but I think you need a TAST person to +2",
       "revId": "c0fa53f980bdf63f99d5f13f465fec10bce44895",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5adc8828_3467bcb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2020-12-17T05:57:26Z",
+      "side": 1,
+      "message": "Thanks! I wanted to get a second opinion on my approach first before committing to a Tast review.",
+      "parentUuid": "e15c1b26_5709675b",
+      "revId": "c0fa53f980bdf63f99d5f13f465fec10bce44895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
