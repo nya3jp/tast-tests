@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "389fa634_9f990ff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-17T19:42:42Z",
+      "side": 1,
+      "message": "Based on the discussion in the last WiFi test meeting. The debug should be activated on all WiFi tests by default. I will submit another patch to have this option.",
+      "revId": "1562eba74e0230c646f2f84503b06dbb6563dc48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
