@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package health
 
 import (
 	"context"
@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrosHealthdProbeFanInfo,
+		Func: ProbeFanInfo,
 		Desc: "Checks that cros_healthd can fetch fan info",
 		Contacts: []string{
 			"jschettler@google.com",
@@ -51,7 +51,7 @@ func getNumFans(ctx context.Context) (int, error) {
 	return numFans, nil
 }
 
-func CrosHealthdProbeFanInfo(ctx context.Context, s *testing.State) {
+func ProbeFanInfo(ctx context.Context, s *testing.State) {
 	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryFan, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get fan telemetry info: ", err)

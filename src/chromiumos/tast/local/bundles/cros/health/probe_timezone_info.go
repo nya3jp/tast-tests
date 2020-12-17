@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package health
 
 import (
 	"context"
@@ -14,7 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrosHealthdProbeTimezoneInfo,
+		Func: ProbeTimezoneInfo,
 		Desc: "Check that we can probe cros_healthd for timezone info",
 		Contacts: []string{
 			"jschettler@google.com",
@@ -25,7 +25,7 @@ func init() {
 	})
 }
 
-func CrosHealthdProbeTimezoneInfo(ctx context.Context, s *testing.State) {
+func ProbeTimezoneInfo(ctx context.Context, s *testing.State) {
 	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryTimezone, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get timezone telemetry info: ", err)
