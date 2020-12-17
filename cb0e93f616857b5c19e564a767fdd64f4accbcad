@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f47bdd7_0ce9a04b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-17T08:22:09Z",
+      "side": 1,
+      "message": "Thank you for explanation!\nI tried it again on rammus-arc-r and R89-13666.0.0, however it is not reproduced while Tast says \"Reusing existing ARC session\".\n\nThis is the log of Tast without the revert.\n\n```\n$ tast run my_crbook arc.BuildProperties.vm arc.CheckAndroidVersion.vm\n...\n2020/12/17 16:46:30 Completed test arc.BuildProperties.vm in 53.33s with 0 error(s)\n2020/12/17 16:46:30 Started test arc.CheckAndroidVersion.vm\n2020/12/17 16:46:30 [16:46:30.432] Preparing precondition \"arc_booted\"\n2020/12/17 16:46:30 [16:46:30.558] Resetting Chrome\u0027s state\n2020/12/17 16:46:30 [16:46:30.563] Reloading the extension process\n2020/12/17 16:46:30 [16:46:30.597] Reusing existing ARC session\n2020/12/17 16:46:30 [16:46:30.650] Closing precondition \"arc_booted\"\n2020/12/17 16:46:30 Completed test arc.CheckAndroidVersion.vm in 240ms with 0 error(s)\n2020/12/17 16:46:30 Ran 2 local test(s) in 55.511s\n2020/12/17 16:46:31 Starting /tmp/tast/build/host/remote_test_runner locally\n2020/12/17 16:46:31 Ran 0 remote test(s) in 161ms\n2020/12/17 16:46:33 --------------------------------------------------------------------------------\n2020/12/17 16:46:33 arc.BuildProperties.vm      [ PASS ]\n2020/12/17 16:46:33 arc.CheckAndroidVersion.vm  [ PASS ]\n2020/12/17 16:46:33 --------------------------------------------------------------------------------\n2020/12/17 16:46:33 Results saved to /tmp/tast/results/20201217-164530\n\n$ ls /tmp/tast/results/20201217-164530/tests/*/arcvm-console.txt\n/tmp/tast/results/20201217-164530/tests/arc.BuildProperties.vm/arcvm-console.txt\n/tmp/tast/results/20201217-164530/tests/arc.CheckAndroidVersion.vm/arcvm-console.txt\n```",
+      "parentUuid": "2402d1ca_0b61b0a0",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb146b8b_406beddc",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3441a112_7c14398b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-17T08:22:09Z",
+      "side": 1,
+      "message": "Okay. I removed this change.",
+      "parentUuid": "cb146b8b_406beddc",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3a1ad44_0e2482d2",
@@ -66,6 +102,24 @@
       "writtenOn": "2020-12-17T01:04:02Z",
       "side": 1,
       "message": "The failure happens here. In my example running arc.BuildProperties.vm and arc.CheckAndroidVersion.vm, when resetOutDir is called from preImpl.Prepare(), |outDir| is the tempdir for arc.CheckAndroidVersion.vm while |a.outDir| is the previous tempdir for arc.BuildProperties.vm.\n\nI\u0027m suspecting that when Tast reaches here |a.outDir| is already cleaned up, resulting in the error. You probably don\u0027t want to simply skip if |a.outDir| exists, which means to drop arcvm-console.txt for all but the last test reusing the same precondition.",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d1e131_214081ca",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-17T08:22:09Z",
+      "side": 1,
+      "message": "Thank you for telling the location of failure. For now, I moved the check of the existence of outDir here.\n\narcvm-console.txt may be dropped but I don\u0027t know how to avoid it. I couldn\u0027t know the condition to reproduce the error yet. Openning *os.File before outDir is cleaned up and using the handler may solve this issue?",
+      "parentUuid": "e3a1ad44_0e2482d2",
       "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
