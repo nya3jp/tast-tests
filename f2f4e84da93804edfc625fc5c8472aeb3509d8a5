@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4d4793_a6aeb10f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-12-17T19:36:06Z",
+      "side": 1,
+      "message": "tast_lint was bypassed because it was complaining that new tests should be marked as informational. These tests are just renamed. ",
+      "revId": "f2f4e84da93804edfc625fc5c8472aeb3509d8a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
