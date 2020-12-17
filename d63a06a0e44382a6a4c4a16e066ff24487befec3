@@ -16,6 +16,29 @@
       "message": "Thank you for quick review. PTAL again? Thanks.",
       "revId": "d63a06a0e44382a6a4c4a16e066ff24487befec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d16bf1b3_0b7485c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/bootid_logger.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-12-17T05:36:02Z",
+      "side": 1,
+      "message": "how about putting this block right before line 55 and turn this into s.Fatal()? The check at l.55 looks helpful only when the two data are properly set.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "d63a06a0e44382a6a4c4a16e066ff24487befec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
