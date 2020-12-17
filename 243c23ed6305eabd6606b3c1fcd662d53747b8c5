@@ -16,6 +16,46 @@
       "message": "nice",
       "revId": "243c23ed6305eabd6606b3c1fcd662d53747b8c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f55618_31634ef6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-17T18:23:14Z",
+      "side": 1,
+      "message": "LGTM with a nit.",
+      "revId": "243c23ed6305eabd6606b3c1fcd662d53747b8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a074992_62d4101f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fio_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-17T18:23:14Z",
+      "side": 1,
+      "message": "Can you increase the indent one more on those line 39-46?  I guess that\u0027s more readable, and looks like genparams can deal with those indent differences.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "243c23ed6305eabd6606b3c1fcd662d53747b8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
