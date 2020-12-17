@@ -201,6 +201,17 @@ func init() {
 					scenario: "inception_v4_quant_no_nnapi",
 				},
 			},
+			{
+				Name:      "resnet_v2_no_nnapi",
+				ExtraData: []string{"ml_benchmark_resnet_v2.tar.xz"},
+				Val: benchmarkParams{
+					tflite: &tfliteParams{
+						archive: "ml_benchmark_resnet_v2.tar.xz",
+						numRuns: 100,
+					},
+					scenario: "resnet_v2_no_nnapi",
+				},
+			},
 		},
 	})
 }
