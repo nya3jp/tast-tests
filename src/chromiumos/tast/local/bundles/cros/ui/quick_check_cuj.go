@@ -29,12 +29,9 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Pre:          cuj.LoggedInToCUJUser(),
+		Fixture:      "loggedInToCUJUser",
 		Timeout:      4 * time.Minute,
-		Vars: []string{
-			"ui.cuj_username",
-			"ui.cuj_password",
-		},
+		Vars:         []string{"ui.cuj_password"},
 	})
 }
 
@@ -55,7 +52,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	cr := s.PreValue().(cuj.PreData).Chrome
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	password := s.RequiredVar("ui.cuj_password")
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
