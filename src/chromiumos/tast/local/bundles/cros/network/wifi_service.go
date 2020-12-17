@@ -2233,7 +2233,7 @@ func (s *WifiService) ResetTest(ctx context.Context, req *network.ResetTestReque
 		return resetPath, nil
 	}
 	mwifiexReset := func(ctx context.Context, resetPath string) error {
-		ctx, cancel := ctxutil.Shorten(ctx, mwifiexTimeout)
+		ctx, cancel := context.WithTimeout(ctx, mwifiexTimeout)
 		defer cancel()
 
 		// We aren't guaranteed to receive a disconnect event, but shill will at least notice the adapter went away.
