@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
-	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -135,17 +134,15 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 
 	params := s.Param().(arcPIPEnergyAndPowerTestParams)
 	var cr *chrome.Chrome
-	var cs ash.ConnSource
 	var browserWindowType ash.WindowType
 	switch params.chromeType {
 	case lacros.ChromeTypeChromeOS:
 		cr = s.FixtValue().(*arc.PreData).Chrome
-		cs = cr
 		browserWindowType = ash.WindowTypeBrowser
 	case lacros.ChromeTypeLacros:
 		var l *launcher.LacrosChrome
 		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, lacros.ChromeTypeLacros)
+		cr, l, _, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, lacros.ChromeTypeLacros)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
@@ -265,31 +262,6 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		if 10*pipWindow.TargetBounds.Width >= 3*info.WorkArea.Width && 10*pipWindow.TargetBounds.Height >= 3*info.WorkArea.Height {
 			s.Fatalf("Expected small PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
 		}
-	}
-
-	conn, err := cs.NewConn(ctx, "chrome://settings")
-	if err != nil {
-		s.Fatal("Failed to load chrome://settings: ", err)
-	}
-	defer conn.Close()
-
-	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
-	}
-
-	// Tab away from the search box of chrome://settings, so that
-	// there will be no blinking cursor.
-	if err := kw.Accel(ctx, "Tab"); err != nil {
-		s.Fatal("Failed to send Tab: ", err)
-	}
-
-	browser, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType == browserWindowType })
-	if err != nil {
-		s.Fatal("Failed to get browser window: ", err)
-	}
-
-	if err := ash.SetWindowStateAndWait(ctx, tconn, browser.ID, ash.WindowStateMaximized); err != nil {
-		s.Fatal("Failed to maximize browser window: ", err)
 	}
 
 	// triedToStopTracing means that cr.StopTracing(cleanupCtx)
