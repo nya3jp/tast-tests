@@ -21,7 +21,7 @@ func init() {
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"iwlwifi_rescan"},
-		ServiceDeps:  []string{"tast.cros.network.IwlwifiPCIRescan"},
+		ServiceDeps:  []string{"tast.cros.network.IwlwifiPCIRescan", "tast.cros.network.WifiService"},
 	})
 }
 
@@ -38,8 +38,9 @@ func RemoteIwlwifiPCIRescan(ctx context.Context, s *testing.State) {
 		s.Error("Test failed with reason: ", err)
 	}
 
+	wifiClient := network.NewWifiServiceClient(r.Conn)
 	// Cleanup. Check if we ruined anything and reboot if needed.
-	if _, err := client.HealthCheck(ctx, &empty.Empty{}); err != nil {
+	if _, err := wifiClient.HealthCheck(ctx, &empty.Empty{}); err != nil {
 		s.Log("Reboot DUT as the healthy check failed: ", err)
 		if err := s.DUT().Reboot(ctx); err != nil {
 			s.Log("Reboot failed: ", err)
