@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "291c3bf3_7ecdc615",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "Can you add info about the android snippet version to this commit message. If we need to update this semi-regularly, it\u0027ll be handy to have a record of the version number we are checking in",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2cd080_cbf90bdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "Is there a go link you can add here for posterity",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fd77dcd5_0c25661b",
@@ -14,6 +60,259 @@
       "writtenOn": "2020-12-17T11:29:06Z",
       "side": 1,
       "message": "Haven\u0027t closely self-reviewed it yet, but figure I\u0027d upload it for now. I\u0027ll take another look at it soon.",
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1cd0957_9698bfaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "Library?",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98190918_b5209e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "At the moment this test will try to run on both chromebooks and fail on the one without a phone. We\u0027ll need a way to share the phone or skip the test or add another phone\n\nPerhaps we should call that out here\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1159996",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1619f39f_5e17ebd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "Add comment explaining this",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016ecabe_751da061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "Can probably make this error message a bit more helpful. E.g if 0, say there is no phone connected.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd17583e_0177c4ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "Could just set it to false here and remove the else branch",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24b6d7bc_873a135c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "Capitals",
+      "range": {
+        "startLine": 70,
+        "startChar": 35,
+        "endLine": 70,
+        "endChar": 47
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f22c7a_ab9bdeac",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "This file is mainly about setting up the snippet library, not about nearby share. Which makes me think it (and its constants) should be in their own package.\n\nWe can interface with the AndroidNearbyDevice object in our tests",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f85332_b254ab91",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "Perhaps we should put the apk in a zip. Have the zip be dated on google storage but the apk itself just be named neary_snippet.apk.\n\nThat way we don\u0027t need to update the name in two places when it changes",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845366a5_45463d37",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "Any other info you can add?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e52073b_7a71b6e5",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "iota here and everywhere",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 46
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3ef64d_4afeacc4",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:57:16Z",
+      "side": 1,
+      "message": "Is it golang convention to split them into three const\u0027s like that?\n\nSeems like they could be in one with a comment separating them",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
       "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
