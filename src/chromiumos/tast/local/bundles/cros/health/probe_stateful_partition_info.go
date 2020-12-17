@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package health
 
 import (
 	"context"
@@ -16,7 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrosHealthdProbeStatefulPartitionInfo,
+		Func: ProbeStatefulPartitionInfo,
 		Desc: "Checks that cros_healthd can fetch stateful partition info",
 		Contacts: []string{
 			"jschettler@google.com",
@@ -34,7 +34,7 @@ func absDiff(a, b uint64) uint64 {
 	return b - a
 }
 
-func CrosHealthdProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
+func ProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
 	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryStatefulPartition, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get stateful partition telemetry info: ", err)

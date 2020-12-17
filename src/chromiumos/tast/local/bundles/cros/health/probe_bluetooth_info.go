@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package health
 
 import (
 	"context"
@@ -16,7 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrosHealthdProbeBluetoothInfo,
+		Func: ProbeBluetoothInfo,
 		Desc: "Checks that cros_healthd can fetch Bluetooth info",
 		Contacts: []string{
 			"jschettler@google.com",
@@ -33,7 +33,7 @@ type bluetoothAdapter struct {
 	powered bool
 }
 
-func CrosHealthdProbeBluetoothInfo(ctx context.Context, s *testing.State) {
+func ProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryBluetooth, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get Bluetooth telemetry info: ", err)
