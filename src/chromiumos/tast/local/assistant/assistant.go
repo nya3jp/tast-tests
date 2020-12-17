@@ -118,12 +118,12 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 
 // VerboseLogging is a helper function passed into chrome.New which will:
 //     - Enable VLOG traces in the assistant code.
-//     - Use LibAssistant beta backend which will cause LibAssistant to print
-//       more detailed logs.
+//     - Enable PII in VLOG traces in the assistant code. This will log the
+//       actual queries sent, and the replies received.
 func VerboseLogging() chrome.Option {
 	return chrome.ExtraArgs(
-		"--vmodule=*assistant*=3,chromeos/services/assistant/service=3",
-		"--enable-features=LibAssistantBetaBackend",
+		"--vmodule=*/assistant/*=3",
+		"--enable-features=AssistantDebugging",
 	)
 }
 
