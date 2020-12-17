@@ -206,6 +206,30 @@
       },
       "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88df105_219849ee",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2020-12-17T20:04:37Z",
+      "side": 1,
+      "message": "Yes this was recently change to \"Nearby Visibility\" which actually gets cut off to \"Nearby visibi...\"",
+      "parentUuid": "898707a3_93e80102",
+      "range": {
+        "startLine": 112,
+        "startChar": 38,
+        "endLine": 112,
+        "endChar": 52
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
