@@ -21,7 +21,6 @@ import (
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
-	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -201,22 +200,6 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		if 10*pipWindow.TargetBounds.Width >= 3*info.WorkArea.Width && 10*pipWindow.TargetBounds.Height >= 3*info.WorkArea.Height {
 			s.Fatalf("Expected small PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
 		}
-	}
-
-	conn, err := cr.NewConn(ctx, "chrome://settings")
-	if err != nil {
-		s.Fatal("Failed to load chrome://settings: ", err)
-	}
-	defer conn.Close()
-
-	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
-	}
-
-	// Tab away from the search box of chrome://settings, so that
-	// there will be no blinking cursor.
-	if err := kw.Accel(ctx, "Tab"); err != nil {
-		s.Fatal("Failed to send Tab: ", err)
 	}
 
 	// triedToStopTracing means that cr.StopTracing(cleanupCtx)
