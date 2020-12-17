@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf872c2_7a30ad55",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1370,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-17T19:42:42Z",
+      "side": 1,
+      "message": "\u003e \"restors\" is a possible misspelling of \"restores\".\n\nPlease fix.",
+      "parentUuid": "a1f735e9_81951872",
+      "range": {
+        "startLine": 1370,
+        "startChar": 121,
+        "endLine": 1370,
+        "endChar": 128
+      },
+      "revId": "ffdd18ac9b17db8cdf83f27cbe365c54a1c89f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
