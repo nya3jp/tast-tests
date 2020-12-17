@@ -83,21 +83,23 @@ func MicrosoftOnedrive(ctx context.Context, s *testing.State) {
 // verify MicrosoftOnedrive reached main activity page of the app.
 func launchAppForMicrosoftOnedrive(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		allowButtonText        = "ALLOW"
-		gotItButtonText        = "GOT IT"
-		homeClassName          = "android.widget.TextView"
-		hometext               = "Meet your Personal Vault"
-		enterEmailAddressID    = "com.microsoft.skydrive:id/authentication_input_text"
-		nextButtonDescription  = "Next"
-		okText                 = "OK"
-		notNowID               = "android:id/autofill_save_no"
-		notnowText             = "NOT NOW"
-		passwordClassName      = "android.widget.EditText"
-		passwordID             = "i0118"
-		passwordText           = "Password"
-		signInClassName        = "android.widget.Button"
-		signinText             = "SIGN IN"
-		turnOnCameraUploadText = "TURN ON CAMERA UPLOAD"
+		allowButtonText                = "ALLOW"
+		cameraID                       = "com.microsoft.skydrive:id/fab_button"
+		enterEmailAddressID            = "com.microsoft.skydrive:id/authentication_input_text"
+		gotItButtonText                = "GOT IT"
+		meetYourPersonalVaultClassName = "android.widget.TextView"
+		meetYourPersonalVaulttext      = "Meet your Personal Vault"
+		nextButtonDescription          = "Next"
+		notNowID                       = "android:id/autofill_save_no"
+		notnowText                     = "NOT NOW"
+		okText                         = "OK"
+		passwordClassName              = "android.widget.EditText"
+		passwordID                     = "i0118"
+		passwordText                   = "Password"
+		signInClassName                = "android.widget.Button"
+		signinText                     = "SIGN IN"
+		turnOnCameraUploadText         = "TURN ON CAMERA UPLOAD"
+		profileID                      = "com.microsoft.skydrive:id/pivot_me"
 	)
 
 	// Click on signin button.
@@ -229,9 +231,52 @@ func launchAppForMicrosoftOnedrive(ctx context.Context, s *testing.State, tconn 
 		s.Fatal("Failed to click on notnowButton: ", err)
 	}
 
-	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.ClassName(homeClassName), ui.Text(hometext))
-	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Fatal("homeIcon doesn't exists: ", err)
+	// Click on meet your personal vault on homePage.
+	clickOnMeetYourPersonalVault := d.Object(ui.ClassName(meetYourPersonalVaultClassName), ui.Text(meetYourPersonalVaulttext))
+	if err := clickOnMeetYourPersonalVault.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("clickOnMeetYourPersonalVault doesn't exists: ", err)
+	} else if err := clickOnMeetYourPersonalVault.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnMeetYourPersonalVault: ", err)
 	}
+
+	// Check for profile icon.
+	profileIcon := d.Object(ui.ID(profileID))
+	if err := profileIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Fatal("profileIcon doesn't exists: ", err)
+	} else {
+		signOutOfMicrosoftOnedrive(ctx, s, tconn, a, d, appPkgName, appActivity)
+	}
+}
+
+// signOutOfMicrosoftOnedrive verifies app is signed out.
+func signOutOfMicrosoftOnedrive(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		logOutOfOnedriveText = "Sign out"
+		okButtonText         = "OK"
+		profileID            = "com.microsoft.skydrive:id/pivot_me"
+	)
+
+	// Click on profile icon.
+	profileIcon := d.Object(ui.ID(profileID))
+	if err := profileIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Error("profileIcon doesn't exists: ", err)
+	} else if err := profileIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on profileIcon: ", err)
+	}
+
+	logOutOfMicrosoftOnedrive := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+logOutOfOnedriveText))
+	if err := logOutOfMicrosoftOnedrive.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Fatal("logOutOfMicrosoftOnedrive doesn't exist: ", err)
+	} else if err := logOutOfMicrosoftOnedrive.Click(ctx); err != nil {
+		s.Fatal("Failed to click on logOutOfMicrosoftOnedrive: ", err)
+	}
+
+	// Click on ok button to signout.
+	okButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+okButtonText))
+	if err := okButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Error("okButton doesn't exists: ", err)
+	} else if err := okButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on okButton: ", err)
+	}
+
 }
