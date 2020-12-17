@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fd94a4b_efe3987c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T03:39:53Z",
+      "side": 1,
+      "message": "LGTM % minor nits.",
+      "revId": "db47b732edd6792f3f6c06babcf74e399fc641ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b704786_fceccc77",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T03:39:53Z",
+      "side": 1,
+      "message": "This seems to be not yet used, but I guess it\u0027s OK to add together if not conflicting with other CLs.",
+      "revId": "db47b732edd6792f3f6c06babcf74e399fc641ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a93cdc4_e4e1d433",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T03:39:53Z",
+      "side": 1,
+      "message": "minor nit: I think we already wait connected state in ConnectWifiAP so I\u0027m not sure if we need to wait again here. i.e. maybe CHECK_ONLY is enough? But this is not harmful as if we timeout on this waiting, we should already fail in ping/arping check.",
+      "range": {
+        "startLine": 95,
+        "startChar": 27,
+        "endLine": 95,
+        "endChar": 64
+      },
+      "revId": "db47b732edd6792f3f6c06babcf74e399fc641ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75910724_4fa0aad7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T03:39:53Z",
+      "side": 1,
+      "message": "nit: might be nice to guard rekeyCount\u003c0 case before make to avoid runtime panic. (although in that case, the param setting is not very reasonable for this test).",
+      "range": {
+        "startLine": 121,
+        "startChar": 42,
+        "endLine": 121,
+        "endChar": 54
+      },
+      "revId": "db47b732edd6792f3f6c06babcf74e399fc641ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
