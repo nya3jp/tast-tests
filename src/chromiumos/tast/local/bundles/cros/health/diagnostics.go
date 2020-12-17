@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+// Package health tests the system daemon cros_healthd to ensure that telemetry
+// and diagnostics calls can be completed successfully.
+package health
 
 import (
 	"context"
