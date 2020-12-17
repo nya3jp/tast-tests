@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "831653d2_f3aa3ab8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-12-17T03:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d28825f6_9fa2eef3",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 57
+      },
+      "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f10a178c_3c9e06d2",
@@ -253,6 +277,30 @@
       "side": 1,
       "message": "That seems approximately reasonable to me. Not completely ideal, but good enough.",
       "parentUuid": "60523247_6261ada1",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "91253e721a8f51726241fa994f8f1f32e4cf0b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5ca27f_158f0978",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-12-17T03:10:56Z",
+      "side": 1,
+      "message": "I\u0027ve included Yenlin\u0027s buffer code, but it looks like GTK rekey doesn\u0027t actually cause any state changes, so I can\u0027t do the same thing I did in ptk.go, so checking the error message will have to be at least a medium-term solution (or until we implement the bi-directional stream monitor). Marking this as resolved for now.",
+      "parentUuid": "3b460a3c_e296d3b8",
       "range": {
         "startLine": 104,
         "startChar": 30,
