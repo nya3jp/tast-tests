@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "698fdb5c_236199da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-17T22:03:03Z",
+      "side": 1,
+      "message": "miguel@ PTAL\n   removed binary from /usr/local/libexec/chrome-binary-tests\n   all 17415 tests passed with this change",
+      "revId": "60c0968b39288f50a3b3008b80f87bac6d65bfc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
