@@ -271,6 +271,24 @@
       "parentUuid": "ceffd5fd_0e1af7f9",
       "revId": "28d07dd1323391d3038fbd2612be1dc6c2092fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb1ed63_1d5888c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_still_capture_zsl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-12-17T14:30:22Z",
+      "side": 1,
+      "message": "Do you mean something like this?\nHAL3StillCapture: for all devices that don\u0027t support ZSL.\nHAL3StillCaptureZsl: the ZSL-variant for devices that support ZSL.\nBoth run the entire suite of Camera3StillCaptureTest.\n\nThen in gtest (cros-camera-test), we say\n```\nif (ShouldRunAgainstCrosCamera()) {\n   GTEST_SKIP();\n}\n```\n\n\u003e Why didn\u0027t we add ENABLE_ZSL in the ZSL helper?\n\nI think my understanding at the time was that ENABLE_ZSL should be explicitly added to the capture request.\nThis was from reading the testTakePictureZsl test here: https://cs.android.com/android/platform/superproject/+/master:cts/tests/camera/src/android/hardware/camera2/cts/StillCaptureTest.java;l\u003d225;drc\u003dfadf88db914f8d32ce7ce76e2d669361ceeeebeb\n\n```\n               CaptureRequest.Builder stillRequest \u003d\n                        mCamera.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);\n                stillRequest.set(CaptureRequest.CONTROL_ENABLE_ZSL, true);\n```\n\nLet\u0027s have a short meeting next week to discuss this.",
+      "parentUuid": "250087ec_d055502b",
+      "revId": "28d07dd1323391d3038fbd2612be1dc6c2092fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
