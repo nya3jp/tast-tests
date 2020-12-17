@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3026f07_cc170626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:39:04Z",
+      "side": 1,
+      "message": "I meant more like a string in the UI that says *nearby*. I get that its within the receiving window but looking for a cancel button just doesn\u0027t \"feel\" right to me :D",
+      "parentUuid": "ed6aac89_6043a8f4",
+      "range": {
+        "startLine": 59,
+        "startChar": 100,
+        "endLine": 59,
+        "endChar": 114
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "704ae07b_aface5ec",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
         "patchSetId": 3
@@ -285,6 +309,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b693c4c_c9aa46f2",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:39:04Z",
+      "side": 1,
+      "message": "Had a look at the android CL. It seems like the only thing in common so far is the DataUsage and Visibility vars. Everything else seems like two different things. My instinct is to have a separate android or snippet package for that side of the flow.",
+      "parentUuid": "7704fd15_6c541785",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7c83b87_636952b6",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
         "patchSetId": 3
@@ -367,6 +415,30 @@
       "side": 1,
       "message": "If we extend the UI controls later, it might be good to keep this around as the interface for other UI interaction, something like:\n```\nfunc (r *ReceiveUI) WaitForSender(...) error {/*do stuff in the UI to look for a sender*/}\nfunc (r *ReceiveUI) ReadToken(...) (string, error) {/*find the secure sharing token in the UI*/}\n\nr, _ :\u003d EnterHighVisibility(...)\nr.WaitForSender() // wait for the sender to show up in the receive UI\ntoken, _ :\u003d r.ReadToken() // get the secure sharing token from the UI\n...\n```\n\nThat\u0027s what I had in mind for wrapping it in a struct here. Maybe I\u0027m thinking too far ahead?",
       "parentUuid": "dd6dcf18_57bb0e6c",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f139058c_928ba661",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T21:39:04Z",
+      "side": 1,
+      "message": "For this CL I\u0027d try not to over future proof since we\u0027ll definitely make changes after getting feedback from tast owners and eng team. \n\nIt think ui.go will probably be renamed or split up into thins like receiving_ui and sending_ui.\n\nCan you remove this file and just put the quick settings interaction steps into the main test for simplicity?",
+      "parentUuid": "c6a5365b_6c3110e0",
       "range": {
         "startLine": 21,
         "startChar": 0,
