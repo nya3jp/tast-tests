@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -287,11 +286,22 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Connected to the first AP; Start roaming")
-		// TODO(b/171086223): The changing of BSSID only means we've initiated the roam attempt, as opposed to be actually L3 connected. Remove the polling below once the bug is addressed.
 		props := []*wificell.ShillProperty{{
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateReady},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateIdle},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
 			Property:       shillconst.ServicePropertyWiFiBSSID,
 			ExpectedValues: []interface{}{mac1.String()},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+			Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
 		}}
 		waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
@@ -345,23 +355,15 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}
 
 		// Verify the L3 connectivity and make sure that the DUT stays connected to the second AP.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := tf.PingFromDUT(ctx, serverIP.String()); err != nil {
-				return err
-			}
-			dutState, err := tf.QueryService(ctx)
-			if err != nil {
-				return err
-			}
-			if dutState.Wifi.Bssid != mac1.String() {
-				return testing.PollBreak(errors.Errorf("unexpected BSSID: got %s, want %s", dutState.Wifi.Bssid, mac1))
-			}
-			return nil
-		}, &testing.PollOptions{
-			Timeout:  30 * time.Second,
-			Interval: time.Second,
-		}); err != nil {
-			s.Error("Failed to verify the connection: ", err)
+		if err := tf.PingFromDUT(ctx, serverIP.String()); err != nil {
+			s.Fatal("Failed to verify connection: ", err)
+		}
+		dutState, err := tf.QueryService(ctx)
+		if err != nil {
+			s.Fatal("Failed to query service: ", err)
+		}
+		if dutState.Wifi.Bssid != mac1.String() {
+			s.Fatalf("Unexpected BSSID: got %s, want %s", dutState.Wifi.Bssid, mac1)
 		}
 	}
 	hasFTSupport := func(ctx context.Context) bool {

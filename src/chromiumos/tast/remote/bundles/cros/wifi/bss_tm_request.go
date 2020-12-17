@@ -125,15 +125,25 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 		}
 
 		// Set up a watcher for the Shill WiFi BSSID property.
-		// TODO(b/171086223): The changing of BSSID only means we've initiated the roam attempt, as opposed to be actually L3 connected. Remove the polling below once the bug is addressed.
 		monitorProps := []string{shillconst.ServicePropertyIsConnected}
-		props := []*wificell.ShillProperty{
-			&wificell.ShillProperty{
-				Property:       shillconst.ServicePropertyWiFiBSSID,
-				Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-				ExpectedValues: []interface{}{roamBSSID},
-			},
-		}
+		props := []*wificell.ShillProperty{{
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateReady},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateIdle},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiBSSID,
+			ExpectedValues: []interface{}{roamBSSID},
+			Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
+		}}
+
 		waitCtx, cancel := context.WithTimeout(ctx, roamTimeout)
 		defer cancel()
 		waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
@@ -164,10 +174,8 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 
 		// Just for good measure make sure we're properly connected.
 		s.Log("Verifying connection to AP 1")
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			return tf.VerifyConnection(ctx, ap1)
-		}, &testing.PollOptions{Timeout: verifyTimeout, Interval: time.Second}); err != nil {
-			s.Fatal("Failed to verify connection: ", err)
+		if err := tf.VerifyConnection(ctx, ap1); err != nil {
+			s.Fatal("DUT: failed to verify connection: ", err)
 		}
 	}
 

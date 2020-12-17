@@ -97,13 +97,23 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 		s.Fatal("DUT: failed to verify connection: ", err)
 	}
 
-	props := []*wificell.ShillProperty{
-		&wificell.ShillProperty{
-			Property:       shillconst.ServicePropertyWiFiBSSID,
-			ExpectedValues: []interface{}{ap2BSSID},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		},
-	}
+	props := []*wificell.ShillProperty{{
+		Property:       shillconst.ServicePropertyWiFiRoamState,
+		ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
+		Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+	}, {
+		Property:       shillconst.ServicePropertyWiFiRoamState,
+		ExpectedValues: []interface{}{shillconst.RoamStateReady},
+		Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+	}, {
+		Property:       shillconst.ServicePropertyWiFiRoamState,
+		ExpectedValues: []interface{}{shillconst.RoamStateIdle},
+		Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+	}, {
+		Property:       shillconst.ServicePropertyWiFiBSSID,
+		ExpectedValues: []interface{}{ap2BSSID},
+		Method:         network.ExpectShillPropertyRequest_CHECK_ONLY,
+	}}
 
 	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
@@ -160,12 +170,7 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return tf.VerifyConnection(ctx, ap2)
-	}, &testing.PollOptions{
-		Timeout:  20 * time.Second,
-		Interval: time.Second,
-	}); err != nil {
-		s.Fatal("Failed to verify connection: ", err)
+	if err := tf.VerifyConnection(ctx, ap2); err != nil {
+		s.Fatal("DUT: failed to verify connection: ", err)
 	}
 }
