@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8f04539_0faf339b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-12-17T04:00:25Z",
+      "side": 1,
+      "message": "I just linked 2 bugs. \n\nThe idea is to provide more info for better error tracking in stainless. Of course, they should be fixed soon. But there can be regressions afterwards.",
+      "parentUuid": "ce4c8df3_79f58c17",
+      "revId": "96c84a21dca1a6e55b4e657a10093badfd58c66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11df166b_78367354",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-16T14:11:58Z",
       "side": 1,
       "message": "So, it\u0027s worth having a tracking issue. It\u0027d be better to link of the failure instances, such as a link to the filing bot etc..",
+      "revId": "96c84a21dca1a6e55b4e657a10093badfd58c66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c507d8bc_5e7ce1ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-12-17T04:00:25Z",
+      "side": 1,
+      "message": "Just added 2 bugs.",
+      "parentUuid": "11df166b_78367354",
       "revId": "96c84a21dca1a6e55b4e657a10093badfd58c66f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
