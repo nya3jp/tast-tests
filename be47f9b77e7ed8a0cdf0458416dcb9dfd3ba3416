@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9534e7_28abf2a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-12-17T01:49:47Z",
+      "side": 1,
+      "message": "Thanks for reviewing. Greg, can you give me CR+2?",
+      "revId": "be47f9b77e7ed8a0cdf0458416dcb9dfd3ba3416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
