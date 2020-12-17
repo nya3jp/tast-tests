@@ -70,6 +70,30 @@
       },
       "revId": "7bd72c0f8319d3dc031073728fa83124208906a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9141defe_c01cd84c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-12-17T10:33:42Z",
+      "side": 1,
+      "message": "Based on offline discussion, decided to go with your suggestion to add support in ArcAuthorizer.java better as it seems like the one of the purposes of this file is exactly what I need, and we have similar use cases for disabling other GMS features through chrome switches.\n\nAlso spoke with niwa@ and he is working on restricting android-sh privileges on ARCVM release images.   So my current solution using android-sh is only a stop gap until they clean up all the other android-sh use cases in tast/CTS for previously stated security objective.\n\nhttp://doc/1iG1cXOQKQPFSC1F3r1G_seVXYNncAG1pZVobMdOVkck#heading\u003dh.ip31u66aaw99",
+      "parentUuid": "bcdaed2d_7fc5173a",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 4
+      },
+      "revId": "7bd72c0f8319d3dc031073728fa83124208906a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
