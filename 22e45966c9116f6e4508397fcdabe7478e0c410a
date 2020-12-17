@@ -344,6 +344,30 @@
       },
       "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86fb710e_f3402cdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-17T00:04:36Z",
+      "side": 1,
+      "message": "Thanks! it looks better and is similar structure to other modules.",
+      "parentUuid": "2c00d7fd_fcfe3f65",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "22e45966c9116f6e4508397fcdabe7478e0c410a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

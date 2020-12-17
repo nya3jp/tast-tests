@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d84aaba9_83d5faed",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-17T00:04:36Z",
+      "side": 1,
+      "message": "Can you move `Feature` to the first line?\n\nI mean:\n\tDockedMagnifier Feature \u003d \"dockedMagnifier\"\n\tFocusHighlight          \u003d \"focusHighlight\"\n\tScreenMagnifier         \u003d \"screenMagnifier\"\n\tSelectToSpeak           \u003d \"selectToSpeak\"\n\tSpokenFeedback          \u003d \"spokenFeedback\"\n\tSwitchAccess            \u003d \"switchAccess\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "e78fb179e5fab26ce5818238ab8c01589e358e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54bd45a9_33352b2e",
         "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
         "patchSetId": 3
@@ -53,6 +76,53 @@
         "startChar": 0,
         "endLine": 47,
         "endChar": 1
+      },
+      "revId": "e78fb179e5fab26ce5818238ab8c01589e358e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1198a18d_e5f4a0d8",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-17T00:04:36Z",
+      "side": 1,
+      "message": "We now have multiple steps that needs Close(). Instead of adding a new line, how about making a anonymous function and catch the error like below:\n\nif err :\u003d func() {\n\tif err :\u003d extConn.WaitForExpr(ctx, `document.readyState \u003d\u003d\u003d \"complete\"`); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"timed out waiting for ChromeVox connection to be ready\")\n\t}\n\n\tif err :\u003d extConn.WaitForExpr(ctx, \"ChromeVoxState.instance\"); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"ChromeVox unavailable\")\n\t}\n\n\tif err :\u003d chrome.AddTastLibrary(ctx, extConn); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to introduce tast library\")\n\t}\n\treturn nil\n}(); err !\u003d nil {\n\textConn.Close()\n\treturn nil, err\n}",
+      "parentUuid": "54bd45a9_33352b2e",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "e78fb179e5fab26ce5818238ab8c01589e358e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e7227ad_4b6942a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-17T00:04:36Z",
+      "side": 1,
+      "message": "nit: can you remove this as it moved to accessibility package.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 100
       },
       "revId": "e78fb179e5fab26ce5818238ab8c01589e358e03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
