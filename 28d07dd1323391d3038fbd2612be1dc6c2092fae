@@ -109,6 +109,24 @@
       "parentUuid": "9abc073c_f2ba6f72",
       "revId": "28d07dd1323391d3038fbd2612be1dc6c2092fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1afb01c1_b2a762df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_still_capture_zsl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-12-17T08:44:19Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. I wasn\u0027t aware this is discouraged.\nTo answer your first question, ZSL requires some advanced capabilities not present on most devices.\n\nTechnically all platforms should pass this test without an issue (but only a few devices will have ZSL turned on). The concern was from a lab resource perspective.\n\nI suppose the router I could instead take (thanks kamesan@ for talking to me offline about it): Determine in the capability in gtest (cros-camera-test) and skip the test if devices don\u0027t support that advanced capability.\nThis is currently being used by portrait mode test: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/camera/camera3_test/camera3_frame_test.cc;l\u003d1893-1896;drc\u003d34d10525925863b7dddb3db830d45365b2d7e25a",
+      "parentUuid": "f36178b4_8e29a148",
+      "revId": "28d07dd1323391d3038fbd2612be1dc6c2092fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
