@@ -51,6 +51,69 @@
       "parentUuid": "e15c1b26_5709675b",
       "revId": "c0fa53f980bdf63f99d5f13f465fec10bce44895",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d802b5_1276ef3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/ml_benchmark_smartdim.tar.xz.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-17T06:17:14Z",
+      "side": 1,
+      "message": "clar: the data looks older? Where does this come from?",
+      "range": {
+        "startLine": 2,
+        "startChar": 102,
+        "endLine": 2,
+        "endChar": 106
+      },
+      "revId": "c0fa53f980bdf63f99d5f13f465fec10bce44895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e07735_014cb19f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-17T06:17:14Z",
+      "side": 1,
+      "message": "nit/style.\n\nconst tfliteDriverPath \u003d ...\n\nAlso, could you follow the document style?\n\n// tfliteDriverPath is ...",
+      "revId": "c0fa53f980bdf63f99d5f13f465fec10bce44895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e6ff310_93c17c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-17T06:17:14Z",
+      "side": 1,
+      "message": "nit. Let\u0027s combine them.\nMultiline string (i.e. `...`) may help you to simplify.",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 63
+      },
+      "revId": "c0fa53f980bdf63f99d5f13f465fec10bce44895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
