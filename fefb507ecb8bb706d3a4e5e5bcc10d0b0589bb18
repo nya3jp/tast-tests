@@ -16,6 +16,24 @@
       "message": "Why did this show up as flakey rather than failed?",
       "revId": "fefb507ecb8bb706d3a4e5e5bcc10d0b0589bb18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3172667d_d6dc213c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-12-17T22:45:05Z",
+      "side": 1,
+      "message": "There seems to be a general flake that affects all three tests, but this one is specific to diagnostics which is why it failed more than others. That other issue is tracked in crbug/1156855.",
+      "parentUuid": "1a4383bf_d38ce12a",
+      "revId": "fefb507ecb8bb706d3a4e5e5bcc10d0b0589bb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
