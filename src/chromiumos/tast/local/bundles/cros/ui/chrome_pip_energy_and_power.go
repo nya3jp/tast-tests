@@ -157,6 +157,19 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move mouse to PIP window: ", err)
 	}
 
+	windows, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get windows: ", err)
+	}
+
+	if windowsCount := len(windows); windowsCount != 1 {
+		s.Fatal("Expected 1 window; found ", windowsCount)
+	}
+
+	if _, err := ash.SetWindowState(ctx, tconn, windows[0].ID, ash.WMEventMinimize); err != nil {
+		s.Fatal("Failed to minimize browser window: ", err)
+	}
+
 	resizeHandle, err := chromeui.Find(ctx, tconn, chromeui.FindParams{Name: "Resize", ClassName: "ResizeHandleButton"})
 	if err != nil {
 		s.Fatal("Failed to get PIP resize handle: ", err)
@@ -241,22 +254,6 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		if err := mouse.Move(ctx, tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second); err != nil {
 			s.Fatal("Failed to move mouse: ", err)
 		}
-	}
-
-	extraConn, err := cr.NewConn(ctx, "chrome://settings")
-	if err != nil {
-		s.Fatal("Failed to load chrome://settings: ", err)
-	}
-	defer extraConn.Close()
-
-	if err := webutil.WaitForQuiescence(ctx, extraConn, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for chrome://settings to achieve quiescence: ", err)
-	}
-
-	// Tab away from the search box of chrome://settings, so that
-	// there will be no blinking cursor.
-	if err := kw.Accel(ctx, "Tab"); err != nil {
-		s.Fatal("Failed to send Tab: ", err)
 	}
 
 	// triedToStopTracing means that cr.StopTracing(cleanupCtx)
