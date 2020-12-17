@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c1fcad9_42076e87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T17:39:51Z",
+      "side": 1,
+      "message": "do we need to mention UI here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "256e074c_7acf3abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T17:39:51Z",
+      "side": 1,
+      "message": "add TODO to replace when feature is enabled by default",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009e0718_067c4b74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T17:39:51Z",
+      "side": 1,
+      "message": "Anything more nearby specific you can search for?",
+      "range": {
+        "startLine": 59,
+        "startChar": 100,
+        "endLine": 59,
+        "endChar": 114
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704ae07b_aface5ec",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T17:39:51Z",
+      "side": 1,
+      "message": "comment",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04547f6a_b79fcfc3",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T17:39:51Z",
+      "side": 1,
+      "message": "Are there going to be Android versions of all of these settings? \nWill they go in this file?\n\nWondering if it\u0027s better to keep them separate to make var names easier instead of prepending CrOS everywhere",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c83b87_636952b6",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T17:39:51Z",
+      "side": 1,
+      "message": "You can avoid having to write the 0,1,2,3 by replacing it with \nCrOSDataUsageUnknown CrOSDataUsage \u003d iota\nCrOSDataUsageOffline  CrOSDataUsage\nCrOSDataUsageOnline   CrOSDataUsage\nCrOSDataUsageWifiOnly CrOSDataUsage",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd6dcf18_57bb0e6c",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-17T17:39:51Z",
+      "side": 1,
+      "message": "Do you have other plans for this? Why not just return the node in the method below?\n\nThen you don\u0027t need a release method and clients don\u0027t have to do ReceiveUI.Root.FindParams(",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
