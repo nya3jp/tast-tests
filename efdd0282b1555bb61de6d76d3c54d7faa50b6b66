@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc42327_f54cd1d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-12-17T09:57:14Z",
+      "side": 1,
+      "message": "LGTM, but please also wait for an approval of a team member.",
+      "revId": "efdd0282b1555bb61de6d76d3c54d7faa50b6b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
