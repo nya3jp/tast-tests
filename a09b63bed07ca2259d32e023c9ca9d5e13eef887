@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91582621_92ecba02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T08:11:27Z",
+      "side": 1,
+      "message": "I end up with solving this in precondition because it is not obvious that reboot can break gRPC in TestFixture, which might cause some problem in the ordering of defers. e.g. Reboot should be the last thing to do but one might still check with tf.WifiClient().HealthCheck.\n\nMight be better to keep the rule simple that we should avoid reboot in test body when using TestFixturePre and have the recovery in Prepare.",
+      "revId": "a09b63bed07ca2259d32e023c9ca9d5e13eef887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
