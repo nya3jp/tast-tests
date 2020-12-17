@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1fac8ec_42edc424",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-17T04:23:36Z",
+      "side": 1,
+      "message": "Ok, so please clarify it in the commit message. E.g.\n \nThis CL is to provide more detailed errors. The errors should be tracked and fixed separately.\n\nor something.",
+      "parentUuid": "f8f04539_0faf339b",
+      "revId": "96c84a21dca1a6e55b4e657a10093badfd58c66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11df166b_78367354",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Just added 2 bugs.",
       "parentUuid": "11df166b_78367354",
+      "revId": "96c84a21dca1a6e55b4e657a10093badfd58c66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b489a572_08e6ae49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-17T04:23:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c507d8bc_5e7ce1ca",
       "revId": "96c84a21dca1a6e55b4e657a10093badfd58c66f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
