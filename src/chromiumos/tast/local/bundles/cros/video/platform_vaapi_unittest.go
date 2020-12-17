@@ -8,7 +8,6 @@ import (
 	"context"
 	"path/filepath"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -32,8 +31,7 @@ func init() {
 // see https://github.com/intel/libva-utils.
 func PlatformVAAPIUnittest(ctx context.Context, s *testing.State) {
 	const exec = "test_va_api"
-	if report, err := gtest.New(
-		filepath.Join(chrome.BinTestDir, exec),
+	if report, err := gtest.New(exec,
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(ctx); err != nil {
