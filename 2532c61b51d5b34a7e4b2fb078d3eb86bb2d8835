@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8413f07_6985325d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-17T19:53:31Z",
+      "side": 1,
+      "message": "By removing the chrome dependency from platform the test may run on more devices. I don\u0027t think the CQ will run them, so we may only see it from the lab after the change lands.",
+      "revId": "2532c61b51d5b34a7e4b2fb078d3eb86bb2d8835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
