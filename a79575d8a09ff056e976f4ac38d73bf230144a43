@@ -39,6 +39,30 @@
       },
       "revId": "a79575d8a09ff056e976f4ac38d73bf230144a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b9bd67_c1ae3ec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T22:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9916154c_41ec89c6",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 8
+      },
+      "revId": "a79575d8a09ff056e976f4ac38d73bf230144a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
