@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5ed26587_c933f4d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-12-17T04:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb1de121_6dba170b",
+      "revId": "51d0114ab75141b031961f674c2b82c0c9df1bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f3b79888_b243a338",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b86b1859_389142cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/bootid_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-12-17T04:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0fd15ad_a420bb6d",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "51d0114ab75141b031961f674c2b82c0c9df1bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34936778_ce5576ae",
@@ -71,6 +113,30 @@
       "writtenOn": "2020-12-16T07:37:41Z",
       "side": 1,
       "message": "nit: \"failed\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "51d0114ab75141b031961f674c2b82c0c9df1bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "122d46b8_1af0e581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/bootid_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-12-17T04:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34936778_ce5576ae",
       "range": {
         "startLine": 35,
         "startChar": 26,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39fa692_45d8007d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/bootid_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-12-17T04:50:31Z",
+      "side": 1,
+      "message": "I tried replacing this with \u0027.\u0027 but it was removed by linter.",
+      "parentUuid": "1b22694c_5edf1cc1",
+      "range": {
+        "startLine": 50,
+        "startChar": 86,
+        "endLine": 50,
+        "endChar": 88
+      },
+      "revId": "51d0114ab75141b031961f674c2b82c0c9df1bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7322aa2c_e7b1a27f",
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6fa05e_00711411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/bootid_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-12-17T04:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7322aa2c_e7b1a27f",
+      "range": {
+        "startLine": 56,
+        "startChar": 85,
+        "endLine": 56,
+        "endChar": 88
+      },
+      "revId": "51d0114ab75141b031961f674c2b82c0c9df1bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e1e8f86_ebadd0ce",
@@ -140,6 +254,30 @@
       "writtenOn": "2020-12-16T07:37:41Z",
       "side": 1,
       "message": "nit: is this an output? I would suggest \"b\" (meaning buffer or bytes) or \"content\".",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "51d0114ab75141b031961f674c2b82c0c9df1bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d30f0cc_9f2b7c63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/bootid_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2020-12-17T04:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e1e8f86_ebadd0ce",
       "range": {
         "startLine": 61,
         "startChar": 1,
