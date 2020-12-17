@@ -156,6 +156,12 @@ var (
 	// VideoResolutionOption is option for each available video capture resolution.
 	VideoResolutionOption = UIComponent{"video resolution option", []string{
 		"#view-video-resolution-settings input"}}
+
+	// BarcodeChipURL is chip for url detected from barcode.
+	BarcodeChipURL = UIComponent{"barcode chip url", []string{".barcode-chip-url a"}}
+	// BarcodeCopyURLButton is button to copy url detected from barcode.
+	BarcodeCopyURLButton = UIComponent{"barcode copy url button",
+		[]string{"#barcode-chip-url-container .barcode-copy-button"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -912,6 +918,20 @@ func (a *App) CheckVisible(ctx context.Context, ui UIComponent, expected bool) e
 	return nil
 }
 
+// WaitVisible waits until the visibility of ui becomes expected.
+func (a *App) WaitVisible(ctx context.Context, ui UIComponent, expected bool) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		visible, err := a.Visible(ctx, ui)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if visible != expected {
+			return errors.Errorf("failed to wait visibility state for %v: got %v, want %v", ui.Name, visible, expected)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
 // CheckConfirmUIExists returns whether the confirm UI exists.
 func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
 	var reviewElementID string
@@ -1025,6 +1045,11 @@ func (a *App) ToggleGridOption(ctx context.Context) (bool, error) {
 // ToggleMirroringOption toggles the mirroring option.
 func (a *App) ToggleMirroringOption(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "mirror", "#toggle-mirror")
+}
+
+// ToggleQRCodeOption toggles the barcode scanning option.
+func (a *App) ToggleQRCodeOption(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "scan-barcode", "#toggle-barcode")
 }
 
 // SetTimerOption sets the timer option to on/off.
