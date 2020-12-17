@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04acfc31_125987d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-17T23:35:18Z",
+      "side": 1,
+      "message": "I agree with Kyle here: the most specific guidance on this topic is Effective Go. In this way, package names are treated differently from test file names, such as high_visibility_ui_smoke.go.\n\nWe even see this in some standard-lib Go packages, such as index/suffixarray, mime/quotedprintable, and net/http/cookiejar.",
+      "parentUuid": "8b3774d7_95ccb47f",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c1fcad9_42076e87",
