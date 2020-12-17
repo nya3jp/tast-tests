@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc4da69_8f1b9adc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-17T00:17:00Z",
+      "side": 1,
+      "message": "I think you can use one of\n- Embedding https://golang.org/doc/effective_go.html#embedding\n  - e.g. type ChromeVoxConn struct { chrome.Conn }\n- Defined type (Named type) https://golang.org/ref/spec#Type_definitions\n  - e.g. type ChromeVoxConn chrome.Conn\nso that we don\u0027t need to care about getters.\n\nI think defined type is simpler in this case.",
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baa8efda_1187ace8",
