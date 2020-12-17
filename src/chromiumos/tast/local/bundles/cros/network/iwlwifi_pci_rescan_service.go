@@ -6,14 +6,11 @@ package network
 
 import (
 	"context"
-	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/iwlwifirescan"
-	"chromiumos/tast/local/shill"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
@@ -34,19 +31,6 @@ type IwlwifiPCIRescanService struct{}
 func (s *IwlwifiPCIRescanService) RemoveIfaceAndWaitForRecovery(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
 	if err := iwlwifirescan.RemoveIfaceAndWaitForRecovery(ctx); err != nil {
 		return nil, err
-	}
-	return &empty.Empty{}, nil
-}
-
-// HealthCheck checks if the DUT has a WiFi device. If not, we may need to reboot the DUT.
-func (s *IwlwifiPCIRescanService) HealthCheck(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
-	manager, err := shill.NewManager(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create shill manager")
-	}
-	_, err = shill.WifiInterface(ctx, manager, 5*time.Second)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not get a WiFi interface")
 	}
 	return &empty.Empty{}, nil
 }

@@ -2366,3 +2366,16 @@ func (s *WifiService) ResetTest(ctx context.Context, req *network.ResetTestReque
 	}
 	return &empty.Empty{}, nil
 }
+
+// HealthCheck checks if the DUT has a WiFi device. If not, we may need to reboot the DUT.
+func (s *WifiService) HealthCheck(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager")
+	}
+	_, err = shill.WifiInterface(ctx, manager, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get a WiFi interface")
+	}
+	return &empty.Empty{}, nil
+}
