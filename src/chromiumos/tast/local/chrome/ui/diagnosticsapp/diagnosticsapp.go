@@ -21,8 +21,8 @@ var diagnosticsRootNodeParams = ui.FindParams{
 }
 
 var diagnosticsLogButton = ui.FindParams{
-	Name: "Session log",
-	Role: ui.RoleTypeButton,
+	ClassName: "session-log-button",
+	Role:      ui.RoleTypeButton,
 }
 
 // DiagnotsicsRootNode returns the root ui node of Diagnotsics app.
