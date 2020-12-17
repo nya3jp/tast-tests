@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd04f190_34d4cf52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-17T22:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78fe2ca8_b5a22d80",
+      "range": {
+        "startLine": 27,
+        "startChar": 19,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "b002dbc55c843ce905e762382f61952f100ae813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d97caaf2_705dbf7f",
@@ -169,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58458d9a_cc9b52a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-17T22:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae11b00_a0f64d54",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "b002dbc55c843ce905e762382f61952f100ae813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e5a8d23_3ffcaac0",
@@ -206,6 +254,30 @@
       "side": 1,
       "message": "sure, let me change this.",
       "parentUuid": "5e5a8d23_3ffcaac0",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "b002dbc55c843ce905e762382f61952f100ae813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b040b2_5994aa32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-17T22:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b68a4c_28e95f48",
       "range": {
         "startLine": 70,
         "startChar": 16,
