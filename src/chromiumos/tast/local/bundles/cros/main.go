@@ -44,6 +44,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/logs"
 	_ "chromiumos/tast/local/bundles/cros/meta"
 	_ "chromiumos/tast/local/bundles/cros/multivm"
+	_ "chromiumos/tast/local/bundles/cros/nearbyshare"
 	_ "chromiumos/tast/local/bundles/cros/network"
 	_ "chromiumos/tast/local/bundles/cros/notifications"
 	_ "chromiumos/tast/local/bundles/cros/ocr"
