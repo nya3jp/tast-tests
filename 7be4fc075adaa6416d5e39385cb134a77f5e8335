@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "155ef4cd_a10c193e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-17T20:44:26Z",
+      "side": 1,
+      "message": "CQ failure is a known issue; should be fixed now",
+      "revId": "7be4fc075adaa6416d5e39385cb134a77f5e8335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
