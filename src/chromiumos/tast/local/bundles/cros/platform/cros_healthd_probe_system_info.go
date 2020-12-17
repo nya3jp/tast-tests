@@ -10,9 +10,9 @@ import (
 	"regexp"
 	"strings"
 
-	"chromiumos/tast/local/bundles/cros/platform/csv"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/croshealthd"
+	"chromiumos/tast/local/csv"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
