@@ -33,6 +33,24 @@
       "message": "I don\u0027t know why arc.AppCrash.mock_consent on novato-arc64-cq.tast_vm.direct_tast_vm test have passed now. But I think this is okay because this board seems very special one.\n\nVictor, could you review again?",
       "revId": "cc64f41b3c2c86c3f18d98e0f33624593d7fac95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d428edc1_689a73b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-17T19:16:38Z",
+      "side": 1,
+      "message": "Oh, Victor seems OOO until next year.",
+      "parentUuid": "d941f77b_10a50176",
+      "revId": "cc64f41b3c2c86c3f18d98e0f33624593d7fac95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
