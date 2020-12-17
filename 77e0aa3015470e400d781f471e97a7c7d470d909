@@ -1291,6 +1291,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5b58200_283c8788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-17T00:01:01Z",
+      "side": 1,
+      "message": "err may contains other type of failures. \n1) 2) 3) all will return non-nil err and the way you wrote is only working for scenario 4). \nIf Run() fails with \"No such command\", the result shown in the dashboard may looks like \"%s: returns the error code - No such command\", which is weird to me.\n\nIf you really want to check for error code, you can run testexec.ExitCode as below\n\nif err :\u003d xxx.Run(...); err !\u003d nil {\n    exitCode, ok :\u003d testexec.ExitCode(err)\n    if !ok {\n          s.Fatal(\"Failed to run...\")\n    }\n    s.Fatal(\"%s: returns the error code - %v\")\n}\n\nBTW, shouldn\u0027t this be s.Fatal?",
+      "parentUuid": "aeeab732_ec8cac40",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ab857a2_4ed4dc15",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
