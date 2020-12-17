@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0edc3d5c_e107fe6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2020-12-17T19:44:23Z",
+      "side": 1,
+      "message": "Actually, I think I should remove \"chrome\" for the platform test. But no_qemu should probably be moved back up. Unless they won\u0027t apply for borealis/crostini later on?",
+      "parentUuid": "7c1d3524_6c219fc2",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 53
+      },
+      "revId": "a649f6cc5194a99be1073903744d57ce5bf432a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7bb0fc9_d56e1bd6",
@@ -105,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b90d86_73b4f717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2020-12-17T19:44:23Z",
+      "side": 1,
+      "message": "Right, I meant to ask if I should remove it because I wasn\u0027t sure.",
+      "parentUuid": "a7bb0fc9_d56e1bd6",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "a649f6cc5194a99be1073903744d57ce5bf432a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c66d1d92_1ab068ce",
@@ -118,6 +166,30 @@
       "writtenOn": "2020-12-17T08:51:46Z",
       "side": 1,
       "message": "This should be \"platform\".\n\nBut how about defining some constants and using those?\n\nconst (\n       smoke_platform \u003d iota\n       smoke_chrome\n)",
+      "range": {
+        "startLine": 45,
+        "startChar": 23,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "a649f6cc5194a99be1073903744d57ce5bf432a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c544eb2_7774cf58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2020-12-17T19:44:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c66d1d92_1ab068ce",
       "range": {
         "startLine": 45,
         "startChar": 23,
