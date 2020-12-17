@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87c3313c_6802041a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/high_visibility_ui_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T22:19:27Z",
+      "side": 1,
+      "message": "Ah gotcha, I\u0027ve updated it to look for the text \"Visible to nearby devices as \u003cdevice name\u003e\". I also updated the setup step to use a non-default device name, so we can actually see if it\u0027s taking effect in the UI. How\u0027s that?",
+      "parentUuid": "f3026f07_cc170626",
+      "range": {
+        "startLine": 59,
+        "startChar": 100,
+        "endLine": 59,
+        "endChar": 114
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "704ae07b_aface5ec",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
         "patchSetId": 3
@@ -321,6 +345,30 @@
       "side": 1,
       "message": "Had a look at the android CL. It seems like the only thing in common so far is the DataUsage and Visibility vars. Everything else seems like two different things. My instinct is to have a separate android or snippet package for that side of the flow.",
       "parentUuid": "7704fd15_6c541785",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ddec929_0ca15d05",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T22:19:27Z",
+      "side": 1,
+      "message": "Sounds good, I\u0027ve removed the CrOS prefix on all of these, and I\u0027ll split the android stuff out in the other CL.",
+      "parentUuid": "8b693c4c_c9aa46f2",
       "range": {
         "startLine": 15,
         "startChar": 5,
@@ -439,6 +487,30 @@
       "side": 1,
       "message": "For this CL I\u0027d try not to over future proof since we\u0027ll definitely make changes after getting feedback from tast owners and eng team. \n\nIt think ui.go will probably be renamed or split up into thins like receiving_ui and sending_ui.\n\nCan you remove this file and just put the quick settings interaction steps into the main test for simplicity?",
       "parentUuid": "c6a5365b_6c3110e0",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "7a73143f0b0f0b3294f2250c01d649f84a326145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2869943d_ac503ef2",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T22:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f139058c_928ba661",
       "range": {
         "startLine": 21,
         "startChar": 0,
