@@ -124,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3bc5287_37efbcb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3_test_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2020-12-17T10:15:52Z",
+      "side": 1,
+      "message": "Note that if removing this, it will test device-operated ZSL over vendor HAL library if it\u0027s supported.",
+      "parentUuid": "1e689fa8_7d3fa16a",
+      "range": {
+        "startLine": 122,
+        "startChar": 15,
+        "endLine": 122,
+        "endChar": 75
+      },
+      "revId": "28d07dd1323391d3038fbd2612be1dc6c2092fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "639092b9_467ee4d0",
