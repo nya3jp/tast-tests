@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a5282d4_a9f7cd1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-12-17T18:50:51Z",
+      "side": 1,
+      "message": "I believe this will need another +2 from Victor; it got reset when the branch destination changed to \"main\".",
+      "revId": "cc64f41b3c2c86c3f18d98e0f33624593d7fac95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
