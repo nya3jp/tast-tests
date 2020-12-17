@@ -32,8 +32,19 @@ func init() {
 		},
 		Attr: []string{"group:mainline"},
 		// TODO(pwang): Remove display_backlight once crbug.com/950346 support hardware dependency.
-		SoftwareDeps: []string{"no_qemu", "chrome", "display_backlight"},
-		Data:         []string{"screenshot1_reference.png", "screenshot2_reference.png"},
+		SoftwareDeps: []string{"display_backlight"},
+		Params: []testing.Param{
+			{
+				Name:              "chrome",
+				ExtraSoftwareDeps: []string{"chrome", "no_qemu"},
+				Val:               "chrome",
+			}, {
+				Name:              "platform",
+				ExtraData:         []string{"screenshot1_reference.png", "screenshot2_reference.png"},
+				ExtraSoftwareDeps: []string{"chrome", "no_qemu"},
+				Val:               "chrome",
+			},
+		},
 	})
 }
 
@@ -52,8 +63,15 @@ func Smoke(ctx context.Context, s *testing.State) {
 	if err := switchToGUI(ctx); err != nil {
 		s.Fatal("Failed to switch to GUI: ", err)
 	}
-	testSomethingOnScreen(ctx, s)
-	testGeneratedScreenshot(ctx, s)
+
+	testType := s.Param().(string)
+
+	if testType == "chrome" {
+		testSomethingOnScreen(ctx, s)
+	}
+	if testType == "platform" {
+		testGeneratedScreenshot(ctx, s)
+	}
 }
 
 func switchToGUI(ctx context.Context) error {
