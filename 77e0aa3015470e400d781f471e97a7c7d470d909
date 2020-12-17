@@ -1309,6 +1309,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c161d400_8dd5ab95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-17T00:57:31Z",
+      "side": 1,
+      "message": "Thank you Po-Hsien. I see your point. \nI see many go files having this \"Failed to run\" code, \nand looks like 1), 2), 3) are reasoning behind it. Makes sense.\n\nMade change accordingly. \n\nI see that half of codes doing \"fatal\" and maybe another half doing \"error\" in similar situation. I was doing \"error\" as I referenced drm.go, which you mentioned is out-dated. \n\"Fatal\" seems more appropriate to me as well going over how \"fatal\" and \"error\" are used in our codes. If I understood correctly, \"Fatal\" seems to imply something critical, which should exit immediately vs. \"Error\" is something reporting errors, but can proceed to next steps or can be ignored like warning (e.g. when just additional logs are processed). \n\nSo in this context, I think \"returns the exit code\" should be \"error\". I actually experimented with \"fatal\". As expected, we are not getting summary result in this case. I would want to have summary result even if some tests are failing. \n\n2020/12/16 16:52:09 [16:52:08.935] [[Total for qcom-venus device /dev/video-dec0: 45, Succeeded: 43, Failed: 2, Warnings: 0]]",
+      "parentUuid": "a5b58200_283c8788",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ab857a2_4ed4dc15",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
         "patchSetId": 4
