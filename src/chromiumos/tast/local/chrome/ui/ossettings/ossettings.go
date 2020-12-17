@@ -47,6 +47,17 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
+// Close closes the Settings app.
+func Close(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := apps.Close(ctx, tconn, apps.Settings.ID); err != nil {
+		return errors.Wrap(err, "failed to close settings app")
+	}
+	if err := ash.WaitForAppClosed(ctx, tconn, apps.Settings.ID); err != nil {
+		return errors.Wrap(err, "failed waiting for settings app to close")
+	}
+	return nil
+}
+
 // LaunchAtPage launches the Settings app at a particular page.
 // An error is returned if the app fails to launch.
 func LaunchAtPage(ctx context.Context, tconn *chrome.TestConn, subpage ui.FindParams) error {
