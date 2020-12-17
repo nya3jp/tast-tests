@@ -208,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "395731e2_96b8a51f",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-17T09:04:45Z",
+      "side": 1,
+      "message": "Per discussion, the comment here could be:\n\n// The reasons why we create a new gRPC session here for checking DUT\u0027s health are:\n//   1. For the very first test of the Precondition, Prepare() does not have a gRPC yet.\n//   2. For the rest of tests, p.tf might be broken such as DUT unexpected rebooted in the previous test. So checking the DUT\u0027s health without using the existing gRPC session can avoid the problem. Note that the broken p.tf is already handled in Prepare().",
+      "parentUuid": "40c7322a_49e0e661",
+      "range": {
+        "startLine": 99,
+        "startChar": 33,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7d1398f_1aa00176",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 3
