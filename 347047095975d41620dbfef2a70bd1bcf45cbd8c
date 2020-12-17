@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd77dcd5_0c25661b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-17T11:29:06Z",
+      "side": 1,
+      "message": "Haven\u0027t closely self-reviewed it yet, but figure I\u0027d upload it for now. I\u0027ll take another look at it soon.",
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
