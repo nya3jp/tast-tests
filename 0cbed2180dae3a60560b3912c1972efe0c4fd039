@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f5557da_b45cc1f9",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T09:00:21Z",
+      "side": 1,
+      "message": "No longer relevant.",
+      "parentUuid": "0560820b_e8b53308",
+      "range": {
+        "startLine": 97,
+        "startChar": 35,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca502996_ee792e5e",
@@ -87,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "771dbca0_c9e54a65",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T09:00:21Z",
+      "side": 1,
+      "message": "No longer relevant.",
+      "parentUuid": "ca502996_ee792e5e",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 16
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710230dd_14c4d01a",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T09:00:21Z",
+      "side": 1,
+      "message": "No longer relevant.",
+      "parentUuid": "094876c9_df4d6535",
+      "range": {
+        "startLine": 98,
+        "startChar": 38,
+        "endLine": 98,
+        "endChar": 68
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40c7322a_49e0e661",
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f64b7302_f8f5f2fc",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T09:00:21Z",
+      "side": 1,
+      "message": "Per offline discussion. The reasoning here is to separate DUT problem and TestFixture problem. If we don\u0027t create a new gRPC here, then we\u0027ll need to reuse the one in p.tf which will depend on the health of existing p.tf (and also it is not available in the first Prepare call), then we might do some unnecessary reboot because of broken TestFixture even when DUT is healthy.\n\nPossibly I\u0027m making the statement too complicated. Re-phrase with a simpler idea. PTAL.",
+      "parentUuid": "40c7322a_49e0e661",
+      "range": {
+        "startLine": 99,
+        "startChar": 33,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7d1398f_1aa00176",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 3
@@ -123,6 +219,30 @@
       "writtenOn": "2020-12-17T08:39:34Z",
       "side": 1,
       "message": "the DUT due",
+      "range": {
+        "startLine": 124,
+        "startChar": 19,
+        "endLine": 124,
+        "endChar": 22
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6026ef8f_216186de",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T09:00:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d1398f_1aa00176",
       "range": {
         "startLine": 124,
         "startChar": 19,
