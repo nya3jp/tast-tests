@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2a8d17db_c0fe6571",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-17T08:27:12Z",
+      "side": 1,
+      "message": "+cc chharry as he\u0027s the contact of wifi.PTK and wifi.GTK test.",
+      "revId": "db47b732edd6792f3f6c06babcf74e399fc641ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8b704786_fceccc77",
         "filename": "src/chromiumos/tast/common/shillconst/const.go",
         "patchSetId": 3
