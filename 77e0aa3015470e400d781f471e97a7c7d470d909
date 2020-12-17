@@ -1325,6 +1325,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "537128fc_88b27d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/v4l2_compliance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-17T19:14:35Z",
+      "side": 1,
+      "message": "Ack Make sense. Thank you!",
+      "parentUuid": "c161d400_8dd5ab95",
+      "revId": "77e0aa3015470e400d781f471e97a7c7d470d909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ab857a2_4ed4dc15",
