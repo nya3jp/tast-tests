@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package health
 
 import (
 	"context"
@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrosHealthdProbeCPUInfo,
+		Func: ProbeCPUInfo,
 		Desc: "Check that we can probe cros_healthd for CPU info",
 		Contacts: []string{
 			"jschettler@google.com",
@@ -149,7 +149,7 @@ func verifyCStates(lines []string) error {
 	return nil
 }
 
-func CrosHealthdProbeCPUInfo(ctx context.Context, s *testing.State) {
+func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	b, err := croshealthd.RunTelem(ctx, croshealthd.TelemCategoryCPU, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to run telem command: ", err)

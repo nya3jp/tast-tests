@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package health
 
 import (
 	"context"
@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrosHealthdProbeNetworkInfo,
+		Func: ProbeNetworkInfo,
 		Desc: "Check that we can probe cros_healthd for network info",
 		Contacts: []string{
 			"tbegin@google.com",
@@ -29,7 +29,7 @@ func init() {
 	})
 }
 
-func CrosHealthdProbeNetworkInfo(ctx context.Context, s *testing.State) {
+func ProbeNetworkInfo(ctx context.Context, s *testing.State) {
 	b, err := croshealthd.RunTelem(ctx, croshealthd.TelemCategoryNetwork, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to run telem command: ", err)
