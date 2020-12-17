@@ -62,13 +62,11 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
 		Timeout:      7 * time.Minute,
-		Pre:          cuj.LoggedInToCUJUser(),
+		Fixture:      "loggedInToCUJUser",
 		Vars: []string{
 			"mute",
 			"record",
 			"ui.MeetCUJ.bond_credentials",
-			"ui.cuj_username",
-			"ui.cuj_password",
 		},
 		Params: []testing.Param{{
 			// Base case.
@@ -207,7 +205,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}()
 	s.Log("Created a room with the code ", meetingCode)
 
-	cr := s.PreValue().(cuj.PreData).Chrome
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

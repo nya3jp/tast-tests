@@ -37,10 +37,8 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      4 * time.Minute,
-		Pre:          cuj.LoggedInToCUJUser(),
+		Fixture:      "loggedInToCUJUser",
 		Vars: []string{
-			"ui.cuj_username",
-			"ui.cuj_password",
 			"ui.VideoCUJ.ytExperiments",
 		},
 		Params: []testing.Param{{
@@ -65,7 +63,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	cr := s.PreValue().(cuj.PreData).Chrome
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

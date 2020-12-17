@@ -37,12 +37,8 @@ func init() {
 		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
 		Timeout:      10 * time.Minute,
-		Vars: []string{
-			"ui.cuj_username",
-			"ui.cuj_password",
-		},
-		Data: []string{"bear-320x240.vp8.webm", "pip.html"},
-		Pre:  cuj.LoggedInToCUJUser(),
+		Data:         []string{"bear-320x240.vp8.webm", "pip.html"},
+		Fixture:      "loggedInToCUJUser",
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -75,7 +71,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	tabletMode := s.Param().(bool)
 
-	cr := s.PreValue().(cuj.PreData).Chrome
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
