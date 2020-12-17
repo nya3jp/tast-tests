@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5580bbc_3f599bc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-17T08:39:34Z",
+      "side": 1,
+      "message": "Thanks for the quick fix.",
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0560820b_e8b53308",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-17T08:39:34Z",
+      "side": 1,
+      "message": "healthy",
+      "range": {
+        "startLine": 97,
+        "startChar": 35,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca502996_ee792e5e",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-17T08:39:34Z",
+      "side": 1,
+      "message": ". In this case, ...",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 16
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094876c9_df4d6535",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-17T08:39:34Z",
+      "side": 1,
+      "message": "fix it by calling NewTestFixture",
+      "range": {
+        "startLine": 98,
+        "startChar": 38,
+        "endLine": 98,
+        "endChar": 68
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c7322a_49e0e661",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-17T08:39:34Z",
+      "side": 1,
+      "message": "Sorry I don\u0027t quite get it. In this function, it cannot tell if TestFixture is broken.\nAlso, why creating a new tf is related to creating a new gRPC here?  I understand that having a new gRPC for checking the DUT\u0027s wifi health is reasonable.",
+      "range": {
+        "startLine": 99,
+        "startChar": 33,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d1398f_1aa00176",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-12-17T08:39:34Z",
+      "side": 1,
+      "message": "the DUT due",
+      "range": {
+        "startLine": 124,
+        "startChar": 19,
+        "endLine": 124,
+        "endChar": 22
+      },
+      "revId": "0cbed2180dae3a60560b3912c1972efe0c4fd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
