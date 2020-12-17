@@ -287,10 +287,17 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Connected to the first AP; Start roaming")
-		// TODO(b/171086223): The changing of BSSID only means we've initiated the roam attempt, as opposed to be actually L3 connected. Remove the polling below once the bug is addressed.
 		props := []*wificell.ShillProperty{{
-			Property:       shillconst.ServicePropertyWiFiBSSID,
-			ExpectedValues: []interface{}{mac1.String()},
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateReady},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateIdle},
 			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
 		}}
 		waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)

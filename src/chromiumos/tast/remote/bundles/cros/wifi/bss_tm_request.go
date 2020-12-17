@@ -125,15 +125,21 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 		}
 
 		// Set up a watcher for the Shill WiFi BSSID property.
-		// TODO(b/171086223): The changing of BSSID only means we've initiated the roam attempt, as opposed to be actually L3 connected. Remove the polling below once the bug is addressed.
 		monitorProps := []string{shillconst.ServicePropertyIsConnected}
-		props := []*wificell.ShillProperty{
-			&wificell.ShillProperty{
-				Property:       shillconst.ServicePropertyWiFiBSSID,
-				Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-				ExpectedValues: []interface{}{roamBSSID},
-			},
-		}
+		props := []*wificell.ShillProperty{{
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateReady},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}, {
+			Property:       shillconst.ServicePropertyWiFiRoamState,
+			ExpectedValues: []interface{}{shillconst.RoamStateIdle},
+			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+		}}
+
 		waitCtx, cancel := context.WithTimeout(ctx, roamTimeout)
 		defer cancel()
 		waitForProps, err := tf.ExpectShillProperty(waitCtx, servicePath, props, monitorProps)

@@ -97,13 +97,19 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 		s.Fatal("DUT: failed to verify connection: ", err)
 	}
 
-	props := []*wificell.ShillProperty{
-		&wificell.ShillProperty{
-			Property:       shillconst.ServicePropertyWiFiBSSID,
-			ExpectedValues: []interface{}{ap2BSSID},
-			Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
-		},
-	}
+	props := []*wificell.ShillProperty{{
+		Property:       shillconst.ServicePropertyWiFiRoamState,
+		ExpectedValues: []interface{}{shillconst.RoamStateConfiguration},
+		Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+	}, {
+		Property:       shillconst.ServicePropertyWiFiRoamState,
+		ExpectedValues: []interface{}{shillconst.RoamStateReady},
+		Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+	}, {
+		Property:       shillconst.ServicePropertyWiFiRoamState,
+		ExpectedValues: []interface{}{shillconst.RoamStateIdle},
+		Method:         network.ExpectShillPropertyRequest_ON_CHANGE,
+	}}
 
 	waitCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
