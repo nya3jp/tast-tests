@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+package health
 
 import (
 	"context"
@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrosHealthdProbeSystemInfo,
+		Func: ProbeSystemInfo,
 		Desc: "Check that we can probe cros_healthd for system info",
 		Contacts: []string{
 			"cros-tdm@google.com",
@@ -32,7 +32,7 @@ func init() {
 	})
 }
 
-func CrosHealthdProbeSystemInfo(ctx context.Context, s *testing.State) {
+func ProbeSystemInfo(ctx context.Context, s *testing.State) {
 	const (
 		// Location of cached VPD R/O contents.
 		cachedVpdRoPath = "/sys/firmware/vpd/ro/"
