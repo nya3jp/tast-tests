@@ -50,7 +50,7 @@ func Attestation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to prepare for enrollment: ", err)
 	}
 
-	at := hwsec.NewAttestaionTest(utility, hwsec.DefaultPCA)
+	at := hwsec.NewAttestationTest(utility, hwsec.DefaultPCA)
 
 	ac, err := hwseclocal.NewAttestationClient(ctx)
 	if err != nil {
