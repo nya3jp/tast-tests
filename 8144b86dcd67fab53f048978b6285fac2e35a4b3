@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae4fe05_dd62a568",
+        "filename": "src/chromiumos/tast/remote/wificell/cont.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-18T08:11:49Z",
+      "side": 1,
+      "message": "Missing timeout handling, the same in Stop",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 38
+      },
+      "revId": "8144b86dcd67fab53f048978b6285fac2e35a4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9338d96c_4941c27c",
+        "filename": "src/chromiumos/tast/remote/wificell/cont.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1431109
+      },
+      "writtenOn": "2020-12-18T08:11:49Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 39
+      },
+      "revId": "8144b86dcd67fab53f048978b6285fac2e35a4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
