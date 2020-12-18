@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c2edf2_695f5639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "\u003e \"overriden\" is a possible misspelling of \"overridden\".\n\nPlease fix.",
+      "parentUuid": "0cc2a2e5_b1dcf3c3",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "11ad60a9345184dacca567ee41f996626086ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

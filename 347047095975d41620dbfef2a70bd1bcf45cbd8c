@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61bbdc53_1b075cac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "Added which .zip I\u0027m using to the test section. The snippet doesn\u0027t appear to be strictly versioned, but the build date should suffice for version info.",
+      "parentUuid": "291c3bf3_7ecdc615",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d2cd080_cbf90bdf",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-17T21:57:16Z",
       "side": 1,
       "message": "Is there a go link you can add here for posterity",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f1912e_6838b5a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "Added a couple of go links.",
+      "parentUuid": "6d2cd080_cbf90bdf",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -112,6 +160,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fc1f6d4_eaf98f4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "Added a TODO for it temporarily while we figure this out. Need to look into options 2\u00263 you mentioned in the bug still.",
+      "parentUuid": "98190918_b5209e06",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13999e80_dd715e5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1cd0957_9698bfaf",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1619f39f_5e17ebd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
         "patchSetId": 2
@@ -123,6 +219,30 @@
       "writtenOn": "2020-12-17T21:57:16Z",
       "side": 1,
       "message": "Add comment explaining this",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d001b3_120eec5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1619f39f_5e17ebd2",
       "range": {
         "startLine": 26,
         "startChar": 26,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc257f84_0de923b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "016ecabe_751da061",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd17583e_0177c4ff",
@@ -169,6 +313,30 @@
       "writtenOn": "2020-12-17T21:57:16Z",
       "side": 1,
       "message": "Could just set it to false here and remove the else branch",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4abbc193_63958395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd17583e_0177c4ff",
       "range": {
         "startLine": 48,
         "startChar": 0,
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54239edf_c9c5fbbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_apk_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24b6d7bc_873a135c",
+      "range": {
+        "startLine": 70,
+        "startChar": 35,
+        "endLine": 70,
+        "endChar": 47
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50f22c7a_ab9bdeac",
@@ -215,6 +407,30 @@
       "writtenOn": "2020-12-17T21:57:16Z",
       "side": 1,
       "message": "This file is mainly about setting up the snippet library, not about nearby share. Which makes me think it (and its constants) should be in their own package.\n\nWe can interface with the AndroidNearbyDevice object in our tests",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "babce417_eb14e85a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "I move them into the android package, let me know what you think.",
+      "parentUuid": "50f22c7a_ab9bdeac",
       "range": {
         "startLine": 6,
         "startChar": 8,
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0cab51_c296d0e5",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f85332_b254ab91",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "845366a5_45463d37",
@@ -261,6 +501,30 @@
       "writtenOn": "2020-12-17T21:57:16Z",
       "side": 1,
       "message": "Any other info you can add?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4648c0eb_45eccee0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "added a little info based on https://source.android.com/devices/tech/admin/multi-user-testing#adb-interactions-across-users",
+      "parentUuid": "845366a5_45463d37",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -294,6 +558,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95567cb4_d4c029c9",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e52073b_7a71b6e5",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 46
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd3ef64d_4afeacc4",
@@ -307,6 +595,30 @@
       "writtenOn": "2020-12-17T21:57:16Z",
       "side": 1,
       "message": "Is it golang convention to split them into three const\u0027s like that?\n\nSeems like they could be in one with a comment separating them",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20813251_44e56135",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T08:41:50Z",
+      "side": 1,
+      "message": "I tried that originally but go-lint yelled at me and failed the pre-upload hooks lol. I thought it would be better to separate them to point out which flow they\u0027re associated with.",
+      "parentUuid": "dd3ef64d_4afeacc4",
       "range": {
         "startLine": 88,
         "startChar": 0,
