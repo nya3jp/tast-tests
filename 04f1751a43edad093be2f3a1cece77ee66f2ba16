@@ -33,6 +33,23 @@
       "message": "build passed before. tests were run and got expected result (some failures are expected)\n\nhttps://gerrit-review.googlesource.com/Documentation/config-labels.html\nThe Verified label was originally invented by the Android Open Source Project to mean \u0027compiles, passes basic unit tests\u0027.",
       "revId": "04f1751a43edad093be2f3a1cece77ee66f2ba16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a080d3cc_bf771b4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-18T15:51:38Z",
+      "side": 1,
+      "message": "Looks some builds failed. \nThank you ilja for doing commit queue +2 again!",
+      "revId": "04f1751a43edad093be2f3a1cece77ee66f2ba16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
