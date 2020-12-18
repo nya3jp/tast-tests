@@ -8,6 +8,7 @@ package org.chromium.arc.testapp.gameperformance;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.opengl.ETC1Util;
 import android.os.Bundle;
 import android.test.ActivityInstrumentationTestCase2;
 
@@ -24,6 +25,7 @@ public class GLESMinReqTest extends ActivityInstrumentationTestCase2<GamePerform
     private String mGLExtensions = null;
     private String mGLVersion = null;
     private String mGLVendor = null;
+    private boolean mSupportsETC1 = false;
 
     public GLESMinReqTest() {
         super(GamePerformanceActivity.class);
@@ -44,6 +46,8 @@ public class GLESMinReqTest extends ActivityInstrumentationTestCase2<GamePerform
                 mGLVersion = gl.glGetString(GL10.GL_VERSION);
                 mGLVendor = gl.glGetString(GL10.GL_VENDOR);
 
+                mSupportsETC1 = ETC1Util.isETC1Supported();
+
                 // Remove FrameDrawer, since this is a one-time only thing
                 activity.getOpenGLView().setFrameDrawer(null);
 
@@ -61,6 +65,7 @@ public class GLESMinReqTest extends ActivityInstrumentationTestCase2<GamePerform
         status.putString("gl_vendor", mGLVendor);
         status.putString("gl_extensions", mGLExtensions);
         status.putBoolean("supports_AEP", deviceSupportsAEP);
+        status.putBoolean("supports_ETC1", mSupportsETC1);
         getInstrumentation().sendStatus(Activity.RESULT_OK, status);
     }
 }
