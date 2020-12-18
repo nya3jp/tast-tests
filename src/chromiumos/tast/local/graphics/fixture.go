@@ -7,7 +7,8 @@ package graphics
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
+	"regexp"
 	"strings"
 	"time"
 
@@ -28,18 +29,23 @@ func init() {
 }
 
 type gpuWatchDogFixture struct {
-	hangPatterns []string
-	postFunc     []func(ctx context.Context) error
+	regexp   *regexp.Regexp
+	postFunc []func(ctx context.Context) error
 }
 
 func (f *gpuWatchDogFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	// TODO: This needs to be kept in sync for new drivers, especially ARM.
-	f.hangPatterns = []string{
-		"drm:i915_hangcheck_elapsed",
-		"drm:i915_hangcheck_hung",
-		"Hangcheck timer elapsed...",
-		"drm/i915: Resetting chip after gpu hang",
+	hangRegexStrs := []string{
+		`drm:i915_hangcheck_elapsed`,
+		`drm:i915_hangcheck_hung`,
+		`Hangcheck timer elapsed...`,
+		`drm/i915: Resetting chip after gpu hang`,
+		`GPU HANG:.+\b[H|h]ang on (rcs0|vcs0|vecs0)`,
+		`hangcheck recover!`, // Freedreno
 	}
+	// TODO(pwang): add regex for memory faults.
+	f.regexp = regexp.MustCompile(strings.Join(hangRegexStrs, "|"))
+	s.Log("Setup regex to detect GPU hang: ", f.regexp)
 	return nil
 }
 
@@ -88,33 +94,19 @@ func (f *gpuWatchDogFixture) checkNewCrashes(ctx context.Context, oldCrashes []s
 	return nil
 }
 
-// getGPUHang returns the gpu hang lines in messages file as a map.
-func (f *gpuWatchDogFixture) getGPUHang() (map[string]bool, error) {
-	out, err := ioutil.ReadFile(syslog.MessageFile)
-	if err != nil {
-		return nil, err
-	}
-	hangLine := make(map[string]bool)
-	for _, line := range strings.Split(string(out), "\n") {
-		for _, pattern := range f.hangPatterns {
-			if strings.Contains(line, pattern) {
-				hangLine[line] = true
-			}
+// checkHangs checks gpu hangs from the reader. It returns error if failed to read the file or gpu hang patterns are detected.
+func (f *gpuWatchDogFixture) checkHangs(ctx context.Context, reader *syslog.Reader) error {
+	for {
+		e, err := reader.Read()
+		if err == io.EOF {
+			break
+		} else if err != nil {
+			return errors.Wrap(err, "failed to read syslog")
 		}
-	}
-	return hangLine, nil
-}
 
-// checkNewHangs checks the oldHangs with the current hangs in syslog.MessageFile. It returns error if failed to read the file or the lines are mismatch.
-func (f *gpuWatchDogFixture) checkNewHangs(ctx context.Context, oldHangs map[string]bool) error {
-	hangs, err := f.getGPUHang()
-	if err != nil {
-		return err
-	}
-
-	for newhangs := range hangs {
-		if _, ok := oldHangs[newhangs]; !ok {
-			return errors.New("detected a gpu hang during test")
+		matches := f.regexp.FindAllStringSubmatch(e.Line, -1)
+		if len(matches) > 0 {
+			return errors.Errorf("GPU hang: %s", e.Line)
 		}
 	}
 	return nil
@@ -145,13 +137,14 @@ func (f *gpuWatchDogFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		})
 	}
 
-	// Record PreTest GPU hangs.
-	hangLine, err := f.getGPUHang()
+	// syslog.NewReader reports syslog message written after it is started for GPU hang detection.
+	sysLogReader, err := syslog.NewReader(ctx)
 	if err != nil {
-		s.Log("Failed to get GPU hang line: ", err)
+		s.Log("Failed to get syslog reader: ", err)
 	} else {
 		f.postFunc = append(f.postFunc, func(ctx context.Context) error {
-			return f.checkNewHangs(ctx, hangLine)
+			defer sysLogReader.Close()
+			return f.checkHangs(ctx, sysLogReader)
 		})
 	}
 }
