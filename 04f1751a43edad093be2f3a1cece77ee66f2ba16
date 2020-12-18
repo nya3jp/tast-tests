@@ -67,6 +67,24 @@
       "message": "All the builds worked out (\u003dwe have binaries).\nBut some of these are used for testing and not all tests have passed\nhttps://ci.chromium.org/p/chromeos/builders/testplatform/cros_test_platform/b8860602421438459488?\n\nIn the summary from the email\nhttps://ci.chromium.org/p/chromeos/builders/cq/cq-orchestrator/b8860621339496581152?\n\nWe see that tests unrelated to yours have failed, in other words the CQ is red. You can +2 for a while, but until this is resolved it will keep failing.\n\nYour tests won\u0027t run in the CQ. You will need to wait for a few days and check the lab on https://stainless.corp.google.com/search",
       "revId": "04f1751a43edad093be2f3a1cece77ee66f2ba16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1683dee0_5a443930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-18T17:21:50Z",
+      "side": 1,
+      "message": "Thank you ilja for the explanation.",
+      "parentUuid": "14a12c68_3c1977d9",
+      "revId": "04f1751a43edad093be2f3a1cece77ee66f2ba16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
