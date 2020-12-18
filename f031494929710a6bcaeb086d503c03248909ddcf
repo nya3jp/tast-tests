@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faef2965_60430d3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T05:04:48Z",
+      "side": 1,
+      "message": "Had to change the \"Visible to nearby devices as \u003cname\u003e\" string check, as the latest Chrome has a new string that includes a countdown timer (\"Visible to nearby devices as \u003cname\u003e for X minutes/seconds\"). Changed it to partially match up to the device name.",
+      "revId": "f031494929710a6bcaeb086d503c03248909ddcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
