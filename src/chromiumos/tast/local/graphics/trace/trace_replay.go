@@ -18,6 +18,7 @@ import (
 	"path"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -317,6 +318,17 @@ func pushTraceReplayApp(ctx context.Context, guest IGuestOS, serverIP string, se
 	return nil
 }
 
+// grepGuestProcesses looks through the currently running processes in a VM and returns the comma separated
+// list of process IDs which matches the specified pattern
+func grepGuestProcesses(ctx context.Context, pattern string, guest IGuestOS) (string, error) {
+	cmd := guest.Command(ctx, "pgrep", "-d,", pattern)
+	out, err := cmd.Output()
+	if err != nil {
+		return "", errors.Wrap(err, "Unable to invoke pgrep")
+	}
+	return strings.TrimRight(string(out), "\n"), nil
+}
+
 // runTraceReplayInVM calls the trace_replay executable in a VM with args and writes test results to a file
 // for Crosbolt to pick up later.
 func runTraceReplayInVM(ctx context.Context, resultDir string, guest IGuestOS, group *comm.TestGroupConfig) error {
@@ -475,15 +487,43 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 		return errors.Errorf("trace_replay protocol version mismatch. Host version: %d. Guest version: %d. Please make sure to sync the chroot/tast bundle to the same revision as the DUT image", comm.ProtocolVersion, replayAppVersionInfo.ProtocolVersion)
 	}
 
-	shortCtx, shortCancel := ctxutil.Shorten(ctx, 30*time.Second)
+	shortCtx, shortCancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer shortCancel()
+
+	deadline, _ := shortCtx.Deadline()
+	replayTimeout := deadline.Sub(time.Now()).Seconds() - 15
+	if replayTimeout < 0 {
+		return errors.New("Test context deadline exceeded before it starts")
+	}
 
 	group.ProxyServer = comm.ProxyServerInfo{
 		URL: "http://" + serverAddr,
 	}
 
+	group.Timeout = uint32(replayTimeout)
+
 	if group.ExtendedDuration > 0 {
 		return runTraceReplayExtendedInVM(shortCtx, resultDir, guest, group)
 	}
-	return runTraceReplayInVM(shortCtx, resultDir, guest, group)
+	err = runTraceReplayInVM(shortCtx, resultDir, guest, group)
+
+	// If shortContext is timed out then it means the guest application probably hangs
+	if err == context.DeadlineExceeded {
+		testing.ContextLog(ctx, "WARNING: guest side "+replayAppName+" execution context timed out")
+		// Try to locate the hanged trace_replay processes and kill it and all its childs
+		// (glretrace, elgretrace, etc)
+		pids, perr := grepGuestProcesses(ctx, replayAppName, guest)
+		if perr != nil {
+			testing.ContextLog(ctx, "WARNING: ", perr)
+		} else {
+			testing.ContextLog(ctx, "Killing "+replayAppName+" processes: "+pids)
+			if perr = guest.Command(ctx, "pkill", "-P", pids).Run(); perr != nil {
+				testing.ContextLog(ctx, "WARNING: ", perr)
+				// TODO(tutankhamen): We, probably, want to restart the VM or even reboot the DUT
+			}
+		}
+	}
+
+	return err
+
 }
