@@ -443,6 +443,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f37df7a3_4fa6e48e",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2020-12-18T11:52:02Z",
+      "side": 1,
+      "message": "I would recommend you to do manual setup for Android phone once and don\u0027t config it in test time.\nBecause you don\u0027t install GMS on Android phone at test time so this can be one-time setup using Mobile Utilities tool.\nIf you really want to config the flags in test time, you may better use \"Test Support Driver\" to do so. Because the `am broadcast ..FLAG_OVERRIDE` is asynchronous operation, you can\u0027t guarantee when it will complete.\nThe \"Test Support Driver\" need \"ts_apk\" and \"ts_driver_apk\" to install on Android device and can be used by `am startservice ...testsupport/.CommandService`:\nhttp://g3doc/java/com/google/android/gmscore/g3doc/testing/integration/test-support#custom-integration\n\nNote: the test support will deliberately \"self-destruct\"\nhttps://g3doc.corp.google.com/java/com/google/android/gmscore/g3doc/testing/integration/test-support.md#freshness-requirements",
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7f85332_b254ab91",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
         "patchSetId": 2
