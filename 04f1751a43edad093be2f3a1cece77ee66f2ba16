@@ -16,6 +16,23 @@
       "message": "Miguel@ PTAL\n  reflected comments and uploaded changes",
       "revId": "04f1751a43edad093be2f3a1cece77ee66f2ba16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224a0a02_adf7d76b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-18T00:01:37Z",
+      "side": 1,
+      "message": "build passed before. tests were run and got expected result (some failures are expected)\n\nhttps://gerrit-review.googlesource.com/Documentation/config-labels.html\nThe Verified label was originally invented by the Android Open Source Project to mean \u0027compiles, passes basic unit tests\u0027.",
+      "revId": "04f1751a43edad093be2f3a1cece77ee66f2ba16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
