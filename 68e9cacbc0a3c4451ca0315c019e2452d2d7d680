@@ -50,6 +50,47 @@
       "message": "Panic: Cannot create Chrome instance while precondition is being used",
       "revId": "68e9cacbc0a3c4451ca0315c019e2452d2d7d680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c8af20_be82e0ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T18:05:04Z",
+      "side": 1,
+      "message": "Sounds like something forgot to unlock. Let me check the log for that.\n\nBeside the problem, I also noticed that I forgot to replace s.PreValue() to s.FixtValue().\nI\u0027ll update it in the next patch.",
+      "parentUuid": "d837d1c0_c8ef8561",
+      "revId": "68e9cacbc0a3c4451ca0315c019e2452d2d7d680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95de0e63_48279464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T18:05:04Z",
+      "side": 1,
+      "message": "TODO(myself): rebase on top of femi\u0027s CL and change this to s.FixtValue()",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 27
+      },
+      "revId": "68e9cacbc0a3c4451ca0315c019e2452d2d7d680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
