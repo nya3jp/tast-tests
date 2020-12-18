@@ -263,6 +263,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "427a02c3_cf309868",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T08:27:01Z",
+      "side": 1,
+      "message": "and i fixed #1",
+      "parentUuid": "457fb4a9_3a2c502a",
+      "range": {
+        "startLine": 494,
+        "startChar": 18,
+        "endLine": 494,
+        "endChar": 52
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d12a3202_2c6fb68c",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 4
