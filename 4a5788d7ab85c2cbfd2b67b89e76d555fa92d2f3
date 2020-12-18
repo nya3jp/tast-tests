@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d4eaada_94d6f3f7",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T07:47:51Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "a3784665_a2ba10a4",
+      "range": {
+        "startLine": 493,
+        "startChar": 11,
+        "endLine": 493,
+        "endChar": 12
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6e25c6a_23fbf88e",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "In previous string I operate with class Time, but here I operate on int.",
       "parentUuid": "b6e25c6a_23fbf88e",
+      "range": {
+        "startLine": 494,
+        "startChar": 18,
+        "endLine": 494,
+        "endChar": 52
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2aa9047_55718078",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T07:47:51Z",
+      "side": 1,
+      "message": "1)\ndeadline, ok :\u003d shortCtx.Deadline() \nif ok \u003d\u003d false {\n    ...\n}\nreplayTimeout :\u003d deadline.Sub(time.Now()).Seconds() - 15\n\n2) \nreplayTimeout, replayCancel :\u003d ctxutil.Shorten(shortCtx, 15*time.Second).Seconds()\ndefer replayCancel()\n\nTo me, 2) is more concise and has better readability. In addition, given 2)\u0027s replayTimeout is deterministic, sounds more suitable for performance test isn\u0027t it?\nWDYT?",
+      "parentUuid": "177fe1f4_acc74c39",
       "range": {
         "startLine": 494,
         "startChar": 18,
