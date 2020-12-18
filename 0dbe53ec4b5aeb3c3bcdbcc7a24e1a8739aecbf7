@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73286791_35b4515c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-12-18T16:28:47Z",
+      "side": 1,
+      "message": "Oh! Nice catch :p",
+      "revId": "0dbe53ec4b5aeb3c3bcdbcc7a24e1a8739aecbf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
