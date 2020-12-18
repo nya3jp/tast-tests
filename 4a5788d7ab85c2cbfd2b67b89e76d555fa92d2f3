@@ -1,0 +1,285 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f81e86b_020f6e39",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "Is this prefix/regex/exact matching? Maybe add some comment?",
+      "range": {
+        "startLine": 322,
+        "startChar": 71,
+        "endLine": 322,
+        "endChar": 78
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828aec38_ec8d1ddb",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "u\n\nError strings should not be capitalized\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 327,
+        "startChar": 31,
+        "endLine": 327,
+        "endChar": 32
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ac48e4_a7802150",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "better to check if ok \u003d\u003d True.",
+      "range": {
+        "startLine": 493,
+        "startChar": 11,
+        "endLine": 493,
+        "endChar": 12
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e25c6a_23fbf88e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "ctxutil.Shorten(shortCtx, 15*time.Second)? \nThere shouldn\u0027t be much difference between ctxutil.Shorten and the way you calculate as I think all previous steps are quite light.",
+      "range": {
+        "startLine": 494,
+        "startChar": 18,
+        "endLine": 494,
+        "endChar": 52
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d12a3202_2c6fb68c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "This is a little bit hard for me to understand. \nHow about \"replay timeout is negative\" or \"don\u0027t have enough time to replay\"?",
+      "range": {
+        "startLine": 496,
+        "startChar": 21,
+        "endLine": 496,
+        "endChar": 68
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "859efa27_8cdb51ec",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "errors.Is(err, context.DeadlineExceeded)",
+      "range": {
+        "startLine": 511,
+        "startChar": 4,
+        "endLine": 511,
+        "endChar": 35
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd880f7_f059d059",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "I think the convention is to use printf style formatting.\ntesting.ContextLogf(ctx, \"WARNING: guest side %s execution context timed out\", replayAppName)",
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a3df76_0b8f9aff",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "tast doesn\u0027t enforce 80 line width. You can delete this if you want.",
+      "range": {
+        "startLine": 513,
+        "startChar": 85,
+        "endLine": 514,
+        "endChar": 5
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c9c5c1_b616f156",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "Probably worth propagate the error to the caller by \nerr \u003d errors.Wrap(err, perr)",
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03531c92_ccf776be",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "Seems like something should be appended here?",
+      "range": {
+        "startLine": 519,
+        "startChar": 64,
+        "endLine": 519,
+        "endChar": 65
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f564f03_4c2dd706",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "%s",
+      "range": {
+        "startLine": 519,
+        "startChar": 38,
+        "endLine": 519,
+        "endChar": 51
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a564db14_563adaab",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "Can you propagate the error back to the caller as well?\nerr \u003d errors.Wrap(err, perr)",
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c54a102_0f1605f6",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T05:27:15Z",
+      "side": 1,
+      "message": "TODO(tutankhamen): Restart the VM or reboot the DUT if possible.",
+      "range": {
+        "startLine": 522,
+        "startChar": 26,
+        "endLine": 522,
+        "endChar": 85
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
