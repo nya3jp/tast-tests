@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0e7dac_beb6363c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-18T06:42:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f4dcb3c_6b39a815",
+      "range": {
+        "startLine": 922,
+        "startChar": 14,
+        "endLine": 922,
+        "endChar": 25
+      },
+      "revId": "c3c8a5a7f671c780a85d847a483423d5a37b7c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f9c2f23_622fd8f2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f1384b2_70e1218b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-18T06:42:48Z",
+      "side": 1,
+      "message": "sgtm, changed to %q.",
+      "parentUuid": "4f9c2f23_622fd8f2",
+      "range": {
+        "startLine": 102,
+        "startChar": 52,
+        "endLine": 102,
+        "endChar": 66
+      },
+      "revId": "c3c8a5a7f671c780a85d847a483423d5a37b7c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8171353_27f60b8c",
@@ -60,6 +108,24 @@
       "writtenOn": "2020-12-17T18:08:29Z",
       "side": 1,
       "message": "Is this different from the chip that comes up and is clicked in L111?",
+      "revId": "c3c8a5a7f671c780a85d847a483423d5a37b7c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8603416_f78c38ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-18T06:42:48Z",
+      "side": 1,
+      "message": "Yes, there is a different expandable (for long text) text chip for text (instead of url) detected from QR code.",
+      "parentUuid": "b8171353_27f60b8c",
       "revId": "c3c8a5a7f671c780a85d847a483423d5a37b7c84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
