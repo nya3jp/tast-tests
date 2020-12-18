@@ -187,7 +187,7 @@ func (rp *PCAGoLib) HandleCertificateRequest(ctx context.Context, request string
 	return SendPostRequestTo(ctx, request, certURL(pcaType))
 }
 
-// AttestationTest provides the complex operations in the attestaion flow along with validations
+// AttestationTest provides the complex operations in the attestation flow along with validations
 type AttestationTest struct {
 	ac      attestationClient
 	pcaType PCAType
@@ -195,14 +195,14 @@ type AttestationTest struct {
 	va      VA
 }
 
-// NewAttestaionTestWith creates a new AttestationTest instance with the default PCA and VA instances that talk to the real servers used in production.
-func NewAttestaionTestWith(ac attestationClient, pcaType PCAType, pca PCA, va VA) *AttestationTest {
+// NewAttestationTestWith creates a new AttestationTest instance with the default PCA and VA instances that talk to the real servers used in production.
+func NewAttestationTestWith(ac attestationClient, pcaType PCAType, pca PCA, va VA) *AttestationTest {
 	return &AttestationTest{ac, pcaType, pca, va}
 }
 
-// NewAttestaionTest creates a new AttestationTest instance with the default PCA and VA objects that talk to the real servers used in production.
-func NewAttestaionTest(ac attestationClient, pcaType PCAType) *AttestationTest {
-	return NewAttestaionTestWith(ac, pcaType, &PCAGoLib{}, &RealVA{})
+// NewAttestationTest creates a new AttestationTest instance with the default PCA and VA objects that talk to the real servers used in production.
+func NewAttestationTest(ac attestationClient, pcaType PCAType) *AttestationTest {
+	return NewAttestationTestWith(ac, pcaType, &PCAGoLib{}, &RealVA{})
 }
 
 // Enroll creates the enroll request, sends it to the corresponding PCA server, and finishes the request with the received response.
