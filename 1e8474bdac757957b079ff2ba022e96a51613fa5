@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80d9f54_b59ddc64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-18T01:53:13Z",
+      "side": 1,
+      "message": "Note: the role of tast owners would be primarily for the style checking.  Please wait for the reviews from your team (Tao or Meilin) for the check of the behavior of this test.",
+      "revId": "1e8474bdac757957b079ff2ba022e96a51613fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05aa4716_d93544bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-18T01:53:13Z",
+      "side": 1,
+      "message": "nit: this is fine but it doesn\u0027t have to be fatal as this is exactly the last statement of this test. s.Error would be fine (but I\u0027m okay with s.Fatal).",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "1e8474bdac757957b079ff2ba022e96a51613fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "679dc7c1_baf0deda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-18T01:53:13Z",
+      "side": 1,
+      "message": "I am afraid that this name (gatherMetrics) is too generic.  Please note that the go function like this can be shared among the same package (i.e. the files in the same directory), and so too generic term might end up conflicting with other test files.\n\nI would recommend to make this a bit more specific to what it does, e.g. gatherSmoothnessMetricsForOpen.\n\nOr, if it\u0027s actually a generic utility and sharable, please consider moving to the library (local/assistant package).",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 18
+      },
+      "revId": "1e8474bdac757957b079ff2ba022e96a51613fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ddf7896_4109e8e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-18T01:53:13Z",
+      "side": 1,
+      "message": "I feel like this is not very common style of function definition in Go. Note that:\n- Go does not have any column limitation in its style guide. It\u0027s okay to be \u003e80 characters in a line.\n- even when the definition is wrapped, typically the first parameter is in the same line of the function name.\n- it\u0027s also not common to wrap at the end of the last parameter, the return value, close paren would be in the same line (i.e. postfix string) error { ...)\n\nI am actually not very sure this is documented somewhere, and actually consistency should be the key.  Please check other files and follow the same manner.   If you find an example of this style, I\u0027m fine.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "1e8474bdac757957b079ff2ba022e96a51613fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "709b094e_f2d8229e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-18T01:53:13Z",
+      "side": 1,
+      "message": "Please remove line wraps, i.e.\n  pv.Set(perf.Metric{\n    Name: ...\n    ...\n  }, mean)\n\nThat\u0027s shorter and clearer to me.",
+      "range": {
+        "startLine": 112,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 3
+      },
+      "revId": "1e8474bdac757957b079ff2ba022e96a51613fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a055d9f_1dc10664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-12-18T01:53:13Z",
+      "side": 1,
+      "message": "Not recording the performance of close?  Why?",
+      "revId": "1e8474bdac757957b079ff2ba022e96a51613fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
