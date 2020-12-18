@@ -16,6 +16,24 @@
       "message": "# Looks like it is still under the discussion within the Camera team. I\u0027ll revisit when you come up with consensus.",
       "revId": "d7294869d690dc28f37bac2f738f4b06e9d40695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21acc045_c83ff451",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2020-12-18T07:05:18Z",
+      "side": 1,
+      "message": "That sounds good. I\u0027ll add you to \"attention\" once we\u0027ve figured it out. Thanks Hidehiko!",
+      "parentUuid": "9ca39d1c_2849238c",
+      "revId": "d7294869d690dc28f37bac2f738f4b06e9d40695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
