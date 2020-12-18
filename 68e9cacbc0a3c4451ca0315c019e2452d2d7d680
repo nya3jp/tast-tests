@@ -16,6 +16,23 @@
       "message": "Kicks dry-run. Let\u0027s see if one of the deqp test purposely crashes the gpu.",
       "revId": "68e9cacbc0a3c4451ca0315c019e2452d2d7d680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "168232bd_045b75b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-18T01:50:54Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "68e9cacbc0a3c4451ca0315c019e2452d2d7d680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
