@@ -80,6 +80,24 @@
       "message": "nit/style: switch this to a const",
       "revId": "699907627c285d85224730169f1f7c05db1c703f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355672b2_7c3fadd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-12-18T05:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a303284_cef202e6",
+      "revId": "699907627c285d85224730169f1f7c05db1c703f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
