@@ -38,7 +38,8 @@ func init() {
 			Val:               "H264",
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 		}},
-		Data: []string{"webrtc_video_display_perf_test.html", "third_party/munge_sdp.js"},
+		Data:    []string{"webrtc_video_display_perf_test.html", "third_party/munge_sdp.js"},
+		Fixture: "gpuWatchDog",
 	})
 }
 

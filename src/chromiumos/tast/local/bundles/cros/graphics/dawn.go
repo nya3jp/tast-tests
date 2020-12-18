@@ -29,6 +29,7 @@ func init() {
 		}},
 		// TODO(crbug.com/1031054): Re-enable once binaries are built again.
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "gpuWatchDog",
 	})
 }
 

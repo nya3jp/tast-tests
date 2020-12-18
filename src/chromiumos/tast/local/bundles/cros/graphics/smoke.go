@@ -38,17 +38,16 @@ func init() {
 		Attr: []string{"group:mainline"},
 		// TODO(pwang): Remove display_backlight once crbug.com/950346 support hardware dependency.
 		SoftwareDeps: []string{"display_backlight", "no_qemu"},
-		Params: []testing.Param{
-			{
-				Name:              "chrome",
-				ExtraSoftwareDeps: []string{"chrome"},
-				Val:               smokeChrome,
-			}, {
-				Name:      "platform",
-				ExtraData: []string{"screenshot1_reference.png", "screenshot2_reference.png"},
-				Val:       smokePlatform,
-			},
-		},
+		Fixture:      "gpuWatchDog",
+		Params: []testing.Param{{
+			Name:              "chrome",
+			ExtraSoftwareDeps: []string{"chrome"},
+			Val:               smokeChrome,
+		}, {
+			Name:      "platform",
+			ExtraData: []string{"screenshot1_reference.png", "screenshot2_reference.png"},
+			Val:       smokePlatform,
+		}},
 	})
 }
 

@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
@@ -25,6 +26,15 @@ func init() {
 		Impl:            &gpuWatchDogFixture{},
 		PreTestTimeout:  5 * time.Second,
 		PostTestTimeout: 5 * time.Second,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "chromeGraphics",
+		Desc:            "Logged into a user session for graphics testing.",
+		Impl:            chrome.NewLoggedInFixture(),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
 	})
 }
 

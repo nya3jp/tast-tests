@@ -49,18 +49,18 @@ func init() {
 			"chromeos-gfx@google.com",
 		},
 		SoftwareDeps: []string{"no_qemu", "vulkan"},
-		Params: []testing.Param{
-			{
-				Name:      "",
-				Val:       vkbenchConfig{hasty: false},
-				ExtraAttr: []string{"group:mainline", "informational", "group:graphics", "graphics_nightly"},
-				Timeout:   5 * time.Minute,
-			}, {
-				Name:      "hasty",
-				Val:       vkbenchConfig{hasty: true},
-				ExtraAttr: []string{"group:mainline", "informational"},
-				Timeout:   5 * time.Minute,
-			}},
+		Params: []testing.Param{{
+			Name:      "",
+			Val:       vkbenchConfig{hasty: false},
+			ExtraAttr: []string{"group:mainline", "informational", "group:graphics", "graphics_nightly"},
+			Timeout:   5 * time.Minute,
+		}, {
+			Name:      "hasty",
+			Val:       vkbenchConfig{hasty: true},
+			ExtraAttr: []string{"group:mainline", "informational"},
+			Timeout:   5 * time.Minute,
+		}},
+		Fixture: "gpuWatchDog",
 	})
 }
 
