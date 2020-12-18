@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac846a8b_ce4b64e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-12-18T18:06:11Z",
+      "side": 1,
+      "message": "platform.* fails. I feel this is unrelated. Try again.",
+      "revId": "c66a4480692476ad8cae73809045e3d0c0d405cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
