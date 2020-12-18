@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "101cb15f_4204a022",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f81e86b_020f6e39",
+      "range": {
+        "startLine": 322,
+        "startChar": 71,
+        "endLine": 322,
+        "endChar": 78
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "828aec38_ec8d1ddb",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-18T05:27:15Z",
       "side": 1,
       "message": "u\n\nError strings should not be capitalized\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 327,
+        "startChar": 31,
+        "endLine": 327,
+        "endChar": 32
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e182891d_b25ae358",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "828aec38_ec8d1ddb",
       "range": {
         "startLine": 327,
         "startChar": 31,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3784665_a2ba10a4",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "I just moved this code a little. We assume that context is always with deadline",
+      "parentUuid": "f9ac48e4_a7802150",
+      "range": {
+        "startLine": 493,
+        "startChar": 11,
+        "endLine": 493,
+        "endChar": 12
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6e25c6a_23fbf88e",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 4
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-18T05:27:15Z",
       "side": 1,
       "message": "ctxutil.Shorten(shortCtx, 15*time.Second)? \nThere shouldn\u0027t be much difference between ctxutil.Shorten and the way you calculate as I think all previous steps are quite light.",
+      "range": {
+        "startLine": 494,
+        "startChar": 18,
+        "endLine": 494,
+        "endChar": 52
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177fe1f4_acc74c39",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "In previous string I operate with class Time, but here I operate on int.",
+      "parentUuid": "b6e25c6a_23fbf88e",
       "range": {
         "startLine": 494,
         "startChar": 18,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c02b3b8_9afe67fa",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d12a3202_2c6fb68c",
+      "range": {
+        "startLine": 496,
+        "startChar": 21,
+        "endLine": 496,
+        "endChar": 68
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "859efa27_8cdb51ec",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a475e6be_9d97c8c0",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "859efa27_8cdb51ec",
+      "range": {
+        "startLine": 511,
+        "startChar": 4,
+        "endLine": 511,
+        "endChar": 35
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acd880f7_f059d059",
@@ -152,6 +296,24 @@
       "writtenOn": "2020-12-18T05:27:15Z",
       "side": 1,
       "message": "I think the convention is to use printf style formatting.\ntesting.ContextLogf(ctx, \"WARNING: guest side %s execution context timed out\", replayAppName)",
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b5461c1_5d794897",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd880f7_f059d059",
       "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -181,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32bc3ccd_411580de",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "I\u0027m just trying to make it easier to read my comments here",
+      "parentUuid": "80a3df76_0b8f9aff",
+      "range": {
+        "startLine": 513,
+        "startChar": 85,
+        "endLine": 514,
+        "endChar": 5
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53c9c5c1_b616f156",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 4
@@ -192,6 +378,24 @@
       "writtenOn": "2020-12-18T05:27:15Z",
       "side": 1,
       "message": "Probably worth propagate the error to the caller by \nerr \u003d errors.Wrap(err, perr)",
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "728ce272_1f23d5fd",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c9c5c1_b616f156",
       "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -242,6 +446,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c85fa70_7cb010d9",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f564f03_4c2dd706",
+      "range": {
+        "startLine": 519,
+        "startChar": 38,
+        "endLine": 519,
+        "endChar": 51
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2093aadb_48d4fdff",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03531c92_ccf776be",
+      "range": {
+        "startLine": 519,
+        "startChar": 64,
+        "endLine": 519,
+        "endChar": 65
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a564db14_563adaab",
@@ -259,6 +511,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b50739f_5ce4e851",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a564db14_563adaab",
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c54a102_0f1605f6",
@@ -272,6 +542,30 @@
       "writtenOn": "2020-12-18T05:27:15Z",
       "side": 1,
       "message": "TODO(tutankhamen): Restart the VM or reboot the DUT if possible.",
+      "range": {
+        "startLine": 522,
+        "startChar": 26,
+        "endLine": 522,
+        "endChar": 85
+      },
+      "revId": "4a5788d7ab85c2cbfd2b67b89e76d555fa92d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ff979f_cc5e50bd",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-12-18T06:09:12Z",
+      "side": 1,
+      "message": "I\u0027m still bit skeptical about it. Let\u0027s try without for now. I\u0027m pretty sure we will cover 99% timeout problems",
+      "parentUuid": "0c54a102_0f1605f6",
       "range": {
         "startLine": 522,
         "startChar": 26,
