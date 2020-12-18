@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09cfc22_e6333402",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-18T05:27:08Z",
+      "side": 1,
+      "message": "We like GPU to be capitalized. Otherwise very nice, thank you!",
+      "revId": "5305c23121f1f8b94612d1d5222884794d809337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8a1cfa_aa7a3809",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-18T05:27:08Z",
+      "side": 1,
+      "message": "TODO(ddmail): add regex for memory faults",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "5305c23121f1f8b94612d1d5222884794d809337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f43344_fb8a48d5",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-18T05:27:08Z",
+      "side": 1,
+      "message": "GPU",
+      "range": {
+        "startLine": 47,
+        "startChar": 30,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "5305c23121f1f8b94612d1d5222884794d809337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3689f617_4e1b889b",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-18T05:27:08Z",
+      "side": 1,
+      "message": "How about shorten this so it shows up nicer on stainless?\n\"GPU hang: %s\"",
+      "range": {
+        "startLine": 108,
+        "startChar": 25,
+        "endLine": 108,
+        "endChar": 56
+      },
+      "revId": "5305c23121f1f8b94612d1d5222884794d809337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f3d5632_66e27798",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-18T05:27:08Z",
+      "side": 1,
+      "message": "hang",
+      "range": {
+        "startLine": 139,
+        "startChar": 80,
+        "endLine": 139,
+        "endChar": 85
+      },
+      "revId": "5305c23121f1f8b94612d1d5222884794d809337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
