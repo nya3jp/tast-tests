@@ -35,7 +35,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay(),
 			// See crbug.com/1031054, broken on veyron
 			hwdep.SkipOnPlatform("tiger")),
-		Pre: chrome.LoggedIn(),
+		Fixture: "chromeGraphics",
 		Data: []string{
 			"fps.html",
 		},
@@ -119,7 +119,7 @@ func FPS(ctx context.Context, s *testing.State) {
 	defer server.Close()
 	testURL := server.URL + "/fps.html"
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 	conn, err := cr.NewConn(ctx, testURL)
 	if err != nil {
 		s.Fatalf("Failed to open %s: %v", testURL, err)
