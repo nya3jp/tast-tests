@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"nya@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "screenshot"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeGraphics",
 	})
 }
 

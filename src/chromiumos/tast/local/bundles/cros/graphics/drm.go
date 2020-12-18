@@ -69,7 +69,8 @@ func init() {
 			ExtraSoftwareDeps: []string{"display_backlight", "vulkan"},
 			ExtraAttr:         []string{"informational"},
 		}},
-		Attr: []string{"group:mainline"},
+		Attr:    []string{"group:mainline"},
+		Fixture: "gpuWatchDog",
 	})
 }
 

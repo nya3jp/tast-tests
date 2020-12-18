@@ -35,7 +35,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay(),
 			// See crbug.com/1031054, broken on veyron
 			hwdep.SkipOnPlatform("tiger")),
-		Pre: chrome.LoggedIn(),
+		Fixture: "chromeGraphics",
 		Data: []string{
 			"fps.html",
 		},
