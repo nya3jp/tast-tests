@@ -72,23 +72,7 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 		i.initHelper(ctx, s)
 	}
 
-	mode, err := i.v.Helper.Reporter.CurrentBootMode(ctx)
-	if err != nil {
-		s.Fatal("Could not get current boot mode: ", err)
-	}
-
-	// This is the first Prepare invocation, save the starting boot mode.
-	if i.origBootMode == nil {
-		s.Logf("Saving boot mode %q for restoration upon completion of all tests under this precondition", mode)
-		i.origBootMode = &mode
-	}
-
-	if mode != i.v.BootMode {
-		s.Logf("Current boot mode is %q, rebooting to %q to satisfy precondition", mode, i.v.BootMode)
-		if err := i.rebootToMode(ctx, i.v.BootMode); err != nil {
-			s.Fatalf("Failed to reboot to mode %q: %v", i.v.BootMode, err)
-		}
-	}
+	i.setupBootMode(ctx, s)
 
 	return i.v
 }
@@ -103,22 +87,7 @@ func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 	// Don't reuse the Helper, as the helper's servo RPC connection may be down.
 	i.initHelper(ctx, s)
 
-	// Can't Restore the boot mode if unknown.
-	if i.origBootMode == nil {
-		return
-	}
-
-	mode, err := i.v.Helper.Reporter.CurrentBootMode(ctx)
-	if err != nil {
-		s.Fatal("Could not get boot mode: ", err)
-	}
-
-	if mode != *i.origBootMode {
-		s.Logf("Restoring boot mode from %q to %q", mode, *i.origBootMode)
-		if err := i.rebootToMode(ctx, *i.origBootMode); err != nil {
-			s.Fatal("Failed to restore boot mode: ", err)
-		}
-	}
+	i.restoreBootMode(ctx, s)
 }
 
 // String identifies this Precondition.
@@ -146,6 +115,49 @@ func (i *impl) destroyHelper(ctx context.Context, s *testing.PreState) {
 		s.Log("Closing helper failed: ", err)
 	}
 	i.v.Helper = nil
+}
+
+// setupBootMode the DUT to the correct mode if it's in a different one, saving the original one.
+func (i *impl) setupBootMode(ctx context.Context, s *testing.PreState) {
+	mode, err := i.v.Helper.Reporter.CurrentBootMode(ctx)
+	if err != nil {
+		s.Fatal("Could not get current boot mode: ", err)
+	}
+
+	// This is the first Prepare invocation, save the starting boot mode.
+	if i.origBootMode == nil {
+		s.Logf("Saving boot mode %q for restoration upon completion of all tests under this precondition", mode)
+		i.origBootMode = &mode
+	}
+
+	if mode != i.v.BootMode {
+		s.Logf("Current boot mode is %q, rebooting to %q to satisfy precondition", mode, i.v.BootMode)
+		if err := i.rebootToMode(ctx, i.v.BootMode); err != nil {
+			s.Fatalf("Failed to reboot to mode %q: %v", i.v.BootMode, err)
+		}
+	}
+}
+
+// restoreBootMode restores DUT's boot mode.
+func (i *impl) restoreBootMode(ctx context.Context, s *testing.PreState) {
+	// Can't Restore the boot mode if unknown.
+	if i.origBootMode == nil {
+		return
+	}
+
+	mode, err := i.v.Helper.Reporter.CurrentBootMode(ctx)
+	if err != nil {
+		s.Error("Could not get boot mode: ", err)
+		return
+	}
+
+	if mode != *i.origBootMode {
+		s.Logf("Restoring boot mode from %q to %q", mode, *i.origBootMode)
+		if err := i.rebootToMode(ctx, *i.origBootMode); err != nil {
+			s.Error("Failed to restore boot mode: ", err)
+			return
+		}
+	}
 }
 
 // rebootToMode reboots to the specified mode using the ModeSwitcher, it assumes the helper is present.
