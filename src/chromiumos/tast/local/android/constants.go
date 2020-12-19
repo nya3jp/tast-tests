@@ -6,3 +6,6 @@ package android
 
 // DefaultUser is the default Android user ID, corresponding to the system user that adb runs as.
 const DefaultUser = "0"
+
+// DownloadDir is Android's default downloads directory.
+const DownloadDir = "/sdcard/Download/"
