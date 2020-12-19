@@ -16,6 +16,7 @@ import (
 
 	"golang.org/x/net/context"
 
+	"chromiumos/tast/common/firmware"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	pb "chromiumos/tast/services/cros/firmware"
@@ -35,18 +36,6 @@ const (
 // defaultChromeosFmapConversion converts dump_fmap names to those recognized by flashrom
 var defaultChromeosFmapConversion = map[ImageSection]string{
 	GBBImageSection: "FV_GBB",
-}
-
-// sortedGBBFlags ensures flags are returned in a consistent order.
-var sortedGBBFlags []pb.GBBFlag
-
-func init() {
-	for _, v := range pb.GBBFlag_value {
-		sortedGBBFlags = append(sortedGBBFlags, pb.GBBFlag(v))
-	}
-	sort.Slice(sortedGBBFlags, func(i, j int) bool {
-		return sortedGBBFlags[i] < sortedGBBFlags[j]
-	})
 }
 
 // SectionInfo represents the location and size of a firmware image section.
@@ -171,8 +160,7 @@ func parseSections(fmap string) (map[ImageSection]SectionInfo, error) {
 // calcGBBFlags interprets mask as a GBBFlag bit mask and returns the set flags.
 func calcGBBFlags(mask uint32) []pb.GBBFlag {
 	var res []pb.GBBFlag
-	// use sorted flags to return a deterministic order of flags.
-	for _, pos := range sortedGBBFlags {
+	for _, pos := range firmware.AllGBBFlags() {
 		if mask&(0x0001<<pos) != 0 {
 			res = append(res, pb.GBBFlag(pos))
 		}
