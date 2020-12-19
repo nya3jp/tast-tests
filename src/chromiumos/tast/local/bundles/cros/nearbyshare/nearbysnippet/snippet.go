@@ -32,11 +32,12 @@ import (
 // be a race condition updating requestID between requests. Requests should be made sequentially, with the
 // responses processed before making the next request.
 type AndroidNearbyDevice struct {
-	device        *adb.Device
-	conn          net.Conn
-	listeningPort int
-	hostPort      int
-	requestID     int
+	device           *adb.Device
+	conn             net.Conn
+	listeningPort    int
+	hostPort         int
+	requestID        int
+	transferCallback string
 }
 
 // New initializes the specified Android device for Nearby Sharing.
@@ -258,6 +259,11 @@ func overrideGMSCoreFlags(ctx context.Context, device *adb.Device) error {
 	return nil
 }
 
+// SHA256Sum computes the sha256sum of the specified file on the Android device.
+func (a *AndroidNearbyDevice) SHA256Sum(ctx context.Context, filename string) (string, error) {
+	return a.device.SHA256Sum(ctx, filename)
+}
+
 // jsonRPCCmd is the command format required to initialize the RPC server.
 type jsonRPCCmd struct {
 	Cmd string `json:"cmd"`
@@ -300,7 +306,7 @@ func (a *AndroidNearbyDevice) clientSend(body []byte) error {
 func (a *AndroidNearbyDevice) clientReceive() ([]byte, error) {
 	a.conn.SetReadDeadline(time.Now().Add(10 * time.Second))
 	bufReader := bufio.NewReader(a.conn)
-	res, err := bufReader.ReadBytes('}')
+	res, err := bufReader.ReadBytes('\n')
 	if err != nil {
 		return nil, err
 	}
@@ -309,23 +315,25 @@ func (a *AndroidNearbyDevice) clientReceive() ([]byte, error) {
 
 // clientRPCRequest formats the provided method and arguments as a jsonRPCRequest and sends it to the server.
 // The server expects requests to have an incrementing ID field. The AndroidNearbyDevice struct keeps track
-// of the current request ID, and it is incremented each time this function is called.
-func (a *AndroidNearbyDevice) clientRPCRequest(ctx context.Context, method string, args ...interface{}) error {
-	request := jsonRPCRequest{ID: a.requestID, Method: method, Params: make([]interface{}, 0)}
+// of the current request ID, and it is incremented each time this function is called. This function returns
+// the request ID that was used which callers can use when reading the response.
+func (a *AndroidNearbyDevice) clientRPCRequest(ctx context.Context, method string, args ...interface{}) (int, error) {
+	reqID := a.requestID
+	request := jsonRPCRequest{ID: reqID, Method: method, Params: make([]interface{}, 0)}
 	if len(args) > 0 {
 		request.Params = args
 	}
 	requestBytes, err := json.Marshal(&request)
 	if err != nil {
-		return errors.Wrap(err, "failed to marshal request to json")
+		return reqID, errors.Wrap(err, "failed to marshal request to json")
 	}
 	testing.ContextLog(ctx, "RPC request: ", string(requestBytes))
 
 	if err := a.clientSend(requestBytes); err != nil {
-		return err
+		return reqID, err
 	}
 	a.requestID++
-	return nil
+	return reqID, nil
 }
 
 // clientRPCResponse returns the server's response.
@@ -379,11 +387,12 @@ func (a *AndroidNearbyDevice) Initialize(ctx context.Context) error {
 
 // GetNearbySharingVersion retrieves the Android device's Nearby Sharing version.
 func (a *AndroidNearbyDevice) GetNearbySharingVersion(ctx context.Context) (string, error) {
-	if err := a.clientRPCRequest(ctx, "getNearbySharingVersion"); err != nil {
+	id, err := a.clientRPCRequest(ctx, "getNearbySharingVersion")
+	if err != nil {
 		return "", err
 	}
 	// Read response.
-	res, err := a.clientRPCResponse(ctx, a.requestID-1)
+	res, err := a.clientRPCResponse(ctx, id)
 	if err != nil {
 		return "", err
 	}
@@ -393,4 +402,148 @@ func (a *AndroidNearbyDevice) GetNearbySharingVersion(ctx context.Context) (stri
 		return "", errors.Wrap(err, "failed to parse version number from json result")
 	}
 	return version, nil
+}
+
+// settingTimeoutSeconds is the time to wait for the Nearby Snippet to return settings values.
+// Only used by getDeviceName, getDataUsage, and getVisibility RPCs.
+const settingTimeoutSeconds = 10
+
+// GetDeviceName retrieve's the Android device's display name for Nearby Share.
+func (a *AndroidNearbyDevice) GetDeviceName(ctx context.Context) (string, error) {
+	id, err := a.clientRPCRequest(ctx, "getDeviceName", settingTimeoutSeconds)
+	if err != nil {
+		return "", err
+	}
+	// Read response.
+	res, err := a.clientRPCResponse(ctx, id)
+	if err != nil {
+		return "", err
+	}
+
+	var name string
+	if err := json.Unmarshal(res.Result, &name); err != nil {
+		return "", errors.Wrap(err, "failed to parse device name from json result")
+	}
+	return name, nil
+}
+
+// GetDataUsage retrieve's the Android device's Nearby Share data usage setting.
+func (a *AndroidNearbyDevice) GetDataUsage(ctx context.Context) (DataUsage, error) {
+	var data DataUsage
+	id, err := a.clientRPCRequest(ctx, "getDataUsage", settingTimeoutSeconds)
+	if err != nil {
+		return data, err
+	}
+	// Read response.
+	res, err := a.clientRPCResponse(ctx, id)
+	if err != nil {
+		return data, err
+	}
+
+	if err := json.Unmarshal(res.Result, &data); err != nil {
+		return data, errors.Wrap(err, "failed to parse data usage from json result")
+	}
+	return data, nil
+}
+
+// GetVisibility retrieve's the Android device's Nearby Share visibility setting.
+func (a *AndroidNearbyDevice) GetVisibility(ctx context.Context) (Visibility, error) {
+	var vis Visibility
+	id, err := a.clientRPCRequest(ctx, "getVisibility", settingTimeoutSeconds)
+	if err != nil {
+		return vis, err
+	}
+	// Read response.
+	res, err := a.clientRPCResponse(ctx, id)
+	if err != nil {
+		return vis, err
+	}
+
+	if err := json.Unmarshal(res.Result, &vis); err != nil {
+		return vis, errors.Wrap(err, "failed to parse device visibility from json result")
+	}
+	return vis, nil
+}
+
+// SetupDevice configures the Android device's Nearby Share settings.
+func (a *AndroidNearbyDevice) SetupDevice(ctx context.Context, dataUsage DataUsage, visibility Visibility, name string) error {
+	id, err := a.clientRPCRequest(ctx, "setupDevice", dataUsage, visibility, name)
+	if err != nil {
+		return err
+	}
+	_, err = a.clientRPCResponse(ctx, id)
+	return err
+}
+
+// eventWaitAndGet waits for the specified event associated with the RPC that returned callbackID to appear in the snippet's event cache.
+func (a *AndroidNearbyDevice) eventWaitAndGet(ctx context.Context, callbackID string, eventName SnippetEvent, timeout time.Duration) error {
+	id, err := a.clientRPCRequest(ctx, "eventWaitAndGet", callbackID, eventName, int(timeout.Milliseconds()))
+	if err != nil {
+		return err
+	}
+	// Read response.
+	_, err = a.clientRPCResponse(ctx, id)
+	return err
+}
+
+// ReceiveFile starts receiving with a timeout.
+// Sets the AndroidNearbyDevice's transferCallback, which is needed when awaiting follow-up SnippetEvents when calling eventWaitAndGet.
+func (a *AndroidNearbyDevice) ReceiveFile(ctx context.Context, senderName, receiverName string, turnaroundTime time.Duration) error {
+	// Reset the transferCallback between shares.
+	a.transferCallback = ""
+	id, err := a.clientRPCRequest(ctx, "receiveFile", senderName, receiverName, int(turnaroundTime.Seconds()))
+	if err != nil {
+		return err
+	}
+	res, err := a.clientRPCResponse(ctx, id)
+	if err != nil {
+		return err
+	}
+	a.transferCallback = res.Callback
+	return nil
+}
+
+// AwaitReceiverConfirmation should be used after ReceiveFile to wait for the onLocalConfirmation SnippetEvent, which indicates
+// that the Android device has detected the incoming share and is awaiting confirmation to begin the transfer.
+func (a *AndroidNearbyDevice) AwaitReceiverConfirmation(ctx context.Context, timeout time.Duration) error {
+	if a.transferCallback == "" {
+		return errors.New("transferCallback is not set, ReceiveFile should be executed first")
+	}
+	if err := a.eventWaitAndGet(ctx, a.transferCallback, SnippetEventOnLocalConfirmation, timeout); err != nil {
+		return errors.Wrap(err, "failed waiting for onLocalConfirmation event to know that Android is ready to start the transfer")
+	}
+	return nil
+}
+
+// AwaitSharingStopped waits for the onStop event, which indicates that sharing has stopped and Android Nearby Share teardown
+// tasks have been completed. It does not necessarily indicate that the transfer succeeded.
+func (a *AndroidNearbyDevice) AwaitSharingStopped(ctx context.Context, timeout time.Duration) error {
+	if a.transferCallback == "" {
+		return errors.New("transferCallback is not set, a share needs to be initiated first")
+	}
+	if err := a.eventWaitAndGet(ctx, a.transferCallback, SnippetEventOnStop, timeout); err != nil {
+		return errors.Wrap(err, "failed waiting for onLocalConfirmation event to know that Android is ready to start the transfer")
+	}
+	return nil
+}
+
+// AcceptTheSharing accepts the share on the receiver side.
+func (a *AndroidNearbyDevice) AcceptTheSharing(ctx context.Context, token string) error {
+	id, err := a.clientRPCRequest(ctx, "acceptTheSharing", token)
+	if err != nil {
+		return err
+	}
+	_, err = a.clientRPCResponse(ctx, id)
+	return err
+}
+
+// CancelReceivingFile ends Nearby Share on the receiving side. This is used to fail fast instead of waiting for ReceiveFile's timeout.
+func (a *AndroidNearbyDevice) CancelReceivingFile(ctx context.Context) error {
+	id, err := a.clientRPCRequest(ctx, "cancelReceivingFile")
+	if err != nil {
+		return err
+	}
+	// Read response.
+	_, err = a.clientRPCResponse(ctx, id)
+	return err
 }
