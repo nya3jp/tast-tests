@@ -317,3 +317,29 @@ func (d *Device) ForwardTCP(ctx context.Context, androidPort int) (int, error) {
 func (d *Device) RemoveForwardTCP(ctx context.Context, hostPort int) error {
 	return d.Command(ctx, "forward", "--remove", fmt.Sprintf("tcp:%d", hostPort)).Run(testexec.DumpLogOnError)
 }
+
+// PressKeyCode sends a key event with the specified key code.
+func (d *Device) PressKeyCode(ctx context.Context, keycode string) error {
+	return d.ShellCommand(ctx, "input", "keyevent", keycode).Run(testexec.DumpLogOnError)
+}
+
+// Root restarts adbd with root permissions.
+func (d *Device) Root(ctx context.Context) error {
+	return d.Command(ctx, "root").Run(testexec.DumpLogOnError)
+}
+
+// SetScreenOffTimeout sets the Android device's screen timeout. This function requires adb root access.
+func (d *Device) SetScreenOffTimeout(ctx context.Context, t time.Duration) error {
+	if err := d.Root(ctx); err != nil {
+		return err
+	}
+	return d.ShellCommand(ctx, "settings", "put", "system", "screen_off_timeout", strconv.Itoa(int(t.Milliseconds()))).Run(testexec.DumpLogOnError)
+}
+
+// EnableBluetooth enables bluetooth on the Android device. This function requires adb root access.
+func (d *Device) EnableBluetooth(ctx context.Context) error {
+	if err := d.Root(ctx); err != nil {
+		return err
+	}
+	return d.ShellCommand(ctx, "svc", "bluetooth", "enable").Run(testexec.DumpLogOnError)
+}
