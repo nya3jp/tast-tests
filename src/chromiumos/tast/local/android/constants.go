@@ -6,3 +6,11 @@ package android
 
 // DefaultUser is the default Android user ID, corresponding to the system user that adb runs as.
 const DefaultUser = "0"
+
+// KeyCode is used to specify a key event on the Android device using the `adb shell input keyevent` command.
+type KeyCode string
+
+// Derived from https://developer.android.com/reference/android/view/KeyEvent.html.
+const (
+	KeyCodeWakeup KeyCode = "KEYCODE_WAKEUP"
+)

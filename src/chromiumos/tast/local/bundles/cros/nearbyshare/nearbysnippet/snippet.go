@@ -258,6 +258,11 @@ func overrideGMSCoreFlags(ctx context.Context, device *adb.Device) error {
 	return nil
 }
 
+// SHA256Sum computes the sha256sum of the specified file on the Android device.
+func (a *AndroidNearbyDevice) SHA256Sum(ctx context.Context, filename string) (string, error) {
+	return a.device.SHA256Sum(ctx, filename)
+}
+
 // jsonRPCCmd is the command format required to initialize the RPC server.
 type jsonRPCCmd struct {
 	Cmd string `json:"cmd"`
@@ -300,7 +305,7 @@ func (a *AndroidNearbyDevice) clientSend(body []byte) error {
 func (a *AndroidNearbyDevice) clientReceive() ([]byte, error) {
 	a.conn.SetReadDeadline(time.Now().Add(10 * time.Second))
 	bufReader := bufio.NewReader(a.conn)
-	res, err := bufReader.ReadBytes('}')
+	res, err := bufReader.ReadBytes('\n')
 	if err != nil {
 		return nil, err
 	}
@@ -393,4 +398,113 @@ func (a *AndroidNearbyDevice) GetNearbySharingVersion(ctx context.Context) (stri
 		return "", errors.Wrap(err, "failed to parse version number from json result")
 	}
 	return version, nil
+}
+
+// settingTimeoutSeconds is the time to wait for the Nearby Snippet to return settings values.
+// Only used by getDeviceName, getDataUsage, and getVisibility RPCs.
+const settingTimeoutSeconds = 10
+
+// GetDeviceName retrieve's the Android device's display name for Nearby Share.
+func (a *AndroidNearbyDevice) GetDeviceName(ctx context.Context) (string, error) {
+	if err := a.clientRPCRequest(ctx, "getDeviceName", settingTimeoutSeconds); err != nil {
+		return "", err
+	}
+	// Read response.
+	res, err := a.clientRPCResponse(ctx, a.requestID-1)
+	if err != nil {
+		return "", err
+	}
+
+	var name string
+	if err := json.Unmarshal(res.Result, &name); err != nil {
+		return "", errors.Wrap(err, "failed to parse device name from json result")
+	}
+	return name, nil
+}
+
+// GetDataUsage retrieve's the Android device's Nearby Share data usage setting.
+func (a *AndroidNearbyDevice) GetDataUsage(ctx context.Context) (DataUsage, error) {
+	var data DataUsage
+	if err := a.clientRPCRequest(ctx, "getDataUsage", settingTimeoutSeconds); err != nil {
+		return data, err
+	}
+	// Read response.
+	res, err := a.clientRPCResponse(ctx, a.requestID-1)
+	if err != nil {
+		return data, err
+	}
+
+	if err := json.Unmarshal(res.Result, &data); err != nil {
+		return data, errors.Wrap(err, "failed to parse data usage from json result")
+	}
+	return data, nil
+}
+
+// GetVisibility retrieve's the Android device's Nearby Share visibility setting.
+func (a *AndroidNearbyDevice) GetVisibility(ctx context.Context) (Visibility, error) {
+	var vis Visibility
+	if err := a.clientRPCRequest(ctx, "getVisibility", settingTimeoutSeconds); err != nil {
+		return vis, err
+	}
+	// Read response.
+	res, err := a.clientRPCResponse(ctx, a.requestID-1)
+	if err != nil {
+		return vis, err
+	}
+
+	if err := json.Unmarshal(res.Result, &vis); err != nil {
+		return vis, errors.Wrap(err, "failed to parse device visibility from json result")
+	}
+	return vis, nil
+}
+
+// SetupDevice configures the Android device's Nearby Share settings.
+func (a *AndroidNearbyDevice) SetupDevice(ctx context.Context, dataUsage DataUsage, visibility Visibility, name string) error {
+	if err := a.clientRPCRequest(ctx, "setupDevice", dataUsage, visibility, name); err != nil {
+		return err
+	}
+	_, err := a.clientRPCResponse(ctx, a.requestID-1)
+	return err
+}
+
+// ReceiveFile starts receiving with a timeout.
+// Returns a callback ID which can be used to wait for follow-up SnippetEvents when calling EventWaitAndGet.
+func (a *AndroidNearbyDevice) ReceiveFile(ctx context.Context, senderName, receiverName string, turnaroundTime time.Duration) (string, error) {
+	if err := a.clientRPCRequest(ctx, "receiveFile", senderName, receiverName, int(turnaroundTime.Seconds())); err != nil {
+		return "", err
+	}
+	res, err := a.clientRPCResponse(ctx, a.requestID-1)
+	if err != nil {
+		return "", err
+	}
+	return res.Callback, nil
+}
+
+// EventWaitAndGet waits for the specified event associated with the RPC that returned callbackID to appear in the snippet's event cache.
+func (a *AndroidNearbyDevice) EventWaitAndGet(ctx context.Context, callbackID string, eventName SnippetEvent, timeout time.Duration) error {
+	if err := a.clientRPCRequest(ctx, "eventWaitAndGet", callbackID, eventName, int(timeout.Milliseconds())); err != nil {
+		return err
+	}
+	// Read response.
+	_, err := a.clientRPCResponse(ctx, a.requestID-1)
+	return err
+}
+
+// AcceptTheSharing accepts the share on the receiver side.
+func (a *AndroidNearbyDevice) AcceptTheSharing(ctx context.Context, token string) error {
+	if err := a.clientRPCRequest(ctx, "acceptTheSharing", token); err != nil {
+		return err
+	}
+	_, err := a.clientRPCResponse(ctx, a.requestID-1)
+	return err
+}
+
+// CancelReceivingFile ends Nearby Share on the receiving side. This is used to fail fast instead of waiting for ReceiveFile's timeout.
+func (a *AndroidNearbyDevice) CancelReceivingFile(ctx context.Context) error {
+	if err := a.clientRPCRequest(ctx, "cancelReceivingFile"); err != nil {
+		return err
+	}
+	// Read response.
+	_, err := a.clientRPCResponse(ctx, a.requestID-1)
+	return err
 }
