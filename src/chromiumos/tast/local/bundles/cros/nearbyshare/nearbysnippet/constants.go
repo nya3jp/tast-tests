@@ -13,6 +13,9 @@ const (
 	instrumentationRunnerPackage = "com.google.android.mobly.snippet.SnippetRunner"
 )
 
+// DownloadDir is the download directory where incoming shares go.
+const DownloadDir = "/sdcard/Download/"
+
 // DataUsage are data usage values for the Nearby Snippet's setupDevice and getDataUsage methods.
 type DataUsage int
 

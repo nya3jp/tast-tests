@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -44,4 +44,45 @@ const (
 	DeviceNameValidationResultErrorEmpty
 	DeviceNameValidationResultErrorTooLong
 	DeviceNameValidationResultErrorNotValidUtf8
+)
+
+// startDiscoveryResult is the result when starting discovery from the DiscoveryManager Mojo interface.
+type startDiscoveryResult int
+
+// As defined in https://chromium.googlesource.com/chromium/src/+/master/chrome/browser/ui/webui/nearby_share/public/mojom/nearby_share_settings.mojom
+const (
+	startDiscoveryResultSuccess startDiscoveryResult = iota
+	startDiscoveryResultErrorInProgressTransferring
+	startDiscoveryResultErrorGeneric
+)
+
+// selectShareTargetResult is the result when selecting a share target from the DiscoveryManager Mojo interface.
+type selectShareTargetResult int
+
+// As defined in https://chromium.googlesource.com/chromium/src/+/master/chrome/browser/ui/webui/nearby_share/public/mojom/nearby_share_settings.mojom
+const (
+	selectShareTargetResultOk selectShareTargetResult = iota
+	selectShareTargetResultError
+	selectShareTargetResultInvalidShareTarget
+)
+
+// TransferStatus represents the status of the current transfer.
+type TransferStatus int
+
+// As defined in https://chromium.googlesource.com/chromium/src/+/master/chrome/browser/ui/webui/nearby_share/public/mojom/nearby_share_settings.mojom
+const (
+	TransferStatusUnknown TransferStatus = iota
+	TransferStatusConnecting
+	TransferStatusAwaitingLocalConfirmation
+	TransferStatusAwaitingRemoteAcceptance
+	TransferStatusAwaitingRemoteAcceptanceFailed
+	TransferStatusInProgress
+	TransferStatusComplete
+	TransferStatusFailed
+	TransferStatusRejected
+	TransferStatusCancelled
+	TransferStatusTimedOut
+	TransferStatusMediaUnavailable
+	TransferStatusNotEnoughSpace
+	TransferStatusUnsupportedAttachmentType
 )
