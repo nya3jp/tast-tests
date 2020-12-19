@@ -22,6 +22,9 @@ const androidDefaultUser = "0"
 // InstrumentationRunnerPackage is the instrumentation runner to run the snippet.
 const instrumentationRunnerPackage = "com.google.android.mobly.snippet.SnippetRunner"
 
+// downloadDir is the download directory where incoming shares go.
+const downloadDir = "/sdcard/Download/"
+
 // DataUsage are data usage values for the snippet's setupDevice and getDataUsage methods.
 type DataUsage int
 

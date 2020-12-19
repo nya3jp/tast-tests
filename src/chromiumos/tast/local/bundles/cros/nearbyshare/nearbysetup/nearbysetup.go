@@ -9,6 +9,8 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/adb"
+	"chromiumos/tast/local/android/nearbysnippet"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/ui/ossettings"
@@ -65,4 +67,39 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 		}
 	}
 	return nil
+}
+
+// AndroidSetup prepares the connected Android device for Nearby Share tests.
+func AndroidSetup(ctx context.Context, apkZipPath string, dontOverrideGMS bool, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) (*nearbysnippet.AndroidNearbyDevice, error) {
+	// This loads the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
+	if err := adb.LaunchServer(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to launch adb server")
+	}
+
+	devices, err := adb.Devices(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to list adb devices")
+	}
+	if len(devices) == 0 {
+		// TODO(crbug/1159996): Skip running this test if the DUT doesn't have a phone connected.
+		return nil, errors.New("failed to find a connected Android device")
+	}
+	// We assume a single device is connected.
+	testDevice := devices[0]
+
+	// Launch and start the snippet server. Don't override GMS Core flags if specified in the runtime vars.
+	androidNearby, err := nearbysnippet.PrepareAndroidNearbyDevice(ctx, testDevice, apkZipPath, dontOverrideGMS)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to set up the snippet server")
+	}
+
+	if err := androidNearby.Initialize(); err != nil {
+		return nil, errors.Wrap(err, "failed to initialize snippet server")
+	}
+
+	if err := androidNearby.SetupDevice(dataUsage, visibility, name); err != nil {
+		return nil, errors.Wrap(err, "failed to configure Android Nearby Share settings")
+	}
+
+	return androidNearby, nil
 }
