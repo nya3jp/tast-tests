@@ -26,6 +26,7 @@ class DropWindow(Gtk.Window):
 
   def on_drag_data_received(self, widget, drag_context, x, y, data, info, time):
     print(data.get_uris(), end="")
+    #drag_context.finish(True, False, time)
     self.close()
 
 window = DropWindow()
