@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc637e7f_840a8e17",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-20T20:44:18Z",
+      "side": 1,
+      "message": "nearby_snippet.zip",
+      "range": {
+        "startLine": 8,
+        "startChar": 26,
+        "endLine": 8,
+        "endChar": 53
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a820a2_1e1b4d10",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-20T20:44:18Z",
+      "side": 1,
+      "message": "How about putting this method in nearbysetup.go along with CrOSSetup()",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e21bc5_4d0b40af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/nearby_snippet_20201217.zip.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-20T20:44:18Z",
+      "side": 1,
+      "message": "rename this file to be nearby_snippet.zip.external \n\nIts name can stay consistent and only the contents of the file will change when we update the file on google storage. Then you don\u0027t need to add the date to the var name in constants.go either.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95cac376_a1f1c6cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-20T20:44:18Z",
+      "side": 1,
+      "message": "Can you stay consistent with the naming of this everywhere.",
+      "range": {
+        "startLine": 19,
+        "startChar": 49,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

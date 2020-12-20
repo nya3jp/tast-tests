@@ -460,6 +460,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0440a9b_85d8b473",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-12-20T20:44:18Z",
+      "side": 1,
+      "message": "Will the manual setup survive a phone reboot? \n\nI don\u0027t think we ever got an answer to whether userdebug images autoupdate their gmscore",
+      "parentUuid": "f37df7a3_4fa6e48e",
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7f85332_b254ab91",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
         "patchSetId": 2
