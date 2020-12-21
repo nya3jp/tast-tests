@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b8b32e_53d3a4fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-21T23:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d337b62e_e952557a",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 256,
+        "endChar": 5
+      },
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd974835_e5a95c2f",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-21T16:26:23Z",
       "side": 1,
       "message": "nit: saveScreenshotToFileOnError for consistency, since it also checks \"hasError\".",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da6e530_fc616ef2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-21T23:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd974835_e5a95c2f",
       "range": {
         "startLine": 24,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc172c3_bb3e83b8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-21T23:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67eefb5_a0b4825b",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c52585e_556dc72d",
@@ -100,6 +172,24 @@
       "writtenOn": "2020-12-21T16:26:23Z",
       "side": 1,
       "message": "let\u0027s return an error.\nIf callers want, they can ignore.",
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf0c6d7e_b0fad2e5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-21T23:16:54Z",
+      "side": 1,
+      "message": "This function normally works in tear down. It is not part of the test itself. If tear down fialed or dump files not found, this log gives a clue.",
+      "parentUuid": "8c52585e_556dc72d",
       "revId": "907856893ebf8709760515abc42706447c4fff4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0090e1d2_592a372a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-21T23:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93df8ca0_e9cedc63",
+      "range": {
+        "startLine": 40,
+        "startChar": 38,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23824ccd_60dfce9a",
@@ -140,6 +254,24 @@
       "writtenOn": "2020-12-21T16:26:23Z",
       "side": 1,
       "message": "ditto to return an error.",
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "885c50a5_a0abe5d7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-21T23:16:54Z",
+      "side": 1,
+      "message": "Replied already.",
+      "parentUuid": "23824ccd_60dfce9a",
       "revId": "907856893ebf8709760515abc42706447c4fff4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
