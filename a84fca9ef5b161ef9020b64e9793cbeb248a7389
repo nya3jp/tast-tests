@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b747a39_581cb576",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-21T08:30:10Z",
+      "side": 1,
+      "message": "Mostly hitting crbug.com/1160494. Need to wait for the fix/demote before retry.",
+      "revId": "a84fca9ef5b161ef9020b64e9793cbeb248a7389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
