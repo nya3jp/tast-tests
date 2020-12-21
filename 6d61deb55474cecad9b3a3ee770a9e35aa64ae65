@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47420864_5d97a1b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-21T03:30:47Z",
+      "side": 1,
+      "message": "LGTM % nits.\n\n+cc chharry, the contact of RoamFT test.",
+      "revId": "6d61deb55474cecad9b3a3ee770a9e35aa64ae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20be5e4b_7fc1ceb4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-21T03:30:47Z",
+      "side": 1,
+      "message": "nit: not sure if it worths to keep the BSSID check as CHECK_ONLY after RoamStateIdle. I think the frequency check in VerifyConnection below already has similar coverage so this might not be necessary. (similar in RoamDBus)",
+      "revId": "6d61deb55474cecad9b3a3ee770a9e35aa64ae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1142aa_79b32302",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-21T03:30:47Z",
+      "side": 1,
+      "message": "nit: IIRC, the polling for ping/connection check is added because roam is not yet finished when BSSID of the service is changed. Now we wait for the RoamState change, so maybe we can remove this now? (similar in the other two tests)",
+      "revId": "6d61deb55474cecad9b3a3ee770a9e35aa64ae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
