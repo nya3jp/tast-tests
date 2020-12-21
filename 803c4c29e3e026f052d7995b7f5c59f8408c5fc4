@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d58e89d_a88e56a6",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-21T20:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "028219cf_111276a7",
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86e3ee06_66336608",
@@ -65,6 +83,30 @@
       "writtenOn": "2020-12-21T19:29:18Z",
       "side": 1,
       "message": "nit/style: add space after //",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c0e271_2b3f0a6a",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-21T20:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86e3ee06_66336608",
       "range": {
         "startLine": 97,
         "startChar": 0,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b47539_93cedece",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-21T20:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bc786d9_b0d8c524",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f165270_382a9810",
@@ -115,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19c8743_43c708de",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-21T20:20:22Z",
+      "side": 1,
+      "message": "Right, it should be equal but somehow it wasn\u0027t during testing.  BUT, I just tested again now and it works as expected, so got rid of gbbflagsEqual, thanks!  The fabric of the universe has been restored... [or perhaps I was just doing something dumb \u003d)]",
+      "parentUuid": "4f165270_382a9810",
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9aecfee_47a861fb",
@@ -128,6 +212,24 @@
       "writtenOn": "2020-12-21T19:29:18Z",
       "side": 1,
       "message": "This is redundant with gbbFlagsEqual.",
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7936625a_f1f5e461",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-21T20:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9aecfee_47a861fb",
       "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +280,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fffd140b_b37956b9",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-21T20:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dd8e767_73e9059a",
+      "range": {
+        "startLine": 55,
+        "startChar": 48,
+        "endLine": 55,
+        "endChar": 53
+      },
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90959e0_6755dc56",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-21T20:20:22Z",
+      "side": 1,
+      "message": "Had it without but was a bit hard to read with only spaces or semicolons, ok to keep them?",
+      "parentUuid": "13fb054a_16ef1fe1",
+      "range": {
+        "startLine": 55,
+        "startChar": 47,
+        "endLine": 55,
+        "endChar": 49
+      },
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23e1101d_2ed70c39",
@@ -191,6 +341,24 @@
       "writtenOn": "2020-12-21T19:29:18Z",
       "side": 1,
       "message": "style: Please change the compared order to !compare(got, want), per https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94dd6423_7326cd25",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-21T20:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23e1101d_2ed70c39",
       "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
