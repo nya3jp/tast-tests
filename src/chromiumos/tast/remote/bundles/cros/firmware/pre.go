@@ -15,12 +15,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        Pre,
-		Desc:        "Verifies firmware Preconditions",
-		Contacts:    []string{"cros-fw-engprod@google.com", "aluo@google.com"},
-		Data:        []string{firmware.ConfigFile},
-		ServiceDeps: []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-		Vars:        []string{"servo"},
+		Func:         Pre,
+		Desc:         "Verifies firmware Preconditions",
+		Contacts:     []string{"cros-fw-engprod@google.com", "aluo@google.com"},
+		Data:         []string{firmware.ConfigFile},
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		SoftwareDeps: []string{"crossystem"},
+		Vars:         []string{"servo"},
 		Params: []testing.Param{{
 			Name:      "normal",
 			Val:       common.BootModeNormal,
