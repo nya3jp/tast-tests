@@ -52,6 +52,64 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb253c6_6412a142",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-21T00:37:11Z",
+      "side": 1,
+      "message": "I noticed two things during weekend. Thank you!",
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0ea95d_3e16e73f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-21T00:37:11Z",
+      "side": 1,
+      "message": "I\u0027m sorry I\u0027ve noticed that defined type is not suitable in this case because defined type needs explicit type conversion when we want to use the underlying type. Embedding should work.",
+      "parentUuid": "9dc4da69_8f1b9adc",
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c382f4f_f9784da5",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-21T00:37:11Z",
+      "side": 1,
+      "message": "nit: Now that this is a constructor of ChromeVoxConn. By convention in Go, I would name this NewChromeVoxConn().\n\n(I couldn\u0027t find exact reference for this, but you can see various examples in https://golang.org/doc/effective_go.html)",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04a49c39_809e3651",
