@@ -27,6 +27,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"diagnostics"},
+		Fixture:      "crosHealthdRunning",
 	})
 }
 
