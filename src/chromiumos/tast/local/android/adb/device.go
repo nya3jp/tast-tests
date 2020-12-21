@@ -339,6 +339,15 @@ func (d *Device) PressKeyCode(ctx context.Context, keycode string) error {
 	return d.ShellCommand(ctx, "input", "keyevent", keycode).Run(testexec.DumpLogOnError)
 }
 
+// SDKVersion returns the Android SDK version.
+func (d *Device) SDKVersion(ctx context.Context) (int, error) {
+	sdkVersion, err := d.ShellCommand(ctx, "getprop", "ro.build.version.sdk").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, err
+	}
+	return strconv.Atoi(strings.TrimSuffix(string(sdkVersion), "\n"))
+}
+
 // Root restarts adbd with root permissions.
 func (d *Device) Root(ctx context.Context) error {
 	return d.Command(ctx, "root").Run(testexec.DumpLogOnError)
