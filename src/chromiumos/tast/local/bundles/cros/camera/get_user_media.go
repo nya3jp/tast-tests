@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
@@ -62,6 +61,7 @@ func GetUserMedia(ctx context.Context, s *testing.State) {
 	}
 
 	// Run tests for 480p and 720p.
-	getusermedia.RunGetUserMedia(ctx, s, s.PreValue().(*chrome.Chrome), duration,
-		getusermedia.VerboseLogging)
+	if _, err := webrtc.RunGetUserMedia(ctx, s.DataFileSystem(), s.PreValue().(*chrome.Chrome), duration, webrtc.VerboseLogging); err != nil {
+		s.Error("Failed when running get user media: ", err)
+	}
 }

@@ -7,9 +7,9 @@ package camera
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/constants"
+	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
@@ -29,5 +29,7 @@ func init() {
 }
 
 func DecodeAccelUsedJPEG(ctx context.Context, s *testing.State) {
-	getusermedia.RunDecodeAccelUsedJPEG(ctx, s, "get_user_media.html", "crowd720_25frames.mjpeg", constants.RTCJPEGInitStatus, constants.RTCJPEGInitSuccess)
+	if err := webrtc.RunDecodeAccelUsedJPEG(ctx, s.DataFileSystem(), "get_user_media.html", s.DataPath("crowd720_25frames.mjpeg"), constants.RTCJPEGInitStatus, constants.RTCJPEGInitSuccess); err != nil {
+		s.Error("Failed with: ", err)
+	}
 }

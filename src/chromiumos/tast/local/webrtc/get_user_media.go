@@ -2,9 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package getusermedia provides code for webrtc.* tests related to getUserMedia(), see:
-// https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia.
-package getusermedia
+package webrtc
 
 import (
 	"context"
@@ -19,29 +17,29 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/vm"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
 // RunDecodeAccelUsedJPEG tests that the HW JPEG decoder is used in a GetUserMedia().
 // The test fails if bucketValue on histogramName does not count up.
-func RunDecodeAccelUsedJPEG(ctx context.Context, s *testing.State, getUserMediaFilename, streamName, histogramName string, bucketValue int64) {
+func RunDecodeAccelUsedJPEG(ctx context.Context, fs http.FileSystem, getUserMediaFilename, streamFile, histogramName string, bucketValue int64) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
+		return errors.Wrap(err, "failed to set values for verbose logging")
 	}
 	defer vl.Close()
 
-	if err := openPageAndCheckBucket(ctx, s.DataFileSystem(), getUserMediaFilename, s.DataPath(streamName), histogramName, bucketValue); err != nil {
-		s.Fatal("Failed: ", err)
+	if err := openPageAndCheckBucket(ctx, fs, getUserMediaFilename, streamFile, histogramName, bucketValue); err != nil {
+		return err
 	}
+	return nil
 }
 
 // openPageAndCheckBucket opens getUserMediaFilename, and uses GetUserMedia() to
 // stream streamFile. Then it verifies that bucketValue on histogramName counts
 // up in the end of the test.
 func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, getUserMediaFilename, streamFile, histogramName string, bucketValue int64) error {
-	chromeArgs := webrtc.ChromeArgsWithFileCameraInput(streamFile, true)
+	chromeArgs := ChromeArgsWithFileCameraInput(streamFile, true)
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to Chrome")
@@ -126,39 +124,39 @@ const (
 // duration specifies how long video capturing will run for each resolution.
 // If verbose is true, video drivers' verbose messages will be enabled.
 // verbose must be false for performance tests.
-func RunGetUserMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	duration time.Duration, verbose VerboseLoggingMode) cameraResults {
+func RunGetUserMedia(ctx context.Context, fs http.FileSystem, cr chrome.Interface,
+	duration time.Duration, verbose VerboseLoggingMode) (cameraResults, error) {
 	if verbose == VerboseLogging {
 		vl, err := logging.NewVideoLogger()
 		if err != nil {
-			s.Fatal("Failed to set values for verbose logging")
+			return nil, errors.Wrap(err, "failed to set values for verbose logging")
 		}
 		defer vl.Close()
 	}
 
 	var results cameraResults
-	RunTest(ctx, s, cr, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results)
+	RunTest(ctx, fs, cr, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results)
 
-	s.Logf("Results: %+v", results)
+	testing.ContextLogf(ctx, "Results: %+v", results)
 
 	for _, result := range results {
 		if len(result.Errors) != 0 {
 			for _, msg := range result.Errors {
-				s.Errorf("%dx%d: %s", result.Width, result.Height, msg)
+				return nil, errors.Errorf("%dx%d: %s", result.Width, result.Height, msg)
 			}
 		}
 
 		if err := result.FrameStats.CheckTotalFrames(); err != nil {
-			s.Errorf("%dx%d was not healthy: %v", result.Width, result.Height, err)
+			return nil, errors.Wrapf(err, "%dx%d was not healthy", result.Width, result.Height)
 		}
 		// Only check the percentage of broken and black frames if we are
 		// running under QEMU, see crbug.com/898745.
 		if vm.IsRunningOnVM() {
 			if err := result.FrameStats.CheckBrokenFrames(); err != nil {
-				s.Errorf("%dx%d was not healthy: %v", result.Width, result.Height, err)
+				return nil, errors.Wrapf(err, "%dx%d was not healthy", result.Width, result.Height)
 			}
 		}
 	}
 
-	return results
+	return results, nil
 }

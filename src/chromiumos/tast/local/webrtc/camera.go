@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package getusermedia
+package webrtc
 
 import (
 	"context"
@@ -14,59 +14,59 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/testing"
 )
 
 // RunTest checks if the given WebRTC tests work correctly.
 // htmlName is a filename of an HTML file in data directory.
 // entryPoint is a JavaScript expression that starts the test there.
-func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	htmlName, entryPoint string, results interface{}) {
+func RunTest(ctx context.Context, fs http.FileSystem, cr chrome.Interface,
+	htmlName, entryPoint string, results interface{}) error {
 
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	server := httptest.NewServer(http.FileServer(fs))
 	defer server.Close()
 
 	conn, err := cr.NewConn(ctx, server.URL+"/"+htmlName)
 	if err != nil {
-		s.Fatal("Creating renderer failed: ", err)
+		return errors.Wrap(err, "creating renderer failed")
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
 	if err := conn.WaitForExpr(ctx, "scriptReady"); err != nil {
-		s.Fatal("Timed out waiting for scripts ready: ", err)
+		return errors.Wrap(err, "timed out waiting for scripts ready")
 	}
 
 	if err := conn.WaitForExpr(ctx, "checkVideoInput()"); err != nil {
 		var msg string
 		if err := conn.Eval(ctx, "enumerateDevicesError", &msg); err != nil {
-			s.Error("Failed to evaluate enumerateDevicesError: ", err)
+			return errors.Wrap(err, "failed to evaluate enumerateDevicesError")
 		} else if len(msg) > 0 {
-			s.Error("enumerateDevices failed: ", msg)
+			return errors.Errorf("enumerateDevices failed: %v", msg)
 		}
-		s.Fatal("Timed out waiting for video device to be available: ", err)
+		return errors.Wrap(err, "timed out waiting for video device to be available")
 	}
 
 	if err := conn.Eval(ctx, entryPoint, nil); err != nil {
-		s.Fatal("Failed to start test: ", err)
+		return errors.Wrap(err, "failed to start test")
 	}
 
 	rctx, rcancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer rcancel()
 	if err := conn.WaitForExpr(rctx, "isTestDone"); err != nil {
 		// If test didn't finish within the deadline, display error messages stored in "globalErrors".
-		var errors []string
-		if err := conn.Eval(ctx, "globalErrors", &errors); err == nil {
-			for _, msg := range errors {
-				s.Error("Got JS error: ", msg)
+		var errs []string
+		if err := conn.Eval(ctx, "globalErrors", &errs); err == nil {
+			for _, msg := range errs {
+				return errors.Errorf("got JS error: %v", msg)
 			}
 		}
-		s.Fatal("Timed out waiting for test completed: ", err)
+		return errors.Wrap(err, "timed out waiting for test completed")
 	}
 
 	if err := conn.Eval(ctx, "getResults()", results); err != nil {
-		s.Fatal("Failed to get results from JS: ", err)
+		return errors.Wrap(err, "failed to get results from JS")
 	}
+	return nil
 }
 
 func percentage(num, total int) float64 {
