@@ -38,11 +38,12 @@ type LacrosChrome struct {
 	logAggregator *jslog.Aggregator // collects JS console output
 	testExtID     string            // ID for test extension exposing APIs
 	testExtConn   *chrome.Conn      // connection to test extension exposing APIs
+	lacrosPath    string            // Root directory for lacros-chrome.
 }
 
 // ConnectToLacrosChrome connects to a running lacros instance (e.g launched by the UI) and returns a LacrosChrome object that can be used to interact with it.
-func ConnectToLacrosChrome(ctx context.Context, chrome *chrome.Chrome, userDataDir string) (*LacrosChrome, error) {
-	l := &LacrosChrome{testExtID: chrome.TestExtID()}
+func ConnectToLacrosChrome(ctx context.Context, chrome *chrome.Chrome, lacrosPath, userDataDir string) (*LacrosChrome, error) {
+	l := &LacrosChrome{testExtID: chrome.TestExtID(), lacrosPath: lacrosPath}
 	debuggingPortPath := filepath.Join(userDataDir, "DevToolsActivePort")
 	var err error
 	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath, cdputil.WaitPort); err != nil {
@@ -86,7 +87,10 @@ func (l *LacrosChrome) Close(ctx context.Context) error {
 		l.testExtConn.Close()
 		l.testExtConn = nil
 	}
-	killLacrosChrome(ctx)
+
+	if err := killLacrosChrome(ctx, l.lacrosPath); err != nil {
+		return errors.Wrap(err, "failed to kill lacros-chrome")
+	}
 	return nil
 }
 
@@ -117,17 +121,22 @@ func PidsFromPath(ctx context.Context, path string) ([]int, error) {
 
 // killLacrosChrome kills all binaries whose executable contains the base path
 // to lacros-chrome.
-func killLacrosChrome(ctx context.Context) {
+func killLacrosChrome(ctx context.Context, lacrosPath string) error {
+	if lacrosPath == "" {
+		return errors.New("Path to lacros-chrome cannot be empty")
+	}
+
 	// Kills all instances of lacros-chrome and other related executables.
-	pids, err := PidsFromPath(ctx, BinaryPath)
+	pids, err := PidsFromPath(ctx, lacrosPath)
 	if err != nil {
-		testing.ContextLog(ctx, "Error finding pids for lacros-chrome: ", err)
+		return errors.Wrap(err, "error finding pids for lacros-chrome")
 	}
 	for _, pid := range pids {
 		// We ignore errors, since it's possible the process has
 		// already been killed.
 		unix.Kill(pid, syscall.SIGKILL)
 	}
+	return nil
 }
 
 func closeFDs(ctx context.Context, fds []int) {
@@ -200,27 +209,29 @@ func extensionArgs(extID, extList string) []string {
 
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
 func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
-	killLacrosChrome(ctx)
+	if err := killLacrosChrome(ctx, p.LacrosPath); err != nil {
+		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
+	}
 
 	// Create a new temporary directory for user data dir. We don't bother
 	// clearing it on shutdown, since it's a subdirectory of the binary
 	// path, which is cleared by pre.go. We need to use a new temporary
 	// directory for each invocation so that successive calls to
 	// LaunchLacrosChrome don't interfere with each other.
-	userDataDir, err := ioutil.TempDir(BinaryPath, "")
+	userDataDir, err := ioutil.TempDir(p.LacrosPath, "")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create temp dir")
 	}
 
-	l := &LacrosChrome{testExtID: p.Chrome.TestExtID()}
+	l := &LacrosChrome{testExtID: p.Chrome.TestExtID(), lacrosPath: p.LacrosPath}
 	extList := strings.Join(p.Chrome.ExtDirs(), ",")
 	args := []string{
-		"--ozone-platform=wayland",               // Use wayland to connect to exo wayland server.
-		"--no-sandbox",                           // Disable sandbox for now
-		"--no-first-run",                         // Prevent showing up offer pages, e.g. google.com/chromebooks.
-		"--user-data-dir=" + userDataDir,         // Specify a --user-data-dir, which holds on-disk state for Chrome.
-		"--lang=en-US",                           // Language
-		"--breakpad-dump-location=" + BinaryPath, // Specify location for breakpad dump files.
+		"--ozone-platform=wayland",                 // Use wayland to connect to exo wayland server.
+		"--no-sandbox",                             // Disable sandbox for now
+		"--no-first-run",                           // Prevent showing up offer pages, e.g. google.com/chromebooks.
+		"--user-data-dir=" + userDataDir,           // Specify a --user-data-dir, which holds on-disk state for Chrome.
+		"--lang=en-US",                             // Language
+		"--breakpad-dump-location=" + p.LacrosPath, // Specify location for breakpad dump files.
 		"--window-size=800,600",
 		"--log-file=" + userDataDir + "/logfile",     // Specify log file location for debugging.
 		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
@@ -241,7 +252,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	}
 	defer f.Close()
 
-	l.cmd = testexec.CommandContext(ctx, BinaryPath+"/chrome", args...)
+	l.cmd = testexec.CommandContext(ctx, p.LacrosPath+"/chrome", args...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 
 	// The mojo platform channel file is the first element of ExtraFiles, so it will be be accessible

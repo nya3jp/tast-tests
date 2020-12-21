@@ -138,7 +138,7 @@ func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 	// processes, but most will go away after 60 seconds.
 	testing.Sleep(ctx, 60*time.Second)
 
-	pmf, pss, err := measureProcesses(ctx, launcher.BinaryPath)
+	pmf, pss, err := measureProcesses(ctx, s.PreValue().(launcher.PreData).LacrosPath)
 	if err != nil {
 		s.Fatal("Failed to measure memory of lacros-chrome: ", err)
 	}
