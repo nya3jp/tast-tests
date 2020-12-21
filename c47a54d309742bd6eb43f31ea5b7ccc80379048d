@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f16b9ef_5c49021d",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-21T03:05:41Z",
+      "side": 1,
+      "message": "We have a good implementation in src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go. Can you try moving it here?",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "c47a54d309742bd6eb43f31ea5b7ccc80379048d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b4b595_aa6611aa",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-21T03:05:41Z",
+      "side": 1,
+      "message": "I feel like logging the version here is a bit verbose, e.g. when calling is multiple times:\n\n if IsKernelVersionAtLeast(5, 0) {\n   ...\n } else if IsKernelVersionAtLeast(4, 0) {\n   ...\n } else {\n   // In this case the kernel version is printed twice!\n }",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 60
+      },
+      "revId": "c47a54d309742bd6eb43f31ea5b7ccc80379048d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
