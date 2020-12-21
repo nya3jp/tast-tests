@@ -13,7 +13,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/rpc"
+	"chromiumos/tast/remote/firmware"
 	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
@@ -31,13 +31,17 @@ func init() {
 }
 
 func GBBFlags(ctx context.Context, s *testing.State) {
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), "", "")
+	defer func() {
+		if err := h.Close(ctx); err != nil {
+			s.Log("Closing helper: ", err)
+		}
+	}()
+	if err := h.RequireBiosServiceClient(ctx); err != nil {
+		s.Fatal("Requiring BiosServiceClient: ", err)
 	}
-	defer cl.Close(ctx)
 
-	bs := pb.NewBiosServiceClient(cl.Conn)
+	bs := h.BiosServiceClient
 
 	old, err := bs.GetGBBFlags(ctx, &empty.Empty{})
 	if err != nil {
