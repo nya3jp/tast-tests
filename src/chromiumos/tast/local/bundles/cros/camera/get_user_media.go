@@ -10,11 +10,19 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/vm"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
+)
+
+type chromeType int
+
+const (
+	ashChrome chromeType = iota
+	lacrosChrome
 )
 
 func init() {
@@ -24,23 +32,36 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
+		Data:         append(webrtc.DataFiles(), launcher.DataArtifact, "getusermedia.html"),
 		Params: []testing.Param{
 			{
 				Name:              "real",
 				Pre:               pre.ChromeVideo(),
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{caps.BuiltinCamera, "camera_720p"},
+				Val:               ashChrome,
 			},
 			{
 				Name:              "vivid",
 				Pre:               pre.ChromeVideo(),
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{caps.VividCamera},
+				Val:               ashChrome,
 			},
 			{
 				Name: "fake",
 				Pre:  pre.ChromeVideoWithFakeWebcam(),
+				Val:  ashChrome,
+			},
+			{
+				Name:      "lacros",
+				Pre:       launcher.StartedByData(),
+				ExtraAttr: []string{"informational"},
+				// TODO(b/175168296): Change the capability to |caps.BuiltinCamera| to test MIPI
+				// cameras as well once they are supported on Lacros.
+				ExtraSoftwareDeps: []string{caps.BuiltinUSBCamera, "camera_720p", "lacros"},
+				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
+				Val:               lacrosChrome,
 			},
 		},
 	})
@@ -61,7 +82,16 @@ func GetUserMedia(ctx context.Context, s *testing.State) {
 		duration = 10 * time.Second
 	}
 
+	var cr getusermedia.ChromeInterface
+	if s.Param().(chromeType) == lacrosChrome {
+		cr, err := launcher.LaunchLacrosChrome(ctx, s.PreValue().(launcher.PreData))
+		if err != nil {
+			s.Fatal("Failed to launch lacros-chrome: ", err)
+		}
+		defer cr.Close(ctx)
+	} else {
+		cr = s.PreValue().(*chrome.Chrome)
+	}
 	// Run tests for 480p and 720p.
-	getusermedia.RunGetUserMedia(ctx, s, s.PreValue().(*chrome.Chrome), duration,
-		getusermedia.VerboseLogging)
+	getusermedia.RunGetUserMedia(ctx, s, cr, duration, getusermedia.VerboseLogging)
 }
