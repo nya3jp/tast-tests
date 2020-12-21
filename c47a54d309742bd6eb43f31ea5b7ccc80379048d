@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f55f8172_5b0eb0e7",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-12-21T09:12:02Z",
+      "side": 1,
+      "message": "I can\u0027t import kernel tast tests it seems.  I would have to refactor config_verify.go to get the function from a common bundle like sysutil like app_loading_perf.go?\n\n        src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go:17:2: import of chromiumos/tast/local/bundles/cros/kernel is only allowed from chromiumos/tast/local/bundles/*/kernel or its descendant\n        src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go:38:6: Tast requires exactly one symbol (test function or service type) to be exported in an entry file; unexport func ConfigVerify if it is not one\n        src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go:54:6: Tast requires exactly one symbol (test function or service type) to be exported in an entry file; unexport func IsKernelVersionAtLeast if it is not one\n\nSo both app_loading_perf.go and config_verify.go will use a common package to get kernel version and arch (also to verify version is less or later than expected.  WDYT?",
+      "parentUuid": "8f16b9ef_5c49021d",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "c47a54d309742bd6eb43f31ea5b7ccc80379048d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1b4b595_aa6611aa",
         "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
         "patchSetId": 4
