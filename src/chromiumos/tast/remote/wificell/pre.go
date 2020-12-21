@@ -113,6 +113,27 @@ func (p *testFixturePreImpl) dutHealthCheck(ctx context.Context, s *testing.PreS
 	return nil
 }
 
+// recoverUnhealthyDUT checks if the DUT is healthy. If not, try to recover it
+// with reboot.
+func (p *testFixturePreImpl) recoverUnhealthyDUT(ctx context.Context, s *testing.PreState) error {
+	if err := p.dutHealthCheck(ctx, s); err != nil {
+		s.Log("Rebooting the DUT due to health check err: ", err)
+		// As reboot will at least break tf.rpc, no reason to keep
+		// the existing p.tf. Close it before reboot.
+		if p.tf != nil {
+			s.Log("Close TestFixture before reboot")
+			if err := p.tf.Close(ctx); err != nil {
+				s.Log("Failed to close TestFixture before DUT reboot recovery: ", err)
+			}
+			p.tf = nil
+		}
+		if err := s.DUT().Reboot(ctx); err != nil {
+			return errors.Wrap(err, "reboot failed")
+		}
+	}
+	return nil
+}
+
 // Prepare initializes the shared TestFixture if not yet created and returns it
 // as precondition value.
 // Note that the test framework already reserves p.Timeout() for both Prepare
@@ -122,19 +143,8 @@ func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.PreState) i
 	ctx, st := timing.Start(ctx, p.String()+"_prepare")
 	defer st.End()
 
-	if err := p.dutHealthCheck(ctx, s); err != nil {
-		s.Log("Rebooting the DUT due to health check err: ", err)
-		// As reboot will at least break tf.rpc, no reason to keep
-		// the existing p.tf. Close it before reboot.
-		if p.tf != nil {
-			if err := p.tf.Close(ctx); err != nil {
-				s.Log("Failed to close TestFixture before DUT reboot recovery: ", err)
-			}
-			p.tf = nil
-		}
-		if err := s.DUT().Reboot(ctx); err != nil {
-			s.Fatal("Failed to recovery DUT with reboot: ", err)
-		}
+	if err := p.recoverUnhealthyDUT(ctx, s); err != nil {
+		s.Fatal("Failed to recover unhealthy DUT: ", err)
 	}
 
 	if p.tf != nil {
@@ -212,6 +222,13 @@ func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.PreState) i
 func (p *testFixturePreImpl) Close(ctx context.Context, s *testing.PreState) {
 	ctx, st := timing.Start(ctx, p.String()+"_close")
 	defer st.End()
+
+	// Ensure DUT is healthy here again, so that we don't leave with
+	// bad state to later tests/tasks.
+	if err := p.recoverUnhealthyDUT(ctx, s); err != nil {
+		s.Fatal("Failed to recover unhealthy DUT: ", err)
+	}
+
 	if p.tf == nil {
 		return
 	}
