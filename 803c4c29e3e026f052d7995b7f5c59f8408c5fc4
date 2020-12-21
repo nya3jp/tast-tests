@@ -328,6 +328,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87211f6_f85704b7",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-21T21:04:02Z",
+      "side": 1,
+      "message": "Eh, I guess it makes sense to keep them. Sgtm",
+      "parentUuid": "a90959e0_6755dc56",
+      "range": {
+        "startLine": 55,
+        "startChar": 47,
+        "endLine": 55,
+        "endChar": 49
+      },
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23e1101d_2ed70c39",
