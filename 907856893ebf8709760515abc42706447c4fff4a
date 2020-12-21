@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d337b62e_e952557a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-21T16:26:23Z",
+      "side": 1,
+      "message": "style:\nfaillog.*OnError functions checks whether it has an error or not internally.\nSo, you can skip s.HasError() at L252.",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 256,
+        "endChar": 5
+      },
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd974835_e5a95c2f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-21T16:26:23Z",
+      "side": 1,
+      "message": "nit: saveScreenshotToFileOnError for consistency, since it also checks \"hasError\".",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67eefb5_a0b4825b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-21T16:26:23Z",
+      "side": 1,
+      "message": "nit: let\u0027s keep this private at this moment, because nobody outside of this module uses this. Whenever necessary, it is easy to make it public in another CL.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c52585e_556dc72d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-21T16:26:23Z",
+      "side": 1,
+      "message": "let\u0027s return an error.\nIf callers want, they can ignore.",
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93df8ca0_e9cedc63",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-21T16:26:23Z",
+      "side": 1,
+      "message": "fileName",
+      "range": {
+        "startLine": 40,
+        "startChar": 38,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23824ccd_60dfce9a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-21T16:26:23Z",
+      "side": 1,
+      "message": "ditto to return an error.",
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
