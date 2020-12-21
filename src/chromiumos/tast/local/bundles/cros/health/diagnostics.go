@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/croshealthd"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -26,6 +25,7 @@ func init() {
 		SoftwareDeps: []string{"diagnostics"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      10 * time.Minute,
+		Fixture:      "crosHealthdRunning",
 	})
 }
 
@@ -54,10 +54,6 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 		}
 
 		return true
-	}
-
-	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
-		s.Fatal("Failed to start diagnostics daemon: ", err)
 	}
 
 	routines, err := croshealthd.GetDiagRoutines(ctx)
