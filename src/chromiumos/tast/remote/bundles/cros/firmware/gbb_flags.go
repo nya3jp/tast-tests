@@ -6,14 +6,13 @@ package firmware
 
 import (
 	"context"
-	"reflect"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/checkers"
 	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
@@ -57,26 +56,19 @@ func GBBFlags(ctx context.Context, s *testing.State) {
 	// 150 seconds is a ballpark estimate, adjust as needed.
 	ctx, cancel := ctxutil.Shorten(ctx, 150*time.Second)
 	defer cancel()
+
+	checker := checkers.New(h)
 	defer func(ctx context.Context) {
 		if _, err := bs.ClearAndSetGBBFlags(ctx, old); err != nil {
 			s.Fatal("ClearAndSetGBBFlags to restore original values failed: ", err)
 		}
 
-		if err := checkGBBFlags(ctx, bs, *old); err != nil {
+		if err := checker.GBBFlags(ctx, *old); err != nil {
 			s.Fatal("all flags should have been restored: ", err)
 		}
 	}(ctxForCleanup)
 
-	if err := checkGBBFlags(ctx, bs, req); err != nil {
+	if err := checker.GBBFlags(ctx, req); err != nil {
 		s.Fatal("all flags should have been toggled: ", err)
 	}
-}
-
-func checkGBBFlags(ctx context.Context, bs pb.BiosServiceClient, want pb.GBBFlagsState) error {
-	if res, err := bs.GetGBBFlags(ctx, &empty.Empty{}); err != nil {
-		return errors.Wrap(err, "could not get GBB flags")
-	} else if !reflect.DeepEqual(want.Set, res.Set) || !reflect.DeepEqual(want.Clear, res.Clear) {
-		return errors.Errorf("got %v, want %v", res, &want)
-	}
-	return nil
 }
