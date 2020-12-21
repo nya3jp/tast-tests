@@ -63,6 +63,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/session"
 	_ "chromiumos/tast/local/bundles/cros/shelf"
 	_ "chromiumos/tast/local/bundles/cros/storage"
+	_ "chromiumos/tast/local/bundles/cros/u2fd"
 	_ "chromiumos/tast/local/bundles/cros/ui"
 	_ "chromiumos/tast/local/bundles/cros/unicorn"
 	_ "chromiumos/tast/local/bundles/cros/video"
