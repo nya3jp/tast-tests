@@ -146,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c907e38e_ef7687a0",
+        "filename": "src/chromiumos/tast/remote/network/firewall/firewall.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-21T13:37:26Z",
+      "side": 1,
+      "message": "No response, assuming resolved.",
+      "parentUuid": "87b6282c_1ee7823d",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "0350f6a35c62b6589d5deb43c84dc42825b0c62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a23e3c30_03a13ada",

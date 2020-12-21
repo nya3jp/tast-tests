@@ -34,6 +34,24 @@
       "parentUuid": "c6f055e1_a9731558",
       "revId": "f949d3c2fe24a99c60388f98927b9eaa2d37d472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "830cf3d4_5eac519a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-21T13:37:26Z",
+      "side": 1,
+      "message": "I usually worked in a regime that required all comments closed, reviewer or not.\nIf it\u0027s not the case, then fine.",
+      "parentUuid": "70832b34_dc5ebe83",
+      "revId": "f949d3c2fe24a99c60388f98927b9eaa2d37d472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
