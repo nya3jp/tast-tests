@@ -16,6 +16,24 @@
       "message": "How large are these files? Should we just enable it for all crostini tests?",
       "revId": "58d3b3e2889caa2018dc1cc4a76b9fe0db5f237f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f445924_57b6fda3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-21T03:29:13Z",
+      "side": 1,
+      "message": "About 3.7MB per record.",
+      "parentUuid": "693abfaf_4e94fc96",
+      "revId": "58d3b3e2889caa2018dc1cc4a76b9fe0db5f237f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
