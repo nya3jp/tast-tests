@@ -9,6 +9,7 @@ import (
 
 	common "chromiumos/tast/common/firmware"
 	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/checkers"
 	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/testing"
 )
@@ -46,16 +47,25 @@ func Pre(ctx context.Context, s *testing.State) {
 	mode := s.Param().(common.BootMode)
 
 	if v.BootMode != mode {
-		s.Fatalf("Precondition boot mode unexpected, want %v, got %v", mode, v.BootMode)
+		s.Fatalf("Precondition boot mode unexpected, got %v, want %v", v.BootMode, mode)
 	}
 
 	h := v.Helper
 
 	curr, err := h.Reporter.CurrentBootMode(ctx)
 	if err != nil {
-		s.Fatal("Could not report DUT boot mode: ", err)
+		s.Error("Could not report DUT boot mode: ", err)
 	} else if curr != v.BootMode {
-		s.Fatalf("DUT boot mode unexpected, want %v, got %v", v.BootMode, curr)
+		s.Errorf("DUT boot mode unexpected, got %v, want %v", curr, v.BootMode)
+	} else {
+		s.Logf("Successfully verified that precondition set boot mode to %q", v.BootMode)
 	}
-	s.Logf("Successfully verified that precondition set boot mode to %q", curr)
+
+	checker := checkers.New(h)
+
+	if err := checker.GBBFlags(ctx, v.GBBFlags); err != nil {
+		s.Fatal("DUT GBB flags incorrect: ", err)
+	} else {
+		s.Logf("Successfully verified that precondition set GBB flags to %q", v.GBBFlags)
+	}
 }

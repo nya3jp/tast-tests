@@ -87,6 +87,7 @@ func (GBBFlag) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_faf33e0440459a6d, []int{0}
 }
 
+// GBBFlagsState represents the a known state of GBB flags.  Set flags have precedence over cleared ones.
 type GBBFlagsState struct {
 	Clear                []GBBFlag `protobuf:"varint,1,rep,packed,name=Clear,proto3,enum=tast.cros.firmware.GBBFlag" json:"Clear,omitempty"`
 	Set                  []GBBFlag `protobuf:"varint,2,rep,packed,name=Set,proto3,enum=tast.cros.firmware.GBBFlag" json:"Set,omitempty"`

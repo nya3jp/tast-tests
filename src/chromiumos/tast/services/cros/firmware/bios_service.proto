@@ -36,6 +36,7 @@ enum GBBFlag {
   FORCE_DEV_BOOT_FASTBOOT_FULL_CAP = 13;
 }
 
+// GBBFlagsState represents the a known state of GBB flags.  Set flags have precedence over cleared ones.
 message GBBFlagsState {
   repeated GBBFlag Clear = 1;
   repeated GBBFlag Set = 2;

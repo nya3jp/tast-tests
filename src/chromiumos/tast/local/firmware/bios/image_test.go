@@ -35,6 +35,29 @@ func TestCalcGBB(t *testing.T) {
 	}
 }
 
+func TestCalcGBBBits(t *testing.T) {
+	tests := []struct {
+		curr  uint32
+		clear uint32
+		set   uint32
+		want  uint32
+	}{
+		{0b0101, 0b0000, 0b0000, 0b0101},
+		{0b0101, 0b1111, 0b0000, 0b0000},
+		{0b0100, 0b0000, 0b0001, 0b0101},
+		{0b0010, 0b0010, 0b0001, 0b0001},
+		{0b0011, 0b1100, 0b1100, 0b1111},
+		{0b0101, 0b1010, 0b0101, 0b0101},
+	}
+
+	for _, tc := range tests {
+		got := calcGBBBits(tc.curr, tc.clear, tc.set)
+		if got != tc.want {
+			t.Errorf("calcGBBBits, updating %04b with %04b(clear) and %04b(set), got %04b, want %04b", tc.curr, tc.clear, tc.set, got, tc.want)
+		}
+	}
+}
+
 func TestReadSectionData(t *testing.T) {
 	s := map[ImageSection]SectionInfo{GBBImageSection: SectionInfo{1, 16}}
 	i := Image{[]byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4}, s}
