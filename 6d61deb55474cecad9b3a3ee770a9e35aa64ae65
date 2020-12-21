@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "957bc9b8_39a96ef4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-12-21T22:06:49Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "20be5e4b_7fc1ceb4",
+      "revId": "6d61deb55474cecad9b3a3ee770a9e35aa64ae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec1142aa_79b32302",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-21T03:30:47Z",
       "side": 1,
       "message": "nit: IIRC, the polling for ping/connection check is added because roam is not yet finished when BSSID of the service is changed. Now we wait for the RoamState change, so maybe we can remove this now? (similar in the other two tests)",
+      "revId": "6d61deb55474cecad9b3a3ee770a9e35aa64ae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65545ac5_6ae90464",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-12-21T22:06:49Z",
+      "side": 1,
+      "message": "I removed the polling, but still do VerifyConnection.",
+      "parentUuid": "ec1142aa_79b32302",
       "revId": "6d61deb55474cecad9b3a3ee770a9e35aa64ae65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
