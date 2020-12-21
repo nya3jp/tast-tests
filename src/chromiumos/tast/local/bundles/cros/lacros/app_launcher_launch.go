@@ -43,7 +43,8 @@ func AppLauncherLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
-	l, err := launcher.ConnectToLacrosChrome(ctx, s.PreValue().(launcher.PreData).Chrome, launcher.LacrosUserDataDir)
+	p := s.PreValue().(launcher.PreData)
+	l, err := launcher.ConnectToLacrosChrome(ctx, p.Chrome, p.LacrosPath, launcher.LacrosUserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
