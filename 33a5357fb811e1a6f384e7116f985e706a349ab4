@@ -16,6 +16,23 @@
       "message": "rebase to fit the new genparams in SimpleConnect. Waiting for veyron_mickey devices to be removed (b/173723099)",
       "revId": "33a5357fb811e1a6f384e7116f985e706a349ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d87bd199_25e2a0da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-21T02:45:51Z",
+      "side": 1,
+      "message": "mickey devices are removed [1], so we can merge this CL now.\n\nharpreet: please take another look at this CL.\n\n[1] https://chromeos-swarming.appspot.com/botlist?c\u003did\u0026c\u003dtask\u0026c\u003dos\u0026c\u003dstatus\u0026d\u003dasc\u0026f\u003dlabel-board%3Aveyron_mickey\u0026f\u003dlabel-wificell%3ATrue\u0026k\u003dlabel-wificell\u0026s\u003did",
+      "revId": "33a5357fb811e1a6f384e7116f985e706a349ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
