@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631b9b2e_6481918c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-21T23:20:32Z",
+      "side": 1,
+      "message": "This is the last of the changes to enable GBB flags in preconditions, thanks for all the reviews!",
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
