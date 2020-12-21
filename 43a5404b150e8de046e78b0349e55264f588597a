@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "486be669_03737e7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a388474a_1244cdef",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea1629b1_04dcdc49",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35202d7c_4c2e2610",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Today I don\u0027t see this problem when running multiple tests consecutively.",
+      "parentUuid": "ea1629b1_04dcdc49",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe8c3544_2bf7f4c4",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-07T20:14:37Z",
       "side": 1,
       "message": "These two tests seem to output \"Fail\" in the console. Haven\u0027t looked into details, but that\u0027s outside the scope of this CL.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18dc4321_c2cc346d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe8c3544_2bf7f4c4",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -134,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7504a942_b68823e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "I\u0027m defining a suite \"fingerprint-mcu\" (http://crrev/c/2593741, http://crrev/c/) and a suite_scheduler config (http://crrev/i/3462030) so that it will run only on our setups. group:mainline is replaced with group:fingerprint-mcu.",
+      "parentUuid": "676d58a1_d7891957",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b47bcaf_76e2f3f7",
@@ -147,6 +243,30 @@
       "writtenOn": "2020-12-07T20:14:37Z",
       "side": 1,
       "message": "I should remove this, so that we control informational/critical on a per-unittest basis below.",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "585c7432_bf0f04fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b47bcaf_76e2f3f7",
       "range": {
         "startLine": 30,
         "startChar": 35,
@@ -180,6 +300,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b5a5abd_9f0a4074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e44be415_9da40ad9",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 4
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0db833f_52f4584e",
@@ -193,6 +337,30 @@
       "writtenOn": "2020-12-08T22:21:15Z",
       "side": 1,
       "message": "Technically a PTY (pseudoterminal)",
+      "range": {
+        "startLine": 149,
+        "startChar": 52,
+        "endLine": 149,
+        "endChar": 67
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7570d58f_aa4082bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0db833f_52f4584e",
       "range": {
         "startLine": 149,
         "startChar": 52,
@@ -226,6 +394,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc48b52_7a573ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd2bba39_97ca9c4e",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 2
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91371be1_11fc4e2f",
@@ -249,6 +441,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62b6dca_f6b633a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91371be1_11fc4e2f",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 37
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec1ddf6b_274d3e06",
@@ -262,6 +478,30 @@
       "writtenOn": "2020-12-08T22:21:15Z",
       "side": 1,
       "message": "Check for error?",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 36
+      },
+      "revId": "43a5404b150e8de046e78b0349e55264f588597a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a9d149_d39112af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec1ddf6b_274d3e06",
       "range": {
         "startLine": 197,
         "startChar": 2,

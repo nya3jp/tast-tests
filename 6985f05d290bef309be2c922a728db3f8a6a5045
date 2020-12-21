@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "2908b98e_9ed2a507",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Not quite ready for review yet but I feel the excitement!",
       "revId": "6985f05d290bef309be2c922a728db3f8a6a5045",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "539c0223_a3123db4",
         "filename": "/PATCHSET_LEVEL",
@@ -32,8 +33,25 @@
       "message": "Glad to see this coming along. 😊",
       "parentUuid": "2908b98e_9ed2a507",
       "revId": "6985f05d290bef309be2c922a728db3f8a6a5045",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c522268c_1a1462fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "539c0223_a3123db4",
+      "revId": "6985f05d290bef309be2c922a728db3f8a6a5045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
