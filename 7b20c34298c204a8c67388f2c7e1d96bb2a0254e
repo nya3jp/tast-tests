@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de69e19b_72b5a468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-21T02:56:55Z",
+      "side": 1,
+      "message": "Setting both group:mainline and group:crosbolt to a test is unusual. group:mainline is for functional tests that should finish as quickly as possible, while group:crosbolt is for performance tests that might take longer. Note that performance results generated in informational runs are discarded.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 4
+      },
+      "revId": "7b20c34298c204a8c67388f2c7e1d96bb2a0254e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "140cee92_9ee36a4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-21T02:56:55Z",
+      "side": 1,
+      "message": "Is it meaningful to run the same model 100 times for functional testing? If not, it\u0027s nice to split it into two, one with numRuns\u003d1 (for functional testing) and the other with numRuns\u003d100 (for performance testing).",
+      "range": {
+        "startLine": 210,
+        "startChar": 15,
+        "endLine": 210,
+        "endChar": 18
+      },
+      "revId": "7b20c34298c204a8c67388f2c7e1d96bb2a0254e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
