@@ -20,6 +20,9 @@ import (
 
 // Helper tracks several firmware-related objects.
 type Helper struct {
+	// BiosServiceClient provides bios related services such as GBBFlags manipulation.
+	BiosServiceClient fwpb.BiosServiceClient
+
 	// Board contains the DUT's board, as reported by the Platform RPC.
 	// Currently, this is based on /etc/lsb-release's CHROMEOS_RELEASE_BOARD.
 	Board string
@@ -118,15 +121,28 @@ func (h *Helper) RequireRPCUtils(ctx context.Context) error {
 	return nil
 }
 
+// RequireBiosServiceClient creates a firmware.BiosServiceClient, unless one already exists.
+func (h *Helper) RequireBiosServiceClient(ctx context.Context) error {
+	if h.BiosServiceClient != nil {
+		return nil
+	}
+	if err := h.RequireRPCClient(ctx); err != nil {
+		return errors.Wrap(err, "requiring RPC client")
+	}
+	h.BiosServiceClient = fwpb.NewBiosServiceClient(h.RPCClient.Conn)
+	return nil
+}
+
 // CloseRPCConnection shuts down the RPC client (if present), and removes any RPC clients that the Helper was tracking.
 func (h *Helper) CloseRPCConnection(ctx context.Context) error {
+	defer func() {
+		h.RPCClient, h.RPCUtils, h.BiosServiceClient = nil, nil, nil
+	}()
 	if h.RPCClient != nil {
 		if err := h.RPCClient.Close(ctx); err != nil {
-			h.RPCClient, h.RPCUtils = nil, nil
 			return errors.Wrap(err, "closing rpc client")
 		}
 	}
-	h.RPCClient, h.RPCUtils = nil, nil
 	return nil
 }
 
