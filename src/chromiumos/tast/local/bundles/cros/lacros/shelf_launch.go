@@ -27,6 +27,7 @@ func init() {
 			{
 				Pre:       launcher.StartedByDataUI(),
 				ExtraData: []string{launcher.DataArtifact},
+				ExtraVars: []string{"lacros.skipInstallation"},
 			},
 			{
 				Name:              "omaha",
@@ -97,7 +98,8 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 
 	s.Log("Connecting to the lacros-chrome browser")
 	const userDataDir = "/home/chronos/user/lacros/"
-	l, err := launcher.ConnectToLacrosChrome(ctx, s.PreValue().(launcher.PreData).Chrome, userDataDir)
+	p := s.PreValue().(launcher.PreData)
+	l, err := launcher.ConnectToLacrosChrome(ctx, p.Chrome, p.LacrosPath, userDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
