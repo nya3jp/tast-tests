@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "c2c49210_4cbe68e9",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Ready for review but not ready for landing",
       "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "71cf86b6_e7550bb5",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/fpmcu-unittest-bloonchipper-rsa-20200717.bin.external",
@@ -37,10 +38,34 @@
         "endChar": 1
       },
       "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4394a33d_f6d7c486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/fpmcu-unittest-bloonchipper-rsa-20200717.bin.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Done, we are using build artifacts now",
+      "parentUuid": "71cf86b6_e7550bb5",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 1
+      },
+      "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3ab93615_db7cc9ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
@@ -60,10 +85,10 @@
         "endChar": 49
       },
       "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "77c3da87_b8d6121c",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
@@ -84,10 +109,34 @@
         "endChar": 49
       },
       "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c171467_bcfb52ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Using separate binaries for now.",
+      "parentUuid": "77c3da87_b8d6121c",
+      "range": {
+        "startLine": 31,
+        "startChar": 46,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "7429c5ff_0acf781f",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
@@ -107,10 +156,10 @@
         "endChar": 94
       },
       "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a8c64344_f9b44abb",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
@@ -131,10 +180,34 @@
         "endChar": 94
       },
       "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6533170_0d04279c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:37:16Z",
+      "side": 1,
+      "message": "Since this is now build artifact, the binaries are specific to each CQ build, it\u0027s more difficult and not necessary to include the EC commit hash.",
+      "parentUuid": "a8c64344_f9b44abb",
+      "range": {
+        "startLine": 48,
+        "startChar": 86,
+        "endLine": 48,
+        "endChar": 94
+      },
+      "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "ec11e1dc_51a2d2fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
@@ -154,8 +227,7 @@
         "endChar": 75
       },
       "revId": "66826d63a93eb886c9a0c2b4d79c0489eccb1dfd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
