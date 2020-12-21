@@ -22,6 +22,7 @@ func init() {
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
+		Vars:         []string{"lacros.deployedBinary"}, // Isn't applicable to omaha. TODO: stop applying to omaha once switched to fixture.
 		Params: []testing.Param{
 			{
 				Pre:       launcher.StartedByDataUI(),
@@ -95,7 +96,8 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Connecting to the lacros-chrome browser")
-	l, err := launcher.ConnectToLacrosChrome(ctx, s.PreValue().(launcher.PreData).Chrome, launcher.LacrosUserDataDir)
+	p := s.PreValue().(launcher.PreData)
+	l, err := launcher.ConnectToLacrosChrome(ctx, p.Chrome, p.LacrosPath, launcher.LacrosUserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
