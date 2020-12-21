@@ -697,6 +697,24 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		return errors.Wrap(err, "failed to get test API connection")
 	}
 
+	// Close all windows.
+	var tabsClosed float64
+	if err := tconn.Call(ctx, &tabsClosed, `async () => {
+			const windows = await tast.promisify(chrome.windows.getAll)();
+			const remove = tast.promisify(chrome.windows.remove);
+			const getAllInWindow = tast.promisify(chrome.tabs.getAllInWindow);
+			let tabsClosed = 0;
+			for (const window of windows) {
+				const tabs = await getAllInWindow(window.id);
+				tabsClosed += tabs.length;
+				await remove(window.id);
+			}
+			return tabsClosed;
+		}`); err != nil {
+		return errors.Wrap(err, "failed to close all windows")
+	}
+	testing.ContextLogf(ctx, "Closed %f tabs.", tabsClosed)
+
 	if c.vkEnabled {
 		// Calling the method directly to avoid vkb/chrome circular imports.
 		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.inputMethodPrivate.hideInputView)()", nil); err != nil {
