@@ -16,6 +16,23 @@
       "message": "This will simplify gbb flag preconditions.",
       "revId": "2a99b52a2eee46d56429646e080f839e7869a6d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec35b740_99856767",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-21T23:03:47Z",
+      "side": 1,
+      "message": "Hi Kevin, could you please +2 (if everything looks alright)?  Thanks!",
+      "revId": "2a99b52a2eee46d56429646e080f839e7869a6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
