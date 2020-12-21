@@ -16,6 +16,23 @@
       "message": "android/ lgtm",
       "revId": "e2b328b895559a3eb3981bd448437d929cd90070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31049f34_52bfaf5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-12-21T20:08:59Z",
+      "side": 1,
+      "message": "Thanks for the reviews!",
+      "revId": "e2b328b895559a3eb3981bd448437d929cd90070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
