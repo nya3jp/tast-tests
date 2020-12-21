@@ -29,6 +29,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"diagnostics"},
+		Pre:          croshealthd.RunningPre,
 	})
 }
 
