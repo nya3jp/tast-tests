@@ -88,13 +88,13 @@ func (i *Image) GetGBBFlags() ([]pb.GBBFlag, []pb.GBBFlag, error) {
 	return clearFlags, setFlags, nil
 }
 
-// ClearAndSetGBBFlags clears and sets the specified flags, leaving the rest unchanged.
+// ClearAndSetGBBFlags clears and sets the specified flags, leaving the rest unchanged, set has precedence over clear.
 func (i *Image) ClearAndSetGBBFlags(clearFlags, setFlags []pb.GBBFlag) error {
 	var currGBB uint32
 	if err := i.readSectionData(GBBImageSection, gbbHeaderOffset, 4, &currGBB); err != nil {
 		return err
 	}
-	newGBB := (currGBB & ^calcGBBMask(clearFlags)) | calcGBBMask(setFlags)
+	newGBB := calcGBBBits(currGBB, calcGBBMask(clearFlags), calcGBBMask(setFlags))
 	if newGBB == currGBB {
 		// No need to write section data if GBB flags are already correct.
 		return nil
@@ -175,6 +175,11 @@ func calcGBBMask(flags []pb.GBBFlag) uint32 {
 		mask |= 0x0001 << f
 	}
 	return mask
+}
+
+// calcGBBBits returns the final GBB bits after applying clear and set to curr.  Set has precedence over clear in the same bit position.
+func calcGBBBits(curr, clear, set uint32) uint32 {
+	return (curr & ^clear) | set
 }
 
 // readSectionData returns interpreted data of a given size from raw bytes at the specified location.
