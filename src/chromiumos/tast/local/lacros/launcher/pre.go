@@ -31,17 +31,11 @@ const (
 	DataArtifact = "lacros_binary.tar"
 
 	// LacrosTestPath is the file path at which all lacros-chrome related test artifacts are stored.
-	LacrosTestPath = "/mnt/stateful_partition/lacros_test_artifacts"
+	lacrosTestPath = "/mnt/stateful_partition/lacros_test_artifacts"
 
-	// BinaryPath is the root directory for lacros-chrome related binaries.
-	BinaryPath = LacrosTestPath + "/lacros_binary"
+	// binaryPath is the root directory for lacros-chrome related binaries.
+	binaryPath = lacrosTestPath + "/lacros_binary"
 )
-
-// defaultChromeOptions specifies the options to pass to Chrome to enable Lacros UI integration.
-var defaultChromeOptions = []chrome.Option{
-	chrome.EnableFeatures("LacrosSupport"),
-	chrome.ExtraArgs("--lacros-chrome-path=" + BinaryPath),
-}
 
 // The PreData object is made available to users of this precondition via:
 //
@@ -53,6 +47,7 @@ type PreData struct {
 	Chrome      *chrome.Chrome   // The CrOS-chrome instance.
 	TestAPIConn *chrome.TestConn // The CrOS-chrome connection.
 	Mode        setupMode        // Mode used to get the lacros binary.
+	LacrosPath  string           // Root directory for lacros-chrome.
 }
 
 // StartedByData uses a pre-built image downloaded from cloud storage as a
@@ -65,7 +60,7 @@ func startedByDataWithChromeOSChromeOptions(suffix string, opts ...chrome.Option
 	return &preImpl{
 		name:    "lacros_started_by_artifact_" + suffix,
 		timeout: chrome.LoginTimeout + 7*time.Minute,
-		mode:    download,
+		mode:    preExist,
 		opts:    append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+mojoSocketPath)),
 	}
 }
@@ -91,8 +86,9 @@ func StartedByOmaha() testing.Precondition { return startedByOmahaPre }
 type setupMode int
 
 const (
-	// download lacros binary from GCS.
-	download setupMode = iota
+	// Lacros-chrome already exists during the precondition. It can be already downloaded per the
+	// external data dependency or pre-deployed by the caller site that invokes the tests.
+	preExist setupMode = iota
 	// Omaha is used to get the lacros binary.
 	omaha
 )
@@ -100,14 +96,14 @@ const (
 var startedByDataPre = &preImpl{
 	name:    "lacros_started_by_artifact",
 	timeout: chrome.LoginTimeout + 7*time.Minute,
-	mode:    download,
+	mode:    preExist,
 	opts:    []chrome.Option{chrome.ExtraArgs("--lacros-mojo-socket-for-testing=" + mojoSocketPath)},
 }
 
 var startedByDataForceCompositionPre = &preImpl{
 	name:    "lacros_started_by_artifact_force_composition",
 	timeout: chrome.LoginTimeout + 7*time.Minute,
-	mode:    download,
+	mode:    preExist,
 	opts: []chrome.Option{chrome.ExtraArgs(
 		"--lacros-mojo-socket-for-testing="+mojoSocketPath,
 		"--enable-hardware-overlays=\"\"")}, // Force composition.
@@ -116,10 +112,11 @@ var startedByDataForceCompositionPre = &preImpl{
 var startedByDataWith100FakeAppsPre = ash.NewFakeAppPrecondition("fake_apps", 100, startedByDataWithChromeOSChromeOptions, false)
 
 var startedByDataUIPre = &preImpl{
-	name:    "lacros_started_by_artifact_ui",
-	timeout: chrome.LoginTimeout + 7*time.Minute,
-	mode:    download,
-	opts:    defaultChromeOptions,
+	name:               "lacros_started_by_artifact_ui",
+	timeout:            chrome.LoginTimeout + 7*time.Minute,
+	mode:               preExist,
+	needsLacrosPathArg: true,
+	opts:               []chrome.Option{chrome.EnableFeatures("LacrosSupport")},
 }
 
 var startedByOmahaPre = &preImpl{
@@ -131,13 +128,15 @@ var startedByOmahaPre = &preImpl{
 
 // Implementation of lacros's precondition.
 type preImpl struct {
-	name     string           // Name of this precondition (for logging/uniqueing purposes).
-	timeout  time.Duration    // Timeout for completing the precondition.
-	mode     setupMode        // Where (download/build artifact) the container image comes from.
-	cr       *chrome.Chrome   // Connection to CrOS-chrome.
-	tconn    *chrome.TestConn // Test-connection for CrOS-chrome.
-	prepared bool             // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
-	opts     []chrome.Option  // Options to be run for CrOS-chrome.
+	name               string           // Name of this precondition (for logging/uniqueing purposes).
+	timeout            time.Duration    // Timeout for completing the precondition.
+	mode               setupMode        // How (pre exist/to be downloaded/) the container image is obtained.
+	needsLacrosPathArg bool             // If true, "--lacros-chrome-path" arg should be passed to ash-chrome and its value is |lacrosPath|.
+	lacrosPath         string           // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
+	cr                 *chrome.Chrome   // Connection to CrOS-chrome.
+	tconn              *chrome.TestConn // Test-connection for CrOS-chrome.
+	prepared           bool             // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	opts               []chrome.Option  // Options to be run for CrOS-chrome.
 }
 
 // Interface methods for a testing.Precondition.
@@ -152,20 +151,20 @@ func (p *preImpl) prepareLacrosChromeBinary(ctx context.Context, s *testing.PreS
 		return errors.Wrap(err, "failed to remount stateful partition with exec privilege")
 	}
 
-	if err := os.RemoveAll(LacrosTestPath); err != nil && !os.IsNotExist(err) {
+	if err := os.RemoveAll(lacrosTestPath); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to remove old test artifacts directory")
 	}
 
-	if err := os.MkdirAll(LacrosTestPath, os.ModePerm); err != nil {
+	if err := os.MkdirAll(lacrosTestPath, os.ModePerm); err != nil {
 		return errors.Wrap(err, "failed to make new test artifacts directory")
 	}
 
 	artifactPath := s.DataPath(DataArtifact)
-	tarCmd := testexec.CommandContext(ctx, "tar", "-xvf", artifactPath, "-C", LacrosTestPath)
+	tarCmd := testexec.CommandContext(ctx, "tar", "-xvf", artifactPath, "-C", lacrosTestPath)
 	if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to untar test artifacts")
 	}
-	if err := os.Chmod(BinaryPath, 0777); err != nil {
+	if err := os.Chmod(binaryPath, 0777); err != nil {
 		return errors.Wrap(err, "failed to change permissions of binary dir path")
 	}
 
@@ -205,6 +204,18 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	extList := strings.Join(c.ExtDirs(), ",")
 	extensionArgs := extensionArgs(c.TestExtID(), extList)
 	p.opts = append(p.opts, chrome.ExtraArgs("--lacros-chrome-additional-args="+strings.Join(extensionArgs, "####")))
+
+	path, deployed := s.Var("lacros.deployedBinary")
+	if deployed {
+		p.lacrosPath = path
+	} else {
+		p.lacrosPath = binaryPath
+	}
+
+	if p.needsLacrosPathArg {
+		p.opts = append(p.opts, chrome.ExtraArgs("--lacros-chrome-path="+p.lacrosPath))
+	}
+
 	var err error
 	if p.cr, err = chrome.New(ctx, p.opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -214,9 +225,11 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 
 	switch p.mode {
-	case download:
-		if err := p.prepareLacrosChromeBinary(ctx, s); err != nil {
-			s.Fatal("Failed to download and prepare lacros-chrome, err")
+	case preExist:
+		if !deployed {
+			if err := p.prepareLacrosChromeBinary(ctx, s); err != nil {
+				s.Fatal("Failed to prepare lacros-chrome, err")
+			}
 		}
 	case omaha:
 		// When launched by Omaha we need to wait several seconds for lacros to be launchable.
@@ -277,5 +290,5 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.tconn, p.mode}
+	return PreData{p.cr, p.tconn, p.mode, p.lacrosPath}
 }
