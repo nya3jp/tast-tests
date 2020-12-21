@@ -20,7 +20,7 @@ import (
 // RunTest checks if the given WebRTC tests work correctly.
 // htmlName is a filename of an HTML file in data directory.
 // entryPoint is a JavaScript expression that starts the test there.
-func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+func RunTest(ctx context.Context, s *testing.State, cr chrome.Interface,
 	htmlName, entryPoint string, results interface{}) {
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
