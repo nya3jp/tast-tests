@@ -46,12 +46,7 @@ func init() {
 			"jmpollock@google.com",
 			"chromeos-platform-ml@google.com",
 		},
-		Attr: []string{
-			"group:mainline",
-			"informational",
-			"group:crosbolt",
-			"crosbolt_nightly",
-		},
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"ml_benchmark"},
 		HardwareDeps: hwdep.D(hwdep.ForceDischarge()),
