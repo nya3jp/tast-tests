@@ -75,6 +75,17 @@ func New(ctx context.Context, d *adb.Device, apkZipPath string, overrideGMS bool
 		}
 	}
 
+	// Grant the MANAGE_EXTERNAL_STORAGE permission to the Nearby Snippet if the SDK version is 30+ (Android 11+).
+	// This is required for the Android sender flow, since the Nearby Snippet sends files from external storage.
+	if sdkVersion, err := a.device.SDKVersion(ctx); err != nil {
+		return a, errors.Wrap(err, "failed to get android sdk version")
+	} else if sdkVersion >= 30 {
+		permissionsCmd := a.device.ShellCommand(ctx, "appops", "set", "--uid", moblyPackage, "MANAGE_EXTERNAL_STORAGE", "allow")
+		if err := permissionsCmd.Run(); err != nil {
+			return a, errors.Wrap(err, "failed to grant external storage permissions to the Nearby Snippet APK")
+		}
+	}
+
 	// Launch the Nearby Snippet APK and connect to the RPC server.
 	if err := a.LaunchSnippet(ctx); err != nil {
 		return a, err
@@ -262,6 +273,15 @@ func overrideGMSCoreFlags(ctx context.Context, device *adb.Device) error {
 // SHA256Sum computes the sha256sum of the specified file on the Android device.
 func (a *AndroidNearbyDevice) SHA256Sum(ctx context.Context, filename string) (string, error) {
 	return a.device.SHA256Sum(ctx, filename)
+}
+
+// StageFile pushes the specified file to the Android device to be used in sending.
+func (a *AndroidNearbyDevice) StageFile(ctx context.Context, file string) error {
+	androidDst := filepath.Join(android.DownloadDir, SendDir, filepath.Base(file))
+	if err := a.device.PushFile(ctx, file, androidDst); err != nil {
+		return errors.Wrapf(err, "failed to push %v to %v", file, androidDst)
+	}
+	return nil
 }
 
 // jsonRPCCmd is the command format required to initialize the RPC server.
@@ -540,6 +560,34 @@ func (a *AndroidNearbyDevice) AcceptTheSharing(ctx context.Context, token string
 // CancelReceivingFile ends Nearby Share on the receiving side. This is used to fail fast instead of waiting for ReceiveFile's timeout.
 func (a *AndroidNearbyDevice) CancelReceivingFile(ctx context.Context) error {
 	id, err := a.clientRPCRequest(ctx, "cancelReceivingFile")
+	if err != nil {
+		return err
+	}
+	// Read response.
+	_, err = a.clientRPCResponse(ctx, id)
+	return err
+}
+
+// SendFile starts sending with a timeout.
+// Sets the AndroidNearbyDevice's transferCallback, which is needed when awaiting follow-up SnippetEvents when calling eventWaitAndGet.
+func (a *AndroidNearbyDevice) SendFile(ctx context.Context, senderName, receiverName, shareFileName string, mimetype MimeType, turnaroundTime time.Duration) error {
+	// Reset the transferCallback between shares.
+	a.transferCallback = ""
+	id, err := a.clientRPCRequest(ctx, "sendFile", senderName, receiverName, shareFileName, mimetype, int(turnaroundTime.Seconds()))
+	if err != nil {
+		return err
+	}
+	res, err := a.clientRPCResponse(ctx, id)
+	if err != nil {
+		return err
+	}
+	a.transferCallback = res.Callback
+	return nil
+}
+
+// CancelSendingFile ends Nearby Share on the sending side. This is used to fail fast instead of waiting for SendFile's timeout.
+func (a *AndroidNearbyDevice) CancelSendingFile(ctx context.Context) error {
+	id, err := a.clientRPCRequest(ctx, "cancelSendingFile")
 	if err != nil {
 		return err
 	}

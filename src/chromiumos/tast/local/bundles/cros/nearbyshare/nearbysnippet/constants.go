@@ -13,6 +13,9 @@ const (
 	instrumentationRunnerClass = "com.google.android.mobly.snippet.SnippetRunner"
 )
 
+// SendDir is the subdirectory of the Android downloads directory where we will stage files for sending.
+const SendDir = "test_files"
+
 // DataUsage are data usage values for the Nearby Snippet's setupDevice and getDataUsage methods.
 type DataUsage int
 
@@ -51,4 +54,16 @@ const (
 	// Shared Snippet event when Android is sender and receiver.
 	// The onStop event indicates that the transfer is complete and all teardown tasks for Android Nearby are complete.
 	SnippetEventOnStop SnippetEvent = "onStop"
+)
+
+// MimeType are the mime type values that are accepted by the snippet's sendFile method.
+type MimeType string
+
+// MimeTypes supported by the snippet library.
+const (
+	MimeTypeTextVCard MimeType = "text/x-vcard"
+	MimeTypePDF       MimeType = "application/pdf"
+	MimeTypeJpeg      MimeType = "image/jpeg"
+	MimeTypeMP4       MimeType = "video/mp4"
+	MimeTypeTextPlain MimeType = "text/plain"
 )

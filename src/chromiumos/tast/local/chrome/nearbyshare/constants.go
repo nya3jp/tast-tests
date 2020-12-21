@@ -56,5 +56,8 @@ const SendDir = "/home/chronos/user/Downloads/nearby_test_files"
 // CrosDetectReceiverTimeout is the timeout for a CrOS sender to detect a receiver.
 const CrosDetectReceiverTimeout = time.Minute
 
+// CrosDetectSenderTimeout is the timeout for a CrOS receiver to detect a sender.
+const CrosDetectSenderTimeout = time.Minute
+
 // SmallFileTimeout is the test timeout for small file transfer tests.
 const SmallFileTimeout = 2 * time.Minute

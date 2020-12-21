@@ -28,9 +28,11 @@ import (
 // TestData contains the values for parameterized tests, such as the file name and the total test timeout
 // which can vary depending on file size. The timeout for the test is actually set in the testing.Params,
 // Android Nearby tests need to know the total timeout, which is used as a parameter to several RPCs.
+// The MimeType is required when sending from Android
 type TestData struct {
 	Filename string
 	Timeout  time.Duration
+	MimeType nearbysnippet.MimeType
 }
 
 // UnzipTestFiles extracts test data files to a temporary directory. Returns an array of base filenames and the name of the temporary dir.
@@ -87,6 +89,24 @@ func ExtractCrosTestFiles(ctx context.Context, zipPath string) ([]string, error)
 		}
 	}
 	return filenames, nil
+}
+
+// ExtractAndroidTestFile prepares a test file to send from an Android device.
+func ExtractAndroidTestFile(ctx context.Context, zipPath string, a *nearbysnippet.AndroidNearbyDevice) (string, error) {
+	filenames, tempDir, err := UnzipTestFiles(ctx, zipPath)
+	if err != nil {
+		return "", err
+	}
+	defer os.RemoveAll(tempDir)
+
+	// Expecting just 1 file for Android, which is a limitation of the Nearby Snippet.
+	if len(filenames) != 1 {
+		return "", errors.Errorf("expected exactly 1 file, got %v", len(filenames))
+	}
+	if err := a.StageFile(ctx, filepath.Join(tempDir, filenames[0])); err != nil {
+		return "", err
+	}
+	return filenames[0], nil
 }
 
 // RandomDeviceName appends a randomly generated integer (up to 6 digits) to the base device name to avoid conflicts
