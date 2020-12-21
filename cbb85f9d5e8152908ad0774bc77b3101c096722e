@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e4c3d67_ee5f5c83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-21T17:28:13Z",
+      "side": 1,
+      "message": "Sounds good, thank you for confirming!",
+      "parentUuid": "0a0ea95d_3e16e73f",
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c382f4f_f9784da5",
@@ -100,6 +118,30 @@
       "writtenOn": "2020-12-21T00:37:11Z",
       "side": 1,
       "message": "nit: Now that this is a constructor of ChromeVoxConn. By convention in Go, I would name this NewChromeVoxConn().\n\n(I couldn\u0027t find exact reference for this, but you can see various examples in https://golang.org/doc/effective_go.html)",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c15d609_49db3b5c",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-21T17:28:13Z",
+      "side": 1,
+      "message": "Agreed, thanks for the reference; I also found an existing example:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/conn.go;l\u003d34",
+      "parentUuid": "0c382f4f_f9784da5",
       "range": {
         "startLine": 44,
         "startChar": 5,
@@ -133,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef948b85_5a63b627",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-21T17:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a49c39_809e3651",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 1
+      },
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baa8efda_1187ace8",
@@ -156,6 +222,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c38df88_2c8e6a18",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-21T17:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baa8efda_1187ace8",
+      "range": {
+        "startLine": 115,
+        "startChar": 29,
+        "endLine": 115,
+        "endChar": 42
+      },
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac56ffab_d8699817",
@@ -169,6 +259,30 @@
       "writtenOn": "2020-12-16T22:06:38Z",
       "side": 1,
       "message": "Not sure what the style is in Go; is it better to do the above, or create an Eval method that takes *ChromeVoxConn as a receiver? That way we could just do:\n\ncvconn.Eval(...)",
+      "range": {
+        "startLine": 62,
+        "startChar": 18,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab672e68_e1b07d2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-21T17:28:13Z",
+      "side": 1,
+      "message": "@Hiroki, do you have an opinion on what\u0027s best here? Is it better to call Eval using the underlying Conn object, or is it better to create an Eval method like below?\n\nfunc (cvconn *ChromeVoxConn) Eval(...) {\n    cvconn.conn.Eval(...)\n}\n\n// Now we can do:\ncvconn.Eval(...)",
+      "parentUuid": "ac56ffab_d8699817",
       "range": {
         "startLine": 62,
         "startChar": 18,
