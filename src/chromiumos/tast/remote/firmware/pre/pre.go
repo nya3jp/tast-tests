@@ -9,15 +9,20 @@ import (
 	"context"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	common "chromiumos/tast/common/firmware"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/checkers"
+	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
 
 // Value contains fields that are useful for tests.
 type Value struct {
 	BootMode common.BootMode
+	GBBFlags pb.GBBFlagsState
 	Helper   *firmware.Helper
 }
 
@@ -25,6 +30,7 @@ type Value struct {
 type impl struct {
 	v            *Value
 	origBootMode *common.BootMode
+	origGBBFlags *pb.GBBFlagsState
 	timeout      time.Duration
 }
 
@@ -43,18 +49,16 @@ func RecMode() testing.Precondition {
 	return recMode
 }
 
-const (
-	// prepareTimeout is the maximum time that the Prepare method should take, adjust as needed.
-	prepareTimeout = 5 * time.Minute
-)
-
 // newPrecondition creates an instance of firmware Precondition.
 func newPrecondition(mode common.BootMode) testing.Precondition {
 	return &impl{
 		v: &Value{
 			BootMode: mode,
+			// Default GBBFlagsState for firmware testing.
+			GBBFlags: pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()},
 		},
-		timeout: prepareTimeout,
+		// The maximum time that the Prepare method should take, adjust as needed.
+		timeout: 5 * time.Minute,
 	}
 }
 
@@ -77,6 +81,10 @@ func (i *impl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
 		s.Fatal("Could not setup BootMode: ", err)
 	}
 
+	if err := i.setupGBBFlags(ctx); err != nil {
+		s.Fatal("Could not setup GBB flags: ", err)
+	}
+
 	return i.v
 }
 
@@ -89,6 +97,10 @@ func (i *impl) Close(ctx context.Context, s *testing.PreState) {
 
 	// Don't reuse the Helper, as the helper's servo RPC connection may be down.
 	i.initHelper(ctx, s)
+
+	if err := i.restoreGBBFlags(ctx); err != nil {
+		s.Error("Count not restore GBB flags: ", err)
+	}
 
 	if err := i.restoreBootMode(ctx); err != nil {
 		s.Error("Count not restore BootMode: ", err)
@@ -175,6 +187,94 @@ func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode) error {
 	}
 	if err := ms.RebootToMode(ctx, mode); err != nil {
 		return err
+	}
+	return nil
+}
+
+// setupGBBFlags sets and clears GBB Flags for firmware testing.
+func (i *impl) setupGBBFlags(ctx context.Context) error {
+
+	if err := i.v.Helper.RequireBiosServiceClient(ctx); err != nil {
+		return errors.Wrap(err, "failed to require BiosServiceClient")
+	}
+
+	orig, err := i.v.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "getting original GBB Flags failed")
+	}
+	i.origGBBFlags = orig
+
+	if common.GBBFlagsStatesEqual(i.v.GBBFlags, *i.origGBBFlags) {
+		testing.ContextLog(ctx, "GBBFlags are already proper")
+		return nil
+	}
+
+	if err := i.setAndCheckGBBFlags(ctx, i.v.GBBFlags); err != nil {
+		return errors.Wrap(err, "setAndCheckGBBFlags failed")
+	}
+
+	if err := i.rebootIfRequired(ctx, *i.origGBBFlags, i.v.GBBFlags); err != nil {
+		return errors.Wrap(err, "rebooting after required flags changed failed")
+	}
+
+	return nil
+}
+
+// restoreGBBFlags restores GBB Flags as it was prior to setupGBBFlags.
+func (i *impl) restoreGBBFlags(ctx context.Context) error {
+	if i.origGBBFlags == nil {
+		return nil
+	}
+
+	if err := i.v.Helper.RequireBiosServiceClient(ctx); err != nil {
+		return errors.Wrap(err, "failed to require BiosServiceClient")
+	}
+
+	curr, err := i.v.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "getting current GBB Flags failed")
+	}
+
+	if !common.GBBFlagsStatesEqual(*i.origGBBFlags, *curr) {
+		if err := i.setAndCheckGBBFlags(ctx, *i.origGBBFlags); err != nil {
+			return errors.Wrap(err, "restoreGBBFlags failed")
+		}
+		if err := i.rebootIfRequired(ctx, *curr, *i.origGBBFlags); err != nil {
+			return errors.Wrap(err, "rebooting after required flags changed failed")
+		}
+	}
+
+	return nil
+}
+
+// setAndCheckGBBFlags sets and reads back the GBBFlags to ensure correctness.
+func (i *impl) setAndCheckGBBFlags(ctx context.Context, req pb.GBBFlagsState) error {
+	if err := i.v.Helper.RequireBiosServiceClient(ctx); err != nil {
+		return err
+	}
+
+	if _, err := i.v.Helper.BiosServiceClient.ClearAndSetGBBFlags(ctx, &req); err != nil {
+		return err
+	}
+
+	checker := checkers.New(i.v.Helper)
+	if err := checker.GBBFlags(ctx, req); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// rebootIfRequired reboots the DUT if any flags that require a reboot has changed.
+func (i *impl) rebootIfRequired(ctx context.Context, a, b pb.GBBFlagsState) error {
+	if common.GBBFlagsChanged(a, b, common.RebootRequiredGBBFlags()) {
+		ms, err := firmware.NewModeSwitcher(ctx, i.v.Helper)
+		if err != nil {
+			return err
+		}
+		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+			return err
+		}
 	}
 	return nil
 }
