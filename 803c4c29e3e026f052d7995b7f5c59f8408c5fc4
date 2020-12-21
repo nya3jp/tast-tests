@@ -33,6 +33,166 @@
       "message": "Spreading out the review load...",
       "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "028219cf_111276a7",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-21T19:29:18Z",
+      "side": 1,
+      "message": "Update local/firmware/bios/image.go\u0027s sortedGBBFlags to use AllGBBFlags: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/firmware/bios/image.go;drc\u003da92ba2e7d7185733c59efe08277514c300b66f86;l\u003d40",
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e3ee06_66336608",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-21T19:29:18Z",
+      "side": 1,
+      "message": "nit/style: add space after //",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bc786d9_b0d8c524",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-21T19:29:18Z",
+      "side": 1,
+      "message": "nit/style: capitalize the F in Flags. (gbbFlagsEqual)",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f165270_382a9810",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-21T19:29:18Z",
+      "side": 1,
+      "message": "I\u0027m not so sure about this. According to the docs for reflect.DeepEqual, it seems like empty slices should be equal:\n\n    Slice values are deeply equal when all of the following are true: they are both nil or both non-nil, they have the same length, and either they point to the same initial entry of the same underlying array (that is, \u0026x[0] \u003d\u003d \u0026y[0]) or their corresponding elements (up to length) are deeply equal. Note that a non-nil empty slice and a nil slice (for example, []byte{} and []byte(nil)) are not deeply equal.\n\nHere\u0027s a snippet demonstrating empty, DeepEqual slices: https://play.golang.com/p/X_IWXdZBap0\n\nIf you\u0027re correct about the DeepEqual logic, we can simplify this block to:\n\n    if len(a) \u003d\u003d 0 \u0026\u0026 len(b) \u003d\u003d 0 {\n        return true\n    }\n    return reflect.DeepEqual(a, b)\n\n...since if only one of the two has length 0, then reflect.DeepEqual should return false.",
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9aecfee_47a861fb",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-21T19:29:18Z",
+      "side": 1,
+      "message": "This is redundant with gbbFlagsEqual.",
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13fb054a_16ef1fe1",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-21T19:29:18Z",
+      "side": 1,
+      "message": "style: Remove newlines:\n\n    t.Errorf(\"Clear incorrect for canonical %v: want %v; got %v\", s.a.Clear, s.c.Clear, ca.Clear)\n\nDitto L57, L85, L111, L124",
+      "range": {
+        "startLine": 55,
+        "startChar": 47,
+        "endLine": 55,
+        "endChar": 49
+      },
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd8e767_73e9059a",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-21T19:29:18Z",
+      "side": 1,
+      "message": "style: Per https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures, please switch the reported order to \"got; want\".\n\nDitto L57, L85, L111, L124",
+      "range": {
+        "startLine": 55,
+        "startChar": 48,
+        "endLine": 55,
+        "endChar": 53
+      },
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e1101d_2ed70c39",
+        "filename": "src/chromiumos/tast/common/firmware/gbb_flags_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-21T19:29:18Z",
+      "side": 1,
+      "message": "style: Please change the compared order to !compare(got, want), per https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "803c4c29e3e026f052d7995b7f5c59f8408c5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
