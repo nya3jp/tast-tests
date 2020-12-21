@@ -16,6 +16,7 @@ import (
 
 	"github.com/abema/go-mp4"
 	"github.com/pixelbender/go-matroska/matroska"
+	"github.com/rwcarlsen/goexif/exif"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
@@ -112,6 +113,41 @@ func getOrientedResolution(ctx context.Context, app *cca.App, r cca.Resolution) 
 	return r, nil
 }
 
+func imageResolution(path string) (int, int, error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to open captured file for decoding jpeg")
+	}
+	c, err := jpeg.DecodeConfig(f)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to decode captured file")
+	}
+	defer f.Close()
+
+	// Read display rotation number from exif.
+	f2, err := os.Open(path)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to open captured file for reading exif")
+	}
+	defer f2.Close()
+	x, err := exif.Decode(f2)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to decode exif")
+	}
+	tag, err := x.Get(exif.Orientation)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to get orientation from exif")
+	}
+	o, err := tag.Int(0)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to get integer value of orientation tag")
+	}
+	if 5 <= o && o <= 8 {
+		return c.Height, c.Width, nil
+	}
+	return c.Width, c.Height, nil
+}
+
 func testPhotoResolution(ctx context.Context, app *cca.App) error {
 	return app.RunThroughCameras(ctx, func(facing cca.Facing) error {
 		if err := app.SwitchMode(ctx, cca.Photo); err != nil {
@@ -145,16 +181,12 @@ func testPhotoResolution(ctx context.Context, app *cca.App) error {
 			if err != nil {
 				return errors.Wrap(err, "failed to get file path")
 			}
-			f, err := os.Open(path)
+			width, height, err := imageResolution(path)
 			if err != nil {
-				return errors.Wrap(err, "failed to open captured file")
+				return errors.Wrap(err, "failed to get image resolution")
 			}
-			c, err := jpeg.DecodeConfig(f)
-			if err != nil {
-				return errors.Wrap(err, "failed to decode captured file")
-			}
-			if c.Width != or.Width || c.Height != or.Height {
-				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", c.Width, c.Height, or.Width, or.Height)
+			if width != or.Width || height != or.Height {
+				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", width, height, or.Width, or.Height)
 			}
 			return nil
 		})
