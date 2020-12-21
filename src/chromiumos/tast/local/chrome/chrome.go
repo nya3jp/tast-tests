@@ -166,6 +166,12 @@ const (
 // for details about this pattern.
 type Option func(c *Chrome)
 
+// Interface defines interface which includes methods which should be implemented by all
+// Chrome instances. (e.g. Lacros)
+type Interface interface {
+	NewConn(context.Context, string, ...cdputil.CreateTargetOption) (*Conn, error)
+}
+
 // EnableWebAppInstall returns an Option that can be passed to enable web app auto-install after user login.
 // By default web app auto-install is disabled to reduce network traffic in test environment.
 // See https://crbug.com/1076660 for more details.

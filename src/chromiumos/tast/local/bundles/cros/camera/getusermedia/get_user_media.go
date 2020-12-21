@@ -126,7 +126,7 @@ const (
 // duration specifies how long video capturing will run for each resolution.
 // If verbose is true, video drivers' verbose messages will be enabled.
 // verbose must be false for performance tests.
-func RunGetUserMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+func RunGetUserMedia(ctx context.Context, s *testing.State, cr chrome.Interface,
 	duration time.Duration, verbose VerboseLoggingMode) cameraResults {
 	if verbose == VerboseLogging {
 		vl, err := logging.NewVideoLogger()
