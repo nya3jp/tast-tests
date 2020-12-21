@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/vm"
@@ -122,11 +123,18 @@ const (
 	NoVerboseLogging
 )
 
+// ChromeInterface defines interface which includes methods which should be
+// implemented by all Chrome instances. (e.g. Lacros)
+type ChromeInterface interface {
+	NewConn(context.Context, string, ...cdputil.CreateTargetOption) (*chrome.Conn, error)
+	Close(ctx context.Context) error
+}
+
 // RunGetUserMedia run a test in /data/getusermedia.html.
 // duration specifies how long video capturing will run for each resolution.
 // If verbose is true, video drivers' verbose messages will be enabled.
 // verbose must be false for performance tests.
-func RunGetUserMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+func RunGetUserMedia(ctx context.Context, s *testing.State, cr ChromeInterface,
 	duration time.Duration, verbose VerboseLoggingMode) cameraResults {
 	if verbose == VerboseLogging {
 		vl, err := logging.NewVideoLogger()
