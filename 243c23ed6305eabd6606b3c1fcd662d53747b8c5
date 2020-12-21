@@ -56,6 +56,30 @@
       },
       "revId": "243c23ed6305eabd6606b3c1fcd662d53747b8c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8cf2934_232efa57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fio_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-12-21T05:52:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a074992_62d4101f",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "243c23ed6305eabd6606b3c1fcd662d53747b8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
