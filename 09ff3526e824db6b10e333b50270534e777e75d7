@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9173fac5_209c5767",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "should this be a public library? I feel like this better fits as a subpackage of bundles/cros/nearbyshare",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc637e7f_840a8e17",
         "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
         "patchSetId": 5
@@ -19,6 +42,99 @@
         "startChar": 26,
         "endLine": 8,
         "endChar": 53
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96587741_2e7d65fe",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "Versioning this may not be a bad idea. The advantage of versioning in gcs is that if we update the apk, it won\u0027t potentially break versions of the test in older milestones.",
+      "parentUuid": "bc637e7f_840a8e17",
+      "range": {
+        "startLine": 8,
+        "startChar": 26,
+        "endLine": 8,
+        "endChar": 53
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea4ae53_7b341885",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "nit: don\u0027t prepend with NearbySnippet. other locations will use it at nearbysnippet.NearbySnippetApk. Same for other constants here.\n\nEven the local constants don\u0027t really need it since we are in the nearbysnippet package, and that gives context",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d426d2_e43c6c4f",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "This should probably go up a package and be android.DefaultUser or something similar.",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd21939a_1f385879",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "nit: merge these into one const block with comments in the block?",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 85
       },
       "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -49,6 +165,190 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d280d55e_388ac5fc",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "Should this method be called New or something similar?",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7587204b_a0943a86",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "will this cause versioning conflicts in the future? This may stop the apk from ever updating.",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 102
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97034b1_7157ff6e",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "nit: maybe merge lines",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 54
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e52d869e_6bc581e1",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "why does this need such a complicated start command?",
+      "range": {
+        "startLine": 88,
+        "startChar": 41,
+        "endLine": 89,
+        "endChar": 137
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5f0a1e_ad35384e",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "maybe abstract making these sense they are almost identical?",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 27
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe8b5a4_a701c88e",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "why is stop on AndroidNearbyDevice, but launchSnippet not?",
+      "range": {
+        "startLine": 192,
+        "startChar": 30,
+        "endLine": 192,
+        "endChar": 41
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c57bb3_ae59a874",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "do we really want to log this all the time?",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 57
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040078fc_15053767",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "why -1?",
+      "range": {
+        "startLine": 299,
+        "startChar": 22,
+        "endLine": 299,
+        "endChar": 30
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5e21bc5_4d0b40af",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/nearby_snippet_20201217.zip.external",
         "patchSetId": 5
@@ -72,6 +372,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56570077_f6761835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/nearby_snippet_20201217.zip.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "Does this need to be an external zip? can the source just be checked in at tast-tests/android/*? I assume if it needs to be private, it could be in tast-tests-private/android/*, but I haven\u0027t tested that to ensure that works.",
+      "range": {
+        "startLine": 2,
+        "startChar": 84,
+        "endLine": 2,
+        "endChar": 88
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95cac376_a1f1c6cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
         "patchSetId": 5
@@ -88,6 +411,122 @@
         "startChar": 49,
         "endLine": 19,
         "endChar": 67
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a46128_87f3755e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "\u003e \"overriden\" is a possible misspelling of \"overridden\".\n\nPlease fix.",
+      "parentUuid": "c46585ef_22f29953",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e1a3aa_8ae8b4ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "can we say if len !\u003d 1 since we assume 1 connected device",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67bb97e7_593434d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "nit: var dontOverride bool",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eff6db7_2fa54cc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "Does this go here or after initialize",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 37
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfecb1b_dd7a92c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-12-21T19:44:17Z",
+      "side": 1,
+      "message": "should initialize be part of/called by prepare",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 38
       },
       "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
