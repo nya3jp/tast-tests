@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1168351_95183ad5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-22T07:12:05Z",
+      "side": 1,
+      "message": "ptal",
+      "revId": "9ea12be006376a2a276ab3d1440be7a8f2264fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4db20c4e_75bef413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-22T07:12:05Z",
+      "side": 1,
+      "message": "This depends on https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2600596",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "9ea12be006376a2a276ab3d1440be7a8f2264fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
