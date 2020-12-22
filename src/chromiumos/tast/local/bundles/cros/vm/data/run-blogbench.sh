@@ -19,7 +19,8 @@ main() {
     [[ "$$" == "1" ]] || die "Not runnnig as PID 1"
 
     [[ $# -eq 3 ]] || \
-        die "Usage: $(basename "$0") <block|fs|p9> <src> <test directory>"
+        die "Usage: $(basename "$0") <block|fs|fs_dax|p9> <src> " \
+            "<test directory>"
 
     [[ -d "${mountpoint}" ]] || die "${mountpoint} is not a directory"
 
@@ -42,6 +43,9 @@ main() {
             ;;
         fs)
             mount -t virtiofs "${src}" "${mountpoint}"
+            ;;
+        fs_dax)
+            mount -t virtiofs -o dax "${src}" "${mountpoint}"
             ;;
         *)
             die "Unknown storage type: ${kind}"
