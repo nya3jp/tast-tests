@@ -16,6 +16,143 @@
       "message": "This is the last of the changes to enable GBB flags in preconditions, thanks for all the reviews!",
       "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38404bb5_c7783407",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T21:04:01Z",
+      "side": 1,
+      "message": "The way you\u0027ve defined this GBBFlagsState, many flags will be present in both Clear and Set. Under the current implementation of Image.ClearAndSetGBBFlags, I think that will work. But this is implicit, not explicit, and thus might be changed unexpectedly later. In the name of defensive programming, I suggest making one of the two following changes.\n\nOption 1: Define this Clear to include only the flags that are not in FAFTGBBFlags. This could be accomplished by creating a new constant, common.FAFTClearGBBFlags. It could also be accomplished by calculating during newPrecondition (before L53) which flags should be cleared.\n\nOption 2: Update the docstrings for Image.ClearAndSetGBBFlags and BiosService.ClearAndSetGBBFlags to explicitly state that if a flag is present in both clear and set, then it will be set. Also add a test case for this scenario.",
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7cb8261_7e23b69d",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T21:04:01Z",
+      "side": 1,
+      "message": "Per http://go/tast-code-review-comments#state, please avoid passing around State unless you really need it. Here, you can use testing.ContextLog instead of s.Log, and return an error instead of s.Fatal.",
+      "range": {
+        "startLine": 182,
+        "startChar": 50,
+        "endLine": 182,
+        "endChar": 69
+      },
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee724927_27216b48",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T21:04:01Z",
+      "side": 1,
+      "message": "nit/style: remove newline",
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a3b998_c2643b76",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T21:04:01Z",
+      "side": 1,
+      "message": "We need to check whether i.origGBBFlags has already been set. Otherwise, if multiple tests run sequentially under this Precondition, the existing origGBBFlags will be overwritten.\n\n    if i.origGBBFlags \u003d\u003d nil {\n        i.origGBBFlags \u003d orig\n    }",
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e449b663_d91ce61f",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T21:04:01Z",
+      "side": 1,
+      "message": "Per http://go/tast-code-review-comments#state, please avoid passing around State unless you really need it. Here, you can return an error instead of s.Error.",
+      "range": {
+        "startLine": 209,
+        "startChar": 52,
+        "endLine": 209,
+        "endChar": 71
+      },
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7cd520_7f4fcb62",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T21:04:01Z",
+      "side": 1,
+      "message": "style: Switch this logic to return early if necessary, to keep the normal code path at minimal indentation:\n\n    if common.GBBFlagsStatesEqual(*i.origGBBFlags, *curr) {\n        return\n    }\n    \n    if err :\u003d i.setAndCheckGBBFlags...",
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27bc540b_3994a82c",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T21:04:01Z",
+      "side": 1,
+      "message": "nit/typo: \"have\"",
+      "range": {
+        "startLine": 255,
+        "startChar": 71,
+        "endLine": 255,
+        "endChar": 74
+      },
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
