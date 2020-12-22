@@ -196,6 +196,12 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 			return errors.New("pv should not be nil when measuring CPU usage and power consumption")
 		}
 
+		s.Log("Waiting for codec to be ready")
+		if err := c2e2etest.WaitForCodecReady(ctx, a); err != nil {
+			return errors.Wrap(err, "failed to wait for codec before measuring usage")
+		}
+
+		s.Log("Starting CPU measurements")
 		measurements, err := cpu.MeasureUsage(ctx, ba.measureDuration)
 		if err != nil {
 			return errors.Wrapf(err, "failed to run (measure CPU and power consumption): %v", err)

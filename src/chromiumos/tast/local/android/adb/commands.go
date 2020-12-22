@@ -44,12 +44,12 @@ func (d *Device) GetProp(ctx context.Context, key string) (string, error) {
 // BroadcastResult is the parsed result of an Android Activity Manager broadcast.
 type BroadcastResult struct {
 	// The result value of the broadcast.
-	result int
+	Result int
 	// Optional: Additional data to be passed with the result.
-	data *string
+	Data *string
 	// Optional: A bundle of extra data passed with the result.
 	// TODO(springerm): extras is a key-value map and should be parsed.
-	extras *string
+	Extras *string
 }
 
 const (
@@ -82,18 +82,18 @@ func (d *Device) BroadcastIntent(ctx context.Context, action string, params ...s
 	}
 
 	broadcastResult := BroadcastResult{}
-	broadcastResult.result = resultValue
+	broadcastResult.Result = resultValue
 
 	// `m[3]` matches the data value. `m[2]` matches the entire "data=\"...\"" part.
 	// We have to check `m[2]` because the data could be an empty string, which is different from "no data", in which case we return nil.
 	data := string(m[3])
 	if string(m[2]) != "" {
-		broadcastResult.data = &data
+		broadcastResult.Data = &data
 	}
 
 	extras := string(m[6])
 	if string(m[5]) != "" {
-		broadcastResult.extras = &extras
+		broadcastResult.Extras = &extras
 	}
 
 	return &broadcastResult, nil
@@ -106,17 +106,17 @@ func (d *Device) BroadcastIntentGetData(ctx context.Context, action string, para
 		return "", err
 	}
 
-	if result.result != intentResultActivityResultOk {
-		if result.data == nil {
-			return "", errors.Errorf("broadcast of %q failed, status = %d", action, result.result)
+	if result.Result != intentResultActivityResultOk {
+		if result.Data == nil {
+			return "", errors.Errorf("broadcast of %q failed, status = %d", action, result.Result)
 		}
 
-		return "", errors.Errorf("broadcast of %q failed, status = %d, data = %q", action, result.result, *result.data)
+		return "", errors.Errorf("broadcast of %q failed, status = %d, data = %q", action, result.Result, *result.Data)
 	}
 
-	if result.data == nil {
+	if result.Data == nil {
 		return "", errors.Errorf("broadcast of %q has no result data", action)
 	}
 
-	return *result.data, nil
+	return *result.Data, nil
 }

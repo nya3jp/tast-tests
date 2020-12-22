@@ -30,7 +30,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklist...)),
 		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_1080p_i420",
 			Val: video.EncodeTestOptions{
