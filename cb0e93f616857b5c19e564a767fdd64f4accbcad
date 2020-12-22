@@ -140,6 +140,24 @@
       "parentUuid": "d0d1e131_214081ca",
       "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da05135_924acf31",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-12-22T15:11:17Z",
+      "side": 1,
+      "message": "PostTest hook of a fixture is the right place to put the code to save log files, but how can I enable the \"arcBooted\" fixture on ARC-related tests? The fixture seems seems not enabled now and the hook is not called.\nhttps://source.corp.google.com/search?q\u003darcBooted%20language:go",
+      "parentUuid": "943e5fc0_beda0aca",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
