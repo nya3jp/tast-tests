@@ -14,6 +14,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/dut"
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/testing"
@@ -35,6 +36,21 @@ func init() {
 			"kevin")),
 		Timeout: 10 * time.Minute,
 	})
+}
+
+func saveAllFiles(ctx context.Context, d *dut.DUT, matches []*crash_service.RegexMatch, dir string) error {
+	var firstErr error
+	for _, m := range matches {
+		for _, f := range m.Files {
+			if err := d.GetFile(ctx, f, filepath.Join(dir, path.Base(f))); err != nil {
+				testing.ContextLogf(ctx, "Failed to save file %s: %s", f, err)
+				if firstErr == nil {
+					firstErr = err
+				}
+			}
+		}
+	}
+	return firstErr
 }
 
 func WatchdogCrash(ctx context.Context, s *testing.State) {
@@ -154,7 +170,8 @@ func WatchdogCrash(ctx context.Context, s *testing.State) {
 				continue
 			}
 			if err := d.Command("/bin/grep", "-q", "sig=kernel-(WATCHDOG)", m.Files[0]).Run(ctx); err != nil {
-				if err := d.GetFile(cleanupCtx, m.Files[0], filepath.Join(s.OutDir(), path.Base(m.Files[0]))); err != nil {
+				// get all files
+				if err := saveAllFiles(cleanupCtx, d, append(res.Matches, biosLogMatches), s.OutDir()); err != nil {
 					s.Log("Failed to get meta file: ", err)
 				}
 				s.Error("Did not find correct pattern in meta file: ", err)
