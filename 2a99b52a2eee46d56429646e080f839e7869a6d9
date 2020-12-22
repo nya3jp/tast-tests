@@ -50,6 +50,52 @@
       "message": "Adding Greg as owner reviewer.",
       "revId": "2a99b52a2eee46d56429646e080f839e7869a6d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a9e2f96_b53b3f2a",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T20:38:15Z",
+      "side": 1,
+      "message": "Per http://go/tast-code-review-comments#state, please avoid passing around State unless you really need it. Here, you can use testing.ContextLogf instead of s.Logf, and return an error instead of s.Fatalf.",
+      "range": {
+        "startLine": 121,
+        "startChar": 50,
+        "endLine": 121,
+        "endChar": 69
+      },
+      "revId": "2a99b52a2eee46d56429646e080f839e7869a6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f48fc48_e114a392",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T20:38:15Z",
+      "side": 1,
+      "message": "Per http://go/tast-code-review-comments#state, please avoid passing around State unless you really need it. Here, you can use testing.ContextLogf instead of s.Logf, and return an error instead of s.Error.",
+      "range": {
+        "startLine": 142,
+        "startChar": 52,
+        "endLine": 142,
+        "endChar": 71
+      },
+      "revId": "2a99b52a2eee46d56429646e080f839e7869a6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
