@@ -13,11 +13,13 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -152,4 +154,18 @@ func (d *VideoMetadata) StreamDataArg(dataPath string) (string, error) {
 	sdArg := fmt.Sprintf("--test_video_data=%s:%d:%d:%d:%d:0:0:%d:%d",
 		dataPath, d.Width, d.Height, d.NumFrames, d.NumFragments, pEnum, d.FrameRate)
 	return sdArg, nil
+}
+
+// WaitForCodecReady waits for an already running E2eTestActivity to finish setup of its codec.
+func WaitForCodecReady(ctx context.Context, a *arc.ARC) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		res, err := a.BroadcastIntent(ctx, "org.chromium.c2.test.CHECK_CODEC_CONFIGURED", Pkg)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if res.Result != 1 {
+			return errors.Errorf("Codec not yet configured: %d", res.Result)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 60 * time.Second})
 }
