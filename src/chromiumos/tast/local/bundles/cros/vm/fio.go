@@ -56,6 +56,17 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_dax_boot",
+				ExtraData: []string{"fio_boot.job"},
+				Val: param{
+					kind: "virtiofs_dax",
+					job:  "fio_boot.job",
+				},
+				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
+				// on ARM.
+				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
 				Name:      "p9_boot",
 				ExtraData: []string{"fio_boot.job"},
 				Val: param{
@@ -78,6 +89,17 @@ func init() {
 					kind: "virtiofs",
 					job:  "fio_login.job",
 				},
+			},
+			{
+				Name:      "virtiofs_dax_login",
+				ExtraData: []string{"fio_login.job"},
+				Val: param{
+					kind: "virtiofs_dax",
+					job:  "fio_login.job",
+				},
+				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
+				// on ARM.
+				ExtraSoftwareDeps: []string{"amd64"},
 			},
 			{
 				Name:      "p9_login",
@@ -104,6 +126,17 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_dax_surfing",
+				ExtraData: []string{"fio_surfing.job"},
+				Val: param{
+					kind: "virtiofs_dax",
+					job:  "fio_surfing.job",
+				},
+				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
+				// on ARM.
+				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
 				Name:      "p9_surfing",
 				ExtraData: []string{"fio_surfing.job"},
 				Val: param{
@@ -126,6 +159,17 @@ func init() {
 					kind: "virtiofs",
 					job:  "fio_randread.job",
 				},
+			},
+			{
+				Name:      "virtiofs_dax_randread",
+				ExtraData: []string{"fio_randread.job"},
+				Val: param{
+					kind: "virtiofs_dax",
+					job:  "fio_randread.job",
+				},
+				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
+				// on ARM.
+				ExtraSoftwareDeps: []string{"amd64"},
 			},
 			{
 				Name:      "p9_randread",
@@ -152,6 +196,17 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_dax_randwrite",
+				ExtraData: []string{"fio_randwrite.job"},
+				Val: param{
+					kind: "virtiofs_dax",
+					job:  "fio_randwrite.job",
+				},
+				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
+				// on ARM.
+				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
 				Name:      "p9_randwrite",
 				ExtraData: []string{"fio_randwrite.job"},
 				Val: param{
@@ -174,6 +229,17 @@ func init() {
 					kind: "virtiofs",
 					job:  "fio_seqread.job",
 				},
+			},
+			{
+				Name:      "virtiofs_dax_seqread",
+				ExtraData: []string{"fio_seqread.job"},
+				Val: param{
+					kind: "virtiofs_dax",
+					job:  "fio_seqread.job",
+				},
+				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
+				// on ARM.
+				ExtraSoftwareDeps: []string{"amd64"},
 			},
 			{
 				Name:      "p9_seqread",
@@ -200,6 +266,17 @@ func init() {
 				},
 			},
 			{
+				Name:      "virtiofs_dax_seqwrite",
+				ExtraData: []string{"fio_seqwrite.job"},
+				Val: param{
+					kind: "virtiofs_dax",
+					job:  "fio_seqwrite.job",
+				},
+				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
+				// on ARM.
+				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
 				Name:      "p9_seqwrite",
 				ExtraData: []string{"fio_seqwrite.job"},
 				Val: param{
@@ -222,6 +299,17 @@ func init() {
 					kind: "virtiofs",
 					job:  "fio_stress_rw.job",
 				},
+			},
+			{
+				Name:      "virtiofs_dax_stress_rw",
+				ExtraData: []string{"fio_stress_rw.job"},
+				Val: param{
+					kind: "virtiofs_dax",
+					job:  "fio_stress_rw.job",
+				},
+				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
+				// on ARM.
+				ExtraSoftwareDeps: []string{"amd64"},
 			},
 			{
 				Name:      "p9_stress_rw",
@@ -282,7 +370,7 @@ func Fio(ctx context.Context, s *testing.State) {
 	if kind == "block" {
 		tag = "/dev/vda"
 		args = append(args, "--rwdisk", block)
-	} else if kind == "virtiofs" {
+	} else if kind == "virtiofs" || kind == "virtiofs_dax" {
 		tag = "shared"
 		args = append(args, "--shared-dir",
 			fmt.Sprintf("%s:%s:type=fs:cache=always:timeout=3600:writeback=true", shared, tag))
