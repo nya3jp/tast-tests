@@ -86,6 +86,24 @@
       "parentUuid": "ec1142aa_79b32302",
       "revId": "6d61deb55474cecad9b3a3ee770a9e35aa64ae65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fac8175_c9dcb6c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-22T02:25:35Z",
+      "side": 1,
+      "message": "Yeah, I mean to remove only the polling but not the inner verification, so the change is exactly what I think of. Thanks.",
+      "parentUuid": "65545ac5_6ae90464",
+      "revId": "6d61deb55474cecad9b3a3ee770a9e35aa64ae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
