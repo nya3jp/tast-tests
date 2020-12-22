@@ -16,6 +16,23 @@
       "message": "Thanks! I don\u0027t know Go but I assume you know what you\u0027re doing. ;)",
       "revId": "68f5ae7b642cf14bf92a31ab8b5fe973042f17c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a89eef_82dd65ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-12-22T23:05:20Z",
+      "side": 1,
+      "message": "Actually, while you\u0027re here, could you make it collect /sys/firmware/log as well? That file could also be very useful to debug these things.",
+      "revId": "68f5ae7b642cf14bf92a31ab8b5fe973042f17c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
