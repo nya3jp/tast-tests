@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca0f893_8e5b991b",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-22T23:02:38Z",
+      "side": 1,
+      "message": "Picked option 2, thanks and done!",
+      "parentUuid": "38404bb5_c7783407",
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7cb8261_7e23b69d",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-12-22T21:04:01Z",
       "side": 1,
       "message": "Per http://go/tast-code-review-comments#state, please avoid passing around State unless you really need it. Here, you can use testing.ContextLog instead of s.Log, and return an error instead of s.Fatal.",
+      "range": {
+        "startLine": 182,
+        "startChar": 50,
+        "endLine": 182,
+        "endChar": 69
+      },
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a33a687_60b67b35",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-22T23:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7cb8261_7e23b69d",
       "range": {
         "startLine": 182,
         "startChar": 50,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd0c8fb3_00050b17",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-22T23:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee724927_27216b48",
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39a3b998_c2643b76",
@@ -88,6 +148,24 @@
       "writtenOn": "2020-12-22T21:04:01Z",
       "side": 1,
       "message": "We need to check whether i.origGBBFlags has already been set. Otherwise, if multiple tests run sequentially under this Precondition, the existing origGBBFlags will be overwritten.\n\n    if i.origGBBFlags \u003d\u003d nil {\n        i.origGBBFlags \u003d orig\n    }",
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7004145_bca0c847",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-22T23:02:38Z",
+      "side": 1,
+      "message": "oops! Done.",
+      "parentUuid": "39a3b998_c2643b76",
       "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6980278c_ae1cf191",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-22T23:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e449b663_d91ce61f",
+      "range": {
+        "startLine": 209,
+        "startChar": 52,
+        "endLine": 209,
+        "endChar": 71
+      },
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a7cd520_7f4fcb62",
@@ -132,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fc3acc_6eba9ca5",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-22T23:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a7cd520_7f4fcb62",
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27bc540b_3994a82c",
@@ -145,6 +265,30 @@
       "writtenOn": "2020-12-22T21:04:01Z",
       "side": 1,
       "message": "nit/typo: \"have\"",
+      "range": {
+        "startLine": 255,
+        "startChar": 71,
+        "endLine": 255,
+        "endChar": 74
+      },
+      "revId": "4e315dbb586ca2a7cb854a587f0b47e791be1ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b465cf_771b86d0",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-22T23:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27bc540b_3994a82c",
       "range": {
         "startLine": 255,
         "startChar": 71,
