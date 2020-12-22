@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f607dc0_3cbba5de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-22T22:11:38Z",
+      "side": 1,
+      "message": "Yes, I thought strange as well. As you know, this is from the document. Let me remove this.",
+      "parentUuid": "cc8475d8_22fd6137",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 6
+      },
+      "revId": "e7a54c673c50ce88c552144a85fdcd825810bc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eba79cd_e74a5ee6",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "553b41f3_8ff46906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-22T22:11:38Z",
+      "side": 1,
+      "message": "Thank you. I intended to have separate section for encoder later, but yes, we can just use 1 subsection as you suggested.\n\nI assume leaving \"decoder\" name here is fine for now. We change change again once we add \"encoder\" in the future.",
+      "parentUuid": "1eba79cd_e74a5ee6",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 1
+      },
+      "revId": "e7a54c673c50ce88c552144a85fdcd825810bc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbc49475_fb40cb2b",
@@ -94,6 +142,30 @@
       "writtenOn": "2020-12-22T21:36:21Z",
       "side": 1,
       "message": "micro-nit: if |exitCode| \u003e 0, both l.84 and 86 would execute. Would we\nsee the same information twice? Should we move the s.Logf() statement\nto the else{} of this if{} ?",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "e7a54c673c50ce88c552144a85fdcd825810bc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce4c7c78_714f4349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-22T22:11:38Z",
+      "side": 1,
+      "message": "If some tests fail, then, yes, we will see this summary info twice. \nIt might be confusing when this summary appears different place in the log \ndepending on pass or fail. \nBut I do see benefit of removing them as you suggested. \nLet me do it as suggested.",
+      "parentUuid": "bbc49475_fb40cb2b",
       "range": {
         "startLine": 86,
         "startChar": 13,
