@@ -30,7 +30,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-		SoftwareDeps: []string{"arm"}, // TODO(b/173552528): Use |v4l2_codec| when available.
+		SoftwareDeps: []string{"v4l2_codec"},
 		Timeout:      2 * time.Minute,
 		Params: []testing.Param{{
 			// -v: Turn on verbose reporting.
@@ -67,21 +67,24 @@ func PlatformV4L2(ctx context.Context, s *testing.State) {
 		if !ok {
 			s.Fatalf("Failed to run %s: %v", command[0], err)
 		}
-		s.Errorf("%s: finished with exit code: %v", command[0], exitCode)
-	}
 
-	contents, err := ioutil.ReadFile(logFile)
-	if err != nil {
-		s.Fatal("Failed to read the log file: ", err)
-	}
+		contents, err := ioutil.ReadFile(logFile)
+		if err != nil {
+			s.Fatal("Failed to read the log file: ", err)
+		}
 
-	matches := v4l2SummaryRegExp.FindAllStringSubmatch(string(contents), -1)
-	if matches == nil {
-		s.Fatal("Failed to find matches for summary result")
-	}
-	if len(matches) != 1 {
-		s.Fatalf("Found %d matches for summary result; want 1", len(matches))
-	}
+		matches := v4l2SummaryRegExp.FindAllStringSubmatch(string(contents), -1)
+		if matches == nil {
+			s.Fatal("Failed to find matches for summary result")
+		}
+		if len(matches) != 1 {
+			s.Fatalf("Found %d matches for summary result; want 1", len(matches))
+		}
 
-	s.Logf("%s", matches)
+		if exitCode > 0 {
+			s.Errorf("%s", matches)
+		} else {
+			s.Logf("%s", matches)
+		}
+	}
 }
