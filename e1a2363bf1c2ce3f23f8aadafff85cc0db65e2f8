@@ -140,6 +140,24 @@
       "parentUuid": "baf107fa_8111ddff",
       "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "435950ee_0cb0aaae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-12-22T10:44:41Z",
+      "side": 1,
+      "message": "Sending another key event to make sure it\u0027s working before typing the test target is an interesting idea. However, I\u0027d like to avoid the special logic for specific key codes because it introduces a dependency from this test to Chrome\u0027s behavior. It will be difficult to keep the test updated everytime when Chrome changes the behavior of some special key. WDYT?",
+      "parentUuid": "4e15cab4_373d6d8c",
+      "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
