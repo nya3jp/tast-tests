@@ -10,8 +10,6 @@ import (
 	"regexp"
 	"time"
 
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -23,27 +21,17 @@ func init() {
 		Contacts:     []string{"smbarber@chromium.org", "crosvm-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"vm_host"},
-		// TODO(smbarber): Download only files for the current architecture.
-		Data: []string{
-			"termina_kernel_aarch64",
-			"termina_kernel_x86_64",
-			"termina_rootfs_aarch64.img",
-			"termina_rootfs_x86_64.img",
-		},
+		Pre:          vm.Artifact(),
+		Data:         []string{vm.ArtifactData()},
 	})
 }
 
 func StartCrosvm(ctx context.Context, s *testing.State) {
-	kernelName, rootfsName, err := vmDataName(ctx)
-	if err != nil {
-		s.Fatal("Failed to find VM image: ", err)
-	}
-	kernelPath := s.DataPath(kernelName)
-	rootfsPath := s.DataPath(rootfsName)
+	data := s.PreValue().(vm.PreData)
 
 	cvm, err := vm.NewCrosvm(ctx, &vm.CrosvmParams{
-		VMKernel:   kernelPath,
-		RootfsPath: rootfsPath,
+		VMKernel:   data.Kernel,
+		RootfsPath: data.Rootfs,
 		KernelArgs: []string{"init=/bin/bash"},
 	})
 	if err != nil {
@@ -72,19 +60,4 @@ func StartCrosvm(ctx context.Context, s *testing.State) {
 	} else {
 		s.Logf("Saw line %q", line)
 	}
-}
-
-// vmDataName returns the name of the VM kernel and rootfs files to use for the current architecture.
-func vmDataName(ctx context.Context) (string, string, error) {
-	u, err := sysutil.Uname()
-	if err != nil {
-		return "", "", errors.Wrap(err, "failed to get uname")
-	}
-	if u.Machine == "aarch64" {
-		return "termina_kernel_aarch64", "termina_rootfs_aarch64.img", nil
-	} else if u.Machine == "x86_64" {
-		return "termina_kernel_x86_64", "termina_rootfs_x86_64.img", nil
-	}
-
-	return "", "", errors.Errorf("no known VM image for architecture %q", u.Machine)
 }
