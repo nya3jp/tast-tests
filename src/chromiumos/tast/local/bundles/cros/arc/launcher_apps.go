@@ -36,7 +36,7 @@ func init() {
 
 func LauncherApps(ctx context.Context, s *testing.State) {
 	const (
-		pkgName = "com.google.android.apps.photos"
+		pkgName = "com.google.android.apps.maps"
 	)
 
 	username := s.RequiredVar("arc.username")
@@ -83,7 +83,31 @@ func LauncherApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the newly downloaded app in Launcher.
-	if err := launcher.LaunchApp(ctx, tconn, apps.Photos); err != nil {
+	if err := launcher.LaunchApp(ctx, tconn, apps.Maps); err != nil {
 		s.Fatal("Failed to launch: ", err)
+	}
+
+	if err := apps.Close(ctx, tconn, apps.Maps.ID); err != nil {
+		s.Fatal("Failed to close: ", err)
+	}
+
+	// Turn off the Play Store
+	if err := optin.SetPlayStoreEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to Turn Off Play Store: ", err)
+	}
+
+	// Verify Play Store is Off
+	playStoreState, err := optin.GetPlayStoreState(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to check Google PlayStore State: ", err)
+	}
+	if playStoreState["enabled"] == true {
+		s.Fatal("Playstore Still Enabled")
+	}
+
+	// Verify the app icon is not visible in Launcher.
+	icon, err := launcher.FindAppFromItemView(ctx, tconn, apps.Maps)
+	if icon != nil {
+		s.Fatal("Installed app remained in launcher after play store disabled: ", icon)
 	}
 }

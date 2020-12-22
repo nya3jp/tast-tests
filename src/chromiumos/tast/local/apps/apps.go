@@ -95,6 +95,12 @@ var Lacros = App{
 	Name: "Lacros",
 }
 
+// Maps has details about Arc Maps app.
+var Maps = App{
+	ID:   "gmhipfhgnoelkiiofcnimehjnpaejiel",
+	Name: "Maps",
+}
+
 // Photos has details about the Photos app.
 var Photos = App{
 	ID:   "fdbkkojdbojonckghlanfaopfakedeca",
