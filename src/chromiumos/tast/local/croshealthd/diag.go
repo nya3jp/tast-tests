@@ -70,10 +70,21 @@ type RoutineResult struct {
 	Status   string
 }
 
-// RunDiagRoutine runs the specified `routine`. Returns a RoutineResult on
-// success or an error.
-func RunDiagRoutine(ctx context.Context, routine string) (*RoutineResult, error) {
-	output, err := runDiag(ctx, []string{"--action=run_routine", fmt.Sprintf("--routine=%s", routine)})
+// RoutineParams are different configuration options for running a diagnostic
+// routine.
+type RoutineParams struct {
+	Routine string // The name of the routine to run
+	Cancel  bool   // Boolean flag to cancel the routine
+}
+
+// RunDiagRoutine runs the specified routine based on `params`. Returns a
+// RoutineResult on success or an error.
+func RunDiagRoutine(ctx context.Context, params RoutineParams) (*RoutineResult, error) {
+	diagParams := []string{"--action=run_routine", fmt.Sprintf("--routine=%s", params.Routine)}
+	if params.Cancel {
+		diagParams = append(diagParams, "--force_cancel_at_percent=5")
+	}
+	output, err := runDiag(ctx, diagParams)
 	if err != nil {
 		return nil, err
 	}
