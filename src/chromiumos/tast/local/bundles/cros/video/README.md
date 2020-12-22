@@ -135,6 +135,23 @@ Tests are available for various codecs and resolutions. To run all tests use:
 
     tast run $HOST video.EncodeAccelPerf.*
 
+## PlatformV4L2 Tests (`video.PlatformV4L2`)
+
+### Video decoder v4l2 compliance tests (`video.PlatformV4L2.decoder`)
+
+V4L2 is a kernel video acceleration API. It is implemented in the kernel
+linuxtv sub-tree, and it's used in Chrome for ARM-based boards such as those
+shipped by Rockchip, MediaTek, and Qualcomm, and for the companion accelerator
+Kepler chips Kepler.
+
+These tests validate video4linux (V4L2) video device, both input and output.
+They attempt to test almost all aspects of a V4L2 device and it covers almost
+all V4L2 ioctls.
+
+To run these tests use:
+
+    tast run $HOST video.PlatformV4L2.decoder
+
 ## Play Tests (`video.Play`)
 
 The Play test verifies whether video playback works by playing a video in the
