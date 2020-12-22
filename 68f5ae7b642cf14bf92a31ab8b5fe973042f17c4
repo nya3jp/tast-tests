@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed340223_04957f88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-12-22T23:00:28Z",
+      "side": 1,
+      "message": "Thanks! I don\u0027t know Go but I assume you know what you\u0027re doing. ;)",
+      "revId": "68f5ae7b642cf14bf92a31ab8b5fe973042f17c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
