@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e6e690_74f83fa4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-22T06:09:46Z",
+      "side": 1,
+      "message": "\u003e \"lauching\" is a possible misspelling of \"launching\".\n\nPlease fix.",
+      "parentUuid": "6d1dafa6_79db2230",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "604335d241162d6cab358a5d0544771f45a302fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
