@@ -13,6 +13,24 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// newRoutineParams creates and returns a diagnostic routine with default test
+// parameters.
+func newRoutineParams(routine string) croshealthd.RoutineParams {
+	return croshealthd.RoutineParams{
+		Routine: routine,
+		Cancel:  false,
+	}
+}
+
+// newCancelRoutineParams creates and returns a diagnostic routine that will be
+// canceled partway through running.
+func newCancelRoutineParams(routine string) croshealthd.RoutineParams {
+	return croshealthd.RoutineParams{
+		Routine: routine,
+		Cancel:  true,
+	}
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DiagnosticsRun,
@@ -27,87 +45,87 @@ func init() {
 		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
 			Name:      "battery_capacity",
-			Val:       croshealthd.RoutineBatteryCapacity,
+			Val:       newRoutineParams(croshealthd.RoutineBatteryCapacity),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "battery_health",
-			Val:       croshealthd.RoutineBatteryHealth,
+			Val:       newRoutineParams(croshealthd.RoutineBatteryHealth),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "urandom",
-			Val:       croshealthd.RoutineURandom,
+			Val:       newCancelRoutineParams(croshealthd.RoutineURandom),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "smartctl_check",
-			Val:       croshealthd.RoutineSmartctlCheck,
+			Val:       newRoutineParams(croshealthd.RoutineSmartctlCheck),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "cpu_cache",
-			Val:       croshealthd.RoutineCPUCache,
+			Val:       newRoutineParams(croshealthd.RoutineCPUCache),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "cpu_stress",
-			Val:       croshealthd.RoutineCPUStress,
+			Val:       newRoutineParams(croshealthd.RoutineCPUStress),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "floating_point_accuracy",
-			Val:       croshealthd.RoutineFloatingPointAccurary,
+			Val:       newRoutineParams(croshealthd.RoutineFloatingPointAccurary),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "nvme_self_test",
-			Val:       croshealthd.RoutineNVMESelfTest,
+			Val:       newRoutineParams(croshealthd.RoutineNVMESelfTest),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "nvme_wear_level",
-			Val:       croshealthd.RoutineNVMEWearLevel,
+			Val:       newRoutineParams(croshealthd.RoutineNVMEWearLevel),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "prime_search",
-			Val:       croshealthd.RoutinePrimeSearch,
+			Val:       newRoutineParams(croshealthd.RoutinePrimeSearch),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "lan_connectivity",
-			Val:       croshealthd.RoutineLanConnectivity,
+			Val:       newRoutineParams(croshealthd.RoutineLanConnectivity),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "signal_strength",
-			Val:       croshealthd.RoutineSignalStrength,
+			Val:       newRoutineParams(croshealthd.RoutineSignalStrength),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "gateway_can_be_pinged",
-			Val:       croshealthd.RoutineGatewayCanBePinged,
+			Val:       newRoutineParams(croshealthd.RoutineGatewayCanBePinged),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "has_secure_wifi_connection",
-			Val:       croshealthd.RoutineHasSecureWifiConnection,
+			Val:       newRoutineParams(croshealthd.RoutineHasSecureWifiConnection),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "dns_resolver_present",
-			Val:       croshealthd.RoutineDNSResolverPresent,
+			Val:       newRoutineParams(croshealthd.RoutineDNSResolverPresent),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "dns_latency",
-			Val:       croshealthd.RoutineDNSLatency,
+			Val:       newRoutineParams(croshealthd.RoutineDNSLatency),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "dns_resolution",
-			Val:       croshealthd.RoutineDNSResolverPresent,
+			Val:       newRoutineParams(croshealthd.RoutineDNSResolverPresent),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "captive_portal",
-			Val:       croshealthd.RoutineCaptivePortal,
+			Val:       newRoutineParams(croshealthd.RoutineCaptivePortal),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "http_firewall",
-			Val:       croshealthd.RoutineHTTPFirewall,
+			Val:       newRoutineParams(croshealthd.RoutineHTTPFirewall),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "https_firewall",
-			Val:       croshealthd.RoutineHTTPSFirewall,
+			Val:       newRoutineParams(croshealthd.RoutineHTTPSFirewall),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "https_latency",
-			Val:       croshealthd.RoutineHTTPSLatency,
+			Val:       newRoutineParams(croshealthd.RoutineHTTPSLatency),
 			ExtraAttr: []string{"informational"},
 		}},
 	})
@@ -118,7 +136,8 @@ func init() {
 // routines can be run without errors, and not to check if the routines pass or
 // fail.
 func DiagnosticsRun(ctx context.Context, s *testing.State) {
-	routine := s.Param().(string)
+	params := s.Param().(croshealthd.RoutineParams)
+	routine := params.Routine
 
 	// Check that the routine is supported on the device. If not supported, exit
 	// the test early.
@@ -135,7 +154,7 @@ func DiagnosticsRun(ctx context.Context, s *testing.State) {
 	}
 
 	s.Logf("Running routine: %s", routine)
-	ret, err := croshealthd.RunDiagRoutine(ctx, routine)
+	ret, err := croshealthd.RunDiagRoutine(ctx, params)
 	if err != nil {
 		s.Fatalf("Unable to run %s routine: %s", routine, err)
 	} else if ret == nil {
@@ -147,6 +166,16 @@ func DiagnosticsRun(ctx context.Context, s *testing.State) {
 		if result.Status != croshealthd.StatusUnsupported {
 			s.Fatalf("%q routine has status %q; want %q",
 				routine, result.Status, croshealthd.StatusUnsupported)
+		}
+		return
+	}
+
+	// Check that if requested, the routine was canceled.
+	if params.Cancel {
+		if result.Status != croshealthd.StatusCancelling &&
+			result.Status != croshealthd.StatusCancelled {
+			s.Fatalf("%q routine has status %q; want %q or %q",
+				routine, result.Status, croshealthd.StatusCancelling, croshealthd.StatusCancelled)
 		}
 		return
 	}
