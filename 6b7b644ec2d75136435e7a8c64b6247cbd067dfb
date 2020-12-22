@@ -16,6 +16,46 @@
       "message": "LGTM.",
       "revId": "6b7b644ec2d75136435e7a8c64b6247cbd067dfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e29c6127_b3da6c18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-22T02:53:33Z",
+      "side": 1,
+      "message": "nice improvement, thanks for doing this!",
+      "revId": "6b7b644ec2d75136435e7a8c64b6247cbd067dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2c20a3_5bf2628e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/roam_ft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-22T02:53:33Z",
+      "side": 1,
+      "message": "nit: these were all s.Error() before, as there are multiple runOnce() invocations. I\u0027m OK either way I suppose, so I\u0027ll just highlight it but leave resolved in case that\u0027s a desired/intentional change.",
+      "range": {
+        "startLine": 359,
+        "startChar": 5,
+        "endLine": 359,
+        "endChar": 10
+      },
+      "revId": "6b7b644ec2d75136435e7a8c64b6247cbd067dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
