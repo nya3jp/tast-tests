@@ -122,6 +122,24 @@
       "parentUuid": "e3a1ad44_0e2482d2",
       "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943e5fc0_beda0aca",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-22T03:43:23Z",
+      "side": 1,
+      "message": "Ah, that\u0027s a good catch. Indeed, when precondition\u0027s Prepare is called, OutDir for the previous test might be already copied to the host and removed. Sorry for not catching this problem earlier...\n\nThis problem is actually solved by fixtures. Fixtures can install post-test hooks where they can save files to a test\u0027s output dir after it ends.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/fixt.go;rcl\u003dd046166708dcfe66d512919eb37e909b9dcc41ab;l\u003d187\n\nThere\u0027s already ARC fixture. You might want to place the new logic to the fixture instead of the precondition.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/fixture.go;rcl\u003d083eceb002501d4bc4acf632b4bae3fa1f5ef3b8;l\u003d98",
+      "parentUuid": "d0d1e131_214081ca",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
