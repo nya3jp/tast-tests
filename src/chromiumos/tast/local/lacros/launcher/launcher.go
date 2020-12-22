@@ -30,6 +30,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// LacrosUserDataDir is the directory that contains the user data of lacros.
+const LacrosUserDataDir = "/home/chronos/user/lacros/"
+
 // LacrosChrome contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
 type LacrosChrome struct {
@@ -254,10 +257,8 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	}
 
 	// Wait for a window that matches what a lacros window looks like.
-	if err := ash.WaitForCondition(ctx, p.TestAPIConn, func(w *ash.Window) bool {
-		return w.IsVisible && strings.HasPrefix(w.Title, "about:blank") && strings.HasPrefix(w.Name, "ExoShellSurface")
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for lacros-chrome window to be visible")
+	if err := WaitForLacrosWindow(ctx, p.TestAPIConn, "about:blank"); err != nil {
+		return nil, err
 	}
 
 	debuggingPortPath := userDataDir + "/DevToolsActivePort"
@@ -269,6 +270,16 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	l.logAggregator = jslog.NewAggregator()
 
 	return l, nil
+}
+
+// WaitForLacrosWindow waits for a Lacrow window with the specified title to be visibe.
+func WaitForLacrosWindow(ctx context.Context, tconn *chrome.TestConn, title string) error {
+	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+		return w.IsVisible && strings.HasPrefix(w.Title, title) && strings.HasPrefix(w.Name, "ExoShellSurface")
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for lacros-chrome window to be visible")
+	}
+	return nil
 }
 
 // NewConnForTarget iterates through all available targets and returns a connection to the
