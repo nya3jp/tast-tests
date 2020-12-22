@@ -51,6 +51,24 @@
       "parentUuid": "d1a89eef_82dd65ce",
       "revId": "68f5ae7b642cf14bf92a31ab8b5fe973042f17c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0725cff7_8e916ed0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-12-22T23:40:19Z",
+      "side": 1,
+      "message": "I just realized that this is already created (if /sys/firmware/log is present) as the .bios_log file, so I\u0027m including that.\n\nIn this case, the .bios_log contained a number of errors of form:\n\nQTISECLIB [2ca15b1f0]BL31 Error : NS_WDT_BITE",
+      "parentUuid": "bddd3241_5c671d5b",
+      "revId": "68f5ae7b642cf14bf92a31ab8b5fe973042f17c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
