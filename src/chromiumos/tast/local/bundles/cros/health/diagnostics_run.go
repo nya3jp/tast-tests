@@ -63,6 +63,13 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"nvme"},
 		}, {
+			Name:      "nvme_wear_level",
+			Val:       croshealthd.RoutineNVMEWearLevel,
+			ExtraAttr: []string{"informational"},
+			// nvme_wear_level requires specific offsets in the nvme log that
+			// are only currently defined for wilco devices.
+			ExtraSoftwareDeps: []string{"nvme", "wilco"},
+		}, {
 			Name:      "prime_search",
 			Val:       croshealthd.RoutinePrimeSearch,
 			ExtraAttr: []string{"informational"},
