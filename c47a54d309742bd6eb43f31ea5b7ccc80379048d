@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ab3696f_8403f3de",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-22T02:01:13Z",
+      "side": 1,
+      "message": "You\u0027re right, bundle subpackages can\u0027t be imported from support libraries. We have to move the code to the sysutil package.",
+      "parentUuid": "f55f8172_5b0eb0e7",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "c47a54d309742bd6eb43f31ea5b7ccc80379048d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1b4b595_aa6611aa",
         "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
         "patchSetId": 4
