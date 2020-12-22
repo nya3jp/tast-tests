@@ -235,17 +235,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 			return err
 		}
 
-		for _, scriptPath := range scriptPaths {
-			script, err := ioutil.ReadFile(scriptPath)
-			if err != nil {
-				return err
-			}
-			if err := conn.Eval(ctx, string(script), nil); err != nil {
-				return err
-			}
-		}
-		testing.ContextLog(ctx, "CCA launched")
-		return nil
+		return loadScripts(ctx, conn, scriptPaths)
 	}(); err != nil {
 		if closeErr := conn.CloseTarget(ctx); closeErr != nil {
 			testing.ContextLog(ctx, "Failed to close app: ", closeErr)
@@ -259,6 +249,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		return nil, err
 	}
 
+	testing.ContextLog(ctx, "CCA launched")
 	app := &App{conn, cr, scriptPaths, outDir, appLauncher, appWindow}
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
@@ -274,6 +265,19 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 	testing.ContextLog(ctx, "CCA window is ready")
 	return app, nil
+}
+
+func loadScripts(ctx context.Context, conn *chrome.Conn, scriptPaths []string) error {
+	for _, scriptPath := range scriptPaths {
+		script, err := ioutil.ReadFile(scriptPath)
+		if err != nil {
+			return err
+		}
+		if err := conn.Eval(ctx, string(script), nil); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // New launches a CCA instance. The returned App instance must be closed when the test is finished.
@@ -1399,4 +1403,24 @@ func (a *App) InnerResolutionSettingButton(ctx context.Context, facing Facing, r
 	selector := fmt.Sprintf("button[aria-describedby='%s-%sres-desc']", ariaPrefix, rt)
 
 	return &UIComponent{name, []string{selector}}, nil
+}
+
+// Refresh refreshes CCA.
+func (a *App) Refresh(ctx context.Context, tb *testutil.TestBridge) error {
+	newAppWindow, err := testutil.RefreshApp(ctx, a.conn, tb)
+	if err != nil {
+		return err
+	}
+
+	// Releases the previous app window.
+	if err := a.appWindow.Release(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to release app window: ", err)
+	}
+
+	if err := loadScripts(ctx, a.conn, a.scriptPaths); err != nil {
+		return errors.Wrap(err, "failed to load scripts")
+	}
+
+	a.appWindow = newAppWindow
+	return nil
 }
