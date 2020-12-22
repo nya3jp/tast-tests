@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "245614e2_4583129a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-12-22T22:35:09Z",
+      "side": 1,
+      "message": "Just FYI, instead of running each test individually, you can run them in sequential if needed by appending each to the end, i.e.\n\ntast run $DEVICE assistant.CardElementAnimationPerf assistant.SuggestionChipAnimationPerf assistant.LauncherToPeekingAnimationPerf ...",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 67
+      },
+      "revId": "8cbf01d85744222a4ebddd3ef8facf1a44711437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0cd5ade5_a5da286e",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-12-21T23:44:36Z",
       "side": 1,
       "message": "lgtm",
+      "revId": "8cbf01d85744222a4ebddd3ef8facf1a44711437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1642ac6e_a9572371",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-12-22T22:35:09Z",
+      "side": 1,
+      "message": "lgtm, thanks for the change!",
       "revId": "8cbf01d85744222a4ebddd3ef8facf1a44711437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
