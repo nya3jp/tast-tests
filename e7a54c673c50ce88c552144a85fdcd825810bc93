@@ -16,6 +16,92 @@
       "message": "@miguel PTAL\n\nI reorganized codes to reuse \"exitCode\" we already had in the code. \nI thought \"extracting from Failed\" was duplicated. WDYT?\nAlso, I removed previous errorf as we are adding this one. \n\ntested to see below message, which I think will be shown in Stainless.\n\n2020/12/22 11:18:15 --------------------------------------------------------------------------------\n2020/12/22 11:18:15 video.PlatformV4L2.decoder  [ FAIL ] [[Total for qcom-venus device /dev/video-dec0: 45, Succeeded: 43, Failed: 2, Warnings: 0]]\n2020/12/22 11:18:15 --------------------------------------------------------------------------------\n",
       "revId": "e7a54c673c50ce88c552144a85fdcd825810bc93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea6cb6a_0c87a657",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-22T21:36:21Z",
+      "side": 1,
+      "message": "Changes LGTM modulo addressing the comments.\n\n+pwang@ for OWNERS review (since he reviewed the original CL).",
+      "revId": "e7a54c673c50ce88c552144a85fdcd825810bc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc8475d8_22fd6137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-22T21:36:21Z",
+      "side": 1,
+      "message": "nit: remove this \"Kepler\".",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 6
+      },
+      "revId": "e7a54c673c50ce88c552144a85fdcd825810bc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eba79cd_e74a5ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-22T21:36:21Z",
+      "side": 1,
+      "message": "The previous paragraph applies to all V4L2 compliance tests, so what about\nthis alternative structure:\n\n ## PlatformV4L2 Tests \n\n V4L2 is a kernel... // same as it is now.\n\n ### V4L2 video compliance tests (`video.PlatformV4L2.decoder`)\n\n These tests validate the Video4Linux2 video acceleration APIs, for\n both input and output. They attempt to test almost all aspects of a\n V4L2 device by exercising the IOCTLs.\n\n To run...\n\nThis way when we land the `v4l2-ctl` test variant, we can just add a\n###-level section.\n\nAlso I did not mention \"decoder\" on the ### heading so that it\u0027s easier\nto extend for \"encoding\" later on :-P",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 1
+      },
+      "revId": "e7a54c673c50ce88c552144a85fdcd825810bc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc49475_fb40cb2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-22T21:36:21Z",
+      "side": 1,
+      "message": "micro-nit: if |exitCode| \u003e 0, both l.84 and 86 would execute. Would we\nsee the same information twice? Should we move the s.Logf() statement\nto the else{} of this if{} ?",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "e7a54c673c50ce88c552144a85fdcd825810bc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
