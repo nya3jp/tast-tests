@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d21d21a8_9b0f59f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-12-22T17:26:13Z",
+      "side": 1,
+      "message": "LGTM with nits.",
+      "revId": "afc6d284e8c5c54b9823ca53c0520060d610996a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c648cdc0_b4ac0123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-12-22T17:26:13Z",
+      "side": 1,
+      "message": "Is it intentional that this is very close to the `if` on line 88 but not the same?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 4
+      },
+      "revId": "afc6d284e8c5c54b9823ca53c0520060d610996a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b3c182_5923bd89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2020-12-22T17:26:13Z",
+      "side": 1,
+      "message": "It looks like this can be made into a helper function (RunAndStoreMetricMean) which takes an array of metric names [\"Apps.StateTransition.AnimationSmoothness\"] and the metric phase(?) (\"open\" vs \"close\").",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 0
+      },
+      "revId": "afc6d284e8c5c54b9823ca53c0520060d610996a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
