@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f85889_30ee1055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T21:11:59Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "c944dbc56e4403870f7c41d7c737b5b325d4aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89d03c7e_a3e4da9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-12-22T21:11:59Z",
+      "side": 1,
+      "message": "This line redundantly prints error twice, because it is both wrapped and formatted. If the error string were the string literal \"an error occurred\", it would appear as:\n\n    failed to wait for codec before measuring usage: an error occurred: an error occurred\n\nYou can address this by changing Wrapf to Wrap, and removing the %v-formatted error:\n\n    return errors.Wrap(err, \"failed to wait for codec before measuring usage\")",
+      "revId": "c944dbc56e4403870f7c41d7c737b5b325d4aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
