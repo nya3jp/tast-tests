@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7378eb9a_207ddcd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/stats/stats.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-22T02:29:13Z",
+      "side": 1,
+      "message": "Nice reference :)",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "c55128cd5bb93d2d9de3237f64bf90812ecdba5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
