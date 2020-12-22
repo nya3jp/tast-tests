@@ -136,10 +136,6 @@ type testingState interface {
 	Fatal(...interface{})
 }
 
-func getVMArtifact(arch string) string {
-	return fmt.Sprintf("crostini_vm_%s.zip", arch)
-}
-
 func getContainerMetadataArtifact(arch string, debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
 	if largeContainer {
 		return fmt.Sprintf("crostini_app_test_container_metadata_%s_%s.tar.xz", debianVersion, arch)
@@ -177,7 +173,7 @@ func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.Cont
 
 	var vmPath string
 	if isComponent {
-		vmPath = s.DataPath(getVMArtifact(arch))
+		vmPath = s.DataPath(vm.GetVMArtifact(arch))
 	}
 
 	iOptions := &cui.InstallationOptions{
