@@ -315,6 +315,30 @@
       },
       "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c113d7_a804b9d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-22T16:40:19Z",
+      "side": 1,
+      "message": "Got it, thank you for clarifying, I understand now. I decided to use a pointer, since I want to avoid unnecessary copies. So I did:\n\ntype ChromeVoxConn struct {\n    *chrome.Conn\n}\n\nHopefully this is okay too!",
+      "parentUuid": "791e22a6_845c97c9",
+      "range": {
+        "startLine": 62,
+        "startChar": 18,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
