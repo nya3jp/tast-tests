@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "148615bf_67beb928",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-22T19:32:00Z",
+      "side": 1,
+      "message": "@miguel PTAL\n\nI reorganized codes to reuse \"exitCode\" we already had in the code. \nI thought \"extracting from Failed\" was duplicated. WDYT?\nAlso, I removed previous errorf as we are adding this one. \n\ntested to see below message, which I think will be shown in Stainless.\n\n2020/12/22 11:18:15 --------------------------------------------------------------------------------\n2020/12/22 11:18:15 video.PlatformV4L2.decoder  [ FAIL ] [[Total for qcom-venus device /dev/video-dec0: 45, Succeeded: 43, Failed: 2, Warnings: 0]]\n2020/12/22 11:18:15 --------------------------------------------------------------------------------\n",
+      "revId": "e7a54c673c50ce88c552144a85fdcd825810bc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
