@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74533e34_c1f5788b",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-12-22T05:29:45Z",
+      "side": 1,
+      "message": "Thanks for confirming and refactored.",
+      "parentUuid": "3ab3696f_8403f3de",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "c47a54d309742bd6eb43f31ea5b7ccc80379048d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1b4b595_aa6611aa",
