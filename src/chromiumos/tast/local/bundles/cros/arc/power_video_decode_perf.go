@@ -194,8 +194,9 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Finished setup")
 
-	if err := metrics.Start(ctx); err != nil {
-		s.Fatal("Failed to start metrics: ", err)
+	s.Log("Waiting for codec to be ready")
+	if err := c2e2etest.WaitForCodecReady(ctx, a); err != nil {
+		s.Fatal("Failed to wait for codec before measuring usage: ", err)
 	}
 
 	s.Log("Warmup: waiting a bit before starting the measurement")
@@ -204,6 +205,9 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting measurement")
+	if err := metrics.Start(ctx); err != nil {
+		s.Fatal("Failed to start metrics: ", err)
+	}
 	if err := metrics.StartRecording(ctx); err != nil {
 		s.Fatal("Failed to start recording: ", err)
 	}
