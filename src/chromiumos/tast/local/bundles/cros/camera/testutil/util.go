@@ -114,6 +114,38 @@ func LaunchApp(ctx context.Context, cr *chrome.Chrome, tb *TestBridge, appLaunch
 	return conn, appWindow, nil
 }
 
+// RefreshApp refreshes the camera app and rebuilds the communication flow between tests and app.
+func RefreshApp(ctx context.Context, conn *chrome.Conn, tb *TestBridge) (*AppWindow, error) {
+	appWindow, err := tb.AppWindow(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to register app window")
+	}
+
+	err = func() error {
+		// Triggers refresh.
+		if err := conn.Eval(ctx, "location.reload()", nil); err != nil {
+			return errors.Wrap(err, "failed to trigger refresh")
+		}
+
+		_, err = appWindow.WaitUntilWindowBound(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to bind window")
+		}
+
+		if err := appWindow.NotifyReady(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for app window ready")
+		}
+		return nil
+	}()
+	if err != nil {
+		if releaseErr := appWindow.Release(ctx); releaseErr != nil {
+			testing.ContextLog(ctx, "Failed to release app window: ", releaseErr)
+		}
+		return nil, err
+	}
+	return appWindow, nil
+}
+
 // SWALauncher returns an app launcher which launches CCA as SWA.
 func SWALauncher() AppLauncher {
 	return func(ctx context.Context, tconn *chrome.TestConn) error {
