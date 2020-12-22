@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99af2fdc_a119e429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/app_launcher_launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-22T19:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "050f1357_a169c210",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "4e13efab0f6aa4ca414e3181f92c6a3be7349734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "624aa4f4_f7af6b85",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "245be02a_be6c04fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/app_launcher_launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-22T19:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "624aa4f4_f7af6b85",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "4e13efab0f6aa4ca414e3181f92c6a3be7349734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "089e0054_4620e61b",
@@ -94,6 +142,24 @@
       "writtenOn": "2020-12-22T17:03:53Z",
       "side": 1,
       "message": "nit/style:\n\nconst LacrosUserDataDir \u003d ...",
+      "revId": "4e13efab0f6aa4ca414e3181f92c6a3be7349734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e1a62f_10236fa2",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-22T19:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "089e0054_4620e61b",
       "revId": "4e13efab0f6aa4ca414e3181f92c6a3be7349734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
