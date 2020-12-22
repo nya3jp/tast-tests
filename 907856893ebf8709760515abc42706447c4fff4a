@@ -243,6 +243,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e684046_6e5e6363",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-22T15:52:19Z",
+      "side": 1,
+      "message": "not fixed. you7re not using fileName as explained in the document.",
+      "parentUuid": "0090e1d2_592a372a",
+      "range": {
+        "startLine": 40,
+        "startChar": 38,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23824ccd_60dfce9a",
         "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
         "patchSetId": 1
