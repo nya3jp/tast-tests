@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17650841_22fcda13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-22T21:59:10Z",
+      "side": 1,
+      "message": "Got it, makes sense! Actually, this entire Var solution should be short-term as well. My understanding is that, once lacros provisioning is supported, we should see the following changes:\n- cros side: instead of downloading from gcs, use the one bundled with the OS image.\n- chromium side: instead of deploying to a different location, just override provisioned location, and all the tests should just work without any modification.",
+      "parentUuid": "572877b5_834b5a43",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "9ea12be006376a2a276ab3d1440be7a8f2264fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a8421cc_3313470c",
@@ -78,6 +102,24 @@
       "writtenOn": "2020-12-22T16:59:20Z",
       "side": 1,
       "message": "optional: rather than hard coding, how about passing the path via Var?\nThat also helps precondition to understand whether it is already deployed or not.\n\npath, ok :\u003d s.Var(\"lacros.DeployedBinary\")\nif !ok {\n  // download\n  ...\n}",
+      "revId": "9ea12be006376a2a276ab3d1440be7a8f2264fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d4be18_35ed35c5",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-22T21:59:10Z",
+      "side": 1,
+      "message": "That\u0027s a great idea! Done.",
+      "parentUuid": "3a8421cc_3313470c",
       "revId": "9ea12be006376a2a276ab3d1440be7a8f2264fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
