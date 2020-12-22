@@ -291,6 +291,30 @@
       },
       "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791e22a6_845c97c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-22T00:28:01Z",
+      "side": 1,
+      "message": "Can you embed chrome.Conn to the struct?\n\nI mean, instead of\n\ntype ChromeVoxConn struct {\n\tconn *chrome.Conn\n}\n\n, we can do \n\ntype ChromeVoxConn struct {\n\tchrome.Conn\n}\n\nso that all of public methods of chrome.Conn are directly accessible from ChromeVoxConn, which means we can do cvconn.Eval without any wrappers.\n\nI\u0027m sorry if my previous comments were not clear.",
+      "parentUuid": "ab672e68_e1b07d2b",
+      "range": {
+        "startLine": 62,
+        "startChar": 18,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "cbb85f9d5e8152908ad0774bc77b3101c096722e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
