@@ -19,18 +19,25 @@ func TestFio(t *testing.T) {
 		Name string
 		Kind string
 		Job  string
+		Dep  string
 	}
 
 	jobs := []string{"boot", "login", "surfing", "randread", "randwrite", "seqread", "seqwrite", "stress_rw"}
-	kind := []string{"block", "virtiofs", "p9"}
+	kind := []string{"block", "virtiofs", "virtiofs_dax", "p9"}
 
 	var params []paramData
 	for _, job := range jobs {
 		for _, kind := range kind {
+			dep := ""
+			if kind == "virtiofs_dax" {
+				dep = "amd64"
+			}
+
 			params = append(params, paramData{
 				Name: fmt.Sprintf("%s_%s", kind, job),
 				Kind: kind,
 				Job:  fmt.Sprintf("fio_%s.job", job),
+				Dep:  dep,
 			})
 		}
 	}
@@ -43,6 +50,11 @@ func TestFio(t *testing.T) {
 				kind: {{ .Kind | fmt }},
 				job: {{ .Job | fmt }},
 			},
+			{{ if .Dep }}
+			// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
+			// on ARM.
+			ExtraSoftwareDeps: []string { {{ .Dep | fmt }} },
+			{{ end }}
 		},
 		{{ end }}`,
 		params)
