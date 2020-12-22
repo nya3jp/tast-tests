@@ -13,8 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/vm/common"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -26,9 +26,10 @@ func init() {
 		Desc:         "Tests that the crosvm virtio-fs device works correctly",
 		Contacts:     []string{"chirantan@chromium.org", "crosvm-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{common.VirtiofsKernel(), runPjdfstest},
+		Data:         []string{vm.ArtifactData(), runPjdfstest},
 		Timeout:      20 * time.Minute,
 		SoftwareDeps: []string{"vm_host"},
+		Pre:          vm.Artifact(),
 	})
 }
 
@@ -46,12 +47,7 @@ func Virtiofs(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to change permissions on temporary directory: ", err)
 	}
 
-	vmlinux := s.DataPath(common.VirtiofsKernel())
-
-	kernel := filepath.Join(td, "kernel")
-	if err := common.UnpackKernel(ctx, vmlinux, kernel); err != nil {
-		s.Fatal("Failed to unpack kernel: ", err)
-	}
+	data := s.PreValue().(vm.PreData)
 
 	logFile := filepath.Join(s.OutDir(), "serial.log")
 
@@ -76,7 +72,7 @@ func Virtiofs(ctx context.Context, s *testing.State) {
 		"--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", logFile),
 		"--shared-dir", "/:/dev/root:type=fs:cache=always",
 		"--disable-sandbox",
-		kernel,
+		data.Kernel,
 	}
 
 	output, err := os.Create(filepath.Join(s.OutDir(), "crosvm.log"))

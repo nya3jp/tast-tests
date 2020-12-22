@@ -14,8 +14,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/local/bundles/cros/vm/common"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -33,9 +33,10 @@ func init() {
 		Desc:         "Tests crosvm storage device small file performance",
 		Contacts:     []string{"chirantan@chromium.org", "crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		Data:         []string{common.VirtiofsKernel(), runBlogbench},
+		Data:         []string{vm.ArtifactData(), runBlogbench},
 		SoftwareDeps: []string{"vm_host"},
 		Timeout:      5 * time.Minute,
+		Pre:          vm.Artifact(),
 		Params: []testing.Param{
 			{
 				Name: "block",
@@ -61,12 +62,7 @@ func Blogbench(ctx context.Context, s *testing.State) {
 	}
 	defer os.RemoveAll(td)
 
-	vmlinux := s.DataPath(common.VirtiofsKernel())
-
-	kernel := filepath.Join(td, "kernel")
-	if err := common.UnpackKernel(ctx, vmlinux, kernel); err != nil {
-		s.Fatal("Failed to unpack kernel: ", err)
-	}
+	data := s.PreValue().(vm.PreData)
 
 	shared := filepath.Join(td, "shared")
 	if err := os.Mkdir(shared, 0755); err != nil {
@@ -124,7 +120,7 @@ func Blogbench(ctx context.Context, s *testing.State) {
 		td,
 	}
 
-	args = append(args, "-p", strings.Join(params, " "), kernel)
+	args = append(args, "-p", strings.Join(params, " "), data.Kernel)
 
 	output, err := os.Create(filepath.Join(s.OutDir(), "crosvm.log"))
 	if err != nil {
