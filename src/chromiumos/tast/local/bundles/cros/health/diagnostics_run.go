@@ -57,6 +57,11 @@ func init() {
 			Val:       croshealthd.RoutineNVMESelfTest,
 			ExtraAttr: []string{"informational"},
 		}, {
+			Name:              "nvme_wear_level",
+			Val:               croshealthd.RoutineNVMEWearLevel,
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"wilco"},
+		}, {
 			Name:      "prime_search",
 			Val:       croshealthd.RoutinePrimeSearch,
 			ExtraAttr: []string{"informational"},
