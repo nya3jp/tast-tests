@@ -47,6 +47,13 @@ func init() {
 				Val:  "fs",
 			},
 			{
+				Name: "virtiofs_dax",
+				Val:  "fs_dax",
+				// TODO(b/176129399): Remove this line once virtiofs DAX is enabled
+				// on ARM.
+				ExtraSoftwareDeps: []string{"amd64"},
+			},
+			{
 				Name: "p9",
 				Val:  "p9",
 			},
@@ -98,7 +105,7 @@ func Blogbench(ctx context.Context, s *testing.State) {
 	if kind == "block" {
 		tag = "/dev/vda"
 		args = append(args, "--rwdisk", block)
-	} else if kind == "fs" {
+	} else if kind == "fs" || kind == "fs_dax" {
 		tag = "shared"
 		args = append(args, "--shared-dir",
 			fmt.Sprintf("%s:%s:type=%s:cache=always:timeout=3600:writeback=true", shared, tag, kind))
