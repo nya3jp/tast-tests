@@ -33,6 +33,23 @@
       "message": "LGTM, Thank you!\n\nPlease get a review from tast-owners@",
       "revId": "65b90f4727a42ae70d7706094ddc8c869242c911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "871ab1c3_6aae0ced",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-22T15:37:19Z",
+      "side": 1,
+      "message": "Adding tast owners for owners approval.",
+      "revId": "65b90f4727a42ae70d7706094ddc8c869242c911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
