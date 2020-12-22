@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eea8540_05e255d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-22T05:27:27Z",
+      "side": 1,
+      "message": "\u003e \"lauching\" is a possible misspelling of \"launching\".\n\nPlease fix.",
+      "parentUuid": "c1d7ee16_5aeb088d",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "d04f77bfba61ce0fb3ef578aa534265f2ca1791a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b97f274_b1625fd0",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-22T05:27:27Z",
+      "side": 1,
+      "message": "\u003e \"specificed\" is a possible misspelling of \"specified\".\n\nPlease fix.",
+      "parentUuid": "87ad885b_b785948b",
+      "range": {
+        "startLine": 278,
+        "startChar": 58,
+        "endLine": 278,
+        "endChar": 68
+      },
+      "revId": "d04f77bfba61ce0fb3ef578aa534265f2ca1791a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
