@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53afa9d_e222fe5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-22T03:02:08Z",
+      "side": 1,
+      "message": "Thanks for the change! +oka for another fixture use case.\n",
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99f6c0fd_9df735f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-22T03:02:08Z",
+      "side": 1,
+      "message": "I believe we want to put this in a scope. Otherwise the whole SetUp is bounded by chrome.LoginTimeout.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 15
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1eb8a1f_98dccc6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-22T03:02:08Z",
+      "side": 1,
+      "message": "There\u0027s a subtle difference between fixtures and preconditions about errors within SetUp/Prepare.\n\nFor preconditions, Close is called even if Prepare reports errors.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/pre.go;rcl\u003dea34b76546fe6531a750ca3dd4ca5f7483ef8632;l\u003d17\n\nFor fixtures, TearDown is not called when SetUp reports errors.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/fixt.go;rcl\u003dd046166708dcfe66d512919eb37e909b9dcc41ab;l\u003d135\n\nThus f.cr assigned here will leak when we call s.Error/s.Fatal below.\n\nTo avoid this, we have to perform deferred close, for example:\n\n cr, err :\u003d chrome.New(...)\n if err !\u003d nil { ... }\n defer func() {\n   if cr !\u003d nil {\n     cr.Close()\n   }\n }()\n\n ...\n\n f.cr \u003d cr\n cr \u003d nil",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d64fb1c_560b6add",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-22T03:02:08Z",
+      "side": 1,
+      "message": "We can skip these nil checks since TearDown is called only when SetUp succeeds.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe506f6e_27cb7e6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-22T03:02:08Z",
+      "side": 1,
+      "message": "Just curious: why don\u0027t we do this in Chrome.ResetState?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "801c3e2f_b42c6a30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-12-22T03:02:08Z",
+      "side": 1,
+      "message": "nit: I personally recommend making this a function (not a method) since it\u0027s not closely tied to loggedInToCUJUserFixture.\n\n func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, error)",
+      "range": {
+        "startLine": 160,
+        "startChar": 35,
+        "endLine": 160,
+        "endChar": 50
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
