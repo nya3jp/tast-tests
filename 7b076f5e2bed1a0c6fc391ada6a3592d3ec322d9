@@ -16,6 +16,40 @@
       "message": "Adding Hikaru, since she might be working this week.",
       "revId": "7b076f5e2bed1a0c6fc391ada6a3592d3ec322d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c869f6bc_364ebdce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-12-22T08:27:08Z",
+      "side": 1,
+      "message": "Logic looks good to me. Defer to Tast owners.",
+      "revId": "7b076f5e2bed1a0c6fc391ada6a3592d3ec322d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc8418ed_037c3b17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle_shifting.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-12-22T08:27:08Z",
+      "side": 1,
+      "message": "nits:\nCreated -\u003e Create or Creates\nshould -\u003e Should\n\nThe tasks created here will be launched sequentially later, so how about rephrasing this like this to clarify what is done here:\n\"Schedule tasks to pressure the memory and see how the memory policy behaves.\"",
+      "revId": "7b076f5e2bed1a0c6fc391ada6a3592d3ec322d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
