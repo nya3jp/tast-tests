@@ -6,8 +6,7 @@ package lacros
 
 import (
 	"context"
-	"strings"
-	"time"
+	"os"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
@@ -19,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShelfLaunch,
-		Desc:         "Tests launching and interacting with lacros launched from the UI",
+		Desc:         "Tests launching and interacting with lacros launched from the Shelf",
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
@@ -84,24 +83,24 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Clean up user data dir to ensure a clean start.
+	os.RemoveAll(launcher.LacrosUserDataDir)
 	if err = ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
 		s.Fatal("Failed to launch Lacros: ", err)
 	}
 
 	s.Log("Checking that Lacros window is visible")
-	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-		return w.IsVisible && strings.HasPrefix(w.Title, "Welcome to Chrome") && strings.HasPrefix(w.Name, "ExoShellSurface")
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	if err := launcher.WaitForLacrosWindow(ctx, tconn, "Welcome to Chrome"); err != nil {
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
 	s.Log("Connecting to the lacros-chrome browser")
-	const userDataDir = "/home/chronos/user/lacros/"
-	l, err := launcher.ConnectToLacrosChrome(ctx, s.PreValue().(launcher.PreData).Chrome, userDataDir)
+	l, err := launcher.ConnectToLacrosChrome(ctx, s.PreValue().(launcher.PreData).Chrome, launcher.LacrosUserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
 	defer l.Close(ctx)
+
 	s.Log("Opening a new tab")
 	tab, err := l.Devsess.CreateTarget(ctx, "about:blank")
 	if err != nil {
@@ -109,9 +108,15 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 	defer l.Devsess.CloseTarget(ctx, tab)
 	s.Log("Closing lacros-chrome browser")
+
+	if err := launcher.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
+		s.Fatal("Failed waiting for Lacros to navigate to about:blank page: ", err)
+	}
+
 	if err := l.Close(ctx); err != nil {
 		s.Fatal("Failed to close lacros-chrome: ", err)
 	}
+
 	if err := ash.WaitForAppClosed(ctx, tconn, apps.Lacros.ID); err != nil {
 		s.Fatalf("%s did not close successfully: %s", apps.Lacros.Name, err)
 	}
