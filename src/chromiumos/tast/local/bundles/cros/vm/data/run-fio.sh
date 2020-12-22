@@ -12,8 +12,8 @@ die() {
 }
 
 usage() {
-  die "Usage: $(basename "$0") <block|virtiofs|p9> <src> <mountpoint> " \
-      "<output> <jobs>"
+  die "Usage: $(basename "$0") <block|virtiofs|virtiofs_dax|p9> <src> " \
+      "<mountpoint> <output> <jobs>"
 }
 
 main() {
@@ -51,6 +51,9 @@ main() {
     virtiofs)
       mount -t virtiofs "${src}" "${mountpoint}"
       ;;
+    virtiofs_dax)
+        mount -t virtiofs -o dax "${src}" "${mountpoint}"
+        ;;
     *)
       die "Unknown storage type: ${kind}"
   esac
