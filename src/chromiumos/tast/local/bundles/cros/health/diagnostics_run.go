@@ -14,6 +14,15 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+// newRoutineParams creates and returns a diagnostic routine with default test
+// parameters.
+func newRoutineParams(routine string) croshealthd.RoutineParams {
+	return croshealthd.RoutineParams{
+		Routine: routine,
+		Cancel:  false,
+	}
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DiagnosticsRun,
@@ -28,94 +37,94 @@ func init() {
 		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
 			Name:              "battery_capacity",
-			Val:               croshealthd.RoutineBatteryCapacity,
+			Val:               newRoutineParams(croshealthd.RoutineBatteryCapacity),
 			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Battery()),
 		}, {
 			Name:              "battery_health",
-			Val:               croshealthd.RoutineBatteryHealth,
+			Val:               newRoutineParams(croshealthd.RoutineBatteryHealth),
 			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Battery()),
 		}, {
 			Name:      "urandom",
-			Val:       croshealthd.RoutineURandom,
+			Val:       newRoutineParams(croshealthd.RoutineURandom),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:              "smartctl_check",
-			Val:               croshealthd.RoutineSmartctlCheck,
+			Val:               newRoutineParams(croshealthd.RoutineSmartctlCheck),
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"smartctl"},
 		}, {
 			Name:      "cpu_cache",
-			Val:       croshealthd.RoutineCPUCache,
+			Val:       newRoutineParams(croshealthd.RoutineCPUCache),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "cpu_stress",
-			Val:       croshealthd.RoutineCPUStress,
+			Val:       newRoutineParams(croshealthd.RoutineCPUStress),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "floating_point_accuracy",
-			Val:       croshealthd.RoutineFloatingPointAccurary,
+			Val:       newRoutineParams(croshealthd.RoutineFloatingPointAccurary),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:              "nvme_self_test",
-			Val:               croshealthd.RoutineNVMESelfTest,
+			Val:               newRoutineParams(croshealthd.RoutineNVMESelfTest),
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"nvme"},
 		}, {
 			Name:      "nvme_wear_level",
-			Val:       croshealthd.RoutineNVMEWearLevel,
+			Val:       newRoutineParams(croshealthd.RoutineNVMEWearLevel),
 			ExtraAttr: []string{"informational"},
 			// nvme_wear_level requires specific offsets in the nvme log that
 			// are only currently defined for wilco devices.
 			ExtraSoftwareDeps: []string{"nvme", "wilco"},
 		}, {
 			Name:      "prime_search",
-			Val:       croshealthd.RoutinePrimeSearch,
+			Val:       newRoutineParams(croshealthd.RoutinePrimeSearch),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "lan_connectivity",
-			Val:       croshealthd.RoutineLanConnectivity,
+			Val:       newRoutineParams(croshealthd.RoutineLanConnectivity),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "signal_strength",
-			Val:       croshealthd.RoutineSignalStrength,
+			Val:       newRoutineParams(croshealthd.RoutineSignalStrength),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "gateway_can_be_pinged",
-			Val:       croshealthd.RoutineGatewayCanBePinged,
+			Val:       newRoutineParams(croshealthd.RoutineGatewayCanBePinged),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "has_secure_wifi_connection",
-			Val:       croshealthd.RoutineHasSecureWifiConnection,
+			Val:       newRoutineParams(croshealthd.RoutineHasSecureWifiConnection),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "dns_resolver_present",
-			Val:       croshealthd.RoutineDNSResolverPresent,
+			Val:       newRoutineParams(croshealthd.RoutineDNSResolverPresent),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "dns_latency",
-			Val:       croshealthd.RoutineDNSLatency,
+			Val:       newRoutineParams(croshealthd.RoutineDNSLatency),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "dns_resolution",
-			Val:       croshealthd.RoutineDNSResolverPresent,
+			Val:       newRoutineParams(croshealthd.RoutineDNSResolverPresent),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "captive_portal",
-			Val:       croshealthd.RoutineCaptivePortal,
+			Val:       newRoutineParams(croshealthd.RoutineCaptivePortal),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "http_firewall",
-			Val:       croshealthd.RoutineHTTPFirewall,
+			Val:       newRoutineParams(croshealthd.RoutineHTTPFirewall),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "https_firewall",
-			Val:       croshealthd.RoutineHTTPSFirewall,
+			Val:       newRoutineParams(croshealthd.RoutineHTTPSFirewall),
 			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "https_latency",
-			Val:       croshealthd.RoutineHTTPSLatency,
+			Val:       newRoutineParams(croshealthd.RoutineHTTPSLatency),
 			ExtraAttr: []string{"informational"},
 		}},
 	})
@@ -126,9 +135,10 @@ func init() {
 // routines can be run without errors, and not to check if the routines pass or
 // fail.
 func DiagnosticsRun(ctx context.Context, s *testing.State) {
-	routine := s.Param().(string)
+	params := s.Param().(croshealthd.RoutineParams)
+	routine := params.Routine
 	s.Logf("Running routine: %s", routine)
-	result, err := croshealthd.RunDiagRoutine(ctx, routine)
+	result, err := croshealthd.RunDiagRoutine(ctx, params)
 	if err != nil {
 		s.Fatalf("Unable to run %s routine: %s", routine, err)
 	}
