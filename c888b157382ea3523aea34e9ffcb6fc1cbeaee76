@@ -16,6 +16,24 @@
       "message": "Nice. Lgtm but we probably want to have the crostini tast owners take a look as well.  sidereal is out till january so maybe davidmunro?",
       "revId": "c888b157382ea3523aea34e9ffcb6fc1cbeaee76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba17489_c37ee6b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-12-22T13:00:06Z",
+      "side": 1,
+      "message": "sgtm. Let me add davidmunro@.",
+      "parentUuid": "4d38a05f_9b4ef498",
+      "revId": "c888b157382ea3523aea34e9ffcb6fc1cbeaee76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
