@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819024d0_88be9b74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-22T02:45:10Z",
+      "side": 1,
+      "message": "defer cancel()",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 16
+      },
+      "revId": "b31e9bd07017a5b3dfb70d044b425cfd62300c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9041a7ed_9fb1184e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-22T02:45:10Z",
+      "side": 1,
+      "message": "nit: somewhere (either here, where the \u0027err \u003d\u003d nil\u0027 and string-search logic is a bit atypical; or above where the Expect-ation is a bit strange) we might deserve a comment about the subtleties (how we\u0027re looking for a specific failure, and how we\u0027re padding the timeouts to try to make this reasonably stable), for the future reader",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 110
+      },
+      "revId": "b31e9bd07017a5b3dfb70d044b425cfd62300c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62059177_080b865f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-22T02:45:10Z",
+      "side": 1,
+      "message": "maybe \"\u003c\u003d\"? I\u0027m not sure how the Expect-er will behave with an empty slice of expected properties, but it can\u0027t be what we want",
+      "range": {
+        "startLine": 121,
+        "startChar": 15,
+        "endLine": 121,
+        "endChar": 16
+      },
+      "revId": "b31e9bd07017a5b3dfb70d044b425cfd62300c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ee7318_a8834ead",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-22T02:45:10Z",
+      "side": 1,
+      "message": "tiny nit: normally one would print a value in here (e.g., rekeyCount?), to make this more useful. But these are all constants, so not such a big deal I guess.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "b31e9bd07017a5b3dfb70d044b425cfd62300c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e338edb8_98b8d4f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-12-22T02:45:10Z",
+      "side": 1,
+      "message": "nice! the rekey events make for a reasonable compromise, where even if we can\u0027t get a great hold on checking for IsConnected\u003d\u003dtrue the entire time, we can at least check that we get a reasonable of rekey events, and no IsConnected\u003d\u003dfalse in between them.",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 24
+      },
+      "revId": "b31e9bd07017a5b3dfb70d044b425cfd62300c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
