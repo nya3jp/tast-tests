@@ -478,6 +478,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "511a8d15_4b8768a4",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2020-12-22T03:50:33Z",
+      "side": 1,
+      "message": "Yes, the manual setup survive a phone after rebooting.\n\nFor auto update part, I think it\u0027s the same as public users.\nThe Google Play store should auto update GMS core by default.\nIt is not related to userdebug image or not, because actually the GMS core is signed version inside userdebug image.",
+      "parentUuid": "d0440a9b_85d8b473",
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7f85332_b254ab91",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
         "patchSetId": 2
