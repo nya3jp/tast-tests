@@ -39,6 +39,47 @@
       },
       "revId": "9ea12be006376a2a276ab3d1440be7a8f2264fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572877b5_834b5a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-22T16:59:20Z",
+      "side": 1,
+      "message": "I expect we\u0027ll switch Lacros Tast tests from precondition to fixture.\nAnd the fixture supports its own vars: crrev.com/c/1127166\n\nSo, this will be very short term workaround.\nConsidering that, could you just move this to Vars in toplevel, with TODO?\nI prefer using existing features, rather than extending a framework, to reduce total amount of maintenance cost.",
+      "parentUuid": "4db20c4e_75bef413",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "9ea12be006376a2a276ab3d1440be7a8f2264fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8421cc_3313470c",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-22T16:59:20Z",
+      "side": 1,
+      "message": "optional: rather than hard coding, how about passing the path via Var?\nThat also helps precondition to understand whether it is already deployed or not.\n\npath, ok :\u003d s.Var(\"lacros.DeployedBinary\")\nif !ok {\n  // download\n  ...\n}",
+      "revId": "9ea12be006376a2a276ab3d1440be7a8f2264fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
