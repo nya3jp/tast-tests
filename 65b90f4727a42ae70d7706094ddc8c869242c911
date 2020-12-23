@@ -94,6 +94,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65b71b8e_04019626",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-23T17:04:04Z",
+      "side": 1,
+      "message": "Thanks for catching that. For this change, I specified Feature for all consts. However, does it make sense to do something like below in the future:\n\ntype Feature int\n\nconst(\n    DockedMagnifier Feature \u003d iota\n    FocusHighlight\n    ....\n)\n\nfunc (f Feature) String() string {\n    // Convert int to string using a map.\n}\n\nIf this makes sense, I can do this in a follow-up change. Thanks!",
+      "parentUuid": "50afa70f_d4cc485e",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "65b90f4727a42ae70d7706094ddc8c869242c911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5da7e6c8_3e437d9b",
         "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
         "patchSetId": 4
@@ -105,6 +129,30 @@
       "writtenOn": "2020-12-23T01:46:48Z",
       "side": 1,
       "message": "Optional: It\u0027s more common to use \"defer\" to ensure we close extConn when an error happens. There\u0027s several ways to close an object only when returning with an error, but for example:\n\n func ChromeVoxExtConn(...) (extConn *chrome.Conn, retErr error) {  // name the return value\n   extConn, err :\u003d ...\n   if err !\u003d nil {\n     return nil, err\n   }\n   defer func() {\n     if retErr !\u003d nil {\n       extConn.Close()\n     }\n   }()\n\n   ...\n }",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "65b90f4727a42ae70d7706094ddc8c869242c911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa77e39a_5b335842",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-23T17:04:04Z",
+      "side": 1,
+      "message": "Thank you for the tip. I think I will stay with the current approach for this change since you\u0027ve already given a +1 😊",
+      "parentUuid": "5da7e6c8_3e437d9b",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -128,6 +176,30 @@
       "writtenOn": "2020-12-23T01:46:48Z",
       "side": 1,
       "message": "nit\u0026optional: \"accessibility\" is a bit long word, especially when we rename it to \"arcaccessibility\". We might want to consider renaming them to a11y?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "65b90f4727a42ae70d7706094ddc8c869242c911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f269f8_25b7be48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-23T17:04:04Z",
+      "side": 1,
+      "message": "Sure, let\u0027s name it \"a11y\" and \"arca11y\" to avoid long names!",
+      "parentUuid": "ef6914b2_49092d70",
       "range": {
         "startLine": 13,
         "startChar": 0,
