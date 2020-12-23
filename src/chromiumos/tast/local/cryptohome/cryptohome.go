@@ -339,6 +339,15 @@ func UnmountVault(ctx context.Context, user string) error {
 	return nil
 }
 
+// MountedVaultPath returns the path where the decrypted data for the user is located.
+func MountedVaultPath(ctx context.Context, user string) (string, error) {
+	hash, err := UserHash(ctx, user)
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(shadowRoot, hash, "mount"), nil
+}
+
 // IsMounted checks if the vault for the user is mounted.
 func IsMounted(ctx context.Context, user string) (bool, error) {
 	mounter := cryptohomedExe
