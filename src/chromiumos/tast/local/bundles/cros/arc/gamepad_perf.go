@@ -30,14 +30,14 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Pre:     arc.Booted(),
+		Fixture: "arcBooted",
 		Timeout: 2 * time.Minute,
 	})
 }
 
 func GamepadPerf(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

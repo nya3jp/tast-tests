@@ -23,7 +23,7 @@ func init() {
 		// TODO(b/150909711): Enable this test after fix.
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 
@@ -37,8 +37,8 @@ func PerAppDensity(ctx context.Context, s *testing.State) {
 		squareSidePx = 100
 	)
 
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 	dd, err := perappdensity.MeasureDisplayDensity(ctx, a)
 	if err != nil {
 		s.Fatal("Error obtaining initial display density: ", err)

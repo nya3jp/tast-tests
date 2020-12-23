@@ -24,7 +24,7 @@ func init() {
 			"judyhsiao@chromium.org",         // Author
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
@@ -64,8 +64,8 @@ func init() {
 
 // AudioValidity runs audio validity tests.
 func AudioValidity(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	param := s.Param().(audio.TestParameters)
 	atast, err := audio.NewARCAudioTast(ctx, a, cr)
 	if err != nil {
