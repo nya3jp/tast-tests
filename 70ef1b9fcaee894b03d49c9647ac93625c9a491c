@@ -16,6 +16,40 @@
       "message": "ptal",
       "revId": "70ef1b9fcaee894b03d49c9647ac93625c9a491c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8df53de_775d26d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-23T16:38:05Z",
+      "side": 1,
+      "message": "LGTM with minor request.\n\nThank you for making the fix.\nFYI: we\u0027ll switch to use the testing python script you made in Tast, too.\n",
+      "revId": "70ef1b9fcaee894b03d49c9647ac93625c9a491c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ba6b9c_a67d9b0d",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-23T16:38:05Z",
+      "side": 1,
+      "message": "Now two fds are returned. Could you\n- document which is what, and\n- (optional) use named return value?",
+      "revId": "70ef1b9fcaee894b03d49c9647ac93625c9a491c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
