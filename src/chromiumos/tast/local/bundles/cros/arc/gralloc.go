@@ -23,7 +23,7 @@ func init() {
 		Contacts:     []string{"stevensd@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -34,7 +34,7 @@ func init() {
 }
 
 func Gralloc(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 5*time.Second)
 	defer cancel()

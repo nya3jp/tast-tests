@@ -36,7 +36,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(unstableModels...)),
@@ -115,8 +115,8 @@ func Print(ctx context.Context, s *testing.State) {
 		attributes   = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 	)
 
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

@@ -27,8 +27,8 @@ func init() {
 			"mxcai@chromium.org",
 			"chromeos-apps-foundation-team@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
-		Pre:  arc.Booted(),
+		Attr:    []string{"group:mainline", "informational"},
+		Fixture: "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {
@@ -45,8 +45,8 @@ const (
 )
 
 func ChromeIntentPicker(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
-	arcDevice := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	arcDevice := s.FixtValue().(*arc.PreData).ARC
 
 	const (
 		appName        = "Intent Picker Test App"

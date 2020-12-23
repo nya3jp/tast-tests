@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/a11y"
-	"chromiumos/tast/local/arc"
 	arca11y "chromiumos/tast/local/bundles/cros/arc/a11y"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
@@ -39,7 +38,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},

@@ -25,7 +25,7 @@ func init() {
 		},
 		// TODO(yusukes,ricardoq): ARCVM does not need the test. Remove this once we retire ARC container.
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		// Informational because the test is flaky. See https://crbug.com/1018776
 		Attr: []string{"group:mainline", "informational"},
 	})
@@ -40,7 +40,7 @@ func FileSystemPermissions(ctx context.Context, s *testing.State) {
 		aidUnknown = "65534"
 	)
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	arcPID, err := arc.InitPID()
 	if err != nil {
 		s.Fatal("Failed to get ARC init PID: ", err)
