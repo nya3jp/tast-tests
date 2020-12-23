@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56815cb7_352b8c8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-12-23T09:04:01Z",
+      "side": 1,
+      "message": "8 minutes is a bit concerning but some tests are taking more time and it should be fine I guess...? Also I realized that we can\u0027t make the test to be exhaustive because there are modifier keys as well, and it\u0027s just US layout... Do you have any idea on how to test a good subset of it? (it\u0027s optional.)",
+      "parentUuid": "33de35cc_a96d52b9",
+      "range": {
+        "startLine": 213,
+        "startChar": 49,
+        "endLine": 213,
+        "endChar": 53
+      },
+      "revId": "6c38f2034b2b0202471018350bf4c6039e5e9689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d30c8ae6_2de92dc5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
         "patchSetId": 3

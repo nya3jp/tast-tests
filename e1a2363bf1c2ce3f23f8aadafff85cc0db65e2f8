@@ -158,6 +158,24 @@
       "parentUuid": "4e15cab4_373d6d8c",
       "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67cae4aa_3b031b51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-12-23T09:04:01Z",
+      "side": 1,
+      "message": "OK, then can we document corner cases we\u0027re aware of in the test so that we can make improvement later?\n\nThere are following corner cases I can imagine:\n\ncase #1:\n\n1. A key (e.g. back button) is pressed that closes the activity\n2. focusField() runs before the key #1 is processed by Android and succeeds, because there\u0027s no wait\n2. A key that leads to ARC crash or mojo disconnection is sent, but it\u0027s not sent to Android\n3. Because it\u0027s not received by Android, it fails to catch the regression\n\ncase #2:\n\n1. A key that leads to ARC crash or mojo disconnection is sent as a last case\n2. As there\u0027s no wait after the loop, done is sent to the logcat goroutine before the crash message is received\n3. Because the test returns without error, it fails to catch the regression",
+      "parentUuid": "435950ee_0cb0aaae",
+      "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
