@@ -56,6 +56,30 @@
       },
       "revId": "f71a8a459663a1a0b80bcdcddd9ddecb520d5077",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b76cc5d3_21165649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2020-12-23T17:43:14Z",
+      "side": 1,
+      "message": "Yes, looks like we can access it directly, so I removed the getter.",
+      "parentUuid": "8b662eb1_5555a973",
+      "range": {
+        "startLine": 169,
+        "startChar": 93,
+        "endLine": 169,
+        "endChar": 112
+      },
+      "revId": "f71a8a459663a1a0b80bcdcddd9ddecb520d5077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
