@@ -107,6 +107,6 @@ func init() {
 }
 
 func VideoEncodeAccel(ctx context.Context, s *testing.State) {
-	video.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC,
+	video.RunARCVideoTest(ctx, s, s.FixtValue().(*arc.PreData).ARC,
 		s.Param().(video.EncodeTestOptions), veaPullEncodedVideo, veaCacheExtractedVideo)
 }

@@ -72,7 +72,7 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -92,7 +92,7 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 		Wifi: setup.DisableWifiInterfaces, Battery: batteryMode, NightLight: setup.DisableNightLight}))
 
 	// Install GCA APK.
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	sup.Add(setup.InstallApp(ctx, a, s.DataPath(gcaApk), gcaPackage))
 
 	// Grant permissions to activity.

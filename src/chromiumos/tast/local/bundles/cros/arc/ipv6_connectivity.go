@@ -24,7 +24,7 @@ func init() {
 		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 
@@ -34,7 +34,7 @@ func IPv6Connectivity(ctx context.Context, s *testing.State) {
 		googleDNSIPv6    = "2001:4860:4860::8888"
 		googleDotComIPv6 = "ipv6.google.com"
 	)
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	verify := func(ctx context.Context, cmd func(context.Context, string, ...string) *testexec.Cmd, bindir string) error {
 		// Verify global IPv6 address is configured correctly.

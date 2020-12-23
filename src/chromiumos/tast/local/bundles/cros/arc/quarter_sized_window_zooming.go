@@ -27,7 +27,7 @@ func init() {
 		// Disable test until it can be fixed: https://crbug.com/1038163
 		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 
@@ -39,8 +39,8 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 		quarterSizeSetting = "persist.sys.ui.quarter_window_zooming"
 	)
 
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
