@@ -21,7 +21,7 @@ func init() {
 		Name:            "crosHealthdRunning",
 		Desc:            "The croshealthd daemon is available and running",
 		Contacts:        []string{"tbegin@google.com", "pmoy@google.com"},
-		SetUpTimeout:    5 * time.Second,
+		SetUpTimeout:    30 * time.Second,
 		ResetTimeout:    5 * time.Second,
 		PreTestTimeout:  1 * time.Second,
 		PostTestTimeout: 1 * time.Second,
@@ -45,6 +45,15 @@ func newCrosHealthdFixture(run bool) testing.FixtureImpl {
 func (f *crosHealthdFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	if err := f.Reset(ctx); err != nil {
 		s.Fatal("Unable to reset fixture: ", err)
+	}
+
+	// Restart the "ui" job to ensure that Chrome is running and wait Chrome to
+	// bootstrap the cros_healthd mojo services.
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Fatal("Unable to ensure 'ui' upstart service is running: ", err)
+	}
+	if err := WaitForMojoBootstrap(ctx); err != nil {
+		s.Fatal("Unable to wait for mojo bootstrap: ", err)
 	}
 	return nil
 }
