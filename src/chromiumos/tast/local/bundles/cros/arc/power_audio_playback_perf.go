@@ -171,7 +171,7 @@ func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -188,7 +188,7 @@ func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 		Wifi: setup.DisableWifiInterfaces, Battery: param.BatteryDischargeMode, NightLight: setup.DisableNightLight}))
 
 	// Install testing app.
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	sup.Add(setup.InstallApp(ctx, a, arc.APKPath(audio.Apk), audio.Pkg))
 
 	// Wait until CPU is cooled down.

@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"ricardoq@chromium.org", "arc-gaming+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -33,8 +33,8 @@ func init() {
 }
 
 func KillProcess(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
