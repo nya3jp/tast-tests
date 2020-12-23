@@ -46,6 +46,13 @@ func (f *crosHealthdFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err := f.Reset(ctx); err != nil {
 		s.Fatal("Unable to reset fixture: ", err)
 	}
+
+	// Restart the "ui" job to ensure that Chrome is running and wait for the
+	// MojoConnectionService dbus service is ready. This means that Chrome
+	// should have bootstrapped cros_healthd.
+	if err := upstart.RestartJobAndWaitForDbusService(ctx, "ui", "MojoConnectionService"); err != nil {
+		s.Fatal("Unable to ensure 'ui' upstart service is running with the 'MojoConnectionService' dbus service available")
+	}
 	return nil
 }
 
