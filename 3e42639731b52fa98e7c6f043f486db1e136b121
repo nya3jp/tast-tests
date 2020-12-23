@@ -16,6 +16,23 @@
       "message": "Just realized that I have unsent replies. Please consider moving the main logic to sub-package to avoid defining functions / structures in bundles/cros/wifi package. ",
       "revId": "3e42639731b52fa98e7c6f043f486db1e136b121",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c71654c_f7aad00f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-23T17:09:23Z",
+      "side": 1,
+      "message": "It took me quite a while to dig into the code and doc to get the answers.",
+      "revId": "3e42639731b52fa98e7c6f043f486db1e136b121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b9d4291_5f2341fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-23T17:09:23Z",
+      "side": 1,
+      "message": "This is rather sophisticated question. Do you mean automaton picking correct wificell setup to run the test on? Then, according to the comment in hardware.go, not yet:\n`// TODO(hidehiko): Consider adding lab peripherals here.`\nSo I can only discriminate basing on DUT hw properties, not on lab equipment present in the setup, I cannot add Atten hwdep without substantial work in tast itself first, which is out of the scope here.",
+      "parentUuid": "1e9a44c3_18988769",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "e6e416fed3b96b2b46d4482ca2d589e848cb1c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52b58cff_e29fa091",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 6
@@ -37,6 +61,24 @@
       "writtenOn": "2020-12-16T05:00:57Z",
       "side": 1,
       "message": "Golang sets package level visibility for constants, variables, types and functions in top level of files. So unless they are going to share within the package, it is better to be placed in main test function or move the main logic to sub package. In this case I would suggest the later (to avoid lengthy AttenuatedPerf).",
+      "revId": "e6e416fed3b96b2b46d4482ca2d589e848cb1c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64eaa041_5308c3a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2020-12-23T17:09:23Z",
+      "side": 1,
+      "message": "Well, I thought that \"sub\" package is intended for functions and variables intended for reuse (at least https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-subpackages suggests so). I don\u0027t plan to reuse these.\n\nI\u0027m not fond of stuffing everything into one function as well. That\u0027s artificial and won\u0027t look good.\n\nSo, some other options are left here:\n- move the whole test to entirely different package/category;\n- add artificial namespace (\u003d\u003dprefix) to all or only more generic symbols;\n- leave everything as it is, there are already multiple tests, (especially longer ones) that use similar approach.\n\nWDYT?",
+      "parentUuid": "52b58cff_e29fa091",
       "revId": "e6e416fed3b96b2b46d4482ca2d589e848cb1c2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
