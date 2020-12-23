@@ -27,7 +27,7 @@ func init() {
 		Contacts:     []string{"phweiss@chromium.org", "giovax@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Data:         []string{"ArcShelfIconTest.apk"},
 		Timeout:      30 * time.Second,
 		Params: []testing.Param{{
@@ -64,7 +64,7 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 		expGroupColor  = [][]color.RGBA{{color.RGBA{0, 0, 255, 255}, color.RGBA{255, 255, 255, 255}}, {color.RGBA{0, 255, 0, 255}, color.RGBA{255, 0, 0, 255}}}
 	)
 
-	p := s.PreValue().(arc.PreData)
+	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
 
