@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aefa711_e3c1c8fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-23T04:56:06Z",
+      "side": 1,
+      "message": "Hmm, no we don\u0027t expect that. Fixed it, thanks!",
+      "parentUuid": "fc203c91_82a2aedc",
+      "revId": "384f4d0b0a4ce485c818b533194e32f8b70cf609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17d4ae21_f9a37d35",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-23T04:52:57Z",
       "side": 1,
       "message": "huge nit: Move this to ~L1419 after releasing previous app window",
+      "revId": "384f4d0b0a4ce485c818b533194e32f8b70cf609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "010b596a_44429095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-23T04:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17d4ae21_f9a37d35",
       "revId": "384f4d0b0a4ce485c818b533194e32f8b70cf609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
