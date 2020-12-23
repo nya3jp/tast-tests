@@ -69,6 +69,24 @@
       "parentUuid": "bddd3241_5c671d5b",
       "revId": "68f5ae7b642cf14bf92a31ab8b5fe973042f17c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0ca883_1acbdfe5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-12-23T00:55:36Z",
+      "side": 1,
+      "message": "Right, please include that file. We\u0027ll see if it turns out to be useful for this particular problem or not, but it\u0027s good to have available in general.",
+      "parentUuid": "0725cff7_8e916ed0",
+      "revId": "68f5ae7b642cf14bf92a31ab8b5fe973042f17c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
