@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeade8e0_1ccaa077",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-12-23T00:31:45Z",
+      "side": 1,
+      "message": "oops, good catch.",
+      "parentUuid": "819024d0_88be9b74",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 16
+      },
+      "revId": "b31e9bd07017a5b3dfb70d044b425cfd62300c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9041a7ed_9fb1184e",
@@ -120,6 +144,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f19cbeea_3532c37f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-12-23T00:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62059177_080b865f",
+      "range": {
+        "startLine": 121,
+        "startChar": 15,
+        "endLine": 121,
+        "endChar": 16
+      },
+      "revId": "b31e9bd07017a5b3dfb70d044b425cfd62300c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "46ee7318_a8834ead",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
         "patchSetId": 4
@@ -131,6 +179,30 @@
       "writtenOn": "2020-12-22T02:45:10Z",
       "side": 1,
       "message": "tiny nit: normally one would print a value in here (e.g., rekeyCount?), to make this more useful. But these are all constants, so not such a big deal I guess.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "b31e9bd07017a5b3dfb70d044b425cfd62300c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a92ea4a_f1374c21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ptk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-12-23T00:31:45Z",
+      "side": 1,
+      "message": "Yeah, I just figured rekeyCount wouldn\u0027t really mean anything unless you looked through the code. Will leave it as is.",
+      "parentUuid": "46ee7318_a8834ead",
       "range": {
         "startLine": 122,
         "startChar": 0,
