@@ -16,6 +16,46 @@
       "message": "Thank you for the feedback!",
       "revId": "f71a8a459663a1a0b80bcdcddd9ddecb520d5077",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3973a294_fdfd31da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-23T00:19:20Z",
+      "side": 1,
+      "message": "LGTM with one comment.\nThanks for this clean up!!",
+      "revId": "f71a8a459663a1a0b80bcdcddd9ddecb520d5077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b662eb1_5555a973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-12-23T00:19:20Z",
+      "side": 1,
+      "message": "Can we directly access it via `cvconn.Conn`?\n\nIf we can do it, we don\u0027t need the getter method.",
+      "range": {
+        "startLine": 169,
+        "startChar": 93,
+        "endLine": 169,
+        "endChar": 112
+      },
+      "revId": "f71a8a459663a1a0b80bcdcddd9ddecb520d5077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
