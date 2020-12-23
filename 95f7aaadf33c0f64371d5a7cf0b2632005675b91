@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "162ce506_98b0b0d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2020-12-23T17:27:44Z",
+      "side": 1,
+      "message": "@miguel \n  v4l2_codec software dep change landed, so made change to use it instead of arm software dep\n  https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2599453",
+      "revId": "95f7aaadf33c0f64371d5a7cf0b2632005675b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
