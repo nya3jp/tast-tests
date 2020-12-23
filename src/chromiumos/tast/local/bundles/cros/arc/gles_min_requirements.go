@@ -97,11 +97,11 @@ func GLESMinRequirements(ctx context.Context, s *testing.State) {
 	// Check ETC1 support.
 	supportsETC1, ok := results["supports_ETC1"]
 	if !ok {
-		s.Log("Test output: ", out)
 		s.Fatal("Failed to find 'supports_ETC1'")
 	}
 	if supportsETC1 != "true" {
-		s.Fatalf("Unexpected ETC1, got: %q, want='true'", supportsETC1)
+		s.Log("Test output: ", out)
+		s.Fatalf("Unexpected ETC1 value, got: %q, want='true'", supportsETC1)
 	}
 
 	// No need to check for ETC2 compressed texture format.
@@ -117,7 +117,7 @@ func GLESMinRequirements(ctx context.Context, s *testing.State) {
 	// c) GL_KHR_texture_compression_astc (includes b)
 	// The test passes it at least a) is supported.
 	if !supportsASTC && !astcRegex.MatchString(results["gl_extensions"]) {
-		s.Logf("Supported GLES extensions: %q", results["gl_extensions"])
+		s.Log("Test output: ", out)
 		s.Fatal("ASTC LDR texture format not supported")
 	}
 }
