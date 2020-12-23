@@ -69,6 +69,23 @@
       "message": "Based on this comment https://buganizer.corp.google.com/issues/173723099#comment3 the veyron_mickey has been removed from the lab, so this change can be merged. ",
       "revId": "294155236b1eb52a8ee075f1d918342a83d2332e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f3a9645_0f7aecad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-23T02:45:51Z",
+      "side": 1,
+      "message": "Looks like hitting this flake: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1087066. Let\u0027s retry CQ.",
+      "revId": "294155236b1eb52a8ee075f1d918342a83d2332e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
