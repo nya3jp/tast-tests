@@ -33,6 +33,24 @@
       "message": "I found that this kernel is for ARM32 and it doesn\u0027t have virtiofs enabled. So, vm.Virtiofs will fail on ARM boards with this CL.\n\nI think we have two options:\n1. Enable virtiofs for ARM32. I\u0027m not sure which defconfig the ARM32 guest kernel is using, though.\n2. Keep using virtiofs_kernel_aarch64.xz\n\nWDYT?",
       "revId": "b99376b6a7d8e2953ca86f9c3bff409a95a5e2c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "955ccaf2_ac84a543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_vm_arm.zip.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-12-23T05:32:24Z",
+      "side": 1,
+      "message": "We actually use a 64-bit kernel even on arm. Only the userspace is 32-bit. This is the defconfig: https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-5.4/arch/arm64/configs/chromiumos-container-vm-arm64_defconfig\n\nAs you mentioned offline it sounds like you figured out why this wasn\u0027t working though.",
+      "parentUuid": "e554daad_ac619d7e",
+      "revId": "b99376b6a7d8e2953ca86f9c3bff409a95a5e2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
