@@ -22,7 +22,7 @@ func init() {
 			"pmoy@chromium.org",   // cros_healthd tool author
 			"tbegin@chromium.org", // test author
 		},
-		SoftwareDeps: []string{"diagnostics"},
+		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      10 * time.Minute,
 		Fixture:      "crosHealthdRunning",

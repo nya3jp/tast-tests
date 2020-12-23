@@ -25,7 +25,7 @@ func init() {
 			"khegde@google.com",
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"diagnostics"},
+		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 	})
 }
