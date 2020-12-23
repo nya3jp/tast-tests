@@ -29,14 +29,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome", "chrome_internal", "drivefs"},
 		Timeout:      5 * time.Minute,
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		// TODO(b/147620213): Add similar test for ARCVM.
 	})
 }
 
 func DownloadsFolder(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	expectations := []storage.Expectation{
 		{LabelID: storage.ActionID, Value: storage.ExpectedAction},
 		{LabelID: storage.URIID, Value: downloadURI},

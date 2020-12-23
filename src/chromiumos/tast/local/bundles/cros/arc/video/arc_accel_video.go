@@ -125,8 +125,20 @@ func makeActivityFullscreen(ctx context.Context, activity *arc.Activity, tconn *
 	return ash.WaitForARCAppWindowState(ctx, tconn, activity.PackageName(), ash.WindowStateFullscreen)
 }
 
+func getPreData(s *testing.State) *arc.PreData {
+	// TODO(b/177029198): Always use fixtures and remove this function.
+	if pre, ok := s.FixtValue().(*arc.PreData); ok {
+		return pre
+	}
+	if pre, ok := s.PreValue().(arc.PreData); ok {
+		return &pre
+	}
+	s.Fatal("Failed to get PreData")
+	return nil
+}
+
 func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo string, requireMD5File bool) *c2e2etest.VideoMetadata {
-	a := s.PreValue().(arc.PreData).ARC
+	a := getPreData(s).ARC
 
 	videoPath := s.DataPath(testVideo)
 	pushFiles := []string{videoPath}
@@ -183,14 +195,14 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := getPreData(s).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := getPreData(s).ARC
 	defer a.Command(ctx, "rm", arcFilePath+textLogName).Run()
 
 	args, err := cfg.argsList()
@@ -236,14 +248,14 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 // It fails if c2_e2e_test fails.
 // It returns a map of perf statistics containing fps, dropped frame, and cpu stats.
 func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (perf map[string]float64) {
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := getPreData(s).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := getPreData(s).ARC
 	// Clean this up separately from the main cleanup function because a perf test run will invoke
 	// this function multiple times.
 	// We don't need to remove the XML log because GoogleTest overwrites it.
@@ -333,7 +345,7 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, opts DecodeTestO
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
-	defer arcVideoTestCleanup(ctx, s.PreValue().(arc.PreData).ARC)
+	defer arcVideoTestCleanup(ctx, getPreData(s).ARC)
 
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
@@ -387,7 +399,7 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, opts DecodeTestO
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
-	defer arcVideoTestCleanup(ctx, s.PreValue().(arc.PreData).ARC)
+	defer arcVideoTestCleanup(ctx, getPreData(s).ARC)
 
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()

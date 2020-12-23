@@ -32,7 +32,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 
@@ -74,8 +74,8 @@ func baselinePixelCount(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 }
 
 func UniformScaleFactorNonMaximized(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 	s.Log(ctx, "Running app, without uniform scaling")
 	if err := perappdensity.SetUpApk(ctx, a, perappdensity.Apk); err != nil {
 		s.Fatal("Failed to set up perappdensity.apk: ", err)

@@ -27,7 +27,7 @@ func init() {
 		Contacts:     []string{"armenk@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome", "tablet_mode"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Timeout:      8 * time.Minute,
 	})
 }

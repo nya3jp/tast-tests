@@ -28,7 +28,7 @@ func init() {
 		Contacts:     []string{"jasongustaman@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 
@@ -117,7 +117,7 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the Android (ARC) interfaces names and IPs.
-	out, err := s.PreValue().(arc.PreData).ARC.Command(ctx, "/system/bin/ip", "-o", "addr", "show", "scope", "global").Output(testexec.DumpLogOnError)
+	out, err := s.FixtValue().(*arc.PreData).ARC.Command(ctx, "/system/bin/ip", "-o", "addr", "show", "scope", "global").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to get Android interface list: ", err)
 	}

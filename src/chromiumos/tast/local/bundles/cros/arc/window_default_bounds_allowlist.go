@@ -32,7 +32,7 @@ func init() {
 		Contacts:     []string{"xutan@google.com", "takise@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "vm",

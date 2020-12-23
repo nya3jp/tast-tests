@@ -50,7 +50,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stableSettingsBridgeParam,
@@ -290,7 +290,7 @@ func runProxyTest(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, p pro
 
 func SettingsBridge(ctx context.Context, s *testing.State) {
 	param := s.Param().(settingsBridgeParam)
-	d := s.PreValue().(arc.PreData)
+	d := s.FixtValue().(*arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
 

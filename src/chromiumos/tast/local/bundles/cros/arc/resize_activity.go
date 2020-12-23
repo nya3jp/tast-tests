@@ -28,7 +28,7 @@ func init() {
 		// Attr:     []string{"group:mainline", "informational"},
 		// Adding 'tablet_mode' since moving/resizing the window requires screen touch support.
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -39,7 +39,7 @@ func init() {
 }
 
 func ResizeActivity(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -82,7 +82,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
 	if err != nil {

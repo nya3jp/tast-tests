@@ -33,7 +33,7 @@ func init() {
 		Contacts:     []string{"ricardo@chromium.org", "arc-gaming+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -44,7 +44,7 @@ func init() {
 }
 
 func GLESMinRequirements(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	if err := a.Install(ctx, arc.APKPath("ArcGamePerformanceTest.apk")); err != nil {
 		s.Fatal("Failed installing app: ", err)

@@ -26,7 +26,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      2 * time.Minute,
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 
@@ -35,8 +35,8 @@ func AudioAEC(ctx context.Context, s *testing.State) {
 	// This comes from APM_ECHO_CANCELLATION defined in cras_types.h
 	const AEC = 1
 
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	param := audio.TestParameters{
 		Permission: "android.permission.RECORD_AUDIO",
 		Class:      "org.chromium.arc.testapp.arcaudiotest.TestAECEffectActivity",

@@ -25,7 +25,7 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Data:         arcMemory.AndroidData(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -60,7 +60,7 @@ func MemoryShiftingPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read critical margin: ", err)
 	}
 	p.Set(marginMetric, float64(margin)/memory.MiB)
-	a := arcMemory.NewAndroidAllocator(s.PreValue().(arc.PreData).ARC)
+	a := arcMemory.NewAndroidAllocator(s.FixtValue().(*arc.PreData).ARC)
 	cleanup, err := a.Prepare(ctx, func(p string) string { return s.DataPath(p) })
 	if err != nil {
 		s.Fatal("Failed to setup ArcMemoryAllocatorTest app: ", err)

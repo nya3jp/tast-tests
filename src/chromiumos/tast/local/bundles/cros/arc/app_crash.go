@@ -23,7 +23,7 @@ func init() {
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Name:              "mock_consent",
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -41,8 +41,8 @@ func init() {
 }
 
 func AppCrash(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	opt := crash.WithMockConsent()
 	useConsent := s.Param().(crash.ConsentType)

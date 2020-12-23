@@ -112,7 +112,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 	}
 	defer crastestclient.Unmute(fullCtx)
 
-	d := s.PreValue().(arc.PreData)
+	d := s.FixtValue().(*arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
 

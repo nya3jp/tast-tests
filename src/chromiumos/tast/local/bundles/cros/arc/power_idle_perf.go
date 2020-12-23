@@ -54,7 +54,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.ForceBatteryDischarge,
 				},
-				Pre: arc.Booted(),
+				Fixture: "arcBooted",
 			},
 			{
 				Name:              "vm",
@@ -63,7 +63,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.ForceBatteryDischarge,
 				},
-				Pre: arc.Booted(),
+				Fixture: "arcBooted",
 			},
 			{
 				Name:              "noarc_nobatterymetrics",
@@ -81,7 +81,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.NoBatteryDischarge,
 				},
-				Pre: arc.Booted(),
+				Fixture: "arcBooted",
 			},
 			{
 				Name:              "vm_nobatterymetrics",
@@ -90,7 +90,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.NoBatteryDischarge,
 				},
-				Pre: arc.Booted(),
+				Fixture: "arcBooted",
 			},
 		},
 	})
@@ -111,7 +111,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 
 	cr, ok := s.PreValue().(*chrome.Chrome)
 	if !ok {
-		cr = s.PreValue().(arc.PreData).Chrome
+		cr = s.FixtValue().(*arc.PreData).Chrome
 	}
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -164,7 +164,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	p.Set(cooldownTimeMetric, float64(cooldownTime.Milliseconds()))
 
 	// Report memory usage.
-	arcPre, ok := s.PreValue().(arc.PreData)
+	arcPre, ok := s.FixtValue().(*arc.PreData)
 	metricRegexp := regexp.MustCompile("[^a-zA-Z0-9]")
 	if ok {
 		memOut, err := arcPre.ARC.Command(ctx, "cat", "/proc/meminfo").Output()

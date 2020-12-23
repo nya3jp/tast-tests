@@ -23,7 +23,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -35,7 +35,7 @@ func init() {
 
 func VerifyDefaultApps(ctx context.Context, s *testing.State) {
 
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)

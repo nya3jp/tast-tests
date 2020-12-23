@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Sample test to manipulate an app with UI automator",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Data:         []string{"todo-mvp.apk"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
@@ -51,7 +51,7 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 		customTitle   = "Meet the team at Sagrada Familia"
 	)
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)

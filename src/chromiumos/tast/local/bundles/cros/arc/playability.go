@@ -22,15 +22,15 @@ func init() {
 		Contacts:     []string{"richardfung@google.com", "arc-next@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 
 // Playability tests whether a build is "playable". It tests whether we can open an app,
 // install apks, and change window state.
 func Playability(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

@@ -29,7 +29,7 @@ func init() {
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklist...)),
-		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
+		Fixture:      "arcBooted", // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_1080p_i420",
@@ -54,6 +54,6 @@ func init() {
 }
 
 func VideoEncodeAccelPerf(ctx context.Context, s *testing.State) {
-	video.RunARCPerfVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC,
+	video.RunARCPerfVideoTest(ctx, s, s.FixtValue().(*arc.PreData).ARC,
 		s.Param().(video.EncodeTestOptions), veapCacheExtractedVideo)
 }

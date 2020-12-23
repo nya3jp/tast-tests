@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/gameperformance"
 	"chromiumos/tast/testing"
 )
@@ -20,7 +19,7 @@ func init() {
 		Contacts:     []string{"khmel@chromium.org", "skuhne@chromium.org", "arc-performance@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Data:         []string{"ArcGamePerformanceTest.apk"},
 		Timeout:      30 * time.Minute,
 		Params: []testing.Param{{

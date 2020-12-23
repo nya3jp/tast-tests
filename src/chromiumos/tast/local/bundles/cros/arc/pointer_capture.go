@@ -28,7 +28,7 @@ func init() {
 		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 
@@ -37,7 +37,7 @@ func init() {
 // when injecting events into ChromeOS through a uinput mouse.
 // More about Pointer Capture: https://developer.android.com/training/gestures/movement#pointer-capture
 func PointerCapture(ctx context.Context, s *testing.State) {
-	p := s.PreValue().(arc.PreData)
+	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
 

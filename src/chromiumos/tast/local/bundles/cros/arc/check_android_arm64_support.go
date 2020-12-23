@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Ensures that any board with x86_64 built-in capability must support ARM64 ABI as well",
 		Contacts:     []string{"arc-core@google.com", "vraheja@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -35,7 +35,7 @@ func init() {
 
 func CheckAndroidARM64Support(ctx context.Context, s *testing.State) {
 	// Reuse existing ARC session.
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	// Check compatibility for 64-bit ABI from DUT.
 	abi64List, err := a.GetProp(ctx, "ro.product.cpu.abilist64")

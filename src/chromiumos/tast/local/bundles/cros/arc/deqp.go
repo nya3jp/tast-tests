@@ -45,7 +45,7 @@ func init() {
 		Contacts:     []string{"morg@chromium.org", "arc-eng@google.com"},
 		Data:         deqpTests,
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -96,8 +96,8 @@ func pushCaseListFilesToAndroid(ctx context.Context, s *testing.State, a *arc.AR
 // DEQP is the main tast test entry point.
 // TODO(morg): Add support for different DEQP suite versions as a parameterized test flag (9.0r9, 9.0r10, etc).
 func DEQP(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	apk := s.Param().(string)
 
 	tconn, err := cr.TestAPIConn(ctx)
