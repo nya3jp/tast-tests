@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b21c99cb_1bfdab7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-12-23T17:21:10Z",
+      "side": 1,
+      "message": "Hi Greg, I\u0027d still need a +2 from you, if everything has been addressed.  Thanks.",
+      "revId": "4ea958969dbcddf24caf8bdb32d74d53b7ab3162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
