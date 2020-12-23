@@ -9,7 +9,6 @@ import (
 	"regexp"
 	"unicode/utf8"
 
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -21,7 +20,7 @@ func init() {
 		Contacts:     []string{"kimiyuki@google.com", "arcvm-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm", "arc_pstore"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 

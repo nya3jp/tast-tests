@@ -41,7 +41,7 @@ func init() {
 		Desc:         "Checks physical keyboard works on Android",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Val:               stablePkTests,
@@ -117,8 +117,8 @@ func physicalKeyboardOnTypeNullTextFieldTest(ctx context.Context, st pkTestState
 }
 
 func PhysicalKeyboard(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

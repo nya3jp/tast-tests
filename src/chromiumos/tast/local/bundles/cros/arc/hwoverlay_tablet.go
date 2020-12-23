@@ -26,7 +26,7 @@ func init() {
 		Contacts: []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(ricardoq): enable test once the bug that fixes hardware overlay gets fixed. See: http://b/120557146
 		SoftwareDeps: []string{"drm_atomic", "tablet_mode", "chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -37,7 +37,7 @@ func init() {
 }
 
 func HWOverlayTablet(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -57,7 +57,7 @@ func HWOverlayTablet(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to disable tablet mode: ", err)
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	// Any ARC++ activity could be used for this test. Using one that is already installed.
 	act, err := arc.NewActivity(a, "com.android.settings", ".Settings")

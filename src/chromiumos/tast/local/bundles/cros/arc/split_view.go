@@ -30,7 +30,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -121,8 +121,8 @@ func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a
 }
 
 func SplitView(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

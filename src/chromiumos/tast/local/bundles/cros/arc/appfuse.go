@@ -10,7 +10,6 @@ import (
 
 	"github.com/godbus/dbus"
 
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -27,7 +26,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 func Appfuse(ctx context.Context, s *testing.State) {

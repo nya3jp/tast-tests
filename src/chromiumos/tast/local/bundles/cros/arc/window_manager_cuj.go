@@ -71,7 +71,7 @@ func init() {
 		// TODO(http://b/149790068): Test is disabled until it can be fixed
 		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Data:         []string{"ArcPipSimpleTastTest.apk"},
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
@@ -97,8 +97,8 @@ func init() {
 }
 
 func WindowManagerCUJ(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

@@ -30,19 +30,19 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Pre:     arc.Booted(),
+		Fixture: "arcBooted",
 		Timeout: 2 * time.Minute,
 	})
 }
 
 func MousePerf(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Could not open Test API connection: ", err)
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Could not initialize UI Automator: ", err)

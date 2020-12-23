@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/local/arc"
 	arcMemory "chromiumos/tast/local/bundles/cros/arc/memory"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/memory"
@@ -32,11 +31,11 @@ func init() {
 			Pre:               chrome.LoggedIn(),
 		}, {
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
+			Fixture:           "arcBooted",
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.Booted(),
+			Fixture:           "arcBooted",
 		}},
 		Timeout: 10 * time.Minute,
 	})

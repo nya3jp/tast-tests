@@ -24,7 +24,7 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Data:         arcMemory.AndroidData(),
 		Params: []testing.Param{{
 			// For manual testing only, does not run automatically.
@@ -42,7 +42,7 @@ func MemoryAndroidPerf(ctx context.Context, s *testing.State) {
 	allocatedMetric := perf.Metric{Name: "allocated", Unit: "MiB", Direction: perf.BiggerIsBetter, Multiple: true}
 	marginMetric := perf.Metric{Name: "critical_margin", Unit: "MiB"}
 
-	a := arcMemory.NewAndroidAllocator(s.PreValue().(arc.PreData).ARC)
+	a := arcMemory.NewAndroidAllocator(s.FixtValue().(*arc.PreData).ARC)
 
 	margin, err := memory.CriticalMargin()
 	if err != nil {

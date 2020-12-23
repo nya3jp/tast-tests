@@ -37,7 +37,7 @@ func init() {
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.Booted(),
+			Fixture:           "arcBooted",
 		}},
 		Timeout: 10 * time.Minute,
 	})
@@ -78,7 +78,7 @@ func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
 	var a *arc.ARC
 	cr, ok := s.PreValue().(*chrome.Chrome)
 	if !ok {
-		pre := s.PreValue().(arc.PreData)
+		pre := s.FixtValue().(*arc.PreData)
 		cr = pre.Chrome
 		a = pre.ARC
 	}

@@ -46,7 +46,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklist...)),
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Timeout:      pvepPowerTestDuration,
 		Params: []testing.Param{{
 			Name: "h264_1080p_i420",
@@ -83,13 +83,13 @@ func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	opts := s.Param().(video.EncodeTestOptions)
 
 	// Only H.264 is currently supported.

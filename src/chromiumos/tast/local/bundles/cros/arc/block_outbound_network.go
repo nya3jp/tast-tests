@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Test the network blockage functionality of ARC++",
 		Contacts:     []string{"bhansknecht@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -33,7 +33,7 @@ func init() {
 }
 
 func BlockOutboundNetwork(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)

@@ -236,7 +236,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		prefix: "ui",
 	}}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	apkName, err := apploading.ApkNameForArch(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to get APK name: ", err)
@@ -256,7 +256,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 
 	var scores []float64
 	groups := make(map[string][]float64)
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	for _, test := range tests {
 		config.ClassName = test.name
 		config.Prefix = test.prefix

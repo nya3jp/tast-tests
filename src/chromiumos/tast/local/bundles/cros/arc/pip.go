@@ -89,7 +89,7 @@ func init() {
 		Contacts:     []string{"edcourtney@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Val:               pipTests,
@@ -112,14 +112,14 @@ func PIP(ctx context.Context, s *testing.State) {
 	}
 
 	// For debugging, create a Chrome session with chrome.ExtraArgs("--show-taps")
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	const apkName = "ArcPipTest.apk"
 	s.Log("Installing ", apkName)

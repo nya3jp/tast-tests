@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Checks Android intents are forwarded to Chrome",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -45,7 +45,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 		wallpaperPickerURL = "chrome-extension://obklkkbkpaoaejdabbfldmcfplpdgolj/main.html"
 	)
 
-	d := s.PreValue().(arc.PreData)
+	d := s.FixtValue().(*arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
 

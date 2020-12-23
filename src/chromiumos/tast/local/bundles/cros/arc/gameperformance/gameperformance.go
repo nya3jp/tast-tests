@@ -59,7 +59,7 @@ var keyInformations = []struct {
 
 // RunTest executes subset of tests in ArcGamePerformanceTest.apk determined by the test class name.
 func RunTest(ctx context.Context, s *testing.State, className string) {
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	const apkName = "ArcGamePerformanceTest.apk"
 	s.Log("Installing: ", apkName)

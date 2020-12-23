@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"edman@chromium.org", "arc-eng-muc@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -46,7 +46,7 @@ func init() {
 }
 
 func VTSKeymaster(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	testExecName, err := vtsTestExecName(ctx, a, isARCVM(s.SoftwareDeps()))
 	if err != nil {

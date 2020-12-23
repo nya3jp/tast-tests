@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Verifies adb communication works as intended",
 		Contacts:     []string{"hidehiko@chromium.org", "tast-owners@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -33,7 +33,7 @@ func init() {
 }
 
 func ADBValidity(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	testADBCommandStatus(ctx, s, a)
 
 	var allbytes [256]byte

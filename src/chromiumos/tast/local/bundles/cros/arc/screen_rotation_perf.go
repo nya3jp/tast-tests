@@ -31,7 +31,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		// Sunflower.apk taken from: https://github.com/googlesamples/android-sunflower
 		// Commit hash: ce82cffeed8150cf97789065898f08f29a2a1c9b
 		Data:    []string{"Sunflower.apk"},
@@ -46,8 +46,8 @@ func init() {
 }
 
 func ScreenRotationPerf(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)

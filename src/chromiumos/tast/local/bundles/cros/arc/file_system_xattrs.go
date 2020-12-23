@@ -8,7 +8,6 @@ import (
 	"context"
 	"encoding/hex"
 
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -24,7 +23,7 @@ func init() {
 		},
 		// TODO(yusukes,ricardoq): ARCVM does not need the test. Remove this once we retire ARC container.
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline"},
 	})
 }

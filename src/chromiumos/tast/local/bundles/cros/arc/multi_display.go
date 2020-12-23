@@ -95,14 +95,14 @@ func init() {
 		// TODO(ruanc): There is no hardware dependency for multi-display. Move back to the mainline group once it is supported.
 		SoftwareDeps: []string{"arc", "chrome"},
 		Timeout:      4 * time.Minute,
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 
 // MultiDisplay test requires two connected displays.
 func MultiDisplay(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

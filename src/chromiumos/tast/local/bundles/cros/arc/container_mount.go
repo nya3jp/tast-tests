@@ -27,11 +27,11 @@ func init() {
 			"android_p",
 			"chrome",
 		},
-		Attr: []string{"group:mainline"},
-		Pre:  arc.Booted(),
+		Attr:    []string{"group:mainline"},
+		Fixture: "arcBooted",
 	})
 }
 
 func ContainerMount(ctx context.Context, s *testing.State) {
-	containermount.RunTest(ctx, s, s.PreValue().(arc.PreData).ARC)
+	containermount.RunTest(ctx, s, s.FixtValue().(*arc.PreData).ARC)
 }

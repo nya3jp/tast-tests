@@ -42,7 +42,7 @@ func init() {
 		SoftwareDeps: []string{"android_p", "chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Data:         []string{"ArcCompanionLibDemo.apk", "white_wallpaper.jpg"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Timeout:      5 * time.Minute,
 	})
 }
@@ -89,7 +89,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		wallpaper               = "white_wallpaper.jpg"
 	)
 
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -108,7 +108,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to disable tablet mode: ", err)
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
