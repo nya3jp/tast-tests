@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c10e712_704db4fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-23T00:14:47Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "819024d0_88be9b74",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 16
+      },
+      "revId": "b31e9bd07017a5b3dfb70d044b425cfd62300c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9041a7ed_9fb1184e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-22T02:45:10Z",
       "side": 1,
       "message": "nit: somewhere (either here, where the \u0027err \u003d\u003d nil\u0027 and string-search logic is a bit atypical; or above where the Expect-ation is a bit strange) we might deserve a comment about the subtleties (how we\u0027re looking for a specific failure, and how we\u0027re padding the timeouts to try to make this reasonably stable), for the future reader",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 110
+      },
+      "revId": "b31e9bd07017a5b3dfb70d044b425cfd62300c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8830e687_08d9ff8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/gtk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-12-23T00:14:47Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "9041a7ed_9fb1184e",
       "range": {
         "startLine": 123,
         "startChar": 0,
