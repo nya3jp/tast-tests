@@ -162,7 +162,7 @@ func runARCVideoEncoderTest(ctx context.Context, s *testing.State, a *arc.ARC,
 // pv is optional value, passed when we run performance test and record measurement value.
 // Note: pv must be provided when measureUsage is set at binArgs.
 func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, commonArgs []string, ba binArgs, pv *perf.Values) error {
-	cr := s.PreValue().(arc.PreData).Chrome
+	cr := getPreData(s).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

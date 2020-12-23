@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Checks Downloads integration is working",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com", "cros-arc-te@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Data:         []string{"capybara.jpg"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
@@ -40,7 +40,7 @@ func Downloads(ctx context.Context, s *testing.State) {
 		androidPath = "/storage/emulated/0/Download/" + filename
 	)
 
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	expected, err := ioutil.ReadFile(s.DataPath(filename))
 	if err != nil {
