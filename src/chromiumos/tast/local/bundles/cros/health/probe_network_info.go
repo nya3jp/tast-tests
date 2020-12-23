@@ -26,7 +26,7 @@ func init() {
 		},
 		// TODO(b/178274447): Test is flaky due to Chrome bootstrapping
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"diagnostics"},
+		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 	})
 }
