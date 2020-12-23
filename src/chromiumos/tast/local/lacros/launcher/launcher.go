@@ -138,26 +138,26 @@ func closeFDs(ctx context.Context, fds []int) {
 	}
 }
 
-func receiveMojoFile(ctx context.Context) (*os.File, error) {
+func receiveFDs(ctx context.Context) (*os.File, *os.File, error) {
 	addr := &net.UnixAddr{
 		Name: mojoSocketPath,
 		Net:  "unix",
 	}
 	conn, err := net.DialUnix("unix", nil, addr)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not open lacros mojo socket")
+		return nil, nil, errors.Wrap(err, "could not open lacros mojo socket")
 	}
 	defer conn.Close()
 
 	oob := make([]byte, syscall.CmsgSpace(4))
 	_, oobn, _, _, err := conn.ReadMsgUnix(nil, oob)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not read lacros mojo socket")
+		return nil, nil, errors.Wrap(err, "could not read lacros mojo socket")
 	}
 
 	msgs, err := syscall.ParseSocketControlMessage(oob[:oobn])
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	var fds []int
@@ -172,19 +172,32 @@ func receiveMojoFile(ctx context.Context) (*os.File, error) {
 
 	if firstErr != nil {
 		closeFDs(ctx, fds)
-		return nil, errors.Wrap(firstErr, "could not extract fds from lacros mojo socket")
+		return nil, nil, errors.Wrap(firstErr, "could not extract fds from lacros mojo socket")
 	}
 
-	if len(fds) != 1 {
+	// New ash-chrome returns two FDs: one for mojo connection, and the second for the startup data FD.
+	// Old one returns only the mojo connection.
+	// TODO(crbug.com/1156033): Clean up the code after dropping the old protocol support.
+	if len(fds) != 1 && len(fds) != 2 {
 		closeFDs(ctx, fds)
-		return nil, errors.Errorf("expected exactly 1 file descriptor, got %d", len(fds))
+		return nil, nil, errors.Errorf("expected exactly 1 or 2 file descriptors, got %d", len(fds))
 	}
 
-	f := os.NewFile(uintptr(fds[0]), "lacros.sock")
-	if f == nil {
-		return nil, errors.New("could not use fd for mojo")
+	mojo := os.NewFile(uintptr(fds[0]), "lacros.sock")
+	if mojo == nil {
+		return nil, nil, errors.New("could not use fd for mojo")
 	}
-	return f, nil
+
+	if len(fds) == 1 {
+		return mojo, nil, nil
+	}
+
+	startup := os.NewFile(uintptr(fds[1]), "startup_data")
+	if startup == nil {
+		return nil, nil, errors.New("could not use fd for startup data")
+	}
+
+	return mojo, startup, nil
 }
 
 // extensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
@@ -229,24 +242,33 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--use-cras",                                 // Use CrAS.
 		"--use-fake-ui-for-media-stream",             // Avoid the need to grant camera/microphone permissions.
-		"--mojo-platform-channel-handle=3",           // Pass the file descriptor needed to connect lacros and ash-chrome via Mojo.
 		chrome.BlankURL,                              // Specify first tab to load.
 	}
 	args = append(args, extensionArgs(l.testExtID, extList)...)
 
-	// Get a file to connect to ash-chrome using Mojo with. Make sure to do this
-	f, err := receiveMojoFile(ctx)
+	// Get file descriptors to establish a mojo connection with ash-chrome and also consume startup data if available.
+	mojo, startup, err := receiveFDs(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not get fd for mojo")
+		return nil, errors.Wrap(err, "could not get fds for mojo or startup data")
 	}
-	defer f.Close()
+	defer mojo.Close()
+	if startup != nil {
+		defer startup.Close()
+	}
+
+	args = append(args, "--mojo-platform-channel-handle=3")
+	if startup != nil {
+		args = append(args, "--cros-startup-data-fd=4")
+	}
 
 	l.cmd = testexec.CommandContext(ctx, BinaryPath+"/chrome", args...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 
-	// The mojo platform channel file is the first element of ExtraFiles, so it will be be accessible
-	// to lacros as file descriptor #3. Be careful about this when adding more ExtraFiles.
-	l.cmd.Cmd.ExtraFiles = append(l.cmd.Cmd.ExtraFiles, f)
+	// Entry i in ExtraFiles becomes file descriptor 3+i. Be careful about this when adding more ExtraFiles.
+	l.cmd.Cmd.ExtraFiles = append(l.cmd.Cmd.ExtraFiles, mojo)
+	if startup != nil {
+		l.cmd.Cmd.ExtraFiles = append(l.cmd.Cmd.ExtraFiles, startup)
+	}
 
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
 	if err := l.cmd.Cmd.Start(); err != nil {
