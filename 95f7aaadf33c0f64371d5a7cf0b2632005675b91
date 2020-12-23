@@ -16,6 +16,29 @@
       "message": "@miguel \n  v4l2_codec software dep change landed, so made change to use it instead of arm software dep\n  https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2599453",
       "revId": "95f7aaadf33c0f64371d5a7cf0b2632005675b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868a9669_449b35ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-12-23T17:35:17Z",
+      "side": 1,
+      "message": "nit: IIUC the tests don\u0027t verify the functionality, only the IOCTLs\nthemselves, so what about something like: \"They attempt to verify that \nall expected IOCTLs are indeed supported.\" ? \n\nIf in time we wire the \"streaming\" versions of the v4l2-compliance\ntests, then we should come back here and update the text.",
+      "range": {
+        "startLine": 148,
+        "startChar": 23,
+        "endLine": 149,
+        "endChar": 37
+      },
+      "revId": "95f7aaadf33c0f64371d5a7cf0b2632005675b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
