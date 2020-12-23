@@ -127,6 +127,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58ff2a6_54e1530e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9a055cb_82e663e5",
+      "range": {
+        "startLine": 5,
+        "startChar": 56,
+        "endLine": 5,
+        "endChar": 61
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34784346_4683e4c3",
@@ -140,6 +164,30 @@
       "writtenOn": "2020-11-30T06:31:35Z",
       "side": 1,
       "message": "Can you add some comment for this?",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c416c9ac_aa37a08a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34784346_4683e4c3",
       "range": {
         "startLine": 27,
         "startChar": 1,
@@ -173,6 +221,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b03800a3_8983f5db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26b4825b_801aee9f",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95026db9_d58875c9",
@@ -186,6 +258,30 @@
       "writtenOn": "2020-11-30T06:31:35Z",
       "side": 1,
       "message": "How about add some comment to describe what\u0027s dtmp and cdstmp?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d784317_434f6404",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95026db9_d58875c9",
       "range": {
         "startLine": 40,
         "startChar": 1,
@@ -249,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c9776f_51503013",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbcfbe46_42913174",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93b1af5e_8b404e21",
@@ -285,6 +399,24 @@
       "writtenOn": "2020-12-01T01:11:18Z",
       "side": 1,
       "message": "Some comments to explain the steps taken are also useful here.",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b24a8437_8cee4834",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b3b96da_ae0b9a7d",
       "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -359,6 +491,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "211b091f_0d801d84",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "774f82d2_5cd60651",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 9
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43b93a79_74ed3d02",
@@ -372,6 +528,30 @@
       "writtenOn": "2020-11-30T06:31:35Z",
       "side": 1,
       "message": "nit. duts \u003d append(duts, ds...)",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec4fa3b_43a73fe1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43b93a79_74ed3d02",
       "range": {
         "startLine": 76,
         "startChar": 2,
@@ -487,6 +667,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e121dbed_aed4fad5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28b94215_5e6d990d",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5decff18_40164c64",
@@ -500,6 +698,30 @@
       "writtenOn": "2020-11-30T06:31:35Z",
       "side": 1,
       "message": "close_",
+      "range": {
+        "startLine": 112,
+        "startChar": 31,
+        "endLine": 112,
+        "endChar": 39
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb4eea9_bc72f5d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5decff18_40164c64",
       "range": {
         "startLine": 112,
         "startChar": 31,
@@ -546,6 +768,30 @@
       "writtenOn": "2020-11-30T06:31:35Z",
       "side": 1,
       "message": "you can just use \"duts \u003d append(duts, ds...)\"",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 3
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a126cf1d_8afa504e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56f61ac6_87133bf2",
       "range": {
         "startLine": 131,
         "startChar": 2,
@@ -645,6 +891,30 @@
       "writtenOn": "2020-11-30T06:31:35Z",
       "side": 1,
       "message": "Can you move this to the beginning of the file?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 1
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00516962_da1dd54b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2020-12-23T07:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c25c43_e9b6a26b",
       "range": {
         "startLine": 154,
         "startChar": 0,
