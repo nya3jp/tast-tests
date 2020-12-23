@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c12741_e54b9933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-12-23T23:03:14Z",
+      "side": 1,
+      "message": "Do we need to specify the histogram suffix i.e. Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode?",
+      "range": {
+        "startLine": 91,
+        "startChar": 24,
+        "endLine": 91,
+        "endChar": 43
+      },
+      "revId": "e482f1968e1d0b8182cee8533a3b42ffe1eff2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
