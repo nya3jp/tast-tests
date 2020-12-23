@@ -176,6 +176,24 @@
       "parentUuid": "5da05135_924acf31",
       "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f082bc80_0d9f76c2",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-12-23T06:26:36Z",
+      "side": 1,
+      "message": "Is there anyone actively working on replacing the precondition with a fixture?\nThis is blocking a P1 ARCVM bug b/167430147.",
+      "parentUuid": "938dc4ec_6e82b766",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
