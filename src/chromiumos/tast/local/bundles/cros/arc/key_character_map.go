@@ -23,7 +23,7 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"informational", "group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -39,7 +39,7 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	p := s.PreValue().(arc.PreData)
+	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
 

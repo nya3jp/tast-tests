@@ -524,8 +524,8 @@ func ChangeDisplayZoomFactor(ctx context.Context, tconn *chrome.TestConn, dispID
 
 // SetupAndRunTestCases sets up the environment for tests and runs testcases.
 func SetupAndRunTestCases(ctx context.Context, s *testing.State, isTabletMode bool, testCases []TestCase) {
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	if err := a.Install(ctx, arc.APKPath(APKNameArcWMTestApp24)); err != nil {
 		s.Fatal("Failed to install APK: ", err)

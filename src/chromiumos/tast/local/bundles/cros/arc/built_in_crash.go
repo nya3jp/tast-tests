@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"kimiyuki@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Name:              "real_consent",
 			ExtraSoftwareDeps: []string{"android_vm", "metrics_consent"},
@@ -44,8 +44,8 @@ func BuiltInCrash(ctx context.Context, s *testing.State) {
 		temporaryCrashDirInAndroid = "/data/vendor/arc_native_crash_reports"
 	)
 
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
 
 	opt := crash.WithMockConsent()
 	if s.Param().(crash.ConsentType) == crash.RealConsent {

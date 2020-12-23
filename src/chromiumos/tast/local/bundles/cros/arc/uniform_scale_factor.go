@@ -25,15 +25,15 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 	})
 }
 
 func UniformScaleFactor(ctx context.Context, s *testing.State) {
 	const squareSidePx = 100
 
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	dd, err := perappdensity.MeasureDisplayDensity(ctx, a)
 	if err != nil {
