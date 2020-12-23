@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -34,6 +35,7 @@ func init() {
 type crosHealthdFixture struct {
 	run bool
 	pid int
+	cr  *chrome.Chrome
 }
 
 func newCrosHealthdFixture(run bool) testing.FixtureImpl {
@@ -46,6 +48,15 @@ func (f *crosHealthdFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err := f.Reset(ctx); err != nil {
 		s.Fatal("Unable to reset fixture: ", err)
 	}
+
+	// Create a new connection to Chrome. This is required to bootstrap the mojo
+	// connection between Chrome and cros_healthd for network telemetry and
+	// diagnostics.
+	cr, err := chrome.New(ctx, chrome.NoLogin())
+	if err != nil {
+		s.Fatal("Unable to start Chrome: ", err)
+	}
+	f.cr = cr
 	return nil
 }
 
@@ -93,5 +104,9 @@ func (f *crosHealthdFixture) TearDown(ctx context.Context, s *testing.FixtState)
 	// left running.
 	if err := upstart.EnsureJobRunning(ctx, crosHealthdJobName); err != nil {
 		s.Fatalf("Failed to start %s daemon: %s", crosHealthdJobName, err)
+	}
+
+	if err := f.cr.Close(ctx); err != nil {
+		s.Log("Failed to close Chrome connection: ", err)
 	}
 }
