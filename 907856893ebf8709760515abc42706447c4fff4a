@@ -291,6 +291,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2720dfa_4fc8cbb1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-23T16:35:17Z",
+      "side": 1,
+      "message": "Hmm... the current fix does not make sense to me... Could you either:\n\n1) If screenshotFileName should be used here, please remove fileName from the parameter, which is unused. Then, this function is identical with saveScreenshotOnError, so please merge them, too. Or\n2) pls use fileName, instead, and revert the comment.",
+      "parentUuid": "e0506154_0e179461",
+      "range": {
+        "startLine": 40,
+        "startChar": 38,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "907856893ebf8709760515abc42706447c4fff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23824ccd_60dfce9a",
         "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
         "patchSetId": 1
