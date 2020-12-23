@@ -26,6 +26,7 @@ func init() {
 		PreTestTimeout:  1 * time.Second,
 		PostTestTimeout: 1 * time.Second,
 		TearDownTimeout: 5 * time.Second,
+		Parent:          "chromeRunning",
 		Impl:            newCrosHealthdFixture(true),
 	})
 }
