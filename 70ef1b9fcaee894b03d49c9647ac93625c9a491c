@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a3e23a8_69e7dc54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-24T01:09:45Z",
+      "side": 1,
+      "message": "I thought about making that change directly, but didn\u0027t do it because I don\u0027t know how to make that script available for Tast. I\u0027m pretty new to chromiumos, is there already a mechanism to refer to a chromium file in chromiumos repo?",
+      "parentUuid": "c8df53de_775d26d8",
+      "revId": "70ef1b9fcaee894b03d49c9647ac93625c9a491c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0ba6b9c_a67d9b0d",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-23T16:38:05Z",
       "side": 1,
       "message": "Now two fds are returned. Could you\n- document which is what, and\n- (optional) use named return value?",
+      "revId": "70ef1b9fcaee894b03d49c9647ac93625c9a491c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f3cea1c_0a24ba16",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-24T01:09:45Z",
+      "side": 1,
+      "message": "Done, added document, but ended up not using named return value because this function has too many return statements upon errors are encountered, and using returned value means that every return statement changes from 1 line to 2 lines, which makes this function pretty lengthy.",
+      "parentUuid": "b0ba6b9c_a67d9b0d",
       "revId": "70ef1b9fcaee894b03d49c9647ac93625c9a491c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
