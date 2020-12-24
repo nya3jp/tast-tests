@@ -8,6 +8,7 @@ import (
 	"context"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/arccrash"
@@ -80,7 +81,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	metaFileName := base + crash.MetadataExt
 	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, []string{
 		base + crash.LogExt, metaFileName, base + crash.InfoExt,
-	})
+	}, crash.Timeout(30*time.Second))
 	if err != nil {
 		s.Fatal("Didn't find files: ", err)
 	}
