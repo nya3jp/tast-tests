@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce65a44c_19bf901f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Done, thanks for the note!",
+      "parentUuid": "22f5dfc5_0a4a777b",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4dc8045_1c4eb4e3",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-01T20:10:59Z",
       "side": 1,
       "message": "QQ: This bug hasn\u0027t been migrated?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4380e9_82990aee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Nope, but I migrated manually.",
+      "parentUuid": "f4dc8045_1c4eb4e3",
       "range": {
         "startLine": 9,
         "startChar": 4,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4cf99e_809f8405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac62a913_176986d3",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aa962f2_4d3ec494",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e10406_0f016337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa962f2_4d3ec494",
+      "range": {
+        "startLine": 38,
+        "startChar": 64,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c923e90_a40c5cbd",
@@ -140,6 +236,30 @@
       "writtenOn": "2020-12-01T21:24:55Z",
       "side": 1,
       "message": "Assume that Chrome can take much longer than 10 seconds to start, when it is unhappy. We don\u0027t want to debug this, so give it more here, say 90 seconds. It is a good idea to be generous with timeouts, like at least 5x of one sees locally, maybe even 10x. Hitting a timeout must mean it was truly exceptional (say a proper hang).",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7940455f_3ea9f91c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c923e90_a40c5cbd",
       "range": {
         "startLine": 46,
         "startChar": 37,
@@ -175,6 +295,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d5895c1_d4beb864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure what you mean by stealing the failure handling, but I\u0027ve elaborated a bit more --- WDYT?",
+      "parentUuid": "6c4467bb_735a458e",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 15
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce70e529_c0c76bb2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
         "patchSetId": 1
@@ -186,6 +330,30 @@
       "writtenOn": "2020-12-01T21:24:55Z",
       "side": 1,
       "message": "I assume I missed when this was added to the chromeos-chrome.ebuild and to the bisector?",
+      "range": {
+        "startLine": 55,
+        "startChar": 16,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20152bb7_f1e6d23a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ce70e529_c0c76bb2",
       "range": {
         "startLine": 55,
         "startChar": 16,
@@ -245,6 +413,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5380b43_8e917ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Renamed to PlatformDecoding to match PlatformEncoding in PS3-\u003e4, but I\u0027m happy to make it PlatformDecodingVaapi too (or put vaapi into the test name, e.g. PlatformDecoding.vaapi_vp9).",
+      "parentUuid": "95661d24_fa37d3da",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49a6430a_39ccd440",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
         "patchSetId": 1
@@ -256,6 +448,30 @@
       "writtenOn": "2020-12-01T20:10:59Z",
       "side": 1,
       "message": "s/chromeos-video-eng/chromeos-gfx-video/",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45d107ef_56c39a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49a6430a_39ccd440",
       "range": {
         "startLine": 21,
         "startChar": 4,
@@ -289,6 +505,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac1296c5_53a3da22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4596005f_0281453a",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28a6ca10_cb18d6ae",
@@ -312,6 +552,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7621cc2e_33ee9454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28a6ca10_cb18d6ae",
+      "range": {
+        "startLine": 31,
+        "startChar": 51,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e29ee223_b982ca75",
@@ -325,6 +589,30 @@
       "writtenOn": "2020-12-01T21:24:55Z",
       "side": 1,
       "message": "The tast owners don\u0027t like the word \"Sanity\" anymore.",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33d1093f_6feb27b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e29ee223_b982ca75",
       "range": {
         "startLine": 38,
         "startChar": 10,

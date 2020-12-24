@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18fe3db8_5e23f461",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-12-24T07:10:35Z",
+      "side": 1,
+      "message": "I had some trouble building the test image to make sure the invocation changes were picked up, but everything seems to be working now, at least locally!\n\nThe bulk of the changes to address the comments are in PS1-\u003e3, with a renaming of RunVaapiSmokeTest to RunVaapiBinary because I anticipate modifying it to support e.g. microbenchmarking.\n\nPS3-\u003e4 renames the test to video.PlatformDecode.",
+      "revId": "07144f4862f01f1b87100a86919619a899a0344c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
