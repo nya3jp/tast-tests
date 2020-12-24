@@ -421,6 +421,9 @@ func (r *Router) monitorOnInterface(ctx context.Context, iface string) (*iw.NetD
 
 // StartHostapd starts the hostapd server.
 func (r *Router) StartHostapd(ctx context.Context, name string, conf *hostapd.Config) (_ *hostapd.Server, retErr error) {
+	ctx, st := timing.Start(ctx, "router.StartHostapd")
+	defer st.End()
+
 	if err := conf.SecurityConfig.InstallRouterCredentials(ctx, r.host, r.workDir()); err != nil {
 		return nil, errors.Wrap(err, "failed to install router credentials")
 	}
@@ -440,6 +443,9 @@ func (r *Router) StartHostapd(ctx context.Context, name string, conf *hostapd.Co
 }
 
 func (r *Router) startHostapdOnIface(ctx context.Context, iface, name string, conf *hostapd.Config) (_ *hostapd.Server, retErr error) {
+	ctx, st := timing.Start(ctx, "router.startHostapdOnIface")
+	defer st.End()
+
 	hs, err := hostapd.StartServer(ctx, r.host, name, iface, r.workDir(), conf)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start hostapd server")
@@ -490,6 +496,9 @@ func (r *Router) ReconfigureHostapd(ctx context.Context, hs *hostapd.Server, con
 
 // StartDHCP starts the DHCP server and configures the server IP.
 func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask) (_ *dhcp.Server, retErr error) {
+	ctx, st := timing.Start(ctx, "router.StartDHCP")
+	defer st.End()
+
 	if err := r.ipr.FlushIP(ctx, iface); err != nil {
 		return nil, err
 	}
