@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "623b07e6_14902d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/getusermedia.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-24T08:11:48Z",
+      "side": 1,
+      "message": "This file is 100% copied from \"../camera/data/getusermdiea.html\".",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
