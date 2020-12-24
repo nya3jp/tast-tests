@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aafca6e1_5435f11e",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-24T03:16:46Z",
+      "side": 1,
+      "message": "just noticed that this is not closed and causing some resource leak.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 10
+      },
+      "revId": "345a748ccec7483b0d2a1f5b546c1b99aad0776e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
