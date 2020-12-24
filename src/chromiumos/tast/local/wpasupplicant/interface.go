@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -53,6 +54,9 @@ func NewInterface(ctx context.Context, path dbus.ObjectPath) (*Interface, error)
 
 // BSSs returns the BSSs property of the interface.
 func (iface *Interface) BSSs(ctx context.Context) ([]*BSS, error) {
+	ctx, st := timing.Start(ctx, "interface.BSSs")
+	defer st.End()
+
 	var bssPaths []dbus.ObjectPath
 	if err := iface.dbus.Get(ctx, dbusInterfacePropBSSs, &bssPaths); err != nil {
 		return nil, err

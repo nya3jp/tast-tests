@@ -19,7 +19,7 @@ const dbusGetPropsMethod = "org.freedesktop.DBus.Properties.Get"
 
 // NewDBusObject creates a DBusObject to wpa_supplicant.
 func NewDBusObject(ctx context.Context, path dbus.ObjectPath, iface string) (*DBusObject, error) {
-	conn, obj, err := dbusutil.Connect(ctx, dbusBaseInterface, path)
+	conn, obj, err := dbusutil.ConnectNoTiming(ctx, dbusBaseInterface, path)
 	if err != nil {
 		return nil, err
 	}
