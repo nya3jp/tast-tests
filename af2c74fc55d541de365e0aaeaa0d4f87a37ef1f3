@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f5b9eb_c76830ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-24T21:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f567aeb_6688165c",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "af2c74fc55d541de365e0aaeaa0d4f87a37ef1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3222c2b1_fc1e9509",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f8dd2a_51c630df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-24T21:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3222c2b1_fc1e9509",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "af2c74fc55d541de365e0aaeaa0d4f87a37ef1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "536ad15f_bac349a7",
@@ -94,6 +142,30 @@
       "writtenOn": "2020-12-21T02:59:57Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "af2c74fc55d541de365e0aaeaa0d4f87a37ef1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09cf6388_c1014a2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-12-24T21:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "536ad15f_bac349a7",
       "range": {
         "startLine": 70,
         "startChar": 10,
