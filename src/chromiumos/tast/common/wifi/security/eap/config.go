@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
+	"chromiumos/tast/timing"
 )
 
 // Config implements security.Config interface for EAP protected network.
@@ -97,6 +98,9 @@ func (c *Config) ShillServiceProperties() (map[string]interface{}, error) {
 
 // InstallRouterCredentials installs the necessary credentials onto router.
 func (c *Config) InstallRouterCredentials(ctx context.Context, host *ssh.Conn, workDir string) error {
+	ctx, st := timing.Start(ctx, "eap.InstallRouterCredentials")
+	defer st.End()
+
 	pathMap := make(map[string]string)
 
 	c.ServerCACertFile = filepath.Join(workDir, "hostapd_ca_cert_file."+c.fileSuffix)
@@ -141,6 +145,9 @@ func (c *Config) NeedsNetCertStore() bool {
 
 // InstallClientCredentials installs credentials on the DUT.
 func (c *Config) InstallClientCredentials(ctx context.Context, store *netcertstore.Store) error {
+	ctx, st := timing.Start(ctx, "eap.InstallClientCredentials")
+	defer st.End()
+
 	if !c.hasClientCred() {
 		return nil
 	}
