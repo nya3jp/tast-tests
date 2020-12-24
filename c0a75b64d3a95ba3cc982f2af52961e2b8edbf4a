@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffbcbff_2180d1c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-24T08:38:13Z",
+      "side": 1,
+      "message": "Should we return cca.Resolution here?",
+      "range": {
+        "startLine": 116,
+        "startChar": 35,
+        "endLine": 116,
+        "endChar": 43
+      },
+      "revId": "c0a75b64d3a95ba3cc982f2af52961e2b8edbf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d53b5c_1d65e450",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-24T08:38:13Z",
+      "side": 1,
+      "message": "Should we put this at ~L120?",
+      "revId": "c0a75b64d3a95ba3cc982f2af52961e2b8edbf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
