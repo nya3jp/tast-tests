@@ -50,6 +50,24 @@
       "message": "(oops, I thought I commented here, but it seems like I misoperated...)\n\nConceptually, this should be tied to mode. If it is preExist, we need to set this, otherwise (i.e. download from omaha), we should not need this.\n\nCould you remove needsLacrosPathArg, and check setupMode instead?\n\nif p.mode \u003d\u003d preExist {\n  p.opts \u003d ...\n}",
       "revId": "06f1e9c61dd62fbcc8a89db14b62758354758fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "309d7ca2_95aee810",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2020-12-24T02:00:04Z",
+      "side": 1,
+      "message": "Done. The main reason why I introduced needsLacrosPathArg is that tests that launch from cmdline don\u0027t need ash-chrome to have \u0027--lacros-chrome-path\u0027, but it seems that there is no harm having it anyway. Thanks for pointing it out, removing it makes the code cleaner!",
+      "parentUuid": "cb998e2c_f6ca3839",
+      "revId": "06f1e9c61dd62fbcc8a89db14b62758354758fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
