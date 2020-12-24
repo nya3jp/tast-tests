@@ -36,12 +36,10 @@ func init() {
 			Val:               testutil.PlatformApp,
 			ExtraAttr:         []string{"informational", "group:camera-postsubmit"},
 		}, {
-			Name: "fake",
-			Pre:  testutil.ChromeWithPlatformAppAndFakeCamera(),
-			Val:  testutil.PlatformApp,
-			// TODO(crbug.com/1050732): Remove this once the unknown crash on
-			// scarlet is resolved.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("scarlet")),
+			Name:      "fake",
+			Pre:       testutil.ChromeWithPlatformAppAndFakeCamera(),
+			Val:       testutil.PlatformApp,
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:              "real_swa",
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
@@ -55,10 +53,9 @@ func init() {
 			Val:               testutil.SWA,
 			ExtraAttr:         []string{"informational"},
 		}, {
-			Name:      "fake_swa",
-			Pre:       testutil.ChromeWithSWAAndFakeCamera(),
-			Val:       testutil.SWA,
-			ExtraAttr: []string{"informational"},
+			Name: "fake_swa",
+			Pre:  testutil.ChromeWithSWAAndFakeCamera(),
+			Val:  testutil.SWA,
 			// TODO(crbug.com/1050732): Remove this once the unknown crash on
 			// scarlet is resolved.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("scarlet")),
