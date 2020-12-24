@@ -22,6 +22,30 @@
       },
       "revId": "345a748ccec7483b0d2a1f5b546c1b99aad0776e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea050e21_88c1b552",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-12-24T03:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aafca6e1_5435f11e",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 10
+      },
+      "revId": "345a748ccec7483b0d2a1f5b546c1b99aad0776e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
