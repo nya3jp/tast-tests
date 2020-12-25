@@ -100,7 +100,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	if err := app.Click(ctx, cca.GridSettingBackButton); err != nil {
 		s.Error("Failed to click back button: ", err)
 	}
-	if err := app.WaitForState(ctx, "golden", true); err != nil {
+	if err := app.WaitForState(ctx, "gridtype-golden", true); err != nil {
 		s.Error("Golden-grid type is not active: ", err)
 	}
 
