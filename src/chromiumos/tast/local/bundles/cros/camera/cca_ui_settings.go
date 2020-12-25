@@ -100,7 +100,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	if err := app.Click(ctx, cca.GridSettingBackButton); err != nil {
 		s.Error("Failed to click back button: ", err)
 	}
-	if err := app.WaitForState(ctx, "golden", true); err != nil {
+	if err := app.WaitForState(ctx, "grid-golden", true); err != nil {
 		s.Error("Golden-grid type is not active: ", err)
 	}
 
@@ -115,7 +115,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	if err := app.Click(ctx, cca.TimerSettingBackButton); err != nil {
 		s.Error("Failed to click back button: ", err)
 	}
-	if err := app.WaitForState(ctx, "_10sec", true); err != nil {
+	if err := app.WaitForState(ctx, "timer-10s", true); err != nil {
 		s.Error("10s-timer is not active: ", err)
 	}
 }
