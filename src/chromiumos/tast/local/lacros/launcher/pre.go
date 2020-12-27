@@ -202,8 +202,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	if err := c.PrepareExtensions(ctx); err != nil {
 		return err
 	}
-	extList := strings.Join(c.ExtDirs(), ",")
-	extensionArgs := extensionArgs(c.TestExtID(), extList)
+	extListttt := strings.Join(c.ExtDirs(), ",")
+	extensionArgs := extensionArgs(c.TestExtID(), extListttt)
 	p.opts = append(p.opts, chrome.ExtraArgs("--lacros-chrome-additional-args="+strings.Join(extensionArgs, "####")))
 	var err error
 	if p.cr, err = chrome.New(ctx, p.opts...); err != nil {
