@@ -8,6 +8,7 @@ package cca
 import (
 	"context"
 	"fmt"
+	"math"
 	"regexp"
 	"time"
 
@@ -22,6 +23,9 @@ import (
 
 // Duration to wait for CPU to stabalize.
 const stabilizationDuration time.Duration = 5 * time.Second
+
+// Duration of the interval during which CPU usage will be measured for streaming.
+const measureDuration = 20 * time.Second
 
 // MeasurementOptions contains the information for performance measurement.
 type MeasurementOptions struct {
@@ -89,12 +93,12 @@ func measureUIBehaviors(ctx context.Context, cr *chrome.Chrome, app *App, perfVa
 	}
 
 	return app.RunThroughCameras(ctx, func(facing Facing) error {
-		if err := measureStreamingPerformance(ctx, cr, app, perfValues, facing, false /* isRecording */); err != nil {
+		if err := measurePreviewPerformance(ctx, app, perfValues, facing); err != nil {
 			return errors.Wrap(err, "failed to measure preview performance")
 		}
 
-		if err := measureStreamingPerformance(ctx, cr, app, perfValues, facing, true /* isRecording */); err != nil {
-			return errors.Wrap(err, "failed to measure performance for recording video")
+		if err := measureRecordingPerformance(ctx, app, perfValues, facing); err != nil {
+			return errors.Wrap(err, "failed to measure video recording performance")
 		}
 
 		if err := measureTakingPicturePerformance(ctx, app); err != nil {
@@ -105,58 +109,99 @@ func measureUIBehaviors(ctx context.Context, cr *chrome.Chrome, app *App, perfVa
 	})
 }
 
-// measureStreamingPerformance measures the CPU usage when streaming.
-func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *App, perfValues *perf.Values, facing Facing, isRecording bool) error {
-	// Duration of the interval during which CPU usage will be measured.
-	const measureDuration = 20 * time.Second
-
-	var mode Mode
-	if isRecording {
-		mode = Video
-	} else {
-		mode = Photo
-	}
-	testing.ContextLog(ctx, "Switching to correct mode")
-	if err := app.SwitchMode(ctx, mode); err != nil {
-		return errors.Wrap(err, "failed to switch to correct mode")
-	}
-
-	var recordingStartTime time.Time
-	if isRecording {
-		// Start the recording.
-		var err error
-		recordingStartTime, err = app.StartRecording(ctx, TimerOff)
-		if err != nil {
-			return errors.Wrap(err, "failed to start recording for performance measurement")
-		}
-	}
-
+// measureStablizedCPUUsage measures the cpu usage after it's cooled down for stabilizationDuration.
+func measureStablizedCPUUsage(ctx context.Context) (float64, error) {
 	testing.ContextLog(ctx, "Sleeping to wait for CPU usage to stabilize for ", stabilizationDuration)
 	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
-		return errors.Wrap(err, "failed to wait for CPU usage to stabilize")
+		return 0, errors.Wrap(err, "failed to wait for CPU usage to stabilize")
 	}
 
 	testing.ContextLog(ctx, "Measuring CPU usage for ", measureDuration)
-	cpuUsage, err := cpu.MeasureCPUUsage(ctx, measureDuration)
+	return cpu.MeasureCPUUsage(ctx, measureDuration)
+}
+
+// measurePreviewPerformance measures the performance of preview with QR code detection on and off.
+func measurePreviewPerformance(ctx context.Context, app *App, perfValues *perf.Values, facing Facing) error {
+	testing.ContextLog(ctx, "Switching to photo mode")
+	if err := app.SwitchMode(ctx, Photo); err != nil {
+		return errors.Wrap(err, "failed to switch to photo mode")
+	}
+
+	cpuUsage, err := measureStablizedCPUUsage(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to measure CPU usage")
 	}
+	testing.ContextLogf(ctx, "Measured preview CPU usage: %.1f%%", cpuUsage)
 
-	if isRecording {
-		if _, _, err := app.StopRecording(ctx, false, recordingStartTime); err != nil {
-			return errors.Wrap(err, "failed to stop recording for performance measurement")
-		}
-	}
-
-	testing.ContextLog(ctx, "Measured cpu usage: ", cpuUsage)
-	var CPUMetricNameBase string
-	if isRecording {
-		CPUMetricNameBase = "cpu_usage_recording"
-	} else {
-		CPUMetricNameBase = "cpu_usage_preview"
-	}
 	perfValues.Set(perf.Metric{
-		Name:      fmt.Sprintf("%s-facing-%s", CPUMetricNameBase, facing),
+		Name:      fmt.Sprintf("cpu_usage_preview-facing-%s", facing),
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, cpuUsage)
+
+	// Enable QR code detection and measure the performance again.
+	enabled, err := app.ToggleQRCodeOption(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to enable QR code detection")
+	}
+	if !enabled {
+		return errors.Wrap(err, "QR code detection is not enabled after toggling")
+	}
+
+	cpuUsageQR, err := measureStablizedCPUUsage(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to measure CPU usage")
+	}
+	overhead := math.Max(0, cpuUsageQR-cpuUsage)
+	testing.ContextLogf(ctx, "Measured QR code detection CPU usage: %.1f%%, overhead = %.1f%%", cpuUsageQR, overhead)
+
+	enabled, err = app.ToggleQRCodeOption(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to disable QR code detection")
+	}
+	if enabled {
+		return errors.Wrap(err, "QR code detection is not disabled after toggling")
+	}
+
+	perfValues.Set(perf.Metric{
+		Name:      fmt.Sprintf("cpu_usage_qrcode-facing-%s", facing),
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, cpuUsageQR)
+
+	perfValues.Set(perf.Metric{
+		Name:      fmt.Sprintf("cpu_overhead_qrcode-facing-%s", facing),
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, overhead)
+
+	return nil
+}
+
+// measureRecordingPerformance measures the performance of video recording.
+func measureRecordingPerformance(ctx context.Context, app *App, perfValues *perf.Values, facing Facing) error {
+	testing.ContextLog(ctx, "Switching to video mode")
+	if err := app.SwitchMode(ctx, Video); err != nil {
+		return errors.Wrap(err, "failed to switch to video mode")
+	}
+
+	recordingStartTime, err := app.StartRecording(ctx, TimerOff)
+	if err != nil {
+		return errors.Wrap(err, "failed to start recording for performance measurement")
+	}
+
+	cpuUsage, err := measureStablizedCPUUsage(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to measure CPU usage")
+	}
+	testing.ContextLogf(ctx, "Measured recording CPU usage: %.1f%%", cpuUsage)
+
+	if _, _, err := app.StopRecording(ctx, false, recordingStartTime); err != nil {
+		return errors.Wrap(err, "failed to stop recording for performance measurement")
+	}
+
+	perfValues.Set(perf.Metric{
+		Name:      fmt.Sprintf("cpu_usage_recording-facing-%s", facing),
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, cpuUsage)
@@ -170,7 +215,7 @@ func measureTakingPicturePerformance(ctx context.Context, app *App) error {
 		return err
 	}
 
-	testing.ContextLog(ctx, "Switching to correct mode")
+	testing.ContextLog(ctx, "Switching to photo mode")
 	if err := app.SwitchMode(ctx, Photo); err != nil {
 		return err
 	}
