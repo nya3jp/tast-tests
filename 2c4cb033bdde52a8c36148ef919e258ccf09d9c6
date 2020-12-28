@@ -120,6 +120,24 @@
       "parentUuid": "964fd4d2_02d11d2d",
       "revId": "2c4cb033bdde52a8c36148ef919e258ccf09d9c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c9a086a_8ae621ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-12-28T20:13:06Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ve added that and dry-running CQ to see if it\u0027ll pass. Could I get your +2 again? It looks like it has expired",
+      "parentUuid": "812917a4_3446900f",
+      "revId": "2c4cb033bdde52a8c36148ef919e258ccf09d9c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
