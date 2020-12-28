@@ -510,7 +510,7 @@ func DecreaseSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 	return SliderValue(ctx, tconn, slider)
 }
 
-// SelectAudioOption selects the audio input or output device with the given name from the audio settings page.
+// SelectAudioOption selects the audio input or output device with the given name from the audio settings page. Also verify the changes
 func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, device string) error {
 	if err := OpenAudioSettings(ctx, tconn); err != nil {
 		return err
