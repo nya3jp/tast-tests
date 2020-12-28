@@ -82,7 +82,6 @@ func launchAppForWordPress(ctx context.Context, s *testing.State, tconn *chrome.
 	const (
 		continueWithWordPressID = "org.wordpress.android:id/first_button"
 		continueWithGoogleID    = "org.wordpress.android:id/continue_with_google"
-		accountID               = "com.google.android.gms:id/account_display_name"
 		notNowText              = "NOT RIGHT NOW"
 		readerText              = "Reader"
 	)
@@ -101,14 +100,6 @@ func launchAppForWordPress(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Error("Google button doesn't exist: ", err)
 	} else if err := googleButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on google button: ", err)
-	}
-
-	// Click on account button.
-	accountButton := d.Object(ui.ID(accountID))
-	if err := accountButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("account button doesn't exist: ", err)
-	} else if err := accountButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on account button: ", err)
 	}
 
 	// Click on not now button.
