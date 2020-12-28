@@ -16,10 +16,12 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/bundle"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/faillog"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/ready"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -123,6 +125,46 @@ func ensureDiskSpace(ctx context.Context, purgeable []string) (uint64, error) {
 	return disk.FreeSpace(statefulPartition)
 }
 
+func hwsecResetDACounter(ctx context.Context) error {
+	cmdRunner, err := hwseclocal.NewCmdRunner()
+	if err != nil {
+		return errors.Wrap(err, "failed to create CmdRunner")
+	}
+
+	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	if err != nil {
+		return errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
+	}
+
+	// Reset the TPM dictionary attack counter
+	if msg, err := tpmManagerUtil.ResetDALock(ctx); err != nil {
+		return errors.Wrapf(err, "failed to reset TPM dictionary attack: %s", msg)
+	}
+	return nil
+}
+
+func hwsecCheckDACounter(ctx context.Context) error {
+	cmdRunner, err := hwseclocal.NewCmdRunner()
+	if err != nil {
+		return errors.Wrap(err, "failed to create CmdRunner")
+	}
+
+	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	if err != nil {
+		return errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
+	}
+
+	// Get the TPM dictionary attack info
+	daInfo, err := tpmManagerUtil.GetDAInfo(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the TPM dictionary attack info")
+	}
+	if daInfo.Counter != 0 {
+		return errors.Errorf("TPM dictionary counter is not zero: %#v", daInfo)
+	}
+	return nil
+}
+
 func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
 	// Store the current log state.
 	oldInfo, err := os.Stat(varLogMessages)
@@ -152,7 +194,18 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 		s.Log("Failed to wait for Internet connectivity: ", err)
 	}
 
+	// Reset the TPM dictionary attack counter before running the tast.
+	if err := hwsecResetDACounter(ctx); err != nil {
+		s.Log("Failed to reset TPM DA counter: ", err)
+	}
+
 	return func(ctx context.Context, s *testing.TestHookState) {
+
+		// Ensure the TPM dictionary attack counter is zero after tast finish.
+		if err := hwsecCheckDACounter(ctx); err != nil {
+			s.Error("Failed to check TPM DA counter: ", err)
+		}
+
 		if s.HasError() {
 			faillog.Save(ctx)
 		}
