@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87679201_28dfdfbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-28T05:01:17Z",
+      "side": 1,
+      "message": "Hi Yen-Lin, since Alexander is OOO these days, could you help to review this CL?\nThanks!",
+      "revId": "b5ad9c77fa076154d13f3159cd61cca24dfb9fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
