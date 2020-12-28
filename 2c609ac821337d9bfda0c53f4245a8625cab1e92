@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6dc744_19a7a680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-28T03:39:42Z",
+      "side": 1,
+      "message": "I have thought about that. I also don\u0027t like the idea to duplicate things in data to lacros package. But I put this test inside lacros package since I saw audio team also put their tests [1] for lacros under lacros package and I am wondering if it would be preferable to put lacros basic testings inside lacros package so it will be easier for Lacros team to monitor the status of the components in Lacros.\n\n[1]: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/lacros/audio_play.go",
+      "parentUuid": "1240ff5b_eede86ba",
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "623b07e6_14902d21",
