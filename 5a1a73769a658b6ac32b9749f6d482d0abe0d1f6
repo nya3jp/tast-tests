@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7f7e0c_23dff357",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-12-28T19:56:23Z",
+      "side": 1,
+      "message": "nit: \"utility library\"?",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "5a1a73769a658b6ac32b9749f6d482d0abe0d1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
