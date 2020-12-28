@@ -435,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b389a2f3_b40f7853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vaapi_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-12-28T07:10:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d5380b43_8e917ee2",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "e6475448dad2f178067802ee38d52cd1b1f9cdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49a6430a_39ccd440",
