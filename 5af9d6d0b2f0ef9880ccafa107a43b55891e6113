@@ -1,0 +1,320 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28432c9_82794aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "It looks like testing.State is passed to this method just so that errors can be reported via s.Fatal. Since we don\u0027t like passing testing.State where it is not needed, you could make this method return error and call s.Fatal in the top-level test.\n\nSee: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#state",
+      "range": {
+        "startLine": 83,
+        "startChar": 35,
+        "endLine": 83,
+        "endChar": 51
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daa968e5_005096ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "clar: Why is this needed?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c126bbc_c4898211",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "optional: you have helper methods defined both above and below your main test method. I usually find test files easiest to read if the top-level test method is at the top (after init()) and helpers follow. However, I can\u0027t find any explicit guidance around this, so I\u0027ve marked this optional.",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 21
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c68e1fa_f7ced6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "Could you create the tab directly (i.e. without possibly hitting UI/keyboard input flakiness) by using cr.NewConn(ctx, url)?",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 37
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f6c2e1_47b88f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "Waiting based on time (instead of a condition) is generally not recommended:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#sleep\n\nI\u0027m not the expert on Chrome tests, but I recall seeing this Chrome memory test run, which seemed to have a good method for detecting when tabs were actually loaded:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/memory/mempressure/mempressure.go?q\u003dload%20test%20memory%20chrome%20package:chromeos_public%7Cchromeos_internal\u0026type\u003dcs\nperhaps you could re-use some of the logic here? (does waitForQuiescence do you what you need?)",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8679c26_b52d5adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "How reliable is this key combination? It looks like this may be navigating a list or dropdown -- might exploring the UI accessibility tree be more reliable in the long term (e.g. if the list order changes)?\n\nThis slide deck may contain some ideas for how you can do this (N.B. link available to Googlers only): go/ui-tast-tests-slides",
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2002fa4f_c15fa218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "Ditto on waiting on time rather than condition (https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#sleep), is a polling or other solution possible to tell when this is actually done?",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 34
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da596225_b1f6aa5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "ditto (waiting on time rather than condition) -- is there a better solution here?",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 34
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "231ae240_d82d9365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "Ditto (passing testing.State only for s.Fatal). See: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#state",
+      "range": {
+        "startLine": 171,
+        "startChar": 33,
+        "endLine": 171,
+        "endChar": 49
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd58489_119e0dca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 10
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098f24fb_3d8f41ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "optional: move this up to where you have the break statement, and make the return statement a break. I believe this is slightly more in the spirit of: https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 42
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3243866_dbcf1ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "Ditto (passing testing.State only for s.Fatal). See: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#state",
+      "range": {
+        "startLine": 190,
+        "startChar": 31,
+        "endLine": 190,
+        "endChar": 47
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "713ee2b8_25c7c5c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "Ditto (don\u0027t think this is needed)",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 10
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb975ef9_5c4b4f10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-12-28T23:38:27Z",
+      "side": 1,
+      "message": "optional: Same as in assertMakeCredentialSuccess",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 40
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
