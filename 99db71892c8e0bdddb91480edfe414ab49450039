@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66659f5d_02d4a8bd",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-12-28T14:44:37Z",
+      "side": 1,
+      "message": "It might be a good idea to print the path of the namespace here.",
+      "range": {
+        "startLine": 411,
+        "startChar": 21,
+        "endLine": 411,
+        "endChar": 70
+      },
+      "revId": "99db71892c8e0bdddb91480edfe414ab49450039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
