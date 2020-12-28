@@ -18,17 +18,47 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/bundle"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
+	"chromiumos/tast/errors"
+	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/baserpc"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
+func hwsecCheckDACounter(ctx context.Context, s *testing.TestHookState) error {
+	cmdRunner, err := hwsecremote.NewCmdRunner(s.DUT())
+	if err != nil {
+		return errors.Wrap(err, "failed to create CmdRunner: ")
+	}
+
+	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	if err != nil {
+		return errors.Wrap(err, "failed to create UtilityTpmManagerBinary: ")
+	}
+
+	// Get the TPM dictionary attack info
+	daInfo, err := tpmManagerUtil.GetDAInfo(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the TPM dictionary attack info: ")
+	}
+	if daInfo.Counter != 0 {
+		return errors.Errorf("TPM dictionary counter is not zero: %#v", daInfo)
+	}
+	return nil
+}
+
 // testHookRemote returns a function that performs post-run activity after a test run is done.
 func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx context.Context,
 	s *testing.TestHookState) {
 	return func(ctx context.Context, s *testing.TestHookState) {
+
+		// Ensure the TPM dictionary attack counter is zero after tast finish.
+		if err := hwsecCheckDACounter(ctx, s); err != nil {
+			s.Error("Failed to check TPM DA counter: ", err)
+		}
 
 		// Only save faillog when there is an error.
 		if !s.HasError() {
