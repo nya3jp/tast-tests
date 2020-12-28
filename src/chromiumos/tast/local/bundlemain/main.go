@@ -16,10 +16,12 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/bundle"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/faillog"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/ready"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -123,6 +125,28 @@ func ensureDiskSpace(ctx context.Context, purgeable []string) (uint64, error) {
 	return disk.FreeSpace(statefulPartition)
 }
 
+func hwsecCheckDACounter(ctx context.Context) error {
+	cmdRunner, err := hwseclocal.NewCmdRunner()
+	if err != nil {
+		return errors.Wrap(err, "failed to create CmdRunner: ")
+	}
+
+	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	if err != nil {
+		return errors.Wrap(err, "failed to create UtilityTpmManagerBinary: ")
+	}
+
+	// Get the TPM dictionary attack info
+	daInfo, err := tpmManagerUtil.GetDAInfo(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the TPM dictionary attack info: ")
+	}
+	if daInfo.Counter != 0 {
+		return errors.Errorf("TPM dictionary counter is not zero: %#v", daInfo)
+	}
+	return nil
+}
+
 func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
 	// Store the current log state.
 	oldInfo, err := os.Stat(varLogMessages)
@@ -184,6 +208,11 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 			if spaceUsage > spaceUsageThreshold {
 				s.Logf("Stateful partition usage: %d MiB (%d MiB free -> %d MiB free)", spaceUsage/mib, freeSpaceBefore/mib, freeSpaceAfter/mib)
 			}
+		}
+
+		// Ensure the TPM dictionary attack counter is zero after tast finish.
+		if err := hwsecCheckDACounter(ctx); err != nil {
+			s.Error("Failed to check TPM DA counter: ", err)
 		}
 	}
 }
