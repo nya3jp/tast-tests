@@ -144,7 +144,9 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(ctx)
 
-	if err := filesApp.OpenDir(ctx, filesapp.Playfiles, "Files - "+filesapp.Playfiles); err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return filesApp.OpenDir(ctx, filesapp.Playfiles, "Files - "+filesapp.Playfiles)
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		s.Fatal("Failed to open Play files: ", err)
 	}
 
