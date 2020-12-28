@@ -16,6 +16,52 @@
       "message": "Michael\u0027s out this week, so assigning to Ian for a review.",
       "revId": "2a7789093baba4eb0268e9f0e297d979167f99b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28216e1c_df1dd4b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-12-28T18:48:58Z",
+      "side": 1,
+      "message": "\"DEPRECATED: use linuxssh.GetFile(ctx, d.Conn(), src, dst)\" (src/platform/tast/src/chromiumos/tast/dut/dut.go)",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "2a7789093baba4eb0268e9f0e297d979167f99b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2e5e4f_04246fd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-12-28T18:48:58Z",
+      "side": 1,
+      "message": "Maybe \"Get all files to help debug issue\"\n\nMake it clear this isn\u0027t a functional part of the test but a debugging helper",
+      "range": {
+        "startLine": 173,
+        "startChar": 7,
+        "endLine": 173,
+        "endChar": 20
+      },
+      "revId": "2a7789093baba4eb0268e9f0e297d979167f99b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
