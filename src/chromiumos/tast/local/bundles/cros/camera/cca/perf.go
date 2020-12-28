@@ -8,6 +8,7 @@ package cca
 import (
 	"context"
 	"fmt"
+	"math"
 	"regexp"
 	"time"
 
@@ -148,7 +149,7 @@ func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *Ap
 		}
 	}
 
-	testing.ContextLog(ctx, "Measured cpu usage: ", cpuUsage)
+	testing.ContextLogf(ctx, "Measured CPU usage: %.1f%%", cpuUsage)
 	var CPUMetricNameBase string
 	if isRecording {
 		CPUMetricNameBase = "cpu_usage_recording"
@@ -160,6 +161,49 @@ func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *Ap
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, cpuUsage)
+
+	if !isRecording {
+		// Measure the performance of QR code detection in Photo mode.
+
+		scanBarcode, err := app.GetState(ctx, "scan-barcode")
+		if err != nil {
+			return errors.Wrap(err, "failed to get barcode state")
+		}
+		if !scanBarcode {
+			enabled, err := app.ToggleQRCodeOption(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to enable QR code detection")
+			}
+			if !enabled {
+				return errors.Wrap(err, "QR code detection is not enabled after toggling")
+			}
+		}
+
+		testing.ContextLog(ctx, "Sleeping to wait for CPU usage to stabilize for ", stabilizationDuration)
+		if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
+			return errors.Wrap(err, "failed to wait for CPU usage to stabilize")
+		}
+
+		testing.ContextLog(ctx, "Measuring CPU usage of QR code detection for ", measureDuration)
+		cpuUsageQR, err := cpu.MeasureCPUUsage(ctx, measureDuration)
+		if err != nil {
+			return errors.Wrap(err, "failed to measure CPU usage")
+		}
+		overhead := math.Max(0, cpuUsageQR-cpuUsage)
+		testing.ContextLogf(ctx, "Measured CPU usage: %.1f%%, overhead = %.1f%%", cpuUsageQR, overhead)
+
+		perfValues.Set(perf.Metric{
+			Name:      fmt.Sprintf("cpu_usage_qrcode-facing-%s", facing),
+			Unit:      "percent",
+			Direction: perf.SmallerIsBetter,
+		}, cpuUsageQR)
+
+		perfValues.Set(perf.Metric{
+			Name:      fmt.Sprintf("cpu_overhead_qrcode-facing-%s", facing),
+			Unit:      "percent",
+			Direction: perf.SmallerIsBetter,
+		}, overhead)
+	}
 
 	return nil
 }
