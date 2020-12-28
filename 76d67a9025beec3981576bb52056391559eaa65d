@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f00cc12_e1ec088f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-28T05:13:24Z",
+      "side": 1,
+      "message": "Please make sure camera.CCA* passes before/after applying crrev.com/c/2596588. Thanks.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "76d67a9025beec3981576bb52056391559eaa65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "668abb5b_520b2343",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-28T05:13:24Z",
+      "side": 1,
+      "message": "defer +2 to Tast owners.",
+      "revId": "76d67a9025beec3981576bb52056391559eaa65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
