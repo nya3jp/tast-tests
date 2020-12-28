@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "affce507_9f68bfed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-28T15:56:58Z",
+      "side": 1,
+      "message": "Since the flows are similar between three use cases:\n1. Preview\n2. Recording\n3. QR code detection\n\nDo you think we can have a variable (e.g. StreamingCondition) and split measureStreamingPerformance() into three parts:\n1. Pre-process\n2. Measuring (including stabilization, measuring and saving metrics)\n3. Post-Process\n\nAnd do the pre-process and post-process for each use cases respectively:\n[Preprocess]\n1. Preview -\u003e Switch to photo mode\n2. Recording -\u003e Switch to video mode and start recording\n3. QR code detection -\u003e Switch to photo mode and enable QR code detection\n\n[Post process]\n1. Preview -\u003e None\n2. Recording -\u003e Stop the recording\n3. QR code detection -\u003e None",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "75194a3309533d0669a50c37385f0b1c0bfe729b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
