@@ -202,7 +202,8 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, a *arc.ARC, appN
 			defer gConn.CloseTarget(ctx)
 
 			if appName == YoutubeApp {
-				if err = checkYoutubeAppPIP(ctx, tconn); err != nil {
+				ytApp := videoApp.(*YtApp)
+				if err = ytApp.checkYoutubeAppPIP(ctx); err != nil {
 					return errors.Wrap(err, "youtube App smaller video preview window is not shows up")
 				}
 			}
