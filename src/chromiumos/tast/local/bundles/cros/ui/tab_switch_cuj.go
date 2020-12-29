@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
@@ -22,17 +23,23 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{tabswitchcuj.WPRArchiveName},
-		Timeout:      22 * time.Minute,
+		Timeout:      15 * time.Minute,
 		Vars:         []string{"mute"},
 		Pre:          wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 	})
 }
 
+// TabSwitchCUJ measures the performance of tab-switching CUJ
 func TabSwitchCUJ(ctx context.Context, s *testing.State) {
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	tabswitchcuj.Run(ctx, s)
+	cr, ok := s.PreValue().(*chrome.Chrome)
+	if !ok {
+		s.Fatal("Failed to connect to Chrome")
+	}
+
+	tabswitchcuj.Run(ctx, s, cr)
 }
