@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/wificell"
@@ -50,11 +51,12 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 		hostapd.SSID(ssid),
 		hostapd.Mode(hostapd.Mode80211nMixed),
 		hostapd.HTCaps(hostapd.HTCapHT20),
+		hostapd.Hidden(),
 	}
 	// The AP configs we're going to use. The initAPOps one is which we
 	// manual connect to, and the ones in reconnectAPParams are expected
 	// to be auto-reconnected.
-	initAPOps := append([]hostapd.Option{hostapd.Channel(1), hostapd.BSSID(origBSSID)}, sharedOps...)
+	initAPOps := append([]hostapd.Option{hostapd.Channel(48), hostapd.BSSID(origBSSID)}, sharedOps...)
 	// Checking both channel jumping on the same BSSID and channel jumping
 	// between BSSIDs, all inside the same SSID.
 	reconnectAPParams := []struct {
@@ -62,23 +64,22 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 		ops  []hostapd.Option
 	}{
 		{
-			desc: "jump to ch6",
-			ops:  append([]hostapd.Option{hostapd.Channel(6), hostapd.BSSID(origBSSID)}, sharedOps...),
+			desc: "jump to 5200MHz",
+			ops:  append([]hostapd.Option{hostapd.Channel(40), hostapd.BSSID(origBSSID)}, sharedOps...),
 		},
 		{
-			desc: "jump to ch11",
-			ops:  append([]hostapd.Option{hostapd.Channel(11), hostapd.BSSID(origBSSID)}, sharedOps...),
-		},
-		// The next two use default unique BSSID (i.e. different from origBSSID and each other).
-		{
-			desc: "jump to ch3 with different BSSID",
-			ops:  append([]hostapd.Option{hostapd.Channel(3)}, sharedOps...),
+			desc: "jump to 5220MHz",
+			ops:  append([]hostapd.Option{hostapd.Channel(44), hostapd.BSSID(origBSSID)}, sharedOps...),
 		},
 		{
-			desc: "jump to ch8 with different BSSID",
-			ops:  append([]hostapd.Option{hostapd.Channel(8)}, sharedOps...),
+			desc: "jump to 5180MHz",
+			ops:  append([]hostapd.Option{hostapd.Channel(36), hostapd.BSSID(origBSSID)}, sharedOps...),
 		},
 	}
+	secConfFac := wpa.NewConfigFactory(
+		"chromeos", wpa.Mode(wpa.ModePureWPA2),
+		wpa.Ciphers2(wpa.CipherCCMP),
+	)
 
 	// collectFirstErr is an utility function for collecting errors in defer.
 	collectFirstErr := func(firstErr *error, err error) {
@@ -107,7 +108,7 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 		ctx, cancel := wifiutil.ReserveForWaitServiceIdle(ctx)
 		defer cancel()
 
-		ap, err := tf.ConfigureAP(ctx, initAPOps, nil)
+		ap, err := tf.ConfigureAP(ctx, initAPOps, secConfFac)
 		if err != nil {
 			return errors.Wrap(err, "failed to configure the initial AP")
 		}
@@ -152,7 +153,7 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 		ctx, cancel = wifiutil.ReserveForWaitServiceIdle(ctx)
 		defer cancel()
 
-		ap, err := tf.ConfigureAP(ctx, apOps, nil)
+		ap, err := tf.ConfigureAP(ctx, apOps, secConfFac)
 		if err != nil {
 			return errors.Wrap(err, "failed to configure the AP")
 		}
