@@ -154,7 +154,18 @@ func ShareDrive(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := sharedFolders.ShareDriveOK(ctx, filesApp, tconn); err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := sharedFolders.ShareDriveOK(ctx, filesApp, tconn); err != nil {
+			if errClose := filesApp.Close(cleanupCtx); errClose != nil {
+				return errors.Wrap(errClose, "failed to close Files app")
+			}
+			var errOpen error
+			if filesApp, errOpen = filesapp.Launch(ctx, tconn); errOpen != nil {
+				return errors.Wrap(errOpen, "failed to open Files app")
+			}
+		}
+		return err
+	}, &testing.PollOptions{Timeout: 5 * time.Minute, Interval: time.Minute}); err != nil {
 		s.Fatal("Failed to share Google Drive: ", err)
 	}
 
