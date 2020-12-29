@@ -18,6 +18,9 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -42,7 +45,7 @@ type VideoApp interface {
 	Close(ctx context.Context)
 }
 
-// video struct defines video src for testing.
+// videoSrc struct defines video src for testing.
 type videoSrc struct {
 	url     string
 	quality string
@@ -134,6 +137,27 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, a *arc.ARC, appN
 		}
 	}()
 
+	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
+		conn, err := uiHandler.NewChromeTab(ctx, cr, "https://mail.google.com", true)
+		if err != nil {
+			return conn, errors.Wrap(err, "failed to open gmail web page")
+		}
+		if err := webutil.WaitForQuiescence(ctx, conn, 2*time.Minute); err != nil {
+			return conn, errors.Wrap(err, "failed to wait for gmail page to finish loading")
+		}
+		// YouTube sometimes pops up a prompt to notice users how to operate YouTube
+		// if there're new features. Dismiss prompt if it exist.
+		gotItPrompt := nodewith.Name("Got it").Role(role.Button)
+		ui.IfSuccessThen(
+			ui.WaitUntilExists(gotItPrompt),
+			uiHandler.ClickUntil(
+				gotItPrompt,
+				ui.WithTimeout(2*time.Second).WaitUntilGone(gotItPrompt),
+			),
+		)
+		return conn, nil
+	}
+
 	for index := 0; index < len(videoSources); index++ {
 		// Repeat the run for different video source.
 		if err = recorder.Run(ctx, func(ctx context.Context) error {
@@ -157,6 +181,15 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, a *arc.ARC, appN
 			if err := testing.Sleep(ctx, time.Second); err != nil {
 				return errors.Wrap(err, "failed to sleep")
 			}
+
+			// Open Gmail web.
+			testing.ContextLog(ctx, "Open Gmail web")
+			gConn, err := openGmailWeb(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to open Gmail website")
+			}
+			defer gConn.Close()
+			defer gConn.CloseTarget(ctx)
 
 			if err := uiHandler.SwitchWindow()(ctx); err != nil {
 				return errors.Wrap(err, "failed to switch back to video playing")
