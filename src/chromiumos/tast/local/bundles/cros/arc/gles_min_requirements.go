@@ -88,10 +88,9 @@ func GLESMinRequirements(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to parse OpenGL ES version: ", err)
 	}
 
-	// TODO(ricardoq): Upgrade minimum requirement to GLES 3.1.
-	if major < 3 {
+	if major < 3 || (major == 3 && minor < 1) {
 		s.Log("GLES version: ", glVersion)
-		s.Fatalf("Unexpected GLES version, got %d.%d, want: >= 3.0", major, minor)
+		s.Fatalf("Unexpected GLES version, got %d.%d, want: >= 3.1", major, minor)
 	}
 
 	// Check ETC1 support.
