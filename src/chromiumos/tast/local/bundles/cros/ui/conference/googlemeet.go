@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
@@ -526,30 +525,6 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 	}
 	defer kb.Close()
 
-	unsetMirrorDisplay := func(ctx context.Context, tconn *chrome.TestConn) error {
-		testing.ContextLog(ctx, "Launch os settins to disable mirror")
-		settings, err := ossettings.LaunchAtPage(ctx, tconn, nodewith.Name("Device").Role(role.Link))
-		if err != nil {
-			return errors.Wrap(err, "failed to launch os-settings Device page")
-		}
-
-		displayFinder := nodewith.Name("Displays").Role(role.Link).Ancestor(ossettings.WindowFinder)
-		if err := ui.LeftClick(displayFinder)(ctx); err != nil {
-			return errors.Wrap(err, "failed to launch display page")
-		}
-
-		mirrorFinder := nodewith.Name("Mirror Built-in display").Role(role.CheckBox).Ancestor(ossettings.WindowFinder)
-		if err := ui.LeftClick(mirrorFinder)(ctx); err != nil {
-			return errors.Wrap(err, "failed to click mirror display")
-		}
-
-		if err := settings.Close(ctx); err != nil {
-			return errors.Wrap(err, "failed to close settings")
-		}
-
-		return nil
-	}
-
 	moveConferenceTab := func(ctx context.Context) error {
 		return uiauto.Combine("move conference to exteneded display",
 			kb.AccelAction("Alt+Tab"),
@@ -574,12 +549,6 @@ func (conf *GoogleMeetConference) ExtendedDisplayPresenting(ctx context.Context)
 			ui.LeftClickUntil(shareButton, ui.Gone(shareButton)),
 			ui.WaitUntilGone(stopPresentation),
 		)(ctx)
-	}
-
-	if conf.tabletMode {
-		if err := unsetMirrorDisplay(ctx, tconn); err != nil {
-			return err
-		}
 	}
 
 	testing.ContextLog(ctx, "Create a new Google Slides")
