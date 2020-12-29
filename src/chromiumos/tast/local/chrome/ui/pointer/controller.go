@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -33,6 +35,15 @@ type Controller interface {
 
 	// Close closes the access to the underlying system and releases resources.
 	Close()
+
+	// StableLeftClick waits for node location to be stabilized and then performs left click on it.
+	StableLeftClick(ctx context.Context, tconn *chrome.TestConn, n *nodewith.Finder, pollOpts *testing.PollOptions) error
+
+	// StableRightClick waits for node location to be stabilized and then performs right click on it.
+	StableRightClick(ctx context.Context, tconn *chrome.TestConn, n *nodewith.Finder, pollOpts *testing.PollOptions) error
+
+	// StableDoubleClick waits for node location to be stabilized and then performs double click on it.
+	StableDoubleClick(ctx context.Context, tconn *chrome.TestConn, n *nodewith.Finder, pollOpts *testing.PollOptions) error
 }
 
 // Click provides an action of press and release at the location, i.e. a mouse
@@ -93,6 +104,24 @@ func (mc *MouseController) Move(ctx context.Context, start, end coords.Point, du
 		return errors.Wrap(err, "failed to move to the start location")
 	}
 	return mouse.Move(ctx, mc.tconn, end, duration)
+}
+
+// StableLeftClick implements Controller.StableLeftClick.
+func (mc *MouseController) StableLeftClick(ctx context.Context, tconn *chrome.TestConn, n *nodewith.Finder, pollOpts *testing.PollOptions) error {
+	ui := uiauto.New(tconn).WithPollOpts(*pollOpts)
+	return uiauto.Combine("MouseController StableLeftClick", ui.WaitForLocation(n), ui.LeftClick(n))(ctx)
+}
+
+// StableRightClick implements Controller.StableRightClick.
+func (mc *MouseController) StableRightClick(ctx context.Context, tconn *chrome.TestConn, n *nodewith.Finder, pollOpts *testing.PollOptions) error {
+	ui := uiauto.New(tconn).WithPollOpts(*pollOpts)
+	return uiauto.Combine("MouseController StableLeftClick", ui.WaitForLocation(n), ui.RightClick(n))(ctx)
+}
+
+// StableDoubleClick implements Controller.StableDoubleClick.
+func (mc *MouseController) StableDoubleClick(ctx context.Context, tconn *chrome.TestConn, n *nodewith.Finder, pollOpts *testing.PollOptions) error {
+	ui := uiauto.New(tconn).WithPollOpts(*pollOpts)
+	return uiauto.Combine("MouseController StableLeftClick", ui.WaitForLocation(n), ui.DoubleClick(n))(ctx)
 }
 
 // Close implements Controller.Close.
@@ -176,8 +205,65 @@ func (tc *TouchController) Move(ctx context.Context, start, end coords.Point, du
 	return tc.stw.Swipe(ctx, startX, startY, endX, endY, duration)
 }
 
+// StableLeftClick implements Controller.StableLeftClick.
+func (tc *TouchController) StableLeftClick(ctx context.Context, tconn *chrome.TestConn, n *nodewith.Finder, pollOpts *testing.PollOptions) error {
+	ui := uiauto.New(tconn).WithPollOpts(*pollOpts)
+	err := ui.WaitForLocation(n)(ctx)
+	if err != nil {
+		return err
+	}
+
+	l, err := ui.Location(ctx, n)
+	if err != nil {
+		return err
+	}
+
+	x, y := tc.tcc.ConvertLocation(l.CenterPoint())
+	return tc.touch(ctx, tconn, x, y)
+}
+
+// StableRightClick implements Controller.StableRightClick.
+// For touch controller, right click will be implemented as long touch.
+func (tc *TouchController) StableRightClick(ctx context.Context, tconn *chrome.TestConn, n *nodewith.Finder, pollOpts *testing.PollOptions) error {
+	ui := uiauto.New(tconn).WithPollOpts(*pollOpts)
+	err := ui.WaitForLocation(n)(ctx)
+	if err != nil {
+		return err
+	}
+
+	l, err := ui.Location(ctx, n)
+	if err != nil {
+		return err
+	}
+
+	x, y := tc.tcc.ConvertLocation(l.CenterPoint())
+	return tc.longTouch(ctx, tconn, x, y)
+}
+
+// StableDoubleClick implements Controller.StableDoubleClick.
+// Currently, the double click of touch event is mapped to left click.
+func (tc *TouchController) StableDoubleClick(ctx context.Context, tconn *chrome.TestConn, n *nodewith.Finder, pollOpts *testing.PollOptions) error {
+	return tc.StableLeftClick(ctx, tconn, n, pollOpts)
+}
+
 // Close implements Controller.Close.
 func (tc *TouchController) Close() {
 	tc.stw.Close()
 	tc.tsew.Close()
+}
+
+// touch executes a touch event on input coordinate.
+func (tc *TouchController) touch(ctx context.Context, tconn *chrome.TestConn, x, y input.TouchCoord) error {
+	if err := tc.stw.Move(x, y); err != nil {
+		return err
+	}
+	return tc.stw.End()
+}
+
+// longTouch executes a long-touch event on input coordinate.
+func (tc *TouchController) longTouch(ctx context.Context, tconn *chrome.TestConn, x, y input.TouchCoord) error {
+	if err := tc.stw.LongPressAt(ctx, x, y); err != nil {
+		return err
+	}
+	return tc.stw.End()
 }
