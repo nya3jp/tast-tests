@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3637070_cdda483c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-12-29T20:23:36Z",
+      "side": 1,
+      "message": "Note: I\u0027ll create a bug soon (and change this line to point to it).",
+      "revId": "19c2a3a4fb3dd3dcefff225e3da2db92c8869572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
