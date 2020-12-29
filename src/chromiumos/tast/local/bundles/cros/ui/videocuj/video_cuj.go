@@ -12,7 +12,9 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -96,6 +98,12 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 	)
 
 	testing.ContextLogf(ctx, "Run app appName: %s tabletMode: %t, extendedDisplay: %t", appName, tabletMode, extendedDisplay)
+
+	if appName == YoutubeApp {
+		if err := installYoutubeApp(ctx, tconn, a); err != nil {
+			return errors.Wrapf(err, "failed to install %s", youtubePkg)
+		}
+	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
 	if err != nil {
@@ -192,6 +200,8 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 			switch appName {
 			case YoutubeWeb:
 				videoApp = NewYtWeb(cr, tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+			case YoutubeApp:
+				videoApp = NewYtApp(tconn, kb, a, d, videoSource)
 			}
 
 			if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
@@ -216,10 +226,26 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 				return errors.Wrap(err, "failed to open Gmail website")
 			}
 			defer gConn.Close()
-			defer gConn.CloseTarget(ctx)
+			defer gConn.CloseTarget(cleanupCtx)
 
-			if err := uiHandler.SwitchWindow()(ctx); err != nil {
-				return errors.Wrap(err, "failed to switch back to video playing")
+			if appName == YoutubeApp {
+				if err = checkYoutubeAppPIP(ctx, tconn); err != nil {
+					return errors.Wrap(err, "youtube App smaller video preview window is not shows up")
+				}
+			}
+
+			// Switch back to video playing.
+			if tabletMode && appName == YoutubeApp {
+				if err := uiHandler.SwitchToAppWindow("YouTube")(ctx); err != nil {
+					return errors.Wrap(err, "failed to click app from Hotseat")
+				}
+				if err := kb.Accel(ctx, "F4"); err != nil {
+					return errors.Wrap(err, "failed to type the tab key")
+				}
+			} else {
+				if err := uiHandler.SwitchWindow()(ctx); err != nil {
+					return errors.Wrap(err, "failed to switch back to video playing")
+				}
 			}
 
 			// Pause and reuse video playback.
@@ -239,12 +265,21 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 
 	pv := perf.NewValues()
 
+	// We'll collect Browser.StartTime for both YouTube-Web and YouTube-App
 	pv.Set(perf.Metric{
 		Name:      "Browser.StartTime",
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 		Multiple:  true,
 	}, float64(browserStartTime.Milliseconds()))
+
+	if appName == YoutubeApp {
+		pv.Set(perf.Metric{
+			Name:      "Apps.StartTime",
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+		}, float64(appStartTime))
+	}
 
 	if err := recorder.Record(ctx, pv); err != nil {
 		return errors.Wrap(err, "failed to record result")
@@ -276,4 +311,26 @@ func getWindowID(ctx context.Context, tconn *chrome.TestConn) (int, error) {
 		return -1, errors.Errorf("expect 1 window, got %d", len(all))
 	}
 	return all[0].ID, nil
+}
+
+func installYoutubeApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
+	closeCtx := ctx
+	installCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
+	defer cancel()
+
+	device, err := a.NewUIDevice(installCtx)
+	if err != nil {
+		return errors.Wrap(err, "failed to set up ARC device")
+	}
+	defer device.Close(closeCtx)
+
+	installErr := playstore.InstallApp(installCtx, a, device, youtubePkg, -1)
+
+	if err := apps.Close(closeCtx, tconn, apps.PlayStore.ID); err != nil {
+		// Leaving PlayStore open will impact the logic of detecting fullscreen
+		// mode in this test case. We fail the test if this happens.
+		return errors.Wrap(err, "failed to close Play Store")
+	}
+
+	return installErr
 }
