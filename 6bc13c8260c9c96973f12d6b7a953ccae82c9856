@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cfb0574_351eeb50",
+        "filename": "src/chromiumos/tast/local/croshealthd/diag.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-12-29T17:24:44Z",
+      "side": 1,
+      "message": "Do you want to include the rest of the possible statuses here, like cancelled, or do you only want to include the statuses here that you actually use / care about?",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "6bc13c8260c9c96973f12d6b7a953ccae82c9856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
