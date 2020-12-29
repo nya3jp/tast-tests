@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package servo
+// Package xmlrpc implements the XML-RPC client library.
+package xmlrpc
 
 import (
 	"bytes"
@@ -18,8 +19,22 @@ import (
 	"chromiumos/tast/errors"
 )
 
-// call represents a Servo call request.
-type call struct {
+// rpcTimeout is the default and maximum timeout for XML-RPC requests.
+const rpcTimeout = 10 * time.Second
+
+// XMLRpc holds the XML-RPC information.
+type XMLRpc struct {
+	host string
+	port int
+}
+
+// New creates a new Chameleon object for communicating with XML-RPC server.
+func New(host string, port int) *XMLRpc {
+	return &XMLRpc{host: host, port: port}
+}
+
+// Call represents a Servo call request.
+type Call struct {
 	method string
 	args   []interface{}
 }
@@ -176,12 +191,13 @@ func newParams(args []interface{}) ([]param, error) {
 	return params, nil
 }
 
-func newCall(method string, args ...interface{}) call {
-	return call{method, args}
+// NewCall creates a XML-RPC call.
+func NewCall(method string, args ...interface{}) Call {
+	return Call{method, args}
 }
 
 // serializeMethodCall turns a method and args into a serialized XML-RPC method call.
-func serializeMethodCall(cl call) ([]byte, error) {
+func serializeMethodCall(cl Call) ([]byte, error) {
 	params, err := newParams(cl.args)
 	if err != nil {
 		return nil, err
@@ -264,8 +280,8 @@ func (r *response) checkFault() error {
 	return NewFaultError(faultCode, faultString)
 }
 
-// run makes an XML-RPC call to servod.
-func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
+// Run makes an XML-RPC call to the server.
+func (r *XMLRpc) Run(ctx context.Context, cl Call, out ...interface{}) error {
 	body, err := serializeMethodCall(cl)
 	if err != nil {
 		return err
@@ -273,10 +289,10 @@ func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
 
 	// Get RPC timeout duration from context or use default.
 	timeout := getTimeout(ctx)
-	servodURL := fmt.Sprintf("http://%s:%d", s.host, s.port)
+	serverURL := fmt.Sprintf("http://%s:%d", r.host, r.port)
 	httpClient := &http.Client{Timeout: timeout}
 
-	resp, err := httpClient.Post(servodURL, "text/xml", bytes.NewBuffer(body))
+	resp, err := httpClient.Post(serverURL, "text/xml", bytes.NewBuffer(body))
 	if err != nil {
 		return err
 	}

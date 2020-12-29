@@ -12,16 +12,15 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-	"time"
 
+	"chromiumos/tast/common/xmlrpc"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
 // Servo holds the servod connection information.
 type Servo struct {
-	host string
-	port int
+	xmlrpc *xmlrpc.XMLRpc
 
 	// Cache queried attributes that won't change.
 	version string
@@ -36,8 +35,6 @@ const (
 	servodDefaultHost = "localhost"
 	// servodDefaultPort is the default port for servod.
 	servodDefaultPort = 9999
-	// rpcTimeout is the default and maximum timeout for XML-RPC requests to servod.
-	rpcTimeout = 10 * time.Second
 )
 
 // New creates a new Servo object for communicating with a servod instance.
@@ -48,7 +45,7 @@ func New(ctx context.Context, connSpec string) (*Servo, error) {
 	if err != nil {
 		return nil, err
 	}
-	s := &Servo{host: host, port: port}
+	s := &Servo{xmlrpc: xmlrpc.New(host, port)}
 
 	// Ensure Servo is set up properly before returning.
 	return s, s.verifyConnectivity(ctx)
