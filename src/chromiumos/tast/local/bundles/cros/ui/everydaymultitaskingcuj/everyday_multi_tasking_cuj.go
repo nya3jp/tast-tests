@@ -7,15 +7,16 @@ package everydaymultitaskingcuj
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
+	"chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/spotify"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
@@ -29,12 +30,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// YoutubeMusicAppName indicates to test against YoutubeMusic.
-const YoutubeMusicAppName = "ytmusic"
+const (
+	// YoutubeMusicAppName indicates to test against YoutubeMusic.
+	YoutubeMusicAppName = "ytmusic"
+	// SpotifyAppName indicates to test against Spotify.
+	SpotifyAppName = spotify.AppName
+)
 
 // Run runs the EverydayMultitaskingCUJ test.
 // ccaSriptPaths is the scirpt paths used by CCA package to do camera testing.
 // account is the one used by Spotify APP to do login.
+// TODO(crbug.com/1196849): split this large function.
 func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode bool) error {
 	const (
 		gmailURL        = "https://mail.google.com"
@@ -47,7 +53,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 		redditURL       = "https://www.reddit.com/"
 		initialVolume   = 60
 		intervalVolume  = 5
-		timeout         = 3 * time.Second
 	)
 
 	// Basic tier test scenario: Have 2 browser windows open with 5 tabs each.
@@ -57,7 +62,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	// 1. The first and second window URL list are same as basic.
 	// 2. The third window URL list including Google News, CNN news, Wikipedia, Reddit.
 	// 3. The fourth window URL list is same as the third one.
-
 	firstWindowURLList := []string{gmailURL, calendarURL, youtubeMusicURL, huluURL, googleNewsURL}
 	secondWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, googleNewsURL, cnnNewsURL}
 	thirdWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, redditURL, cnnNewsURL}
@@ -135,7 +139,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 		}
 		defer uiHandler.Close()
 
-		switchWindowByHotseat := subtest{
+		switchWindowByHotseatTest := subtest{
 			"hotseat",
 			"Switching the focused window through clicking the hotseat",
 			func(ctx context.Context, ws []*ash.Window, i int) error {
@@ -146,12 +150,15 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 						wIdx++
 					}
 				}
-				windowAppName := "Chrome"
+				appName = "Chrome"
+				if strings.Contains(ws[i].Title, SpotifyAppName) {
+					appName = SpotifyAppName
+				}
 				testing.ContextLogf(ctx, "Switching window to %q", ws[i].Title)
-				return uiHandler.SwitchToAppWindowByIndex(windowAppName, wIdx)(ctx)
+				return uiHandler.SwitchToAppWindowByIndex(appName, wIdx)(ctx)
 			},
 		}
-		switchWindowTests = append(switchWindowTests, switchWindowByHotseat)
+		switchWindowTests = append(switchWindowTests, switchWindowByHotseatTest)
 	} else {
 		if uiHandler, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to create clamshell action handler")
@@ -166,6 +173,20 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 			},
 		}
 		switchWindowTests = append(switchWindowTests, switchWindowByKeyboardTest)
+	}
+
+	// Install android apps for the everyday works: Spotify.
+	var (
+		appSpotify *spotify.Spotify
+		uiTimeout  = 5 * time.Second
+	)
+	if appName == SpotifyAppName {
+		appSpotify = spotify.NewSpotify(kb, a, d, account, uiTimeout)
+
+		testing.ContextLog(ctx, "Check and install ", spotify.PackageName)
+		if err := appSpotify.Install(ctx, tconn, 3*time.Minute); err != nil {
+			return errors.Wrap(err, "failed to install Spotify")
+		}
 	}
 
 	testing.ContextLog(ctx, "Start to get browser start time")
@@ -192,15 +213,38 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	// So make it the first deferred function to use cleanupCtx.
 	defer setBatteryNormal(cleanupCtx)
 
+	var appStartTime int64
+	// Launch arc apps from the app launcher; first open the app-launcher, type
+	// the query and select the first search result, and wait for the app window
+	// to appear. When the app has the splash screen, skip it.
+	if appName == SpotifyAppName {
+		if err = recorder.Run(ctx, func(ctx context.Context) error {
+			t, err := appSpotify.Launch(ctx, tconn, time.Minute)
+			if err != nil {
+				return errors.Wrap(err, "failed to Launch Spotify")
+			}
+			appStartTime = t.Milliseconds()
+
+			testing.ContextLog(ctx, "Start to play Spotify")
+			if err = appSpotify.Play(ctx); err != nil {
+				return errors.Wrap(err, "failed to play Spotify")
+			}
+			// Waits some time to stabilize the result of launcher animations.
+			return testing.Sleep(ctx, uiTimeout)
+		}); err != nil {
+			return errors.Wrap(err, "failed to launch and play Spotify")
+		}
+	}
+
 	openBrowserWithTabs := func(urlList []string) error {
-		var conn *chrome.Conn
 		for idx, url := range urlList {
-			conn, err = uiHandler.NewChromeTab(ctx, cr, url, idx == 0)
+			conn, err := uiHandler.NewChromeTab(ctx, cr, url, idx == 0)
 			if err != nil {
 				return errors.Wrapf(err, "failed to open %s", url)
 			}
 			// We don't need to keep the connection, so close it before leaving this function.
 			defer conn.Close()
+
 			if err := webutil.WaitForQuiescence(ctx, conn, time.Minute); err != nil {
 				return errors.Wrap(err, "failed to wait for page to finish loading")
 			}
@@ -332,6 +376,13 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 	}, float64(browserStartTime.Milliseconds()))
+	if appStartTime > 0 {
+		pv.Set(perf.Metric{
+			Name:      "Apps.StartTime",
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+		}, float64(appStartTime))
+	}
 	if err = recorder.Record(ctx, pv); err != nil {
 		return errors.Wrap(err, "failed to report")
 	}
@@ -385,16 +436,6 @@ func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 	}
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
-	}
-	return nil
-}
-
-func waitAndClickObject(ctx context.Context, object *androidui.Object, name string, timeout time.Duration) error {
-	if err := object.WaitForExists(ctx, timeout); err != nil {
-		return errors.Wrapf(err, `failed to find %q`, name)
-	}
-	if err := object.Click(ctx); err != nil {
-		return errors.Wrapf(err, `failed to click %q`, name)
 	}
 	return nil
 }

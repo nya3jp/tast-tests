@@ -6,9 +6,11 @@ package cuj
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -31,21 +33,34 @@ func OpenAppAndGetStartTime(ctx context.Context, tconn *chrome.TestConn, a *arc.
 	return time.Since(startTime), act, nil
 }
 
-// FindAndClick finds and clicks Android ui object.
-func FindAndClick(ctx context.Context, obj *ui.Object, timeout time.Duration) error {
-	if err := obj.WaitForExists(ctx, timeout); err != nil {
-		return errors.Wrap(err, "failed to find the target object")
-	}
-	if err := obj.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the target object")
-	}
-	return nil
-}
-
-// ClickIfExist clicks the UI object if it exists. If the object cannot be found, nil will be returned.
-func ClickIfExist(ctx context.Context, obj *ui.Object, timeout time.Duration) error {
-	if err := obj.WaitForExists(ctx, timeout); err != nil {
+// FindAndClick returns an action function that finds and clicks the Android ui object.
+func FindAndClick(obj *ui.Object, waitTime time.Duration) action.Action {
+	return func(ctx context.Context) error {
+		if err := obj.WaitForExists(ctx, waitTime); err != nil {
+			return errors.Wrap(err, "failed to find the target object")
+		}
+		if err := obj.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click the target object")
+		}
 		return nil
 	}
-	return obj.Click(ctx)
+}
+
+// ClickIfExist returns an action function that clicks the UI object if it exists.
+// If the object cannot be found, nil will be returned from the action function.
+func ClickIfExist(obj *ui.Object, waitTime time.Duration) action.Action {
+	return func(ctx context.Context) error {
+		if err := obj.WaitForExists(ctx, waitTime); err != nil {
+			// If the first wrapped error is "timeout", it means the oject is not found.
+			// See errTimeout definition in andriod/ui package.
+			if strings.HasSuffix(err.Error(), "timeout") {
+				return nil
+			}
+			return errors.Wrap(err, "failed to wait for the target object")
+		}
+		if err := obj.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click the target object")
+		}
+		return nil
+	}
 }
