@@ -18,6 +18,9 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -161,6 +164,27 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 	defer faillog.DumpUITreeOnError(cleanupCtx, outDir, hasError, tconn)
 	defer faillog.SaveScreenshotOnError(cleanupCtx, cr, outDir, hasError)
 
+	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
+		conn, err := uiHandler.NewChromeTab(ctx, cr, "https://mail.google.com", true)
+		if err != nil {
+			return conn, errors.Wrap(err, "failed to open gmail web page")
+		}
+		if err := webutil.WaitForQuiescence(ctx, conn, 2*time.Minute); err != nil {
+			return conn, errors.Wrap(err, "failed to wait for gmail page to finish loading")
+		}
+		// YouTube sometimes pops up a prompt to notice users how to operate YouTube
+		// if there're new features. Dismiss prompt if it exist.
+		gotItPrompt := nodewith.Name("Got it").Role(role.Button)
+		ui.IfSuccessThen(
+			ui.WaitUntilExists(gotItPrompt),
+			uiHandler.ClickUntil(
+				gotItPrompt,
+				ui.WithTimeout(2*time.Second).WaitUntilGone(gotItPrompt),
+			),
+		)
+		return conn, nil
+	}
+
 	for _, videoSource := range videoSources {
 		// Repeat the run for different video source.
 		if err = recorder.Run(ctx, func(ctx context.Context) error {
@@ -184,6 +208,15 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 			if err := testing.Sleep(ctx, time.Second); err != nil {
 				return errors.Wrap(err, "failed to sleep")
 			}
+
+			// Open Gmail web.
+			testing.ContextLog(ctx, "Open Gmail web")
+			gConn, err := openGmailWeb(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to open Gmail website")
+			}
+			defer gConn.Close()
+			defer gConn.CloseTarget(ctx)
 
 			if err := uiHandler.SwitchWindow()(ctx); err != nil {
 				return errors.Wrap(err, "failed to switch back to video playing")
