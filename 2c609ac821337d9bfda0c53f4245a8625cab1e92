@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f98111_a4228f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:24:34Z",
+      "side": 1,
+      "message": "Note: some tests are outside of lacros directory.\nE.g.: platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+      "parentUuid": "9c6dc744_19a7a680",
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "623b07e6_14902d21",
@@ -55,6 +73,110 @@
         "endLine": 1,
         "endChar": 1
       },
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab9f412_a1542db8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/getusermedia.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:24:34Z",
+      "side": 1,
+      "message": "Would it help for you to make the test parameterize to avoid this duplication?\nKeeping two files in sync often cause a trouble, such as forgetting one file to be updated.",
+      "parentUuid": "623b07e6_14902d21",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc8a7bab_0762b01d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:24:34Z",
+      "side": 1,
+      "message": "Hmm... \"Interface\" sounds like too ambiguous to me, though I may not fully understand your intention yet.\nDo you mean ConnectionFactory or something?",
+      "range": {
+        "startLine": 169,
+        "startChar": 3,
+        "endLine": 169,
+        "endChar": 12
+      },
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f22fe32_15b2e315",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:24:34Z",
+      "side": 1,
+      "message": "the error at L46 is the primary failing reason. Could you just Log these?",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 59
+      },
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c885014f_262e2fb0",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:24:34Z",
+      "side": 1,
+      "message": "ditto. Error returned at L63 should be the primary one.",
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "589afbec_edc3d4f6",
+        "filename": "src/chromiumos/tast/local/webrtc/get_user_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:24:34Z",
+      "side": 1,
+      "message": "I think you\u0027ll need to check return value here.",
       "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
