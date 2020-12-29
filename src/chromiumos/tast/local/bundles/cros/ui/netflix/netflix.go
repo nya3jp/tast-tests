@@ -6,6 +6,7 @@ package netflix
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -23,13 +24,13 @@ type Netflix struct {
 }
 
 const (
-	homeURL    = "https://www.netflix.com"
+	homeURL    = "https://www.netflix.com/browse"
 	signOutURL = "https://www.netflix.com/SignOut"
 	timeout    = time.Second * 30
 )
 
 // New creates a Netflix instance and signs into Netflix website.
-func New(ctx context.Context, tconn *chrome.TestConn, username, password string, cr *chrome.Chrome) (n *Netflix, err error) {
+func New(ctx context.Context, tconn *chrome.TestConn, username, password string, cr *chrome.Chrome, playbackSettings string) (n *Netflix, err error) {
 	conn, err := cr.NewConn(ctx, homeURL)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to open Netflix")
@@ -45,39 +46,97 @@ func New(ctx context.Context, tconn *chrome.TestConn, username, password string,
 	if err = webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for Netflix login page to finish loading")
 	}
+	// prevent case be interrupted by who's watching page
+	if n, profileNode, err := switchProfile(ctx, tconn, conn, playbackSettings); err == nil {
+		testing.ContextLogf(ctx, "Who's watching: click %s profile", profileNode.Name)
+
+		testing.Poll(ctx, func(ctx context.Context) error {
+			return errors.New("wait for 3 second")
+		}, &testing.PollOptions{Interval: time.Second, Timeout: time.Second * 3})
+
+		return n, nil
+	}
+
 	kidsParam := ui.FindParams{Name: "Kids", Role: ui.RoleTypeLink}
 	if err := ui.WaitUntilExists(ctx, tconn, kidsParam, timeout); err == nil {
 		testing.ContextLog(ctx, "Kids is found, assuming the login is completed already")
-		return &Netflix{conn: conn}, nil
 	}
 	// Check that user was logged in
 	homeParam := ui.FindParams{Name: "Home", Role: ui.RoleTypeLink}
-	if err := ui.WaitUntilExists(ctx, tconn, homeParam, 5*time.Second); err == nil {
+	homeNode, err := ui.FindWithTimeout(ctx, tconn, homeParam, time.Second*5)
+	if err == nil {
 		testing.ContextLog(ctx, "Home is found, assuming the login is completed already")
-		return &Netflix{conn: conn}, nil
 	}
-	if err = n.signIn(ctx, tconn, conn, username, password); err != nil {
+
+	if homeNode != nil && homeNode.Name == "Home" {
+		// click profile icon
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			expr := `(() => {
+				document.querySelector("#appMountPoint > div > div > div:nth-child(1) > div.bd.dark-background > div.pinning-header > div > div > div > div:nth-child(4) > div > div > a").click()
+			})()`
+			if err := conn.Eval(ctx, expr, nil); err != nil {
+				testing.ContextLog(ctx, "Can't find account button to switch profiles")
+				return errors.Wrap(err, "failed to execute Javascript to find account button to switch profiles")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: timeout}); err != nil {
+			return nil, errors.Wrap(err, "failed to find account button to switch profiles")
+		}
+
+		n, profileNode, err := switchProfile(ctx, tconn, conn, playbackSettings)
+		if err != nil {
+			testing.ContextLogf(ctx, "You already in %s mode", playbackSettings)
+			return &Netflix{conn: conn}, nil
+		}
+		testing.ContextLogf(ctx, "Switch profile to %s", profileNode.Name)
+
+		testing.Poll(ctx, func(ctx context.Context) error {
+			return errors.New("wait for 3 second")
+		}, &testing.PollOptions{Interval: time.Second, Timeout: time.Second * 3})
+
+		return n, nil
+	}
+
+	if err = n.signIn(ctx, tconn, conn, username, password, playbackSettings); err != nil {
 		return nil, errors.Wrap(err, "failed to sign in Netflix")
 	}
 	return &Netflix{conn: conn}, nil
 }
 
-func (n *Netflix) signIn(ctx context.Context, tconn *chrome.TestConn, conn *chrome.Conn, username, password string) error {
+func switchProfile(ctx context.Context, tconn *chrome.TestConn, conn *chrome.Conn, playbackSettings string) (n *Netflix, params ui.FindParams, err error) {
+	profile, findErr := findProfileParams(ctx, tconn, playbackSettings)
+	if findErr == nil {
+		if err := ui.WaitUntilExists(ctx, tconn, profile, timeout); err == nil {
+			testing.ContextLog(ctx, "Profile is found, assuming the login is completed already")
+		}
+		if err := cuj.WaitAndClick(ctx, tconn, profile, timeout); err == nil {
+			testing.ContextLog(ctx, "Profile is clicked, assuming the login is completed already")
+			return &Netflix{conn: conn}, profile, nil
+		}
+	}
+	return nil, ui.FindParams{}, errors.Wrap(findErr, "failed to find profile param, may not log in yet or already in specified profile")
+}
+
+func findProfileParams(ctx context.Context, tconn *chrome.TestConn, playbackSettings string) (ui.FindParams, error) {
+	params := ui.FindParams{
+		Role:       ui.RoleTypeLink,
+		Attributes: map[string]interface{}{"name": regexp.MustCompile("^" + playbackSettings + "-.*")},
+	}
+	node, err := ui.FindWithTimeout(ctx, tconn, params, time.Second*3)
+	if err != nil {
+		return ui.FindParams{}, errors.Wrap(err, "failed to find profile's node")
+	}
+	testing.ContextLogf(ctx, "Account Name : %s", node.Name)
+	return ui.FindParams{Name: node.Name, Role: ui.RoleTypeLink}, nil
+}
+
+func (n *Netflix) signIn(ctx context.Context, tconn *chrome.TestConn, conn *chrome.Conn, username, password, playbackSettings string) error {
 	testing.ContextLog(ctx, "Attempting to log into Netflix")
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to open the keyboard")
 	}
 	defer kb.Close()
-
-	signInParam := ui.FindParams{Name: "Sign In", Role: ui.RoleTypeLink}
-	if err := cuj.WaitAndClick(ctx, tconn, signInParam, timeout); err != nil {
-		return errors.Wrap(err, "failed to click sign in field")
-	}
-
-	if err := webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
-		return errors.Wrap(err, "failed to wait for Netflix login page to finish loading")
-	}
 
 	accountParam := ui.FindParams{Name: "Email or phone number"}
 	if err := cuj.WaitAndClick(ctx, tconn, accountParam, timeout); err != nil {
@@ -101,11 +160,40 @@ func (n *Netflix) signIn(ctx context.Context, tconn *chrome.TestConn, conn *chro
 		return errors.Wrap(err, "failed to press enter")
 	}
 
+	// avoid to enter Account page
+	testing.Poll(ctx, func(ctx context.Context) error {
+		return errors.New("wait for 3 second")
+	}, &testing.PollOptions{Interval: time.Second, Timeout: time.Second * 3})
+
 	// Check that user was logged in successfully.
 	homeParam := ui.FindParams{Name: "Home", Role: ui.RoleTypeLink}
-	if err := ui.WaitUntilExists(ctx, tconn, homeParam, timeout); err != nil {
+	if _, err := ui.FindWithTimeout(ctx, tconn, homeParam, timeout); err != nil {
 		return errors.Wrap(err, "failed to sign in")
 	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		expr := `(() => {
+			document.querySelector("#appMountPoint > div > div > div:nth-child(1) > div.bd.dark-background > div.pinning-header > div > div > div > div:nth-child(4) > div > div > a").click()
+		})()`
+		if err := conn.Eval(ctx, expr, nil); err != nil {
+			testing.ContextLog(ctx, "Can't find account button to switch profiles")
+			return errors.Wrap(err, "failed to execute Javascript to find account button to switch profiles")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return errors.Wrap(err, "failed to find account button to switch profiles")
+	}
+
+	_, profileNode, err := switchProfile(ctx, tconn, conn, playbackSettings)
+	if err != nil {
+		testing.ContextLogf(ctx, "You already in %s mode", playbackSettings)
+		return nil
+	}
+	testing.ContextLogf(ctx, "Switch profile to %s", profileNode.Name)
+
+	testing.Poll(ctx, func(ctx context.Context) error {
+		return errors.New("wait for 3 second")
+	}, &testing.PollOptions{Interval: time.Second, Timeout: time.Second * 3})
 
 	return nil
 }
