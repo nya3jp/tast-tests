@@ -230,6 +230,22 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	}, nil
 }
 
+// ResetSession re-establishes a Chrome DevTools Protocol WebSocket connection
+// to the browser.
+func (c *Chrome) ResetSession(ctx context.Context) error {
+	if c.sess != nil {
+		c.sess.Close(ctx)
+		c.sess = nil
+	}
+
+	var err error
+	if c.sess, err = driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, c.agg); err != nil {
+		testing.ContextLog(ctx, "Chrome cannot create new session: ", err)
+		return err
+	}
+	return nil
+}
+
 // Close disconnects from Chrome and cleans up standard extensions.
 // To avoid delays between tests, the ui job (and by extension, Chrome) is not restarted,
 // so the current user (if any) remains logged in.
