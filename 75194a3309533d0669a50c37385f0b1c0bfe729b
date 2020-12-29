@@ -22,6 +22,30 @@
       },
       "revId": "75194a3309533d0669a50c37385f0b1c0bfe729b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6cc6226_fb5fdad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-29T10:21:01Z",
+      "side": 1,
+      "message": "Hmm this is a little bit tricky since the QR code detection actually depends on preview cpu usage to calculate the overhead.\n\nI did some experiments and found that splitting them to measurePreviewPerformance() and measureRecordingPerformance() is the most clear solution. PTAL :)",
+      "parentUuid": "affce507_9f68bfed",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "75194a3309533d0669a50c37385f0b1c0bfe729b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
