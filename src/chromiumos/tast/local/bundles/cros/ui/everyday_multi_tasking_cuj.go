@@ -34,6 +34,7 @@ func init() {
 		Vars: []string{
 			"ui.cuj_mute",      // Optional. Mute the DUT during the test.
 			"ui.cuj_mode",      // Optional. Expecting "tablet" or "clamshell".
+			"ui.cuj_username",  // Used to select the account to do login to spotify.
 			"ui.bt_devicename", // Required for Bluetooth subtests.
 		},
 		Fixture: "loggedInAndKeepState",
@@ -56,6 +57,14 @@ func init() {
 					enableBT: true,
 				},
 			}, {
+				Name:    "basic_spotify_bluetooth",
+				Timeout: 10 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Basic,
+					appName:  et.SpotifyAppName,
+					enableBT: true,
+				},
+			}, {
 				Name:    "plus_ytmusic",
 				Timeout: 15 * time.Minute,
 				Val: multiTaskingParam{
@@ -69,6 +78,14 @@ func init() {
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.YoutubeMusicAppName,
+					enableBT: true,
+				},
+			}, {
+				Name:    "plus_spotify_bluetooth",
+				Timeout: 15 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.SpotifyAppName,
 					enableBT: true,
 				},
 			},
@@ -85,11 +102,15 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	if _, ok := s.Var("ui.cuj_mute"); ok {
 		if err := crastestclient.Mute(ctx); err != nil {
 			s.Fatal("Failed to mute audio: ", err)
 		}
-		defer crastestclient.Unmute(ctx)
+		defer crastestclient.Unmute(cleanupCtx)
 	}
 
 	isBtEnabled, err := bluetooth.IsEnabled(ctx)
@@ -108,7 +129,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 				if err := bluetooth.Disable(ctx); err != nil {
 					s.Fatal("Failed to disable bluetooth: ", err)
 				}
-			}(ctx)
+			}(cleanupCtx)
 		}
 	} else if isBtEnabled {
 		testing.ContextLog(ctx, "Start to disable bluetooth")
@@ -119,7 +140,13 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 			if err := bluetooth.Enable(ctx); err != nil {
 				s.Fatal("Failed to connect bluetooth: ", err)
 			}
-		}(ctx)
+		}(cleanupCtx)
+	}
+
+	// Spotify login account.
+	var account string
+	if app == et.SpotifyAppName {
+		account = s.RequiredVar("ui.cuj_username")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -134,7 +161,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatalf("Failed to enable tablet mode to %v: %v", tabletMode, err)
 		}
-		defer cleanup(ctx)
+		defer cleanup(cleanupCtx)
 	} else {
 		// Use default screen mode of the DUT.
 		tabletMode, err = ash.TabletModeEnabled(ctx, tconn)
@@ -144,12 +171,8 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Running test with tablet mode: ", tabletMode)
 
-	// Shorten context a bit to allow for cleanup if test fails.
-	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
-	defer cancel()
-
 	ccaScriptPaths := []string{s.DataPath("cca_ui.js")}
-	if err := et.Run(ctx, cr, a, tier, ccaScriptPaths, s.OutDir(), app, "", tabletMode); err != nil {
-		s.Fatal(ctx, "Failed to run everyday multi-tasking cuj test:", err)
+	if err := et.Run(ctx, cr, a, tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode); err != nil {
+		s.Fatal("Failed to run everyday multi-tasking cuj test: ", err)
 	}
 }
