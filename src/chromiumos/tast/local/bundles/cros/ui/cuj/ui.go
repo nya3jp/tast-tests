@@ -46,11 +46,11 @@ func RunTabletMode(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		}
 	}
 
-	var cleanup func(context.Context) error
+	cleanup := func(context.Context) error { return nil }
 	if modeChange {
 		cleanup, err = ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
-			s.Fatalf("Failed to ensure tablet mode enabled(%v): %v", tabletMode, err)
+			return false, nil, errors.Wrapf(err, "failed to ensure tablet mode enabled(%v)", tabletMode)
 		}
 	}
 
