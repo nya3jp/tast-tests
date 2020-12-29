@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "758aa63a_ca5eabc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-12-29T17:44:40Z",
+      "side": 1,
+      "message": "AGAIN!",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "d8ff9170f4bd9a562deedd3c20ff3bcee6da16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be5b994_eb04b2ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-12-29T17:44:40Z",
+      "side": 1,
+      "message": "GETTEM TRICIUM!",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "d8ff9170f4bd9a562deedd3c20ff3bcee6da16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94a77076_591e1539",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_list.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-12-29T17:44:40Z",
+      "side": 1,
+      "message": "Would it be better to search the returned list for all of the routines we know should be present? Otherwise something like Wilco could be missing urandom, for example, but it wouldn\u0027t be caught here since Wilco supports extra routines.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "d8ff9170f4bd9a562deedd3c20ff3bcee6da16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e979c1_b1ff5df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-12-29T17:44:40Z",
+      "side": 1,
+      "message": "Maybe reword this - we accept StatusNotRun below for cases like the DUTs not being hooked up to a network.",
+      "range": {
+        "startLine": 126,
+        "startChar": 29,
+        "endLine": 126,
+        "endChar": 48
+      },
+      "revId": "d8ff9170f4bd9a562deedd3c20ff3bcee6da16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
