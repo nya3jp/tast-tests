@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -48,12 +49,22 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	// Basic tier test scenario: Have 2 browser windows open with 5 tabs each.
 	// 1. The first window URL list including Gmail, Calendar, YouTube Music, Hulu and Google News.
 	// 2. The second window URL list including Google News, CCN news, Wiki.
+	// Plus tier test scenario: Same as basic but click through 20 tabs (4 windows x 5 tabs).
+	// 1. The first and second window URL list are same as basic.
+	// 2. The third window URL list including Google News, CNN news, Wikipedia, Reddit.
+	// 3. The fourth window URL list is same as the third one.
+
 	firstWindowURLList := []string{gmailURL, calendarURL, youtubeMusicURL, huluURL, googleNewsURL}
 	secondWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, googleNewsURL, cnnNewsURL}
+	thirdWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, redditURL, cnnNewsURL}
+	fourthWindowURLList := thirdWindowURLList
 
 	// Basic tier URL list that will be opened in two browser windows.
 	pageList := [][]string{firstWindowURLList, secondWindowURLList}
-	// TODO(chromium:1196849): add plus tier URLs.
+	// Plus tier URL list that will be opened in four browser windows.
+	if tier == cuj.Plus {
+		pageList = append(pageList, thirdWindowURLList, fourthWindowURLList)
+	}
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -210,6 +221,21 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 		}
 	}
 	// TODO(chromium:1196849): take photo and video.
-	// TODO(chromium:1196849): Save recorder metrics.
+
+	pv := perf.NewValues()
+	pv.Set(perf.Metric{
+		Name:      "Browser.StartTime",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+	}, float64(browserStartTime.Milliseconds()))
+	if err = recorder.Record(ctx, pv); err != nil {
+		return errors.Wrap(err, "failed to report")
+	}
+	if err = pv.Save(outDir); err != nil {
+		return errors.Wrap(err, "failed to store values")
+	}
+	if err := recorder.SaveHistograms(outDir); err != nil {
+		return errors.Wrap(err, "failed to save histogram raw data")
+	}
 	return nil
 }
