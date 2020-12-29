@@ -40,7 +40,7 @@ const (
 	SwitchWindowThroughHotseat SwitchWindowOption = iota
 	// SwitchWindowThroughOverview specifies switch window through overview.
 	SwitchWindowThroughOverview
-	// SwitchWindowThroughKeyEvent specifies switch window through ker event.
+	// SwitchWindowThroughKeyEvent specifies switch window through key event.
 	SwitchWindowThroughKeyEvent
 	// SwitchWindowThroughShelf specifies switch window through shelf.
 	SwitchWindowThroughShelf = SwitchWindowThroughHotseat
