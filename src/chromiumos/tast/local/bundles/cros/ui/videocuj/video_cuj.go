@@ -229,7 +229,8 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 			defer gConn.CloseTarget(cleanupCtx)
 
 			if appName == YoutubeApp {
-				if err = checkYoutubeAppPIP(ctx, tconn); err != nil {
+				ytApp := videoApp.(*YtApp)
+				if err = ytApp.checkYoutubeAppPIP(ctx); err != nil {
 					return errors.Wrap(err, "youtube App smaller video preview window is not shows up")
 				}
 			}
