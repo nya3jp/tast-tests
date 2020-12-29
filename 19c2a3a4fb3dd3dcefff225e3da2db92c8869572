@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d681f9f6_e2c45dae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-12-29T22:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3637070_cdda483c",
+      "revId": "19c2a3a4fb3dd3dcefff225e3da2db92c8869572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f851e219_50d046de",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da7f47ce_ff66f8bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/data/chrome_nacl_app/background.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-12-29T22:14:50Z",
+      "side": 1,
+      "message": "I thought about this, but couldn\u0027t find a way to implement the equivalent of line #58, which is:\n\n  catchModuleFailures(moduleEmbed, reject);\n\nWhat this line is doing is essentially: whenever an error-related DOM event is fired, reject the resulting promise.\n\nA naive attempt could be:\n\n  async function runTest() {\n    ...\n    catchModuleFailures(moduleEmbed, (e) \u003d\u003e {\n      throw e;\n    });\n    ...\n  }\n\nThis naive attempt wouldn\u0027t work as expected, since the \"throw\" statement will happen without the \"runTest()\" function on the stack - so the exception will stay uncaught, and the promise won\u0027t be rejected. The result of a missing rejection would be a \"hung\" promise or a mistakenly passing test (both without a trace in the Tast logs).\n\nI didn\u0027t manage to come up with an async-function-based solution that would avoid this problem. But I\u0027m open to suggestions :-)",
+      "parentUuid": "f851e219_50d046de",
+      "revId": "19c2a3a4fb3dd3dcefff225e3da2db92c8869572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f796f2b_d5999d0d",
         "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
         "patchSetId": 1
@@ -48,6 +84,30 @@
       "writtenOn": "2020-12-29T22:00:07Z",
       "side": 1,
       "message": "Please include a group address as well in case the individuals are unavailable.",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "19c2a3a4fb3dd3dcefff225e3da2db92c8869572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87eaa92_3dd53856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-12-29T22:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f796f2b_d5999d0d",
       "range": {
         "startLine": 29,
         "startChar": 2,
