@@ -105,11 +105,24 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Running test with tablet mode: ", tabletMode)
 
+	var uiHandler cuj.UIActionHandler
+	if tabletMode {
+		if uiHandler, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
+			s.Fatal("Failed to create tablet action handler: ", err)
+		}
+	} else {
+		if uiHandler, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
+			s.Fatal("Failed to create clamshell action handler: ", err)
+		}
+	}
+	defer uiHandler.Close()
+
 	testResources := videocuj.TestResources{
-		Cr:    cr,
-		Tconn: tconn,
-		A:     a,
-		Kb:    kb,
+		Cr:        cr,
+		Tconn:     tconn,
+		A:         a,
+		Kb:        kb,
+		UIHandler: uiHandler,
 	}
 
 	videoCUJParams := s.Param().(videoCUJParam)

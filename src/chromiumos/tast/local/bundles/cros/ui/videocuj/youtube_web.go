@@ -64,16 +64,31 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to wait for video element")
 	}
 
+	// Root window on built-in display.
+	targetWin := nodewith.ClassName("RootWindow-0").Role(role.Window)
+	if y.extendedDisplay {
+		// Root window on extended display.
+		targetWin = nodewith.ClassName("RootWindow-1").Role(role.Window)
+		ytPlayerView := nodewith.Name("YouTube Video Player").Ancestor(targetWin)
+		if err := y.ui.Exists(ytPlayerView)(ctx); err != nil {
+			// Chrome is not on extended display.
+			testing.ContextLog(ctx, "Switch Youtube to extended display")
+			if err := y.kb.Accel(ctx, "Search+Alt+M"); err != nil {
+				return errors.Wrap(err, "failed to switch Youtube to the extended display: ")
+			}
+		}
+	}
+
 	adsButton := nodewith.Name("Skip Ads").Role(role.Button)
 	if err := y.ui.IfSuccessThen(y.ui.WaitUntilExists(adsButton), y.uiHdl.Click(adsButton))(ctx); err != nil {
 		return errors.Wrap(err, "failed to find ads and skip ads")
 	}
 
 	switchQuality := func(resolution string) error {
-		videoPlayer := nodewith.Name("YouTube Video Player")
-		playButton := nodewith.Name("Play (k)").Role(role.Button)
-		settings := nodewith.Name("Settings").Role(role.PopUpButton)
-		quality := nodewith.NameStartingWith("Quality").Role(role.MenuItem)
+		videoPlayer := nodewith.Name("YouTube Video Player").Ancestor(targetWin)
+		playButton := nodewith.Name("Play (k)").Role(role.Button).Ancestor(videoPlayer)
+		settings := nodewith.Name("Settings").Role(role.PopUpButton).Ancestor(videoPlayer)
+		quality := nodewith.NameStartingWith("Quality").Role(role.MenuItem).Ancestor(videoPlayer)
 
 		if err := y.ui.WaitUntilExists(videoPlayer)(ctx); err != nil {
 			return errors.Wrap(err, `failed to find "YouTube Video Player"`)
@@ -87,6 +102,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 			if err := uiauto.Combine("show the setting panel and click it",
 				y.uiHdl.Click(videoPlayer),
 				y.uiHdl.Click(settings),
+				y.ui.WithTimeout(2*time.Second).WaitUntilExists(quality),
 			)(ctx); err != nil {
 				return errors.Wrap(err, "failed to show the setting panel and click it")
 			}
@@ -100,7 +116,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 			return errors.Wrap(err, `failed to click "Quality"`)
 		}
 
-		resolutionFinder := nodewith.NameStartingWith(resolution).Role(role.MenuItemRadio)
+		resolutionFinder := nodewith.NameStartingWith(resolution).Role(role.MenuItemRadio).Ancestor(videoPlayer)
 		if err := y.uiHdl.Click(resolutionFinder)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to click %q", resolution)
 		}
