@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -42,10 +43,24 @@ func FindAndClick(ctx context.Context, obj *ui.Object, timeout time.Duration) er
 	return nil
 }
 
+// FindAndClickAction returns an action function which finds and clicks Android ui object.
+func FindAndClickAction(obj *ui.Object, waitTime time.Duration) action.Action {
+	return func(ctx context.Context) error {
+		return FindAndClick(ctx, obj, waitTime)
+	}
+}
+
 // ClickIfExist clicks the UI object if it exists. If the object cannot be found, nil will be returned.
 func ClickIfExist(ctx context.Context, obj *ui.Object, timeout time.Duration) error {
 	if err := obj.WaitForExists(ctx, timeout); err != nil {
 		return nil
 	}
 	return obj.Click(ctx)
+}
+
+// ClickIfExistAction returns an action function which clicks the UI object if it exists.
+func ClickIfExistAction(obj *ui.Object, waitTime time.Duration) action.Action {
+	return func(ctx context.Context) error {
+		return ClickIfExist(ctx, obj, waitTime)
+	}
 }
