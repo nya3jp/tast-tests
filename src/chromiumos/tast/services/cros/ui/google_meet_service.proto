@@ -1,0 +1,17 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+import "google/protobuf/empty.proto";
+import "meet_type.proto";
+
+// GoogleMeetService provides RPC methods to run Google Meet related operations
+service GoogleMeetService {
+  rpc MeetScenario(MeetScenarioRequest) returns (google.protobuf.Empty);
+}
