@@ -15,6 +15,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/testing"
 )
@@ -92,9 +94,13 @@ func CloseBrowserTabs(ctx context.Context, tconn *chrome.TestConn) error {
 // Which it is also support multiple names for a single app (e.g. "Chrome"||"Chromium" for Google Chrome, the browser).
 // It returns the time when a mouse click event is injected to the app icon.
 func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName string, appOtherPossibleNames ...string) (time.Time, error) {
-	params := nodewith.Name(appName).ClassName("ash/ShelfAppButton")
+	// If the extended display is enabled, the icon will appear on both internal and external display,
+	// Find node on internal display.
+	nativeDisplay := nodewith.ClassName("RootWindow-0").Role(role.Window)
+
+	params := nodewith.Name(appName).ClassName("ash/ShelfAppButton").Ancestor(nativeDisplay)
 	if len(appOtherPossibleNames) > 0 {
-		params = paramsOfAppNames(append(appOtherPossibleNames, appName))
+		params = paramsOfAppNames(append(appOtherPossibleNames, appName)).Ancestor(nativeDisplay)
 	}
 
 	ac := uiauto.New(tconn)
@@ -137,9 +143,13 @@ func LaunchAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName s
 		return startTime, errors.Wrap(err, "failed to show hotseat")
 	}
 
-	params := nodewith.Name(appName).ClassName("ash/ShelfAppButton")
+	// If the extended display is enabled, the icon will appear on both internal and external display,
+	// Find node on internal display.
+	nativeDisplay := nodewith.ClassName("RootWindow-0").Role(role.Window)
+
+	params := nodewith.Name(appName).ClassName("ash/ShelfAppButton").Ancestor(nativeDisplay)
 	if len(appOtherPossibleNames) > 0 {
-		params = paramsOfAppNames(append(appOtherPossibleNames, appName))
+		params = paramsOfAppNames(append(appOtherPossibleNames, appName)).Ancestor(nativeDisplay)
 	}
 
 	ac := uiauto.New(tconn)
@@ -167,4 +177,38 @@ func paramsOfAppNames(names []string) *nodewith.Finder {
 	pattern += ")"
 
 	return nodewith.NameRegex(regexp.MustCompile(pattern)).ClassName("ash/ShelfAppButton")
+}
+
+// UnsetMirrorDisplay unsets the mirror display settings.
+func UnsetMirrorDisplay(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+
+	testing.ContextLog(ctx, "Launch os-settings to disable mirror")
+	settings, err := ossettings.LaunchAtPage(ctx, tconn, nodewith.Name("Device").Role(role.Link))
+	if err != nil {
+		return errors.Wrap(err, "failed to launch os-settings Device page")
+	}
+
+	displayFinder := nodewith.Name("Displays").Role(role.Link).Ancestor(ossettings.WindowFinder)
+	if err := ui.LeftClick(displayFinder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to launch display page")
+	}
+
+	mirrorFinder := nodewith.Name("Mirror Built-in display").Role(role.CheckBox).Ancestor(ossettings.WindowFinder)
+	// Find the node info for the mirror checkbox
+	nodeInfo, err := ui.Info(ctx, mirrorFinder)
+	if err != nil {
+		return errors.Wrap(err, "failed to get info for the mirror checkbox")
+	}
+	if nodeInfo.Checked == "true" {
+		testing.ContextLog(ctx, "Click 'Mirror Built-in display' checkbox")
+		if err := ui.LeftClick(mirrorFinder)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click mirror display")
+		}
+	}
+
+	if err := settings.Close(ctx); err != nil {
+		return errors.Wrap(err, "failed to close settings")
+	}
+	return nil
 }
