@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/testing"
 )
@@ -92,9 +93,13 @@ func CloseBrowserTabs(ctx context.Context, tconn *chrome.TestConn) error {
 // Which it is also support multiple names for a single app (e.g. "Chrome"||"Chromium" for Google Chrome, the browser).
 // It returns the time when a mouse click event is injected to the app icon.
 func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName string, appOtherPossibleNames ...string) (time.Time, error) {
-	params := nodewith.Name(appName).ClassName("ash/ShelfAppButton")
+	// If the extended display is enabled, the icon will appear on both internal and external display,
+	// Find node on internal display.
+	nativeDisplay := nodewith.ClassName("RootWindow-0").Role(role.Window)
+
+	params := nodewith.Name(appName).ClassName("ash/ShelfAppButton").Ancestor(nativeDisplay)
 	if len(appOtherPossibleNames) > 0 {
-		params = paramsOfAppNames(append(appOtherPossibleNames, appName))
+		params = paramsOfAppNames(append(appOtherPossibleNames, appName)).Ancestor(nativeDisplay)
 	}
 
 	ac := uiauto.New(tconn)
@@ -137,9 +142,13 @@ func LaunchAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName s
 		return startTime, errors.Wrap(err, "failed to show hotseat")
 	}
 
-	params := nodewith.Name(appName).ClassName("ash/ShelfAppButton")
+	// If the extended display is enabled, the icon will appear on both internal and external display,
+	// Find node on internal display.
+	nativeDisplay := nodewith.ClassName("RootWindow-0").Role(role.Window)
+
+	params := nodewith.Name(appName).ClassName("ash/ShelfAppButton").Ancestor(nativeDisplay)
 	if len(appOtherPossibleNames) > 0 {
-		params = paramsOfAppNames(append(appOtherPossibleNames, appName))
+		params = paramsOfAppNames(append(appOtherPossibleNames, appName)).Ancestor(nativeDisplay)
 	}
 
 	ac := uiauto.New(tconn)
