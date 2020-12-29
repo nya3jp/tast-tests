@@ -729,9 +729,7 @@ func (cl *ClamshellActionHandler) NewChromeTab(ctx context.Context, cr *chrome.C
 
 // SwitchWindow returns a function which switches to the next window by key event.
 func (cl *ClamshellActionHandler) SwitchWindow() action.Action {
-	return func(ctx context.Context) error {
-		return cl.kb.Accel(ctx, "Alt+Tab")
-	}
+	return cl.kb.AccelAction("Alt+Tab")
 }
 
 // SwitchToAppWindow returns a function which switches to the window of the given app.
