@@ -39,6 +39,30 @@
       },
       "revId": "f6cac139e86fff939bcf7121d571cd1275def164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e8b1e1_edc5dd8a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-29T22:37:15Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. Fixed.",
+      "parentUuid": "6af7330d_4304b087",
+      "range": {
+        "startLine": 29,
+        "startChar": 110,
+        "endLine": 29,
+        "endChar": 134
+      },
+      "revId": "f6cac139e86fff939bcf7121d571cd1275def164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
