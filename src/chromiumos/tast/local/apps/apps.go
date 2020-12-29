@@ -26,14 +26,14 @@ type App struct {
 // Chrome has details about the Chrome app.
 var Chrome = App{
 	ID:   "mgndgikekgjfcpckkfioiadnlibdjbkf",
-	Name: "Chrome",
+	Name: "Google Chrome",
 }
 
 // Chromium has details about the Chromium app.
 // It replaces Chrome on amd64-generic builds.
 var Chromium = App{
 	ID:   "mgndgikekgjfcpckkfioiadnlibdjbkf",
-	Name: "Chromium",
+	Name: "Google Chrome",
 }
 
 // Camera has details about the Camera app.
