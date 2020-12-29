@@ -34,6 +34,7 @@ func init() {
 		Vars: []string{
 			"ui.cuj_mute",      // Optional. Mute the DUT during the test.
 			"ui.cuj_mode",      // Optional. Expecting "tablet" or "clamshell".
+			"ui.cuj_username",  // Used to select the account to do login to spotify.
 			"ui.bt_devicename", // Required for Bluetooth subtests.
 		},
 		Fixture: "loggedInAndKeepState",
@@ -56,6 +57,14 @@ func init() {
 					enableBT: true,
 				},
 			}, {
+				Name:    "basic_spotify_bluetooth",
+				Timeout: 10 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Basic,
+					appName:  et.Spotify,
+					enableBT: true,
+				},
+			}, {
 				Name:    "plus_ytmusic",
 				Timeout: 15 * time.Minute,
 				Val: multiTaskingParam{
@@ -69,6 +78,14 @@ func init() {
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.YoutubeMusic,
+					enableBT: true,
+				},
+			}, {
+				Name:    "plus_spotify_bluetooth",
+				Timeout: 15 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.Spotify,
 					enableBT: true,
 				},
 			},
@@ -122,6 +139,12 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		}(ctx)
 	}
 
+	// Spotify login account.
+	var account string
+	if app == et.Spotify {
+		account = s.RequiredVar("ui.cuj_username")
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -149,7 +172,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	ccaScriptPaths := []string{s.DataPath("cca_ui.js")}
-	if err := et.Run(ctx, cr, a, tier, ccaScriptPaths, s.OutDir(), app, "", tabletMode); err != nil {
+	if err := et.Run(ctx, cr, a, tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode); err != nil {
 		s.Fatal(ctx, "Failed to run everyday multi-tasking cuj test:", err)
 	}
 }

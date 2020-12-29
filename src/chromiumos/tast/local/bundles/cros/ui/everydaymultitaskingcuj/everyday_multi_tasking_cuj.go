@@ -8,19 +8,23 @@ package everydaymultitaskingcuj
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	androidui "chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
@@ -29,25 +33,30 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// YoutubeMusic indicates to test against YoutubeMusic.
-const YoutubeMusic = "ytmusic"
+const (
+	// YoutubeMusic indicates to test against YoutubeMusic.
+	YoutubeMusic = "ytmusic"
+	// Spotify indicates to test against Spotify.
+	Spotify = "Spotify"
+)
 
 // Run runs the EverydayMultitaskingCUJ test.
 // ccaSriptPaths is the scirpt paths used by CCA package to do camera testing.
 // account is the one used by Spotify APP to do login.
 func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode bool) error {
 	const (
-		gmailURL        = "https://mail.google.com"
-		calendarURL     = "https://calendar.google.com/"
-		youtubeMusicURL = "https://music.youtube.com/channel/UCPC0L1d253x-KuMNwa05TpA"
-		huluURL         = "https://www.hulu.com/"
-		googleNewsURL   = "https://news.google.com/"
-		cnnNewsURL      = "https://edition.cnn.com/"
-		wikiURL         = "https://www.wikipedia.org/"
-		redditURL       = "https://www.reddit.com/"
-		initialVolume   = 60
-		intervalVolume  = 5
-		timeout         = 3 * time.Second
+		spotifyPackageName = "com.spotify.music"
+		gmailURL           = "https://mail.google.com"
+		calendarURL        = "https://calendar.google.com/"
+		youtubeMusicURL    = "https://music.youtube.com/channel/UCPC0L1d253x-KuMNwa05TpA"
+		huluURL            = "https://www.hulu.com/"
+		googleNewsURL      = "https://news.google.com/"
+		cnnNewsURL         = "https://edition.cnn.com/"
+		wikiURL            = "https://www.wikipedia.org/"
+		redditURL          = "https://www.reddit.com/"
+		initialVolume      = 60
+		intervalVolume     = 5
+		timeout            = 3 * time.Second
 	)
 
 	// Basic tier test scenario: Have 2 browser windows open with 5 tabs each.
@@ -57,7 +66,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	// 1. The first and second window URL list are same as basic.
 	// 2. The third window URL list including Google News, CNN news, Wikipedia, Reddit.
 	// 3. The fourth window URL list is same as the third one.
-
 	firstWindowURLList := []string{gmailURL, calendarURL, youtubeMusicURL, huluURL, googleNewsURL}
 	secondWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, googleNewsURL, cnnNewsURL}
 	thirdWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, redditURL, cnnNewsURL}
@@ -132,9 +140,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 						wIdx++
 					}
 				}
-				windowAppName := "Chrome"
+				appName = "Chrome"
+				if strings.Contains(ws[i].Title, Spotify) {
+					appName = Spotify
+				}
 				testing.ContextLogf(ctx, "Switching window to %q", ws[i].Title)
-				return uiHandler.SwitchToAppWindowByIndex(windowAppName, wIdx)(ctx)
+				return uiHandler.SwitchToAppWindowByIndex(appName, wIdx)(ctx)
 			},
 		}
 		switchWindowTest = []subtest{
@@ -160,6 +171,25 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 		}
 	}
 
+	// Install android apps for the everyday works: Spotify.
+	if appName == Spotify {
+		installSpotify := func(ctx context.Context) error {
+			testing.ContextLog(ctx, "Check and install ", spotifyPackageName)
+			installCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
+			defer cancel()
+			if err = playstore.InstallApp(installCtx, a, d, spotifyPackageName, -1); err != nil {
+				return errors.Wrapf(err, "failed to install %s", spotifyPackageName)
+			}
+			if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+				return errors.Wrap(err, "failed to close Play Store")
+			}
+			return nil
+		}
+		if err := installSpotify(ctx); err != nil {
+			return errors.Wrap(err, "failed to install Spotify")
+		}
+	}
+
 	testing.ContextLog(ctx, "Start to get browser start time")
 	browserStartTime, err := cuj.GetBrowserStartTime(ctx, cr, tconn, tabletMode)
 	if err != nil {
@@ -175,6 +205,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	}
 	defer recorder.Close(ctx)
 
+	var appStartTime int64
 	setBatteryNormal, err := setup.SetBatteryDischarge(ctx, 50)
 	if err != nil {
 		return errors.Wrap(err, "failed to set battery discharge")
@@ -183,6 +214,144 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 	// Shorten the context to make sure battery charging is resumed after testing.
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
+
+	// Launch arc apps from the app launcher; first open the app-launcher, type
+	// the query and select the first search result, and wait for the app window
+	// to appear. When the app has the splash screen, skip it.
+
+	if appName == Spotify {
+		playSotify := func(ctx context.Context) error {
+			const (
+				spotifyIDPrefix   = "com.spotify.music:id/"
+				playPauseButtonID = spotifyIDPrefix + "play_pause_button"
+				searchTabID       = spotifyIDPrefix + "search_tab"
+				searchFieldID     = spotifyIDPrefix + "find_search_field_text"
+				queryID           = spotifyIDPrefix + "query"
+				childrenID        = spotifyIDPrefix + "children"
+				albumName         = "Photograph"
+				singerName        = "Song • Ed Sheeran"
+				defaultUITimeout  = 30 * time.Second
+				waitTime          = 3 * time.Second
+			)
+			fisrtLogin := false
+			signIn := d.Object(androidui.Text("Continue with Google"))
+			if err := signIn.WaitForExists(ctx, waitTime); err != nil {
+				testing.ContextLog(ctx, `Failed to find "Continue with Google" button`)
+			} else if err := signIn.Click(ctx); err != nil {
+				return errors.Wrap(err, `failed to click "Continue with Google" button`)
+			} else {
+				accountButton := d.Object(androidui.Text(account))
+				if err := waitAndClickObject(ctx, accountButton, "account button", waitTime); err != nil {
+					testing.ContextLog(ctx, "Sign in directly")
+				}
+				fisrtLogin = true
+			}
+
+			dismiss := d.Object(androidui.Text("DISMISS"))
+			if err := dismiss.WaitForExists(ctx, waitTime); err != nil {
+				testing.ContextLog(ctx, `Failed to find "DISMISS" button, believing splash screen has been dismissed already`)
+			} else if err := dismiss.Click(ctx); err != nil {
+				return errors.Wrap(err, `failed to click "DISMISS" button`)
+			}
+
+			promp := d.Object(androidui.Text("NO, THANKS"))
+			if err := promp.WaitForExists(ctx, waitTime); err != nil {
+				testing.ContextLog(ctx, `Failed to find "NO, THANKS" button`)
+			} else if err := promp.Click(ctx); err != nil {
+				return errors.Wrap(err, `failed to click "NO, THANKS" button`)
+			}
+
+			testing.ContextLog(ctx, "Check if the Play button exists, click play button or search song to play")
+			pauseButton := d.Object(androidui.ID(playPauseButtonID), androidui.Enabled(true), androidui.Description("Pause"))
+			playButton := d.Object(androidui.ID(playPauseButtonID), androidui.Enabled(true), androidui.Description("Play"))
+
+			if err := playButton.WaitForExists(ctx, timeout); err != nil {
+				testing.ContextLog(ctx, "The play button doesn't exists")
+			} else {
+				if err := playButton.Click(ctx); err != nil {
+					return errors.Wrap(err, `failed to click "play button"`)
+				}
+				if err := pauseButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+					testing.ContextLog(ctx, "The pause button doesn't exists")
+				} else {
+					return nil
+				}
+			}
+
+			searchTab := d.Object(androidui.ID(searchTabID))
+			if err := waitAndClickObject(ctx, searchTab, "search tab", defaultUITimeout); err != nil {
+				return err
+			}
+
+			searchField := d.Object(androidui.ID(searchFieldID))
+			if err := waitAndClickObject(ctx, searchField, "search feild", defaultUITimeout); err != nil {
+				return err
+			}
+
+			query := d.Object(androidui.ID(queryID))
+			if err := waitAndClickObject(ctx, query, "query feild", defaultUITimeout); err != nil {
+				return err
+			}
+
+			if err := kb.Type(ctx, albumName); err != nil {
+				return errors.Wrap(err, "failed to type album")
+			}
+
+			singerButton := d.Object(androidui.Text(singerName))
+			if err := waitAndClickObject(ctx, singerButton, "singerButton", defaultUITimeout); err != nil {
+				return err
+			}
+
+			var shufflePlayButton *androidui.Object
+			if fisrtLogin {
+				shufflePlayButton = d.Object(androidui.Text("SHUFFLE PLAY"))
+			} else {
+				shufflePlayButton = d.Object(androidui.ID(childrenID), androidui.ClassName("android.widget.LinearLayout"))
+			}
+
+			if err := waitAndClickObject(ctx, shufflePlayButton, "shuffle play button", defaultUITimeout); err != nil {
+				testing.ContextLog(ctx, "Shuffle play button doesn't exists")
+			}
+
+			if err := pauseButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+				return errors.Wrap(err, "the pause button doesn't exists")
+			}
+			return nil
+		}
+
+		if err = recorder.Run(ctx, func(ctx context.Context) error {
+			launchCtx, cancel := context.WithTimeout(ctx, 2*time.Minute)
+			defer cancel()
+			if _, err := ash.GetARCAppWindowInfo(ctx, tconn, spotifyPackageName); err == nil {
+				testing.ContextLogf(ctx, "Package %s is already visible, skipping", spotifyPackageName)
+				return nil
+			}
+
+			var startTime time.Time
+			// Sometimes the Spotify App will fail to open, so add retry here.
+			if err := testing.Poll(launchCtx, func(ctx context.Context) error {
+				if err := launcher.SearchAndLaunch(tconn, kb, Spotify)(ctx); err != nil {
+					return errors.Wrapf(err, "failed to launch %s app", Spotify)
+				}
+				startTime = time.Now()
+				return ash.WaitForVisible(ctx, tconn, spotifyPackageName)
+			}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+				return errors.Wrapf(err, "failed to wait for the new window of %s", spotifyPackageName)
+			}
+			if Spotify == appName {
+				endTime := time.Now()
+				appStartTime = endTime.Sub(startTime).Milliseconds()
+			}
+			testing.ContextLog(ctx, "Start to play Spotify")
+			if err = playSotify(launchCtx); err != nil {
+				return errors.Wrap(err, "failed to play Spotify")
+			}
+			// Waits some time to stabilize the result of launcher animations.
+			return testing.Sleep(launchCtx, timeout)
+		}); err != nil {
+			return errors.Wrap(err, "failed to launch Spotify")
+		}
+	}
 
 	openBrowserWithTabs := func(urlList []string) error {
 		var conn *chrome.Conn
@@ -311,6 +480,13 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tier cuj.Tier, ccaS
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 	}, float64(browserStartTime.Milliseconds()))
+	if appStartTime > 0 {
+		pv.Set(perf.Metric{
+			Name:      "Apps.StartTime",
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+		}, float64(appStartTime))
+	}
 	if err = recorder.Record(ctx, pv); err != nil {
 		return errors.Wrap(err, "failed to report")
 	}
