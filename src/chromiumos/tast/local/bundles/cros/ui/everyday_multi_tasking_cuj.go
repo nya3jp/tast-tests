@@ -33,6 +33,7 @@ func init() {
 		Vars: []string{
 			"ui.cuj_mute",      // Optional. Mute the DUT during the test.
 			"ui.cuj_mode",      // Optional. Expecting "tablet" or "clamshell".
+			"ui.cuj_username",  // Used to select the account to do login to spotify.
 			"ui.bt_devicename", // Required for Bluetooth subtests.
 		},
 		Fixture: "loggedInAndKeepState",
@@ -47,12 +48,44 @@ func init() {
 					enableBT: false,
 				},
 			}, {
+				Name:    "basic_ytmusic_bluetooth",
+				Timeout: 10 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Basic,
+					appName:  et.YoutubeMusic,
+					enableBT: true,
+				},
+			}, {
+				Name:    "basic_spotify_bluetooth",
+				Timeout: 10 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Basic,
+					appName:  et.Spotify,
+					enableBT: true,
+				},
+			}, {
 				Name:    "plus_ytmusic",
 				Timeout: 15 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.YoutubeMusic,
 					enableBT: false,
+				},
+			}, {
+				Name:    "plus_ytmusic_bluetooth",
+				Timeout: 15 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.YoutubeMusic,
+					enableBT: true,
+				},
+			}, {
+				Name:    "plus_spotify_bluetooth",
+				Timeout: 15 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.Spotify,
+					enableBT: true,
 				},
 			},
 		},
