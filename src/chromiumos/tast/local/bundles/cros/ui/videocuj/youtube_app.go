@@ -77,7 +77,7 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 
 	// Clear notification prompt if it exists.
 	noThanksEle := y.d.Object(androidui.ID(noThanksID), androidui.Text("NO THANKS"))
-	if err := cuj.ClickIfExist(ctx, noThanksEle, 5*time.Second); err != nil {
+	if err := cuj.ClickIfExist(noThanksEle, 5*time.Second)(ctx); err != nil {
 		return errors.Wrap(err, `failed to click "NO THANKS" to clear notification prompt`)
 	}
 
@@ -90,7 +90,7 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		}
 
 		searchEditText := y.d.Object(androidui.ID(searchEditTextID))
-		if err := cuj.FindAndClick(ctx, searchEditText, uiWaitTime); err != nil {
+		if err := cuj.FindAndClick(searchEditText, uiWaitTime)(ctx); err != nil {
 			return errors.Wrap(err, `failed to find "searchTextfield"`)
 		}
 
@@ -105,7 +105,7 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		startTime := time.Now()
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 
-			if err := cuj.FindAndClick(ctx, firstVideo, uiWaitTime); err != nil {
+			if err := cuj.FindAndClick(firstVideo, uiWaitTime)(ctx); err != nil {
 				if strings.Contains(err.Error(), "click") {
 					return testing.PollBreak(err)
 				}
@@ -128,22 +128,22 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		startTime := time.Now()
 		if err := testing.Poll(ctx, func(context.Context) error {
 			playerView := y.d.Object(androidui.ID(playerViewID))
-			if err := cuj.FindAndClick(ctx, playerView, uiWaitTime); err != nil {
+			if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
 				return errors.Wrap(err, "failed to find/click the player view on switch quality")
 			}
 
 			moreBtn := y.d.Object(androidui.ID(moreOptions))
-			if err := cuj.FindAndClick(ctx, moreBtn, waitTimeAfterClickPlayerView); err != nil {
+			if err := cuj.FindAndClick(moreBtn, waitTimeAfterClickPlayerView)(ctx); err != nil {
 				return errors.Wrap(err, `failed to find/click the "More options"`)
 			}
 
 			qualityBtn := y.d.Object(androidui.Text("Quality"))
-			if err := cuj.FindAndClick(ctx, qualityBtn, uiWaitTime); err != nil {
+			if err := cuj.FindAndClick(qualityBtn, uiWaitTime)(ctx); err != nil {
 				return errors.Wrap(err, "failed to find/click the Quality")
 			}
 
 			advancedBtn := y.d.Object(androidui.Text("Advanced"))
-			if err := cuj.FindAndClick(ctx, advancedBtn, uiWaitTime); err != nil {
+			if err := cuj.FindAndClick(advancedBtn, uiWaitTime)(ctx); err != nil {
 				return errors.Wrap(err, "failed to find/click the advanced option")
 			}
 
@@ -216,12 +216,12 @@ func (y *YtApp) EnterFullscreen(ctx context.Context) error {
 
 	startTime := time.Now()
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := cuj.FindAndClick(ctx, playerView, uiWaitTime); err != nil {
+		if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find/click the player view")
 		}
 
 		fsBtn := y.d.Object(androidui.ID(fullscreenBtnID))
-		if err := cuj.FindAndClick(ctx, fsBtn, waitTimeAfterClickPlayerView); err != nil {
+		if err := cuj.FindAndClick(fsBtn, waitTimeAfterClickPlayerView)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find/click the fullscreen button")
 		}
 
@@ -252,11 +252,11 @@ func (y *YtApp) PauseAndPlayVideo(ctx context.Context) error {
 	startTime := time.Now()
 	return testing.Poll(ctx, func(ctx context.Context) error {
 
-		if err := cuj.FindAndClick(ctx, playerView, uiWaitTime); err != nil {
+		if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find/click the player view")
 		}
 
-		if err := cuj.FindAndClick(ctx, pauseBtn, waitTimeAfterClickPlayerView); err != nil {
+		if err := cuj.FindAndClick(pauseBtn, waitTimeAfterClickPlayerView)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find/click the pause button")
 		}
 
