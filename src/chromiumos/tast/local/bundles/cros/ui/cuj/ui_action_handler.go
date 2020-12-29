@@ -41,6 +41,8 @@ type UIActionHandler interface {
 	ScrollChromePage(ctx context.Context) ([]func(ctx context.Context, conn *chrome.Conn) error, error)
 	// ChromePageRefresh refresh a web page (current focus page).
 	ChromePageRefresh(ctx context.Context) error
+	// MinimizeAllWindow minimizes all window.
+	MinimizeAllWindow(ctx context.Context) error
 	// Close releases the underlying resouses.
 	Close()
 }
@@ -50,6 +52,9 @@ type TabletActionHandler struct {
 	tconn *chrome.TestConn
 	ui    *uiauto.Context
 	tc    *touch.Context
+	tew   *input.TouchscreenEventWriter
+	tcc   *input.TouchCoordConverter
+	stew  *input.SingleTouchEventWriter
 }
 
 // NewTabletActionHandler returns the action handler which is responsible for handling UI actions on tablet.
@@ -59,15 +64,29 @@ func NewTabletActionHandler(ctx context.Context, tconn *chrome.TestConn) (*Table
 		return nil, errors.Wrap(err, "failed to create the touch context instance")
 	}
 
+	// Get touch controller for tablet.
+	tew, tcc, err := touch.NewTouchscreenAndConverter(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create the touchscreen and converter")
+	}
+
+	stew, err := tew.NewSingleTouchWriter()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create the single touch writer")
+	}
 	return &TabletActionHandler{
 		tconn: tconn,
 		ui:    uiauto.New(tconn).WithPollOpts(defaultPollOptions),
 		tc:    tc,
+		tew:   tew,
+		tcc:   tcc,
+		stew:  stew,
 	}, nil
 }
 
 // Close releases the underlying resouses.
 func (t *TabletActionHandler) Close() {
+	t.stew.Close()
 	t.tc.Close()
 }
 
@@ -123,18 +142,7 @@ func (t *TabletActionHandler) SwitchWindow(ctx context.Context, idxWindow, numWi
 		return nil
 	}
 
-	// Get touch controller for tablet.
-	tew, tcc, err := touch.NewTouchscreenAndConverter(ctx, t.tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to create the touchscreen and converter")
-	}
-	stew, err := tew.NewSingleTouchWriter()
-	if err != nil {
-		return errors.Wrap(err, "failed to create the single touch writer")
-	}
-	defer stew.Close()
-
-	if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, t.tconn, stew, tcc); err != nil {
+	if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, t.tconn, t.stew, t.tcc); err != nil {
 		return errors.Wrap(err, "failed to show hotseat")
 	}
 
@@ -282,6 +290,18 @@ func (t *TabletActionHandler) ScrollChromePage(ctx context.Context) ([]func(ctx 
 		swipeUp,
 		swipeUp,
 	}, nil
+}
+
+// MinimizeAllWindow minimizes all window.
+func (t *TabletActionHandler) MinimizeAllWindow(ctx context.Context) error {
+	if err := ash.DragToShowHomescreen(ctx, t.tew.Width(), t.tew.Height(), t.stew, t.tconn); err != nil {
+		return errors.Wrap(err, "failed to show homescreen")
+	}
+	if err := ash.WaitForHotseatAnimatingToIdealState(ctx, t.tconn, ash.ShelfShownHomeLauncher); err != nil {
+		return errors.Wrap(err, "hotseat is in an unexpected state")
+	}
+	testing.ContextLog(ctx, "All windows are minimized")
+	return nil
 }
 
 // ClamshellActionHandler define the action on clamshell devices.
@@ -437,6 +457,51 @@ func (cl *ClamshellActionHandler) ScrollChromePage(ctx context.Context) ([]func(
 		doubleSwipeUp,
 		doubleSwipeUp,
 	}, nil
+}
+
+// MinimizeAllWindow minimizes all window.
+func (cl *ClamshellActionHandler) MinimizeAllWindow(ctx context.Context) error {
+	// Count the number of targets to minimize
+	ws, err := ash.GetAllWindows(ctx, cl.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed get current windows")
+	}
+	total := len(ws)
+	testing.ContextLogf(ctx, "Found %d windows should be minimized", total)
+
+	// Only active and frame-visible ones can be minimize by UI operation.
+	// Scan until all targets are minimized.
+	ui := uiauto.New(cl.tconn)
+	for minimized := 0; minimized < total; {
+		for _, w := range ws {
+			// only active and frameVisible one is the target to minimize.
+			if !w.IsActive || !w.IsFrameVisible {
+				continue
+			}
+
+			// Find the button under window and click it.
+			windowNode := nodewith.Name(w.Title).Role(role.Window).First()
+			minimizeBtn := nodewith.Name("Minimize").Role(role.Button).ClassName("FrameCaptionButton").Ancestor(windowNode)
+			if err := uiauto.Combine("find minimize button under window and click it",
+				ui.WaitUntilExists(windowNode),
+				ui.WaitUntilExists(minimizeBtn),
+				ui.LeftClick(minimizeBtn),
+			)(ctx); err != nil {
+				return errors.Wrap(err, "failed to minimize window")
+			}
+
+			minimized++
+			testing.ContextLogf(ctx, "Window: %q is minimized", w.Title)
+			break
+		}
+		// Get windows again since window state changed.
+		ws, err = ash.GetAllWindows(ctx, cl.tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed get current windows")
+		}
+	}
+
+	return nil
 }
 
 // mouseMoveToCenterOfWindow moves the mouse to the center of chrome window.
