@@ -109,7 +109,7 @@ const template = `{{range .}} {
 									ScreenMode:        {{.ScreenMode}},
 			{{if .Scenario}}		Scenario:          "{{.Scenario}}",									 {{end}}
 								},
-			{{if .ValParams}}	Params:      {{.Val}},                                                   {{end}}
+			{{if .ValParams}}	Params:            {{.ValParams}},                                       {{end}}
 							},
 }, {{end}}`
 
