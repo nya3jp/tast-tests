@@ -41,6 +41,10 @@ type UIActionHandler interface {
 	ScrollChromePage(ctx context.Context) ([]func(ctx context.Context, conn *chrome.Conn) error, error)
 	// ChromePageRefresh refresh a web page (current focus page).
 	ChromePageRefresh(ctx context.Context) error
+	// MinimizeAllWindow minimizes all window.
+	MinimizeAllWindow(ctx context.Context) error
+	// ResetTestConnection reset the connection of tast's test extension.
+	ResetTestConnection(tconn *chrome.TestConn)
 	// Close releases the underlying resouses.
 	Close()
 }
@@ -293,6 +297,23 @@ func (t *TabletActionHandler) ScrollChromePage(ctx context.Context) ([]func(ctx 
 	}, nil
 }
 
+// MinimizeAllWindow minimizes all window.
+func (t *TabletActionHandler) MinimizeAllWindow(ctx context.Context) error {
+	if err := ash.DragToShowHomescreen(ctx, t.tew.Width(), t.tew.Height(), t.stew, t.tconn); err != nil {
+		return errors.Wrap(err, "failed to show homescreen")
+	}
+	if err := ash.WaitForHotseatAnimatingToIdealState(ctx, t.tconn, ash.ShelfShownHomeLauncher); err != nil {
+		return errors.Wrap(err, "hotseat is in an unexpected state")
+	}
+	return nil
+}
+
+// ResetTestConnection reset the connection of tast's test extension.
+func (t *TabletActionHandler) ResetTestConnection(tconn *chrome.TestConn) {
+	t.ui = uiauto.New(tconn).WithPollOpts(defaultPollOptions)
+	t.tconn = tconn
+}
+
 // ClamshellActionHandler define the action on clamshell devices.
 type ClamshellActionHandler struct {
 	tconn    *chrome.TestConn
@@ -448,6 +469,57 @@ func (cl *ClamshellActionHandler) ScrollChromePage(ctx context.Context) ([]func(
 		doubleSwipeUp,
 		doubleSwipeUp,
 	}, nil
+}
+
+// MinimizeAllWindow minimizes all window.
+func (cl *ClamshellActionHandler) MinimizeAllWindow(ctx context.Context) error {
+	// Count the number of targets to minimize
+	ws, err := ash.GetAllWindows(ctx, cl.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed get current windows")
+	}
+	total := len(ws)
+	testing.ContextLogf(ctx, "Found %d windows should be minimized", total)
+
+	// Only actived and frame-visible ones can be minimize by UI operation,
+	// needs to scan over and over until all targets are minimized
+	ui := uiauto.New(cl.tconn)
+	for minimized := 0; minimized < total; {
+		for _, w := range ws {
+			// only actived and frameVisible ones is the target to minimize
+			if !w.IsActive || !w.IsFrameVisible {
+				continue
+			}
+
+			// Find the button under window and click it
+			windowNode := nodewith.Name(w.Title).Role(role.Window).First()
+			minimizeBtn := nodewith.Name("Minimize").Role(role.Button).ClassName("FrameCaptionButton").Ancestor(windowNode)
+			if err := uiauto.Combine("find minimize button under window and click it",
+				ui.WaitUntilExists(windowNode),
+				ui.WaitUntilExists(minimizeBtn),
+				ui.LeftClick(minimizeBtn),
+			)(ctx); err != nil {
+				return errors.Wrap(err, "failed to minimize window")
+			}
+
+			minimized++
+			testing.ContextLogf(ctx, "Window: %q is minimized", w.Title)
+			break
+		}
+		// get windows again since window state changed
+		ws, err = ash.GetAllWindows(ctx, cl.tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed get current windows")
+		}
+	}
+
+	return nil
+}
+
+// ResetTestConnection reset the connection of tast's test extension.
+func (cl *ClamshellActionHandler) ResetTestConnection(tconn *chrome.TestConn) {
+	cl.ui = uiauto.New(tconn).WithPollOpts(defaultPollOptions)
+	cl.tconn = tconn
 }
 
 // mouseMoveToCenterOfWindow moves the mouse to the center of chrome window.
