@@ -211,8 +211,8 @@ func (p *preImpl) prepareRemote(ctx context.Context, s *testing.PreState) interf
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
-	httpAddr := s.RequiredVar("wpr_http_addr")
-	httpsAddr := s.RequiredVar("wpr_https_addr")
+	httpAddr := s.RequiredVar("ui.wpr_http_addr")
+	httpsAddr := s.RequiredVar("ui.wpr_https_addr")
 	if err := waitForServerSocket(ctx, httpAddr, nil); err != nil {
 		s.Fatalf("Cannot connect to WPR at %s: %v", httpAddr, err)
 	}
