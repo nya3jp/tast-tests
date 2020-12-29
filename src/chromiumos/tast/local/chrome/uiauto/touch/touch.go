@@ -74,6 +74,16 @@ func New(ctx context.Context, tconn *chrome.TestConn) (*Context, error) {
 	return &Context{tsw: tsw, tcc: tcc, ac: uiauto.New(tconn)}, nil
 }
 
+// TouchscreenEventWriter returns the current TouchscreenEventWriter.
+func (tc *Context) TouchscreenEventWriter() *input.TouchscreenEventWriter {
+	return tc.tsw
+}
+
+// TouchCoordConverter returns the current TouchCoordConverter.
+func (tc *Context) TouchCoordConverter() *input.TouchCoordConverter {
+	return tc.tcc
+}
+
 // Close closes the access to the touch screen.
 func (tc *Context) Close() error {
 	return tc.tsw.Close()
