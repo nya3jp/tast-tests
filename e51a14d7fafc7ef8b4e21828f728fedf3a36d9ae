@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4905d6_2384df40",
+        "filename": "src/chromiumos/tast/local/croshealthd/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-12-29T17:37:34Z",
+      "side": 1,
+      "message": "nit: daemon? same on line 54.",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "e51a14d7fafc7ef8b4e21828f728fedf3a36d9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
