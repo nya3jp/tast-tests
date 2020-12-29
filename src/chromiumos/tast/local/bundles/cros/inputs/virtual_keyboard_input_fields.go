@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -30,46 +31,55 @@ func init() {
 				Name:              "us_en_stable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
+				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "us_en_unstable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
+				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
 				Name:              "us_en_exp",
 				Pre:               pre.VKEnabledTabletExp,
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			}, {
 				Name:              "jp_us_stable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
+				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "jp_us_unstable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
+				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
 				Name:              "jp_us_exp",
 				Pre:               pre.VKEnabledTabletExp,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			}, {
 				Name:              "zh_pinyin_stable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
+				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "zh_pinyin_unstable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
+				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
 				Name:              "zh_pinyin_exp",
 				Pre:               pre.VKEnabledTabletExp,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			},
 		},
@@ -106,20 +116,20 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 		subTests = []testData{
 			{
 				inputField:   testserver.TextAreaInputField,
-				keySeq:       strings.Split("hello", ""),
-				expectedText: "hello",
+				keySeq:       strings.Split("Hello", ""),
+				expectedText: "Hello",
 			}, {
 				inputField:   testserver.TextInputField,
-				keySeq:       strings.Split("hello", ""),
-				expectedText: "hello",
+				keySeq:       strings.Split("Hello", ""),
+				expectedText: "Hello",
 			}, {
 				inputField:   testserver.SearchInputField,
-				keySeq:       strings.Split("hello", ""),
-				expectedText: "hello",
+				keySeq:       strings.Split("Hello", ""),
+				expectedText: "Hello",
 			}, {
 				inputField:   testserver.PasswordInputField,
 				keySeq:       strings.Split("hello", ""),
-				expectedText: "•••••",
+				expectedText: "hello",
 			}, {
 				inputField:   testserver.NumberInputField,
 				keySeq:       strings.Split("-123.456", ""),
@@ -162,7 +172,7 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 			}, {
 				inputField:   testserver.PasswordInputField,
 				keySeq:       strings.Split("konnnitiha", ""),
-				expectedText: "••••••••••",
+				expectedText: "konnnitiha",
 			}, {
 				inputField:   testserver.NumberInputField,
 				keySeq:       strings.Split("-123.456", ""),
@@ -206,7 +216,7 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 			}, {
 				inputField:   testserver.PasswordInputField,
 				keySeq:       strings.Split("nihao", ""),
-				expectedText: "•••••",
+				expectedText: "nihao",
 			}, {
 				inputField:   testserver.NumberInputField,
 				keySeq:       strings.Split("-123.456", ""),
@@ -238,18 +248,21 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 
 	for _, subtest := range subTests {
 		s.Run(ctx, string(subtest.inputField), func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+			defer func() {
+				outDir := filepath.Join(s.OutDir(), string(subtest.inputField))
+				faillog.DumpUITreeOnError(ctx, outDir, s.HasError, tconn)
+				faillog.SaveScreenshotOnError(ctx, cr, outDir, s.HasError)
+
+				if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
+					s.Log("Failed to hide virtual keyboard: ", err)
+				}
+			}()
+
 			inputField := subtest.inputField
 
 			if err := inputField.ClickUntilVKShown(ctx, tconn); err != nil {
 				s.Fatal("Failed to click input field to show virtual keyboard: ", err)
 			}
-
-			defer func() {
-				if err := vkb.HideVirtualKeyboard(ctx, tconn); err != nil {
-					s.Log("Failed to hide virtual keyboard: ", err)
-				}
-			}()
 
 			if err := vkb.TapKeys(ctx, tconn, subtest.keySeq); err != nil {
 				s.Fatalf("Failed to tap keys %v: %v", subtest.keySeq, err)
@@ -262,15 +275,19 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			if err := inputField.WaitForValueToBe(ctx, tconn, subtest.expectedText); err != nil {
-				s.Fatal("Failed to verify input: ", err)
-			}
-
 			// Password input is a special case. The value is presented with placeholder "•".
 			// Using PasswordTextField field to verify the outcome.
 			if inputField == testserver.PasswordInputField {
-				if err := testserver.PasswordTextField.WaitForValueToBe(ctx, tconn, strings.Join(subtest.keySeq[:], "")); err != nil {
+				if err := inputField.WaitForValueToBe(ctx, tconn, strings.Repeat("•", len(subtest.keySeq))); err != nil {
+					s.Fatal("Failed to verify input: ", err)
+				}
+
+				if err := testserver.PasswordTextField.WaitForValueToBe(ctx, tconn, subtest.expectedText); err != nil {
 					s.Fatal("Failed to verify password input: ", err)
+				}
+			} else {
+				if err := inputField.WaitForValueToBe(ctx, tconn, subtest.expectedText); err != nil {
+					s.Fatal("Failed to verify input: ", err)
 				}
 			}
 		})
