@@ -17,6 +17,9 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -91,6 +94,29 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, a
 
 	ui := uiauto.New(tconn)
 
+	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
+		conn, err := uiHandler.NewChromeTab(ctx, cr, "https://mail.google.com", true)
+		if err != nil {
+			return conn, errors.Wrap(err, "failed to open gmail web page")
+		}
+		if err := webutil.WaitForQuiescence(ctx, conn, 2*time.Minute); err != nil {
+			return conn, errors.Wrap(err, "failed ailed to wait for page to finish loading")
+		}
+
+		gotItPrompt := nodewith.Name("Got it").Role(role.Button)
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(gotItPrompt); err == nil {
+			if err := uiauto.Combine("click 'Got it' prompt",
+				// Immediately clicking the 'Got it' button sometimes doesn't work. Sleep 2 seconds.
+				ui.Sleep(2*time.Second),
+				uiHandler.Click(gotItPrompt),
+			)(ctx); err != nil {
+				testing.ContextLog(ctx, "There's no 'Got it' prompt")
+			}
+		}
+
+		return conn, nil
+	}
+
 	recorder, err := cuj.NewRecorder(ctx, tconn, cuj.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
@@ -145,6 +171,15 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, a
 			if err := testing.Sleep(ctx, time.Second); err != nil {
 				s.Fatal("Failed to sleep: ", err)
 			}
+
+			// Open Gmail web.
+			s.Log("Open Gmail web")
+			gConn, err := openGmailWeb(ctx)
+			if err != nil {
+				s.Fatal("Failed to open Gmail website: ", err)
+			}
+			defer gConn.Close()
+			defer gConn.CloseTarget(ctx)
 
 			if err := uiHandler.SwitchWindow()(ctx); err != nil {
 				return errors.Wrap(err, "failed to switch back to video playing")
