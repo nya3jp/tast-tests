@@ -50,7 +50,7 @@ func PCMarkWorkAndroidApp(ctx context.Context, s *testing.State) {
 	)
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
-	a := s.FixtValue().(*arc.PredData).ARC
+	ar := s.FixtValue().(*arc.PreData).ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -63,14 +63,14 @@ func PCMarkWorkAndroidApp(ctx context.Context, s *testing.State) {
 	}
 	defer kw.Close()
 
-	uiDevice, err := a.NewUIDevice(ctx)
+	uiDevice, err := ar.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed to setup ARC and Play Store: ", err)
 	}
 	defer uiDevice.Close(ctx)
 
 	s.Log("Installing app from play store")
-	if err := playstore.InstallApp(ctx, a, uiDevice, pkgName, -1); err != nil {
+	if err := playstore.InstallApp(ctx, ar, uiDevice, pkgName, -1); err != nil {
 		s.Fatalf("Failed to install %s: %v", pkgName, err)
 	}
 
