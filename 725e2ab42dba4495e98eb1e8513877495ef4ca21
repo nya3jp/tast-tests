@@ -1,0 +1,313 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b3a4ff6_02c08af0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a18b91d1_ba0ad468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "nit/style:\n\ndefer srv.Close()",
+      "range": {
+        "startLine": 36,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc02224_4fc2146e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "nit/optional/style: you can just inline this at L44.",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b87564_94d8f785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "ditto: defer cr.Close(ctx)",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2e270f0_0cb52784",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "could you move this at L57?\n\nAlso, nit/style:\ndefer d.Conn().Command(...).Output(ctx)",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf688e4_96cefb74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "looks not async?",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12dc7d4a_f61f0685",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "866e1d5a_3e649667",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "In general \"check\" is ambiguous. What does this, and what is returned. Could you give more concrete name? Do boundaries need to be green-ish?\n\nDitto for below.",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2493fc_35aa3e13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "the range of angle looks not consistent enough. Maybe:\n\nif (max \u003d\u003d\u003d r)\n  angle \u003d ((g - b) / d + 6) % 6 * 60;\n} else if (max \u003d\u003d\u003d g) {\n  angle \u003d ((b - r) / d + 2) * 60;\n} else {\n  angle \u003d ((r - g) / d + 4) * 60;\n}\n\nso that angle will be [0, 360). Specifically, if max \u003d\u003d\u003d r, 0 \u003c\u003d angle \u003c\u003d 60 || 300 \u003c\u003d angle \u003c 360.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 7
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c85c207_dc86a050",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "nit/style: can be moved and merge with the above line.",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65fe4845_f33d0cb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "Could you clarify where \"align\" comes from? This function just checks the current preview frame?",
+      "range": {
+        "startLine": 177,
+        "startChar": 13,
+        "endLine": 177,
+        "endChar": 18
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aa48755_ccc36aa6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "This function does not support \"N\" times.\n\nMaybe:\n\nWaits for 5 consecutive frames which satisfies ... (the detailed condition) ...\n\nor something?",
+      "range": {
+        "startLine": 183,
+        "startChar": 36,
+        "endLine": 183,
+        "endChar": 37
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78fb11b9_364f0580",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "maybe waitFor... something? (could you take a look at my comment above, too)?",
+      "range": {
+        "startLine": 189,
+        "startChar": 8,
+        "endLine": 189,
+        "endChar": 18
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e5b8c4b_e4acdeab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "instead, is it possible to poll whether the fixture is settling down enough?\nsleeping the fixed amount of time is often source of flakiness, and/or, the waste of the time (because it needs to wait for 5 secs always even if it is settled down quickly).",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a031ca_760f0c4d",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/alignment_service.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:57:39Z",
+      "side": 1,
+      "message": "clarification: is this absolute path? Or relative one from somewhere? Could you clarify in the document?",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
