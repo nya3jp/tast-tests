@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	et "chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -101,7 +102,27 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
-	tabletMode := false
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	var tabletMode bool
+	if mode, ok := s.Var("ui.cuj_mode"); ok {
+		tabletMode = mode == "tablet"
+		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+		if err != nil {
+			s.Fatalf("Failed to enable tablet mode to %v: %v", tabletMode, err)
+		}
+		defer cleanup(ctx)
+	} else {
+		// Use default screen mode of the DUT.
+		tabletMode, err = ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get DUT default screen mode: ", err)
+		}
+	}
+	s.Log("Running test with tablet mode: ", tabletMode)
 
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)

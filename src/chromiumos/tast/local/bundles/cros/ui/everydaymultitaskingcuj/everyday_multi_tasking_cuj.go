@@ -7,6 +7,8 @@ package everydaymultitaskingcuj
 
 import (
 	"context"
+	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -17,6 +19,8 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/cuj/bluetooth"
+	"chromiumos/tast/local/camera/cca"
+	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -147,19 +151,49 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, t
 	browserWindows := map[int]bool{}
 	var ws []*ash.Window
 	var subtest2 subtest
-
-	if uiHandler, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
-		s.Fatal("Failed create chrome action handler: ", err)
+	if tabletMode {
+		if uiHandler, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
+			s.Fatal("Failed create chrome action handler: ", err)
+		}
+		if pc, err = pointer.NewTouch(ctx, tconn); err != nil {
+			s.Fatal("Failed create touch context: ", err)
+		}
+		subtest2 = subtest{
+			"hotseat",
+			"Switching the focused window through clicking the hotseat",
+			func(ctx context.Context, s *testing.State, i int) error {
+				title := ws[i].Title
+				wIdx := -1 // the index of target window within same app
+				wCount := 0
+				for idx, w := range ws {
+					if w.WindowType == ws[i].WindowType {
+						wCount++
+						if idx <= i {
+							wIdx++
+						}
+					}
+				}
+				appName = "Chrome"
+				if strings.Contains(title, Spotify) {
+					appName = Spotify
+				}
+				s.Logf("Switching window to: %q", title)
+				return uiHandler.SwitchToAppWindowByIndex(appName, wIdx)(ctx)
+			},
+		}
+	} else {
+		if uiHandler, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
+			s.Fatal("Failed create chrome action handler: ", err)
+		}
+		pc = pointer.NewMouse(tconn)
+		subtest2 = subtest{
+			"alt-tab",
+			"Switching the focused window through Alt-Tab",
+			func(ctx context.Context, s *testing.State, i int) error {
+				return uiHandler.SwitchToLRUWindow(cuj.SwitchWindowThroughKeyEvent)(ctx)
+			},
+		}
 	}
-	pc = pointer.NewMouse(tconn)
-	subtest2 = subtest{
-		"alt-tab",
-		"Switching the focused window through Alt-Tab",
-		func(ctx context.Context, s *testing.State, i int) error {
-			return uiHandler.SwitchToLRUWindow(cuj.SwitchWindowThroughKeyEvent)(ctx)
-		},
-	}
-
 	defer pc.Close()
 	defer uiHandler.Close()
 
@@ -379,13 +413,81 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, t
 		return nil
 	}
 
+	switchTabs := func(ctx context.Context, s *testing.State, pages []string) error {
+		if err := setVolume(ctx, tconn, initialVolume); err != nil {
+			return errors.Wrap(err, "failed to set volume")
+		}
+
+		for tabIdx := 0; tabIdx < len(pages); tabIdx++ {
+			s.Log("Switching Chrome tab")
+			if err := uiHandler.SwitchToChromeTabByIndex(tabIdx)(ctx); err != nil {
+				return errors.Wrap(err, "failed to switch tab")
+			}
+
+			s.Log("Volume up")
+			kb.Accel(ctx, topRow.VolumeUp)
+			if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep")
+			}
+		}
+		return nil
+	}
+
+	switchAllBrowserTabs := func(ctx context.Context, s *testing.State) error {
+		s.Log("Start to switch all browser tabs")
+
+		isSkip := func(ctx context.Context) (bool, error) {
+			ws, err := ash.GetAllWindows(ctx, tconn)
+			if err != nil {
+				return true, errors.Wrap(err, "failed to obtain the window list")
+			}
+			for _, w := range ws {
+				// Search current focus window
+				if !w.IsActive {
+					continue
+				}
+				// Skip if the window is not a "Browser"
+				if w.WindowType != ash.WindowTypeBrowser {
+					return true, nil
+				}
+				return false, nil
+			}
+			return true, errors.New("failed to find active browser window")
+		}
+
+		ws, err := ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to obtain the window list")
+		}
+		skipped := 0
+		for i := range ws {
+			skip, err := isSkip(ctx)
+			if err != nil {
+				return errors.New("failed to check windows")
+			}
+			if skip {
+				skipped++
+				s.Log("Skipping switch tab action for this window")
+			} else {
+				if err := switchTabs(ctx, s, pageList[i-skipped]); err != nil {
+					return errors.Wrap(err, "failed to switch tabs")
+				}
+			}
+			s.Log("Switching window by overview")
+			if err := uiHandler.SwitchToLRUWindow(cuj.SwitchWindowThroughOverview)(ctx); err != nil {
+				return errors.Wrap(err, "failed to switch windows through overview")
+			}
+		}
+		return nil
+	}
+
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		for _, list := range pageList {
 			if err := openBrowserWithTabs(list); err != nil {
 				return errors.Wrap(err, "failed to open browser with tabs")
 			}
 		}
-		return nil
+		return switchAllBrowserTabs(ctx, s)
 	}); err != nil {
 		s.Fatal("Failed to run the open tabs and switch tabs scenario: ", err)
 	}
@@ -411,6 +513,9 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, t
 		s.Log(st.desc)
 		s.Run(ctx, st.name, func(ctx context.Context, s *testing.State) {
 			if err := recorder.Run(ctx, func(ctx context.Context) error {
+				if err := setVolume(ctx, tconn, initialVolume); err != nil {
+					return errors.Wrap(err, "failed to set os volume")
+				}
 				for i := 0; i < len(ws); i++ {
 					s.Log("Volume up")
 					if err := kb.Accel(ctx, topRow.VolumeUp); err != nil {
@@ -426,6 +531,10 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, t
 				s.Fatal("Failed to run the switch window scenario: ", err)
 			}
 		})
+	}
+	s.Log("Take photo and video")
+	if err := recorder.Run(ctx, func(ctx context.Context) error { return takePhotoAndVideo(ctx, s, cr) }); err != nil {
+		s.Fatal("Failed to run the camera scenario: ", err)
 	}
 
 	pv := perf.NewValues()
@@ -450,6 +559,67 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, t
 	if err := recorder.SaveHistograms(s.OutDir()); err != nil {
 		s.Fatal("Failed to save histogram raw data: ", err)
 	}
+}
+
+func setVolume(ctx context.Context, tconn *chrome.TestConn, volume int) (err error) {
+	testing.ContextLog(ctx, "Set volume to ", volume)
+
+	javascrpt := fmt.Sprintf(`new Promise((resolve, reject) => {
+		const adjustVolume = level => {
+			chrome.audio.getDevices({ streamTypes: ['OUTPUT'], isActive: true }, devices => { chrome.audio.setProperties(devices[0].id, { level }, () => { }) });
+		};
+		adjustVolume(%d);
+		resolve();
+	});`, volume)
+	if err = tconn.EvalPromise(ctx, javascrpt, nil); err != nil {
+		return errors.Wrap(err, "failed to set operation system sound volume level")
+	}
+	return
+}
+
+func takePhotoAndVideo(ctx context.Context, s *testing.State, cr *chrome.Chrome) error {
+	tb, err := testutil.NewTestBridge(ctx, cr, testutil.UseRealCamera)
+	if err != nil {
+		return errors.Wrap(err, "failed to construct test bridge")
+	}
+	defer tb.TearDown(ctx)
+
+	if err := cca.ClearSavedDirs(ctx, cr); err != nil {
+		s.Fatal("Failed to clear saved directory: ", err)
+	}
+
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
+	if err != nil {
+		return errors.Wrap(err, "failed to open CCA")
+	}
+
+	// Take Photo
+	_, err = app.TakeSinglePhoto(ctx, cca.TimerOff)
+	if err != nil {
+		return errors.Wrap(err, "failed to take single photo")
+	}
+	// Record video
+	testing.ContextLog(ctx, "Switch to video mode")
+	if err := app.SwitchMode(ctx, cca.Video); err != nil {
+		return errors.Wrap(err, "failed to switch to video mode")
+	}
+	if err := app.WaitForVideoActive(ctx); err != nil {
+		return errors.Wrap(err, "preview is inactive after switch to video mode")
+	}
+	if err := app.ClickShutter(ctx); err != nil {
+		return errors.Wrap(err, "failed to click shutter")
+	}
+	if err := app.WaitForState(ctx, "recording", true); err != nil {
+		return errors.Wrap(err, "recording is not started")
+	}
+	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep")
+	}
+	testing.ContextLog(ctx, "Stopping a video")
+	if err := app.ClickShutter(ctx); err != nil {
+		return errors.Wrap(err, "failed to click shutter")
+	}
+	return nil
 }
 
 func waitAndClickObject(ctx context.Context, object *androidui.Object, name string, timeout time.Duration) error {
