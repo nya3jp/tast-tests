@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63f4d72f_68e2aadc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/data/chrome_nacl_app/background.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-29T22:18:10Z",
+      "side": 1,
+      "message": "Makes sense.  Might be worth leaving a comment so no-one introduces the problem later.",
+      "parentUuid": "da7f47ce_ff66f8bf",
+      "revId": "19c2a3a4fb3dd3dcefff225e3da2db92c8869572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f796f2b_d5999d0d",
         "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
         "patchSetId": 1
