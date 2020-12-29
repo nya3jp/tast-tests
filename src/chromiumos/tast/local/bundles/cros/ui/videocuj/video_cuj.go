@@ -36,10 +36,11 @@ const (
 
 // TestResources holds the cuj test resources passed in from main test case.
 type TestResources struct {
-	Cr    *chrome.Chrome
-	Tconn *chrome.TestConn
-	A     *arc.ARC
-	Kb    *input.KeyboardEventWriter
+	Cr        *chrome.Chrome
+	Tconn     *chrome.TestConn
+	A         *arc.ARC
+	Kb        *input.KeyboardEventWriter
+	UIHandler cuj.UIActionHandler
 }
 
 // TestParams holds the cuj test parameters passed in from main test case.
@@ -105,6 +106,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 		tconn           = resources.Tconn
 		a               = resources.A
 		kb              = resources.Kb
+		uiHandler       = resources.UIHandler
 		outDir          = param.OutDir
 		appName         = param.App
 		tabletMode      = param.TabletMode
@@ -125,17 +127,11 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 		return errors.Wrap(err, "failed to create TabCrashChecker")
 	}
 
-	var uiHandler cuj.UIActionHandler
-	if tabletMode {
-		if uiHandler, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to create tablet action handler")
-		}
-	} else {
-		if uiHandler, err = cuj.NewClamshellActionHandler(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to create clamshell action handler")
+	if extendedDisplay {
+		if err := cuj.UnsetMirrorDisplay(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to unset mirror display")
 		}
 	}
-	defer uiHandler.Close()
 
 	ui := uiauto.New(tconn)
 
@@ -273,6 +269,12 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 				return errors.Wrap(err, "failed to pause and play video")
 			}
 
+			if extendedDisplay {
+				if err := moveGmailWindow(ctx, gConn, kb, uiHandler); err != nil {
+					return errors.Wrap(err, "failed to move Gmail window between main display and extended display")
+				}
+			}
+
 			// Before recording the metrics, check if there is any tab crashed.
 			if err := tabChecker.Check(ctx); err != nil {
 				return errors.Wrap(err, "tab renderer crashed")
@@ -331,6 +333,31 @@ func getWindowID(ctx context.Context, tconn *chrome.TestConn) (int, error) {
 		return -1, errors.Errorf("expect 1 window, got %d", len(all))
 	}
 	return all[0].ID, nil
+}
+
+// moveGmailWindow switch Gmail to the extended display
+func moveGmailWindow(ctx context.Context, gConn *chrome.Conn, kb *input.KeyboardEventWriter, uiHandler cuj.UIActionHandler) error {
+	testing.ContextLog(ctx, "Move focus to Gmail and move it to extended screen")
+	if err := uiHandler.SwitchWindow()(ctx); err != nil {
+		return errors.Wrap(err, "failed to alt-tab")
+	}
+
+	testing.ContextLog(ctx, "Switch Gmail to the extended display")
+	if err := kb.Accel(ctx, "Search+Alt+M"); err != nil {
+		return errors.Wrap(err, "failed to switch Gmail to the extended display")
+	}
+
+	// Wait time between the movement on main display and extended display.
+	if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait")
+	}
+
+	testing.ContextLog(ctx, "Switch Gmail back to the main display")
+	if err := kb.Accel(ctx, "Search+Alt+M"); err != nil {
+		return errors.Wrap(err, "failed to switch Gmail back to the main display")
+	}
+
+	return nil
 }
 
 func installYoutubeApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
