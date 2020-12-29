@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ec53485_44b33985",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-29T23:31:24Z",
+      "side": 1,
+      "message": "Looks good. Let\u0027s try it out!",
+      "revId": "5e7b21a576bfba8d4943e1f0a21e39c6a98d5ddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47cfc5be_d6f94213",
@@ -19,6 +36,29 @@
         "startChar": 17,
         "endLine": 30,
         "endChar": 40
+      },
+      "revId": "5e7b21a576bfba8d4943e1f0a21e39c6a98d5ddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa98d538_27310aa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-29T23:31:24Z",
+      "side": 1,
+      "message": "nit: \"flashing\"",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 18
       },
       "revId": "5e7b21a576bfba8d4943e1f0a21e39c6a98d5ddd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
