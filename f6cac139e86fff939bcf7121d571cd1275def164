@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec819e4_f2bb3374",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:14:21Z",
+      "side": 1,
+      "message": "LGTM with minor comment.",
+      "revId": "f6cac139e86fff939bcf7121d571cd1275def164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6af7330d_4304b087",
+        "filename": "src/chromiumos/tast/local/chrome/ui/faillog/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-12-29T16:14:21Z",
+      "side": 1,
+      "message": "nit: sorry overlooked. This is unused. Could you remove before submitting?\n\nDitto for tconn at L23.",
+      "range": {
+        "startLine": 29,
+        "startChar": 110,
+        "endLine": 29,
+        "endChar": 134
+      },
+      "revId": "f6cac139e86fff939bcf7121d571cd1275def164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
