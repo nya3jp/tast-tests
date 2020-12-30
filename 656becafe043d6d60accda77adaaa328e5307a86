@@ -63,6 +63,91 @@
       },
       "revId": "656becafe043d6d60accda77adaaa328e5307a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d40e2ac_ee55a4b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-30T01:07:50Z",
+      "side": 1,
+      "message": "Another option is filepath.Dir, although I\u0027m not sure if you expect additional subdirectories later",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8734711f_4c719bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-30T01:07:50Z",
+      "side": 1,
+      "message": "Is there any other way to check that it has initialized, eg command output?  Sleeps in tests tend to be very flaky.",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b038689d_967f289f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-30T01:07:50Z",
+      "side": 1,
+      "message": "Optional: you could extract only the file of interest from the tarball",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd9c38e_c63c0461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-30T01:07:50Z",
+      "side": 1,
+      "message": "Iis there any way to avoid a sleep here too?",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41b8ee39_c067abab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-12-30T01:07:50Z",
+      "side": 1,
+      "message": "Can you give an example of the expected output you are parsing here?  it will make it easier to debug later if the format changes.",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
