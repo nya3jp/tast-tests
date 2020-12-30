@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "298d77f4_af960db1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-30T00:18:15Z",
+      "side": 1,
+      "message": "After this CL lands, this test won\u0027t be scheduled until https://chrome-internal-review.googlesource.com/c/chromeos/config-internal/+/3462030 lands AND modia@ puts the setups in \"fingerprint-dragonclaw\" pool.",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2515f7_4ff7317e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-30T00:18:15Z",
+      "side": 1,
+      "message": "Lab folks prefer defining a pool for the Dragonclaw-specific setups (and another pool for Icetower) instead of managing a swarming label for the dev board type.",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
