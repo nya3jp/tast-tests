@@ -1,5 +1,0 @@
-{
-  "url": "gs://chromiumos-test-assets-public/tast/cros/platform/ml_benchmark/ml_benchmark_inception_v4_20201217.tar.xz",
-  "size": 156603632,
-  "sha256sum": "244491d2beb41fe902850f7eb3d5438f786cd1c24836329f1e297dc76fb53298"
-}

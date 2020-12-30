@@ -1,5 +1,0 @@
-{
-  "url": "gs://chromiumos-test-assets-public/tast/cros/platform/ml_benchmark/ml_benchmark_resnet_v2_101_20201217.tar.xz",
-  "size": 164215672,
-  "sha256sum": "cc76920bd1a7e91221f5cb8a4c83c1ccc20e8c5f8b893a636c017d9c1a08cb12"
-}
