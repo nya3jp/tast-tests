@@ -1,5 +1,0 @@
-{
-  "url": "gs://chromiumos-test-assets-public/tast/cros/platform/ml_benchmark/ml_benchmark_mobilenet_v2_1.0_224_quant_20201216.tar.xz",
-  "size": 2958600,
-  "sha256sum": "3fdca7d9da2f9a30344fada314c379f9df9562997a8f29e0483c0483691f1677"
-}
