@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/peripherals/peripheraltypes"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/diagnosticsapp"
 	"chromiumos/tast/local/chrome/ui/faillog"
@@ -19,15 +20,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// uiDriver is the waitForApp function from the relevant UI driver.
-type uiDriver func(ctx context.Context, tconn *chrome.TestConn) error
-
 // testParams contains all the data needed to run a single test iteration.
 type testParams struct {
 	appName     string
 	query       string
 	featureFlag string
-	waitForApp  uiDriver
+	waitForApp  peripheraltypes.WaitForAppFn
 }
 
 func init() {
