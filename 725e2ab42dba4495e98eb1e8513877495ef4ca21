@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "591d7b38_fe7016a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a18b91d1_ba0ad468",
+      "range": {
+        "startLine": 36,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bc02224_4fc2146e",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29780724_db27d202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bc02224_4fc2146e",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5b87564_94d8f785",
@@ -71,6 +113,30 @@
       "writtenOn": "2020-12-29T16:57:39Z",
       "side": 1,
       "message": "ditto: defer cr.Close(ctx)",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b133fd_96968d90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5b87564_94d8f785",
       "range": {
         "startLine": 48,
         "startChar": 7,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fa1fd42_0a495624",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2e270f0_0cb52784",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbf688e4_96cefb74",
@@ -117,6 +207,30 @@
       "writtenOn": "2020-12-29T16:57:39Z",
       "side": 1,
       "message": "looks not async?",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "106a6318_c658eb80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbf688e4_96cefb74",
       "range": {
         "startLine": 68,
         "startChar": 4,
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca79192_7b91dc2d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12dc7d4a_f61f0685",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "866e1d5a_3e649667",
@@ -163,6 +301,24 @@
       "writtenOn": "2020-12-29T16:57:39Z",
       "side": 1,
       "message": "In general \"check\" is ambiguous. What does this, and what is returned. Could you give more concrete name? Do boundaries need to be green-ish?\n\nDitto for below.",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b572e744_4567a6c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Updated the comments of the function, see if it\u0027s clear to you. As for renaming it, not sure how to concise the name in explicit like |checkFrameBounaryLayInGreenArea|.",
+      "parentUuid": "866e1d5a_3e649667",
       "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +346,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16998d4b_fa711d6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f2493fc_35aa3e13",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 7
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c85c207_dc86a050",
@@ -207,6 +387,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d7d5a5_0974f0b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c85c207_dc86a050",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65fe4845_f33d0cb9",
@@ -220,6 +418,30 @@
       "writtenOn": "2020-12-29T16:57:39Z",
       "side": 1,
       "message": "Could you clarify where \"align\" comes from? This function just checks the current preview frame?",
+      "range": {
+        "startLine": 177,
+        "startChar": 13,
+        "endLine": 177,
+        "endChar": 18
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "292f5ba8_076ce52a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Updated the function comment.",
+      "parentUuid": "65fe4845_f33d0cb9",
       "range": {
         "startLine": 177,
         "startChar": 13,
@@ -255,6 +477,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8020faea_899e4adb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Updated the comment. The detail criteria of passing alignment check is already described in the comment of |checkFrame| and |checkAlign|. Not very sure if it\u0027s worthy of rephrasing the detail again here.",
+      "parentUuid": "7aa48755_ccc36aa6",
+      "range": {
+        "startLine": 183,
+        "startChar": 36,
+        "endLine": 183,
+        "endChar": 37
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78fb11b9_364f0580",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
         "patchSetId": 10
@@ -266,6 +512,30 @@
       "writtenOn": "2020-12-29T16:57:39Z",
       "side": 1,
       "message": "maybe waitFor... something? (could you take a look at my comment above, too)?",
+      "range": {
+        "startLine": 189,
+        "startChar": 8,
+        "endLine": 189,
+        "endChar": 18
+      },
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0697fe01_1a48805b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78fb11b9_364f0580",
       "range": {
         "startLine": 189,
         "startChar": 8,
@@ -293,6 +563,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ffebd4a_4f6b69a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Because the fixture in camera box is just some steel stick for fix relative position of chart tablet and DUT which don\u0027t have any electronic sensor attach to it. So can only rely on lab\u0027s operator to judge they have fixed their position with the fixture.\nAdded a new settle button that will be toggled by lab\u0027s operator when they settle the fixture.",
+      "parentUuid": "7e5b8c4b_e4acdeab",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2a031ca_760f0c4d",
@@ -306,6 +594,24 @@
       "writtenOn": "2020-12-29T16:57:39Z",
       "side": 1,
       "message": "clarification: is this absolute path? Or relative one from somewhere? Could you clarify in the document?",
+      "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bedfc47_ca51eb61",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/alignment_service.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T04:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a031ca_760f0c4d",
       "revId": "725e2ab42dba4495e98eb1e8513877495ef4ca21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
