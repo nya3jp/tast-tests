@@ -16,6 +16,23 @@
       "message": "Defer +2 to Tast owners.",
       "revId": "ef7eb42540345f2c8bf7000bafd0032d30e3ec12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd7acbc6_553c6dc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-30T01:38:38Z",
+      "side": 1,
+      "message": "kathrelkeld@ is OOO until Jan 5. Redraw (?) a Tast owner.",
+      "revId": "ef7eb42540345f2c8bf7000bafd0032d30e3ec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
