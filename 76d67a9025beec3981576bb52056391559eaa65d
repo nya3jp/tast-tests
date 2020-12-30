@@ -60,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a65010d3_e53d7c62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T00:22:30Z",
+      "side": 1,
+      "message": "In CCA\u0027s codebase the |getState| value of non-existing state will always be false.\nSo, to adapt both new and old state in the test, we will need to judge if one of the new or old state are flagged",
+      "parentUuid": "410d5e9a_c7ae36db",
+      "revId": "76d67a9025beec3981576bb52056391559eaa65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0d62081_43bd330d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 5
@@ -71,6 +89,24 @@
       "writtenOn": "2020-12-29T16:30:00Z",
       "side": 1,
       "message": "nit/optional: If both new state name and old state name are available, old one would win.\nI think new one is expected to be used?",
+      "revId": "76d67a9025beec3981576bb52056391559eaa65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac865f36_c0ecb705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-30T00:22:30Z",
+      "side": 1,
+      "message": "More specifically:\nBefore migration - Only old state name will be available, all new state will always be false.\nAfter migration - Only new state name will be available, all old state will always be false.",
+      "parentUuid": "d0d62081_43bd330d",
       "revId": "76d67a9025beec3981576bb52056391559eaa65d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
