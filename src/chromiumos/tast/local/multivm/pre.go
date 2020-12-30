@@ -10,7 +10,9 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -21,6 +23,7 @@ var noVMStartedPre = &preImpl{
 			timeout: chrome.LoginTimeout,
 		},
 		nil,
+		nil,
 	),
 }
 
@@ -28,6 +31,30 @@ var noVMStartedPre = &preImpl{
 // VMs.
 func NoVMStarted() testing.Precondition {
 	return noVMStartedPre
+}
+
+var arcCrostiniStartedPre = &preImpl{
+	"multivm_arc_crostini",
+	NewStateManager(
+		ChromeOptions{
+			timeout: chrome.LoginTimeout,
+		},
+		&ARCOptions{
+			timeout: arc.BootTimeout,
+		},
+		&CrostiniOptions{
+			mode:           cui.Component,
+			largeContainer: false,
+			debianVersion:  vm.DebianBuster,
+			timeout:        7 * time.Minute,
+		},
+	),
+}
+
+// ArcCrostiniStarted returns a Precondition that logs into Chrome and starts
+// ARCVM an Crostini.
+func ArcCrostiniStarted() testing.Precondition {
+	return arcCrostiniStartedPre
 }
 
 var arcStartedPre = &preImpl{
@@ -39,12 +66,35 @@ var arcStartedPre = &preImpl{
 		&ARCOptions{
 			timeout: arc.BootTimeout,
 		},
+		nil,
 	),
 }
 
 // ArcStarted returns a Precondition that logs into Chrome and starts ARCVM.
 func ArcStarted() testing.Precondition {
 	return arcStartedPre
+}
+
+var crostiniStartedPre = &preImpl{
+	"multivm_crostini",
+	NewStateManager(
+		ChromeOptions{
+			timeout: chrome.LoginTimeout,
+		},
+		nil,
+		&CrostiniOptions{
+			mode:           cui.Component,
+			largeContainer: false,
+			debianVersion:  vm.DebianBuster,
+			timeout:        7 * time.Minute,
+		},
+	),
+}
+
+// CrostiniStarted returns a Precondition that logs into Chrome and starts
+// Crostini.
+func CrostiniStarted() testing.Precondition {
+	return crostiniStartedPre
 }
 
 type preImpl struct {
@@ -62,6 +112,8 @@ type PreData struct {
 	Keyboard    *input.KeyboardEventWriter
 	// Available if useARC provided to preImpl.
 	ARC *arc.ARC
+	// Available if useCrostini provided to preImpl
+	Crostini *vm.Container
 }
 
 func (p *preImpl) String() string { return p.name }
@@ -69,6 +121,9 @@ func (p *preImpl) Timeout() time.Duration {
 	timeout := p.vmState.crOptions.timeout
 	if p.vmState.useARC != nil {
 		timeout += p.vmState.useARC.timeout
+	}
+	if p.vmState.useCrostini != nil {
+		timeout += p.vmState.useCrostini.timeout
 	}
 	return timeout
 }
@@ -79,6 +134,7 @@ func (p *preImpl) preData() *PreData {
 		TestAPIConn: p.vmState.TestAPIConn(),
 		Keyboard:    p.vmState.Keyboard(),
 		ARC:         p.vmState.ARC(),
+		Crostini:    p.vmState.Crostini(),
 	}
 }
 
