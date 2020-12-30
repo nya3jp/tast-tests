@@ -157,7 +157,7 @@ func getContainerRootfsArtifact(arch string, debianVersion vm.ContainerDebianVer
 // GetInstallerOptions returns an InstallationOptions struct with data
 // paths, install mode, and debian version set appropriately for the
 // test.
-func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.ContainerDebianVersion, largeContainer bool) *cui.InstallationOptions {
+func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.ContainerDebianVersion, largeContainer bool, userName string) *cui.InstallationOptions {
 	var arch string
 	for _, dep := range s.SoftwareDeps() {
 		if dep == "amd64" || dep == "arm" {
@@ -186,6 +186,7 @@ func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.Cont
 		ContainerRootfsPath:   s.DataPath(getContainerRootfsArtifact(arch, debianVersion, largeContainer)),
 		Mode:                  mode,
 		DebianVersion:         debianVersion,
+		UserName:              userName,
 	}
 
 	return iOptions
@@ -460,8 +461,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	} else {
 		// Install Crostini.
-		iOptions := GetInstallerOptions(s, p.vmMode == component, p.debianVersion, p.container == largeContainer)
-		iOptions.UserName = p.cr.User()
+		iOptions := GetInstallerOptions(s, p.vmMode == component, p.debianVersion, p.container == largeContainer, p.cr.User())
 		if _, err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}

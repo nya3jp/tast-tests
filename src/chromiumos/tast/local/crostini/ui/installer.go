@@ -283,6 +283,7 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 	}
 
 	// Get the container.
+	testing.ContextLog(ctx, "Installing for name: ", iOptions.UserName)
 	cont, err := vm.DefaultContainer(ctx, iOptions.UserName)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to connect to running container")
