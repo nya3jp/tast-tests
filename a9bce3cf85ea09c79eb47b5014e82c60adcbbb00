@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8f7ad9_6fa20f42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-12-30T23:07:45Z",
+      "side": 1,
+      "message": "Is there are better way to pass as NA in Tast than what I\u0027m doing here (logging and returning)?\n\nAutotest has a special error for this (http://cs/chromeos_public/src/third_party/autotest/files/client/common_lib/error.py?l\u003d79), but I couldn\u0027t find anything similar for Tast. Perhaps I could find a way to translate this into a softwareDep?",
+      "revId": "a9bce3cf85ea09c79eb47b5014e82c60adcbbb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
