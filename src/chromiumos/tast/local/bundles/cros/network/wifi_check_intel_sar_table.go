@@ -382,6 +382,14 @@ func verifyTable(decodedSSDT []byte, tableType sarTableType, geoTables []geoSART
 }
 
 func WifiCheckIntelSARTable(ctx context.Context, s *testing.State) {
+	// Check whether the device supports dynamic SAR according to powerd configs.
+	// If the device does not support SAR, then this test should be skipped.
+	supportsSAR, err := ioutil.ReadFile("/run/chromeos-config/v1/power/set-wifi-transmit-power-for-tablet-mode")
+	if err != nil || string(supportsSAR) != "1" {
+		s.Log("Device does not support SAR, skipping test")
+		return
+	}
+
 	const (
 		// Vendor ID for Intel WiFi.
 		intelVendorID = "0x8086"
