@@ -11,7 +11,10 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crostini"
+	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -27,12 +30,23 @@ type ARCOptions struct {
 	timeout time.Duration
 }
 
+// CrostiniOptions describe how to start Crostini. Pass nil if Crostini is not
+// needed.
+type CrostiniOptions struct {
+	mode           string                    // Where (download/build artifact) the container image comes from.
+	debianVersion  vm.ContainerDebianVersion // OS version of the container image.
+	minDiskSize    uint64                    // The minimum size of the VM image in bytes. 0 to use default disk size.
+	largeContainer bool
+	timeout        time.Duration
+}
+
 // StateManager allows Chrome and VMs to be activated, checked and cleaned
 // between tests, and deactivated.
 type StateManager struct {
 	// Activate options.
-	crOptions ChromeOptions
-	useARC    *ARCOptions
+	crOptions   ChromeOptions
+	useARC      *ARCOptions
+	useCrostini *CrostiniOptions
 
 	// Managed Chrome and VM. Default zero values set inactive state.
 	cr          *chrome.Chrome
@@ -40,21 +54,24 @@ type StateManager struct {
 	keyboard    *input.KeyboardEventWriter
 	arc         *arc.ARC
 	arcSnapshot *arc.Snapshot
+	crostini    *vm.Container
 
 	active bool
 }
 
 // NewStateManager creates a state manager from ChromeOptions, and optional
-// ARCOptions, if ARC is to be launched.
-func NewStateManager(crOptions ChromeOptions, useARC *ARCOptions) StateManager {
+// ARCOptions and CrostiniOptions, if ARC and/or Crostini are to be launched.
+func NewStateManager(crOptions ChromeOptions, useARC *ARCOptions, useCrostini *CrostiniOptions) StateManager {
 	return StateManager{
 		crOptions:   crOptions,
 		useARC:      useARC,
+		useCrostini: useCrostini,
 		cr:          nil,
 		tconn:       nil,
 		keyboard:    nil,
 		arc:         nil,
 		arcSnapshot: nil,
+		crostini:    nil,
 		active:      false,
 	}
 }
@@ -101,6 +118,14 @@ func (s *StateManager) ARC() *arc.ARC {
 	return s.arc
 }
 
+// Crostini gets the active Crostini container, or nil if not active.
+func (s *StateManager) Crostini() *vm.Container {
+	if !s.active {
+		panic("Do not call Crostini when multivm.StateManager is not active")
+	}
+	return s.crostini
+}
+
 // Active is true if Chrome and VMs are currently active.
 func (s *StateManager) Active() bool {
 	return s.active
@@ -132,6 +157,9 @@ func (s *StateManager) Activate(ctx context.Context, st StateManagerTestingState
 			opts = append(opts, chrome.ARCEnabled())
 		} else {
 			opts = append(opts, chrome.ARCDisabled())
+		}
+		if s.useCrostini != nil {
+			opts = append(opts, chrome.ExtraArgs("--vmodule=crostini*=1"))
 		}
 		opts = append(opts, chrome.ExtraArgs(s.crOptions.extraArgs...))
 
@@ -176,6 +204,30 @@ func (s *StateManager) Activate(ctx context.Context, st StateManagerTestingState
 		}
 	}
 
+	// Crostini, if requested.
+	if s.useCrostini != nil {
+		if err := func() error {
+			ctx, cancel := context.WithTimeout(ctx, s.useCrostini.timeout)
+			defer cancel()
+
+			testing.ContextLog(ctx, "Creating Crostini")
+			iOptions := crostini.GetInstallerOptions(st, true, s.useCrostini.debianVersion, s.useCrostini.largeContainer, s.cr.User())
+			iOptions.UserName = s.cr.User()
+			iOptions.MinDiskSize = s.useCrostini.minDiskSize
+			if _, err := cui.InstallCrostini(ctx, s.tconn, iOptions); err != nil {
+				return errors.Wrap(err, "failed to install Crostini")
+			}
+			var err error
+			s.crostini, err = vm.DefaultContainer(ctx, s.cr.User())
+			if err != nil {
+				return errors.Wrap(err, "failed to connect to running container")
+			}
+			vm.Lock()
+			return nil
+		}(); err != nil {
+			return err
+		}
+	}
 	s.active = true
 	return nil
 }
@@ -205,6 +257,12 @@ func (s *StateManager) CheckAndReset(ctx context.Context, st StateManagerTesting
 		}
 	}
 
+	// Crostini.
+	if s.crostini != nil {
+		if err := crostini.BasicCommandWorks(ctx, s.crostini); err != nil {
+			return errors.Wrap(err, "failed checking Crostini")
+		}
+	}
 	return nil
 }
 
@@ -263,6 +321,20 @@ func (s *StateManager) Deactivate(ctx context.Context) (errRet error) {
 				}
 			}
 			s.arc = nil
+		}()
+	}
+
+	if s.crostini != nil {
+		defer func() {
+			vm.Unlock()
+			if err := s.crostini.VM.Stop(ctx); err != nil {
+				if errRet == nil {
+					errRet = errors.Wrap(err, "failed to deactivate Crostini")
+				} else {
+					testing.ContextLog(ctx, "Failed to deactivate Crostini: ", err)
+				}
+			}
+			s.crostini = nil
 		}()
 	}
 
