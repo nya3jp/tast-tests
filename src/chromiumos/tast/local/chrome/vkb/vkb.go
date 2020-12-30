@@ -354,6 +354,42 @@ func SwitchToVoiceInput(ctx context.Context, tconn *chrome.TestConn) error {
 	return ui.StableFindAndClick(ctx, tconn, params, &opts)
 }
 
+// TapKeyboardInput changes virtual keyboard to keyboard input layout.
+func TapKeyboardInput(ctx context.Context, tconn *chrome.TestConn) error {
+	params := ui.FindParams{
+		Role:      ui.RoleTypeButton,
+		Name:      "Back",
+		ClassName: "sk icon-key",
+	}
+	opts := testing.PollOptions{Timeout: 2 * time.Second, Interval: 100 * time.Millisecond}
+
+	return ui.StableFindAndClick(ctx, tconn, params, &opts)
+}
+
+// TapAccessPoints changes the suggestion bar to input icons.
+func TapAccessPoints(ctx context.Context, tconn *chrome.TestConn) error {
+	params := ui.FindParams{
+		Role:      ui.RoleTypeButton,
+		Name:      "Show access points",
+		ClassName: "sk icon-key",
+	}
+	opts := testing.PollOptions{Timeout: 2 * time.Second, Interval: 100 * time.Millisecond}
+
+	return ui.StableFindAndClick(ctx, tconn, params, &opts)
+}
+
+// TapHandwritingInput changes virtual keyboard to handwriting input layout.
+func TapHandwritingInput(ctx context.Context, tconn *chrome.TestConn) error {
+	params := ui.FindParams{
+		Role:      ui.RoleTypeButton,
+		Name:      "switch to handwriting, not compatible with ChromeVox",
+		ClassName: "sk icon-key",
+	}
+	opts := testing.PollOptions{Timeout: 2 * time.Second, Interval: 100 * time.Millisecond}
+
+	return ui.StableFindAndClick(ctx, tconn, params, &opts)
+}
+
 // EnableA11yVirtualKeyboard enables or disables accessibility mode of the
 // virtual keyboard. When disabled, the tablet non-a11y virtual keyboard will
 // be used when activated.
