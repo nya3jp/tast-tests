@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b1ee7a_81e9f99f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-30T10:23:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0f17a6b_f46acddf",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "ef7eb42540345f2c8bf7000bafd0032d30e3ec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dde61f72_0a388dff",
@@ -88,6 +112,24 @@
       "writtenOn": "2020-12-30T09:49:08Z",
       "side": 1,
       "message": "Should we check for the initial state of QR code detection?",
+      "revId": "ef7eb42540345f2c8bf7000bafd0032d30e3ec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab267691_f1c3ac89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-30T10:23:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dde61f72_0a388dff",
       "revId": "ef7eb42540345f2c8bf7000bafd0032d30e3ec12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
