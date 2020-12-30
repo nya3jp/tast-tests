@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e0d4d83_9dacee34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-30T04:08:13Z",
+      "side": 1,
+      "message": "If Lacros team does not have strong opinion to include lacros related tests in lacros pacakge, then we will vote for putting the test inside camera package to avoid duplicating the data.",
+      "parentUuid": "37f98111_a4228f88",
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "623b07e6_14902d21",
@@ -101,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21861c27_2f9c3713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/getusermedia.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-30T04:08:13Z",
+      "side": 1,
+      "message": "Reverted the changes.",
+      "parentUuid": "9ab9f412_a1542db8",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc8a7bab_0762b01d",
@@ -114,6 +156,30 @@
       "writtenOn": "2020-12-29T16:24:34Z",
       "side": 1,
       "message": "Hmm... \"Interface\" sounds like too ambiguous to me, though I may not fully understand your intention yet.\nDo you mean ConnectionFactory or something?",
+      "range": {
+        "startLine": 169,
+        "startChar": 3,
+        "endLine": 169,
+        "endChar": 12
+      },
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab8023b9_2f6c9232",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-30T04:08:13Z",
+      "side": 1,
+      "message": "The intention here is to reuse some existing utilities/methods which accept a *chrome.Chrome instance.\n\nGiven that Lacros has already implemented most of the needed APIs (e.g. NewConn(), NewConnForTarget(), TestAPIConn(), etc), I am thinking if we can change the parameter of the utilities/methods to make them accept an interface which both *chrome.Chrome and *lacros.LacrosChrome have implemented.\n\nMay I know if it is common to do so in Tast (Go) or is there any other preferable way? Thanks.",
+      "parentUuid": "cc8a7bab_0762b01d",
       "range": {
         "startLine": 169,
         "startChar": 3,
@@ -147,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8556f9c7_09bd2105",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-30T04:08:13Z",
+      "side": 1,
+      "message": "Reverted the changes.",
+      "parentUuid": "3f22fe32_15b2e315",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 59
+      },
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c885014f_262e2fb0",
@@ -164,6 +254,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c01f99_2b186dcf",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-30T04:08:13Z",
+      "side": 1,
+      "message": "Reverted the changes.",
+      "parentUuid": "c885014f_262e2fb0",
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "589afbec_edc3d4f6",
@@ -177,6 +285,24 @@
       "writtenOn": "2020-12-29T16:24:34Z",
       "side": 1,
       "message": "I think you\u0027ll need to check return value here.",
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "351db7b9_4495c6b2",
+        "filename": "src/chromiumos/tast/local/webrtc/get_user_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-12-30T04:08:13Z",
+      "side": 1,
+      "message": "Reverted the changes.",
+      "parentUuid": "589afbec_edc3d4f6",
       "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
