@@ -22,6 +22,30 @@
       },
       "revId": "6bc13c8260c9c96973f12d6b7a953ccae82c9856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2938e0f_e95588dd",
+        "filename": "src/chromiumos/tast/local/croshealthd/diag.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-12-30T17:32:58Z",
+      "side": 1,
+      "message": "Yeah I\u0027ll add all possible statuses.",
+      "parentUuid": "0cfb0574_351eeb50",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "6bc13c8260c9c96973f12d6b7a953ccae82c9856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
