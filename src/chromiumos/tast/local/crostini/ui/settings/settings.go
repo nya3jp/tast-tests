@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -287,9 +288,15 @@ func (s *Settings) ClickChange(ctx context.Context) (*ResizeDiskDialog, error) {
 	if err := uig.Do(ctx, s.tconn,
 		uig.FindWithTimeout(resizeButton, uiTimeout).LeftClick().WaitForLocationChangeCompleted(),
 		dialog.Self); err != nil {
-		return nil, errors.Wrap(err, "failed to find the delete dialog")
+		return nil, errors.Wrap(err, "failed to find the resize dialog")
 	}
 
+	// It takes some time for the data to load on the slider, especially when Crostini is shutdown.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return uig.Do(ctx, s.tconn, dialog.Slider)
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+		return nil, errors.Wrap(err, "failed to find slider in resize dialog")
+	}
 	return dialog, nil
 }
 
@@ -402,4 +409,106 @@ func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 			return size, nil
 		}
 	}
+}
+
+// GetCurAndTargetDiskSize gets the current disk size and calculates a target disk size to resize.
+func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.KeyboardEventWriter) (curSize, targetSize uint64, err error) {
+	resizeDlg, dialog, err := s.getResizeDialog(ctx)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to launch Resize Linux disk dialog")
+	}
+	defer dialog.Release(ctx)
+
+	// Focus on the slider.
+	if err := uig.Do(ctx, s.tconn, uig.WaitForLocationChangeCompleted(), resizeDlg.Slider.FocusAndWait(15*time.Second)); err != nil {
+		return 0, 0, errors.Wrap(err, "failed to focus on the slider on the Resize Linux disk dialog")
+	}
+
+	// Get current size.
+	curSize, err = GetDiskSize(ctx, s.tconn, resizeDlg.Slider)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to get initial disk size")
+	}
+
+	// Get the minimum size.
+	minSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, resizeDlg.Slider, false, 0)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to resize to the minimum disk size")
+	}
+	// Get the maximum size.
+	maxSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, resizeDlg.Slider, true, 500*SizeGB)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to resize to the maximum disk size")
+	}
+
+	targetSize = minSize + (maxSize-minSize)/2
+	if targetSize == curSize {
+		targetSize = minSize + (maxSize-minSize)/3
+	}
+
+	if err := uig.Do(ctx, s.tconn, uig.WaitForLocationChangeCompleted(), resizeDlg.Cancel.LeftClick()); err != nil {
+		return 0, 0, errors.Wrap(err, "failed to click button Cancel on Resize Linux disk dialog")
+	}
+
+	// Wait the resize dialog gone.
+	if err := ui.WaitUntilGone(ctx, s.tconn, ui.FindParams{Role: dialog.Role, Name: dialog.Name}, 15*time.Second); err != nil {
+		return 0, 0, errors.Wrap(err, "failed to close the Resize Linux disk dialog")
+	}
+	return curSize, targetSize, nil
+}
+
+// Resize changes the disk size to the target size.
+// It returns the size on the slider as string and the result size as uint64.
+func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWriter, curSize, targetSize uint64) (string, uint64, error) {
+	resizeDlg, dialog, err := s.getResizeDialog(ctx)
+	if err != nil {
+		return "", 0, errors.Wrap(err, "failed to launch Resize Linux disk dialog")
+	}
+	defer dialog.Release(ctx)
+
+	// Focus on the slider.
+	if err := uig.Do(ctx, s.tconn, uig.WaitForLocationChangeCompleted(), resizeDlg.Slider.FocusAndWait(15*time.Second)); err != nil {
+		return "", 0, errors.Wrap(err, "failed to focus on the slider on the Resize Linux disk dialog")
+	}
+
+	// Resize to the target size.
+	size, err := ChangeDiskSize(ctx, s.tconn, keyboard, resizeDlg.Slider, targetSize > curSize, targetSize)
+	if err != nil {
+		return "", 0, errors.Wrapf(err, "failed to resize to %d: ", targetSize)
+	}
+
+	// Record the new size on the slider.
+	node, err := uig.GetNode(ctx, s.tconn, resizeDlg.Slider.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeStaticText}, 15*time.Second))
+	if err != nil {
+		return "", 0, errors.Wrap(err, "failed to read the disk size from slider after resizing")
+	}
+	defer node.Release(ctx)
+	sizeOnSlider := node.Name
+
+	if err := uig.Do(ctx, s.tconn, uig.WaitForLocationChangeCompleted(), resizeDlg.Resize.LeftClick()); err != nil {
+		return "", 0, errors.Wrap(err, "failed to click button Resize on Resize Linux disk dialog")
+	}
+
+	// Wait the resize dialog gone.
+	if err := ui.WaitUntilGone(ctx, s.tconn, ui.FindParams{Role: dialog.Role, Name: dialog.Name}, 15*time.Second); err != nil {
+		return "", 0, errors.Wrap(err, "failed to close the Resize Linux disk dialog")
+	}
+
+	return sizeOnSlider, size, nil
+}
+
+func (s *Settings) getResizeDialog(ctx context.Context) (*ResizeDiskDialog, *ui.Node, error) {
+	// Click Change on Linux settings page.
+	resizeDlg, err := s.ClickChange(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to click button Change on Linux settings page")
+	}
+
+	// Get the dialog node and params.
+	dialog, err := uig.GetNode(ctx, s.tconn, resizeDlg.Self)
+	if err != nil {
+		return nil, nil, errors.New("failed to get the node of the Resize Linux disk dialog")
+	}
+
+	return resizeDlg, dialog, nil
 }
