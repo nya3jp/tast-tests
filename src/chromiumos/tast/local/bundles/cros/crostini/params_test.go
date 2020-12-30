@@ -47,6 +47,7 @@ var testFiles = []string{
 	"resize_ok.go",
 	"resize_restart.go",
 	"restart.go",
+	"restart_icon.go",
 	"run_with_arc.go",
 	"shared_font_files.go",
 	"share_downloads_add_files.go",
@@ -132,6 +133,7 @@ var appTests = []string{
 	"app_emacs.go",
 	"app_gedit.go",
 	"app_vscode.go",
+	"restart_app.go",
 }
 
 func TestAppTestParams(t *testing.T) {

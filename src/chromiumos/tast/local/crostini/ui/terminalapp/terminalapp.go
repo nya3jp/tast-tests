@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
@@ -87,7 +88,7 @@ func (ta *TerminalApp) waitForPrompt(ctx context.Context) error {
 	return uig.Do(ctx, ta.tconn, uig.WaitForLocationChangeCompleted(), waitForPrompt)
 }
 
-// clickShelfMenuItem shuts down crostini by right clicking on the terminal app shelf icon.
+// clickShelfMenuItem right clicks the terminal app icon on the shelf and left click the specified menu item.
 func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemNameRegexp string) (retErr error) {
 	revert, err := ash.EnsureTabletModeEnabled(ctx, ta.tconn, false)
 	if err != nil {
@@ -119,6 +120,21 @@ func (ta *TerminalApp) clickShelfMenuItem(ctx context.Context, itemNameRegexp st
 		uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeMenuItem, Attributes: map[string]interface{}{"name": regexp.MustCompile(itemNameRegexp)}}, uiTimeout).LeftClick(),
 	).WithNamef("TerminalApp.clickShelfMenuItem()")
 	return uig.Do(ctx, ta.tconn, shutdown)
+}
+
+// LaunchThroughIcon launches Crostini by clicking the terminal app icon in launcher.
+func LaunchThroughIcon(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
+	// TODO(jinrongwu): type the whole name of Terminal instead of t when the following problem fixed.
+	// The problem is: the launcher exits if typing more than one letter. This problem does not exists in other tests.
+	if err := launcher.SearchAndLaunchWithQuery(ctx, tconn, "t", "Terminal"); err != nil {
+		return nil, errors.Wrap(err, "failed to launch Terminal app")
+	}
+
+	ta, err := Find(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find Terminal window")
+	}
+	return ta, nil
 }
 
 // RestartCrostini shuts down Crostini and launch and exit the Terminal window.
