@@ -8,7 +8,9 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/multivm"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -24,9 +26,21 @@ func init() {
 			Name: "novm",
 			Pre:  multivm.NoVMStarted(),
 		}, {
+			Name:              "arc_crostini",
+			Pre:               multivm.ArcCrostiniStarted(),
+			ExtraData:         []string{vm.ArtifactData(), crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+			ExtraHardwareDeps: crostini.CrostiniStable,
+			ExtraSoftwareDeps: []string{"vm_host", "android_vm", "amd64"},
+		}, {
 			Name:              "arc",
 			Pre:               multivm.ArcStarted(),
 			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name:              "crostini",
+			Pre:               multivm.CrostiniStarted(),
+			ExtraData:         []string{vm.ArtifactData(), crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+			ExtraHardwareDeps: crostini.CrostiniStable,
+			ExtraSoftwareDeps: []string{"vm_host", "amd64"},
 		}},
 	})
 }
@@ -47,6 +61,12 @@ func Login(ctx context.Context, s *testing.State) {
 
 		if _, ok := pkgs["android"]; !ok {
 			s.Fatal("Android package not found: ", pkgs)
+		}
+	}
+
+	if pre.Crostini != nil {
+		if err := crostini.BasicCommandWorks(ctx, pre.Crostini); err != nil {
+			s.Fatal("Crostini basic commands don't work: ", err)
 		}
 	}
 }
