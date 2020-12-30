@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eaa31e2_d8ef045e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-12-30T17:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6be5b994_eb04b2ec",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "d8ff9170f4bd9a562deedd3c20ff3bcee6da16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a65c40_c300434c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-12-30T17:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "758aa63a_ca5eabc3",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "d8ff9170f4bd9a562deedd3c20ff3bcee6da16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94a77076_591e1539",
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe20947_8decf967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_list.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-12-30T17:33:18Z",
+      "side": 1,
+      "message": "Yes I think this routine could be improved in a future CL. Right now I\u0027m just trying to split out the functionality.",
+      "parentUuid": "94a77076_591e1539",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "d8ff9170f4bd9a562deedd3c20ff3bcee6da16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75e979c1_b1ff5df5",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-29T17:44:40Z",
       "side": 1,
       "message": "Maybe reword this - we accept StatusNotRun below for cases like the DUTs not being hooked up to a network.",
+      "range": {
+        "startLine": 126,
+        "startChar": 29,
+        "endLine": 126,
+        "endChar": 48
+      },
+      "revId": "d8ff9170f4bd9a562deedd3c20ff3bcee6da16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d5529a_28964486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-12-30T17:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75e979c1_b1ff5df5",
       "range": {
         "startLine": 126,
         "startChar": 29,
