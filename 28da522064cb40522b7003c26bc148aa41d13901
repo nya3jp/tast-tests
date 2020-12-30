@@ -22,6 +22,30 @@
       },
       "revId": "28da522064cb40522b7003c26bc148aa41d13901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e377f22f_d1ef847a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-12-30T17:33:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a107d54d_5bb439b8",
+      "range": {
+        "startLine": 152,
+        "startChar": 34,
+        "endLine": 152,
+        "endChar": 49
+      },
+      "revId": "28da522064cb40522b7003c26bc148aa41d13901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
