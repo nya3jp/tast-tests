@@ -39,6 +39,30 @@
       },
       "revId": "656becafe043d6d60accda77adaaa328e5307a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb212f1d_26e6e0f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-30T00:27:15Z",
+      "side": 1,
+      "message": "Moving this into test params so that we can write:\n\nExtraAttr: []string{\"group:fingerprint-icetower\"},\nName:      \"dragonclaw_aes\",\nVal:       \"dragonclaw_test-aes.bin\",\n\nfor the other setup with Icetower (which is the dev board for dragonclaw firmware)",
+      "parentUuid": "7b2515f7_4ff7317e",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
