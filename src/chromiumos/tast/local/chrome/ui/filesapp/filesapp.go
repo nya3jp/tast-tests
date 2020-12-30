@@ -596,15 +596,7 @@ func (f *FilesApp) SelectDirectoryContextMenuItem(ctx context.Context, dirName, 
 		return errors.Wrapf(err, "failed to find %s", menuItem)
 	}
 	defer item.Release(ctx)
-
-	// Sometimes one left click does not work, add retry.
-	return testing.Poll(ctx, func(context.Context) error {
-		if err := item.StableLeftClick(ctx, f.stablePollOpts); err != nil {
-			return err
-		}
-
-		return f.Root.WaitUntilDescendantGone(ctx, ui.FindParams{Name: menuItem, Role: ui.RoleTypeMenuItem}, 15*time.Second)
-	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second})
+	return item.StableLeftClick(ctx, f.stablePollOpts)
 }
 
 // SelectEnclosingFolder clicks the enclosing folder via the breadcrumbs.
