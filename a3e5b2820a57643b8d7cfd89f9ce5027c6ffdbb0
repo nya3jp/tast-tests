@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "784093ca_4514352b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2020-12-30T05:14:58Z",
+      "side": 1,
+      "message": "Using \"t\" instead of \"Terminal\" here is because the launcher exits immediately if setting it more than 1 letter. Need to fix this.",
+      "range": {
+        "startLine": 127,
+        "startChar": 58,
+        "endLine": 127,
+        "endChar": 59
+      },
+      "revId": "a3e5b2820a57643b8d7cfd89f9ce5027c6ffdbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
