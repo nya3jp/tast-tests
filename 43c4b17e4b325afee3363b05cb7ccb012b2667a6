@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56951fc3_aab0f695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-31T06:04:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de1a635f_f41c2da1",
+      "revId": "43c4b17e4b325afee3363b05cb7ccb012b2667a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc3e06ee_42310978",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ac5cd0e_6062c067",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-31T06:04:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc3e06ee_42310978",
+      "revId": "43c4b17e4b325afee3363b05cb7ccb012b2667a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1e4960b_adbb9bc4",
@@ -48,6 +84,24 @@
       "writtenOn": "2020-12-31T03:00:50Z",
       "side": 1,
       "message": "Could you help move the nested class and function out of manualAlign()? I feel it\u0027s hard to follow the code because everything is inlined.\n\nIf you don\u0027t want to pollute the global namespace, let\u0027s wrap the whole file in a IIFE or make it a ES6 module.",
+      "revId": "43c4b17e4b325afee3363b05cb7ccb012b2667a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb93ff7_2cf45ce5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-31T06:04:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e4960b_adbb9bc4",
       "revId": "43c4b17e4b325afee3363b05cb7ccb012b2667a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3375b41c_64e7135a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-31T06:04:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "957b39e5_9f36884c",
+      "range": {
+        "startLine": 54,
+        "startChar": 45,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "43c4b17e4b325afee3363b05cb7ccb012b2667a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c601d3c3_2ccd8656",
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf39f277_319ce7b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-31T06:04:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c601d3c3_2ccd8656",
+      "revId": "43c4b17e4b325afee3363b05cb7ccb012b2667a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7791a3af_5e539dec",
@@ -105,6 +201,24 @@
       "writtenOn": "2020-12-31T03:00:50Z",
       "side": 1,
       "message": "huge nit: merge with next line, or for (const track of ...getVideoTracks()) track.stop();",
+      "revId": "43c4b17e4b325afee3363b05cb7ccb012b2667a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad10673f_629c3490",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-12-31T06:04:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7791a3af_5e539dec",
       "revId": "43c4b17e4b325afee3363b05cb7ccb012b2667a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
