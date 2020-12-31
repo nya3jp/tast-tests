@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b91d21b_957112a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_cn_hello.hw",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "Purple colored space means it can be removed. Please fix other places as well.",
+      "range": {
+        "startLine": 4,
+        "startChar": 3978,
+        "endLine": 4,
+        "endChar": 3979
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "934f21d2_b74bf7fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "Attr: []string{\"group:input-tools\"}\n\nLooks like you are on old code base.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 88
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa852118_c126f858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "This is used for audio test only. Do not think it is required by hw.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 26
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e576fa9f_84769b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "Same to the question on voice input. This test file is only an input to the function, not required to be copied to user disk. Can we read it directly to memory?",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 34
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcded2e2_56915e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "Looks like this part is repeated multiple times across tests. I have raised https://crrev.com/c/2606095 to move the check inside AddAndSetInputMethod function.\n\nYou can remove the check here.",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d026f95_2d7e2e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "The keyboard button only appears if current layout is not keyboard. It depends last test finished on a non-keyboard input test. Every single test should be independent, and assumed to be started with default settings.Thus, this function is not required. If it fails after voice input test, it means the tear down of last test is not good.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5f876e_f26bffaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "nit: update comment",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 25
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdfbf359_0786ac79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "pathGroup is middle data, these 2 functions can be merged.",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02fa820_d46dce26",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "All these types are internal data, they are not required to be exposed to user function. The only input data to handwriting function is the file path.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b30f2cb_7a8a2f2a",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "Can you add in comment on why +0.5 before make it int?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 60
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3009ba7c_dc1cdb13",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "I think it is nice to move this function into vkb.go, this is a function happens on general vkb  panel.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 1
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fdaa63c_68024ca2",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "This error is ignored?\n\nreturn nil, err?",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 4
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b08f7a0_7ae5806c",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "Is this too small for a real user behavior?",
+      "range": {
+        "startLine": 137,
+        "startChar": 52,
+        "endLine": 137,
+        "endChar": 71
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2d23942_f594a504",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-12-31T00:47:06Z",
+      "side": 1,
+      "message": "This function is not required as explained in another comment.",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 1
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
