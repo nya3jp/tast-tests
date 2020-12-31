@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ceac2b_a2d723d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-12-31T03:09:40Z",
+      "side": 1,
+      "message": "camera related code lgtm. Defer +2 and review of chrome.Interface to hidehiko@.",
+      "revId": "99a137650bac6c7bddfcb167ba8fc84f17dc80d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
