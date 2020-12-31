@@ -307,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6361191f_2b8ff2ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-31T03:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22c8f5ea_d1a304e4",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a5f876e_f26bffaf",
@@ -613,6 +637,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ebb7c1_0ce41dba",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-31T03:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "800ae100_824ab172",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 4
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b08f7a0_7ae5806c",
@@ -674,6 +722,30 @@
       "side": 1,
       "message": "Ack. Can you also add some comments / examples above code to help other users to understand the velocity.",
       "parentUuid": "8a673efb_74dcb9bd",
+      "range": {
+        "startLine": 137,
+        "startChar": 52,
+        "endLine": 137,
+        "endChar": 71
+      },
+      "revId": "25ce0d9897081e62abf7e77ffc98a2521a987549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ecb9c1_cbd0ef10",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2020-12-31T03:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a79f7da_7728f809",
       "range": {
         "startLine": 137,
         "startChar": 52,
