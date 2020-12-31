@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b02445_d7387d41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-31T00:52:02Z",
+      "side": 1,
+      "message": "Changed to subattrs like {\"group:fingerprint-mcu\", \"dragonclaw\"} for clarity",
+      "parentUuid": "fb212f1d_26e6e0f9",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d40e2ac_ee55a4b0",
@@ -78,6 +102,24 @@
       "writtenOn": "2020-12-30T01:07:50Z",
       "side": 1,
       "message": "Another option is filepath.Dir, although I\u0027m not sure if you expect additional subdirectories later",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed375757_1f6314f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-31T00:52:02Z",
+      "side": 1,
+      "message": "Ack, though I don\u0027t expect subdirectories in the near future, I\u0027d like to keep the flexibility of using string splits",
+      "parentUuid": "5d40e2ac_ee55a4b0",
       "revId": "656becafe043d6d60accda77adaaa328e5307a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19adf69_11d3a8f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-31T00:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8734711f_4c719bf3",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b038689d_967f289f",
@@ -112,6 +172,24 @@
       "writtenOn": "2020-12-30T01:07:50Z",
       "side": 1,
       "message": "Optional: you could extract only the file of interest from the tarball",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61bc8d67_c0326c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-31T00:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b038689d_967f289f",
       "revId": "656becafe043d6d60accda77adaaa328e5307a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -133,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6961452_c21d356b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-31T00:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cd9c38e_c63c0461",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41b8ee39_c067abab",
@@ -146,6 +242,24 @@
       "writtenOn": "2020-12-30T01:07:50Z",
       "side": 1,
       "message": "Can you give an example of the expected output you are parsing here?  it will make it easier to debug later if the format changes.",
+      "revId": "656becafe043d6d60accda77adaaa328e5307a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b319ee6_2aed600b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-31T00:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41b8ee39_c067abab",
       "revId": "656becafe043d6d60accda77adaaa328e5307a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
