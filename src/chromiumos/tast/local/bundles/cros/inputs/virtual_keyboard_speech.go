@@ -110,18 +110,9 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	}
 	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	// Get the current ime code.
-	currentIME, err := ime.GetCurrentInputMethod(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get current ime: ", err)
-	}
-
-	// Only install input when the current ime is different to the ime we are testing.
-	if testIME != currentIME {
-		// Add the ime input being tested to the test device.
-		if err := ime.AddAndSetInputMethod(ctx, tconn, testIME); err != nil {
-			s.Fatalf("Failed to set input method to %s: %v: ", testIME, err)
-		}
+	// Add the ime input being tested to the test device.
+	if err := ime.AddAndSetInputMethod(ctx, tconn, testIME); err != nil {
+		s.Fatalf("Failed to set input method to %s: %v: ", testIME, err)
 	}
 
 	// Activate voice input.
