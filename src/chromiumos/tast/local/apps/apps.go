@@ -47,6 +47,12 @@ var Canvas = App{
 	Name: "Chrome Canvas",
 }
 
+// ConnectivityDiagnostics has details about Connectivity Diagnostics app.
+var ConnectivityDiagnostics = App{
+	ID: "pinjbkpghjkgmlmfidajjdjocdpegjkg",
+	Name: "Connectivity Diagnostics",
+}
+
 // Diagnostics has details about Diagnostics SWA.
 var Diagnostics = App{
 	ID:   "keejpcfcpecjhmepmpcfgjemkmlicpam",
