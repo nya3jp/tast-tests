@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ffddb88_2a26445b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2021-01-01T02:34:42Z",
+      "side": 1,
+      "message": "Addressed the previous review comments. \nAdded a new subpackage \u0027ui/showpassword/show_password.go\u0027 that includes common functions that the 2 tests share. \nRenamed both the tests.\nAdded new file constants.go in lockscreen package.",
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
