@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f329bf0_d6ff150e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/show_password_lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2021-01-01T02:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abfc7a28_8922d080",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "a66084af5507eb661b1398b4067733be689a4cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90e74adc_e629bf41",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-12-04T02:14:21Z",
       "side": 1,
       "message": "Should these be stored in tast-tests-private similar to other login tests?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "a66084af5507eb661b1398b4067733be689a4cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9d2fe5_1ea9d035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/show_password_lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2021-01-01T02:38:42Z",
+      "side": 1,
+      "message": "Based on offline discussion, keeping these params within the script.",
+      "parentUuid": "90e74adc_e629bf41",
       "range": {
         "startLine": 38,
         "startChar": 2,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ecf1ee_e361d5a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/show_password_lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2021-01-01T02:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cffde4d_c48f8478",
+      "range": {
+        "startLine": 129,
+        "startChar": 115,
+        "endLine": 129,
+        "endChar": 119
+      },
+      "revId": "a66084af5507eb661b1398b4067733be689a4cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6767e568_d3e39e2f",
@@ -117,6 +189,30 @@
       "writtenOn": "2020-12-04T02:14:21Z",
       "side": 1,
       "message": "I think this function does too many things\n1 open settings\n2 enable pin unlock\n3 lock the scree\n\nand the name openSettings doesn\u0027t indicate that it does so much. Can you break it up ?",
+      "range": {
+        "startLine": 207,
+        "startChar": 5,
+        "endLine": 207,
+        "endChar": 17
+      },
+      "revId": "a66084af5507eb661b1398b4067733be689a4cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31e6a4d6_cc52b8dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/show_password_lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2021-01-01T02:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6767e568_d3e39e2f",
       "range": {
         "startLine": 207,
         "startChar": 5,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d83e7a5_86dedfba",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2021-01-01T02:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ebd644a_e909fec5",
+      "range": {
+        "startLine": 117,
+        "startChar": 47,
+        "endLine": 117,
+        "endChar": 82
+      },
+      "revId": "a66084af5507eb661b1398b4067733be689a4cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0786858_85586dbf",
@@ -163,6 +283,30 @@
       "writtenOn": "2020-12-04T02:14:21Z",
       "side": 1,
       "message": "You can leave out the word \"function\" in comments :)",
+      "range": {
+        "startLine": 130,
+        "startChar": 16,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "a66084af5507eb661b1398b4067733be689a4cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ddb982_90288304",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2021-01-01T02:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0786858_85586dbf",
       "range": {
         "startLine": 130,
         "startChar": 16,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06645701_c9ebde50",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2021-01-01T02:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da759401_d03feea7",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "a66084af5507eb661b1398b4067733be689a4cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c52193e_b0d585c6",
@@ -209,6 +377,30 @@
       "writtenOn": "2020-12-04T02:14:21Z",
       "side": 1,
       "message": "Replace with something simpler like:\n\nWaitForHidePassword checks that password/pin field is autohidden 5s after show password button is pressed",
+      "range": {
+        "startLine": 147,
+        "startChar": 23,
+        "endLine": 147,
+        "endChar": 107
+      },
+      "revId": "a66084af5507eb661b1398b4067733be689a4cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "549bf5f8_afd05eba",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2021-01-01T02:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c52193e_b0d585c6",
       "range": {
         "startLine": 147,
         "startChar": 23,
