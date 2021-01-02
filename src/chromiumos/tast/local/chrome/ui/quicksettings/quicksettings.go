@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
@@ -535,4 +536,75 @@ func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, kb *input.Ke
 	}
 
 	return nil
+}
+
+// CommonElementsInQuickSettings returns a map that contains descriptive names and its Quick Settings params.
+// The params in the map are common to Locked/SignIn/LoggedIn screen Quick Settings.
+// Also returns a map that contains all the errors generated and grouped as fatal and non-fatal.
+func CommonElementsInQuickSettings(ctx context.Context, tconn *chrome.TestConn, battery, restrictedPods bool) (map[string]ui.FindParams, map[string]bool) {
+
+	// Associate the params with a descriptive name for better error reporting.
+	getNodes := map[string]ui.FindParams{
+		"Shutdown button":   ShutdownBtnParams,
+		"Collapse button":   CollapseBtnParams,
+		"Volume slider":     VolumeSliderParams,
+		"Brightness slider": BrightnessSliderParams,
+		"Date/time display": DateViewParams,
+	}
+
+	if battery {
+		getNodes["Battery display"] = BatteryViewParams
+	}
+
+	featuredPods := []SettingPod{SettingPodNetwork}
+	// errorsMap contains the error details and its errorType (true for Fatal and false for non-fatal).
+	var errorsMap = map[string]bool{}
+
+	// First check for the bluetooth pod on devices with at least 1 bluetooth adapter.
+	// If bluetooth adapters exists, add the bluetooth settingPod in the featuredPods list.
+	if adapters, err := bluetooth.Adapters(ctx); err != nil {
+		err = errors.Wrap(err, "unable to get Bluetooth adapters")
+		errorsMap[err.Error()] = true
+	} else if len(adapters) > 0 {
+		featuredPods = append(featuredPods, SettingPodBluetooth)
+	}
+
+	// For Locked screen, check that the network and bluetooth buttons are present and restricted (cannot be clicked).
+	if restrictedPods {
+		for _, setting := range featuredPods {
+			if restricted, err := PodRestricted(ctx, tconn, setting); err != nil {
+				err = errors.Wrapf(err, "failed to check restricted status of %v setting", setting)
+				errorsMap[err.Error()] = true
+			} else if !restricted {
+				err = errors.Wrapf(err, "pod setting %v not restricted", setting)
+				errorsMap[err.Error()] = false
+			}
+		}
+
+		// Check that the expected accessibility UI element is shown in Quick Settings.
+		accessibilityParams, err := PodIconParams(SettingPodAccessibility)
+		if err != nil {
+			err = errors.Wrap(err, "failed to get params for accessibility pod icon")
+			errorsMap[err.Error()] = true
+		} else {
+			getNodes["Accessibility pod"] = accessibilityParams
+		}
+	} else {
+		// Add the pods accessibility and keyboard, specific to signIn screen in featuredPods List.
+		featuredPods = append(featuredPods, SettingPodAccessibility)
+		featuredPods = append(featuredPods, SettingPodKeyboard)
+
+		// Loop through all the Settingspod and generate the ui.FindParams for the specified quick settings pod.
+		for _, settingPod := range featuredPods {
+			podParams, err := PodIconParams(settingPod)
+			if err != nil {
+				err = errors.Wrapf(err, "failed to get params for %v pod icon", podParams)
+				errorsMap[err.Error()] = true
+			} else {
+				getNodes[string(settingPod)+" pod"] = podParams
+			}
+		}
+	}
+
+	return getNodes, errorsMap
 }
