@@ -697,3 +697,18 @@ func saveMinidumpsWithoutCrash(ctx context.Context) error {
 	minidump.SaveWithoutCrash(ctx, dir, matchers...)
 	return nil
 }
+
+// SkipToLoginForTesting skips OOBE screen before Login.
+func (c *Chrome) SkipToLoginForTesting(ctx context.Context) error {
+	conn, err := c.WaitForOOBEConnection(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to wait for OOBE connection")
+	}
+	defer conn.Close()
+
+	testing.ContextLog(ctx, "Skip OOBE before login")
+	if err := conn.Eval(ctx, "Oobe.skipToLoginForTesting()", nil); err != nil {
+		return err
+	}
+	return nil
+}
