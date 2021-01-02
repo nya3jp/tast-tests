@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
@@ -575,4 +576,48 @@ func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, kb *input.Ke
 	}
 
 	return nil
+}
+
+// RestrictedSettingsPods returns the setting pods that are restricted when Quick Settings is opened while a user is not signed in.
+func RestrictedSettingsPods(ctx context.Context) ([]SettingPod, error) {
+
+	restrictedPods := []SettingPod{SettingPodNetwork}
+
+	// First check for the bluetooth pod on devices with at least 1 bluetooth adapter.
+	// If bluetooth adapters exists, add the bluetooth settingPod in the restrictedPods list.
+	if adapters, err := bluetooth.Adapters(ctx); err != nil {
+		return restrictedPods, errors.Wrap(err, "unable to get Bluetooth adapters")
+	} else if len(adapters) > 0 {
+		restrictedPods = append(restrictedPods, SettingPodBluetooth)
+	}
+
+	return restrictedPods, nil
+}
+
+// CommonElementsInQuickSettings returns a map that contains ui.FindParams for Quick Settings UI elements that are present in all sign-in states (signed in, signed out, screen locked).
+// The keys of the map are descriptive names for the UI elements.
+func CommonElementsInQuickSettings(ctx context.Context, tconn *chrome.TestConn, battery bool) (map[string]ui.FindParams, error) {
+
+	// Associate the params with a descriptive name for better error reporting.
+	getNodes := map[string]ui.FindParams{
+		"Shutdown button":   ShutdownBtnParams,
+		"Collapse button":   CollapseBtnParams,
+		"Volume slider":     VolumeSliderParams,
+		"Brightness slider": BrightnessSliderParams,
+		"Date/time display": DateViewParams,
+	}
+
+	if battery {
+		getNodes["Battery display"] = BatteryViewParams
+	}
+
+	// Check that the expected accessibility UI element is shown in Quick Settings.
+	accessibilityParams, err := PodIconParams(SettingPodAccessibility)
+	if err != nil {
+		return getNodes, errors.Wrap(err, "failed to get params for accessibility pod icon")
+	}
+
+	getNodes["Accessibility pod"] = accessibilityParams
+
+	return getNodes, nil
 }
