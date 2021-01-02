@@ -110,4 +110,5 @@ const (
 	SettingPodNetwork       SettingPod = "network"
 	SettingPodNightLight    SettingPod = "Night Light"
 	SettingPodNearbyShare   SettingPod = "Nearby Share"
+	SettingPodKeyboard      SettingPod = "keyboard"
 )
