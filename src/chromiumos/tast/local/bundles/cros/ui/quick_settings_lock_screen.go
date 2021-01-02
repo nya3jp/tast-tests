@@ -110,28 +110,18 @@ func QuickSettingsLockScreen(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Get the common Quick Settings elements.
+	checkNodes := quicksettings.CommonElementsExist(s.Param().(bool))
+
 	// Check that the expected UI elements are shown in Quick Settings.
 	accessibilityParams, err := quicksettings.PodIconParams(quicksettings.SettingPodAccessibility)
 	if err != nil {
 		s.Fatal("Failed to get params for accessibility pod icon: ", err)
+	} else {
+		checkNodes["Accessibility pod"] = accessibilityParams
 	}
 
-	// Associate the params with a descriptive name for better error reporting.
-	checkNodes := map[string]ui.FindParams{
-		"Accessibility pod": accessibilityParams,
-		"Brightness slider": quicksettings.BrightnessSliderParams,
-		"Volume slider":     quicksettings.VolumeSliderParams,
-		"Signout button":    quicksettings.SignoutBtnParams,
-		"Shutdown button":   quicksettings.ShutdownBtnParams,
-		"Collapse button":   quicksettings.CollapseBtnParams,
-		"Date/time display": quicksettings.DateViewParams,
-	}
-
-	// Only check the battery display if the DUT has a battery.
-	if s.Param().(bool) {
-		checkNodes["Battery display"] = quicksettings.BatteryViewParams
-	}
-
+	// Loop through all the Quick Settings nodes of locked screen and verify if they exist.
 	for node, params := range checkNodes {
 		if shown, err := ui.Exists(ctx, tconn, params); err != nil {
 			s.Fatalf("Failed to check existence of %v: %v", node, err)

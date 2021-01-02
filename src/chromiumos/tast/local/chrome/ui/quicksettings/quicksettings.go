@@ -536,3 +536,22 @@ func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, kb *input.Ke
 
 	return nil
 }
+
+// CommonElementsExist returns a map that contains descriptive names and its Quick Settings params.
+// The params in the map are common to Locked/SignIn/LoggedIn screen Quick Settings.
+func CommonElementsExist(battery bool) map[string]ui.FindParams {
+
+	// Associate the params with a descriptive name for better error reporting.
+	getNodes := map[string]ui.FindParams{
+		"Shutdown button":   ShutdownBtnParams,
+		"Collapse button":   CollapseBtnParams,
+		"Volume slider":     VolumeSliderParams,
+		"Brightness slider": BrightnessSliderParams,
+		"Date/time display": DateViewParams,
+	}
+	if battery {
+		getNodes["Battery display"] = BatteryViewParams
+	}
+
+	return getNodes
+}
