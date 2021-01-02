@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
@@ -115,50 +114,38 @@ func QuickSettingsLockScreen(ctx context.Context, s *testing.State) {
 		s.Error("Notifications were not hidden")
 	}
 
-	// Check that the network and bluetooth buttons are present and restricted (cannot be clicked).
-	restrictedPods := []quicksettings.SettingPod{quicksettings.SettingPodNetwork}
-
-	// Only check for the bluetooth pod on devices with at least 1 bluetooth adapter.
-	if adapters, err := bluetooth.Adapters(ctx); err != nil {
-		s.Fatal("Unable to get Bluetooth adapters: ", err)
-	} else if len(adapters) > 0 {
-		restrictedPods = append(restrictedPods, quicksettings.SettingPodBluetooth)
+	// Get the restricted featured pods.
+	restrictedPods, err := quicksettings.RestrictedSettingsPods(ctx)
+	if err != nil {
+		s.Fatal("Failed to get the restricted pod param: ", err)
 	}
 
+	// Verify that the pod icons are restricted on the locked screen.
 	for _, setting := range restrictedPods {
-		if restricted, err := quicksettings.PodRestricted(ctx, tconn, setting); err != nil {
+		restricted, err := quicksettings.PodRestricted(ctx, tconn, setting)
+		if err != nil {
 			s.Fatalf("Failed to check restricted status of pod setting %v: %v", setting, err)
-		} else if !restricted {
+		}
+		if !restricted {
 			s.Errorf("Pod setting %v not restricted: %v", setting, err)
 		}
 	}
 
-	// Check that the expected UI elements are shown in Quick Settings.
-	accessibilityParams, err := quicksettings.PodIconParams(quicksettings.SettingPodAccessibility)
+	hasBattery := s.Param().(bool)
+
+	// Get the common Quick Settings elements to verify.
+	checkNodes, err := quicksettings.CommonElements(ctx, tconn, hasBattery, true /* isLockedScreen */)
 	if err != nil {
-		s.Fatal("Failed to get params for accessibility pod icon: ", err)
+		s.Fatal("Failed to get the params in LockedScreen: ", err)
 	}
 
-	// Associate the params with a descriptive name for better error reporting.
-	checkNodes := map[string]ui.FindParams{
-		"Accessibility pod": accessibilityParams,
-		"Brightness slider": quicksettings.BrightnessSliderParams,
-		"Volume slider":     quicksettings.VolumeSliderParams,
-		"Signout button":    quicksettings.SignoutBtnParams,
-		"Shutdown button":   quicksettings.ShutdownBtnParams,
-		"Collapse button":   quicksettings.CollapseBtnParams,
-		"Date/time display": quicksettings.DateViewParams,
-	}
-
-	// Only check the battery display if the DUT has a battery.
-	if s.Param().(bool) {
-		checkNodes["Battery display"] = quicksettings.BatteryViewParams
-	}
-
+	// Loop through all the Quick Settings nodes of locked screen and verify if they exist.
 	for node, params := range checkNodes {
-		if shown, err := ui.Exists(ctx, tconn, params); err != nil {
+		shown, err := ui.Exists(ctx, tconn, params)
+		if err != nil {
 			s.Fatalf("Failed to check existence of %v: %v", node, err)
-		} else if !shown {
+		}
+		if !shown {
 			s.Errorf("%v was not found in the UI", node)
 		}
 	}
