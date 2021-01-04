@@ -85,30 +85,20 @@ func launchAppForNFL(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 		homeText = "Home"
 	)
 
-	// Click on skip button.
+	// Click on skip button until home page exists.
 	skipButton := d.Object(ui.Text(skipText))
-	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("skip button doesn't exist: ", err)
-	} else if err := skipButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on skip button: ", err)
-	}
-
-	// Click on skip button to skip location access.
-	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("skip button doesn't exist: ", err)
-	} else if err := skipButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on skip button: ", err)
-	}
-
-	// Click on skip button to skip favorite team.
-	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("skip button doesn't exist: ", err)
-	} else if err := skipButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on skip button: ", err)
+	homeButton := d.Object(ui.Text(homeText))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := homeButton.Exists(ctx); err != nil {
+			skipButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Error("Home icon doesn't exist: ", err)
 	}
 
 	// Check for home icon.
-	homeButton := d.Object(ui.Text(homeText))
 	if err := homeButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Fatal("Home icon doesn't exist: ", err)
 	}
