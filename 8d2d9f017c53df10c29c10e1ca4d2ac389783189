@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b261811_3d05e940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_restart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-04T21:31:37Z",
+      "side": 1,
+      "message": "You need to add this file to src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+      "revId": "8d2d9f017c53df10c29c10e1ca4d2ac389783189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
