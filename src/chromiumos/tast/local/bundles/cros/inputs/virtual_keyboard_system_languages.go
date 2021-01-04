@@ -10,9 +10,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
 
@@ -38,54 +36,48 @@ func init() {
 				ExtraHardwareDeps: pre.InputsStableModels,
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
-					regionCode:             "es",
-					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_ES_SPA),
-					defaultInputMethodName: "abrir menú de teclado", // label displayed as ES
+					regionCode:           "es",
+					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 				},
 			}, {
 				Name:              "es_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
-					regionCode:             "es",
-					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_ES_SPA),
-					defaultInputMethodName: "abrir menú de teclado", // label displayed as ES
+					regionCode:           "es",
+					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_ES_SPA),
 				},
 			}, {
 				Name:              "fr_stable",
 				ExtraHardwareDeps: pre.InputsStableModels,
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
-					regionCode:             "fr",
-					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_FR_FRA),
-					defaultInputMethodName: "ouvrir le menu du clavier", // label displayed as FR
+					regionCode:           "fr",
+					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 				},
 			}, {
 				Name:              "fr_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
-					regionCode:             "fr",
-					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_FR_FRA),
-					defaultInputMethodName: "ouvrir le menu du clavier", // label displayed as FR
+					regionCode:           "fr",
+					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_FR_FRA),
 				},
 			}, {
 				Name:              "jp_stable",
 				ExtraHardwareDeps: pre.InputsStableModels,
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val: testParameters{
-					regionCode:             "jp",
-					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_JP_JPN),
-					defaultInputMethodName: "キーボード メニューを開く", // label displayed as JA
+					regionCode:           "jp",
+					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_JP_JPN),
 				},
 			}, {
 				Name:              "jp_unstable",
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
-					regionCode:             "jp",
-					defaultInputMethodID:   string(ime.INPUTMETHOD_XKB_JP_JPN),
-					defaultInputMethodName: "キーボード メニューを開く", //label displayed as JA
+					regionCode:           "jp",
+					defaultInputMethodID: string(ime.INPUTMETHOD_XKB_JP_JPN),
 				},
 			},
 		},
@@ -95,7 +87,6 @@ func init() {
 func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 	regionCode := s.Param().(testParameters).regionCode
 	defaultInputMethodID := ime.IMEPrefix + s.Param().(testParameters).defaultInputMethodID
-	defaultInputMethodName := s.Param().(testParameters).defaultInputMethodName
 
 	cr, err := chrome.New(ctx, chrome.Region(regionCode), chrome.VKEnabled())
 	if err != nil {
@@ -118,24 +109,5 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 
 	if currentInputMethodID != defaultInputMethodID {
 		s.Fatalf("Failed to verify default input method in country %s. got %s; want %s", regionCode, currentInputMethodID, defaultInputMethodID)
-	}
-
-	if err := vkb.ShowVirtualKeyboard(ctx, tconn); err != nil {
-		s.Fatal("Failed to show the virtual keyboard: ", err)
-	}
-
-	s.Log("Waiting for the virtual keyboard to show")
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-
-	languageMenuNode, err := vkb.DescendantNode(ctx, tconn, ui.FindParams{ClassName: "sk label-key language-menu"})
-	if err != nil {
-		s.Fatal("Failed to find language menu node: ", err)
-	}
-	defer languageMenuNode.Release(ctx)
-
-	if languageMenuNode.Name != defaultInputMethodName {
-		s.Errorf("unepxected language menu name: got %q; want %q", languageMenuNode.Name, defaultInputMethodName)
 	}
 }
