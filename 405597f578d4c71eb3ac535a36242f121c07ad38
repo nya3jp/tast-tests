@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fcfce4a_2feced18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-05T03:22:47Z",
+      "side": 1,
+      "message": "When remote case running via gRPC call, the method may generate files (e.g. take screenshot when error, generate perf log, etc.). And we want to collect those files end of case.",
+      "parentUuid": "49b9e1c8_3f5d6ef4",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "83d61090_b4942b38",
@@ -148,6 +172,24 @@
       "writtenOn": "2020-11-30T10:08:11Z",
       "side": 1,
       "message": "Fixtures are now available, and as I understood they will replace preconditions in the future.\nIs it possible to implement this as a fixture (real qustion, as not everything is supported in the fixtures at the moment), to avoid a possible rewriting in the near future?\nA fixtue example:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/fixture.go\n\n+CC Shuhei for more info on fixtures.\n",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57372c87_3ee1c89c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-05T03:22:47Z",
+      "side": 1,
+      "message": "Thanks for the comments. Fixture is new to us and I think we can change this into fixture implementation with a new CL when precondition is deprecated. But this is a good remind and we will try to use fixture for any preconditions we will be developing.",
+      "parentUuid": "5cde0e96_907d1ea4",
       "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -436,6 +478,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30883859_dbba80c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-05T03:22:47Z",
+      "side": 1,
+      "message": "Thanks for the comments. I will leave the implementation as is until @nya has more input on how to change this in infrastructure.",
+      "parentUuid": "93b1af5e_8b404e21",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b3b96da_ae0b9a7d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
         "patchSetId": 1
@@ -482,6 +548,30 @@
       "writtenOn": "2020-12-01T01:11:18Z",
       "side": 1,
       "message": "Where is this method coming from? I don\u0027t see this in this commit or in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2562900\n\nBecause I can\u0027t figure out where this is coming from, the structure of mduts is unclear. From 75-79, it looks like it\u0027s a list of a list that you\u0027re flattening into a single list? If we\u0027re parsing the DUTs from a parameter, can we simply flatten that list to start?",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604129bd_3d4fedc9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-05T03:22:47Z",
+      "side": 1,
+      "message": "This is newly added with CL https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2558269 to support multi-DUTs. \n\nThe CompDUTs() returns a list of a list, because companion DUTs have difference types (e.g. host, presenter, etc.). And we made each type like a pool, then the case could take specific type of DUT for using.",
+      "parentUuid": "844714e9_9fe369db",
       "range": {
         "startLine": 73,
         "startChar": 10,
@@ -698,6 +788,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2781849f_8b996314",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-05T03:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d588d6ac_e605935d",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28b94215_5e6d990d",
@@ -793,6 +901,30 @@
       "writtenOn": "2020-11-30T06:31:35Z",
       "side": 1,
       "message": "I can\u0027t find it in cs/. Is this newly added function?",
+      "range": {
+        "startLine": 116,
+        "startChar": 12,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c634de72_053f59d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-05T03:22:47Z",
+      "side": 1,
+      "message": "Yes. This is newly added with CL https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2558269 to support multi-DUTs",
+      "parentUuid": "34dffa70_53f7c54c",
       "range": {
         "startLine": 116,
         "startChar": 12,
@@ -903,6 +1035,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f445bbe_cdf82c62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-05T03:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42577481_c03efb8a",
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "087830c6_d41e34ed",
@@ -916,6 +1066,30 @@
       "writtenOn": "2020-12-04T23:08:37Z",
       "side": 1,
       "message": "It is hard to follow what does the \u0027local storage\u0027 mean.  This sentence would be fine as a doc string should start with a simple concise sentence, but could you add more descriptions in the following lines for what the local storage does, how it\u0027s used, etc.",
+      "range": {
+        "startLine": 156,
+        "startChar": 40,
+        "endLine": 156,
+        "endChar": 67
+      },
+      "revId": "405597f578d4c71eb3ac535a36242f121c07ad38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c6018cf_f63b9e4a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-05T03:22:47Z",
+      "side": 1,
+      "message": "Added comment on L29-32.",
+      "parentUuid": "087830c6_d41e34ed",
       "range": {
         "startLine": 156,
         "startChar": 40,
