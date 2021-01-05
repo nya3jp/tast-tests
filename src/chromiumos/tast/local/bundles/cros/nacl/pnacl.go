@@ -28,7 +28,7 @@ func init() {
 		Desc:         "Tests running a PNaCl module",
 		Contacts:     []string{"emaxx@chromium.org", "nacl-eng@google.com"},
 		Data:         extensionFiles,
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "nacl"},
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }
