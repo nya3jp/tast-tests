@@ -22,7 +22,14 @@ const IMEPrefix = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
 const ChromiumIMEPrefix = "_comp_ime_fgoepimhcoialccpbmpnnblemnepkkao"
 
 // AddAndSetInputMethod adds the IME identified by imeID and then sets it to the current input method.
+// Note: this function will not do anything if the IME already exists.
 func AddAndSetInputMethod(ctx context.Context, tconn *chrome.TestConn, imeID string) error {
+	if currentIME, err := GetCurrentInputMethod(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to get current input method")
+	} else if currentIME == imeID {
+		return nil
+	}
+
 	if err := AddInputMethod(ctx, tconn, imeID); err != nil {
 		return errors.Wrapf(err, "failed to add input method %q", imeID)
 	}
