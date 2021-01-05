@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a95e761_bdc16cca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_apps_arc_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-05T17:41:04Z",
+      "side": 1,
+      "message": "nit: you should avoid renaming imports unless their is a conflict",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "a092caaf3e83424470ac6646cfae00a333c1d71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e1f072_600fa6b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_apps_arc_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-05T17:41:04Z",
+      "side": 1,
+      "message": "I feel like this name may be a little misleading. It sounds like it would be checking that the default apps are installed when arc is off.",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "a092caaf3e83424470ac6646cfae00a333c1d71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552f03be_48027b5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_apps_arc_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-05T17:41:04Z",
+      "side": 1,
+      "message": "super nit: remove empty line here",
+      "revId": "a092caaf3e83424470ac6646cfae00a333c1d71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebc41de6_5440bdf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_apps_arc_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-05T17:41:04Z",
+      "side": 1,
+      "message": "Is this necessary? Can we just launch the app and go through optin then?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "a092caaf3e83424470ac6646cfae00a333c1d71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c80083_a7c1a594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_apps_arc_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-05T17:41:04Z",
+      "side": 1,
+      "message": "This sleep should be replaced with polling if possible",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "a092caaf3e83424470ac6646cfae00a333c1d71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50287e65_3635a6cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_apps_arc_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-05T17:41:04Z",
+      "side": 1,
+      "message": "I feel like this doesn\u0027t match go naming conventions, but I cold be wrong. Shouldn\u0027t this start with a lower case letter?\n\nAlso, if you don\u0027t already have pre-upload checks enable, make sure to turn them on.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "a092caaf3e83424470ac6646cfae00a333c1d71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d1ab29_88c0c707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/default_apps_arc_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-05T17:41:04Z",
+      "side": 1,
+      "message": "ditto here for naming, also having accept and Accept is confusing. you should probably name this acceptParams.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 7
+      },
+      "revId": "a092caaf3e83424470ac6646cfae00a333c1d71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
