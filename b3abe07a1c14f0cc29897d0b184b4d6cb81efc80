@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f46444fb_cf92c60a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-05T19:37:37Z",
+      "side": 1,
+      "message": "Hrm, the intel_wifi_chip dependency is downright horrible, with major downsides: it basically means we will eventually stop testing any new device with dual sourcing, because they *might* have non-Intel WiFi on them.\n\nWithout support for true HW deps, this is the best we can do, so CR+1, but do we have a plan/timeline on when we can kill this fake SW Dep?\n\n(BTW, I\u0027m confused why this was ever a Software dep in the first place; we could have implemented it as a Harwdware dep still, with a list of models to skip. But that isn\u0027t the point of this CL, so if we\u0027re not killing it soon, maybe I should file a bug and get that resolved properly.)",
+      "revId": "b3abe07a1c14f0cc29897d0b184b4d6cb81efc80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
