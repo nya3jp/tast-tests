@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e7f771_07a50499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-05T23:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cb40e35_5174d1a3",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "07144f4862f01f1b87100a86919619a899a0344c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eac3329_5a080d39",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-05T17:34:52Z",
       "side": 1,
       "message": "nit: Seeing what it does [1], it seems to apply only to v4l2 \ndrivers. Perhaps we could complement those lines with bumping \nup i915\u0027s verbosity level as well?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/logging/log_helper.go;l\u003d45?q\u003dNewVideoLogger",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "07144f4862f01f1b87100a86919619a899a0344c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "396748dd_f7cb64fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-05T23:40:39Z",
+      "side": 1,
+      "message": "Discussed offline --- will bump verbosity in a separate CL.",
+      "parentUuid": "5eac3329_5a080d39",
       "range": {
         "startLine": 31,
         "startChar": 20,

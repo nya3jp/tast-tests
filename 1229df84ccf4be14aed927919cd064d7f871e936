@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "accb7dfe_0a138104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-05T23:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e58e59_69854b4f",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "1229df84ccf4be14aed927919cd064d7f871e936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8643fb93_228c84d1",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-05T17:34:52Z",
       "side": 1,
       "message": "Other tests in this folder (e.g. Play) use just \"vp9\" for this (and\nmake a distinction for \"vp9_2\").",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "1229df84ccf4be14aed927919cd064d7f871e936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc91ea2_5d2c5b9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-05T23:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8643fb93_228c84d1",
       "range": {
         "startLine": 30,
         "startChar": 23,
