@@ -1,0 +1,429 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7caa21f8_fe5e60e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "Hi Hyun,\n\nThanks for your CL, I have few comments:",
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ee0d57_304359a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_cn_hello.hw",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "How these files were created?\n\nWill be good to have an instruction how to generate such files and documentation about file format.\n\nMaybe a separate package to handle this file format?\n\nalso, we should probably make them external, see example:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/data/voice_cn_hello_20201021.wav.external",
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d639410_62227e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "nit: it can be just `cancel`",
+      "range": {
+        "startLine": 74,
+        "startChar": 6,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437721c6_863db4e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "nit: maybe we can create a separate variable for `s.Param().(handwritingTestParams)` to make these lines more readable?\n\n`params :\u003d s.Param().(handwritingTestParams)`\nthen we even may not need all other variables: handwritingFile, expectedText and testIME.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 75
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df613aff_c359a53c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to use cleanup context here? Will virtual keyboard save its state after test run?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 38
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "567a93bb_1c988923",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "maybe then we should rename this structure to `stroke`?",
+      "range": {
+        "startLine": 31,
+        "startChar": 48,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e638dd_f09f1470",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "Do they really form the `expectedText` or maybe just a text? This file should not know anything about other files, including variable `expectedText`.",
+      "range": {
+        "startLine": 36,
+        "startChar": 47,
+        "endLine": 36,
+        "endChar": 68
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e095a2_8dfa11d7",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "You can make this function a type method for point:\n\n```\nfunc (p point) toCoord() coords.Point {\n  return ...\n}\n```",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 41
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5135b5ce_49fc4305",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "You can just use math.Round instead",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35cd4854_6d92ab14",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "this methos is too complicated and can be splitted into mulptiple parts\n1. reading from file\n2. rescaling\n3. drawing\n\n1 and 2 should be covered by unit tests.",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78640a3f_729a30ab",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "I never saw variable that starts with \"_\", please try to use another variable name, for example `pg`",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 11
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81445ffc_950d61b7",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "os.File implements io.Reader interface, there is no need to read file first and then scan it again.\n\nyou can use os.Open to open file:\nhttps://golang.org/pkg/os/#Open",
+      "range": {
+        "startLine": 70,
+        "startChar": 29,
+        "endLine": 70,
+        "endChar": 60
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "112fa98f_1a753ef0",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "let\u0027s handle the result of `Scan()`",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 15
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d689bc5_2fbb5b61",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "you can move it under if condition, e.g.\n\n```\nif _, err :\u003d ...; err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 79
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c06d74_995f15c6",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "Can\u0027t you use `scanner` instead?",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6f1f1ab_e019d087",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "this variable should be declared inside next for loop since it used only there",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 18
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aab5e9d_7b643414",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b429e54_3021c3aa",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "How will it work if keyboard already shows keyboard input layout?",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 70
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e39473f_cfcd2405",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T12:55:45Z",
+      "side": 1,
+      "message": "nit: is there a good reason to don\u0027t use default interval which is 100ms?",
+      "range": {
+        "startLine": 364,
+        "startChar": 55,
+        "endLine": 364,
+        "endChar": 87
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
