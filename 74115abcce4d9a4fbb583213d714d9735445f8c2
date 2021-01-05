@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ff4606_c9f668d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2021-01-05T22:09:38Z",
+      "side": 1,
+      "message": "LGTM % david\u0027s comments",
+      "revId": "74115abcce4d9a4fbb583213d714d9735445f8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe642138_b97b6816",
@@ -31,6 +48,24 @@
       "writtenOn": "2020-12-29T01:30:20Z",
       "side": 1,
       "message": "Should you also clean up the files from ExtractTermina?",
+      "revId": "74115abcce4d9a4fbb583213d714d9735445f8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6492d482_a0b532b1",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2021-01-05T22:09:38Z",
+      "side": 1,
+      "message": "yes I think calling DeleteImages() would be good to do here.",
+      "parentUuid": "95f83358_3b2294a2",
       "revId": "74115abcce4d9a4fbb583213d714d9735445f8c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
