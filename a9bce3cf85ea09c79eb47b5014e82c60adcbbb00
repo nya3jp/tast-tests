@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca236652_bb4cf997",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-01-05T22:20:46Z",
+      "side": 1,
+      "message": "You\u0027re totally correct. I\u0027ll scrap this implementation.\n\nDo you know of a better way of checking for the presence of Intel SAR tables other than parsing the ACPI output like is already being done in this test? My fear is that if I use the ACPI parsing and pass whenever we don\u0027t find any SAR tables, then if the parsing breaks for any reason (formatting changes etc.) then devices will begin passing spuriously without throwing an error. Ideally, we should be able to catch cases of \"the SAR table exists but we failed to find it in our ACPI parsing\".",
+      "parentUuid": "3d6e64f3_15774ed5",
+      "revId": "a9bce3cf85ea09c79eb47b5014e82c60adcbbb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f13b850_80c18936",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe25b177_493245dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-01-05T22:20:46Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "7f13b850_80c18936",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 73
+      },
+      "revId": "a9bce3cf85ea09c79eb47b5014e82c60adcbbb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fbd256c_9886c9a4",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-01-05T19:34:22Z",
       "side": 1,
       "message": "I would naturally think that using the cros-config libraries or shell utilities would be preferred to bare filesystem access, but I\u0027m not sure. Anyway, other tests use check_powerd_config:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go;l\u003d47?q\u003dcheck_powerd_config%20file:tast-tests%20file:wifi_set_tx_power.go\u0026sq\u003d",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 109
+      },
+      "revId": "a9bce3cf85ea09c79eb47b5014e82c60adcbbb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7cb0bd6_4b191b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-01-05T22:20:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3fbd256c_9886c9a4",
       "range": {
         "startLine": 387,
         "startChar": 0,
@@ -95,6 +161,24 @@
       "side": 1,
       "message": "Hmm, Tast very intentionally doesn\u0027t have a \"N/A\" status, because we\u0027re not supposed to do \"skip\" testing:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#device-dependencies\n\nSo either we convincingly argue that this is positively testing something, and so just \"return\" (like you\u0027re doing), or we need to declare a failure and skip the test some other way (through dependencies).\n\nPer my other comment, other tests are already doing this though... Anyway, I think we probably don\u0027t want to take this approach (testing only dynamic SAR tables).",
       "parentUuid": "2c8f7ad9_6fa20f42",
+      "revId": "a9bce3cf85ea09c79eb47b5014e82c60adcbbb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745a9a9a_820d4e05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-01-05T22:20:46Z",
+      "side": 1,
+      "message": "Do you think it would be possible to define a dependency that tracks whether a device has any SAR tables at all. I don\u0027t personally know how that could be done. (There aren\u0027t any USE flags for SAR right?)",
+      "parentUuid": "f8acefab_3bacb821",
       "revId": "a9bce3cf85ea09c79eb47b5014e82c60adcbbb00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
