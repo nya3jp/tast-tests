@@ -16,6 +16,506 @@
       "message": "Addressed the previous review comments. \nAdded a new subpackage \u0027ui/showpassword/show_password.go\u0027 that includes common functions that the 2 tests share. \nRenamed both the tests.\nAdded new file constants.go in lockscreen package.",
       "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec25818_93789d18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "Did you run gofmt before uploading?\n\nSome more quick comments on style and other things I noticed that should be easy to fix.\n\n",
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a220003_52f85a00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "643b16d0_477a2ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "viewing",
+      "range": {
+        "startLine": 28,
+        "startChar": 32,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0ec946_fde20ac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "end in a period",
+      "range": {
+        "startLine": 28,
+        "startChar": 83,
+        "endLine": 28,
+        "endChar": 89
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572e8444_a0b4f4fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "What is a gaiaID? is this a real one or a fake one",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 8
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2472df77_18036a3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b6660d_fa85a837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "what is the password only field?",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43e4fe1_38281eb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5427ede_d1d5d77c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aa890e5_ede09217",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "This name isn\u0027t great. I believe golang avoids use of words like Verify in function names.",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade01765_96ec82b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "Can you change this to be if pin {}else {} \n\nMakes the code easier to follow",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd68955_612d8fc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "Can you change this to pin/password or pin / password. Here and everywhere",
+      "range": {
+        "startLine": 65,
+        "startChar": 43,
+        "endLine": 65,
+        "endChar": 56
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b23bbf1_8d4da9c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "I\u0027d avoid hardcoding in a timeout like this. I think the error message is fine without it",
+      "range": {
+        "startLine": 91,
+        "startChar": 59,
+        "endLine": 91,
+        "endChar": 67
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eea19715_68de2676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "end in period",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 79
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "227050fe_8cda2245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/showpassword/show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "show_password.go seems like a weird place for this SetupPIN function",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 13
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b444be0_a12a6d8f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "586dd4ed_fd04f9c1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "are these variables listed alphabetical in other constants.go files? If so let\u0027s continue to do that here",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0498e74c_b127c5e0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "How about StableLeftClick() instead of LeftClick()\n\nHere and below",
+      "range": {
+        "startLine": 112,
+        "startChar": 75,
+        "endLine": 112,
+        "endChar": 84
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d3306d_3db07151",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "golang likes to be pretty verbose about everything. I think the proper thing to do here would be to check for an error before returning \n\ntextField, err :\u003d ui.Find(ctx, tconn, params)\nif err !\u003d nil {\n\treturn errors.New(\"could not find blah blha\")\n}\nreturn textField",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 35
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "def9b3ac_acba0755",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "WaitForPasswordHidden is clearer to me",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 24
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c9f987_ac88c008",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "You could return an error here instead of returning false and throwing the error in the caller",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 14
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97faa37b_619b5640",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:23:43Z",
+      "side": 1,
+      "message": "is this part needed?",
+      "range": {
+        "startLine": 171,
+        "startChar": 8,
+        "endLine": 171,
+        "endChar": 16
+      },
+      "revId": "df3adecd48d7b5928094d233a878f1e6e43133b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
