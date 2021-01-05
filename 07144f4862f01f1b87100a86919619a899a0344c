@@ -16,6 +16,52 @@
       "message": "I had some trouble building the test image to make sure the invocation changes were picked up, but everything seems to be working now, at least locally!\n\nThe bulk of the changes to address the comments are in PS1-\u003e3, with a renaming of RunVaapiSmokeTest to RunVaapiBinary because I anticipate modifying it to support e.g. microbenchmarking.\n\nPS3-\u003e4 renames the test to video.PlatformDecode.",
       "revId": "07144f4862f01f1b87100a86919619a899a0344c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb40e35_5174d1a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-05T17:34:52Z",
+      "side": 1,
+      "message": "nit: s/2020/2021/ now :-) -- same in the next file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "07144f4862f01f1b87100a86919619a899a0344c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eac3329_5a080d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-05T17:34:52Z",
+      "side": 1,
+      "message": "nit: Seeing what it does [1], it seems to apply only to v4l2 \ndrivers. Perhaps we could complement those lines with bumping \nup i915\u0027s verbosity level as well?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/logging/log_helper.go;l\u003d45?q\u003dNewVideoLogger",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "07144f4862f01f1b87100a86919619a899a0344c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

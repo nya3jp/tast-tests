@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61129789_9d5a1b0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-05T17:34:52Z",
+      "side": 1,
+      "message": "LGTM modulo comments below. (Sorry they got split over PSs).",
+      "revId": "1229df84ccf4be14aed927919cd064d7f871e936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e58e59_69854b4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-05T17:34:52Z",
+      "side": 1,
+      "message": "Steve and I had a couple of back and forths re. this message, which comes\nfrom other legacy code IIRC. In the end we settled for not saying \"to run\"\n[1] since this code path is also hit if the command executes correctly,\nbut fails (as opposed to e.g. could not run because binary not found). \nWith that I\u0027d say leave here \"%v failed: %v\".\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/platform_vaapi_unittest.go;l\u003d38",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "1229df84ccf4be14aed927919cd064d7f871e936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8643fb93_228c84d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-05T17:34:52Z",
+      "side": 1,
+      "message": "Other tests in this folder (e.g. Play) use just \"vp9\" for this (and\nmake a distinction for \"vp9_2\").",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "1229df84ccf4be14aed927919cd064d7f871e936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
