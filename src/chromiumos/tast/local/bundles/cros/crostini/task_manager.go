@@ -106,7 +106,7 @@ func TaskManager(ctx context.Context, s *testing.State) {
 	s.Log("Find row in task manager")
 	taskManagerRootNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
 		Name:      "Task Manager",
-		ClassName: "View",
+		ClassName: "DialogDelegateView",
 	}, time.Second*10)
 	if err != nil {
 		s.Fatal("Couldn't find Task Manager node: ", err)
