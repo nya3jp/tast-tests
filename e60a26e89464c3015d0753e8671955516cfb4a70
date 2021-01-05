@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5feaeb5a_aa1c1d04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-05T18:44:51Z",
+      "side": 1,
+      "message": "\"localStore\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "e60a26e89464c3015d0753e8671955516cfb4a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fdb4a83_743ff63c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-05T18:44:51Z",
+      "side": 1,
+      "message": "I still feel like \"local store\" isn\u0027t a good name, and also the service itself is too generic.\n\nI asked in the CL for adding the service, but why not being more specific?  Who copies files to the temp directory, and how does that work? What type of files should be copied?  Why not designing the protocol for the specific use case?\n\nEverything is too obscure to me, and it is hard for me to approve this as-is for now.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 61
+      },
+      "revId": "e60a26e89464c3015d0753e8671955516cfb4a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abb38404_6df4418a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-05T18:44:51Z",
+      "side": 1,
+      "message": "nit: you can write as \"range s.CompDUTs()\"",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "e60a26e89464c3015d0753e8671955516cfb4a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f40a5c_2ce4d8fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-05T18:44:51Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 154,
+        "startChar": 16,
+        "endLine": 154,
+        "endChar": 27
+      },
+      "revId": "e60a26e89464c3015d0753e8671955516cfb4a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a0b382_337b7d75",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-05T18:44:51Z",
+      "side": 1,
+      "message": "Please do this:\n  for i :\u003d range duts {\n    d :\u003d duts[i]\n    ...",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 9
+      },
+      "revId": "e60a26e89464c3015d0753e8671955516cfb4a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
