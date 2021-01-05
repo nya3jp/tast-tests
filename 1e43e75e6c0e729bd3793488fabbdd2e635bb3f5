@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bf42d9d_d71cb407",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-05T10:07:43Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "1e43e75e6c0e729bd3793488fabbdd2e635bb3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e029ae_59d39465",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-05T10:07:43Z",
+      "side": 1,
+      "message": "nit: document that this does not add anything if already exists.",
+      "revId": "1e43e75e6c0e729bd3793488fabbdd2e635bb3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b28422a_af6f1ac0",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-05T10:07:43Z",
+      "side": 1,
+      "message": "not sure if this log statement is useful.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "revId": "1e43e75e6c0e729bd3793488fabbdd2e635bb3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
