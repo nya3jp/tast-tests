@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c6e3ae_56e4d28e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-05T19:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f6c0fd_9df735f1",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 15
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1eb8a1f_98dccc6c",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1bcdfbb_a200b991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-05T19:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1eb8a1f_98dccc6c",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d64fb1c_560b6add",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-22T03:02:08Z",
       "side": 1,
       "message": "We can skip these nil checks since TearDown is called only when SetUp succeeds.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe692f2_2d753413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-05T19:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d64fb1c_560b6add",
       "range": {
         "startLine": 106,
         "startChar": 1,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "191d3acf_92470e34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-05T19:20:04Z",
+      "side": 1,
+      "message": "It would be hard to say chrome.ResetState is the right place for this check.\nThe problem for this check was non-browser windows in the window system (so it uses ash.GetAllWindows).\n\nchrome.ResetState only removes all targets (i.e. browser windows), which means other windows (e.g. arc / crostini app windows) will stay, and we can\u0027t assume that all of those other windows should always be closed upon chrome.ResetState.",
+      "parentUuid": "fe506f6e_27cb7e6f",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "801c3e2f_b42c6a30",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
         "patchSetId": 1
@@ -123,6 +219,30 @@
       "writtenOn": "2020-12-22T03:02:08Z",
       "side": 1,
       "message": "nit: I personally recommend making this a function (not a method) since it\u0027s not closely tied to loggedInToCUJUserFixture.\n\n func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, error)",
+      "range": {
+        "startLine": 160,
+        "startChar": 35,
+        "endLine": 160,
+        "endChar": 50
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e3a1879_b08ae302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-05T19:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "801c3e2f_b42c6a30",
       "range": {
         "startLine": 160,
         "startChar": 35,
