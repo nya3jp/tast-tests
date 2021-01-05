@@ -23,6 +23,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Pre:          launcher.StartedByDataUI(),
 		Data:         []string{launcher.DataArtifact},
+		Vars:         []string{"lacrosDeployedBinary"},
 	})
 }
 

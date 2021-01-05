@@ -25,6 +25,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Pre:          launcher.StartedByData(),
 		Data:         []string{launcher.DataArtifact, "media_session_60sec_test.ogg", "audio_playback_test.html"},
+		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{{
 			Name: "play",
 			Val:  audio.OutputStream,

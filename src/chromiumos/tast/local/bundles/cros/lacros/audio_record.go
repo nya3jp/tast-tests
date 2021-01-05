@@ -26,7 +26,7 @@ func init() {
 		Pre:          launcher.StartedByData(),
 		Timeout:      7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 		Data:         []string{launcher.DataArtifact},
-		Vars:         []string{"lacros.deployedBinary"},
+		Vars:         []string{"lacrosDeployedBinary"},
 	})
 }
 

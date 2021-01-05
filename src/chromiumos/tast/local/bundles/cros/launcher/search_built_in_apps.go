@@ -27,6 +27,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
+		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{
 			{
 				Pre: chrome.LoggedIn(),

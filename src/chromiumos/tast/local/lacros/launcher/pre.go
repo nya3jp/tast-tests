@@ -203,7 +203,12 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	extensionArgs := extensionArgs(c.TestExtID(), extList)
 	p.opts = append(p.opts, chrome.ExtraArgs("--lacros-chrome-additional-args="+strings.Join(extensionArgs, "####")))
 
-	path, deployed := s.Var("lacros.deployedBinary")
+	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
+	// lacros-chrome instead of always downloading from a gcs location.
+	// All lacros tests are required to register this var regardless needing it or not, please see
+	// crbug.com/1163160. This is going to inconvenience to authoring new lacros tests temporarily,
+	// but this workaround is to be removed soon once lab provisioning is supported for Lacros.
+	path, deployed := s.Var("lacrosDeployedBinary")
 	if deployed {
 		p.lacrosPath = path
 	} else {
