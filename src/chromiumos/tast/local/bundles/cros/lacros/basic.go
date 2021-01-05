@@ -23,7 +23,7 @@ func init() {
 		Pre:          launcher.StartedByData(),
 		Timeout:      7 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
-		Vars:         []string{"lacros.deployedBinary"},
+		Vars:         []string{"lacrosDeployedBinary"},
 	})
 }
 

@@ -25,6 +25,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      120 * time.Minute,
 		Data:         []string{launcher.DataArtifact, "video.html", "bbb_1080p60_yuv.vp9.webm"},
+		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{{
 			Name: "maximized",
 			Val: gpucuj.TestParams{

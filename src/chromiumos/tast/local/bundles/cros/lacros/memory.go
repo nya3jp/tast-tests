@@ -44,6 +44,7 @@ func init() {
 		},
 		Pre:     launcher.StartedByData(),
 		Timeout: 60 * time.Minute,
+		Vars:    []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{{
 			Name: "blank",
 			Val:  testParams{mode: openURLMode, url: "about:blank"},

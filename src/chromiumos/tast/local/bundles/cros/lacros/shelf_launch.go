@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Vars:         []string{"lacros.deployedBinary"}, // Isn't applicable to omaha. TODO: stop applying to omaha once switched to fixture.
+		Vars:         []string{"lacrosDeployedBinary"}, // Isn't applicable to omaha. TODO: stop applying to omaha once switched to fixture.
 		Params: []testing.Param{
 			{
 				Pre:       launcher.StartedByDataUI(),
