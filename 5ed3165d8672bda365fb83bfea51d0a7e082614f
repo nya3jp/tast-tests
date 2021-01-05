@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e61cb9_d469a3e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_settings_sign_in.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:49:12Z",
+      "side": 1,
+      "message": "Network",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 7
+      },
+      "revId": "5ed3165d8672bda365fb83bfea51d0a7e082614f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8522a8a_8e2bf9fa",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:49:12Z",
+      "side": 1,
+      "message": "Probably makes sense to name this after the javascript function that it is calling. ie \n\nSkipToLoginForTesting",
+      "range": {
+        "startLine": 1855,
+        "startChar": 17,
+        "endLine": 1855,
+        "endChar": 36
+      },
+      "revId": "5ed3165d8672bda365fb83bfea51d0a7e082614f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94de614e_2bc514cc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:49:12Z",
+      "side": 1,
+      "message": "This name is not clear to me.",
+      "range": {
+        "startLine": 542,
+        "startChar": 5,
+        "endLine": 542,
+        "endChar": 24
+      },
+      "revId": "5ed3165d8672bda365fb83bfea51d0a7e082614f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0db3f291_eebf3787",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-05T12:49:12Z",
+      "side": 1,
+      "message": "Perhaps you could make a few more bools for different types of pods (bluetooth, accessibility etc) and have the logic for figuring out which ones are needed here instead of in each test",
+      "range": {
+        "startLine": 542,
+        "startChar": 25,
+        "endLine": 542,
+        "endChar": 32
+      },
+      "revId": "5ed3165d8672bda365fb83bfea51d0a7e082614f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
