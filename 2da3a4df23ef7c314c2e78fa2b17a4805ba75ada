@@ -33,6 +33,46 @@
       "message": "tast-owners: Please review and put CR+2 if it looks good to you.",
       "revId": "2da3a4df23ef7c314c2e78fa2b17a4805ba75ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252489ee_ab9fc45e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T13:06:44Z",
+      "side": 1,
+      "message": "I was on OOO in December, sorry for long review.\n\nLGTM % comment",
+      "revId": "2da3a4df23ef7c314c2e78fa2b17a4805ba75ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc14c11_6512f7c1",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-05T13:06:44Z",
+      "side": 1,
+      "message": "Maybe you can just use SysfsBatteryPath instead and don\u0027t repeat the same checks in this function, i.e. `len(batteryPaths) \u003d\u003d 0` and `len(batteryPaths) !\u003d 1`",
+      "range": {
+        "startLine": 181,
+        "startChar": 22,
+        "endLine": 181,
+        "endChar": 43
+      },
+      "revId": "2da3a4df23ef7c314c2e78fa2b17a4805ba75ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
