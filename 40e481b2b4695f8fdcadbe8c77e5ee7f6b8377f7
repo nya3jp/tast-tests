@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1abafee2_fa3dee5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-05T19:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "169534f5_196e8ff4",
+      "revId": "40e481b2b4695f8fdcadbe8c77e5ee7f6b8377f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63fbf7c7_19be0681",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d38e52dd_7efb7261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-05T19:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63fbf7c7_19be0681",
+      "revId": "40e481b2b4695f8fdcadbe8c77e5ee7f6b8377f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61579783_c819a7b9",
@@ -65,6 +101,24 @@
       "writtenOn": "2020-12-31T02:15:52Z",
       "side": 1,
       "message": "Please check scanner error after the loop.\n\nAlso, is it an error to exit the loop at all?  As written now the test will pass if output ends  before any Pass! line appears in the output.",
+      "revId": "40e481b2b4695f8fdcadbe8c77e5ee7f6b8377f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2849e4a_3a227661",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fpmcu_unittest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-05T19:21:21Z",
+      "side": 1,
+      "message": "You are right, I was assuming the output will always contain one of \"Pass\" or \"Fail\". If we exit the loop then there\u0027s an error",
+      "parentUuid": "61579783_c819a7b9",
       "revId": "40e481b2b4695f8fdcadbe8c77e5ee7f6b8377f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
