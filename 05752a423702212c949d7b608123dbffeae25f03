@@ -33,6 +33,23 @@
       "message": "let\u0027s wait 2 more builds.\n\nAccording to this it only passed 18:\nhttps://tastboard.corp.google.com/test/arc.MouseInput\n\n",
       "revId": "05752a423702212c949d7b608123dbffeae25f03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc589f1_3542758d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-01-05T18:52:01Z",
+      "side": 1,
+      "message": "Ricardo, the test has now passed 20+ times. PTAL again, thanks.",
+      "revId": "05752a423702212c949d7b608123dbffeae25f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
