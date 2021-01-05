@@ -35,7 +35,7 @@ func init() {
 		// WiFi chips that would work for this test. However, for now
 		// there is no better way to specify the exact hardware
 		// parameters needed for this test. (See linked bug.)
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("blooglet", "dalboz", "dirinboz", "ezkinil", "trembyle")),
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("blooglet", "dalboz", "dirinboz", "ezkinil", "trembyle", "vilboz")),
 	})
 }
 
