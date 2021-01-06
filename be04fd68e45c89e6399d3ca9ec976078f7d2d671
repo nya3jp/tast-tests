@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8051f2_749de002",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2021-01-06T21:54:14Z",
+      "side": 1,
+      "message": "Risan - a friendly ping to review this CL",
+      "revId": "be04fd68e45c89e6399d3ca9ec976078f7d2d671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
