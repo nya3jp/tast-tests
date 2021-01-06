@@ -32,7 +32,6 @@ func init() {
 					Options:      []string{"copies=2", "multiple-document-handling=separate-documents-collated-copies"},
 				},
 				ExtraData: []string{"2page.pdf", "printer_EpsonWF3620.ppd", "printer_collate_epson_software_collate_golden.bin"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "epson_software_uncollated",
 				Val: &ippprint.Params{
@@ -42,7 +41,6 @@ func init() {
 					Options:      []string{"copies=2"},
 				},
 				ExtraData: []string{"2page.pdf", "printer_EpsonWF3620.ppd", "printer_collate_epson_software_uncollated_golden.bin"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "epson_hardware_collate",
 				Val: &ippprint.Params{
@@ -52,7 +50,6 @@ func init() {
 					Options:      []string{"copies=2", "multiple-document-handling=separate-documents-collated-copies"},
 				},
 				ExtraData: []string{"2page.pdf", "printer_EpsonWFC20590.ppd", "printer_collate_epson_hardware_collate_golden.ps"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "epson_hardware_uncollated",
 				Val: &ippprint.Params{
@@ -62,7 +59,6 @@ func init() {
 					Options:      []string{"copies=2"},
 				},
 				ExtraData: []string{"2page.pdf", "printer_EpsonWFC20590.ppd", "printer_collate_epson_hardware_uncollated_golden.ps"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "lexmark_600dpi",
 				Val: &ippprint.Params{
@@ -72,7 +68,6 @@ func init() {
 					Options:      []string{"printer-resolution=600dpi"},
 				},
 				ExtraData: []string{"to_print.pdf", "printer_Lexmark.ppd", "printer_resolution_lexmark_600dpi_golden.ps"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "lexmark_1200dpi",
 				Val: &ippprint.Params{
@@ -82,7 +77,6 @@ func init() {
 					Options:      []string{"printer-resolution=1200dpi"},
 				},
 				ExtraData: []string{"to_print.pdf", "printer_Lexmark.ppd", "printer_resolution_lexmark_1200dpi_golden.ps"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "lexmark_2400x600dpi",
 				Val: &ippprint.Params{
@@ -92,7 +86,6 @@ func init() {
 					Options:      []string{"printer-resolution=2400x600dpi"},
 				},
 				ExtraData: []string{"to_print.pdf", "printer_Lexmark.ppd", "printer_resolution_lexmark_2400x600dpi_golden.ps"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "dymo_lw",
 				Val: &ippprint.Params{
@@ -101,7 +94,6 @@ func init() {
 					ExpectedFile: "printer_add_dymo_lw_printer_golden.bin",
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_dymo_printer_lw450.ppd", "printer_add_dymo_lw_printer_golden.bin"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "dymo_lm",
 				Val: &ippprint.Params{
@@ -110,7 +102,6 @@ func init() {
 					ExpectedFile: "printer_add_dymo_lm_printer_golden.bin",
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_dymo_printer_lm450.ppd", "printer_add_dymo_lm_printer_golden.bin"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "epson",
 				Val: &ippprint.Params{
@@ -119,7 +110,6 @@ func init() {
 					ExpectedFile: "printer_add_epson_printer_golden.ps",
 				},
 				ExtraData: []string{"to_print.pdf", "printer_EpsonWF3620.ppd", "printer_add_epson_printer_golden.ps"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "epson_color",
 				Val: &ippprint.Params{
@@ -129,7 +119,6 @@ func init() {
 					Options:      []string{"print-color-mode=color"},
 				},
 				ExtraData: []string{"to_print.pdf", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_color_golden.bin"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "epson_monochrome",
 				Val: &ippprint.Params{
@@ -139,7 +128,6 @@ func init() {
 					Options:      []string{"print-color-mode=monochrome"},
 				},
 				ExtraData: []string{"to_print.pdf", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_monochrome_golden.bin"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "generic",
 				Val: &ippprint.Params{
@@ -156,7 +144,6 @@ func init() {
 					ExpectedFile: "printer_add_hp_printer_pclm_out.pclm",
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "hp_pwg_raster_color",
 				Val: &ippprint.Params{
@@ -165,7 +152,6 @@ func init() {
 					ExpectedFile: "printer_add_hp_ipp_everywhere_golden.pwg",
 				},
 				ExtraData: []string{"to_print.pdf", "hp_ipp_everywhere.ppd", "printer_add_hp_ipp_everywhere_golden.pwg"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "hp_pwg_raster_monochrome",
 				Val: &ippprint.Params{
@@ -175,7 +161,6 @@ func init() {
 					Options:      []string{"print-color-mode=monochrome"},
 				},
 				ExtraData: []string{"to_print.pdf", "hp_ipp_everywhere.ppd", "printer_add_hp_pwg_raster_monochrome_golden.pwg"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "star",
 				Val: &ippprint.Params{
