@@ -1,0 +1,376 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71587c28_6e74d7e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "style;\nif _, err :\u003d fmt.Sscanf(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 16
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580eae0b_ebff6a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 202,
+        "startChar": 33,
+        "endLine": 202,
+        "endChar": 35
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd6eb974_01d6dace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "go/coil: maybe \"in expected ranges\"",
+      "range": {
+        "startLine": 301,
+        "startChar": 45,
+        "endLine": 301,
+        "endChar": 49
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae5dceb8_9ca5013d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "nit: ensures",
+      "range": {
+        "startLine": 301,
+        "startChar": 12,
+        "endLine": 301,
+        "endChar": 19
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9240e9be_6297282a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "nit: unnecessary empty line. expected is initialized in the block of L305-L311.",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c9b18c_d793883b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "nit: \"want\" to be consistent with other Tast code.",
+      "range": {
+        "startLine": 314,
+        "startChar": 88,
+        "endLine": 314,
+        "endChar": 97
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8a36f0_a5efb2bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "nit: \"not\" (starting with lower case letter)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 314,
+        "startChar": 24,
+        "endLine": 314,
+        "endChar": 27
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c74b3bae_3e8612cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "nit: \"timestamp\"",
+      "range": {
+        "startLine": 321,
+        "startChar": 25,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63a62e49_15874699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 327,
+        "startChar": 25,
+        "endLine": 327,
+        "endChar": 34
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f510c64_6399c255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "could you move this to SensorIioserviceHard to minimize the scope?",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d1c1f2f_4d88afc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "could you use time package here?",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f65f8dc4_158b9467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "nit: \"IIOService\" (all upper letters for acronyms).",
+      "range": {
+        "startLine": 30,
+        "startChar": 14,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22aeb918_2233512f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "Logically, this could cause dead lock. Could you call wg.Done() before instead of defer on error cases? or change the sync structure (like exact upper limit by calculation or not to wait for the error cases)?",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e872480_0e0c775d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "unused.",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119e001a_e4bce8ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "could you simplify the process handling code by calling SeparatedOutput() instead?",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 5
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5bbd72_a5edc27e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "could you declare the variable when needed?\nYou can inline at L106 in this case.",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cedfa3d_62c1d337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "if validate returns nil, the for-loop below will be terminated, even if there\u0027re errors from other goroutines.",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "115e0a42_bbd1b509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:42:20Z",
+      "side": 1,
+      "message": "nit: could you use line comment?",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
