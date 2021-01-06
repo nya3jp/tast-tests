@@ -229,6 +229,30 @@
       },
       "revId": "e482f1968e1d0b8182cee8533a3b42ffe1eff2a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beb574bc_1f08471f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-06T19:04:06Z",
+      "side": 1,
+      "message": "That should be because the next event (keypress of hotkey) happens during the animation of the launcher. You can make a wait through ash.WaitForLauncherState, i.e.\n\n  hists, err :\u003d metrics.RunAndWaitAll(ctx, tconn, timeout, func(ctx context.Context) error {\n    if err :\u003d assistant.ToggleUIWithHotkey(ctx, tconn); err !\u003d nil {\n      return errors.Wrap(err, ...)\n    }\n    if err :\u003d ash.WaitForLauncherState(ctx, tconn, ash.Half); err !\u003d nil {\n      return errors.Wrap(err, ...)\n    }\n    return assistant.ToggleUIWithHotkey(ctx, tconn)\n  }, ...)",
+      "parentUuid": "46826d10_d924d87d",
+      "range": {
+        "startLine": 91,
+        "startChar": 24,
+        "endLine": 91,
+        "endChar": 43
+      },
+      "revId": "e482f1968e1d0b8182cee8533a3b42ffe1eff2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
