@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a682b283_53fc6cdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-06T00:02:38Z",
+      "side": 1,
+      "message": "\u003e Do you know of a better way of checking for the presence of Intel SAR tables other than parsing the ACPI output like is already being done in this test?\n\nGood question, and that\u0027s a valid concern.\n\nMy first thought was \"no, there isn\u0027t\", but then if the goal is to double-check whether the parser matches what the driver thinks, then perhaps we could make use of the IWL_MVM_VENDOR_CMD_GET_SAR_PROFILE_INFO vendor command. It has a IWL_MVM_VENDOR_ATTR_SAR_ENABLED_PROFILE_NUM attribute, which I believe should tell us how many profiles the driver thinks it has. We could compare these results with our ACPI parse, to ensure things line up, I suppose.\n\nI think I\u0027d be OK with skipping non-existent profiles first, and later considering whether we want to augment things this way. For manual (e.g., Project Tracker) tests, I think people can read the log output. For lab testing, it\u0027s probably better to have the test in Green shape than it is to guard against all possible manners of error.",
+      "parentUuid": "ca236652_bb4cf997",
+      "revId": "a9bce3cf85ea09c79eb47b5014e82c60adcbbb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f13b850_80c18936",
@@ -179,6 +197,24 @@
       "side": 1,
       "message": "Do you think it would be possible to define a dependency that tracks whether a device has any SAR tables at all. I don\u0027t personally know how that could be done. (There aren\u0027t any USE flags for SAR right?)",
       "parentUuid": "f8acefab_3bacb821",
+      "revId": "a9bce3cf85ea09c79eb47b5014e82c60adcbbb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97881bb4_6a623b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_intel_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-06T00:02:38Z",
+      "side": 1,
+      "message": "Right, no USE flags.\n\nTechnically, Intel SAR tables are a software dependency (which could theoretically turn into a useful dependency here), but they are built up very indirectly, as they go into the BIOS binary, which is built very differently from the rest of the OS, and so wouldn\u0027t be as easy to track as a traditional SoftwareDep. It would also still vary per-Hardware, because one OS may contain many BIOS binaries, applying the correct one to the local hardware. In other words, this gets complicated, and is bordering on impossible.\n\n(We *could* probably add some kind of test-only metadata to the lab database or some per-model cros-config variable [*], I suppose. But that sounds just as error-prone as doing the skip-testing in the first place, I think.)\n\nI think our best bet is do our best to test something for all Intel WiFi systems, to the best of our ability.\n\n[*] And then plumb that into the Dependency system? Notably, we don\u0027t yet have that for bare cros-config, I think. But maybe the new Starlark stuff helps that?",
+      "parentUuid": "745a9a9a_820d4e05",
       "revId": "a9bce3cf85ea09c79eb47b5014e82c60adcbbb00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
