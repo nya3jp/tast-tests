@@ -212,6 +212,24 @@
       "parentUuid": "f082bc80_0d9f76c2",
       "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01e0634_4c4e283e",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-01-06T03:09:09Z",
+      "side": 1,
+      "message": "Is it possible to solve this problem without migrating all ARC tests to the fixture?\nRewriting all ARC tests may take a long time if we encounter unexpected bugs.",
+      "parentUuid": "57c4bfff_cb58ccca",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
