@@ -16,6 +16,23 @@
       "message": "jeroendh@ any ideas on the cause?",
       "revId": "89175de62775e518051f7deef52a1d457e5addf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14b701d2_55a03c52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2021-01-06T18:53:27Z",
+      "side": 1,
+      "message": "Good catch - it is caused by a recent refactoring of me that I just fixed in https://chromium-review.googlesource.com/c/chromium/src/+/2612087.\n\nThis refactoring causes crashes with VLOG enabled.\n\nI guess it makes sense to temporary disable the logging.",
+      "revId": "89175de62775e518051f7deef52a1d457e5addf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
