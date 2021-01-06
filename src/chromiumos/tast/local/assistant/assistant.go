@@ -140,6 +140,7 @@ func VerboseLogging() chrome.Option {
 // VerboseLoggingEnabled creates a new precondition which can be shared by
 // tests that require an already-started Chromeobject with verbose logging
 // enabled.
+// TODO(b/176824009) fix this causing test failures before using.
 func VerboseLoggingEnabled() testing.Precondition { return verboseLoggingPre }
 
 var verboseLoggingPre = chrome.NewPrecondition("verbose-logging", VerboseLogging())

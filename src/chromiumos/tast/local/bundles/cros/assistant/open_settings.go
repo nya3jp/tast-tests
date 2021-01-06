@@ -26,7 +26,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          assistant.VerboseLoggingEnabled(),
+		Pre:          chrome.LoggedIn(),
 	})
 }
 

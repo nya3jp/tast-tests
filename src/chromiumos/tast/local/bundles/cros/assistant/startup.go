@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Starts Google Assistant service and checks the running status",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Pre:          assistant.VerboseLoggingEnabled(),
+		Pre:          chrome.LoggedIn(),
 		Attr:         []string{"group:mainline"},
 	})
 }

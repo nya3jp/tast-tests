@@ -30,7 +30,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Pre:          assistant.VerboseLoggingEnabled(),
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
