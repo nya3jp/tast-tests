@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "578c5f19_bbfc8e33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-06T01:19:55Z",
+      "side": 1,
+      "message": "I think the immediate action here is to make sure this Attr listing matches the docs here:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md#manually_added-attributes\n\nAnd judging by that doc, this should be group:wificell_roam and... maybe wificell_roam_perf? Or maybe a new attribute? I\u0027m not sure, actually.",
+      "parentUuid": "6b9d4291_5f2341fa",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "e6e416fed3b96b2b46d4482ca2d589e848cb1c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52b58cff_e29fa091",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/attenuated_perf.go",
         "patchSetId": 6
