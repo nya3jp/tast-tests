@@ -16,6 +16,52 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "f0d49466d6adb82e5713babd25f73574ba11a88a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66cb2181_ab87a46d",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-06T09:33:40Z",
+      "side": 1,
+      "message": "\": \" is not needed, it\u0027s added by errors.Wrap. ditto for below.",
+      "range": {
+        "startLine": 34,
+        "startChar": 53,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "f0d49466d6adb82e5713babd25f73574ba11a88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4bf913d_189952e2",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-06T09:33:40Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 44,
+        "startChar": 69,
+        "endLine": 44,
+        "endChar": 71
+      },
+      "revId": "f0d49466d6adb82e5713babd25f73574ba11a88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
