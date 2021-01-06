@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "62b72eb8_60d28c37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-01-06T09:34:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f00cc12_e1ec088f",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "76d67a9025beec3981576bb52056391559eaa65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "668abb5b_520b2343",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -163,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e3bff9_2a6d07df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-01-06T09:34:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c01d225b_877ae290",
+      "revId": "76d67a9025beec3981576bb52056391559eaa65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48e3b6d0_315dde59",
@@ -200,6 +242,30 @@
       "side": 1,
       "message": "oops. code :\u003d fmt.Sprintf(\"(%s) \u003d\u003d\u003d %t\", ...) I meant.",
       "parentUuid": "48e3b6d0_315dde59",
+      "range": {
+        "startLine": 1145,
+        "startChar": 1,
+        "endLine": 1153,
+        "endChar": 2
+      },
+      "revId": "76d67a9025beec3981576bb52056391559eaa65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ee9544_ec7731e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-01-06T09:34:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4dd206b_7ed4196a",
       "range": {
         "startLine": 1145,
         "startChar": 1,
