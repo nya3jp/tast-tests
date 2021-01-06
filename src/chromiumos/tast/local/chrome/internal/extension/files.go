@@ -5,14 +5,21 @@
 package extension
 
 import (
+	"crypto/md5"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/chrome/internal/config"
 )
+
+// TastChromeOptioionsJSVar the JavaScript var name for storing the chrome options.
+const TastChromeOptioionsJSVar = "tastChromeOptioions"
 
 // Files manages local files of extensions to be installed to Chrome for
 // testing.
@@ -26,11 +33,14 @@ type Files struct {
 // destDir is a path to a directory under which extensions are written. The
 // directory should not exist at the beginning. Callers are responsible for
 // deleting the directory after they're done with it.
-// The user test extension is always created. If signinExtensionKey is a
+// cfg is the chrome configuration that will be used by the chrome session.
+// The user test extension is always created. If SigninExtKey of cfg is a
 // non-empty string, the sign-in profile test extension is also created using
-// the key. extraExtDirs specifies directories of extra extensions to be
+// the key. ExtraExtDirs of cfg specifies directories of extra extensions to be
 // installed.
-func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey string) (files *Files, retErr error) {
+// cfg will further be stored into test extension's background.js. It can be
+// retrieved later for session reuse comparison.
+func PrepareExtensions(destDir string, cfg *config.Config) (files *Files, retErr error) {
 	// Ensure destDir does not exist at the beginning.
 	if _, err := os.Stat(destDir); err == nil {
 		return nil, errors.Errorf("%s must not exist at the beginning", destDir)
@@ -47,16 +57,21 @@ func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey
 		}
 	}()
 
+	js, err := json.Marshal(cfg)
+	if err != nil {
+		return nil, err
+	}
+	extraBgJs := fmt.Sprintf("%s = %q;", TastChromeOptioionsJSVar, js)
 	// Prepare the user test extension.
-	user, err := prepareTestExtension(filepath.Join(destDir, "test_api"), testExtensionKey, TestExtensionID)
+	user, err := prepareTestExtension(filepath.Join(destDir, "test_api"), testExtensionKey, TestExtensionID, extraBgJs)
 	if err != nil {
 		return nil, err
 	}
 
 	// Prepare the sign-in profile test extension if it is available.
 	var signin *testExtension
-	if signinExtensionKey != "" {
-		signin, err = prepareTestExtension(filepath.Join(destDir, "test_api_signin_profile"), signinExtensionKey, SigninProfileTestExtensionID)
+	if cfg.SigninExtKey != "" {
+		signin, err = prepareTestExtension(filepath.Join(destDir, "test_api_signin_profile"), cfg.SigninExtKey, SigninProfileTestExtensionID, extraBgJs)
 		if err != nil {
 			return nil, err
 		}
@@ -64,7 +79,7 @@ func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey
 
 	// Prepare extra extensions.
 	var copiedExtraExtDirs []string
-	for i, src := range extraExtDirs {
+	for i, src := range cfg.ExtraExtDirs {
 		manifest := filepath.Join(src, "manifest.json")
 		if _, err = os.Stat(manifest); err != nil {
 			return nil, errors.Wrap(err, "missing extension manifest")
@@ -84,6 +99,27 @@ func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey
 		signin:       signin,
 		extraExtDirs: copiedExtraExtDirs,
 	}, nil
+}
+
+// Checksums returns the MD5 checksums of the existing extensions' manifest file.
+func Checksums(destDir string) ([]string, error) {
+	dirs, err := ioutil.ReadDir(destDir)
+	if err != nil {
+		return nil, err
+	}
+
+	var checksums []string
+	for _, subdir := range dirs {
+		manifest := filepath.Join(destDir, subdir.Name(), "manifest.json")
+		manifestContent, err := ioutil.ReadFile(manifest)
+		if err != nil {
+			// Skip this directory.
+			continue
+		}
+		checksum := md5.Sum(manifestContent)
+		checksums = append(checksums, string(checksum[:]))
+	}
+	return checksums, nil
 }
 
 // DeprecatedDirs returns a list of directories where extensions are available.
