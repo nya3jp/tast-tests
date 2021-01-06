@@ -16,6 +16,23 @@
       "message": "Were you able to test this on a local betty-arc-r VM to see how long it actually takes?",
       "revId": "f413a5f2a6b21dbd74423685b16a6619f2869833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a9334fc_4879b89e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-06T09:30:48Z",
+      "side": 1,
+      "message": "LGTM but I want ack from Miriam.\n",
+      "revId": "f413a5f2a6b21dbd74423685b16a6619f2869833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
