@@ -39,6 +39,30 @@
       },
       "revId": "2f793640301e0a81a158189a17b319bd8e13a9c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f694285b_037bda5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/todoist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2021-01-06T20:43:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be3a3147_ba3e7261",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 33
+      },
+      "revId": "2f793640301e0a81a158189a17b319bd8e13a9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
