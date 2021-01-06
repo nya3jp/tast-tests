@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a1a7876_4a5b8dcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2021-01-06T18:36:26Z",
+      "side": 1,
+      "message": "Don\u0027t remember seeing the implementation - this is just the test. LGTM but you\u0027ll need an owner.\n\nAlso fix spelling nit below.",
+      "revId": "8b134fb0b448bacc695dfb07c31b07b7aaf5566b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c82a776_6b678bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2021-01-06T18:36:26Z",
+      "side": 1,
+      "message": "\u003e \"satify\" is a possible misspelling of \"satisfy\".\n\nPlease fix.",
+      "parentUuid": "f6d31b3a_28228034",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 23
+      },
+      "revId": "8b134fb0b448bacc695dfb07c31b07b7aaf5566b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
