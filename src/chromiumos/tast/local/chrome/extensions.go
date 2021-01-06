@@ -107,7 +107,8 @@ func ComputeExtensionID(dir string) (string, error) {
 // Chrome APIs, needed for performing various tasks without interacting with the
 // UI (e.g. enabling the ARC Play Store). Passed key is used for the manifest
 // key. The extension's ID is returned.
-func writeTestExtension(dir, key string) (id string, err error) {
+// script is the additional JavaScript that will be appended to background.js.
+func writeTestExtension(dir, key, script string) (id string, err error) {
 	if err = os.MkdirAll(dir, 0755); err != nil {
 		return "", err
 	}
@@ -145,6 +146,7 @@ func writeTestExtension(dir, key string) (id string, err error) {
     "settingsPrivate",
     "system.display",
     "tabs",
+    "usersPrivate",
     "wallpaper"
   ],
   "automation": {
@@ -156,7 +158,7 @@ func writeTestExtension(dir, key string) (id string, err error) {
 	for _, f := range []struct{ name, data string }{
 		{"manifest.json", manifest},
 		// Use tast library by default in Test extension.
-		{"background.js", tastLibrary},
+		{"background.js", tastLibrary + script},
 	} {
 		if err = ioutil.WriteFile(filepath.Join(dir, f.name), []byte(f.data), 0644); err != nil {
 			return "", err

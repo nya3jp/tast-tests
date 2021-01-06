@@ -51,6 +51,11 @@ const (
 	// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
 	uiRestartTimeout = 60 * time.Second
 
+	// Directories for test extensions.
+	testExtensionParentDir = "/usr/local/tmp/tast/chrome_session/test_extension"
+	testExtensionDir       = testExtensionParentDir + "/tast_test_api_extension"
+	testExtensionSignedDir = testExtensionParentDir + "/tast_test_signin_api_extension"
+
 	// testExtensionKey is a manifest key of the autotest extension.
 	testExtensionKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDuUZGKCDbff6IRaxa4Pue7PPkxwPaNhGT3JEqppEsNWFjM80imEdqMbf3lrWqEfaHgaNku7nlpwPO1mu3/4Hr+XdNa5MhfnOnuPee4hyTLwOs3Vzz81wpbdzUxZSi2OmqMyI5oTaBYICfNHLwcuc65N5dbt6WKGeKgTpp4v7j7zwIDAQAB"
 
@@ -342,7 +347,10 @@ func DisableFeatures(features ...string) Option {
 // extension in the supplied directory.
 // Ownership of the extension directory and its contents may be modified by New.
 func UnpackedExtension(dir string) Option {
-	return func(c *Chrome) { c.extDirs = append(c.extDirs, dir) }
+	return func(c *Chrome) {
+		c.unpackedExtDirs = append(c.unpackedExtDirs, dir)
+		c.extDirs = append(c.extDirs, dir)
+	}
 }
 
 // LoadSigninProfileExtension loads the test extension which is allowed to run in the signin profile context.
@@ -351,11 +359,15 @@ func LoadSigninProfileExtension(key string) Option {
 	return func(c *Chrome) { c.signinExtKey = key }
 }
 
-// Chrome interacts with the currently-running Chrome instance via the
-// Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
-type Chrome struct {
-	devsess *cdputil.Session // DevTools session
+// ReuseSession returns an Option that can be passed to New to make Chrome to reuse the existing
+// login session from same user.
+// For noLogin mode and deferLogin option, session will not be re-used.
+func ReuseSession() Option {
+	return func(c *Chrome) { c.reuseSession = true }
+}
 
+// chromeConfig holds the configuration for running Chrome.
+type chromeConfig struct {
 	user, pass, gaiaID, contact string // login credentials
 	normalizedUser              string // user with domain added, periods removed, etc.
 	parentUser, parentPass      string // unicorn parent login credentials
@@ -379,6 +391,17 @@ type Chrome struct {
 	extraArgs        []string
 	enableFeatures   []string
 	disableFeatures  []string
+
+	unpackedExtDirs []string // directories containing all unpacked extensions to load
+}
+
+// Chrome interacts with the currently-running Chrome instance via the
+// Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
+type Chrome struct {
+	chromeConfig
+	devsess *cdputil.Session // DevTools session
+
+	reuseSession bool // reuse exiting login session, if it's from the same user
 
 	extDirs     []string // directories containing all unpacked extensions to load
 	testExtID   string   // ID for test extension exposing APIs
@@ -423,21 +446,24 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	defer st.End()
 
 	c := &Chrome{
-		user:                   DefaultUser,
-		pass:                   DefaultPass,
-		gaiaID:                 defaultGaiaID,
-		keepState:              false,
-		loginMode:              fakeLogin,
-		vkEnabled:              false,
-		skipOOBEAfterLogin:     true,
-		enableLoginVerboseLogs: false,
-		installWebApp:          false,
-		region:                 "us",
-		policyEnabled:          false,
-		enroll:                 false,
-		breakpadTestMode:       true,
-		tracingStarted:         false,
-		logAggregator:          jslog.NewAggregator(),
+		chromeConfig: chromeConfig{
+			user:                   DefaultUser,
+			pass:                   DefaultPass,
+			gaiaID:                 defaultGaiaID,
+			keepState:              false,
+			loginMode:              fakeLogin,
+			vkEnabled:              false,
+			skipOOBEAfterLogin:     true,
+			enableLoginVerboseLogs: false,
+			installWebApp:          false,
+			region:                 "us",
+			policyEnabled:          false,
+			enroll:                 false,
+			breakpadTestMode:       true,
+		},
+		reuseSession:   false,
+		tracingStarted: false,
+		logAggregator:  jslog.NewAggregator(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -495,27 +521,86 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
-	if err := c.PrepareExtensions(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to prepare extensions")
+	var newChromeSession = true
+	if c.reuseSession {
+		if err := func() error {
+			if c.deferLogin || c.loginMode == noLogin {
+				// Don't re-use login session for tests requiring no login.
+				return errors.New("test requires no login")
+			}
+			var err error
+			if err = c.CheckExtensions(); err != nil {
+				// No test extensions found. Cannot reuse.
+				return err
+			}
+			if err = cdputil.DetectDebuggingPort(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to detect debugging port: ", err)
+				// No debugging port to access. Cannot reuse.
+				return err
+			}
+			c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.NoWaitPort)
+			if err != nil {
+				return err
+			}
+			defer func() {
+				// Close all resources used by reuseSession checking.
+				c.devsess.Close(ctx)
+				c.devsess = nil
+				if c.testExtConn != nil {
+					c.testExtConn.locked = false
+					c.testExtConn.Close()
+					c.testExtConn = nil
+				}
+			}()
+			if err = c.compareOptions(ctx); err != nil {
+				return err
+			}
+			loggedIn, err := c.checkUserLogin(ctx)
+			if err != nil {
+				// User login checking failed.
+				return err
+			}
+			if !loggedIn {
+				// No logged-in session. Cannot reuse.
+				return errors.New("existing chrome session not logged in")
+			}
+			return nil
+		}(); err == nil {
+			testing.ContextLog(ctx, "Reuse chrome session")
+			newChromeSession = false
+		} else {
+			// Will restart Chrome session.
+			testing.ContextLog(ctx, "Failed to reuse chrome session: ", err)
+		}
 	}
 
-	if err := c.restartChromeForTesting(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to restart chrome for testing")
+	if newChromeSession {
+		if err := c.PrepareExtensions(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to prepare extensions")
+		}
+
+		if err := c.restartChromeForTesting(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to restart chrome for testing")
+		}
 	}
+
 	var err error
 	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort); err != nil {
 		return nil, errors.Wrapf(c.chromeErr(err), "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
 
-	if c.loginMode != noLogin && !c.keepState {
-		if err := cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
-			return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", c.normalizedUser)
+	if newChromeSession {
+		// Check keepState for new Chrome session only.
+		if c.loginMode != noLogin && !c.keepState {
+			if err := cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
+				return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", c.normalizedUser)
+			}
 		}
-	}
-
-	if !c.deferLogin && (c.loginMode != noLogin) {
-		if err := c.logIn(ctx); err != nil {
-			return nil, err
+		// Do login for new Chrome session only.
+		if !c.deferLogin && (c.loginMode != noLogin) {
+			if err := c.logIn(ctx); err != nil {
+				return nil, err
+			}
 		}
 	}
 
@@ -592,9 +677,6 @@ func (c *Chrome) Close(ctx context.Context) error {
 	if c.testExtConn != nil {
 		c.testExtConn.locked = false
 		c.testExtConn.Close()
-	}
-	if len(c.testExtDir) > 0 {
-		os.RemoveAll(c.testExtDir)
 	}
 
 	if c.devsess != nil {
@@ -765,12 +847,19 @@ func (c *Chrome) PrepareExtensions(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "prepare_extensions")
 	defer st.End()
 
+	os.RemoveAll(testExtensionParentDir)
+
 	// Write the built-in test extension.
 	var err error
-	if c.testExtDir, err = ioutil.TempDir("", "tast_test_api_extension."); err != nil {
+	if err = os.MkdirAll(testExtensionDir, 0755); err != nil {
 		return err
 	}
-	if c.testExtID, err = writeTestExtension(c.testExtDir, testExtensionKey); err != nil {
+	c.testExtDir = testExtensionDir
+
+	// Write the tastChromeOptions to background.js
+	script := fmt.Sprintf("tastChromeOptions = %q;", fmt.Sprintf("%v", c.chromeConfig))
+
+	if c.testExtID, err = writeTestExtension(c.testExtDir, testExtensionKey, script); err != nil {
 		return err
 	}
 	if c.testExtID != TestExtensionID {
@@ -786,10 +875,11 @@ func (c *Chrome) PrepareExtensions(ctx context.Context) error {
 	// Write the signin profile test extension.
 	if len(c.signinExtKey) > 0 {
 		var err error
-		if c.signinExtDir, err = ioutil.TempDir("", "tast_test_signin_api_extension."); err != nil {
+		if err = os.MkdirAll(testExtensionSignedDir, 0755); err != nil {
 			return err
 		}
-		if c.signinExtID, err = writeTestExtension(c.signinExtDir, c.signinExtKey); err != nil {
+		c.signinExtDir = testExtensionSignedDir
+		if c.signinExtID, err = writeTestExtension(c.signinExtDir, c.signinExtKey, ""); err != nil {
 			return err
 		}
 		if c.signinExtID != signinProfileTestExtensionID {
@@ -808,7 +898,35 @@ func (c *Chrome) PrepareExtensions(ctx context.Context) error {
 		}
 	}
 	return nil
+}
 
+// CheckExtensions checks if Chrome extensions for tast are present.
+func (c *Chrome) CheckExtensions() error {
+	manifest := filepath.Join(testExtensionDir, "manifest.json")
+	if _, err := os.Stat(manifest); err != nil {
+		return err
+	}
+	extID, err := ComputeExtensionID(testExtensionDir)
+	if err != nil || extID != TestExtensionID {
+		return err
+	}
+	c.testExtDir = testExtensionDir
+	c.testExtID = extID
+	c.extDirs = append(c.extDirs, c.testExtDir)
+	if len(c.signinExtKey) > 0 {
+		manifest := filepath.Join(testExtensionSignedDir, "manifest.json")
+		if _, err := os.Stat(manifest); err != nil {
+			return err
+		}
+		extID, err := ComputeExtensionID(testExtensionSignedDir)
+		if err != nil || extID != signinProfileTestExtensionID {
+			return err
+		}
+		c.signinExtDir = testExtensionSignedDir
+		c.signinExtID = extID
+		c.extDirs = append(c.extDirs, c.signinExtDir)
+	}
+	return nil
 }
 
 // restartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
@@ -1867,5 +1985,73 @@ func SaveTraceToFile(ctx context.Context, trace *trace.Trace, path string) error
 		return errors.Wrap(err, "could not flush the gzip writer")
 	}
 
+	return nil
+}
+
+// checkUserLogin checks if a user has logged in.
+func (c *Chrome) checkUserLogin(ctx context.Context) (bool, error) {
+	conn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to establish Chrome connection")
+	}
+	js := `
+             var loginStatus = null;
+             var currentUser = null;
+
+             chrome.usersPrivate.getLoginStatus(function (status) {
+                     loginStatus = status;
+             });
+             chrome.usersPrivate.getCurrentUser(function (user) {
+                     currentUser = user;
+             });
+             `
+
+	if err := conn.Exec(ctx, js); err != nil {
+		return false, errors.Wrap(err, "failed to run js to get login status")
+	}
+
+	var loginStatus, isScreenLocked, currentUser string
+
+	if err := conn.Eval(ctx, "loginStatus.isLoggedIn  + ''", &loginStatus); err != nil {
+		return false, errors.Wrap(err, "failed to evaluate loginStatus.isLoggedIn")
+	}
+	if loginStatus == "false" {
+		return false, nil
+	}
+
+	if err := conn.Eval(ctx, "loginStatus.isScreenLocked  + ''", &isScreenLocked); err != nil {
+		return false, errors.Wrap(err, "failed to evaluate loginStatus.isScreenLocked")
+	}
+	if isScreenLocked == "true" {
+		return true, errors.New("screen is locked")
+	}
+
+	if err := conn.Eval(ctx, "currentUser.email  + ''", &currentUser); err != nil {
+		return true, errors.Wrap(err, "failed to evaluate currentUser")
+	}
+	if currentUser != c.user {
+		return true, errors.New("logged in with a different user")
+	}
+
+	return true, nil
+}
+
+// compareOptions compares the Chrome options with the existing Chrome session.
+func (c *Chrome) compareOptions(ctx context.Context) error {
+	conn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to establish Chrome connection")
+	}
+
+	var existingChromeOptions string
+	if err := conn.Eval(ctx, "tastChromeOptions  + ''", &existingChromeOptions); err != nil {
+		return errors.Wrap(err, "failed to evaluate tastChromeOptions")
+	}
+
+	chromeCfg := fmt.Sprintf("%v", c.chromeConfig)
+	// Just compare the printed structure. Expect configuration exact match, even for slices.
+	if chromeCfg != existingChromeOptions {
+		return errors.New("options are not compatible")
+	}
 	return nil
 }
