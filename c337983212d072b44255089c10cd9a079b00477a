@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "539aa032_4492d385",
+        "filename": "src/chromiumos/tast/local/croshealthd/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-06T21:36:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f4809a0_31a27f09",
+      "revId": "c337983212d072b44255089c10cd9a079b00477a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1a6b22b_08c9fb47",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4b643b_5ef51015",
+        "filename": "src/chromiumos/tast/local/croshealthd/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-06T21:36:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1a6b22b_08c9fb47",
+      "range": {
+        "startLine": 70,
+        "startChar": 35,
+        "endLine": 70,
+        "endChar": 36
+      },
+      "revId": "c337983212d072b44255089c10cd9a079b00477a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14df5f9a_afbddbf7",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-01-06T09:09:32Z",
       "side": 1,
       "message": "IIUC, if cros_healthd crashes during a test, all subsequent tests using the precondition will fail immediately. This will reduce isolation of tests using the precondition.\n\nIf you want to make sure that cros_healthd does not crash during tests, we should check it in post-test hooks. Then we can blame an exact test that causes a crash, not later tests.\n\nUnfortunately post-test hooks are not supported in preconditions. A good news is that fixtures, a recently introduced alternative to preconditions, supports post-test hooks. You might want to try it out.\n\nhttps://groups.google.com/a/chromium.org/g/tast-users/c/-vC6RR8fYlQ/m/AEd6EIHGBQAJ",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "c337983212d072b44255089c10cd9a079b00477a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c75b0f4_9ccaf6dd",
+        "filename": "src/chromiumos/tast/local/croshealthd/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-06T21:36:36Z",
+      "side": 1,
+      "message": "Good catch, that is not the behavior I would want. I converted this to use a fixture instead. Let me know if I did anything incorrectly.",
+      "parentUuid": "14df5f9a_afbddbf7",
       "range": {
         "startLine": 69,
         "startChar": 0,
