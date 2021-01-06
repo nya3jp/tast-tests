@@ -33,6 +33,24 @@
       "message": "If we\u0027re skipping these devices because they don\u0027t have intel wifi chips, can we instead add this exclusion to the existing \"intel_wifi_chip\" dep?",
       "revId": "84201cff6e2c00fcc1446aebf687fa307a145489",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f898f8e1_ae02ec26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-06T21:39:12Z",
+      "side": 1,
+      "message": "Resolved through chat. The CL is skipping devices by model names which is different than \"intel_wifi_chip\" which specifies boards names.",
+      "parentUuid": "a690e94d_dfa281e7",
+      "revId": "84201cff6e2c00fcc1446aebf687fa307a145489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
