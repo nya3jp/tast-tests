@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "901a2e7c_874438fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-01-06T00:40:14Z",
+      "side": 1,
+      "message": "Is there a way we can avoid splitting the tests in arm and amd64 variants?\n\nI assume making the test depend on both amd64 and arm data files would waste too much time downloading unnecessary artifacts?\n\nOtherwise it looks good from my side.",
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
