@@ -41,6 +41,13 @@ const (
 	// 40*3=120 seconds for the safety.
 	gaiaLoginTimeout = 120 * time.Second
 
+	// tryReuseSessionTimeout is the maximum amount of time that Chrome is expected to take to perform
+	// session resue checking. Chrome will connect to the exsting Chrome instance, obtained the
+	// existing configuration, and compare with the new session config. This procedure doesn't
+	// restart the Chrome UI and should finish fast. If this procdure fails, we still have time for new
+	// session login.
+	tryReuseSessionTimeout = 10 * time.Second
+
 	// TestExtensionID is an extension ID of the autotest extension. It
 	// corresponds to testExtensionKey.
 	TestExtensionID = extension.TestExtensionID
@@ -56,6 +63,8 @@ const (
 	// that Chrome does not malfunction on post-test manual inspection.
 	// This directory is cleared at the beginning of chrome.New.
 	persistentDir = "/usr/local/tmp/tast/chrome_session"
+	// extensionsDir is the directory for all chrome session extensions.
+	extensionsDir = persistentDir + "/extensions"
 )
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Chrome.Close.
@@ -97,8 +106,11 @@ func Unlock() {
 type Chrome struct {
 	// cfg contains configurations computed from options given to chrome.New.
 	// Its fields must not be altered after its construction.
-	cfg  config.Config
-	exts *extension.Files
+	cfg config.Config
+	// deprecatedExtDirs holds the directories of the test extensions and will
+	// only be used by DeprecatedExtDirs().
+	deprecatedExtDirs []string
+
 	agg  *jslog.Aggregator
 	sess *driver.Session
 
@@ -109,10 +121,11 @@ type Chrome struct {
 func (c *Chrome) User() string { return c.cfg.User }
 
 // DeprecatedExtDirs returns the directories holding the test extensions.
+// For reused Chrome session, deprecatedExtDirs is not set and this method will return nil.
 //
 // DEPRECATED: This method does not handle sign-in profile extensions correctly.
 func (c *Chrome) DeprecatedExtDirs() []string {
-	return c.exts.DeprecatedDirs()
+	return c.deprecatedExtDirs
 }
 
 // DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
@@ -151,12 +164,21 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		return nil, err
 	}
 
+	if cfg.TryReuseSession {
+		reuseCtx, reuseCancel := context.WithTimeout(ctx, tryReuseSessionTimeout)
+		defer reuseCancel()
+		cr, err := tryReuseSession(reuseCtx, cfg)
+		if err == nil {
+			return cr, nil
+		}
+		testing.ContextLogf(ctx, "Current session is not reusable: %v; restarting a new session", err)
+	}
+
 	if err := os.RemoveAll(persistentDir); err != nil {
 		return nil, err
 	}
 
-	extsDir := filepath.Join(persistentDir, "extensions")
-	exts, err := extension.PrepareExtensions(extsDir, cfg.ExtraExtDirs, cfg.SigninExtKey)
+	exts, err := extension.PrepareExtensions(extensionsDir, cfg)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
@@ -223,11 +245,11 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	}
 
 	return &Chrome{
-		cfg:          *cfg,
-		exts:         exts,
-		agg:          agg,
-		sess:         sess,
-		loginPending: loginPending,
+		cfg:               *cfg,
+		deprecatedExtDirs: exts.DeprecatedDirs(),
+		agg:               agg,
+		sess:              sess,
+		loginPending:      loginPending,
 	}, nil
 }
 
