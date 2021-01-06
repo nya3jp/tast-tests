@@ -230,6 +230,24 @@
       "parentUuid": "57c4bfff_cb58ccca",
       "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "595a9a03_b3c194e8",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-06T04:54:01Z",
+      "side": 1,
+      "message": "Unfortunately AFAIK there\u0027s no workaround to run post-test hooks in preconditions. As soon as a test finishes, the framework starts copying output files back to the host. When a precondition\u0027s Prepare is called copying is already in flight.",
+      "parentUuid": "d01e0634_4c4e283e",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
