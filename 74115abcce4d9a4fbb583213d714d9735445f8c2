@@ -35,6 +35,47 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c7eef6_d32f9c3e",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-06T05:48:00Z",
+      "side": 1,
+      "message": "Yes, the test will panic when it tries to access the data file",
+      "parentUuid": "fe642138_b97b6816",
+      "revId": "74115abcce4d9a4fbb583213d714d9735445f8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "825326c3_b9f67c07",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-06T05:48:00Z",
+      "side": 1,
+      "message": "I hadn\u0027t realised this was allowed. I might make the other crostini tests use this trick too at some point.",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "74115abcce4d9a4fbb583213d714d9735445f8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95f83358_3b2294a2",
