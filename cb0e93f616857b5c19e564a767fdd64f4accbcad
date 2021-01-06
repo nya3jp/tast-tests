@@ -248,6 +248,24 @@
       "parentUuid": "d01e0634_4c4e283e",
       "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67aab3b8_b961e09b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-06T09:02:32Z",
+      "side": 1,
+      "message": "Now I\u0027m trying to replacing preconditions with the fixture.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2599687",
+      "parentUuid": "595a9a03_b3c194e8",
+      "revId": "cb0e93f616857b5c19e564a767fdd64f4accbcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
