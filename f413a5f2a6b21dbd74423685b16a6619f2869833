@@ -33,6 +33,23 @@
       "message": "LGTM but I want ack from Miriam.\n",
       "revId": "f413a5f2a6b21dbd74423685b16a6619f2869833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c883f155_03f5b340",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-01-06T15:23:12Z",
+      "side": 1,
+      "message": "LGTM modulo Shao-Chuan\u0027s comment.",
+      "revId": "f413a5f2a6b21dbd74423685b16a6619f2869833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
