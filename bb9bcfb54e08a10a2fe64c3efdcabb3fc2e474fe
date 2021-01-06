@@ -884,6 +884,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2392ea39_61fbbf05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/document_scan_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-06T23:52:46Z",
+      "side": 1,
+      "message": "Hmm that\u0027s interesting. From what I can tell, the test:\n\n1. Finds and clicks the Scan button\n2. Finds the scan complete text node\n3. Finds the UI element with id\u003dscanCompleteText and verifies its value is \"Complete!\"\n\nIf removing #2 causes the API to select a different scanner, then I\u0027d suggest we make sure the virtual USB printer is always used for tests. Otherwise we might run into similar timing issues on devices in the lab. Ben suggested a few methods of ensuring we always use the virtual USB pritner, but were any implemented?",
+      "parentUuid": "dd7664cd_cb01031e",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 2
+      },
+      "revId": "bb9bcfb54e08a10a2fe64c3efdcabb3fc2e474fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f356ed9e_ac9b839f",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanner/document_scan_api.go",
         "patchSetId": 5
