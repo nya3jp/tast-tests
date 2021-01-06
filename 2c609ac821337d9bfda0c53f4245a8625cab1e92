@@ -214,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e7d9a8_519d365b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-01-06T10:43:52Z",
+      "side": 1,
+      "message": "Not very sure I understand it correctly. I moved the interface to getusermedia package. PTAL, thanks!",
+      "parentUuid": "829d068b_93b14ade",
+      "range": {
+        "startLine": 169,
+        "startChar": 3,
+        "endLine": 169,
+        "endChar": 12
+      },
+      "revId": "2c609ac821337d9bfda0c53f4245a8625cab1e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f22fe32_15b2e315",
