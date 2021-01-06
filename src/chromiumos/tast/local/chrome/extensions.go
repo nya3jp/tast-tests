@@ -145,6 +145,7 @@ func writeTestExtension(dir, key string) (id string, err error) {
     "settingsPrivate",
     "system.display",
     "tabs",
+    "usersPrivate",
     "wallpaper"
   ],
   "automation": {

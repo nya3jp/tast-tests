@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"net/http"
 	"strconv"
 	"strings"
 	"time"
@@ -136,6 +137,22 @@ func readDebuggingPort(p string) (int, error) {
 	}
 	lines := strings.SplitN(string(b), "\n", 2) // We only need the first line of the file.
 	return strconv.Atoi(lines[0])
+}
+
+// DetectDebuggingPort checks if Chrome CDP debugging port is available to use.
+func DetectDebuggingPort(ctx context.Context) error {
+	port, err := readDebuggingPort(DebuggingPortPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read Chrome debugging port")
+	}
+
+	// Make sure the Chrome debugging port can be accessed.
+	cdpVersionURL := fmt.Sprintf("http://127.0.0.1:%d/json/version", port)
+	if _, err := http.Get(cdpVersionURL); err != nil {
+		return errors.Wrap(err, "failed to access Chrome debugging port to get CDP version")
+	}
+
+	return nil
 }
 
 // Close shuts down the connection to the browser.

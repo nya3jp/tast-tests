@@ -351,6 +351,12 @@ func LoadSigninProfileExtension(key string) Option {
 	return func(c *Chrome) { c.signinExtKey = key }
 }
 
+// ReuseLogin returns an Option that can be passed to New to make Chrome to reuse the existing
+// login session from same user.
+func ReuseLogin() Option {
+	return func(c *Chrome) { c.reuseLogin = true }
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
@@ -372,6 +378,7 @@ type Chrome struct {
 	enroll                      bool   // whether device should be enrolled
 	arcMode                     arcMode
 	restrictARCCPU              bool // a flag to control cpu restrictions on ARC
+	reuseLogin                  bool // reuse exiting login session, if it's from the same user
 
 	// If breakpadTestMode is true, tell Chrome's breakpad to always write
 	// dumps directly to a hardcoded directory.
@@ -438,6 +445,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		breakpadTestMode:       true,
 		tracingStarted:         false,
 		logAggregator:          jslog.NewAggregator(),
+		reuseLogin:             false,
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -497,6 +505,34 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 
 	if err := c.PrepareExtensions(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
+	}
+
+	if c.reuseLogin {
+		if err := cdputil.DetectDebuggingPort(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to detect debugging port: ", err)
+		} else {
+			var err error
+			if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.NoWaitPort); err != nil {
+				return nil, errors.Wrap(c.chromeErr(err), "failed to establish connection to Chrome Debuggin Protocol")
+			}
+			err = c.checkUserLogin(ctx)
+			if err == nil {
+				toClose = nil
+				return c, nil
+			}
+			testing.ContextLog(ctx, "Failed to determine login status: ", err)
+			// Need to restart extConn and CDP Session, because chrome will be restarted.
+			if c.testExtConn != nil {
+				c.testExtConn.locked = false
+				c.testExtConn.Close()
+				c.testExtConn = nil
+			}
+			if c.devsess != nil {
+				c.devsess.Close(ctx)
+				c.devsess = nil
+			}
+			testing.ContextLog(ctx, "No login session to reuse. Restart chrome")
+		}
 	}
 
 	if err := c.restartChromeForTesting(ctx); err != nil {
@@ -753,6 +789,17 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	if err := tconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "failed to wait for the ready state")
 	}
+
+	// Make sure tast API is available. Tast API reload is needed after location.reload().
+	tastReady := false
+	err = tconn.Eval(ctx, `typeof tast != 'undefined'`, &tastReady)
+	if err != nil || !tastReady {
+		testing.ContextLog(ctx, "Reload tast API library")
+		if err := AddTastLibrary(ctx, tconn.Conn); err != nil {
+			return errors.Wrap(err, "tast api is not ready")
+		}
+	}
+
 	return nil
 }
 
@@ -1846,6 +1893,52 @@ func SaveTraceToFile(ctx context.Context, trace *trace.Trace, path string) error
 
 	if err := writer.Flush(); err != nil {
 		return errors.Wrap(err, "could not flush the gzip writer")
+	}
+
+	return nil
+}
+
+// checkUserLogin checks if a user has logged in.
+func (c *Chrome) checkUserLogin(ctx context.Context) error {
+	conn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		// If a connect to existing chrome cannot be created, user is not in logged in status.
+		return errors.Wrap(err, "failed to establish Chrome connection")
+	}
+	js := `
+             var loginStatus = null;
+             var currentUser = null;
+
+             chrome.usersPrivate.getLoginStatus(function (status) {
+                     loginStatus = status;
+             });
+             chrome.usersPrivate.getCurrentUser(function (user) {
+                     currentUser = user;
+             });
+             `
+
+	if err := conn.Exec(ctx, js); err != nil {
+		return errors.Wrap(err, "failed to run js to get login status")
+	}
+
+	var loginStatus, isScreenLocked, currentUser string
+
+	if err := conn.Eval(ctx, "loginStatus.isLoggedIn  + ''", &loginStatus); err != nil {
+		return errors.Wrap(err, "failed to evaluate loginStatus.isLoggedIn")
+	} else if loginStatus == "false" {
+		return errors.New("user is not logged in")
+	}
+
+	if err := conn.Eval(ctx, "loginStatus.isScreenLocked  + ''", &isScreenLocked); err != nil {
+		return errors.Wrap(err, "failed to evaluate loginStatus.isScreenLocked")
+	} else if isScreenLocked == "true" {
+		return errors.New("screen is locked")
+	}
+
+	if err := conn.Eval(ctx, "currentUser.email  + ''", &currentUser); err != nil {
+		return errors.Wrap(err, "failed to evaluate currentUser")
+	} else if currentUser != c.user {
+		return errors.New("logged in with a different user")
 	}
 
 	return nil
