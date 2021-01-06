@@ -35,12 +35,14 @@ type testExtension struct {
 
 // prepareTestExtension prepares a test extension at dir. key is a private key
 // for the extension. id is an expected ID of the extension.
-func prepareTestExtension(dir, key, id string) (*testExtension, error) {
+// extraBgJs is the extra JavaScript that will be appended to the test extension's
+// background.js file.
+func prepareTestExtension(dir, key, id, extraBgJs string) (*testExtension, error) {
 	if err := os.MkdirAll(dir, 0755); err != nil {
 		return nil, err
 	}
 
-	actualID, err := writeTestExtension(dir, key)
+	actualID, err := writeTestExtension(dir, key, extraBgJs)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +76,9 @@ func (e *testExtension) Dir() string {
 // Chrome APIs, needed for performing various tasks without interacting with the
 // UI (e.g. enabling the ARC Play Store). Passed key is used for the manifest
 // key. The extension's ID is returned.
-func writeTestExtension(dir, key string) (id string, err error) {
+// extraBgJs is the extra JavaScript that will be appended to the test extension's
+// background.js file.
+func writeTestExtension(dir, key, extraBgJs string) (id string, err error) {
 	if err = os.MkdirAll(dir, 0755); err != nil {
 		return "", err
 	}
@@ -112,6 +116,7 @@ func writeTestExtension(dir, key string) (id string, err error) {
     "settingsPrivate",
     "system.display",
     "tabs",
+    "usersPrivate",
     "wallpaper"
   ],
   "automation": {
@@ -122,8 +127,8 @@ func writeTestExtension(dir, key string) (id string, err error) {
 
 	for _, f := range []struct{ name, data string }{
 		{"manifest.json", manifest},
-		// Use tast library by default in Test extension.
-		{"background.js", TastLibraryJS},
+		// Use tast library by default in Test extension. Append any extra JavaScript.
+		{"background.js", TastLibraryJS + extraBgJs},
 	} {
 		if err = ioutil.WriteFile(filepath.Join(dir, f.name), []byte(f.data), 0644); err != nil {
 			return "", err

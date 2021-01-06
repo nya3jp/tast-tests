@@ -7,9 +7,11 @@ package chrome
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
+	"reflect"
 	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
@@ -149,20 +151,38 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		return nil, err
 	}
 
-	if err := os.RemoveAll(persistentDir); err != nil {
-		return nil, err
+	var exts *extension.Files
+	newChromeSession := true
+	if cfg.ReuseSession {
+		exts, err = checkReuseSession(ctx, cfg)
+		if err != nil {
+			// Will restart Chrome session.
+			testing.ContextLog(ctx, "Failed to reuse chrome session: ", err)
+		} else {
+			testing.ContextLog(ctx, "Reuse chrome session")
+			newChromeSession = false
+		}
 	}
 
-	extsDir := filepath.Join(persistentDir, "extensions")
-	exts, err := extension.PrepareExtensions(extsDir, cfg.ExtraExtDirs, cfg.SigninExtKey)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare extensions")
-	}
+	if newChromeSession {
+		if err := os.RemoveAll(persistentDir); err != nil {
+			return nil, err
+		}
 
-	if err := setup.RestartChromeForTesting(ctx, cfg, exts); err != nil {
-		return nil, errors.Wrap(err, "failed to restart chrome for testing")
-	}
+		extsDir := filepath.Join(persistentDir, "extensions")
+		js, err := optionsToJavaScript(cfg)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to convert options to JavaScript")
+		}
+		exts, err = extension.PrepareExtensions(extsDir, cfg.ExtraExtDirs, cfg.SigninExtKey, js)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to prepare extensions")
+		}
 
+		if err := setup.RestartChromeForTesting(ctx, cfg, exts); err != nil {
+			return nil, errors.Wrap(err, "failed to restart chrome for testing")
+		}
+	}
 	agg := jslog.NewAggregator()
 	defer func() {
 		if retErr != nil {
@@ -180,27 +200,29 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		}
 	}()
 
-	if cfg.LoginMode != config.NoLogin && !cfg.KeepState {
-		if err := cryptohome.RemoveUserDir(ctx, cfg.NormalizedUser); err != nil {
-			return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", cfg.NormalizedUser)
-		}
-	}
-
 	loginPending := false
-	if cfg.DeferLogin {
-		loginPending = true
-	} else {
-		err := login.LogIn(ctx, cfg, sess)
-		if err == login.ErrNeedNewSession {
-			// Restart session.
-			newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
-			if err != nil {
+	if newChromeSession {
+		if cfg.LoginMode != config.NoLogin && !cfg.KeepState {
+			if err := cryptohome.RemoveUserDir(ctx, cfg.NormalizedUser); err != nil {
+				return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", cfg.NormalizedUser)
+			}
+		}
+
+		if cfg.DeferLogin {
+			loginPending = true
+		} else {
+			err := login.LogIn(ctx, cfg, sess)
+			if err == login.ErrNeedNewSession {
+				// Restart session.
+				newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
+				if err != nil {
+					return nil, err
+				}
+				sess.Close(ctx)
+				sess = newSess
+			} else if err != nil {
 				return nil, err
 			}
-			sess.Close(ctx)
-			sess = newSess
-		} else if err != nil {
-			return nil, err
 		}
 	}
 
@@ -548,4 +570,121 @@ func (c *Chrome) StartTracing(ctx context.Context, categories []string) error {
 // StopTracing stops trace collection and returns the collected trace events.
 func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
 	return c.sess.StopTracing(ctx)
+}
+
+// checkUserLogin checks if a user has logged in.
+func (c *Chrome) checkUserLogin(ctx context.Context) (bool, error) {
+	conn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to establish Chrome connection")
+	}
+
+	var status struct {
+		IsLoggedIn     bool
+		IsScreenLocked bool
+	}
+	var user struct {
+		Email string
+	}
+
+	if err := conn.Eval(ctx, `tast.promisify(chrome.usersPrivate.getLoginStatus)()`, &status); err != nil {
+		return false, errors.Wrap(err, "failed to run js to get login status")
+	}
+	if !status.IsLoggedIn {
+		return false, nil
+	}
+	if status.IsScreenLocked {
+		return true, errors.New("screen is locked")
+	}
+
+	if err := conn.Eval(ctx, `tast.promisify(chrome.usersPrivate.getCurrentUser)()`, &user); err != nil {
+		return true, errors.Wrap(err, "failed to run js to get current user")
+	}
+	if user.Email != c.cfg.User {
+		return true, errors.New("logged in with a different user")
+	}
+
+	return true, nil
+}
+
+const tastChromeOptioionsVar = "tastChromeOptioions"
+
+// compareOptions compares the Chrome config with the the one read from Chrome session.
+func (c *Chrome) compareOptions(ctx context.Context) error {
+	conn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to establish Chrome connection")
+	}
+
+	var existingChromeOptions string
+	if err := conn.Eval(ctx, tastChromeOptioionsVar, &existingChromeOptions); err != nil {
+		return errors.Wrap(err, "failed to evaluate tastChromeOptions")
+	}
+
+	existingCfg := &config.Config{}
+	if err := json.Unmarshal([]byte(existingChromeOptions), existingCfg); err != nil {
+		return errors.Wrap(err, "failed to unmarshal tastChromeOptions")
+	}
+
+	if !reflect.DeepEqual(c.cfg, *existingCfg) {
+		return errors.New("chrome options are not compatible")
+	}
+	return nil
+}
+
+// optionsToJavaScript returns the JavaScript used to store Chrome options in background.js.
+func optionsToJavaScript(cfg *config.Config) (string, error) {
+	js, err := json.Marshal(cfg)
+	if err != nil {
+		return "", err
+	}
+
+	return fmt.Sprintf("%s = %q;", tastChromeOptioionsVar, js), nil
+}
+
+// checkReuseSession checks if the session can be reused and returns the extensions.
+func checkReuseSession(ctx context.Context, cfg *config.Config) (*extension.Files, error) {
+	if cfg.DeferLogin || cfg.LoginMode == config.NoLogin {
+		// Don't re-use login session for tests requiring no login.
+		return nil, errors.New("test requires no login")
+	}
+	extsDir := filepath.Join(persistentDir, "extensions")
+	exts, err := extension.CheckExtensions(extsDir, cfg.ExtraExtDirs, cfg.SigninExtKey)
+	if err != nil {
+		// Not all test extensions are found. Cannot reuse.
+		return nil, err
+	}
+	if err = cdputil.DetectDebuggingPort(ctx); err != nil {
+		// No debugging port to access. Cannot reuse.
+		return nil, err
+	}
+	agg := jslog.NewAggregator()
+	defer agg.Close()
+	sess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.NoWaitPort, agg)
+	if err != nil {
+		return nil, err
+	}
+	defer sess.Close(ctx)
+
+	cr := &Chrome{
+		cfg:          *cfg,
+		exts:         exts,
+		agg:          agg,
+		sess:         sess,
+		loginPending: false,
+	}
+	if err = cr.compareOptions(ctx); err != nil {
+		return nil, err
+	}
+
+	loggedIn, err := cr.checkUserLogin(ctx)
+	if err != nil {
+		// User login checking failed.
+		return nil, err
+	}
+	if !loggedIn {
+		// No logged-in session. Cannot reuse.
+		return nil, errors.New("existing chrome session not logged in")
+	}
+	return exts, nil
 }

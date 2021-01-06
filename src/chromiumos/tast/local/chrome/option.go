@@ -207,3 +207,12 @@ func UnpackedExtension(dir string) Option {
 func LoadSigninProfileExtension(key string) Option {
 	return func(cfg *config.Config) { cfg.SigninExtKey = key }
 }
+
+// ReuseSession returns an Option that can be passed to New to make Chrome to reuse the existing
+// login session from same user.
+// Session will be re-used when Chrome configurations are compatible between two sessions. For noLogin mode
+// and deferLogin option, session will not be re-used.
+// If the existing session cannot be reused, a new Chrome session will be restarted.
+func ReuseSession() Option {
+	return func(cfg *config.Config) { cfg.ReuseSession = true }
+}

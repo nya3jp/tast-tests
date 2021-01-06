@@ -62,6 +62,7 @@ type Config struct {
 	KeepState                   bool
 	DeferLogin                  bool
 	LoginMode                   LoginMode
+	ReuseSession                bool // reuse exiting login session if configuration matches
 	EnableLoginVerboseLogs      bool // enable verbose logging in some login related files
 	VKEnabled                   bool
 	SkipOOBEAfterLogin          bool // skip OOBE post user login

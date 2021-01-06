@@ -30,13 +30,15 @@ type Files struct {
 // non-empty string, the sign-in profile test extension is also created using
 // the key. extraExtDirs specifies directories of extra extensions to be
 // installed.
-func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey string) (*Files, error) {
+// extraBgJs is the extra JavaScript that will be appended to the test extension's
+// background.js file.
+func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey, extraBgJS string) (*Files, error) {
 	if err := os.MkdirAll(destDir, 0755); err != nil {
 		return nil, err
 	}
 
 	// Prepare the user test extension.
-	user, err := prepareTestExtension(filepath.Join(destDir, "test_api"), testExtensionKey, TestExtensionID)
+	user, err := prepareTestExtension(filepath.Join(destDir, "test_api"), testExtensionKey, TestExtensionID, extraBgJS)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +46,7 @@ func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey
 	// Prepare the sign-in profile test extension if it is available.
 	var signin *testExtension
 	if signinExtensionKey != "" {
-		signin, err = prepareTestExtension(filepath.Join(destDir, "test_api_signin_profile"), signinExtensionKey, SigninProfileTestExtensionID)
+		signin, err = prepareTestExtension(filepath.Join(destDir, "test_api_signin_profile"), signinExtensionKey, SigninProfileTestExtensionID, "")
 		if err != nil {
 			return nil, err
 		}
@@ -67,6 +69,58 @@ func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey
 		copiedExtraExtDirs = append(copiedExtraExtDirs, dst)
 	}
 
+	return &Files{
+		user:         user,
+		signin:       signin,
+		extraExtDirs: copiedExtraExtDirs,
+	}, nil
+}
+
+// CheckExtensions checks if Chrome extensions are present.
+func CheckExtensions(destDir string, extraExtDirs []string, signinExtensionKey string) (*Files, error) {
+	var extDirs []string
+	var copiedExtraExtDirs []string
+
+	userDir := filepath.Join(destDir, "test_api")
+	signinDir := filepath.Join(destDir, "test_api_signin_profile")
+
+	extDirs = append(extDirs, userDir)
+	if signinExtensionKey != "" {
+		extDirs = append(extDirs, signinDir)
+	}
+	for i := range extraExtDirs {
+		dst := filepath.Join(destDir, fmt.Sprintf("extra.%d", i))
+		extDirs = append(extDirs, dst)
+		copiedExtraExtDirs = append(copiedExtraExtDirs, dst)
+	}
+
+	for _, dir := range extDirs {
+		manifest := filepath.Join(dir, "manifest.json")
+		if _, err := os.Stat(manifest); err != nil {
+			return nil, errors.Wrapf(err, "missing extension manifest for %s", dir)
+		}
+	}
+
+	userID, err := ComputeExtensionID(userDir)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to compute test api extension ID")
+	}
+	if userID != TestExtensionID {
+		return nil, errors.New("unexpected test api extension ID")
+	}
+	user := &testExtension{dir: userDir, id: userID}
+
+	var signin *testExtension
+	if signinExtensionKey != "" {
+		signinID, err := ComputeExtensionID(signinDir)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to compute signin extension ID")
+		}
+		if signinID != SigninProfileTestExtensionID {
+			return nil, errors.New("unexpected signin extension ID")
+		}
+		signin = &testExtension{dir: signinID, id: signinID}
+	}
 	return &Files{
 		user:         user,
 		signin:       signin,
