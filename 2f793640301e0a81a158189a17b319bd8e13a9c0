@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5abcedbd_35270578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-06T17:54:43Z",
+      "side": 1,
+      "message": "just one nit",
+      "revId": "2f793640301e0a81a158189a17b319bd8e13a9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be3a3147_ba3e7261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/todoist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-06T17:54:43Z",
+      "side": 1,
+      "message": "This probably can just be s.Fatal(\"Failed to enter KEYCODE_BACK: \", err)\nSince pressing the back keycode should never fail, we should just fail the test early if this happens.",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 33
+      },
+      "revId": "2f793640301e0a81a158189a17b319bd8e13a9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
