@@ -109,6 +109,24 @@
       "parentUuid": "95f83358_3b2294a2",
       "revId": "74115abcce4d9a4fbb583213d714d9735445f8c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b278ad_05064f63",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-01-06T15:02:30Z",
+      "side": 1,
+      "message": "Oh, you\u0027re right! Thanks for catching this.",
+      "parentUuid": "6492d482_a0b532b1",
+      "revId": "74115abcce4d9a4fbb583213d714d9735445f8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

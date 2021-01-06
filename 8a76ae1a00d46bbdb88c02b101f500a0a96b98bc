@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35eb6d01_b1150c85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2021-01-06T15:02:30Z",
+      "side": 1,
+      "message": "Thanks for review, folks! Since CL:2606099 was merged, we can submit this CL now.\nMatthew, could you please review this CL as a Tast reviewer?\n",
+      "revId": "8a76ae1a00d46bbdb88c02b101f500a0a96b98bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
