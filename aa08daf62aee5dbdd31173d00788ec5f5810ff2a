@@ -206,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fff92e6_21866300",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-06T09:28:36Z",
+      "side": 1,
+      "message": "I see your point, I agree that Chrome.ResetState should be responsible for browser windows only since it\u0027s a method in \"Chrome\".",
+      "parentUuid": "191d3acf_92470e34",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "aa08daf62aee5dbdd31173d00788ec5f5810ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "801c3e2f_b42c6a30",
