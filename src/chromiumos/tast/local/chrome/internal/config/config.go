@@ -6,6 +6,9 @@
 package config
 
 import (
+	"encoding/json"
+	"reflect"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/session"
 )
@@ -55,16 +58,25 @@ const (
 //
 // This is an immutable struct. Its fields must not be altered outside of Option
 // and NewConfig.
+//
+// The "reuse_match" tag defines whether this field needs to match when trying to
+// reuse the existing chrome session (i.e., when TryReuseSession is true). The tag has
+// the following values:
+// - "false": this field doesn't have to match for reused session
+// - "customized": this field will not be checked for reuse in default checking logic. In stead,
+//   reuse checking logic is expected to be customized in customizedReuseCheck() function.
+// - default and other values: this field must match for session reuse
 type Config struct {
-	User, Pass, GAIAID, Contact string // login credentials
-	NormalizedUser              string // user with domain added, periods removed, etc.
-	ParentUser, ParentPass      string // unicorn parent login credentials
-	KeepState                   bool
-	DeferLogin                  bool
-	LoginMode                   LoginMode
-	EnableLoginVerboseLogs      bool // enable verbose logging in some login related files
+	User, Pass, GAIAID, Contact string    // login credentials
+	NormalizedUser              string    // user with domain added, periods removed, etc.
+	ParentUser, ParentPass      string    // unicorn parent login credentials
+	KeepState                   bool      `reuse_match:"false"`
+	DeferLogin                  bool      `reuse_match:"customized"`
+	LoginMode                   LoginMode `reuse_match:"customized"`
+	TryReuseSession             bool      `reuse_match:"false"` // try to reuse existing login session if configuration matches
+	EnableLoginVerboseLogs      bool      // enable verbose logging in some login related files
 	VKEnabled                   bool
-	SkipOOBEAfterLogin          bool // skip OOBE post user login
+	SkipOOBEAfterLogin          bool `reuse_match:"false"` // skip OOBE post user login
 	InstallWebApp               bool // auto install essential apps after user login
 	Region                      string
 	PolicyEnabled               bool   // flag to enable policy fetch
@@ -80,8 +92,9 @@ type Config struct {
 	EnableFeatures   []string
 	DisableFeatures  []string
 
-	ExtraExtDirs []string // directories containing all extra unpacked extensions to load
-	SigninExtKey string   // private key for signin profile test extension manifest
+	// reuse_match of extensions will be handled in Chrome.New().
+	ExtraExtDirs []string `reuse_match:"customized"` // directories containing all extra unpacked extensions to load
+	SigninExtKey string   `reuse_match:"customized"` // private key for signin profile test extension manifest
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -125,4 +138,61 @@ func NewConfig(opts []Option) (*Config, error) {
 	}
 
 	return cfg, nil
+}
+
+// Marshal marshal the Config struct to bytes.
+func (c *Config) Marshal() ([]byte, error) {
+	return json.Marshal(c)
+}
+
+// Unmarshal unmarshals the data to a Config struct
+func Unmarshal(data []byte) (*Config, error) {
+	cfg := &Config{}
+	if err := json.Unmarshal(data, cfg); err != nil {
+		return nil, err
+	}
+	return cfg, nil
+}
+
+// IsSessionReusable compares two configurations to see if they are compatible for the existing
+// Chrome session to be re-used. This function is called when TryReuseSession option is set for
+// the new Chrome session request.
+func (c *Config) IsSessionReusable(other *Config) bool {
+	// Default comparison logic is implemented here.
+	t := reflect.TypeOf(c).Elem()
+	val1 := reflect.ValueOf(c).Elem()
+	val2 := reflect.ValueOf(other).Elem()
+	// Iterate over all available fields and compare fields requiring exact match.
+	for i := 0; i < t.NumField(); i++ {
+		field := t.Field(i)
+
+		// Get the field tag.
+		reuseMatch := field.Tag.Get("reuse_match")
+		if reuseMatch == "false" || reuseMatch == "customized" {
+			continue
+		}
+
+		fv1 := val1.Field(i)
+		fv2 := val2.Field(i)
+		if !reflect.DeepEqual(fv1.Interface(), fv2.Interface()) {
+			return false
+		}
+	}
+
+	// Check fields requiring customized comparison logic.
+	return c.customizedReuseCheck(other)
+}
+
+// customizedReuseCheck provides customized session reuse checking logic for fields with
+// `reuse_match:"customized"` tag. If a newly defined Config field needs to be handled explicitly
+// for session reuse, the customized logic should be added in this function.
+func (c *Config) customizedReuseCheck(other *Config) bool {
+	// Check DeferLogin and LoginMode.
+	if other.DeferLogin || other.LoginMode == NoLogin {
+		return false
+	}
+	if other.LoginMode != c.LoginMode {
+		return false
+	}
+	return true
 }

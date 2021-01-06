@@ -1,0 +1,158 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package chrome
+
+import (
+	"context"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/config"
+	"chromiumos/tast/local/chrome/internal/driver"
+	"chromiumos/tast/local/chrome/internal/extension"
+	"chromiumos/tast/local/chrome/jslog"
+	"chromiumos/tast/testing"
+)
+
+// tryReuseSession checks if the exiting chrome session can be reuse, and returns a
+// Chrome instance if reuse criteria is met.
+func tryReuseSession(ctx context.Context, cfg *config.Config) (cr *Chrome, retErr error) {
+	testing.ContextLog(ctx, "Trying to reuse existing chrome session")
+
+	if !cfg.TryReuseSession {
+		return nil, errors.New("TryReuseSession option is not set")
+	}
+
+	agg := jslog.NewAggregator()
+	defer func() {
+		if retErr != nil {
+			agg.Close()
+		}
+	}()
+	sess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.NoWaitPort, agg)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		if retErr != nil {
+			sess.Close(ctx)
+		}
+	}()
+
+	if err := compareExtensions(cfg); err != nil {
+		return nil, err
+	}
+
+	if err := compareConfig(ctx, sess, cfg); err != nil {
+		return nil, err
+	}
+
+	if err := compareUserLogin(ctx, sess, cfg.User); err != nil {
+		return nil, err
+	}
+
+	return &Chrome{
+		cfg:          *cfg,
+		agg:          agg,
+		sess:         sess,
+		loginPending: cfg.DeferLogin,
+	}, nil
+}
+
+// compareExtensions checks if the new session extensions match the ones of the exsting session.
+func compareExtensions(cfg *config.Config) error {
+	// Get existing extension checksums.
+	extsDir := filepath.Join(extensionDir)
+	checksums, err := extension.Checksums(extsDir)
+	if err != nil {
+		return errors.Wrap(err, "failed to get checksums of existing extensions")
+	}
+
+	// Prepare extensions for new session in a temporary dir.
+	tempDir, err := ioutil.TempDir("", "")
+	if err != nil {
+		return err
+	}
+	defer os.RemoveAll(tempDir)
+	// PrepareExtensions() expects a non-existent extension dir.
+	tempExtDir := filepath.Join(tempDir, "extensions")
+	_, err = extension.PrepareExtensions(tempExtDir, cfg)
+	if err != nil {
+		return err
+	}
+	newChecksums, err := extension.Checksums(tempExtDir)
+	if err != nil {
+		return errors.Wrap(err, "failed to get checksums of new extensions")
+	}
+
+	// Make sure all new extensions exist in existing extensions by comparing checksums.
+	contains := func(slc []string, ele string) bool {
+		// Check if a slice contains a given element.
+		for _, e := range slc {
+			if e == ele {
+				return true
+			}
+		}
+		return false
+	}
+	for _, ne := range newChecksums {
+		if !contains(checksums, ne) {
+			return errors.New("required extension doesn't exist in the existing session")
+		}
+	}
+	return nil
+}
+
+// compareUserLogin checks if the configured user has logged in.
+func compareUserLogin(ctx context.Context, sess *driver.Session, email string) error {
+	conn, err := sess.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to establish Chrome connection")
+	}
+
+	var status struct {
+		IsLoggedIn     bool
+		IsScreenLocked bool
+	}
+
+	if err := conn.Eval(ctx, `tast.promisify(chrome.usersPrivate.getLoginStatus)()`, &status); err != nil {
+		return errors.Wrap(err, "failed to run javascript to get login status")
+	}
+	if !status.IsLoggedIn {
+		return errors.New("user has not logged in")
+	}
+	if status.IsScreenLocked {
+		return errors.New("screen is locked")
+	}
+
+	return nil
+}
+
+// compareConfig compares the configuration between new and existing Chrome sessions.
+func compareConfig(ctx context.Context, sess *driver.Session, cfg *config.Config) error {
+	conn, err := sess.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to establish Chrome connection")
+	}
+
+	var existingChromeOptions string
+	if err := conn.Eval(ctx, extension.TastChromeOptionsJSVar, &existingChromeOptions); err != nil {
+		return errors.Wrapf(err, "failed to evaluate %s", extension.TastChromeOptionsJSVar)
+	}
+
+	existingCfg, err := config.Unmarshal([]byte(existingChromeOptions))
+	if err != nil {
+		return errors.Wrap(err, "failed to unmarshal existing config data")
+	}
+
+	if !cfg.IsSessionReusable(existingCfg) {
+		return errors.New("configurations are not compatible for reuse")
+	}
+
+	return nil
+}
