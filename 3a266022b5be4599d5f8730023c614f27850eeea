@@ -34,6 +34,70 @@
       "parentUuid": "901a2e7c_874438fb",
       "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35f498f_18e85f04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-06T05:57:23Z",
+      "side": 1,
+      "message": "I discovered looking at CL:2599840 that this is possible, though it requires a bit of refactoring.",
+      "parentUuid": "18789de4_186fa6fb",
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e96dde_606e73eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/data/crostini_test_container_metadata_buster_amd64.tar.xz.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-06T05:57:23Z",
+      "side": 1,
+      "message": "All of these should be symlinks to the files in ../../../../crostini/data, that way they\u0027ll be updated whenever I update the VM or container images.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 1
+      },
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f844937c_ee52dadf",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-06T05:57:23Z",
+      "side": 1,
+      "message": "We should remove that. We now take the position that concierge should never be shutdown before the user logs out.",
+      "range": {
+        "startLine": 330,
+        "startChar": 28,
+        "endLine": 330,
+        "endChar": 96
+      },
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
