@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "781ed8d8_ed94459b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-06T00:28:51Z",
+      "side": 1,
+      "message": "Hi Oleh, thank you for your review comments, I\u0027ve gone through them all and have left comments that require consensus.",
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
