@@ -16,6 +16,23 @@
       "message": "Fixed the resource leak. Dean@: would you like to take another look?",
       "revId": "d81e7388bae379640833297223c5db6cba45c6b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deda6356_191086f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-06T03:49:18Z",
+      "side": 1,
+      "message": "LGTM. Thanks for fixing the resource leak.",
+      "revId": "d81e7388bae379640833297223c5db6cba45c6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
