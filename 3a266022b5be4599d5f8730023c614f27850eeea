@@ -16,6 +16,24 @@
       "message": "Is there a way we can avoid splitting the tests in arm and amd64 variants?\n\nI assume making the test depend on both amd64 and arm data files would waste too much time downloading unnecessary artifacts?\n\nOtherwise it looks good from my side.",
       "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18789de4_186fa6fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-06T01:54:39Z",
+      "side": 1,
+      "message": "downloading data files is a problem, not just from time, but also from a disk usage perspective that we already have a lot of trouble with.\n\nThe crostini precondition is written this way, I would prefer not to change it at this point unless there is a strong reason to do so.\n\nIf this is a significant problem, it would probably be best to approach tast core team with it and see if data fetching can be made smarter.",
+      "parentUuid": "901a2e7c_874438fb",
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
