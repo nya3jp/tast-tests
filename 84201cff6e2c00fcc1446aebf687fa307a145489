@@ -16,6 +16,23 @@
       "message": "In the long-term, it would be preferable to specify a dependency for Realtek WiFi chip, per guidance on go/tast-deps:\n\n    Note that there are special kinds of hardware dependencies, named Model, SkipOnModel, Platform, and SkipOnPlatform. With these dependencies, tests will be controlled based on the device type names, rather than the device characteristics. In general, it is recommended not to use these conditions. If you feel you need these conditions, it is recommended to reconsider whether there is an alternative (and more appropriate) condition. Examples of their expected use cases are:\n\n    * There are known issues in a driver of a specific device, which cannot be fixed immediately. The test is stable on other models, and we would like to promoted it to critical.\n\n    * There is a test running as informational. Flakiness failures are found only on a few models, but the test is stable on other models. With depending models/platforms, we can promote the test to critical on most of models, except ones where the test results flakiness. In this case, it is expected that a dedicated engineer is assigned to investigate the cause and its fix.",
       "revId": "84201cff6e2c00fcc1446aebf687fa307a145489",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a690e94d_dfa281e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-01-06T15:25:58Z",
+      "side": 1,
+      "message": "If we\u0027re skipping these devices because they don\u0027t have intel wifi chips, can we instead add this exclusion to the existing \"intel_wifi_chip\" dep?",
+      "revId": "84201cff6e2c00fcc1446aebf687fa307a145489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
