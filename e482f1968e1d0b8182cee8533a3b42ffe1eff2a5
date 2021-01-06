@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b78f719_1418c106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-01-06T18:14:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86ef656b_931b536d",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "e482f1968e1d0b8182cee8533a3b42ffe1eff2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "591e987f_5cf05d48",
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "591e987f_5cf05d48",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "e482f1968e1d0b8182cee8533a3b42ffe1eff2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8926463d_bd4e7909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-01-06T18:14:52Z",
+      "side": 1,
+      "message": "Putting this in the deferred cleanup func above",
+      "parentUuid": "841efcad_e59928cc",
       "range": {
         "startLine": 54,
         "startChar": 21,
@@ -149,6 +197,30 @@
       "side": 1,
       "message": "Apps.StateTransition.AnimationSmoothness is reported indeed, which includes everything.  It is up to your choice which one should be monitored, but I think it\u0027s better to separate them.  That way, you can put both Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode and Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode here, and the main scenario can both open and close the assistant UI in a single metrics.RunAndWaitAll.",
       "parentUuid": "e889002e_66f606c8",
+      "range": {
+        "startLine": 91,
+        "startChar": 24,
+        "endLine": 91,
+        "endChar": 43
+      },
+      "revId": "e482f1968e1d0b8182cee8533a3b42ffe1eff2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46826d10_d924d87d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-01-06T18:14:52Z",
+      "side": 1,
+      "message": "I saw some stability problems with this approach unless I inserted a Sleep between launcher open and close. Either the open or close histogram sometimes did not appear if the launcher opened and closed too quickly. A different test, \"assistant.EmbeddedUIOpenAndCloseAnimationPerf\" uses |ash.WaitForLauncherState| but we\u0027ve seen some flakiness with that too.\n\nWaiting for the metric to appear each time solved this issue, which is why I put them in separate metrics.RunAndWaitAll",
+      "parentUuid": "31f12dd1_92346671",
       "range": {
         "startLine": 91,
         "startChar": 24,
