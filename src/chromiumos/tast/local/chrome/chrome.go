@@ -111,7 +111,11 @@ func (c *Chrome) User() string { return c.cfg.User }
 // DeprecatedExtDirs returns the directories holding the test extensions.
 //
 // DEPRECATED: This method does not handle sign-in profile extensions correctly.
+// For reused Chrome session, this method just return a nil because c.exts is not set.
 func (c *Chrome) DeprecatedExtDirs() []string {
+	if c.exts == nil {
+		return nil
+	}
 	return c.exts.DeprecatedDirs()
 }
 
@@ -151,12 +155,20 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		return nil, err
 	}
 
+	if cfg.TryReuseSession {
+		cr, err := tryReuseSession(ctx, cfg)
+		if err == nil {
+			return cr, nil
+		}
+		testing.ContextLog(ctx, "Failed to reuse session: ", err)
+	}
+
 	if err := os.RemoveAll(persistentDir); err != nil {
 		return nil, err
 	}
 
 	extsDir := filepath.Join(persistentDir, "extensions")
-	exts, err := extension.PrepareExtensions(extsDir, cfg.ExtraExtDirs, cfg.SigninExtKey)
+	exts, err := extension.PrepareExtensions(extsDir, cfg)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
