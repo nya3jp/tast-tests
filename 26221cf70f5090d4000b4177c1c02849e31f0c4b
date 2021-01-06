@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73d73167_04045977",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-06T09:28:36Z",
+      "side": 1,
+      "message": "LGTM with a nit, thanks for trying out fixtures.\n",
+      "revId": "26221cf70f5090d4000b4177c1c02849e31f0c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d60c22_7b81e4f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-06T09:28:36Z",
+      "side": 1,
+      "message": "nit: It\u0027s nicer if construction and close are paired. I know it\u0027s a bit difficult because we want to create scopes for shorter context timeouts as well.\n\nA possible way would be like:\n\n cr :\u003d func() *chrome.Chrome {\n   ctx, cancel :\u003d context.WithTimeout(ctx, ...)\n   defer cancel()\n\n   cr, err :\u003d chrome.New(...)\n   if err !\u003d nil {\n     s.Fatal(...)\n   }\n\n   chrome.Lock()\n   return cr\n }()\n defer func() {\n   if cr !\u003d nil {\n     chrome.Unlock()\n     if err :\u003d cr.Close(ctx); err !\u003d nil {\n       ...\n     }\n   }\n }()",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 4
+      },
+      "revId": "26221cf70f5090d4000b4177c1c02849e31f0c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
