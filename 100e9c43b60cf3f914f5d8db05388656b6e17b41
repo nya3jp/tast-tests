@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ce362d_7273ecbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-01-06T14:55:03Z",
+      "side": 1,
+      "message": "Hi, I found this test flaky (if not failing) on betty-arc-r, blocking cheeps uprev:\nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI73300007040228029\u0026testResultId\u003dTR66516394737608026\n\nWould be great if you can try it out on betty and see if it\u0027s a real issue. If it\u0027s simply due to betty being slow, can we adjust some timeouts here?",
+      "revId": "100e9c43b60cf3f914f5d8db05388656b6e17b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
