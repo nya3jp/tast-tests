@@ -12,6 +12,7 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/chrome/jslog"
@@ -36,7 +37,11 @@ func DeprecatedPrepareExtensions() (extDirs []string, err error) {
 	if err != nil {
 		return nil, err
 	}
-	exts, err := extension.PrepareExtensions(filepath.Join(dir, "extensions"), nil, "")
+	cfg, err := config.NewConfig(nil)
+	if err != nil {
+		return nil, err
+	}
+	exts, err := extension.PrepareExtensions(filepath.Join(dir, "extensions"), cfg)
 	if err != nil {
 		return nil, err
 	}
