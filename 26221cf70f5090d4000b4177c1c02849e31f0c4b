@@ -39,6 +39,30 @@
       },
       "revId": "26221cf70f5090d4000b4177c1c02849e31f0c4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bcd11f6_70777b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-06T19:51:22Z",
+      "side": 1,
+      "message": "I think it\u0027s done (not using defer for arc.ARC instance as there\u0027s only one code path to clean it up on error)",
+      "parentUuid": "24d60c22_7b81e4f2",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 4
+      },
+      "revId": "26221cf70f5090d4000b4177c1c02849e31f0c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
