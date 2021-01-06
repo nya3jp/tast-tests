@@ -34,6 +34,24 @@
       "parentUuid": "99d1a9b8_41458775",
       "revId": "f0bdc010b1319819a39fa79dd0eebb5981b8c90a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b9668de_362d058e",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-06T12:04:09Z",
+      "side": 1,
+      "message": "Okay, we now only have 1 unsupported combination (app test container + stretch), so that\u0027s not the only check.",
+      "parentUuid": "7b5c8933_62f114a9",
+      "revId": "f0bdc010b1319819a39fa79dd0eebb5981b8c90a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
