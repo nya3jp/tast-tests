@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e7ebcd_00863242",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-06T13:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb74a8c_04f14bee",
+      "range": {
+        "startLine": 131,
+        "startChar": 53,
+        "endLine": 131,
+        "endChar": 55
+      },
+      "revId": "65bda257df60e9c16ccfeaa695c294bd029e3b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ddaf447_a1503940",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-01-06T09:32:35Z",
       "side": 1,
       "message": "nit: extra space",
+      "range": {
+        "startLine": 141,
+        "startChar": 69,
+        "endLine": 141,
+        "endChar": 70
+      },
+      "revId": "65bda257df60e9c16ccfeaa695c294bd029e3b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5e55da4_896adc68",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-06T13:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ddaf447_a1503940",
       "range": {
         "startLine": 141,
         "startChar": 69,
