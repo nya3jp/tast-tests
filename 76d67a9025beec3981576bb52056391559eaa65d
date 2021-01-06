@@ -41,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9556479_c543440b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:09:47Z",
+      "side": 1,
+      "message": "Defer to Shik with comments.",
+      "revId": "76d67a9025beec3981576bb52056391559eaa65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "410d5e9a_c7ae36db",
@@ -107,6 +124,47 @@
       "side": 1,
       "message": "More specifically:\nBefore migration - Only old state name will be available, all new state will always be false.\nAfter migration - Only new state name will be available, all old state will always be false.",
       "parentUuid": "d0d62081_43bd330d",
+      "revId": "76d67a9025beec3981576bb52056391559eaa65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01d225b_877ae290",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:09:47Z",
+      "side": 1,
+      "message": "Ok, thanks for explanation. Could you clarify in the comment? E.g.\n\nDuring the migration, it is necessary to check both old and new state names. If old state name is available, all new state are always false. If new state name is available, all old state are always false. Thus, combining obtained two values with || is what we need here.",
+      "parentUuid": "ac865f36_c0ecb705",
+      "revId": "76d67a9025beec3981576bb52056391559eaa65d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e3b6d0_315dde59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-06T08:09:47Z",
+      "side": 1,
+      "message": "optional: I\u0027d recommend to align this with the logic in GetState().\n\nvar getState string\nif lState, hasLegacy :\u003d ...; hasLegacy {\n  getState \u003d fmt.Sprintf(\"Tast.getState(%q) || Tast.getState(%q)\", state, lState)\n} else {\n  getState \u003d fmt.Sprintf(\"Tast.getState(%q)\", state)\n}\ncode :\u003d fmt.Sprintf(\"%s \u003d\u003d\u003d %t\", getState, active)\n...",
+      "range": {
+        "startLine": 1145,
+        "startChar": 1,
+        "endLine": 1153,
+        "endChar": 2
+      },
       "revId": "76d67a9025beec3981576bb52056391559eaa65d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
