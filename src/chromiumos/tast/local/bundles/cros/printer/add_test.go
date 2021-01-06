@@ -2,6 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Run "TAST_GENERATE_UPDATE=1 ~/trunk/src/platform/tast/tools/go.sh test add_test.go"
+// to regenerate parameters for add.go, proxy_add.go.
+
 package printer
 
 import (
@@ -11,8 +14,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/printer/ippprint"
 )
 
-// base adds two parameterized tests, one prefixed with "proxy_" that uses
-// the CUPS proxy for printing and the other that does not.
+// base adds two parameterized tests, one that uses the CUPS proxy for
+// printing and the other that does not.
 type base struct {
 	ExtraAttr                            []string
 	PrintFile, Name, PpdFile, GoldenFile string
@@ -60,26 +63,26 @@ func TestAddParams(t *testing.T) {
         {{ end }}
 }, {{ end }}`, []base{
 		// Collate
-		iTest2("epson_software_collate", "printer_EpsonWF3620.ppd", "printer_collate_epson_software_collate_golden.bin", ippprint.WithCopies(2), ippprint.Collate()),
-		iTest2("epson_software_uncollated", "printer_EpsonWF3620.ppd", "printer_collate_epson_software_uncollated_golden.bin", ippprint.WithCopies(2)),
-		iTest2("epson_hardware_collate", "printer_EpsonWFC20590.ppd", "printer_collate_epson_hardware_collate_golden.ps", ippprint.WithCopies(2), ippprint.Collate()),
-		iTest2("epson_hardware_uncollated", "printer_EpsonWFC20590.ppd", "printer_collate_epson_hardware_uncollated_golden.ps", ippprint.WithCopies(2)),
+		test2("epson_software_collate", "printer_EpsonWF3620.ppd", "printer_collate_epson_software_collate_golden.bin", ippprint.WithCopies(2), ippprint.Collate()),
+		test2("epson_software_uncollated", "printer_EpsonWF3620.ppd", "printer_collate_epson_software_uncollated_golden.bin", ippprint.WithCopies(2)),
+		test2("epson_hardware_collate", "printer_EpsonWFC20590.ppd", "printer_collate_epson_hardware_collate_golden.ps", ippprint.WithCopies(2), ippprint.Collate()),
+		test2("epson_hardware_uncollated", "printer_EpsonWFC20590.ppd", "printer_collate_epson_hardware_uncollated_golden.ps", ippprint.WithCopies(2)),
 
 		// Resolution
-		iTest("lexmark_600dpi", "printer_Lexmark.ppd", "printer_resolution_lexmark_600dpi_golden.ps", ippprint.WithResolution("600dpi")),
-		iTest("lexmark_1200dpi", "printer_Lexmark.ppd", "printer_resolution_lexmark_1200dpi_golden.ps", ippprint.WithResolution("1200dpi")),
-		iTest("lexmark_2400x600dpi", "printer_Lexmark.ppd", "printer_resolution_lexmark_2400x600dpi_golden.ps", ippprint.WithResolution("2400x600dpi")),
+		test("lexmark_600dpi", "printer_Lexmark.ppd", "printer_resolution_lexmark_600dpi_golden.ps", ippprint.WithResolution("600dpi")),
+		test("lexmark_1200dpi", "printer_Lexmark.ppd", "printer_resolution_lexmark_1200dpi_golden.ps", ippprint.WithResolution("1200dpi")),
+		test("lexmark_2400x600dpi", "printer_Lexmark.ppd", "printer_resolution_lexmark_2400x600dpi_golden.ps", ippprint.WithResolution("2400x600dpi")),
 
 		// Add
-		iTest("dymo_lw", "printer_add_dymo_printer_lw450.ppd", "printer_add_dymo_lw_printer_golden.bin"),
-		iTest("dymo_lm", "printer_add_dymo_printer_lm450.ppd", "printer_add_dymo_lm_printer_golden.bin"),
-		iTest("epson", "printer_EpsonWF3620.ppd", "printer_add_epson_printer_golden.ps"),
-		iTest("epson_color", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_color_golden.bin", "print-color-mode=color"),
-		iTest("epson_monochrome", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_monochrome_golden.bin", "print-color-mode=monochrome"),
+		test("dymo_lw", "printer_add_dymo_printer_lw450.ppd", "printer_add_dymo_lw_printer_golden.bin"),
+		test("dymo_lm", "printer_add_dymo_printer_lm450.ppd", "printer_add_dymo_lm_printer_golden.bin"),
+		test("epson", "printer_EpsonWF3620.ppd", "printer_add_epson_printer_golden.ps"),
+		test("epson_color", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_color_golden.bin", "print-color-mode=color"),
+		test("epson_monochrome", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_monochrome_golden.bin", "print-color-mode=monochrome"),
 		test("generic", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_generic_printer_golden.ps"),
-		iTest("hp", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"),
-		iTest("hp_pwg_raster_color", "hp_ipp_everywhere.ppd", "printer_add_hp_ipp_everywhere_golden.pwg"),
-		iTest("hp_pwg_raster_monochrome", "hp_ipp_everywhere.ppd", "printer_add_hp_pwg_raster_monochrome_golden.pwg", "print-color-mode=monochrome"),
+		test("hp", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"),
+		test("hp_pwg_raster_color", "hp_ipp_everywhere.ppd", "printer_add_hp_ipp_everywhere_golden.pwg"),
+		test("hp_pwg_raster_monochrome", "hp_ipp_everywhere.ppd", "printer_add_hp_pwg_raster_monochrome_golden.pwg", "print-color-mode=monochrome"),
 		test("star", "printer_add_star_printer_rastertostar.ppd.gz", "printer_add_star_printer_rastertostar.bin"),
 		test("star_lm", "printer_add_star_printer_rastertostarlm.ppd.gz", "printer_add_star_printer_rastertostarlm.bin"),
 
