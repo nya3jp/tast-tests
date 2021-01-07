@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
@@ -127,6 +128,13 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 					if err := a.PullFile(ctx, "/sdcard/window_dump.xml", path); err != nil {
 						s.Log("Failed to pull UIAutomator dump: ", err)
 					}
+					if err := adb.Command(ctx, "bugreport", s.OutDir()).Run(testexec.DumpLogOnError); err != nil {
+						s.Log("Failed to get bug report: ", err)
+						return
+					}
+					s.Log("path:s.OutDir(): ", s.OutDir())
+					filename = fmt.Sprintf("bugreport-arcappcompat-failed-test-%d.zip", idx)
+					path = filepath.Join(s.OutDir(), filename)
 				}
 			}(cleanupCtx)
 
@@ -251,6 +259,7 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 	if err != nil {
 		s.Error("Failed to get window info: ", err)
 	}
+
 	s.Logf("App Resize info, info.CanResize %+v", info.CanResize)
 	if !info.CanResize {
 		s.Log("This app is not resizable. Skipping test")
@@ -398,6 +407,10 @@ func DetectAndCloseCrashOrAppNotResponding(ctx context.Context, s *testing.State
 		return errors.New("waiting for crash")
 	}, &testing.PollOptions{Timeout: shortUITimeout}); err != nil && !strings.Contains(err.Error(), "waiting for crash") {
 		s.Error("The application crashed: ", err)
+		path := filepath.Join(s.OutDir(), "app-crash-or-anr.png")
+		if err := screenshot.Capture(ctx, path); err != nil {
+			s.Log("Screenshot for app-crash-or-anr.png: ", err)
+		}
 		handleCrashOrANRDialog(ctx, s, d)
 	}
 }
