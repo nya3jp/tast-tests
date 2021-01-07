@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // newRoutineParams creates and returns a diagnostic routine with default test
@@ -75,6 +76,8 @@ func init() {
 			Name:      "nvme_self_test",
 			Val:       newRoutineParams(croshealthd.RoutineNVMESelfTest),
 			ExtraAttr: []string{"informational"},
+			// TODO(http://b/175305207): some zork nvme controllers lock up
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("dalboz", "morphius")),
 		}, {
 			Name:      "nvme_wear_level",
 			Val:       newRoutineParams(croshealthd.RoutineNVMEWearLevel),
