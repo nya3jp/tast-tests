@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21184446_cf78f57a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-01-07T00:15:27Z",
+      "side": 1,
+      "message": "minor nit: routers",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2d4e296_2e42098d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-01-07T00:15:27Z",
+      "side": 1,
+      "message": "I believe in Tast\u0027s convention, we should avoid passing in the testing state into helper functions for the purpose of emitting errors. We should allow the main test to decide how to handle the error.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#support-packages\n\ne.g\n```\nfunc axConnect(ctx context.Context, ssid, passphrase string) error {\n\t...\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err,\"error trying to create RPC Dial\")\n\t}\n\t...\n\treturn nil\n}\n```",
+      "range": {
+        "startLine": 37,
+        "startChar": 36,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
