@@ -16,6 +16,23 @@
       "message": "Hi, this is failing on betty-arc-r and blocking betty uprev for Android TreeHugger. Is it OK to demote the test for now?\nSorry for the confusion since betty-arc-r is not yet covered by CQ.",
       "revId": "53ae0f3c4990ddce12d21a4c52fc9ad036e6606d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45981da7_7f2adb3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-01-07T20:52:30Z",
+      "side": 1,
+      "message": "LGTM.\n\nI might try to run this test on P so that it will run on a lot more boards to get more data before we make it critical again.",
+      "revId": "53ae0f3c4990ddce12d21a4c52fc9ad036e6606d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
