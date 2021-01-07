@@ -16,6 +16,24 @@
       "message": "one question, do we still wanna use tpm mangaer dbus client instead of using tpm manger binary?\n",
       "revId": "58ca4a2d95bc5bf913edc967a96b4ac093459b86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea6d257f_8aab8a7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-07T10:31:40Z",
+      "side": 1,
+      "message": "Using tpm mangaer dbus client would need to add the D-Bus client and gRPC service for remote tast-test. Switching to that would be lower priority, and need some detail design for it.",
+      "parentUuid": "03177982_8291caa0",
+      "revId": "58ca4a2d95bc5bf913edc967a96b4ac093459b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
