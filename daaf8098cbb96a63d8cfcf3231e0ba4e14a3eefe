@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5780b47b_07a7b855",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-01-07T04:27:54Z",
+      "side": 1,
+      "message": "arc.MemoryAndroidPerf is broken, and should be replaced by something different (maybe the existing multivm.Lifecycle.arc), disable until we rewrite or decide to remove it.",
+      "revId": "daaf8098cbb96a63d8cfcf3231e0ba4e14a3eefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
