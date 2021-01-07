@@ -33,6 +33,115 @@
       "message": "Tast owner, PTAL thanks.",
       "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dec7d88_9a6a26fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-07T10:00:35Z",
+      "side": 1,
+      "message": "LGTM % comments and question",
+      "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bae2b1c_5d42c2d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-07T10:00:35Z",
+      "side": 1,
+      "message": "If you prefer, there is a shorter way to do this:\n\u003e  allowScreenSizeConfigChange :\u003d version \u003e\u003d arc.SDKR",
+      "range": {
+        "startLine": 645,
+        "startChar": 1,
+        "endLine": 650,
+        "endChar": 2
+      },
+      "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6124c8f_d811db18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-07T10:00:35Z",
+      "side": 1,
+      "message": "Unrelated to this CL:\nIf the error is form the arc.findWindow() call, the error should still be handled according to the value of param.shouldMove?",
+      "range": {
+        "startLine": 762,
+        "startChar": 4,
+        "endLine": 789,
+        "endChar": 0
+      },
+      "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e9fb1e8_56c77315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-07T10:00:35Z",
+      "side": 1,
+      "message": "It can be a little more compact:\n\u003e  if ccList, err :\u003d queryConfigurationChanges(ctx, a); err !\u003d nil {\n\u003e  \treturn err\n\u003e  } else if !isConfigurationChangeMatched(ccList, param.wantCC, allowScreenSizeConfigChange) {\n\u003e  \treturn errors.Errorf(\"unexpected config change: got %+v; want %+v\", ccList, param.wantCC)\n\u003e  }",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 796,
+        "endChar": 5
+      },
+      "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a44a4d_f344260e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-07T10:00:35Z",
+      "side": 1,
+      "message": "nit: by this time, you can assume that len(lhs) equals to len(rhs), so this part can be skipped.",
+      "range": {
+        "startLine": 1516,
+        "startChar": 44,
+        "endLine": 1516,
+        "endChar": 56
+      },
+      "revId": "edd8266757f1b761190fe3de3d744146d0eacf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
