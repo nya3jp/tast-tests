@@ -70,7 +70,7 @@ func AllowDinosaurEasterEgg(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 
 			var isBlocked bool
-			if err := conn.Eval(ctx, `document.querySelector('* /deep/ #main-frame-error div.snackbar') === null`, &isBlocked); err != nil {
+			if err := conn.Eval(ctx, `document.querySelector('* #main-frame-error div.snackbar') === null`, &isBlocked); err != nil {
 				s.Fatal("Could not read from dino page: ", err)
 			}
 
