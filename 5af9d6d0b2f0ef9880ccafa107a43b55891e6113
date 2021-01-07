@@ -289,6 +289,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d565855b_710cac4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T01:18:21Z",
+      "side": 1,
+      "message": "Yes, and I changed to this because it\u0027s clearer what I\u0027m trying to do.",
+      "parentUuid": "c56e4454_9331043f",
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2002fa4f_c15fa218",
