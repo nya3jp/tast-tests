@@ -46,6 +46,47 @@
       },
       "revId": "5ff13f660d13bf310aedea810bcb800d8578be90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f7ef2f_460473f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T17:15:53Z",
+      "side": 1,
+      "message": "Ack! Thanks for your comment\n\nCan you please include your comment in your CL as well near ExtraSoftwareDeps?",
+      "parentUuid": "b980fd11_377db364",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "5ff13f660d13bf310aedea810bcb800d8578be90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbdbf6b3_ea1fdcbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T17:15:53Z",
+      "side": 1,
+      "message": "LGTM % comment,\n\nThanks!",
+      "revId": "5ff13f660d13bf310aedea810bcb800d8578be90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
