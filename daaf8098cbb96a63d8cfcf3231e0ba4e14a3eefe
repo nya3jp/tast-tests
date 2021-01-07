@@ -16,6 +16,23 @@
       "message": "arc.MemoryAndroidPerf is broken, and should be replaced by something different (maybe the existing multivm.Lifecycle.arc), disable until we rewrite or decide to remove it.",
       "revId": "daaf8098cbb96a63d8cfcf3231e0ba4e14a3eefe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d29e0f_51a957a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-07T08:31:25Z",
+      "side": 1,
+      "message": "TODO(b/176944540): Re-enable the test once it is fixed; otherwise, delete it.\n\nRefer TODO comments:\nhttps://engdoc.corp.google.com/eng/doc/devguide/cpp/styleguide.md?cl\u003dhead#TODO_Comments",
+      "revId": "daaf8098cbb96a63d8cfcf3231e0ba4e14a3eefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
