@@ -103,6 +103,15 @@ func mountPassthroughMounts(ctx context.Context) ([]sysutil.MountInfo, error) {
 			testing.ContextLogf(ctx, "%s is not running, skipped", job)
 			continue
 		}
+		// mount-passthrough runs as a child of the upstart job process.
+		out, err := testexec.CommandContext(ctx, "pgrep", "--parent", strconv.Itoa(pid)).Output(testexec.DumpLogOnError)
+		if err != nil {
+			return nil, err
+		}
+		pid, err = strconv.Atoi(strings.TrimSpace(string(out)))
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parse PID: %s", out)
+		}
 		mounts, err := sysutil.MountInfoForPID(pid)
 		if err != nil {
 			return nil, err
