@@ -9,11 +9,14 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
@@ -112,6 +115,21 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer func(ctx context.Context) {
+				if s.HasError() {
+					dir := filepath.Join(s.OutDir(), "faillog_"+tc.name)
+					if err := os.MkdirAll(dir, 0755); err != nil {
+						s.Errorf("Failed to create failog dir %q: %v", dir, err)
+						return
+					}
+					faillog.SaveToDir(ctx, dir)
+				}
+			}(cleanupCtx)
+
 			// Update policies.
 			if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.value); err != nil {
 				s.Fatal("Failed to update policies: ", err)
