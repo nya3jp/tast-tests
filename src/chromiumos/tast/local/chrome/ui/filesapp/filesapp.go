@@ -48,7 +48,6 @@ const (
 
 // Directory names.
 const (
-	MyFiles     = "My files"
 	Downloads   = "Downloads"
 	GoogleDrive = "Google Drive"
 	MyDrive     = "My Drive"
@@ -597,37 +596,6 @@ func (f *FilesApp) SelectDirectoryContextMenuItem(ctx context.Context, dirName, 
 	}
 	defer item.Release(ctx)
 	return item.StableLeftClick(ctx, f.stablePollOpts)
-}
-
-// SelectEnclosingFolder clicks the enclosing folder via the breadcrumbs.
-func (f *FilesApp) SelectEnclosingFolder(ctx context.Context) error {
-	// Find the breadcrumbs container.
-	params := ui.FindParams{
-		ClassName: "breadcrumbs",
-		Role:      ui.RoleTypeGenericContainer,
-	}
-	breadcrumbs, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the breadcrumbs container")
-	}
-	defer breadcrumbs.Release(ctx)
-
-	// Find all the clickable folders in the breadcrumbs container.
-	params = ui.FindParams{
-		Role: ui.RoleTypeButton,
-	}
-	folders, err := breadcrumbs.Descendants(ctx, params)
-	if err != nil {
-		return errors.Wrap(err, "failed to find all breadcrumb items")
-	}
-	defer folders.Release(ctx)
-
-	if len(folders) < 2 {
-		return nil
-	}
-
-	enclosingFolder := folders[len(folders)-2]
-	return enclosingFolder.StableLeftClick(ctx, f.stablePollOpts)
 }
 
 // SetStablePollOpts sets the polling options for ensuring that a nodes location is stable before clicking.
