@@ -637,6 +637,18 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 	}
 	defer m.Close()
 
+	version, err := arc.SDKVersion()
+	if err != nil {
+		s.Fatal("Failed to get ARC version: ", err)
+	}
+	// In ARC R, screen size (in pixels) may change when window move to another display.
+	var allowScreenSizeConfigChange bool
+	if version >= arc.SDKR {
+		allowScreenSizeConfigChange = true
+	} else {
+		allowScreenSizeConfigChange = false
+	}
+
 	type shouldMoveFlag bool
 	const (
 		shouldMove    shouldMoveFlag = true
@@ -779,7 +791,7 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 				if err != nil {
 					return err
 				}
-				if !reflect.DeepEqual(ccList, param.wantCC) {
+				if !isConfigurationChangeMatched(ccList, param.wantCC, allowScreenSizeConfigChange) {
 					return errors.Errorf("unexpected config change: got %+v; want %+v", ccList, param.wantCC)
 				}
 
@@ -1497,4 +1509,22 @@ type activityStayingError struct {
 // Error is for error interface.
 func (e *activityStayingError) Error() string {
 	return fmt.Sprintf("activity still stays at the source display %s", e.displayID)
+}
+
+// isConfigurationChangeMatched return true if two configuration change is matched.
+func isConfigurationChangeMatched(lhs, rhs []configChangeEvent, allowScreenSizeChange bool) bool {
+	if len(lhs) != len(rhs) || len(lhs) > 1 || len(rhs) > 1 {
+		return false
+	}
+	if len(lhs) > 0 {
+		L := lhs[0]
+		R := rhs[0]
+		if L.handled != R.handled || L.density != R.density || L.orientation != R.orientation || L.fontScale != R.fontScale {
+			return false
+		}
+		if !allowScreenSizeChange && (L.screenSize != R.screenSize || L.smallestScreenSize != R.smallestScreenSize) {
+			return false
+		}
+	}
+	return true
 }
