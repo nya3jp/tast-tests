@@ -16,6 +16,138 @@
       "message": "Thanks!",
       "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfaa81ba_e3fbd42e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T11:04:50Z",
+      "side": 1,
+      "message": "Why do you need RunVaapiBinary function to be in the separate file?\n\nSame question for src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/decode_accel_smoke.go\n\nThis function is used only in one Tast test.",
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a5a461_5641094f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T11:04:50Z",
+      "side": 1,
+      "message": "it should be VAAPI:\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27abadf1_52a96647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T11:04:50Z",
+      "side": 1,
+      "message": "Maybe \"create new video logger\"?",
+      "range": {
+        "startLine": 33,
+        "startChar": 21,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a82f4ccc_fe531de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T11:04:50Z",
+      "side": 1,
+      "message": "It actually may work not as you expect. You already use ctx to stop UI job, it also takes some time. That\u0027s why you need to reserve time for cleanup first at the beginning of the function.\n\n\nYou can find some examples here:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed2925f0_1fc0bc1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T11:04:50Z",
+      "side": 1,
+      "message": "I guess it\u0027s not enough just to return if err happened, because there can be for example context deadline exceeded error. You need to explicitly check for expected error.",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6434c2f3_070dcdd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T11:04:50Z",
+      "side": 1,
+      "message": "PTAL when to log:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 88
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
