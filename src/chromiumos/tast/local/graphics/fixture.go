@@ -38,10 +38,12 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:            "chromeGraphics",
-		Desc:            "Logged into a user session for graphics testing.",
-		Parent:          "gpuWatchDog",
-		Impl:            chrome.NewLoggedInFixture(),
+		Name:   "chromeGraphics",
+		Desc:   "Logged into a user session for graphics testing.",
+		Parent: "gpuWatchDog",
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return nil, nil
+		}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
