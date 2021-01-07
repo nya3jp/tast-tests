@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c227647_7c9d52c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-07T07:19:09Z",
+      "side": 1,
+      "message": "* I locally tested only critical tests. Please tell me if you know a good way to test all ARC-related tests.\n* Other than simple replacement, some files (power_idle_perf_test.go and registration_test.go) are updated for CI. (http://crrev/c/2599687/1..3)\n* This CL is for https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2594929",
+      "revId": "36d27c610fc606427670e189929d83b79a8f6327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
