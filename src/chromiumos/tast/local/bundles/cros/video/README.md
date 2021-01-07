@@ -233,8 +233,13 @@ To run all video seek tests run:
 ### Resolution Ladder Sequence Creation
 
 The `smpte_bars_resolution_ladder.*` videos are generated using a combination of
-gstreamer and ffmpeg scripts, concretely for VP8, VP9 and H.264 (AVC1),
+gstreamer and ffmpeg scripts, concretely for AV1, VP8, VP9 and H.264 (AVC1),
 respectively:
+
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,format=I420,width=320,height=240   ! av1enc ! video/x-av1,profile=main ! webmmux ! filesink location=smpte00.webm;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,format=I420,width=854,height=480   ! av1enc ! video/x-av1,profile=main ! webmmux ! filesink location=smpte01.webm;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,format=I420,width=1280,height=800  ! av1enc ! video/x-av1,profile=main ! webmmux ! filesink location=smpte02.webm;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,format=I420,width=1904,height=1008 ! av1enc ! video/x-av1,profile=main ! webmmux ! filesink location=smpte03.webm;
 
     gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=320,height=240   ! vp8enc ! "video/x-vp8" ! webmmux ! filesink location=smpte00.vp8.webm;
     gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=854,height=480   ! vp8enc ! "video/x-vp8" ! webmmux ! filesink location=smpte01.vp8.webm;
@@ -269,7 +274,7 @@ which is then used for `ffmpeg`, for example for the MPEG-4 output:
 
     ffmpeg -f concat -i files.mp4.txt -bsf:v "h264_metadata=level=auto" -c copy smpte.mp4
 
-The line for VP8 and VP9 is similar, without the `-bsf:v`.
+The line for AV1, VP8 and VP9 is similar, without the `-bsf:v`.
 
 ## Canvas Tests (`video.DrawOnCanvas`)
 

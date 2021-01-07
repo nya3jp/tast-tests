@@ -62,6 +62,13 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
+			Name:              "switch_av1",
+			Val:               seekTest{filename: "smpte_bars_resolution_ladder.av1.webm", numSeeks: 25},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"smpte_bars_resolution_ladder.av1.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			Fixture:           "chromeVideoWithHWAV1Decoding",
+		}, {
 			Name:              "switch_h264",
 			Val:               seekTest{filename: "smpte_bars_resolution_ladder.h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
