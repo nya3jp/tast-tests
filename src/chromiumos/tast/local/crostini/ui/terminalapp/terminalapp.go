@@ -69,7 +69,7 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	}
 
 	terminalApp := &TerminalApp{tconn: tconn, Root: app}
-	if err := terminalApp.waitForPrompt(ctx); err != nil {
+	if err := terminalApp.WaitForPrompt(ctx); err != nil {
 		app.Release(ctx)
 		return nil, errors.Wrap(err, "failed to wait for terminal prompt")
 	}
@@ -77,7 +77,10 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	return terminalApp, nil
 }
 
-func (ta *TerminalApp) waitForPrompt(ctx context.Context) error {
+// WaitForPrompt waits until the terminal window shows a shell
+// prompt. Useful for either waiting for the startup process to finish
+// or for a terminal application to exit.
+func (ta *TerminalApp) WaitForPrompt(ctx context.Context) error {
 	parentParams := ui.FindParams{
 		Role:       ui.RoleTypeRootWebArea,
 		Attributes: map[string]interface{}{"name": regexp.MustCompile(`\@penguin\: `)},

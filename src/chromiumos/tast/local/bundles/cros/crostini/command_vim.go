@@ -230,6 +230,11 @@ func createFileWithVim(ctx context.Context, keyboard *input.KeyboardEventWriter,
 	if err := keyboard.Accel(ctx, "Enter"); err != nil {
 		return errors.Wrap(err, "failed to press Enter in Terminal")
 	}
+
+	// Wait for vim to exit
+	if err := terminalApp.WaitForPrompt(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for vim to exit")
+	}
 	return nil
 }
 
