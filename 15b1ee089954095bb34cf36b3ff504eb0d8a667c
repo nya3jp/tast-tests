@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2023147f_16139a84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_cn_hello.hw",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Your host can upload files and you will need to just update this CL.\n\nAs you mentioned, you already have some design for this file format. You can make it public even if it isn\u0027t final. Otherwise, we can just forget to do it in the future. At least, there should be a bug if for some good reason you prefer to do it later.",
+      "parentUuid": "70108b5b_8ee1f281",
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d639410_62227e67",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
         "patchSetId": 8
@@ -431,6 +449,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "941ac593_ce0a099a",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "What about unit tests?",
+      "parentUuid": "21b7a59d_f2250427",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78640a3f_729a30ab",
         "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
         "patchSetId": 8
@@ -572,6 +614,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "206ab92c_6a2a372e",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "not resolved",
+      "parentUuid": "9952eed5_5151fabc",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 15
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d689bc5_2fbb5b61",
         "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
         "patchSetId": 8
@@ -659,6 +725,54 @@
         "startChar": 21,
         "endLine": 75,
         "endChar": 31
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3114653f_2df60144",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Oh, my fault! I thought that bufio.Scanner implements io.Reader interface!",
+      "parentUuid": "8ec4ac12_fa39564b",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410b2c32_1491c949",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "not resolved",
+      "parentUuid": "f37e6bab_372ffbbc",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 79
       },
       "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -758,6 +872,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5862ee36_5a06ec1d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed06fe6c_c78a72d4",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b429e54_3021c3aa",
@@ -805,6 +943,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e94475_b01d1be3",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "79e8bfd9_d341f10e",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 70
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e39473f_cfcd2405",
@@ -842,6 +1004,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "2e39473f_cfcd2405",
+      "range": {
+        "startLine": 364,
+        "startChar": 55,
+        "endLine": 364,
+        "endChar": 87
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015793d2_7db94856",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Sorry for not being very clear, by using default inverval I meant to don\u0027t specify Interval at all. Tast framework will handle it for you.",
+      "parentUuid": "15f019e9_9afca147",
       "range": {
         "startLine": 364,
         "startChar": 55,
