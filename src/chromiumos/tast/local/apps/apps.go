@@ -125,6 +125,18 @@ var PlayStore = App{
 	Name: "Play Store",
 }
 
+// Clock has details about the Clock app.
+var Clock = App{
+	ID:   "ddmmnabaeomoacfpfjgghfpocfolhjlg",
+	Name: "Clock",
+}
+
+// Contacts has details about the Contacts app.
+var Contacts = App{
+	ID:   "kipfkokfekalckplgaikemhghlbkgpfl",
+	Name: "Contacts",
+}
+
 // PrintManagement has details about the Print Management app.
 var PrintManagement = App{
 	ID:   "fglkccnmnaankjodgccmiodmlkpaiodc",
