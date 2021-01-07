@@ -120,3 +120,8 @@ func (d *Device) BroadcastIntentGetData(ctx context.Context, action string, para
 
 	return *result.Data, nil
 }
+
+// BugReport returns bugreport of the device.
+func (d *Device) BugReport(ctx context.Context, path string) error {
+	return d.Command(ctx, "bugreport", path).Run(testexec.DumpLogOnError)
+}
