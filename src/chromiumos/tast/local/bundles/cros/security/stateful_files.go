@@ -148,6 +148,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("home/user"), users("chronos"), groups("chronos-access"), chk.Mode(0700), chk.SkipChildren()), // top-level children
 		chk.NewPattern(chk.Tree("home"), users("root"), groups("root"), chk.NotMode(022)),
 
+		chk.NewPattern(chk.Path("unencrypted/apkcache"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Tree("unencrypted/attestation"), users("attestation", "root"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("unencrypted/preserve"), users("root"), chk.NotMode(02)),                 // directory itself
 		chk.NewPattern(chk.Path("unencrypted/preserve/cros-update"), chk.SkipChildren()),                 // only exists for testing
@@ -203,7 +204,6 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 	if _, err := user.Lookup("android-root"); err == nil {
 		prependPatterns(
-			chk.NewPattern(chk.Path("unencrypted/apkcache"), chk.Mode(0700), chk.SkipChildren()),
 			chk.NewPattern(chk.Tree("unencrypted/art-data"), users("android-root", "root"), chk.NotMode(022)))
 	}
 
