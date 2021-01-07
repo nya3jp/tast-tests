@@ -22,6 +22,30 @@
       },
       "revId": "5ff13f660d13bf310aedea810bcb800d8578be90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b980fd11_377db364",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-07T17:01:08Z",
+      "side": 1,
+      "message": "The wear level is buried in the NVME logs, and you need to have a very specific byte offset that varies per device. Wilco is the only device that has this offset. This is documented in the routine itself.",
+      "parentUuid": "82c5757f_fca2eefc",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "5ff13f660d13bf310aedea810bcb800d8578be90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
