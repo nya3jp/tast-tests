@@ -16,6 +16,391 @@
       "message": "Hi Oleh, thank you for your review comments, I\u0027ve gone through them all and have left comments that require consensus.",
       "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0be9308_a94ce539",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Hi Hyun,\n\nLooks much better, however your CL still missing documentation about file format and unit tests. Also I have few minor comments about code style.\n\nThanks,\nOleh",
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c98a572_e5f4786c",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "IIUC, you call this method only once in scaling function, e.g. before drawing. So why first stroke will be removed then?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 113
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6693954c_8aed7f93",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Maybe rename it to \"toCoordsPoint\" to be more presize?",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f7c5b98_5d8e9a9b",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Please move this method right after \"point\" structure",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "831cd268_827d133a",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Maybe rename it to NewStrokeGroupFromFile?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9598fb0_0fb067bd",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "same: not used / not needed",
+      "range": {
+        "startLine": 60,
+        "startChar": 25,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff0e953_7bc29025",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Actually this should be returned by the function",
+      "range": {
+        "startLine": 60,
+        "startChar": 87,
+        "endLine": 60,
+        "endChar": 115
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0919b45_1660da06",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "We don\u0027t need tconn in this funciton",
+      "range": {
+        "startLine": 60,
+        "startChar": 46,
+        "endLine": 60,
+        "endChar": 68
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d495a89_81f34b12",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "nit: add space between %f: \"%f %f\"?",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a011f64_4fb538c2",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 88,
+        "startChar": 39,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d91cc9c_20984558",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "Maybe try to use shorter names for variables, for example sc?",
+      "range": {
+        "startLine": 109,
+        "startChar": 71,
+        "endLine": 109,
+        "endChar": 86
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2517477d_2abbc88a",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "same: can?",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 7
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdbc7423_d41e66a2",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "same: canLoc?",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 15
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e69e666_61aba427",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "What does this magic number mean? You can create a separate constant and add a comment",
+      "range": {
+        "startLine": 118,
+        "startChar": 49,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89db2fb6_f54fdf6b",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "it used only once, maybe just remove this variable?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39adf510_7f7f2a7e",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "maybe just \"p\"?",
+      "range": {
+        "startLine": 143,
+        "startChar": 9,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f88186_823c0a0d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-07T13:36:50Z",
+      "side": 1,
+      "message": "What is the minimal inverval that VK will handle?",
+      "range": {
+        "startLine": 147,
+        "startChar": 60,
+        "endLine": 147,
+        "endChar": 79
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
