@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package cuj
+package perf
 
 import (
 	"context"
@@ -24,9 +24,9 @@ type memoryDataSource struct {
 	previous    float64
 }
 
-// newMemoryDataSource creates a new instance of memoryDataSource with the
+// NewMemoryDataSource creates a new instance of memoryDataSource with the
 // given name.
-func newMemoryDataSource(name, diffName, percentName string) *memoryDataSource {
+func NewMemoryDataSource(name, diffName, percentName string) *memoryDataSource {
 	return &memoryDataSource{name: name, diffName: diffName, percentName: percentName}
 }
 
