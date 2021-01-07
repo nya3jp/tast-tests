@@ -32,6 +32,7 @@ import (
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type meetLayoutType string
@@ -118,7 +119,8 @@ func init() {
 			},
 		}, {
 			// 4p power test.
-			Name: "power_4p",
+			Name:              "power_4p",
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: meetTest{
 				num:     4,
 				layout:  meetLayoutTiled,
@@ -130,7 +132,8 @@ func init() {
 			},
 		}, {
 			// 16p power test.
-			Name: "power_16p",
+			Name:              "power_16p",
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: meetTest{
 				num:     16,
 				layout:  meetLayoutTiled,
