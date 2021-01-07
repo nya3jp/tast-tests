@@ -9,15 +9,17 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/memoryuser"
 	"chromiumos/tast/local/multivm"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
 type lifecycleShiftingParam struct {
-	inHost, inARC bool
+	inHost, inCrostini, inARC bool
 }
 
 func init() {
@@ -37,6 +39,19 @@ func init() {
 				memoryuser.AllocPageFilename,
 				memoryuser.JavascriptFilename,
 			},
+		}, {
+			Name:              "crostini_host",
+			Pre:               multivm.CrostiniStarted(),
+			Val:               &lifecycleShiftingParam{inCrostini: true, inHost: true},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraData: []string{
+				vm.ArtifactData(),
+				crostini.GetContainerMetadataArtifact("buster", false),
+				crostini.GetContainerRootfsArtifact("buster", false),
+				memoryuser.AllocPageFilename,
+				memoryuser.JavascriptFilename,
+			},
+			ExtraHardwareDeps: crostini.CrostiniStable,
 		}},
 	})
 }
@@ -58,12 +73,19 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 	numTypes := 0
 	if param.inHost {
 		server = memoryuser.NewMemoryStressServer(s.DataFileSystem())
+		defer server.Close()
 		numTypes++
 	}
 	if param.inARC {
 		numTypes++
 	}
+	if param.inCrostini {
+		numTypes++
+	}
 
+	if numTypes == 0 {
+		s.Fatal("No lifecycle unit types")
+	}
 	// Created tabs/apps/etc. should have memory that is a bit compressible.
 	// We use the same value as the low compress ratio in
 	// platform.MemoryStressBasic.
@@ -72,8 +94,10 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 	var tasks []memoryuser.MemoryTask
 	var appsAliveTasks []memoryuser.KillableTask
 	var tabsAliveTasks []memoryuser.KillableTask
+	var procsAliveTasks []memoryuser.KillableTask
 	var appsAliveMetrics []*memoryuser.StillAliveMetricTask
 	var tabsAliveMetrics []*memoryuser.StillAliveMetricTask
+	var procsAliveMetrics []*memoryuser.StillAliveMetricTask
 	for i := 0; i < 3; i++ {
 		const numTasks = 50
 		if param.inHost {
@@ -102,6 +126,19 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 			appsAliveMetrics = append(appsAliveMetrics, task)
 			tasks = append(tasks, task)
 		}
+		if param.inCrostini {
+			for j := 0; j < numTasks/numTypes; j++ {
+				task := memoryuser.NewCrostiniLifecycleTask(pre.Crostini, len(procsAliveTasks), taskAllocMiB, compressRatio, hostLimit)
+				procsAliveTasks = append(procsAliveTasks, task)
+				tasks = append(tasks, task)
+			}
+			task := memoryuser.NewStillAliveMetricTask(
+				procsAliveTasks,
+				fmt.Sprintf("procs_alive_%d", i),
+			)
+			procsAliveMetrics = append(procsAliveMetrics, task)
+			tasks = append(tasks, task)
+		}
 	}
 
 	if param.inHost {
@@ -115,6 +152,18 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		if err := memoryuser.InstallArcLifecycleTestApps(ctx, arc, len(appsAliveTasks)); err != nil {
 			s.Fatal("Failed to install ArcLifecycleTestApps: ", err)
 		}
+	}
+	if param.inCrostini {
+		task := memoryuser.NewMinStillAliveMetricTask(procsAliveMetrics, "procs_alive_min")
+		tasks = append(tasks, task)
+		if err := memoryuser.InstallCrostiniLifecycle(ctx, pre.Crostini); err != nil {
+			s.Fatal("Failed to install Crostini lifecycle unit: ", err)
+		}
+		defer func() {
+			if err := memoryuser.UninstallCrostiniLifecycle(ctx, pre.Crostini); err != nil {
+				s.Error("Failed to uninstall Crostini lifecycle unit: ", err)
+			}
+		}()
 	}
 
 	// Run all the tasks.
