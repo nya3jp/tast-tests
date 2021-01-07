@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90659fcb_3a3bb5bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-07T02:14:54Z",
+      "side": 1,
+      "message": "The two vars should stay in WifiService struct. But it is a gRPC service, I doubt it is the right way to make the service stateful. If not, it is also not okay to have vars to keep the state.\n\nI think it is caller\u0027s responsibility to keep the original debug level and tags.",
+      "revId": "2740134aacd6df9bda08ddb83cb1a5db9ff3c58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64eb6686_2f28a66f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-07T02:14:54Z",
+      "side": 1,
+      "message": "The code block is sort of duplicate of line 90-108. Consider refactoring it. However, if it is caller\u0027s responsibility to keep the state, leave the logic in caller side.",
+      "revId": "2740134aacd6df9bda08ddb83cb1a5db9ff3c58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
