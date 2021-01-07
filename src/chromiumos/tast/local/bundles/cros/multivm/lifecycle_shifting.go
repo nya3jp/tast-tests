@@ -32,7 +32,7 @@ func init() {
 			Name:              "arc_host",
 			Pre:               multivm.ArcStarted(),
 			Val:               &lifecycleShiftingParam{inARC: true, inHost: true},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"arc"},
 			ExtraData: []string{
 				memoryuser.AllocPageFilename,
 				memoryuser.JavascriptFilename,

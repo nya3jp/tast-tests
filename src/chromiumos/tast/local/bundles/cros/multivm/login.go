@@ -67,5 +67,6 @@ func Login(ctx context.Context, s *testing.State) {
 		if err := crostini.BasicCommandWorks(ctx, pre.Crostini); err != nil {
 			s.Fatal("Crostini basic commands don't work: ", err)
 		}
+		memoryuser.InstallCrostiniLifecycle(ctx, pre.Crostini, s.DataPath)
 	}
 }

@@ -39,12 +39,12 @@ func init() {
 			Name:              "arc",
 			Pre:               multivm.ArcStarted(),
 			Val:               &lifecycleParam{inARC: true},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"arc"},
 		}, {
 			Name:              "arc_host",
 			Pre:               multivm.ArcStarted(),
 			Val:               &lifecycleParam{inARC: true, inHost: true},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"arc"},
 			ExtraData: []string{
 				memoryuser.AllocPageFilename,
 				memoryuser.JavascriptFilename,
@@ -53,7 +53,7 @@ func init() {
 			Name:              "host_with_bg_arc",
 			Pre:               multivm.ArcStarted(),
 			Val:               &lifecycleParam{inHost: true},
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"arc"},
 			ExtraData: []string{
 				memoryuser.AllocPageFilename,
 				memoryuser.JavascriptFilename,
