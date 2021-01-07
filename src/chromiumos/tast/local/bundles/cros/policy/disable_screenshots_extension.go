@@ -6,17 +6,21 @@ package policy
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/pre"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -112,6 +116,20 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			// This is needed only for debugging purpose to understand why the test is flaky.
+			// TODO(crbug:1159824): Remove once test will be stable.
+			defer func(ctx context.Context) {
+				if s.HasError() {
+					if err := screenshot.Capture(ctx, filepath.Join(s.OutDir(), fmt.Sprintf("screenshot_%s.png", tc.name))); err != nil {
+						s.Error("Failed to capture screenshot: ", err)
+					}
+				}
+			}(cleanupCtx)
+
 			// Update policies.
 			if err := policyutil.ServeAndVerify(ctx, fdms, cr, tc.value); err != nil {
 				s.Fatal("Failed to update policies: ", err)
