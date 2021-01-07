@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
+	perfSrc "chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 
@@ -150,11 +151,11 @@ type Recorder struct {
 	cleanup func(ctx context.Context) error
 
 	timeline           *perf.Timeline
-	gpuDataSource      *gpuDataSource
-	frameDataTracker   *FrameDataTracker
-	zramInfoTracker    *ZramInfoTracker
-	batteryInfoTracker *BatteryInfoTracker
-	memInfoTracker     *MemoryInfoTracker
+	gpuDataSource      *perfSrc.GPUDataSource
+	frameDataTracker   *perfSrc.FrameDataTracker
+	zramInfoTracker    *perfSrc.ZramInfoTracker
+	batteryInfoTracker *perfSrc.BatteryInfoTracker
+	memInfoTracker     *perfSrc.MemoryInfoTracker
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -189,12 +190,12 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 		return nil, errors.Wrap(err, "failed to connect to test API")
 	}
 
-	gpuDS := newGPUDataSource(tconn)
+	gpuDS := perfSrc.NewGPUDataSource(tconn)
 	sources := []perf.TimelineDatasource{
-		NewCPUUsageSource("CPU"),
-		newThermalDataSource(ctx),
+		perfSrc.NewCPUUsageSource("CPU"),
+		perfSrc.NewThermalDataSource(),
 		gpuDS,
-		newMemoryDataSource("RAM.Absolute", "RAM.Diff.Absolute", "RAM"),
+		perfSrc.NewMemoryDataSource("RAM.Absolute", "RAM.Diff.Absolute", "RAM"),
 	}
 	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix(metricPrefix))
 	if err != nil {
@@ -204,22 +205,22 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}
 
-	frameDataTracker, err := NewFrameDataTracker(metricPrefix)
+	frameDataTracker, err := perfSrc.NewFrameDataTracker(metricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create FrameDataTracker")
 	}
 
-	zramInfoTracker, err := NewZramInfoTracker(metricPrefix)
+	zramInfoTracker, err := perfSrc.NewZramInfoTracker(metricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ZramInfoTracker")
 	}
 
-	batteryInfoTracker, err := NewBatteryInfoTracker(ctx, metricPrefix)
+	batteryInfoTracker, err := perfSrc.NewBatteryInfoTracker(ctx, metricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create BatteryInfoTracker")
 	}
 
-	memInfoTracker := NewMemoryTracker(a)
+	memInfoTracker := perfSrc.NewMemoryTracker(a)
 
 	r := &Recorder{
 		cr:                 cr,
@@ -541,7 +542,7 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	}
 	pv.Merge(vs)
 
-	displayInfo, err := NewDisplayInfo(ctx, r.tconn)
+	displayInfo, err := perfSrc.NewDisplayInfo(ctx, r.tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display info")
 	}

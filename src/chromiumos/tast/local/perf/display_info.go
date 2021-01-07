@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package cuj
+package perf
 
 import (
 	"context"
@@ -40,7 +40,7 @@ func NewDisplayInfo(ctx context.Context, tconn *chrome.TestConn) (*DisplayInfo, 
 	}, nil
 }
 
-// ToValues stores display information as performance metric values.
+// Record stores display information as performance metric values.
 func (d DisplayInfo) Record(values *perf.Values) {
 	values.Set(perf.Metric{
 		Name:      "TPS.RefreshRate",

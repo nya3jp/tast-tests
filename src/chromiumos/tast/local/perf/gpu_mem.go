@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package cuj
+package perf
 
 import (
 	"context"
@@ -16,7 +16,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type gpuDataSource struct {
+// GPUDataSource is helper to get gpu data from Chrome.
+type GPUDataSource struct {
 	prefix   string
 	tconn    *chrome.TestConn
 	previous float64
@@ -27,26 +28,27 @@ type gpuDataSource struct {
 	dataErr     error
 }
 
-func newGPUDataSource(tconn *chrome.TestConn) *gpuDataSource {
-	return &gpuDataSource{
+// NewGPUDataSource creates an instance of GPUDataSource.
+func NewGPUDataSource(tconn *chrome.TestConn) *GPUDataSource {
+	return &GPUDataSource{
 		tconn: tconn,
 		stopc: make(chan struct{}),
 	}
 }
 
 // Close stops the background goroutine in this data source.
-func (ds *gpuDataSource) Close() {
+func (ds *GPUDataSource) Close() {
 	close(ds.stopc)
 }
 
 // Setup implements perf.TimelineDatasource.Setup.
-func (ds *gpuDataSource) Setup(ctx context.Context, prefix string) error {
+func (ds *GPUDataSource) Setup(ctx context.Context, prefix string) error {
 	ds.prefix = prefix
 	return nil
 }
 
 // Start implements perf.TimelineDatasource.Start.
-func (ds *gpuDataSource) Start(ctx context.Context) error {
+func (ds *GPUDataSource) Start(ctx context.Context) error {
 	recorder, err := metrics.StartRecorder(ctx, ds.tconn, "Compositing.Browser.GPUMemoryForTilingsInKb")
 	if err != nil {
 		return err
@@ -110,7 +112,7 @@ func (ds *gpuDataSource) Start(ctx context.Context) error {
 	return nil
 }
 
-func (ds *gpuDataSource) histograms() ([]*metrics.Histogram, error) {
+func (ds *GPUDataSource) histograms() ([]*metrics.Histogram, error) {
 	ds.dataMutex.Lock()
 	defer ds.dataMutex.Unlock()
 	if ds.dataErr != nil {
@@ -120,7 +122,7 @@ func (ds *gpuDataSource) histograms() ([]*metrics.Histogram, error) {
 }
 
 // Snapshot implements perf.TimelineDatasource.Snapshot.
-func (ds *gpuDataSource) Snapshot(ctx context.Context, values *perf.Values) error {
+func (ds *GPUDataSource) Snapshot(ctx context.Context, values *perf.Values) error {
 	// We cap 512MB for the GPU memory for tiling.
 	const maxGPUMemory = 512 * 1024
 
@@ -160,6 +162,6 @@ func (ds *gpuDataSource) Snapshot(ctx context.Context, values *perf.Values) erro
 }
 
 // Stop does nothing.
-func (ds *gpuDataSource) Stop(_ context.Context, values *perf.Values) error {
+func (ds *GPUDataSource) Stop(_ context.Context, values *perf.Values) error {
 	return nil
 }
