@@ -30,13 +30,11 @@ func init() {
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 		HardwareDeps: hwdep.D(
-			// Marvell systems have their country hard-coded in EEPROM.
+			// Some Marvell systems have their country hard-coded in EEPROM, and can't pass this test.
+			// TODO(b/36431366): the EEPROM may be wrong in many cases (https://crrev.com/c/2600261), so we may want to
+			// reevaluate (and fix) these models.
 			hwdep.SkipOnModel("bob"),
-			hwdep.SkipOnModel("elm"),
-			hwdep.SkipOnModel("fievel"),
-			hwdep.SkipOnModel("hana"),
 			hwdep.SkipOnModel("kevin"),
-			hwdep.SkipOnModel("tiger"),
 		),
 	})
 }
