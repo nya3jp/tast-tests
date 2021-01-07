@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4b17acf_afe1f316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d28432c9_82794aa5",
+      "range": {
+        "startLine": 83,
+        "startChar": 35,
+        "endLine": 83,
+        "endChar": 51
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daa968e5_005096ec",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-28T23:38:27Z",
       "side": 1,
       "message": "clar: Why is this needed?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "892cef9a_cf7b7d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Not needed.",
+      "parentUuid": "daa968e5_005096ec",
       "range": {
         "startLine": 87,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab2f4a0a_1faa7766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c126bbc_c4898211",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 21
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c68e1fa_f7ced6ec",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-28T23:38:27Z",
       "side": 1,
       "message": "Could you create the tab directly (i.e. without possibly hitting UI/keyboard input flakiness) by using cr.NewConn(ctx, url)?",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 37
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "452c0cd6_e9bc4f83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c68e1fa_f7ced6ec",
       "range": {
         "startLine": 116,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8573e31a_7d44027c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Ack, looks like when using cr.NewConn(), it will block until the tab is loaded, so no need to wait.",
+      "parentUuid": "01f6c2e1_47b88f24",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8679c26_b52d5adb",
@@ -135,6 +255,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93379391_c89895f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "First, I changed to https://securitykeys.info/qa.html which is controlled by us. It\u0027s also much simpler html. So I would say key combination is reliable.\n\n-------------------------------------------------------------------------\nI tried to explore the UI accessibility tree, but since this is 3rd party\u0027s web content, the ui node stops at:\n\nnode id\u003d307 role\u003dwebView state\u003d{\"focusable\":true,\"focused\":true} parentID\u003d274 childIds\u003d[435] childTreeID\u003dF668B1BDF4B793D065187A841AD87079 className\u003dWebView                                                                                                                                                                       \n |\n |-- node id\u003d435 role\u003dunknown state\u003d{} parentID\u003d307 childIds\u003d[] className\u003dNativeViewHost  \n\n------------------------------------------------------------------------\nI noticed that I can manipulate these DOM elements using javascript in the developer console. Does Tast allow running $(\"#submit\").click()  ?\n\nIf this works then it\u0027s an alternative, but I like the key combinations since that\u0027s easier",
+      "parentUuid": "f8679c26_b52d5adb",
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2002fa4f_c15fa218",
         "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
         "patchSetId": 1
@@ -146,6 +284,30 @@
       "writtenOn": "2020-12-28T23:38:27Z",
       "side": 1,
       "message": "Ditto on waiting on time rather than condition (https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#sleep), is a polling or other solution possible to tell when this is actually done?",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 34
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b5a89b_1dd75461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "The polling will be just looking for the success line, it\u0027s a little better than sleeping I think",
+      "parentUuid": "2002fa4f_c15fa218",
       "range": {
         "startLine": 148,
         "startChar": 1,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "890f6139_5ac1573c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da596225_b1f6aa5a",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 34
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "231ae240_d82d9365",
@@ -192,6 +378,30 @@
       "writtenOn": "2020-12-28T23:38:27Z",
       "side": 1,
       "message": "Ditto (passing testing.State only for s.Fatal). See: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/code_review_comments.md#state",
+      "range": {
+        "startLine": 171,
+        "startChar": 33,
+        "endLine": 171,
+        "endChar": 49
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4827f233_081094b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "231ae240_d82d9365",
       "range": {
         "startLine": 171,
         "startChar": 33,
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3535676_40aca979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3bd58489_119e0dca",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 10
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "098f24fb_3d8f41ba",
@@ -238,6 +472,30 @@
       "writtenOn": "2020-12-28T23:38:27Z",
       "side": 1,
       "message": "optional: move this up to where you have the break statement, and make the return statement a break. I believe this is slightly more in the spirit of: https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 42
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad620c23_63d9b5b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "098f24fb_3d8f41ba",
       "range": {
         "startLine": 186,
         "startChar": 1,
@@ -271,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "202969c0_fbe2a820",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3243866_dbcf1ca7",
+      "range": {
+        "startLine": 190,
+        "startChar": 31,
+        "endLine": 190,
+        "endChar": 47
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "713ee2b8_25c7c5c8",
@@ -294,6 +576,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c223db12_458d467e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "713ee2b8_25c7c5c8",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 10
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb975ef9_5c4b4f10",
@@ -307,6 +613,30 @@
       "writtenOn": "2020-12-28T23:38:27Z",
       "side": 1,
       "message": "optional: Same as in assertMakeCredentialSuccess",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 40
+      },
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc48068f_5c7571b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:26:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb975ef9_5c4b4f10",
       "range": {
         "startLine": 205,
         "startChar": 1,
