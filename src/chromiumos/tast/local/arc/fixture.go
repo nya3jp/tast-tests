@@ -19,9 +19,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// postTestTimeout is the timeout duration to save logs after each test.
+// PostTestTimeout is the timeout duration to save logs after each test.
 // It's intentionally set longer than resetTimeout because dumping 'dumpsys' takes around 20 seconds.
-const postTestTimeout = resetTimeout + 20*time.Second
+const PostTestTimeout = resetTimeout + 20*time.Second
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -36,7 +36,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -53,7 +53,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -73,7 +73,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -95,7 +95,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -117,7 +117,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -137,7 +137,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -179,7 +179,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -200,7 +200,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -224,7 +224,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -246,7 +246,7 @@ func init() {
 		}, "--video-decoder=libvda-vd\n"),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 
@@ -258,7 +258,7 @@ func init() {
 		Impl:            NewArcBootedWithParentChromeFixture(),
 		Parent:          "lacrosWithArcEnabled",
 		SetUpTimeout:    BootTimeout + ui.StartTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 	})
 
 	// arcBootedInClamshellMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in clamshell mode with Touch Mode Mouse compat features enabled in this fixture.
@@ -323,7 +323,7 @@ func init() {
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
-		PostTestTimeout: postTestTimeout,
+		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
 }
@@ -363,6 +363,15 @@ func NewArcBootedWithConfigFixture(fOpts chrome.OptionsCallback, arcvmConfig str
 			}
 			return append(opts, chrome.ARCEnabled(), chrome.ExtraArgs("--disable-features=ArcResizeLock")), nil
 		},
+	}
+}
+
+// NewMtbfArcBootedFixture returns a FixtureImpl with a OptionsCallback function provided for MTBF ARC++ tests.
+func NewMtbfArcBootedFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
+	return &bootedFixture{
+		enableUIAutomator: false,
+		playStoreOptin:    true,
+		fOpt:              fOpts,
 	}
 }
 
