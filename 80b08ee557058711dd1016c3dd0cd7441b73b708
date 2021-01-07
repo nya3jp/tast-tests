@@ -16,6 +16,23 @@
       "message": "Retry CQ due to same failure pattern from: crbug.com/1162595.",
       "revId": "80b08ee557058711dd1016c3dd0cd7441b73b708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6000c3a_78cc2105",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 14
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-07T07:46:32Z",
+      "side": 1,
+      "message": "nit: IIUC this does not need to live in the await",
+      "revId": "80b08ee557058711dd1016c3dd0cd7441b73b708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
