@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb7e010c_5f163cf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/background.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-01-07T22:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a274707_3432bb6e",
+      "revId": "92f5e459f466fc90554669840a0bab2bb6783421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92a5aece_fd00ebbc",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-07T22:17:34Z",
       "side": 1,
       "message": "Can you move this up like this: https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/resources/chromeos/login/components/oobe_links.css;l\u003d3",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "92f5e459f466fc90554669840a0bab2bb6783421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d24a453_d53c6783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.css",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-01-07T22:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92a5aece_fd00ebbc",
       "range": {
         "startLine": 4,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f4da79b_e3c7d297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.html",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-01-07T22:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "993bfea8_52774430",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "92f5e459f466fc90554669840a0bab2bb6783421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27b34ae7_0067b368",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-01-07T22:17:34Z",
       "side": 1,
       "message": "Remove this.",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "92f5e459f466fc90554669840a0bab2bb6783421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35791ba6_36b171a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.html",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-01-07T22:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27b34ae7_0067b368",
       "range": {
         "startLine": 14,
         "startChar": 4,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68531a95_d0515a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-01-07T22:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b81dfbf_1a7b09a3",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "92f5e459f466fc90554669840a0bab2bb6783421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfa77bed_7627b529",
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10da16ef_907139dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-01-07T22:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa77bed_7627b529",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "92f5e459f466fc90554669840a0bab2bb6783421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed5aecb0_75418ee5",
@@ -146,6 +284,30 @@
       "writtenOn": "2021-01-07T22:17:34Z",
       "side": 1,
       "message": "I think we can remove this since we don\u0027t do anything with imageNode.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 36
+      },
+      "revId": "92f5e459f466fc90554669840a0bab2bb6783421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bcd4ab1_148888e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-01-07T22:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed5aecb0_75418ee5",
       "range": {
         "startLine": 136,
         "startChar": 1,
