@@ -273,6 +273,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c56e4454_9331043f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-07T00:50:24Z",
+      "side": 1,
+      "message": "I\u0027m not the expert on this, but using code search I can find:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go;l\u003d95?q\u003d%22.click()%22%20lang:go%20\n\nDoes something along the lines of conn.Eval(ctx, `$(\"#submit\").click()`, nil) do what you need?\n(See also: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/conn.go;l\u003d111 )",
+      "parentUuid": "93379391_c89895f3",
+      "revId": "5af9d6d0b2f0ef9880ccafa107a43b55891e6113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2002fa4f_c15fa218",
         "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
         "patchSetId": 1
