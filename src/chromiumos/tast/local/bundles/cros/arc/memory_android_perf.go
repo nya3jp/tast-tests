@@ -30,8 +30,9 @@ func init() {
 			// For manual testing only, does not run automatically.
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "vm",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+			Name: "vm",
+			// TODO: b:176944540: Fix this tests an reenable, or delete.
+			//ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 10 * time.Minute,
