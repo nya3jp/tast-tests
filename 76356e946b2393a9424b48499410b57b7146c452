@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1494d73_9782347f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-07T16:27:43Z",
+      "side": 1,
+      "message": "nit: Should we return 100 for this case like [1] ?\n\n[1] https://github.com/shirou/gopsutil/blob/master/cpu/cpu.go#L113",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 48
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c4a53bb_2ecfb95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-07T16:27:43Z",
+      "side": 1,
+      "message": "nit: Move this after \"true\" ?",
+      "range": {
+        "startLine": 84,
+        "startChar": 40,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a058fb_ee187ca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-07T16:27:43Z",
+      "side": 1,
+      "message": "Just double check that we prefer this way instead of the \"Variant:   fmt.Sprintf(\"cpu-%d\", i)\" way.",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 37
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea278a13_6077883e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-07T16:27:43Z",
+      "side": 1,
+      "message": "nit: Move this up before L107 to keep cpu utilization logic together. And insert an empty line to separate from cpu freq logic.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
