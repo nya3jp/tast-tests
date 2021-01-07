@@ -45,17 +45,26 @@ func init() {
 	})
 }
 
+// FixtureOptions is the function used to set up the fixture by returning Chrome options.
+type FixtureOptions func(ctx context.Context, s *testing.FixtState) ([]Option, error)
+
 // loggedInFixture is a fixture to start Chrome with the given options.
 // If the parent is specified, and the parent returns a value of []Option, it
 // will also add those options when starting Chrome.
 type loggedInFixture struct {
 	cr   *Chrome
-	opts []Option
+	opts []Option       // Chrome Options
+	fOpt FixtureOptions // Function to generate Chrome Options
 }
 
 // NewLoggedInFixture returns a FixtureImpl of creating a Chrome instance with the given options.
 func NewLoggedInFixture(opts ...Option) testing.FixtureImpl {
 	return &loggedInFixture{opts: opts}
+}
+
+// NewLoggedInFixtureWithOptions returns a FixtureImpl with a FixtureOptions function provided.
+func NewLoggedInFixtureWithOptions(fOpt FixtureOptions) testing.FixtureImpl {
+	return &loggedInFixture{fOpt: fOpt}
 }
 
 func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -64,6 +73,15 @@ func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	if extraOpts, ok := s.ParentValue().([]Option); ok {
 		opts = append(opts, extraOpts...)
 	}
+
+	if f.fOpt != nil {
+		crOpts, err := f.fOpt(ctx, s)
+		if err != nil {
+			s.Fatal("Failed to call fixture option: ", err)
+		}
+		opts = append(opts, crOpts...)
+	}
+
 	cr, err := New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
