@@ -89,6 +89,8 @@ type Tester struct {
 	act   *arc.Activity
 }
 
+var defaultPollOptions = &testing.PollOptions{Timeout: 30 * time.Second}
+
 // NewTester creates a new instance of a Tester.
 // The provided activity should be started before any of the Tester's methods are called.
 // All provided arguments must outlive the Tester.
@@ -134,7 +136,7 @@ func (t *Tester) ExpectMotionEvents(ctx context.Context, matchers ...Matcher) er
 			}
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}, defaultPollOptions)
 }
 
 // WaitUntilEvent polls readMotionEvents repeatedly until it receives any motionEvent that
@@ -152,7 +154,7 @@ func (t *Tester) WaitUntilEvent(ctx context.Context, matcher Matcher) error {
 			}
 		}
 		return errors.New("no matching event received")
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}, defaultPollOptions)
 }
 
 // readMotionEvents unmarshalls the JSON string in the TextView representing the MotionEvents
