@@ -33,6 +33,23 @@
       "message": "Good catch - it is caused by a recent refactoring of me that I just fixed in https://chromium-review.googlesource.com/c/chromium/src/+/2612087.\n\nThis refactoring causes crashes with VLOG enabled.\n\nI guess it makes sense to temporary disable the logging.",
       "revId": "89175de62775e518051f7deef52a1d457e5addf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ee95d5_e153a3ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-01-07T19:30:44Z",
+      "side": 1,
+      "message": "Should this be merged if the fix is already in on the chromium side? I think I\u0027ll hold off on this because it should be fixed by the next chrome uprev.",
+      "revId": "89175de62775e518051f7deef52a1d457e5addf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
