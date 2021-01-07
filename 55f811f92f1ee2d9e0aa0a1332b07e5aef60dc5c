@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e01348a3_71965dc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-07T09:55:20Z",
+      "side": 1,
+      "message": "Looks fairly stable.\n\nDo you know the reason of this failure?\nhttps://tastboard.corp.google.com/test/printer.Add.lexmark_pin\n",
+      "revId": "55f811f92f1ee2d9e0aa0a1332b07e5aef60dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
