@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/load"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -127,8 +126,6 @@ func NewRecorder(ctx context.Context, tconn *chrome.TestConn, configs ...MetricC
 		gpuDS,
 		memDiff,
 	}
-	// Note setup.PowerTest() is needed to for stable/reliable power metrics.
-	sources = append(sources, power.TestMetrics()...)
 	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix("TPS."))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
