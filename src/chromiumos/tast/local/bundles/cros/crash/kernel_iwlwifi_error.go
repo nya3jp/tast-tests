@@ -36,7 +36,7 @@ func init() {
 		Func:         KernelIwlwifiError,
 		Desc:         "Verify kernel iwlwifi errors are logged as expected",
 		Contacts:     []string{"arowa@google.com", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi", "intel_wifi_chip"},
 		// TODO(crbug.com/1070299): Remove the below hard-coded devices
 		// and the the software dependency "intel_wifi_chip" above.
