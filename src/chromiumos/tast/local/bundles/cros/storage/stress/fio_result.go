@@ -41,6 +41,7 @@ type fioResultReport struct {
 type fioDiskUsageReport struct {
 	name           string
 	percentageUsed int64
+	bytesWritten   int64
 }
 
 // FioResultWriter is a serial processor of fio results.
@@ -77,14 +78,14 @@ func (f *FioResultWriter) Report(group string, result *fioResult) {
 }
 
 // ReportDiskUsage records the disk usage percents to report it at save time.
-func (f *FioResultWriter) ReportDiskUsage(diskName string, percentageUsed int64) {
+func (f *FioResultWriter) ReportDiskUsage(diskName string, percentageUsed, totalBytesWritten int64) {
 	if len(diskName) == 0 || percentageUsed == -1 {
 		return // No reporting of empty or wrong disk usage.
 	}
 
 	f.resultLock.Lock()
 	defer f.resultLock.Unlock()
-	f.diskUsages = append(f.diskUsages, fioDiskUsageReport{diskName, percentageUsed})
+	f.diskUsages = append(f.diskUsages, fioDiskUsageReport{diskName, percentageUsed, totalBytesWritten})
 }
 
 func reportDiskPercentageUsed(ctx context.Context, diskUsage fioDiskUsageReport, perfValues *perf.Values) {
@@ -95,6 +96,14 @@ func reportDiskPercentageUsed(ctx context.Context, diskUsage fioDiskUsageReport,
 		Direction: perf.SmallerIsBetter,
 		Multiple:  false,
 	}, float64(diskUsage.percentageUsed))
+
+	perfValues.Append(perf.Metric{
+		Name:      "total_bytes_written",
+		Variant:   diskUsage.name,
+		Unit:      "byte",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}, float64(diskUsage.bytesWritten))
 }
 
 // reportJobRWResult appends metrics for latency and bandwidth from the current test results
