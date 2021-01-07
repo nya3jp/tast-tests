@@ -37,7 +37,11 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Pre:          chrome.LoggedIn(),
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		HardwareDeps: hwdep.D(
+			hwdep.InternalDisplay(),
+			// Exclude sparky360 as its touchscreen often doesn't work well. See b/176940351.
+			hwdep.SkipOnModel("sparky360"),
+		),
 	})
 }
 
