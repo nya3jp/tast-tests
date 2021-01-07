@@ -8,15 +8,17 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/memoryuser"
 	"chromiumos/tast/local/multivm"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
 type lifecycleParam struct {
-	inHost, inARC bool
+	inHost, inARC, inCrostini bool
 }
 
 func init() {
@@ -40,6 +42,17 @@ func init() {
 			Pre:               multivm.ArcStarted(),
 			Val:               &lifecycleParam{inARC: true},
 			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name: "crostini",
+			Pre:  multivm.CrostiniStarted(),
+			Val:  &lifecycleParam{inCrostini: true},
+			ExtraData: []string{
+				vm.ArtifactData(),
+				crostini.GetContainerMetadataArtifact("buster", false),
+				crostini.GetContainerRootfsArtifact("buster", false),
+			},
+			ExtraHardwareDeps: crostini.CrostiniStable,
+			ExtraSoftwareDeps: []string{"vm_host"},
 		}, {
 			Name:              "arc_host",
 			Pre:               multivm.ArcStarted(),
@@ -65,6 +78,8 @@ func init() {
 func Lifecycle(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(*multivm.PreData)
 	param := s.Param().(*lifecycleParam)
+	preARC := multivm.ARCFromPre(pre)
+	preCrostini := multivm.CrostiniFromPre(pre)
 
 	info, err := kernelmeter.MemInfo()
 	if err != nil {
@@ -79,12 +94,19 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	numTypes := 0
 	if param.inHost {
 		server = memoryuser.NewMemoryStressServer(s.DataFileSystem())
+		defer server.Close()
 		numTypes++
 	}
 	if param.inARC {
 		numTypes++
 	}
+	if param.inCrostini {
+		numTypes++
+	}
 
+	if numTypes == 0 {
+		s.Fatal("No lifecycle unit types")
+	}
 	// Created tabs/apps/etc. should have memory that is a bit compressible.
 	// We use the same value as the low compress ratio in
 	// platform.MemoryStressBasic.
@@ -94,6 +116,7 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	var tasks []memoryuser.MemoryTask
 	var tabsAliveTasks []memoryuser.KillableTask
 	var appsAliveTasks []memoryuser.KillableTask
+	var procsAliveTasks []memoryuser.KillableTask
 	for i := 0; i < numTasks/numTypes; i++ {
 		if param.inHost {
 			task := server.NewMemoryStressTask(int(taskAllocMiB), compressRatio, hostLimit)
@@ -105,6 +128,11 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 			appsAliveTasks = append(appsAliveTasks, task)
 			tasks = append(tasks, task)
 		}
+		if param.inCrostini {
+			task := memoryuser.NewCrostiniLifecycleTask(preCrostini, len(procsAliveTasks), taskAllocMiB, compressRatio, hostLimit)
+			procsAliveTasks = append(procsAliveTasks, task)
+			tasks = append(tasks, task)
+		}
 		if len(tasks) == 0 {
 			s.Fatal("No MemoryTasks created")
 		}
@@ -114,20 +142,32 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 		task := memoryuser.NewStillAliveMetricTask(tabsAliveTasks, "tabs_alive")
 		tasks = append(tasks, task)
 	}
-	arc := multivm.ARCFromPre(pre)
 	if param.inARC {
 		task := memoryuser.NewStillAliveMetricTask(appsAliveTasks, "apps_alive")
 		tasks = append(tasks, task)
-		if err := memoryuser.InstallArcLifecycleTestApps(ctx, arc, len(appsAliveTasks)); err != nil {
+		if err := memoryuser.InstallArcLifecycleTestApps(ctx, preARC, len(appsAliveTasks)); err != nil {
 			s.Fatal("Failed to install ArcLifecycleTestApps: ", err)
 		}
 	}
+	if param.inCrostini {
+		task := memoryuser.NewStillAliveMetricTask(procsAliveTasks, "procs_alive")
+		tasks = append(tasks, task)
+		if err := memoryuser.InstallCrostiniLifecycle(ctx, preCrostini); err != nil {
+			s.Fatal("Failed to install Crostini lifecycle unit: ", err)
+		}
+		defer func() {
+			if err := memoryuser.UninstallCrostiniLifecycle(ctx, preCrostini); err != nil {
+				s.Error("Failed to uninstall Crostini lifecycle unit: ", err)
+			}
+		}()
+	}
 
+	s.Log("Running memoryuser")
 	// Run all the tasks.
 	rp := &memoryuser.RunParameters{
-		UseARC:         arc != nil,
+		UseARC:         preARC != nil,
 		ExistingChrome: pre.Chrome,
-		ExistingARC:    arc,
+		ExistingARC:    preARC,
 	}
 	if err := memoryuser.RunTest(ctx, s.OutDir(), tasks, rp); err != nil {
 		s.Fatal("RunTest failed: ", err)
