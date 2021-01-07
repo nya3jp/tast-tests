@@ -5,6 +5,7 @@
 package pre
 
 import (
+	"context"
 	"strings"
 
 	"chromiumos/tast/local/chrome"
@@ -15,12 +16,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideo",
 		Desc: "Logged into a user session with logging enabled",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeUseHWCodecsForSmallResolutions,
-			chromeBypassPermissionsArgs,
-			chromeSuppressNotificationsArgs,
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeUseHWCodecsForSmallResolutions,
+				chromeBypassPermissionsArgs,
+				chromeSuppressNotificationsArgs,
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -31,12 +34,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeAlternateVideoDecoder",
 		Desc: "Logged into a user session with alternate hardware accelerated video decoder.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeUseHWCodecsForSmallResolutions,
-			chromeSuppressNotificationsArgs,
-			chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeUseHWCodecsForSmallResolutions,
+				chromeSuppressNotificationsArgs,
+				chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -46,12 +51,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithGuestLogin",
 		Desc: "Similar to chromeVideo fixture but forcing login as a guest.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeUseHWCodecsForSmallResolutions,
-			chromeSuppressNotificationsArgs,
-			chrome.GuestLogin(),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeUseHWCodecsForSmallResolutions,
+				chromeSuppressNotificationsArgs,
+				chrome.GuestLogin(),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -62,12 +69,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithHDRScreen",
 		Desc: "Similar to chromeVideo fixture but enabling the HDR screen if present.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeUseHWCodecsForSmallResolutions,
-			chromeSuppressNotificationsArgs,
-			chrome.EnableFeatures("UseHDRTransferFunction"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeUseHWCodecsForSmallResolutions,
+				chromeSuppressNotificationsArgs,
+				chrome.EnableFeatures("UseHDRTransferFunction"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -77,12 +86,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeCompositedVideo",
 		Desc: "Similar to chromeVideo fixture but disabling hardware overlays entirely to force video to be composited.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeUseHWCodecsForSmallResolutions,
-			chromeSuppressNotificationsArgs,
-			chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeUseHWCodecsForSmallResolutions,
+				chromeSuppressNotificationsArgs,
+				chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -92,12 +103,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcam",
 		Desc: "Similar to chromeVideo fixture but supplementing it with the use of a fake video/audio capture device (a.k.a. 'fake webcam'), see https://webrtc.org/testing/.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeUseHWCodecsForSmallResolutions,
-			chromeSuppressNotificationsArgs,
-			chromeFakeWebcamArgs,
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeUseHWCodecsForSmallResolutions,
+				chromeSuppressNotificationsArgs,
+				chromeFakeWebcamArgs,
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -107,13 +120,15 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcamAndAlternateVideoDecoder",
 		Desc: "Similar to chromeVideoWithFakeWebcam fixture but using the alternative video decoder.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeUseHWCodecsForSmallResolutions,
-			chromeSuppressNotificationsArgs,
-			chromeFakeWebcamArgs,
-			chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeUseHWCodecsForSmallResolutions,
+				chromeSuppressNotificationsArgs,
+				chromeFakeWebcamArgs,
+				chrome.EnableFeatures("UseAlternateVideoDecoderImplementation"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -123,12 +138,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers",
 		Desc: "Similar to chromeVideoWithFakeWebcam fixture but forcing webrtc vp9 stream to be three temporal layers..",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeSuppressNotificationsArgs,
-			chromeFakeWebcamArgs,
-			chrome.ExtraArgs("--force-fieldtrials=WebRTC-SupportVP9SVC/EnabledByFlag_1SL3TL/"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chromeFakeWebcamArgs,
+				chrome.ExtraArgs("--force-fieldtrials=WebRTC-SupportVP9SVC/EnabledByFlag_1SL3TL/"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -138,12 +155,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcamAndSWDecoding",
 		Desc: "Similar to chromeVideoWithFakeWebcam fixture but hardware decoding disabled.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeSuppressNotificationsArgs,
-			chromeFakeWebcamArgs,
-			chrome.ExtraArgs("--disable-accelerated-video-decode"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chromeFakeWebcamArgs,
+				chrome.ExtraArgs("--disable-accelerated-video-decode"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -153,12 +172,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithFakeWebcamAndSWEncoding",
 		Desc: "Similar to chromeVideoWithFakeWebcam fixture but hardware encoding disabled.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeSuppressNotificationsArgs,
-			chromeFakeWebcamArgs,
-			chrome.ExtraArgs("--disable-accelerated-video-encode"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chromeFakeWebcamArgs,
+				chrome.ExtraArgs("--disable-accelerated-video-encode"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -168,10 +189,12 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeScreenCapture",
 		Desc: "Logged into a user session with flag so that Chrome always picks the entire screen for getDisplayMedia(), bypassing the picker UI.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeSuppressNotificationsArgs,
-			chrome.ExtraArgs(`--auto-select-desktop-capture-source=display`),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeSuppressNotificationsArgs,
+				chrome.ExtraArgs(`--auto-select-desktop-capture-source=display`),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -181,10 +204,12 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeWindowCapture",
 		Desc: "Logged into a user session with flag so that Chrome always picks the Chromium window for getDisplayMedia(), bypassing the picker UI.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeSuppressNotificationsArgs,
-			chrome.ExtraArgs(`--auto-select-desktop-capture-source=Chrome`),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeSuppressNotificationsArgs,
+				chrome.ExtraArgs(`--auto-select-desktop-capture-source=Chrome`),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -194,10 +219,12 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithSWDecoding",
 		Desc: "Similar to chromeVideo fixture but making sure Chrome does not use any potential hardware accelerated decoding.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeSuppressNotificationsArgs,
-			chrome.ExtraArgs("--disable-accelerated-video-decode"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeSuppressNotificationsArgs,
+				chrome.ExtraArgs("--disable-accelerated-video-decode"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -207,11 +234,13 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithSWDecodingAndLibGAV1",
 		Desc: "Similar to chromeVideoWithSWDecoding fixture but enabling the use of LibGAV1 for AV1 decoding.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeSuppressNotificationsArgs,
-			chrome.ExtraArgs("--disable-accelerated-video-decode", "--enable-features=Gav1VideoDecoder"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chrome.ExtraArgs("--disable-accelerated-video-decode", "--enable-features=Gav1VideoDecoder"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -222,12 +251,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithHWAV1Decoding",
 		Desc: "Similar to chromeVideo fixture but also enables hardware accelerated av1 decoding.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeUseHWCodecsForSmallResolutions,
-			chromeSuppressNotificationsArgs,
-			chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeUseHWCodecsForSmallResolutions,
+				chromeSuppressNotificationsArgs,
+				chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -237,13 +268,15 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithGuestLoginAndHWAV1Decoding",
 		Desc: "Similar to chromeVideoWithGuestLogin fixture but also enables hardware accelerated av1 decoding.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeUseHWCodecsForSmallResolutions,
-			chromeSuppressNotificationsArgs,
-			chrome.GuestLogin(),
-			chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeUseHWCodecsForSmallResolutions,
+				chromeSuppressNotificationsArgs,
+				chrome.GuestLogin(),
+				chrome.ExtraArgs("--enable-features=VaapiAV1Decoder"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -254,12 +287,14 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeVideoWithSWDecodingAndHDRScreen",
 		Desc: "Similar to chromeVideoWithSWDecoding but also enalbing the HDR screen if present.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeVModuleArgs,
-			chromeSuppressNotificationsArgs,
-			chrome.ExtraArgs("--disable-accelerated-video-decode"),
-			chrome.EnableFeatures("UseHDRTransferFunction"),
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeVModuleArgs,
+				chromeSuppressNotificationsArgs,
+				chrome.ExtraArgs("--disable-accelerated-video-decode"),
+				chrome.EnableFeatures("UseHDRTransferFunction"),
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -269,10 +304,12 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeCameraPerf",
 		Desc: "Logged into a user session with camera tests-specific setting and without verbose logging that can affect the performance. This fixture should be used only for performance tests.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeBypassPermissionsArgs,
-			chromeSuppressNotificationsArgs,
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeBypassPermissionsArgs,
+				chromeSuppressNotificationsArgs,
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -282,10 +319,12 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeFakeCameraPerf",
 		Desc: "Logged into a user session with fake video/audio capture device (a.k.a. 'fake webcam', see https://webrtc.org/testing), without asking for user permission, and without verboselogging that can affect the performance. This fixture should be used only used for performance tests.",
-		Impl: chrome.NewLoggedInFixture(
-			chromeFakeWebcamArgs,
-			chromeSuppressNotificationsArgs,
-		),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chromeFakeWebcamArgs,
+				chromeSuppressNotificationsArgs,
+			}, nil
+		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
