@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab286b2_661a4013",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-07T10:06:51Z",
+      "side": 1,
+      "message": "Nice!\n",
+      "revId": "8c67c76093fa267c5442ef8f3b65dd7deb70a178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b4e800b_15143a03",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-07T10:06:51Z",
+      "side": 1,
+      "message": "Please remember to set ResetTimeout when you implement Reset.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "8c67c76093fa267c5442ef8f3b65dd7deb70a178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d5ad04d_fb7dbb89",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-07T10:06:51Z",
+      "side": 1,
+      "message": "nit: Maybe nil is a better value if you\u0027re not interested in returning a meaningful value.",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "8c67c76093fa267c5442ef8f3b65dd7deb70a178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e0edef_9e2a7b80",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-07T10:06:51Z",
+      "side": 1,
+      "message": "Reset is called between tests to do light-weight resetting of the environment so that all tests depending on the fixture start in a similar environment.\n\nIn this case we want to do the same things as SetUp. Then, even if a test accidentally crashes cros_healthd, it is restarted before subsequent tests.",
+      "range": {
+        "startLine": 61,
+        "startChar": 29,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "8c67c76093fa267c5442ef8f3b65dd7deb70a178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c90aeb_35590271",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-07T10:06:51Z",
+      "side": 1,
+      "message": "nit: We don\u0027t need to check f.pid !\u003d 0 since PostTest is not called when PreTest fails.\n\nOf course you can still check f.pid !\u003d 0, but then it would be better to set f.pid \u003d 0 at the beginning of PreTest.",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 15
+      },
+      "revId": "8c67c76093fa267c5442ef8f3b65dd7deb70a178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
