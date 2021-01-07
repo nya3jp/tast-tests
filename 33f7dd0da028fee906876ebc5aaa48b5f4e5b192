@@ -16,6 +16,23 @@
       "message": "PTAL, thanks! This is needed to make sure the test will pass on TreeHugger.\n\nAlthough this fixed most of the timeouts, on betty-arc-r/GCE I still find the test failing consistently:\n\u003e Tablet Snapped Right: Verify Mouse: Failed to wait for the initial hover event: context deadline exceeded; last error follows: no matching event received\nI hope we can move this test back to informational (see revert https://crrev.com/c/2613071) until this is fixed.",
       "revId": "33f7dd0da028fee906876ebc5aaa48b5f4e5b192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a4f635_1c646813",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-01-07T20:50:53Z",
+      "side": 1,
+      "message": "Thanks Shao-Chuan for investigating the issue! I appreciate the help.",
+      "revId": "33f7dd0da028fee906876ebc5aaa48b5f4e5b192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
