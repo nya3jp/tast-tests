@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68e5a7d_7df3b2cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-07T19:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1494d73_9782347f",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 48
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c4a53bb_2ecfb95d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-07T16:27:43Z",
       "side": 1,
       "message": "nit: Move this after \"true\" ?",
+      "range": {
+        "startLine": 84,
+        "startChar": 40,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba21dc04_c8faf994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-07T19:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c4a53bb_2ecfb95d",
       "range": {
         "startLine": 84,
         "startChar": 40,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e628d051_db7c359e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-07T19:10:06Z",
+      "side": 1,
+      "message": "The current implementation of crosbolt importer actually does not allow to combine non-variant data and variant-data -- see autotest_result_parser.cc internally, but if non-variant record (s.name -- TPS.CPU) exists, all variant data will be ignored from crosbolt.  And I don\u0027t want to change the name of this TPS.CPU.\n\nThat said, this per-cpu data can be used as variant -- usage percent, frequency, and max-frequency are in the same name with variants.",
+      "parentUuid": "b6a058fb_ee187ca8",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 37
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea278a13_6077883e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
         "patchSetId": 3
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-07T16:27:43Z",
       "side": 1,
       "message": "nit: Move this up before L107 to keep cpu utilization logic together. And insert an empty line to separate from cpu freq logic.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e03918b_edced8c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-07T19:10:06Z",
+      "side": 1,
+      "message": "This is the the result of all CPUs combined, and L107 is about per-CPU data, it can\u0027t be mixed in L107.  Added a blank line to see the separation.",
+      "parentUuid": "ea278a13_6077883e",
       "range": {
         "startLine": 130,
         "startChar": 0,
