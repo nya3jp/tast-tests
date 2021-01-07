@@ -2,23 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package cuj
+package perf
 
 import (
 	"context"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 )
 
 // FrameDataTracker is helper to get animation frame data from Chrome.
 type FrameDataTracker struct {
 	prefix        string
-	animationData []perfutil.DisplayFrameData
-	dsData        *perfutil.DisplayFrameData
-	dsTracker     *perfutil.DisplaySmoothnessTracker
+	animationData []DisplayFrameData
+	dsData        *DisplayFrameData
+	dsTracker     *DisplaySmoothnessTracker
 }
 
 // Close ensures that the browser state (display smoothness tracking) is cleared.
@@ -40,13 +39,13 @@ func (t *FrameDataTracker) Start(ctx context.Context, tconn *chrome.TestConn) er
 
 // Stop stops the animation data collection and stores the collected data.
 func (t *FrameDataTracker) Stop(ctx context.Context, tconn *chrome.TestConn) error {
-	var dsData *perfutil.DisplayFrameData
+	var dsData *DisplayFrameData
 	var err error
 	if dsData, err = t.dsTracker.Stop(ctx, tconn, ""); err != nil {
 		return errors.Wrap(err, "failed to stop display smoothness tracking")
 	}
 
-	var data []perfutil.DisplayFrameData
+	var data []DisplayFrameData
 	if err := tconn.Call(ctx, &data, `tast.promisify(chrome.autotestPrivate.stopThroughputTrackerDataCollection)`); err != nil {
 		return errors.Wrap(err, "failed to stop data collection")
 	}
@@ -120,6 +119,6 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 func NewFrameDataTracker(metricPrefix string) (*FrameDataTracker, error) {
 	return &FrameDataTracker{
 		prefix:    metricPrefix,
-		dsTracker: perfutil.NewDisplaySmoothnessTracker(),
+		dsTracker: NewDisplaySmoothnessTracker(),
 	}, nil
 }

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package cuj
+package perf
 
 import (
 	"context"
@@ -27,7 +27,8 @@ type thermalDataSource struct {
 	metrics map[string]*thermalMetric
 }
 
-func newThermalDataSource(ctx context.Context) *thermalDataSource {
+// NewThermalDataSource creates a new instance of thermalDataSource.
+func NewThermalDataSource() *thermalDataSource {
 	return &thermalDataSource{}
 }
 
