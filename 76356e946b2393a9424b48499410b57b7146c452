@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "248d1a7d_ee766338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-07T19:17:36Z",
+      "side": 1,
+      "message": "Thanks for the background info. In this case, I think your previous way for using metrics name is better that we would have the usage, freq in different charts.\n\nLeaving this up to you.",
+      "parentUuid": "e628d051_db7c359e",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 37
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea278a13_6077883e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
         "patchSetId": 3
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "This is the the result of all CPUs combined, and L107 is about per-CPU data, it can\u0027t be mixed in L107.  Added a blank line to see the separation.",
       "parentUuid": "ea278a13_6077883e",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9499d511_184f25b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-07T19:17:36Z",
+      "side": 1,
+      "message": "Oops, I mis-read the code.",
+      "parentUuid": "6e03918b_edced8c9",
       "range": {
         "startLine": 130,
         "startChar": 0,
