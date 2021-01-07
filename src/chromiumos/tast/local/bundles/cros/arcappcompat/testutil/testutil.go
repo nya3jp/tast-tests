@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	//"chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
@@ -120,12 +121,17 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 					}
 					if err := a.Command(ctx, "uiautomator", "dump").Run(testexec.DumpLogOnError); err != nil {
 						s.Log("Failed to dump UIAutomator: ", err)
-						return
+					} else {
+						filename = fmt.Sprintf("ui-dump-arcappcompat-failed-test-%d.xml", idx)
+						path = filepath.Join(s.OutDir(), filename)
+						if err := a.PullFile(ctx, "/sdcard/window_dump.xml", path); err != nil {
+							s.Log("Failed to pull UIAutomator dump: ", err)
+						}
 					}
-					filename = fmt.Sprintf("ui-dump-arcappcompat-failed-test-%d.xml", idx)
+					filename = fmt.Sprintf("bugreport-arcappcompat-failed-test-%d.zip", idx)
 					path = filepath.Join(s.OutDir(), filename)
-					if err := a.PullFile(ctx, "/sdcard/window_dump.xml", path); err != nil {
-						s.Log("Failed to pull UIAutomator dump: ", err)
+					if err := a.BugReport(ctx, path); err != nil {
+						s.Log("Failed to get bug report: ", err)
 					}
 				}
 			}(cleanupCtx)
@@ -149,6 +155,16 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			}
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
 		})
+		// Added adb bugreport here for checking purpose, , todo: need to remove
+		if err := a.Command(ctx, "bugreport", s.OutDir()).Run(testexec.DumpLogOnError); err != nil {
+			s.Log("Failed to get bug report: ", err)
+			return
+		}
+		// Added log for checking purpose, todo: need to remove
+		s.Log("path:s.OutDir(): ", s.OutDir())
+		filename := fmt.Sprintf("bugreport-arcappcompat-failed-test-%d.zip", idx)
+		path := filepath.Join(s.OutDir(), filename)
+		s.Log("path: ", path)
 		cancel()
 	}
 }
@@ -400,6 +416,10 @@ func DetectAndCloseCrashOrAppNotResponding(ctx context.Context, s *testing.State
 		return errors.New("waiting for crash")
 	}, &testing.PollOptions{Timeout: shortUITimeout}); err != nil && !strings.Contains(err.Error(), "waiting for crash") {
 		s.Error("The application crashed: ", err)
+		path := filepath.Join(s.OutDir(), "app-crash-or-anr.png")
+		if err := screenshot.Capture(ctx, path); err != nil {
+			s.Log("Screenshot for app-crash-or-anr.png: ", err)
+		}
 		handleCrashOrANRDialog(ctx, s, d)
 	}
 }
