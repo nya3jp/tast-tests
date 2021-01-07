@@ -16,6 +16,23 @@
       "message": "Sorry for the delayed reply!",
       "revId": "292c9623c82eb593ae27bc06ea8abfa9433cef12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac9d2139_0fa119f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-07T10:07:38Z",
+      "side": 1,
+      "message": "Thanks! Please let me know when you port this change to the fixture.\n",
+      "revId": "292c9623c82eb593ae27bc06ea8abfa9433cef12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
