@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94fdcc98_d0e86ab5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-07T00:50:24Z",
+      "side": 1,
+      "message": "Looking good, just one more nit and responding to the thread about how to best do the UI automation.",
+      "revId": "f97a286f4b40ae97908e3c71624c5d30450b1de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f269a55d_f4789b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-01-07T00:50:24Z",
+      "side": 1,
+      "message": "It is typical to keep a connection for this tab, and to close it when you are done. I.E.\n\nconn, err :\u003d cr.NewConn(...)\nif err !\u003d nil {\n   ...\n}\ndefer conn.Close()\n\nSee https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/conn.go;l\u003d61",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "f97a286f4b40ae97908e3c71624c5d30450b1de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
