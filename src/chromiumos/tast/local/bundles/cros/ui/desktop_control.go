@@ -182,34 +182,39 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 		ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 		defer cancel()
 
+		// The option to be used for StableLeftClick and WaitLocationStable. Also,
+		// it uses a longer interval (default interval is 100msecs), as the location
+		// update may not happen very quickly.
+		waitingOption := &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}
+
 		// Seems that the quick settings open/close don't have metrics, but in case
 		// that's added in the future, it is noted here.
 		statusArea, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "ash/StatusAreaWidgetDelegate"}, 10*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the status area")
 		}
-		if err := statusArea.StableLeftClick(ctx, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		if err := statusArea.StableLeftClick(ctx, waitingOption); err != nil {
 			return errors.Wrap(err, "failed to click the status area")
 		}
 		defer statusArea.Release(releaseCtx)
 
-		collapseButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "CollapseButton"}, 10*time.Second)
+		collapseButton, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "CollapseButton"}, 20*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the collapse button, possibly quick settings is not open yet")
 		}
 		defer collapseButton.Release(releaseCtx)
 
 		// Click the collapse button to collapse.
-		if err := collapseButton.StableLeftClick(ctx, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		if err := collapseButton.StableLeftClick(ctx, waitingOption); err != nil {
 			return errors.Wrap(err, "failed to click the collapse button")
 		}
 
 		// Click the collapse button again to expand.
-		if err := collapseButton.StableLeftClick(ctx, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		if err := collapseButton.StableLeftClick(ctx, waitingOption); err != nil {
 			return errors.Wrap(err, "failed to click the collapse button")
 		}
 
-		if err := collapseButton.WaitLocationStable(ctx, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		if err := collapseButton.WaitLocationStable(ctx, waitingOption); err != nil {
 			return errors.Wrap(err, "failed to wait for the collapse button location to be stabilized")
 		}
 
