@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b07c4a1f_af6319bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-07T19:29:04Z",
+      "side": 1,
+      "message": "So I actually reworked things so that unsupported tests are checked before running them. So I don\u0027t think a comment is needed now since the SoftwareDep is gone.",
+      "parentUuid": "19f7ef2f_460473f9",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "5ff13f660d13bf310aedea810bcb800d8578be90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bbdbf6b3_ea1fdcbc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
