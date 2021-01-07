@@ -222,7 +222,7 @@ func RunFioStress(ctx context.Context, testConfig TestConfig) error {
 	if testConfig.ResultWriter != nil {
 		group := resultGroupName(ctx, res, devName, rawDev)
 		testConfig.ResultWriter.Report(group, res)
-		testConfig.ResultWriter.ReportDiskUsage(group, info.PercentageUsed)
+		testConfig.ResultWriter.ReportDiskUsage(group, info.PercentageUsed, info.TotalBytesWritten)
 	}
 
 	return nil

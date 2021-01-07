@@ -51,6 +51,9 @@ type Info struct {
 	// the value is reported in 10's of percents (10, 20, 30, etc.).
 	// In case of any error reading SSD usage data, value will be -1.
 	PercentageUsed int64
+	// TotalBytesWritten corresponds to total amount of data (in bytes) written
+	// to the disk.
+	TotalBytesWritten int64
 }
 
 // Get runs the storage info shell script and returns its info.
@@ -79,6 +82,7 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 
 	var lifeStatus LifeStatus
 	var percentageUsed int64
+	var bytesWritten int64
 	var name string
 	switch deviceType {
 	case EMMC:
@@ -92,6 +96,7 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse NVMe health")
 		}
+		bytesWritten, err = parseTotalBytesWrittenNVMe(lines)
 		name = parseDeviceNameNVMe(lines)
 	case SSD:
 		percentageUsed, lifeStatus, err = parseDeviceHealthSSD(lines)
@@ -99,11 +104,13 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 			return nil, errors.Wrap(err, "failed to parse SSD health")
 		}
 		name = parseDeviceNameSATA(lines)
+		bytesWritten, err = parseTotalBytesWrittenSATA(lines)
 	default:
 		return nil, errors.Errorf("parsing device health for type %v is not supported", deviceType)
 	}
 
-	return &Info{Name: name, Device: deviceType, Status: lifeStatus, PercentageUsed: percentageUsed}, nil
+	return &Info{Name: name, Device: deviceType, Status: lifeStatus,
+		PercentageUsed: percentageUsed, TotalBytesWritten: bytesWritten}, nil
 }
 
 var (
@@ -148,6 +155,10 @@ var (
 	// flag as indicating a failing device. If an NVMe or SATA device indicates
 	// a percentage used value above this threshold, we flag the device as failing.
 	percentageUsedThreshold int64 = 97
+	//
+	nvmeUnitsWritten = regexp.MustCompile(`\s*Data Units Written:\s*(?P<param>\d+[,\d]*)`)
+	//
+	ssdUnitsWritten = regexp.MustCompile(`.*Total_LBAs_Written.*\s+(?P<param>\d+)$`)
 )
 
 // parseDeviceType searches outlines for storage device type.
@@ -290,4 +301,41 @@ func parseDeviceHealthSSD(outLines []string) (int64, LifeStatus, error) {
 	}
 
 	return -1, Healthy, nil
+}
+
+func parseTotalBytesWrittenNVMe(lines []string) (int64, error) {
+	for _, line := range lines {
+		match := nvmeUnitsWritten.FindStringSubmatch(line)
+		if match == nil {
+			continue
+		}
+
+		unitsWritten, err := strconv.ParseInt(strings.ReplaceAll(match[1], ",", ""), 10, 64)
+		if err != nil {
+			return 0, errors.Errorf("failed to parse total bytes written %v", match[1])
+		}
+
+		// smartctl reports units written in 1000's of blocks (512 bytes each).
+		return unitsWritten * 512 * 1000, nil
+	}
+
+	return 0, nil
+}
+
+func parseTotalBytesWrittenSATA(lines []string) (int64, error) {
+	for _, line := range lines {
+		match := ssdUnitsWritten.FindStringSubmatch(line)
+		if match == nil {
+			continue
+		}
+
+		blocksWritten, err := strconv.ParseInt(match[1], 10, 64)
+		if err != nil {
+			return 0, errors.Errorf("failed to parse total bytes written %v", match[1])
+		}
+
+		return blocksWritten * 512, nil
+	}
+
+	return 0, nil
 }
