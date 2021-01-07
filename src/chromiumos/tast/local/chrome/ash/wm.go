@@ -188,7 +188,7 @@ type Window struct {
 	FrameMode                  FrameMode           `json:"FrameMode"`
 }
 
-var defaultPollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
+var defaultPollOptions = &testing.PollOptions{Timeout: 20 * time.Second}
 
 var stateToWmTypes = map[WindowStateType]WMEventType{
 	WindowStateNormal:       WMEventNormal,

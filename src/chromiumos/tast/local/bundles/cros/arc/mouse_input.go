@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/motioninput"
@@ -24,6 +25,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Pre:          arc.Booted(),
+		Timeout:      10 * time.Minute,
 	})
 }
 
