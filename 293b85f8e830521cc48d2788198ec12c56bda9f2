@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51c0e779_f0a270e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-07T00:33:40Z",
+      "side": 1,
+      "message": "Updated subattr to fingerprint-mcu_dragonclaw. The prefix is required by Tast.",
+      "revId": "293b85f8e830521cc48d2788198ec12c56bda9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
