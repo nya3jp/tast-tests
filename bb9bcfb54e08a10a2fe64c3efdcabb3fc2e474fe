@@ -906,6 +906,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51fd1bcd_e808084d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/document_scan_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-01-07T19:34:58Z",
+      "side": 1,
+      "message": "I moved around the variable updating in scan.js and it seems to have fixed the issue! :)",
+      "parentUuid": "2392ea39_61fbbf05",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 2
+      },
+      "revId": "bb9bcfb54e08a10a2fe64c3efdcabb3fc2e474fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f356ed9e_ac9b839f",
