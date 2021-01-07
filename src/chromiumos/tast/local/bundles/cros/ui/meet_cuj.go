@@ -165,10 +165,9 @@ func init() {
 //   - Record and save metrics.
 func MeetCUJ(ctx context.Context, s *testing.State) {
 	const (
-		timeout     = 10 * time.Second
-		botDuration = 2 * time.Minute
-		docsURL     = "https://docs.google.com/document/d/1qREN9w1WgjgdGYBT_eEtE6T21ErlW_4nQoBJVhrR1S0/edit"
-		notes       = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		timeout = 10 * time.Second
+		docsURL = "https://docs.google.com/document/d/1qREN9w1WgjgdGYBT_eEtE6T21ErlW_4nQoBJVhrR1S0/edit"
+		notes   = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
@@ -241,9 +240,32 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx)
 	}
 
+	tweakPerfValues := func(pv *perf.Values) error { return nil }
 	if meet.power {
 		s.Log("Preparing for power metrics collection")
 		meetTimeout = 3 * time.Minute
+
+		// Power tests need to record power metrics; they are separated from
+		// cuj.Recorder's timeline as it is for a different purpose and mixing them
+		// might cause a risk of taking too much time of collecting data.
+		timeline, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Prefix("Power."))
+		if err != nil {
+			s.Fatal("Failed to create power metrics: ", err)
+		}
+		if err = timeline.Start(ctx); err != nil {
+			s.Fatal("Failed to start power timeline: ", err)
+		}
+		if err = timeline.StartRecording(ctx); err != nil {
+			s.Fatal("Failed to start recording the power metrics: ", err)
+		}
+		tweakPerfValues = func(pv *perf.Values) error {
+			values, err := timeline.StopRecording()
+			if err != nil {
+				return err
+			}
+			pv.Merge(values)
+			return nil
+		}
 
 		sup, cleanup := setup.New("meet call power")
 		sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
@@ -503,7 +525,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		sctx, cancel := context.WithTimeout(ctx, timeout)
 		defer cancel()
-		if _, err := bc.AddBots(sctx, meetingCode, meet.num, botDuration); err != nil {
+		// Add 30 seconds to the bot duration to make sure that bots do not leave
+		// slightly earlier than the test scenario.
+		if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second); err != nil {
 			return errors.Wrap(err, "failed to create bots")
 		}
 		if err := meetConn.WaitForExpr(ctx, "hrTelemetryApi.isInMeeting() === true"); err != nil {
@@ -638,6 +662,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Tab renderer crashed: ", err)
 	}
 
+	if err := tweakPerfValues(pv); err != nil {
+		s.Fatal("Failed to tweak the perf values: ", err)
+	}
 	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}
