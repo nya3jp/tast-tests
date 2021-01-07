@@ -60,3 +60,8 @@ func (a *ARC) BroadcastIntent(ctx context.Context, action string, params ...stri
 func (a *ARC) BroadcastIntentGetData(ctx context.Context, action string, params ...string) (string, error) {
 	return a.device.BroadcastIntentGetData(ctx, action, params...)
 }
+
+// BugReport returns bugreport of the device.
+func (a *ARC) BugReport(ctx context.Context, path string) error {
+	return a.device.BugReport(ctx, path)
+}
