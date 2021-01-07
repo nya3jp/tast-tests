@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8200588f_fc2b6dca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-07T18:08:37Z",
+      "side": 1,
+      "message": "I don\u0027t think this needs to be update, it is fine if the date is just for when the file was first created.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "5e5b635c2fe8637b6cb6d567f4a2364e06578a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e65bd33_9da35021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-07T18:08:37Z",
+      "side": 1,
+      "message": "This should probably be run specifically on arc. Can we add a BugReport method to arc/commands.go?\n\nIt should just be something like:\n func (a *ARC) BugReport(ctx context.Context, outDir filepath.Path) *testexec.Cmd {\n   return a.device.Command(ctx, \"bugreport\", outDir)\n }\n\nThen here we can just call a.BugReport(...)",
+      "range": {
+        "startLine": 131,
+        "startChar": 15,
+        "endLine": 131,
+        "endChar": 56
+      },
+      "revId": "5e5b635c2fe8637b6cb6d567f4a2364e06578a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d58dcc3_aaee593c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-07T18:08:37Z",
+      "side": 1,
+      "message": "Is logging this necessary?",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 42
+      },
+      "revId": "5e5b635c2fe8637b6cb6d567f4a2364e06578a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41382b4e_c3a0695b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-07T18:08:37Z",
+      "side": 1,
+      "message": "This path is created but not used.",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 46
+      },
+      "revId": "5e5b635c2fe8637b6cb6d567f4a2364e06578a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
