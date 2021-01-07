@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19175170_75fcfa24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_list.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-07T19:20:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfd29090_368445b8",
+      "revId": "16e24051a7413b22b2c2dde9d401207a35a17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ea87eba_3b1d719d",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b97a8cf_869969c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-07T19:20:36Z",
+      "side": 1,
+      "message": "ret can be null, this indicates that the result is good to use and valid after the previous check. All uses of result could dereference the pointer, but I think this is clearer. Let me know if you disagree.",
+      "parentUuid": "7ea87eba_3b1d719d",
+      "revId": "16e24051a7413b22b2c2dde9d401207a35a17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71363ab8_1f006ac2",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-01-07T00:18:57Z",
       "side": 1,
       "message": "optional: might be clearer if you transform this to only a single negative, ie\n\n!(result.Status \u003d\u003d croshealthd.StatusPassed ||\n\t\tresult.Status \u003d\u003d croshealthd.StatusFailed ||\n\t\tresult.Status \u003d\u003d croshealthd.StatusNotRun)",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 10
+      },
+      "revId": "16e24051a7413b22b2c2dde9d401207a35a17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef9fafad_1719b1d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-07T19:20:36Z",
+      "side": 1,
+      "message": "That makes sense to me, done.",
+      "parentUuid": "71363ab8_1f006ac2",
       "range": {
         "startLine": 130,
         "startChar": 4,

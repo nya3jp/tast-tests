@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfc2102f_258a8aa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-07T19:20:36Z",
+      "side": 1,
+      "message": "I also added an additional check in PS8 to only run the test if it is supported by the device. This change might be worth another look",
+      "revId": "3837e6e2fb93c02225ea5fdb39cb1c15f4a87a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
