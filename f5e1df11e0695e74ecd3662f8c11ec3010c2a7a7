@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d709ee_6d2004c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-07T20:34:41Z",
+      "side": 1,
+      "message": "Continued from MTBF code submission, there CLs are here for review. They tackle the same problem - reusing Chrome login sessions between multiple tast runs, without restarting Chrome UI.",
+      "revId": "f5e1df11e0695e74ecd3662f8c11ec3010c2a7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
