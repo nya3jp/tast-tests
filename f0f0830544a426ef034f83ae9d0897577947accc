@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ceb2d74_3c7ce0e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-01-07T00:49:15Z",
+      "side": 1,
+      "message": "nit: beneficial",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "f0f0830544a426ef034f83ae9d0897577947accc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
