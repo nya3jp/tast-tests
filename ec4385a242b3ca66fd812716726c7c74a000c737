@@ -16,6 +16,23 @@
       "message": "Adding David for Java readability. (If you have some time to take a look...)",
       "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd4156df_afb60e65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-01-08T02:58:58Z",
+      "side": 1,
+      "message": "Looks fine for Java readability.",
+      "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
