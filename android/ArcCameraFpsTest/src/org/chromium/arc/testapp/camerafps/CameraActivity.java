@@ -11,6 +11,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.ImageFormat;
 import android.hardware.camera2.CameraCharacteristics;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,6 +51,8 @@ public class CameraActivity extends Activity {
             "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_DROPPED_FRAMES";
     private static final String ACTION_GET_NUM_DROPPED_FRAMES_SENSOR =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_DROPPED_FRAMES_SENSOR";
+    private static final String ACTION_GET_OUTPUT_FORMATS =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_OUTPUT_FORMATS";
     private static final String ACTION_GET_PREVIEW_RESOLUTIONS =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_PREVIEW_RESOLUTIONS";
     private static final String ACTION_GET_PREVIEW_SIZE =
@@ -70,6 +73,8 @@ public class CameraActivity extends Activity {
             "org.chromium.arc.testapp.camerafps.ACTION_RESET_HISTOGRAM";
     private static final String ACTION_SET_CAMERA_ID =
             "org.chromium.arc.testapp.camerafps.ACTION_SET_CAMERA_ID";
+    private static final String ACTION_SET_OUTPUT_FORMAT =
+            "org.chromium.arc.testapp.camerafps.ACTION_SET_OUTPUT_FORMAT";
     private static final String ACTION_SET_TARGET_FPS =
             "org.chromium.arc.testapp.camerafps.ACTION_SET_TARGET_FPS";
     private static final String ACTION_SET_TARGET_RESOLUTION =
@@ -83,6 +88,8 @@ public class CameraActivity extends Activity {
 
     private static final String KEY_CAMERA_ID = "id";
     private static final int DEFAULT_CAMERA_ID = 0;
+    private static final String KEY_FORMAT = "format";
+    private static final int DEFAULT_FORMAT = ImageFormat.JPEG;
     private static final String KEY_FPS = "fps";
     private static final int DEFAULT_FPS = 30;
 
@@ -151,6 +158,9 @@ public class CameraActivity extends Activity {
                                 setResultData(Long.toString(
                                         mHistogram.getNumDroppedFramesSensor()));
                                 break;
+                            case ACTION_GET_OUTPUT_FORMATS:
+                                setResultData(mCameraFragment.getSupportedOutputFormats());
+                                break;
                             case ACTION_GET_PREVIEW_RESOLUTIONS:
                                 setResultData(mCameraFragment.getPreviewResolutions());
                                 break;
@@ -189,6 +199,10 @@ public class CameraActivity extends Activity {
                                 mCameraFragment.setCameraId(id);
                                 mCameraFragment.onPause();
                                 mCameraFragment.onResume();
+                                break;
+                            case ACTION_SET_OUTPUT_FORMAT:
+                                mCameraFragment.setOutputImageFormat(
+                                        intent.getIntExtra(KEY_FORMAT, DEFAULT_FORMAT));
                                 break;
                             case ACTION_SET_TARGET_FPS:
                                 int fps = intent.getIntExtra(KEY_FPS, DEFAULT_FPS);
@@ -246,6 +260,7 @@ public class CameraActivity extends Activity {
         filter.addAction(ACTION_GET_NUM_FRAMES);
         filter.addAction(ACTION_GET_NUM_DROPPED_FRAMES);
         filter.addAction(ACTION_GET_NUM_DROPPED_FRAMES_SENSOR);
+        filter.addAction(ACTION_GET_OUTPUT_FORMATS);
         filter.addAction(ACTION_GET_PREVIEW_RESOLUTIONS);
         filter.addAction(ACTION_GET_PREVIEW_SIZE);
         filter.addAction(ACTION_GET_RECORDING_RESOLUTIONS);
@@ -253,6 +268,7 @@ public class CameraActivity extends Activity {
         filter.addAction(ACTION_RESET_CAMERA);
         filter.addAction(ACTION_RESET_HISTOGRAM);
         filter.addAction(ACTION_SET_CAMERA_ID);
+        filter.addAction(ACTION_SET_OUTPUT_FORMAT);
         filter.addAction(ACTION_SET_TARGET_FPS);
         filter.addAction(ACTION_SET_TARGET_RESOLUTION);
         filter.addAction(ACTION_GET_SENSOR_TIMESTAMP_SOURCE);
