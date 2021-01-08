@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b737ba00_6c355f82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-01-08T10:28:20Z",
+      "side": 1,
+      "message": "It seems like we don\u0027t guarantee that camera and video labels are mutually exclusive.  Could you add the logic or some comments in the code accordingly?",
+      "range": {
+        "startLine": 10,
+        "startChar": 65,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "4c7b78c9c51e3add83f946cce3d6aa3ac8065d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
