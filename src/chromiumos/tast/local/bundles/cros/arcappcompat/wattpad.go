@@ -61,7 +61,8 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.username", "arcappcompat.password"},
+		Vars: []string{"arcappcompat.username", "arcappcompat.password",
+			"arcappcompat.Wattpad.emailid", "arcappcompat.Wattpad.password"},
 	})
 }
 
@@ -80,9 +81,12 @@ func Wattpad(ctx context.Context, s *testing.State) {
 // verify Wattpad reached main activity page of the app.
 func launchAppForWattpad(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInID        = "wp.wattpad:id/log_in_button"
-		googleID        = "wp.wattpad:id/authentication_view_google_button"
-		homeDescription = "Home"
+		signInID          = "wp.wattpad:id/log_in_button"
+		enterEmailText    = "Username"
+		enterPasswordText = "Password"
+		startText         = "Start Reading"
+		notNowText        = "NOT NOW"
+		homeDescription   = "Home"
 	)
 
 	// Click on sign in button.
@@ -93,12 +97,42 @@ func launchAppForWattpad(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on signIn button: ", err)
 	}
 
-	// Click on google button.
-	googleButton := d.Object(ui.ID(googleID))
-	if err := googleButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("google button doesn't exist: ", err)
-	} else if err := googleButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on google button: ", err)
+	// Enter email address.
+	WattpadEmailID := s.RequiredVar("arcappcompat.Wattpad.emailid")
+	enterEmailAddress := d.Object(ui.Text(enterEmailText))
+	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("EnterEmailAddress doesn't exist: ", err)
+	} else if err := enterEmailAddress.Click(ctx); err != nil {
+		s.Fatal("Failed to click on enterEmailAddress: ", err)
+	} else if err := enterEmailAddress.SetText(ctx, WattpadEmailID); err != nil {
+		s.Fatal("Failed to enterEmailAddress: ", err)
+	}
+
+	// Enter password.
+	WattpadPassword := s.RequiredVar("arcappcompat.Wattpad.password")
+	enterPassword := d.Object(ui.Text(enterPasswordText))
+	if err := enterPassword.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("EnterPassword doesn't exist: ", err)
+	} else if err := enterPassword.Click(ctx); err != nil {
+		s.Fatal("Failed to click on enterPassword: ", err)
+	} else if err := enterPassword.SetText(ctx, WattpadPassword); err != nil {
+		s.Fatal("Failed to enterPassword: ", err)
+	}
+
+	// Click on start reading button.
+	startButton := d.Object(ui.Text(startText))
+	if err := startButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("Start button doesn't exist: ", err)
+	} else if err := startButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on start button: ", err)
+	}
+
+	// Check for not now button and press back to skip it.
+	notNowButton := d.Object(ui.Text(notNowText))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exist: ", err)
+	} else if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+		s.Log("Failed to press back button: ", err)
 	}
 
 	// Check for home icon.
