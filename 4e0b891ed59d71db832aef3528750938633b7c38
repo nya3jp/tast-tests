@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09291a5f_5c86cae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-01-08T08:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17cbf3c3_93dfcad8",
+      "revId": "4e0b891ed59d71db832aef3528750938633b7c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "642cc4af_73454921",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-08T08:33:37Z",
       "side": 1,
       "message": "Can you check for the error type before continuing with generation?",
+      "revId": "4e0b891ed59d71db832aef3528750938633b7c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4a8cbb_184f6e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-01-08T08:56:09Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t get this. Is there an error type I need to specially handle instead of just propagating it out?",
+      "parentUuid": "642cc4af_73454921",
       "revId": "4e0b891ed59d71db832aef3528750938633b7c38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
