@@ -89,7 +89,9 @@ func DisableScreenshotsHotkey(ctx context.Context, s *testing.State) {
 			//
 			// Please check kScreenshotMinimumIntervalInMS constant in
 			// ui/snapshot/screenshot_grabber.cc
-			testing.Sleep(ctx, time.Second)
+			if err := testing.Sleep(ctx, time.Second); err != nil {
+				s.Fatal("Failed to sleep: ", err)
+			}
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
