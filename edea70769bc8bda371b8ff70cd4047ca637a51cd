@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be43f675_1aef3102",
+        "filename": "src/chromiumos/tast/common/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-08T04:02:47Z",
+      "side": 1,
+      "message": "nit: is \\s* at the start necessary when using Find?",
+      "range": {
+        "startLine": 159,
+        "startChar": 40,
+        "endLine": 159,
+        "endChar": 43
+      },
+      "revId": "edea70769bc8bda371b8ff70cd4047ca637a51cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
