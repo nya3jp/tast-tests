@@ -497,6 +497,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa9d4d32_a963591a",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-08T11:02:06Z",
+      "side": 1,
+      "message": "Because the nearbySnippetPackage is actually an Android instrumentation test (https://developer.android.com/studio/test/command-line#RunTestsDevice), it need to use `am instrument` to run it.\nThe `-e action start` is the argument (https://developer.android.com/studio/test/command-line#AMOptionsSyntax) for the instrumentation test codes. This is defined by Mobly(go/mobly) nippetRunner: http://google3/third_party/java_src/android_libs/mobly_snippet_lib/src/main/java/com/google/android/mobly/snippet/SnippetRunner.java?l\u003d59\u0026rcl\u003d231330529",
+      "parentUuid": "ecb6c410_71b1ad92",
+      "range": {
+        "startLine": 88,
+        "startChar": 41,
+        "endLine": 89,
+        "endChar": 137
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee5f0a1e_ad35384e",
         "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
         "patchSetId": 5
