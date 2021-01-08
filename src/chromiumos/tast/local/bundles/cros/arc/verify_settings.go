@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VerifySettings,
 		Desc:         "Verifies ARC++ settings work as intended",
-		Contacts:     []string{"vkrishan@google.com", "rohitbm@google.com", "arc-eng@google.com"},
+		Contacts:     []string{"vkrishan@google.com", "arc-eng@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
