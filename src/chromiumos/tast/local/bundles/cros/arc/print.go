@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -38,6 +39,13 @@ func init() {
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(unstableModels...)),
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
+		}, {
+			Name:              "unstable",
+			Val:               "arc_print_ippusb_golden.pdf",
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(unstableModels...)),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
 		}, {
@@ -47,6 +55,27 @@ func init() {
 			ExtraData:         []string{"arc_print_vm_ippusb_golden.pdf"},
 		}},
 	})
+}
+
+// unstableModels is a list of models that are too flaky for the CQ.
+var unstableModels = []string{
+	"banon",
+	"betty",
+	"betty-pi-arc",
+	"caroline-kernelnext",
+	"elm",
+	"dragonair",
+	"willow",
+	"kodama",
+	"ampton",
+	"bluebird",
+	"bobba",
+	"dood",
+	"phaser360",
+	"sparky",
+	"tiger",
+	"dirinboz",
+	"ezkinil",
 }
 
 func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
