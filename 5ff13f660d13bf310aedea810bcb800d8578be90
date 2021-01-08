@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "95c076c5_eaca7af3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-08T11:39:10Z",
+      "side": 1,
+      "message": "I actually prefer using SoftwareDep since it\u0027s more explicit, check my comment in another CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2599052",
+      "parentUuid": "b07c4a1f_af6319bf",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "5ff13f660d13bf310aedea810bcb800d8578be90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bbdbf6b3_ea1fdcbc",
