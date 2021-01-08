@@ -69,6 +69,24 @@
       "parentUuid": "95309960_1c549625",
       "revId": "e4c01fca167ff0c609ccec14cc6ab78c115a0185",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2918364b_e09166ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-08T13:56:09Z",
+      "side": 1,
+      "message": "Finally I updated comment and CL a bit. PTAL :)",
+      "parentUuid": "c6db8b29_37805f01",
+      "revId": "e4c01fca167ff0c609ccec14cc6ab78c115a0185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
