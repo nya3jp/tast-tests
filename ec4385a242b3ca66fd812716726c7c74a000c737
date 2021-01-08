@@ -33,6 +33,69 @@
       "message": "Looks fine for Java readability.",
       "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1e826e_77c80443",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-01-08T05:31:05Z",
+      "side": 1,
+      "message": "lgtm with optional suggestions.",
+      "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6897231_1c3da6ba",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-01-08T05:31:05Z",
+      "side": 1,
+      "message": "optional: You can use StringJoiner to construct the string representation of a list like:\n```\nStringJoiner sj \u003d new StringJoiner(\", \", \"[\", \"]\");\nArrays.stream(mStreamConfiguratinMap.getOutputFormats())\n        .forEach(f -\u003e sj.add(Integer.toString(f)));\nreturn sj.toString();\n```",
+      "range": {
+        "startLine": 328,
+        "startChar": 8,
+        "endLine": 335,
+        "endChar": 29
+      },
+      "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d626b1d_e21faf02",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-01-08T05:31:05Z",
+      "side": 1,
+      "message": "optional: I guess you can use FileChannel to write ByteBuffer to the FileOutputStream.\n```\noutput.getChannel().write(image.getPlanes()[i].getBuffer())\n```",
+      "range": {
+        "startLine": 385,
+        "startChar": 36,
+        "endLine": 387,
+        "endChar": 56
+      },
+      "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
