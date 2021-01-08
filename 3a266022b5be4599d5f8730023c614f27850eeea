@@ -54,6 +54,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "202fd8f5_cd7c71d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-01-08T00:42:27Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to refactor much, just have a function that returns the data needed instead of hard-coding the slice:\n  func Data() []string {\n  \tif runtime.GOARCH \u003d\u003d \"amd64\" {\n  \t\treturn []string{ ... }\n  \t}\n  \n  \treturn []string{ ... }\n  }",
+      "parentUuid": "e35f498f_18e85f04",
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76be36b3_6f80bc42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-01-08T00:42:27Z",
+      "side": 1,
+      "message": "If it\u0027s not too hard, I would really like to avoid ",
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05e96dde_606e73eb",
