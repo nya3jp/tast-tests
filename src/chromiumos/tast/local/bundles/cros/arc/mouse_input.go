@@ -24,7 +24,7 @@ func init() {
 		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Timeout:      10 * time.Minute,
 	})
 }
@@ -35,7 +35,7 @@ func init() {
 // and verifies that those events were received by the Android application in the expected screen
 // locations.
 func MouseInput(ctx context.Context, s *testing.State) {
-	p := s.PreValue().(arc.PreData)
+	p := s.FixtValue().(*arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
 
