@@ -16,6 +16,23 @@
       "message": "Hi Victor,\n\nWDYT about promoting this test?\nhttps://cros-health-prod.googleplex.com/test/policy.DisableScreenshotsHotkey\n\nIt\u0027s pretty stable and the only failure was about precondition issue.\n\nThanks,\nOleh",
       "revId": "dd5f2441260379d6588f9ef12cbc689ce4557ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98eead6e_72d51e54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-08T15:40:58Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "dd5f2441260379d6588f9ef12cbc689ce4557ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
