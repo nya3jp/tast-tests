@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beba3faf_45c16eda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-08T15:38:18Z",
+      "side": 1,
+      "message": "Hi all,\n\nPTAL :) \n\nThanks,\nOleh",
+      "revId": "5b058a6aa5546128891e9b8d0afcf05b0cfef414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
