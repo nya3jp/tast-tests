@@ -848,6 +848,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c93acf3f_61713e10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-08T11:34:51Z",
+      "side": 1,
+      "message": "I think \"Nearby Snippet\" is good to me.\nWe only emphasize APK when writing the Snippet client:\nhttp://google3/third_party/py/mobly/controllers/android_device_lib/snippet_client.py?l\u003d71\u0026rcl\u003d277322773",
+      "parentUuid": "0f878bbe_9d743f76",
+      "range": {
+        "startLine": 19,
+        "startChar": 49,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2a46128_87f3755e",
