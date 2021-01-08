@@ -262,8 +262,8 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				extraData = []string{vm.GetVMArtifact(i.arch)}
 			}
 			extraData = append(extraData,
-				getContainerMetadataArtifact(i.arch, i.debianVersion, testCase.UseLargeContainer),
-				getContainerRootfsArtifact(i.arch, i.debianVersion, testCase.UseLargeContainer),
+				getContainerMetadataArtifactForArch(i.arch, i.debianVersion, testCase.UseLargeContainer),
+				getContainerRootfsArtifactForArch(i.arch, i.debianVersion, testCase.UseLargeContainer),
 			)
 
 			extraSoftwareDeps := []string{i.arch}
