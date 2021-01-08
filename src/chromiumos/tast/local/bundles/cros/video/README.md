@@ -152,6 +152,16 @@ To run these tests use:
 
     tast run $HOST video.PlatformV4L2.decoder
 
+### Video acceleration API unit tests (`video.PlatformVAAPIUnittest`)
+
+This test runs the "test\_va\_api" GTest binary from the libva-test
+package. It checks the libva API against the implementation. See
+https://github.com/intel/libva-utils for more details.
+
+To run this test use:
+
+    tast run $HOST video.PlatformVAAPIUnittest
+
 ## Play Tests (`video.Play`)
 
 The Play test verifies whether video playback works by playing a video in the
