@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -136,34 +137,38 @@ type testingState interface {
 	Fatal(...interface{})
 }
 
-func getContainerMetadataArtifact(arch string, debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
+func getContainerMetadataArtifactForArch(arch string, debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
 	if largeContainer {
 		return fmt.Sprintf("crostini_app_test_container_metadata_%s_%s.tar.xz", debianVersion, arch)
 	}
 	return fmt.Sprintf("crostini_test_container_metadata_%s_%s.tar.xz", debianVersion, arch)
 }
 
-func getContainerRootfsArtifact(arch string, debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
+// GetContainerMetadataArtifact gets the container metadata artifact
+// for the container parameters. Note that this function will return
+// different values on different architectures.
+func GetContainerMetadataArtifact(debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
+	return getContainerMetadataArtifactForArch(runtime.GOARCH, debianVersion, largeContainer)
+}
+
+func getContainerRootfsArtifactForArch(arch string, debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
 	if largeContainer {
 		return fmt.Sprintf("crostini_app_test_container_rootfs_%s_%s.tar.xz", debianVersion, arch)
 	}
 	return fmt.Sprintf("crostini_test_container_rootfs_%s_%s.tar.xz", debianVersion, arch)
 }
 
+// GetContainerRootfsArtifact gets the container rootfs artifact
+// for the container parameters. Note that this function will return
+// different values on different architectures.
+func GetContainerRootfsArtifact(debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
+	return getContainerRootfsArtifactForArch(runtime.GOARCH, debianVersion, largeContainer)
+}
+
 // GetInstallerOptions returns an InstallationOptions struct with data
 // paths, install mode, and debian version set appropriately for the
 // test.
 func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.ContainerDebianVersion, largeContainer bool, userName string) *cui.InstallationOptions {
-	var arch string
-	for _, dep := range s.SoftwareDeps() {
-		if dep == "amd64" || dep == "arm" {
-			arch = dep
-		}
-	}
-	if arch == "" {
-		s.Fatal("Running on an unknown architecture")
-	}
-
 	var mode string
 	if isComponent {
 		mode = cui.Component
@@ -173,13 +178,13 @@ func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.Cont
 
 	var vmPath string
 	if isComponent {
-		vmPath = s.DataPath(vm.GetVMArtifact(arch))
+		vmPath = s.DataPath(vm.ArtifactData())
 	}
 
 	iOptions := &cui.InstallationOptions{
 		VMArtifactPath:        vmPath,
-		ContainerMetadataPath: s.DataPath(getContainerMetadataArtifact(arch, debianVersion, largeContainer)),
-		ContainerRootfsPath:   s.DataPath(getContainerRootfsArtifact(arch, debianVersion, largeContainer)),
+		ContainerMetadataPath: s.DataPath(GetContainerMetadataArtifact(debianVersion, largeContainer)),
+		ContainerRootfsPath:   s.DataPath(GetContainerRootfsArtifact(debianVersion, largeContainer)),
 		Mode:                  mode,
 		DebianVersion:         debianVersion,
 		UserName:              userName,
