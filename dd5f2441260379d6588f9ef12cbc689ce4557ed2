@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba9187a_41c7fc50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-08T14:09:03Z",
+      "side": 1,
+      "message": "Hi Victor,\n\nWDYT about promoting this test?\nhttps://cros-health-prod.googleplex.com/test/policy.DisableScreenshotsHotkey\n\nIt\u0027s pretty stable and the only failure was about precondition issue.\n\nThanks,\nOleh",
+      "revId": "dd5f2441260379d6588f9ef12cbc689ce4557ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
