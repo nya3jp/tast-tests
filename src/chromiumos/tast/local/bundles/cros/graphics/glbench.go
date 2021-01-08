@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -65,53 +66,27 @@ func init() {
 				ExtraAttr: []string{"group:mainline"},
 				Timeout:   5 * time.Minute,
 			}, {
-				Name:              "crostini_amd64",
+				Name:              "crostini",
 				ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
-				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
-				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "amd64"},
+				ExtraData:         []string{vm.ArtifactData(), crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           1 * time.Hour,
 				Val:               glbenchConfig{environment: envDebian},
 			}, {
-				Name:              "crostini_arm",
-				ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
-				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
-				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "arm"},
-				Pre:               crostini.StartedByComponentBuster(),
-				Timeout:           1 * time.Hour,
-				Val:               glbenchConfig{environment: envDebian},
-			}, {
-				Name:              "crostini_hasty_amd64_stable",
+				Name:              "crostini_hasty_stable",
 				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
-				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
-				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "amd64"},
+				ExtraData:         []string{vm.ArtifactData(), crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
 				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           5 * time.Minute,
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 			}, {
-				Name:              "crostini_hasty_amd64_unstable",
+				Name:              "crostini_hasty_unstable",
 				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
-				ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
-				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "amd64"},
-				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Pre:               crostini.StartedByComponentBuster(),
-				Timeout:           5 * time.Minute,
-				Val:               glbenchConfig{hasty: true, environment: envDebian},
-			}, {
-				Name:              "crostini_hasty_arm_stable",
-				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
-				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
-				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "arm"},
-				ExtraHardwareDeps: crostini.CrostiniStable,
-				Pre:               crostini.StartedByComponentBuster(),
-				Timeout:           5 * time.Minute,
-				Val:               glbenchConfig{hasty: true, environment: envDebian},
-			}, {
-				Name:              "crostini_hasty_arm_unstable",
-				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
-				ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
-				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "arm"},
+				ExtraData:         []string{vm.ArtifactData(), crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				Pre:               crostini.StartedByComponentBuster(),
 				Timeout:           5 * time.Minute,
