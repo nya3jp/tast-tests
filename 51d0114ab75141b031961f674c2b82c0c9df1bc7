@@ -265,6 +265,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec625f3_4dd1d9df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/logs/bootid_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-01-08T05:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d16f6e69_de6acf68",
+      "range": {
+        "startLine": 56,
+        "startChar": 85,
+        "endLine": 56,
+        "endChar": 88
+      },
+      "revId": "51d0114ab75141b031961f674c2b82c0c9df1bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e1e8f86_ebadd0ce",
