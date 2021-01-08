@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "164fe7ca_e68c604a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-08T04:51:34Z",
+      "side": 1,
+      "message": "Thanks, Kyra! LGTM % a few more nits and comments.",
+      "revId": "6722c6ff0f6c756697739b9f796ee0c0755e31f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3200eec5_9333629b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/README.md",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-08T04:51:34Z",
+      "side": 1,
+      "message": "nit: Scan",
+      "range": {
+        "startLine": 1,
+        "startChar": 11,
+        "endLine": 1,
+        "endChar": 19
+      },
+      "revId": "6722c6ff0f6c756697739b9f796ee0c0755e31f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65891f65_5a55ff1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/README.md",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-08T04:51:34Z",
+      "side": 1,
+      "message": "nit: Document Scan",
+      "range": {
+        "startLine": 3,
+        "startChar": 37,
+        "endLine": 3,
+        "endChar": 54
+      },
+      "revId": "6722c6ff0f6c756697739b9f796ee0c0755e31f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4fb47b_8fa0c56c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/README.md",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-08T04:51:34Z",
+      "side": 1,
+      "message": "nit: Scan",
+      "range": {
+        "startLine": 8,
+        "startChar": 12,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "6722c6ff0f6c756697739b9f796ee0c0755e31f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3fa4bf_639e51c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/manifest.json",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-08T04:51:34Z",
+      "side": 1,
+      "message": "nit: Scan",
+      "range": {
+        "startLine": 2,
+        "startChar": 20,
+        "endLine": 2,
+        "endChar": 28
+      },
+      "revId": "6722c6ff0f6c756697739b9f796ee0c0755e31f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3497fbc_01c4949b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.css",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-08T04:51:34Z",
+      "side": 1,
+      "message": "Chromium OS",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 30
+      },
+      "revId": "6722c6ff0f6c756697739b9f796ee0c0755e31f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8625c9d9_bbdcb94e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-08T04:51:34Z",
+      "side": 1,
+      "message": "Looks like we can remove this now.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "6722c6ff0f6c756697739b9f796ee0c0755e31f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a685f7_8a11e087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/data/scan.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-08T04:51:34Z",
+      "side": 1,
+      "message": "We could create a variable for this as well and then call scanCompleteText.value \u003d ...",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 45
+      },
+      "revId": "6722c6ff0f6c756697739b9f796ee0c0755e31f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0bc36b_988aba1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-08T04:51:34Z",
+      "side": 1,
+      "message": "source",
+      "range": {
+        "startLine": 143,
+        "startChar": 17,
+        "endLine": 143,
+        "endChar": 23
+      },
+      "revId": "6722c6ff0f6c756697739b9f796ee0c0755e31f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
