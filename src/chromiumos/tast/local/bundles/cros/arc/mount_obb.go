@@ -179,7 +179,7 @@ func MountOBB(ctx context.Context, s *testing.State) {
 		}
 		defer func() {
 			if retErr != nil {
-				unix.Unmount(mountPath, unix.MNT_DETACH)
+				testexec.CommandContext(ctx, "umount", "-l", mountPath).Run(testexec.DumpLogOnError)
 			}
 		}()
 
@@ -197,8 +197,8 @@ func MountOBB(ctx context.Context, s *testing.State) {
 			return err
 		}
 
-		// Call Unmount without MNT_DETACH, which should commit the content of file system cached in kernel.
-		if err := unix.Unmount(mountPath, 0); err != nil {
+		// Run umount command without -l option, which should commit the content of file system cached in kernel.
+		if err := testexec.CommandContext(ctx, "umount", mountPath).Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrap(err, "failed to unmount vfat")
 		}
 
