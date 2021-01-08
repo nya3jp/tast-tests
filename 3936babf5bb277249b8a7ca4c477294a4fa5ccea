@@ -201,6 +201,30 @@
       },
       "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba28ce5f_bab69183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-08T12:48:25Z",
+      "side": 1,
+      "message": "This is a really good question!\nI go through the Mobly codes and find that there is a _SOCKET_READ_TIMEOUT default to 10 seconds. (which is the same value in `clientReceive()`)\nhttp://google3/third_party/py/mobly/controllers/android_device_lib/jsonrpc_client_base.py?l\u003d71\u0026rcl\u003d350262826\nTherefore, it should be OK and has the same behavior as Python tests.",
+      "parentUuid": "48b69928_e7605e84",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 18
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
