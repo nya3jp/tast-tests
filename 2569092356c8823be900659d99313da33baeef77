@@ -34,6 +34,23 @@
       "parentUuid": "69eaae8b_3d272c37",
       "revId": "2569092356c8823be900659d99313da33baeef77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39bf2d57_4850413b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-08T01:07:13Z",
+      "side": 1,
+      "message": "LGTM.\n\nI am wondering about other tests using power metrics. But as I checked quickly, it turns out that they are also failing on veylon_tiger, or they have the same hwdep already.",
+      "revId": "2569092356c8823be900659d99313da33baeef77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
