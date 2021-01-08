@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/dash_smpte_240_20210113.av1.mp4",
+  "size": 16932,
+  "sha256sum": "ae12368246ca6b57fe499485d959dd66c1b9c918b679460599469bc829c03527"
+}

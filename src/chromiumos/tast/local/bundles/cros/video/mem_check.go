@@ -67,6 +67,14 @@ func init() {
 			Fixture:           "chromeVideoWithGuestLogin",
 			Timeout:           10 * time.Minute,
 		}, {
+			Name:              "av1_hw_switch",
+			Val:               memCheckParams{fileName: "dash_smpte_av1.mp4.mpd", sizes: []graphics.Size{{Width: 256, Height: 144}, {Width: 426, Height: 240}}, videoType: play.MSEVideo},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         append(play.MSEDataFiles(), "dash_smpte_av1.mp4.mpd", "dash_smpte_144.av1.mp4", "dash_smpte_240.av1.mp4"),
+			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeAV1},
+			Fixture:           "chromeVideoWithGuestLoginAndHWAV1Decoding",
+			Timeout:           10 * time.Minute,
+		}, {
 			Name:              "h264_hw_switch",
 			Val:               memCheckParams{fileName: "cars_dash_mp4.mpd", sizes: []graphics.Size{{Width: 256, Height: 144}, {Width: 426, Height: 240}}, videoType: play.MSEVideo},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
