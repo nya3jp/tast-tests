@@ -52,6 +52,24 @@
       "parentUuid": "46c4a737_ede1deeb",
       "revId": "96a61420c85240b38caf44b43bdfb8aed01ded4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6d2165_93613c14",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-01-08T16:18:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6b62c2f_0ca5f0b6",
+      "revId": "96a61420c85240b38caf44b43bdfb8aed01ded4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
