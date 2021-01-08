@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fca57a7_9404181f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-08T08:05:20Z",
+      "side": 1,
+      "message": "I rewrote the CL using the \"arcBooted\" fixture. This directly depends on crrev.com/c/2617165 and implicitly assumes crrev.com/c/2599687 .",
+      "revId": "3c988a289f62cd70f573e5e4a7d64eafc5894c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
