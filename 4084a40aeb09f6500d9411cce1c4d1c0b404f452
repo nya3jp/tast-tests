@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b80d9c26_41321be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-08T03:06:18Z",
+      "side": 1,
+      "message": "+1 same question here. Looks like it is designed as a parameterized test. This function is the main body of the test logic.",
+      "parentUuid": "bfaa81ba_e3fbd42e",
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3a5a461_5641094f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
         "patchSetId": 7
