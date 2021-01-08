@@ -137,32 +137,24 @@ type testingState interface {
 	Fatal(...interface{})
 }
 
-func getContainerMetadataArtifactForArch(arch string, debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
-	if largeContainer {
-		return fmt.Sprintf("crostini_app_test_container_metadata_%s_%s.tar.xz", debianVersion, arch)
-	}
-	return fmt.Sprintf("crostini_test_container_metadata_%s_%s.tar.xz", debianVersion, arch)
-}
-
 // GetContainerMetadataArtifact gets the container metadata artifact
 // for the container parameters. Note that this function will return
 // different values on different architectures.
 func GetContainerMetadataArtifact(debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
-	return getContainerMetadataArtifactForArch(runtime.GOARCH, debianVersion, largeContainer)
-}
-
-func getContainerRootfsArtifactForArch(arch string, debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
 	if largeContainer {
-		return fmt.Sprintf("crostini_app_test_container_rootfs_%s_%s.tar.xz", debianVersion, arch)
+		return fmt.Sprintf("crostini_app_test_container_metadata_%s_%s.tar.xz", debianVersion, runtime.GOARCH)
 	}
-	return fmt.Sprintf("crostini_test_container_rootfs_%s_%s.tar.xz", debianVersion, arch)
+	return fmt.Sprintf("crostini_test_container_metadata_%s_%s.tar.xz", debianVersion, runtime.GOARCH)
 }
 
 // GetContainerRootfsArtifact gets the container rootfs artifact
 // for the container parameters. Note that this function will return
 // different values on different architectures.
 func GetContainerRootfsArtifact(debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
-	return getContainerRootfsArtifactForArch(runtime.GOARCH, debianVersion, largeContainer)
+	if largeContainer {
+		return fmt.Sprintf("crostini_app_test_container_rootfs_%s_%s.tar.xz", debianVersion, runtime.GOARCH)
+	}
+	return fmt.Sprintf("crostini_test_container_rootfs_%s_%s.tar.xz", debianVersion, runtime.GOARCH)
 }
 
 // GetInstallerOptions returns an InstallationOptions struct with data
