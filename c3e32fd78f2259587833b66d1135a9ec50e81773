@@ -33,6 +33,24 @@
       "message": "Do you want to invoke the faillog here? It might change it\u0027s implementation in the future. \nMaybe capture the screenshot directly?",
       "revId": "c3e32fd78f2259587833b66d1135a9ec50e81773",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7034b2_bfbe71b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-08T11:01:08Z",
+      "side": 1,
+      "message": "Yeah, maybe it makes sense to just capture screenshot at the end.",
+      "parentUuid": "540a4379_6588cf5a",
+      "revId": "c3e32fd78f2259587833b66d1135a9ec50e81773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
