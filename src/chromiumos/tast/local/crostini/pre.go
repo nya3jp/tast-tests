@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -158,15 +159,7 @@ func getContainerRootfsArtifact(arch string, debianVersion vm.ContainerDebianVer
 // paths, install mode, and debian version set appropriately for the
 // test.
 func GetInstallerOptions(s testingState, isComponent bool, debianVersion vm.ContainerDebianVersion, largeContainer bool, userName string) *cui.InstallationOptions {
-	var arch string
-	for _, dep := range s.SoftwareDeps() {
-		if dep == "amd64" || dep == "arm" {
-			arch = dep
-		}
-	}
-	if arch == "" {
-		s.Fatal("Running on an unknown architecture")
-	}
+	arch := runtime.GOARCH
 
 	var mode string
 	if isComponent {

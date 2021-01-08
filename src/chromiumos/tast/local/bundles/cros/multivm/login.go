@@ -25,33 +25,21 @@ func init() {
 			Name: "novm",
 			Pre:  multivm.NoVMStarted(),
 		}, {
-			Name:              "arc_crostini_amd64",
+			Name:              "arc_crostini",
 			Pre:               multivm.ArcCrostiniStarted(),
-			ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
+			ExtraData:         multivm.CrostiniData(),
 			ExtraHardwareDeps: crostini.CrostiniStable,
-			ExtraSoftwareDeps: []string{"vm_host", "android_vm", "amd64"},
-		}, {
-			Name:              "arc_crostini_arm",
-			Pre:               multivm.ArcCrostiniStarted(),
-			ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
-			ExtraHardwareDeps: crostini.CrostiniStable,
-			ExtraSoftwareDeps: []string{"vm_host", "android_vm", "arm"},
+			ExtraSoftwareDeps: []string{"vm_host", "android_vm"},
 		}, {
 			Name:              "arc",
 			Pre:               multivm.ArcStarted(),
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
-			Name:              "crostini_amd64",
+			Name:              "crostini",
 			Pre:               multivm.CrostiniStarted(),
-			ExtraData:         []string{"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
+			ExtraData:         multivm.CrostiniData(),
 			ExtraHardwareDeps: crostini.CrostiniStable,
-			ExtraSoftwareDeps: []string{"vm_host", "amd64"},
-		}, {
-			Name:              "crostini_arm",
-			Pre:               multivm.CrostiniStarted(),
-			ExtraData:         []string{"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
-			ExtraHardwareDeps: crostini.CrostiniStable,
-			ExtraSoftwareDeps: []string{"vm_host", "arm"},
+			ExtraSoftwareDeps: []string{"vm_host"},
 		}},
 	})
 }

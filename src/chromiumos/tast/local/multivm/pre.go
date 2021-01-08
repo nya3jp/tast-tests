@@ -6,6 +6,7 @@ package multivm
 
 import (
 	"context"
+	"runtime"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -164,4 +165,20 @@ func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 	if err := p.vmState.Deactivate(ctx); err != nil {
 		s.Fatal("Failed to deacivate Chrome+VMs: ", err)
 	}
+}
+
+var crostiniData = map[string][]string{
+	"arm":   {"crostini_vm_arm.zip", "crostini_test_container_metadata_buster_arm.tar.xz", "crostini_test_container_rootfs_buster_arm.tar.xz"},
+	"amd64": {"crostini_vm_amd64.zip", "crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
+}
+
+// CrostiniData returns the test Data or ExtraData dependencies needed to run
+// any Crostini precondition.
+func CrostiniData() []string {
+	data, ok := crostiniData[runtime.GOARCH]
+	if !ok {
+		// Installing Crostini will raise an error.
+		return []string{}
+	}
+	return data
 }
