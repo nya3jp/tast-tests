@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "859b5dea_34665611",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2021-01-08T05:34:15Z",
+      "side": 1,
+      "message": "Good to know. I\u0027ll it leave as is for consistency with the existing code (which also uses StringBuilder).",
+      "parentUuid": "a6897231_1c3da6ba",
+      "range": {
+        "startLine": 328,
+        "startChar": 8,
+        "endLine": 335,
+        "endChar": 29
+      },
+      "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d626b1d_e21faf02",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-01-08T05:31:05Z",
       "side": 1,
       "message": "optional: I guess you can use FileChannel to write ByteBuffer to the FileOutputStream.\n```\noutput.getChannel().write(image.getPlanes()[i].getBuffer())\n```",
+      "range": {
+        "startLine": 385,
+        "startChar": 36,
+        "endLine": 387,
+        "endChar": 56
+      },
+      "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93d3c969_dea4180e",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2021-01-08T05:34:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6d626b1d_e21faf02",
       "range": {
         "startLine": 385,
         "startChar": 36,
