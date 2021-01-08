@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7abfd64a_e8130de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-08T12:33:47Z",
+      "side": 1,
+      "message": "The \"POST\" means the snippet codes running on the Android device want to let host side to know what event already happened. It post an {@link SnippetEvent} object to the Event cache.\nhttp://google3/third_party/java_src/android_libs/mobly_snippet_lib/src/main/java/com/google/android/mobly/snippet/event/EventCache.java?l\u003d80\u0026rcl\u003d350262826",
+      "parentUuid": "5bbd4993_4d147841",
+      "range": {
+        "startLine": 38,
+        "startChar": 36,
+        "endLine": 38,
+        "endChar": 64
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c55f104_3b443f08",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/constants.go",
         "patchSetId": 6
