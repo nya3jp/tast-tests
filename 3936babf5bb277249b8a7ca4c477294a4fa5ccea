@@ -135,6 +135,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b33bdd48_947fb957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-08T12:24:22Z",
+      "side": 1,
+      "message": "I am wondering that is it possible to play some tricks to turn method call (the method name) into RPC call string and accept variable args?\nThe Python side do it in this way:\n```\n    def __getattr__(self, name):\n        \"\"\"Wrapper for python magic to turn method calls into RPC calls.\"\"\"\n\n        def rpc_call(*args):\n            return self._rpc(name, *args)\n\n        return rpc_call\n```\nhttp://google3/third_party/py/mobly/controllers/android_device_lib/jsonrpc_client_base.py?l\u003d375\u0026rcl\u003d350724983\n\nThe caller side calls it like:\n```\nad.nearby.getNearbySharingVersion()\n# ad means AndroidDevice\n# nearby is the SnippetClient\n# getNearbySharingVersion() is the method name that is not defined in the Python class.\n# Therefore, it will trigger the call to __getattr__ to resolve it.\n```\n\nThis make you more easy to call other RPC calls instead of implement them for every call.",
+      "range": {
+        "startLine": 316,
+        "startChar": 30,
+        "endLine": 316,
+        "endChar": 53
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48b69928_e7605e84",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
         "patchSetId": 6
