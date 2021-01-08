@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/sysutil"
@@ -32,7 +33,6 @@ const (
 	builtInUSBCameraConfigPath = "/etc/camera/camera_characteristics.conf"
 	cameraHALGlobPattern       = "/usr/lib*/camera_hal/*.so"
 	jsonConfigPath             = "/var/cache/camera/test_config.json"
-	mediaProfilePath           = "/var/cache/camera/media_profiles.xml"
 )
 
 // mediaSettings is used to unmarshal media profile in ARC.
@@ -103,7 +103,7 @@ func IsV1Legacy(ctx context.Context) (bool, error) {
 // getRecordingParams gets the recording parameters from the media profile in
 // ARC, which would be used as an argument of cros_camera_test.
 func getRecordingParams(ctx context.Context) (string, error) {
-	err := testexec.CommandContext(ctx, "generate_camera_profile").Run(testexec.DumpLogOnError)
+	mediaProfilePath, err := readOrGenerateMediaProfilePath(ctx)
 	if err != nil {
 		return "", err
 	}
@@ -139,6 +139,19 @@ func getRecordingParams(ctx context.Context) (string, error) {
 		}
 	}
 	return strings.Join(params, ","), nil
+}
+
+// readOrGenerateMediaProfilePath returns the ARC media profile file path, and possibly generates the file if not exists.
+func readOrGenerateMediaProfilePath(ctx context.Context) (string, error) {
+	if path, err := crosconfig.Get(ctx, "/arc/media-profiles", "system-path"); err == nil {
+		return path, nil
+	} else if !crosconfig.IsNotFound(err) {
+		return "", err
+	}
+	if err := testexec.CommandContext(ctx, "generate_camera_profile").Run(testexec.DumpLogOnError); err != nil {
+		return "", err
+	}
+	return "/var/cache/camera/media_profiles.xml", nil
 }
 
 // crosCameraTestConfig is the config for running cros_camera_test.
