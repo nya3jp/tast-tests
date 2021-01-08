@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -38,6 +39,13 @@ func init() {
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
+			ExtraHardwareDeps: arcPrintStable,
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
+		}, {
+			Name:              "unstable",
+			Val:               "arc_print_ippusb_golden.pdf",
+			ExtraHardwareDeps: arcPrintUnstable,
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraData:         []string{"arc_print_ippusb_golden.pdf"},
 		}, {
@@ -48,6 +56,35 @@ func init() {
 		}},
 	})
 }
+
+// unstableModels is a list of models that are too flaky for the CQ.
+var unstableModels = []string{
+	"banon",
+	"betty",
+	"betty-pi-arc",
+	"caroline-kernelnext",
+	"elm",
+	"dragonair",
+	"willow",
+	"kodama",
+	"ampton",
+	"bluebird",
+	"bobba",
+	"dood",
+	"phaser360",
+	"sparky",
+	"tiger",
+	"dirinboz",
+	"ezkinil",
+}
+
+// arcPrintStable is a hardware dependency that only runs arc.Print on models
+// that can pass it without known flakiness issues.
+var arcPrintStable = hwdep.D(hwdep.SkipOnModel(unstableModels...))
+
+// arcPrintUnstable is a hardware dependency that is the inverse of
+// arcPrintStable. It only runs arc.Print on models that are known to be flaky.
+var arcPrintUnstable = hwdep.D(hwdep.Model(unstableModels...))
 
 func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
 	params := ui.FindParams{
