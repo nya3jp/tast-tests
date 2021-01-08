@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0adc796_d150055e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "Context should almost never be stored, it should always be passed in and used when needed.\n\nAlso, if it absolutely needs to be stored, it should probably be context.Context not *context.Context",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c51e7812_a40126fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "This port may need to be released on error.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 55
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960f04b4_94c54fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "I assume this conn should be closed on error?",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 38
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17fe6445_100c0622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "bytes.Buffer may be a nicer alternative.",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 26
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d30f5db_fb32a0fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "You should probably docment that this function shouldn\u0027t be used concurrently do to a race condition in updating requestID. Maybe just a general comment on the struct as a whole",
+      "range": {
+        "startLine": 251,
+        "startChar": 31,
+        "endLine": 251,
+        "endChar": 42
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f8f241_a0e187ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "I just realized, you may want to use adb.WaitForDevice. Otherwise this could potentially fail if the device/adb server isn\u0027t done initializing. Not sure it will matter, but just a thought.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

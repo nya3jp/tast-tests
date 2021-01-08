@@ -324,6 +324,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cd2243_8a0c10aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "Something similar is not really possible in go due to static types and no proper var args. Anything that would do something like that would almost certainly be outside of go/tast style.",
+      "parentUuid": "757b6d40_fa1bb351",
+      "range": {
+        "startLine": 316,
+        "startChar": 30,
+        "endLine": 316,
+        "endChar": 53
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48b69928_e7605e84",

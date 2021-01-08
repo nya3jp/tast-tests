@@ -543,6 +543,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80fac350_f5075e64",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa9d4d32_a963591a",
+      "range": {
+        "startLine": 88,
+        "startChar": 41,
+        "endLine": 89,
+        "endChar": 137
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5f0a1e_ad35384e",
@@ -827,6 +851,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "260d4db7_b6180486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/nearby_snippet_20201217.zip.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "everything in tast-test/android/* specifies how it gets built. There is good documentation in the readme in that directory with example snippet code. Otherwise look at any arc test that uses one of the apps in that directory. Generally easy to figure out due to apk name matching the test name.",
+      "parentUuid": "938bdd6f_1e3dc619",
+      "range": {
+        "startLine": 2,
+        "startChar": 84,
+        "endLine": 2,
+        "endChar": 88
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95cac376_a1f1c6cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
         "patchSetId": 5
@@ -1085,6 +1133,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "def24975_7ef53704",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a173d05f_c519bb9b",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 37
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdfecb1b_dd7a92c3",
@@ -1122,6 +1194,30 @@
       "side": 1,
       "message": "It would make it cleaner for sure, but I did it this way so I could defer StopSnippet before trying any RPCs just in case they fail for whatever reason.",
       "parentUuid": "bdfecb1b_dd7a92c3",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b0995a_5447d47b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b153e209_73d043b2",
       "range": {
         "startLine": 65,
         "startChar": 11,
