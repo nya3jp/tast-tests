@@ -80,33 +80,54 @@ func EdjingMix(ctx context.Context, s *testing.State) {
 // verify EdjingMix reached main activity page of the app.
 func launchAppForEdjingMix(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		nextText       = "NEXT"
+		nextText       = "Next"
+		skipText       = "SKIP"
+		tryForFreeText = "TRY FOR FREE NOW"
+		notNowText     = "NOT NOW"
 		closeClassName = "android.widget.ImageView"
 		allowText      = "ALLOW"
-		skipText       = "SKIP"
+		allowID        = "com.android.packageinstaller:id/permission_allow_button"
 		recordingText  = "REC"
 	)
 
-	// Click on next button.
+	// Click on next button until skip button exists.
 	nextButton := d.Object(ui.Text(nextText))
-	if err := nextButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Next button doesn't exists: ", err)
-	} else if err := nextButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on next button: ", err)
+	skipButton := d.Object(ui.Text(skipText))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := skipButton.Exists(ctx); err != nil {
+			s.Log(" Click on next button until skip button exist")
+			nextButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Error("Skip button doesn't exist: ", err)
+	} else if err := skipButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on skip button: ", err)
 	}
 
-	// Click on close button.
-	closeButton := d.Object(ui.ClassName(closeClassName))
-	if err := closeButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Close button doesn't exist: ", err)
-	} else if err := closeButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on close button: ", err)
+	// Click on skip button until try for free button exists.
+	tryForFreeButton := d.Object(ui.Text(tryForFreeText))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := tryForFreeButton.Exists(ctx); err != nil {
+			s.Log(" Click on skip button until tryForFree button exist")
+			skipButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
+		s.Error(" tryForFree button doesn't exist: ", err)
 	}
 
 	pressKeysEdjingMix(ctx, s, d)
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+	} else {
+		s.Log("Entered KEYCODE_ENTER")
+	}
+	pressAllowKeysEdjingMix(ctx, s, d)
 
 	// Click on skip button
-	skipButton := d.Object(ui.Text(skipText))
 	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("Skip button doesn't exists: ", err)
 	} else if err := skipButton.Click(ctx); err != nil {
@@ -120,8 +141,8 @@ func launchAppForEdjingMix(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 }
 
-// pressKeysEdjingMix runs the same set of keys twice to close the pop-up windows and land on home page
-func pressKeysEdjingMix(ctx context.Context, s *testing.State, d *ui.Device) {
+// pressAllowKeysEdjingMix runs the same set of keys twice to close the pop-up windows and land on home page
+func pressAllowKeysEdjingMix(ctx context.Context, s *testing.State, d *ui.Device) {
 	var count = 1
 
 	for i := 0; i <= count; i++ {
@@ -139,6 +160,32 @@ func pressKeysEdjingMix(ctx context.Context, s *testing.State, d *ui.Device) {
 			s.Log("Entered KEYCODE_TAB")
 		}
 
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_ENTER: ", err)
+		} else {
+			s.Log("Entered KEYCODE_ENTER")
+		}
+	}
+}
+
+// pressKeysEdjingMix runs a set of keys once to close ad dialog box
+func pressKeysEdjingMix(ctx context.Context, s *testing.State, d *ui.Device) {
+	var count = 1
+
+	for i := 1; i <= count; i++ {
+
+		//Press tab and enter keys
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_TAB: ", err)
+		} else {
+			s.Log("Entered KEYCODE_TAB")
+		}
+
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_ENTER: ", err)
+		} else {
+			s.Log("Entered KEYCODE_ENTER")
+		}
 		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
 			s.Log("Failed to enter KEYCODE_ENTER: ", err)
 		} else {
