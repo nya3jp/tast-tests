@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eb4328c_4b92d6df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-08T08:43:28Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6897231_1c3da6ba",
@@ -141,6 +158,29 @@
         "startChar": 36,
         "endLine": 387,
         "endChar": 56
+      },
+      "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "416d9702_09c4e516",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-08T08:43:28Z",
+      "side": 1,
+      "message": "nit: this else branch is not necessary, the 2nd return can be outside of the \"if\".",
+      "range": {
+        "startLine": 650,
+        "startChar": 10,
+        "endLine": 650,
+        "endChar": 14
       },
       "revId": "ec4385a242b3ca66fd812716726c7c74a000c737",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
