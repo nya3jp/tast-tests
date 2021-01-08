@@ -16,6 +16,23 @@
       "message": "Hi Tast Experts,\n\nCan you please take a look at this CL? \n\nThanks!",
       "revId": "22dbe360d2ec91ecd03b9d37773ede5a9f5b3514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a135655_393e8f2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-08T10:13:28Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "22dbe360d2ec91ecd03b9d37773ede5a9f5b3514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
