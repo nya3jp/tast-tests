@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc8dfd5_4e1225d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Sorry for the delay, was off the past couple of weeks and had quite a few comments to go through :)",
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
