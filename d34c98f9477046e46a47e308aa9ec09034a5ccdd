@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034681bd_9d39da5a",
+        "filename": "src/chromiumos/tast/local/chrome/fixture_loggedin_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T10:34:56Z",
+      "side": 1,
+      "message": "I wonder if we can merge this to loggedInFixture since most logic is the same as that. I think the point of this fixture is that we compute options at runtime by referencing runtime variables. How about extending loggedInFixture to accept a closure that returns options?\n\nFor example:\n\n func newLoggedInFixture(computeOpts func(ctx context.Context, s *testing.FixtState) []Option) *loggedInFixture",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "d34c98f9477046e46a47e308aa9ec09034a5ccdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b38fe3c_5fc19f45",
+        "filename": "src/chromiumos/tast/local/chrome/fixture_loggedin_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T10:34:56Z",
+      "side": 1,
+      "message": "It\u0027s tricky to provide Chrome options from parent fixtures. I believe we can instead provide options on loggedInUserFixture registration?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "d34c98f9477046e46a47e308aa9ec09034a5ccdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc5a756_c816c97f",
+        "filename": "src/chromiumos/tast/local/chrome/fixture_loggedin_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T10:34:56Z",
+      "side": 1,
+      "message": "style: Please use assignment in \"if\" only when those variables are used only within the \"if\" scope.\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\n userID, ok :\u003d s.Var(f.userVar)\n if !ok {\n   ...\n }",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "d34c98f9477046e46a47e308aa9ec09034a5ccdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
