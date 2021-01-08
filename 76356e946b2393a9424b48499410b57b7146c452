@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4bfd7d2_2f53dcf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-08T02:16:20Z",
+      "side": 1,
+      "message": "Okay, moving back to the original form.",
+      "parentUuid": "248d1a7d_ee766338",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 37
+      },
+      "revId": "76356e946b2393a9424b48499410b57b7146c452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea278a13_6077883e",
