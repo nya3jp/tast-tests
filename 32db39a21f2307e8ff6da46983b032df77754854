@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "853b888b_7c8767c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-08T11:17:28Z",
+      "side": 1,
+      "message": "LGTM % final nit",
+      "revId": "32db39a21f2307e8ff6da46983b032df77754854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf83f83_31554533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_screenshots_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-08T11:17:28Z",
+      "side": 1,
+      "message": "minor nit: add a comment on why this is done.",
+      "revId": "32db39a21f2307e8ff6da46983b032df77754854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
