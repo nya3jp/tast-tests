@@ -16,6 +16,24 @@
       "message": "Is the login account type only the difference in this test compared to normal ARC++ ON test ?",
       "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b38aa06_5adcfbd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-08T22:18:50Z",
+      "side": 1,
+      "message": "Yes, It signs in with parent account and then authorizes it for child login which is  all taken care in chrome.New() API where both parent and child login details are passed.",
+      "parentUuid": "14db8331_bca31f82",
+      "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
