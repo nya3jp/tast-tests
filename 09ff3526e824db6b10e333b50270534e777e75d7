@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51bbc375_dfc85387",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Sounds good, made it a subpackage instead.",
+      "parentUuid": "9173fac5_209c5767",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc637e7f_840a8e17",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28fe7892_7e4df7f0",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "We\u0027ll still have versioning even if we change this nearby_snippet.zip, since the external data file specifies the actual file name in gcs.",
+      "parentUuid": "96587741_2e7d65fe",
+      "range": {
+        "startLine": 8,
+        "startChar": 26,
+        "endLine": 8,
+        "endChar": 53
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dea4ae53_7b341885",
@@ -84,6 +132,30 @@
       "writtenOn": "2020-12-21T19:44:17Z",
       "side": 1,
       "message": "nit: don\u0027t prepend with NearbySnippet. other locations will use it at nearbysnippet.NearbySnippetApk. Same for other constants here.\n\nEven the local constants don\u0027t really need it since we are in the nearbysnippet package, and that gives context",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "510cbf5b_d30dbe78",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea4ae53_7b341885",
       "range": {
         "startLine": 11,
         "startChar": 6,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "666b7d88_fd64b9d3",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57d426d2_e43c6c4f",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd21939a_1f385879",
@@ -130,6 +226,30 @@
       "writtenOn": "2020-12-21T19:44:17Z",
       "side": 1,
       "message": "nit: merge these into one const block with comments in the block?",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 85
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb1f5f76_58f02e59",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd21939a_1f385879",
       "range": {
         "startLine": 7,
         "startChar": 1,
@@ -188,6 +308,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "367247c3_13394863",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "I was thinking to have a function in nearbysetup.go that calls this one and initializes the RPC server and Nearby settings (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2598733/2/src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup/nearbysetup.go). I figured it would be better to keep this function along with the rest of the code that deals with adb and rpc stuff. WDYT?",
+      "parentUuid": "39a820a2_1e1b4d10",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "624c6d50_c08eb4c7",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Yeah that sounds good, changed it to just New",
+      "parentUuid": "d280d55e_388ac5fc",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7587204b_a0943a86",
         "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
         "patchSetId": 5
@@ -199,6 +367,30 @@
       "writtenOn": "2020-12-21T19:44:17Z",
       "side": 1,
       "message": "will this cause versioning conflicts in the future? This may stop the apk from ever updating.",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 102
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ebbbc5_9fbc1598",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "ah yeah good catch, let\u0027s just install it every time.",
+      "parentUuid": "7587204b_a0943a86",
       "range": {
         "startLine": 67,
         "startChar": 27,
@@ -222,6 +414,30 @@
       "writtenOn": "2020-12-21T19:44:17Z",
       "side": 1,
       "message": "nit: maybe merge lines",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 54
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d036031_1d802438",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "I didn\u0027t see a much cleaner way to merge them, will leave as is for now",
+      "parentUuid": "a97034b1_7157ff6e",
       "range": {
         "startLine": 71,
         "startChar": 1,
@@ -257,6 +473,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecb6c410_71b1ad92",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "ericth@, any comments here? I don\u0027t know myself, I just grabbed it from the snippet documentation.",
+      "parentUuid": "e52d869e_6bc581e1",
+      "range": {
+        "startLine": 88,
+        "startChar": 41,
+        "endLine": 89,
+        "endChar": 137
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee5f0a1e_ad35384e",
         "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
         "patchSetId": 5
@@ -268,6 +508,30 @@
       "writtenOn": "2020-12-21T19:44:17Z",
       "side": 1,
       "message": "maybe abstract making these sense they are almost identical?",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 27
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068365fe_863d9d37",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee5f0a1e_ad35384e",
       "range": {
         "startLine": 165,
         "startChar": 1,
@@ -301,6 +565,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ca9838_b06f5131",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "launchSnippet sets up the net.Conn for the RPC session, which is a field of AndroidNearbyDevice, so initially I thought to call launchSnippet to get the net.Conn and then declare and return the struct all at once (L82). I can initialize the struct first though, and put launchSnippet on it to be more consistent, though. Then launchSnippet can just set the field instead of returning the net.Conn.",
+      "parentUuid": "3fe8b5a4_a701c88e",
+      "range": {
+        "startLine": 192,
+        "startChar": 30,
+        "endLine": 192,
+        "endChar": 41
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7c57bb3_ae59a874",
@@ -314,6 +602,30 @@
       "writtenOn": "2020-12-21T19:44:17Z",
       "side": 1,
       "message": "do we really want to log this all the time?",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 57
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8b251b_83297b18",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "ah yeah this one\u0027s not particularly informative, I\u0027ve removed it. the other ones are nice to have though",
+      "parentUuid": "b7c57bb3_ae59a874",
       "range": {
         "startLine": 251,
         "startChar": 1,
@@ -347,6 +659,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "511745ac_cf9552b4",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Specifying -1 creates a new session with the server: http://google3/third_party/py/mobly/controllers/android_device_lib/jsonrpc_client_base.py?l\u003d65\u0026rcl\u003d339841812\n\nAdded a comment with a little bit of context.",
+      "parentUuid": "040078fc_15053767",
+      "range": {
+        "startLine": 299,
+        "startChar": 22,
+        "endLine": 299,
+        "endChar": 30
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5e21bc5_4d0b40af",
@@ -360,6 +696,30 @@
       "writtenOn": "2020-12-20T20:44:18Z",
       "side": 1,
       "message": "rename this file to be nearby_snippet.zip.external \n\nIts name can stay consistent and only the contents of the file will change when we update the file on google storage. Then you don\u0027t need to add the date to the var name in constants.go either.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28c49728_7d8c7153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/nearby_snippet_20201217.zip.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5e21bc5_4d0b40af",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -395,6 +755,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "938bdd6f_1e3dc619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/nearby_snippet_20201217.zip.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to handle files outside of the bundle\u0027s data directory. Supposing we add the APK to somewhere like tast-tests-private/android/nearby_snippet.apk, what path do we use to find the file in the test (instead of s.DataPath(...))? Are there any examples for getting this to work?",
+      "parentUuid": "56570077_f6761835",
+      "range": {
+        "startLine": 2,
+        "startChar": 84,
+        "endLine": 2,
+        "endChar": 88
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95cac376_a1f1c6cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
         "patchSetId": 5
@@ -406,6 +790,30 @@
       "writtenOn": "2020-12-20T20:44:18Z",
       "side": 1,
       "message": "Can you stay consistent with the naming of this everywhere.",
+      "range": {
+        "startLine": 19,
+        "startChar": 49,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f878bbe_9d743f76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll change it to just \"Nearby Snippet\". ericth@, what\u0027s the terminology you guys use for everything? I\u0027m mixing terms like Nearby snippet, snippet APK, snippet RPC server, etc., but it would probably be best for us to stay consistent with your team\u0027s terminology.\n\nIs it something like:\n(Nearby) Snippet APK - just the .apk file.\nNearby Snippet - the actual RPC server application on the Android device",
+      "parentUuid": "95cac376_a1f1c6cd",
       "range": {
         "startLine": 19,
         "startChar": 49,
@@ -440,6 +848,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b024bb4_37377244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2a46128_87f3755e",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28e1a3aa_8ae8b4ea",
@@ -463,6 +895,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a874c88_6a132082",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28e1a3aa_8ae8b4ea",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67bb97e7_593434d8",
@@ -476,6 +932,30 @@
       "writtenOn": "2020-12-21T19:44:17Z",
       "side": 1,
       "message": "nit: var dontOverride bool",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87eff278_1cb40802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67bb97e7_593434d8",
       "range": {
         "startLine": 51,
         "startChar": 1,
@@ -511,6 +991,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a173d05f_c519bb9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "It goes here. At this point the snippet is already running and we\u0027ve established a TCP connection to it that we should clean up later regardless of the Initialize RPC outcome.",
+      "parentUuid": "1eff6db7_2fa54cc5",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 37
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdfecb1b_dd7a92c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
         "patchSetId": 5
@@ -522,6 +1026,30 @@
       "writtenOn": "2020-12-21T19:44:17Z",
       "side": 1,
       "message": "should initialize be part of/called by prepare",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b153e209_73d043b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T01:48:41Z",
+      "side": 1,
+      "message": "It would make it cleaner for sure, but I did it this way so I could defer StopSnippet before trying any RPCs just in case they fail for whatever reason.",
+      "parentUuid": "bdfecb1b_dd7a92c3",
       "range": {
         "startLine": 65,
         "startChar": 11,
