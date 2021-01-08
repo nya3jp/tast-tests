@@ -155,13 +155,23 @@ type generatedParam struct {
 const template = `{{range .}} {
 	{{if .Name}}              Name:              {{fmt .Name}},                                             {{end}}
 	{{if .ExtraAttr}}         ExtraAttr:         []string{ {{range .ExtraAttr}}{{fmt .}},{{end}} },         {{end}}
-	{{if .ExtraData}}         ExtraData:         []string{ {{range .ExtraData}}{{fmt .}},{{end}} },         {{end}}
+	{{if .ExtraData}}         ExtraData:         []string{ {{range .ExtraData}}  {{.}},  {{end}} },         {{end}}
 	{{if .ExtraSoftwareDeps}} ExtraSoftwareDeps: []string{ {{range .ExtraSoftwareDeps}}{{fmt .}},{{end}} }, {{end}}
 	{{if .ExtraHardwareDeps}} ExtraHardwareDeps: {{.ExtraHardwareDeps}},                                    {{end}}
 	{{if .Pre}}               Pre:               {{.Pre}},                                                  {{end}}
 	{{if .Timeout}}           Timeout:           {{fmt .Timeout}},                                          {{end}}
 	{{if .Val}}               Val:               {{.Val}},                                                  {{end}}
 }, {{end}}`
+
+func combineName(first, second string) string {
+	if first == "" {
+		return second
+	}
+	if second == "" {
+		return first
+	}
+	return first + "_" + second
+}
 
 // MakeTestParamsFromList takes a list of test cases (in the form of
 // crostini.Param objects) and generates a set of crostini test
@@ -177,23 +187,19 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 
 	type iterator struct {
 		debianVersion vm.ContainerDebianVersion
-		arch          string
 		stable        bool
 		vmMode        string
 	}
 	var it = []iterator{}
 
 	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster} {
-		for _, arch := range []string{"amd64", "arm"} {
-			for _, stable := range []bool{true, false} {
-				for _, vmMode := range []string{"component", "dlc"} {
-					it = append(it, iterator{
-						debianVersion: debianVersion,
-						arch:          arch,
-						stable:        stable,
-						vmMode:        vmMode,
-					})
-				}
+		for _, stable := range []bool{true, false} {
+			for _, vmMode := range []string{"component", "dlc"} {
+				it = append(it, iterator{
+					debianVersion: debianVersion,
+					stable:        stable,
+					vmMode:        vmMode,
+				})
 			}
 		}
 	}
@@ -202,11 +208,6 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 
 		if testCase.UseLargeContainer && !testCase.MinimalSet {
 			t.Fatalf("Test %q: Testing apps on stretch is not supported", testCase.Name)
-		}
-
-		var namePrefix string
-		if testCase.Name != "" {
-			namePrefix = testCase.Name + "_"
 		}
 
 		// Check here if it's possible for any iteration of
@@ -232,21 +233,21 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				continue
 			}
 
-			name := ""
+			name := testCase.Name
 			if !testCase.MinimalSet {
 				// If we're generating a minimal set
 				// then the debian version and use of
 				// component/dlc is always the same
 				// and we don't need to include it in
 				// the test name.
-				name += i.vmMode + "_" + string(i.debianVersion) + "_"
+				name = combineName(name, i.vmMode)
+				name = combineName(name, string(i.debianVersion))
 			}
-			name += i.arch
 			if !testCase.IsNotMainline && !testCase.OnlyStableBoards {
 				if i.stable {
-					name += "_stable"
+					name = combineName(name, "stable")
 				} else {
-					name += "_unstable"
+					name = combineName(name, "unstable")
 				}
 			}
 
@@ -259,14 +260,24 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 
 			var extraData []string
 			if i.vmMode == "component" {
-				extraData = []string{vm.GetVMArtifact(i.arch)}
+				extraData = []string{"vm.ArtifactData()"}
 			}
 			extraData = append(extraData,
-				getContainerMetadataArtifactForArch(i.arch, i.debianVersion, testCase.UseLargeContainer),
-				getContainerRootfsArtifactForArch(i.arch, i.debianVersion, testCase.UseLargeContainer),
+				fmt.Sprintf("crostini.GetContainerMetadataArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
+				fmt.Sprintf("crostini.GetContainerRootfsArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
 			)
 
-			extraSoftwareDeps := []string{i.arch}
+			// Quote the extra data strings we got passed,
+			// so we can define the container and VM
+			// artifacts with runtime functions while
+			// still taking string literals from the
+			// outside world.
+			for _, data := range testCase.ExtraData {
+				extraData = append(extraData,
+					fmt.Sprintf("%q", data))
+			}
+
+			var extraSoftwareDeps []string
 			if i.vmMode == "dlc" {
 				extraSoftwareDeps = append(extraSoftwareDeps, "dlc")
 			}
@@ -307,9 +318,9 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			testParam := generatedParam{
-				Name:              namePrefix + name,
+				Name:              name,
 				ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
-				ExtraData:         append(testCase.ExtraData, extraData...),
+				ExtraData:         extraData,
 				ExtraSoftwareDeps: append(testCase.ExtraSoftwareDeps, extraSoftwareDeps...),
 				ExtraHardwareDeps: hardwareDeps,
 				Pre:               precondition,
