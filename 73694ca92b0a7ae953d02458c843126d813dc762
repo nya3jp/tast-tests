@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6ebe32_c9b5ae22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "Sorry, it seems I overlooked many things in last CL...\n",
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74ffb95b_779b5a31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "I believe you didn\u0027t intend to update this file; the test is still using preconditions.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed8093a_562005fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aff25a8_4faf569a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d93dd0_1e9c70f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b915b0c_7ef2bcc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0669fe_1b22b06f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53029b8b_4f679245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "This function is called from arc.VideoDecodeAccel which still uses preconditions.\n\n VideoDecodeAccel -\u003e RunAllARCVideoTests -\u003e runARCVideoTestSetup",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a913890_6fb84abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 186,
+        "startChar": 9,
+        "endLine": 186,
+        "endChar": 18
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af73e201_32259dcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 336,
+        "startChar": 34,
+        "endLine": 336,
+        "endChar": 43
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d75098_da7bdbcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T04:59:45Z",
+      "side": 1,
+      "message": "This test still uses preconditions.",
+      "range": {
+        "startLine": 110,
+        "startChar": 31,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
