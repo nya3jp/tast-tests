@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07ac2e2a_9b3aaa2d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-08T17:48:59Z",
+      "side": 1,
+      "message": "Shuhei, thanks for the review.\n\nHow about serializing the Chrome key options and inject them into the Chrome as JavaScript with conn.Eval()? Next time we can just get it back from Chrome and compare.\n\nWe can rename the \"ReuseLogin\" to \"InstanceReuse\". We will not restart Chrome instance if InstanceReuse is true and the serialized options are the same.",
+      "parentUuid": "4da6b180_63d6af10",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 32
+      },
+      "revId": "f5e1df11e0695e74ecd3662f8c11ec3010c2a7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4dd1f2f_b1acfbd6",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -77,6 +101,30 @@
       "writtenOn": "2021-01-08T10:25:00Z",
       "side": 1,
       "message": "The test extension is removed on Close. This will affect reused sessions.",
+      "range": {
+        "startLine": 632,
+        "startChar": 0,
+        "endLine": 634,
+        "endChar": 2
+      },
+      "revId": "f5e1df11e0695e74ecd3662f8c11ec3010c2a7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b827823c_eed650cd",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-08T17:48:59Z",
+      "side": 1,
+      "message": "Testing shows it doesn\u0027t affect the reuse. Probably those directories are only used during chrome start?\n\nIn the chrome.Reset() there is a location.reload() call, even with extension dir removed, the extensions still work after reloading. Only thing we need to take care is the tastLibrary, which should be re-injected after page reload.\n\nI\u0027m also wondering if we can put extension dir in a permanent location so we don\u0027t have to clear it in chrome.Close(). Instead we will empty this directory before chrome.New(). How do you think?",
+      "parentUuid": "276bd90b_eb4adc5f",
       "range": {
         "startLine": 632,
         "startChar": 0,
