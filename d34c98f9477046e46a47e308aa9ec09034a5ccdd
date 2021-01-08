@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6706b8d6_539d8104",
+        "filename": "src/chromiumos/tast/local/chrome/fixture_loggedin_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-08T21:40:21Z",
+      "side": 1,
+      "message": "I rewrote to extend the loggedInFixture with closure. A single closure function can be used to generate chrome options at run time.",
+      "parentUuid": "034681bd_9d39da5a",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "d34c98f9477046e46a47e308aa9ec09034a5ccdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b38fe3c_5fc19f45",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b9b212_ae72fd91",
+        "filename": "src/chromiumos/tast/local/chrome/fixture_loggedin_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-08T21:40:21Z",
+      "side": 1,
+      "message": "Since we are extending loggedInFixture, this code snippet will be reused from loggedInFixture\u0027s Setup() function.",
+      "parentUuid": "8b38fe3c_5fc19f45",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "d34c98f9477046e46a47e308aa9ec09034a5ccdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cc5a756_c816c97f",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-08T10:34:56Z",
       "side": 1,
       "message": "style: Please use assignment in \"if\" only when those variables are used only within the \"if\" scope.\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\n userID, ok :\u003d s.Var(f.userVar)\n if !ok {\n   ...\n }",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "d34c98f9477046e46a47e308aa9ec09034a5ccdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38cbddbd_fad7c55c",
+        "filename": "src/chromiumos/tast/local/chrome/fixture_loggedin_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-08T21:40:21Z",
+      "side": 1,
+      "message": "Runtime var reading has been remove to MTBF fixture, and changed following this comment.",
+      "parentUuid": "8cc5a756_c816c97f",
       "range": {
         "startLine": 41,
         "startChar": 1,
