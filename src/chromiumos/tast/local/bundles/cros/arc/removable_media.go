@@ -22,7 +22,7 @@ func init() {
 			"arc-storage@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Data:         []string{"capybara.jpg"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
@@ -36,5 +36,5 @@ func init() {
 }
 
 func RemovableMedia(ctx context.Context, s *testing.State) {
-	removablemedia.RunTest(ctx, s, s.PreValue().(arc.PreData).ARC, "capybara.jpg")
+	removablemedia.RunTest(ctx, s, s.FixtValue().(*arc.PreData).ARC, "capybara.jpg")
 }

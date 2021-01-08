@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Checks that we are not shipping 32-bit Android on a 64-bit Kernel unintentionally",
 		Contacts:     []string{"arc-core@google.com", "vraheja@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          arc.Booted(),
+		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -33,7 +33,7 @@ func init() {
 // CheckAndroidVersion Checks that 32-bit Android is not put in 64bit image unintentionally.
 func CheckAndroidVersion(ctx context.Context, s *testing.State) {
 	// Reuse existing ARC session.
-	a := s.PreValue().(arc.PreData).ARC
+	a := s.FixtValue().(*arc.PreData).ARC
 
 	// Check compatibility for abi 64 from DUT.
 	abi64List, err := a.GetProp(ctx, "ro.product.cpu.abilist64")
