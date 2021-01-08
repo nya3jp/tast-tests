@@ -296,7 +296,7 @@ func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) error {
 	cmdArgs := append(n.netJailArgs, args...)
 	minijailArgs := []string{"-e", "-C", n.netTempDir}
 	minijailArgs = append(minijailArgs, cmdArgs...)
-	if err := testexec.CommandContext(ctx, "minijail0", minijailArgs...).Start(); err != nil {
+	if err := testexec.CommandContext(ctx, "minijail0", minijailArgs...).Run(); err != nil {
 		return errors.Wrap(err, "failed to run command inside the chroot")
 	}
 
