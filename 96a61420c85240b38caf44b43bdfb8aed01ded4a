@@ -34,6 +34,24 @@
       "parentUuid": "634902ae_431d292f",
       "revId": "96a61420c85240b38caf44b43bdfb8aed01ded4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b62c2f_0ca5f0b6",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-01-08T13:45:31Z",
+      "side": 1,
+      "message": "All other cryptohome-related tests are using the cryptohome command-line tool to interact with cryptohomed. And realistically the tool is just a thin wrapper over the D-Bus interface, mostly because constructing the protobufs on the cmdline is impossible.",
+      "parentUuid": "46c4a737_ede1deeb",
+      "revId": "96a61420c85240b38caf44b43bdfb8aed01ded4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
