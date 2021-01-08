@@ -514,6 +514,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a041e80c_f8459642",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-08T11:54:08Z",
+      "side": 1,
+      "message": "Thanks! Kyle, I think we should make a bug to follow up on that after we get the current approach running.",
+      "parentUuid": "a5ae065f_1d0362e8",
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7f85332_b254ab91",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
         "patchSetId": 2
