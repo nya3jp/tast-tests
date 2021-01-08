@@ -16,6 +16,75 @@
       "message": "Continued from MTBF code submission, there CLs are here for review. They tackle the same problem - reusing Chrome login sessions between multiple tast runs, without restarting Chrome UI.",
       "revId": "f5e1df11e0695e74ecd3662f8c11ec3010c2a7a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da6b180_63d6af10",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T10:25:00Z",
+      "side": 1,
+      "message": "ReuseLogin must be more careful about reusing a session. For example, if the first invocation of chrome.New takes no option and the second invocation takes chrome.ReuseLogin and chrome.UnpackedExtension, then chrome.New should refuse to reuse the session because an unpacked extension is not available.\n\nI can think of a few possible approaches:\n\n- Check that a set of options passed to chrome.New is exactly the same. This approach needs a mechanism to serialize a set of options to persistent storage and read it in later run.\n- Support only a few options to be used together with ReuseLogin, such as user names. When other options are specified, return an error. Then we have to support serialization for only a limited set of options.",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 32
+      },
+      "revId": "f5e1df11e0695e74ecd3662f8c11ec3010c2a7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4dd1f2f_b1acfbd6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T10:25:00Z",
+      "side": 1,
+      "message": "This logic is super fragile. It must set all fields that would be set in the following logic, but it\u0027s very difficult to tell if we set all required fields.\n\nSo, even if this code may work at this moment, I\u0027m afraid that maintaining it will be very tough.\n\nTo make it reliable, please try to refactor this package.",
+      "range": {
+        "startLine": 510,
+        "startChar": 1,
+        "endLine": 537,
+        "endChar": 0
+      },
+      "revId": "f5e1df11e0695e74ecd3662f8c11ec3010c2a7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "276bd90b_eb4adc5f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-08T10:25:00Z",
+      "side": 1,
+      "message": "The test extension is removed on Close. This will affect reused sessions.",
+      "range": {
+        "startLine": 632,
+        "startChar": 0,
+        "endLine": 634,
+        "endChar": 2
+      },
+      "revId": "f5e1df11e0695e74ecd3662f8c11ec3010c2a7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
