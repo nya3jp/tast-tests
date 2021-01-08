@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "039e9cdb_c1e06c33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-08T12:53:56Z",
+      "side": 1,
+      "message": "Adding the current CrOS sheriff as reviewer, this CL should probably be chumped once it gets past the building images stage",
+      "revId": "add04dc806d258b300a251c30a7afe0d4c22e204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
