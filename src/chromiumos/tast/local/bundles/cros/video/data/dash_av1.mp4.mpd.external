@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/dash_av1_20210108.mp4.mpd",
+  "size": 1284,
+  "sha256sum": "cb46e9a530d7642a46616185f596e7d36f20ada3952df6ef2590f09d0a9d66ff"
+}

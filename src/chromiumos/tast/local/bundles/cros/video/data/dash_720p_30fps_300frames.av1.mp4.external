@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/dash_720p_30fps_300frames_20210108.av1.mp4",
+  "size": 1495655,
+  "sha256sum": "2c4de44f420228affe2be0bdc0f23fd5b14160694529e0e5b7b481035b6ceac9"
+}
