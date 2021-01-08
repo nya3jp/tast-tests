@@ -28,7 +28,7 @@ const uiTimeout = 10 * time.Second
 // findStatusArea finds the status area UI node.
 func findStatusArea(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
 	params := ui.FindParams{
-		ClassName: "ash/StatusAreaWidgetDelegate",
+		ClassName: "UnifiedSystemTray",
 	}
 	return ui.FindWithTimeout(ctx, tconn, params, uiTimeout)
 }
