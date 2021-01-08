@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c1151c_851c8336",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2021-01-08T04:46:08Z",
+      "side": 1,
+      "message": "Renuga, feel free to review the CL",
+      "revId": "f2cda1aa562075fe79dd29b5b865950506d611b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
