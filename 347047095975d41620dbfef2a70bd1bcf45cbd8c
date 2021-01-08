@@ -716,6 +716,30 @@
       },
       "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bef855a_92d9df90",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-08T22:00:49Z",
+      "side": 1,
+      "message": "That should totally work in one const. My guess if anything is that it would yell at you due to our commenting rules or adding extra blank lines, but should work.",
+      "parentUuid": "20813251_44e56135",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
