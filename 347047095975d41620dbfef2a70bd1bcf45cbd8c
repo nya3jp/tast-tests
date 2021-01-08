@@ -496,6 +496,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5ae065f_1d0362e8",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-08T11:07:03Z",
+      "side": 1,
+      "message": "BTW, I recently created a robust UI automation approach to config GMS flags through \"Mobile Utilities\" app: http://google3/javatests/com/google/android/gmscore/integ/modules/nearby/mobly/e2e/tools/mobile_utilities_helper/README.md\nThis approach do not need to install TestSupport, only need to install the \"Mobile Utilities\" app and can run on OEM devices.",
+      "parentUuid": "511a8d15_4b8768a4",
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7f85332_b254ab91",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
         "patchSetId": 2
