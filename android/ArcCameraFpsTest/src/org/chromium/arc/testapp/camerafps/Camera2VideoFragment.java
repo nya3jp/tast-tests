@@ -104,6 +104,8 @@ public class Camera2VideoFragment extends Fragment {
     private StreamConfigurationMap mStreamConfigurationMap;
     // Some devices have multiple cameras. Specifies which one should be used.
     private int mCameraId = 0;
+    // Image format when taking snapshots.
+    private int mOutputImageFormat = ImageFormat.JPEG;
 
     // Select the largest resolution among all choices. If a specific target resolution was
     // requested, use that resolution instead if it is supported. If the requested resolution
@@ -179,6 +181,10 @@ public class Camera2VideoFragment extends Fragment {
 
     public void setCameraId(int id) {
         mCameraId = id;
+    }
+
+    public void setOutputImageFormat(int format) {
+        mOutputImageFormat = format;
     }
 
     @Override
@@ -278,8 +284,8 @@ public class Camera2VideoFragment extends Fragment {
     }
 
     public String getSnapshotResolutions() {
-        Size[] sizes = mStreamConfigurationMap.getOutputSizes(ImageFormat.JPEG);
-        Size[] hrSizes = mStreamConfigurationMap.getHighResolutionOutputSizes(ImageFormat.JPEG);
+        Size[] sizes = mStreamConfigurationMap.getOutputSizes(mOutputImageFormat);
+        Size[] hrSizes = mStreamConfigurationMap.getHighResolutionOutputSizes(mOutputImageFormat);
 
         StringBuilder sb = new StringBuilder();
         sb.append("[");
@@ -318,6 +324,17 @@ public class Camera2VideoFragment extends Fragment {
         return getSupportedResolutions(SurfaceTexture.class);
     }
 
+    public String getSupportedOutputFormats() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int format : mStreamConfigurationMap.getOutputFormats()) {
+            sb.append(format);
+            sb.append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
     /** Triggers and waits for snapshot to finish. */
     public String takeCameraPicture() throws InterruptedException {
         try {
@@ -328,9 +345,9 @@ public class Camera2VideoFragment extends Fragment {
             final String fullFilePath = getFullPath(getActivity(), filename);
             Log.i(TAG, "Saving picture in file: " + fullFilePath);
 
-            Size[] sizes = mStreamConfigurationMap.getOutputSizes(ImageFormat.JPEG);
+            Size[] sizes = mStreamConfigurationMap.getOutputSizes(mOutputImageFormat);
             Size[] hrSizes =
-                    mStreamConfigurationMap.getHighResolutionOutputSizes(ImageFormat.JPEG);
+                    mStreamConfigurationMap.getHighResolutionOutputSizes(mOutputImageFormat);
             Size[] allSizes;
             if (hrSizes == null) {
                 allSizes = sizes;
@@ -346,7 +363,7 @@ public class Camera2VideoFragment extends Fragment {
                     ImageReader.newInstance(
                             mSnapshotSize.getWidth(),
                             mSnapshotSize.getHeight(),
-                            ImageFormat.JPEG,
+                            mOutputImageFormat,
                             1 /* maximum images */);
             final CaptureRequest.Builder captureBuilder =
                     mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
@@ -358,14 +375,17 @@ public class Camera2VideoFragment extends Fragment {
                         @Override
                         public void onImageAvailable(ImageReader reader) {
                             final Image image = reader.acquireLatestImage();
-                            ByteBuffer buffer = image.getPlanes()[0].getBuffer();
-                            byte[] bytes = new byte[buffer.remaining()];
-                            buffer.get(bytes);
-                            File file = new File(fullFilePath);
+
                             FileOutputStream output = null;
                             try {
+                                File file = new File(fullFilePath);
                                 output = new FileOutputStream(file);
-                                output.write(bytes);
+                                for (int i = 0; i < image.getPlanes().length; i++) {
+                                    ByteBuffer buffer = image.getPlanes()[i].getBuffer();
+                                    byte[] bytes = new byte[buffer.remaining()];
+                                    buffer.get(bytes);
+                                    output.write(bytes);
+                                }
                             } catch (Exception e) {
                                 throw new RuntimeException(e);
                             } finally {
@@ -625,7 +645,11 @@ public class Camera2VideoFragment extends Fragment {
     }
 
     private String getPhotoFileName() {
-        return System.currentTimeMillis() + ".jpeg";
+        if (mOutputImageFormat == ImageFormat.JPEG) {
+            return System.currentTimeMillis() + ".jpeg";
+        } else {
+            return System.currentTimeMillis() + ".f_" + mOutputImageFormat;
+        }
     }
 
     private String getFullPath(Context context, String filename) {
