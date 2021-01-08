@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee550a8c_ad4e0ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T20:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5b13b1f_7dc4e3dc",
+      "range": {
+        "startLine": 29,
+        "startChar": 17,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bbd4993_4d147841",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be86ed0c_cf5fa2dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T20:28:47Z",
+      "side": 1,
+      "message": "Added some additional comments to clarify.",
+      "parentUuid": "7abfd64a_e8130de8",
+      "range": {
+        "startLine": 38,
+        "startChar": 36,
+        "endLine": 38,
+        "endChar": 64
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c55f104_3b443f08",
@@ -101,6 +149,30 @@
       "writtenOn": "2021-01-08T11:54:08Z",
       "side": 1,
       "message": "Make this more explicit",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df13583_b8c297b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T20:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c55f104_3b443f08",
       "range": {
         "startLine": 54,
         "startChar": 3,
@@ -134,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6cc965_705548b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T20:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80c66ced_c0479331",
+      "range": {
+        "startLine": 55,
+        "startChar": 49,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14a6316b_ee556440",
@@ -157,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85507c06_6d72de16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T20:28:47Z",
+      "side": 1,
+      "message": "Sure we can do that. My original thinking was to name the flag to contrast with the default behavior which is to override the flags. The flag is pretty much only for when we want to run locally against a non-rooted device, in which case we can\u0027t override the flags due to lack of adb root. That said, I agree it\u0027s clearer to avoid the double negative here, and using the flat as -var\u003doverrideGMS\u003dfalse is equally clear to -var\u003ddontOverrideGMS\u003dtrue.",
+      "parentUuid": "14a6316b_ee556440",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b33bdd48_947fb957",
@@ -170,6 +290,30 @@
       "writtenOn": "2021-01-08T12:24:22Z",
       "side": 1,
       "message": "I am wondering that is it possible to play some tricks to turn method call (the method name) into RPC call string and accept variable args?\nThe Python side do it in this way:\n```\n    def __getattr__(self, name):\n        \"\"\"Wrapper for python magic to turn method calls into RPC calls.\"\"\"\n\n        def rpc_call(*args):\n            return self._rpc(name, *args)\n\n        return rpc_call\n```\nhttp://google3/third_party/py/mobly/controllers/android_device_lib/jsonrpc_client_base.py?l\u003d375\u0026rcl\u003d350724983\n\nThe caller side calls it like:\n```\nad.nearby.getNearbySharingVersion()\n# ad means AndroidDevice\n# nearby is the SnippetClient\n# getNearbySharingVersion() is the method name that is not defined in the Python class.\n# Therefore, it will trigger the call to __getattr__ to resolve it.\n```\n\nThis make you more easy to call other RPC calls instead of implement them for every call.",
+      "range": {
+        "startLine": 316,
+        "startChar": 30,
+        "endLine": 316,
+        "endChar": 53
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757b6d40_fa1bb351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T20:28:47Z",
+      "side": 1,
+      "message": "That\u0027s pretty interesting how Python does it. I\u0027m not sure if something similar is possible in Go. I\u0027m OK having a separate func for each RPC, though, since we have to handle the responses differently sometimes based on their content/format.",
+      "parentUuid": "b33bdd48_947fb957",
       "range": {
         "startLine": 316,
         "startChar": 30,
@@ -217,6 +361,30 @@
       "side": 1,
       "message": "This is a really good question!\nI go through the Mobly codes and find that there is a _SOCKET_READ_TIMEOUT default to 10 seconds. (which is the same value in `clientReceive()`)\nhttp://google3/third_party/py/mobly/controllers/android_device_lib/jsonrpc_client_base.py?l\u003d71\u0026rcl\u003d350262826\nTherefore, it should be OK and has the same behavior as Python tests.",
       "parentUuid": "48b69928_e7605e84",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 18
+      },
+      "revId": "3936babf5bb277249b8a7ca4c477294a4fa5ccea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220349c4_117c3352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-08T20:28:47Z",
+      "side": 1,
+      "message": "The 10 second timeout on the TCP read in clientReceive seems to be working so far without any issue. We can take a look later on if we have issues with reading timing out or getting partial responses or something.",
+      "parentUuid": "ba28ce5f_bab69183",
       "range": {
         "startLine": 320,
         "startChar": 0,
