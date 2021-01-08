@@ -50,6 +50,24 @@
       "message": "Should this be merged if the fix is already in on the chromium side? I think I\u0027ll hold off on this because it should be fixed by the next chrome uprev.",
       "revId": "89175de62775e518051f7deef52a1d457e5addf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1c5110b_39143be8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-01-08T06:23:36Z",
+      "side": 1,
+      "message": "LGTM. We do not need this if chromium fix has been landed.",
+      "parentUuid": "d3ee95d5_e153a3ef",
+      "revId": "89175de62775e518051f7deef52a1d457e5addf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
