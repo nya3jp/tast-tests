@@ -198,7 +198,7 @@ func MountOBB(ctx context.Context, s *testing.State) {
 		}
 
 		// Call Unmount without MNT_DETACH, which should commit the content of file system cached in kernel.
-		if err := unix.Unmount(mountPath, 0); err != nil {
+		if err := testexec.CommandContext(ctx, "umount", mountPath).Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrap(err, "failed to unmount vfat")
 		}
 
