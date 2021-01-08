@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43729c30_173b7f74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-08T01:14:23Z",
+      "side": 1,
+      "message": "it seems a little strange, but if it is clearer to you that is ok.  It originally made me think it might be a double dereference or something, so that might be an issue for someone reading the code.\n\nMaybe at least add a brief comment to explain why you are doing this? or just leave it, up to you.",
+      "parentUuid": "3b97a8cf_869969c8",
+      "revId": "16e24051a7413b22b2c2dde9d401207a35a17b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71363ab8_1f006ac2",
