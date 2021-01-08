@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5640091_7a47726b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-08T05:12:43Z",
+      "side": 1,
+      "message": "Should this be 480?",
+      "range": {
+        "startLine": 71,
+        "startChar": 111,
+        "endLine": 71,
+        "endChar": 114
+      },
+      "revId": "45e71804787219ab8c3d7935ec85cc29ebf8c4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cbda127_96085561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-08T05:12:43Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be 720?",
+      "range": {
+        "startLine": 71,
+        "startChar": 139,
+        "endLine": 71,
+        "endChar": 142
+      },
+      "revId": "45e71804787219ab8c3d7935ec85cc29ebf8c4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18011332_3fd38767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-08T05:12:43Z",
+      "side": 1,
+      "message": "Note that cars_dash_mp4.mpd is locally there, not in gs. I don\u0027t think\nis worth uploading it since is so small.\n https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/cars_dash_mp4.mpd?q\u003dcars_dash_mp4",
+      "range": {
+        "startLine": 73,
+        "startChar": 51,
+        "endLine": 73,
+        "endChar": 68
+      },
+      "revId": "45e71804787219ab8c3d7935ec85cc29ebf8c4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
