@@ -33,6 +33,24 @@
       "message": "Thanks for this change!\n\nWhile this CL is okay, you might want to consider creating two separate CLs for converting critical tests and informational tests. It might allow you to avoid reverting all changes in case informational tests start failing after this CL.\n\nYou can run all ARC-related mainline tests (including informational tests) by the following command line:\n\n tast run DUT \u0027(\"group:mainline\" \u0026\u0026 \"dep:android*\")\u0027\n",
       "revId": "36d27c610fc606427670e189929d83b79a8f6327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fee9cc1_3bf463a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-08T03:38:00Z",
+      "side": 1,
+      "message": "Splitting this CL sounds nice. I made this CL is for critical and created a new CL (crrev.com/c/2616581) for informational tests.\n\nFor running tests, thank you for suggestion, but is there way with something like trybots? Running it locally takes much time and blocks DUT.",
+      "parentUuid": "36bdbfff_188c0e73",
+      "revId": "36d27c610fc606427670e189929d83b79a8f6327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
