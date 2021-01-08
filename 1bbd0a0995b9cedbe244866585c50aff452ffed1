@@ -34,6 +34,24 @@
       "parentUuid": "14db8331_bca31f82",
       "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb2d57d1_db2cdd38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2021-01-08T22:25:47Z",
+      "side": 1,
+      "message": "Thanks, now I notice that. I just asked to check if we can have one test for normal login as well as for unicorn account types?",
+      "parentUuid": "6b38aa06_5adcfbd1",
+      "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
