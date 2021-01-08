@@ -70,9 +70,10 @@ func SystemProxySettings(ctx context.Context, s *testing.State) {
 			name: "enabled",
 			p: policy.SystemProxySettings{
 				Val: &policy.SystemProxySettingsValue{
-					SystemProxyEnabled:     true,
-					SystemServicesPassword: "",
-					SystemServicesUsername: "",
+					SystemProxyEnabled:           true,
+					SystemServicesPassword:       "",
+					SystemServicesUsername:       "",
+					PolicyCredentialsAuthSchemes: []string{},
 				},
 			},
 		},
@@ -80,9 +81,10 @@ func SystemProxySettings(ctx context.Context, s *testing.State) {
 			name: "disabled",
 			p: policy.SystemProxySettings{
 				Val: &policy.SystemProxySettingsValue{
-					SystemProxyEnabled:     false,
-					SystemServicesPassword: "",
-					SystemServicesUsername: "",
+					SystemProxyEnabled:           false,
+					SystemServicesPassword:       "",
+					SystemServicesUsername:       "",
+					PolicyCredentialsAuthSchemes: []string{},
 				},
 			},
 		},
