@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9fdcd0_66f86d56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-08T19:31:07Z",
+      "side": 1,
+      "message": "Miguel suggested to me before to start with the format \n\"This CL adds/updates/fixes\"",
+      "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377d6801_5cfd141f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-08T19:31:07Z",
+      "side": 1,
+      "message": "I didn\u0027t see this to be added in comment before. I might be wrong. You can double check.",
+      "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05149a4a_8df2c542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-08T19:31:07Z",
+      "side": 1,
+      "message": "nit: can we use \"tests\" here and below \"These tests\"?\nalso, can we do Video acceleration (VA) or VA (Video acceleration).\npeople usually just call VA.",
+      "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
