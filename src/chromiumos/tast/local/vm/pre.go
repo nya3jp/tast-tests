@@ -14,20 +14,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// GetVMArtifact returns the name of a zip file containing Crostini's
-// artifacts, such as kernel and rootfs, for the given arch.
-func GetVMArtifact(arch string) string {
-	return fmt.Sprintf("crostini_vm_%s.zip", arch)
-}
-
 // ArtifactData returns the name of the data file that must be specified
 // for tests using the Artifact() precondition.
 func ArtifactData() string {
-	if runtime.GOARCH == "amd64" {
-		return GetVMArtifact("amd64")
-	}
-
-	return GetVMArtifact("arm")
+	return fmt.Sprintf("crostini_vm_%s.zip", runtime.GOARCH)
 }
 
 // The PreData object is made available to users of this precondition via:
