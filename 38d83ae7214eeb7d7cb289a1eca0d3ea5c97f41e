@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b520d4_d244b739",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-08T12:51:59Z",
+      "side": 1,
+      "message": "Note that I\u0027m not 100% sure this will actually work, in particular when the arch of the host and the DUT are different",
+      "revId": "38d83ae7214eeb7d7cb289a1eca0d3ea5c97f41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
