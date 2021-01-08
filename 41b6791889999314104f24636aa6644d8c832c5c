@@ -16,6 +16,23 @@
       "message": "Hi Victor,\n\nPTAL :) \n\nThanks,\nOleh",
       "revId": "41b6791889999314104f24636aa6644d8c832c5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ca76923_fbaced4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-08T15:40:39Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "41b6791889999314104f24636aa6644d8c832c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
