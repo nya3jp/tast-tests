@@ -162,16 +162,18 @@ func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, pro
 
 	var service *shill.Service
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		service, err = m.FindMatchingService(ctx, visibleProps)
-		if err == nil {
-			return nil
+		service, err := m.FindMatchingService(ctx, visibleProps)
+		if err != nil {
+			return err
 		}
-		// Scan WiFi AP again if the expected AP is not found.
-		if err2 := m.RequestScan(ctx, shill.TechnologyWifi); err2 != nil {
-			return testing.PollBreak(errors.Wrap(err2, "failed to request active scan"))
+		if service == nil {
+			// Scan WiFi AP again if the expected AP is not found.
+			if err2 := m.RequestScan(ctx, shill.TechnologyWifi); err2 != nil {
+				return testing.PollBreak(errors.Wrap(err2, "failed to request active scan"))
+			}
+			return errors.New("no matching service")
 		}
-		return err
+		return nil
 	}, &testing.PollOptions{
 		Timeout:  15 * time.Second,
 		Interval: 200 * time.Millisecond, // RequestScan is spammy, but shill handles that for us.
