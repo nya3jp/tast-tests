@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,13 +28,6 @@ func init() {
 		// only in RF chambers.
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
-		HardwareDeps: hwdep.D(
-			// Some Marvell systems have their country hard-coded in EEPROM, and can't pass this test.
-			// TODO(b/36431366): the EEPROM may be wrong in many cases (https://crrev.com/c/2600261), so we may want to
-			// reevaluate (and fix) these models.
-			hwdep.SkipOnModel("bob"),
-			hwdep.SkipOnModel("kevin"),
-		),
 	})
 }
 
