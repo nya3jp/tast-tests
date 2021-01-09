@@ -71,7 +71,7 @@ func init() {
 func Pandora(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.pandora.android"
-		appActivity = ".LauncherActivity"
+		appActivity = ".Main"
 	)
 	testCases := s.Param().([]testutil.TestCase)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testCases)
@@ -81,14 +81,13 @@ func Pandora(ctx context.Context, s *testing.State) {
 // verify Pandora reached main activity page of the app.
 func launchAppForPandora(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		signInID         = "com.pandora.android:id/welcome_log_in_button"
-		noneOfTheAboveID = "com.google.android.gms:id/cancel"
-		enterEmailID     = "com.pandora.android:id/email_editText"
-		enterPasswordID  = "com.pandora.android:id/password_editText"
-		logInText        = "Log In"
-		logInID          = "com.pandora.android:id/loading_text"
-		profileIconID    = "com.pandora.android:id/tab_profile"
-		profileIconDes   = "Profile"
+		signInID       = "com.pandora.android:id/welcome_log_in_button"
+		emailText      = "Email"
+		passwordText   = "Password"
+		logInText      = "Log In"
+		logInID        = "com.pandora.android:id/button_sign_in_submit"
+		profileIconID  = "com.pandora.android:id/toolbar_home"
+		profileIconDes = "Navigation Menu with Notification"
 	)
 
 	// Click on sign in button.
@@ -101,29 +100,18 @@ func launchAppForPandora(ctx context.Context, s *testing.State, tconn *chrome.Te
 
 	// Check and click email address.
 	pandoraEmailID := s.RequiredVar("arcappcompat.Pandora.emailid")
-	enterEmailAddress := d.Object(ui.ID(enterEmailID))
+	enterEmailAddress := d.Object(ui.Text(emailText))
 	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("EnterEmailAddress doesn't exist: ", err)
 	} else if err := enterEmailAddress.Click(ctx); err != nil {
 		s.Fatal("Failed to click on enterEmailAddress: ", err)
-	}
-
-	// Click on none of the above button.
-	noneOfTheAboveButton := d.Object(ui.ID(noneOfTheAboveID))
-	if err := noneOfTheAboveButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("noneOfTheAboveButton doesn't exist: ", err)
-	} else if err := noneOfTheAboveButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on noneOfTheAboveButton: ", err)
-	}
-
-	//Set email address
-	if err := enterEmailAddress.SetText(ctx, pandoraEmailID); err != nil {
+	} else if err := enterEmailAddress.SetText(ctx, pandoraEmailID); err != nil {
 		s.Fatal("Failed to enterEmailAddress: ", err)
 	}
 
 	// Enter password.
 	pandoraPassword := s.RequiredVar("arcappcompat.Pandora.password")
-	enterPassword := d.Object(ui.ID(enterPasswordID))
+	enterPassword := d.Object(ui.Text(passwordText))
 	if err := enterPassword.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("EnterPassword doesn't exist: ", err)
 	} else if err := enterPassword.Click(ctx); err != nil {
