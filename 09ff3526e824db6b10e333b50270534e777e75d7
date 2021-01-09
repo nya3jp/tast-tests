@@ -899,6 +899,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10d37686_bf3bacb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/nearby_snippet_20201217.zip.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-09T03:35:58Z",
+      "side": 1,
+      "message": "I think it is very difficult to do it.\nBecause the snippet need to call Nearby module\u0027s API inside GMS.\nhttp://google3/javatests/com/google/android/gmscore/integ/modules/nearby/mobly/snippets/BUILD?l\u003d26\u0026rcl\u003d333875848\nThese APIs are not public.\nI think having something like \"rapid\" to automatically build and release the APK after code committed is a good solution.",
+      "parentUuid": "a790df7e_73b2510d",
+      "range": {
+        "startLine": 2,
+        "startChar": 84,
+        "endLine": 2,
+        "endChar": 88
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95cac376_a1f1c6cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
         "patchSetId": 5
