@@ -23,9 +23,15 @@ func init() {
 		Desc:         "Verifies mouse input in various window states on Android",
 		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_vm"},
+		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Timeout:      10 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -110,6 +116,14 @@ func initialEventMatcher(p coords.Point) motioninput.Matcher {
 func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, t *motioninput.WMTestState, tester *motioninput.Tester) {
 	s.Log("Verifying Mouse")
 
+	// The sequence of events reported for ARC++ P and newer versions differ, and this test
+	// takes those into account. In particular, P reports HOVER_EXIT and HOVER_ENTER before
+	// and after button down and up respectively, which newer versions do not report.
+	version, err := arc.SDKVersion()
+	if err != nil {
+		s.Fatal("Failed to get ARC SDK version: ", err)
+	}
+
 	p := t.CenterOfWindow()
 	e := t.ExpectedPoint(p)
 
@@ -126,7 +140,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 
 	// numMouseMoveIterations is the number of times certain motion events should be repeated in
 	// a test. Increasing this number will increase the time it takes to run the test.
-	const numMouseMoveIterations = 2
+	const numMouseMoveIterations = 1
 
 	// deltaDP is the amount we want to move the mouse pointer between each successive injected
 	// event. We use an arbitrary value that is not too large so that we can safely assume that
@@ -151,7 +165,12 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
 		s.Fatal("Failed to press button on mouse: ", err)
 	}
-	if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionDown, e), mouseMatcher(motioninput.ActionButtonPress, e)); err != nil {
+	var pressEvents []motioninput.Matcher
+	if version <= arc.SDKP {
+		pressEvents = append(pressEvents, mouseMatcher(motioninput.ActionHoverExit, e))
+	}
+	pressEvents = append(pressEvents, mouseMatcher(motioninput.ActionDown, e), mouseMatcher(motioninput.ActionButtonPress, e))
+	if err := tester.ExpectEventsAndClear(ctx, pressEvents...); err != nil {
 		s.Fatal("Failed to expect events and clear: ", err)
 	}
 
@@ -172,7 +191,12 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
 		s.Fatal("Failed to release mouse button: ", err)
 	}
-	if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionButtonRelease, e), mouseMatcher(motioninput.ActionUp, e), mouseMatcher(motioninput.ActionHoverMove, e)); err != nil {
+	var releaseEvents []motioninput.Matcher
+	releaseEvents = append(releaseEvents, mouseMatcher(motioninput.ActionButtonRelease, e), mouseMatcher(motioninput.ActionUp, e))
+	if version > arc.SDKP {
+		releaseEvents = append(releaseEvents, mouseMatcher(motioninput.ActionHoverMove, e))
+	}
+	if err := tester.ExpectEventsAndClear(ctx, releaseEvents...); err != nil {
 		s.Fatal("Failed to expect events and clear: ", err)
 	}
 
@@ -183,7 +207,12 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	if err := mouse.Move(ctx, tconn, p, 0); err != nil {
 		s.Fatalf("Failed to inject move at %v: %v", e, err)
 	}
-	if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionHoverMove, e)); err != nil {
+	var moveEvents []motioninput.Matcher
+	if version <= arc.SDKP {
+		moveEvents = append(moveEvents, mouseMatcher(motioninput.ActionHoverEnter, e))
+	}
+	moveEvents = append(moveEvents, mouseMatcher(motioninput.ActionHoverMove, e))
+	if err := tester.ExpectEventsAndClear(ctx, moveEvents...); err != nil {
 		s.Fatal("Failed to expect events and clear: ", err)
 	}
 }
