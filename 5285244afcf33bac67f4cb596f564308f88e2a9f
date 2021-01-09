@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c477424_264fb962",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-09T00:54:30Z",
+      "side": 1,
+      "message": "I didn\u0027t realize just how much support we already have for DBus and Shill testing in Tast.\nI definitely think we should use Tast for Shill Cellular testing.\n\nI added a \u0027cellular\u0027 group for Tast tests with a Cellular dependency. I will follow up about setting that up in the lab and adding the test group to Stainless.\n",
+      "revId": "5285244afcf33bac67f4cb596f564308f88e2a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
