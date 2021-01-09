@@ -875,6 +875,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a790df7e_73b2510d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/nearby_snippet_20201217.zip.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-09T03:18:10Z",
+      "side": 1,
+      "message": "Ah okay I see what you mean. The Nearby Snippet might have some g3 build dependencies, although I haven\u0027t looked too closely yet:\nhttps://source.corp.google.com/piper///depot/google3/javatests/com/google/android/gmscore/integ/modules/nearby/mobly/snippets/BUILD\n\nErik, what do you think? Would it be possible to build the snippet ourselves if we copied the source into the private tast-tests repo?\n\nI think the external zip might end up being simpler in the long run, we\u0027ll have to periodically sync either the APK or the source either way.",
+      "parentUuid": "260d4db7_b6180486",
+      "range": {
+        "startLine": 2,
+        "startChar": 84,
+        "endLine": 2,
+        "endChar": 88
+      },
+      "revId": "09ff3526e824db6b10e333b50270534e777e75d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95cac376_a1f1c6cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
         "patchSetId": 5

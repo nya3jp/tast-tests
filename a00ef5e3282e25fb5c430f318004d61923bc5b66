@@ -51,6 +51,24 @@
       "parentUuid": "d4ad1cf7_0dc0171e",
       "revId": "a00ef5e3282e25fb5c430f318004d61923bc5b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f675aac4_928a108a",
+        "filename": "src/chromiumos/tast/local/android/nearbysnippet/snippet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-09T03:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed517bc_ddc863db",
+      "revId": "a00ef5e3282e25fb5c430f318004d61923bc5b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

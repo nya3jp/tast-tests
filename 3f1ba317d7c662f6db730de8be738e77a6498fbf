@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db043539_0dc1d735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-09T03:18:10Z",
+      "side": 1,
+      "message": "Good to know, it definitely doesn\u0027t need to be stored here, it just made it easier to call testing.ContextLog in various places. I\u0027ll just pass it around instead and clean up the logging a bit.",
+      "parentUuid": "d0adc796_d150055e",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c51e7812_a40126fc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-08T22:00:49Z",
       "side": 1,
       "message": "This port may need to be released on error.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 55
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9f0f8e_eeb9c6c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-09T03:18:10Z",
+      "side": 1,
+      "message": "Right, I separated out all the functions that create resources that need to be cleaned up. Now New() will return an array of cleanup functions that callers can iterate through to make sure the necessary cleanup is performed. This way, even if we only partially get through setup (ex. launched the snippet, but port forwarding failed), we can still easily clean up whatever was created.\n\nI might be overthinking it though, let me know if there\u0027s an easier way that I\u0027m just missing completely haha.",
+      "parentUuid": "c51e7812_a40126fc",
       "range": {
         "startLine": 133,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86654866_101c9a82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-09T03:18:10Z",
+      "side": 1,
+      "message": "See above comment for changes to resource cleanup.",
+      "parentUuid": "960f04b4_94c54fb6",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 38
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17fe6445_100c0622",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-08T22:00:49Z",
       "side": 1,
       "message": "bytes.Buffer may be a nicer alternative.",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 26
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41ff669_d749d606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-09T03:18:10Z",
+      "side": 1,
+      "message": "I couldn\u0027t get something working bytes.Buffer. For example, `io.Copy(\u0026buf, a.conn)` hangs, I\u0027m guessing the response doesn\u0027t terminate in EOF or something like that. I came up with something using bufio.Reader that works though, so we don\u0027t have to allocate this manually.",
+      "parentUuid": "17fe6445_100c0622",
       "range": {
         "startLine": 238,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9d2c7a_24b1c89f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-09T03:18:10Z",
+      "side": 1,
+      "message": "Ah yeah good point, I didn\u0027t consider that. Added some additional comments for the struct about making RPCs sequentially and processing the results between each.",
+      "parentUuid": "0d30f5db_fb32a0fe",
+      "range": {
+        "startLine": 251,
+        "startChar": 31,
+        "endLine": 251,
+        "endChar": 42
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3f8f241_a0e187ca",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-01-08T22:00:49Z",
       "side": 1,
       "message": "I just realized, you may want to use adb.WaitForDevice. Otherwise this could potentially fail if the device/adb server isn\u0027t done initializing. Not sure it will matter, but just a thought.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb4d3197_3614cefe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/snippet_library_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-09T03:18:10Z",
+      "side": 1,
+      "message": "Sounds good, I changed this to adb.WaitForDevice with a trivial predicate so we\u0027ll just get the first device that we find.",
+      "parentUuid": "e3f8f241_a0e187ca",
       "range": {
         "startLine": 39,
         "startChar": 1,

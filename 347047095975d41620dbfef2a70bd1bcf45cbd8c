@@ -740,6 +740,30 @@
       },
       "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed0daa9_42722d86",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-09T03:18:10Z",
+      "side": 1,
+      "message": "Weird, I guess I must have done something wrong before lol I was able to combine it into one const block with comments this time around 😊",
+      "parentUuid": "3bef855a_92d9df90",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "347047095975d41620dbfef2a70bd1bcf45cbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
