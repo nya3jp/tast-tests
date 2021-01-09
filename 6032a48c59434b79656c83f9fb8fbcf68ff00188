@@ -16,6 +16,24 @@
       "message": "Hi tbarzic@, I noticed that there was a recent refactoring of metrics reporting:\n\nhttps://chromium-review.googlesource.com/c/chromium/src/+/2608848\n\nThe purpose of this tast test is to measure first-run performance of opening the Assistant UI when it triggers Better Onboarding. \n\nBetter Onboarding expands the height from kPeeking to kHalf before the kClosed-\u003ekPeeking transition animation completes. This used to \"work\" in that the state transition happened and metrics were reported for the final kHalf state.\n\nOld behavior:\n\nSetState kPeeking\nimmediate SetState kHalf\nReport Metrics kHalf\n\nnow no metrics are reported.\n\nWhat do you think are the options here?",
       "revId": "6032a48c59434b79656c83f9fb8fbcf68ff00188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e2472f7_82d4a6aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-01-09T00:37:13Z",
+      "side": 1,
+      "message": "would it be feasible to update state transition to go to kHalf immediately?\n\nOtherwise, we can adjust logic for when to report metrics to better handle this case.",
+      "parentUuid": "4bde6c02_69583c1e",
+      "revId": "6032a48c59434b79656c83f9fb8fbcf68ff00188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
