@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2c73450_dde9211b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-09T01:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ce41f65_0125b27a",
+      "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05149a4a_8df2c542",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "There might be no right or wrong here. I thought there seems to be convention and comments and naming seems to be sensitive in chromeos land. I just tried to follow how other tests were described. For this test, I think there are 17K+ tests run with this, isn\u0027t it? I think I shared sample log with you. So little bit confused when you say only 1 test is run. If we consider as one unit test package?\n\nUnittest or Unittests are both fine to me. Just check how it is named with other tests. \n\nI guess video acceleration is also fine as it is as well in that case.",
       "parentUuid": "d68d409b_716b8387",
+      "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574db3c5_0aeef33a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-09T01:34:08Z",
+      "side": 1,
+      "message": "\u003e For this test, I think there are 17K+ tests run with this, isn\u0027t it?\n\nYou\u0027re right: the test we are invoking has a bunch of underlying tests it runs (thousands). In our test suite, though, this is all bundled into one unit test, video.PlatformVAAPIUnittest.\n\n\u003e If we consider as one unit test package?\n\nYep, exactly, that\u0027s what I meant by one test. The result of running video.PlatformVAAPIUnittest is one pass/fail result; it\u0027s packaged up into one Tast test. A similar example is video.Capability which is described using singular nouns above https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/README.md;l\u003d42;drc\u003d1a6d75f3f68623109c6fda206c30c1a28dd816c7\n\nSo based on that example I think keep as is; does that sound okay?",
+      "parentUuid": "915da28e_f21e478f",
       "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
