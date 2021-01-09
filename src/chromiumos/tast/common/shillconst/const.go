@@ -75,6 +75,7 @@ const (
 // Service property names defined in dbus-constants.h .
 const (
 	// Service property names.
+	ServicePropertyConnectable    = "Connectable"
 	ServicePropertyDevice         = "Device"
 	ServicePropertyName           = "Name"
 	ServicePropertyType           = "Type"
@@ -214,4 +215,9 @@ const (
 	DeviceBgscanMethodSimple = "simple"
 	DeviceBgscanMethodLearn  = "learn"
 	DeviceBgscanMethodNone   = "none"
+)
+
+// Manager DBus Errors
+const (
+	ManagerFindMatchingServiceNotFound = "Matching service was not found"
 )
