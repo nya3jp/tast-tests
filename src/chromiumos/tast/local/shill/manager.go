@@ -143,6 +143,28 @@ func (m *Manager) Devices(ctx context.Context) ([]*Device, error) {
 	return devs, nil
 }
 
+// DeviceByType returns a device matching |type|.
+func (m *Manager) DeviceByType(ctx context.Context, deviceType string) (*Device, error) {
+	devices, err := m.Devices(ctx)
+	if err != nil {
+		return nil, err
+	}
+	for _, d := range devices {
+		properties, err := d.GetProperties(ctx)
+		if err != nil {
+			return nil, err
+		}
+		t, err := properties.GetString(shillconst.DevicePropertyType)
+		if err != nil {
+			return nil, err
+		}
+		if t == deviceType {
+			return d, nil
+		}
+	}
+	return nil, nil
+}
+
 // ConfigureService configures a service with the given properties and returns its path.
 func (m *Manager) ConfigureService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
 	var service dbus.ObjectPath

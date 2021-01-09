@@ -75,6 +75,7 @@ const (
 // Service property names defined in dbus-constants.h .
 const (
 	// Service property names.
+	ServicePropertyConnectable    = "Connectable"
 	ServicePropertyDevice         = "Device"
 	ServicePropertyName           = "Name"
 	ServicePropertyType           = "Type"
