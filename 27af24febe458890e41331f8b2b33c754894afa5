@@ -39,6 +39,30 @@
       },
       "revId": "27af24febe458890e41331f8b2b33c754894afa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41aa908f_23733bec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2021-01-09T00:05:01Z",
+      "side": 1,
+      "message": "It only runs on 2 boards for vm, and one of them is failing for a known software issue.",
+      "parentUuid": "fa524386_bfb62253",
+      "range": {
+        "startLine": 52,
+        "startChar": 23,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "27af24febe458890e41331f8b2b33c754894afa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
