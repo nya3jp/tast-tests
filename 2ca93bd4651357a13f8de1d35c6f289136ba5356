@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ce41f65_0125b27a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-09T00:53:59Z",
+      "side": 1,
+      "message": "I thought I didn\u0027t usually saw code review link in the comment, but I think it should be useful on 2nd thought. Let\u0027s leave as it is.",
+      "parentUuid": "ad05b59e_e9d82616",
+      "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05149a4a_8df2c542",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
         "patchSetId": 4
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "\u003e can we use \"tests\" here and below \"These tests\"?\n\nI hit an issue where I went to run the test and accidentally wrote\n  video.PlatfrormVAAPIUnittest*s*\n\nbut it turns out the name is singular, rather than plural. It runs one test with one pass/failure message as well (since there is only one test). This version of plurality in the documentation agrees with the singular of the name and of the test. My hope was that by calling it \"test\" we would make it clearer to readers that the name is \"Unittest\" not \"Unittests\" and that only one PASS/FAIL is expected.\n\nIf having the test name and documentation be plural feels better, I\u0027d be happy to go back and change the test name from PlatformVAAPIUnittest -\u003e PlatformVAAPIUnittests, since Unittests was what I wrote by default without thinking. Let me know if so!\n\n\u003e also, can we do Video acceleration (VA) or VA (Video acceleration).\n\u003e people usually just call VA.\n\nI went with the first suggestion you gave as it is nicely consistent and clear; this README used \"video acceleration\" previously without shortening (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/README.md;l\u003d147;drc\u003d1a6d75f3f68623109c6fda206c30c1a28dd816c7).",
       "parentUuid": "05149a4a_8df2c542",
+      "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915da28e_f21e478f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-09T00:53:59Z",
+      "side": 1,
+      "message": "There might be no right or wrong here. I thought there seems to be convention and comments and naming seems to be sensitive in chromeos land. I just tried to follow how other tests were described. For this test, I think there are 17K+ tests run with this, isn\u0027t it? I think I shared sample log with you. So little bit confused when you say only 1 test is run. If we consider as one unit test package?\n\nUnittest or Unittests are both fine to me. Just check how it is named with other tests. \n\nI guess video acceleration is also fine as it is as well in that case.",
+      "parentUuid": "d68d409b_716b8387",
       "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
