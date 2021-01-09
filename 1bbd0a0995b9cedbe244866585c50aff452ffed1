@@ -52,6 +52,41 @@
       "parentUuid": "6b38aa06_5adcfbd1",
       "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2754387c_c29436b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-09T02:51:29Z",
+      "side": 1,
+      "message": "Don\u0027t see any test which does just login and verifies Playstore is On.PlayStore Test does login and install an app. Can we expand this test to cover few other unicorn scenarios.",
+      "parentUuid": "cb2d57d1_db2cdd38",
+      "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7324c853_4e3af413",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-09T02:51:29Z",
+      "side": 1,
+      "message": "Please ",
+      "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
