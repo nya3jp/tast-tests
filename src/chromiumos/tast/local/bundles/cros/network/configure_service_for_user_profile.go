@@ -11,6 +11,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
@@ -49,7 +50,9 @@ func init() {
 func removeMatchingService(ctx context.Context, m *shill.Manager, props map[string]interface{}) error {
 	service, err := m.FindMatchingService(ctx, props)
 	if err != nil {
-		// No match is not a problem.
+		return errors.Wrap(err, "error calling FindMatchingService")
+	}
+	if service == nil {
 		return nil
 	}
 	testing.ContextLog(ctx, "Deleting existing service: ", service)
@@ -118,8 +121,8 @@ func ConfigureServiceForUserProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to configure service: ", err)
 	}
 
-	if _, err := m.FindMatchingService(ctx, expectProps); err != nil {
-		s.Fatal("Configured network not found: ", err)
+	if service, err := m.FindMatchingService(ctx, expectProps); err != nil || service == nil {
+		s.Fatal("Configured network not found, err: ", err)
 	}
 
 	s.Log("Restarting Shill to ensure persistence")

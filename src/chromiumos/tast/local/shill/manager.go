@@ -50,16 +50,21 @@ func NewManager(ctx context.Context) (*Manager, error) {
 	return &Manager{PropertyHolder: ph}, nil
 }
 
-// FindMatchingService returns the first matching Service who has the expected properties.
-// Noted that it searches all services including Visible=false ones. To focus on visible services,
-// please specify Visible=true in expectProps.
-func (m *Manager) FindMatchingService(ctx context.Context, expectProps map[string]interface{}) (*Service, error) {
+// FindMatchingService returns the first Service that matches |expectedProperties|.
+// If no matching Service is found, returns nil.
+// Note that the complete list of Services is searched, including those with Visible=false.
+// To find only visible services, please specify Visible=true in expectedProperties.
+func (m *Manager) FindMatchingService(ctx context.Context, expectedProperties map[string]interface{}) (*Service, error) {
 	ctx, st := timing.Start(ctx, "m.FindMatchingService")
 	defer st.End()
 
 	var servicePath dbus.ObjectPath
-	if err := m.dbusObject.Call(ctx, "FindMatchingService", expectProps).Store(&servicePath); err != nil {
-		return nil, errors.Wrap(err, "failed to configure service")
+	err := m.dbusObject.Call(ctx, "FindMatchingService", expectedProperties).Store(&servicePath)
+	if err != nil {
+		if err.Error() == shillconst.ManagerFindMatchingServiceNotFound {
+			return nil, nil
+		}
+		return nil, errors.Wrap(err, "FindMatchingService call failed")
 	}
 	service, err := NewService(ctx, servicePath)
 	if err != nil {
@@ -79,6 +84,9 @@ func (m *Manager) WaitForServiceProperties(ctx context.Context, expectProps map[
 		return e
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		return nil, err
+	}
+	if service == nil {
+		return nil, errors.New("no matching service found")
 	}
 	return service, nil
 }
@@ -141,6 +149,28 @@ func (m *Manager) Devices(ctx context.Context) ([]*Device, error) {
 		devs = append(devs, d)
 	}
 	return devs, nil
+}
+
+// DeviceByType returns a device matching |type|.
+func (m *Manager) DeviceByType(ctx context.Context, deviceType string) (*Device, error) {
+	devices, err := m.Devices(ctx)
+	if err != nil {
+		return nil, err
+	}
+	for _, d := range devices {
+		properties, err := d.GetProperties(ctx)
+		if err != nil {
+			return nil, err
+		}
+		t, err := properties.GetString(shillconst.DevicePropertyType)
+		if err != nil {
+			return nil, err
+		}
+		if t == deviceType {
+			return d, nil
+		}
+	}
+	return nil, nil
 }
 
 // ConfigureService configures a service with the given properties and returns its path.
@@ -207,6 +237,33 @@ func (m *Manager) EnableTechnology(ctx context.Context, technology Technology) e
 // DisableTechnology disables a technology interface.
 func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) error {
 	return m.dbusObject.Call(ctx, "DisableTechnology", string(technology)).Err
+}
+
+func (m *Manager) hasTechnology(ctx context.Context, technologyProperty string, technology Technology) (bool, error) {
+	prop, err := m.GetProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get properties")
+	}
+	technologies, err := prop.GetStrings(technologyProperty)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to get property: %s", technologyProperty)
+	}
+	for _, t := range technologies {
+		if t == string(technology) {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+// IsAvailable returns true if a technology is available.
+func (m *Manager) IsAvailable(ctx context.Context, technology Technology) (bool, error) {
+	return m.hasTechnology(ctx, shillconst.ManagerPropertyAvailableTechnologies, technology)
+}
+
+// IsEnabled returns true if a technology is enabled.
+func (m *Manager) IsEnabled(ctx context.Context, technology Technology) (bool, error) {
+	return m.hasTechnology(ctx, shillconst.ManagerPropertyEnabledTechnologies, technology)
 }
 
 // DevicesByTechnology returns list of Devices and their Properties snapshots of the specified technology.

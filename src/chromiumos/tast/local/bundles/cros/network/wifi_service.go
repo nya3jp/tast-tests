@@ -178,6 +178,9 @@ func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, pro
 	}); err != nil {
 		return nil, err
 	}
+	if service == nil {
+		return nil, errors.New("no matching service")
+	}
 	return service, nil
 }
 
