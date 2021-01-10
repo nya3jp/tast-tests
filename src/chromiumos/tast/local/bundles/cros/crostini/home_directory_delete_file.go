@@ -24,7 +24,7 @@ func init() {
 		Func:         HomeDirectoryDeleteFile,
 		Desc:         "Test deleting a file in Linux files and container using a pre-built crostini image",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
