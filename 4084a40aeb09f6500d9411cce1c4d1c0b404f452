@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b8d9857_5c1f6170",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-11T22:15:06Z",
+      "side": 1,
+      "message": "The motivation is our intent to add more tast tests that also run this binary, but with different arguments. Does that help motivate the separate files? Would you prefer them in the same file in this CL and then break them apart later?\n\nI\u0027m not sure the reasoning for RunAccelVideoSmokeTest; would it be all right if I confirmed that and merged them in a separate CL?",
+      "parentUuid": "bfaa81ba_e3fbd42e",
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3a5a461_5641094f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
         "patchSetId": 7
@@ -66,6 +84,30 @@
       "writtenOn": "2021-01-07T11:04:50Z",
       "side": 1,
       "message": "it should be VAAPI:\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5338b60_638b17b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-11T22:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3a5a461_5641094f",
       "range": {
         "startLine": 28,
         "startChar": 8,
@@ -89,6 +131,30 @@
       "writtenOn": "2021-01-07T11:04:50Z",
       "side": 1,
       "message": "Maybe \"create new video logger\"?",
+      "range": {
+        "startLine": 33,
+        "startChar": 21,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd6de19c_91208e93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-11T22:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27abadf1_52a96647",
       "range": {
         "startLine": 33,
         "startChar": 21,
@@ -124,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "031f997e_a4337669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-11T22:15:06Z",
+      "side": 1,
+      "message": "Like so?",
+      "parentUuid": "a82f4ccc_fe531de7",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed2925f0_1fc0bc1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
         "patchSetId": 7
@@ -147,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d84d0ad_b34ef4e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-11T22:15:06Z",
+      "side": 1,
+      "message": "Thanks, and added. Maybe if there are more cases of expected fail, it would make sense to refine \"expectedFail\" from a bool to an errcode or similar. For now, the purpose is just to confirm that the binary isn\u0027t blindly passing for everything.",
+      "parentUuid": "ed2925f0_1fc0bc1e",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6434c2f3_070dcdd3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
         "patchSetId": 7
@@ -158,6 +272,30 @@
       "writtenOn": "2021-01-07T11:04:50Z",
       "side": 1,
       "message": "PTAL when to log:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 88
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be93404_3e1bd4bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-11T22:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6434c2f3_070dcdd3",
       "range": {
         "startLine": 66,
         "startChar": 0,
