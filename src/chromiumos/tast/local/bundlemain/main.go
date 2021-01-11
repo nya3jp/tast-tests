@@ -14,6 +14,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/bundle"
 	"chromiumos/tast/common/hwsec"
@@ -24,6 +25,7 @@ import (
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/ready"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -166,6 +168,11 @@ func hwsecCheckDACounter(ctx context.Context) error {
 }
 
 func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
+	// Ensure the ui service is running.
+	con, cancel := context.WithTimeout(ctx, 10*time.Second)
+	upstart.EnsureJobRunning(con, "ui")
+	cancel()
+
 	// Store the current log state.
 	oldInfo, err := os.Stat(varLogMessages)
 	if err != nil {
