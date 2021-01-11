@@ -7,37 +7,102 @@ implementations, while other tests operate on the entire Chrome stack.
 
 To get a list of all available video tests run:
 
-    tast list $HOST | grep video.
+    tast list $HOST video.*
 
 All video tests can be found in the [tast video folder].
 
-Some tests use Chrome while others do not; a hypothetical user would not see any
-action in a DUT when running the latter.
-
 [TOC]
 
-## Capabilities and Capability Test
+## Test layering
 
-Tast can prevent running tests on SoCs without a particular functionality (see
-[Test Dependencies], and the video tests make extensive use of this for gating
-tests on hardware capabilities e.g. presence of video decoding for a given
-codec. These capabilities are specified per-chipset (potentially with per-board
-and per-device overlays) in files like e.g. [15-chipset-cml-capabilities.yaml].
-These files are ingested in Go via the [`caps` package], so that test cases can
-use them as preconditions in their `SoftwareDeps`.
+Test can be conceptually organized by the level of the protocol stack that is
+exercised and verified. The following diagram shows a simplified software stack
+where the numbers refers to tests that interact with and verify the layers
+underneath.
 
-For example: Intel Broadwell has support for hardware accelerated H.264 decoding
-but not VP8. Therefore, the Broadwell associated capabilities file
-[15-chipset-bdw-capabilities.yaml] has a number of `hw_dec_h264_*` entries and
-no `hw_dec_vp8_*` entries. Tast ingests these capabilities file(s) and provides
-them for tests with the name correspondence defined in the mentioned [`caps`
-package]. Any test (case) with a `caps.HWDecodeH264` listed in its
-`SoftwareDeps`, for example [`Play.h264_hw`], will thus run on Broadwell
-devices, whereas those with `caps.HWDecodeVP8` listed will not, for example
-[`Play.vp8_hw`].
+![Test layering diagram](test_layering.png)
 
-Googlers can refer to go/crosvideocodec for more information about the hardware
-supported video features.
+1. **Full stack** tests verify the whole Chrome stack, usually via DevTools
+protocol. ARC++ or other user-facing apps are conceptually at this level,
+although they are not in the scope of the video test package.
+  Examples are `video.(Contents|DrawOnCanvas|MemCheck|Play|PlaybackPerf|Seek)`.
+  Tests at this level oftentimes inspect system state via direct access to the
+  file system, e.g. `MemCheck` retrieves the memory use from the Kernel DRI
+  debug interface.
+
+2. **Chrome `//media`** test binaries verify [`media::VideoDecoder`] and
+[`media::VideoEncodeAccelerator`] functionality on top of real hardware. These
+are:
+
+  - [`video_decode_accelerator_tests`] and
+[`video_decode_accelerator_perf_tests`], wrapped by
+`video.DecodeAccel`/`video.DecodeAccelPerf` and
+`video.DecodeAccelVD`/`video.DecodeAccelVDPerf` respectively, see the [video
+decoder integration tests](#Video-decoder-integration-tests) Section.
+
+  - [`video_encode_accelerator_tests`], wrapped by
+`video.EncodeAccelNew`/`video.EncodeAccelNewPerf`,  see the [video encoder
+integration tests](#Video-encoder-integration-tests) Section. These tests are
+somewhat still being launched (b/172223014) and are coexisting with the older
+[`video_encode_accelerator_unittest`], wrapped by
+`video.EncodeAccel`/`video.EncodeAccelPerf`.
+
+3. and 4. **Platform** tests verify video acceleration at the vendor-API level,
+e.g. the kernel or userspace library. These tests do not need Chrome and are
+ideal for the first stages of a new platform bringup. They might just be
+wrappers around upstream validation tests. Examples are
+`video.(PlatformEncoding|PlatformVAAPIUnittests|V4L2)` and any other `Platform`-
+prefixed test.
+
+A hypothetical user would not see any action on the screen of a DUT when
+running tests of level 2, 3 or 4.
+
+### Direct Video Decoder
+
+ChromeOS supports both a legacy Video Decoder and a new direct VideoDecoder, see
+[tinyurl.com/chromeos-video-decoders](https://tinyurl.com/chromeos-video-decoders)
+(except for a few legacy platforms that only support the legacy one).
+
+Both the legacy and the direct decoders must coexist for some time, hence tests
+at the Chrome //media level are present for both implementations, marking the
+direct ones with a `VD` prefix (e.g. `video.DecodeAccel` and
+`video.DecodeAccelVD`). Full stack tests are focused on the implementation being
+currently shipped, while keeping a few test cases operating on the alternate
+VideoDecoder. These variants have an `alt` suffix.
+
+There are [Software Dependencies] (see the
+[Capabilities](#Capabilities) Section) to gate Tast tests,
+namely: `video_decoder_direct`, `video_decoder_legacy` to mark the implementation
+shipped by default, and `video_decoder_legacy_supported`.
+
+## Capabilities
+
+Tast can skip running tests on SoCs without a particular functionality by
+specifying its [Software Dependencies]. All video tests make extensive use of
+this for gating tests on e.g. support for decoding a given codec, etc.
+
+The full specification can be found in the [`autotest-capability-default`]
+package but, essentially these capabilities are specified per-chipset
+(potentially with per-board and per-device overlays) in files like e.g.
+[15-chipset-cml-capabilities.yaml]. These files are ingested in Go via the
+[`caps` package], so that test cases can use them as preconditions in their
+`SoftwareDeps`.
+
+For example: Intel Skylake has support for hardware accelerated VP8 decoding but
+not VP9. Therefore, the Skylake associated capabilities file
+[15-chipset-skl-capabilities.yaml] has a number of `hw_dec_vp8_*` entries but no
+`hw_dec_vp9_*` (the "minus" symbol is misleading: it does not mean "disable" but
+simply itemizes the capabilities). Tast ingests these capabilities file(s) and
+provides them for tests with the name correspondence defined in the mentioned
+[`caps` package]. Any test (case) with a `caps.HWDecodeVP8` listed in its
+`SoftwareDeps`, for example [`Play.vp8_hw`], will thus run on Skylake devices,
+whereas those with `caps.HWDecodeVP9` listed will not, for example
+[`Play.vp9_hw`].
+
+Googlers can refer to [go/crosvideocodec](http://go/crosvideocodec) for more
+information about the video features support.
+
+### Capability Test (`video.Capability`)
 
 The Capability test verifies that the capabilities provided by the YAML file(s)
 are indeed detected by the hardware via the command line utility
@@ -51,88 +116,75 @@ appropriate locations for the Video Tast tests to run properly.
 
 ## Video decoder integration tests (`video.DecodeAccel`)
 
-These tests validate video decoding functionality by running the
-[video_decode_accelerator_tests]. They are implemented directly on top of the
-video decoder implementations, not using Chrome. Various behaviors are tested
-such as flushing and resetting the decoder. Decoded frames are validated by
-comparing their checksums against expected values. For more information about
-these tests check the [video decoder tests usage documentation].
+These tests validate video decoding at the **Chrome `//media`** level for
+several codecs and resolutions by running [`video_decode_accelerator_tests`].
+Various behaviors are tested such as flushing and resetting the decoder. In
+addition there are tests using videos that change resolution during
+playback. Decoded frames are validated by comparing their checksums against
+expected values.
 
-Tests are available for various codecs such as H.264, VP8 and VP9. In addition
-there are tests using videos that change resolution during plaback. To run all
-tests use:
+The `DecodeAccelVD` tests utilize the direct VideoDecoder implementation (see
+the [Direct Video Decoder](#direct-video-decoder) Section). To run the test use:
 
     tast run $HOST video.DecodeAccel.*
-
-There are variants of these tests present that have 'VD' in their names. These
-tests operate on the new video decoder implementations, which are set to replace
-the current ones. To run all VD video decoder tests run:
-
     tast run $HOST video.DecodeAccelVD.*
+
+### Video decoder performance tests (`video.DecodeAccelPerf`)
+
+Similarly, `video.DecodeAccelPerf` and `video.DecodeAccelVDPerf` measure
+Chrome's video decode stack performance by running
+[`video_decode_accelerator_perf_tests`]. Various metrics are collected such as
+decode latency, FPS, CPU or power usage for various codecs and resolutions. To
+run these tests use:
+
+    tast run $HOST video.DecodeAccelPerf.*
+    tast run $HOST video.DecodeAccelVDPerf.*
 
 ### Video decoder compliance tests (`video.DecodeCompliance`)
 
-These tests validate video decoding compliance by running the
-[video_decode_accelerator_tests] with various video clips and
---gtest\_filter=VideoDecoderTest.FlushAtEndOfStream.
-Unlike the DecodeAccel and DecodeAccelVD tests, DecodeCompliance mostly targets
-specific codec features and is primarily concerned with the correctness of the
-produced frames.
-Currently, we only test AV1. To run the test use:
+These tests validate video decoding compliance by running
+[`video_decode_accelerator_tests`] with various video clips and
+`--gtest\_filter=VideoDecoderTest.FlushAtEndOfStream`. Unlike DecodeAccel and
+DecodeAccelVD tests, DecodeCompliance mostly targets specific codec features and
+is primarily concerned with the correctness of the produced frames. Currently,
+we only test AV1. To run the test use:
 
     tast run $HOST video.DecodeCompliance.av1_test_vectors
 
 Please see [data/test_vectors/README.md] for details about the video clips used
 in this test.
 
-### Video decoder performance tests (`video.DecodeAccelPerf`)
-
-These tests measure video decode performance by running the
-[video_decode_accelerator_perf_tests]. These tests are implemented directly on
-top of the video decoder implementations and collect various metrics such as
-FPS, CPU usage, power consumption (Intel devices only) and decode latency. For
-more information about these tests check the
-[video decoder performance tests usage documentation].
-
-Performance tests are available for various codecs using 1080p and 2160p videos,
-both in 30 and 60fps variants. To run all performance tests use:
-
-    tast run $HOST video.DecodeAccelPerf.*
-
-There are variants of these tests present that have 'VD' in their names. These
-tests operate on the new video decoder implementations, which are set to replace
-the current ones. To run all VD video decoder performance tests run:
-
-    tast run $HOST video.DecodeAccelVDPerf.*
-
 ### Video decoder smoke checks
 
-These tests use the [video_decode_accelerator_tests] to decode a video stream
-with unsupported features. This is done by playing VP9 profile1-3 videos while
-the decoder is incorrectly configured for profile0. The tests verify whether a
-decoder is able to handle unexpected errors gracefully. To run all smoke checks
+These tests use the [`video_decode_accelerator_tests`] to decode a VP9 bitstream
+of Profiles 1 to 3 while the decoder is incorrectly configured for Profile 0,
+verify that the decoder can handle unexpected errors gracefully.  Currently only
+Rockchip 3399 (https://crbug.com/971032) cannot do so, Tast skips this test
+thanks to the `vp9_smoke` [Software Dependencies] entry. To run all smoke checks
 use:
 
     tast run $HOST video.DecodeAccelSmoke.*
 
 ## Video encoder integration tests (`video.EncodeAccel`)
 
-These tests run the [video_encode_accelerator_unittest] to test encoding raw
-video frames. They are implemented directly on top of the video encoder
-implementations, not using Chrome. Tests are available that test encoding H.264,
-VP8 and VP9 videos using various resolutions.
+These tests verify encoding at the **Chrome `//media`** level for several codecs
+and resolutions. `video.EncodeAccelNew` wrap the new
+[`video_encode_accelerator_tests`] whereas the legacy ones are
+[`video_encode_accelerator_unittest`] wrapped by `video.EncodeAccel`.
 
 To run all video encode tests use:
 
+    tast run $HOST video.EncodeAccelNew.*
     tast run $HOST video.EncodeAccel.*
 
 ### Video encoder performance tests (`video.EncodeAccelPerf`)
 
-These tests measure video encode performance by running the
-[video_encode_accelerator_unittest]. They are implemented directly on top of the
-video encoder implementations. Various metrics are collected such as CPU usage.
-Tests are available for various codecs and resolutions. To run all tests use:
+Similarly, `video.EncodeAccelNewPerf` and `video.EncodeAccelPerf` measure
+Chrome's video encode stack performance. Various metrics are collected such as
+FPS, CPU or power usage for various codecs and resolutions. To run all tests
+use:
 
+    tast run $HOST video.EncodeAccelNewPerf.*
     tast run $HOST video.EncodeAccelPerf.*
 
 ## PlatformV4L2 Tests (`video.PlatformV4L2`)
@@ -360,6 +412,20 @@ To run these tests use:
 
     tast run $HOST video.Contents.*
 
+## MemCheck Tests (`video.MemCheck`)
+
+The full stack `MemCheck` tests verify that there are no memory leaks while
+playing videos. Two different variants are provided:
+
+- Tests with a simple codec identifier (e.g. `vp8_hw`) operate by monitoring the
+amount of Framebuffers of a specific resolution increases during playback and
+then returns to the original count after playback is finished. These
+Framebuffers  correspond to the amount of allocated video frame resources.
+
+- Tests with a `switch` suffix play back several resolutions cyclically using
+MSE while verifying that the amount of Framebuffers of any of a given set of
+resolutions never exceeds a given value.
+
 ## Addendum
 
 ### Generation of test videos (for `video.{DrawOnCanvas,Contents}`)
@@ -518,19 +584,19 @@ gen_cropped_video 32 16 88 64 still-colors-720x480.bmp \
   still-colors-720x480-cropped-to-640x360.h264.mp4
 ```
 
-[15-chipset-bdw-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/chipset-bdw/chromeos-base/autotest-capability-chipset-bdw/files/15-chipset-bdw-capabilities.yaml?q=15-chipset-bdw-capabilities.yaml
+[`media::VideoDecoder`]: https://source.chromium.org/search?q=media::VideoDecoder
+[`media::VideoEncodeAccelerator`]: https://source.chromium.org/search?q=media::VideoEncodeAccelerator
+[`video_decode_accelerator_tests`]: https://chromium.googlesource.com/chromium/src/+/main/docs/media/gpu/video_decoder_test_usage.md
+[`video_decode_accelerator_perf_tests`]: https://chromium.googlesource.com/chromium/src/+/main/docs/media/gpu/video_decoder_perf_test_usage.md
+[`video_encode_accelerator_unittest`]: https://chromium.googlesource.com/chromium/src/+/main/docs/media/gpu/veatest_usage.md
+[`video_encode_accelerator_tests`]: https://chromium.googlesource.com/chromium/src/+/main/docs/media/gpu/video_encoder_test_usage.md
+[Software Dependencies]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md
+[15-chipset-skl-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/chipset-skl/chromeos-base/autotest-capability-chipset-skl/files/15-chipset-skl-capabilities.yaml
 [15-chipset-cml-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/chipset-cml/chromeos-base/autotest-capability-chipset-cml/files/15-chipset-cml-capabilities.yaml?q=15-chipset-cml-capabilities.yaml
-[`autotest-capability`]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/main/chromeos-base/autotest-capability-default/
+[`autotest-capability-default`]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/main/chromeos-base/autotest-capability-default/
 [`caps` package]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/caps/caps.go
-[tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/video/
-[video_decode_accelerator_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc
-[video decoder tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_test_usage.md
-[video_decode_accelerator_perf_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_perf_tests.cc
-[video decoder performance tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_perf_test_usage.md
-[video_encode_accelerator_unittest]: https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc
-[`Play.h264_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=92?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
-[`Play.vp8_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=99?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
-[Test Dependencies]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md
+[`Play.vp9_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=124
+[`Play.vp8_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=117
 [video-on-canvas.html]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html
 [ffmpeg Slideshow docs]: https://trac.ffmpeg.org/wiki/Slideshow
 [data/test_vectors/README.md]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md
