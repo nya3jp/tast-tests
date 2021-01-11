@@ -19,7 +19,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/faillog"
+	"chromiumos/tast/local/chrome/uig"
 	cui "chromiumos/tast/local/crostini/ui"
+	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
@@ -527,20 +529,34 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 		p.keyboard = nil
 	}
 
-	// Don't stop concierge or delete the image for keepState so that
+	// Don't uninstall crostini or delete the image for keepState so that
 	// crostini is still running after the test, and the image can be reused.
 	if keepState(s) && p.startedOK {
 		s.Log("keepState not stopping concierge or unmounting and deleting image in cleanUp")
 	} else {
 		if p.cont != nil {
-			if err := vm.StopConcierge(ctx); err != nil {
-				s.Log("Failure stopping concierge: ", err)
+			// Open the Linux settings.
+			st, err := settings.OpenLinuxSettings(ctx, p.tconn)
+			if err != nil {
+				s.Log("Failed to open Linux Settings: ", err)
+			}
+
+			// Click Remove on Linux settings page.
+			removeDlg, err := st.ClickRemove(ctx, p.tconn)
+			if err != nil {
+				s.Log("Failed to click Remove button on Linux settings page: ", err)
+			}
+
+			// Click Delete on the confirm dialog.
+			if err := uig.Do(ctx, p.tconn, uig.WaitForLocationChangeCompleted(), removeDlg.Delete.LeftClick()); err != nil {
+				s.Log("Failed to click Delete button on remove Linux dialog: ", err)
+			}
+
+			if err := st.Close(ctx); err != nil {
+				s.Log("Failed to close settings window after uninstalling Linux: ", err)
 			}
 			p.cont = nil
 		}
-		// It is always safe to unmount the component, which just posts some
-		// logs if it was never mounted.
-		vm.UnmountComponent(ctx)
 		if err := vm.DeleteImages(); err != nil {
 			s.Log("Error deleting images: ", err)
 		}
