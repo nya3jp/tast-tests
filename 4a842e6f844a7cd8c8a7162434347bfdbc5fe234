@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82766c91_1810034a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-01-11T23:11:12Z",
+      "side": 0,
+      "message": "This change was forced by gofmt.",
+      "revId": "4a842e6f844a7cd8c8a7162434347bfdbc5fe234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
