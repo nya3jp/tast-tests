@@ -81,6 +81,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c98e39fc_b844b965",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb11e0e7_2d9c3d7a",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6bf460_97e3fde2",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14fc2e46_8cfba0a5",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7d45a5d_50e8b0c0",
@@ -127,6 +175,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b38e0cf_63ae1362",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d45a5d_50e8b0c0",
+      "range": {
+        "startLine": 105,
+        "startChar": 79,
+        "endLine": 105,
+        "endChar": 84
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f6a22f6_2c8ff95d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0410e505_0b856e7b",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3e61dd6_eba990f8",
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe0d14c_027fbfd3",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3e61dd6_eba990f8",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6905f2a2_e09a49c3",
@@ -163,6 +283,30 @@
       "writtenOn": "2021-01-11T10:41:06Z",
       "side": 1,
       "message": "nit: IIRC, you can just omit \"stroke\" here, same for \"point\" below",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8992d1a1_b17f4ca4",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6905f2a2_e09a49c3",
       "range": {
         "startLine": 20,
         "startChar": 3,
@@ -219,6 +363,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb17ae1e_14ce207a",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f875ede_1481ef4b",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 43
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4ae5435_5c5c9cbc",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aae7297_28ba35d5",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 7
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a1599fb_0d5e0adf",
@@ -232,6 +424,30 @@
       "writtenOn": "2021-01-11T10:41:06Z",
       "side": 1,
       "message": "nit: ;",
+      "range": {
+        "startLine": 46,
+        "startChar": 34,
+        "endLine": 46,
+        "endChar": 35
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a117d386_bb9af984",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a1599fb_0d5e0adf",
       "range": {
         "startLine": 46,
         "startChar": 34,
@@ -265,6 +481,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7913f4a4_cc5e2744",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91e95b12_14a44960",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "042ec1e2_e1cfa261",
@@ -288,6 +528,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a5115f_3b5b63b7",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "042ec1e2_e1cfa261",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d194ff82_b802719e",
@@ -301,6 +565,30 @@
       "writtenOn": "2021-01-11T10:41:06Z",
       "side": 1,
       "message": "nit: err shouldn\u0027t be ignored",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c1daf37_b87bf759",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T23:44:15Z",
+      "side": 1,
+      "message": "I\u0027ve changed this to a struct method and removed the error as you mentioned.\nThis has lead to this function not returning anything including an error.",
+      "parentUuid": "d194ff82_b802719e",
       "range": {
         "startLine": 88,
         "startChar": 1,
