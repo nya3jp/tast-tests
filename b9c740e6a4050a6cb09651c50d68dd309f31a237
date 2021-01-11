@@ -16,6 +16,24 @@
       "message": "Matthew,\n\nI don\u0027t know how to use repo very well, so hopefully I didn\u0027t just stomp some of your changes.\n\nI\u0027ve stacked `fixup 2606092` on top which removes the need for separate arm/amd64 test variants, but I\u0027ve only tested it with amd64. runtime.GOARCH might have different values for arm/arm64 than what the rest of the Crostini Pre code is expecting.",
       "revId": "b9c740e6a4050a6cb09651c50d68dd309f31a237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f2fa6f_378cae6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-11T22:20:34Z",
+      "side": 1,
+      "message": "sidereal is fixing this for all Crostini tests currently in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2618100\n\nI will wait until that is merged and then follow the pattern set there.",
+      "parentUuid": "25ffda1d_5700c4c1",
+      "revId": "b9c740e6a4050a6cb09651c50d68dd309f31a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
