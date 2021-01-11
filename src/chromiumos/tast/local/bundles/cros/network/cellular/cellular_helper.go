@@ -72,18 +72,11 @@ func (helper *Helper) Enable() error {
 	return nil
 }
 
-// GetService returns the first connectable Cellular Service.
-// If no such Cellular Service is available, returns a nil service and an error.
-func (helper *Helper) GetService() (*shill.Service, error) {
-	// Look for any connectable Cellular service.
-	cellularProps := map[string]interface{}{
-		shillconst.ServicePropertyConnectable: true,
-		shillconst.ServicePropertyType:        shillconst.TypeCellular,
-	}
+func (helper *Helper) getMatchingService(props map[string]interface{}) (*shill.Service, error) {
 	// It may take a few seconds for a Cellular Service to appear.
 	var cellularService *shill.Service
 	if err := testing.Poll(helper.ctx, func(ctx context.Context) error {
-		cellularService, err := helper.Manager.FindMatchingService(ctx, cellularProps)
+		cellularService, err := helper.Manager.FindMatchingService(ctx, props)
 		if err != nil {
 			return err
 		}
@@ -98,4 +91,33 @@ func (helper *Helper) GetService() (*shill.Service, error) {
 		return nil, errors.Wrap(err, "failed to get Cellular Service")
 	}
 	return cellularService, nil
+}
+
+// GetService returns the first connectable Cellular Service.
+// If no such Cellular Service is available, returns a nil service and an error.
+func (helper *Helper) GetService() (*shill.Service, error) {
+	cellularProps := map[string]interface{}{
+		shillconst.ServicePropertyConnectable: true,
+		shillconst.ServicePropertyType:        shillconst.TypeCellular,
+	}
+	return helper.getMatchingService(cellularProps)
+}
+
+// GetServiceForDevice returns the first connectable Cellular Service matching the Device ICCID.
+// If no such Cellular Service is available, returns a nil service and an error.
+func (helper *Helper) GetServiceForDevice() (*shill.Service, error) {
+	deviceProperties, err := helper.Device.GetProperties(helper.ctx)
+	if err != nil || deviceProperties == nil {
+		return nil, errors.Wrap(err, "failed to get Cellular Device properties")
+	}
+	deviceIccid, err := deviceProperties.GetString(shillconst.DevicePropertyCellularICCID)
+	if deviceIccid == "" {
+		return nil, errors.Wrap(err, "device missing ICCID")
+	}
+	cellularProps := map[string]interface{}{
+		shillconst.ServicePropertyCellularICCID: deviceIccid,
+		shillconst.ServicePropertyConnectable:   true,
+		shillconst.ServicePropertyType:          shillconst.TypeCellular,
+	}
+	return helper.getMatchingService(cellularProps)
 }
