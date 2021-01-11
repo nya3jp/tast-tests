@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e05f9e6_9ca336b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2021-01-11T20:12:01Z",
+      "side": 1,
+      "message": "Are you intending to land this now and then update it in sync as the cryptohome side evolves? Doing so might be a bit tedious, it\u0027s perfectly fine to first get the cryptohome side to a point where the basic functionality works and only then add the tast test. Your call though.\n\nWhen the time comes, you\u0027ll want to add tast reviewers, see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
+      "revId": "d5e2bb56cf0171178f69296e62e4b6830163e01d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f8d8ec4_148be0e4",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2021-01-11T20:12:01Z",
+      "side": 1,
+      "message": "session",
+      "range": {
+        "startLine": 65,
+        "startChar": 49,
+        "endLine": 65,
+        "endChar": 55
+      },
+      "revId": "d5e2bb56cf0171178f69296e62e4b6830163e01d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
