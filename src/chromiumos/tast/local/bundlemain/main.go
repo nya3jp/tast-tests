@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/ready"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -124,6 +125,9 @@ func ensureDiskSpace(ctx context.Context, purgeable []string) (uint64, error) {
 }
 
 func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
+	// Ensure the ui service is running.
+	upstart.EnsureJobRunning(ctx, "ui")
+
 	// Store the current log state.
 	oldInfo, err := os.Stat(varLogMessages)
 	if err != nil {
