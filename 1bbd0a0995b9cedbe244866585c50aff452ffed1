@@ -87,6 +87,24 @@
       "message": "Please ",
       "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae3e960_c579911c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2021-01-11T18:39:38Z",
+      "side": 1,
+      "message": "Ideally it is good to keep a test fast to fail, but different config is fine. \n\nLogin specific scenarios, we can add them in CQ later. But more functionality scenarios will stay in post BVT test suites.",
+      "parentUuid": "2754387c_c29436b3",
+      "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
