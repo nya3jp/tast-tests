@@ -21,7 +21,7 @@ func init() {
 			"swboyd@chromium.org", // Tast author
 			"chromeos-security@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"cpu_vuln_sysfs", "no_qemu"},
 	})
 }
