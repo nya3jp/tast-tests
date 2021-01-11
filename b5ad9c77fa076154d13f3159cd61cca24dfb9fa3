@@ -33,6 +33,24 @@
       "message": "According to tastboard, https://tastboard.corp.google.com/test/camera.CCAUISmoke.fake_swa, there are a few failures after the CL was uploaded. Not sure if it can be a regression, can you help taking a look before merging?",
       "revId": "b5ad9c77fa076154d13f3159cd61cca24dfb9fa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "933f95f3_ff38b71f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-01-11T07:14:12Z",
+      "side": 1,
+      "message": "Thanks for raising the concern.\n\nI tried to reproduce it for several times but still cannot reproduce it. Since it is super green these days according to tast board:\nhttps://tastboard.corp.google.com/test/camera.CCAUISmoke.fake_swa\n\nLet\u0027s merge this CL first.",
+      "parentUuid": "675df128_ef23f102",
+      "revId": "b5ad9c77fa076154d13f3159cd61cca24dfb9fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
