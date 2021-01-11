@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d256dc7_83adbc90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_cn_hello.hw",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "I\u0027ve asked my host to upload the files for me and have changed the code to use the external data files.\n\nAlso, I created a bug (crbug/1164089) and commented the link to the code to make sure I do the documentation regarding the handwriting file.\nI\u0027ve decided to add the documentation in a later CL because this was scheduled to be done later along with investigation regarding one-step tool / command line tool to automate this task.",
+      "parentUuid": "2023147f_16139a84",
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d639410_62227e67",
@@ -471,6 +489,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24391ddd_684863bf",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "I\u0027ve added unit tests as well as refactored the functions that require unit testing to be independent from ctx, tconn and the things that do not require testing such as opening a file.",
+      "parentUuid": "941ac593_ce0a099a",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78640a3f_729a30ab",
@@ -636,6 +678,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "791e438b_a71132ac",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "I used scanner.Err() on the next line to handle the result of scanner.Scan().\nscanner.Scan() will either return True (if it read correctly) and False (\"when the scan stops by reaching the end of the input or an error\").\n\n\"After Scan returns false, the Err method will return any error that occurred during scanning, ..\"",
+      "parentUuid": "206ab92c_6a2a372e",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 15
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d689bc5_2fbb5b61",
@@ -768,6 +834,30 @@
       "side": 1,
       "message": "not resolved",
       "parentUuid": "f37e6bab_372ffbbc",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 79
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87a39615_7daa3c36",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "410b2c32_1491c949",
       "range": {
         "startLine": 75,
         "startChar": 0,
@@ -1028,6 +1118,30 @@
       "side": 1,
       "message": "Sorry for not being very clear, by using default inverval I meant to don\u0027t specify Interval at all. Tast framework will handle it for you.",
       "parentUuid": "15f019e9_9afca147",
+      "range": {
+        "startLine": 364,
+        "startChar": 55,
+        "endLine": 364,
+        "endChar": 87
+      },
+      "revId": "15b1ee089954095bb34cf36b3ff504eb0d8a667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd50d8f_b7e196ca",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "015793d2_7db94856",
       "range": {
         "startLine": 364,
         "startChar": 55,
