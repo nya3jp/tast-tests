@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
@@ -91,15 +90,6 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
 	defer cancel()
 	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
-
-	// Show Play files.
-	// It is necessary to call optin.Perform and optin.WaitForPlayStoreShown to make sure that Play files is shown.
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
-		s.Fatal("Failed to optin to Play Store: ", err)
-	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn, 2*time.Minute); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
-	}
 
 	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 	// Unshare shared folders in the end.
