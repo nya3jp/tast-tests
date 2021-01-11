@@ -10,7 +10,6 @@ import (
 	"reflect"
 	"time"
 
-	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
@@ -161,7 +160,6 @@ func init() {
 func ShareMovies(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
-	cr := s.PreValue().(crostini.PreData).Chrome
 
 	if !crostini.GaiaLoginAvailable(s) {
 		s.Fatal("This test requires access to a real gaia account. If you are an internal user, you can run this with a checkout of the internal Chrome OS repos")
@@ -186,15 +184,6 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 
 	if screenRecorder != nil {
 		screenRecorder.Start(ctx)
-	}
-
-	// Show Play files.
-	// It is necessary to call optin.Perform and optin.WaitForPlayStoreShown to make sure that Play files is shown.
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
-		s.Fatal("Failed to optin to Play Store: ", err)
-	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
 	}
 
 	sharedFolders := sharedfolders.NewSharedFolders()
