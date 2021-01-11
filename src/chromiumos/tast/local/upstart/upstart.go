@@ -183,8 +183,11 @@ func StopJob(ctx context.Context, job string) error {
 		// It's possible that this command will fail if it's run during b), but in that case
 		// waitUIJobStabilized should wait for the ui job to return to c), in which case the
 		// following "initctl stop" command should succeed in bringing the job back to "stop/waiting".
+
 		testexec.CommandContext(ctx, "initctl", "stop", job).Run()
 		if err := waitUIJobStabilized(ctx); err != nil {
+			StartJob(context.Background(), uiJob)
+			StartJob(context.Background(), "ui-respawn")
 			return errors.Wrapf(err, "failed waiting for %v job to stabilize", job)
 		}
 	}
