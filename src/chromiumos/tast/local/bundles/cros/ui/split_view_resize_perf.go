@@ -338,7 +338,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					return errors.Wrap(err, "failed to drag divider all the way right")
 				}
 				if err := pointerController.Move(ctx, dragPoints[2], dragPoints[3], time.Second); err != nil {
-					return errors.Wrap(err, "failed to drag divider all the way right")
+					return errors.Wrap(err, "failed to drag divider back to middle position")
 				}
 				if err := pointerController.Release(ctx); err != nil {
 					return errors.Wrap(err, "failed to end divider drag")
