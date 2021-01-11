@@ -194,6 +194,24 @@
       "parentUuid": "574db3c5_0aeef33a",
       "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77200df7_7e9b522f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-11T19:28:24Z",
+      "side": 1,
+      "message": "Resolved.",
+      "parentUuid": "8d233e5d_e4b17d6d",
+      "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
