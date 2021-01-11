@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a7c2d51_0ec11dd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-11T19:36:47Z",
+      "side": 1,
+      "message": "instead of doing this, can we just handle the cleanup with a defer after each setup?\n\n defer func() {\n   if err !\u003d nil {\n     // cleanup something\n   }\n }()\n\nYou may have to name the return params for this to work correctly, but I don\u0027t think so.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "b811b71f189a30d6856fdb33fac13fb335643f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

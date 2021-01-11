@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1797d11e_0e42a112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-11T19:36:47Z",
+      "side": 1,
+      "message": "just check for error in the defer, and if so, cleanup.",
+      "parentUuid": "fc9f0f8e_eeb9c6c2",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 55
+      },
+      "revId": "3f1ba317d7c662f6db730de8be738e77a6498fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "960f04b4_94c54fb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
         "patchSetId": 7
