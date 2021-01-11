@@ -45,6 +45,30 @@
       },
       "revId": "3a4b44b00c407fda7f3443963656f8418c1534a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9031e46f_e2152b63",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-11T23:33:09Z",
+      "side": 1,
+      "message": "Yes, uninstalling crostini involves shutting down the VM cleanly, which can take a while",
+      "parentUuid": "e272c69f_b99f0feb",
+      "range": {
+        "startLine": 555,
+        "startChar": 16,
+        "endLine": 555,
+        "endChar": 21
+      },
+      "revId": "3a4b44b00c407fda7f3443963656f8418c1534a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
