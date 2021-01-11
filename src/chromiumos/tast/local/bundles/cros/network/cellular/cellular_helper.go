@@ -49,27 +49,66 @@ func NewHelper(ctx context.Context) (*Helper, error) {
 	return &helper, nil
 }
 
-// Enable enables Cellular and ensures that the enable succeeded, otherwise an error is returned.
-func (h *Helper) Enable(ctx context.Context) error {
-	h.Manager.EnableTechnology(ctx, shill.TechnologyCellular)
-
-	// It may take a few seconds for Cellular to become enabled.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
+// waitForEnabled polls for the specified enable state for cellular.
+func (h *Helper) waitForEnabled(ctx context.Context, expected bool) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
 		enabled, err := h.Manager.IsEnabled(ctx, shill.TechnologyCellular)
 		if err != nil {
 			return errors.Wrap(err, "failed to get enabled state")
 		}
-		if !enabled {
-			return errors.New("Cellular not enabled")
+		if enabled != expected {
+			return errors.Errorf("unexpected enabled state, got %t, expected %t", enabled, expected)
 		}
 		return nil
 	}, &testing.PollOptions{
-		Timeout:  30 * time.Second,
+		Timeout:  3 * time.Second,
 		Interval: 100 * time.Millisecond,
-	}); err != nil {
+	})
+}
+
+// waitForPowered polls for the specified power state for cellular.
+func (h *Helper) waitForPowered(ctx context.Context, expected bool) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		deviceProperties, err := h.Device.GetShillProperties(ctx)
+		if err != nil {
+			return err
+		}
+		powered, err := deviceProperties.GetBool(shillconst.DevicePropertyPowered)
+		if err != nil {
+			return err
+		}
+		if powered != expected {
+			return errors.Errorf("unexpected powered state, got %t, expected %t", powered, expected)
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  3 * time.Second,
+		Interval: 100 * time.Millisecond,
+	})
+}
+
+// Enable calls Manager.EnableTechnology(cellular) and returns ture if the enable succeeded, or an error otherwise.
+func (h *Helper) Enable(ctx context.Context) error {
+	h.Manager.EnableTechnology(ctx, shill.TechnologyCellular)
+
+	if err := h.waitForEnabled(ctx, true); err != nil {
 		return err
 	}
-	return nil
+	return h.waitForPowered(ctx, true)
+}
+
+// Disable calls Manager.DisableTechnology(cellular) and returns ture if the enable succeeded, or an error otherwise.
+func (h *Helper) Disable(ctx context.Context) error {
+	h.Manager.DisableTechnology(ctx, shill.TechnologyCellular)
+
+	if err := h.waitForEnabled(ctx, false); err != nil {
+		return err
+	}
+	err := h.waitForPowered(ctx, false)
+	// Operations (i.e. Enable) called immediately after disabling can fail.
+	// TODO(b/177588333): Fix instead of sleeping here.
+	testing.Sleep(ctx, 200*time.Millisecond)
+	return err
 }
 
 // FindService returns the first connectable Cellular Service.
@@ -100,4 +139,80 @@ func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, erro
 		shillconst.ServicePropertyType:          shillconst.TypeCellular,
 	}
 	return h.Manager.WaitForServiceProperties(ctx, cellularProperties, 5*time.Second)
+}
+
+// AutoConnectCleanupTime provides enough time for a successful dbus operation.
+// If a timeout occurs during cleanup, the operation will fail anyway.
+const AutoConnectCleanupTime = 1 * time.Second
+
+// SetServiceAutoConnect sets the AutoConnect property of the Cellular Service
+// associated with the Cellular Device to |autoConnect| if the current value
+// does not match |autoConnect|.
+// Returns true when Service.AutoConnect is set and the operation succeeds.
+// Returns an error if any operation fails.
+func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (bool, error) {
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get Cellular Service")
+	}
+	properties, err := service.GetShillProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "unable to get properties")
+	}
+	curAutoConnect, err := properties.GetBool(shillconst.ServicePropertyAutoConnect)
+	if err != nil {
+		return false, errors.Wrap(err, "unable to get AutoConnect")
+	}
+	if autoConnect == curAutoConnect {
+		return false, nil
+	}
+	if err := service.SetProperty(ctx, shillconst.ServicePropertyAutoConnect, autoConnect); err != nil {
+		return false, errors.Wrap(err, "failed to set Service.AutoConnect")
+	}
+	return true, nil
+}
+
+// waitForConnected polls for the IsConnected state for |service| to be true.
+func (h *Helper) waitForConnected(ctx context.Context, service *shill.Service, expected bool) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		properties, err := service.GetShillProperties(ctx)
+		if err != nil {
+			return errors.Wrap(err, "unable to get properties")
+		}
+		connected, err := properties.GetBool(shillconst.ServicePropertyIsConnected)
+		if err != nil {
+			return errors.Wrap(err, "unable to get IsConnected from properties")
+		}
+		if connected != expected {
+			return errors.Errorf("unexpected Service.IsConnected state, got %t, expected %t", connected, expected)
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  6 * time.Second,
+		Interval: 100 * time.Millisecond,
+	})
+}
+
+// Connect to the Cellular Service and ensure that the connect succeeded, otherwise return an error.
+func (h *Helper) Connect(ctx context.Context) error {
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return err
+	}
+	if err := service.Connect(ctx); err != nil {
+		return err
+	}
+	return h.waitForConnected(ctx, service, true)
+}
+
+// Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
+func (h *Helper) Disconnect(ctx context.Context) error {
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return err
+	}
+	if err := service.Disconnect(ctx); err != nil {
+		return err
+	}
+	return h.waitForConnected(ctx, service, false)
 }
