@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/inputs/handwriting_jp_hello_20210108.hw",
+  "size": 43545,
+  "sha256sum": "ba9f468301a1681fe09ead78052ae2910f0137bc8e02b256661156243746d016"
+}
