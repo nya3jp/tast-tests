@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eba47df_820559be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-11T04:29:45Z",
+      "side": 1,
+      "message": "Almost there!",
+      "revId": "99a6962f402f4902257a6168dde451d661e75236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a58fef_e4a4a116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-11T04:29:45Z",
+      "side": 1,
+      "message": "Q: do you think there\u0027ll be devices where playing back 720p AV1\nwould be\\ too much, causing flakiness in the test? I\u0027m thinking\nabout Celeron devices or future ARM ones. Note that h264_hw_switch\nuses 144p and 240p videos, because the purpose of this test is to\nverify very-many seeks. WDYT?",
+      "range": {
+        "startLine": 73,
+        "startChar": 70,
+        "endLine": 73,
+        "endChar": 142
+      },
+      "revId": "99a6962f402f4902257a6168dde451d661e75236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
