@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d615a242_0fa09ff3",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "Do you mean that canvas won\u0027t be fully ready? Is it reproducible with smaller inverval? Did you try other UI params?\n\nAlso, comment is not very precise: how \"faster interval\" can \"remove the first stroke\"? Maybe you mean that canvas won\u0027t be ready for drawing if we\u0027ll the smaller interval.\n\nAnyway, it\u0027s a potential issue for test stability. if canvas is not ready, then some slow boards will constantly failing until you increase invertal to multiple seconds and slowing down test on all boards. So ideally we should find approach when canvas will be ready for drawing.",
+      "parentUuid": "158a8a64_1604fc2b",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 113
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6693954c_8aed7f93",
         "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
         "patchSetId": 10
@@ -747,6 +771,30 @@
       "side": 1,
       "message": "I understand that \u0027p\u0027 is commonly used for points but I think it might be good to use consistent naming styles for stroke and point and using \u0027s\u0027 for currentStroke might be a bit ambiguous. Is this alright?\n\nI am happy to change the variable name to \u0027p\u0027 for currentPoint if you still think that this should be shortened.",
       "parentUuid": "39adf510_7f7f2a7e",
+      "range": {
+        "startLine": 143,
+        "startChar": 9,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abef01db_42ac6153",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "PTAL on official guideline: https://github.com/golang/go/wiki/CodeReviewComments#variable-names\n\nFor small scope it\u0027s preferred to use shorter names, it\u0027s a bit different approach than for example in C++.",
+      "parentUuid": "8f03fe17_852d2555",
       "range": {
         "startLine": 143,
         "startChar": 9,
