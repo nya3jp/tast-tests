@@ -176,6 +176,24 @@
       "parentUuid": "915da28e_f21e478f",
       "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d233e5d_e4b17d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-11T17:13:56Z",
+      "side": 1,
+      "message": "Thank you. Sure, if you already aware of this, sounds good to me.",
+      "parentUuid": "574db3c5_0aeef33a",
+      "revId": "2ca93bd4651357a13f8de1d35c6f289136ba5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
