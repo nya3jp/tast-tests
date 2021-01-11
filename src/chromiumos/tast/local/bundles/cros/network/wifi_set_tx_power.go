@@ -25,16 +25,14 @@ func init() {
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(
-					"ezkinil", // TODO(b/162258095): Ezkinil lab DUTs have Qualcomm chip
-					"dalboz",  // TODO(b/162258095): Dalboz lab DUTs have Qualcomm chip
+					"dalboz", // TODO(b/162258095): Dalboz lab DUTs have Qualcomm chip
 				)),
 			},
 			{
 				Name:      "informational",
 				ExtraAttr: []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(
-					"ezkinil", // TODO(b/162258095): Ezkinil lab DUTs have Qualcomm chip
-					"dalboz",  // TODO(b/162258095): Dalboz lab DUTs have Qualcomm chip
+					"dalboz", // TODO(b/162258095): Dalboz lab DUTs have Qualcomm chip
 				)),
 			},
 		},
