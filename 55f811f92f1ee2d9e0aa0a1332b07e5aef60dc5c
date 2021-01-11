@@ -16,6 +16,24 @@
       "message": "Looks fairly stable.\n\nDo you know the reason of this failure?\nhttps://tastboard.corp.google.com/test/printer.Add.lexmark_pin\n",
       "revId": "55f811f92f1ee2d9e0aa0a1332b07e5aef60dc5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d701ea89_df93411d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-01-11T23:26:21Z",
+      "side": 1,
+      "message": "It\u0027s failing with \"Failed to connect to debugd: failed waiting for org.chromium.debugd service: context deadline exceeded.\" Debugd is listed as stop/waiting in initctl_list.log and is not present in ps.txt, causing a lot of tests to fail. Debugd is configured to start after the ui service, which is also listed as stop/waiting. graphics.DRM.drm_cursor_test has the following error (drm.go:79): Failed to stop ui: failed waiting for ui job to stabilize: context deadline exceeded. A lot of tast tests including this one appear to defer restarting the ui service after it has been successfully stopped when what they should be doing is first deferring the ensure ui service is running command and then attempting to stop the service to account for cases where the ui service partially stops (crbug.com/891594), ie it is stopped but the status takes too long to stabilize. Although even in that case I think the deferred start ui service command may still fail to run as the context is timed out. It\u0027s a bit unintuitive that upstart.StopJob can return an error despite successfully stopping the service, so I created crrev.com/c/2623410 to ensure the service is running before returning an error. That should fix the test flakes.",
+      "parentUuid": "e01348a3_71965dc0",
+      "revId": "55f811f92f1ee2d9e0aa0a1332b07e5aef60dc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
