@@ -7,10 +7,12 @@ package cellular
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/testing"
 )
 
 // Helper fetches Cellular Device and Service properties.
@@ -57,4 +59,50 @@ func NewHelper(ctx context.Context) (*Helper, error) {
 		Device:  device,
 		Service: service,
 	}, nil
+}
+
+// TODO(stevenjb): Use shorter sleep durations and query state in a loop.
+
+// IsEnabled returns true if Cellular is enabled.
+func (helper *Helper) IsEnabled() bool {
+	enabled, _ := helper.manager.IsEnabled(helper.ctx, shill.TechnologyCellular)
+	return enabled
+}
+
+// Enable attempts to enable Cellular returns true if enabled after the attempt.
+func (helper *Helper) Enable() bool {
+	helper.manager.EnableTechnology(helper.ctx, shill.TechnologyCellular)
+	testing.Sleep(helper.ctx, 3*time.Second)
+	return helper.IsEnabled()
+}
+
+// Disable attempts to disable Cellular returns true if disabled after the attempt.
+func (helper *Helper) Disable() bool {
+	helper.manager.DisableTechnology(helper.ctx, shill.TechnologyCellular)
+	testing.Sleep(helper.ctx, 1*time.Second)
+	return !helper.IsEnabled()
+}
+
+// IsConnected returns true if Cellular is connected.
+func (helper *Helper) IsConnected() bool {
+	properties, err := helper.Service.GetProperties(helper.ctx)
+	if err != nil {
+		return false
+	}
+	connected, err := properties.GetBool(shillconst.ServicePropertyIsConnected)
+	return connected
+}
+
+// Connect attempts to connect to the Cellular Service and returns true if connected after the attempt.
+func (helper *Helper) Connect() bool {
+	helper.Service.Connect(helper.ctx)
+	testing.Sleep(helper.ctx, 1*time.Second)
+	return helper.IsConnected()
+}
+
+// Disconnect attempts to disconnect from the Cellular Service and returns true if disconnected after the attempt.
+func (helper *Helper) Disconnect() bool {
+	helper.Service.Disconnect(helper.ctx)
+	testing.Sleep(helper.ctx, 1*time.Second)
+	return !helper.IsConnected()
 }

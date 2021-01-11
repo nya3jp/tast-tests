@@ -231,6 +231,25 @@ func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) 
 	return m.dbusObject.Call(ctx, "DisableTechnology", string(technology)).Err
 }
 
+// IsEnabled returns true if a technology is enabled.
+func (m *Manager) IsEnabled(ctx context.Context, technology Technology) (bool, error) {
+	prop, err := m.GetProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get properties")
+	}
+	technologies, err := prop.GetStrings(shillconst.ManagerPropertyEnabledTechnologies)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get enabled technologies")
+	}
+
+	for _, t := range technologies {
+		if t == string(technology) {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
 // DevicesByTechnology returns list of Devices and their Properties snapshots of the specified technology.
 func (m *Manager) DevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, []*Properties, error) {
 	var matches []*Device
