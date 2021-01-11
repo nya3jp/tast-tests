@@ -147,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd35511_a80b0787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/data/crostini_test_container_metadata_buster_amd64.tar.xz.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-11T22:20:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e96dde_606e73eb",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 1
+      },
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f844937c_ee52dadf",
@@ -160,6 +184,30 @@
       "writtenOn": "2021-01-06T05:57:23Z",
       "side": 1,
       "message": "We should remove that. We now take the position that concierge should never be shutdown before the user logs out.",
+      "range": {
+        "startLine": 330,
+        "startChar": 28,
+        "endLine": 330,
+        "endChar": 96
+      },
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeb1540c_a652d388",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-11T22:20:34Z",
+      "side": 1,
+      "message": "Made https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2622135 to address this, I will wait until it is merged before proceeding with this change.",
+      "parentUuid": "f844937c_ee52dadf",
       "range": {
         "startLine": 330,
         "startChar": 28,
