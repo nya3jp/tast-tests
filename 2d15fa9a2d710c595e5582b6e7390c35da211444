@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd5a5de_65366cc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-01-11T08:46:40Z",
+      "side": 1,
+      "message": "Retry CQ+2 due to: crbug.com/1164217",
+      "revId": "2d15fa9a2d710c595e5582b6e7390c35da211444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
