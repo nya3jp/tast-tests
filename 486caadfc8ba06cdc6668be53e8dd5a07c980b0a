@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ffbbc0_c9b9daa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-01-11T05:07:49Z",
+      "side": 1,
+      "message": "do we still need this now that the issue is marked as \"verified\"?",
+      "revId": "486caadfc8ba06cdc6668be53e8dd5a07c980b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
