@@ -170,4 +170,4 @@ frames.
 [Tast webrtc folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/webrtc/
 [WebRTC architecture]: http://webrtc.github.io/webrtc-org/architecture/#
 [fake video capture device]: http://webrtc.github.io/webrtc-org/testing/
-[Video Capabilities]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/video/README.md#capabilities-and-capability-test
+[Video Capabilities]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/video/README.md#capabilities
