@@ -87,3 +87,22 @@ func (h *Helper) FindService() (*shill.Service, error) {
 	}
 	return h.Manager.WaitForServiceProperties(h.ctx, cellularProperties, 5*time.Second)
 }
+
+// FindServiceForDevice returns the first connectable Cellular Service matching the Device ICCID.
+// If no such Cellular Service is available, returns a nil service and an error.
+func (h *Helper) FindServiceForDevice() (*shill.Service, error) {
+	deviceProperties, err := h.Device.GetProperties(h.ctx)
+	if err != nil || deviceProperties == nil {
+		return nil, errors.Wrap(err, "failed to get Cellular Device properties")
+	}
+	deviceIccid, err := deviceProperties.GetString(shillconst.DevicePropertyCellularICCID)
+	if err != nil || deviceIccid == "" {
+		return nil, errors.Wrap(err, "device missing ICCID")
+	}
+	cellularProperties := map[string]interface{}{
+		shillconst.ServicePropertyCellularICCID: deviceIccid,
+		shillconst.ServicePropertyConnectable:   true,
+		shillconst.ServicePropertyType:          shillconst.TypeCellular,
+	}
+	return h.Manager.WaitForServiceProperties(h.ctx, cellularProperties, 5*time.Second)
+}
