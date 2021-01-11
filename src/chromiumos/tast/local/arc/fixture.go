@@ -16,9 +16,11 @@ import (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "arcBooted",
-		Desc:            "ARC is booted",
-		Impl:            &bootedFixture{},
+		Name: "arcBooted",
+		Desc: "ARC is booted",
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.ARCEnabled()}, nil
+		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: resetTimeout,
@@ -30,12 +32,24 @@ type bootedFixture struct {
 	cr   *chrome.Chrome
 	arc  *ARC
 	init *Snapshot
+
+	fOpt chrome.OptionsCallback // Function to return chrome options.
+}
+
+// NewArcBootedFixture returns a FixtureImpl with a OptionsCallback function provided.
+func NewArcBootedFixture(fOpt chrome.OptionsCallback) testing.FixtureImpl {
+	return &bootedFixture{fOpt: fOpt}
 }
 
 func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	success := false
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	opts, err := f.fOpt(ctx, s)
+	if err != nil {
+		s.Fatal("Failed to obtain fixture options: ", err)
+	}
+
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
