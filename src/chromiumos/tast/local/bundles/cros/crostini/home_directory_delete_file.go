@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"os"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -14,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/linuxfiles"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -161,6 +163,7 @@ func init() {
 func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
@@ -178,14 +181,20 @@ func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 	const fileName = "testfile.txt"
 
 	s.Run(ctx, "delete_from_linuxfiles", func(ctx context.Context, s *testing.State) {
-		// Rename a file from Linux files and check it get renamed in container.
-		if err := testDeleteFileFromLinuxFiles(ctx, filesApp, cont, fileName); err != nil {
+		ownerID, err := cryptohome.UserHash(ctx, cr.User())
+		if err != nil {
+			s.Fatal("Failed to get user hash: ", err)
+		}
+		filePath := "/media/fuse/crostini_" + ownerID + "_termina_penguin/" + fileName
+
+		// Delete a file from Linux files and check it get deleted in container.
+		if err := testDeleteFileFromLinuxFiles(ctx, filesApp, cont, fileName, filePath); err != nil {
 			s.Error("Failed to test deleting files from Linux files: ", err)
 		}
 	})
 
 	s.Run(ctx, "delete_from_container", func(ctx context.Context, s *testing.State) {
-		// Rename a file from container and check it get renamed in Linux files.
+		// Delete a file from container and check it get deleted in Linux files.
 		if err := testDeleteFileFromContainer(ctx, filesApp, cont, fileName); err != nil {
 			s.Error("Failed to test deleting files in container: ", err)
 		}
@@ -193,23 +202,26 @@ func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 }
 
 // testDeleteFileFromLinuxFiles first deletes a file in Linux files then checks it is also deleted in container.
-func testDeleteFileFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container, fileName string) error {
+func testDeleteFileFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesApp, cont *vm.Container, fileName, filePath string) error {
 	// Create a file inside container.
 	if err := cont.Command(ctx, "touch", fileName).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to create a file in the container")
 	}
 
-	// Open "Linux files".
-	if err := filesApp.OpenDir(ctx, linuxfiles.DirName, linuxfiles.Title); err != nil {
-		return errors.Wrap(err, "failed to open Linux files")
+	// Delete the file from Chrome OS.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat(filePath); err != nil {
+			return errors.Wrapf(err, "file %s does not exist", filePath)
+		}
+		if err := os.Remove(filePath); err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to delete the file in Chrome OS")
 	}
 
-	// Delete the file in Linux file.
-	if err := filesApp.DeleteFileOrFolder(ctx, fileName); err != nil {
-		return errors.Wrapf(err, "failed to delete %s in Linux files", fileName)
-	}
-
-	// Check the file has been deleted in the container.
+	// Check the file has been deleted from the container.
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if err := cont.CheckFileDoesNotExistInDir(ctx, ".", fileName); err != nil {
 			return errors.Wrapf(err, "failed to delete file %s in the container through deleting it from Linux files", fileName)
