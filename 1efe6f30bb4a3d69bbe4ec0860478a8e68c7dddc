@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5dcf131_ed08f5e2",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-11T00:02:33Z",
+      "side": 1,
+      "message": "you could probably use strings.Join, but this works too.",
+      "range": {
+        "startLine": 166,
+        "startChar": 5,
+        "endLine": 166,
+        "endChar": 16
+      },
+      "revId": "1efe6f30bb4a3d69bbe4ec0860478a8e68c7dddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2bb8e11_6521b75b",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-11T00:02:33Z",
+      "side": 1,
+      "message": "just a thought, should we consider passing runtime.GOARCH as an argument rather than making it implicit?  I\u0027m undecided on this, so only change if you think it is better.",
+      "range": {
+        "startLine": 266,
+        "startChar": 55,
+        "endLine": 266,
+        "endChar": 56
+      },
+      "revId": "1efe6f30bb4a3d69bbe4ec0860478a8e68c7dddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0785c40b_c0596329",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-11T00:02:33Z",
+      "side": 1,
+      "message": "Shouldn\u0027t one of these be GetContainerRootfsArtifact?",
+      "range": {
+        "startLine": 267,
+        "startChar": 26,
+        "endLine": 267,
+        "endChar": 54
+      },
+      "revId": "1efe6f30bb4a3d69bbe4ec0860478a8e68c7dddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
