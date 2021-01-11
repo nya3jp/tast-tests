@@ -42,6 +42,11 @@ func (h *PropertyHolder) GetProperties(ctx context.Context) (*Properties, error)
 	return NewProperties(ctx, h.DBusObject)
 }
 
+// GetDBusProperties calls the dbus GetAll method on the interface and returns the result.
+func (h *PropertyHolder) GetDBusProperties(ctx context.Context) (*Properties, error) {
+	return NewDBusProperties(ctx, h.DBusObject)
+}
+
 // SetProperty calls SetProperty on the interface to set property to the given value.
 func (h *PropertyHolder) SetProperty(ctx context.Context, prop string, value interface{}) error {
 	return h.Call(ctx, "SetProperty", prop, value).Err

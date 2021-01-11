@@ -26,6 +26,15 @@ func NewProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
 	return &Properties{props: props}, nil
 }
 
+// NewDBusProperties creates a new Properties object and populates it with the object's properties.
+func NewDBusProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
+	var props map[string]interface{}
+	if err := d.GetAll(ctx, &props); err != nil {
+		return nil, errors.Wrapf(err, "failed getting all properties of %v", d)
+	}
+	return &Properties{props: props}, nil
+}
+
 // Has returns whether property exist.
 func (p *Properties) Has(prop string) bool {
 	_, ok := p.props[prop]
@@ -115,6 +124,19 @@ func (p *Properties) GetInt32(prop string) (int32, error) {
 	ret, ok := value.(int32)
 	if !ok {
 		return 0, errors.Errorf("property %s is not an int32: %q", prop, value)
+	}
+	return ret, nil
+}
+
+// GetUInt32 returns the property value as a uint32.
+func (p *Properties) GetUInt32(prop string) (uint32, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return 0, err
+	}
+	ret, ok := value.(uint32)
+	if !ok {
+		return 0, errors.Errorf("property %s is not a uint32: %q", prop, value)
 	}
 	return ret, nil
 }
