@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "158a8a64_1604fc2b",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "I think this is because if we poll with an interval that is too small, it finds the canvas multiple times before the first identification of the canvas returns that it has found the canvas and \u0027resets\u0027 the current ongoing stroke.",
+      "parentUuid": "4c98a572_e5f4786c",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 113
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6693954c_8aed7f93",
         "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
         "patchSetId": 10
@@ -88,6 +112,30 @@
       "writtenOn": "2021-01-07T13:36:50Z",
       "side": 1,
       "message": "Maybe rename it to \"toCoordsPoint\" to be more presize?",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a77f0d3_05c99bb4",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6693954c_8aed7f93",
       "range": {
         "startLine": 55,
         "startChar": 15,
@@ -111,6 +159,30 @@
       "writtenOn": "2021-01-07T13:36:50Z",
       "side": 1,
       "message": "Please move this method right after \"point\" structure",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe07107_e23024d1",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f7c5b98_5d8e9a9b",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -213,6 +285,102 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f393e20_48e77404",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff0e953_7bc29025",
+      "range": {
+        "startLine": 60,
+        "startChar": 87,
+        "endLine": 60,
+        "endChar": 115
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29da1eca_a92256c4",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "I read the documentation for naming in GoLang and I\u0027ve renamed this function to newStrokeGroup.",
+      "parentUuid": "831cd268_827d133a",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a202141_6206565d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0919b45_1660da06",
+      "range": {
+        "startLine": 60,
+        "startChar": 46,
+        "endLine": 60,
+        "endChar": 68
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e89c5c17_b2fa4e29",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9598fb0_0fb067bd",
+      "range": {
+        "startLine": 60,
+        "startChar": 25,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d495a89_81f34b12",
@@ -226,6 +394,30 @@
       "writtenOn": "2021-01-07T13:36:50Z",
       "side": 1,
       "message": "nit: add space between %f: \"%f %f\"?",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5d880f_e7a14e03",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d495a89_81f34b12",
       "range": {
         "startLine": 76,
         "startChar": 34,
@@ -259,6 +451,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b7334d_ec5406f7",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a011f64_4fb538c2",
+      "range": {
+        "startLine": 88,
+        "startChar": 39,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d91cc9c_20984558",
@@ -272,6 +488,30 @@
       "writtenOn": "2021-01-07T13:36:50Z",
       "side": 1,
       "message": "Maybe try to use shorter names for variables, for example sc?",
+      "range": {
+        "startLine": 109,
+        "startChar": 71,
+        "endLine": 109,
+        "endChar": 86
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa117fda_eeccb93d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "I\u0027ve left this as strokeContainer as I think sc is a bit ambiguous especially because there are a lot of other variables starting with sc in the same method such as scale and scanner.",
+      "parentUuid": "9d91cc9c_20984558",
       "range": {
         "startLine": 109,
         "startChar": 71,
@@ -305,6 +545,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d71060b_57392eab",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "I think it may be better if we kept it as canvas because it\u0027s not too long and a bit less ambiguous.\nI understand your intention was to keep it consistent with the changing canvasLocation to canLoc so I\u0027ve changed canvasLocation to canvasLoc.",
+      "parentUuid": "2517477d_2abbc88a",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 7
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdbc7423_d41e66a2",
@@ -318,6 +582,30 @@
       "writtenOn": "2021-01-07T13:36:50Z",
       "side": 1,
       "message": "same: canLoc?",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 15
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e7a34f6_3ba6f66f",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "I\u0027ve renamed it to canvasLoc (as mentioned above) as canLoc sounds a bit too ambiguous.",
+      "parentUuid": "cdbc7423_d41e66a2",
       "range": {
         "startLine": 115,
         "startChar": 1,
@@ -351,6 +639,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f86e0870_485828ac",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e69e666_61aba427",
+      "range": {
+        "startLine": 118,
+        "startChar": 49,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89db2fb6_f54fdf6b",
@@ -364,6 +676,30 @@
       "writtenOn": "2021-01-07T13:36:50Z",
       "side": 1,
       "message": "it used only once, maybe just remove this variable?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee3e5bb_59166701",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89db2fb6_f54fdf6b",
       "range": {
         "startLine": 142,
         "startChar": 0,
@@ -397,6 +733,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f03fe17_852d2555",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "I understand that \u0027p\u0027 is commonly used for points but I think it might be good to use consistent naming styles for stroke and point and using \u0027s\u0027 for currentStroke might be a bit ambiguous. Is this alright?\n\nI am happy to change the variable name to \u0027p\u0027 for currentPoint if you still think that this should be shortened.",
+      "parentUuid": "39adf510_7f7f2a7e",
+      "range": {
+        "startLine": 143,
+        "startChar": 9,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32f88186_823c0a0d",
@@ -410,6 +770,30 @@
       "writtenOn": "2021-01-07T13:36:50Z",
       "side": 1,
       "message": "What is the minimal inverval that VK will handle?",
+      "range": {
+        "startLine": 147,
+        "startChar": 60,
+        "endLine": 147,
+        "endChar": 79
+      },
+      "revId": "3d7236216e3ab7536a39788af5ab7bc88d0e0096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76cf89cf_3278d140",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-11T04:18:55Z",
+      "side": 1,
+      "message": "It says that if the interval is 0, it will move instantly to the specified point. We are trying to simulate a real person writing the handwriting so I think a bit of a delay is good.",
+      "parentUuid": "32f88186_823c0a0d",
       "range": {
         "startLine": 147,
         "startChar": 60,
