@@ -16,6 +16,299 @@
       "message": "Thank you for your additional comments!\nI\u0027ve gone through them and changed the code where necessary.",
       "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc8d13b_84c35e5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "Thanks for changes!\n\nLooks much better. Mostly left minor comments.",
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14fc2e46_8cfba0a5",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "please use file path, in tests you can use tests as well",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb11e0e7_2d9c3d7a",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "please move it right after strokeGroup struct",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d45a5d_50e8b0c0",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "there is no need to return error here",
+      "range": {
+        "startLine": 105,
+        "startChar": 79,
+        "endLine": 105,
+        "endChar": 84
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0410e505_0b856e7b",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "it can be a struct method as well",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e61dd6_eba990f8",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "nit: make it const",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6905f2a2_e09a49c3",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "nit: IIRC, you can just omit \"stroke\" here, same for \"point\" below",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aae7297_28ba35d5",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "nit: don\u0027t ignore error",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 7
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f875ede_1481ef4b",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "You can use files in unit tests:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/storage/stress/trim_util_test.go;l\u003d32?q\u003dtast-tests%20file:_test.go%20ioutil",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 43
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1599fb_0d5e0adf",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "nit: ;",
+      "range": {
+        "startLine": 46,
+        "startChar": 34,
+        "endLine": 46,
+        "endChar": 35
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e95b12_14a44960",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "i\u0027d remove \"mock\" prefix because there is no special \"mock\" behavior",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042ec1e2_e1cfa261",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "same here for \"mock\" prefix.\n\n\"sg\" name should be fine for such small function. It\u0027s a bit confusing and inconsistent when you use \"stroke container\" and \"stroke group\" for the same thing.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d194ff82_b802719e",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-11T10:41:06Z",
+      "side": 1,
+      "message": "nit: err shouldn\u0027t be ignored",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "5dd1353f90d2ffa517ae02e79678e822073eb35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
