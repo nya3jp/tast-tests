@@ -16,6 +16,23 @@
       "message": "Tast owners: PTAL (small documentation update)",
       "revId": "87bdbfb9d2addf94b1cf609764950b150d009d3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eceb5f5_9f5abdaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-11T22:25:11Z",
+      "side": 1,
+      "message": "+2\n\n(giving +2 without waiting for shadow reviewer since this is a trivial CL, and shadow reviewer is in a different timezone)",
+      "revId": "87bdbfb9d2addf94b1cf609764950b150d009d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
