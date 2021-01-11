@@ -22,6 +22,30 @@
       },
       "revId": "9ec9809d62f4b38cd67177ed7c34e3b8be5804bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e62da4_aa83974b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-11T17:07:37Z",
+      "side": 1,
+      "message": "What do you think about checking for a status of kUnsupported if we determine the routine is not supported instead of skipping the routine? I would still like to test that if a routine is unsupported, it can be invoked without error.",
+      "parentUuid": "9a6ed487_f2ac39f1",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "9ec9809d62f4b38cd67177ed7c34e3b8be5804bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
