@@ -165,6 +165,27 @@ func (m *Manager) DeviceByType(ctx context.Context, deviceType string) (*Device,
 	return nil, nil
 }
 
+// Services returns a list of all available Service instances.
+func (m *Manager) Services(ctx context.Context) ([]*Service, error) {
+	p, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	paths, err := p.GetObjectPaths(shillconst.ManagerPropertyServices)
+	if err != nil {
+		return nil, err
+	}
+	services := make([]*Service, 0, len(paths))
+	for _, path := range paths {
+		service, err := NewService(ctx, path)
+		if err != nil {
+			return nil, err
+		}
+		services = append(services, service)
+	}
+	return services, nil
+}
+
 // ConfigureService configures a service with the given properties and returns its path.
 func (m *Manager) ConfigureService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
 	var service dbus.ObjectPath
