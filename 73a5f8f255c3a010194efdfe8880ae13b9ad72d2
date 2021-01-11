@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b144a8_2b093fb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-11T22:18:37Z",
+      "side": 1,
+      "message": "just check, defer with error requires named return params to always work correctly:\n\na *AndroidNearbyDevice, err error",
+      "range": {
+        "startLine": 54,
+        "startChar": 83,
+        "endLine": 54,
+        "endChar": 110
+      },
+      "revId": "73a5f8f255c3a010194efdfe8880ae13b9ad72d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04ed1ae_4f865202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-11T22:18:37Z",
+      "side": 1,
+      "message": "ditto:\n\n(err error)",
+      "range": {
+        "startLine": 108,
+        "startChar": 65,
+        "endLine": 108,
+        "endChar": 70
+      },
+      "revId": "73a5f8f255c3a010194efdfe8880ae13b9ad72d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
