@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c5d7c20_dc16a86e",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-11T22:36:10Z",
+      "side": 1,
+      "message": "uninstalling Crostini",
+      "range": {
+        "startLine": 535,
+        "startChar": 23,
+        "endLine": 535,
+        "endChar": 74
+      },
+      "revId": "3a4b44b00c407fda7f3443963656f8418c1534a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e272c69f_b99f0feb",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-11T22:36:10Z",
+      "side": 1,
+      "message": "There is a removing progress dialog after clicking delete and it may take a few seconds to disappear. I think it means it takes that time to uninstall Crostini. Therefore, suggest to wait for that dialog disappear or verify another thing like https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/remove_ok.go;l\u003d187",
+      "range": {
+        "startLine": 555,
+        "startChar": 16,
+        "endLine": 555,
+        "endChar": 21
+      },
+      "revId": "3a4b44b00c407fda7f3443963656f8418c1534a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
