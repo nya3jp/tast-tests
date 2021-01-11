@@ -24,6 +24,7 @@ const (
 	// Device property names.
 	DevicePropertyAddress         = "Address"
 	DevicePropertyInterface       = "Interface"
+	DevicePropertyPowered         = "Powered"
 	DevicePropertyType            = "Type"
 	DevicePropertySelectedService = "SelectedService"
 
