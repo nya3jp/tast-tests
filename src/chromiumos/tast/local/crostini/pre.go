@@ -16,7 +16,9 @@ import (
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -415,6 +417,24 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, p.tconn)
+
+	// If we use a real gaia login, then ARC++ can't be started
+	// until after we accept the playstore terms and
+	// conditions. But trying to opt-in multiple times also fails,
+	// because the opt-in page only appears the first time, so do
+	// it here in the precondition.
+	if arc.Supported() && GaiaLoginAvailable(s) {
+		s.Log("Opting into Play Store")
+		if err := optin.Perform(ctx, p.cr, p.tconn); err != nil {
+			s.Fatal("Failed to optin to Play Store: ", err)
+		}
+		if err := optin.WaitForPlayStoreShown(ctx, p.tconn); err != nil {
+			s.Fatal("Failed to wait for Play Store: ", err)
+		}
+		if err := apps.Close(ctx, p.tconn, apps.PlayStore.ID); err != nil {
+			s.Log("Failed to close Play Store: ", err)
+		}
+	}
 
 	if p.keyboard, err = input.Keyboard(ctx); err != nil {
 		s.Fatal("Failed to create keyboard device: ", err)
