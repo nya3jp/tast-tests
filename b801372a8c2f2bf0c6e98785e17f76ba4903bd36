@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce56511_f8e1f026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-11T21:51:26Z",
+      "side": 1,
+      "message": "nit: return a, a.TCPConn(ctx)",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "b801372a8c2f2bf0c6e98785e17f76ba4903bd36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9de79f09_d0dfcaa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-11T21:51:26Z",
+      "side": 1,
+      "message": "Thinking about this more. since you don\u0027t actually use the error in the defer, you may just want to log this. testing.ContextLogf(...)",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 78
+      },
+      "revId": "b801372a8c2f2bf0c6e98785e17f76ba4903bd36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
