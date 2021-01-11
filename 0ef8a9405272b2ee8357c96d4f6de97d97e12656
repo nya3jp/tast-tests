@@ -16,6 +16,24 @@
       "message": "Can you move the remove outside of the Poll?  It doesn\u0027t make sense to continue deleting if there is an error",
       "revId": "0ef8a9405272b2ee8357c96d4f6de97d97e12656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd69ee4_53f9f4c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_delete_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-11T01:47:44Z",
+      "side": 1,
+      "message": "Added checking existence after deleting, sometimes os.Remove fails to remove without knowing why.",
+      "parentUuid": "f4f7dd8e_aaf06b82",
+      "revId": "0ef8a9405272b2ee8357c96d4f6de97d97e12656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
