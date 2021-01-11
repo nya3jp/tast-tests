@@ -27,6 +27,10 @@ const (
 	DevicePropertyType            = "Type"
 	DevicePropertySelectedService = "SelectedService"
 
+	// Cellular device property names.
+	DevicePropertyCellularICCID      = "Cellular.ICCID"
+	DevicePropertyCellularSIMPresent = "Cellular.SIMPresent"
+
 	// Ethernet device property names.
 	DevicePropertyEthernetBusType   = "Ethernet.DeviceBusType"
 	DevicePropertyEthernetLinkUp    = "Ethernet.LinkUp"
@@ -87,6 +91,9 @@ const (
 	ServicePropertyAutoConnect    = "AutoConnect"
 	ServicePropertyGUID           = "GUID"
 	ServicePropertyConnectionID   = "ConnectionId"
+
+	// Cellular service property names.
+	ServicePropertyCellularICCID = "Cellular.ICCID"
 
 	// WiFi service property names.
 	ServicePropertyPassphrase          = "Passphrase"
