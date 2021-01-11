@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d688cb_e2c3a344",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-11T09:53:37Z",
+      "side": 1,
+      "message": "I prefer the implicit usage because that\u0027s the only arch string that makes sense to use.\n\nAlso so I don\u0027t have to go and update every test to import the runtime package",
+      "parentUuid": "b2bb8e11_6521b75b",
+      "range": {
+        "startLine": 266,
+        "startChar": 55,
+        "endLine": 266,
+        "endChar": 56
+      },
+      "revId": "1efe6f30bb4a3d69bbe4ec0860478a8e68c7dddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0785c40b_c0596329",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-01-11T00:02:33Z",
       "side": 1,
       "message": "Shouldn\u0027t one of these be GetContainerRootfsArtifact?",
+      "range": {
+        "startLine": 267,
+        "startChar": 26,
+        "endLine": 267,
+        "endChar": 54
+      },
+      "revId": "1efe6f30bb4a3d69bbe4ec0860478a8e68c7dddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34562427_13bb3c37",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-11T09:53:37Z",
+      "side": 1,
+      "message": "Err, yes, fixed",
+      "parentUuid": "0785c40b_c0596329",
       "range": {
         "startLine": 267,
         "startChar": 26,
