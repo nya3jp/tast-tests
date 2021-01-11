@@ -26,7 +26,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "tpm2"},
 	})
 }
 
