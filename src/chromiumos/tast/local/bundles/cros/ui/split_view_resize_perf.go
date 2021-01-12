@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 	"time"
 
@@ -26,6 +27,15 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type splitViewResizeParams int
+
+const (
+	splitViewResizeClamshell splitViewResizeParams = iota
+	splitViewResizeTablet
+	splitViewResizeWebUI
+	splitViewResizeWebUIExpand
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SplitViewResizePerf,
@@ -35,15 +45,23 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      5 * time.Minute,
-		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{
 			{
-				Name: "clamshell_mode",
-				Val:  false,
+				Name:    "clamshell_mode",
+				Val:     splitViewResizeClamshell,
+				Fixture: "chromeLoggedIn",
 			},
 			{
 				ExtraSoftwareDeps: []string{"tablet_mode"},
-				Val:               true,
+				Val:               splitViewResizeTablet,
+			},
+			{
+				Name: "webui",
+				Val:  splitViewResizeWebUI,
+			},
+			{
+				Name: "webui_expand",
+				Val:  splitViewResizeWebUIExpand,
 			},
 		},
 	})
@@ -55,14 +73,33 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	param := s.Param().(splitViewResizeParams)
+	tabletMode := param != splitViewResizeClamshell
+	webuiTabstrip := param == splitViewResizeWebUI || param == splitViewResizeWebUIExpand
+	expandWebUI := param == splitViewResizeWebUIExpand
+
+	var cr *chrome.Chrome
+	if tabletMode {
+		var err error
+		var opt chrome.Option
+		if webuiTabstrip {
+			opt = chrome.EnableFeatures("WebUITabStrip")
+		} else {
+			opt = chrome.DisableFeatures("WebUITabStrip")
+		}
+		if cr, err = chrome.New(ctx, opt); err != nil {
+			s.Fatal("Failed to init")
+		}
+		defer cr.Close(ctx)
+	} else {
+		cr = s.FixtValue().(*chrome.Chrome)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	tabletMode := s.Param().(bool)
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
 		if tabletMode {
@@ -143,8 +180,41 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	var modeName string
 	if tabletMode {
 		testCases = testCaseSlice{
-			{"SingleWindow", 1, func(context.Context) error { return nil }},
-			{"WithOverview", 8, func(context.Context) error { return nil }},
+			{"SingleWindow", 1, func(ctx context.Context) error {
+				if !expandWebUI {
+					return nil
+				}
+				// Toggle to open the WebUI tabstrip.
+				params := chromeui.FindParams{
+					Role:       chromeui.RoleTypeButton,
+					Attributes: map[string]interface{}{"name": regexp.MustCompile("toggle tab strip")},
+				}
+				toggleButton, err := chromeui.Find(ctx, tconn, params)
+				if err != nil {
+					return err
+				}
+				waitOptions := &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}
+				if err := toggleButton.WaitLocationStable(ctx, waitOptions); err != nil {
+					return err
+				}
+				if err := pointer.Click(ctx, pointerController, toggleButton.Location.CenterPoint()); err != nil {
+					return err
+				}
+				if err := toggleButton.WaitLocationStable(ctx, waitOptions); err != nil {
+					return err
+				}
+				// Disable automation features explicitly, so that further operations
+				// won't be affected by accessibility events. See
+				// https://crbug.com/1096719 and https://crbug.com/1111137.
+				if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.disableAutomation)()", nil); err != nil {
+					return errors.Wrap(err, "failed to disable the automation feature")
+				}
+				if err := tconn.Eval(ctx, "location.reload()", nil); err != nil {
+					return err
+				}
+				return tconn.WaitForExpr(ctx, "document.readyState == 'complete'")
+			}},
+			{"WithOverview", 8, func(ctx context.Context) error { return nil }},
 			{"MultiWindow", 8, func(ctx context.Context) error {
 				// Additional preparation for the multi-window; by default the right side
 				// should be in the overview mode, so here selects one of the windows.
@@ -158,9 +228,51 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				if err := pointer.Click(ctx, pointerController, w.OverviewInfo.Bounds.CenterPoint()); err != nil {
 					return errors.Wrapf(err, "failed to tap the center of %d", id1)
 				}
-				return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+				if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 					return w.ID == id1 && !w.IsAnimating && w.State == ash.WindowStateRightSnapped
-				}, &testing.PollOptions{Timeout: 5 * time.Second})
+				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+					return errors.Wrap(err, "failed to wait for the condition")
+				}
+
+				if !expandWebUI {
+					return nil
+				}
+
+				// Toggle to open the WebUI tabstrip of the window on righthand side.
+				params := chromeui.FindParams{
+					Role:       chromeui.RoleTypeButton,
+					Attributes: map[string]interface{}{"name": regexp.MustCompile("toggle tab strip")},
+				}
+				toggleButtons, err := chromeui.FindAll(ctx, tconn, params)
+				if err != nil {
+					return err
+				}
+				for _, toggleButton := range toggleButtons {
+					waitOptions := &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}
+					if err := toggleButton.WaitLocationStable(ctx, waitOptions); err != nil {
+						return err
+					}
+					if toggleButton.Location.CenterPoint().X < info.Bounds.CenterPoint().X {
+						continue
+					}
+					if err := pointer.Click(ctx, pointerController, toggleButton.Location.CenterPoint()); err != nil {
+						return err
+					}
+					if err := toggleButton.WaitLocationStable(ctx, waitOptions); err != nil {
+						return err
+					}
+					break
+				}
+				// Disable automation features explicitly, so that further operations
+				// won't be affected by accessibility events. See
+				// https://crbug.com/1096719 and https://crbug.com/1111137.
+				if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.disableAutomation)()", nil); err != nil {
+					return errors.Wrap(err, "failed to disable the automation feature")
+				}
+				if err := tconn.Eval(ctx, "location.reload()", nil); err != nil {
+					return err
+				}
+				return tconn.WaitForExpr(ctx, "document.readyState == 'complete'")
 			}},
 		}
 		modeName = "TabletMode"
@@ -225,7 +337,8 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 
 	currentWindows := 0
 	runner := perfutil.NewRunner(cr)
-	for _, testCase := range testCases {
+	var id0 int
+	for i, testCase := range testCases {
 		s.Run(ctx, testCase.name, func(ctx context.Context, s *testing.State) {
 			conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, testCase.numWindows-currentWindows)
 			if err != nil {
@@ -240,39 +353,46 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 				s.Fatal("Failed to enter into the overview mode: ", err)
 			}
-			w, err := ash.FindFirstWindowInOverview(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to find the window in the overview mode: ", err)
-			}
-			wCenterPoint := w.OverviewInfo.Bounds.CenterPoint()
-			ended := false
-			if err := pointerController.Press(ctx, wCenterPoint); err != nil {
-				s.Fatal("Failed to start window drag from overview grid to snap: ", err)
-			}
-			defer func() {
-				if !ended {
-					if err := pointerController.Release(ctx); err != nil {
-						s.Error("Failed to release the pointer: ", err)
+
+			// In tablet-mode, this is needed only once as the left-snapped window
+			// should stay as left-snapped.
+			if !tabletMode || i == 0 {
+				w, err := ash.FindFirstWindowInOverview(ctx, tconn)
+				if err != nil {
+					s.Fatal("Failed to find the window in the overview mode: ", err)
+				}
+				wCenterPoint := w.OverviewInfo.Bounds.CenterPoint()
+
+				if err := pointerController.Press(ctx, wCenterPoint); err != nil {
+					s.Fatal("Failed to start window drag from overview grid to snap: ", err)
+				}
+				ended := false
+				defer func() {
+					if !ended {
+						if err := pointerController.Release(ctx); err != nil {
+							s.Error("Failed to release the pointer: ", err)
+						}
+					}
+				}()
+				// A window drag from a tablet overview grid must begin with a long press to
+				// disambiguate from scrolling.
+				if tabletMode {
+					if err := testing.Sleep(ctx, time.Second); err != nil {
+						s.Fatal("Failed to wait for touch to become long press, for window drag from overview grid to snap: ", err)
 					}
 				}
-			}()
-			// A window drag from a tablet overview grid must begin with a long press to
-			// disambiguate from scrolling.
-			if tabletMode {
-				if err := testing.Sleep(ctx, time.Second); err != nil {
-					s.Fatal("Failed to wait for touch to become long press, for window drag from overview grid to snap: ", err)
+				if err := pointerController.Move(ctx, wCenterPoint, leftSnapPoint, 200*time.Millisecond); err != nil {
+					s.Fatal("Failed during window drag from overview grid to snap: ", err)
 				}
-			}
-			if err := pointerController.Move(ctx, wCenterPoint, leftSnapPoint, 200*time.Millisecond); err != nil {
-				s.Fatal("Failed during window drag from overview grid to snap: ", err)
-			}
-			if err := pointerController.Release(ctx); err != nil {
-				s.Fatal("Failed to end window drag from overview grid to snap: ", err)
-			}
-			ended = true
+				if err := pointerController.Release(ctx); err != nil {
+					s.Fatal("Failed to end window drag from overview grid to snap: ", err)
+				}
+				ended = true
 
-			// id0 supposed to have the window id which is left-snapped.
-			id0 := w.ID
+				// id0 supposed to have the window id which is left-snapped.
+				id0 = w.ID
+			}
+
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 				return w.ID == id0 && !w.IsAnimating && w.State == ash.WindowStateLeftSnapped
 			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
@@ -313,7 +433,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					// the screen exactly, and the previous drag will end up with a
 					// slightly different width. So checking the starting position again.
 					w, err := ash.FindWindow(ctx, tconn, func(window *ash.Window) bool {
-						return id0 == w.ID
+						return id0 == window.ID
 					})
 					if err != nil {
 						return errors.Wrap(err, "failed to find the window")
