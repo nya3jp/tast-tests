@@ -26,7 +26,9 @@ func screenshotPaths() ([]string, error) {
 			paths = append(paths, path)
 		}
 		return nil
-	}); err != nil {
+	}); os.IsNotExist(err) {
+		return []string{}, nil
+	} else if err != nil {
 		return nil, err
 	}
 
