@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4bd9402_50e4698d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-12T23:00:47Z",
+      "side": 1,
+      "message": "lgtm % one nit",
+      "revId": "2bf88eeb588ec7fe3631e4a454a455afd5be44b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c65cbb50_11d900ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-12T23:00:47Z",
+      "side": 1,
+      "message": "nit: This block is repeated a few times in this file. Could we somehow share the code?\ne.g.\n\n  resetAutomation :\u003d func() error {\n    ...;\n  }\n\n?",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 70
+      },
+      "revId": "2bf88eeb588ec7fe3631e4a454a455afd5be44b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
