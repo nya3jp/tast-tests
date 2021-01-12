@@ -7,18 +7,16 @@ package security
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strconv"
 	"strings"
-	"syscall"
 
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/asan"
+	"chromiumos/tast/local/bundles/cros/security/sandboxing"
 	"chromiumos/tast/local/moblab"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
@@ -296,13 +294,13 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 
 	// We don't know that we'll see parent processes before their children (since PIDs can wrap around),
 	// so do an initial pass to gather information.
-	infos := make(map[int32]*procSandboxInfo)
+	infos := make(map[int32]*sandboxing.ProcSandboxInfo)
 	ignoredAncestorPIDs := make(map[int32]struct{})
 	for _, proc := range procs {
-		info, err := getProcSandboxInfo(proc)
+		info, err := sandboxing.GetProcSandboxInfo(proc)
 		// Even on error, write the partially-filled info to help in debugging.
 		fmt.Fprintf(lg, "%5d %-15s uid=%-6d gid=%-6d pidns=%-10d mntns=%-10d nnp=%-5v seccomp=%-5v ecaps=%#x\n",
-			proc.Pid, info.name, info.euid, info.egid, info.pidNS, info.mntNS, info.noNewPrivs, info.seccomp, info.ecaps)
+			proc.Pid, info.Name, info.Euid, info.Egid, info.PidNS, info.MntNS, info.NoNewPrivs, info.Seccomp, info.Ecaps)
 		if err != nil {
 			// An error could either indicate that the process exited or that we failed to parse /proc.
 			// Check if the process is still there so we can report the error in the latter case.
@@ -315,14 +313,14 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		infos[proc.Pid] = info
 
 		// Determine if all of this process's children should also be ignored.
-		_, ignoredByName := ignoredAncestorNames[info.name]
+		_, ignoredByName := ignoredAncestorNames[info.Name]
 		if ignoredByName ||
 			// Assume that any executables under /usr/local are dev- or test-specific,
 			// since /usr/local is mounted noexec if dev mode is disabled.
-			strings.HasPrefix(info.exe, "/usr/local/") ||
+			strings.HasPrefix(info.Exe, "/usr/local/") ||
 			// Autotest tests sometimes leave orphaned processes running after they exit,
 			// so ignore anything that might e.g. be using a data file from /usr/local/autotest.
-			strings.Contains(info.cmdline, "autotest") {
+			strings.Contains(info.Cmdline, "autotest") {
 			ignoredAncestorPIDs[proc.Pid] = struct{}{}
 		}
 	}
@@ -341,7 +339,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		if pid == initPID {
 			continue
 		}
-		if _, ok := exclusionsMap[info.name]; ok {
+		if _, ok := exclusionsMap[info.Name]; ok {
 			continue
 		}
 		if _, ok := ignoredAncestorPIDs[pid]; ok {
@@ -356,14 +354,14 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		// We may have expectations for multiple users in the case of a process that forks and drops privileges.
 		var reqs *procReqs
 		var reqUID uint32
-		for _, r := range baselineMap[info.name] {
+		for _, r := range baselineMap[info.Name] {
 			uid, err := parseID(r.euser, sysutil.GetUID)
 			if err != nil {
 				s.Errorf("Failed to look up user %q for PID %v", r.euser, pid)
 				continue
 			}
 			// Favor reqs that exactly match the process's EUID, but fall back to the first one we see.
-			match := uid == info.euid
+			match := uid == info.Euid
 			if match || reqs == nil {
 				reqs = r
 				reqUID = uid
@@ -376,242 +374,76 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		if reqs == nil {
 			// Processes running as root must always be listed in the baseline.
 			// We ignore unlisted non-root processes on the assumption that they've already done some sandboxing.
-			if info.euid == 0 {
-				s.Errorf("Unexpected %q process %v (%v) running as root", info.name, pid, info.exe)
+			if info.Euid == 0 {
+				s.Errorf("Unexpected %q process %v (%v) running as root", info.Name, pid, info.Exe)
 			}
 			continue
 		}
 
 		var problems []string
 
-		if info.euid != reqUID {
-			problems = append(problems, fmt.Sprintf("effective UID %v; want %v", info.euid, reqUID))
+		if info.Euid != reqUID {
+			problems = append(problems, fmt.Sprintf("effective UID %v; want %v", info.Euid, reqUID))
 		}
 
 		if gid, err := parseID(reqs.egroup, sysutil.GetGID); err != nil {
 			s.Errorf("Failed to look up group %q for PID %v", reqs.egroup, pid)
-		} else if info.egid != gid {
-			problems = append(problems, fmt.Sprintf("effective GID %v; want %v", info.egid, gid))
+		} else if info.Egid != gid {
+			problems = append(problems, fmt.Sprintf("effective GID %v; want %v", info.Egid, gid))
 		}
 
 		// We test for PID/mount namespaces and capabilities by comparing against what init is using
 		// since processes inherit these by default.
-		if reqs.features&pidNS != 0 && info.pidNS != -1 && info.pidNS == initInfo.pidNS {
+		if reqs.features&pidNS != 0 && info.PidNS != -1 && info.PidNS == initInfo.PidNS {
 			problems = append(problems, "missing PID namespace")
 		}
-		if reqs.features&(mntNS|mntNSNoPivotRoot) != 0 && info.mntNS != -1 && info.mntNS == initInfo.mntNS {
+		if reqs.features&(mntNS|mntNSNoPivotRoot) != 0 && info.MntNS != -1 && info.MntNS == initInfo.MntNS {
 			problems = append(problems, "missing mount namespace")
 		}
-		if reqs.features&restrictCaps != 0 && info.ecaps == initInfo.ecaps {
+		if reqs.features&restrictCaps != 0 && info.Ecaps == initInfo.Ecaps {
 			problems = append(problems, "no restricted capabilities")
 		}
-		if reqs.features&noNewPrivs != 0 && !info.noNewPrivs {
+		if reqs.features&noNewPrivs != 0 && !info.NoNewPrivs {
 			problems = append(problems, "missing no_new_privs")
 		}
 		// Minijail disables seccomp at runtime when ASan is enabled, so don't check it in that case.
-		if reqs.features&seccomp != 0 && !info.seccomp && !asanEnabled {
+		if reqs.features&seccomp != 0 && !info.Seccomp && !asanEnabled {
 			problems = append(problems, "seccomp filter disabled")
 		}
 
 		// If a mount namespace is required and used, but some of the init process's test image mounts
 		// are still present, then the process didn't call pivot_root().
-		if reqs.features&mntNS != 0 && info.mntNS != -1 && info.mntNS != initInfo.mntNS && info.hasTestImageMounts {
+		if reqs.features&mntNS != 0 && info.MntNS != -1 && info.MntNS != initInfo.MntNS && info.HasTestImageMounts {
 			problems = append(problems, "did not call pivot_root(2)")
 		}
 
 		if len(problems) > 0 {
 			s.Errorf("%q process %v (%v) isn't properly sandboxed: %s",
-				info.name, pid, info.exe, strings.Join(problems, ", "))
+				info.Name, pid, info.Exe, strings.Join(problems, ", "))
 		}
 	}
 
 	s.Logf("Checked %d processes after exclusions", numChecked)
 }
 
-// procSandboxInfo holds sandboxing-related information about a running process.
-type procSandboxInfo struct {
-	name               string // "Name:" value from /proc/<pid>/status
-	exe                string // full executable path
-	cmdline            string // space-separated command line
-	ppid               int32  // parent PID
-	euid, egid         uint32 // effective UID and GID
-	pidNS, mntNS       int64  // PID and mount namespace IDs (-1 if unknown)
-	ecaps              uint64 // effective capabilities
-	noNewPrivs         bool   // no_new_privs is set (see "minijail -N")
-	seccomp            bool   // seccomp filter is active
-	hasTestImageMounts bool   // has test-image-only mounts
-}
-
-// getProcSandboxInfo returns sandboxing-related information about proc.
-// An error is returned if any files cannot be read or if malformed data is encountered,
-// but the partially-filled info is still returned.
-func getProcSandboxInfo(proc *process.Process) (*procSandboxInfo, error) {
-	var info procSandboxInfo
-	var firstErr error
-	saveErr := func(err error) {
-		if firstErr == nil {
-			firstErr = err
-		}
-	}
-
-	// Ignore errors for e.g. kernel processes.
-	info.exe, _ = proc.Exe()
-	info.cmdline, _ = proc.Cmdline()
-
-	var err error
-	if info.ppid, err = proc.Ppid(); err != nil {
-		saveErr(errors.Wrap(err, "failed to get parent"))
-	}
-
-	if uids, err := proc.Uids(); err != nil {
-		saveErr(errors.Wrap(err, "failed to get UIDs"))
-	} else {
-		info.euid = uint32(uids[1])
-	}
-
-	if gids, err := proc.Gids(); err != nil {
-		saveErr(errors.Wrap(err, "failed to get GIDs"))
-	} else {
-		info.egid = uint32(gids[1])
-	}
-
-	// Namespace data appears to sometimes be missing for (exiting?) processes: https://crbug.com/936703
-	if info.pidNS, err = readProcNamespace(proc.Pid, "pid"); os.IsNotExist(err) && proc.Pid != 1 {
-		info.pidNS = -1
-	} else if err != nil {
-		saveErr(errors.Wrap(err, "failed to read pid namespace"))
-	}
-	if info.mntNS, err = readProcNamespace(proc.Pid, "mnt"); os.IsNotExist(err) && proc.Pid != 1 {
-		info.mntNS = -1
-	} else if err != nil {
-		saveErr(errors.Wrap(err, "failed to read mnt namespace"))
-	}
-
-	// Read additional info from /proc/<pid>/status.
-	status, err := readProcStatus(proc.Pid)
-	if err != nil {
-		saveErr(errors.Wrap(err, "failed reading status"))
-	} else {
-		if info.ecaps, err = strconv.ParseUint(status["CapEff"], 16, 64); err != nil {
-			saveErr(errors.Wrapf(err, "failed parsing effective caps %q", status["CapEff"]))
-		}
-		info.name = status["Name"]
-		info.noNewPrivs = status["NoNewPrivs"] == "1"
-		info.seccomp = status["Seccomp"] == "2" // 1 is strict, 2 is filter
-	}
-
-	// Check whether any mounts that only occur in test images are available to the process.
-	// These are limited to the init mount namespace, so if a process has its own namespace,
-	// it shouldn't have these (assuming that it called pivot_root()).
-	if mnts, err := readProcMountpoints(proc.Pid); os.IsNotExist(err) || err == syscall.EINVAL {
-		// mounts files are sometimes missing or unreadable: https://crbug.com/936703#c14
-	} else if err != nil {
-		saveErr(errors.Wrap(err, "failed reading mountpoints"))
-	} else {
-		for _, mnt := range mnts {
-			for _, tm := range []string{"/usr/local", "/var/db/pkg", "/var/lib/portage"} {
-				if mnt == tm {
-					info.hasTestImageMounts = true
-					break
-				}
-			}
-		}
-	}
-
-	return &info, firstErr
-}
-
-// readProcNamespace returns pid's namespace ID for name (e.g. "pid" or "mnt"),
-// per /proc/<pid>/ns/<name>. This may return os.ErrNotExist: https://crbug.com/936703
-func readProcNamespace(pid int32, name string) (int64, error) {
-	v, err := os.Readlink(fmt.Sprintf("/proc/%d/ns/%s", pid, name))
-	if err != nil {
-		return -1, err
-	}
-	// The link value should have the form ":[<id>]"
-	pre := name + ":["
-	suf := "]"
-	if !strings.HasPrefix(v, pre) || !strings.HasSuffix(v, suf) {
-		return -1, errors.Errorf("unexpected value %q", v)
-	}
-	return strconv.ParseInt(v[len(pre):len(v)-len(suf)], 10, 64)
-}
-
-// readProcMountpoints returns all mountpoints listed in /proc/<pid>/mounts.
-// This may return os.ErrNotExist or syscall.EINVAL for zombie processes: https://crbug.com/936703
-func readProcMountpoints(pid int32) ([]string, error) {
-	b, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/mounts", pid))
-	// ioutil.ReadFile can return an *os.PathError. If it's os.ErrNotExist, we return it directly
-	// since it's easy to check, but for other errors, we return the inner error (which is a syscall.Errno)
-	// so that callers can inspect it.
-	if pathErr, ok := err.(*os.PathError); ok && !os.IsNotExist(err) {
-		return nil, pathErr.Err
-	} else if err != nil {
-		return nil, err
-	}
-	var mounts []string
-	for _, ln := range strings.Split(strings.TrimSpace(string(b)), "\n") {
-		if ln == "" {
-			continue
-		}
-		// Example line:
-		// run /var/run tmpfs rw,seclabel,nosuid,nodev,noexec,relatime,mode=755 0 0
-		parts := strings.Fields(ln)
-		if len(parts) != 6 {
-			return nil, errors.Errorf("failed to parse line %q", ln)
-		}
-		mounts = append(mounts, parts[1])
-	}
-	return mounts, nil
-}
-
-// procStatusLineRegexp is used to split a line from /proc/<pid>/status. Example content:
-// Name:	powerd
-// State:	S (sleeping)
-// Tgid:	1249
-// ...
-var procStatusLineRegexp = regexp.MustCompile(`^([^:]+):\t(.*)$`)
-
-// readProcStatus parses /proc/<pid>/status and returns its key/value pairs.
-func readProcStatus(pid int32) (map[string]string, error) {
-	b, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/status", pid))
-	if err != nil {
-		return nil, err
-	}
-
-	vals := make(map[string]string)
-	for _, ln := range strings.Split(strings.TrimSpace(string(b)), "\n") {
-		// Skip blank lines: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1772671
-		if ln == "" {
-			continue
-		}
-		ms := procStatusLineRegexp.FindStringSubmatch(ln)
-		if ms == nil {
-			return nil, errors.Errorf("failed to parse line %q", ln)
-		}
-		vals[ms[1]] = ms[2]
-	}
-	return vals, nil
-}
-
 // procHasAncestor returns true if pid has any of ancestorPIDs as an ancestor process.
 // infos should contain the full set of processes and is used to look up data.
 func procHasAncestor(pid int32, ancestorPIDs map[int32]struct{},
-	infos map[int32]*procSandboxInfo) (bool, error) {
+	infos map[int32]*sandboxing.ProcSandboxInfo) (bool, error) {
 	info, ok := infos[pid]
 	if !ok {
 		return false, errors.Errorf("process %d not found", pid)
 	}
 
 	for {
-		pinfo, ok := infos[info.ppid]
+		pinfo, ok := infos[info.Ppid]
 		if !ok {
-			return false, errors.Errorf("parent process %d not found", info.ppid)
+			return false, errors.Errorf("parent process %d not found", info.Ppid)
 		}
-		if _, ok := ancestorPIDs[info.ppid]; ok {
+		if _, ok := ancestorPIDs[info.Ppid]; ok {
 			return true, nil
 		}
-		if info.ppid == 1 {
+		if info.Ppid == 1 {
 			return false, nil
 		}
 		info = pinfo
