@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38cbaf86_5c9e6ad8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-01-12T10:25:51Z",
+      "side": 1,
+      "message": "stainless/browse/chromeos-autotest-results/swarming-50d57d13d44dfb10/autoserv_test/tast/results/tests/printer.Add.lexmark_pin",
+      "parentUuid": "f1381015_e10efb00",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "b2199cba060c6be16b7b0f92fe1e780a123569ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a87e8fd4_dfeb2e56",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06855f13_53743590",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-01-12T10:25:51Z",
+      "side": 1,
+      "message": "crbug.com/1165694 (also see the comment on crrev.com/c/2613806 for more information about the bug).",
+      "parentUuid": "a87e8fd4_dfeb2e56",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "b2199cba060c6be16b7b0f92fe1e780a123569ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a52e31ee_796f207e",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-12T02:57:49Z",
       "side": 1,
       "message": "Let\u0027s avoid using context.Background() for these operations. Using context.Background(), we will entirely ignore the timeout. Also we will lose any logging emitted via testing.ContextLog.",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 190,
+        "endChar": 47
+      },
+      "revId": "b2199cba060c6be16b7b0f92fe1e780a123569ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61956e6d_1dfcae81",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-01-12T10:25:51Z",
+      "side": 1,
+      "message": "I think it makes sense to ignore the context timeout here (which is usually zero as waitUIJobStabilized waits until the context is expired before returning an error) and let it take however long it takes to start the ui service before moving to the next Tast test, which may require said service to be running. Some logging information may be lost but that may be unavoidable if the test context has exceeded its deadline and is canceled. How does that sound?",
+      "parentUuid": "a52e31ee_796f207e",
       "range": {
         "startLine": 189,
         "startChar": 3,
