@@ -22,6 +22,30 @@
       },
       "revId": "44e8ee9045e76dcb85744b1b93c309c9f68839e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3068509b_6ae4c62c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-12T08:44:44Z",
+      "side": 1,
+      "message": "I think we expected that 720p_60fps is unnecessary as the decoders are fast enough for it and we also have 1080p@30/60.\nWe may want to add them in the future?",
+      "parentUuid": "51ba8038_e03b5bf6",
+      "range": {
+        "startLine": 310,
+        "startChar": 14,
+        "endLine": 310,
+        "endChar": 24
+      },
+      "revId": "44e8ee9045e76dcb85744b1b93c309c9f68839e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
