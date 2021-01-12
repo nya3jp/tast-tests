@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8df7c507_8569c63c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-12T09:53:04Z",
+      "side": 1,
+      "message": "Just to propose another possible alternative:\n- make InitDUT respond the initial state instead of empty\n- store the initial state in TestFixture.\n- feed the response of InitDUT to Teardown for restoration\n\nRestore back to the state before tests might be a little more friendly to users, but I don\u0027t have strong preference here.",
+      "parentUuid": "cadbf7f2_0543ba24",
+      "revId": "2740134aacd6df9bda08ddb83cb1a5db9ff3c58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64eb6686_2f28a66f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 5
