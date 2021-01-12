@@ -22,6 +22,30 @@
       },
       "revId": "8543297c447a31c1710c754140877a654fd1d8d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1655ff9e_480cd8c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-12T04:28:07Z",
+      "side": 0,
+      "message": "I added this removal function in building this precondition. I was trying to clean up IME on reusing Chrome instance. After last time discussed with you offline, I think it is better to keep IME for the next testing. It should reduce the flakiness somehow due to less times in installing new IME.",
+      "parentUuid": "da9543ac_eca8ca98",
+      "range": {
+        "startLine": 217,
+        "startChar": 35,
+        "endLine": 217,
+        "endChar": 59
+      },
+      "revId": "8543297c447a31c1710c754140877a654fd1d8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
