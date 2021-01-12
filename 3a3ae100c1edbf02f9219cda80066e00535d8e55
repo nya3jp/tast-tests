@@ -50,6 +50,63 @@
       "message": "Adding Shuhei for owners approval. Thank you for taking a look when you get the chance 😊",
       "revId": "3a3ae100c1edbf02f9219cda80066e00535d8e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c5a57a_82ae95dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-12T05:28:55Z",
+      "side": 1,
+      "message": "Hi, sorry for delay. LGTM with nits.\n",
+      "revId": "3a3ae100c1edbf02f9219cda80066e00535d8e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02dd6e4e_4eeae315",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-12T05:28:55Z",
+      "side": 1,
+      "message": "style: Usually receiver names are 1 or 2 chars.\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-names",
+      "revId": "3a3ae100c1edbf02f9219cda80066e00535d8e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d69ea2_c6584559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-12T05:28:55Z",
+      "side": 1,
+      "message": "Optional, not required in this CL:\n\nYou may want to rename the a11y package to arca11y package so that we don\u0027t need to alias it on import to avoid conflicts with chromiumos/tast/local/a11y. It\u0027s common to add prefixes to package names even though its full path may sound redundant, e.g. https://godoc.org/io/ioutil.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "3a3ae100c1edbf02f9219cda80066e00535d8e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
