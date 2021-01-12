@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4dfbd27_a9e4b4c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-12T00:38:35Z",
+      "side": 1,
+      "message": "Still a WIP. Need better polling for enabled / connected state, and maybe more failure cases, although I\u0027m not sure just how useful that really is.\n",
+      "revId": "41f206ea36dae270fd3f8521409dc945cf2bc019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
