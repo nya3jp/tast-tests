@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6566d60_9a3c0a80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-12T21:16:34Z",
+      "side": 1,
+      "message": "So, I ended up making some significant changes, but I think the cleanup is worthwhile. \nSome of the changes (specifically cellular_helper) are in anticipation of linked CLs.\nLet me know if you think this should be broken up.\n\nPTAL\n",
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

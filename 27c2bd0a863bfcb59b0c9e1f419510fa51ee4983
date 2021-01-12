@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f80e3d_f446ee04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-12T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dbb79d3_d498bbdb",
+      "range": {
+        "startLine": 19,
+        "startChar": 44,
+        "endLine": 19,
+        "endChar": 76
+      },
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8415cac6_ffaf1585",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-12T15:03:38Z",
       "side": 1,
       "message": "When err !\u003d nil, prefer to also print the error.\n\nI believe you can do: s.Fatal(\"msg:\", err)",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88289bac_eaf4cbf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-12T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8415cac6_ffaf1585",
       "range": {
         "startLine": 27,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0557204d_803f6bb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-12T21:16:34Z",
+      "side": 1,
+      "message": "It\u0027s defined as \u0027type Technology string\u0027. Effectively it\u0027s an enum. The cast is required.",
+      "parentUuid": "a89e638e_6bedfa2f",
+      "range": {
+        "startLine": 39,
+        "startChar": 10,
+        "endLine": 39,
+        "endChar": 42
+      },
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96711829_c6ff4f91",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc16a8f_5b559b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-12T21:16:34Z",
+      "side": 1,
+      "message": "Hmm, yeah, we probably shouldn\u0027t assume Enabled. Updated the test.",
+      "parentUuid": "96711829_c6ff4f91",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e6b53f6_d0b8f517",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-01-12T15:03:38Z",
       "side": 1,
       "message": "Doesn\u0027t this require an active and valid sim card ?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5f66db_74707fe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-12T21:16:34Z",
+      "side": 1,
+      "message": "Not necessarily, but in practice, yes, since we want a connectable Cellular network (otherwise there\u0027s not a lot of point in testing). Updated description and added a comment above cellularProps.",
+      "parentUuid": "8e6b53f6_d0b8f517",
       "range": {
         "startLine": 56,
         "startChar": 0,
