@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1381015_e10efb00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-12T02:57:49Z",
+      "side": 1,
+      "message": "Do you have example run logs where this bug happened?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "b2199cba060c6be16b7b0f92fe1e780a123569ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a87e8fd4_dfeb2e56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-12T02:57:49Z",
+      "side": 1,
+      "message": "This issue is closed two years ago. Can you refer another bug that gives background about the bug you\u0027re trying to fix?",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "b2199cba060c6be16b7b0f92fe1e780a123569ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52e31ee_796f207e",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-12T02:57:49Z",
+      "side": 1,
+      "message": "Let\u0027s avoid using context.Background() for these operations. Using context.Background(), we will entirely ignore the timeout. Also we will lose any logging emitted via testing.ContextLog.",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 190,
+        "endChar": 47
+      },
+      "revId": "b2199cba060c6be16b7b0f92fe1e780a123569ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
