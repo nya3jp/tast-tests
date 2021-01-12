@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "130a102a_6eca4875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-01-12T13:43:48Z",
+      "side": 1,
+      "message": "Thanks for the input! Let\u0027s see how long does it take on the slow devices.\n\nCombination of modifier keys are a good point. I don\u0027t have any idea to cover them effectively though.\n\nUsing non-US layout should not change the result because our current input pipeline is using only evdev code. However, it\u0027s implementation-detail and can be changed in the future. I don\u0027t have a good idea to cover all possible keyboard layouts x all possible codes...",
+      "parentUuid": "56815cb7_352b8c8f",
+      "range": {
+        "startLine": 213,
+        "startChar": 49,
+        "endLine": 213,
+        "endChar": 53
+      },
+      "revId": "6c38f2034b2b0202471018350bf4c6039e5e9689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d30c8ae6_2de92dc5",
