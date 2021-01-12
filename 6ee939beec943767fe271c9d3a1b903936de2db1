@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6636c9fb_a843134b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/constants.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-12T07:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bf28949_54e6b1b4",
+      "revId": "6ee939beec943767fe271c9d3a1b903936de2db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3cd8150_ab5daeab",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-01-12T04:09:21Z",
       "side": 1,
       "message": "I think maybe we can consider to move this as a function to share with other tast-test.\nBecause \"am instrument\" is a common command for \"Running instrument tests on Android\":\nhttps://developer.android.com/studio/test/command-line#RunTestsDevice\n\nMaybe can have some function like `SendIntentCommand`:\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/local/android/adb/commands.go#27\n\n```\n// InstrumentationCommand returns a Cmd to send \"am instrument\" command.\nfunc (d *Device) InstrumentationCommand(ctx context.Context, action, userId string, testPackage string, runnerClass string, argsMap string[]) *testexec.Cmd {\n\targs :\u003d []string{\"instrument\", \"--user\", userId, \"-w\", \"-r\"}\n\tfor argK, argV :\u003d range argsMap {\n\t\targs \u003d append(args, \"-e\", argK, argV)\n\t}\n\tappend(args, testPackage+\"/\"+runnerClass)\n\treturn d.ShellCommand(ctx, \"am\", args...)\n}\n```\n\nThen modify `LaunchSnippet` and `StopSnippet` to remove duplicate code:\n```\nlaunchSnippetCmd :\u003d a.device.InstrumentationCommand(ctx,\nandroid.DefaultUser, map[string]string{\"action\":\"start\"},\nmoblyPackage, instrumentationRunnerPackage)\n```\n\n```\nstopSnippetCommand :\u003d a.device.InstrumentationCommand(ctx,\nandroid.DefaultUser, map[string]string{\"action\":\"stop\"},\nmoblyPackage, instrumentationRunnerPackage)\n```",
+      "revId": "6ee939beec943767fe271c9d3a1b903936de2db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4799c1_5e1704a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-12T07:22:19Z",
+      "side": 1,
+      "message": "Maybe we can take a look at refactoring this later. There aren\u0027t too many instances of the \"am instrument\" command in the rest of the code base (https://source.corp.google.com/search?q\u003d%22am%22,%20%22instrument%22\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$) so not too big of a deal for now.",
+      "parentUuid": "b3cd8150_ab5daeab",
       "revId": "6ee939beec943767fe271c9d3a1b903936de2db1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
