@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bf28949_54e6b1b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/constants.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2021-01-12T04:11:10Z",
+      "side": 1,
+      "message": "or instrumentationRunnerClass",
+      "parentUuid": "431f5b4d_3e78c943",
+      "revId": "6ee939beec943767fe271c9d3a1b903936de2db1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3cd8150_ab5daeab",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
         "patchSetId": 11
