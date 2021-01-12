@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba52939_22dea5db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-12T03:54:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ae3e960_c579911c",
+      "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ec2901d_86480661",
@@ -120,6 +138,30 @@
       "writtenOn": "2021-01-11T22:31:25Z",
       "side": 1,
       "message": "If we wanted, we could make a parameterized test for multiple different types of login, or make it so that we do other test cases based on unicorn account specifics.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3899de12_882fe4c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_playstore_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-12T03:54:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5ec2901d_86480661",
       "range": {
         "startLine": 38,
         "startChar": 1,
