@@ -16,6 +16,23 @@
       "message": "Hi Tast owner,\n\nPTAL :)\n\nThanks,\nOleh",
       "revId": "af0a305238da70cfddc14283527b322d6e9979ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b287a78d_aea09b13",
+        "filename": "src/chromiumos/tast/local/screenshot/files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-12T12:07:38Z",
+      "side": 1,
+      "message": "Should we not create the directory in that case? Or does taking a screenshot do it automatically?",
+      "revId": "af0a305238da70cfddc14283527b322d6e9979ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
