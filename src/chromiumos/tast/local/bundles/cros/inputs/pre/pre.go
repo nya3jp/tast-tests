@@ -213,43 +213,6 @@ func ResetIMEStatus(ctx context.Context, tconn *chrome.TestConn) error {
 		}
 	}
 
-	// Remove any installed input methods.
-	installedInputMethods, err := ime.GetInstalledInputMethods(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get installed input methods")
-	}
-
-	for _, inputMethod := range installedInputMethods {
-		if inputMethod.ID != defaultIMECode {
-			testing.ContextLogf(ctx, "Removing installed input method: %s", inputMethod.ID)
-			if err := ime.RemoveInputMethod(ctx, tconn, inputMethod.ID); err != nil {
-				return errors.Wrapf(err, "failed to remove input method: %s", inputMethod.ID)
-			}
-		}
-	}
-
-	// Wait for only default IME exists.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		installedInputMethods, err := ime.GetInstalledInputMethods(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to get installed input methods")
-		}
-
-		if len(installedInputMethods) == 0 {
-			return errors.New("no input method installed")
-		} else if len(installedInputMethods) > 1 {
-			return errors.New("more than 1 input method other than default is found")
-		}
-
-		if installedInputMethods[0].ID != defaultIMECode {
-			return errors.Errorf("failed to reset input method: want %q; got %q", defaultIMECode, installedInputMethods[0].ID)
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to remove installed input methods")
-	}
-
 	return nil
 }
 
