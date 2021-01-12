@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4cad0f2_7509b02b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-12T17:40:24Z",
+      "side": 1,
+      "message": "Done. Need to use enable features, so will just create a new instance.",
+      "parentUuid": "873eb442_31ab3309",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "8d9663170802a10f40cc911e816903c294a177bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42841e20_28bf6b07",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-12T00:01:00Z",
       "side": 1,
       "message": "This is a func, not a type?",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "8d9663170802a10f40cc911e816903c294a177bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dfd1f0d_d54d79c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/peripheraltypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-12T17:40:24Z",
+      "side": 1,
+      "message": "Yes, it\u0027s the driver function.",
+      "parentUuid": "42841e20_28bf6b07",
       "range": {
         "startLine": 15,
         "startChar": 14,
