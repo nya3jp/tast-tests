@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11858e2d_03eb4d3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447973
+      },
+      "writtenOn": "2021-01-12T18:53:13Z",
+      "side": 1,
+      "message": "Hello! \nWanted to ping in case you missed this CL during the shift from the holiday season 😊",
+      "revId": "dccc2809ea3bbce21b0a6cc5255c4a912f6aac40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
