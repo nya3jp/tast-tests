@@ -140,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cdb2996_a4df8245",
+        "filename": "src/chromiumos/tast/local/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-12T18:11:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e31ac9e1_0aad5ec3",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "65b90f4727a42ae70d7706094ddc8c869242c911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5da7e6c8_3e437d9b",
