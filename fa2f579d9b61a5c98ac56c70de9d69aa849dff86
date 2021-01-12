@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "407fee93_952f036a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-12T09:22:21Z",
+      "side": 1,
+      "message": "The change of registration_test.go is unintendedly contained the CL for informational tests, but it\u0027s required for this CL for critical. So I moved it.",
+      "revId": "fa2f579d9b61a5c98ac56c70de9d69aa849dff86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
