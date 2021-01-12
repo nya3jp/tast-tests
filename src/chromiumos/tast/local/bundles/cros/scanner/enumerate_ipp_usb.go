@@ -32,7 +32,7 @@ func init() {
 		Func:         EnumerateIPPUSB,
 		Desc:         "Tests that IPP-USB devices are correctly found",
 		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"virtual_usb_printer"},
 	})
 }
