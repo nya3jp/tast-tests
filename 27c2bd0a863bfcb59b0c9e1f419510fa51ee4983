@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72421951_387e134a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-12T15:03:38Z",
+      "side": 1,
+      "message": "LGTM, I only have minor nits.",
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dbb79d3_d498bbdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-12T15:03:38Z",
+      "side": 1,
+      "message": "should we add the cellular dev mailing list as an additional PoC since this is testing cell ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 44,
+        "endLine": 19,
+        "endChar": 76
+      },
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8415cac6_ffaf1585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-12T15:03:38Z",
+      "side": 1,
+      "message": "When err !\u003d nil, prefer to also print the error.\n\nI believe you can do: s.Fatal(\"msg:\", err)",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a89e638e_6bedfa2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-12T15:03:38Z",
+      "side": 1,
+      "message": "just curious: what is the type of shill.TechnologyCellular ? it is not a string ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 10,
+        "endLine": 39,
+        "endChar": 42
+      },
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96711829_c6ff4f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-12T15:03:38Z",
+      "side": 1,
+      "message": "Do you think this could be worthwhile to try to enable the Cell technology in that case with a call to shill Manager API ?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e6b53f6_d0b8f517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-12T15:03:38Z",
+      "side": 1,
+      "message": "Doesn\u0027t this require an active and valid sim card ?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "27c2bd0a863bfcb59b0c9e1f419510fa51ee4983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
