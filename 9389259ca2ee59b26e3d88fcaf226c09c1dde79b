@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb849622_f4fbff73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-12T22:15:56Z",
+      "side": 1,
+      "message": "Nice, looks good.",
+      "revId": "9389259ca2ee59b26e3d88fcaf226c09c1dde79b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1949135b_cbe211c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-12T22:15:56Z",
+      "side": 1,
+      "message": "Is this going to be used more widely? If not then maybe we should stick it in the shill_cellular_sim file. If it is, I hope we can name it something better than Helper which is kind of vague.",
+      "revId": "9389259ca2ee59b26e3d88fcaf226c09c1dde79b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
