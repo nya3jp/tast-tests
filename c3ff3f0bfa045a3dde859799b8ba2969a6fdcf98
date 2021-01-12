@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35287b66_bad1c133",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-12T00:50:03Z",
+      "side": 1,
+      "message": "we don\u0027t have Owners approval yet, so removing CQ+2 and replacing with CQ+1",
+      "revId": "c3ff3f0bfa045a3dde859799b8ba2969a6fdcf98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
