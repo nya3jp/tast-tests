@@ -93,6 +93,30 @@
       },
       "revId": "8d9663170802a10f40cc911e816903c294a177bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d476fe5_f7f52bfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/peripheraltypes/types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-12T22:27:12Z",
+      "side": 1,
+      "message": "Then could we have a more meaningful name?",
+      "parentUuid": "6dfd1f0d_d54d79c4",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "8d9663170802a10f40cc911e816903c294a177bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
