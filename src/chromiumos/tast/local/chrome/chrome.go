@@ -739,20 +739,10 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	// Disable the automation feature. Otherwise, automation tree updates and
 	// events will come to the test API, and sometimes it causes significant
 	// performance drawback on low-end devices. See: https://crbug.com/1096719.
-	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.disableAutomation)()", nil); err != nil {
-		return errors.Wrap(err, "failed to disable the automation feature")
+	if err := tconn.ResetAutomation(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset the automation feature")
 	}
 
-	// Reloading the test extension contents to clear all of Javascript objects.
-	// This also resets the internal state of automation tree, so without
-	// reloading, disableAutomation above would cause failures.
-	testing.ContextLog(ctx, "Reloading the extension process")
-	if err := tconn.Eval(ctx, "location.reload()", nil); err != nil {
-		return errors.Wrap(err, "failed to reload the test extension")
-	}
-	if err := tconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		return errors.Wrap(err, "failed to wait for the ready state")
-	}
 	return nil
 }
 
@@ -1115,6 +1105,35 @@ func ExtensionBackgroundPageURL(extID string) string {
 // cf) crbug.com/1043590
 type TestConn struct {
 	*Conn
+}
+
+// ResetAutomation resets the automation API feature. The automation API feature
+// is widely used to control the UI, but keeping it activated sometimes causes
+// performance drawback on low-end devices. This method deactivates the
+// automation API and resets internal states. See: https://crbug.com/1096719.
+func (tconn *TestConn) ResetAutomation(ctx context.Context) error {
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.disableAutomation)()", nil); err != nil {
+		return errors.Wrap(err, "failed to disable the automation feature")
+	}
+
+	// Reloading the test extension contents to clear all of Javascript objects.
+	// This also resets the internal state of automation tree, so without
+	// reloading, disableAutomation above would cause failures.
+	if err := tconn.Eval(ctx, "location.reload()", nil); err != nil {
+		return errors.Wrap(err, "failed to reload the testconn")
+	}
+	if err := tconn.WaitForExpr(ctx, "document.readyState == 'complete'"); err != nil {
+		return errors.Wrap(err, "test API extension is unavailable")
+	}
+
+	if err := tconn.WaitForExpr(ctx, `typeof tast != 'undefined'`); err != nil {
+		return errors.Wrap(err, "tast API is unavailable")
+	}
+
+	if err := tconn.Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
+		return errors.Wrap(err, "failed to initialize test API events")
+	}
+	return nil
 }
 
 // TestAPIConn returns a shared connection to the test API extension's
