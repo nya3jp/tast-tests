@@ -33,6 +33,23 @@
       "message": "The last buildbots was red due to the build failure of \"cups\". Let me retry.",
       "revId": "ad992295e727cca1afc06fd074226b448f92c620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb841e8_25819bfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-01-12T20:31:04Z",
+      "side": 1,
+      "message": "test results|original_test|tast.ui.QuickSettingsLockScreen was failed. Let me retry.",
+      "revId": "ad992295e727cca1afc06fd074226b448f92c620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
