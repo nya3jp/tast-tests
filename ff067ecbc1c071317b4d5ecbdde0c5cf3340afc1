@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17e969d6_03ee36c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-12T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3379d956_02061b41",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "ff067ecbc1c071317b4d5ecbdde0c5cf3340afc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fc4d26a_596d4bcf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-11T18:13:52Z",
       "side": 1,
       "message": "nit: remove",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "ff067ecbc1c071317b4d5ecbdde0c5cf3340afc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0573befd_4a5518bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_manager_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-12T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fc4d26a_596d4bcf",
       "range": {
         "startLine": 31,
         "startChar": 32,
