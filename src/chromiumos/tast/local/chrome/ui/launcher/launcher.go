@@ -35,7 +35,7 @@ func SearchAndLaunchWithQuery(ctx context.Context, tconn *chrome.TestConn, query
 	}
 	defer appNode.Release(ctx)
 
-	if err := appNode.LeftClick(ctx); err != nil {
+	if err := appNode.StableLeftClick(ctx, &testing.PollOptions{Timeout: defaultTimeout}); err != nil {
 		return errors.Wrap(err, "failed to launch app")
 	}
 	return nil
