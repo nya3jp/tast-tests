@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4413db63_bc4ca564",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-12T08:06:49Z",
+      "side": 1,
+      "message": "For future commits: you don\u0027t need double tags, you can leave the tast-tests one, if you have another (like the hwsec in this case).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "0b449ccdc881eea576cfa7e9ccc9e00d051ae26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e095c1d0_aa51e932",
@@ -29,6 +52,23 @@
         "id": 1293547
       },
       "writtenOn": "2021-01-11T09:05:41Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "0b449ccdc881eea576cfa7e9ccc9e00d051ae26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "168fe062_2f362074",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-12T08:06:49Z",
       "side": 1,
       "message": "LGTM",
       "revId": "0b449ccdc881eea576cfa7e9ccc9e00d051ae26b",
