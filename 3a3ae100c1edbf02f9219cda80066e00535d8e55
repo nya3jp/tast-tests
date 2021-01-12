@@ -88,6 +88,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "292dac2d_ecc8f85a",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-12T18:49:22Z",
+      "side": 1,
+      "message": "Done, renamed to \"cv\".",
+      "parentUuid": "02dd6e4e_4eeae315",
+      "revId": "3a3ae100c1edbf02f9219cda80066e00535d8e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "11d69ea2_c6584559",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 5
@@ -99,6 +117,30 @@
       "writtenOn": "2021-01-12T05:28:55Z",
       "side": 1,
       "message": "Optional, not required in this CL:\n\nYou may want to rename the a11y package to arca11y package so that we don\u0027t need to alias it on import to avoid conflicts with chromiumos/tast/local/a11y. It\u0027s common to add prefixes to package names even though its full path may sound redundant, e.g. https://godoc.org/io/ioutil.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "3a3ae100c1edbf02f9219cda80066e00535d8e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d4f4a27_da94ab4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-12T18:49:22Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. The reason I did this was because I was following a suggestion in an earlier change [1]. So I think I will keep this for now, but I will consider updating it in the future 😊\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2593324/2..5/src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go#b13",
+      "parentUuid": "11d69ea2_c6584559",
       "range": {
         "startLine": 14,
         "startChar": 1,
