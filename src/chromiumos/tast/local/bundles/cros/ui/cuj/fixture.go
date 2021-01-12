@@ -26,7 +26,7 @@ func init() {
 		Desc:            "The main fixture used for UI CUJ tests",
 		Contacts:        []string{"mukai@chromium.org"},
 		Impl:            &loggedInToCUJUserFixture{},
-		SetUpTimeout:    chrome.LoginTimeout + optin.OptinTimeout + arc.BootTimeout + 10*time.Second,
+		SetUpTimeout:    chrome.LoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars:            []string{"ui.cuj_username", "ui.cuj_password"},
@@ -87,7 +87,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 
 	func() {
 		const playStorePackageName = "com.android.vending"
-		ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout)
+		ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout+time.Minute)
 		defer cancel()
 
 		// Optin to Play Store.
@@ -101,12 +101,24 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		}
 
 		s.Log("Waiting for Playstore shown")
-		if err := ash.WaitForVisible(ctx, tconn, playStorePackageName); err != nil {
+		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+			return w.ARCPackageName == playStorePackageName
+		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 			s.Fatal("Failed to wait for the playstore: ", err)
 		}
 
 		if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
 			s.Fatal("Failed to close Play Store: ", err)
+		}
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if _, err := ash.GetARCAppWindowInfo(ctx, tconn, playStorePackageName); err == ash.ErrWindowNotFound {
+				return nil
+			} else if err != nil {
+				return testing.PollBreak(err)
+			}
+			return errors.New("still seeing playstore window")
+		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+			s.Fatal("Failed to wait for the playstore window to be closed: ", err)
 		}
 	}()
 
