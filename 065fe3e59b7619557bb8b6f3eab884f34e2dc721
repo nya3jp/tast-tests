@@ -16,6 +16,196 @@
       "message": "Thank you again for your comments, I\u0027ve taken in your suggestions and patched the CL to reflect them. I\u0027ve also identified the issue regarding the first stroke issue and have created a feature request as it requires a new feature to check for whether the engine is ready which will require internal code base access which I don\u0027t have.",
       "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b671b5_11ee4101",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-12T12:02:33Z",
+      "side": 1,
+      "message": "Thanks! That is the approach we should always follow :)",
+      "parentUuid": "430d4c1e_fb2365be",
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c15ff712_6ac7d041",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-12T12:02:33Z",
+      "side": 1,
+      "message": "LGTM % nits. Please resolve all comments before submission.\n\nThanks!",
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6fefc02_d3823b0d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-12T12:02:33Z",
+      "side": 1,
+      "message": "this should be \"sg\":\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-names",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f39c27b_e11c5564",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-12T12:02:33Z",
+      "side": 1,
+      "message": "maybe just rename to \"scale\"? do you have other scale methods or does strokeGroup contain smth else except handwriting data?\n\nThis name also looks like leftover from previous patches, but it can be updated as well.",
+      "range": {
+        "startLine": 49,
+        "startChar": 36,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979e3b07_43d5ce0c",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-12T12:02:33Z",
+      "side": 1,
+      "message": "usually New* methods located right after struct, please move before \"scale\" method.\n\nFor example check os package: https://golang.org/pkg/os/#File",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6f159f_685726b7",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-12T12:02:33Z",
+      "side": 1,
+      "message": "nit: we probably don\u0027t need this one time variable",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 10
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af461d4_a48a9d97",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-12T12:02:33Z",
+      "side": 1,
+      "message": "nit: please close file before os.Remove",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 16
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8f5ae8_abc241da",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-12T12:02:33Z",
+      "side": 1,
+      "message": "nit: maybe remove this blank line to be consistent with other functions.",
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b4c40fb_71b1d685",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-12T12:02:33Z",
+      "side": 1,
+      "message": "move it at the beginning of the function to don\u0027t split params+opts+return",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 40
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
