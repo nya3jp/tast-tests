@@ -114,3 +114,45 @@ func NumberOfOutputsConnected(ctx context.Context) (int, error) {
 	}
 	return connected, nil
 }
+
+// supportedFormatsPrimaryDisplayPattern matches the the following output:
+// 0x00000001
+//  formats: C8   RG16 XR24 XB24 AR24 AB24 XR30 XB30 YUYV YVYU UYVY VYUY NV12
+//  props:
+// 	7 type:
+// 		flags: immutable enum
+// 		enums: Overlay=0 Primary=1 Cursor=2
+//		value: 1
+// Specifically: we want the crtc matching 0x00...01, which is the device's internal panel (as opposed to external panels)
+// We want to make sure it has formats, props, etc.;
+// And we want it to be a primary display, not an overlay or a cursor (its value is 1)
+var supportedFormatsPrimaryDisplayPattern = regexp.MustCompile(`0x(0+)1\n\s+formats:([ \t]+(\S+))+\n\s+props:\n([^\n]+\n){3}\s+value: 1`)
+
+// supportedFormatsPattern matches the formats portion of the output, specifically:
+//  formats: C8   RG16 XR24 XB24 AR24 AB24 XR30 XB30 YUYV YVYU UYVY VYUY NV12
+var supportedFormatsPattern = regexp.MustCompile(`\s+formats:(([ \t]+\S+)+)`)
+
+// ModetestPrimaryDisplayFormatsSupported determines the supported formats of the first primary display.
+func ModetestPrimaryDisplayFormatsSupported(ctx context.Context) ([]string, error) {
+	output, err := testexec.CommandContext(ctx, "modetest", "-p").Output()
+	if err != nil {
+		return nil, err
+	}
+
+	primaryDisplayFormatInfo := supportedFormatsPrimaryDisplayPattern.FindString(string(output))
+	if primaryDisplayFormatInfo == "" {
+		testing.ContextLog(ctx, "Failed to find primary display format with modetest")
+		// Question: what is standard for these error messages?
+		return nil, errors.New("display format parsing") //TODO error message better
+	}
+
+	formatLine := supportedFormatsPattern.FindStringSubmatch(primaryDisplayFormatInfo)
+	if formatLine == nil {
+		testing.ContextLogf(ctx, "Failed to find format within primary display format: %s", primaryDisplayFormatInfo)
+		return nil, errors.New("really bad error in format parsing") //TODO error message better
+	}
+	// formats example:
+	//  C8   RG16 XR24 XB24 AR24 AB24 XR30 XB30 YUYV YVYU UYVY VYUY NV12
+	formats := formatLine[1]
+	return strings.Fields(formats), nil
+}
