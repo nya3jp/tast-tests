@@ -16,6 +16,23 @@
       "message": "Yamaguchi-san, PTAL again? Thanks.",
       "revId": "ad992295e727cca1afc06fd074226b448f92c620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e788be3_ad5a6d47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2021-01-12T01:51:32Z",
+      "side": 1,
+      "message": "The last buildbots was red due to the build failure of \"cups\". Let me retry.",
+      "revId": "ad992295e727cca1afc06fd074226b448f92c620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
