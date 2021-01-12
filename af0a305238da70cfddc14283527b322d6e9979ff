@@ -33,6 +33,24 @@
       "message": "Should we not create the directory in that case? Or does taking a screenshot do it automatically?",
       "revId": "af0a305238da70cfddc14283527b322d6e9979ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "241fee96_6325bcfe",
+        "filename": "src/chromiumos/tast/local/screenshot/files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-12T12:50:58Z",
+      "side": 1,
+      "message": "Thanks for asking this question!\n\nUnfortunately, I didn\u0027t check the behavior in this case. If Download folder does not exist, taking screenshot will fail.\n\nLooks like there are some problems with builders.",
+      "parentUuid": "b287a78d_aea09b13",
+      "revId": "af0a305238da70cfddc14283527b322d6e9979ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
