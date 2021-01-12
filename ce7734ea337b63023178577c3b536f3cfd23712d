@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5549d3fb_f0c9a303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_enable_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-12T17:38:01Z",
+      "side": 1,
+      "message": "Is there anything else we want to check by querying arc? Ditto for when we turn playstore back on",
+      "range": {
+        "startLine": 76,
+        "startChar": 25,
+        "endLine": 76,
+        "endChar": 60
+      },
+      "revId": "ce7734ea337b63023178577c3b536f3cfd23712d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b6ee98c_6c7fd9d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_enable_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-12T17:38:01Z",
+      "side": 1,
+      "message": "Why does turning off need polling but not turning on?",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "ce7734ea337b63023178577c3b536f3cfd23712d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
