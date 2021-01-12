@@ -63,6 +63,30 @@
       },
       "revId": "44e8ee9045e76dcb85744b1b93c309c9f68839e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9dba0d_cb03d95f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-12T18:26:15Z",
+      "side": 1,
+      "message": "Adding them sounds good but then I\u0027d leave this 720p_60fps out until\nwe add all the other _60fps? WDYT?",
+      "parentUuid": "3068509b_6ae4c62c",
+      "range": {
+        "startLine": 310,
+        "startChar": 14,
+        "endLine": 310,
+        "endChar": 24
+      },
+      "revId": "44e8ee9045e76dcb85744b1b93c309c9f68839e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
