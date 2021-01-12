@@ -21,12 +21,12 @@ const AndroidTmpDirPath = "/data/local/tmp"
 
 // PullFile copies a file in Android to Chrome OS with adb pull.
 func (d *Device) PullFile(ctx context.Context, src, dst string) error {
-	return d.Command(ctx, "pull", src, dst).Run()
+	return d.Command(ctx, "pull", src, dst).Run(testexec.DumpLogOnError)
 }
 
 // PushFile copies a file in Chrome OS to Android with adb push.
 func (d *Device) PushFile(ctx context.Context, src, dst string) error {
-	return d.Command(ctx, "push", src, dst).Run()
+	return d.Command(ctx, "push", src, dst).Run(testexec.DumpLogOnError)
 }
 
 // PushFileToTmpDir copies a file in Chrome OS to Android temp directory.
@@ -34,7 +34,7 @@ func (d *Device) PushFile(ctx context.Context, src, dst string) error {
 func (d *Device) PushFileToTmpDir(ctx context.Context, src string) (string, error) {
 	dst := filepath.Join(AndroidTmpDirPath, filepath.Base(src))
 	if err := d.PushFile(ctx, src, dst); err != nil {
-		d.ShellCommand(ctx, "rm", dst).Run()
+		d.ShellCommand(ctx, "rm", dst).Run(testexec.DumpLogOnError)
 		return "", errors.Wrapf(err, "failed to adb push %v to %v", src, dst)
 	}
 	return dst, nil
