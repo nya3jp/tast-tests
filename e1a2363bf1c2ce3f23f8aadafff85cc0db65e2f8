@@ -176,6 +176,24 @@
       "parentUuid": "435950ee_0cb0aaae",
       "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64e6aa3_0fbd0b51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-01-12T13:43:48Z",
+      "side": 1,
+      "message": "Thank you so much for pointing them out! I added TODO comment with your cases. I\u0027ll revisit those cases later.",
+      "parentUuid": "67cae4aa_3b031b51",
+      "revId": "e1a2363bf1c2ce3f23f8aadafff85cc0db65e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
