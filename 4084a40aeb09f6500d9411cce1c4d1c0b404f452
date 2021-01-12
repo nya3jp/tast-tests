@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b450d81_2935efcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-12T00:58:27Z",
+      "side": 1,
+      "message": "RunVAAPIBinary is designed as a lib function for reuse. But it passes through testing.State, and directly fail the test, which makes it a test case. I do not think it is a good practise in encapsulation. The main test logic should be inline  the test case itself. \n\nI still do not recommend to separate the file, unless it is well structured and more convincible. At the moment, there is only one logic and one parameterized test. It will not be a big effort to separate it once it is required.",
+      "parentUuid": "6b8d9857_5c1f6170",
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3a5a461_5641094f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
         "patchSetId": 7
