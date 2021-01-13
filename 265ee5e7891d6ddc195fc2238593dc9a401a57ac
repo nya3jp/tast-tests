@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "967b68e6_c7b2655d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-13T04:28:03Z",
+      "side": 1,
+      "message": "Feels like something that might fit in a library better, but if this is the only use then leave it here for now",
+      "revId": "265ee5e7891d6ddc195fc2238593dc9a401a57ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48284254_63fc3139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-13T04:28:03Z",
+      "side": 1,
+      "message": "The goroutine is left running in all of these s.Fatalf calls\n\nMaybe you can use a defer done \u003c- true to catch all of these cases at once?",
+      "revId": "265ee5e7891d6ddc195fc2238593dc9a401a57ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
