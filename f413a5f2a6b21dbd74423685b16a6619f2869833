@@ -50,6 +50,24 @@
       "message": "LGTM modulo Shao-Chuan\u0027s comment.",
       "revId": "f413a5f2a6b21dbd74423685b16a6619f2869833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bff7a85_2ae63f32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T09:58:40Z",
+      "side": 1,
+      "message": "I have made this CL without local tests because I had no environments where betty is available. Now I got a betty environment and checked on it, and",
+      "parentUuid": "6722d455_e2c86b55",
+      "revId": "f413a5f2a6b21dbd74423685b16a6619f2869833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
