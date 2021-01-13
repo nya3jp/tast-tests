@@ -216,7 +216,7 @@ func SetFloatingMode(ctx context.Context, cr *chrome.Chrome, enable bool) error 
 	}
 	defer bconn.Close()
 
-	if err := bconn.WaitForExpr(ctx, fmt.Sprintf("background.inputviewLoader_.controller_.maybeSetFloatingModeEnabled(%t)", enable)); err != nil {
+	if err := bconn.WaitForExpr(ctx, fmt.Sprintf("background.inputviewLoader.module$exports$google3$i18n$input$javascript$chos$loader_Loader_prototype$controller.maybeSetFloatingModeEnabled(%t)", enable)); err != nil {
 		if enable {
 			return errors.Wrap(err, "failed to wait for virtual keyboard to be floating mode")
 		}
