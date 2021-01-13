@@ -248,6 +248,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Log("Preparing for power metrics collection")
 		meetTimeout = 3 * time.Minute
 
+		// Setup needs to happen before power.TestMetrics() to disable wifi first
+		// so that the thermal sensor for wifi is excluded from the metrics.
+		sup, cleanup := setup.New("meet call power")
+		sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+			Wifi:       setup.DisableWifiInterfaces,
+			Battery:    setup.ForceBatteryDischarge,
+			NightLight: setup.DisableNightLight}))
+		defer func() {
+			if err := cleanup(closeCtx); err != nil {
+				s.Error("Cleanup meet power setup failed: ", err)
+			}
+		}()
+
 		// Power tests need to record power metrics; they are separated from
 		// cuj.Recorder's timeline as it is for a different purpose and mixing them
 		// might cause a risk of taking too much time of collecting data.
@@ -269,17 +282,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			pv.Merge(values)
 			return nil
 		}
-
-		sup, cleanup := setup.New("meet call power")
-		sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-			Wifi:       setup.DisableWifiInterfaces,
-			Battery:    setup.ForceBatteryDischarge,
-			NightLight: setup.DisableNightLight}))
-		defer func() {
-			if err := cleanup(closeCtx); err != nil {
-				s.Error("Cleanup meet power setup failed: ", err)
-			}
-		}()
 	}
 
 	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
