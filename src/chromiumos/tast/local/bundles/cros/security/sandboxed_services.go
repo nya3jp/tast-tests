@@ -274,7 +274,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		if _, ok := ignoredAncestorPIDs[pid]; ok {
 			continue
 		}
-		if skip, err := procHasAncestor(pid, ignoredAncestorPIDs, infos); err == nil && skip {
+		if skip, err := sandboxing.ProcHasAncestor(pid, ignoredAncestorPIDs, infos); err == nil && skip {
 			continue
 		}
 
@@ -353,28 +353,4 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 	}
 
 	s.Logf("Checked %d processes after exclusions", numChecked)
-}
-
-// procHasAncestor returns true if pid has any of ancestorPIDs as an ancestor process.
-// infos should contain the full set of processes and is used to look up data.
-func procHasAncestor(pid int32, ancestorPIDs map[int32]struct{},
-	infos map[int32]*sandboxing.ProcSandboxInfo) (bool, error) {
-	info, ok := infos[pid]
-	if !ok {
-		return false, errors.Errorf("process %d not found", pid)
-	}
-
-	for {
-		pinfo, ok := infos[info.Ppid]
-		if !ok {
-			return false, errors.Errorf("parent process %d not found", info.Ppid)
-		}
-		if _, ok := ancestorPIDs[info.Ppid]; ok {
-			return true, nil
-		}
-		if info.Ppid == 1 {
-			return false, nil
-		}
-		info = pinfo
-	}
 }

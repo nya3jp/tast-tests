@@ -276,3 +276,27 @@ func ReadProcStatus(pid int32) (map[string]string, error) {
 	}
 	return vals, nil
 }
+
+// ProcHasAncestor returns true if pid has any of ancestorPIDs as an ancestor process.
+// infos should contain the full set of processes and is used to look up data.
+func ProcHasAncestor(pid int32, ancestorPIDs map[int32]struct{},
+	infos map[int32]*ProcSandboxInfo) (bool, error) {
+	info, ok := infos[pid]
+	if !ok {
+		return false, errors.Errorf("process %d not found", pid)
+	}
+
+	for {
+		pinfo, ok := infos[info.Ppid]
+		if !ok {
+			return false, errors.Errorf("parent process %d not found", info.Ppid)
+		}
+		if _, ok := ancestorPIDs[info.Ppid]; ok {
+			return true, nil
+		}
+		if info.Ppid == 1 {
+			return false, nil
+		}
+		info = pinfo
+	}
+}
