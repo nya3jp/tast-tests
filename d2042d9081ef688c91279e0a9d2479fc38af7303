@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a31cffaf_60fd7c27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:53:56Z",
+      "side": 1,
+      "message": "I decided that rather than add a trivial \"manager\" test to make this a slightly more complete \"ethernet\" test. (It is also possible that a DUT, especially a developer DUT, won\u0027t have an ethernet connection, in which case this would be expected to fail).\n",
+      "revId": "d2042d9081ef688c91279e0a9d2479fc38af7303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
