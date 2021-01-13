@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d8531b1_7daa74e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_perf_extra_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T06:19:15Z",
+      "side": 1,
+      "message": "Thank you for catching! This is a mistake. I checked files using arc.BootedInTabletMode(), but missed files using other preconditions.",
+      "parentUuid": "74ffb95b_779b5a31",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fed8093a_562005fc",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-08T04:59:45Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70f91001_db9330b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T06:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fed8093a_562005fc",
       "range": {
         "startLine": 174,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5b2dadf_c03ade23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T06:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aff25a8_4faf569a",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0d93dd0_1e9c70f0",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-01-08T04:59:45Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0416e4c9_2dc9e265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T06:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d93dd0_1e9c70f0",
       "range": {
         "startLine": 135,
         "startChar": 1,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a1bbc6_328537c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T06:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b915b0c_7ef2bcc2",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be0669fe_1b22b06f",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-01-08T04:59:45Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 38
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e0d3ec3_1cd1c294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T06:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be0669fe_1b22b06f",
       "range": {
         "startLine": 122,
         "startChar": 1,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7986e298_311cc3cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T06:19:15Z",
+      "side": 1,
+      "message": "The functions in this package seem to be called from both tests using preconditions and fixtures, so I made a helper function `getPreData`.",
+      "parentUuid": "53029b8b_4f679245",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a913890_6fb84abd",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-01-08T04:59:45Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 186,
+        "startChar": 9,
+        "endLine": 186,
+        "endChar": 18
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60db353a_b78b758c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T06:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a913890_6fb84abd",
       "range": {
         "startLine": 186,
         "startChar": 9,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "712ca73e_895eea11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T06:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af73e201_32259dcb",
+      "range": {
+        "startLine": 336,
+        "startChar": 34,
+        "endLine": 336,
+        "endChar": 43
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8d75098_da7bdbcd",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-01-08T04:59:45Z",
       "side": 1,
       "message": "This test still uses preconditions.",
+      "range": {
+        "startLine": 110,
+        "startChar": 31,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "73694ca92b0a7ae953d02458c843126d813dc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae24e424_9820fcf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2021-01-13T06:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8d75098_da7bdbcd",
       "range": {
         "startLine": 110,
         "startChar": 31,
