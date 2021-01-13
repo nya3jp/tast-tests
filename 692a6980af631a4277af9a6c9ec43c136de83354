@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11bf07a6_a981dc64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-01-13T12:56:16Z",
+      "side": 1,
+      "message": "Looking at logs I think the CQ didn\u0027t include the CL that replaced preconditions with fixtures, so this change was effectively not tested.\nhttps://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2021-01-13/d1b41122-c3bf-4f23-98af-7cf54f30c915/\n\n(CQ uses the latest snapshot manifest which is not necessarily ToT. This CL should have been submitted together with crrev.com/c/2599687 in order to get tested.)",
+      "revId": "692a6980af631a4277af9a6c9ec43c136de83354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
