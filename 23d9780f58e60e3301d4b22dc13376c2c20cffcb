@@ -22,6 +22,30 @@
       },
       "revId": "23d9780f58e60e3301d4b22dc13376c2c20cffcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37324324_3b7b821c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-13T16:01:03Z",
+      "side": 1,
+      "message": "The dependent CL of https://crrev.com/c/2599052/12 adds this dep.",
+      "parentUuid": "7b32de14_8a05016c",
+      "range": {
+        "startLine": 71,
+        "startChar": 32,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "23d9780f58e60e3301d4b22dc13376c2c20cffcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
