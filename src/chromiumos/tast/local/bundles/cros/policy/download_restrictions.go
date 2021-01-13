@@ -30,7 +30,7 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Pre:          pre.User,
 		Data:         []string{"download_restrictions_index.html", "download_restrictions.zip"},
 	})
