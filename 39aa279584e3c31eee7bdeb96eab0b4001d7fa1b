@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "372a9dd6_abcda7f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-01-13T11:50:23Z",
+      "side": 1,
+      "message": "LGTM: %nit",
+      "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b79127e6_c1f06c9a",
@@ -48,6 +65,23 @@
       "writtenOn": "2021-01-13T05:24:46Z",
       "side": 1,
       "message": "minor nit: arcRoot or androidRoot?",
+      "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49056a02_020394cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-01-13T11:50:23Z",
+      "side": 1,
+      "message": "nit: missing .",
       "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
