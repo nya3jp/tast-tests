@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2dadc5dc_5f27caa5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-01-13T08:27:38Z",
+      "side": 1,
+      "message": "thanks for the tip!",
+      "parentUuid": "4413db63_bc4ca564",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "0b449ccdc881eea576cfa7e9ccc9e00d051ae26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e095c1d0_aa51e932",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
