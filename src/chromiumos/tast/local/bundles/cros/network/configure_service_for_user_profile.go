@@ -11,6 +11,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
@@ -49,8 +50,10 @@ func init() {
 func removeMatchingService(ctx context.Context, m *shill.Manager, props map[string]interface{}) error {
 	service, err := m.FindMatchingService(ctx, props)
 	if err != nil {
-		// No match is not a problem.
-		return nil
+		if err.Error() == shillconst.ManagerFindMatchingServiceNotFound {
+			return nil
+		}
+		return errors.Wrap(err, "error calling FindMatchingService")
 	}
 	testing.ContextLog(ctx, "Deleting existing service: ", service)
 	return service.Remove(ctx)
