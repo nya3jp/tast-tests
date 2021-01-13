@@ -409,8 +409,9 @@ func (u *UtilityCryptohomeBinary) IsMounted(ctx context.Context) (bool, error) {
 
 // Unmount unmounts the vault for username.
 func (u *UtilityCryptohomeBinary) Unmount(ctx context.Context, username string) (bool, error) {
-	_, err := u.binary.Unmount(ctx, username)
+	out, err := u.binary.Unmount(ctx, username)
 	if err != nil {
+		testing.ContextLogf(ctx, "Unmount command failed for %q with: %q", username, string(out))
 		return false, errors.Wrap(err, "failed to unmount")
 	}
 	return true, nil
@@ -418,7 +419,9 @@ func (u *UtilityCryptohomeBinary) Unmount(ctx context.Context, username string) 
 
 // UnmountAll unmounts all vault.
 func (u *UtilityCryptohomeBinary) UnmountAll(ctx context.Context) error {
-	if _, err := u.binary.UnmountAll(ctx); err != nil {
+	out, err := u.binary.UnmountAll(ctx)
+	if err != nil {
+		testing.ContextLogf(ctx, "Unmount command failed with: %q", string(out))
 		return errors.Wrap(err, "failed to unmount")
 	}
 	return nil
