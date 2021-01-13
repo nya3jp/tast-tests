@@ -402,18 +402,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 						return errors.Wrap(err, "failed to start overview at right")
 					}
 				}
-				if !tabletMode {
-					// In clamshell mode, the window width does not stick to the half of
-					// the screen exactly, and the previous drag will end up with a
-					// slightly different width. So checking the starting position again.
-					w, err := ash.FindWindow(ctx, tconn, func(window *ash.Window) bool {
-						return id0 == window.ID
-					})
-					if err != nil {
-						return errors.Wrap(err, "failed to find the window")
-					}
-					dragPoints[0].X = w.BoundsInRoot.Right()
-				}
 				if err := pointerController.Press(ctx, dragPoints[0]); err != nil {
 					return errors.Wrap(err, "failed to start divider drag")
 				}
@@ -433,6 +421,13 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				}
 				if err := pointerController.Move(ctx, dragPoints[2], dragPoints[3], time.Second); err != nil {
 					return errors.Wrap(err, "failed to drag divider back to middle position")
+				}
+				if !tabletMode {
+					if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+						return w.ID == id0 && w.BoundsInRoot.Right() == dragPoints[3].X
+					}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+						return errors.Wrap(err, "failed to wait for resize to finish")
+					}
 				}
 				if err := pointerController.Release(ctx); err != nil {
 					return errors.Wrap(err, "failed to end divider drag")
