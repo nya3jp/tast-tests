@@ -39,6 +39,30 @@
       },
       "revId": "2bf88eeb588ec7fe3631e4a454a455afd5be44b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c83bcd_4ec15050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-13T00:53:22Z",
+      "side": 1,
+      "message": "Added it as a method of TestConn.",
+      "parentUuid": "c65cbb50_11d900ad",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 70
+      },
+      "revId": "2bf88eeb588ec7fe3631e4a454a455afd5be44b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
