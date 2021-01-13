@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "293dba98_74aa0e76",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-13T02:57:03Z",
+      "side": 1,
+      "message": "These two constructors are very similar. The only difference is just that []chrome.Option is given statically or via a closure. It\u0027s nice to consolidate them as far as possible.\n\nActually I like to consolidate to the new signature since it can be still used to give statically-defined options. For example:\n\n type OptionsCallback func(ctx context.Context, s *testing.FixtState) ([]Option, error)\n\n func NewLoggedInFixture(opts OptionsCallback) testing.FixtureImpl\n\n // Construct a fixture with fixed options:\n NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {\n   return []chrome.Option{...}, nil\n })\n\nWe have to rewrite existing callers of NewLoggedInFixture though.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "91b6151bd7d0af773be450096b797a4f070dec96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

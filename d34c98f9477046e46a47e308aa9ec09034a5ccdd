@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbbac14b_62dce65b",
+        "filename": "src/chromiumos/tast/local/chrome/fixture_loggedin_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-13T02:57:03Z",
+      "side": 1,
+      "message": "Ah you\u0027re right, then it\u0027s okay.",
+      "parentUuid": "b8b9b212_ae72fd91",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "d34c98f9477046e46a47e308aa9ec09034a5ccdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cc5a756_c816c97f",
