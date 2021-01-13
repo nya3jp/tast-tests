@@ -57,6 +57,30 @@
       },
       "revId": "613966e7272bcc55dcc5bef4b05f98a9b668377d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4241b16e_8bc8809b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-13T03:14:29Z",
+      "side": 1,
+      "message": "Thanks for the comment.  Added the same waiting (typeof tast checking and chrome.autotestPrivate.initializeEvents).",
+      "parentUuid": "91a59162_172e6144",
+      "range": {
+        "startLine": 1125,
+        "startChar": 8,
+        "endLine": 1125,
+        "endChar": 67
+      },
+      "revId": "613966e7272bcc55dcc5bef4b05f98a9b668377d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
