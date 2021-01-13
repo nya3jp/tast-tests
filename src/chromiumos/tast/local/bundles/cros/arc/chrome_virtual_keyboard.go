@@ -106,12 +106,8 @@ func chromeVirtualKeyboardBasicEditingTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
-	}
-
-	if err := vkb.WaitForDecoderEnabled(ctx, cr, true); err != nil {
-		s.Fatal("Failed to wait for the IME decoder is ready: ", err)
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
 	// Press a sequence of keys. Avoid using Space since it triggers autocomplete, which can
@@ -203,7 +199,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	}
 
 	s.Log("Waiting for the virtual keyboard to be ready")
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
@@ -239,7 +235,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := field1.Click(ctx); err != nil {
 		s.Fatal("Failed to click the field: ", err)
 	}
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 
@@ -295,8 +291,8 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 
 	// No need to wait for decoder enabled because the decoder won't be enabled on TYPE_NULL field.
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
 	keyDownLabel := d.Object(ui.ID(lastKeyDownLabelID))
@@ -364,8 +360,8 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	s.Log("Waiting for the virtual keyboard to be ready")
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
 	// Showing the normal virtual keyboard should push up the view.
@@ -450,8 +446,8 @@ func chromeVirtualKeyboardRotationTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
 	// Chrome OS virtual keyboard is shown and ready. Let's rotate the device.
@@ -539,7 +535,7 @@ func chromeVirtualKeyboardPasswordEditingTest(
 	}
 
 	s.Log("Waiting for virtual keyboard to be ready")
-	if err := vkb.WaitLocationStable(ctx, tconn); err != nil {
+	if err := vkb.WaitForVKReady(ctx, tconn, cr); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
 	}
 	// We should not wait for the decoder because it is not enabled on the password field.
