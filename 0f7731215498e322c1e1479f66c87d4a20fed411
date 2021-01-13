@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e5dc1f_c58df39e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:56:12Z",
+      "side": 1,
+      "message": "Thanks a ton for the feedback Dean, very much appreciated!\n\nSee https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2627888 for the manager/ethernet test.\n\nNote: I removed some of my changes to manager.go, reducing the amount of test changes required, so it might be easier just to re-review this from Base.\n",
+      "revId": "0f7731215498e322c1e1479f66c87d4a20fed411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
