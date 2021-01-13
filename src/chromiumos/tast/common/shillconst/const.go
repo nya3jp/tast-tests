@@ -215,3 +215,8 @@ const (
 	DeviceBgscanMethodLearn  = "learn"
 	DeviceBgscanMethodNone   = "none"
 )
+
+// Manager DBus Errors
+const (
+	ManagerFindMatchingServiceNotFound = "Matching service was not found"
+)
