@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4797df98_7d05b7a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-13T17:45:43Z",
+      "side": 1,
+      "message": "It is OK for .go. We don\u0027t have line limit here. Any reasonable length is good.",
+      "parentUuid": "b79127e6_c1f06c9a",
+      "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55291a14_e4b344c6",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-01-13T05:24:46Z",
       "side": 1,
       "message": "minor nit: arcRoot or androidRoot?",
+      "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229cd431_63464cf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-13T17:45:43Z",
+      "side": 1,
+      "message": "Done, however go has kind of opposite requirement (related to Chromium) to use shorter name.",
+      "parentUuid": "55291a14_e4b344c6",
       "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26245377_767abbcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-13T17:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49056a02_020394cb",
+      "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6c491e6_14b75816",
@@ -99,6 +153,30 @@
       "writtenOn": "2021-01-13T05:24:46Z",
       "side": 1,
       "message": "minor nit: android root?",
+      "range": {
+        "startLine": 89,
+        "startChar": 50,
+        "endLine": 89,
+        "endChar": 54
+      },
+      "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "643b2aa0_656f7184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-13T17:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6c491e6_14b75816",
       "range": {
         "startLine": 89,
         "startChar": 50,
@@ -132,6 +210,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f79bed7_2287fb90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-13T17:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ee61a1_98e7ecb3",
+      "range": {
+        "startLine": 139,
+        "startChar": 34,
+        "endLine": 139,
+        "endChar": 51
+      },
+      "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fe3811a_cd242186",
@@ -145,6 +247,24 @@
       "writtenOn": "2021-01-13T05:24:46Z",
       "side": 1,
       "message": "nit: \"Try to reset filter on exit\"?",
+      "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6f3148_b9907155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-13T17:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fe3811a_cd242186",
       "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -166,6 +286,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79641177_a6bee1c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-13T17:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ba576f4_ffd6fbfd",
+      "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48d1abe2_c28deee8",
@@ -179,6 +317,30 @@
       "writtenOn": "2021-01-13T05:24:46Z",
       "side": 1,
       "message": "2nd instance of this timeout number, make it a constant?",
+      "range": {
+        "startLine": 219,
+        "startChar": 33,
+        "endLine": 219,
+        "endChar": 50
+      },
+      "revId": "39aa279584e3c31eee7bdeb96eab0b4001d7fa1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93154452_e0c0456f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-13T17:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48d1abe2_c28deee8",
       "range": {
         "startLine": 219,
         "startChar": 33,
