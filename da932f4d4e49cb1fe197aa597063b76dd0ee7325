@@ -33,6 +33,24 @@
       "message": "this \"query\" field doesn\u0027t seem to be used?",
       "revId": "da932f4d4e49cb1fe197aa597063b76dd0ee7325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a6238c0_beb553a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-13T15:24:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62cade5a_ba70d32f",
+      "revId": "da932f4d4e49cb1fe197aa597063b76dd0ee7325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
