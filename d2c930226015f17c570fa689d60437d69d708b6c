@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7d9785_9f242362",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-13T02:48:06Z",
+      "side": 1,
+      "message": "Thanks for the pointer to the bug.\n\nGiven that many tests implicitly assume that the ui job is running, I think it makes sense to start the ui job before every local test. Tast supports per-test hooks here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundlemain/main.go;l\u003d168\n\nA good point of this approach is that, even if the ui job is not running before we run \"tast run\" (e.g. previous manual \"tast run\" resulted in ui crash), we can still recover.\n\nWhat do you think?\n",
+      "revId": "d2c930226015f17c570fa689d60437d69d708b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
