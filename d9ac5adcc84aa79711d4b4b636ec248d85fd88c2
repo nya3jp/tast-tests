@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea256c05_74ee2477",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-13T16:57:10Z",
+      "side": 1,
+      "message": "I\u0027ve switched the cuj precondition to the fixture. See:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2597793/\n\nFor the consistency, this should also be a fixture rather than precondition.",
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d19014_b55c036a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-13T16:57:10Z",
+      "side": 1,
+      "message": "Why LoginTime here?  Who uses this for what purpose?",
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24155d7b_d1cb7732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-13T16:57:10Z",
+      "side": 1,
+      "message": "Why not setting LoginTime?",
+      "range": {
+        "startLine": 60,
+        "startChar": 45,
+        "endLine": 60,
+        "endChar": 46
+      },
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8eb43b0_3a8a5b91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-13T16:57:10Z",
+      "side": 1,
+      "message": "Why does CameraSystemWebApp need to be disabled?",
+      "range": {
+        "startLine": 78,
+        "startChar": 27,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dccb0524_896ef831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-13T16:57:10Z",
+      "side": 1,
+      "message": "This now exists as a package function. You don\u0027t need to define this by yourself.",
+      "range": {
+        "startLine": 144,
+        "startChar": 29,
+        "endLine": 144,
+        "endChar": 44
+      },
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
