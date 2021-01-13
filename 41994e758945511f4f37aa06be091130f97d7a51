@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f63a35_de4c252d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-13T19:06:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f9b1ec8_0b34cab2",
+      "range": {
+        "startLine": 177,
+        "startChar": 11,
+        "endLine": 177,
+        "endChar": 68
+      },
+      "revId": "41994e758945511f4f37aa06be091130f97d7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da78ae4d_7e1d6828",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39bd7086_10460bf7",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-13T19:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da78ae4d_7e1d6828",
+      "revId": "41994e758945511f4f37aa06be091130f97d7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6045967c_fd1a3437",
@@ -88,6 +130,30 @@
       "writtenOn": "2021-01-12T09:53:04Z",
       "side": 1,
       "message": "nit: I think we probably don\u0027t expect tests to change this? (which can make other tests in the same Pre losing verbose config). If so, we can have these functions private.",
+      "range": {
+        "startLine": 1392,
+        "startChar": 23,
+        "endLine": 1392,
+        "endChar": 24
+      },
+      "revId": "41994e758945511f4f37aa06be091130f97d7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e62913_b3042169",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1392,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-13T19:06:42Z",
+      "side": 1,
+      "message": "I agree with you.",
+      "parentUuid": "6045967c_fd1a3437",
       "range": {
         "startLine": 1392,
         "startChar": 23,
