@@ -32,6 +32,12 @@ var videoTestFiles = []string{
 	"test_vectors/av1/frames_refs_short_signaling.ivf.json",
 	"test_vectors/av1/non_uniform_tiling.ivf",
 	"test_vectors/av1/non_uniform_tiling.ivf.json",
+	"test_vectors/av1/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf",
+	"test_vectors/av1/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf.json",
+	"test_vectors/av1/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf",
+	"test_vectors/av1/test-25fps-192x288-only-tile-rows-is-power-of-2.ivf.json",
+	"test_vectors/av1/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf",
+	"test_vectors/av1/test-25fps-192x288-tile-rows-3-tile-cols-3.ivf.json",
 }
 
 func testVectors() []string {
