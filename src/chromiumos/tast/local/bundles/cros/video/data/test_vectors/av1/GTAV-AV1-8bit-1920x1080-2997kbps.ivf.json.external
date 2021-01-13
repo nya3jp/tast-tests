@@ -1,0 +1,5 @@
+{
+  "sha256sum": "c4347f94abb845ae63293d6cb7222539442fbadaa0c382bdc38d3211f3f65652",
+  "size": 10248,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/av1/GTAV-AV1-8bit-1920x1080-2997kbps_20210113.ivf.json"
+}

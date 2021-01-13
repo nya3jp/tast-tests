@@ -14,6 +14,8 @@ violated.
 * ccvb\_film\_grain.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/ccvb_film_grain.ivf)
 * crosvideo\_last\_2sec.ivf (Last two seconds in http://crosvideo.commondatastorage.googleapis.com/av1_720p_30fps.mp4)
 * frames\_refs\_short\_signaling.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/frames_refs_short_signaling.ivf)
+* GTAV-AV1-8bit-1920x1080-2997kbps\_20210113.ivf (extracted from the stream in http://download.opencontent.netflix.com/?prefix=AV1/Chimera/Old/)
+* Netflix_ToddlerFountain-AV1-8bit-1920x1012-3094kbps\_20210113.ivf (extracted from the stream in http://download.opencontent.netflix.com/?prefix=AV1/Chimera/Old/)
 * non\_uniform\_tiling.ivf (https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/features/non_uniform_tiling.ivf)
 
 In the three video files below, either the number of tile rows or the number of
