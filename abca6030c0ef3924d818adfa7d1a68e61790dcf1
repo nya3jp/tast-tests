@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3269cbe1_3990a1b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-01-13T22:30:36Z",
+      "side": 1,
+      "message": "Jorge, could you have a look?\n\nI wanted to introduce a new test similar to security.StatefulFiles to make sure owners/permissions of files in /run/arc[vm] are correct. (I cannot do CQ dry run just yet because of the dependency.)\n",
+      "revId": "abca6030c0ef3924d818adfa7d1a68e61790dcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
