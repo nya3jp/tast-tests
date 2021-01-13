@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64acbc8c_786769b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:56:12Z",
+      "side": 1,
+      "message": "Unless refactoring for its own sake, I prefer to include small refactoring with the code that requires them.\n\nThat said, I am happy to split this into 2 CLs, one for each test. I will include and use the FindMatchingService change with the manager readiness test.",
+      "parentUuid": "14b6e71d_8c0b4719",
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f29758c4_3ff09210",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-01-13T03:23:02Z",
       "side": 1,
       "message": "In Golang, we tend to make the variable short for struct method. How about\n\nfunc (h *Helper) IsEnabled() bool {...}",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 12
+      },
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83de6344_88647b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:56:12Z",
+      "side": 1,
+      "message": "Huh. I figured this would count as a \"medium\" scope according to the guidelines, but we do seem to use 1-2 character variables for class variables in Tast at least. Fixed.\n\ngo/go-style/decisions#variable-names",
+      "parentUuid": "f29758c4_3ff09210",
       "range": {
         "startLine": 47,
         "startChar": 6,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62e06ba2_cdbf5243",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:56:12Z",
+      "side": 1,
+      "message": "Switched to \u0027Find\u0027, since this is a non trivial method so just \u0027Service\u0027 would be misleading.",
+      "parentUuid": "5ef13990_f07ebd2c",
+      "range": {
+        "startLine": 77,
+        "startChar": 22,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ab1ea2c_c1bf17fc",
@@ -111,6 +177,24 @@
       "writtenOn": "2021-01-13T03:34:38Z",
       "side": 1,
       "message": "Why not using Manager.WaitForServiceProperties()?",
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e5208e_5a54ca1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:56:12Z",
+      "side": 1,
+      "message": "Ah, I did that cleanup after I wrote this and didn\u0027t think about the fact that they do the same thing, thanks for catching that! Done.",
+      "parentUuid": "6ab1ea2c_c1bf17fc",
       "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +222,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "322159a0_bfc5a11a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:56:12Z",
+      "side": 1,
+      "message": "I went ahead and modified FindMatchingService again to match what appears to be the more common pattern of returning an error if the service is not found, then testing for specific errors at the call site (in this case shillconst.ManagerFindMatchingServiceNotFound).",
+      "parentUuid": "0f6bbf43_b4f2aa7d",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 53
+      },
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c411121b_beb755ad",
@@ -151,6 +259,24 @@
       "writtenOn": "2021-01-13T03:23:02Z",
       "side": 1,
       "message": "May we move the test in another CL?  Any reason to bundle both tests in a CL?",
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e76778_de048112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_manager_sanity.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:56:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c411121b_beb755ad",
       "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +304,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be87732_d242a572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_manager_sanity.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:56:12Z",
+      "side": 1,
+      "message": "Huh. Thanks for catching this, I had no idea. I\u0027ll switch to \u0027ready\u0027.",
+      "parentUuid": "2ca1ea23_3d2d2c5e",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e2d5ea6_6e23c9bf",
@@ -195,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "507548e3_bc98add7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_manager_sanity.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:56:12Z",
+      "side": 1,
+      "message": "Precaution. I find it helpful to have a \"readiness\" (formerly commonly known as \"sanity\") for complex systems. If that test fails, then we know that the system (in this case Shill) is badly broken, so we can ignore other failures in the system.",
+      "parentUuid": "5e2d5ea6_6e23c9bf",
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae392e0e_4361622f",
@@ -208,6 +376,24 @@
       "writtenOn": "2021-01-13T03:23:02Z",
       "side": 1,
       "message": "Thanks for improving shill/manager.go. However, if it is better to move the improvement into a CL prior to the CL adding new tests?",
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87b22d50_8fb1bca4",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-13T17:56:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae392e0e_4361622f",
       "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
