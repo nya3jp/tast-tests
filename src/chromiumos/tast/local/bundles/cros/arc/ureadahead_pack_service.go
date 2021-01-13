@@ -7,8 +7,11 @@ package arc
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"google.golang.org/grpc"
@@ -19,6 +22,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/testing"
 )
@@ -46,6 +50,10 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 		arcvmPackName = "opt.google.vms.android.pack"
 		arcvmRoot     = "/opt/google/vms/android"
+
+		sysOpenTrace = "/sys/kernel/debug/tracing/events/fs/do_sys_open"
+
+		ureadaheadTimeout = 10 * time.Second
 	)
 
 	// Create arguments for running ureadahead.
@@ -54,17 +62,38 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		"--force-trace",
 	}
 
+	// Stop UI to make sure we don't have any pending holds and race condition restarting Chrome.
+	testing.ContextLog(ctx, "Stopping UI to release all possible locks")
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		return nil, errors.Wrap(err, "failed to stop ui")
+	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
 	var packPath string
+	var arcRoot string
 	// Part of arguments differ in container and arcvm.
 	if request.VmEnabled {
 		packPath = filepath.Join(ureadaheadDataDir, arcvmPackName)
 		args = append(args, fmt.Sprintf("--path-prefix-filter=%s", arcvmRoot))
 		args = append(args, fmt.Sprintf("--pack-file=%s", packPath))
-		args = append(args, arcvmRoot)
+		arcRoot = arcvmRoot
 	} else {
 		packPath = filepath.Join(ureadaheadDataDir, containerPackName)
 		args = append(args, fmt.Sprintf("--path-prefix=%s", containerRoot))
-		args = append(args, containerRoot)
+		arcRoot = containerRoot
+	}
+	args = append(args, arcRoot)
+
+	out, err := testexec.CommandContext(ctx, "lsof", "+D", arcRoot).CombinedOutput()
+	if err != nil {
+		// In case nobody holds file, lsof returns 1.
+		if exitError, ok := err.(*exec.ExitError); !ok || exitError.ExitCode() != 1 {
+			return nil, errors.Wrap(err, "failed to verify android root is not locked")
+		}
+	}
+	outStr := string(out)
+	if outStr != "" {
+		return nil, errors.Errorf("found locks for %q: %q", arcRoot, outStr)
 	}
 
 	if _, err := os.Stat(packPath); err == nil {
@@ -75,17 +104,60 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Wrap(err, "failed to check if pack exists")
 	}
 
+	if err := ioutil.WriteFile("/proc/sys/vm/drop_caches", []byte("3"), 0200); err != nil {
+		return nil, errors.Wrap(err, "failed to clear caches")
+	}
+
 	testing.ContextLog(ctx, "Start ureadahead tracing")
 
-	cmd := testexec.CommandContext(ctx, "ureadahead", args...)
+	// Make sure ureadahead flips these flags to confirm it is started.
+	flags := []string{"/sys/kernel/debug/tracing/tracing_on",
+		filepath.Join(sysOpenTrace, "enable")}
+	for _, flag := range flags {
+		if err := ioutil.WriteFile(flag, []byte("0"), 0644); err != nil {
+			return nil, errors.Wrap(err, "failed to reset ureadahead flag")
+		}
+	}
 
+	cmd := testexec.CommandContext(ctx, "ureadahead", args...)
 	if err := cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed to start ureadahead tracing")
+	}
+
+	// Wait ureadahead actually started.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		for _, flag := range flags {
+			content, err := ioutil.ReadFile(flag)
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to read flag"))
+			}
+			contentStr := strings.TrimSpace(string(content))
+			if contentStr != "1" {
+				return errors.Errorf("flag %q=%q is not yet flipped to 1", flag, contentStr)
+			}
+
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: ureadaheadTimeout}); err != nil {
+		return nil, errors.Wrap(err, "failed to ensure ureadahead started")
 	}
 
 	defer func() {
 		if err := stopUreadaheadTracing(ctx, cmd); err != nil {
 			testing.ContextLog(ctx, "Failed to stop ureadahead tracing")
+		}
+	}()
+
+	// Explicitly set filter for sys_open in order to significantly reduce the tracing traffic.
+	sysOpenFilterPath := filepath.Join(sysOpenTrace, "filter")
+	sysOpenFilterContent := fmt.Sprintf("filename ~ \"%s/*\"", arcRoot)
+	if err := ioutil.WriteFile(sysOpenFilterPath, []byte(sysOpenFilterContent), 0644); err != nil {
+		return nil, errors.Wrap(err, "failed to set sys open filter")
+	}
+	// Try to reset filter on exit.
+	defer func() {
+		if err := ioutil.WriteFile(sysOpenFilterPath, []byte("0"), 0644); err != nil {
+			testing.ContextLog(ctx, "WARNING: Failed to reset sys open filter")
 		}
 	}()
 
@@ -143,7 +215,10 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, err
 	}
 
-	if _, err := os.Stat(packPath); err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := os.Stat(packPath)
+		return err
+	}, &testing.PollOptions{Timeout: ureadaheadTimeout}); err != nil {
 		return nil, errors.Wrap(err, "failed to ensure pack file exists")
 	}
 
