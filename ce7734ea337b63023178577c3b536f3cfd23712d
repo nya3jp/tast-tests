@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e003ae78_75c1dcf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_enable_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-13T00:43:01Z",
+      "side": 1,
+      "message": "Just want to confirm if Play Store settings is reflecting fine in backend.",
+      "parentUuid": "5549d3fb_f0c9a303",
+      "range": {
+        "startLine": 76,
+        "startChar": 25,
+        "endLine": 76,
+        "endChar": 60
+      },
+      "revId": "ce7734ea337b63023178577c3b536f3cfd23712d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b6ee98c_6c7fd9d8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-12T17:38:01Z",
       "side": 1,
       "message": "Why does turning off need polling but not turning on?",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "ce7734ea337b63023178577c3b536f3cfd23712d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f81d7d_e3239411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/disable_enable_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-13T00:43:01Z",
+      "side": 1,
+      "message": "There is WaitForPlayStoreReady in turn flow which in-turn has the polling.",
+      "parentUuid": "7b6ee98c_6c7fd9d8",
       "range": {
         "startLine": 91,
         "startChar": 1,
