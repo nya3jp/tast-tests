@@ -25,7 +25,7 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Pre:          pre.User,
 		Data:         []string{"notifications_for_urls_test_page.html"},
 	})
@@ -95,7 +95,7 @@ func NotificationsBlockedForUrls(ctx context.Context, s *testing.State) {
 			}
 
 			// Open the test page.
-			conn, err := cr.NewConn(ctx, server.URL + "/notifications_for_urls_test_page.html")
+			conn, err := cr.NewConn(ctx, server.URL+"/notifications_for_urls_test_page.html")
 			if err != nil {
 				s.Fatal("Failed to connect to the policy page: ", err)
 			}
