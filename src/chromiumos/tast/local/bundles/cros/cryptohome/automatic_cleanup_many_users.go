@@ -77,6 +77,7 @@ func AutomaticCleanupManyUsers(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 
 	userCreationCtx, st := timing.Start(ctx, "user_creation")
+	userCreationStart := time.Now()
 	var fillFiles []string
 	// Create user directories.
 	for i := 1; i <= userCount; i++ {
@@ -91,12 +92,13 @@ func AutomaticCleanupManyUsers(ctx context.Context, s *testing.State) {
 		fillFiles = append(fillFiles, fillFile)
 	}
 	st.End()
+	userCreationTime := time.Since(userCreationStart)
 
 	pv.Set(perf.Metric{
 		Name:      fmt.Sprintf("cryptohome_user_creation_%d", userCount),
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
-	}, float64(st.EndTime.Sub(st.StartTime).Milliseconds()))
+	}, float64(userCreationTime.Milliseconds()))
 
 	// Unmount all users.
 	if err := cryptohome.UnmountAll(ctx); err != nil {
@@ -110,16 +112,18 @@ func AutomaticCleanupManyUsers(ctx context.Context, s *testing.State) {
 	defer reader.Close()
 
 	automaticCleanupCtx, st := timing.Start(ctx, "cleanup")
+	automaticCleanupStart := time.Now()
 	if err := cleanup.ForceAutomaticCleanup(automaticCleanupCtx); err != nil {
 		s.Fatal("Failed to run automatic cleanup: ", err)
 	}
 	st.End()
+	automaticCleanupTime := time.Since(automaticCleanupStart)
 
 	pv.Set(perf.Metric{
 		Name:      fmt.Sprintf("cryptohome_start_and_cleanup_%d", userCount),
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
-	}, float64(st.EndTime.Sub(st.StartTime).Milliseconds()))
+	}, float64(automaticCleanupTime.Milliseconds()))
 
 	re := regexp.MustCompile(`Disk cleanup took (\d+)ms.`)
 
