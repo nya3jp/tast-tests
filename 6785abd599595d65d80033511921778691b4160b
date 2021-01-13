@@ -50,6 +50,171 @@
       "message": "+Eric to take a look at new RPCs in snippet.go",
       "revId": "6785abd599595d65d80033511921778691b4160b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485e53f1_520570e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:46:51Z",
+      "side": 1,
+      "message": "This is the actual test file.",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eecdf2fd_5b893356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:46:51Z",
+      "side": 1,
+      "message": "Will also update this comment on next patch.",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9591c28a_1268cbd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:46:51Z",
+      "side": 1,
+      "message": "access",
+      "range": {
+        "startLine": 81,
+        "startChar": 117,
+        "endLine": 81,
+        "endChar": 123
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae677de_bfd42ac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:46:51Z",
+      "side": 1,
+      "message": "vecore@, hansberry@, could you take at this JS I\u0027m using to drive the sending flow?",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff68e167_08a5a223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:46:51Z",
+      "side": 1,
+      "message": "This is where the problems with the lab devices are happening. The settings changes from `setupDevice` aren\u0027t being applied. It was working fine on a different device, so we\u0027re investigating if it\u0027s an Android version issue or some other problems with our device setup. We\u0027re working through it now.",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7792fe5_25f7a208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:46:51Z",
+      "side": 1,
+      "message": "Had the wrong delimiter here from last time.",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6930a956_5182dfcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:46:51Z",
+      "side": 1,
+      "message": "ericth@, added a bunch of new RPCs here if you could have a look",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "467306b5_d7592ecf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbytestutils/nearbytestutils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:46:51Z",
+      "side": 1,
+      "message": "Forgot to update this comment, will do so on next patch.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 121
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edc469de_d83fa8b1",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/send.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:46:51Z",
+      "side": 1,
+      "message": "vecore@, hansberry@, this is the Go wrapper around send.js if you\u0027re interested.",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
