@@ -20,7 +20,7 @@ func init() {
 		Func:         NoSharedFolder,
 		Desc:         "Test shared folder list in Settings app when there is no folder shared",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "crostini.gaiaUsername", "crostini.gaiaPassword", "crostini.gaiaID"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
