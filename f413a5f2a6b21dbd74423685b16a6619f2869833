@@ -86,6 +86,24 @@
       "parentUuid": "5bff7a85_2ae63f32",
       "revId": "f413a5f2a6b21dbd74423685b16a6619f2869833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83aaf521_dba5c397",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-01-13T14:43:31Z",
+      "side": 1,
+      "message": "Fine with me if Shao-Chuan\u0027s OK with it.",
+      "parentUuid": "3f9f54d6_c61fd2dc",
+      "revId": "f413a5f2a6b21dbd74423685b16a6619f2869833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
