@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c5e624_10d5b11f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:33:33Z",
+      "side": 1,
+      "message": "We\u0027re still having problems running this in the lab after switched out the phones during the holidays. The \u0027setupDevice\u0027 RPC is failing to configure Android\u0027s Nearby settings on the lab devices, but it\u0027s running fine locally.\n\nI think this is ready enough for a first round of review, though.",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
