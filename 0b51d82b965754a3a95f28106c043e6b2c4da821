@@ -22,6 +22,30 @@
       },
       "revId": "0b51d82b965754a3a95f28106c043e6b2c4da821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81bab043_8865d7e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-01-13T18:38:14Z",
+      "side": 1,
+      "message": "Argh I clearly resolved conflicts incorrectly.",
+      "parentUuid": "51d259f4_89a980e1",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 1
+      },
+      "revId": "0b51d82b965754a3a95f28106c043e6b2c4da821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
