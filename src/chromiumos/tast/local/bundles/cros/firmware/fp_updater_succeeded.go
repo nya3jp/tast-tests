@@ -47,6 +47,10 @@ func readUpdaterLogs(s *testing.State) (string, string) {
 	}
 	previousData, err := ioutil.ReadFile(previousLog)
 	if err != nil {
+		if strings.Contains(err.Error(), "no such file or directory") {
+			// Previous log doesn't exist, this is the first boot.
+			return strings.TrimSpace(string(latestData)), ""
+		}
 		s.Fatal("Failed to read previous updater log: ", err)
 	}
 	return strings.TrimSpace(string(latestData)), strings.TrimSpace(string(previousData))
@@ -62,6 +66,11 @@ func FpUpdaterSucceeded(ctx context.Context, s *testing.State) {
 
 	// If both latest and previous log says no update, count as success.
 	if strings.Contains(latest, noUpdateString) && strings.Contains(prev, noUpdateString) {
+		return
+	}
+
+	// If latest log says no update and previous log does not exist, count as success.
+	if strings.Contains(latest, noUpdateString) && prev == "" {
 		return
 	}
 
