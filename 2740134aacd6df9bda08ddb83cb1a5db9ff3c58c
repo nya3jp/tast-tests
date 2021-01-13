@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3818a17_7b597d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-13T19:06:42Z",
+      "side": 1,
+      "message": "I did something similar to that, I added the following params to TestFixture:\nsetLogging       bool\nlogLevel         int\nlogTags          []string\noriginalLogLevel int\noriginalLogTags  []string\n\nIn test_fixture.go\nIn func NewTestFixture(): I get the initial/original configs and set the desired configs.\n\nIn func close(): I restored the original configs using the params (originalLogLevel \u0026 originalLogTags)\n\nI can move the setting and restoring to InitDUT/Teardown, I think the only benefit is removing the functions setLoggingConfig/getLoggingConfig from test_fixture if we are not planning to use them (such as: set different logging configs in a test and restore the old configs at the end of the test)",
+      "parentUuid": "8df7c507_8569c63c",
+      "revId": "2740134aacd6df9bda08ddb83cb1a5db9ff3c58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64eb6686_2f28a66f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 5
