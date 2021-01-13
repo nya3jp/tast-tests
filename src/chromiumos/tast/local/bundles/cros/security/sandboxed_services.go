@@ -274,7 +274,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		if _, ok := ignoredAncestorPIDs[pid]; ok {
 			continue
 		}
-		if skip, err := procHasAncestor(pid, ignoredAncestorPIDs, infos); err == nil && skip {
+		if skip, err := sandboxing.ProcHasAncestor(pid, ignoredAncestorPIDs, infos); err == nil && skip {
 			continue
 		}
 
