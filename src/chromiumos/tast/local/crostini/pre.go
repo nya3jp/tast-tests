@@ -196,11 +196,7 @@ type varState interface {
 
 // GaiaLoginAvailable returns whether or not a real gaia account is in use. This requires some variables from tast-tests-private
 func GaiaLoginAvailable(s varState) bool {
-	_, ok1 := s.Var("crostini.gaiaUsername")
-	_, ok2 := s.Var("crostini.gaiaPassword")
-	_, ok3 := s.Var("crostini.gaiaID")
-
-	return ok1 && ok2 && ok3
+	return false
 }
 
 // The PreData object is made available to users of this precondition via:
