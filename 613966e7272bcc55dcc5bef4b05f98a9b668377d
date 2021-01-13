@@ -16,6 +16,47 @@
       "message": "nya, can you take a look at the change of testconn?  Do you think it\u0027s okay?\nIf not, I\u0027ll move it to a local function of the test.",
       "revId": "613966e7272bcc55dcc5bef4b05f98a9b668377d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "424ce348_b37a1b05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-13T02:40:58Z",
+      "side": 1,
+      "message": "Extracting the method sounds good to me.",
+      "parentUuid": "7270967e_a4eb3407",
+      "revId": "613966e7272bcc55dcc5bef4b05f98a9b668377d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a59162_172e6144",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-13T02:40:58Z",
+      "side": 1,
+      "message": "No action needed\n\ntestAPIConnFor waits for several other conditions, e.g. typeof tast !\u003d \u0027undefined\u0027. Should we do exactly the same things as that? I know you just extracted ResetState to this method, so no action needed.",
+      "range": {
+        "startLine": 1125,
+        "startChar": 8,
+        "endLine": 1125,
+        "endChar": 67
+      },
+      "revId": "613966e7272bcc55dcc5bef4b05f98a9b668377d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
