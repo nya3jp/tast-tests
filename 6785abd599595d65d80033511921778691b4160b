@@ -33,6 +33,23 @@
       "message": "+Nearby folks to take a look at the JS usage in sender.js (and the Go wrapping in send.go if interested).",
       "revId": "6785abd599595d65d80033511921778691b4160b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e487fb7_46751945",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-13T08:35:23Z",
+      "side": 1,
+      "message": "+Eric to take a look at new RPCs in snippet.go",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
