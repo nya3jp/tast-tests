@@ -356,7 +356,7 @@ func Fio(ctx context.Context, s *testing.State) {
 		"--nofile=262144",
 		"crosvm", "run",
 		"-c", "1",
-		"-m", "512",
+		"-m", "1024",
 		"-s", td,
 		"--shared-dir", "/:/dev/root:type=fs:cache=always",
 		"--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", logFile),
