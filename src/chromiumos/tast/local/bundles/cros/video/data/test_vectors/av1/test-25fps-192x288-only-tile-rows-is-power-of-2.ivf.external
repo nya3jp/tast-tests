@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/av1/test-25fps-192x288-only-tile-rows-is-power-of-2_20210111.ivf",
+  "size": 227470,
+  "sha256sum": "00a9b67a7328b1879d28b3903bc30ee8dd996e6939b43c284872b92c4a6f13ad"
+}
