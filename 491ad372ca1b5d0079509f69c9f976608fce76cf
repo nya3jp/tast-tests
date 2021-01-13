@@ -16,6 +16,23 @@
       "message": "Test is stable: https://cros-health-prod.googleplex.com/test/policy.DisableScreenshotsHotkey",
       "revId": "491ad372ca1b5d0079509f69c9f976608fce76cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d55d171_83dc6a4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-13T11:29:15Z",
+      "side": 1,
+      "message": "Looks like Tast board is a bit outdated: this test is already promoted\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2617790",
+      "revId": "491ad372ca1b5d0079509f69c9f976608fce76cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
