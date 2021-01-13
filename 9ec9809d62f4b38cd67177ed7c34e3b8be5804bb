@@ -70,6 +70,30 @@
       },
       "revId": "9ec9809d62f4b38cd67177ed7c34e3b8be5804bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "906ff0f7_0502e51d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-13T00:49:21Z",
+      "side": 1,
+      "message": "Ok I modified the test so that we should only be running routines that we expect to work based on SoftwareDeps",
+      "parentUuid": "45d38c5a_9984057c",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "9ec9809d62f4b38cd67177ed7c34e3b8be5804bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

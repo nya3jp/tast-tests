@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba95430_eb5217e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-13T00:49:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3903977_5df2e898",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 4
+      },
+      "revId": "1ac60c3fa733ef407fd2c122525fd133e79fd91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c723f0e9_eae007fd",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-12T18:25:27Z",
       "side": 1,
       "message": "I guess you don\u0027t need this \"else if\".\n\ncroshealthd.RunDiagRoutine should return either nil result or nil error, not both nil together.",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "1ac60c3fa733ef407fd2c122525fd133e79fd91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0238b90_210d3732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-13T00:49:21Z",
+      "side": 1,
+      "message": "Yes that makes sense, done.",
+      "parentUuid": "c723f0e9_eae007fd",
       "range": {
         "startLine": 137,
         "startChar": 3,
