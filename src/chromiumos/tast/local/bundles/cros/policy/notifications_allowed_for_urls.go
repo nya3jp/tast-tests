@@ -95,7 +95,7 @@ func NotificationsAllowedForUrls(ctx context.Context, s *testing.State) {
 			}
 
 			// Open the test page.
-			conn, err := cr.NewConn(ctx, server.URL + "/notifications_for_urls_test_page.html")
+			conn, err := cr.NewConn(ctx, server.URL+"/notifications_for_urls_test_page.html")
 			if err != nil {
 				s.Fatal("Failed to connect to the policy page: ", err)
 			}
