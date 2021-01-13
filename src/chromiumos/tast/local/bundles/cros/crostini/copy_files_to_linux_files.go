@@ -106,6 +106,10 @@ func CopyFilesToLinuxFiles(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	if err := cont.Cleanup(ctx, "."); err != nil {
+		s.Fatal("Failed to cleanup the home directory before the test: ", err)
+	}
+
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
