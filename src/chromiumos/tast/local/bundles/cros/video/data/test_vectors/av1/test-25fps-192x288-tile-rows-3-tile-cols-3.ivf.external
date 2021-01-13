@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/av1/test-25fps-192x288-tile-rows-3-tile-cols-3_20210111.ivf",
+  "size": 228659,
+  "sha256sum": "ab09c6ffb4ab3cf24860968315bb6724e86afd66e845bd7eacbeab3bb3ba8515"
+}
