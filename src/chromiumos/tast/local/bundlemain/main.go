@@ -253,10 +253,22 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 	}
 }
 
+// beforeDownload is called before download external data files.
+func beforeDownload(ctx context.Context) {
+	ctx, cancel := context.WithTimeout(ctx, 15*time.Second)
+	defer cancel()
+
+	// Ensure networking is up.
+	if err := shill.WaitForOnline(ctx); err != nil {
+		testing.ContextLog(ctx, "Before downloading external data files: failed to wait for online: ", err)
+	}
+}
+
 // RunLocal is an entry point function for local bundles.
 func RunLocal() {
 	os.Exit(bundle.LocalDefault(bundle.LocalDelegate{
-		Ready:    ready.Wait,
-		TestHook: testHookLocal,
+		Ready:          ready.Wait,
+		TestHook:       testHookLocal,
+		BeforeDownload: beforeDownload,
 	}))
 }
