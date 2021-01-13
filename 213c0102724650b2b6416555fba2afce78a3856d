@@ -16,6 +16,23 @@
       "message": "Test is stable: https://cros-health-prod.googleplex.com/test/policy.BookmarkBarEnabled",
       "revId": "213c0102724650b2b6416555fba2afce78a3856d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b851667_a9d3376b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2021-01-13T11:59:21Z",
+      "side": 1,
+      "message": "I see on the dashboard that this test is doing well.\nLGTM, thanks.",
+      "revId": "213c0102724650b2b6416555fba2afce78a3856d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
