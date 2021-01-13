@@ -140,6 +140,30 @@
       },
       "revId": "b2199cba060c6be16b7b0f92fe1e780a123569ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5392f4_b83a8b42",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-01-13T19:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61956e6d_1dfcae81",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 190,
+        "endChar": 47
+      },
+      "revId": "b2199cba060c6be16b7b0f92fe1e780a123569ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
