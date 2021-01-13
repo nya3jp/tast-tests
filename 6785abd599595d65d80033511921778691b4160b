@@ -54,6 +54,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "86fbad8c_a0beaa42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-01-13T22:01:02Z",
+      "side": 1,
+      "message": "LGTM, but it\u0027s a bit of a rubber-stamp since I\u0027m weak with Go. In any case, nice work! ",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "485e53f1_520570e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
         "patchSetId": 4
@@ -122,6 +139,47 @@
       "writtenOn": "2021-01-13T08:46:51Z",
       "side": 1,
       "message": "vecore@, hansberry@, could you take at this JS I\u0027m using to drive the sending flow?",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f2e3ffc_af1d8abe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-01-13T22:01:02Z",
+      "side": 1,
+      "message": "I defer to vecore@ for JS.",
+      "parentUuid": "8ae677de_bfd42ac6",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f96c6449_b3c7ef51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-01-13T22:01:02Z",
+      "side": 1,
+      "message": "Remove commented out code.",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 37
+      },
       "revId": "6785abd599595d65d80033511921778691b4160b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -213,6 +271,24 @@
       "writtenOn": "2021-01-13T08:46:51Z",
       "side": 1,
       "message": "vecore@, hansberry@, this is the Go wrapper around send.js if you\u0027re interested.",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7b0341_e0e2b2a9",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/send.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-01-13T22:01:02Z",
+      "side": 1,
+      "message": "LG, but I\u0027m not proficient with Go.",
+      "parentUuid": "edc469de_d83fa8b1",
       "revId": "6785abd599595d65d80033511921778691b4160b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
