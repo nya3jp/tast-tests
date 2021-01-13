@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7cf4df1_c3ca038c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-13T20:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b450d81_2935efcf",
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3a5a461_5641094f",
@@ -254,6 +272,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d16d61cc_81e7bb98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-13T20:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5410a023_27ed9d2c",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed2925f0_1fc0bc1e",
@@ -315,6 +357,30 @@
       "side": 1,
       "message": "It\u0027s safer to check specific error you expect in case of error instead just check if it\u0027s context deadline and otherwise error can be ignored.",
       "parentUuid": "3d84d0ad_b34ef4e0",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "4084a40aeb09f6500d9411cce1c4d1c0b404f452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beb11820_4e1ed510",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/vaapi_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-13T20:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb4fe78c_00852629",
       "range": {
         "startLine": 60,
         "startChar": 5,
