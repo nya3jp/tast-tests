@@ -79,7 +79,10 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	}
 
 	if _, err := h.r.Run(ctx, "stop", "ui"); err != nil {
-		return errors.Wrap(err, "failed to stop ui")
+		// ui might not be running because there's no guarantee that it's running when we start the test.
+		// If we actually failed to stop ui and something ends up being wrong, then we can use the logging
+		// below to let whoever that's debugging this problem find out.
+		testing.ContextLog(ctx, "Failed to stop ui, this is normal if ui was not running")
 	}
 
 	if _, err := h.r.Run(ctx, "cryptohome", "--action=unmount"); err != nil {
