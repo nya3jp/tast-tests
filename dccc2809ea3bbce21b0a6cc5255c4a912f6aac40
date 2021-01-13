@@ -16,6 +16,63 @@
       "message": "Hello! \nWanted to ping in case you missed this CL during the shift from the holiday season 😊",
       "revId": "dccc2809ea3bbce21b0a6cc5255c4a912f6aac40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1f699dd_7c3780d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-01-13T01:22:55Z",
+      "side": 1,
+      "message": "LGTM % comment below.",
+      "revId": "dccc2809ea3bbce21b0a6cc5255c4a912f6aac40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2819fb12_61b452b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-01-13T01:22:55Z",
+      "side": 1,
+      "message": "if err :\u003d conn.Navigate(ctx, extURL); err !\u003d nil {\n   ...\n}",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 14
+      },
+      "revId": "dccc2809ea3bbce21b0a6cc5255c4a912f6aac40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e1e42b_5169d64f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-01-13T01:22:55Z",
+      "side": 1,
+      "message": "if err :\u003d diff.Run(testexec.DumpLogOnError); err !\u003d nil {\n    s.Error(...)\n}",
+      "revId": "dccc2809ea3bbce21b0a6cc5255c4a912f6aac40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
