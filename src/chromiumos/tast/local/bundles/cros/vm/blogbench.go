@@ -94,7 +94,7 @@ func Blogbench(ctx context.Context, s *testing.State) {
 		"--nofile=262144",
 		"crosvm", "run",
 		"-c", "1",
-		"-m", "256",
+		"-m", "512",
 		"-s", td,
 		"--shared-dir", "/:/dev/root:type=fs:cache=always",
 		"--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", logFile),
@@ -108,7 +108,7 @@ func Blogbench(ctx context.Context, s *testing.State) {
 	} else if kind == "fs" || kind == "fs_dax" {
 		tag = "shared"
 		args = append(args, "--shared-dir",
-			fmt.Sprintf("%s:%s:type=%s:cache=always:timeout=3600:writeback=true", shared, tag, kind))
+			fmt.Sprintf("%s:%s:type=fs:cache=always:timeout=3600:writeback=true", shared, tag))
 	} else if kind == "p9" {
 		tag = "shared"
 		args = append(args, "--shared-dir", fmt.Sprintf("%s:%s", shared, tag))
@@ -171,6 +171,10 @@ func Blogbench(ctx context.Context, s *testing.State) {
 		if _, err := fmt.Sscanf(lines[idx], "Final score for reads :\t%v", &readScore); err != nil {
 			s.Error("Failed to get score: ", err)
 		}
+	}
+
+	if readScore == 0 || writeScore == 0 {
+		s.Fatalf("Failed to collect valid scores: read=%d, write=%d", readScore, writeScore)
 	}
 
 	s.Logf("Read score = %v, write score = %v", readScore, writeScore)
