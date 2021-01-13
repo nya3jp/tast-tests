@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7cb163f_bee85fc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-01-13T15:39:22Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll split it into a library if it\u0027s needed in another place.",
+      "parentUuid": "967b68e6_c7b2655d",
+      "revId": "265ee5e7891d6ddc195fc2238593dc9a401a57ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48284254_63fc3139",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-13T04:28:03Z",
       "side": 1,
       "message": "The goroutine is left running in all of these s.Fatalf calls\n\nMaybe you can use a defer done \u003c- true to catch all of these cases at once?",
+      "revId": "265ee5e7891d6ddc195fc2238593dc9a401a57ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6694e2c5_6e7e7f94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-01-13T15:39:22Z",
+      "side": 1,
+      "message": "Thank you for catching this! Done.",
+      "parentUuid": "48284254_63fc3139",
       "revId": "265ee5e7891d6ddc195fc2238593dc9a401a57ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
