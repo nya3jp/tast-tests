@@ -99,6 +99,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dc26979_6a32d5d7",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-13T02:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6fefc02_d3823b0d",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dacc75ea_96fff0a7",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-13T02:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f39c27b_e11c5564",
+      "range": {
+        "startLine": 49,
+        "startChar": 36,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "979e3b07_43d5ce0c",
@@ -112,6 +160,30 @@
       "writtenOn": "2021-01-12T12:02:33Z",
       "side": 1,
       "message": "usually New* methods located right after struct, please move before \"scale\" method.\n\nFor example check os package: https://golang.org/pkg/os/#File",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b88272_51126039",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-13T02:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "979e3b07_43d5ce0c",
       "range": {
         "startLine": 73,
         "startChar": 5,
@@ -145,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "989fb03e_d9c6a517",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-13T02:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e6f159f_685726b7",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 10
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1af461d4_a48a9d97",
@@ -158,6 +254,30 @@
       "writtenOn": "2021-01-12T12:02:33Z",
       "side": 1,
       "message": "nit: please close file before os.Remove",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 16
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f407ca5a_0504388c",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-13T02:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af461d4_a48a9d97",
       "range": {
         "startLine": 48,
         "startChar": 7,
@@ -185,6 +305,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d07375_4b9dd474",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-13T02:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f8f5ae8_abc241da",
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b4c40fb_71b1d685",
@@ -198,6 +336,30 @@
       "writtenOn": "2021-01-12T12:02:33Z",
       "side": 1,
       "message": "move it at the beginning of the function to don\u0027t split params+opts+return",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 40
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "111a710c_4e5ded7b",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-13T02:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b4c40fb_71b1d685",
       "range": {
         "startLine": 391,
         "startChar": 0,
