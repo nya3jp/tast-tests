@@ -83,6 +83,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ab1ea2c_c1bf17fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-13T03:34:38Z",
+      "side": 1,
+      "message": "Why not using Manager.WaitForServiceProperties()?",
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f6bbf43_b4f2aa7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
         "patchSetId": 7
