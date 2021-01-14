@@ -64,7 +64,11 @@ func ArcCameraUID() (int, error) {
 func IsV1Legacy(ctx context.Context) (bool, error) {
 	// For unibuild, we can determine if a device is v1 legacy by checking
 	// 'legacy-usb' under path '/camera' in cros_config.
-	if out, err := testexec.CommandContext(ctx, "cros_config", "/camera", "legacy-usb").Output(); err == nil && string(out) == "true" {
+	legacyUSB, err := crosconfig.Get(ctx, "/camera", "legacy-usb")
+	if err != nil && !crosconfig.IsNotFound(err) {
+		return false, errors.Wrap(err, "failed to get legacy-usb state from cros_config")
+	}
+	if legacyUSB == "true" {
 		return true, nil
 	}
 
