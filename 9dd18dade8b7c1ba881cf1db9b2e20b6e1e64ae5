@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e977d9f_9a14f8ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allowed_languages.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-14T12:28:49Z",
+      "side": 1,
+      "message": "%d instead of %t",
+      "range": {
+        "startLine": 118,
+        "startChar": 67,
+        "endLine": 118,
+        "endChar": 102
+      },
+      "revId": "9dd18dade8b7c1ba881cf1db9b2e20b6e1e64ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
