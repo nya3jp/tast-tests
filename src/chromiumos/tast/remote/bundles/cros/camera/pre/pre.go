@@ -34,13 +34,6 @@ func DataChartScene() *chartPre {
 	return dataChartScene
 }
 
-var alignChartScene = newDataChartPre("align_scene", "camerabox_align.svg")
-
-// AlignChartScene returns test precondition for displaying pattern for checking camerabox alignment on chart tablet.
-func AlignChartScene() *chartPre {
-	return alignChartScene
-}
-
 func (p *chartPre) String() string         { return "chart_" + p.name }
 func (p *chartPre) Timeout() time.Duration { return 2 * time.Minute }
 func (p *chartPre) DataPath() string       { return p.path }
