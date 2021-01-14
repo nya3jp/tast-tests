@@ -16,6 +16,24 @@
       "message": "LGTM, we only need to bind mount in manufacturing line.",
       "revId": "612fec91ab7fe5decc8e5d83ec6d43b6cf09c922",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32b2c5e_553bd60f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-01-14T07:15:49Z",
+      "side": 1,
+      "message": "Hmmm maybe something else is bind mounting? I\u0027m not quite sure why these arm devices have it bind mounted.",
+      "parentUuid": "47054f6a_0bd303bf",
+      "revId": "612fec91ab7fe5decc8e5d83ec6d43b6cf09c922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
