@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/remote/bundles/cros/camera/pre"
+	"chromiumos/tast/remote/bundles/cros/camera/chart"
 	"chromiumos/tast/rpc"
 	pb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/ssh/linuxssh"
@@ -22,12 +22,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CameraboxAlign,
 		Desc:         "Verifying alignment of chart tablet screen and target facing camera FOV in camerabox setup",
-		Data:         []string{pre.AlignChartScene().DataPath(), "camerabox_align.html", "camerabox_align.css", "camerabox_align.js"},
+		Data:         []string{"camerabox_align.svg", "camerabox_align.html", "camerabox_align.css", "camerabox_align.js"},
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.camerabox.AlignmentService"},
 		Vars:         []string{"chart", "facing", "user", "pass"},
-		Pre:          pre.AlignChartScene(),
 		Timeout:      20 * time.Minute,
 	})
 }
@@ -65,14 +64,28 @@ func CameraboxAlign(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to send data to remote data path %v: %v", dataPath, err)
 	}
 
-	// TODO(b/166370953): Run display chart on tablet and Chrome Remote Desktop on DUT in parallel.
-	acl := pb.NewAlignmentServiceClient(cl.Conn)
-	if _, err := acl.ManualAlign(ctx, &pb.ManualAlignRequest{
-		DataPath: dataPath,
-		Username: user,
-		Password: pass,
-		Facing:   facing,
-	}); err != nil {
+	// Start DUT in parallel when display chart on chart tablet for they both require slow login chrome.
+	ch := make(chan error, 1)
+	go func() {
+		acl := pb.NewAlignmentServiceClient(cl.Conn)
+		_, err := acl.ManualAlign(ctx, &pb.ManualAlignRequest{
+			DataPath: dataPath,
+			Username: user,
+			Password: pass,
+			Facing:   facing,
+		})
+		ch <- err
+	}()
+	var chartAddr string
+	if altAddr, ok := s.Var("chart"); ok {
+		chartAddr = altAddr
+	}
+	c, err := chart.New(ctx, s.DUT(), chartAddr, s.DataPath("camerabox_align.svg"), s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to prepare chart tablet: ", err)
+	}
+	defer c.Close(ctx, s.OutDir())
+	if err := <-ch; err != nil {
 		s.Fatal("Remote call ManualAlign() failed: ", err)
 	}
 
