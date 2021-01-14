@@ -113,16 +113,17 @@ func TruncateProcName(s string) string {
 
 // ProcSandboxInfo holds sandboxing-related information about a running process.
 type ProcSandboxInfo struct {
-	Name               string // "Name:" value from /proc/<pid>/status
-	Exe                string // full executable path
-	Cmdline            string // space-separated command line
-	Ppid               int32  // parent PID
-	Euid, Egid         uint32 // effective UID and GID
-	PidNS, MntNS       int64  // PID and mount namespace IDs (-1 if unknown)
-	Ecaps              uint64 // effective capabilities
-	NoNewPrivs         bool   // no_new_privs is set (see "minijail -N")
-	Seccomp            bool   // seccomp filter is active
-	HasTestImageMounts bool   // has test-image-only mounts
+	Name               string          // "Name:" value from /proc/<pid>/status
+	Exe                string          // full executable path
+	Cmdline            string          // space-separated command line
+	Ppid               int32           // parent PID
+	Euid, Egid         uint32          // effective UID and GID
+	PidNS, MntNS       int64           // PID and mount namespace IDs (-1 if unknown)
+	Ecaps              uint64          // effective capabilities
+	NoNewPrivs         bool            // no_new_privs is set (see "minijail -N")
+	Seccomp            bool            // seccomp filter is active
+	HasTestImageMounts bool            // has test-image-only mounts
+	MountInfos         []ProcMountinfo // entries from /proc/<pid>/mountinfo
 }
 
 // GetProcSandboxInfo returns sandboxing-related information about proc.
@@ -199,6 +200,14 @@ func GetProcSandboxInfo(proc *process.Process) (*ProcSandboxInfo, error) {
 				}
 			}
 		}
+	}
+
+	if mountInfos, err := ReadProcMountinfo(proc.Pid); os.IsNotExist(err) || err == syscall.EINVAL {
+		// mountinfo files are sometimes missing or unreadable.
+	} else if err != nil {
+		saveErr(errors.Wrap(err, "failed reading mountinfo"))
+	} else {
+		info.MountInfos = mountInfos
 	}
 
 	return &info, firstErr
@@ -299,4 +308,111 @@ func ProcHasAncestor(pid int32, ancestorPIDs map[int32]struct{},
 		}
 		info = pinfo
 	}
+}
+
+// ProcMountinfo holds information about /proc/<pid>/mountinfo entries.
+type ProcMountinfo struct {
+	MountID           uint32
+	ParentID          uint32
+	Major             uint32
+	Minor             uint32
+	Root              string
+	MountPoint        string
+	MountOptions      string
+	OptFields         []string
+	FsType            string
+	MountSource       string
+	SuperBlockOptions string
+}
+
+// ReadProcMountinfo returns all mountpoints listed in /proc/<pid>/mountinfo.
+// This may return os.ErrNotExist or syscall.EINVAL for zombie processes: https://crbug.com/936703
+//
+// Example line:
+// 347 254 8:1 /home /home rw,nosuid,nodev,noexec,noatime shared:96 - ext4 /dev/sda1 rw,seclabel,resgid=20119,commit=600,data=ordered
+//
+// (1) mount ID:  unique identifier of the mount (may be reused after umount)
+// (2) parent ID:  ID of parent (or of self for the top of the mount tree)
+// (3) major:minor:  value of st_dev for files on filesystem
+// (4) root:  root of the mount within the filesystem
+// (5) mount point:  mount point relative to the process's root
+// (6) mount options:  per mount options
+// (7) optional fields:  zero or more fields of the form "tag[:value]"
+// (8) separator:  marks the end of the optional fields
+// (9) filesystem type:  name of filesystem of the form "type[.subtype]"
+// (10) mount source:  filesystem specific information or "none"
+// (11) super options:  per super block options
+//
+// Parsers should ignore all unrecognised optional fields.  Currently the
+// possible optional fields are:
+// shared:X  mount is shared in peer group X
+// master:X  mount is slave to peer group X
+// propagate_from:X  mount is slave and receives propagation from peer group X (*)
+// unbindable  mount is unbindable
+func ReadProcMountinfo(pid int32) ([]ProcMountinfo, error) {
+	const firstOptField = 6
+
+	b, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/mountinfo", pid))
+	// ioutil.ReadFile can return an *os.PathError. If it's os.ErrNotExist, we return it directly
+	// since it's easy to check, but for other errors, we return the inner error (which is a syscall.Errno)
+	// so that callers can inspect it.
+	if pathErr, ok := err.(*os.PathError); ok && !os.IsNotExist(err) {
+		return nil, pathErr.Err
+	} else if err != nil {
+		return nil, err
+	}
+	var mounts []ProcMountinfo
+	for _, ln := range strings.Split(strings.TrimSpace(string(b)), "\n") {
+		if ln == "" {
+			continue
+		}
+		// Example line:
+		// 347 254 8:1 /home /home rw,nosuid,nodev,noexec,noatime shared:96 - ext4 /dev/sda1 rw,seclabel,resgid=20119,commit=600,data=ordered
+		var mi ProcMountinfo
+		fields := strings.Fields(ln)
+
+		var v uint64
+		v, err = strconv.ParseUint(fields[0], 10, 32)
+		if err != nil {
+			return nil, err
+		}
+		mi.MountID = uint32(v)
+		v, err = strconv.ParseUint(fields[1], 10, 32)
+		if err != nil {
+			return nil, err
+		}
+		mi.ParentID = uint32(v)
+		majorMinor := strings.Split(fields[2], ":")
+		v, err = strconv.ParseUint(majorMinor[0], 10, 32)
+		if err != nil {
+			return nil, err
+		}
+		mi.Major = uint32(v)
+		v, err = strconv.ParseUint(majorMinor[1], 10, 32)
+		if err != nil {
+			return nil, err
+		}
+		mi.Minor = uint32(v)
+		mi.Root = fields[3]
+		mi.MountPoint = fields[4]
+		mi.MountOptions = fields[5]
+
+		var optFields []string
+		for _, field := range fields[firstOptField:len(fields)] {
+			if field == "-" {
+				// This is the separator, there are no more optional fields.
+				mi.OptFields = optFields
+				break
+			} else {
+				optFields = append(optFields, field)
+			}
+		}
+
+		nextField := firstOptField + len(optFields) + 1 // + 1 for the separator.
+		mi.FsType = fields[nextField]
+		mi.MountSource = fields[nextField+1]
+		mi.SuperBlockOptions = fields[nextField+2]
+		mounts = append(mounts, mi)
+	}
+	return mounts, nil
 }
