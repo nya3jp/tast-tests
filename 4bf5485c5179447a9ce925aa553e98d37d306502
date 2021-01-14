@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4bc5f68_400a95a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2021-01-14T09:44:30Z",
+      "side": 1,
+      "message": "You should use \"Pre: pre.DriveFsStarted\" instead of creating Chrome instance yourself. Ensuring DriveFS is ready to be used is not straightforward.",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a7febe7_1230979a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2021-01-14T09:44:30Z",
+      "side": 1,
+      "message": "Why 5?",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d62faed8_9232c071",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2021-01-14T09:44:30Z",
+      "side": 1,
+      "message": "\u003e \"survice\" is a possible misspelling of \"service\" or \"survive\".\n\nPlease fix.",
+      "parentUuid": "7865125b_32dcc94e",
+      "range": {
+        "startLine": 60,
+        "startChar": 55,
+        "endLine": 60,
+        "endChar": 62
+      },
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4167c83f_f0a7d9dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2021-01-14T09:44:30Z",
+      "side": 1,
+      "message": "This probably won\u0027t work. As the session ends after the test deletion will never propagate to the server. I\u0027d rather aim at either finding the file already there (from some other run) or create it.",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af469c68_0b0cb6bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2021-01-14T09:44:30Z",
+      "side": 1,
+      "message": "As this action may have impact beyond this test, the cleanup should be made more robust by allocating time for it in case of a global timeout. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a5cd8f4_e2ee61a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2021-01-14T09:44:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be s.Fatal?",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ba5de6_58b85bc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2021-01-14T09:44:30Z",
+      "side": 1,
+      "message": "This also needs cleanup time allocation I assume",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
