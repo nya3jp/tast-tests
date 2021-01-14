@@ -93,6 +93,30 @@
       },
       "revId": "1553968bca2e3ea5a49450db3e435e5d4663afb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae09897c_dcf9bd23",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-14T06:57:24Z",
+      "side": 1,
+      "message": "It\u0027s an internal detail of EnsureJobRunning, so it\u0027s a bit risky to depend on it.\n\nAt very least please add a comment that we assume that the function emits logs on errors. e.g.\n\n upstart.EnsureJobRunning(...) // logs are emitted when it fails",
+      "parentUuid": "32b76729_870affda",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 36
+      },
+      "revId": "1553968bca2e3ea5a49450db3e435e5d4663afb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

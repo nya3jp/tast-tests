@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ce1d42_2acdc9f1",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-14T06:57:24Z",
+      "side": 1,
+      "message": "I forgot to mention this in earlier iteration. Since test hooks are almost invisible to test authors (I guess only a few authors know of test hooks), it\u0027s nice to write informational log messages when we start the ui job. That is:\n\n if (ui job is not running) {\n   // write a log message that we\u0027re starting the ui job\n   // call EnsureJobRunning\n }",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 37
+      },
+      "revId": "7745594a25a1d8977f943cd9757244a13e3f4e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
