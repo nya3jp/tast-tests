@@ -16,6 +16,24 @@
       "message": "Can you leave a TODO here to only save the recording on failure when we move to fixtures?",
       "revId": "e4c137c9e18d049864ba17d22ef18317bcb94115",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f5cf86_768f496e",
+        "filename": "src/chromiumos/tast/local/crostini/post.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-14T10:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64216ec7_2f3cfa78",
+      "revId": "e4c137c9e18d049864ba17d22ef18317bcb94115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
