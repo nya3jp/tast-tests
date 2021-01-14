@@ -33,6 +33,24 @@
       "message": "A nit, as ethernetAvailable is not used below, in Golang we prefer the form:\n\nif ethernetAvailable, err :\u003d manager.IsAvailable(ctx, shill.TechnologyEthernet); err !\u003d nil {\n  ...\n} else if !ethernetAvailable {\n  ...\n}\n\nSame for ethernetEnabled block.",
       "revId": "d2042d9081ef688c91279e0a9d2479fc38af7303",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5617271_2d759903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_ethernet_ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-14T16:30:27Z",
+      "side": 1,
+      "message": "Interesting. That style of scoping didn\u0027t occur to me. It feels a bit like an edge case, but done.",
+      "parentUuid": "52cce7da_3540d030",
+      "revId": "d2042d9081ef688c91279e0a9d2479fc38af7303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
