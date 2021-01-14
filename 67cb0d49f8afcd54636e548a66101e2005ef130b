@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2848a9f_8129a6a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-01-14T01:25:22Z",
+      "side": 1,
+      "message": "Hi, I\u0027m adding support for this test on P to get it to run on more boards.\n\nPTAL, thanks.",
+      "revId": "67cb0d49f8afcd54636e548a66101e2005ef130b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
