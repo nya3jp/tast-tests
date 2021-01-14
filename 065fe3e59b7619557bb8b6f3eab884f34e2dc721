@@ -312,6 +312,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b620fa3_3756c008",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1474038
+      },
+      "writtenOn": "2021-01-14T15:00:28Z",
+      "side": 1,
+      "message": "Thank you for point this out, I\u0027ve fixed it and patched the CL.",
+      "parentUuid": "a6644082_20a59292",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 16
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f8f5ae8_abc241da",
