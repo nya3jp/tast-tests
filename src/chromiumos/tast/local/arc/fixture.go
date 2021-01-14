@@ -6,11 +6,8 @@ package arc
 
 import (
 	"context"
-	"os"
-	"path/filepath"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -22,7 +19,6 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		PostTestTimeout: resetTimeout,
 	})
 }
 
@@ -102,42 +98,4 @@ func (f *bootedFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
 	// hooks in fixtures.
-
-	if err := saveARCVMConsole(ctx, s.OutDir()); err != nil {
-		s.Error("Failed to to save ARCVM console output: ", err)
-	}
-}
-
-// saveARCVMConsole saves the console output of ARCVM Kernel to the output directory using vm_pstore_dump command.
-func saveARCVMConsole(ctx context.Context, outDir string) error {
-	const (
-		pstoreCommandPath = "/usr/bin/vm_pstore_dump"
-		arcvmConsoleName  = "arcvm-console.txt"
-	)
-
-	// Do nothing for containers. The console output is already captured for containers.
-	isVMEnabled, err := VMEnabled()
-	if err != nil {
-		return err
-	}
-	if !isVMEnabled {
-		return nil
-	}
-
-	// TODO(b/153934386): Remove this check when pstore is enabled on ARM.
-	// The pstore feature is enabled only on x86_64. It's not enabled on some architectures, and this `vm_pstore_dump` command doesn't exist on such architectures.
-	if _, err := os.Stat(pstoreCommandPath); os.IsNotExist(err) {
-		return nil
-	}
-
-	path := filepath.Join(outDir, arcvmConsoleName)
-	file, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	cmd := testexec.CommandContext(ctx, pstoreCommandPath)
-	cmd.Stdout = file
-	return cmd.Run()
 }
