@@ -140,12 +140,21 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 }
 
 func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) error {
+	const (
+		scrollClassName = "android.widget.ScrollView"
+	)
 
 	// Time to wait for UI elements to appear in Play Store and Chrome.
 	const timeoutUI = 30 * time.Second
 
-	// Verify System settings in ARC++.
+	// Scroll until logout is visible.
+	scrollLayout := arcDevice.Object(androidui.ClassName(scrollClassName), androidui.Scrollable(true))
 	system := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)system"), androidui.Enabled(true))
+	if err := scrollLayout.WaitForExists(ctx, timeoutUI); err == nil {
+		scrollLayout.ScrollTo(ctx, system)
+	}
+
+	// Verify System settings in ARC++.
 	if err := system.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding System Text View")
 	}
@@ -167,13 +176,6 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 	buildNumber := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)build number"), androidui.Enabled(true))
 	if err := buildNumber.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding Build Number TextView")
-	}
-
-	testing.ContextLog(ctx, "Enable Developer Options")
-	for i := 0; i < 7; i++ {
-		if err := buildNumber.Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click Build Number TextView")
-		}
 	}
 
 	backButton := arcDevice.Object(androidui.ClassName("android.widget.ImageButton"), androidui.Enabled(true))
