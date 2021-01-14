@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "319f3f75_73a09a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-14T02:51:00Z",
+      "side": 1,
+      "message": "I did a quick test on my DUT and saw the error \"unknown control \u0027privacy\u0027\" when running v4l2-ctl. Is it expected?",
+      "revId": "6865f9886aade12ce38cd95c5876b34f977eaecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb55f6cf_9ee4e77b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-14T02:51:00Z",
+      "side": 1,
+      "message": "huge nit: I would prefer to use s.Logf() in this case.",
+      "revId": "6865f9886aade12ce38cd95c5876b34f977eaecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57984b93_11a7b779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-14T02:51:00Z",
+      "side": 1,
+      "message": "qq: Hi kamesan@, will we always fill camera count that match the length of /camera/devices? I forgot the latest status for those fields.",
+      "revId": "6865f9886aade12ce38cd95c5876b34f977eaecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
