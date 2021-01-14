@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e423a0c_7b69d0d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-01-14T03:21:08Z",
+      "side": 1,
+      "message": "Add a , here",
+      "range": {
+        "startLine": 14,
+        "startChar": 34,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "6865f9886aade12ce38cd95c5876b34f977eaecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "319f3f75_73a09a66",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
         "patchSetId": 4
@@ -48,6 +71,41 @@
       "writtenOn": "2021-01-14T02:51:00Z",
       "side": 1,
       "message": "qq: Hi kamesan@, will we always fill camera count that match the length of /camera/devices? I forgot the latest status for those fields.",
+      "revId": "6865f9886aade12ce38cd95c5876b34f977eaecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dd87f9e_0c3897db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-01-14T03:21:08Z",
+      "side": 1,
+      "message": "The count may exist when there\u0027s no /camera/devices. I would suggest to enumerate /camera/devices/* until the path is not found.",
+      "parentUuid": "57984b93_11a7b779",
+      "revId": "6865f9886aade12ce38cd95c5876b34f977eaecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a9a6f60_e7b26b64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-01-14T03:21:08Z",
+      "side": 1,
+      "message": "Delegate this to crosconfig.Get(), and use crosconfig.IsNotFound() to check the returned status is fatal or not.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/crosconfig/crosconfig.go\n\nTogether with the above suggestion, it looks like:\n\n for i :\u003d 0; ; i++ {\n     out, err :\u003d crosconfig.Get(...)\n     if err !\u003d nil {\n         if crosconfig.IsNotFound(err) {\n             break\n         }\n         s.Fatal(...)\n     }\n     if string(out) \u003d\u003d ...\n         ...\n }",
       "revId": "6865f9886aade12ce38cd95c5876b34f977eaecf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
