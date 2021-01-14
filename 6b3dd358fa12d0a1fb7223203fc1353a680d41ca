@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b8ec91_e1383e1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/null_platform_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-14T02:45:35Z",
+      "side": 1,
+      "message": "please note that the below needs to be changed to try all formats and it doesn\u0027t right now -- this is the main part that is WIP, aside from small issues throughout (marked TODO).",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 86
+      },
+      "revId": "6b3dd358fa12d0a1fb7223203fc1353a680d41ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07da6f47_394e7a35",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-14T02:45:35Z",
+      "side": 1,
+      "message": "This feels horrific. Is this horrific?",
+      "range": {
+        "startLine": 129,
+        "startChar": 64,
+        "endLine": 129,
+        "endChar": 135
+      },
+      "revId": "6b3dd358fa12d0a1fb7223203fc1353a680d41ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b3a616b_31e5a99a",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-14T02:45:35Z",
+      "side": 1,
+      "message": "Q here",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 50
+      },
+      "revId": "6b3dd358fa12d0a1fb7223203fc1353a680d41ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
