@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b0240a_c6383ec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-14T00:36:06Z",
+      "side": 1,
+      "message": "please verify the error is os.IsNotExist(err) to make sure it is not some other error.",
+      "range": {
+        "startLine": 172,
+        "startChar": 47,
+        "endLine": 172,
+        "endChar": 57
+      },
+      "revId": "f4fa1100564b7d3e22ab32d39de30f236b878cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cec6b22d_f0b5013e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-14T00:36:06Z",
+      "side": 1,
+      "message": "Please use os.IsNotExist(err) to make sure there is not some other error.",
+      "range": {
+        "startLine": 176,
+        "startChar": 50,
+        "endLine": 176,
+        "endChar": 60
+      },
+      "revId": "f4fa1100564b7d3e22ab32d39de30f236b878cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
