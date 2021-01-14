@@ -61,6 +61,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d75489fa_0a51236b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-14T08:51:17Z",
+      "side": 1,
+      "message": "Ah I tested a random Jinlon in the lab which will run this test in the future. So it sounds like we will need to wait a new firmware installed in the lab before landing this CL. Is my understanding correct?",
+      "parentUuid": "69d6c2fc_b9024952",
+      "revId": "6865f9886aade12ce38cd95c5876b34f977eaecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb55f6cf_9ee4e77b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
         "patchSetId": 4
