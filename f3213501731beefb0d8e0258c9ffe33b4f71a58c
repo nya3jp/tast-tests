@@ -22,6 +22,30 @@
       },
       "revId": "f3213501731beefb0d8e0258c9ffe33b4f71a58c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de0ad9d_b44c5edf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-14T04:20:01Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "4344dec2_275760ef",
+      "range": {
+        "startLine": 178,
+        "startChar": 61,
+        "endLine": 178,
+        "endChar": 83
+      },
+      "revId": "f3213501731beefb0d8e0258c9ffe33b4f71a58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
