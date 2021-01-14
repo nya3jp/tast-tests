@@ -152,9 +152,13 @@ func (r *ScreenRecorder) Stop(ctx context.Context) error {
 
 // SaveInBytes saves the latest encoded string into a decoded bytes file.
 func (r *ScreenRecorder) SaveInBytes(ctx context.Context, filepath string) error {
-	result := strings.Split(r.result, ",")[1]
+	parts := strings.Split(r.result, ",")
+	if len(parts) < 2 {
+		return errors.New("no content has been recorded. The recorder might have been stopped too soon")
+	}
+
 	// Decode base64 string.
-	reader := base64.NewDecoder(base64.StdEncoding, strings.NewReader(result))
+	reader := base64.NewDecoder(base64.StdEncoding, strings.NewReader(parts[1]))
 	buf := bytes.Buffer{}
 	if _, err := buf.ReadFrom(reader); err != nil {
 		return errors.Wrap(err, "failed to read from decoder")
