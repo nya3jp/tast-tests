@@ -16,6 +16,46 @@
       "message": "Hi, I\u0027m adding support for this test on P to get it to run on more boards.\n\nPTAL, thanks.",
       "revId": "67cb0d49f8afcd54636e548a66101e2005ef130b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db81eee5_65e2a64a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-14T22:26:48Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "67cb0d49f8afcd54636e548a66101e2005ef130b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ebe964_ff27a3c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-14T22:26:48Z",
+      "side": 1,
+      "message": "nit: dupe?",
+      "range": {
+        "startLine": 119,
+        "startChar": 8,
+        "endLine": 119,
+        "endChar": 31
+      },
+      "revId": "67cb0d49f8afcd54636e548a66101e2005ef130b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
