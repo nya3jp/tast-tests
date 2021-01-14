@@ -206,6 +206,57 @@ type Resolution struct {
 	Height int `json:"height"`
 }
 
+// MediaSettingsRange provides the possible range and value.
+type MediaSettingsRange struct {
+	Max  float64 `json:"max"`
+	Min  float64 `json:"min"`
+	Step float64 `json:"step"`
+}
+
+// MediaTrackCapabilities specifies the values or range of values of each constrainable property.
+type MediaTrackCapabilities struct {
+	WhiteBalanceMode *[]string `json:"whiteBalanceMode"`
+	ExposureMode     *[]string `json:"exposureMode"`
+	FocusMode        *[]string `json:"focusMode"`
+
+	ExposureCompensation *MediaSettingsRange `json:"exposureCompensation"`
+	ExposureTime         *MediaSettingsRange `json:"exposureTime"`
+	ColorTemperature     *MediaSettingsRange `json:"colorTemperature"`
+	Iso                  *MediaSettingsRange `json:"iso"`
+
+	Brightness *MediaSettingsRange `json:"brightness"`
+	Contrast   *MediaSettingsRange `json:"contrast"`
+	Saturation *MediaSettingsRange `json:"saturation"`
+	Sharpness  *MediaSettingsRange `json:"sharpness"`
+
+	FocusDistance *MediaSettingsRange `json:"focusDistance"`
+	Pan           *MediaSettingsRange `json:"pan"`
+	Tilt          *MediaSettingsRange `json:"tilt"`
+	Zoom          *MediaSettingsRange `json:"zoom"`
+}
+
+// MediaTrackSettings is used to return the current values configured for each of a MediaStreamTrack's settings.
+type MediaTrackSettings struct {
+	WhiteBalanceMode *string `json:"whiteBalanceMode"`
+	ExposureMode     *string `json:"exposureMode"`
+	FocusMode        *string `json:"focusMode"`
+
+	ExposureCompensation *float64 `json:"exposureCompensation"`
+	ExposureTime         *float64 `json:"exposureTime"`
+	ColorTemperature     *float64 `json:"colorTemperature"`
+	Iso                  *float64 `json:"iso"`
+
+	Brightness *float64 `json:"brightness"`
+	Contrast   *float64 `json:"contrast"`
+	Saturation *float64 `json:"saturation"`
+	Sharpness  *float64 `json:"sharpness"`
+
+	FocusDistance *float64 `json:"focusDistance"`
+	Pan           *float64 `json:"pan"`
+	Tilt          *float64 `json:"tilt"`
+	Zoom          *float64 `json:"zoom"`
+}
+
 // AspectRatio returns width divided by height as the aspect ratio of the resolution.
 func (r *Resolution) AspectRatio() float64 {
 	return float64(r.Width) / float64(r.Height)
@@ -602,6 +653,34 @@ func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 		return false, errors.Wrapf(err, "failed to get state: %v", state)
 	}
 	return result, nil
+}
+
+// GetMediaTrackCapabilities of active camera on HALv3 device.
+func (a *App) GetMediaTrackCapabilities(ctx context.Context) (MediaTrackCapabilities, error) {
+	var capabilities MediaTrackCapabilities
+	if err := a.conn.Eval(ctx, "Tast.getMediaTrackCapabilities()", &capabilities); err != nil {
+		testing.ContextLog(ctx, "Error ")
+		return capabilities, errors.Wrap(err, "failed to get capabilities")
+	}
+	return capabilities, nil
+}
+
+// GetMediaTrackSettings of active camera on HALv3 device.
+func (a *App) GetMediaTrackSettings(ctx context.Context) (MediaTrackSettings, error) {
+	var settings MediaTrackSettings
+	if err := a.conn.Eval(ctx, "Tast.getMediaTrackSettings()", &settings); err != nil {
+		testing.ContextLog(ctx, "Error ")
+		return settings, errors.Wrap(err, "failed to get settings")
+	}
+	return settings, nil
+}
+
+// ApplyMediaTrackConstraints of active camera on HALv3 device.
+func (a *App) ApplyMediaTrackConstraints(ctx context.Context, constraints string) error {
+	if err := a.conn.Call(ctx, nil, "Tast.applyMediaTrackConstraints", constraints); err != nil {
+		return errors.Wrapf(err, "failed to applyConstraints to %s", constraints)
+	}
+	return nil
 }
 
 // PortraitModeSupported returns whether portrait mode is supported by the current active video device.
