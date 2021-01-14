@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2992f6a4_cdc0cd22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-14T02:03:40Z",
+      "side": 1,
+      "message": "tast-owners@ PTAL",
+      "revId": "7694c5e3033e39c3d506a38ab22ff69d9998e8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "927bc51d_69cf5e69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-14T02:03:40Z",
+      "side": 1,
+      "message": "nit: Leave blank line before and after this paragraph.",
+      "revId": "7694c5e3033e39c3d506a38ab22ff69d9998e8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b92ff160_4ff5a476",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-14T02:03:40Z",
+      "side": 1,
+      "message": "Leave blank line before this line. Apparently, the links in the rendered markdown document won\u0027t work otherwise.",
+      "revId": "7694c5e3033e39c3d506a38ab22ff69d9998e8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fc9188_f026e1c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-14T02:03:40Z",
+      "side": 1,
+      "message": "Remove: it\u0027s the same as ln. 22.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 191
+      },
+      "revId": "7694c5e3033e39c3d506a38ab22ff69d9998e8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3af974_fd3e93c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/av1/test-25fps-192x288-only-tile-cols-is-power-of-2.ivf.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-01-14T02:03:40Z",
+      "side": 1,
+      "message": "hyper-nit: Switch the order of the \"url\" and \"sha256sum\" fields to be consistent with the existing .external files.",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 13
+      },
+      "revId": "7694c5e3033e39c3d506a38ab22ff69d9998e8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
