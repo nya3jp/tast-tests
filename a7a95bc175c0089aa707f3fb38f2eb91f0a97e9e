@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c027e7d_f165d1aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-14T10:49:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "637823c4_16d7ad83",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "a7a95bc175c0089aa707f3fb38f2eb91f0a97e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce92e72_856c7871",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-14T10:49:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f20f797_6cb3537d",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "a7a95bc175c0089aa707f3fb38f2eb91f0a97e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a76b73_0b83cd4d",
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b0b633_9197513c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-14T10:49:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1a76b73_0b83cd4d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "a7a95bc175c0089aa707f3fb38f2eb91f0a97e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e1961ba_3562fb02",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-12T09:30:39Z",
       "side": 1,
       "message": "With opening chrome://os-settings/osLanguages/details you can avoid one clikcing.",
+      "range": {
+        "startLine": 80,
+        "startChar": 33,
+        "endLine": 80,
+        "endChar": 65
+      },
+      "revId": "a7a95bc175c0089aa707f3fb38f2eb91f0a97e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42735a93_24ef7b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allowed_languages.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-14T10:49:39Z",
+      "side": 1,
+      "message": "I tried this, but it\u0027s not working in the test.",
+      "parentUuid": "3e1961ba_3562fb02",
       "range": {
         "startLine": 80,
         "startChar": 33,
