@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4344dec2_275760ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-14T04:15:50Z",
+      "side": 1,
+      "message": "I think you are ignoring other errors here?",
+      "range": {
+        "startLine": 178,
+        "startChar": 61,
+        "endLine": 178,
+        "endChar": 83
+      },
+      "revId": "f3213501731beefb0d8e0258c9ffe33b4f71a58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
