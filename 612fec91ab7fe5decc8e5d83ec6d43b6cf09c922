@@ -52,6 +52,23 @@
       "parentUuid": "f32b2c5e_553bd60f",
       "revId": "612fec91ab7fe5decc8e5d83ec6d43b6cf09c922",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5611b33f_723adf98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-01-14T13:37:23Z",
+      "side": 1,
+      "message": "Can you fix your script to clean up after itself instead? Otherwise we just end up with a test that collects random corner cases, and makes the actual purpose of the test (enforce mounts) harder to understand.",
+      "revId": "612fec91ab7fe5decc8e5d83ec6d43b6cf09c922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
