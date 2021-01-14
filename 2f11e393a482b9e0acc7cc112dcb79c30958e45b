@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53d142e4_a7a6b105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:47:37Z",
+      "side": 1,
+      "message": "I think you can use a nil trick so that you can omit \u0027available\u0027.\n\nWhen len(batteryPaths) \u003d\u003d 0, it returns nil, nil rather than empty \u0026BatteryInfoTracker{}\n\nThen, other functions, it can check it with nil, e.g.\n  func (t *BatteryInfoTracker) Start(ctx context.Context) error {\n    if t \u003d\u003d nil {\n      return nil\n    }\n    ...",
+      "revId": "2f11e393a482b9e0acc7cc112dcb79c30958e45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e84cd456_f2bf5785",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
         "patchSetId": 11
@@ -19,6 +36,29 @@
         "startChar": 14,
         "endLine": 66,
         "endChar": 18
+      },
+      "revId": "2f11e393a482b9e0acc7cc112dcb79c30958e45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2716b755_c21b0429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:47:37Z",
+      "side": 1,
+      "message": "I still don\u0027t think it is a good idea to get the already-recorded metrics and transform its unit.  Please make the unit transform when it is there.\n\nOr at least, you should consult with Aings for why it really needs to be J.  That will probably need to change the multipliers and waits on his side, but I don\u0027t believe there\u0027s a strong reason why it must be Joule.",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 8
       },
       "revId": "2f11e393a482b9e0acc7cc112dcb79c30958e45b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
