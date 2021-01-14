@@ -1,0 +1,491 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e906c2f_74c33411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "I think it\u0027s great to be under src/chromiumos/tast/local/chrome/ui, as there\u0027s already ossettings and imesettings.  Package name \"bluetooth\" would be probably fine under chrome/ui as bluetoothsettings would be a bit too wordy.",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3797cf8e_e20d0aee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "Out of curiosity, what would be the reason why you want to implement these things through the settings app?\n\nThere\u0027s bluetooth daemon which accepts dbus messages.  We have chromiumos/tast/local/bluetooth package, which currently only returns the list of connected devices (Adapter), but the dbus protocol itself should support the request of a new connection etc.\n\nIf it is for the testing of the settings UI itself, surely this is a good idea.  Otherwise, I think directly communicating with bluetooth daemon is a good idea.",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dcf4814_3b8cfd9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "I think it should describe more about what it returns rather than the implementation details.\n\nWhat I\u0027m thinking is like \"isConnectedState returns the connection state of a bluetooth device from the settings window.\"",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e005bf25_82481c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "I mildly feel like \u0027isConnectedState\u0027 a bit weird phrase.  \u0027isConnected\u0027 or just \u0027connected\u0027, or the original \u0027connectedState\u0027 are good.",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80af957e_56aa6840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "I think this shouldn\u0027t be a FindParams.  It is better to be a string, which specifies the name. Passing any findparams would mean that it may accept unexpected queries.\n\nWith that, you don\u0027t need \u0027newDeviceFindParams\u0027, as you will build the FindParams withi this function only.",
+      "range": {
+        "startLine": 58,
+        "startChar": 73,
+        "endLine": 58,
+        "endChar": 93
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66bc168a_6bdee573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "why not a method of Bluetooth?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7ce571_940095aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "Based on your description, setClipboardTextData should be called just once, and then polling to getClipboardTextData.",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "742ec24a_7ba12113",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "tconn.Eval(ctx, nil, ..., \u0026clipData)",
+      "range": {
+        "startLine": 51,
+        "startChar": 18,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "240b5d3d_9fe8739c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "I think it is much better to just return time.Duration value, and let the caller to transform it into the desired unit.",
+      "range": {
+        "startLine": 62,
+        "startChar": 92,
+        "endLine": 62,
+        "endChar": 97
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4abff92d_92e41739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "It can be \"Chromium\" when the binary is a developer-built one.  It is better to support both cases (cf. https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go#191)",
+      "range": {
+        "startLine": 67,
+        "startChar": 53,
+        "endLine": 67,
+        "endChar": 69
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1041b76_35b17fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "This means that the apps.Close should be called even when launch isn\u0027t successful.  Is there a case that the launch fails but there\u0027s something we want to close?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a23c0c6b_9cf2c209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "I guess this will close all of the browser windows.  For example, if there are other browser windows in prior to this function call, they\u0027re also closed. I think it\u0027s better to be avoided, but if it\u0027s unavoidable, it should be better noted as a part of the doc-comment of this funciton.",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41e347d_b6d083fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "Please provide detailed description of what it does.",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6412bec4_c157a193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "\"initializes gmail\"\n\nNote that you don\u0027t have to put doc comments for unexposed functions.",
+      "range": {
+        "startLine": 41,
+        "startChar": 13,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c88bca_7567fdfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "This looks like identical as the code in task_switch_cuj.go?  Can you also fix task_switch_cuj.go to consolidate the implementation?",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f8f5a7e_b152d1f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "Please add the description of what it does.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b573d2a1_55bb2990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "\"New creates a new netflix instance and signin to netflix.\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae73e73d_05f83026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "Please don\u0027t use testing.Statee.  Rather use username/password strings.",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40f91ea_af15fec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5eed1b7_d5c044f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67404906_8e0beba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "Please do not use testing.Sleep.  Use ui\u0027s Waiting functions.  Same within this function.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7dc0a42_22a42629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "This package does not close the window itself, so it remains.  Is this intended?  Note that Close just closes the connection to the web content.  CloseTarget() will close the tab/window.",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34a2659_51d8b346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settingsapp/settingsapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "It seems there\u0027s already \u0027ossettings\u0027 package (src/chromiumos/tast/local/chrome/ui/ossettings).  Rather than creating this, please modify/integrate with that.",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

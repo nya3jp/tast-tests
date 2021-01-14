@@ -357,6 +357,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b82316b_64aa6d7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3bfe1d92_e2fe5ac8",
+      "range": {
+        "startLine": 67,
+        "startChar": 64,
+        "endLine": 67,
+        "endChar": 76
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6a96e55_9d9b50c0",
@@ -758,6 +782,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e42b449d_36eb6e4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "If that\u0027s the case, I would call it \u0027SetClipboardDataAndWait\u0027.\n\nI think clipboard used to be synchronous, but it changed asynchronously.  Maybe setClipboardTextData should be fixed in that case.",
+      "parentUuid": "195533dd_9f5cf725",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 25
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7f8e400_48f93cec",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
         "patchSetId": 1
@@ -787,6 +835,24 @@
       "side": 1,
       "message": "ash.WaitForApp would wait for the content of the window to be ready",
       "parentUuid": "e7f8e400_48f93cec",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d229977b_13d0c1c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:21:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d089ebf_94e35988",
       "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
