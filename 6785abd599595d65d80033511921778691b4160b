@@ -69,6 +69,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb26ef70_b55942cb",
+        "filename": "src/chromiumos/tast/local/android/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "I think this already exists in a nice way in adb: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/android/ui/generated_constants.go;l\u003d249\n\nI\u0027m a little surprised it is built into ui and doesn\u0027t use adb directly though.\n\nMaybe there is at least a way to reuse the constant without launching the entire ui server?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "485e53f1_520570e3",
@@ -82,6 +105,29 @@
       "writtenOn": "2021-01-13T08:46:51Z",
       "side": 1,
       "message": "This is the actual test file.",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627a7e7f_106a8677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "any specific reasons you use zips over just pngs/jpgs? I noticed you did that with the apk as well in the previous cl",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 38
+      },
       "revId": "6785abd599595d65d80033511921778691b4160b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +151,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03b8e22c_d5508b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "This is longer than the entire test timeout. If you want it to be then entire test length, you can use ctxutil.MaxTimeout. Otherwise, I would make sure to set it to shorter than the test length.",
+      "range": {
+        "startLine": 56,
+        "startChar": 30,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9591c28a_1268cbd4",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
         "patchSetId": 4
@@ -121,6 +190,98 @@
         "startChar": 117,
         "endLine": 81,
         "endChar": 123
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abeea48_1bef154a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "spacing looks off here, can this be reorginized in some way?",
+      "range": {
+        "startLine": 92,
+        "startChar": 48,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f5b83c_c685cc76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "nit: pull this out as a separate variable with a name. It just looks kinda confusing when directly passed in.",
+      "range": {
+        "startLine": 101,
+        "startChar": 65,
+        "endLine": 101,
+        "endChar": 83
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf0b46d_2a7f4844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "I would maybe put this into one of the nearbyshare setup functions so that it doesn\u0027t have to be in every test. Just pass in s.DataPath(...)",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 0
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60d20be_abc1dde0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "man, passing a callback id feels weird.",
+      "range": {
+        "startLine": 147,
+        "startChar": 46,
+        "endLine": 147,
+        "endChar": 56
       },
       "revId": "6785abd599595d65d80033511921778691b4160b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -186,6 +347,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0f61a47_44c99b9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to update this for already existing files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d2fa9a_098fa8c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "not sure fi their will be every be a time that arc will be running while doing a nearby share test, but you may want this to specify not an emulator",
+      "range": {
+        "startLine": 87,
+        "startChar": 43,
+        "endLine": 87,
+        "endChar": 88
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff68e167_08a5a223",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup/nearbysetup.go",
         "patchSetId": 4
@@ -197,6 +404,52 @@
       "writtenOn": "2021-01-13T08:46:51Z",
       "side": 1,
       "message": "This is where the problems with the lab devices are happening. The settings changes from `setupDevice` aren\u0027t being applied. It was working fine on a different device, so we\u0027re investigating if it\u0027s an Android version issue or some other problems with our device setup. We\u0027re working through it now.",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "487f2285_55c9e4cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "This seems potentially a bit short depending on how long things take to enable/setup.",
+      "range": {
+        "startLine": 146,
+        "startChar": 61,
+        "endLine": 146,
+        "endChar": 63
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e394ed_13f8a8c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "should this be in adb in general since it is just the generic download dir?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 39
+      },
       "revId": "6785abd599595d65d80033511921778691b4160b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -237,6 +490,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f08752ed_1e229008",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "not that it necessarily matters, but it may look more natural to make this return the request id and then pass that to a.clientRPCResponse. Then you could do multiple calls and overlap them and won\u0027t need a.requestID -1",
+      "range": {
+        "startLine": 409,
+        "startChar": 13,
+        "endLine": 409,
+        "endChar": 29
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "467306b5_d7592ecf",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbytestutils/nearbytestutils.go",
         "patchSetId": 4
@@ -253,6 +529,29 @@
         "startChar": 0,
         "endLine": 29,
         "endChar": 121
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4cf930f_3c763920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearbytestutils/nearbytestutils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "should the folder be deleted and recreated if it exists to make sure it is in a clean state?",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 84
       },
       "revId": "6785abd599595d65d80033511921778691b4160b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -289,6 +588,75 @@
       "side": 1,
       "message": "LG, but I\u0027m not proficient with Go.",
       "parentUuid": "edc469de_d83fa8b1",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c10ba2_8ade0ec4",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/send.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "where is this created?",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 1
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a43d705_1c8909ea",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/send.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "I think this should happen before the conn is closed.",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523f3858_fc69feb8",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/send.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-14T17:14:58Z",
+      "side": 1,
+      "message": "do you need to do some sort of url encoding/cleaning?",
+      "range": {
+        "startLine": 99,
+        "startChar": 52,
+        "endLine": 99,
+        "endChar": 64
+      },
       "revId": "6785abd599595d65d80033511921778691b4160b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
