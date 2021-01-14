@@ -119,6 +119,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ead8dce_511dc2bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-14T16:44:23Z",
+      "side": 1,
+      "message": "sgtm :)",
+      "parentUuid": "6cdb4950_7c2b9bc0",
+      "revId": "6865f9886aade12ce38cd95c5876b34f977eaecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb55f6cf_9ee4e77b",
