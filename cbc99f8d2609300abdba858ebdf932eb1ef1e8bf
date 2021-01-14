@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e0f6b92_49ff8776",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b66a85e0_d4c5c634",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a61e2f_9ccb78c0",
@@ -86,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05b6fd0_c7fd3877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a61e2f_9ccb78c0",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbefe896_b068ad3a",
@@ -99,6 +135,30 @@
       "writtenOn": "2020-12-05T00:36:21Z",
       "side": 1,
       "message": "// New creates a Bluetooth instance.  It also enables bluetooth feature through quick settings if disabled.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1a1717_b36e83f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbefe896_b068ad3a",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -132,6 +192,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a61d3a_46032e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a9d8433_7cba3b55",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "322d9c3c_b4203d9d",
@@ -155,6 +239,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f655032a_e3c2dcf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "322d9c3c_b4203d9d",
+      "range": {
+        "startLine": 53,
+        "startChar": 45,
+        "endLine": 53,
+        "endChar": 69
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7056a747_ac35e330",
@@ -168,6 +276,30 @@
       "writtenOn": "2020-12-05T00:36:21Z",
       "side": 1,
       "message": "string?  Why not a bool (or an enum)?",
+      "range": {
+        "startLine": 59,
+        "startChar": 95,
+        "endLine": 59,
+        "endChar": 101
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a009d73b_a6abca87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7056a747_ac35e330",
       "range": {
         "startLine": 59,
         "startChar": 95,
@@ -203,6 +335,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bfe1d92_e2fe5ac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "dev, err :\u003d app.Root.Descendant(ctx, params)\nIt gets the node info from deviceName, it only include the one child content contains \"[Cc]onnect\".",
+      "parentUuid": "05a2ec23_15591692",
+      "range": {
+        "startLine": 67,
+        "startChar": 64,
+        "endLine": 67,
+        "endChar": 76
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6a96e55_9d9b50c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
         "patchSetId": 1
@@ -214,6 +370,30 @@
       "writtenOn": "2020-12-05T00:36:21Z",
       "side": 1,
       "message": "What is the purpose of sleeping?  Typically we should avoid use of testing.Sleep unless there\u0027s any other way to wait. Isn\u0027t ui.WaitUntilExists good enough?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 33
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9d4190_4662280d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6a96e55_9d9b50c0",
       "range": {
         "startLine": 90,
         "startChar": 1,
@@ -247,6 +427,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0bfe489_5d4d1e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8800db6_5b2811ad",
+      "range": {
+        "startLine": 104,
+        "startChar": 73,
+        "endLine": 104,
+        "endChar": 98
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41eda584_3c113cda",
@@ -260,6 +464,30 @@
       "writtenOn": "2020-12-05T00:36:21Z",
       "side": 1,
       "message": "%q might be slightly better for logging and errors for a string value.",
+      "range": {
+        "startLine": 108,
+        "startChar": 46,
+        "endLine": 108,
+        "endChar": 48
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d114cef_256b8d97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41eda584_3c113cda",
       "range": {
         "startLine": 108,
         "startChar": 46,
@@ -287,6 +515,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f42d54_3578b1f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa3d5c87_53e51cbc",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5de8dba7_c2ba743d",
@@ -300,6 +546,30 @@
       "writtenOn": "2020-12-05T00:36:21Z",
       "side": 1,
       "message": "Why wrappers.BoolValue?  Isn\u0027t it good enough to use a bool?",
+      "range": {
+        "startLine": 140,
+        "startChar": 106,
+        "endLine": 140,
+        "endChar": 125
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a070f2dd_20a51323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5de8dba7_c2ba743d",
       "range": {
         "startLine": 140,
         "startChar": 106,
@@ -327,6 +597,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f290e1b_9c3f018e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5dc7412_7dab9fb4",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "348a4e11_4aa5077a",
@@ -350,6 +638,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b3fea5_c6350c38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "348a4e11_4aa5077a",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58d6fbce_fdda985e",
@@ -363,6 +675,30 @@
       "writtenOn": "2020-12-05T00:36:21Z",
       "side": 1,
       "message": "tconn.Call(ctx, \u0026data, \u0027tast.proimsify(chrome.autotestPrivate.getClipboardTextData)\u0027)",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c2b74cd_47a41f74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58d6fbce_fdda985e",
       "range": {
         "startLine": 35,
         "startChar": 11,
@@ -398,6 +734,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "195533dd_9f5cf725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "setClipboardTextData has the delay time to set the clipboard data, it need to wait for a little time to get correct ClipboardTextData.",
+      "parentUuid": "a7e62cfe_ec995a4a",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 25
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7f8e400_48f93cec",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
         "patchSetId": 1
@@ -409,6 +769,24 @@
       "writtenOn": "2020-12-05T00:36:21Z",
       "side": 1,
       "message": "Basically this measures the time from the mouse click to the ash.AppShown.  I am afraid that it does not wait for the content of the window to be ready. Is it intended?",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d089ebf_94e35988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "ash.WaitForApp would wait for the content of the window to be ready",
+      "parentUuid": "e7f8e400_48f93cec",
       "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -432,6 +810,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f9f2a72_9cd4229c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "It maybe failed to open chrome browser. We found that the reason is external display. If we run the case with external display, it has the chance click the wrong coordinate of chrome app icon. So we add poll to retry, but it seems not work.",
+      "parentUuid": "4a6d5fd5_1804f66d",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b71f581c_5197e327",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
         "patchSetId": 1
@@ -443,6 +839,30 @@
       "writtenOn": "2020-12-05T00:36:21Z",
       "side": 1,
       "message": "why startTime here to be initialized as time.Now? Isn\u0027t it okay to initialize as:\n  var startTime time.Time\n?",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10dadb9e_52aa66a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b71f581c_5197e327",
       "range": {
         "startLine": 72,
         "startChar": 2,
@@ -476,6 +896,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4b8c70_a8fe20d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd4f2265_2355b13f",
+      "range": {
+        "startLine": 81,
+        "startChar": 62,
+        "endLine": 81,
+        "endChar": 63
+      },
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47de50b1_b8479fcc",
@@ -489,6 +933,24 @@
       "writtenOn": "2020-12-05T00:36:21Z",
       "side": 1,
       "message": "Is this going to be used rather than GetOpenBrowserStartTime()?  If not, consider moving ash.WaiForApp to GetOpenBrowserStartTime. That\u0027s clearer.",
+      "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb23e58f_241a5693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-14T07:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47de50b1_b8479fcc",
       "revId": "cbc99f8d2609300abdba858ebdf932eb1ef1e8bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
