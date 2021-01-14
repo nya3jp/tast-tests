@@ -319,6 +319,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfbfcd5a_619bac06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-14T21:09:52Z",
+      "side": 1,
+      "message": "We might want to double check with Aings. All the power tests that I have seen so far are using W to measure power consumption.\n\nIMHO, W is a better than J to reflect a device\u0027s power consumption that it is time normalized. Our tests are not guaranteed to finish at the same time, even the same test on the same device could have different length of run time. Looking at J would probably have more noises than W.",
+      "parentUuid": "39a5d0ed_5be6abbf",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afec413c_6120607b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
