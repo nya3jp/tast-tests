@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84cd456_f2bf5785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-14T16:46:19Z",
+      "side": 1,
+      "message": "Replace \"TPS.\" with t.prefix, here and other places ?",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 18
+      },
+      "revId": "2f11e393a482b9e0acc7cc112dcb79c30958e45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfd5a4c8_9c4a1538",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/zram_info_tracker.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-01-14T16:46:19Z",
+      "side": 1,
+      "message": "ditto, `t.prefix` since we have it now.",
+      "range": {
+        "startLine": 125,
+        "startChar": 14,
+        "endLine": 125,
+        "endChar": 18
+      },
+      "revId": "2f11e393a482b9e0acc7cc112dcb79c30958e45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
