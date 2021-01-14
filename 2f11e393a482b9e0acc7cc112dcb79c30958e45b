@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66d6503_9d420989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-14T20:33:06Z",
+      "side": 1,
+      "message": "Jun, we didn\u0027t change the already recorded data, but just post process it and get new data from it as we need. This post process is not done in outside system because it is a stable algorithm.\n\nI have confirmed that J is the desired metric because it has information about the running time of the CUJ case.\n\nAnd as you\u0027ve already seen, we added several other power indicators in next patch based on the new requirement (battery info tracker and setPowerUsage() in recorder), including the power usage over battery capacity . Some are read directly from system and some are post calculated.",
+      "parentUuid": "2716b755_c21b0429",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 8
+      },
+      "revId": "2f11e393a482b9e0acc7cc112dcb79c30958e45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfd5a4c8_9c4a1538",
