@@ -202,28 +202,37 @@ window.Tast = class Tast {
   };
 
   /**
-   * Waits for N consecutive frames captured from |facing| camera in
-   * |aspectRatio| FOV passing alignment check.
+   * Waits for all sampled frames captured in last N milliseconds from |facing|
+   * camera in |aspectRatio| FOV passing alignment check.
    * @param {!Facing} facing
    * @param {!AspectRatio} aspectRatio
-   * @param {number} times
+   * @param {number} ms
    * @return {!Promise}
    * @private
    */
-  static async waitForPassAlignN_(facing, aspectRatio, times) {
+  static async waitForPassAlignN_(facing, aspectRatio, ms) {
     const aspectRatioName = aspectRatio === AspectRatio.AR4X3 ? '4x3' : '16x9';
-    let i = 1;
-    while (i <= times) {
-      // TODO(b/166370953): Improve the check response time < 1 seconds.
-      await sleep(1000);
+    let startTime = null;
+    while (true) {
+      await sleep(200);
+      const currentTime = Date.now();
       if (!await Tast.checkAlign_(facing, aspectRatio)) {
         Tast.feedbackAlign_(false, `Check ${aspectRatioName} align failed`);
-        i = 1;
+        startTime = null;
         continue;
       }
+      if (startTime === null) {
+        startTime = currentTime;
+        Tast.feedbackAlign_(true, `Pass check ${aspectRatioName} align`);
+        continue;
+      }
+      const duration = currentTime - startTime;
       Tast.feedbackAlign_(
-          true, `Pass check ${aspectRatioName} align ${i} times`);
-      i++;
+          true,
+          `Pass check ${aspectRatioName} align ${duration / 1000} seconds`);
+      if (duration >= ms) {
+        break;
+      }
     }
   }
 
