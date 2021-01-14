@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e07bc5_d4c2d2bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pre/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-14T18:59:32Z",
+      "side": 1,
+      "message": "I also forgot that Golang cannot define constant slice. How about adding a comment:\n\n// Use string instead of []string as slice cannot be const.\n// https://golang.org/doc/effective_go.html#constants",
+      "parentUuid": "7a996239_5b251cfe",
+      "revId": "41994e758945511f4f37aa06be091130f97d7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f9b1ec8_0b34cab2",
