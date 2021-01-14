@@ -34,6 +34,24 @@
       "parentUuid": "47054f6a_0bd303bf",
       "revId": "612fec91ab7fe5decc8e5d83ec6d43b6cf09c922",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4954618_1a50d34d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-01-14T07:25:01Z",
+      "side": 1,
+      "message": "The original stressapptest is 32-bit process, which causes error when we use it to test a RAM greater than 4G.\n  -\u003e So we need a 64-bit version.\n\nWe try to build 64-bit version directly without bind mount for ARM, but it caused another lab error.\n  -\u003e So we build both 32-bit and 64-bit with different name\n\nIn DUT, we want to use 64-bit directly without any check. Otherwise we need to insert a lot of check when we want to use stressapptest.\n  -\u003e So we use bind mount for those DUTs, then after boot, all stressapptest is 64-bit version, no other check is needed.",
+      "parentUuid": "f32b2c5e_553bd60f",
+      "revId": "612fec91ab7fe5decc8e5d83ec6d43b6cf09c922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
