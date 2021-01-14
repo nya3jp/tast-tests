@@ -56,6 +56,30 @@
       },
       "revId": "67cb0d49f8afcd54636e548a66101e2005ef130b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27185fed_b756da1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2021-01-14T23:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81ebe964_ff27a3c5",
+      "range": {
+        "startLine": 119,
+        "startChar": 8,
+        "endLine": 119,
+        "endChar": 31
+      },
+      "revId": "67cb0d49f8afcd54636e548a66101e2005ef130b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
