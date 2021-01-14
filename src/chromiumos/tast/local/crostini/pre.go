@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -206,10 +207,11 @@ func GaiaLoginAvailable(s varState) bool {
 //		...
 //	}
 type PreData struct {
-	Chrome      *chrome.Chrome
-	TestAPIConn *chrome.TestConn
-	Container   *vm.Container
-	Keyboard    *input.KeyboardEventWriter
+	Chrome         *chrome.Chrome
+	TestAPIConn    *chrome.TestConn
+	Container      *vm.Container
+	Keyboard       *input.KeyboardEventWriter
+	ScreenRecorder *ui.ScreenRecorder
 }
 
 // StartedByComponentStretch ensures that a VM running stretch has
@@ -388,7 +390,22 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			s.Log("Precondition unsatisfied: Chrome is unresponsive: ", err)
 			p.Close(ctx, s)
 		} else {
-			return p.buildPreData(ctx, s)
+			if err := p.cr.ResetState(ctx); err != nil {
+				s.Fatal("Failed to reset chrome's state: ", err)
+			}
+			screenRecorder, err := ui.NewScreenRecorder(ctx, p.tconn)
+			if err != nil {
+				s.Log("Failed to create ScreenRecorder: ", err)
+			}
+
+			if screenRecorder != nil {
+				if err := screenRecorder.Start(ctx); err != nil {
+					s.Log("Failed to start screen record: ", err)
+				} else {
+					s.Log("Start screen recording")
+				}
+			}
+			return PreData{p.cr, p.tconn, p.cont, p.keyboard, screenRecorder}
 		}
 	}
 
@@ -455,6 +472,23 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to create keyboard device: ", err)
 	}
 
+	if err := p.cr.ResetState(ctx); err != nil {
+		s.Fatal("Failed to reset chrome's state: ", err)
+	}
+
+	screenRecorder, err := ui.NewScreenRecorder(ctx, p.tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	if screenRecorder != nil {
+		if err := screenRecorder.Start(ctx); err != nil {
+			s.Log("Failed to start screen record: ", err)
+		} else {
+			s.Log("Start screen recording")
+		}
+	}
+
 	if useLocalImage {
 		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
 		terminalApp, err := terminalapp.Launch(ctx, p.tconn)
@@ -482,13 +516,12 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Log("Failed to gather disk usage: ", err)
 	}
 
-	ret := p.buildPreData(ctx, s)
 	p.startedOK = true
 
 	chrome.Lock()
 	vm.Lock()
 	shouldClose = false
-	return ret
+	return PreData{p.cr, p.tconn, p.cont, p.keyboard, screenRecorder}
 }
 
 // keepState returns whether the precondition should keep state from the
@@ -561,15 +594,6 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 		}
 		p.cr = nil
 	}
-}
-
-// buildPreData is a helper method that resets the machine state in
-// advance of building the precondition data for the actual tests.
-func (p *preImpl) buildPreData(ctx context.Context, s *testing.PreState) PreData {
-	if err := p.cr.ResetState(ctx); err != nil {
-		s.Fatal("Failed to reset chrome's state: ", err)
-	}
-	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
 }
 
 // reportDiskUsage logs a report of the current disk usage.

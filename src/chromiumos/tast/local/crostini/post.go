@@ -36,6 +36,18 @@ func RunCrostiniPostTest(ctx context.Context, p PreData) {
 		testing.ContextLog(ctx, "Failed to get name of directory")
 		return
 	}
+	if p.ScreenRecorder != nil {
+		if err := p.ScreenRecorder.Stop(ctx); err != nil {
+			testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
+		} else {
+			// TODO (jinrongwu): only save the record if the test case fails when porting to fixture.
+			testing.ContextLogf(ctx, "Saving screen record to %s", dir)
+			if err := p.ScreenRecorder.SaveInBytes(ctx, filepath.Join(dir, "screenRecord.webm")); err != nil {
+				testing.ContextLogf(ctx, "Failed to save screen record in bytes: %s", err)
+			}
+		}
+		p.ScreenRecorder.Release(ctx)
+	}
 
 	TrySaveVMLogs(ctx, p.Container.VM)
 	trySaveContainerLogs(ctx, dir, p.Container)
