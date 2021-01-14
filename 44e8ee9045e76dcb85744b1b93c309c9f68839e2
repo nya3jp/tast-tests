@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e99811b_248b442e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-14T01:56:24Z",
+      "side": 1,
+      "message": "LGTM !",
+      "revId": "44e8ee9045e76dcb85744b1b93c309c9f68839e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51ba8038_e03b5bf6",
@@ -103,6 +120,30 @@
       "side": 1,
       "message": "But we have had 720p@60fps for av1 sw.\nSo I think it makes more sense to add av1 720p@60fps for av1 hw?\nWDYT?",
       "parentUuid": "fd9dba0d_cb03d95f",
+      "range": {
+        "startLine": 310,
+        "startChar": 14,
+        "endLine": 310,
+        "endChar": 24
+      },
+      "revId": "44e8ee9045e76dcb85744b1b93c309c9f68839e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eaf0e19_9dfeef72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-14T01:56:24Z",
+      "side": 1,
+      "message": "Yeah, either way it\u0027s not a big deal.",
+      "parentUuid": "f02f9282_45367645",
       "range": {
         "startLine": 310,
         "startChar": 14,
