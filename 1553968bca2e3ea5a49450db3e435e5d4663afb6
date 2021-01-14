@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00ec3dc_94449119",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-01-14T06:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e72a244f_993b6dcf",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 37
+      },
+      "revId": "1553968bca2e3ea5a49450db3e435e5d4663afb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7a71539_a62fa3a3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-14T04:27:35Z",
       "side": 1,
       "message": "Can you also check errors returned by EnsureJobRunning?\n\nIt\u0027s arguable how we should handle errors - s.Error or s.Log/testing.ContextLog. If we call s.Error here, a next test will not run, and likely all later tests. I think it\u0027s okay to start from logging.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 36
+      },
+      "revId": "1553968bca2e3ea5a49450db3e435e5d4663afb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b76729_870affda",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2021-01-14T06:44:50Z",
+      "side": 1,
+      "message": "I think upstart.EnsureJobRunning automatically logs errors (it calls Cmd.DumpLog if the initctl command fails).",
+      "parentUuid": "b7a71539_a62fa3a3",
       "range": {
         "startLine": 129,
         "startChar": 1,
