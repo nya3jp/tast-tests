@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "267db86e_6eab1f02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-14T18:17:53Z",
+      "side": 1,
+      "message": "Agree to bundle the refactoring and its use case (motivation).",
+      "parentUuid": "64acbc8c_786769b9",
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f29758c4_3ff09210",
@@ -328,6 +346,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c8b9d4_0be93c7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_manager_sanity.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-14T18:17:53Z",
+      "side": 1,
+      "message": "SGTM :)",
+      "parentUuid": "7be87732_d242a572",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e2d5ea6_6e23c9bf",
@@ -359,6 +401,24 @@
       "side": 1,
       "message": "Precaution. I find it helpful to have a \"readiness\" (formerly commonly known as \"sanity\") for complex systems. If that test fails, then we know that the system (in this case Shill) is badly broken, so we can ignore other failures in the system.",
       "parentUuid": "5e2d5ea6_6e23c9bf",
+      "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05ec9a2_9f779a35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_manager_sanity.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-14T18:17:53Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "507548e3_bc98add7",
       "revId": "8f4de56dd9f2e308e59e1798bcda6d047e8c7629",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
