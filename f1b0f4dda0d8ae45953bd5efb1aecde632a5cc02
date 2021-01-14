@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e0428e_a569d6be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-14T07:59:25Z",
+      "side": 1,
+      "message": "Instead of using h.IsEnabled() to output error running h.Manager.IsEnabled(), how about wrap the error with \"cellular not enabled\" prefix?\n\nreturn errors.Wrap(err, \"Cellular not enabled\")",
+      "revId": "f1b0f4dda0d8ae45953bd5efb1aecde632a5cc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
