@@ -16,6 +16,98 @@
       "message": "Thanks for the comments!",
       "revId": "90380f7e4f97eabc559f469f201022aadfb4078d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88718883_bfb8b044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T10:45:34Z",
+      "side": 1,
+      "message": "do you need to pass stdout and err if you don\u0027t use them?",
+      "range": {
+        "startLine": 53,
+        "startChar": 23,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "90380f7e4f97eabc559f469f201022aadfb4078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425c9d59_e897c6ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T10:45:34Z",
+      "side": 1,
+      "message": "what if err \u003d\u003d nil, but failExpected !\u003d nil ?",
+      "range": {
+        "startLine": 101,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 55
+      },
+      "revId": "90380f7e4f97eabc559f469f201022aadfb4078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5cfbf2_8106a574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T10:45:34Z",
+      "side": 1,
+      "message": "it\u0027s not recommended to have such logs, PTAL when to log: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 68
+      },
+      "revId": "90380f7e4f97eabc559f469f201022aadfb4078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06411c01_bbd72b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T10:45:34Z",
+      "side": 1,
+      "message": "Please mention that binary failed unexpectedly\n\nit will be useful to add stderr as well, because you atually check whether stderr contains \"Codec VP80 not supported\"",
+      "range": {
+        "startLine": 107,
+        "startChar": 15,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "90380f7e4f97eabc559f469f201022aadfb4078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
