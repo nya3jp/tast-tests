@@ -290,6 +290,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6644082_20a59292",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/handwriting_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T09:47:08Z",
+      "side": 1,
+      "message": "sorry if I confused you, but if we want to close file first and then remove it, defer statements should be in the opposite order.",
+      "parentUuid": "f407ca5a_0504388c",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 16
+      },
+      "revId": "065fe3e59b7619557bb8b6f3eab884f34e2dc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f8f5ae8_abc241da",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 13
