@@ -72,7 +72,7 @@ func setup(ctx context.Context, s *testing.State) {
 
 	// Run tests to collect metrics.
 	resultWriter := &stress.FioResultWriter{}
-	defer resultWriter.Save(ctx, s.OutDir())
+	defer resultWriter.Save(ctx, s.OutDir(), false)
 
 	testConfig := &stress.TestConfig{ResultWriter: resultWriter, Path: stress.BootDeviceFioPath}
 	fioStress(ctx, s, testConfig.WithJob("seq_write"))
@@ -85,7 +85,7 @@ func setup(ctx context.Context, s *testing.State) {
 
 func testBlock(ctx context.Context, s *testing.State) {
 	resultWriter := &stress.FioResultWriter{}
-	defer resultWriter.Save(ctx, s.OutDir())
+	defer resultWriter.Save(ctx, s.OutDir(), false)
 
 	testConfig := &stress.TestConfig{Path: stress.BootDeviceFioPath}
 

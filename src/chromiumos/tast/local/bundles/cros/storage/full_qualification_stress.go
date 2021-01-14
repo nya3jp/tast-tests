@@ -326,7 +326,7 @@ func trimTestBlockImpl(ctx context.Context, s *testing.State, trimPath string, r
 
 	// Check read bandwidth/latency when reading real data.
 	resultWriter := &stress.FioResultWriter{}
-	defer resultWriter.Save(ctx, s.OutDir())
+	defer resultWriter.Save(ctx, s.OutDir(), true)
 
 	testConfig := &stress.TestConfig{ResultWriter: resultWriter, Path: trimPath}
 	if err := runFioStress(ctx, s, testConfig.WithJob("4k_read_qd32")); err != nil {
@@ -382,13 +382,13 @@ func trimTestBlockImpl(ctx context.Context, s *testing.State, trimPath string, r
 	}
 
 	// Write out all metrics to an external keyval file.
-	if err := stress.WriteKeyVals(s.OutDir(), map[string]int{
-		"dataVerifyCount":     dataVerifyCount,
-		"dataVerifyMatch":     dataVerifyMatch,
-		"trimVerifyCount":     trimVerifyCount,
-		"trimVerifyZero":      trimVerifyZero,
-		"trimVerifyOne":       trimVerifyOne,
-		"trimVerifyNonDelete": trimVerifyNonDelete,
+	if err := stress.WriteKeyVals(s.OutDir(), map[string]float64{
+		"dataVerifyCount":     float64(dataVerifyCount),
+		"dataVerifyMatch":     float64(dataVerifyMatch),
+		"trimVerifyCount":     float64(trimVerifyCount),
+		"trimVerifyZero":      float64(trimVerifyZero),
+		"trimVerifyOne":       float64(trimVerifyOne),
+		"trimVerifyNonDelete": float64(trimVerifyNonDelete),
 	}); err != nil {
 		s.Fatal("Error writing trim counters: ", err)
 	}
@@ -519,7 +519,7 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	if passed {
 		passed = s.Run(ctx, "storage_subtest", func(ctx context.Context, s *testing.State) {
 			resultWriter := &stress.FioResultWriter{}
-			defer resultWriter.Save(ctx, s.OutDir())
+			defer resultWriter.Save(ctx, s.OutDir(), true)
 			subtest(ctx, s, resultWriter, slcConfig)
 		})
 	}
