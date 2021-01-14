@@ -52,7 +52,7 @@ type FioResultWriter struct {
 }
 
 // Save processes and saves reported results.
-func (f *FioResultWriter) Save(ctx context.Context, path string) {
+func (f *FioResultWriter) Save(ctx context.Context, path string, writeKeyVal bool) {
 	f.resultLock.Lock()
 	defer f.resultLock.Unlock()
 
@@ -66,6 +66,15 @@ func (f *FioResultWriter) Save(ctx context.Context, path string) {
 		reportDiskPercentageUsed(ctx, disk, perfValues)
 	}
 	perfValues.Save(path)
+
+	if writeKeyVal {
+		for _, report := range f.results {
+			values := saveToKeyVal(ctx, report.result, report.group)
+			if err := WriteKeyVals(path, values); err != nil {
+				testing.ContextLog(ctx, "Error writing results to keyval file: ", err)
+			}
+		}
+	}
 
 	f.results = nil
 }
@@ -195,4 +204,30 @@ func reportResults(ctx context.Context, res *fioResult, group string, perfValues
 		reportJobRWResult(ctx, job.Read, job.Jobname+"_read", group, perfValues)
 		reportJobRWResult(ctx, job.Write, job.Jobname+"_write", group, perfValues)
 	}
+}
+
+func extractResultValues(ctx context.Context, testRes map[string]interface{}, prefix, dev string, values map[string]float64) {
+	flatResult, err := flattenNestedResults("", testRes)
+	if err != nil {
+		testing.ContextLog(ctx, "Error flattening results json: ", err)
+		return
+	}
+
+	for k, v := range flatResult {
+		name := "_" + prefix + k + "{perf}"
+		values[name] = v
+	}
+}
+
+func saveToKeyVal(ctx context.Context, res *fioResult, group string) (values map[string]float64) {
+	values = make(map[string]float64)
+
+	for _, job := range res.Jobs {
+		extractResultValues(ctx, job.Read, job.Jobname+"_read", group, values)
+		extractResultValues(ctx, job.Write, job.Jobname+"_write", group, values)
+		extractResultValues(ctx, job.Trim, job.Jobname+"_trim", group, values)
+		extractResultValues(ctx, job.Sync, job.Jobname+"_sync", group, values)
+	}
+
+	return values
 }

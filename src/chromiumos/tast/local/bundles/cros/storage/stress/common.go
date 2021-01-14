@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"sort"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -19,7 +20,11 @@ import (
 const keyValFileName = "keyval"
 
 // WriteKeyVals writes given key value data to an external file in output directory.
-func WriteKeyVals(outDir string, keyVals map[string]int) error {
+func WriteKeyVals(outDir string, keyVals map[string]float64) error {
+	if keyVals == nil {
+		return errors.New("invalid data to write to keyval file")
+	}
+
 	filename := filepath.Join(outDir, keyValFileName)
 	f, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
@@ -27,8 +32,15 @@ func WriteKeyVals(outDir string, keyVals map[string]int) error {
 	}
 	defer f.Close()
 
-	for key, val := range keyVals {
-		if _, err := fmt.Fprintf(f, "%s=%d\n", key, val); err != nil {
+	// Sorting all results by name before writing to file.
+	keys := make([]string, 0, len(keyVals))
+	for k := range keyVals {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	for _, key := range keys {
+		if _, err := fmt.Fprintf(f, "%s=%v\n", key, keyVals[key]); err != nil {
 			return errors.Wrap(err, "failed to write keyval file")
 		}
 	}
