@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3405eecc_f01cd57e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-14T04:28:16Z",
+      "side": 1,
+      "message": "LGTM % final nits. Thanks!",
+      "revId": "2ee2a3319484b014e237145a6f17a318efbfc2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a12ce60e_03541b5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-14T04:28:16Z",
+      "side": 1,
+      "message": "remove extra \"the\" (sorry my mistake)",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "2ee2a3319484b014e237145a6f17a318efbfc2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "496be097_eedb0a1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-14T04:28:16Z",
+      "side": 1,
+      "message": "start with * so that it bullets (similar to e.g., ln. 17):\n\n  * test-25fps-192x288-tile-rows-3-tile-cols-3.ivf...",
+      "revId": "2ee2a3319484b014e237145a6f17a318efbfc2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "455688fc_65aacfb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-14T04:28:16Z",
+      "side": 1,
+      "message": "nit: wrap to 80 columns if possible to be consistent with [1].\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/README.md;drc\u003d534bc085e41ef5dbb1bc292b853f48f83048efae",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 242
+      },
+      "revId": "2ee2a3319484b014e237145a6f17a318efbfc2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
