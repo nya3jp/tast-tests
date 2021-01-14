@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "2232f4804b32dc98453ac11751d401ff61bfb135",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "340788da_10f360e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-01-14T06:31:29Z",
+      "side": 1,
+      "message": "CQ is currently broken by crbug.com/1166454",
+      "revId": "2232f4804b32dc98453ac11751d401ff61bfb135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
