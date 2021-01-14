@@ -69,6 +69,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "574741de_121f119a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-14T18:03:45Z",
+      "side": 1,
+      "message": "First pass on send.js, I will take a deeper look later today.",
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb26ef70_b55942cb",
@@ -324,6 +341,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d332fd1_b1731617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-14T18:03:45Z",
+      "side": 1,
+      "message": "this.discoveryManager_ ?",
+      "range": {
+        "startLine": 54,
+        "startChar": 6,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f1e7d1_77506548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-14T18:03:45Z",
+      "side": 1,
+      "message": "Are you trying to clear this.discoveryManager_ from the outer scope here?",
+      "range": {
+        "startLine": 56,
+        "startChar": 14,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f96c6449_b3c7ef51",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
         "patchSetId": 4
@@ -340,6 +403,122 @@
         "startChar": 10,
         "endLine": 74,
         "endChar": 37
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e22273_b07f3398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-14T18:03:45Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "f96c6449_b3c7ef51",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 37
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fbe0ab0_a5a3c060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-14T18:03:45Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be doing anything?",
+      "range": {
+        "startLine": 76,
+        "startChar": 10,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c1ef40_c5806f5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-14T18:03:45Z",
+      "side": 1,
+      "message": "Why is this necessary here? If you got to this point are you not already using discovery manager? Seems like an odd place to load the dependency.",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 38
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf83191_01d72d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-14T18:03:45Z",
+      "side": 1,
+      "message": "Can you put this on the same line?",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 108,
+        "endChar": 21
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1bc5ff9_5157cc27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-14T18:03:45Z",
+      "side": 1,
+      "message": "Are you sure \"this.*\" is updating what you expect? You are in a lambda context here.",
+      "range": {
+        "startLine": 109,
+        "startChar": 10,
+        "endLine": 109,
+        "endChar": 36
       },
       "revId": "6785abd599595d65d80033511921778691b4160b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
