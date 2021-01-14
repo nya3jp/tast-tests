@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36fe2430_2f69bee4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T11:22:07Z",
+      "side": 1,
+      "message": "LGTM % nits, thanks!",
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d5e5ac7_16e63fbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_list.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T11:22:07Z",
+      "side": 1,
+      "message": "nit:\n\nUnexpected number of routines: got %d (%v); want \u003e\u003d 9",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 44
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff61cede_bb51560b",
@@ -38,6 +78,30 @@
       "side": 1,
       "message": "Both of these are added in the dependent CL.",
       "parentUuid": "ff61cede_bb51560b",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5efc84f_b193a822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T11:22:07Z",
+      "side": 1,
+      "message": "Sorry, i missed that!",
+      "parentUuid": "be4629eb_c3f478e2",
       "range": {
         "startLine": 47,
         "startChar": 32,
@@ -90,6 +154,121 @@
         "startChar": 32,
         "endLine": 64,
         "endChar": 36
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f762e71e_7b7e7896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T11:22:07Z",
+      "side": 1,
+      "message": "nit: Tast",
+      "range": {
+        "startLine": 132,
+        "startChar": 17,
+        "endLine": 132,
+        "endChar": 21
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b436c69b_89bc2fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T11:22:07Z",
+      "side": 1,
+      "message": "nit: maybe we can simplify it to\n\nresult.Status !\u003d croshealthd.StatusPassed \u0026\u0026\nresult.Status !\u003d croshealthd.StatusFailed \u0026\u0026\nresult.Status !\u003d croshealthd.StatusNotRun",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd88dec_bb2d9179",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T11:22:07Z",
+      "side": 1,
+      "message": "nit:\n\nUnexpected %q routine status: got %q; want %q, %q, or %q",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 56
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a92fe7_61c33457",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T11:22:07Z",
+      "side": 1,
+      "message": "here is wrong order\n\ncorrect order is:\nresult.Status, croshealthd.StatusPassed, croshealthd.StatusFailed, croshealthd.StatusNotRun",
+      "range": {
+        "startLine": 137,
+        "startChar": 12,
+        "endLine": 137,
+        "endChar": 103
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a27b8d_9444b279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-14T11:22:07Z",
+      "side": 1,
+      "message": "nit:\n\nUnexpected progress for %q routine with status %q: got %d; want 100",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 48
       },
       "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
