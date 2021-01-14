@@ -366,6 +366,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44961835_ae032988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-14T19:47:37Z",
+      "side": 1,
+      "message": "I am afraid that you didn\u0027t answer my question; if those postprocessing will be made somewhere, why not in Go code here?\n\nI am also afraid that, for that purpose, results-chart.json may not be the best one.  This is basically for the data container for Google internal dashboard (crosbolt), and I am afraid that uploading data like this would not fit well.  Maybe you should store the histogram data into a different data files in s.OutDir() (e.g. json.Marshal(hists, data) --\u003e ioutil.WriteFile(data, filepath.Join(s.OutDir(), \"histograms.json\"))",
+      "parentUuid": "c20cdbf3_ea4f5df3",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 16
+      },
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfa5430f_e1cc606e",
         "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
         "patchSetId": 1
