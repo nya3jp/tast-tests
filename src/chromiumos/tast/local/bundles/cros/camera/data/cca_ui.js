@@ -322,6 +322,35 @@ window.Tast = class Tast {
   }
 
   /**
+   * Gets media track capabilities of current active camera device.
+   * @return MediaTrackCapabilities
+   */
+  static async getMediaTrackCapabilities() {
+    const track = Tast.previewVideo.srcObject.getVideoTracks()[0];
+    const capabilities = await track.getCapabilities();
+    return capabilities;
+  }
+
+  /**
+   * Gets media track settings of current active camera device.
+   * @return MediaTrackSettings
+   */
+  static async getMediaTrackSettings() {
+    const track = Tast.previewVideo.srcObject.getVideoTracks()[0];
+    const settings = await track.getSettings();
+    return settings;
+  }
+
+  /**
+   * Apply media track constraints of current active camera device.
+   * @param {string} MediaTrackConstraints
+   */
+  static async applyMediaTrackConstraints(constraints) {
+    const track = Tast.previewVideo.srcObject.getVideoTracks()[0];
+    await track.applyConstraints(JSON.parse(constraints));
+  }
+
+  /**
    * Toggle expert mode by simulating the activation key press.
    */
   static toggleExpertMode() {
