@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca0a059_23b44f32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-14T10:51:13Z",
+      "side": 1,
+      "message": "nit: Move this down to get the feedback for the last iteration.",
+      "revId": "613735eb01d671265feafd2a277ec32375767de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72a6321_d0debb04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-14T10:51:13Z",
+      "side": 1,
+      "message": "huge nit: Let\u0027s use 5000 ms instead 5s here for consistency. In JS we usually represent time in ms.",
+      "range": {
+        "startLine": 244,
+        "startChar": 63,
+        "endLine": 244,
+        "endChar": 64
+      },
+      "revId": "613735eb01d671265feafd2a277ec32375767de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
