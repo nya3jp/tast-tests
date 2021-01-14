@@ -16,6 +16,24 @@
       "message": "Instead of using h.IsEnabled() to output error running h.Manager.IsEnabled(), how about wrap the error with \"cellular not enabled\" prefix?\n\nreturn errors.Wrap(err, \"Cellular not enabled\")",
       "revId": "f1b0f4dda0d8ae45953bd5efb1aecde632a5cc02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeb9c5ec_4fde604b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-14T16:41:22Z",
+      "side": 1,
+      "message": "I\u0027m a little confused, we\u0027re not using h.IsEnabled() here (we use that in the test itself).\n\nWhen h.Manager.IsEnabled returns an error, it is not because Cellular is not enabled, it is because of a DBus error (\"failed to get properties\" or \"failed to get property EnabledTechnologies\"). We can wrap that in \"failed to get enabled\", although frankly I don\u0027t think that will help much with debugging (we\u0027ll also have a call stack), but done.",
+      "parentUuid": "f4e0428e_a569d6be",
+      "revId": "f1b0f4dda0d8ae45953bd5efb1aecde632a5cc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
