@@ -352,7 +352,7 @@ func StableFindAndRightClick(ctx context.Context, tconn *chrome.TestConn, params
 // The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
 // The EventWatcher waits the duration of timeout for the event to occur.
 func (n *Node) FocusAndWait(ctx context.Context, timeout time.Duration) error {
-	ew, err := NewWatcher(ctx, n, EventTypeFocus)
+	ew, err := NewRootWatcher(ctx, n.tconn, EventTypeFocus)
 	if err != nil {
 		return errors.Wrap(err, "failed to create focus event watcher")
 	}
