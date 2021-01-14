@@ -249,8 +249,8 @@ func ShareDrive(ctx context.Context, s *testing.State) {
 
 	// Run the test file in shared folder.
 	err = cont.Command(ctx, sharedFilePath).Run()
-	if err == nil {
-		s.Fatal("Was unexpectedly able to run " + sharedFilePath)
+	if err != nil {
+		s.Fatal("Was unable to run " + sharedFilePath)
 	}
 
 	// Copy file to home dir and run it.

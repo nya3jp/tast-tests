@@ -268,8 +268,8 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 
 		// Run the test file in shared folder.
 		err = cont.Command(ctx, filePath).Run()
-		if err == nil {
-			s.Fatal("Was unexpectedly able to run " + filePath)
+		if err != nil {
+			s.Fatal("Was not able to run " + filePath)
 		}
 
 		// Copy file to home dir and run it.
