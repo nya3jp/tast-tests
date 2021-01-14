@@ -51,7 +51,6 @@ const (
 // find params for fixed items.
 var (
 	developersButton      = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(`Developers|Linux.*`)}, Role: ui.RoleTypeButton}
-	advancedButton        = ui.FindParams{Name: "Advanced", Role: ui.RoleTypeButton}
 	nextButton            = ui.FindParams{Name: "Next", Role: ui.RoleTypeButton}
 	settingsHeading       = ui.FindParams{Name: "Settings", Role: ui.RoleTypeHeading}
 	settingsWindow        = ui.FindParams{Name: "Settings", Role: ui.RoleTypeWindow}
@@ -83,17 +82,10 @@ func Open(ctx context.Context, tconn *chrome.TestConn) (*Settings, error) {
 }
 
 func navigateToDevelopers(ctx context.Context, tconn *chrome.TestConn) error {
-	err := uig.Do(ctx, tconn, uig.FindWithTimeout(settingsWindow, uiTimeout).
-		FindWithTimeout(advancedButton, uiTimeout).
-		FocusAndWait(uiTimeout).
-		LeftClick().WithNamef("clickAdvanced()"))
-	if err != nil {
-		return errors.Wrap(err, "failed to click Advanced")
-	}
 	// Navigate to Developers page or Linux settings page.
-
 	return uig.Do(ctx, tconn, uig.Retry(2,
-		uig.FindWithTimeout(developersButton, uiTimeout).
+		uig.FindWithTimeout(settingsWindow, uiTimeout).
+			FindWithTimeout(developersButton, uiTimeout).
 			FocusAndWait(uiTimeout).
 			LeftClick()).WithNamef("navigateToDevelopers()"))
 }
