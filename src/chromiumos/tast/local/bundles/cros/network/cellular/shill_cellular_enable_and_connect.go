@@ -2,12 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package cellular
 
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/network/cellular"
 	"chromiumos/tast/testing"
 )
 
@@ -20,10 +19,11 @@ func init() {
 	})
 }
 
+// ShillCellularEnableAndConnect Test
 func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
-	helper, err := cellular.NewHelper(ctx)
+	helper, err := NewHelper(ctx)
 	if err != nil {
-		s.Fatal("Failed to create cellular.Helper: ", err)
+		s.Fatal("Failed to create Helper: ", err)
 	}
 
 	// Disable AutoConnect so that enable does not connect.

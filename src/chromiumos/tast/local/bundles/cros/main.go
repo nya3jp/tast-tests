@@ -49,6 +49,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/nacl"
 	_ "chromiumos/tast/local/bundles/cros/nearbyshare"
 	_ "chromiumos/tast/local/bundles/cros/network"
+	_ "chromiumos/tast/local/bundles/cros/network/cellular"
 	_ "chromiumos/tast/local/bundles/cros/notifications"
 	_ "chromiumos/tast/local/bundles/cros/ocr"
 	_ "chromiumos/tast/local/bundles/cros/peripherals"
