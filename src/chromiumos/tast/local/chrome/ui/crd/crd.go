@@ -18,8 +18,9 @@ import (
 const crdURL = "https://remotedesktop.google.com/support"
 
 // Do not poll things too fast to prevent triggering weird UI behaviors. The
-// share button will not work if we keep clicking it.
-var rdpPollOpts = &testing.PollOptions{Interval: time.Second}
+// share button will not work if we keep clicking it. Sets timeout to 5 minutes
+// according to timeout for CRD one time access code.
+var rdpPollOpts = &testing.PollOptions{Interval: time.Second, Timeout: 5 * time.Minute}
 
 // ensureAppInstalled ensures the companion extension for the Chrome Remote
 // Desktop website https://remotedesktop.google.com is installed.
