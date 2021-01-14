@@ -112,6 +112,7 @@ func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) 
 func saveARCVMConsole(ctx context.Context, outDir string) error {
 	const (
 		pstoreCommandPath = "/usr/bin/vm_pstore_dump"
+		pstoreFilePath    = "/run/arcvm/arcvm.pstore"
 		arcvmConsoleName  = "arcvm-console.txt"
 	)
 
@@ -127,6 +128,11 @@ func saveARCVMConsole(ctx context.Context, outDir string) error {
 	// TODO(b/153934386): Remove this check when pstore is enabled on ARM.
 	// The pstore feature is enabled only on x86_64. It's not enabled on some architectures, and this `vm_pstore_dump` command doesn't exist on such architectures.
 	if _, err := os.Stat(pstoreCommandPath); os.IsNotExist(err) {
+		return nil
+	}
+
+	// The pstore backend file may not be created.
+	if _, err := os.Stat(pstoreFilePath); os.IsNotExist(err) {
 		return nil
 	}
 
