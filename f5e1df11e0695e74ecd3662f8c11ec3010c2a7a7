@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "439a9d88_ce469d93",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-14T00:36:38Z",
+      "side": 1,
+      "message": "I keep the options in the background.js because I feel this is safest way we know the current chrome instance is started by tast and can be reused.",
+      "parentUuid": "c5d71b04_839830ff",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 32
+      },
+      "revId": "f5e1df11e0695e74ecd3662f8c11ec3010c2a7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4dd1f2f_b1acfbd6",
@@ -102,6 +126,30 @@
       "writtenOn": "2021-01-08T10:25:00Z",
       "side": 1,
       "message": "This logic is super fragile. It must set all fields that would be set in the following logic, but it\u0027s very difficult to tell if we set all required fields.\n\nSo, even if this code may work at this moment, I\u0027m afraid that maintaining it will be very tough.\n\nTo make it reliable, please try to refactor this package.",
+      "range": {
+        "startLine": 510,
+        "startChar": 1,
+        "endLine": 537,
+        "endChar": 0
+      },
+      "revId": "f5e1df11e0695e74ecd3662f8c11ec3010c2a7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6c0bae_0c8855f7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-14T00:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4dd1f2f_b1acfbd6",
       "range": {
         "startLine": 510,
         "startChar": 1,
@@ -173,6 +221,30 @@
       "side": 1,
       "message": "Ah it\u0027s surprising that location.reload() works, thanks for checking it. But I think it\u0027s better not to depend on the behavior... especially I wonder if it still works after adding more files to the test extension (currently it contains manifest.json and background.js only).\n\nAs you suggested let\u0027s put test extension files in a permanent location that is cleared on chrome.New. How about /usr/local/tmp/tast/chrome_session/test_extension for the test extension? Here I expect /usr/local/tmp/tast/chrome_session directory to be tied to the lifetime of a Chrome session. We can use the directory to serialize []chrome.Option used to start a Chrome session as well.",
       "parentUuid": "b827823c_eed650cd",
+      "range": {
+        "startLine": 632,
+        "startChar": 0,
+        "endLine": 634,
+        "endChar": 2
+      },
+      "revId": "f5e1df11e0695e74ecd3662f8c11ec3010c2a7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7918bdb5_9355e7a3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-14T00:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b80efc8_5ded208e",
       "range": {
         "startLine": 632,
         "startChar": 0,
