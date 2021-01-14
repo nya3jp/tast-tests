@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bb39854_eda3ac1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-14T18:17:56Z",
+      "side": 1,
+      "message": "We will remove these from the common metrics because they are not used currently by CUJ performance analysis. @Septem and Jane please take care of this.",
+      "parentUuid": "709487e9_c591714d",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd88bc7c_a0951ff0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
         "patchSetId": 1
@@ -224,6 +248,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e06e4f6_add1e891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-14T18:17:56Z",
+      "side": 1,
+      "message": "I think the purpose for this is to allow the recorder to run multiple times in a single test (multiple recorder.Run() calls). This is give the flexibility for the test cases to design the logic and don\u0027t have to put all the test procedures in a single big function. @Septem and @Jane please confirm.",
+      "parentUuid": "0a6bd4ce_50a11179",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ede14642_2bb0d546",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
@@ -257,6 +299,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a5d0ed_5be6abbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-14T18:17:56Z",
+      "side": 1,
+      "message": "Aings wanted the power usage for CUJ from it begins to it finishes (J), not the power consumption in unit time (W) during CUJ test.\n\nAnd we will have some more changes for the power usage in next patch.\n\ndata provider (power.SysfsBatteryMetrics) is an interface of perf.TimelineDataSource and doesn\u0027t have the CUJ run time information (or Snapshot interval). So we do it outside.",
+      "parentUuid": "2a732925_804bdd32",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afec413c_6120607b",
@@ -270,6 +330,30 @@
       "writtenOn": "2020-12-04T23:41:46Z",
       "side": 1,
       "message": "I am really confused by this.  What is the purpose of this?\nI think the number of buckets, size of buckets etc. will change over the run, and it won\u0027t provide any reliable data sources. I am afraid that it might provide rather noises than insights.  If some analyses will be made over the buckets, that analyses should be better be done somewhere in the test, like this file.",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 16
+      },
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20cdbf3_ea4f5df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-14T18:17:56Z",
+      "side": 1,
+      "message": "Based on Aings\u0027 requirement, we will not just do \"average\" and \"jank rate\" for these samples. Instead we will do more calculation, such as: geomean, standard variation, normalized score, etc. Also the threshold for outlier (jank) will change frequently to adjust final performance score, especially during the initial phase. So our approach is to export samples and let the external system (dashboard) to do all the data analysis. We can adjust the formulas, constants, thresholds, etc in the dashboard, instead of in the test case code and re-runing the tests.\n\nBut when the CUJ performance analysis procedure becomes stable, we can port those calculations back to the recorder.",
+      "parentUuid": "afec413c_6120607b",
       "range": {
         "startLine": 356,
         "startChar": 0,
