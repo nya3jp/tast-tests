@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba14b26_6df015d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-01-14T01:58:34Z",
+      "side": 1,
+      "message": "Does this mean that if there\u0027s a bug that actually does cause the firmware update to fail, this test will often incorrectly pass? If so, is there anything we can do to emphasize that flaky failures really do need to be investigated?",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "3b61730caa5086ae753342c57d6536b312f58432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
