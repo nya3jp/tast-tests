@@ -166,6 +166,8 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/var/lib/portage",
 		// imageloader creates mount point at /run/imageloader/{id}/{package}.
 		"/run/imageloader/[^/]+/[^/]+",
+		// 64-bit arm devices bind mount this test program
+		"/usr/bin/stressapptest",
 	}
 	if moblab.IsMoblab() {
 		ignoredLiveMountPatterns = append(ignoredLiveMountPatterns, "^/mnt/moblab/containers/docker/.*")
