@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbee2c46_fe0cec0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-14T22:33:12Z",
+      "side": 1,
+      "message": "Optional: it is not obvious what this parameter means, perhaps have a resultWriter.SaveKeyVals call as well instead of a boolean parameter?",
+      "range": {
+        "startLine": 329,
+        "startChar": 42,
+        "endLine": 329,
+        "endChar": 46
+      },
+      "revId": "6735d2ef60459cebbf7b3e7af2589fb9b1924cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
