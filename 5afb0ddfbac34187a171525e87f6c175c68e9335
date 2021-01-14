@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52639721_b5b46d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-14T16:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9949be93_ba8118c7",
+      "revId": "5afb0ddfbac34187a171525e87f6c175c68e9335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "312e8489_d745f004",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-13T03:39:55Z",
       "side": 1,
       "message": "Do not use \"Get\".\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 108,
+        "startChar": 22,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "5afb0ddfbac34187a171525e87f6c175c68e9335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ed49d6a_4088d074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-14T16:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "312e8489_d745f004",
       "range": {
         "startLine": 108,
         "startChar": 22,
