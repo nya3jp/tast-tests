@@ -6,12 +6,10 @@ package crostini
 
 import (
 	"context"
-	"path/filepath"
 	"reflect"
 	"time"
 
 	"chromiumos/tast/local/arc/optin"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
@@ -103,25 +101,6 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	}
 
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
-
-	screenRecorder, err := ui.NewScreenRecorder(ctx, tconn)
-	if err != nil {
-		s.Log("Failed to create ScreenRecorder: ", err)
-	}
-	defer func() {
-		if screenRecorder != nil {
-			screenRecorder.Stop(ctx)
-			testing.ContextLogf(ctx, "Saving screen record to %s", s.OutDir())
-			if err := screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "shareMoviesSR.webm")); err != nil {
-				s.Log("Failed to save screen record in bytes: ", err)
-			}
-			screenRecorder.Release(ctx)
-		}
-	}()
-
-	if screenRecorder != nil {
-		screenRecorder.Start(ctx)
-	}
 
 	// Show Play files.
 	// It is necessary to call optin.Perform and optin.WaitForPlayStoreShown to make sure that Play files is shown.

@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -312,16 +313,17 @@ var startedByDlcBusterLargeContainerPre = &preImpl{
 
 // Implementation of crostini's precondition.
 type preImpl struct {
-	name          string                    // Name of this precondition (for logging/uniqueing purposes).
-	timeout       time.Duration             // Timeout for completing the precondition.
-	vmMode        vmSetupMode               // Where (component/dlc) the VM comes from.
-	container     containerType             // What type of container (regular or extra-large) to use.
-	debianVersion vm.ContainerDebianVersion // OS version of the container image.
-	cr            *chrome.Chrome
-	tconn         *chrome.TestConn
-	cont          *vm.Container
-	keyboard      *input.KeyboardEventWriter
-	startedOK     bool
+	name           string                    // Name of this precondition (for logging/uniqueing purposes).
+	timeout        time.Duration             // Timeout for completing the precondition.
+	vmMode         vmSetupMode               // Where (component/dlc) the VM comes from.
+	container      containerType             // What type of container (regular or extra-large) to use.
+	debianVersion  vm.ContainerDebianVersion // OS version of the container image.
+	cr             *chrome.Chrome
+	tconn          *chrome.TestConn
+	cont           *vm.Container
+	keyboard       *input.KeyboardEventWriter
+	startedOK      bool
+	screenRecorder *ui.ScreenRecorder
 }
 
 // Interface methods for a testing.Precondition.
@@ -455,6 +457,17 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to create keyboard device: ", err)
 	}
 
+	p.screenRecorder, err = ui.NewScreenRecorder(ctx, p.tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	if p.screenRecorder != nil {
+		if err := p.screenRecorder.Start(ctx); err != nil {
+			s.Log("Failed to start screen record: ", err)
+		}
+	}
+
 	if useLocalImage {
 		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
 		terminalApp, err := terminalapp.Launch(ctx, p.tconn)
@@ -525,6 +538,19 @@ func (p *preImpl) Close(ctx context.Context, s *testing.PreState) {
 // cleanUp de-initializes the precondition by closing/cleaning-up the relevant
 // fields and resetting the struct's fields.
 func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
+	if p.screenRecorder != nil {
+		if err := p.screenRecorder.Stop(ctx); err != nil {
+			s.Log("Failed to stop recording: ", err)
+		} else {
+
+			s.Logf("Saving screen record to %s", s.OutDir())
+			if err := p.screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "screenRecord.webm")); err != nil {
+				s.Log("Failed to save screen record in bytes: ", err)
+			}
+		}
+		p.screenRecorder.Release(ctx)
+	}
+
 	if p.keyboard != nil {
 		if err := p.keyboard.Close(); err != nil {
 			s.Log("Failure closing keyboard: ", err)
