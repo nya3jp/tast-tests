@@ -33,6 +33,23 @@
       "message": "CQ is currently broken by crbug.com/1166454",
       "revId": "2232f4804b32dc98453ac11751d401ff61bfb135",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cc20ac8_2254104a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-01-15T14:39:42Z",
+      "side": 1,
+      "message": "CQ completed with failures:\n- fizz-cq failure is crbug.com/1167017\n- amd64-generic-direct-tast-vm failure is crbug.com/1166991\n- scarlet-cq.hw.bvt-tast-cq failure is b/177396586\n\nhatch-arc-r tests are fixed by this. Let me chump this CL.",
+      "revId": "2232f4804b32dc98453ac11751d401ff61bfb135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
