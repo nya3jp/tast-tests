@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "92506138_9203e427",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-15T17:23:26Z",
+      "side": 1,
+      "message": "Awesome. Thanks for doing this!",
+      "parentUuid": "f290a1c4_cb49181e",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "6b382a34a1331dcbb54170c982ad8f3539cd1db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0411b97b_0dc3c27e",
         "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
         "patchSetId": 1
