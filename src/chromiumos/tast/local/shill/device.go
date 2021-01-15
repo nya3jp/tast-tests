@@ -28,7 +28,7 @@ func NewDevice(ctx context.Context, path dbus.ObjectPath) (*Device, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Device{PropertyHolder: ph}, nil
+	return &Device{PropertyHolder: *ph}, nil
 }
 
 // SetUsbEthernetMacAddressSource sets USB Ethernet MAC address source for the device.
