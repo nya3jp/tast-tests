@@ -25,5 +25,5 @@ func NewIPConfig(ctx context.Context, path dbus.ObjectPath) (*IPConfig, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &IPConfig{PropertyHolder: ph}, nil
+	return &IPConfig{PropertyHolder: *ph}, nil
 }

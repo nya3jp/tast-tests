@@ -27,7 +27,7 @@ func NewProfile(ctx context.Context, path dbus.ObjectPath) (*Profile, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Profile{PropertyHolder: ph}, nil
+	return &Profile{PropertyHolder: *ph}, nil
 }
 
 // GetEntry calls the GetEntry method on the profile.

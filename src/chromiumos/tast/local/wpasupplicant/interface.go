@@ -11,6 +11,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -40,12 +41,12 @@ const (
 // Interface is the object to interact with wpa_supplicant's
 // fi.w1.wpa_supplicant1.Interface interface.
 type Interface struct {
-	dbus *DBusObject
+	dbus *dbusutil.DBusObject
 }
 
 // NewInterface creates an Interface object.
 func NewInterface(ctx context.Context, path dbus.ObjectPath) (*Interface, error) {
-	d, err := NewDBusObject(ctx, path, dbusInterfaceInterface)
+	d, err := dbusutil.NewDBusObject(ctx, dbusBaseInterface, dbusInterfaceInterface, path)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +75,7 @@ func (iface *Interface) BSSs(ctx context.Context) ([]*BSS, error) {
 }
 
 // DBusObject returns the D-Bus object of the interface.
-func (iface *Interface) DBusObject() *DBusObject {
+func (iface *Interface) DBusObject() *dbusutil.DBusObject {
 	return iface.dbus
 }
 
