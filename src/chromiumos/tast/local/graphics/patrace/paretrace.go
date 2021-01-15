@@ -140,7 +140,9 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string, 
 	quitFunc := func() bool {
 		isRunning, err := act.IsRunning(ctx)
 		if err != nil {
-			return false
+			testing.ContextLog(ctx, err)
+			crashOrOOM = true
+			return true
 		}
 		if !isRunning {
 			testing.ContextLog(ctx, "Activity is no longer running")
