@@ -17,6 +17,31 @@ The license of the video files is [AOM license].
 * [8-bit/av1-1-b8-03-sizeup.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/resize/av1-1-b8-03-sizeup.ivf)
 * [8-bit/av1-1-b8-23-film\_grain-50.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/film_grain/av1-1-b8-23-film_grain-50.ivf)
 
+#### 10 bit
+* [10-bit/00000671.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000671.ivf)
+* [10-bit/00000672.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000672.ivf)
+* [10-bit/00000673.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000673.ivf)
+* [10-bit/00000674.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000674.ivf)
+* [10-bit/00000675.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000675.ivf)
+* [10-bit/00000716.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000716.ivf)
+* [10-bit/00000717.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000717.ivf)
+* [10-bit/00000718.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000718.ivf)
+* [10-bit/00000719.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000719.ivf)
+* [10-bit/00000720.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000720.ivf)
+* [10-bit/00000761.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000761.ivf)
+* [10-bit/00000762.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000762.ivf)
+* [10-bit/00000763.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000763.ivf)
+* [10-bit/00000764.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000764.ivf)
+* [10-bit/00000765.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000765.ivf)
+* [10-bit/av1-1-b10-00-quantizer-00.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-00.ivf)
+* [10-bit/av1-1-b10-00-quantizer-10.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-10.ivf)
+* [10-bit/av1-1-b10-00-quantizer-20.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-20.ivf)
+* [10-bit/av1-1-b10-00-quantizer-30.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-30.ivf)
+* [10-bit/av1-1-b10-00-quantizer-40.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-40.ivf)
+* [10-bit/av1-1-b10-00-quantizer-50.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-50.ivf)
+* [10-bit/av1-1-b10-00-quantizer-60.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/10-bit/quantizer/av1-1-b10-00-quantizer-60.ivf)
+
+
 ### Files based on test-25fps.ivf
 TODO(b/179426205): Add the same license as test-25fps.mp4.
 In the three video files below, either the number of tile rows or the number of
