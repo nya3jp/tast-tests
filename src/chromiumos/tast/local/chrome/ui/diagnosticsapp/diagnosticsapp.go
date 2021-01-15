@@ -20,26 +20,39 @@ var diagnosticsRootNodeParams = ui.FindParams{
 	Role: ui.RoleTypeWindow,
 }
 
-var diagnosticsLogButton = ui.FindParams{
+// DxLogButton export is used to find session log button
+var DxLogButton = ui.FindParams{
 	ClassName: "session-log-button",
 	Role:      ui.RoleTypeButton,
 }
 
-// DiagnotsicsRootNode returns the root ui node of Diagnotsics app.
-func DiagnotsicsRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
+// DxActionButtons export is used to find routine section buttons
+var DxActionButtons = ui.FindParams{
+	ClassName: "action-button",
+	Role:      ui.RoleTypeButton,
+}
+
+// DxCPUChart export is used to find the realtime cpu chart
+var DxCPUChart = ui.FindParams{
+	ClassName: "legend-group",
+	Role:      ui.RoleTypeGenericContainer,
+}
+
+// DiagnosticsRootNode returns the root ui node of Diagnotsics app.
+func DiagnosticsRootNode(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
 	return ui.FindWithTimeout(ctx, tconn, diagnosticsRootNodeParams, 20*time.Second)
 }
 
 // WaitForApp waits for the app to be shown and rendered.
 func WaitForApp(ctx context.Context, tconn *chrome.TestConn) error {
-	dxRootnode, err := DiagnotsicsRootNode(ctx, tconn)
+	dxRootnode, err := DiagnosticsRootNode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to find diagnostics app")
 	}
 	defer dxRootnode.Release(ctx)
 
 	// Find the session log button to verify app is rendering.
-	if _, err := dxRootnode.DescendantWithTimeout(ctx, diagnosticsLogButton, 20*time.Second); err != nil {
+	if _, err := dxRootnode.DescendantWithTimeout(ctx, DxLogButton, 20*time.Second); err != nil {
 		return errors.Wrap(err, "failed to render diagnostics app")
 	}
 	return nil
