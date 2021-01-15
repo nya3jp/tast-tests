@@ -22,6 +22,30 @@
       },
       "revId": "aef58216e8aa53c0279c955a2b7498d2be0fcbda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd1dcd7_feeb5861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_ready.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-15T18:59:35Z",
+      "side": 1,
+      "message": "I think that Cellular \u003d enabled should be the default for tests. I just want to protect these in case a non Cellular test running before these decides otherwise.",
+      "parentUuid": "b7749985_285d6e1c",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "aef58216e8aa53c0279c955a2b7498d2be0fcbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
