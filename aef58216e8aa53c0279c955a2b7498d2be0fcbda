@@ -46,6 +46,30 @@
       },
       "revId": "aef58216e8aa53c0279c955a2b7498d2be0fcbda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e0d97d_35b53f4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_ready.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-15T19:46:13Z",
+      "side": 1,
+      "message": "OK. I\u0027m not sure if it\u0027s generally expected that we might change some global state in this manner but I don\u0027t think this is the right place to gate it.",
+      "parentUuid": "fbd1dcd7_feeb5861",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "aef58216e8aa53c0279c955a2b7498d2be0fcbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
