@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/browserwatcher"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/minidump"
@@ -147,8 +148,8 @@ type Chrome struct {
 	loginPending   bool // true if login is pending until ContinueLogin is called
 	tracingStarted bool // true when tracing is started
 
-	watcher       *browserWatcher   // tries to catch Chrome restarts
-	logAggregator *jslog.Aggregator // collects JS console output
+	watcher       *browserwatcher.Watcher // tries to catch Chrome restarts
+	logAggregator *jslog.Aggregator       // collects JS console output
 }
 
 // User returns the username that was used to log in to Chrome.
@@ -337,7 +338,7 @@ func (c *Chrome) Close(ctx context.Context) error {
 
 	var firstErr error
 	if c.watcher != nil {
-		firstErr = c.watcher.close()
+		firstErr = c.watcher.Close()
 	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
@@ -487,7 +488,7 @@ func (c *Chrome) chromeErr(orig error) error {
 	if c.watcher == nil {
 		return orig
 	}
-	werr := c.watcher.err()
+	werr := c.watcher.Err()
 	if werr == nil {
 		return orig
 	}
@@ -701,7 +702,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	}
 
 	// Start watching the new browser.
-	c.watcher = newBrowserWatcher()
+	c.watcher = browserwatcher.NewWatcher(GetRootPID)
 	return nil
 }
 
@@ -1504,7 +1505,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	// recreated after the port gets ready.
 	os.Remove(cdputil.DebuggingPortPath)
 	// And stop the browser crash watcher temporarily.
-	err = c.watcher.close()
+	err = c.watcher.Close()
 	c.watcher = nil // clear watcher anyway to avoid double close
 	if err != nil {
 		return err
@@ -1525,7 +1526,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	}
 
 	// The original browser process should be gone now, so start watching for the new one.
-	c.watcher = newBrowserWatcher()
+	c.watcher = browserwatcher.NewWatcher(GetRootPID)
 
 	// Then, get the possibly-changed debugging port and establish a new WebSocket connection.
 	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort); err != nil {
