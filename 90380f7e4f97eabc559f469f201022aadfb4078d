@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db4ce485_a4afe332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-15T07:55:19Z",
+      "side": 1,
+      "message": "Done\n\nDid you perhaps mean to replace them with underscores to elide those params? I\u0027ve instead combined these to pass the CombinedOutput as the single parameter output and removed err as a param since we don\u0027t use it now anyway, WDYT?",
+      "parentUuid": "88718883_bfb8b044",
+      "range": {
+        "startLine": 53,
+        "startChar": 23,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "90380f7e4f97eabc559f469f201022aadfb4078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "425c9d59_e897c6ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 9
@@ -71,6 +95,30 @@
       "writtenOn": "2021-01-14T10:45:34Z",
       "side": 1,
       "message": "what if err \u003d\u003d nil, but failExpected !\u003d nil ?",
+      "range": {
+        "startLine": 101,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 55
+      },
+      "revId": "90380f7e4f97eabc559f469f201022aadfb4078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "190346e2_24c5fa61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-15T07:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "425c9d59_e897c6ce",
       "range": {
         "startLine": 101,
         "startChar": 45,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f9b117_05dea818",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-15T07:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf5cfbf2_8106a574",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 68
+      },
+      "revId": "90380f7e4f97eabc559f469f201022aadfb4078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06411c01_bbd72b6f",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-01-14T10:45:34Z",
       "side": 1,
       "message": "Please mention that binary failed unexpectedly\n\nit will be useful to add stderr as well, because you atually check whether stderr contains \"Codec VP80 not supported\"",
+      "range": {
+        "startLine": 107,
+        "startChar": 15,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "90380f7e4f97eabc559f469f201022aadfb4078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54393b9_a6d45182",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-15T07:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06411c01_bbd72b6f",
       "range": {
         "startLine": 107,
         "startChar": 15,
