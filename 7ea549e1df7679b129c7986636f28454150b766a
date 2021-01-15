@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73719d8_80232bb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-15T01:31:34Z",
+      "side": 1,
+      "message": "Reverted those.",
+      "parentUuid": "07c98b3b_c304c53a",
+      "revId": "7ea549e1df7679b129c7986636f28454150b766a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce1b7d5b_675ea5ae",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-01-14T23:06:15Z",
       "side": 1,
       "message": "In principle, yes.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 36
+      },
+      "revId": "7ea549e1df7679b129c7986636f28454150b766a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec813416_f56a973b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/null_platform_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-15T01:31:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce1b7d5b_675ea5ae",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a37a1b_024a2acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/null_platform_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-15T01:31:34Z",
+      "side": 1,
+      "message": "Resolved.",
+      "parentUuid": "6d0afe23_48aceaab",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "7ea549e1df7679b129c7986636f28454150b766a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76b0272b_6f044e63",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-01-14T23:06:15Z",
       "side": 1,
       "message": "As discussed offline, I\u0027d leave here a list of formats, i.e.:\n  []string{\"XR24\", XB24\", \"AR24\", \"AB24\"} \n\nand cycle through them in the test until one works -- and we know\nat least one should work, otherwise this test should fail.\n\nHaving the formats as a list makes it easier to later on\nextend to 30bpp formats.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "7ea549e1df7679b129c7986636f28454150b766a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a96d8363_bacb8631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/null_platform_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-15T01:31:34Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "76b0272b_6f044e63",
       "range": {
         "startLine": 36,
         "startChar": 8,
