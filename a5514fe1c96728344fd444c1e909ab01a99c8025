@@ -16,6 +16,98 @@
       "message": "+tast-owners@",
       "revId": "a5514fe1c96728344fd444c1e909ab01a99c8025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4202e409_92893398",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-15T01:13:38Z",
+      "side": 1,
+      "message": "This was intended in shill DBus API that these two properties have the same name across Service and Device ?",
+      "range": {
+        "startLine": 96,
+        "startChar": 32,
+        "endLine": 96,
+        "endChar": 48
+      },
+      "revId": "a5514fe1c96728344fd444c1e909ab01a99c8025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a33afd_21ea4ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-15T01:13:38Z",
+      "side": 1,
+      "message": "We need to check err !\u003d nil as well.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 23
+      },
+      "revId": "a5514fe1c96728344fd444c1e909ab01a99c8025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe5a5c0_d25201d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-15T01:13:38Z",
+      "side": 1,
+      "message": "Can be fused together into a single if conditional",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "a5514fe1c96728344fd444c1e909ab01a99c8025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5447a74a_8e98995c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-15T01:13:38Z",
+      "side": 1,
+      "message": "Can be fused together into a single if conditional",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "a5514fe1c96728344fd444c1e909ab01a99c8025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
