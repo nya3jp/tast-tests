@@ -39,6 +39,30 @@
       },
       "revId": "2abe37a76e77a667687de7a49223d83fe23ac7fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f240013_b76cb5cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-15T17:08:23Z",
+      "side": 1,
+      "message": "We want at least two iterations to test disable after connect/disconnect, the third is to help catch flakiness. I\u0027ll add a comment.\n\nNow that I think about it, I will also add a Connect after the loop to also test Disable after Connect.",
+      "parentUuid": "43f4d0eb_e61ed267",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "2abe37a76e77a667687de7a49223d83fe23ac7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
