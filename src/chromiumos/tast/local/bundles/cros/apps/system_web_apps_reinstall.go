@@ -139,9 +139,9 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]strin
 // supportCrostini returns whether Crostini is allowed to run on device, by checking relevant
 // information with OS Settings.
 func supportCrostini(ctx context.Context, cr *chrome.Chrome) (bool, error) {
-	conn, err := cr.NewConn(ctx, "chrome://os-settings/")
+	conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/")
 	if err != nil {
-		return false, errors.Wrap(err, "failed to get connection to os settings")
+		return false, errors.Wrap(err, "failed to get connection to OS Settings")
 	}
 	defer conn.Close()
 
