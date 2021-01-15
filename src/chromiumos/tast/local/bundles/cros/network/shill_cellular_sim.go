@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/local/bundles/cros/network/cellular"
@@ -33,7 +34,7 @@ func ShillCellularSim(ctx context.Context, s *testing.State) {
 	} else if !simPresent {
 		s.Fatal("SIM not present")
 	}
-	if _, err = helper.FindServiceForDevice(ctx); err != nil {
+	if _, err = helper.FindServiceForDevice(ctx, 5*time.Second); err != nil {
 		s.Fatal("Failed to get Cellular Service for Device: ", err)
 	}
 }

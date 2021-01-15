@@ -124,7 +124,7 @@ func (h *Helper) FindService(ctx context.Context) (*shill.Service, error) {
 
 // FindServiceForDevice returns the first connectable Cellular Service matching the Device ICCID.
 // If no such Cellular Service is available, returns a nil service and an error.
-func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, error) {
+func (h *Helper) FindServiceForDevice(ctx context.Context, timeout time.Duration) (*shill.Service, error) {
 	deviceProperties, err := h.Device.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get Cellular Device properties")
@@ -141,7 +141,7 @@ func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, erro
 		shillconst.ServicePropertyConnectable:   true,
 		shillconst.ServicePropertyType:          shillconst.TypeCellular,
 	}
-	service, err := h.Manager.WaitForServiceProperties(ctx, props, 5*time.Second)
+	service, err := h.Manager.WaitForServiceProperties(ctx, props, timeout)
 	if err != nil {
 		return nil, errors.Wrapf(err, "Service not found for: %+v", props)
 	}
@@ -158,7 +158,7 @@ const AutoConnectCleanupTime = 1 * time.Second
 // Returns true when Service.AutoConnect is set and the operation succeeds.
 // Returns an error if any operation fails.
 func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (bool, error) {
-	service, err := h.FindServiceForDevice(ctx)
+	service, err := h.FindServiceForDevice(ctx, 5*time.Second)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get Cellular Service")
 	}
@@ -202,7 +202,7 @@ func (h *Helper) waitForConnected(ctx context.Context, service *shill.Service, e
 
 // Connect to the Cellular Service and ensure that the connect succeeded, otherwise return an error.
 func (h *Helper) Connect(ctx context.Context) error {
-	service, err := h.FindServiceForDevice(ctx)
+	service, err := h.FindServiceForDevice(ctx, 5*time.Second)
 	if err != nil {
 		return err
 	}
@@ -214,7 +214,7 @@ func (h *Helper) Connect(ctx context.Context) error {
 
 // Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
 func (h *Helper) Disconnect(ctx context.Context) error {
-	service, err := h.FindServiceForDevice(ctx)
+	service, err := h.FindServiceForDevice(ctx, 5*time.Second)
 	if err != nil {
 		return err
 	}
@@ -222,4 +222,24 @@ func (h *Helper) Disconnect(ctx context.Context) error {
 		return err
 	}
 	return h.waitForConnected(ctx, service, false)
+}
+
+// SetDeviceProperty sets a Device property and waits for the property to be set.
+func (h *Helper) SetDeviceProperty(ctx context.Context, prop string, value interface{}) error {
+	pw, err := h.Device.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	if err := h.Device.SetProperty(ctx, prop, value); err != nil {
+		return errors.Wrapf(err, "Unable to set Device property: %s", prop)
+	}
+
+	expectCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+	if err := pw.Expect(expectCtx, prop, value); err != nil {
+		return errors.Wrapf(err, "% not set", prop)
+	}
+	return nil
 }

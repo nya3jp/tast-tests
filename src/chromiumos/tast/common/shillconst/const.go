@@ -23,6 +23,7 @@ const (
 const (
 	// Device property names.
 	DevicePropertyAddress         = "Address"
+	DevicePropertyInhibited       = "Inhibited"
 	DevicePropertyInterface       = "Interface"
 	DevicePropertyPowered         = "Powered"
 	DevicePropertyType            = "Type"
