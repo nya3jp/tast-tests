@@ -39,6 +39,30 @@
       },
       "revId": "8545d6a2ba4edaa33040e868908ff3733271a5ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f2dccf_aac20ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/null_platform_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-15T17:27:50Z",
+      "side": 1,
+      "message": "It doesn\u0027t sound too good but from the code\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go;l\u003d307?q\u003d%22Uncaptured%20output:%22\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\nit\u0027s just an expected step of the DumpLogOnError. Only the output\nwill be empty because we\u0027re redirecting the stdout and stderr of \n|null_platform_test| to our own |f| on l.59-60.\n\nI think that we don\u0027t want to use |DumpLogOnError| on l.61 because\nit\u0027d spit a lot of information if e.g. execution for a given format\nfails before one succeeds. What we should do is run every format \nin succession until one succeeds (the code is doing this now, good),\nbut store the |err| of those that fail and only Log them in case\nof all of them failing. WDYT?\n\nA side note is that the \"Failed to run\" message, which is somewhat pervasive \nin the Tast tests (cc\u0027ing from each other) is misleading because we end \nup here in several cases, e.g. the binary is not found, its execution fails\ndue missing libraries or when the binary runs fine but returns error. \nPlatformV4L2 [1] does a better job of inspecting the return value by\nusing ExitCode():\n\n  exitCode, ok :\u003d testexec.ExitCode(err)\n  if !ok {\n    // |testexec| didn\u0027t execute.\n  } else if exitCode \u003e 0 {\n    // |testExec| executed but returned an error code (|exitCode|), values are POSIX.\n  } else {\n    // |testExec| run successfully !\n  }\n\nto distinguish all those different cases.\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/platform_v4l2.go;l\u003d65",
+      "parentUuid": "38bb0d74_ae3a9919",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "8545d6a2ba4edaa33040e868908ff3733271a5ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
