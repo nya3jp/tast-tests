@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c281975b_8fceb87b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_list.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-15T00:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d5e5ac7_16e63fbc",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 44
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70f8f9bc_c6f00fc2",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-14T11:24:28Z",
       "side": 1,
       "message": "btw, what is the order of routines? maybe we can sort them or group by categories by adding comments?",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3bfc972_e8986f1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-15T00:57:52Z",
+      "side": 1,
+      "message": "They are just sorted by the order the appear in the mojom file. I think it makes sense for now, but if it is eventually unwieldy, we can break them up.",
+      "parentUuid": "70f8f9bc_c6f00fc2",
       "range": {
         "startLine": 29,
         "startChar": 9,
@@ -205,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ce1d77_4c62c80d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-15T00:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f762e71e_7b7e7896",
+      "range": {
+        "startLine": 132,
+        "startChar": 17,
+        "endLine": 132,
+        "endChar": 21
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b436c69b_89bc2fbd",
@@ -228,6 +300,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b675ebc_f4d02aae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-15T00:57:52Z",
+      "side": 1,
+      "message": "Matthew earlier suggested that we reorganize the logic to what I currently have in the patchset. I think it reads more like how the condition would be read aloud. I think I\u0027ll leave it, but it the complexity grows we can revisit.",
+      "parentUuid": "b436c69b_89bc2fbd",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dd88dec_bb2d9179",
@@ -241,6 +337,30 @@
       "writtenOn": "2021-01-14T11:22:07Z",
       "side": 1,
       "message": "nit:\n\nUnexpected %q routine status: got %q; want %q, %q, or %q",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 56
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6457a946_356b584d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-15T00:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd88dec_bb2d9179",
       "range": {
         "startLine": 136,
         "startChar": 12,
@@ -287,6 +407,30 @@
       "writtenOn": "2021-01-14T11:22:07Z",
       "side": 1,
       "message": "nit:\n\nUnexpected progress for %q routine with status %q: got %d; want 100",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 48
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b82ee7_1a72c4d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-15T00:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79a27b8d_9444b279",
       "range": {
         "startLine": 142,
         "startChar": 12,
