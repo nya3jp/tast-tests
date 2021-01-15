@@ -16,6 +16,46 @@
       "message": "PTAL~!",
       "revId": "20a958494cbb0a64db98b76e67859b95a2c62230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30203705_db98157a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-15T06:52:13Z",
+      "side": 1,
+      "message": "Thank you for cleaning up!",
+      "revId": "20a958494cbb0a64db98b76e67859b95a2c62230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6bb83a_09487741",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-15T06:52:13Z",
+      "side": 1,
+      "message": "nit: could you use filepath.Join() ?",
+      "range": {
+        "startLine": 193,
+        "startChar": 93,
+        "endLine": 193,
+        "endChar": 117
+      },
+      "revId": "20a958494cbb0a64db98b76e67859b95a2c62230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
