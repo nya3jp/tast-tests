@@ -20,7 +20,7 @@ type Properties struct {
 }
 
 // NewProperties creates a new Properties object and populates it with shill's object properties.
-func NewProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
+func NewProperties(ctx context.Context, d *dbusutil.DBusObject) (*Properties, error) {
 	var props map[string]interface{}
 	if err := d.Call(ctx, "GetProperties").Store(&props); err != nil {
 		return nil, errors.Wrapf(err, "failed getting properties of %v", d)
@@ -226,29 +226,21 @@ func (pw *PropertiesWatcher) ExpectIn(ctx context.Context, prop string, expected
 // PropertyHolder provides methods to access properties of a DBus object.
 // The DBus object must provides GetProperties and SetProperty methods, and a PropertyChanged signal.
 type PropertyHolder struct {
-	dbusObject *DBusObject
+	dbusObject *dbusutil.DBusObject
 }
 
 // NewPropertyHolder creates a DBus object with the given path and interface used for accessing properties.
 func NewPropertyHolder(ctx context.Context, iface string, path dbus.ObjectPath) (PropertyHolder, error) {
-	conn, obj, err := dbusutil.ConnectNoTiming(ctx, dbusService, path)
+	dbusObject, err := dbusutil.NewDBusObject(ctx, dbusService, iface, path)
 	if err != nil {
 		return PropertyHolder{}, err
 	}
-	return PropertyHolder{
-		dbusObject: &DBusObject{iface: iface, obj: obj, conn: conn},
-	}, nil
+	return PropertyHolder{dbusObject: dbusObject}, nil
 }
 
 // CreateWatcher returns a PropertiesWatcher to observe the "PropertyChanged" signal.
 func (h *PropertyHolder) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {
-	spec := dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      h.dbusObject.obj.Path(),
-		Interface: h.dbusObject.iface,
-		Member:    "PropertyChanged",
-	}
-	watcher, err := dbusutil.NewSignalWatcher(ctx, h.dbusObject.conn, spec)
+	watcher, err := h.dbusObject.CreateWatcher(ctx, "PropertyChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -264,7 +256,7 @@ func (h *PropertyHolder) GetProperties(ctx context.Context) (*Properties, error)
 
 // ObjectPath returns the underlying object's D-Bus path.
 func (h *PropertyHolder) ObjectPath() dbus.ObjectPath {
-	return h.dbusObject.obj.Path()
+	return h.dbusObject.ObjectPath()
 }
 
 // String return the string of underlying dbusObject.
