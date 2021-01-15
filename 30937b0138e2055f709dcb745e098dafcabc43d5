@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e40b8a_40ed2e60",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T11:07:17Z",
+      "side": 1,
+      "message": "Note: extDirs is now assigned only in PrepareExtensions.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 8
+      },
+      "revId": "30937b0138e2055f709dcb745e098dafcabc43d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b4c881_787e9bd4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T11:07:17Z",
+      "side": 1,
+      "message": "Note: loginPending is like config.deferLogin, but it\u0027s changed in New and ContinueLogin.",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "30937b0138e2055f709dcb745e098dafcabc43d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c990dad2_bd6e5d33",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T11:07:17Z",
+      "side": 1,
+      "message": "Note: now logIn processes the case of noLogin (it just returns immediately).",
+      "range": {
+        "startLine": 249,
+        "startChar": 14,
+        "endLine": 249,
+        "endChar": 19
+      },
+      "revId": "30937b0138e2055f709dcb745e098dafcabc43d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
