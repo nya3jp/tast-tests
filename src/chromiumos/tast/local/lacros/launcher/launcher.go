@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"net"
 	"os"
 	"path/filepath"
 	"strings"
@@ -142,79 +141,6 @@ func killLacrosChrome(ctx context.Context, lacrosPath string) error {
 	return nil
 }
 
-func closeFDs(ctx context.Context, fds []int) {
-	for _, fd := range fds {
-		if err := syscall.Close(fd); err != nil {
-			testing.ContextLog(ctx, "Failed to close file descriptor while cleaning up: ", err)
-		}
-	}
-}
-
-// receiveFDs returns two FDs: the first one is used for establishing a mojo connection
-// and is required to launch lacros; the second one is used for passing startup data from ash to lacros
-// and is optional because it's only available in newer ash-chrome.
-func receiveFDs(ctx context.Context) (*os.File, *os.File, error) {
-	addr := &net.UnixAddr{
-		Name: mojoSocketPath,
-		Net:  "unix",
-	}
-	conn, err := net.DialUnix("unix", nil, addr)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "could not open lacros mojo socket")
-	}
-	defer conn.Close()
-
-	oob := make([]byte, syscall.CmsgSpace(4))
-	_, oobn, _, _, err := conn.ReadMsgUnix(nil, oob)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "could not read lacros mojo socket")
-	}
-
-	msgs, err := syscall.ParseSocketControlMessage(oob[:oobn])
-	if err != nil {
-		return nil, nil, err
-	}
-
-	var fds []int
-	var firstErr error
-	for _, msg := range msgs {
-		msgfds, err := syscall.ParseUnixRights(&msg)
-		if firstErr == nil {
-			firstErr = err
-		}
-		fds = append(fds, msgfds...)
-	}
-
-	if firstErr != nil {
-		closeFDs(ctx, fds)
-		return nil, nil, errors.Wrap(firstErr, "could not extract fds from lacros mojo socket")
-	}
-
-	// New ash-chrome returns two FDs: one for mojo connection, and the second for the startup data FD.
-	// Old one returns only the mojo connection.
-	// TODO(crbug.com/1156033): Clean up the code after dropping the old protocol support.
-	if len(fds) != 1 && len(fds) != 2 {
-		closeFDs(ctx, fds)
-		return nil, nil, errors.Errorf("expected exactly 1 or 2 file descriptors, got %d", len(fds))
-	}
-
-	mojo := os.NewFile(uintptr(fds[0]), "lacros.sock")
-	if mojo == nil {
-		return nil, nil, errors.New("could not use fd for mojo")
-	}
-
-	if len(fds) == 1 {
-		return mojo, nil, nil
-	}
-
-	startup := os.NewFile(uintptr(fds[1]), "startup_data")
-	if startup == nil {
-		return nil, nil, errors.New("could not use fd for startup data")
-	}
-
-	return mojo, startup, nil
-}
-
 // extensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
 func extensionArgs(extID, extList string) []string {
 	return []string{
@@ -252,40 +178,20 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		"--lang=en-US",                             // Language
 		"--breakpad-dump-location=" + p.LacrosPath, // Specify location for breakpad dump files.
 		"--window-size=800,600",
-		"--log-file=" + userDataDir + "/logfile",     // Specify log file location for debugging.
-		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
-		"--enable-gpu-rasterization",                 // Enable GPU rasterization. This is necessary to enable OOP rasterization.
-		"--enable-oop-rasterization",                 // Enable OOP rasterization.
-		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
-		"--use-cras",                                 // Use CrAS.
-		"--use-fake-ui-for-media-stream",             // Avoid the need to grant camera/microphone permissions.
-		chrome.BlankURL,                              // Specify first tab to load.
+		"--log-file=" + filepath.Join(userDataDir, "logfile"), // Specify log file location for debugging.
+		"--enable-logging",                                    // This flag is necessary to ensure the log file is written.
+		"--enable-gpu-rasterization",                          // Enable GPU rasterization. This is necessary to enable OOP rasterization.
+		"--enable-oop-rasterization",                          // Enable OOP rasterization.
+		"--autoplay-policy=no-user-gesture-required",          // Allow media autoplay.
+		"--use-cras",                                          // Use CrAS.
+		"--use-fake-ui-for-media-stream",                      // Avoid the need to grant camera/microphone permissions.
+		chrome.BlankURL,                                       // Specify first tab to load.
 	}
 	args = append(args, extensionArgs(l.testExtID, extList)...)
 
-	// Get file descriptors to establish a mojo connection with ash-chrome and also consume startup data if available.
-	mojo, startup, err := receiveFDs(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not get fds for mojo or startup data")
-	}
-	defer mojo.Close()
-	if startup != nil {
-		defer startup.Close()
-	}
-
-	args = append(args, "--mojo-platform-channel-handle=3")
-	if startup != nil {
-		args = append(args, "--cros-startup-data-fd=4")
-	}
-
-	l.cmd = testexec.CommandContext(ctx, p.LacrosPath+"/chrome", args...)
+	l.cmd = testexec.CommandContext(ctx, "/usr/local/bin/python3", append([]string{"/usr/local/bin/mojo_connection_lacros_launcher.py",
+		"-s", mojoSocketPath, filepath.Join(p.LacrosPath, "chrome")}, args...)...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
-
-	// Entry i in ExtraFiles becomes file descriptor 3+i. Be careful about this when adding more ExtraFiles.
-	l.cmd.Cmd.ExtraFiles = append(l.cmd.Cmd.ExtraFiles, mojo)
-	if startup != nil {
-		l.cmd.Cmd.ExtraFiles = append(l.cmd.Cmd.ExtraFiles, startup)
-	}
 
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
 	if err := l.cmd.Cmd.Start(); err != nil {
