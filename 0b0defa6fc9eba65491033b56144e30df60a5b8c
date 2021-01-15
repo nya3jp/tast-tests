@@ -348,6 +348,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce53f47_610c1820",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-01-15T16:35:33Z",
+      "side": 1,
+      "message": "I asked around a bit and I think people prefer the simplified form. This will also be consistent. Done.",
+      "parentUuid": "0d050779_d8752244",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dd88dec_bb2d9179",
