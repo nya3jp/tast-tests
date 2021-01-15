@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba7cca20_38924e75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T10:42:59Z",
+      "side": 1,
+      "message": "Thanks, just one minor comment.",
+      "revId": "2cdb6f3fbaa63f0be8f7e3c50a810edfd17c01fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a54f5386_c5fa7784",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T10:42:59Z",
+      "side": 1,
+      "message": "Can you drop this check and always call f.fOpt?",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "2cdb6f3fbaa63f0be8f7e3c50a810edfd17c01fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
