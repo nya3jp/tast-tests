@@ -63,6 +63,30 @@
       },
       "revId": "8545d6a2ba4edaa33040e868908ff3733271a5ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f5c05a0_f5124f29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/null_platform_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-15T23:54:08Z",
+      "side": 1,
+      "message": "This is very helpful, thank you!\n\n\u003e (...) I think that we don\u0027t want to use |DumpLogOnError| on l.61 (...) WDYT?\n\nThis makes sense, and I see how the logs of the failures are accessible in the logfile at the end anyway for debugging purposes. I fixed it so the the test is not overwriting the log file for each format, and instead sharing among them.\n\n\u003e (we should use exitCode)\n\nThanks for the explanation. I have attempted to implement this in the printing at the end in case of each failing.",
+      "parentUuid": "18f2dccf_aac20ebf",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "8545d6a2ba4edaa33040e868908ff3733271a5ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
