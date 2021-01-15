@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c77bfaed_4161e77d",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T04:03:56Z",
+      "side": 1,
+      "message": "+1, it\u0027s nicer to have less dependencies to internal details of vm_pstore_dump.",
+      "parentUuid": "f527aca3_c7654df9",
+      "revId": "261bc0ace60af8ccc13399486e058ae74f4f757d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ec6a86b_bcae5eae",
         "filename": "src/chromiumos/tast/local/arc/fixture.go",
         "patchSetId": 1
