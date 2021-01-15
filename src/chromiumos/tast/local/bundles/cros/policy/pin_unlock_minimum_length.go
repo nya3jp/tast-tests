@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/input"
@@ -96,7 +97,7 @@ func PinUnlockMinimumLength(ctx context.Context, s *testing.State) {
 			}
 
 			// Open the Lockscreen page where we can set a PIN.
-			conn, err := cr.NewConn(ctx, "chrome://os-settings/lockScreen")
+			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/lockScreen")
 			if err != nil {
 				s.Fatal("Failed to connect to the settings page: ", err)
 			}

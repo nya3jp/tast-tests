@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 )
@@ -53,7 +54,7 @@ func VerifySettingsState(ctx context.Context, cr *chrome.Chrome, settingsPage st
 	if err != nil {
 		return errors.Wrap(err, "failed to create Test API connection")
 	}
-	conn, err := cr.NewConn(ctx, settingsPage)
+	conn, err := apps.LaunchOSSettings(ctx, cr, settingsPage)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the settings page")
 	}
