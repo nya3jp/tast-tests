@@ -80,7 +80,7 @@ specific codec features and is primarily concerned with the correctness of the
 produced frames.
 Currently, we only test AV1. To run the test use:
 
-    tast run $HOST video.DecodeCompliance.av1_test_vectors
+    tast run $HOST video.DecodeCompliance.av1*
 
 Please see [data/test_vectors/README.md] for details about the video clips used
 in this test.

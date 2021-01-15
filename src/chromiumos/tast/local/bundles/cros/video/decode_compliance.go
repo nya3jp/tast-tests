@@ -34,6 +34,31 @@ var av1FilmGrainFiles = []string{
 
 var av1Files = append(av1CommonFiles, av1FilmGrainFiles...)
 
+var av110BitCommonFiles = []string{
+	"test_vectors/av1/10-bit/00000671.ivf",
+	"test_vectors/av1/10-bit/00000672.ivf",
+	"test_vectors/av1/10-bit/00000673.ivf",
+	"test_vectors/av1/10-bit/00000674.ivf",
+	"test_vectors/av1/10-bit/00000675.ivf",
+	"test_vectors/av1/10-bit/00000716.ivf",
+	"test_vectors/av1/10-bit/00000717.ivf",
+	"test_vectors/av1/10-bit/00000718.ivf",
+	"test_vectors/av1/10-bit/00000719.ivf",
+	"test_vectors/av1/10-bit/00000720.ivf",
+	"test_vectors/av1/10-bit/00000761.ivf",
+	"test_vectors/av1/10-bit/00000762.ivf",
+	"test_vectors/av1/10-bit/00000763.ivf",
+	"test_vectors/av1/10-bit/00000764.ivf",
+	"test_vectors/av1/10-bit/00000765.ivf",
+	"test_vectors/av1/10-bit/av1-1-b10-00-quantizer-00.ivf",
+	"test_vectors/av1/10-bit/av1-1-b10-00-quantizer-10.ivf",
+	"test_vectors/av1/10-bit/av1-1-b10-00-quantizer-20.ivf",
+	"test_vectors/av1/10-bit/av1-1-b10-00-quantizer-30.ivf",
+	"test_vectors/av1/10-bit/av1-1-b10-00-quantizer-40.ivf",
+	"test_vectors/av1/10-bit/av1-1-b10-00-quantizer-50.ivf",
+	"test_vectors/av1/10-bit/av1-1-b10-00-quantizer-60.ivf",
+}
+
 func testFiles(videoFiles []string) []string {
 	var tf []string
 	for _, file := range videoFiles {
@@ -84,6 +109,14 @@ func init() {
 			Val: decodeComplianceTestParam{
 				videoFiles:    av1Files,
 				validatorType: decoding.SSIM,
+			},
+		}, {
+			Name:              "av1_10bit_common",
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
+			ExtraData:         testFiles(av110BitCommonFiles),
+			Val: decodeComplianceTestParam{
+				videoFiles:    av110BitCommonFiles,
+				validatorType: decoding.MD5,
 			},
 		}},
 	})
