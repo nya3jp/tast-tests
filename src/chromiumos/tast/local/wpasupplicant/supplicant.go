@@ -10,6 +10,8 @@ import (
 	"context"
 
 	"github.com/godbus/dbus"
+
+	"chromiumos/tast/local/dbusutil"
 )
 
 const (
@@ -33,12 +35,12 @@ const (
 // Supplicant is the object to interact with wpa_supplicant's
 // fi.w1.wpa_supplicant1 interface.
 type Supplicant struct {
-	dbus *DBusObject
+	dbus *dbusutil.DBusObject
 }
 
 // NewSupplicant creates a Supplicant object.
 func NewSupplicant(ctx context.Context) (*Supplicant, error) {
-	d, err := NewDBusObject(ctx, dbusBasePath, dbusBaseInterface)
+	d, err := dbusutil.NewDBusObject(ctx, dbusBaseInterface, dbusBaseInterface, dbusBasePath)
 	if err != nil {
 		return nil, err
 	}
