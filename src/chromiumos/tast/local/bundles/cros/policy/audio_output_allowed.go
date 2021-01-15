@@ -112,12 +112,8 @@ func AudioOutputAllowed(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to click the audio toggle: ", err)
 				}
 
-				if err := testing.Sleep(ctx, 1*time.Second); err != nil {
-					s.Fatal("Failed to sleep: ", err)
-				}
-
 				// Check if device is still muted.
-				if err := ui.WaitUntilExists(ctx, tconn, mutedFindParams, 1*time.Second); err != nil {
+				if err := policyutil.VerifyNotExists(ctx, tconn, unmutedFindParams, 2*time.Second); err != nil {
 					s.Error("Could not confirm the device is muted: ", err)
 				}
 			}
