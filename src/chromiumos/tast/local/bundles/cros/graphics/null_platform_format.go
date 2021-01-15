@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,6 +30,10 @@ func init() {
 		Params: []testing.Param{{
 			Name: "24bpp",
 			Val:  []string{"XR24", "XB24"},
+		}, {
+			Name:              "30bpp",
+			Val:               []string{"AR30", "AB30", "XR30", "XB30"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Supports30bppFramebuffer()),
 		}},
 	})
 }
