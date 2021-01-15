@@ -253,7 +253,7 @@ func (l *LacrosChrome) NewConn(ctx context.Context, url string, opts ...cdputil.
 }
 
 func (l *LacrosChrome) newConnInternal(ctx context.Context, id target.ID, url string) (*chrome.Conn, error) {
-	conn, err := chrome.NewConn(ctx, l.Devsess, id, l.logAggregator, url, func(err error) error { return err })
+	conn, err := chrome.DeprecatedNewConn(ctx, l.Devsess, id, l.logAggregator, url, func(err error) error { return err })
 	if err != nil {
 		return nil, err
 	}
