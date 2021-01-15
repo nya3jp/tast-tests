@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c5fa63_a8a8b2e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-15T18:50:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc66c52c_2a73d797",
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24155d7b_d1cb7732",
@@ -119,6 +137,47 @@
         "endLine": 78,
         "endChar": 45
       },
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d41abd_145d8b8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-15T18:50:30Z",
+      "side": 1,
+      "message": "Got it. Can you provide a brief comment for that?\n  // Needed by xxxx CUJ test",
+      "parentUuid": "bd20ccd5_95cd297d",
+      "range": {
+        "startLine": 78,
+        "startChar": 27,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bfa52a0_fc9ad0eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-15T18:50:30Z",
+      "side": 1,
+      "message": "This looks like measuring the time of entire chrome.New.  It does a lot of things, including the restarting of the UI process itself.  Is this really what you want to measure?\nMy guess is that meaningful measurement would be either of:\n- from the screen shows the chromeOS UI to the login to be finished\n- from the start of typing the username/password to the login to be finished\n- from the end of typing the username/password to the login to be finished\netc.",
       "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
