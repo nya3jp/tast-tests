@@ -645,6 +645,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a37278b_885434f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-15T07:40:07Z",
+      "side": 1,
+      "message": "See my comment below, this current function as it is just duplicates the discovery_manager.js which not correct if you need the instance associate with the webui anyways. I would suggest moving the module import and calling getDiscoveryManager() on the module and store the result locally here.",
+      "parentUuid": "0686836c_27d6a618",
+      "range": {
+        "startLine": 56,
+        "startChar": 14,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f96c6449_b3c7ef51",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
         "patchSetId": 4
@@ -810,6 +834,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d40a8f2d_d3d568ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-15T07:40:07Z",
+      "side": 1,
+      "message": "Ok I remember that discussion now. I would suggest putting the module import in the local getDiscoveryManager_() function which is an un-used duplicate and use that to get the discovery manager. You can make it async function to deal with the module wait and startDiscovery can then use that, otherwiser you are talking to two different discovery managers and will get confusing/buggy.",
+      "parentUuid": "06f0e891_44bf6aa9",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 38
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fcf83191_01d72d55",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
         "patchSetId": 4
@@ -892,6 +940,30 @@
       "side": 1,
       "message": "It seems like it updates, I checked that this.selectShareTargetRes !\u003d null after selectShareTarget. I think since it\u0027s within an arrow function it references the \u0027this\u0027 of the surrounding scope, but I don\u0027t have the best understanding of scope and closures in JS",
       "parentUuid": "c1bc5ff9_5157cc27",
+      "range": {
+        "startLine": 109,
+        "startChar": 10,
+        "endLine": 109,
+        "endChar": 36
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "546f5060_4ba1d80d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1376771
+      },
+      "writtenOn": "2021-01-15T07:40:07Z",
+      "side": 1,
+      "message": "Your right arrow functions inherit the \"this\" from the outer scope.",
+      "parentUuid": "210af35f_6bab44c3",
       "range": {
         "startLine": 109,
         "startChar": 10,
