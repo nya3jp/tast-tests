@@ -56,6 +56,30 @@
       },
       "revId": "20a958494cbb0a64db98b76e67859b95a2c62230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc979b76_14c9064b",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-01-15T06:59:29Z",
+      "side": 1,
+      "message": "Done - also added for the arg a few lines above.",
+      "parentUuid": "ce6bb83a_09487741",
+      "range": {
+        "startLine": 193,
+        "startChar": 93,
+        "endLine": 193,
+        "endChar": 117
+      },
+      "revId": "20a958494cbb0a64db98b76e67859b95a2c62230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
