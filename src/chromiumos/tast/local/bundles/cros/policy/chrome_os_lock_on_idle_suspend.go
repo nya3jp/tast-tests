@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/input"
@@ -88,7 +89,7 @@ func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
 			}
 
 			// Open the Security and sign-in page where the affected toggle button can be found.
-			conn, err := cr.NewConn(ctx, "chrome://os-settings/lockScreen")
+			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/lockScreen")
 			if err != nil {
 				s.Fatal("Failed to connect to the settings page: ", err)
 			}

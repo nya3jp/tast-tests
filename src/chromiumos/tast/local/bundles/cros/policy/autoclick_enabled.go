@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/mouse"
@@ -114,7 +115,7 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Open settings page where the affected toggle button can be found.
-			sconn, err := cr.NewConn(ctx, "chrome://os-settings/osAccessibility")
+			sconn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osAccessibility")
 			if err != nil {
 				s.Fatal("Failed to connect to the accessibility settings page: ", err)
 			}
