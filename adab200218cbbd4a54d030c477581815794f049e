@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6af743_9981310a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-15T19:35:59Z",
+      "side": 1,
+      "message": "(Also in general I think we tend to use the generic %v/%q instead of the more specific formatters like %d/%t, but I\u0027m not sure how much that\u0027s a rule across the codebase, or maybe %v doesn\u0027t display booleans as words...)",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5cddabb_6fe9e4f3",
