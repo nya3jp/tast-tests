@@ -65,13 +65,6 @@ const (
 )
 
 const (
-	// DefaultUser contains the email address used to log into Chrome when authentication credentials are not supplied.
-	DefaultUser = "testuser@gmail.com"
-
-	// DefaultPass contains the password we use to log into the DefaultUser account.
-	DefaultPass   = "testpass"
-	defaultGaiaID = "gaia-id"
-
 	oobePrefix = "chrome://oobe"
 
 	// BlankURL is the URL corresponding to the about:blank page.
@@ -136,42 +129,22 @@ func Unlock() {
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
+	// cfg contains configurations computed from options given to chrome.New.
+	// Its fields must not be altered after its construction.
+	cfg config
+
 	devsess *cdputil.Session // DevTools session
-
-	user, pass, gaiaID, contact string // login credentials
-	normalizedUser              string // user with domain added, periods removed, etc.
-	parentUser, parentPass      string // unicorn parent login credentials
-	keepState                   bool
-	deferLogin                  bool
-	loginMode                   loginMode
-	enableLoginVerboseLogs      bool // enable verbose logging in some login related files
-	vkEnabled                   bool
-	skipOOBEAfterLogin          bool // skip OOBE post user login
-	installWebApp               bool // auto install essential apps after user login
-	region                      string
-	policyEnabled               bool   // flag to enable policy fetch
-	dmsAddr                     string // Device Management URL, or empty if using default
-	enroll                      bool   // whether device should be enrolled
-	arcMode                     arcMode
-	restrictARCCPU              bool // a flag to control cpu restrictions on ARC
-
-	// If breakpadTestMode is true, tell Chrome's breakpad to always write
-	// dumps directly to a hardcoded directory.
-	breakpadTestMode bool
-	extraArgs        []string
-	enableFeatures   []string
-	disableFeatures  []string
 
 	extDirs     []string // directories containing all unpacked extensions to load
 	testExtID   string   // ID for test extension exposing APIs
 	testExtDir  string   // dir containing test extension
 	testExtConn *Conn    // connection to test extension exposing APIs
 
-	signinExtKey  string // private key for signin profile test extension manifest
 	signinExtID   string // ID for signin profile test extension exposing APIs
 	signinExtDir  string // dir containing signin test profile extension
 	signinExtConn *Conn  // connection to signin profile test extension
 
+	loginPending   bool // true if login is pending until ContinueLogin is called
 	tracingStarted bool // true when tracing is started
 
 	watcher       *browserWatcher   // tries to catch Chrome restarts
@@ -179,13 +152,15 @@ type Chrome struct {
 }
 
 // User returns the username that was used to log in to Chrome.
-func (c *Chrome) User() string { return c.user }
+func (c *Chrome) User() string { return c.cfg.user }
 
 // TestExtID returns the ID of the extension that exposes test-only APIs.
 func (c *Chrome) TestExtID() string { return c.testExtID }
 
 // ExtDirs returns the directories holding the test extensions.
-func (c *Chrome) ExtDirs() []string { return c.extDirs }
+func (c *Chrome) ExtDirs() []string {
+	return append(append([]string(nil), c.cfg.extraExtDirs...), c.testExtDir)
+}
 
 // DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
 // e.g. "127.0.0.1:38725". This port should not be accessed from outside of this package,
@@ -204,36 +179,22 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	ctx, st := timing.Start(ctx, "chrome_new")
 	defer st.End()
 
-	c := &Chrome{
-		user:                   DefaultUser,
-		pass:                   DefaultPass,
-		gaiaID:                 defaultGaiaID,
-		keepState:              false,
-		loginMode:              fakeLogin,
-		vkEnabled:              false,
-		skipOOBEAfterLogin:     true,
-		enableLoginVerboseLogs: false,
-		installWebApp:          false,
-		region:                 "us",
-		policyEnabled:          false,
-		enroll:                 false,
-		breakpadTestMode:       true,
-		tracingStarted:         false,
-		logAggregator:          jslog.NewAggregator(),
-	}
-	for _, opt := range opts {
-		opt(c)
+	cfg, err := newConfig(opts)
+	if err != nil {
+		return nil, err
 	}
 
-	// TODO(rrsilva, crbug.com/1109176) - Disable login-related verbose logging
-	// in all tests once the issue is solved.
-	EnableLoginVerboseLogs()(c)
+	c := &Chrome{
+		cfg:            *cfg,
+		tracingStarted: false,
+		logAggregator:  jslog.NewAggregator(),
+	}
 
 	// Cap the timeout to be certain length depending on the login mode. Sometimes
 	// chrome.New may fail and get stuck on an unexpected screen. Without timeout,
 	// it simply runs out the entire timeout. See https://crbug.com/1078873.
 	timeout := LoginTimeout
-	if c.loginMode == gaiaLogin {
+	if cfg.loginMode == gaiaLogin {
 		timeout = gaiaLoginTimeout
 	}
 	ctx, cancel := context.WithTimeout(ctx, timeout)
@@ -255,19 +216,9 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		return nil, err
 	}
 
-	// This works around https://crbug.com/358427.
-	if c.loginMode == gaiaLogin {
-		var err error
-		if c.normalizedUser, err = session.NormalizeEmail(c.user, true); err != nil {
-			return nil, errors.Wrapf(err, "failed to normalize email %q", c.user)
-		}
-	} else {
-		c.normalizedUser = c.user
-	}
-
 	// Perform an early high-level check of cryptohomed to avoid
 	// less-descriptive errors later if it's broken.
-	if c.loginMode != noLogin {
+	if cfg.loginMode != noLogin {
 		if err := cryptohome.CheckService(ctx); err != nil {
 			// Log problems in cryptohomed's dependencies.
 			for _, e := range cryptohome.CheckDeps(ctx) {
@@ -284,18 +235,19 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	if err := c.restartChromeForTesting(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to restart chrome for testing")
 	}
-	var err error
 	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort); err != nil {
 		return nil, errors.Wrapf(c.chromeErr(err), "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
 
-	if c.loginMode != noLogin && !c.keepState {
-		if err := cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
-			return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", c.normalizedUser)
+	if cfg.loginMode != noLogin && !cfg.keepState {
+		if err := cryptohome.RemoveUserDir(ctx, cfg.normalizedUser); err != nil {
+			return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", cfg.normalizedUser)
 		}
 	}
 
-	if !c.deferLogin && (c.loginMode != noLogin) {
+	if c.cfg.deferLogin {
+		c.loginPending = true
+	} else {
 		if err := c.logIn(ctx); err != nil {
 			return nil, err
 		}
@@ -303,7 +255,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 
 	// VK uses different extension instance in login profile and user profile.
 	// BackgroundConn will wait until the background connection is unique.
-	if c.vkEnabled {
+	if cfg.vkEnabled {
 		// Background target from login persists for a few seconds, causing 2 background targets.
 		// Polling until connected to the unique target.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -479,7 +431,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		return errors.Wrap(err, "failed to get test API connection")
 	}
 
-	if c.vkEnabled {
+	if c.cfg.vkEnabled {
 		// Calling the method directly to avoid vkb/chrome circular imports.
 		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.inputMethodPrivate.hideInputView)()", nil); err != nil {
 			return errors.Wrap(err, "failed to hide virtual keyboard")
@@ -558,20 +510,19 @@ func (c *Chrome) PrepareExtensions(ctx context.Context) error {
 	if c.testExtID != TestExtensionID {
 		return errors.Errorf("unexpected extension ID: got %q; want %q", c.testExtID, TestExtensionID)
 	}
-	c.extDirs = append(c.extDirs, c.testExtDir)
 
 	// Chrome hangs with a nonsensical "Extension error: Failed to load extension
 	// from: . Manifest file is missing or unreadable." error if an extension directory
 	// is owned by another user.
-	dirsToChown := c.extDirs
+	dirsToChown := c.ExtDirs()
 
 	// Write the signin profile test extension.
-	if len(c.signinExtKey) > 0 {
+	if len(c.cfg.signinExtKey) > 0 {
 		var err error
 		if c.signinExtDir, err = ioutil.TempDir("", "tast_test_signin_api_extension."); err != nil {
 			return err
 		}
-		if c.signinExtID, err = writeTestExtension(c.signinExtDir, c.signinExtKey); err != nil {
+		if c.signinExtID, err = writeTestExtension(c.signinExtDir, c.cfg.signinExtKey); err != nil {
 			return err
 		}
 		if c.signinExtID != signinProfileTestExtensionID {
@@ -626,29 +577,29 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
 		"--no-startup-window",                        // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
-		"--cros-region=" + c.region,                  // Force the region.
+		"--cros-region=" + c.cfg.region,              // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 		"--enable-oobe-test-api",                     // Enable OOBE helper functions for authentication.
 		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 	}
-	if c.enroll {
+	if c.cfg.enroll {
 		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
 	}
 
-	if c.skipOOBEAfterLogin {
+	if c.cfg.skipOOBEAfterLogin {
 		args = append(args, "--oobe-skip-postlogin")
 	}
 
-	if !c.installWebApp {
+	if !c.cfg.installWebApp {
 		args = append(args, "--disable-features=DefaultWebAppInstallation")
 	}
 
-	if c.vkEnabled {
+	if c.cfg.vkEnabled {
 		args = append(args, "--enable-virtual-keyboard")
 	}
 
 	// Enable verbose logging on some enrollment related files.
-	if c.enableLoginVerboseLogs {
+	if c.cfg.enableLoginVerboseLogs {
 		args = append(args,
 			"--vmodule="+strings.Join([]string{
 				"*auto_enrollment_check_screen*=1",
@@ -658,27 +609,25 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 				"*auto_enrollment_controller*=1"}, ","))
 	}
 
-	if c.loginMode != gaiaLogin {
+	if c.cfg.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	}
-	if len(c.extDirs) > 0 {
-		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
-	}
+	args = append(args, "--load-extension="+strings.Join(c.ExtDirs(), ","))
 	if len(c.signinExtDir) > 0 {
 		args = append(args, "--load-signin-profile-test-extension="+c.signinExtDir)
 		args = append(args, "--whitelisted-extension-id="+c.signinExtID) // Allowlists the signin profile's test extension to access all Chrome APIs.
 	} else {
 		args = append(args, "--whitelisted-extension-id="+c.testExtID) // Allowlists the test extension to access all Chrome APIs.
 	}
-	if c.policyEnabled {
+	if c.cfg.policyEnabled {
 		args = append(args, "--profile-requires-policy=true")
 	} else {
 		args = append(args, "--profile-requires-policy=false")
 	}
-	if c.dmsAddr != "" {
-		args = append(args, "--device-management-url="+c.dmsAddr)
+	if c.cfg.dmsAddr != "" {
+		args = append(args, "--device-management-url="+c.cfg.dmsAddr)
 	}
-	switch c.arcMode {
+	switch c.cfg.arcMode {
 	case arcDisabled:
 		// Make sure ARC is never enabled.
 		args = append(args, "--arc-availability=none")
@@ -692,7 +641,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		// Allow ARC being enabled on the device to test ARC with real gaia accounts.
 		args = append(args, "--arc-availability=officially-supported")
 	}
-	if c.arcMode == arcEnabled || c.arcMode == arcSupported {
+	if c.cfg.arcMode == arcEnabled || c.cfg.arcMode == arcSupported {
 		args = append(args,
 			// Do not sync the locale with ARC.
 			"--arc-disable-locale-sync",
@@ -700,24 +649,24 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 			"--arc-play-store-auto-update=off",
 			// Make 1 Android pixel always match 1 Chrome devicePixel.
 			"--force-remote-shell-scale=")
-		if !c.restrictARCCPU {
+		if !c.cfg.restrictARCCPU {
 			args = append(args,
 				// Disable CPU restrictions to let tests run faster
 				"--disable-arc-cpu-restriction")
 		}
 	}
 
-	if len(c.enableFeatures) != 0 {
-		args = append(args, "--enable-features="+strings.Join(c.enableFeatures, ","))
+	if len(c.cfg.enableFeatures) != 0 {
+		args = append(args, "--enable-features="+strings.Join(c.cfg.enableFeatures, ","))
 	}
 
-	if len(c.disableFeatures) != 0 {
-		args = append(args, "--disable-features="+strings.Join(c.disableFeatures, ","))
+	if len(c.cfg.disableFeatures) != 0 {
+		args = append(args, "--disable-features="+strings.Join(c.cfg.disableFeatures, ","))
 	}
 
-	args = append(args, c.extraArgs...)
+	args = append(args, c.cfg.extraArgs...)
 	var envVars []string
-	if c.breakpadTestMode {
+	if c.cfg.breakpadTestMode {
 		envVars = append(envVars,
 			"CHROME_HEADLESS=",
 			"BREAKPAD_DUMP_LOCATION=/home/chronos/crash") // Write crash dumps outside cryptohome.
@@ -770,7 +719,7 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 		return err
 	}
 
-	if !c.keepState {
+	if !c.cfg.keepState {
 		const chronosDir = "/home/chronos"
 		// This always fails because /home/chronos is a mount point, but all files
 		// under the directory should be removed.
@@ -1088,7 +1037,7 @@ func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
 // e.g. something@managedchrome.com will return "managedchrome"
 // or x@domainp1.domainp2.com would return "domainp1domainp2"
 func (c *Chrome) userDomain() (string, error) {
-	m := domainRe.FindStringSubmatch(c.user)
+	m := domainRe.FindStringSubmatch(c.cfg.user)
 	// This check mandates the same format as the fake DM server.
 	if len(m) != 2 {
 		return "", errors.New("'user' must have exactly 1 '@' and atleast one '.' after the @")
@@ -1100,7 +1049,7 @@ func (c *Chrome) userDomain() (string, error) {
 // e.g. something@managedchrome.com will return "managedchrome.com"
 // or x@domainp1.domainp2.com would return "domainp1.domainp2.com"
 func (c *Chrome) fullUserDomain() (string, error) {
-	m := fullDomainRe.FindStringSubmatch(c.user)
+	m := fullDomainRe.FindStringSubmatch(c.cfg.user)
 	// If nothing is returned, the enrollment will fail.
 	if len(m) != 2 {
 		return "", errors.New("'user' must have exactly 1 '@'")
@@ -1172,7 +1121,7 @@ func (c *Chrome) enterpriseOOBELogin(ctx context.Context) error {
 	testing.ContextLog(ctx, "Performing login after enrollment")
 	// Now login like "normal".
 	if err := conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false)",
-		c.user, c.pass, c.gaiaID)); err != nil {
+		c.cfg.user, c.cfg.pass, c.cfg.gaiaID)); err != nil {
 		return err
 	}
 
@@ -1182,20 +1131,21 @@ func (c *Chrome) enterpriseOOBELogin(ctx context.Context) error {
 // ContinueLogin continues login deferred by DeferLogin option. It is an error to call
 // this method when DeferLogin option was not passed to New.
 func (c *Chrome) ContinueLogin(ctx context.Context) error {
-	if !c.deferLogin {
+	if !c.loginPending {
 		return errors.New("ContinueLogin can be called once after DeferLogin option is used")
 	}
-	c.deferLogin = false
+	c.loginPending = false
 	if err := c.logIn(ctx); err != nil {
 		return err
 	}
-
 	return nil
 }
 
 // logIn performs a user or guest login based on the loginMode.
 func (c *Chrome) logIn(ctx context.Context) error {
-	switch c.loginMode {
+	switch c.cfg.loginMode {
+	case noLogin:
+		return nil
 	case fakeLogin, gaiaLogin:
 		if err := c.loginUser(ctx); err != nil {
 			return err
@@ -1209,12 +1159,15 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
 			return errors.Wrap(err, "failed to clear notifications")
 		}
+		return nil
 	case guestLogin:
 		if err := c.logInAsGuest(ctx); err != nil {
 			return err
 		}
+		return nil
+	default:
+		return errors.Errorf("unknown login mode: %v", c.cfg.loginMode)
 	}
-	return nil
 }
 
 // loginUser logs in to a freshly-restarted Chrome instance.
@@ -1226,14 +1179,14 @@ func (c *Chrome) loginUser(ctx context.Context) error {
 	}
 	defer conn.Close()
 
-	testing.ContextLogf(ctx, "Logging in as user %q", c.user)
+	testing.ContextLogf(ctx, "Logging in as user %q", c.cfg.user)
 	ctx, st := timing.Start(ctx, "login")
 	defer st.End()
 
-	switch c.loginMode {
+	switch c.cfg.loginMode {
 	case fakeLogin:
 		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', %t)",
-			c.user, c.pass, c.gaiaID, c.enroll)); err != nil {
+			c.cfg.user, c.cfg.pass, c.cfg.gaiaID, c.cfg.enroll)); err != nil {
 			return err
 		}
 	case gaiaLogin:
@@ -1246,17 +1199,17 @@ func (c *Chrome) loginUser(ctx context.Context) error {
 		}
 	}
 
-	if c.enroll {
+	if c.cfg.enroll {
 		if err := c.enterpriseOOBELogin(ctx); err != nil {
 			return err
 		}
 	}
 
-	if err = cryptohome.WaitForUserMount(ctx, c.normalizedUser); err != nil {
+	if err = cryptohome.WaitForUserMount(ctx, c.cfg.normalizedUser); err != nil {
 		return err
 	}
 
-	if c.skipOOBEAfterLogin {
+	if c.cfg.skipOOBEAfterLogin {
 		testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
 		if err = testing.Poll(ctx, func(ctx context.Context) error {
 			if t, err := c.getFirstOOBETarget(ctx); err != nil {
@@ -1326,7 +1279,7 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	testing.ContextLog(ctx, "Performing GAIA login")
 
 	// Fill in username.
-	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", c.user); err != nil {
+	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", c.cfg.user); err != nil {
 		return errors.Wrap(err, "failed to fill username field")
 	}
 	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
@@ -1340,18 +1293,18 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	}
 	if authType == passwordAuth {
 		testing.ContextLog(ctx, "This account uses password authentication")
-		if c.pass == "" {
+		if c.cfg.pass == "" {
 			return errors.New("please supply a password with chrome.Auth()")
 		}
-		if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", c.pass); err != nil {
+		if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", c.cfg.pass); err != nil {
 			return errors.Wrap(err, "failed to fill in password field")
 		}
 	} else if authType == contactAuth {
 		testing.ContextLog(ctx, "This account uses contact email authentication")
-		if c.contact == "" {
+		if c.cfg.contact == "" {
 			return errors.New("please supply a contact email with chrome.Contact()")
 		}
-		if err := insertGAIAField(ctx, gaiaConn, "input[name=email]", c.contact); err != nil {
+		if err := insertGAIAField(ctx, gaiaConn, "input[name=email]", c.cfg.contact); err != nil {
 			return errors.Wrap(err, "failed to fill in contact email field")
 		}
 	} else {
@@ -1375,7 +1328,7 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	}
 
 	// Perform Unicorn login if parent user given.
-	if c.parentUser != "" {
+	if c.cfg.parentUser != "" {
 		if err := c.performUnicornParentLogin(ctx, oobeConn, gaiaConn); err != nil {
 			return err
 		}
@@ -1448,9 +1401,9 @@ func insertGAIAField(ctx context.Context, gaiaConn *Conn, selector, value string
 // This function is heavily based on NavigateUnicornLogin() in Catapult's
 // telemetry/telemetry/internal/backends/chrome/oobe.py.
 func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaConn *Conn) error {
-	normalizedParentUser, err := session.NormalizeEmail(c.parentUser, false)
+	normalizedParentUser, err := session.NormalizeEmail(c.cfg.parentUser, false)
 	if err != nil {
-		return errors.Wrapf(err, "failed to normalize email %q", c.user)
+		return errors.Wrapf(err, "failed to normalize email %q", c.cfg.user)
 	}
 
 	testing.ContextLogf(ctx, "Clicking button that matches parent email: %q", normalizedParentUser)
@@ -1511,7 +1464,7 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 	}
 
 	testing.ContextLog(ctx, "Typing parent password")
-	if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", c.parentPass); err != nil {
+	if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", c.cfg.parentPass); err != nil {
 		return err
 	}
 	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
@@ -1567,7 +1520,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	c.devsess.Close(ctx)
 	c.devsess = nil
 
-	if err = cryptohome.WaitForUserMount(ctx, c.user); err != nil {
+	if err = cryptohome.WaitForUserMount(ctx, c.cfg.user); err != nil {
 		return err
 	}
 
