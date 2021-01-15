@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6deec9c_61e99da7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T10:40:08Z",
+      "side": 1,
+      "message": "Hi Xibin,\n\nThanks for updating the change. Since then I was looking more closely to the chrome package code, and found that it has gotten quite complex after years of developments. Without extensive refactoring I\u0027m afraid that addition of major features such as your one would introduce serious maintainance problems.\n\nI decided to do some refactoring of the package. Would you mind waiting a bit for it? Tracking bug is crbug.com/1166043, and I will make sure to CC you for refactoring changes.\n",
+      "revId": "116ef802228c776cf453fc60d0d8104ade0586f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
