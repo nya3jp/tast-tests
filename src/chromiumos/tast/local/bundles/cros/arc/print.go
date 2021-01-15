@@ -59,22 +59,34 @@ func init() {
 
 // unstableModels is a list of models that are too flaky for the CQ.
 var unstableModels = []string{
+	"paine",
 	"banon",
 	"betty",
 	"caroline",
+	"celes",
+	"cyan",
+	"edgar",
 	"elm",
+	"treeya",
 	"dragonair",
+	"kled",
+	"nightfury",
 	"willow",
 	"kodama",
 	"ampton",
+	"blooglet",
 	"bluebird",
 	"bobba",
 	"dood",
+	"fleex",
 	"phaser360",
 	"sparky",
+	"vorticon",
+	"fievel",
 	"tiger",
 	"dirinboz",
 	"ezkinil",
+	"woomax",
 }
 
 func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
