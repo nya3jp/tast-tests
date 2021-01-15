@@ -65,7 +65,7 @@ func DisableScreenshotsHotkey(ctx context.Context, s *testing.State) {
 			name:             "true",
 			value:            []policy.Policy{&policy.DisableScreenshots{Val: true}},
 			wantAllowed:      false,
-			wantNotification: "Screenshot is blocked",
+			wantNotification: "Can't capture content",
 		},
 		{
 			name:             "false",
