@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d25d8686_f1b931c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-15T00:12:35Z",
+      "side": 1,
+      "message": "I\u0027ll add a comment for this. The tconn stops working after suspend/resume with the precondition. Resetting the Chrome instance from the precondition is not a viable option according to hidehiko@, since other tests may run with the same Chrome instance with Preconditions.",
+      "parentUuid": "a4bc5f68_400a95a5",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a7febe7_1230979a",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-14T09:44:30Z",
       "side": 1,
       "message": "Why 5?",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbfcdc8f_2435e823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-15T00:12:35Z",
+      "side": 1,
+      "message": "The problem reproduces without the fix in one try, usually. The freeze bug occurs when one process freezes before another. Since the process accessing the FUSE instance is grabbing kernel mutexes most of the time, it\u0027s more likely to freeze later, hence reproducing the bug. 5 was the number I chose since it balances runtime (about 1 minute per loop) with a high probability of reproducing the bug if it\u0027s there.",
+      "parentUuid": "6a7febe7_1230979a",
       "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -61,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47710e95_45423c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-15T00:12:35Z",
+      "side": 1,
+      "message": "It\u0027s survive. Nice catch.",
+      "parentUuid": "d62faed8_9232c071",
+      "range": {
+        "startLine": 60,
+        "startChar": 55,
+        "endLine": 60,
+        "endChar": 62
+      },
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4167c83f_f0a7d9dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
         "patchSetId": 5
@@ -72,6 +132,24 @@
       "writtenOn": "2021-01-14T09:44:30Z",
       "side": 1,
       "message": "This probably won\u0027t work. As the session ends after the test deletion will never propagate to the server. I\u0027d rather aim at either finding the file already there (from some other run) or create it.",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7444c050_12966272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-15T00:12:35Z",
+      "side": 1,
+      "message": "Old comment. This isn\u0027t copying to DriveFS, since mounting zip archives from DriveFS wasn\u0027t working without the precondition. I plan on adding another test cases for DriveFS. This is only copying to the Downloads folder.",
+      "parentUuid": "4167c83f_f0a7d9dd",
       "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +184,24 @@
       "writtenOn": "2021-01-14T09:44:30Z",
       "side": 1,
       "message": "Shouldn\u0027t this be s.Fatal?",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "299b1303_021383c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-15T00:12:35Z",
+      "side": 1,
+      "message": "It can go either way. I have it this way since this cgroup doesn\u0027t exist yet (without a CL that this Cq-Depends on), but I wanted to make sure that the suspend failure reproduced regularly with a ToT image.\n\nI\u0027ll just change it to fatal for now.",
+      "parentUuid": "5a5cd8f4_e2ee61a7",
       "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
