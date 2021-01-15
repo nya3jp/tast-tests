@@ -8,6 +8,8 @@ import (
 	"context"
 
 	"github.com/godbus/dbus"
+
+	"chromiumos/tast/local/dbusutil"
 )
 
 const (
@@ -19,12 +21,12 @@ const (
 // BSS is the object to interact with wpa_supplicant's
 // fi.w1.wpa_supplicant1.BSS interface.
 type BSS struct {
-	dbus *DBusObject
+	dbus *dbusutil.DBusObject
 }
 
 // NewBSS creates a BSS object.
 func NewBSS(ctx context.Context, path dbus.ObjectPath) (*BSS, error) {
-	d, err := NewDBusObject(ctx, path, dbusBSSInterface)
+	d, err := dbusutil.NewDBusObject(ctx, dbusBSSInterface, dbusBSSInterface, path)
 	if err != nil {
 		return nil, err
 	}

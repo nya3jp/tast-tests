@@ -47,7 +47,7 @@ func NewManager(ctx context.Context) (*Manager, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Manager{PropertyHolder: ph}, nil
+	return &Manager{PropertyHolder: *ph}, nil
 }
 
 // FindMatchingService returns the first matching Service who has the expected properties.

@@ -28,7 +28,7 @@ func NewService(ctx context.Context, path dbus.ObjectPath) (*Service, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Service{PropertyHolder: ph}, nil
+	return &Service{PropertyHolder: *ph}, nil
 }
 
 // GetDevice returns the Device object corresponding to the Service object
