@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package chrome
+package driver
 
 import (
 	"context"
@@ -20,13 +20,11 @@ import (
 
 // Conn represents a connection to a web content view, e.g. a tab.
 type Conn struct {
-	co *cdputil.Conn
-
-	lw *jslog.Worker
+	co        *cdputil.Conn
+	lw        *jslog.Worker
+	chromeErr func(error) error // wraps Chrome.chromeErr
 
 	locked bool // if true, don't allow Close or CloseTarget to be called
-
-	chromeErr func(error) error // wraps Chrome.chromeErr
 }
 
 // NewConn starts a new session using sm for communicating with the supplied target.
@@ -276,26 +274,20 @@ func (c *Conn) StopProfiling(ctx context.Context) (*profiler.TakePreciseCoverage
 	return c.co.StopProfiling(ctx)
 }
 
-// Conns simply wraps a list of Conn and provides a method to Close all of them.
-type Conns []*Conn
+// PrivateReleaseAllObjects releases all remote JavaScript objects not released yet.
+// This function must kept private to the chrome package.
+func PrivateReleaseAllObjects(ctx context.Context, c *Conn) error {
+	return c.co.ReleaseAllObjects(ctx)
+}
 
-// Close closes all of the connections.
-func (cs Conns) Close() error {
-	var firstErr error
-	numErrs := 0
-	for _, c := range cs {
-		if err := c.Close(); err != nil {
-			numErrs++
-			if firstErr == nil {
-				firstErr = err
-			}
-		}
-	}
-	if numErrs == 0 {
-		return nil
-	}
-	if numErrs == 1 {
-		return firstErr
-	}
-	return errors.Wrapf(firstErr, "failed closing multiple connections: encountered %d errors; first one follows", numErrs)
+// PrivateLock locks a connection.
+// This function must kept private to the chrome package.
+func PrivateLock(c *Conn) {
+	c.locked = true
+}
+
+// PrivateUnlock unlocks a connection.
+// This function must kept private to the chrome package.
+func PrivateUnlock(c *Conn) {
+	c.locked = false
 }
