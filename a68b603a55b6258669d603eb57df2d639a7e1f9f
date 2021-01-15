@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4121b88_26c80edf",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T11:07:17Z",
+      "side": 0,
+      "message": "Note: These constants are moved to option.go since they\u0027re only referenced there.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 0
+      },
+      "revId": "a68b603a55b6258669d603eb57df2d639a7e1f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2169f10f_8e9798c4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T11:07:17Z",
+      "side": 0,
+      "message": "Note: This has been moved to newConfig.",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 2
+      },
+      "revId": "a68b603a55b6258669d603eb57df2d639a7e1f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
