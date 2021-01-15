@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf54b86_28b3c23e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-15T05:55:54Z",
+      "side": 1,
+      "message": "a few more nits.",
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40961b4a_f7a83575",
@@ -162,6 +179,52 @@
         "startChar": 4,
         "endLine": 219,
         "endChar": 5
+      },
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d5cdbf_faef9ae1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-15T05:55:54Z",
+      "side": 1,
+      "message": "as TFLogTags and TFLogLevel options can overwrite the \"default\" setting, so perhaps can remove this.\n\nOr, if you mean \"it is enabled by default\", maybe: \"Set the debug values on the DUT by default\"?",
+      "range": {
+        "startLine": 219,
+        "startChar": 12,
+        "endLine": 219,
+        "endChar": 19
+      },
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de003fe3_b3ae7096",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-15T05:55:54Z",
+      "side": 1,
+      "message": "It might be better to just collectFirstErr here instead of return, so that we can still try to cleanup other resources.",
+      "range": {
+        "startLine": 447,
+        "startChar": 4,
+        "endLine": 447,
+        "endChar": 14
       },
       "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
