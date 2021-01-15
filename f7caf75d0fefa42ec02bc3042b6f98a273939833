@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d9cf130_a3a07a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pre/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40961b4a_f7a83575",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c1c65cd_6dc09e92",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-14T18:59:32Z",
       "side": 1,
       "message": "defaultLogTAgs",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "181a8f95_a9a4c1fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pre/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1c65cd_6dc09e92",
       "range": {
         "startLine": 22,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c17daf5_1c4ceb76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pre/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9501794_e6d13c7c",
+      "range": {
+        "startLine": 56,
+        "startChar": 28,
+        "endLine": 56,
+        "endChar": 49
+      },
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db68b306_fee48b5d",
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b72f7d1_0a77517a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pre/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db68b306_fee48b5d",
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a02a6eb_c035de43",
@@ -117,6 +207,24 @@
       "writtenOn": "2021-01-14T18:59:32Z",
       "side": 1,
       "message": "Looks like it is a trivial line break point after \"to syslog.\".",
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c35c8b_c91d7037",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a02a6eb_c035de43",
       "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b9ee20_80b20991",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc99b897_b41fcc28",
+      "range": {
+        "startLine": 295,
+        "startChar": 52,
+        "endLine": 295,
+        "endChar": 59
+      },
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e3e1d79_cfd35da0",
@@ -157,6 +289,24 @@
       "writtenOn": "2021-01-14T18:59:32Z",
       "side": 1,
       "message": "Is this function going to be used soon? I didn\u0027t see it is used in the CL. If it is not used soon, please just remove it for now.",
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91b7340a_dde82ba6",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e3e1d79_cfd35da0",
       "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -207,6 +357,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a6bcad_f727c0cd",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3d5cdbf_faef9ae1",
+      "range": {
+        "startLine": 219,
+        "startChar": 12,
+        "endLine": 219,
+        "endChar": 19
+      },
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46e57b87_fd2c883b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "811ebf68_3cebe0ed",
+      "range": {
+        "startLine": 219,
+        "startChar": 4,
+        "endLine": 219,
+        "endChar": 5
+      },
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de003fe3_b3ae7096",
@@ -230,6 +428,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ee11d3a_69bad9de",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de003fe3_b3ae7096",
+      "range": {
+        "startLine": 447,
+        "startChar": 4,
+        "endLine": 447,
+        "endChar": 14
+      },
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eba6a5e_16e2870d",
@@ -243,6 +465,30 @@
       "writtenOn": "2021-01-14T18:59:32Z",
       "side": 1,
       "message": "Configuring logging level: %d, tags: %v",
+      "range": {
+        "startLine": 1422,
+        "startChar": 27,
+        "endLine": 1422,
+        "endChar": 37
+      },
+      "revId": "f7caf75d0fefa42ec02bc3042b6f98a273939833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5841140_75396768",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eba6a5e_16e2870d",
       "range": {
         "startLine": 1422,
         "startChar": 27,

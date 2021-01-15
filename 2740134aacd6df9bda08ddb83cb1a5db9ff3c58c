@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9d06d39_a3abff32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "I just added the originalLogLevel and originalLogTags to preImpl and restored the initial values in Close().",
+      "parentUuid": "bd528d32_86445a9c",
+      "revId": "2740134aacd6df9bda08ddb83cb1a5db9ff3c58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64eb6686_2f28a66f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 5

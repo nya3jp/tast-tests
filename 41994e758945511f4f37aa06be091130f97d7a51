@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79561e3a_45651387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pre/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-15T08:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3e07bc5_d4c2d2bf",
+      "revId": "41994e758945511f4f37aa06be091130f97d7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f9b1ec8_0b34cab2",
