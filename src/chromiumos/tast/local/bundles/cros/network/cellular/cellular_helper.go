@@ -6,6 +6,7 @@ package cellular
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -106,9 +107,10 @@ func (h *Helper) FindService(ctx context.Context) (*shill.Service, error) {
 	return h.Manager.WaitForServiceProperties(ctx, cellularProperties, defaultTimeout)
 }
 
-// FindServiceForDevice returns the first connectable Cellular Service matching the Device ICCID.
+// FindServiceForDeviceWithTimeout returns the first connectable Cellular Service matching the Device ICCID.
 // If no such Cellular Service is available, returns a nil service and an error.
-func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, error) {
+// |timeout| specifies a timeout waiting for a service to appear.
+func (h *Helper) FindServiceForDeviceWithTimeout(ctx context.Context, timeout time.Duration) (*shill.Service, error) {
 	deviceProperties, err := h.Device.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get Cellular Device properties")
@@ -125,11 +127,17 @@ func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, erro
 		shillconst.ServicePropertyConnectable:   true,
 		shillconst.ServicePropertyType:          shillconst.TypeCellular,
 	}
-	service, err := h.Manager.WaitForServiceProperties(ctx, props, defaultTimeout)
+	service, err := h.Manager.WaitForServiceProperties(ctx, props, timeout)
 	if err != nil {
 		return nil, errors.Wrapf(err, "Service not found for: %+v", props)
 	}
 	return service, nil
+}
+
+// FindServiceForDevice returns the first connectable Cellular Service matching the Device ICCID.
+// If no such Cellular Service is available, returns a nil service and an error.
+func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, error) {
+	return h.FindServiceForDeviceWithTimeout(ctx, defaultTimeout)
 }
 
 // AutoConnectCleanupTime provides enough time for a successful dbus operation.
@@ -185,4 +193,33 @@ func (h *Helper) Disconnect(ctx context.Context) error {
 		return err
 	}
 	return service.WaitForShillProperty(ctx, shillconst.ServicePropertyIsConnected, false, defaultTimeout)
+}
+
+// SetDeviceProperty sets a Device property and waits for the property to be set.
+func (h *Helper) SetDeviceProperty(ctx context.Context, prop string, value interface{}, timeout time.Duration) error {
+	pw, err := h.Device.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	// If the Modem is starting, SetProperty may fail, so poll while that is the case.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := h.Device.SetProperty(ctx, prop, value); err != nil {
+			if strings.Contains(err.Error(), "Modem not started") {
+				return err
+			}
+			return testing.PollBreak(err)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return errors.Wrapf(err, "unable to set Device property: %s", prop)
+	}
+
+	expectCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+	if err := pw.Expect(expectCtx, prop, value); err != nil {
+		return errors.Wrapf(err, "%s not set", prop)
+	}
+	return nil
 }

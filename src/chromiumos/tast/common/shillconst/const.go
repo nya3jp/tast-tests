@@ -24,6 +24,7 @@ const (
 	// Device property names.
 	DevicePropertyAddress         = "Address"
 	DevicePropertyDBusObject      = "DBus.Object"
+	DevicePropertyInhibited       = "Inhibited"
 	DevicePropertyInterface       = "Interface"
 	DevicePropertyPowered         = "Powered"
 	DevicePropertyType            = "Type"

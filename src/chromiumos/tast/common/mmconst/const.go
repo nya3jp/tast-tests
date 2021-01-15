@@ -9,6 +9,7 @@ package mmconst
 
 // ModemManager1.Modem properties
 const (
+	ModemPropertyDevice         = "Device"
 	ModemPropertySim            = "Sim"
 	ModemPropertySimSlots       = "SimSlots"
 	ModemPropertyPrimarySimSlot = "PrimarySimSlot"
