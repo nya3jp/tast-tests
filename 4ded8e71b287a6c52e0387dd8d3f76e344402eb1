@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e1572e_1bcd2349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_rename_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-15T05:13:50Z",
+      "side": 1,
+      "message": "I think this can just be !os.IsNotExist(err)?  What happens for os.IsNotExist(nil)?",
+      "range": {
+        "startLine": 172,
+        "startChar": 47,
+        "endLine": 172,
+        "endChar": 82
+      },
+      "revId": "4ded8e71b287a6c52e0387dd8d3f76e344402eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
