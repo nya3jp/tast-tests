@@ -55,6 +55,15 @@ func init() {
 			ExtraData:         []string{video.Bear192P.Name},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
+			Name: "h264_192p_nv12_vm",
+			Val: video.EncodeTestOptions{
+				Profile:     videotype.H264Prof,
+				Params:      video.Bear192P,
+				PixelFormat: videotype.NV12,
+			},
+			ExtraData:         []string{video.Bear192P.Name},
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
 			Name: "h264_360p_i420",
 			Val: video.EncodeTestOptions{
 				Profile:     videotype.H264Prof,
