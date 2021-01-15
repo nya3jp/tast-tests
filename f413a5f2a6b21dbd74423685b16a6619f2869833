@@ -104,6 +104,24 @@
       "parentUuid": "3f9f54d6_c61fd2dc",
       "revId": "f413a5f2a6b21dbd74423685b16a6619f2869833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef7b9dbf_c2db4f87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-01-15T12:45:00Z",
+      "side": 1,
+      "message": "I tried this on betty-arc-r running on GCE, for some reason the cryptohome path `/home/user/*/crash` wasn\u0027t even created. I guess something\u0027s badly broken but I haven\u0027t have time to investigate. FWIW I saw logs like this:\n\n\u003e 01-15 01:11:10.119  1512  1512 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1669 android.content.ContextWrapper.startService:720 android.content.ContextWrapper.startService:720 org.chromium.arc.crash_collector.ArcCrashCollector$Receiver.onReceive:99 android.app.ActivityThread.handleReceiver:4032                                                                                                                \u003e 01-15 01:11:10.202  1512  1512 W ArcCrashCollector: Ignoring system_server_wtf dump because we have exceeded the rate limit.\n\nActually we\u0027re planning to switch TreeHugger presubmit to use only a subset of critical Tast tests to exclude betty-on-TreeHugger-specific failures like this. Will let you know once that\u0027s done, if the original timeout already works for HWTest feel free to re-promote without this patch.",
+      "parentUuid": "83aaf521_dba5c397",
+      "revId": "f413a5f2a6b21dbd74423685b16a6619f2869833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
