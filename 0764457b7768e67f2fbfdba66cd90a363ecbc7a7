@@ -16,6 +16,24 @@
       "message": "Have you tried to lease a maglia DUT and run a simple test on it and see if the test is skipped?\n\n",
       "revId": "0764457b7768e67f2fbfdba66cd90a363ecbc7a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d6bd80e_b6bd458d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2021-01-15T16:27:13Z",
+      "side": 1,
+      "message": "no, I don\u0027t know if it would be skipped if directly targeted at it (as the scheduler might be what determines which DUT\u0027s the test can be run on)",
+      "parentUuid": "f300b831_79ed3365",
+      "revId": "0764457b7768e67f2fbfdba66cd90a363ecbc7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
