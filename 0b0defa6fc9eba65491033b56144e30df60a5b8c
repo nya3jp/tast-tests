@@ -324,6 +324,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d050779_d8752244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-15T10:01:30Z",
+      "side": 1,
+      "message": "otoh you don\u0027t use that rule in line 141:\n\n!(result.Progress \u003d\u003d 100 || result.Status \u003d\u003d croshealthd.StatusNotRun)\n\n\nI dont have strong opinion here",
+      "parentUuid": "4b675ebc_f4d02aae",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dd88dec_bb2d9179",
@@ -384,6 +408,30 @@
       "writtenOn": "2021-01-14T11:22:07Z",
       "side": 1,
       "message": "here is wrong order\n\ncorrect order is:\nresult.Status, croshealthd.StatusPassed, croshealthd.StatusFailed, croshealthd.StatusNotRun",
+      "range": {
+        "startLine": 137,
+        "startChar": 12,
+        "endLine": 137,
+        "endChar": 103
+      },
+      "revId": "0b0defa6fc9eba65491033b56144e30df60a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5784034b_9519347d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/diagnostics_run.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-15T10:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a92fe7_61c33457",
       "range": {
         "startLine": 137,
         "startChar": 12,
