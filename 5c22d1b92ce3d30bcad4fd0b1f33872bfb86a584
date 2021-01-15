@@ -16,6 +16,23 @@
       "message": "TY!",
       "revId": "5c22d1b92ce3d30bcad4fd0b1f33872bfb86a584",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c59e471_d19818d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-01-15T01:45:33Z",
+      "side": 1,
+      "message": "hatch-arc-r is failing due to b/177460986, fix in flight.",
+      "revId": "5c22d1b92ce3d30bcad4fd0b1f33872bfb86a584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
