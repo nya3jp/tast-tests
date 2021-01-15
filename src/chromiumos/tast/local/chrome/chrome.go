@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/browserwatcher"
+	"chromiumos/tast/local/chrome/internal/connection"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/minidump"
@@ -325,7 +326,7 @@ func (c *Chrome) Close(ctx context.Context) error {
 	}
 
 	if c.testExtConn != nil {
-		c.testExtConn.locked = false
+		connection.Unlock(c.testExtConn)
 		c.testExtConn.Close()
 	}
 	if len(c.testExtDir) > 0 {
@@ -422,7 +423,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 
 	// If testExtCon was created, free all remote JS objects in the TastObjectGroup.
 	if c.testExtConn != nil {
-		if err := c.testExtConn.co.ReleaseObjectGroup(ctx, cdputil.TastObjectGroup); err != nil {
+		if err := connection.CDPConn(c.testExtConn).ReleaseObjectGroup(ctx, cdputil.TastObjectGroup); err != nil {
 			return errors.Wrap(err, "failed to free tast remote JS object group")
 		}
 	}
@@ -801,7 +802,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 // newConnInternal is a convenience function that creates a new Conn connected to the specified target.
 // url is only used for logging JavaScript console messages.
 func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
-	return NewConn(ctx, c.devsess, id, c.logAggregator, url, c.chromeErr)
+	return connection.NewConn(ctx, c.devsess, id, c.logAggregator, url, c.chromeErr)
 }
 
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
@@ -896,7 +897,7 @@ func (c *Chrome) testAPIConnFor(ctx context.Context, extConn **Conn, extID strin
 	if *extConn, err = c.NewConnForTarget(ctx, MatchTargetURL(bgURL)); err != nil {
 		return nil, err
 	}
-	(*extConn).locked = true
+	connection.Lock(*extConn)
 
 	// Ensure that we don't attempt to use the extension before its APIs are available: https://crbug.com/789313
 	if err := (*extConn).WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
