@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a472f18f_a499463b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-01-15T12:45:03Z",
+      "side": 1,
+      "message": "Patchset4 fixes the compile issue. Resubmit it.",
+      "revId": "3d29a810db4e3925ef41a77e45a671f2fe55ceb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
