@@ -85,6 +85,23 @@
       "message": "See error trying to force-submit\n\n\nAn error occurred\nCould not perform action: submit not permitted\n",
       "revId": "5c22d1b92ce3d30bcad4fd0b1f33872bfb86a584",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9342f68e_e7cd7ade",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-01-15T20:21:15Z",
+      "side": 1,
+      "message": "Still seeing CQ errors from https://crrev.com/c/2628409 which has been merged as of 6:40am today and built into 13730.0.0.  Trying again.\n\nFailed to to save ARCVM console output: exit status 1",
+      "revId": "5c22d1b92ce3d30bcad4fd0b1f33872bfb86a584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
