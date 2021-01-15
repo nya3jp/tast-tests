@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa00c6a2_506c2a37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/shill_cellular_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-15T18:53:02Z",
+      "side": 1,
+      "message": "Do we need these comment lines? Is this enforced by linting?",
+      "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28013f72_12fba038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/shill_cellular_ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-15T18:53:02Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22df79ea_cc375653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/shill_cellular_sim.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-15T18:53:02Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
