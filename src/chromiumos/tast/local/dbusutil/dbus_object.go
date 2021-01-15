@@ -1,25 +1,27 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wpasupplicant
+package dbusutil
 
 import (
 	"context"
 
 	"github.com/godbus/dbus"
-
-	"chromiumos/tast/local/dbusutil"
 )
 
-// TODO(b:161486698): This objects are stolen and extended from shill package. Probably worth to
-// extract them into common component.
+// DBusObject wraps a D-Bus interface, object and connection.
+type DBusObject struct {
+	iface string
+	obj   dbus.BusObject
+	conn  *dbus.Conn
+}
 
 const dbusGetPropsMethod = "org.freedesktop.DBus.Properties.Get"
 
-// NewDBusObject creates a DBusObject to wpa_supplicant.
-func NewDBusObject(ctx context.Context, path dbus.ObjectPath, iface string) (*DBusObject, error) {
-	conn, obj, err := dbusutil.ConnectNoTiming(ctx, dbusBaseInterface, path)
+// NewDBusObject creates a DBusObject.
+func NewDBusObject(ctx context.Context, service, iface string, path dbus.ObjectPath) (*DBusObject, error) {
+	conn, obj, err := ConnectNoTiming(ctx, service, path)
 	if err != nil {
 		return nil, err
 	}
@@ -30,14 +32,12 @@ func NewDBusObject(ctx context.Context, path dbus.ObjectPath, iface string) (*DB
 	}, nil
 }
 
-// DBusObject wraps D-Bus interface, object and connection needed for communication with wpa_supplicant.
-type DBusObject struct {
-	iface string
-	obj   dbus.BusObject
-	conn  *dbus.Conn
+// ObjectPath returns the path of the D-Bus object.
+func (d *DBusObject) ObjectPath() dbus.ObjectPath {
+	return d.obj.Path()
 }
 
-// String returns the path of the D-Bus object.
+// String returns the path of the D-Bus object as a string.
 // It is so named to conform to the Stringer interface.
 func (d *DBusObject) String() string {
 	return string(d.obj.Path())
@@ -54,17 +54,17 @@ func (d *DBusObject) Get(ctx context.Context, propName string, val interface{}) 
 }
 
 // CreateWatcher returns a SignalWatcher to observe the specified signals.
-func (d *DBusObject) CreateWatcher(ctx context.Context, signalNames ...string) (*dbusutil.SignalWatcher, error) {
-	specs := make([]dbusutil.MatchSpec, len(signalNames))
+func (d *DBusObject) CreateWatcher(ctx context.Context, signalNames ...string) (*SignalWatcher, error) {
+	specs := make([]MatchSpec, len(signalNames))
 	for i, sigName := range signalNames {
-		specs[i] = dbusutil.MatchSpec{
+		specs[i] = MatchSpec{
 			Type:      "signal",
 			Path:      d.obj.Path(),
 			Interface: d.iface,
 			Member:    sigName,
 		}
 	}
-	watcher, err := dbusutil.NewSignalWatcher(ctx, d.conn, specs...)
+	watcher, err := NewSignalWatcher(ctx, d.conn, specs...)
 	if err != nil {
 		return nil, err
 	}
