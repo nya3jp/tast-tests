@@ -46,7 +46,7 @@ func init() {
 func removeMatchingService(ctx context.Context, m *shill.Manager, props map[string]interface{}) error {
 	service, err := m.FindMatchingService(ctx, props)
 	if err != nil {
-		if err.Error() == shillconst.ManagerFindMatchingServiceNotFound {
+		if err.Error() == shillconst.ErrorMatchingServiceNotFound {
 			return nil
 		}
 		return errors.Wrap(err, "error calling FindMatchingService")

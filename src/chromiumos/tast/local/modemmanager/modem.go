@@ -6,18 +6,13 @@ package modemmanager
 
 import (
 	"context"
+	"time"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
-)
-
-const (
-	dbusModemmanagerPath           = "/org/freedesktop/ModemManager1"
-	dbusModemmanagerService        = "org.freedesktop.ModemManager1"
-	dbusModemmanagerModemInterface = "org.freedesktop.ModemManager1.Modem"
-	dbusModemmanagerSimInterface   = "org.freedesktop.ModemManager1.Sim"
+	"chromiumos/tast/testing"
 )
 
 // Modem wraps a Modemmanager.Modem D-Bus object.
@@ -27,27 +22,35 @@ type Modem struct {
 
 // NewModem creates a new PropertyHolder instance for the Modem object.
 func NewModem(ctx context.Context) (*Modem, error) {
-	_, obj, err := dbusutil.ConnectNoTiming(ctx, dbusModemmanagerService, dbusModemmanagerPath)
+	_, obj, err := dbusutil.ConnectNoTiming(ctx, DBusModemmanagerService, DBusModemmanagerPath)
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to connect to service %s", dbusModemmanagerService)
+		return nil, errors.Wrapf(err, "failed to connect to service %s", DBusModemmanagerService)
 	}
-	managed, err := dbusutil.ManagedObjects(ctx, obj)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get ManagedObjects")
-	}
+
+	// It may take 30+ seconds for a Modem object to appear after an Inhibit or
+	// a reset, so poll the managed objects for 60 seconds looking for a Modem.
 	modemPath := dbus.ObjectPath("")
-	for iface, paths := range managed {
-		if iface == dbusModemmanagerModemInterface {
-			if len(paths) > 0 {
-				modemPath = paths[0]
-			}
-			break
+	if err := testing.Poll(ctx, func(ctx context.Context) (e error) {
+		managed, err := dbusutil.ManagedObjects(ctx, obj)
+		if err != nil {
+			return errors.Wrap(err, "failed to get ManagedObjects")
 		}
+		for iface, paths := range managed {
+			if iface == DBusModemmanagerModemInterface {
+				if len(paths) > 0 {
+					modemPath = paths[0]
+				}
+				break
+			}
+		}
+		if modemPath == dbus.ObjectPath("") {
+			return errors.Wrap(err, "failed to get Modem path")
+		}
+		return nil // success
+	}, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
+		return nil, err
 	}
-	if modemPath == dbus.ObjectPath("") {
-		return nil, errors.Wrap(err, "failed to get Modem path")
-	}
-	ph, err := dbusutil.NewPropertyHolder(ctx, dbusModemmanagerService, dbusModemmanagerModemInterface, modemPath)
+	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerModemInterface, modemPath)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +59,7 @@ func NewModem(ctx context.Context) (*Modem, error) {
 
 // GetSimProperties creates a PropertyHolder for the Sim object and returns the associated Properties.
 func (m *Modem) GetSimProperties(ctx context.Context, simPath dbus.ObjectPath) (*dbusutil.Properties, error) {
-	ph, err := dbusutil.NewPropertyHolder(ctx, dbusModemmanagerService, dbusModemmanagerSimInterface, simPath)
+	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerSimInterface, simPath)
 	if err != nil {
 		return nil, err
 	}
