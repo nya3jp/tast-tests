@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/policyutil"
@@ -75,9 +76,9 @@ func UserNativePrintersAllowed(ctx context.Context, s *testing.State) {
 			}
 
 			// Open settings page where the affected button can be found.
-			conn, err := cr.NewConn(ctx, "chrome://os-settings/cupsPrinters")
+			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/cupsPrinters")
 			if err != nil {
-				s.Fatal("Failed to connect to the settings page: ", err)
+				s.Fatal("Failed to open os settings: ", err)
 			}
 			defer conn.Close()
 
