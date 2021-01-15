@@ -16,6 +16,29 @@
       "message": "This has changed significantly, I recommend diffing from Base.\n",
       "revId": "2abe37a76e77a667687de7a49223d83fe23ac7fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f4d0eb_e61ed267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-15T01:16:44Z",
+      "side": 1,
+      "message": "EMAGICCONSTANT. Why 3 exactly ?",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "2abe37a76e77a667687de7a49223d83fe23ac7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
