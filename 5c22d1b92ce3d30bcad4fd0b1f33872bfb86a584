@@ -33,6 +33,23 @@
       "message": "hatch-arc-r is failing due to b/177460986, fix in flight.",
       "revId": "5c22d1b92ce3d30bcad4fd0b1f33872bfb86a584",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9413f91_f5e7beec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-01-15T04:57:01Z",
+      "side": 1,
+      "message": "Actually I think it\u0027s safe to chump this change. arc.DataCollector.vm is not covered by CQ testing anyways, verifying that it won\u0027t break builds should be sufficient.",
+      "revId": "5c22d1b92ce3d30bcad4fd0b1f33872bfb86a584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
