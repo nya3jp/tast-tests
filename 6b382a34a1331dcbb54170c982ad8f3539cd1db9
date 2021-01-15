@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f290a1c4_cb49181e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T11:07:33Z",
+      "side": 1,
+      "message": "Note: I sorted fields in the order of:\n\n- immutable fields\n- mutable fields (accessed only by a goroutine)\n- mutable fields (accessed by multiple goroutines)",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "6b382a34a1331dcbb54170c982ad8f3539cd1db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0411b97b_0dc3c27e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/browserwatcher/browserwatcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-15T11:07:33Z",
+      "side": 1,
+      "message": "Note: We can\u0027t import chromiumos/tast/local/chrome because of circular deps.",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "6b382a34a1331dcbb54170c982ad8f3539cd1db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
