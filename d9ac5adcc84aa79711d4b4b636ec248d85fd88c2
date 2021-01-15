@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc66c52c_2a73d797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-15T03:49:40Z",
+      "side": 1,
+      "message": "There has the requirement to get User.LoginTime for cuj.",
+      "parentUuid": "c3d19014_b55c036a",
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24155d7b_d1cb7732",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
         "patchSetId": 1
@@ -71,6 +89,30 @@
       "writtenOn": "2021-01-13T16:57:10Z",
       "side": 1,
       "message": "Why does CameraSystemWebApp need to be disabled?",
+      "range": {
+        "startLine": 78,
+        "startChar": 27,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "d9ac5adcc84aa79711d4b4b636ec248d85fd88c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd20ccd5_95cd297d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/login_keepstate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-15T03:49:40Z",
+      "side": 1,
+      "message": "One of cuj case should use camera app. It\u0027s need to disabled CameraSystemWebApp for running camera app.",
+      "parentUuid": "b8eb43b0_3a8a5b91",
       "range": {
         "startLine": 78,
         "startChar": 27,
