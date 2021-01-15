@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc948bc_0b8427fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-15T15:24:30Z",
+      "side": 1,
+      "message": "Please take another look, split the CL in 2. No longer changing the behavior of WaitUntilStatusExists as many tests are using it now.",
+      "revId": "610c555623cd052c328d2f263bc1d83906805410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
