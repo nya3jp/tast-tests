@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a27588d_57ef4958",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-15T10:46:00Z",
+      "side": 1,
+      "message": "just wanna check that the lacros binary you are updating to is the one that we signed off on today: 89.0.4380.0",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "937bc4cbfa7967e3d9ddc145c09c3c6fa98af784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9d089c3e_8d03d23e",
