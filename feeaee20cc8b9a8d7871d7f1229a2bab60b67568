@@ -33,6 +33,29 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "feeaee20cc8b9a8d7871d7f1229a2bab60b67568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "621eb77b_30fe50bd",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-01-15T03:00:36Z",
+      "side": 1,
+      "message": "nit optional: while you are here, you may want to add username to the error message. e.g.\nerrors.Wrapf(err, \"failed to unmount %q\", username)",
+      "range": {
+        "startLine": 415,
+        "startChar": 52,
+        "endLine": 415,
+        "endChar": 53
+      },
+      "revId": "feeaee20cc8b9a8d7871d7f1229a2bab60b67568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
