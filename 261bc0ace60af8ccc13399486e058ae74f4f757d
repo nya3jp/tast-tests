@@ -16,6 +16,40 @@
       "message": "Probably we should merget the revert commit (crrev.com/c/2628409) first, but I made the fix for the issue.",
       "revId": "261bc0ace60af8ccc13399486e058ae74f4f757d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f527aca3_c7654df9",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-01-15T01:28:35Z",
+      "side": 1,
+      "message": "Can we somehow identify the cause from vm_pstore_dump output, to avoid having to hardcode a constant here?",
+      "revId": "261bc0ace60af8ccc13399486e058ae74f4f757d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec6a86b_bcae5eae",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-01-15T01:28:35Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with pstore but is this something expected to happen? If this is indeed causing those CQ/PFQ failures, skipping collection here implies ARCVM console log won\u0027t get collected for most tests.\n\nIf this is expected, comment here why it\u0027s okay to skip in such cases. Otherwise it\u0027s probably a bug we need to fix and write tests for.",
+      "revId": "261bc0ace60af8ccc13399486e058ae74f4f757d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
