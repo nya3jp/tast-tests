@@ -264,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e7f0ce_c8519991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-15T03:17:21Z",
+      "side": 1,
+      "message": "Yes, just like @Xibin mentioned, we would run multiple recorder.Run(...) in a single test and we want to collect all of them in one single result_chart.json file.",
+      "parentUuid": "9e06e4f6_add1e891",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ede14642_2bb0d546",
