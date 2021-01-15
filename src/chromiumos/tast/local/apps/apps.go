@@ -218,6 +218,37 @@ func LaunchSystemWebApp(ctx context.Context, tconn *chrome.TestConn, appName, ur
 	}`, appName, url)
 }
 
+// LaunchOSSettings launches the OS Settings app to its subpage URL, and returns
+// a connection to it. When this method returns, OS Settings page has finished
+// loading.
+//
+// This method is necessary because OS Settings now uses System Web App link
+// capturing, which doesn't work with Devtools protocol CreateTarget.
+//
+// Note, `url` needs to exactly match the page OS Settings ends up navigating to.
+// For example, chrome://os-settings/.
+func LaunchOSSettings(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn, error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect Test API")
+	}
+
+	if LaunchSystemWebApp(ctx, tconn, "OSSettings", url); err != nil {
+		return nil, errors.Wrap(err, "failed to launch OS Settings")
+	}
+
+	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get connection to os settings")
+	}
+
+	if conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for document load")
+	}
+
+	return conn, nil
+}
+
 // Close closes an app specified by appID.
 func Close(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.closeApp)`, appID)
