@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b542fdc_3d2b22af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-01-15T03:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ca0a059_23b44f32",
+      "revId": "613735eb01d671265feafd2a277ec32375767de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e72a6321_d0debb04",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-01-14T10:51:13Z",
       "side": 1,
       "message": "huge nit: Let\u0027s use 5000 ms instead 5s here for consistency. In JS we usually represent time in ms.",
+      "range": {
+        "startLine": 244,
+        "startChar": 63,
+        "endLine": 244,
+        "endChar": 64
+      },
+      "revId": "613735eb01d671265feafd2a277ec32375767de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fbb75d7_b58d10bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-01-15T03:28:26Z",
+      "side": 1,
+      "message": "Changed the number to ms in javascript and still use seconds in feedback message for it\u0027s more human readable than ms.",
+      "parentUuid": "e72a6321_d0debb04",
       "range": {
         "startLine": 244,
         "startChar": 63,
