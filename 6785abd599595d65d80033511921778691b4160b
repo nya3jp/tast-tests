@@ -133,6 +133,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b761de_d6b10330",
+        "filename": "src/chromiumos/tast/local/android/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-15T20:11:44Z",
+      "side": 1,
+      "message": "I am open to that, but I think that are in ui because ui has a way to send keycodes and that is where they are used the most.",
+      "parentUuid": "202f6d47_7accd4f9",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "485e53f1_520570e3",
@@ -187,6 +211,30 @@
       "side": 1,
       "message": "Mostly planning ahead for when we add tests with multiple files. Since we\u0027ll have that eventually, I figured it would make sense to always use zips so we can treat both single and multi file cases in the same way.",
       "parentUuid": "627a7e7f_106a8677",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 38
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c6a8427_a2573963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-15T20:11:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "170bf74a_293c8962",
       "range": {
         "startLine": 42,
         "startChar": 34,
@@ -269,6 +317,30 @@
       "side": 1,
       "message": "It sounds like ctxutil.MaxTimeout is a huge number though right? Also I can\u0027t seem to find what the default timeout actually is haha, could you point me to it?\n\nThese tests run pretty quickly, but it\u0027s possible that we could have large file tests that take several minutes to run. Will we be able to handle that?",
       "parentUuid": "03b8e22c_d5508b67",
+      "range": {
+        "startLine": 56,
+        "startChar": 30,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398ede36_18d2bc48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-15T20:11:44Z",
+      "side": 1,
+      "message": "ctxutil.MaxTimeout will make it so that something will run until the entire test times out.\nthe default tast test timeout is 2 minutes.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/bundle/local.go\n\nAlso, timeouts can be set per parameterized test if wanted.\n\nSince the test is specifically trying to transfer the file, it would probably be fine to let it use up the entire time transferring.",
+      "parentUuid": "51ba6f07_66bc7de3",
       "range": {
         "startLine": 56,
         "startChar": 30,
@@ -1454,6 +1526,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d92b70_0dd1d960",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/send.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-15T20:11:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "808cd096_8a748fdb",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 1
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a43d705_1c8909ea",
@@ -1538,6 +1634,30 @@
       "side": 1,
       "message": "Doesn\u0027t appear to be necessary, looks like it gets taken care of by cr.NewConn. I tried changing the filename to have some spaces and special characters and it seems to make it through to the URL without issue.",
       "parentUuid": "523f3858_fc69feb8",
+      "range": {
+        "startLine": 99,
+        "startChar": 52,
+        "endLine": 99,
+        "endChar": 64
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "887f9189_fe3068f7",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/send.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-15T20:11:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a375e420_2b589ecc",
       "range": {
         "startLine": 99,
         "startChar": 52,
