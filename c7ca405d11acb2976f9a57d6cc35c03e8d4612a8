@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc91b792_85e12131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/shill_cellular_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-15T18:57:53Z",
+      "side": 1,
+      "message": "Yes it is. Not sure why it\u0027s only an issue with subdirectories, but it seems harmless. (I check and the one other subdirectory we have does the same thing. *shrug*.)",
+      "parentUuid": "aa00c6a2_506c2a37",
+      "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28013f72_12fba038",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20186bb_e4bf1965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/shill_cellular_ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-15T18:57:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "28013f72_12fba038",
+      "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22df79ea_cc375653",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-01-15T18:53:02Z",
       "side": 1,
       "message": "ditto",
+      "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f154bb4_094e939d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/shill_cellular_sim.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-15T18:57:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22df79ea_cc375653",
       "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
