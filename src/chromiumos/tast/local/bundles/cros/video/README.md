@@ -115,26 +115,6 @@ use:
 
     tast run $HOST video.DecodeAccelSmoke.*
 
-## Video encoder integration tests (`video.EncodeAccel`)
-
-These tests run the [video_encode_accelerator_unittest] to test encoding raw
-video frames. They are implemented directly on top of the video encoder
-implementations, not using Chrome. Tests are available that test encoding H.264,
-VP8 and VP9 videos using various resolutions.
-
-To run all video encode tests use:
-
-    tast run $HOST video.EncodeAccel.*
-
-### Video encoder performance tests (`video.EncodeAccelPerf`)
-
-These tests measure video encode performance by running the
-[video_encode_accelerator_unittest]. They are implemented directly on top of the
-video encoder implementations. Various metrics are collected such as CPU usage.
-Tests are available for various codecs and resolutions. To run all tests use:
-
-    tast run $HOST video.EncodeAccelPerf.*
-
 ## PlatformV4L2 Tests (`video.PlatformV4L2`)
 
 V4L2 is a kernel video acceleration API. It is implemented in the kernel
@@ -522,7 +502,6 @@ gen_cropped_video 32 16 88 64 still-colors-720x480.bmp \
 [video decoder tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_test_usage.md
 [video_decode_accelerator_perf_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_perf_tests.cc
 [video decoder performance tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_perf_test_usage.md
-[video_encode_accelerator_unittest]: https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc
 [`Play.h264_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=92?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
 [`Play.vp8_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=99?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
 [Test Dependencies]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md
