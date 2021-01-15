@@ -62,7 +62,7 @@ func (m *Manager) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error)
 }
 
 // FindMatchingService returns the first Service that matches |expectProps|.
-// If no matching Service is found, returns shillconst.ManagerFindMatchingServiceNotFound.
+// If no matching Service is found, returns shillconst.ErrorMatchingServiceNotFound.
 // Note that the complete list of Services is searched, including those with Visible=false.
 // To find only visible services, please specify Visible=true in expectProps.
 func (m *Manager) FindMatchingService(ctx context.Context, expectProps map[string]interface{}) (*Service, error) {

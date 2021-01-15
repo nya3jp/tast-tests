@@ -24,6 +24,7 @@ const (
 	// Device property names.
 	DevicePropertyAddress         = "Address"
 	DevicePropertyDBusObject      = "DBus.Object"
+	DevicePropertyInhibited       = "Inhibited"
 	DevicePropertyInterface       = "Interface"
 	DevicePropertyPowered         = "Powered"
 	DevicePropertyType            = "Type"
@@ -226,7 +227,8 @@ const (
 	DeviceBgscanMethodNone   = "none"
 )
 
-// Manager DBus Errors
+// DBus Errors
 const (
-	ManagerFindMatchingServiceNotFound = "Matching service was not found"
+	ErrorMatchingServiceNotFound = "Matching service was not found"
+	ErrorModemNotStarted         = "Modem not started"
 )
