@@ -33,6 +33,69 @@
       "message": "Hugo, PTAL, thanks!\n",
       "revId": "8202893dd23210234f418ca1cdb6b1109bed9989",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea460a0_e714637a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-15T01:09:47Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "8202893dd23210234f418ca1cdb6b1109bed9989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6103a5_588a0834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_ethernet_ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-15T01:09:47Z",
+      "side": 1,
+      "message": "Also print |err| here.",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "8202893dd23210234f418ca1cdb6b1109bed9989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37145a25_f20af34a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_ethernet_ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-15T01:09:47Z",
+      "side": 1,
+      "message": "Just to check, for Ethernet we are guaranteed to have at least 1 service (regardless of current ConnectionState of that service) ?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "8202893dd23210234f418ca1cdb6b1109bed9989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
