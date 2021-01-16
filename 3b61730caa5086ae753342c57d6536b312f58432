@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1559d795_8c365e36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-16T00:17:17Z",
+      "side": 1,
+      "message": "No, the test is robust to this, if the firmware update fails, the LATEST log definitely says failure and the test catches that",
+      "parentUuid": "fba14b26_6df015d9",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "3b61730caa5086ae753342c57d6536b312f58432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9b4bf6c0_aca59d41",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2021-01-14T16:43:47Z",
       "side": 1,
       "message": "nit/style: The normal code path in an `if err !\u003d nil` block is the raising of the error: in this case, s.Fatal(). Thus, I think it would be clearer to invert this logic:\n\n    if err !\u003d nil {\n        if strings.Contains(err.Error(), \"no such file or directory\") {\n            // Previous log doesn\u0027t exist, this is the first boot.\n            return strings.TrimSpace(string(latestData)), \"\"\n        }\n        s.Fatal(\"Failed to read previous updater log: \", err)\n    }",
+      "revId": "3b61730caa5086ae753342c57d6536b312f58432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58eb2f22_e6aac935",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_updater_succeeded.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-16T00:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "034ab50d_6e92a1a4",
       "revId": "3b61730caa5086ae753342c57d6536b312f58432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
