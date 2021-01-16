@@ -98,6 +98,8 @@ const (
 	DevCoredumpExt = ".devcore"
 	// ECCrashExt is an extension for ec crash dumps
 	ECCrashExt = ".eccrash"
+	// JavaScriptStackExt is the extension for JavaScript stacks.
+	JavaScriptStackExt = ".js_stack"
 
 	// ChromeVerboseConsentFlags provides the flags to enable verbose logging about consent.
 	ChromeVerboseConsentFlags = "--vmodule=stats_reporting_controller=1,autotest_private_api=1"
@@ -129,6 +131,7 @@ func isCrashFile(filename string) bool {
 		CompressedLogExt,
 		DevCoredumpExt,
 		ECCrashExt,
+		JavaScriptStackExt,
 	}
 	for _, ext := range knownExts {
 		if strings.HasSuffix(filename, ext) {
