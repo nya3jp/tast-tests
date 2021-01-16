@@ -25,6 +25,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(
+					"vilboz360", // TODO(b/177684735): Broken, causing CQ issues.
 					"maglia", // TODO(b/177656181): Broken, causing CQ issues.
 					"dalboz", // TODO(b/162258095): Dalboz lab DUTs have Qualcomm chip
 				)),
@@ -33,6 +34,7 @@ func init() {
 				Name:      "informational",
 				ExtraAttr: []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(
+					"vilboz360", // TODO(b/177684735): Broken, causing CQ issues.
 					"maglia", // TODO(b/177656181): Broken, causing CQ issues.
 					"dalboz", // TODO(b/162258095): Dalboz lab DUTs have Qualcomm chip
 				)),
