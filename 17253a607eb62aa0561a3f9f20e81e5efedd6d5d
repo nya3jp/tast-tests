@@ -16,6 +16,69 @@
       "message": "mcasas@: PTAL (full review)",
       "revId": "17253a607eb62aa0561a3f9f20e81e5efedd6d5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f948e309_6e31da35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-16T02:36:48Z",
+      "side": 1,
+      "message": "LGTM % nits below. \n(Functionality is good to let it go through the bots and see\nwhat comes back, might need some minor tweaks when it comes\nto error reporting).\n\ntast-owners@ PTAL\n\nOthers \u003dFYI.",
+      "revId": "17253a607eb62aa0561a3f9f20e81e5efedd6d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68deb32_acab3f5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/null_platform_format.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-16T02:36:48Z",
+      "side": 1,
+      "message": "nit: s/formats/format/",
+      "range": {
+        "startLine": 22,
+        "startChar": 68,
+        "endLine": 22,
+        "endChar": 75
+      },
+      "revId": "17253a607eb62aa0561a3f9f20e81e5efedd6d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49bf028_da756c17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/null_platform_format.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-16T02:36:48Z",
+      "side": 1,
+      "message": "nit: move to l.54? Right before its first use.\n\nSame for |formatFlag| in l.44 to l.55. Although maybe a Tast\nreviewer would prefer to put it at the top of the file (style), \nso let it sit there for a while.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "17253a607eb62aa0561a3f9f20e81e5efedd6d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
