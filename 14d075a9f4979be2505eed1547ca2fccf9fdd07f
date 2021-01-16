@@ -22,6 +22,30 @@
       },
       "revId": "14d075a9f4979be2505eed1547ca2fccf9fdd07f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a9e593_11c9b812",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-16T01:17:36Z",
+      "side": 0,
+      "message": "This is because for LSBrelease we are not using the firmware/reporter package in src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go. getBoardByCrosConfig() is kept the same.\n\nI am breaking this into two commits.",
+      "parentUuid": "1f063c1e_d4486da4",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "14d075a9f4979be2505eed1547ca2fccf9fdd07f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

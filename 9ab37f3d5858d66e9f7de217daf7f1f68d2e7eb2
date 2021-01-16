@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8be0904_8dfb049d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-16T01:17:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c7d47891_a688dbd9",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "9ab37f3d5858d66e9f7de217daf7f1f68d2e7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2d67a68_3d3d6db0",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-29T21:52:52Z",
       "side": 1,
       "message": "May want to put something like \"FlashFpRWFirmware\" in fingerprint.go in case we need to use it in other tests.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "9ab37f3d5858d66e9f7de217daf7f1f68d2e7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ef1c19_a675b508",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-16T01:17:36Z",
+      "side": 1,
+      "message": "I will figure that out when I migrate those autotests (next week)",
+      "parentUuid": "d2d67a68_3d3d6db0",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b282af_0397cd33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-16T01:17:36Z",
+      "side": 1,
+      "message": "No, because this is remote and goes through SSH, while fp_updater_succeeded.go is local.",
+      "parentUuid": "a7772a44_9684bc2c",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "9ab37f3d5858d66e9f7de217daf7f1f68d2e7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be1012c2_d8947538",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-29T21:52:52Z",
       "side": 1,
       "message": "Do we have anything that guarantees that hardware write protect is disabled?\n\nI see FWWPState, but I don\u0027t see it used anywhere: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/remote/servo/methods.go#23\n\nWe should also make sure InitializeKnownState enables hardware write protect so that we\u0027re testing the same configuration that end-user devices have.",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 38
+      },
+      "revId": "9ab37f3d5858d66e9f7de217daf7f1f68d2e7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "590fea97_7f836025",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-16T01:17:36Z",
+      "side": 1,
+      "message": "Done, but the fingerprint package cannot access testing.State which contains the runtime argument for servo, so enabling HW WP must be done in test files.",
+      "parentUuid": "be1012c2_d8947538",
       "range": {
         "startLine": 149,
         "startChar": 11,
