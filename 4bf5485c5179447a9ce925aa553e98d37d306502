@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ab833a_01b6f35a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-16T01:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d25d8686_f1b931c3",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a7febe7_1230979a",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "The problem reproduces without the fix in one try, usually. The freeze bug occurs when one process freezes before another. Since the process accessing the FUSE instance is grabbing kernel mutexes most of the time, it\u0027s more likely to freeze later, hence reproducing the bug. 5 was the number I chose since it balances runtime (about 1 minute per loop) with a high probability of reproducing the bug if it\u0027s there.",
       "parentUuid": "6a7febe7_1230979a",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bde431d_309dab29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-16T01:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbfcdc8f_2435e823",
       "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +145,30 @@
       "side": 1,
       "message": "It\u0027s survive. Nice catch.",
       "parentUuid": "d62faed8_9232c071",
+      "range": {
+        "startLine": 60,
+        "startChar": 55,
+        "endLine": 60,
+        "endChar": 62
+      },
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9367e4_2b92ac02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-16T01:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47710e95_45423c07",
       "range": {
         "startLine": 60,
         "startChar": 55,
@@ -219,6 +279,24 @@
       "writtenOn": "2021-01-14T09:44:30Z",
       "side": 1,
       "message": "This also needs cleanup time allocation I assume",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a39f639_f6284589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-16T01:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02ba5de6_58b85bc0",
       "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
