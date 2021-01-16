@@ -9,7 +9,7 @@ import (
 )
 
 // modelAllowlist is a list of model that is targeted to be able to reliably work in the lab for testing.
-var modelAllowlist = []string{"atlas", "eve", "drallion", "nocturne", "lulu"}
+var modelAllowlist = []string{"atlas", "eve", "drallion", "nocturne"}
 
 // HwDepsStable is hardwareDeps condition that stable to run trace tests.
 var HwDepsStable = hwdep.D(hwdep.Model(modelAllowlist...))
