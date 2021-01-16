@@ -33,7 +33,7 @@ func init() {
 		Func:         ScanESCLIPP,
 		Desc:         "Tests eSCL scanning via an ipp-over-usb tunnel",
 		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"virtual_usb_printer"},
 		Data:         []string{sourceImage, goldenImage},
 		Params: []testing.Param{{
