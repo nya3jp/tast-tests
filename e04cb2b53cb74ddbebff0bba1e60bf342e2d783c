@@ -16,6 +16,24 @@
       "message": "Dean, how can I ensure that the wifi / wpasupplicant tests are run?",
       "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e750b0cb_83654a36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-16T01:16:10Z",
+      "side": 1,
+      "message": "I think you are referring to wifi remote tests that uses wpasupplicant. These test usually use wpasupplicant package in the gRPC calls defined in the file tast/local/bundles/cros/network/wifi_service.go",
+      "parentUuid": "430ad132_30f09032",
+      "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
