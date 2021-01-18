@@ -15,6 +15,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/testexec"
@@ -135,6 +136,23 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 
 	keep = true
 	return yuvFile, nil
+}
+
+// PrepareYUVAndJSON encodes webMPath and creates yuv file whose format is I420.
+// Returns the paths of the YUV file and the associated JSON file used in the test.
+func PrepareYUVAndJSON(ctx context.Context, webMPath, srcYUVJSONPath string) (string, string, error) {
+	yuvPath, err := PrepareYUV(ctx, webMPath, videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
+	if err != nil {
+		return "", "", errors.Wrap(err, "failed to prepare YUVFile")
+	}
+
+	yuvJSONPath := yuvPath + ".json"
+	if err := fsutil.CopyFile(srcYUVJSONPath, yuvJSONPath); err != nil {
+		os.Remove(yuvPath)
+		return "", "", errors.Wrapf(err, "failed to copy json file: %v %v", srcYUVJSONPath, yuvJSONPath)
+
+	}
+	return yuvPath, yuvJSONPath, nil
 }
 
 // publicTempFile creates a world-readable temporary file.
