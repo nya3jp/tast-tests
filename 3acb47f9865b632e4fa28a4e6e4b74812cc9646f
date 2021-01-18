@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a77ab933_98b2b82b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-01-18T09:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f058e02_9094ca1e",
+      "range": {
+        "startLine": 109,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 44
+      },
+      "revId": "3acb47f9865b632e4fa28a4e6e4b74812cc9646f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce72ed6c_85ab1f16",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-18T08:01:23Z",
       "side": 1,
       "message": "nit: Can we simply checks getClientRects().length \u003e 0 here? IIUC we don\u0027t need the bounding rect (roughly, the union of client rects) here.",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 28
+      },
+      "revId": "3acb47f9865b632e4fa28a4e6e4b74812cc9646f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb47fde7_6e3f1cc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-01-18T09:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce72ed6c_85ab1f16",
       "range": {
         "startLine": 110,
         "startChar": 8,
