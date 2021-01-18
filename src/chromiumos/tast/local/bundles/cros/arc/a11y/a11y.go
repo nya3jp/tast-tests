@@ -79,7 +79,8 @@ func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) ([]str
 // A connection to the ChromeVox extension background page is returned, and this will be
 // closed by the calling function.
 func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) (*a11y.ChromeVoxConn, error) {
-	// Wait until spoken feedback is enabled in Android side.
+	// Wait until spoken feedback is enabled in Android side. It takes longer time for Android
+ 	// a11y to be ready, and thus time out here is longer than others.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if res, err := IsEnabledAndroid(ctx, a); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to check whether accessibility is enabled in Android"))
@@ -87,7 +88,7 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 			return errors.New("accessibility not enabled")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled: ")
 	}
 
