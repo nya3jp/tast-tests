@@ -60,6 +60,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c39e216d_9b667ede",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-18T03:03:51Z",
+      "side": 1,
+      "message": "SGTM, done.",
+      "parentUuid": "842e2dd7_6f3392e5",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 12
+      },
+      "revId": "30937b0138e2055f709dcb745e098dafcabc43d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a3e40b8a_40ed2e60",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "nit: looks like extDirs is always cfg.extraExtDirs + testExtDir, maybe it is possible to omit this field -- I think it\u0027s okay to keep it though.",
       "parentUuid": "a3e40b8a_40ed2e60",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 8
+      },
+      "revId": "30937b0138e2055f709dcb745e098dafcabc43d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01dfcfcc_4c6f4e39",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-18T03:03:51Z",
+      "side": 1,
+      "message": "SGTM. I replaced references of extDirs with ExtDirs calls.",
+      "parentUuid": "31e7862c_7f9e8d83",
       "range": {
         "startLine": 138,
         "startChar": 1,
@@ -170,6 +218,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "94111644_ab72e8af",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-18T03:03:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "85f84f08_732105ef",
+      "revId": "30937b0138e2055f709dcb745e098dafcabc43d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f0767c7c_4625ae12",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -181,6 +247,24 @@
       "writtenOn": "2021-01-15T18:04:35Z",
       "side": 1,
       "message": "nit: it looks like extDirs won\u0027t be empty anytime (PrepareExtensions is always called during chrome.New, and it always add testExtDir).",
+      "revId": "30937b0138e2055f709dcb745e098dafcabc43d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fe449ff_54bb22c8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-18T03:03:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f0767c7c_4625ae12",
       "revId": "30937b0138e2055f709dcb745e098dafcabc43d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
