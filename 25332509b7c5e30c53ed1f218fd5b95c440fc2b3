@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "293eaec0_554a983a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/download_link.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T11:12:41Z",
+      "side": 1,
+      "message": "nit: file",
+      "range": {
+        "startLine": 6,
+        "startChar": 18,
+        "endLine": 6,
+        "endChar": 22
+      },
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f4f9f4_849f3d06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/download_link.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T11:12:41Z",
+      "side": 1,
+      "message": "\u003cscript\u003e\n    document.getElementById(\"download-gallery-image\").click();\n\u003c/script\u003e\n\nThis will automatically click link and download image during loading page. It saves you a lot of trouble from extra UI interaction flakiness",
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b5360ca_85a42107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/download_link.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T11:12:41Z",
+      "side": 1,
+      "message": "nit: remove empty lines",
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833a620d_6c1c3871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T11:12:41Z",
+      "side": 1,
+      "message": "You can reuse test file variable in launch_gallery.go\n\nData: []string{testFile, download_link.html}",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1acf346e_9d8584e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T11:12:41Z",
+      "side": 1,
+      "message": "It is highly recommended to use function to process file name from s.Data instead of hard code.\n\nvar testImageFileName \u003d strings.ReplaceAll(testFile, \"*\", \"_\")",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 61
+      },
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a83b49c_4b4cf00a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T11:12:41Z",
+      "side": 1,
+      "message": "defer conn.Close()",
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8efd1582_dd8e7764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T11:12:41Z",
+      "side": 1,
+      "message": "It is not required any more if you follow the suggestion in html page to auto download.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
