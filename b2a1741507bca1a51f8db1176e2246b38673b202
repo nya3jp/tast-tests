@@ -33,6 +33,23 @@
       "message": "Why Tast Chrome.NewConn doesn\u0027t work for opening OS Settings:\n\nNewConn uses devtools protocol createTarget, which uses the NavigateParams.navigated_or_inserted_contents. This param is not returned for link capturing (since link capturing launch is async), and devtools protocol treats this as an error.\n\nNewConnForTarget works, because it finds a session (the one asynchronously launched by LaunchSWA during link capture) based on URL.\n\nMade a CL to update Tast tests to use LaunchApp + NewConnForTarget.\n- LaunchApp better reflects reality. Real users are unlikely to use devtools to open Settings App. LaunchApp uses AppService (which is what chrome uses for launching apps from launcher).\n- NewConnForTarget waits for a new settings app (based on URL)\n- https://crrev.com/c/2631653",
       "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0088a54_f2224807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413244
+      },
+      "writtenOn": "2021-01-18T04:03:53Z",
+      "side": 1,
+      "message": "FYI: I just noticed there appears to be a similar function already in the `ossettings` package, are you able to reuse that one? \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go;l\u003d100-128;drc\u003d529e01ac439148372997c9f09942726b67b5dc5d",
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
