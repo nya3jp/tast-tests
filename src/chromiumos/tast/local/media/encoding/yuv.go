@@ -15,6 +15,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/testexec"
@@ -48,6 +49,7 @@ var md5OfYUV = map[string]string{
 // The input WebM files are vp9 codec. They are generated from raw YUV data by libvpx like "vpxenc foo.yuv -o foo.webm --codec=vp9 -w <width> -h <height> --lossless=1"
 // Please use "--lossless=1" option. Lossless compression is required to ensure we are testing streams at the same quality as original raw streams,
 // to test encoder capabilities (performance, bitrate convergence, etc.) correctly and with sufficient complexity/PSNR.
+// TODO(b/177856221): Removes the functionality of producing NV12 format, so that this always produces an I420 file.
 func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.PixelFormat, size coords.Size) (string, error) {
 	const webMSuffix = ".vp9.webm"
 	if !strings.HasSuffix(webMFile, webMSuffix) {
@@ -135,6 +137,17 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 
 	keep = true
 	return yuvFile, nil
+}
+
+// PrepareYUVJSON creates a json file for yuvPath by copying jsonPath.
+// The first return value is the path of the created JSON file.
+func PrepareYUVJSON(ctx context.Context, yuvPath, jsonPath string) (string, error) {
+	yuvJSONPath := yuvPath + ".json"
+	if err := fsutil.CopyFile(jsonPath, yuvJSONPath); err != nil {
+		return "", errors.Wrapf(err, "failed to copy json file: %v %v", jsonPath, yuvJSONPath)
+
+	}
+	return yuvJSONPath, nil
 }
 
 // publicTempFile creates a world-readable temporary file.
