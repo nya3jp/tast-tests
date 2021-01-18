@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe2e9fd_9b991562",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-18T10:56:46Z",
+      "side": 1,
+      "message": "Miguel, can you review this as David is OOO for a while?\n\nThanks in advance!",
+      "revId": "6f5352add489a950c9eb2855ae1c10b1d6e7bc1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
