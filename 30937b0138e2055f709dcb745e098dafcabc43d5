@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3f350c97_1135e310",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-18T02:32:39Z",
+      "side": 1,
+      "message": "LGTM per Jun\u0027s comments.",
+      "revId": "30937b0138e2055f709dcb745e098dafcabc43d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "842e2dd7_6f3392e5",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
