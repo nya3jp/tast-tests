@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750fdd78_af15bbb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-18T03:11:48Z",
+      "side": 1,
+      "message": "@Xiyuan, @Jun, @Mike, @Po-Hsien, @Gabor:\n\nWe found a CL which made by @Shuhei could replace this CL.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2566544\n\nSo we would abandon this CL, and thanks for your time reviewing.",
+      "revId": "50fd6aa95d7d681fe145460dcff0949a2e700af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
