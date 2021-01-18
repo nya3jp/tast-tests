@@ -24,21 +24,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Params: []testing.Param{{
-			Pre: testutil.ChromeWithPlatformApp(),
-			Val: testutil.PlatformApp,
-		}, {
-			Name: "swa",
-			Pre:  testutil.ChromeWithSWA(),
-			Val:  testutil.SWA,
-		}},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
-	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
+	tb, err := testutil.NewTestBridge(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -48,7 +40,7 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
@@ -140,7 +132,7 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 		s.Fatal("No camera found")
 	}
 
-	if err := app.Restart(ctx, tb, false); err != nil {
+	if err := app.Restart(ctx, tb); err != nil {
 		var errJS *cca.ErrJS
 		if errors.As(err, &errJS) {
 			s.Error("There are JS errors when running CCA: ", err)

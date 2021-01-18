@@ -26,39 +26,16 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "real",
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
-			Pre:               testutil.ChromeWithPlatformApp(),
-			Val:               testutil.PlatformApp,
+			Pre:               chrome.LoggedIn(),
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
-			Pre:               testutil.ChromeWithPlatformApp(),
-			Val:               testutil.PlatformApp,
+			Pre:               chrome.LoggedIn(),
 			ExtraAttr:         []string{"informational", "group:camera-postsubmit"},
 		}, {
 			Name: "fake",
-			Pre:  testutil.ChromeWithPlatformAppAndFakeCamera(),
-			Val:  testutil.PlatformApp,
-			// TODO(crbug.com/1050732): Remove this once the unknown crash on
-			// scarlet is resolved.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("scarlet")),
-		}, {
-			Name:              "real_swa",
-			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
-			Pre:               testutil.ChromeWithSWA(),
-			Val:               testutil.SWA,
-			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:              "vivid_swa",
-			ExtraSoftwareDeps: []string{caps.VividCamera},
-			Pre:               testutil.ChromeWithSWA(),
-			Val:               testutil.SWA,
-			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:      "fake_swa",
-			Pre:       testutil.ChromeWithSWAAndFakeCamera(),
-			Val:       testutil.SWA,
-			ExtraAttr: []string{"informational"},
+			Pre:  testutil.ChromeWithFakeCamera(),
 			// TODO(crbug.com/1050732): Remove this once the unknown crash on
 			// scarlet is resolved.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("scarlet")),
@@ -68,8 +45,7 @@ func init() {
 
 func CCAUISmoke(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
-	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
+	tb, err := testutil.NewTestBridge(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -79,7 +55,7 @@ func CCAUISmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
