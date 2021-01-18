@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "790c9888_fb28b312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-18T09:57:30Z",
+      "side": 1,
+      "message": "sgtm. Let\u0027s either check that CCA is launched successfully with a preview streaming, or use SearchAndWaitForApp() without really launch it.",
+      "parentUuid": "d1e0df96_b07964d8",
+      "revId": "06f430f2e12c3ba6c0747d0d05e3c23dad3e63fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7c05655_a3ae2f79",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
         "patchSetId": 2
