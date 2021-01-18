@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c064748_4c788c62",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-18T02:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2891870_9eb27020",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "d873d59e71d7206872440bbfef08391faa70da0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9f405dd_c02ca906",
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa2e9345_739db9e5",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-18T02:25:58Z",
+      "side": 1,
+      "message": "The `conn` is returned to the caller.\n\nWouldn\u0027t `defer conn.Close()` in here cause the conn to be invalidated?",
+      "parentUuid": "b9f405dd_c02ca906",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 5
+      },
+      "revId": "d873d59e71d7206872440bbfef08391faa70da0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29c87786_f6752fc8",
         "filename": "src/chromiumos/tast/local/apps/apps.go",
         "patchSetId": 1
@@ -94,6 +142,30 @@
       "writtenOn": "2021-01-18T02:12:22Z",
       "side": 1,
       "message": "nit: same as above\n```\nif err :\u003d conn.WaitForExpr(ctx, \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\"); err !\u003d nil\n```",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "d873d59e71d7206872440bbfef08391faa70da0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e45708_6e9e95c9",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-18T02:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29c87786_f6752fc8",
       "range": {
         "startLine": 246,
         "startChar": 0,
