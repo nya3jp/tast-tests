@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "79447b9d_98682620",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-18T09:22:49Z",
+      "side": 1,
+      "message": "nit: Launch",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "eb8fd74e_4736d0fe",
@@ -66,6 +89,87 @@
       "side": 1,
       "message": "That function does slightly different things.\n\nLaunchAtPageURL opens OS Settings app, then perform a second navigation (JS `location.href \u003d ...`). It also requires a UI condition check to wait to the OS Settings page to finish loading.\n\nLaunchOSSettings (in this CL) performs only one navigation (and automaticaly waits for the page finish loading.\n\n---\n\nI don\u0027t have strong opinions about using the first function, but most callers of LaunchOSSettings probably doesn\u0027t need/want a UI check. \n\nUsing LaunchAtPageURL to implement LaunchOSSettings is probably feasible, we\u0027d need to come up with a generic UI condition to wait for the page finish loading. Or use a no-op condition, and subsequently wait on document.readyState.",
       "parentUuid": "d0088a54_f2224807",
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc50f8b_3ea9be38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-18T09:22:49Z",
+      "side": 1,
+      "message": "In policy testing we need to use the OS Settings for some policies, and I agree that it is good if we can skip the UI interaction part.",
+      "parentUuid": "20efc838_5a20e9e1",
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794b34bb_48e0b080",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-18T09:22:49Z",
+      "side": 1,
+      "message": "Thanks for this change. Our team also uses the OS Setting in some tests, and this is a nice addition.\n\nPlease change this file as well:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/show_accessibility_options_in_system_tray_menu.go?q\u003d%22chrome:%2F%2Fos-settings%22\n\nThere is a new test as well, but we will take care of it, as the URL needs to be changed in it (NewConn() did not work with the full URL, but I hope this aproach will).",
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6848fb_4b55bf7e",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-18T09:22:49Z",
+      "side": 1,
+      "message": "This call can exhaust the whole ctx time if it does not find its target. Do you think a shorter context time can be used here somehow? E.g. if it does not find the target in 30 seconds, we can say it failed.",
+      "range": {
+        "startLine": 240,
+        "startChar": 17,
+        "endLine": 240,
+        "endChar": 33
+      },
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0298d9e9_537190aa",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-18T09:22:49Z",
+      "side": 1,
+      "message": "nit: OS Settings",
+      "range": {
+        "startLine": 242,
+        "startChar": 60,
+        "endLine": 242,
+        "endChar": 71
+      },
       "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
