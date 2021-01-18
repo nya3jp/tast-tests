@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4c61290_b7cea9c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-18T23:08:47Z",
+      "side": 1,
+      "message": "Ack. This is the error from the Tast linter when trying to use `testFile` in the Data attribute:\n\n\u003e Following errors should be modified by yourself: src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go:37:26: Tast forbids inter-file references in entry files; move const testFile in launch_gallery.go to a shared package    \n\u003e Refer the following documents for details: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#scoping-and-shared-code",
+      "parentUuid": "5c6ae4d8_70339b0d",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1acf346e_9d8584e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
         "patchSetId": 2
