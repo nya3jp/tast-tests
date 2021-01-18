@@ -183,7 +183,7 @@ func (s *Server) configureNetwork(ctx context.Context, port int, pidPath string)
 	s.lifelineFD = fd
 
 	b := make([]byte, 4)
-	binary.LittleEndian.PutUint32(b, uint32(resp.HostIpv4Address))
+	binary.LittleEndian.PutUint32(b, uint32(resp.PeerIpv4Address))
 	ip := net.IP(b)
 	s.HostAndPort = fmt.Sprintf("%s:%d", ip.String(), port)
 
