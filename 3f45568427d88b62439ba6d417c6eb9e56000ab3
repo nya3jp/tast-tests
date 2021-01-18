@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8151b806_96162084",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T10:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4158d9c9_c43d9fad",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "3f45568427d88b62439ba6d417c6eb9e56000ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5a8a48e_c0c50e72",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d84fdca_81541371",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T10:12:50Z",
+      "side": 1,
+      "message": "They are all small changes and would not affect any other tests. So they are unlikely to be reverted. I understand it is nice to have small cls though. I can split them if you insist.",
+      "parentUuid": "c5a8a48e_c0c50e72",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "3f45568427d88b62439ba6d417c6eb9e56000ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3f32155_d5b33445",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-18T09:58:34Z",
       "side": 1,
       "message": "Please don\u0027t comment code. Just remove it.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 8
+      },
+      "revId": "3f45568427d88b62439ba6d417c6eb9e56000ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e38d348_e0607fac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T10:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3f32155_d5b33445",
       "range": {
         "startLine": 115,
         "startChar": 0,
