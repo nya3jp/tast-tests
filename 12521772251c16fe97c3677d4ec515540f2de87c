@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5fd7639_093f6c09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-18T09:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a208295f_9f37539f",
+      "revId": "12521772251c16fe97c3677d4ec515540f2de87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c80f478b_a968f1ce",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-01-12T04:45:24Z",
       "side": 1,
       "message": "\"Run umount without -l\"?",
+      "range": {
+        "startLine": 200,
+        "startChar": 5,
+        "endLine": 200,
+        "endChar": 36
+      },
+      "revId": "12521772251c16fe97c3677d4ec515540f2de87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "148ef1e1_ed2ee014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-18T09:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c80f478b_a968f1ce",
       "range": {
         "startLine": 200,
         "startChar": 5,
