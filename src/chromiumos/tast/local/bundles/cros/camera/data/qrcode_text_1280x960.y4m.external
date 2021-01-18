@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/camera/qrcode_text_1280x960_20210118.y4m",
+  "size": 1843265,
+  "sha256sum": "558e89ea771309f4535391fcae5f0ce86b3005150ad4f7984383cd532e60127d"
+}
