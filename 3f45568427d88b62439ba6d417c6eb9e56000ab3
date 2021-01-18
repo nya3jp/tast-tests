@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7dc8a281_d82bb5a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-18T10:22:00Z",
+      "side": 1,
+      "message": "I dont insist, but its a good practice to have different CL per change even if it\u0027s small. I\u0027ll let you make your own judgement.\n\nDont you planning to revert removing items from subTests? If you planning to do so, you won\u0027t be able to revert this CL, because there are not related changes as well.",
+      "parentUuid": "5d84fdca_81541371",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "3f45568427d88b62439ba6d417c6eb9e56000ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3f32155_d5b33445",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
         "patchSetId": 1
