@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1e0df96_b07964d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-01-18T09:36:55Z",
+      "side": 1,
+      "message": "On second thought, I kind of think this test is a bit meaningless for SWA. How about we simplify it to only check if the icon is found on the launcher?",
+      "parentUuid": "3c9185d1_5d2ba755",
+      "revId": "06f430f2e12c3ba6c0747d0d05e3c23dad3e63fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7c05655_a3ae2f79",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2021-01-18T08:35:05Z",
       "side": 1,
       "message": "(Not meant to block this CL)\n\nNeed to create and pass test bridge everywhere is a little bit annoying. Not sure if we can further simplify things with the new fixtures feature: https://groups.google.com/a/chromium.org/g/tast-users/c/-vC6RR8fYlQ/m/AEd6EIHGBQAJ",
+      "revId": "06f430f2e12c3ba6c0747d0d05e3c23dad3e63fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d53a42f_90104176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/testutil/test_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-01-18T09:36:55Z",
+      "side": 1,
+      "message": "Good to know! I just filed a bug: b/177800595\nI\u0027ll find some time to evaluate and give it a try to know if it is helpful for us.\nThanks!",
+      "parentUuid": "a7c05655_a3ae2f79",
       "revId": "06f430f2e12c3ba6c0747d0d05e3c23dad3e63fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
