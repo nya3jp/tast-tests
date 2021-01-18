@@ -16,6 +16,23 @@
       "message": "Thank you all for reviewing!",
       "revId": "4ab0a326c3a778d0f393ec478afa0d3da9ccd4cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea41a0e3_31f79ef3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-01-18T00:36:46Z",
+      "side": 1,
+      "message": "I checked the bot log. It seems to me that unrelated tests are failing. Let me retry.\n",
+      "revId": "4ab0a326c3a778d0f393ec478afa0d3da9ccd4cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
