@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfeb7073_46ceaad7",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1413244
+      },
+      "writtenOn": "2021-01-18T03:06:03Z",
+      "side": 1,
+      "message": "Ah apologies. Yes you are correct.",
+      "parentUuid": "aa2e9345_739db9e5",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 5
+      },
+      "revId": "d873d59e71d7206872440bbfef08391faa70da0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29c87786_f6752fc8",
