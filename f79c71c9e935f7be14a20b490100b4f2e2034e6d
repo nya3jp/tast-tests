@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb27cfc_5e49f7db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-18T02:05:11Z",
+      "side": 1,
+      "message": "LGTM with minor comments.\n",
+      "revId": "f79c71c9e935f7be14a20b490100b4f2e2034e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2fb382f_fc969bc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/render_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-18T02:05:11Z",
+      "side": 1,
+      "message": "Can you include err in the message?",
+      "range": {
+        "startLine": 64,
+        "startChar": 44,
+        "endLine": 64,
+        "endChar": 48
+      },
+      "revId": "f79c71c9e935f7be14a20b490100b4f2e2034e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0793884f_63079a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/render_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-18T02:05:11Z",
+      "side": 1,
+      "message": "I recommend including len(buttons) for easier debugging. For example:\n\n s.Fatal(\"Could not find all test routine buttons: got %d, want 3\", len(buttons))",
+      "range": {
+        "startLine": 69,
+        "startChar": 42,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "f79c71c9e935f7be14a20b490100b4f2e2034e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
