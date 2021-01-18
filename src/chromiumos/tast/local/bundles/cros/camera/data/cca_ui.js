@@ -102,7 +102,12 @@ window.Tast = class Tast {
   static isVisible(selector) {
     const element = document.querySelector(selector);
     const style = element && window.getComputedStyle(element);
-    return style && style.display !== 'none' && style.visibility !== 'hidden';
+    const isZeroSize = (element) => {
+      const {width, height} = element.getBoundingClientRect();
+      return width === 0 && height === 0;
+    };
+    return style && style.display !== 'none' && style.visibility !== 'hidden' &&
+        !isZeroSize(element);
   }
 
   /**
