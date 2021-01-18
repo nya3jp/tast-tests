@@ -51,6 +51,81 @@
       "message": "Yenlin, please help take a look.",
       "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "490f2808_870dc224",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-18T10:08:40Z",
+      "side": 1,
+      "message": "It is kind of awkward that wpasupplicant is currently only used in remote WiFi tests that needs a wificell setup. One stabler test uses it: wifi.PMKSACaching.\n\nFor shill part, network.WifiCaps might be a simple sanity check.\n\nTo run all stable remote WiFi tests, you can try: `tast run $DUT \u0027(\"group:wificell\" \u0026\u0026 wificell_func \u0026\u0026 !wificell_unstable)\u0027` but it will take much more time.",
+      "parentUuid": "e750b0cb_83654a36",
+      "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5003f0a9_973c6a55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-18T10:08:40Z",
+      "side": 1,
+      "message": "only nits",
+      "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b14dd40_c0d1d004",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-18T10:08:40Z",
+      "side": 1,
+      "message": "nit: I just noticed that there\u0027s a similar function in local/dbusutil/property.go but with different prototype (return value instead of assign to pointer). They can share the same dbusGetPropsMethod.\n\nWe might also re-organize the similar functions a little bit but it should be another CL.",
+      "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b38a3ee_2c35a5dc",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-18T10:08:40Z",
+      "side": 1,
+      "message": "nit: Not sure if this change is needed (for consistency?). But with this change, it is slightly more straightforward to me to embed PropertyHolder pointer in child objects instead of dereference+copy. Copy is safe here but need to check PropertyHolder for sure when reading. The downside is bad performance with multiple layer of pointer.",
+      "range": {
+        "startLine": 233,
+        "startChar": 81,
+        "endLine": 233,
+        "endChar": 82
+      },
+      "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
