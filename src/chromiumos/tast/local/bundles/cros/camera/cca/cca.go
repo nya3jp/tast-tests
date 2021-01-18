@@ -159,9 +159,14 @@ var (
 
 	// BarcodeChipURL is chip for url detected from barcode.
 	BarcodeChipURL = UIComponent{"barcode chip url", []string{".barcode-chip-url a"}}
+	// BarcodeChipText is chip for text detected from barcode.
+	BarcodeChipText = UIComponent{"barcode chip text", []string{".barcode-chip-text"}}
 	// BarcodeCopyURLButton is button to copy url detected from barcode.
 	BarcodeCopyURLButton = UIComponent{"barcode copy url button",
 		[]string{"#barcode-chip-url-container .barcode-copy-button"}}
+	// BarcodeCopyTextButton is button to copy text detected from barcode.
+	BarcodeCopyTextButton = UIComponent{"barcode copy text button",
+		[]string{"#barcode-chip-text-container .barcode-copy-button"}}
 )
 
 // ResolutionType is different capture resolution type.
