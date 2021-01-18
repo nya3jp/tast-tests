@@ -16,9 +16,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/encoding"
@@ -67,23 +65,6 @@ func codecProfileToEncodeCodecOption(profile videotype.CodecProfile) (string, er
 	}
 }
 
-// prepareYUVFiles encodes webMName and creates yuv file whose format is I420.
-// Returns the paths of the YUV file and the associated JSON file used in the test.
-func prepareYUVFiles(ctx context.Context, webMPath, srcYUVJSONPath string) (string, string, error) {
-	yuvPath, err := encoding.PrepareYUV(ctx, webMPath, videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
-	if err != nil {
-		return "", "", errors.Wrap(err, "failed to prepare YUVFile")
-	}
-
-	dstYUVJSONPath := yuvPath + ".json"
-	if err := fsutil.CopyFile(srcYUVJSONPath, dstYUVJSONPath); err != nil {
-		os.Remove(yuvPath)
-		return "", "", errors.Wrapf(err, "failed to copy json file: %v %v", srcYUVJSONPath, dstYUVJSONPath)
-
-	}
-	return yuvPath, dstYUVJSONPath, nil
-}
-
 // RunNewAccelVideoTest runs all tests in video_encode_accelerator_tests.
 func RunNewAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestOptionsNew) {
 	vl, err := logging.NewVideoLogger()
@@ -100,8 +81,9 @@ func RunNewAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts Te
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	yuvPath, yuvJSONPath, err := prepareYUVFiles(ctx, s.DataPath(opts.WebMName),
-		s.DataPath(YUVJSONFileNameFor(opts.WebMName)))
+	yuvPath, yuvJSONPath, err :=
+		encoding.PrepareYUVFilesFromWebM(ctx, s.DataPath(opts.WebMName),
+			s.DataPath(YUVJSONFileNameFor(opts.WebMName)))
 	if err != nil {
 		s.Fatal("Failed to prepare YUV files: ", err)
 	}
@@ -168,8 +150,9 @@ func RunNewAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opt
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	yuvPath, yuvJSONPath, err := prepareYUVFiles(ctx, s.DataPath(opts.WebMName),
-		s.DataPath(YUVJSONFileNameFor(opts.WebMName)))
+	yuvPath, yuvJSONPath, err :=
+		encoding.PrepareYUVFilesFromWebM(ctx, s.DataPath(opts.WebMName),
+			s.DataPath(YUVJSONFileNameFor(opts.WebMName)))
 	if err != nil {
 		return errors.Wrap(err, "failed to prepare YUV files")
 	}

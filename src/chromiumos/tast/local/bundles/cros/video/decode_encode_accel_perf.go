@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/encoding"
-	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -34,7 +33,8 @@ func init() {
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8, caps.HWEncodeVP8},
-		Data:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json", encode.Crowd1080P.Name},
+		Data: []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json",
+			"crowd-1920x1080.vp9.webm", "crowd-1920x1080.yuv.json"},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 5 * time.Minute,
 	})
@@ -50,14 +50,9 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		measureDuration = 30 * time.Second
 		// Filename of the video that will be decoded.
 		decodeFilename = "1080p_30fps_300frames.vp8.ivf"
-		// Pixelformat of the video that will be encoded.
-		encodePixelFormat = videotype.I420
-		// Profile used to encode the video.
-		encodeProfile = videotype.VP8Prof
 	)
 	// Properties of the video that will be encoded.
 	encodeParams := encode.Crowd1080P
-	encodeParams.FrameRate = 30
 
 	// Only a single process can have access to the GPU, so we are required to
 	// call "stop ui" at the start of the test. This will shut down the chrome
@@ -79,12 +74,15 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Create a raw YUV video to encode for the video encoder tests.
-	streamPath, err := encoding.PrepareYUV(ctx, s.DataPath(encodeParams.Name), encodePixelFormat, encodeParams.Size)
+	yuvPath, yuvJSONPath, err :=
+		encoding.PrepareYUVFilesFromWebM(ctx, s.DataPath(encodeParams.Name),
+			s.DataPath(encode.YUVJSONFileNameFor(encodeParams.Name)))
 	if err != nil {
-		s.Fatal("Failed to prepare YUV file: ", err)
+		s.Fatal("Failed to prepare YUV files: ", err)
 	}
 	if !deapCacheExtractedVideo {
-		defer os.Remove(streamPath)
+		defer os.Remove(yuvPath)
+		defer os.Remove(yuvJSONPath)
 	}
 
 	// Wait for the CPU to become idle.
@@ -93,16 +91,13 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Create gtest that runs the video encoder performance test.
-	encodeTest := newGTest("video_encode_accelerator_unittest", "SimpleEncode/*/0", s.OutDir(),
+	encodeTest := newGTest("video_encode_accelerator_perf_tests", "*MeasureCappedPerformance", s.OutDir(),
 		[]string{
-			encoding.CreateStreamDataArg(encodeParams, encodeProfile, encodePixelFormat, streamPath, "/dev/null"),
-			"--run_at_fps",
-			"--ozone-platform=drm",
-			"--num_frames_to_encode=1000000",  // Large enough to encode entire measurement duration.
-			"--test-launcher-timeout=3600000", // Timeout is management by Tast test.
-			"--single-process-tests",
+			"--codec=vp8",
+			yuvPath,
+			yuvJSONPath,
+			"--output_folder=" + s.OutDir(),
 		})
-
 	// Create gtest that runs the video decoder performance test.
 	decodeTest := newGTest("video_decode_accelerator_perf_tests", "*MeasureCappedPerformance", s.OutDir(),
 		[]string{
