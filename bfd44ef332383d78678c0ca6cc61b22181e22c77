@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d858e2a_41148418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-18T11:30:24Z",
+      "side": 1,
+      "message": "LGTM % comment, but please wait Tom review as well",
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7a7d49e_1c259123",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-18T11:30:24Z",
+      "side": 1,
+      "message": "nit: please explain what is MCU",
+      "range": {
+        "startLine": 6,
+        "startChar": 22,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86195121_93561d56",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-18T11:30:24Z",
+      "side": 1,
+      "message": "nit: From?",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84a4fc0_7a7505c0",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-18T11:30:24Z",
+      "side": 1,
+      "message": "Don\u0027t use \"get\" at the beginning of the funciton names:\nhttps://golang.org/doc/effective_go.html#Getters",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e11a9ba_54bd55f2",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-18T11:30:24Z",
+      "side": 1,
+      "message": "Do we need to use \"Fp\" in function names inside fingerprint package? All functions inside that pacakge should be related to fingerprint",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333961e1_6e74cb97",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-18T11:30:24Z",
+      "side": 1,
+      "message": "Please use fmt.Sprintf here",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 63
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b079b2fa_23175f1a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-18T11:30:24Z",
+      "side": 1,
+      "message": "let\u0027s also add \"outStr\" to have more info",
+      "range": {
+        "startLine": 61,
+        "startChar": 13,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
