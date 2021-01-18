@@ -405,6 +405,9 @@ func (c *Chrome) TestExtID() string { return c.testExtID }
 // ExtDirs returns the directories holding the test extensions.
 func (c *Chrome) ExtDirs() []string { return c.extDirs }
 
+// Region returns the region that was used to start chrome.
+func (c *Chrome) Region() string { return c.region }
+
 // DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
 // e.g. "127.0.0.1:38725". This port should not be accessed from outside of this package,
 // but it is exposed so that the port's owner can be easily identified.
