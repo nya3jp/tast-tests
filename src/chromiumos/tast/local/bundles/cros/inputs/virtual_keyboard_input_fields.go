@@ -43,7 +43,7 @@ func init() {
 				Name:              "us_en_exp",
 				Pre:               pre.VKEnabledTabletExp,
 				Val:               ime.INPUTMETHOD_XKB_US_ENG,
-				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			}, {
 				Name:              "jp_us_stable",
@@ -61,25 +61,22 @@ func init() {
 				Name:              "jp_us_exp",
 				Pre:               pre.VKEnabledTabletExp,
 				Val:               ime.INPUTMETHOD_NACL_MOZC_US,
-				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			}, {
 				Name:              "zh_pinyin_stable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-				ExtraAttr:         []string{"group:mainline", "informational", "group:input-tools-upstream"},
 				ExtraHardwareDeps: pre.InputsStableModels,
 			}, {
 				Name:              "zh_pinyin_unstable",
 				Pre:               pre.VKEnabledTablet,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-				ExtraAttr:         []string{"group:mainline", "informational"},
 				ExtraHardwareDeps: pre.InputsUnstableModels,
 			}, {
 				Name:              "zh_pinyin_exp",
 				Pre:               pre.VKEnabledTabletExp,
 				Val:               ime.INPUTMETHOD_PINYIN_CHINESE_SIMPLIFIED,
-				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraSoftwareDeps: []string{"gboard_decoder"},
 			},
 		},
@@ -114,18 +111,11 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 	switch s.Param().(ime.InputMethodCode) {
 	case ime.INPUTMETHOD_XKB_US_ENG:
 		subTests = []testData{
+			// TODO(b/177777412): Enable VK typing tests on auto-cap fields
 			{
-				inputField:   testserver.TextAreaInputField,
-				keySeq:       strings.Split("Hello", ""),
-				expectedText: "Hello",
-			}, {
-				inputField:   testserver.TextInputField,
-				keySeq:       strings.Split("Hello", ""),
-				expectedText: "Hello",
-			}, {
 				inputField:   testserver.SearchInputField,
-				keySeq:       strings.Split("Hello", ""),
-				expectedText: "Hello",
+				keySeq:       strings.Split("hello", ""),
+				expectedText: "hello",
 			}, {
 				inputField:   testserver.PasswordInputField,
 				keySeq:       strings.Split("hello", ""),
