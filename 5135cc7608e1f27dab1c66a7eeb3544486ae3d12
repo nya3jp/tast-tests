@@ -45,6 +45,30 @@
       },
       "revId": "5135cc7608e1f27dab1c66a7eeb3544486ae3d12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d786baf3_bc9db0b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-01-18T12:04:00Z",
+      "side": 1,
+      "message": "\u003e if err \u003d\u003d nil \u0026\u0026 pid \u003d\u003d oldPID {\n\nIn that way we cannot detect arc.InitPID() failure. Maybe we should return err if err !\u003d nil:\n\t\tif err !\u003d nil {\n\t\t\treturn err\n\t\t}\n\t\tif pid \u003d\u003d oldPID {\n\nCf. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go?l\u003d77-82\u0026rcl\u003d592bb842180f34f9c16c54dfa336ada47aa38d05",
+      "parentUuid": "a14a5fe0_826d48f4",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "5135cc7608e1f27dab1c66a7eeb3544486ae3d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
