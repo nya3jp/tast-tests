@@ -22,19 +22,18 @@ type TestBridge struct {
 	cr       *chrome.Chrome
 	pageConn *chrome.Conn
 	bridge   *chrome.JSObject
-	useSWA   bool
 }
 
 // NewTestBridge returns a new test bridge instance.
-func NewTestBridge(ctx context.Context, cr *chrome.Chrome, useSWA bool) (*TestBridge, error) {
-	pageConn, bridge, err := setUpTestBridge(ctx, cr, useSWA)
+func NewTestBridge(ctx context.Context, cr *chrome.Chrome) (*TestBridge, error) {
+	pageConn, bridge, err := setUpTestBridge(ctx, cr)
 	if err != nil {
 		return nil, err
 	}
-	return &TestBridge{cr, pageConn, bridge, useSWA}, nil
+	return &TestBridge{cr, pageConn, bridge}, nil
 }
 
-func getPageConnForSWA(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
+func getPageConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
 	conn, err := cr.NewConn(ctx, "chrome://camera-app/test/test.html")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to build connection")
@@ -63,26 +62,8 @@ func getPageConnForSWA(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, er
 	return conn, nil
 }
 
-func setUpTestBridge(ctx context.Context, cr *chrome.Chrome, useSWA bool) (*chrome.Conn, *chrome.JSObject, error) {
-	var pageConn *chrome.Conn
-	var err error
-	if useSWA {
-		pageConn, err = getPageConnForSWA(ctx, cr)
-	} else {
-		tconn, err := cr.TestAPIConn(ctx)
-		if err != nil {
-			return nil, nil, errors.Wrap(err, "failed to connect to test extension")
-		}
-		// Background page will not be available if it is not used for a while.
-		// We should wake it up before trying to connect it.
-		if err := tconn.Call(ctx, nil, `
-		  (id) => {
-			chrome.runtime.sendMessage(id, "");
-		  }`, ID); err != nil {
-			return nil, nil, errors.Wrap(err, "failed to wake background page up")
-		}
-		pageConn, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL(BackgroundURL))
-	}
+func setUpTestBridge(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, *chrome.JSObject, error) {
+	pageConn, err := getPageConn(ctx, cr)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to construct bridge page connection")
 	}
@@ -103,7 +84,7 @@ func setUpTestBridge(ctx context.Context, cr *chrome.Chrome, useSWA bool) (*chro
 	  }`
 	var testBridge chrome.JSObject
 	if err := pageConn.Call(ctx, &testBridge, code); err != nil {
-		if err2 := tearDownBridgePageConnection(ctx, cr, pageConn, useSWA); err2 != nil {
+		if err2 := tearDownBridgePageConnection(ctx, cr, pageConn); err2 != nil {
 			testing.ContextLog(ctx, "Failed to tear down bridge page connection", err2)
 		}
 		return nil, nil, errors.Wrap(err, "failed to get test bridge")
@@ -111,22 +92,19 @@ func setUpTestBridge(ctx context.Context, cr *chrome.Chrome, useSWA bool) (*chro
 	return pageConn, &testBridge, nil
 }
 
-func tearDownBridgePageConnection(ctx context.Context, cr *chrome.Chrome, conn *chrome.Conn, useSWA bool) error {
-	// For platform app, it does not make sense to close background page.
-	if useSWA {
-		checkTestPage := func(t *target.Info) bool {
-			// TODO(b/173092399): Remove the legacy path when Chrome is uprev.
-			return t.URL == "chrome://camera-app/test/test.html" || t.URL == "chrome://camera-app/views/test.html"
-		}
-		if testPageAlive, err := cr.IsTargetAvailable(ctx, checkTestPage); err == nil {
-			if testPageAlive {
-				if err := conn.CloseTarget(ctx); err != nil {
-					return errors.Wrap(err, "failed to call CloseTarget() on the bridge page connection")
-				}
+func tearDownBridgePageConnection(ctx context.Context, cr *chrome.Chrome, conn *chrome.Conn) error {
+	checkTestPage := func(t *target.Info) bool {
+		// TODO(b/173092399): Remove the legacy path when Chrome is uprev.
+		return t.URL == "chrome://camera-app/test/test.html" || t.URL == "chrome://camera-app/views/test.html"
+	}
+	if testPageAlive, err := cr.IsTargetAvailable(ctx, checkTestPage); err == nil {
+		if testPageAlive {
+			if err := conn.CloseTarget(ctx); err != nil {
+				return errors.Wrap(err, "failed to call CloseTarget() on the bridge page connection")
 			}
-		} else {
-			testing.ContextLog(ctx, "Failed to check if test page is alive or not: ", err)
 		}
+	} else {
+		testing.ContextLog(ctx, "Failed to check if test page is alive or not: ", err)
 	}
 	if err := conn.Close(); err != nil {
 		return errors.Wrap(err, "failed to call Close() on the bridge page connection")
@@ -149,7 +127,7 @@ func (t *TestBridge) Reset(ctx context.Context) error {
 		return err
 	}
 
-	pageConn, bridge, err := setUpTestBridge(ctx, t.cr, t.useSWA)
+	pageConn, bridge, err := setUpTestBridge(ctx, t.cr)
 	if err != nil {
 		return errors.Wrap(err, "failed to reconstruct test bridge")
 	}
@@ -170,10 +148,15 @@ func (t *TestBridge) TearDown(ctx context.Context) error {
 		t.bridge = nil
 	}
 	if t.pageConn != nil {
-		if err := tearDownBridgePageConnection(ctx, t.cr, t.pageConn, t.useSWA); err != nil {
+		if err := tearDownBridgePageConnection(ctx, t.cr, t.pageConn); err != nil {
 			testing.ContextLog(ctx, "Failed to release bridge page connection: ", err)
 		}
 		t.pageConn = nil
 	}
 	return nil
+}
+
+// EvalOnTestPage evaluates codes on the test page.
+func (t *TestBridge) EvalOnTestPage(ctx context.Context, expr string, out interface{}) error {
+	return t.pageConn.Eval(ctx, expr, out)
 }

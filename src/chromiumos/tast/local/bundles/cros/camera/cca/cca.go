@@ -19,6 +19,7 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -209,7 +210,7 @@ func (r *Resolution) AspectRatio() float64 {
 // until its AppWindow interactable. The scriptPath should be the data path to
 // the helper script cca_ui.js. The returned App instance must be closed when
 // the test is finished.
-func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher testutil.AppLauncher, tb *testutil.TestBridge, useSWA bool) (*App, error) {
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher testutil.AppLauncher, tb *testutil.TestBridge) (*App, error) {
 	// The cros-camera job exists only on boards that use the new camera stack.
 	if upstart.JobExists(ctx, "cros-camera") {
 		// Ensure that cros-camera service is running, because the service
@@ -287,21 +288,16 @@ func loadScripts(ctx context.Context, conn *chrome.Conn, scriptPaths []string) e
 }
 
 // New launches a CCA instance. The returned App instance must be closed when the test is finished.
-func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge, useSWA bool) (*App, error) {
-	launcher := testutil.PlatformAppLauncher()
-	if useSWA {
-		launcher = testutil.SWALauncher()
-	}
-	return Init(ctx, cr, scriptPaths, outDir, launcher, tb, useSWA)
+func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge) (*App, error) {
+	return Init(ctx, cr, scriptPaths, outDir, func(ctx context.Context, tconn *chrome.TestConn) error {
+		return apps.LaunchSystemWebApp(ctx, tconn, "Camera", "chrome://camera-app/views/main.html")
+	}, tb)
 }
 
 // InstanceExists checks if there is any running CCA instance.
-func InstanceExists(ctx context.Context, cr *chrome.Chrome, useSWA bool) (bool, error) {
+func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	checkPrefix := func(t *target.Info) bool {
-		url := fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
-		if useSWA {
-			url = "chrome://camera-app/views/main.html"
-		}
+		url := "chrome://camera-app/views/main.html"
 		return strings.HasPrefix(t.URL, url)
 	}
 	return cr.IsTargetAvailable(ctx, checkPrefix)
@@ -415,11 +411,11 @@ func (a *App) Close(ctx context.Context) (retErr error) {
 }
 
 // Restart restarts the App and resets the associated connection.
-func (a *App) Restart(ctx context.Context, tb *testutil.TestBridge, useSWA bool) error {
+func (a *App) Restart(ctx context.Context, tb *testutil.TestBridge) error {
 	if err := a.Close(ctx); err != nil {
 		return err
 	}
-	newApp, err := Init(ctx, a.cr, a.scriptPaths, a.outDir, a.appLauncher, tb, useSWA)
+	newApp, err := Init(ctx, a.cr, a.scriptPaths, a.outDir, a.appLauncher, tb)
 	if err != nil {
 		return err
 	}

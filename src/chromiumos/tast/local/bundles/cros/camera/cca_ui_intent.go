@@ -96,23 +96,11 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               testutil.ARCWithPlatformApp(),
-			Val:               testutil.PlatformApp,
+			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               testutil.ARCWithPlatformApp(),
-			Val:               testutil.PlatformApp,
-		}, {
-			Name:              "swa",
-			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               testutil.ARCWithSWA(),
-			Val:               testutil.SWA,
-		}, {
-			Name:              "vm_swa",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               testutil.ARCWithSWA(),
-			Val:               testutil.SWA,
+			Pre:               arc.Booted(),
 		}},
 	})
 }
@@ -121,8 +109,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
-	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
-	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
+	tb, err := testutil.NewTestBridge(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -245,21 +232,21 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.Name, func(ctx context.Context, s *testing.State) {
-			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb, useSWA); err != nil {
+			if err := checkIntentBehavior(ctx, cr, a, uiDevice, tc.IntentOptions, scripts, outDir, tb); err != nil {
 				s.Error("Failed when checking intent behavior: ", err)
 			}
 		})
 	}
 
 	s.Run(ctx, "instances coexistanece test", func(ctx context.Context, s *testing.State) {
-		if err := checkInstancesCoexistence(ctx, cr, a, scripts, outDir, tb, useSWA); err != nil {
+		if err := checkInstancesCoexistence(ctx, cr, a, scripts, outDir, tb); err != nil {
 			s.Error("Failed for instances coexistence test: ", err)
 		}
 	})
 }
 
 // launchIntent launches CCA intent with different options.
-func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options intentOptions, scripts []string, outDir string, tb *testutil.TestBridge, useSWA bool) (*cca.App, error) {
+func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options intentOptions, scripts []string, outDir string, tb *testutil.TestBridge) (*cca.App, error) {
 	launchByIntent := func(ctx context.Context, tconn *chrome.TestConn) error {
 		ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
 		defer cancel()
@@ -277,7 +264,7 @@ func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options in
 		testing.ContextLog(ctx, string(output))
 		return nil
 	}
-	return cca.Init(ctx, cr, scripts, outDir, launchByIntent, tb, useSWA)
+	return cca.Init(ctx, cr, scripts, outDir, launchByIntent, tb)
 }
 
 func closeCCAAndTestApp(ctx context.Context, a *arc.ARC, app *cca.App, outDir string) error {
@@ -295,8 +282,8 @@ func closeCCAAndTestApp(ctx context.Context, a *arc.ARC, app *cca.App, outDir st
 }
 
 // checkIntentBehavior checks basic control flow for handling intent with different options.
-func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiDevice *ui.Device, options intentOptions, scripts []string, outDir string, tb *testutil.TestBridge, useSWA bool) (retErr error) {
-	app, err := launchIntent(ctx, cr, a, options, scripts, outDir, tb, useSWA)
+func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiDevice *ui.Device, options intentOptions, scripts []string, outDir string, tb *testutil.TestBridge) (retErr error) {
+	app, err := launchIntent(ctx, cr, a, options, scripts, outDir, tb)
 	if err != nil {
 		return err
 	}
@@ -338,7 +325,7 @@ func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiD
 		}
 
 		shouldAppAutoClose := options.TestBehavior.ShouldReview && options.TestBehavior.ShouldConfirmAfterCapture
-		if err := checkAutoCloseBehavior(ctx, cr, app, shouldAppAutoClose, useSWA); err != nil {
+		if err := checkAutoCloseBehavior(ctx, cr, app, shouldAppAutoClose); err != nil {
 			return err
 		}
 	}
@@ -444,7 +431,7 @@ func checkCaptureResult(ctx context.Context, app *cca.App, mode cca.Mode, startT
 }
 
 // checkAutoCloseBehavior checks closing state of CCA window in intent control flow.
-func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, app *cca.App, shouldClose, useSWA bool) error {
+func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, app *cca.App, shouldClose bool) error {
 	// Sleeps for a while after capturing and then ensure CCA instance is
 	// automatically closed or not.
 	testing.ContextLog(ctx, "Checking auto close behavior")
@@ -483,9 +470,9 @@ func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, app *cca.App
 }
 
 // checkInstancesCoexistence checks number of CCA windows showing in multiple launch request scenario.
-func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, scripts []string, outDir string, tb *testutil.TestBridge, useSWA bool) (retErr error) {
+func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, scripts []string, outDir string, tb *testutil.TestBridge) (retErr error) {
 	// Launch regular CCA.
-	regularApp, err := cca.New(ctx, cr, scripts, outDir, tb, useSWA)
+	regularApp, err := cca.New(ctx, cr, scripts, outDir, tb)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA")
 	}
@@ -510,7 +497,7 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 		URI:          "",
 		Mode:         cca.Photo,
 		TestBehavior: captureConfirmAndDone,
-	}, scripts, outDir, tb, useSWA)
+	}, scripts, outDir, tb)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA by intent")
 	}
@@ -525,11 +512,9 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 		return errors.Wrap(err, "failed to close intent instance")
 	}
 
-	// In SWA, we don't automatically show the original window back.
-	if useSWA {
-		if err := regularApp.Focus(ctx); err != nil {
-			return errors.Wrap(err, "failed to focus the original window")
-		}
+	// We don't automatically show the original window back.
+	if err := regularApp.Focus(ctx); err != nil {
+		return errors.Wrap(err, "failed to focus the original window")
 	}
 	// Check if the regular CCA is automatically resumed.
 	if err := regularApp.WaitForState(ctx, "suspend", false); err != nil {

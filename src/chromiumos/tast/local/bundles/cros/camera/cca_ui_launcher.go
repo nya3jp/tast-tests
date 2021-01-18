@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -24,21 +23,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Params: []testing.Param{{
-			Pre: testutil.ChromeWithPlatformApp(),
-			Val: testutil.PlatformApp,
-		}, {
-			Name: "swa",
-			Pre:  testutil.ChromeWithSWA(),
-			Val:  testutil.SWA,
-		}},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func CCAUILauncher(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
-	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
+	tb, err := testutil.NewTestBridge(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -53,44 +44,7 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 
-	// Only tests clicking camera icon on launcher under clamshell mode since all apps will minimize when the launcher shows up in tablet mode.
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		s.Fatal("Failed to ensure in clamshell mode: ", err)
-	}
-	defer cleanup(ctx)
-
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
-	if err != nil {
-		s.Fatal("Failed to launch camera app: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := app.Close(ctx); err != nil {
-			s.Error("Failed to close app: ", err)
-		}
-	}(ctx)
-
-	// If CCA is a platform app, when firing the launch event as the app is
-	// currently showing, the app should minimize. But this behavior is not
-	// implemented in SWA to make it consistent with other SWAs.
-	if useSWA {
-		if err := app.MinimizeWindow(ctx); err != nil {
-			s.Fatal("Failed to minimize camera app: ", err)
-		}
-	} else {
-		if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
-			s.Fatal("Failed to launch camera app: ", err)
-		}
-	}
-	if err := app.WaitForMinimized(ctx, true); err != nil {
-		s.Fatal("Failed to wait for app being minimized: ", err)
-	}
-
-	// When firing the launch event as the app is minimized, the app window should be restored.
 	if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
 		s.Fatal("Failed to launch camera app: ", err)
-	}
-	if err := app.WaitForMinimized(ctx, false); err != nil {
-		s.Fatal("Failed to wait for app being restored: ", err)
 	}
 }
