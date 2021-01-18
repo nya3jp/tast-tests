@@ -16,6 +16,24 @@
       "message": "Suggest to run in tablet mode as well.",
       "revId": "077aa9c36ce5393578a5542f1fe619361de0b5ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16135d88_e5cec931",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2021-01-18T06:09:37Z",
+      "side": 1,
+      "message": "Tested successfully in tablet mode",
+      "parentUuid": "ab967e69_d3c0934d",
+      "revId": "077aa9c36ce5393578a5542f1fe619361de0b5ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
