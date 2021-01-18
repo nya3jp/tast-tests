@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "febc8180_4f2c8ade",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-18T01:49:28Z",
+      "side": 1,
+      "message": "nit: Maybe wrap the comment?",
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021c1266_2fdb4d1b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-18T01:49:28Z",
+      "side": 1,
+      "message": "Do you need to defer here? or does Release mess up the error message?",
+      "range": {
+        "startLine": 608,
+        "startChar": 3,
+        "endLine": 608,
+        "endChar": 8
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60c8efc_8cf5d777",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-18T01:49:28Z",
+      "side": 1,
+      "message": "A little more explanation of the diff grouping and the reasoning behind it would be good here.",
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284164a0_a1dfb35c",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-18T01:49:28Z",
+      "side": 1,
+      "message": "Why is this still here when getCrosVersion is already at least partially implemented (but as yet unused)?",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c4e941_9cad4342",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-18T01:49:28Z",
+      "side": 1,
+      "message": "Why do all of these functions emit fatal errors rather than just returning an error message?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7670b774_b5c9e709",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-18T01:49:28Z",
+      "side": 1,
+      "message": "You might want to give some context to this error message",
+      "range": {
+        "startLine": 92,
+        "startChar": 31,
+        "endLine": 92,
+        "endChar": 43
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46343a1b_91907e96",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-18T01:49:28Z",
+      "side": 1,
+      "message": "Multiline logs are discouraged, why do you need the \\n\\n?",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf38fe2b_c82742e2",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-18T01:49:28Z",
+      "side": 1,
+      "message": "any reason not to use testexec?  If not, please switch it (and use the dumplogonfailure option if appropriate).",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 12
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
