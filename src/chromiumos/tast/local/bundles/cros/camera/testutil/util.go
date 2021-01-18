@@ -8,61 +8,22 @@ package testutil
 
 import (
 	"context"
-	"fmt"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
 var (
-	// ID is the app id of CCA.
-	ID = "hfhhnacclhffhdffklopdkcgdhifgngh"
-	// BackgroundURL is the url of the CCA background page.
-	BackgroundURL     = fmt.Sprintf("chrome-extension://%s/views/background.html", ID)
 	fakeCameraOptions = chrome.ExtraArgs(
 		// The default fps of fake device is 20, but CCA requires fps >= 24.
 		// Set the fps to 30 to avoid OverconstrainedError.
 		"--use-fake-device-for-media-stream=fps=30")
-	chromeWithSWA                      = chrome.NewPrecondition("cca_swa", chrome.EnableFeatures("CameraSystemWebApp"))
-	chromeWithSWAAndFakeCamera         = chrome.NewPrecondition("cca_fake_camera_swa", chrome.EnableFeatures("CameraSystemWebApp"), fakeCameraOptions)
-	arcWithSWA                         = arc.NewPrecondition("arc_cca_swa", nil, "--enable-features=CameraSystemWebApp")
-	chromeWithPlatformApp              = chrome.NewPrecondition("cca_platform_app", chrome.DisableFeatures("CameraSystemWebApp"))
-	chromeWithPlatformAppAndFakeCamera = chrome.NewPrecondition("cca_fake_camera_platform_app", chrome.DisableFeatures("CameraSystemWebApp"), fakeCameraOptions)
-	arcWithPlatformApp                 = arc.NewPrecondition("arc_cca_platform_app", nil, "--disable-features=CameraSystemWebApp")
+	chromeWithFakeCamera = chrome.NewPrecondition("chrome_fake_camera", fakeCameraOptions)
 )
 
-// CCAAppType determines whether CCA is a platform app or an SWA.
-type CCAAppType int
-
-const (
-	// SWA represents the System web app version of CCA
-	SWA CCAAppType = iota
-	// PlatformApp represents the platform app version of CCA
-	PlatformApp
-)
-
-// ChromeWithSWA returns a precondition that Chrome is already logged in and CCA is installed as an SWA when a test is run.
-func ChromeWithSWA() testing.Precondition { return chromeWithSWA }
-
-// ChromeWithSWAAndFakeCamera returns a precondition that Chrome is already logged in with fake camera and CCA is installed as an SWA when a test is run.
-func ChromeWithSWAAndFakeCamera() testing.Precondition { return chromeWithSWAAndFakeCamera }
-
-// ARCWithSWA returns a precondition that ARC Container has already booted and CCA is installed as an SWA when a test is run.
-func ARCWithSWA() testing.Precondition { return arcWithSWA }
-
-// ChromeWithPlatformApp returns a precondition that Chrome is already logged in and CCA is installed as a platform app when a test is run.
-func ChromeWithPlatformApp() testing.Precondition { return chromeWithPlatformApp }
-
-// ChromeWithPlatformAppAndFakeCamera returns a precondition that Chrome is already logged in with fake camera and CCA is installed as a platform app when a test is run.
-func ChromeWithPlatformAppAndFakeCamera() testing.Precondition {
-	return chromeWithPlatformAppAndFakeCamera
-}
-
-// ARCWithPlatformApp returns a precondition that ARC Container has already booted and CCA is installed as a platform app when a test is run.
-func ARCWithPlatformApp() testing.Precondition { return arcWithPlatformApp }
+// ChromeWithFakeCamera returns a precondition that Chrome is already logged in with fake camera.
+func ChromeWithFakeCamera() testing.Precondition { return chromeWithFakeCamera }
 
 // AppLauncher is used during the launch process of CCA. We could launch CCA
 // by launchApp event, camera intent or any other ways.
@@ -144,18 +105,4 @@ func RefreshApp(ctx context.Context, conn *chrome.Conn, tb *TestBridge) (*AppWin
 		return nil, err
 	}
 	return appWindow, nil
-}
-
-// SWALauncher returns an app launcher which launches CCA as SWA.
-func SWALauncher() AppLauncher {
-	return func(ctx context.Context, tconn *chrome.TestConn) error {
-		return apps.LaunchSystemWebApp(ctx, tconn, "Camera", "chrome://camera-app/views/main.html")
-	}
-}
-
-// PlatformAppLauncher returns an app launcher which launches CCA as platform app.
-func PlatformAppLauncher() AppLauncher {
-	return func(ctx context.Context, tconn *chrome.TestConn) error {
-		return tconn.Call(ctx, nil, `tast.promisify(chrome.management.launchApp)`, ID)
-	}
 }
