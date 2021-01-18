@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91a5d9dc_a7242436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-18T07:30:29Z",
+      "side": 1,
+      "message": "Would it be better to place cellular one level above, say bundles/cros/cellular ?",
+      "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa00c6a2_506c2a37",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/shill_cellular_enable_and_connect.go",
         "patchSetId": 2
