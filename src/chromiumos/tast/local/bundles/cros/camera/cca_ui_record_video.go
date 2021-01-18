@@ -30,14 +30,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      5 * time.Minute,
-		Params: []testing.Param{{
-			Pre: testutil.ChromeWithPlatformApp(),
-			Val: testutil.PlatformApp,
-		}, {
-			Name: "swa",
-			Pre:  testutil.ChromeWithSWA(),
-			Val:  testutil.SWA,
-		}},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -169,8 +162,7 @@ func (v *video) stop(ctx context.Context, app *cca.App) error {
 
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
-	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
+	tb, err := testutil.NewTestBridge(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -197,7 +189,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 			ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 			defer cancel()
 
-			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
+			app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
 			if err != nil {
 				s.Fatal("Failed to open CCA: ", err)
 			}
@@ -229,11 +221,8 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		})
 	}
 
-	// Skip confirm dialog test for platform app since it does not support it.
-	if useSWA {
-		if err := testConfirmDialog(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA); err != nil {
-			s.Error("Failed for confirm dialog test: ", err)
-		}
+	if err := testConfirmDialog(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb); err != nil {
+		s.Error("Failed for confirm dialog test: ", err)
 	}
 }
 
@@ -417,12 +406,12 @@ func testPauseResume(ctx context.Context, app *cca.App) error {
 	return v.stop(ctx, app)
 }
 
-func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge, useSWA bool) error {
+func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, tb *testutil.TestBridge) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 	defer cancel()
 
-	app, err := cca.New(ctx, cr, scriptPaths, outDir, tb, useSWA)
+	app, err := cca.New(ctx, cr, scriptPaths, outDir, tb)
 	if err != nil {
 		return err
 	}
@@ -475,7 +464,7 @@ func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 	// It is expected that the camera app is not closed.
 	errTimeout := errors.New("CCA exists after timeout")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		appExist, err := cca.InstanceExists(ctx, cr, true)
+		appExist, err := cca.InstanceExists(ctx, cr)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -505,7 +494,7 @@ func testConfirmDialog(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 
 	// Now the camera app is closable.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		appExist, err := cca.InstanceExists(ctx, cr, true)
+		appExist, err := cca.InstanceExists(ctx, cr)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
