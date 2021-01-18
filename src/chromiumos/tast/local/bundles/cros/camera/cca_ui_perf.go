@@ -26,14 +26,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      5 * time.Minute,
-		Params: []testing.Param{{
-			Pre: testutil.ChromeWithPlatformApp(),
-			Val: testutil.PlatformApp,
-		}, {
-			Name: "swa",
-			Pre:  testutil.ChromeWithSWA(),
-			Val:  testutil.SWA,
-		}},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -41,8 +34,7 @@ func init() {
 // performance through some UI operations.
 func CCAUIPerf(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
-	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
+	tb, err := testutil.NewTestBridge(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -58,7 +50,7 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 		PerfValues:               perfValues,
 		ShouldMeasureUIBehaviors: true,
 		OutputDir:                s.OutDir(),
-	}, tb, useSWA); err != nil {
+	}, tb); err != nil {
 		var errJS *cca.ErrJS
 		if errors.As(err, &errJS) {
 			s.Error("There are JS errors when running CCA: ", err)
@@ -72,7 +64,7 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 		PerfValues:               perfValues,
 		ShouldMeasureUIBehaviors: false,
 		OutputDir:                s.OutDir(),
-	}, tb, useSWA); err != nil {
+	}, tb); err != nil {
 		var errJS *cca.ErrJS
 		if errors.As(err, &errJS) {
 			s.Error("There are JS errors when running CCA: ", err)

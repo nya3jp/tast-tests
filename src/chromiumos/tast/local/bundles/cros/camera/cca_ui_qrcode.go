@@ -23,25 +23,12 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"cca_ui.js", "qrcode_1280x960.y4m"},
-		Params: []testing.Param{{
-			Val: testutil.PlatformApp,
-		}, {
-			Name: "swa",
-			Val:  testutil.SWA,
-		}},
 	})
 }
 
 func CCAUIQRCode(ctx context.Context, s *testing.State) {
 	const expectedURL = "https://www.google.com/chromebook/chrome-os/"
-	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
-
-	feature := chrome.DisableFeatures("CameraSystemWebApp")
-	if useSWA {
-		feature = chrome.EnableFeatures("CameraSystemWebApp")
-	}
 	cr, err := chrome.New(ctx,
-		feature,
 		chrome.ExtraArgs(
 			"--use-fake-device-for-media-stream",
 			"--use-file-for-fake-video-capture="+s.DataPath("qrcode_1280x960.y4m")))
@@ -54,7 +41,7 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get test connection: ", err)
 	}
 
-	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
+	tb, err := testutil.NewTestBridge(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -64,7 +51,7 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
