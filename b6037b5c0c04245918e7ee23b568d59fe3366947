@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b79b9cda_21bbcf04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-01-18T00:33:12Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with these functions, but is it necessary to release this return value, similar to buttons.Release() below?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "b6037b5c0c04245918e7ee23b568d59fe3366947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7644a93_618a3b6b",
         "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
         "patchSetId": 1
