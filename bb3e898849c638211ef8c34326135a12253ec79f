@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af75981_dcd0add0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/characteristics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-18T04:37:43Z",
+      "side": 1,
+      "message": "Instead of reimplement the parsing logic in go, should we add a gtest with the existing CameraCharacteristics class from USB HAL? We already use it in our V4L2 test.\n\nI am afraid that reimplement the parsing logic in go might have subtle difference and may desync with the USB HAL in the future.",
+      "revId": "bb3e898849c638211ef8c34326135a12253ec79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
