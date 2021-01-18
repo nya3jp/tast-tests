@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -75,6 +76,8 @@ type EncodeTestOptions struct {
 	PixelFormat videotype.PixelFormat
 	// EncoderType indicates whether a HW or SW encoder will be used.
 	EncoderType EncoderType
+	// BatteryDischargeMode specifies battery usage during a test.
+	BatteryDischargeMode setup.BatteryDischargeMode
 }
 
 // testMode represents the test's running mode.
