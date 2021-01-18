@@ -87,7 +87,7 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 			return errors.New("accessibility not enabled")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled: ")
 	}
 
