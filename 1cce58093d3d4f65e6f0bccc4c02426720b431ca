@@ -16,6 +16,23 @@
       "message": "Hello Jun, PTAL in vkb.go. I think it should be in more reliable way, but I don\u0027t have any good idea :/",
       "revId": "1cce58093d3d4f65e6f0bccc4c02426720b431ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bafa93fc_e41b6ddc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-01-18T00:35:29Z",
+      "side": 1,
+      "message": "Thank you both for reviewing!",
+      "revId": "1cce58093d3d4f65e6f0bccc4c02426720b431ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
