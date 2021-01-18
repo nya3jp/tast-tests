@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50051fbf_0e098db9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/download_link.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-18T22:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "293eaec0_554a983a",
+      "range": {
+        "startLine": 6,
+        "startChar": 18,
+        "endLine": 6,
+        "endChar": 22
+      },
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01f4f9f4_849f3d06",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-01-18T11:12:41Z",
       "side": 1,
       "message": "\u003cscript\u003e\n    document.getElementById(\"download-gallery-image\").click();\n\u003c/script\u003e\n\nThis will automatically click link and download image during loading page. It saves you a lot of trouble from extra UI interaction flakiness",
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29bd5183_23c6ad18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/download_link.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-18T22:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01f4f9f4_849f3d06",
       "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db6fcb7_cf583cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/download_link.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-18T22:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b5360ca_85a42107",
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "833a620d_6c1c3871",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-01-18T11:12:41Z",
       "side": 1,
       "message": "You can reuse test file variable in launch_gallery.go\n\nData: []string{testFile, download_link.html}",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "783e9eb0_6fbcbcef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-18T22:21:03Z",
+      "side": 1,
+      "message": "Tast actually doesn\u0027t allow interfile references (if they\u0027re not exported)\n\n\u003e \"Tast forbids inter-file references in entry files\"",
+      "parentUuid": "833a620d_6c1c3871",
       "range": {
         "startLine": 35,
         "startChar": 25,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfeab288_7209cdd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-18T22:21:03Z",
+      "side": 1,
+      "message": "Same reason as above, given the data file exists in this package I avoided moving references to it to a shared package.",
+      "parentUuid": "1acf346e_9d8584e5",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 61
+      },
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a83b49c_4b4cf00a",
@@ -121,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9b7957_b202b4bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-18T22:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a83b49c_4b4cf00a",
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8efd1582_dd8e7764",
@@ -134,6 +260,30 @@
       "writtenOn": "2021-01-18T11:12:41Z",
       "side": 1,
       "message": "It is not required any more if you follow the suggestion in html page to auto download.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f76caca_228de596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-18T22:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8efd1582_dd8e7764",
       "range": {
         "startLine": 96,
         "startChar": 1,
