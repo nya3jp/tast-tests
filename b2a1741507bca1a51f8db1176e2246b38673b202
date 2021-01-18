@@ -50,6 +50,24 @@
       "message": "FYI: I just noticed there appears to be a similar function already in the `ossettings` package, are you able to reuse that one? \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go;l\u003d100-128;drc\u003d529e01ac439148372997c9f09942726b67b5dc5d",
       "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20efc838_5a20e9e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-18T05:37:07Z",
+      "side": 1,
+      "message": "That function does slightly different things.\n\nLaunchAtPageURL opens OS Settings app, then perform a second navigation (JS `location.href \u003d ...`). It also requires a UI condition check to wait to the OS Settings page to finish loading.\n\nLaunchOSSettings (in this CL) performs only one navigation (and automaticaly waits for the page finish loading.\n\n---\n\nI don\u0027t have strong opinions about using the first function, but most callers of LaunchOSSettings probably doesn\u0027t need/want a UI check. \n\nUsing LaunchAtPageURL to implement LaunchOSSettings is probably feasible, we\u0027d need to come up with a generic UI condition to wait for the page finish loading. Or use a no-op condition, and subsequently wait on document.readyState.",
+      "parentUuid": "d0088a54_f2224807",
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
