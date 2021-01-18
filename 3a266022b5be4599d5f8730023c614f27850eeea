@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b7f094_70988bc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-18T21:46:12Z",
+      "side": 1,
+      "message": "Done using the now merged crostini support for this.",
+      "parentUuid": "202fd8f5_cd7c71d2",
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05e96dde_606e73eb",
@@ -208,6 +226,30 @@
       "side": 1,
       "message": "Made https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2622135 to address this, I will wait until it is merged before proceeding with this change.",
       "parentUuid": "f844937c_ee52dadf",
+      "range": {
+        "startLine": 330,
+        "startChar": 28,
+        "endLine": 330,
+        "endChar": 96
+      },
+      "revId": "3a266022b5be4599d5f8730023c614f27850eeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdbc90dc_ddf652aa",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-18T21:46:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb1540c_a652d388",
       "range": {
         "startLine": 330,
         "startChar": 28,
