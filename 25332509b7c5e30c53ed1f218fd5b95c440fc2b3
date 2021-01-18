@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c6ae4d8_70339b0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T22:54:17Z",
+      "side": 1,
+      "message": "This is not reuse the entry file, but the variable value. The file is still managed isolated.",
+      "parentUuid": "783e9eb0_6fbcbcef",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "25332509b7c5e30c53ed1f218fd5b95c440fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1acf346e_9d8584e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
         "patchSetId": 2
