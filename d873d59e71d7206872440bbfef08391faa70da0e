@@ -16,6 +16,92 @@
       "message": "+benreich for feedback\n",
       "revId": "d873d59e71d7206872440bbfef08391faa70da0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eabf3488_9cdaea7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413244
+      },
+      "writtenOn": "2021-01-18T02:12:22Z",
+      "side": 1,
+      "message": "Adding tast-owners for review. ",
+      "revId": "d873d59e71d7206872440bbfef08391faa70da0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2891870_9eb27020",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1413244
+      },
+      "writtenOn": "2021-01-18T02:12:22Z",
+      "side": 1,
+      "message": "nit: this can be collapsed into one line\n\n```\nif err :\u003d LaunchSystemWebApp(ctx, tconn, \"OSSettings\", url); err !\u003d nil\n```",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "d873d59e71d7206872440bbfef08391faa70da0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f405dd_c02ca906",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1413244
+      },
+      "writtenOn": "2021-01-18T02:12:22Z",
+      "side": 1,
+      "message": "Make sure to defer conn.Close()",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 5
+      },
+      "revId": "d873d59e71d7206872440bbfef08391faa70da0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c87786_f6752fc8",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1413244
+      },
+      "writtenOn": "2021-01-18T02:12:22Z",
+      "side": 1,
+      "message": "nit: same as above\n```\nif err :\u003d conn.WaitForExpr(ctx, \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\"); err !\u003d nil\n```",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "d873d59e71d7206872440bbfef08391faa70da0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
