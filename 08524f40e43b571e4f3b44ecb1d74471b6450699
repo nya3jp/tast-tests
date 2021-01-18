@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8948d507_b9b91ac6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-18T22:10:53Z",
+      "side": 1,
+      "message": "nit: maybe we could use the bug where you track removal of the\n(soon legacy) EncodeAccel ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "08524f40e43b571e4f3b44ecb1d74471b6450699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "63fd3b27_cb8c7421",
@@ -14,6 +37,92 @@
       "writtenOn": "2021-01-18T06:22:48Z",
       "side": 1,
       "message": "Miguel can you review this CL as David is OOO for a while?\n\nThanks in advance.",
+      "revId": "08524f40e43b571e4f3b44ecb1d74471b6450699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f831b2_95c7776e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-18T22:10:53Z",
+      "side": 1,
+      "message": "LGTM % a few nits/suggestions.",
+      "revId": "08524f40e43b571e4f3b44ecb1d74471b6450699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61dfd13_227ccbdd",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-18T22:10:53Z",
+      "side": 1,
+      "message": "s/webMName/webMPath/ ?",
+      "range": {
+        "startLine": 141,
+        "startChar": 35,
+        "endLine": 141,
+        "endChar": 43
+      },
+      "revId": "08524f40e43b571e4f3b44ecb1d74471b6450699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31cad15d_1a085904",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-18T22:10:53Z",
+      "side": 1,
+      "message": "nit: PrepareYUVFilesFromWebM() doesn\u0027t describe why is it different when \ncompared to the existing PrepareYUV(). What about PrepareYUVAndJSON() ?",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 28
+      },
+      "revId": "08524f40e43b571e4f3b44ecb1d74471b6450699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a31079f_c7fd46ca",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-18T22:10:53Z",
+      "side": 1,
+      "message": "nit: maybe s/dstYUVJSONPath/yuvJSONPath/ ? To look similar to |yuvPath|\nin l.144.",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 15
+      },
       "revId": "08524f40e43b571e4f3b44ecb1d74471b6450699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
