@@ -40,7 +40,7 @@ type MeasurementOptions struct {
 }
 
 // MeasurePerformance measures performance for CCA.
-func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, options MeasurementOptions, tb *testutil.TestBridge, useSWA bool) (retErr error) {
+func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, options MeasurementOptions, tb *testutil.TestBridge) (retErr error) {
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to set up benchmark")
@@ -56,7 +56,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to idle")
 	}
 
-	app, err := New(ctx, cr, scripts, options.OutputDir, tb, useSWA)
+	app, err := New(ctx, cr, scripts, options.OutputDir, tb)
 	if err != nil {
 		return errors.Wrap(err, "failed to open CCA")
 	}

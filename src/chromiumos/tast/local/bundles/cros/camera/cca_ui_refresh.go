@@ -22,18 +22,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Params: []testing.Param{{
-			Name: "swa",
-			Pre:  testutil.ChromeWithSWA(),
-			Val:  testutil.SWA,
-		}},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func CCAUIRefresh(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	useSWA := s.Param().(testutil.CCAAppType) == testutil.SWA
-	tb, err := testutil.NewTestBridge(ctx, cr, useSWA)
+	tb, err := testutil.NewTestBridge(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -43,7 +38,7 @@ func CCAUIRefresh(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear saved directory: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb, useSWA)
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), tb)
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}

@@ -6,12 +6,7 @@ package camera
 
 import (
 	"context"
-	"fmt"
-	"io/ioutil"
-	"time"
 
-	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -21,11 +16,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAAPI,
 		Desc:         "Verifies that the private JavaScript APIs CCA relies on work as expected",
-		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
-		Data:         []string{"cca_api_can_access_external_storage.js"},
-		Pre:          testutil.ChromeWithPlatformApp(),
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -35,34 +29,32 @@ func init() {
 func CCAAPI(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	const ccaID = "hfhhnacclhffhdffklopdkcgdhifgngh"
-	bgURL := fmt.Sprintf("chrome-extension://%s/views/background.html", ccaID)
-	s.Log("Connecting to CCA background ", bgURL)
-	ccaConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	conn, err := cr.NewConn(ctx, "chrome://camera-app/views/test.html")
 	if err != nil {
-		s.Fatal("Failed to connect to CCA: ", err)
+		s.Fatal("Failed to connect to the CCA's page: ", err)
 	}
-	defer ccaConn.Close()
-	defer ccaConn.CloseTarget(ctx)
 
-	rctx, rcancel := ctxutil.Shorten(ctx, 3*time.Second)
-	defer rcancel()
-	if err := ccaConn.WaitForExpr(rctx, "chrome.fileManagerPrivate"); err != nil {
-		s.Fatal("Failed to wait for expression: ", err)
+	result := true
+	if err := conn.Eval(ctx, "window.FileSystemHandle !== undefined", &result); err != nil {
+		s.Fatal("Failed to evaluate codes on the test page: ", err)
+	} else if !result {
+		s.Fatal("window.FileSystemHandle is not available on the test page")
 	}
-	s.Log("Connected to CCA background")
 
-	testCanAccessExternalStorage(rctx, s, ccaConn)
-	// TODO(inker): Add tests for other private APIs.
-}
-
-func testCanAccessExternalStorage(ctx context.Context, s *testing.State, conn *chrome.Conn) {
-	content, err := ioutil.ReadFile(s.DataPath("cca_api_can_access_external_storage.js"))
-	if err != nil {
-		s.Error("Failed to read JS file: ", err)
-		return
+	if err := conn.Eval(ctx, "window.launchQueue !== undefined", &result); err != nil {
+		s.Fatal("Failed to evaluate codes on the test page: ", err)
+	} else if !result {
+		s.Fatal("window.launchQueue is not available on the test page")
 	}
-	if err := conn.Eval(ctx, string(content), nil); err != nil {
-		s.Error("Failed to evaluate promise: ", err)
+
+	if err := conn.Eval(ctx, `
+	  (async function() {
+	    await import('/strings.m.js');
+	    return window.loadTimeData !== undefined;
+	  })();
+	`, &result); err != nil {
+		s.Fatal("Failed to evaluate codes on the test page: ", err)
+	} else if !result {
+		s.Fatal("window.loadTimeData is not available on the test page")
 	}
 }
