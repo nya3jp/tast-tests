@@ -594,6 +594,24 @@ func FindAll(ctx context.Context, tconn *chrome.TestConn, params FindParams) (No
 	return root.Descendants(ctx, params)
 }
 
+// FindSingleton finds the only descendants of the root node matching the params and returns it.
+// If the JavaScript fails to execute, an error is returned.
+// This differs from Find in that if there are multiple matching nodes, it returns an error.
+func FindSingleton(ctx context.Context, tconn *chrome.TestConn, params FindParams) (*Node, error) {
+	nodes, err := FindAll(ctx, tconn, params)
+	if err != nil {
+		return nil, err
+	} else if len(nodes) == 0 {
+		return nil, errors.Errorf("failed to find ui node matching parameters %+v. If you want a list of ui nodes, try ui.RootDebugInfo(context.Context, chrome.TestConn)", params)
+	} else if len(nodes) > 1 {
+		for _, node := range nodes {
+			defer node.Release(ctx)
+		}
+		return nil, errors.Errorf("found multiple ui nodes matching parameters %+v: %+v", params, nodes)
+	}
+	return nodes[0], nil
+}
+
 // FindWithTimeout finds a descendant of the root node using params and returns it.
 // If the JavaScript fails to execute, an error is returned.
 func FindWithTimeout(ctx context.Context, tconn *chrome.TestConn, params FindParams, timeout time.Duration) (*Node, error) {

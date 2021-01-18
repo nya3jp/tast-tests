@@ -142,6 +142,12 @@ func (r Rect) Size() Size {
 	return Size{Width: r.Width, Height: r.Height}
 }
 
+// Contains returns whether `other` is a rectangle contained within r.
+// A rectangle is considered to contain itself.
+func (r Rect) Contains(other Rect) bool {
+	return r.Left <= other.Left && r.Top <= other.Top && r.Bottom() >= other.Bottom() && r.Right() >= other.Right()
+}
+
 // WithInset returns a new Rect inset by the given amounts. If insetting would cause the rectangle to
 // have negative area, instead an empty rectangle with the same CenterPoint is returned.
 // Note that dw and dh may be negative to outset a rectangle.

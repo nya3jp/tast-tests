@@ -58,6 +58,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/scanapp"
 	_ "chromiumos/tast/local/bundles/cros/scanner"
 	_ "chromiumos/tast/local/bundles/cros/sched"
+	_ "chromiumos/tast/local/bundles/cros/screenshot"
 	_ "chromiumos/tast/local/bundles/cros/security"
 	_ "chromiumos/tast/local/bundles/cros/session"
 	_ "chromiumos/tast/local/bundles/cros/shelf"
