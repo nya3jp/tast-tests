@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b70323_75cf1125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-01-18T11:52:21Z",
+      "side": 1,
+      "message": "In arc.ConciergeCrash [1], we call arc.New() before each arc.InitPID().\n(1) Is it okay to skip several checks (e.g. for the property ro.arc.boot.completed) in arc.New() and just check arc.InitPID()?\n(2) With arc.New() skipped, is 60 sec sufficient for init PID to come up? arc.Boot [2] sets Timeout to be 5 min. So we seem to be expecting that ARC boot time can generally be a little longer. Maybe it\u0027s okay if init PID comes up well before ARC boots completely (in both ARCVM and ARC container).\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/concierge_crash.go\n[2] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "5135cc7608e1f27dab1c66a7eeb3544486ae3d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
