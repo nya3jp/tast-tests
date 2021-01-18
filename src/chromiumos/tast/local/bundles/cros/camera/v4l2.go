@@ -73,6 +73,7 @@ func V4L2(ctx context.Context, s *testing.State) {
 		logFile := fmt.Sprintf("media_v4l2_test_%s.log", filepath.Base(devicePath))
 
 		t := gtest.New("media_v4l2_test",
+			gtest.Filter("V4L2Test/*"),
 			gtest.Logfile(filepath.Join(s.OutDir(), logFile)),
 			gtest.ExtraArgs(extraArgs...))
 
