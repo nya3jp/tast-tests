@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b99692f_ee0a5928",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-18T10:41:52Z",
+      "side": 1,
+      "message": "The removed items from subTests can potentially be added back. I will create a new cl to do that. You brought up a good reason to split the code here. But for this case, I will just keep move forward instead of revertion (There are more changes coming soon).\n\nThanks a lot for your comment. I will use small cls as suggested next time.",
+      "parentUuid": "7dc8a281_d82bb5a7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "3f45568427d88b62439ba6d417c6eb9e56000ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3f32155_d5b33445",
