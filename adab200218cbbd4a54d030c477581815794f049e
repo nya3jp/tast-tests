@@ -37,6 +37,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3929d109_b62469b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-18T08:55:34Z",
+      "side": 1,
+      "message": "Sorry that I didn\u0027t catch this in previous review. We shall not hold ctx in struct. Each method call, the caller should give its current ctx. The reason to do so is that ctx might be different among calling points.\n\nThe trigger that reminds me this is that when I see \nif wasAutoConnect, err :\u003d helper.SetServiceAutoConnect(false); err !\u003d nil {\n   ...\n} else if wasAutoConnect {\n  defer func() {\n    ...\n  }\n}\n\nWe used to reserve ctx for running the defer function. So helper.SetServiceAutoConnect() in the defer function should use the original ctx and other functions below SetServiceAutoConnect block should use the shortened ctx.\n\nThis fix should be made in a standalone CL prior to this one.",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "905259de_fcf4667b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-18T08:55:34Z",
+      "side": 1,
+      "message": "How about adding a comment for better readability?\n\n// waitForEnabled waits for cellular technology being enabled/disabled within 3 seconds.",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5cddabb_6fe9e4f3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
         "patchSetId": 6
@@ -60,6 +94,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ae577af_0952d8eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-18T08:55:34Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9396300c_1fef07e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
         "patchSetId": 6
@@ -71,6 +122,46 @@
       "writtenOn": "2021-01-15T19:34:27Z",
       "side": 1,
       "message": "nit:\n\n ...(\"Unexpected powered state: got %t, want %t\", powered, expected)",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c07fade_8c48454d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-18T08:55:34Z",
+      "side": 1,
+      "message": "Should be:\n\nReturns true if the AutoConnect property was set differently and is flipped successfully. Otherwise returns false if: 1) AutoConnect value is the same as the given value; 2) failed to set AutoConnect.",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df4ae78_19ecf486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-18T08:55:34Z",
+      "side": 1,
+      "message": "Same here",
       "revId": "adab200218cbbd4a54d030c477581815794f049e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
