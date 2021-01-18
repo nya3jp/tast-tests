@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d1b8d9_760d9e18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-18T02:06:15Z",
+      "side": 1,
+      "message": "LGTM. Please allow me a while to clean up the chrome package...",
+      "revId": "8d1e4335dbffeed3f168b6ac52fd6527245fc9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
