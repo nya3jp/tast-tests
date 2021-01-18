@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "da16d2f8_9916043f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-01-18T00:28:56Z",
+      "side": 1,
+      "message": "What about the situation where there is a bug, but the firmware updater doesn\u0027t run? According to this CL, the firmware updater often doesn\u0027t run, so if there is an actual underlying bug, then this test will often pass. Is there anything that can be done about that, or that can at least emphasize flaky failures?",
+      "parentUuid": "1559d795_8c365e36",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "3b61730caa5086ae753342c57d6536b312f58432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9b4bf6c0_aca59d41",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
