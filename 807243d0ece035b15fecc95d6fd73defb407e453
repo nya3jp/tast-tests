@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d75942_3f71e10c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e906c2f_74c33411",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3797cf8e_e20d0aee",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce3e9c7_e059bdeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3797cf8e_e20d0aee",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dcf4814_3b8cfd9b",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-01-14T19:21:56Z",
       "side": 1,
       "message": "I think it should describe more about what it returns rather than the implementation details.\n\nWhat I\u0027m thinking is like \"isConnectedState returns the connection state of a bluetooth device from the settings window.\"",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf97f0ea_d6cfb095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dcf4814_3b8cfd9b",
       "range": {
         "startLine": 56,
         "startChar": 0,
@@ -127,6 +187,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc057cb_638748be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80af957e_56aa6840",
+      "range": {
+        "startLine": 58,
+        "startChar": 73,
+        "endLine": 58,
+        "endChar": 93
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71c9c0ff_7476e127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "We should ensure bluetooth page is opened to get connection state. IsConnected would return connection state for public function.",
+      "parentUuid": "66bc168a_6bdee573",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8d4c15_9b981cdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e005bf25_82481c85",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b7ce571_940095aa",
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee51b47_80dfd451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b7ce571_940095aa",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "742ec24a_7ba12113",
@@ -157,6 +307,30 @@
       "writtenOn": "2021-01-14T19:21:56Z",
       "side": 1,
       "message": "tconn.Eval(ctx, nil, ..., \u0026clipData)",
+      "range": {
+        "startLine": 51,
+        "startChar": 18,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09dc93ab_b72b50bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "742ec24a_7ba12113",
       "range": {
         "startLine": 51,
         "startChar": 18,
@@ -190,6 +364,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c89418_1bd18c03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240b5d3d_9fe8739c",
+      "range": {
+        "startLine": 62,
+        "startChar": 92,
+        "endLine": 62,
+        "endChar": 97
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4abff92d_92e41739",
@@ -203,6 +401,30 @@
       "writtenOn": "2021-01-14T19:21:56Z",
       "side": 1,
       "message": "It can be \"Chromium\" when the binary is a developer-built one.  It is better to support both cases (cf. https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go#191)",
+      "range": {
+        "startLine": 67,
+        "startChar": 53,
+        "endLine": 67,
+        "endChar": 69
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f659d934_6f29b1ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4abff92d_92e41739",
       "range": {
         "startLine": 67,
         "startChar": 53,
@@ -261,6 +483,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70a65e66_2b2b8e7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "First of all, we opened the browser app to get the browser start time.\nSo the browser window was not opened before.\nI have changed to use conn.CloseTarget instead of apps.Close.",
+      "parentUuid": "e1041b76_35b17fc5",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb27025_2805e6b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a23c0c6b_9cf2c209",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f41e347d_b6d083fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
         "patchSetId": 12
@@ -272,6 +542,24 @@
       "writtenOn": "2021-01-14T19:21:56Z",
       "side": 1,
       "message": "Please provide detailed description of what it does.",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb979ed_ce0925ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f41e347d_b6d083fc",
       "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -289,6 +577,30 @@
       "writtenOn": "2021-01-14T19:21:56Z",
       "side": 1,
       "message": "\"initializes gmail\"\n\nNote that you don\u0027t have to put doc comments for unexposed functions.",
+      "range": {
+        "startLine": 41,
+        "startChar": 13,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd97832_d3975b45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6412bec4_c157a193",
       "range": {
         "startLine": 41,
         "startChar": 13,
@@ -339,6 +651,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b37803_6a99957d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f8f5a7e_b152d1f3",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b573d2a1_55bb2990",
@@ -352,6 +688,30 @@
       "writtenOn": "2021-01-14T19:21:56Z",
       "side": 1,
       "message": "\"New creates a new netflix instance and signin to netflix.\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb82afc_34783937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b573d2a1_55bb2990",
       "range": {
         "startLine": 30,
         "startChar": 3,
@@ -385,6 +745,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac099d3f_0a50f323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae73e73d_05f83026",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f40f91ea_af15fec2",
@@ -398,6 +782,30 @@
       "writtenOn": "2021-01-14T19:21:56Z",
       "side": 1,
       "message": "nil",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c81703ee_ae212fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f40f91ea_af15fec2",
       "range": {
         "startLine": 34,
         "startChar": 9,
@@ -431,6 +839,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d5f6c9_8d06c979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5eed1b7_d5c044f0",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67404906_8e0beba6",
@@ -444,6 +876,30 @@
       "writtenOn": "2021-01-14T19:21:56Z",
       "side": 1,
       "message": "Please do not use testing.Sleep.  Use ui\u0027s Waiting functions.  Same within this function.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd7b44d5_30a50314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67404906_8e0beba6",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -471,6 +927,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ff4061d_dc81fb0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7dc0a42_22a42629",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c34a2659_51d8b346",
@@ -484,6 +958,24 @@
       "writtenOn": "2021-01-14T19:21:56Z",
       "side": 1,
       "message": "It seems there\u0027s already \u0027ossettings\u0027 package (src/chromiumos/tast/local/chrome/ui/ossettings).  Rather than creating this, please modify/integrate with that.",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6ce2f51_ec3a9eed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settingsapp/settingsapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-18T06:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c34a2659_51d8b346",
       "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
