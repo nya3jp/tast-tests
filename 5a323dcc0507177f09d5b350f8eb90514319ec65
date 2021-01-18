@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca86f764_722b9830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-01-18T10:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c3ebf3d_88f17db6",
+      "range": {
+        "startLine": 34,
+        "startChar": 29,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "5a323dcc0507177f09d5b350f8eb90514319ec65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb9e84d9_606079fb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-18T09:57:30Z",
       "side": 1,
       "message": "nit: Error. same for below",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "5a323dcc0507177f09d5b350f8eb90514319ec65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cea7d8_60616626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-01-18T10:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb9e84d9_606079fb",
       "range": {
         "startLine": 41,
         "startChar": 4,
