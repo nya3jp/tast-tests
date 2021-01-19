@@ -34,6 +34,24 @@
       "parentUuid": "7c33bcf4_187a4fdd",
       "revId": "cdbf80ff1f828d131c21e944d09517fd848e50cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a8d405_1492dd6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/characteristics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-19T08:52:31Z",
+      "side": 1,
+      "message": "sgtm. wtlee@ could you help confirm the \"BuiltinUSBCamera \u003d\u003e ConfigFileExists\" statement? I am not 100% sure if it hold for some old v1 device that with built-in USB camera but no config. IIRC we treat them as external cameras in USB HAL, but I don\u0027t know whether we set BuiltinUSBCamera capability for them or not.",
+      "parentUuid": "d1ed90b7_8efa376b",
+      "revId": "cdbf80ff1f828d131c21e944d09517fd848e50cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
