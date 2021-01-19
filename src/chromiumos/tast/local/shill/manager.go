@@ -260,9 +260,9 @@ func (m *Manager) IsEnabled(ctx context.Context, technology Technology) (bool, e
 }
 
 // DevicesByTechnology returns list of Devices and their Properties snapshots of the specified technology.
-func (m *Manager) DevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, []*Properties, error) {
+func (m *Manager) DevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, []*dbusutil.Properties, error) {
 	var matches []*Device
-	var props []*Properties
+	var props []*dbusutil.Properties
 
 	devs, err := m.Devices(ctx)
 	if err != nil {
