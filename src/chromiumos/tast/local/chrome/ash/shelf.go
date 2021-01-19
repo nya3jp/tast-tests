@@ -245,6 +245,20 @@ const (
 	MacNative AppType = "MacNative"
 )
 
+// AppInstallSource maps apps::mojom::InstallSource.
+type AppInstallSource string
+
+// Corresponds to the definition in autotest_private.idl
+const (
+	Unknown AppInstallSource = "Unknown"
+	System  AppInstallSource = "System"
+	Policy  AppInstallSource = "Policy"
+	Oem     AppInstallSource = "Oem"
+	Default AppInstallSource = "Default"
+	Sync    AppInstallSource = "Sync"
+	User    AppInstallSource = "User"
+)
+
 // AppReadiness maps apps::mojom::Readiness.
 type AppReadiness string
 
@@ -260,15 +274,16 @@ const (
 
 // ChromeApp corresponds to the "App" defined in autotest_private.idl.
 type ChromeApp struct {
-	AppID                 string       `json:"appId"`
-	Name                  string       `json:"name"`
-	ShortName             string       `json:"shortName"`
-	PublisherID           string       `json:"publisherId"`
-	Type                  AppType      `json:"type"`
-	Readiness             AppReadiness `json:"readiness"`
-	AdditionalSearchTerms []string     `json:"additionalSearchTerms"`
-	ShowInLauncher        bool         `json:"showInLauncher"`
-	ShowInSearch          bool         `json:"showInSearch"`
+	AppID                 string           `json:"appId"`
+	Name                  string           `json:"name"`
+	ShortName             string           `json:"shortName"`
+	PublisherID           string           `json:"publisherId"`
+	Type                  AppType          `json:"type"`
+	InstallSource         AppInstallSource `json:"installSource"`
+	Readiness             AppReadiness     `json:"readiness"`
+	AdditionalSearchTerms []string         `json:"additionalSearchTerms"`
+	ShowInLauncher        bool             `json:"showInLauncher"`
+	ShowInSearch          bool             `json:"showInSearch"`
 }
 
 // ChromeApps returns all of the installed apps.
