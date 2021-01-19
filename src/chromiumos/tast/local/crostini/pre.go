@@ -313,16 +313,17 @@ var startedByDlcBusterLargeContainerPre = &preImpl{
 
 // Implementation of crostini's precondition.
 type preImpl struct {
-	name          string                    // Name of this precondition (for logging/uniqueing purposes).
-	timeout       time.Duration             // Timeout for completing the precondition.
-	vmMode        vmSetupMode               // Where (component/dlc) the VM comes from.
-	container     containerType             // What type of container (regular or extra-large) to use.
-	debianVersion vm.ContainerDebianVersion // OS version of the container image.
-	cr            *chrome.Chrome
-	tconn         *chrome.TestConn
-	cont          *vm.Container
-	keyboard      *input.KeyboardEventWriter
-	startedOK     bool
+	name           string                    // Name of this precondition (for logging/uniqueing purposes).
+	timeout        time.Duration             // Timeout for completing the precondition.
+	vmMode         vmSetupMode               // Where (component/dlc) the VM comes from.
+	container      containerType             // What type of container (regular or extra-large) to use.
+	debianVersion  vm.ContainerDebianVersion // OS version of the container image.
+	cr             *chrome.Chrome
+	tconn          *chrome.TestConn
+	cont           *vm.Container
+	keyboard       *input.KeyboardEventWriter
+	startedOK      bool
+	screenRecorder *ui.ScreenRecorder
 }
 
 // Interface methods for a testing.Precondition.
@@ -392,19 +393,19 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			if err := p.cr.ResetState(ctx); err != nil {
 				s.Fatal("Failed to reset chrome's state: ", err)
 			}
-			screenRecorder, err := ui.NewScreenRecorder(ctx, p.tconn)
+			p.screenRecorder, err = ui.NewScreenRecorder(ctx, p.tconn)
 			if err != nil {
 				s.Log("Failed to create ScreenRecorder: ", err)
 			}
 
-			if screenRecorder != nil {
-				if err := screenRecorder.Start(ctx); err != nil {
+			if p.screenRecorder != nil {
+				if err := p.screenRecorder.Start(ctx); err != nil {
 					s.Log("Failed to start screen record: ", err)
 				} else {
 					s.Log("Start screen recording")
 				}
 			}
-			return PreData{p.cr, p.tconn, p.cont, p.keyboard, screenRecorder}
+			return PreData{p.cr, p.tconn, p.cont, p.keyboard, p.screenRecorder}
 		}
 	}
 
@@ -475,13 +476,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 
-	screenRecorder, err := ui.NewScreenRecorder(ctx, p.tconn)
+	p.screenRecorder, err = ui.NewScreenRecorder(ctx, p.tconn)
 	if err != nil {
 		s.Log("Failed to create ScreenRecorder: ", err)
 	}
 
-	if screenRecorder != nil {
-		if err := screenRecorder.Start(ctx); err != nil {
+	if p.screenRecorder != nil {
+		if err := p.screenRecorder.Start(ctx); err != nil {
 			s.Log("Failed to start screen record: ", err)
 		} else {
 			s.Log("Start screen recording")
@@ -520,7 +521,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	chrome.Lock()
 	vm.Lock()
 	shouldClose = false
-	return PreData{p.cr, p.tconn, p.cont, p.keyboard, screenRecorder}
+	return PreData{p.cr, p.tconn, p.cont, p.keyboard, p.screenRecorder}
 }
 
 // keepState returns whether the precondition should keep state from the
@@ -562,6 +563,20 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 			s.Log("Failure closing keyboard: ", err)
 		}
 		p.keyboard = nil
+	}
+
+	if p.screenRecorder != nil {
+		if err := p.screenRecorder.Stop(ctx); err != nil {
+			testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
+		} else {
+			// TODO (jinrongwu): only save the record if the test case fails when porting to fixture.
+			testing.ContextLogf(ctx, "Saving screen record to %s", s.OutDir())
+			if err := p.screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "screenRecord.webm")); err != nil {
+				testing.ContextLogf(ctx, "Failed to save screen record in bytes: %s", err)
+			}
+		}
+		p.screenRecorder.Release(ctx)
+		p.screenRecorder = nil
 	}
 
 	// Don't uninstall crostini or delete the image for keepState so that
