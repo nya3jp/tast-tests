@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b4de0f4_e6faecad",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-19T02:08:03Z",
+      "side": 1,
+      "message": "It seems confusing that testname is passed twice, maybe change to screenshotName or something",
+      "range": {
+        "startLine": 107,
+        "startChar": 79,
+        "endLine": 107,
+        "endChar": 87
+      },
+      "revId": "5d902888c8cb904618a52eaf5954d476551776a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
