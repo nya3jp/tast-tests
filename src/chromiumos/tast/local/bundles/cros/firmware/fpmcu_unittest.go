@@ -163,12 +163,12 @@ func flashUnittestBinary(ctx context.Context, s *testing.State) {
 // getFpmcuConsolePath returns FPMCU UART console's PTY.
 func getFpmcuConsolePath(ctx context.Context, s *testing.State) string {
 	s.Log("Getting FPMCU's UART console")
-	cmd := testexec.CommandContext(ctx, "dut-control", "raw_fpmcu_uart_pty")
+	cmd := testexec.CommandContext(ctx, "dut-control", "raw_fpmcu_console_uart_pty")
 	output, err := cmd.Output()
 	if err != nil {
 		s.Fatal("Failed to get FPMCU UART console: ", err)
 	}
-	// Example output: raw_fpmcu_uart_pty:/dev/pts/8
+	// Example output: raw_fpmcu_console_uart_pty:/dev/pts/8
 	return strings.TrimSpace(strings.Split(string(output), ":")[1])
 }
 
