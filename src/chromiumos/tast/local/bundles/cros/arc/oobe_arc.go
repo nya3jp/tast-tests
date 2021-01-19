@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,11 +17,11 @@ import (
 )
 
 const (
-	//        TestUser = "crosplaystoretest@gmail.com"
-	//        TestPass = "  0Nk3wEaiXZdBtfwZ"
-	TestUser      = "crtesting2021@gmail.com"
-	TestPass      = "  P@ssw0rd@123"
-	defaultGaiaID = "gaia-id"
+	// Test User email
+	TestUser = "crtesting2021@gmail.com"
+
+	// Test user Password
+	TestPass = "  P@ssw0rd@123"
 )
 
 func init() {
