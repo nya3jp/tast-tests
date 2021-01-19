@@ -6,10 +6,15 @@ package hwsec
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
 	"strings"
 
+	"github.com/golang/protobuf/proto"
+
+	tmpb "chromiumos/system_api/tpm_manager_proto"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -31,6 +36,7 @@ const (
 // structured data.
 type UtilityTpmManagerBinary struct {
 	binary *TpmManagerBinary
+	runner CmdRunner
 }
 
 // NewUtilityTpmManagerBinary creates a new UtilityTpmManagerBinary.
@@ -39,7 +45,7 @@ func NewUtilityTpmManagerBinary(r CmdRunner) (*UtilityTpmManagerBinary, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &UtilityTpmManagerBinary{binary}, nil
+	return &UtilityTpmManagerBinary{binary, r}, nil
 }
 
 // checkCommandAndReturn is a simple helper that checks if binaryMsg returned is successful, and returns the corresponding message and error.
@@ -318,4 +324,75 @@ func (u *UtilityTpmManagerBinary) ResetDALock(ctx context.Context) (string, erro
 	}
 
 	return msg, nil
+}
+
+func (u *UtilityTpmManagerBinary) tempFile(ctx context.Context, prefix string) (string, error) {
+	out, err := u.runner.Run(ctx, "mktemp", fmt.Sprintf("/tmp/%s.XXXXX", prefix))
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(out)), err
+}
+
+func (u *UtilityTpmManagerBinary) removeFile(ctx context.Context, filename string) error {
+	_, err := u.runner.Run(ctx, "rm", "-f", "--", filename)
+	return err
+}
+
+func (u *UtilityTpmManagerBinary) readFile(ctx context.Context, filename string) ([]byte, error) {
+	return u.runner.Run(ctx, "cat", "--", filename)
+}
+
+func (u *UtilityTpmManagerBinary) writeFile(ctx context.Context, filename string, data []byte) error {
+	tmpFile, err := u.tempFile(ctx, "tast_tpm_manager_write")
+	if err != nil {
+		return errors.Wrap(err, "failed to create temp file")
+	}
+	defer u.removeFile(ctx, tmpFile)
+	b64String := base64.StdEncoding.EncodeToString(data)
+	if _, err := u.runner.Run(ctx, "sh", "-c", "echo "+shutil.Escape(b64String)+">"+tmpFile); err != nil {
+		return errors.Wrap(err, "failed to echo string")
+	}
+	_, err = u.runner.Run(ctx, "sh", "-c", "base64 -d "+tmpFile+">"+filename)
+	return err
+}
+
+// GetLocalTPMData would read the local_tpm_data.
+func (u *UtilityTpmManagerBinary) GetLocalTPMData(ctx context.Context) ([]byte, error) {
+	return u.readFile(ctx, "/var/lib/tpm_manager/local_tpm_data")
+}
+
+// SetLocalTPMData would write the local_tpm_data.
+func (u *UtilityTpmManagerBinary) SetLocalTPMData(ctx context.Context, data []byte) error {
+	return u.writeFile(ctx, "/var/lib/tpm_manager/local_tpm_data", data)
+}
+
+// DropResetLockPermissions drops the reset lock permissions and return a callback to restore the permissions.
+func (u *UtilityTpmManagerBinary) DropResetLockPermissions(ctx context.Context) (func(ctx context.Context) error, error) {
+	rawData, err := u.GetLocalTPMData(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get local TPM data")
+	}
+
+	var data tmpb.LocalData
+	if err := proto.Unmarshal(rawData, &data); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal local TPM data")
+	}
+
+	data.OwnerPassword = []byte{}
+	data.LockoutPassword = []byte{}
+	data.OwnerDelegate = &tmpb.AuthDelegate{}
+
+	newData, err := proto.Marshal(&data)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to marshal local TPM data")
+	}
+
+	if err := u.SetLocalTPMData(ctx, newData); err != nil {
+		return nil, errors.Wrap(err, "failed to get local TPM data")
+	}
+
+	return func(ctx context.Context) error {
+		return u.SetLocalTPMData(ctx, rawData)
+	}, nil
 }
