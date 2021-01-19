@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -98,16 +99,22 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]strin
 		}
 	}(cleanupCtx)
 
-	if err := waitForSystemWebAppsInstall(ctx, cr); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to wait system apps install")
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect Test API")
 	}
 
-	installedNames, err := installedSystemAppsNames(ctx, cr)
+	installedSystemWebApps, err := apps.GetListOfSystemWebApps(ctx, tconn)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to get installed system apps")
 	}
 
-	registeredInternalNames, err := registeredSystemAppsInternalNames(ctx, cr)
+	var installedNames []string
+	for _, app := range installedSystemWebApps {
+		installedNames = append(installedNames, app.Name)
+	}
+
+	registeredInternalNames, err := registeredSystemAppsInternalNames(ctx, tconn)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to get registered system apps")
 	}
@@ -146,43 +153,11 @@ func supportCrostini(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	return allowCrostini, nil
 }
 
-func waitForSystemWebAppsInstall(ctx context.Context, cr *chrome.Chrome) error {
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to connect Test API")
-	}
-
-	err = tconn.Eval(
-		ctx,
-		`new Promise((resolve, reject) => {
-			chrome.autotestPrivate.waitForSystemWebAppsInstall(() => {
-				if (chrome.runtime.lastError) {
-					reject(new Error(chrome.runtime.lastError.message));
-					return;
-				}
-
-				resolve();
-			});
-		});`,
-		nil)
-
-	if err != nil {
-		return errors.Wrap(err, "failed to get result from Test API")
-	}
-
-	return nil
-}
-
 // registeredSystemAppsInternalNames returns a string[] that contains system app's internal names.
 // It queries System Web App Manager via Test API.
-func registeredSystemAppsInternalNames(ctx context.Context, cr *chrome.Chrome) ([]string, error) {
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect Test API")
-	}
-
+func registeredSystemAppsInternalNames(ctx context.Context, tconn *chrome.TestConn) ([]string, error) {
 	var result []string
-	err = tconn.Eval(
+	err := tconn.Eval(
 		ctx,
 		`new Promise((resolve, reject) => {
 			chrome.autotestPrivate.getRegisteredSystemWebApps((system_apps) => {
@@ -192,42 +167,6 @@ func registeredSystemAppsInternalNames(ctx context.Context, cr *chrome.Chrome) (
 				}
 
 				resolve(system_apps.map(system_app => system_app.internalName));
-			});
-		});`, &result)
-
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get result from Test API")
-	}
-
-	return result, nil
-}
-
-// installedSystemAppsNames returns a string[] that contains system app's visible name to the user.
-// It queries App Service via Test API.
-func installedSystemAppsNames(ctx context.Context, cr *chrome.Chrome) ([]string, error) {
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect Test API")
-	}
-
-	var result []string
-	err = tconn.Eval(
-		ctx,
-		`new Promise((resolve, reject) => {
-			chrome.autotestPrivate.getAllInstalledApps((apps) => {
-				if (chrome.runtime.lastError) {
-					reject(new Error(chrome.runtime.lastError.message));
-					return;
-				}
-
-				// Note, Terminal has special handling in App Service.
-				// It has type 'Crostini' and install source 'User'.
-				const system_web_apps = apps.filter(app =>
-					   (app.installSource === 'System' && app.type === 'Web')
-					|| (app.installSource === 'User' && app.type === 'Crostini')
-				)
-
-				resolve(system_web_apps.map(app => app.name));
 			});
 		});`, &result)
 
