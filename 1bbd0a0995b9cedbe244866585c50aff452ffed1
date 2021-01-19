@@ -148,6 +148,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ac08ff_2c2378f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_playstore_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-01-19T19:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c10af168_8d3c9ad4",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 103
+      },
+      "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ec2901d_86480661",
