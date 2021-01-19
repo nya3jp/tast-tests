@@ -28,42 +28,32 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func hwsecResetDACounter(ctx context.Context, s *testing.TestHookState) error {
+func hwsecGetDACounter(ctx context.Context, s *testing.TestHookState) (int, error) {
 	cmdRunner, err := hwsecremote.NewLoglessCmdRunner(s.DUT())
 	if err != nil {
-		return errors.Wrap(err, "failed to create CmdRunner")
+		return 0, errors.Wrap(err, "failed to create CmdRunner")
 	}
 
 	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
 	if err != nil {
-		return errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
-	}
-
-	// Reset the TPM dictionary attack counter
-	if msg, err := tpmManagerUtil.ResetDALock(ctx); err != nil {
-		return errors.Wrapf(err, "failed to reset TPM dictionary attack: %s", msg)
-	}
-	return nil
-}
-
-func hwsecCheckDACounter(ctx context.Context, s *testing.TestHookState) error {
-	cmdRunner, err := hwsecremote.NewLoglessCmdRunner(s.DUT())
-	if err != nil {
-		return errors.Wrap(err, "failed to create CmdRunner")
-	}
-
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
-	if err != nil {
-		return errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
+		return 0, errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
 	}
 
 	// Get the TPM dictionary attack info
 	daInfo, err := tpmManagerUtil.GetDAInfo(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the TPM dictionary attack info")
+		return 0, errors.Wrap(err, "failed to get the TPM dictionary attack info")
 	}
-	if daInfo.Counter != 0 {
-		return errors.Errorf("TPM dictionary counter is not zero: %#v", daInfo)
+	return daInfo.Counter, nil
+}
+
+func hwsecCheckDACounter(ctx context.Context, s *testing.TestHookState, origVal int) error {
+	da, err := hwsecGetDACounter(ctx, s)
+	if err != nil {
+		return errors.Wrap(err, "failed to get DA counter")
+	}
+	if da > origVal {
+		return errors.Errorf("TPM dictionary counter is increased: %v -> %v", origVal, da)
 	}
 	return nil
 }
@@ -72,15 +62,18 @@ func hwsecCheckDACounter(ctx context.Context, s *testing.TestHookState) error {
 func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx context.Context,
 	s *testing.TestHookState) {
 
-	// Reset the TPM dictionary attack counter before running the tast.
-	if err := hwsecResetDACounter(ctx, s); err != nil {
-		s.Log("Failed to reset TPM DA counter: ", err)
+	// Store current DA value before running the tast.
+	hwsecDACounter, err := hwsecGetDACounter(ctx, s)
+	if err != nil {
+		s.Log("Failed to get TPM DA counter: ", err)
+		// Assume the counter value is zero when we failed to get the DA counter.
+		hwsecDACounter = 0
 	}
 
 	return func(ctx context.Context, s *testing.TestHookState) {
 
-		// Ensure the TPM dictionary attack counter is zero after tast finish.
-		if err := hwsecCheckDACounter(ctx, s); err != nil {
+		// Ensure the TPM dictionary attack counter didn't be increased after tast finish.
+		if err := hwsecCheckDACounter(ctx, s, hwsecDACounter); err != nil {
 			s.Error("Failed to check TPM DA counter: ", err)
 		}
 
