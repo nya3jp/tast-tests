@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f642553b_80f1c842",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-19T21:12:10Z",
+      "side": 1,
+      "message": "better to use regex here I think, (Beta) will be going away again in the next milestone and using regex will prevent yet more waiting on LKGM uprev.",
+      "range": {
+        "startLine": 47,
+        "startChar": 58,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "b60081d484d3b127c92f86f24fbc09203f7d614a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a913e54_bfd7a131",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-19T21:12:10Z",
+      "side": 1,
+      "message": "why is the extra class needed?",
+      "range": {
+        "startLine": 288,
+        "startChar": 49,
+        "endLine": 288,
+        "endChar": 74
+      },
+      "revId": "b60081d484d3b127c92f86f24fbc09203f7d614a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
