@@ -16,6 +16,46 @@
       "message": "Miguel, can you review this as David is OOO for a while?\n\nThanks in advance!",
       "revId": "6f5352add489a950c9eb2855ae1c10b1d6e7bc1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31faf6d7_aaefba28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-19T17:52:35Z",
+      "side": 1,
+      "message": "Looking good, have a question.",
+      "revId": "6f5352add489a950c9eb2855ae1c10b1d6e7bc1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bfcdbd3_7df0ec89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-19T17:52:35Z",
+      "side": 1,
+      "message": "Different resolutions have different videos, e.g. 2160p, 1080p use\nthe \"Crowd\" video, 192p uses the Bear and the others use the Tulip,\nwhich would make comparisons among them complicated. Could we just \nuse one? I think we can modify the 720p in this CL since this test\u0027s\nresult values are not monitored.\n\nIn an ideal world I\u0027d suggest using a video sequence that reflects\nour typical use case which is a people talking/moving like in a \nvideo conference setting but I\u0027m not sure if we have such sequence\nreadily available.",
+      "range": {
+        "startLine": 141,
+        "startChar": 21,
+        "endLine": 141,
+        "endChar": 31
+      },
+      "revId": "6f5352add489a950c9eb2855ae1c10b1d6e7bc1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
