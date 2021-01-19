@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7030c82_1eef9c0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T17:00:55Z",
+      "side": 1,
+      "message": "Removed ctx from Helper per feedback in \u0027Add shill_cellular_enable_and_connect\u0027 CL.\n",
+      "revId": "538cab6f988b9f55134a4aca574c2c09320795a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
