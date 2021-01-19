@@ -69,6 +69,23 @@
       "parentUuid": "933f95f3_ff38b71f",
       "revId": "b5ad9c77fa076154d13f3159cd61cca24dfb9fa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b703fbca_4338eb6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-01-19T05:01:46Z",
+      "side": 1,
+      "message": "Hmm, since we are about to deprecate all the tests for platform app (chrome app) and rename all the camera.CCAUI*.swa tests to camera.CCAUI*, I think we don\u0027t need to switch it in this CL now.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2635504\n\nLet\u0027s abandon this CL. Thanks for helping review.",
+      "revId": "b5ad9c77fa076154d13f3159cd61cca24dfb9fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
