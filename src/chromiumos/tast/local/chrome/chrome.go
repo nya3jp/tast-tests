@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/browserwatcher"
 	"chromiumos/tast/local/chrome/internal/driver"
+	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/minidump"
@@ -53,17 +54,9 @@ const (
 	// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
 	uiRestartTimeout = 60 * time.Second
 
-	// testExtensionKey is a manifest key of the autotest extension.
-	testExtensionKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDuUZGKCDbff6IRaxa4Pue7PPkxwPaNhGT3JEqppEsNWFjM80imEdqMbf3lrWqEfaHgaNku7nlpwPO1mu3/4Hr+XdNa5MhfnOnuPee4hyTLwOs3Vzz81wpbdzUxZSi2OmqMyI5oTaBYICfNHLwcuc65N5dbt6WKGeKgTpp4v7j7zwIDAQAB"
-
 	// TestExtensionID is an extension ID of the autotest extension. It
 	// corresponds to testExtensionKey.
-	TestExtensionID = "behllobkkfkfnphdnhnkndlbkcpglgmj"
-
-	// signinProfileTestExtensionID is an id of the test extension which is
-	// allowed for signin profile (see http://crrev.com/772709 for details).
-	// It corresponds to Var("ui.signinProfileTestExtensionManifestKey").
-	signinProfileTestExtensionID = "mecfefiddjlmabpeilblgegnbioikfmp"
+	TestExtensionID = extension.TestExtensionID
 )
 
 const (
@@ -137,14 +130,9 @@ type Chrome struct {
 
 	devsess *cdputil.Session // DevTools session
 
-	extDirs     []string // directories containing all unpacked extensions to load
-	testExtID   string   // ID for test extension exposing APIs
-	testExtDir  string   // dir containing test extension
-	testExtConn *Conn    // connection to test extension exposing APIs
-
-	signinExtID   string // ID for signin profile test extension exposing APIs
-	signinExtDir  string // dir containing signin test profile extension
-	signinExtConn *Conn  // connection to signin profile test extension
+	exts          *extension.Files
+	testExtConn   *Conn // connection to test extension exposing APIs
+	signinExtConn *Conn // connection to signin profile test extension
 
 	loginPending   bool // true if login is pending until ContinueLogin is called
 	tracingStarted bool // true when tracing is started
@@ -156,9 +144,11 @@ type Chrome struct {
 // User returns the username that was used to log in to Chrome.
 func (c *Chrome) User() string { return c.cfg.user }
 
-// ExtDirs returns the directories holding the test extensions.
-func (c *Chrome) ExtDirs() []string {
-	return append(append([]string(nil), c.cfg.extraExtDirs...), c.testExtDir)
+// DeprecatedExtDirs returns the directories holding the test extensions.
+//
+// DEPRECATED: This method does not handle sign-in profile extensions correctly.
+func (c *Chrome) DeprecatedExtDirs() []string {
+	return c.exts.DeprecatedDirs()
 }
 
 // DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
@@ -227,7 +217,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
-	if err := c.PrepareExtensions(ctx); err != nil {
+	if c.exts, err = extension.PrepareExtensions(c.cfg.extraExtDirs, c.cfg.signinExtKey); err != nil {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
 
@@ -326,8 +316,8 @@ func (c *Chrome) Close(ctx context.Context) error {
 		driver.PrivateUnlock(c.testExtConn)
 		c.testExtConn.Close()
 	}
-	if len(c.testExtDir) > 0 {
-		os.RemoveAll(c.testExtDir)
+	if c.exts != nil {
+		c.exts.RemoveAll()
 	}
 
 	if c.devsess != nil {
@@ -493,56 +483,6 @@ func (c *Chrome) chromeErr(orig error) error {
 	return werr
 }
 
-// PrepareExtensions prepares extensions to be loaded by Chrome.
-func (c *Chrome) PrepareExtensions(ctx context.Context) error {
-	ctx, st := timing.Start(ctx, "prepare_extensions")
-	defer st.End()
-
-	// Write the built-in test extension.
-	var err error
-	if c.testExtDir, err = ioutil.TempDir("", "tast_test_api_extension."); err != nil {
-		return err
-	}
-	if c.testExtID, err = writeTestExtension(c.testExtDir, testExtensionKey); err != nil {
-		return err
-	}
-	if c.testExtID != TestExtensionID {
-		return errors.Errorf("unexpected extension ID: got %q; want %q", c.testExtID, TestExtensionID)
-	}
-
-	// Chrome hangs with a nonsensical "Extension error: Failed to load extension
-	// from: . Manifest file is missing or unreadable." error if an extension directory
-	// is owned by another user.
-	dirsToChown := c.ExtDirs()
-
-	// Write the signin profile test extension.
-	if len(c.cfg.signinExtKey) > 0 {
-		var err error
-		if c.signinExtDir, err = ioutil.TempDir("", "tast_test_signin_api_extension."); err != nil {
-			return err
-		}
-		if c.signinExtID, err = writeTestExtension(c.signinExtDir, c.cfg.signinExtKey); err != nil {
-			return err
-		}
-		if c.signinExtID != signinProfileTestExtensionID {
-			return errors.Errorf("unexpected extension ID: got %q; want %q", c.signinExtID, signinProfileTestExtensionID)
-		}
-		dirsToChown = append(dirsToChown, c.signinExtDir)
-	}
-
-	for _, dir := range dirsToChown {
-		manifest := filepath.Join(dir, "manifest.json")
-		if _, err = os.Stat(manifest); err != nil {
-			return errors.Wrap(err, "missing extension manifest")
-		}
-		if err := ChownContentsToChrome(dir); err != nil {
-			return err
-		}
-	}
-	return nil
-
-}
-
 // restartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
 func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
@@ -611,13 +551,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	if c.cfg.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	}
-	args = append(args, "--load-extension="+strings.Join(c.ExtDirs(), ","))
-	if len(c.signinExtDir) > 0 {
-		args = append(args, "--load-signin-profile-test-extension="+c.signinExtDir)
-		args = append(args, "--whitelisted-extension-id="+c.signinExtID) // Allowlists the signin profile's test extension to access all Chrome APIs.
-	} else {
-		args = append(args, "--whitelisted-extension-id="+c.testExtID) // Allowlists the test extension to access all Chrome APIs.
-	}
+	args = append(args, c.exts.ChromeArgs()...)
 	if c.cfg.policyEnabled {
 		args = append(args, "--profile-requires-policy=true")
 	} else {
@@ -893,13 +827,13 @@ func (tconn *TestConn) ResetAutomation(ctx context.Context) error {
 // ctx's deadline is reached. The caller should not close the returned
 // connection; it will be closed automatically by Close.
 func (c *Chrome) TestAPIConn(ctx context.Context) (*TestConn, error) {
-	return c.testAPIConnFor(ctx, &c.testExtConn, c.testExtID)
+	return c.testAPIConnFor(ctx, &c.testExtConn, extension.TestExtensionID)
 }
 
 // SigninProfileTestAPIConn is the same as TestAPIConn, but for the signin
 // profile test extension.
 func (c *Chrome) SigninProfileTestAPIConn(ctx context.Context) (*TestConn, error) {
-	return c.testAPIConnFor(ctx, &c.signinExtConn, c.signinExtID)
+	return c.testAPIConnFor(ctx, &c.signinExtConn, extension.SigninProfileTestExtensionID)
 }
 
 // testAPIConnFor builds a test API connection to the extension specified by

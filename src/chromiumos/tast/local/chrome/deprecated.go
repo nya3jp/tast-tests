@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
+	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/chrome/jslog"
 )
 
@@ -21,4 +22,18 @@ import (
 // with old code.
 func DeprecatedNewConn(ctx context.Context, s *cdputil.Session, id target.ID, la *jslog.Aggregator, pageURL string, chromeErr func(error) error) (c *Conn, retErr error) {
 	return driver.NewConn(ctx, s, id, la, pageURL, chromeErr)
+}
+
+// DeprecatedPrepareExtensions prepares test extensions and returns extension
+// directory paths.
+//
+// DEPRECATED: Do not call this function. It's available only for compatibility
+// with old code.
+func DeprecatedPrepareExtensions() (extDirs []string, err error) {
+	exts, err := extension.PrepareExtensions(nil, "")
+	if err != nil {
+		return nil, err
+	}
+	// Note: Files managed by exts are leaked.
+	return exts.DeprecatedDirs(), nil
 }
