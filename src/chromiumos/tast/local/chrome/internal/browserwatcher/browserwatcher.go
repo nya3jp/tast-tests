@@ -74,6 +74,15 @@ func (bw *Watcher) Err() error {
 	return bw.browserErr
 }
 
+// ReplaceErr returns the first error that was observed if any. Otherwise, it
+// returns err as-is.
+func (bw *Watcher) ReplaceErr(err error) error {
+	if werr := bw.Err(); werr != nil {
+		return werr
+	}
+	return err
+}
+
 // check is an internal method that checks the browser process, updating initialPID and browserErr as needed.
 // Returns false after an error has been encountered, indicating that no further calls are needed.
 func (bw *Watcher) check() bool {
