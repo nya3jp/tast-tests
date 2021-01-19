@@ -14,139 +14,6 @@ import (
 	"chromiumos/tast/local/dbusutil"
 )
 
-// Properties wraps shill D-Bus object properties.
-type Properties struct {
-	props map[string]interface{}
-}
-
-// NewProperties creates a new Properties object and populates it with shill's object properties.
-func NewProperties(ctx context.Context, d *dbusutil.DBusObject) (*Properties, error) {
-	var props map[string]interface{}
-	if err := d.Call(ctx, "GetProperties").Store(&props); err != nil {
-		return nil, errors.Wrapf(err, "failed getting properties of %v", d)
-	}
-	return &Properties{props: props}, nil
-}
-
-// Has returns whether property exist.
-func (p *Properties) Has(prop string) bool {
-	_, ok := p.props[prop]
-	return ok
-}
-
-// Get returns property value.
-func (p *Properties) Get(prop string) (interface{}, error) {
-	value, ok := p.props[prop]
-	if !ok {
-		return nil, errors.Errorf("property %s does not exist", prop)
-	}
-	return value, nil
-}
-
-// GetString returns string property value.
-func (p *Properties) GetString(prop string) (string, error) {
-	value, err := p.Get(prop)
-	if err != nil {
-		return "", err
-	}
-	str, ok := value.(string)
-	if !ok {
-		return "", errors.Errorf("property %s is not a string: %q", prop, value)
-	}
-	return str, nil
-}
-
-// GetStrings returns property value as string array.
-func (p *Properties) GetStrings(prop string) ([]string, error) {
-	value, err := p.Get(prop)
-	if err != nil {
-		return nil, err
-	}
-	str, ok := value.([]string)
-	if !ok {
-		return nil, errors.Errorf("property %s is not a string array: %q", prop, value)
-	}
-	return str, nil
-}
-
-// GetBool returns the property value as a boolean.
-func (p *Properties) GetBool(prop string) (bool, error) {
-	value, err := p.Get(prop)
-	if err != nil {
-		return false, err
-	}
-	b, ok := value.(bool)
-	if !ok {
-		return false, errors.Errorf("property %s is not a bool: %q", prop, value)
-	}
-	return b, nil
-}
-
-// GetUint16 returns the property value as uint16.
-func (p *Properties) GetUint16(prop string) (uint16, error) {
-	value, err := p.Get(prop)
-	if err != nil {
-		return 0, err
-	}
-	ret, ok := value.(uint16)
-	if !ok {
-		return 0, errors.Errorf("property %s is not an uint16: %q", prop, value)
-	}
-	return ret, nil
-}
-
-// GetUint16s returns the property value as uint16 array.
-func (p *Properties) GetUint16s(prop string) ([]uint16, error) {
-	value, err := p.Get(prop)
-	if err != nil {
-		return nil, err
-	}
-	ret, ok := value.([]uint16)
-	if !ok {
-		return nil, errors.Errorf("property %s is not an uint16 array: %q", prop, value)
-	}
-	return ret, nil
-}
-
-// GetInt32 returns the property value as int32.
-func (p *Properties) GetInt32(prop string) (int32, error) {
-	value, err := p.Get(prop)
-	if err != nil {
-		return 0, err
-	}
-	ret, ok := value.(int32)
-	if !ok {
-		return 0, errors.Errorf("property %s is not an int32: %q", prop, value)
-	}
-	return ret, nil
-}
-
-// GetObjectPath returns the DBus ObjectPath of the given property name.
-func (p *Properties) GetObjectPath(prop string) (dbus.ObjectPath, error) {
-	value, err := p.Get(prop)
-	if err != nil {
-		return dbus.ObjectPath(""), err
-	}
-	objPath, ok := value.(dbus.ObjectPath)
-	if !ok {
-		return dbus.ObjectPath(""), errors.Errorf("property %s is not a dbus.ObjectPath: %q", prop, value)
-	}
-	return objPath, nil
-}
-
-// GetObjectPaths returns the list of DBus ObjectPaths of the given property name.
-func (p *Properties) GetObjectPaths(prop string) ([]dbus.ObjectPath, error) {
-	value, err := p.Get(prop)
-	if err != nil {
-		return nil, err
-	}
-	objPaths, ok := value.([]dbus.ObjectPath)
-	if !ok {
-		return nil, errors.Errorf("property %s is not a list of dbus.ObjectPath: %q", prop, value)
-	}
-	return objPaths, nil
-}
-
 // PropertiesWatcher watches for "PropertyChanged" signals.
 type PropertiesWatcher struct {
 	watcher *dbusutil.SignalWatcher
@@ -250,8 +117,8 @@ func (h *PropertyHolder) CreateWatcher(ctx context.Context) (*PropertiesWatcher,
 // GetProperties calls dbus GetProperties method on the interface and returns the result.
 // The dbus call may fail with dbusutil.DBusErrorUnknownObject if the ObjectPath is not valid.
 // Callers can check it with dbusutil.IsDBusError if it's expected.
-func (h *PropertyHolder) GetProperties(ctx context.Context) (*Properties, error) {
-	return NewProperties(ctx, h.dbusObject)
+func (h *PropertyHolder) GetProperties(ctx context.Context) (*dbusutil.Properties, error) {
+	return dbusutil.NewProperties(ctx, h.dbusObject)
 }
 
 // ObjectPath returns the underlying object's D-Bus path.
