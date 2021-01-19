@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3b1ef6_3d6d1c1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-19T08:20:36Z",
+      "side": 1,
+      "message": "I will rebase this CL after https://crrev.com/c/2635504 is landed.",
+      "revId": "9c81d556fbb441b57b838518b9b3e3e98b8e7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
