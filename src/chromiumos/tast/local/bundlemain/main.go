@@ -144,6 +144,25 @@ func hwsecGetDACounter(ctx context.Context) (int, error) {
 	return daInfo.Counter, nil
 }
 
+func hwsecGetTPMStatus(ctx context.Context) (*hwsec.NonsensitiveStatusInfo, error) {
+	cmdRunner, err := hwseclocal.NewCmdRunner()
+	if err != nil {
+		return &hwsec.NonsensitiveStatusInfo{}, errors.Wrap(err, "failed to create CmdRunner")
+	}
+
+	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	if err != nil {
+		return &hwsec.NonsensitiveStatusInfo{}, errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
+	}
+
+	// Get the TPM nonsensitive status info
+	status, err := tpmManagerUtil.GetNonsensitiveStatus(ctx)
+	if err != nil {
+		return &hwsec.NonsensitiveStatusInfo{}, errors.Wrap(err, "failed to get the TPM nonsensitive status info")
+	}
+	return status, nil
+}
+
 func hwsecCheckDACounter(ctx context.Context, origVal int) error {
 	da, err := hwsecGetDACounter(ctx)
 	if err != nil {
@@ -151,6 +170,19 @@ func hwsecCheckDACounter(ctx context.Context, origVal int) error {
 	}
 	if da > origVal {
 		return errors.Errorf("TPM dictionary counter is increased: %v -> %v", origVal, da)
+	}
+	return nil
+}
+
+func hwsecCheckTPMStatus(ctx context.Context, origStatus *hwsec.NonsensitiveStatusInfo) error {
+	status, err := hwsecGetTPMStatus(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get TPM status")
+	}
+	if status.IsOwned && !status.HasResetLockPermissions {
+		if !origStatus.IsOwned || origStatus.HasResetLockPermissions {
+			return errors.Errorf("Unexpect TPM status: %#v -> %#v", origStatus, status)
+		}
 	}
 	return nil
 }
@@ -190,7 +222,18 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 		s.Log("Failed to get TPM DA counter: ", err)
 	}
 
+	// Store current TPM status before running the tast.
+	hwsecTpmStatus, err := hwsecGetTPMStatus(ctx)
+	if err != nil {
+		s.Log("Failed to get TPM status: ", err)
+	}
+
 	return func(ctx context.Context, s *testing.TestHookState) {
+
+		// Ensure the TPM is in the expect status after tast finish.
+		if err := hwsecCheckTPMStatus(ctx, hwsecTpmStatus); err != nil {
+			s.Error("Failed to check TPM status: ", err)
+		}
 
 		// Ensure the TPM dictionary attack counter didn't be increased after tast finish.
 		if err := hwsecCheckDACounter(ctx, hwsecDACounter); err != nil {
