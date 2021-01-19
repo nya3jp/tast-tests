@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "619272a6_4cfa1e5e",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-01-19T18:02:40Z",
+      "side": 1,
+      "message": "Removed the line.",
+      "parentUuid": "f89c4104_7d78a7ef",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 65
+      },
+      "revId": "7a3554ba7a91ec06d444453f8eecb674c233bc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "095982aa_616ad49f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d125de3b_8d341582",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-01-19T18:02:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "095982aa_616ad49f",
+      "range": {
+        "startLine": 408,
+        "startChar": 27,
+        "endLine": 408,
+        "endChar": 65
+      },
+      "revId": "7a3554ba7a91ec06d444453f8eecb674c233bc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54f9d482_38659d70",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-07T15:05:57Z",
       "side": 1,
       "message": "Nit: I\u0027d start this with capital U:\n\n\"User session mount namespace at %s has not been created\", mountNsPath",
+      "range": {
+        "startLine": 411,
+        "startChar": 24,
+        "endLine": 411,
+        "endChar": 79
+      },
+      "revId": "7a3554ba7a91ec06d444453f8eecb674c233bc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4916e628_ded2c754",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2021-01-19T18:02:40Z",
+      "side": 1,
+      "message": "documentation recommends using lower case : https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#formatting",
+      "parentUuid": "54f9d482_38659d70",
       "range": {
         "startLine": 411,
         "startChar": 24,
