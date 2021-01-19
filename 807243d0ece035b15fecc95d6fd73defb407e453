@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4739ffd_b5c81fe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "I am afraid that you didn\u0027t answer my question fully.  Why not using local/bluetooth package?",
+      "parentUuid": "2ce3e9c7_e059bdeb",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dcf4814_3b8cfd9b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
         "patchSetId": 12

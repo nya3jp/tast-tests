@@ -1,0 +1,733 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff9d421_af57c37c",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "an ARC app",
+      "range": {
+        "startLine": 247,
+        "startChar": 24,
+        "endLine": 247,
+        "endChar": 30
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759585ca_1241ab1d",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "nit: better to use StableLeftClick",
+      "range": {
+        "startLine": 279,
+        "startChar": 16,
+        "endLine": 279,
+        "endChar": 25
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "720d0a7c_9638d8e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need to write those JS, you could write as:\n  shelfItems, err :\u003d ash.ShelfItems(ctx, tconn)\n  if err !\u003d nil {\n    return errors.Wrap(err, \"failed to get shelf items\")\n  }\n  for _, shelfItem :\u003d range shelfItems {\n    if shelfItem.Status !\u003d ash.ShelfItemClosed {\n      if err :\u003d apps.CloseApp(ctx, tconn, shelfItem.AppID); err !\u003d nil {\n        return errors.Wrapf(err, \"failed to close the app %v\", shelfItem.AppID)\n      }\n    }\n  }\n  return nil",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81fd2dc8_fd68963c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "nit: defer is not necessary",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d88f28c_39824158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Who uses this function?",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57682f5a_f9d5b6e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "nit: StableLeftClick might be better.",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8545bc_9029a7e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "nit: StableLeftClick might be better.",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20de9cb9_9263886b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Can you move this to \"ash\" package?  Looks like a generic utility.",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c9f6ed_9b0d334c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "\"an email through gmail app\"",
+      "range": {
+        "startLine": 108,
+        "startChar": 13,
+        "endLine": 108,
+        "endChar": 20
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "458051be_38a0dd8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "\"sends\"",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 12
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d6a8688_cd074e26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "remove \"field\".  \"subject\", \"content\"",
+      "range": {
+        "startLine": 109,
+        "startChar": 64,
+        "endLine": 109,
+        "endChar": 91
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5be89c6_62ee7979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Can\u0027t we use another mechanism (such as WaitForExists for a node of new message UI)?\n\nIf not, please handle the case of the error:\n  if err :\u003d testing.Sleep(ctx, time.Second); err !\u003d nil {\n    ...\n  }",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 34
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6efd2b8_534b7175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 34
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d4a7a54_44f57a4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "After clicking the send button, doesn\u0027t it have to wait for something?",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a31988a2_ce76c7a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "What is \"some applications\"?",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "293cfb0d_52235808",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Why is WaitForLocationChangeCompleted needed?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6265237b_a31d33d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Could you explain why does this have to use WaitForLocationChangeCompleted? What type of location changes happen during the username typing?",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "031da6a2_0d02a945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d7ebc7_9c8c818f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12546ede_4e778bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "ditto.  Since it waits for the \"Home\" existence below, does this have to wait for the location changes?  If so, why?  What type of UI are supposed to move?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44568169_90dc2f4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "\"Play starts a netflix video.\"\n\nPlease provide a verb and end with a period, the doc comment should be a plain sentence.  This applies to all other comments in this CL.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7180bb_6762d6e0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Please be specific with the context.  This is very ambiguous.  As noted, this is the control of bluetooth settings, from the OS settings window.\n\n\"Bluetooth controls bluetooth settings from the OS settings window.\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64ae670f_effb07c5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20052a42_18feb33b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "\"disables\"",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf114eb8_cb9dcb99",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Umm, I don\u0027t think this is a good idea.\nClose is typically used at the end of a test scenario. Closing of settings window or some connection makes sense, but disabling it at Close would be a bad design choice.\n\nPlease consider:\n- if this method is supposed to disable bluetooth settings, name this method as \u0027Disable\" rather than Close.\n- if it is supposed to be called at the end of a test scenario, do not disable it.  Rather, on New(), check the bluetooth settings before enabling it, and recover the bluetooth status after this, might be a good design.\n- Plus, maybe it\u0027s better to disconnect the bluetooth devices which remain connected.",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 27
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c50d2ae_efdf0831",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Do not use grpc errors outside of grpc. Just use errors.New()",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 68
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be24298b_dba83990",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "\"find\"",
+      "range": {
+        "startLine": 63,
+        "startChar": 38,
+        "endLine": 63,
+        "endChar": 43
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1650a8f_b3366ded",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Use StableLeftClick",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6c4f6a_b751a0e6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "maybe testing.PollBreak(err) ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "605bdfe6_8b354a72",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Maybe use of deviceName clarifies the error message more: e.g. errors.Wrapf(err, \"%q is not connected\", deviceName)",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 63
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06df7c10_f92fe260",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/doc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Please update the document for this package, as it is now not strongly tied with CUJ.\n\n\"Package bluetooth provides the control of bluetooth settings from the OS settings window\"",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 76
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274dd79a_cdde74c1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "Who uses this?  Can you move this type of change to the CL which actually uses this?",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03ac906f_761435f2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T19:47:26Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
