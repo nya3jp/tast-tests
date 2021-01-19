@@ -76,6 +76,7 @@ type KeypressControl StringControl
 // These are the Servo controls which can be set with either a numerical value or a KeypressDuration.
 const (
 	CtrlD        KeypressControl = "ctrl_d"
+	CtrlS        KeypressControl = "ctrl_s"
 	CtrlU        KeypressControl = "ctrl_u"
 	CtrlEnter    KeypressControl = "ctrl_enter"
 	Ctrl         KeypressControl = "ctrl_key"
@@ -446,6 +447,20 @@ func (s *Servo) ToggleOffOn(ctx context.Context, ctrl OnOffControl) error {
 		return err
 	}
 	if err := s.SetString(ctx, StringControl(ctrl), string(On)); err != nil {
+		return err
+	}
+	return nil
+}
+
+// ToggleOnOff turns a switch on and off again.
+func (s *Servo) ToggleOnOff(ctx context.Context, ctrl OnOffControl) error {
+	if err := s.SetString(ctx, StringControl(ctrl), string(On)); err != nil {
+		return err
+	}
+	if err := testing.Sleep(ctx, ServoKeypressDelay); err != nil {
+		return err
+	}
+	if err := s.SetString(ctx, StringControl(ctrl), string(Off)); err != nil {
 		return err
 	}
 	return nil
