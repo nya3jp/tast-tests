@@ -55,7 +55,7 @@ var (
 	nextButton            = ui.FindParams{Name: "Next", Role: ui.RoleTypeButton}
 	settingsHeading       = ui.FindParams{Name: "Settings", Role: ui.RoleTypeHeading}
 	settingsWindow        = ui.FindParams{Name: "Settings", Role: ui.RoleTypeWindow}
-	linuxSettings         = ui.FindParams{Name: PageNameLinux, Role: ui.RoleTypeRootWebArea}
+	linuxSettings         = ui.FindParams{Attributes: map[string]interface{}{"name": regexp.MustCompile(PageNameLinux + ".*")}, Role: ui.RoleTypeRootWebArea}
 	emptySharedFoldersMsg = ui.FindParams{Name: "Shared folders will appear here", Role: ui.RoleTypeStaticText}
 	sharedFoldersList     = ui.FindParams{Name: "Shared folders", Role: ui.RoleTypeList}
 	unshareFailDlg        = ui.FindParams{Name: "Unshare failed", Role: ui.RoleTypeDialog}
@@ -129,7 +129,11 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, subSettings 
 // FindSettingsPage finds a pre-opened Settings page with a window name.
 func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName string) (s *Settings, err error) {
 	// Check Settings app is opened to the specific page.
-	if _, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: windowName, Role: ui.RoleTypeWindow}, uiTimeout); err != nil {
+	param := ui.FindParams{
+		Attributes: map[string]interface{}{"name": regexp.MustCompile(".*" + windowName + ".*")},
+		Role:       ui.RoleTypeWindow,
+	}
+	if _, err := ui.FindWithTimeout(ctx, tconn, param, uiTimeout); err != nil {
 		return nil, errors.Wrapf(err, "failed to find window %s", windowName)
 	}
 
@@ -285,7 +289,7 @@ type ResizeDiskDialog struct {
 	Self   *uig.Action `name:"Resize Linux disk" role:"genericContainer"`
 	Slider *uig.Action `role:"slider"`
 	Resize *uig.Action `name:"Resize" role:"button"`
-	Cancel *uig.Action `name:"Cancel" role:"button"`
+	Cancel *uig.Action `name:"Cancel" role:"button" className:"cancel-button"`
 }
 
 // ClickChange clicks Change to resize disk and returns an instance of ResizeDiskDialog.
