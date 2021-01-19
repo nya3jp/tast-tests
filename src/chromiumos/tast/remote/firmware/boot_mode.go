@@ -298,6 +298,23 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurPress); err != nil {
 			return errors.Wrap(err, "pressing Enter on confirm screen while disabling dev mode")
 		}
+	case MenuSwitcher:
+		// 1. Sleep for [FirmwareScreen] seconds.
+		// 2. Press Ctrl+S.
+		// 3. Sleep for [KeypressDelay] seconds.
+		// 4. Press enter.
+		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) while disabling dev mode", h.Config.FirmwareScreen)
+		}
+		if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlS, servo.DurTab); err != nil {
+			return errors.Wrap(err, "pressing Enter on firmware screen while disabling dev mode")
+		}
+		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
+		}
+		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
+			return errors.Wrap(err, "pressing Enter on confirm screen while disabling dev mode")
+		}
 	case TabletDetachableSwitcher:
 		// 1. Wait until the firmware screen appears.
 		// 2. Hold volume_up for 100ms to highlight the previous menu item (Enable Root Verification).
@@ -340,6 +357,9 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 	}
 
 	switch h.Config.ModeSwitcherType {
+	case MenuSwitcher:
+		// Same as KeyboardDevSwitcher.
+		fallthrough
 	case KeyboardDevSwitcher:
 		// 1. Wait until the firmware screen appears.
 		// 2. Press Ctrl-D to move to the confirm screen.
@@ -348,14 +368,14 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 			return err
 		}
-		if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlD, servo.DurPress); err != nil {
+		if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlD, servo.DurTab); err != nil {
 			return err
 		}
 		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
 			return err
 		}
 		if h.Config.RecButtonDevSwitch {
-			if err := h.Servo.ToggleOffOn(ctx, servo.RecMode); err != nil {
+			if err := h.Servo.ToggleOnOff(ctx, servo.RecMode); err != nil {
 				return err
 			}
 		} else if h.Config.PowerButtonDevSwitch {
@@ -363,7 +383,7 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 				return err
 			}
 		} else {
-			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurPress); err != nil {
+			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
 				return err
 			}
 		}
