@@ -105,6 +105,24 @@
       "parentUuid": "21ac14df_75f45e91",
       "revId": "cdbf80ff1f828d131c21e944d09517fd848e50cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02dd5ab9_93ed400b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/characteristics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-01-19T09:38:01Z",
+      "side": 1,
+      "message": "Btw, it seems that we don\u0027t have any expresso devices in our lab so we might not be able to see such failures.",
+      "parentUuid": "4829489a_211a1803",
+      "revId": "cdbf80ff1f828d131c21e944d09517fd848e50cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
