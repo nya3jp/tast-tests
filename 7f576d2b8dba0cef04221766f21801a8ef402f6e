@@ -377,6 +377,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2bd40aa_f2e7e3ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-19T01:19:26Z",
+      "side": 1,
+      "message": "Remove the watts collection from recorder, instead wrap it inside battery data tracker and output Joules directly.",
+      "parentUuid": "bfbfcd5a_619bac06",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afec413c_6120607b",
@@ -462,6 +480,30 @@
       "side": 1,
       "message": "Jun, I think I have answered the question, which is: calculation is dynamic and constantly changing, especially in the initial phase of CUJ performance analysis. We should not re-run all the test cases on all different DUT models just for changing the processing formula. So post processing will be outside of test execution and we just need to export the raw sample data.\n\nAlso I mentioned it\u0027s possible to move those processing back to CUJ when it is stable. But it\u0027s not the time yet.\n\nAs for crosbolt, since I don\u0027t have any knowledge, could you help check if it will process all data in the .json file, or just pick the pre-defined set of data? We can use another file but just want to make sure we don\u0027t waste effort on things we don\u0027t have to do. Thanks!",
       "parentUuid": "44961835_ae032988",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 16
+      },
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92580468_3c220ae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-19T01:19:26Z",
+      "side": 1,
+      "message": "We stored all CUJ data in a single outfile (cuj_results.json), with all metrics and histogram data, if available. Histogram raw data is kept the same format as before because it is already being used by dash board.",
+      "parentUuid": "980b92a3_34d037ea",
       "range": {
         "startLine": 356,
         "startChar": 0,
