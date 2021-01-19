@@ -16,4 +16,4 @@ for both `x86_64` and `arm64`.
 > date. If updating the data files, please continue to use the version suffix
 > as it's much more meaningful than the date.
 
-[Termina]: https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/refs/heads/master/project-termina/
+[Termina]: https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/refs/heads/main/project-termina/

@@ -4,5 +4,5 @@
 
 // Package session contains local Tast tests that exercise the session_manager daemon.
 //
-// See https://chromium.googlesource.com/chromiumos/platform2/+/master/login_manager/ for more details.
+// See https://chromium.googlesource.com/chromiumos/platform2/+/main/login_manager/ for more details.
 package session

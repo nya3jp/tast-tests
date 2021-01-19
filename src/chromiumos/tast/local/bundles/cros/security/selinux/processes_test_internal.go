@@ -23,7 +23,7 @@ const (
 	Unstable
 )
 
-const domainIsolationErrorMessage = "every daemon must have its own domain. Please follow steps 1~3 of https://chromium.googlesource.com/chromiumos/docs/+/master/security/selinux.md#Practice-in-Examples to create a permissive domain for your daemon."
+const domainIsolationErrorMessage = "every daemon must have its own domain. Please follow steps 1~3 of https://chromium.googlesource.com/chromiumos/docs/+/main/security/selinux.md#Practice-in-Examples to create a permissive domain for your daemon."
 
 // ProcessesTestInternal runs the test suite for SELinuxProcesses(Experimental|Informational)?
 func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector []ProcessTestCaseSelector) {

@@ -518,19 +518,19 @@ gen_cropped_video 32 16 88 64 still-colors-720x480.bmp \
   still-colors-720x480-cropped-to-640x360.h264.mp4
 ```
 
-[15-chipset-bdw-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-bdw/chromeos-base/autotest-capability-chipset-bdw/files/15-chipset-bdw-capabilities.yaml?q=15-chipset-bdw-capabilities.yaml
-[15-chipset-cml-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-cml/chromeos-base/autotest-capability-chipset-cml/files/15-chipset-cml-capabilities.yaml?q=15-chipset-cml-capabilities.yaml
-[`autotest-capability`]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/chromeos-base/autotest-capability-default/
-[`caps` package]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/media/caps/caps.go
-[tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/video/
+[15-chipset-bdw-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/chipset-bdw/chromeos-base/autotest-capability-chipset-bdw/files/15-chipset-bdw-capabilities.yaml?q=15-chipset-bdw-capabilities.yaml
+[15-chipset-cml-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/chipset-cml/chromeos-base/autotest-capability-chipset-cml/files/15-chipset-cml-capabilities.yaml?q=15-chipset-cml-capabilities.yaml
+[`autotest-capability`]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/main/chromeos-base/autotest-capability-default/
+[`caps` package]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/caps/caps.go
+[tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/video/
 [video_decode_accelerator_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc
 [video decoder tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_test_usage.md
 [video_decode_accelerator_perf_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_perf_tests.cc
 [video decoder performance tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_perf_test_usage.md
 [video_encode_accelerator_unittest]: https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc
-[`Play.h264_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=92?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
-[`Play.vp8_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=99?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
+[`Play.h264_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=92?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
+[`Play.vp8_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=99?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
 [Test Dependencies]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md
-[video-on-canvas.html]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html
+[video-on-canvas.html]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/video-on-canvas.html
 [ffmpeg Slideshow docs]: https://trac.ffmpeg.org/wiki/Slideshow
-[data/test_vectors/README.md]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md
+[data/test_vectors/README.md]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md

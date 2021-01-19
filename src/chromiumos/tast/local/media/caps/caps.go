@@ -8,7 +8,7 @@ package caps
 // These are constant strings for capabilities in autotest-capability.
 // Tests may list these in SoftwareDeps.
 // See the below link for detail.
-// https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/chromeos-base/autotest-capability-default/.
+// https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/main/chromeos-base/autotest-capability-default/.
 const (
 	// Prefix is the prefix of capability.
 	Prefix = "autotest-capability:"
