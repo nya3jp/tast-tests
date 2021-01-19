@@ -41,32 +41,32 @@ func PolicyRefreshRate(ctx context.Context, s *testing.State) {
 
 	for _, param := range []struct {
 		name           string
-		expected_value string                    // expected_value is the value that should be set.
+		expectedValue string                    // expectedValue is the value that should be set.
 		value          *policy.PolicyRefreshRate // value is the value of the policy.
 	}{
 		{
 			name:           "min_allowed_value",
-			expected_value: " 30 mins",
+			expectedValue: " 30 mins",
 			value:          &policy.PolicyRefreshRate{Val: 1800000},
 		},
 		{
 			name:           "max_allowed_value",
-			expected_value: " 1 day",
+			expectedValue: " 1 day",
 			value:          &policy.PolicyRefreshRate{Val: 86400000},
 		},
 		{
 			name:           "below_min_allowed_value",
-			expected_value: " 30 mins",
+			expectedValue: " 30 mins",
 			value:          &policy.PolicyRefreshRate{Val: 100},
 		},
 		{
 			name:           "above_max_allowed_value",
-			expected_value: " 1 day",
+			expectedValue: " 1 day",
 			value:          &policy.PolicyRefreshRate{Val: 186400000},
 		},
 		{
 			name:           "unset",
-			expected_value: " 3 hours",
+			expectedValue: " 3 hours",
 			value:          &policy.PolicyRefreshRate{Stat: policy.StatusUnset},
 		},
 	} {
@@ -90,13 +90,13 @@ func PolicyRefreshRate(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			var refresh_value string
-			if err := conn.Eval(ctx, `document.querySelectorAll("#status-box-container .refresh-interval")[1].innerText`, &refresh_value); err != nil {
+			var refreshValue string
+			if err := conn.Eval(ctx, `document.querySelector("#status-box-container .refresh-interval").innerText`, &refreshValue); err != nil {
 				s.Fatal("Could not read policy page: ", err)
 			}
 			// Check the refresh value.
-			if refresh_value != param.expected_value {
-				s.Errorf("Unexpected refresh value: got %v; want %v", refresh_value, param.expected_value)
+			if refreshValue != param.expectedValue {
+				s.Errorf("Unexpected refresh value: got %v; want %v", refreshValue, param.expectedValue)
 			}
 
 		})
