@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"strings"
 
+	tmpb "chromiumos/system_api/tpm_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -30,7 +31,9 @@ const (
 // UtilityTpmManagerBinary wraps and the functions of TpmManagerBinary and parses the outputs to
 // structured data.
 type UtilityTpmManagerBinary struct {
-	binary *TpmManagerBinary
+	binary                *TpmManagerBinary
+	backupLockoutPassword string
+	backupOwnerDelegate   tmpb.AuthDelegate
 }
 
 // NewUtilityTpmManagerBinary creates a new UtilityTpmManagerBinary.
@@ -235,4 +238,52 @@ func (u *UtilityTpmManagerBinary) ResetDALock(ctx context.Context) (string, erro
 	}
 
 	return msg, nil
+}
+
+// DropResetLockPermissions drops the reset lock permissions.
+func (u *UtilityTpmManagerBinary) DropResetLockPermissions(ctx context.Context) error {
+	rawData, err := u.binary.GetLocalTPMData(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get local TPM data")
+	}
+	data, err := UnmarshalLocalData(rawData)
+	if err != nil {
+		return errors.Wrap(err, "failed to unmarshal local TPM data")
+	}
+	u.backupLockoutPassword = data.local_data.lockout_password
+	u.backupOwnerDelegate = data.local_data.owner_delegate
+	data.local_data.lockout_password = ""
+	data.local_data.owner_delegate = tmpb.AuthDelegate{}
+	rawData, err := MarshalLocalData(data)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal local TPM data")
+	}
+	err := u.binary.SetLocalTPMData(ctx, rawData)
+	if err != nil {
+		return errors.Wrap(err, "failed to get local TPM data")
+	}
+	return nil
+}
+
+// RestoreResetLockPermissions restore the reset lock permissions.
+func (u *UtilityTpmManagerBinary) RestoreResetLockPermissions(ctx context.Context) error {
+	rawData, err := u.binary.GetLocalTPMData(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get local TPM data")
+	}
+	data, err := UnmarshalLocalData(rawData)
+	if err != nil {
+		return errors.Wrap(err, "failed to unmarshal local TPM data")
+	}
+	data.local_data.lockout_password = u.backupLockoutPassword
+	data.local_data.owner_delegate = u.backupOwnerDelegate
+	rawData, err := MarshalLocalData(data)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal local TPM data")
+	}
+	err := u.binary.SetLocalTPMData(ctx, rawData)
+	if err != nil {
+		return errors.Wrap(err, "failed to get local TPM data")
+	}
+	return nil
 }
