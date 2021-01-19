@@ -274,20 +274,43 @@ func (c *Conn) StopProfiling(ctx context.Context) (*profiler.TakePreciseCoverage
 	return c.co.StopProfiling(ctx)
 }
 
+// TestConn is a connection to the Tast test extension's background page.
+// cf) crbug.com/1043590
+type TestConn struct {
+	*Conn
+}
+
+// ResetAutomation resets the automation API feature. The automation API feature
+// is widely used to control the UI, but keeping it activated sometimes causes
+// performance drawback on low-end devices. This method deactivates the
+// automation API and resets internal states. See: https://crbug.com/1096719.
+func (tconn *TestConn) ResetAutomation(ctx context.Context) error {
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.disableAutomation)()", nil); err != nil {
+		return errors.Wrap(err, "failed to disable the automation feature")
+	}
+
+	// Reloading the test extension contents to clear all of Javascript objects.
+	// This also resets the internal state of automation tree, so without
+	// reloading, disableAutomation above would cause failures.
+	if err := tconn.Eval(ctx, "location.reload()", nil); err != nil {
+		return errors.Wrap(err, "failed to reload the testconn")
+	}
+	if err := tconn.WaitForExpr(ctx, "document.readyState == 'complete'"); err != nil {
+		return errors.Wrap(err, "test API extension is unavailable")
+	}
+
+	if err := tconn.WaitForExpr(ctx, `typeof tast != 'undefined'`); err != nil {
+		return errors.Wrap(err, "tast API is unavailable")
+	}
+
+	if err := tconn.Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
+		return errors.Wrap(err, "failed to initialize test API events")
+	}
+	return nil
+}
+
 // PrivateReleaseAllObjects releases all remote JavaScript objects not released yet.
 // This function must kept private to the chrome package.
 func PrivateReleaseAllObjects(ctx context.Context, c *Conn) error {
 	return c.co.ReleaseAllObjects(ctx)
-}
-
-// PrivateLock locks a connection.
-// This function must kept private to the chrome package.
-func PrivateLock(c *Conn) {
-	c.locked = true
-}
-
-// PrivateUnlock unlocks a connection.
-// This function must kept private to the chrome package.
-func PrivateUnlock(c *Conn) {
-	c.locked = false
 }
