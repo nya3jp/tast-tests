@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "695b1f4f_d92905f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T16:36:35Z",
+      "side": 1,
+      "message": "We can, but I thought it might be nicer to group the network tests together (and maybe move wifi tests to a subdir at some point also). The top level directory is already pretty large. I don\u0027t feel strongly either way. \n\nejcaruso@, thoughts here?",
+      "parentUuid": "91a5d9dc_a7242436",
+      "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa00c6a2_506c2a37",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/shill_cellular_enable_and_connect.go",
         "patchSetId": 2
