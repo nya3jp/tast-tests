@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/internal/extension"
 )
 
 // LauncherState represents the launcher (a.k.a AppList) state.
@@ -87,7 +88,7 @@ func PrepareFakeApps(baseDir string, num int) ([]string, error) {
 			}
 		}
 	}`
-	if err := chrome.ChownContentsToChrome(baseDir); err != nil {
+	if err := extension.ChownContentsToChrome(baseDir); err != nil {
 		return nil, errors.Wrapf(err, "failed to change ownership of %s", baseDir)
 	}
 	extDirs := make([]string, 0, num)
