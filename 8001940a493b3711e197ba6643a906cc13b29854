@@ -22,6 +22,30 @@
       },
       "revId": "8001940a493b3711e197ba6643a906cc13b29854",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7479c99_1985457d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T18:42:48Z",
+      "side": 1,
+      "message": "Broke this up.",
+      "parentUuid": "36972891_d7b99055",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "8001940a493b3711e197ba6643a906cc13b29854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
