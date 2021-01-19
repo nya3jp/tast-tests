@@ -9,6 +9,9 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/golang/protobuf/proto"
+
+	tmpb "chromiumos/system_api/tpm_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -318,4 +321,33 @@ func (u *UtilityTpmManagerBinary) ResetDALock(ctx context.Context) (string, erro
 	}
 
 	return msg, nil
+}
+
+// DropResetLockPermissions drops the reset lock permissions and return a callback to restore the permissions.
+func (u *UtilityTpmManagerBinary) DropResetLockPermissions(ctx context.Context) (func() error, error) {
+	rawData, err := u.binary.GetLocalTPMData(ctx)
+	if err != nil {
+		return func() error { return nil }, errors.Wrap(err, "failed to get local TPM data")
+	}
+
+	var data tmpb.LocalData
+	if err := proto.Unmarshal(rawData, &data); err != nil {
+		return func() error { return nil }, errors.Wrap(err, "failed to unmarshal local TPM data")
+	}
+
+	data.LockoutPassword = []byte{}
+	data.OwnerDelegate = &tmpb.AuthDelegate{}
+
+	newData, err := proto.Marshal(&data)
+	if err != nil {
+		return func() error { return nil }, errors.Wrap(err, "failed to marshal local TPM data")
+	}
+
+	if err := u.binary.SetLocalTPMData(ctx, newData); err != nil {
+		return func() error { return nil }, errors.Wrap(err, "failed to get local TPM data")
+	}
+
+	return func() error {
+		return u.binary.SetLocalTPMData(ctx, rawData)
+	}, nil
 }
