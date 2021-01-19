@@ -420,9 +420,9 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		}
 	}
 
-	// If testExtCon was created, free all remote JS objects in the TastObjectGroup.
+	// If testExtCon was created, free all remote JS objects.
 	if c.testExtConn != nil {
-		if err := c.testExtConn.co.ReleaseObjectGroup(ctx, cdputil.TastObjectGroup); err != nil {
+		if err := c.testExtConn.co.ReleaseAllObjects(ctx); err != nil {
 			return errors.Wrap(err, "failed to free tast remote JS object group")
 		}
 	}
