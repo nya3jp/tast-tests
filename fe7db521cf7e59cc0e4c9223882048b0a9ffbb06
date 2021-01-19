@@ -16,6 +16,29 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "fe7db521cf7e59cc0e4c9223882048b0a9ffbb06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd2e81a2_693b183b",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-19T10:05:42Z",
+      "side": 1,
+      "message": "What happens if we always compare counters before/after a test? In that way we can omit the resetting logic.",
+      "range": {
+        "startLine": 223,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 46
+      },
+      "revId": "fe7db521cf7e59cc0e4c9223882048b0a9ffbb06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
