@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f9b24b_b4506ba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-19T18:55:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "969417c9_16a71f88",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "b6037b5c0c04245918e7ee23b568d59fe3366947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b79b9cda_21bbcf04",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0997d5_cfefec49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-19T18:55:30Z",
+      "side": 1,
+      "message": "Thanks for the catch, but no longer applicable.",
+      "parentUuid": "b79b9cda_21bbcf04",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "b6037b5c0c04245918e7ee23b568d59fe3366947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7644a93_618a3b6b",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-01-16T00:41:45Z",
       "side": 1,
       "message": "You could write as:\n  button, err :\u003d dxRootnode.DescendentWithTimeout(ctx, diagnosticsapp.DxActionButtons, 20*time.Second)\n  if err !\u003d nil {\n    ...\n\nDescendantWithTimeout returns only one element, but it seems that\u0027s fine as the following scenario simply uses buttons[0].",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "b6037b5c0c04245918e7ee23b568d59fe3366947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d414ce7_2d46aec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2021-01-19T18:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7644a93_618a3b6b",
       "range": {
         "startLine": 51,
         "startChar": 0,
