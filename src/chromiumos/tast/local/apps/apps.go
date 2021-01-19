@@ -218,6 +218,28 @@ func LaunchSystemWebApp(ctx context.Context, tconn *chrome.TestConn, appName, ur
 	}`, appName, url)
 }
 
+// GetListOfSystemWebApps retrieves a list of installed apps and filters down the system web apps.
+func GetListOfSystemWebApps(ctx context.Context, tconn *chrome.TestConn) ([]*ash.ChromeApp, error) {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.waitForSystemWebAppsInstall)"); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for all system web apps to be installed")
+	}
+
+	chromeApps, err := ash.ChromeApps(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get list of Chrome apps")
+	}
+
+	var systemWebApps []*ash.ChromeApp
+	for _, app := range chromeApps {
+		// Terminal has special handling in App Service, it has type 'Crostini' and install source 'User'.
+		if (app.InstallSource == "System" && app.Type == "Web") || (app.InstallSource == "User" && app.Type == "Crostini") {
+			systemWebApps = append(systemWebApps, app)
+		}
+	}
+
+	return systemWebApps, nil
+}
+
 // Close closes an app specified by appID.
 func Close(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.closeApp)`, appID)
