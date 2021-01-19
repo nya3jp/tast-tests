@@ -308,6 +308,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e60b3b1f_f64e84f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T21:50:56Z",
+      "side": 1,
+      "message": "Indeed recorder.Run can be called multiple times.  In that case:\n- this field should be map[string]*Histogram, which keeps the mapping from the name to the histogram\n- each time Run() is called, merge the new histogram into this collection\n\nIn other words, you don\u0027t need to combine them afterwords.  Rather you can aggregate them in Run().  I believe that\u0027s clearer.",
+      "parentUuid": "65e7f0ce_c8519991",
+      "revId": "7f576d2b8dba0cef04221766f21801a8ef402f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ede14642_2bb0d546",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
