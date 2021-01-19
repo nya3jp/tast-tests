@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb55e5e9_3580e766",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-19T05:33:03Z",
+      "side": 1,
+      "message": "Hi Eric, PTAL this change thanks. This currently blocks other test changes and we need to wait a Chrome LKGM uprev before removing the legacy logic in Chrome.",
+      "revId": "37baadde5b9a4e4cc36d4b5e9c3e613e05e49357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
