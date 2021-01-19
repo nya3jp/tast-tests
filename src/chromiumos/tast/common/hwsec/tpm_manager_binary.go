@@ -86,3 +86,8 @@ func (c *TpmManagerBinary) TakeOwnership(ctx context.Context) ([]byte, error) {
 func (c *TpmManagerBinary) Status(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "status")
 }
+
+// NonsensitiveStatus calls "tpm_manager_client status --nonsensitive".
+func (c *TpmManagerBinary) NonsensitiveStatus(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "status", "--nonsensitive")
+}
