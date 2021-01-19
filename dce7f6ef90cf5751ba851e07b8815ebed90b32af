@@ -64,6 +64,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7732fd3_85a04116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-19T08:15:48Z",
+      "side": 1,
+      "message": "nit: use a s.Run for each iteration to know which failed",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "652316cf_cedc33ac",
@@ -77,6 +100,30 @@
       "writtenOn": "2021-01-19T00:31:36Z",
       "side": 1,
       "message": "The DriveFsStarted precondition is useful when you want to assert syncing conditions on DriveWeb. For just verifying that DriveFS has started, you can take the minimal assertion\n\n```\nmountPath, err :\u003d drivefs.WaitForDriveFs(ctx, cr.User())\nif err !\u003d nil {\n\ts.Fatal(\"Failed waiting for DriveFS to start: \", err)\n}\ndrivefsRoot :\u003d path.Join(mountPath, \"root\")\n```",
+      "range": {
+        "startLine": 70,
+        "startChar": 35,
+        "endLine": 70,
+        "endChar": 49
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f448a4_d6d41d83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-19T08:15:48Z",
+      "side": 1,
+      "message": "Can you file a bug about tconn not surviving? It should be fixable.",
+      "parentUuid": "652316cf_cedc33ac",
       "range": {
         "startLine": 70,
         "startChar": 35,
@@ -112,6 +159,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5185a2f1_70e186ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-19T08:15:48Z",
+      "side": 1,
+      "message": "nit: not useful",
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2993df65_d7e56aab",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
         "patchSetId": 6
@@ -128,6 +192,46 @@
         "startChar": 19,
         "endLine": 114,
         "endChar": 22
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb33be0_daeebc29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-19T08:15:48Z",
+      "side": 1,
+      "message": "nit: not useful",
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2308379e_2cffddf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-19T08:15:48Z",
+      "side": 1,
+      "message": "Can this be shorter to make the test faster?",
+      "range": {
+        "startLine": 153,
+        "startChar": 97,
+        "endLine": 153,
+        "endChar": 99
       },
       "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
