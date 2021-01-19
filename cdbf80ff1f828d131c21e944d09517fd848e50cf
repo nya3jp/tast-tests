@@ -52,6 +52,24 @@
       "parentUuid": "d1ed90b7_8efa376b",
       "revId": "cdbf80ff1f828d131c21e944d09517fd848e50cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ac14df_75f45e91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/characteristics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-01-19T09:21:50Z",
+      "side": 1,
+      "message": "Checked on GoldenEye and it seems there is indeed a board: \"expresso\" which seems to have usb camera on it but with no config file and its parent have defined BuiltinUSBCamera cap for it:\nhttps://source.corp.google.com/chromeos_public/src/overlays/chipset-byt/chromeos-base/autotest-capability-chipset-byt/files/15-chipset-byt-capabilities.yaml\n\nSo I think (BuiltinUSBCamera \u003d\u003e ConfigFileExists) might not always true, although it is the only exception I can find",
+      "parentUuid": "67a8d405_1492dd6a",
+      "revId": "cdbf80ff1f828d131c21e944d09517fd848e50cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
