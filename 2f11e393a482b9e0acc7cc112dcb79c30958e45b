@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff67475d_73b8864a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-19T01:19:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53d142e4_a7a6b105",
+      "revId": "2f11e393a482b9e0acc7cc112dcb79c30958e45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e84cd456_f2bf5785",
