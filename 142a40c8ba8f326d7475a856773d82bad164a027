@@ -16,6 +16,23 @@
       "message": "Hi Tast Experts,\n\nCan you place take a look at this CL?\n\nThanks!",
       "revId": "142a40c8ba8f326d7475a856773d82bad164a027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a01676be_382bac95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-19T02:03:19Z",
+      "side": 1,
+      "message": "LGTM for tast style. Also include Garrick for reviewing.",
+      "revId": "142a40c8ba8f326d7475a856773d82bad164a027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
