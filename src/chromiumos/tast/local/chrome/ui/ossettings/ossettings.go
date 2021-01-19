@@ -112,19 +112,25 @@ func LaunchAtPageURL(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 		return errors.Wrap(err, "failed to connect to OS settings target")
 	}
 
-	if err := osSettingsConn.Eval(ctx, fmt.Sprintf("window.location = %q", osSettingsURLPrefix+pageShortURL), nil); err != nil {
-		return errors.Wrap(err, "failed to run javascript")
-	}
-
-	// Wait for condition after changing location.
+	// Using testing.Poll to allow 2-3 times retries.
+	// Sometimes changing window.location in javascript just does not work and no error thrown out.
+	// Refer to b/177868367.
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if result, err := condition(ctx); err != nil {
-			return errors.Wrap(err, "failed to evaluate condition")
-		} else if !result {
-			return errors.New("failed to match condition after changing page location in javascript")
+		// Eval javascript function to change page url.
+		if err := osSettingsConn.Eval(ctx, fmt.Sprintf("window.location = %q", osSettingsURLPrefix+pageShortURL), nil); err != nil {
+			return errors.Wrap(err, "failed to run javascript")
 		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 200 * time.Millisecond})
+
+		// Wait for condition after changing location.
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if result, err := condition(ctx); err != nil {
+				return errors.Wrap(err, "failed to evaluate condition")
+			} else if !result {
+				return errors.New("failed to match condition after changing page location in javascript")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 200 * time.Millisecond})
+	}, &testing.PollOptions{Timeout: 1 * time.Minute})
 }
 
 // ChromeConn returns a Chrome connection to the Settings app.
