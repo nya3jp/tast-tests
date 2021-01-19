@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0897a983_c0326406",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-19T00:33:01Z",
+      "side": 1,
+      "message": "Okay, I create a new issue tracker for this.",
+      "parentUuid": "8948d507_b9b91ac6",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "08524f40e43b571e4f3b44ecb1d74471b6450699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "63fd3b27_cb8c7421",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4830940a_9812a8b9",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-19T00:33:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a61dfd13_227ccbdd",
+      "range": {
+        "startLine": 141,
+        "startChar": 35,
+        "endLine": 141,
+        "endChar": 43
+      },
+      "revId": "08524f40e43b571e4f3b44ecb1d74471b6450699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31cad15d_1a085904",
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dac060d_5581f899",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-19T00:33:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31cad15d_1a085904",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 28
+      },
+      "revId": "08524f40e43b571e4f3b44ecb1d74471b6450699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a31079f_c7fd46ca",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-01-18T22:10:53Z",
       "side": 1,
       "message": "nit: maybe s/dstYUVJSONPath/yuvJSONPath/ ? To look similar to |yuvPath|\nin l.144.",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 15
+      },
+      "revId": "08524f40e43b571e4f3b44ecb1d74471b6450699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b5d075_968c5195",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-19T00:33:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a31079f_c7fd46ca",
       "range": {
         "startLine": 149,
         "startChar": 1,
