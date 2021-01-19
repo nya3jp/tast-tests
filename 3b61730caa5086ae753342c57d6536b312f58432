@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6ea5f602_0f91b7bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-19T04:09:42Z",
+      "side": 1,
+      "message": "I see what your mean. The firmware updater is supposed to compare the current firmware version on MCU with the firmware version in rootfs, and update if the versions don\u0027t match. We have another test that verifies the firmware DOES run in that case: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2595471. Does that sound good enough to you?",
+      "parentUuid": "da16d2f8_9916043f",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "3b61730caa5086ae753342c57d6536b312f58432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9b4bf6c0_aca59d41",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
