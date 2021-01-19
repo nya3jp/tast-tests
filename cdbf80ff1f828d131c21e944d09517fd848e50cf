@@ -123,6 +123,24 @@
       "parentUuid": "4829489a_211a1803",
       "revId": "cdbf80ff1f828d131c21e944d09517fd848e50cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d890555_45d6d96f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/characteristics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-01-19T10:05:49Z",
+      "side": 1,
+      "message": "Thanks for the information! Let me land this first and add a follow-up for (BuiltinUSBCamera \u003d\u003e ConfigFileExists).",
+      "parentUuid": "02dd5ab9_93ed400b",
+      "revId": "cdbf80ff1f828d131c21e944d09517fd848e50cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
