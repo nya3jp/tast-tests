@@ -44,7 +44,7 @@ const (
 
 // Window names for different settings page.
 const (
-	PageNameLinux = "Settings - Linux development environment"
+	PageNameLinux = "Settings - Linux development environment (Beta)"
 	PageNameMSF   = "Settings - " + ManageSharedFolders
 )
 
@@ -285,7 +285,7 @@ type ResizeDiskDialog struct {
 	Self   *uig.Action `name:"Resize Linux disk" role:"genericContainer"`
 	Slider *uig.Action `role:"slider"`
 	Resize *uig.Action `name:"Resize" role:"button"`
-	Cancel *uig.Action `name:"Cancel" role:"button"`
+	Cancel *uig.Action `name:"Cancel" role:"button" className:"cancel-button"`
 }
 
 // ClickChange clicks Change to resize disk and returns an instance of ResizeDiskDialog.
