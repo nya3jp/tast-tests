@@ -16,6 +16,23 @@
       "message": "Thanks Miguel for reviewing. Add tast-owners@ as you mark CR+1 in the patchset 1.",
       "revId": "08fe2040d300dccb307dad4a02508c4d6b68dbba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaee7a5a_8d31946c",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-19T03:20:53Z",
+      "side": 1,
+      "message": "As you promote this utility from bundles to sharable support library, I think it is better to consider cleaned APIs.\n\nIn this case, this function does two things, \"PrepareYUV\" and copy JSON files. They look independent, so could you split the methods to make responsibility clearer?\nE.g., currently you return two strings, but what are what is unclear.",
+      "revId": "08fe2040d300dccb307dad4a02508c4d6b68dbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
