@@ -93,3 +93,9 @@ func readKeyFromExtensionManifest(path string) ([]byte, error) {
 	}
 	return nil, nil
 }
+
+// BackgroundPageURL returns the URL to the background page for the extension
+// with the supplied ID.
+func BackgroundPageURL(id string) string {
+	return "chrome-extension://" + id + "/_generated_background_page.html"
+}
