@@ -4,5 +4,5 @@
 
 // Package debugd contains local Tast tests that exercise the debugd daemon.
 //
-// See https://chromium.googlesource.com/chromiumos/platform2/+/master/debugd/ for more details.
+// See https://chromium.googlesource.com/chromiumos/platform2/+/main/debugd/ for more details.
 package debugd

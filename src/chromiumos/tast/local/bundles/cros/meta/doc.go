@@ -6,5 +6,5 @@
 //
 // Some tests are disabled but executed by remote "meta" tests to exercise
 // the tast command execution.
-// Remote meta tests are at https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/master/src/chromiumos/tast/remote/bundles/cros/meta/.
+// Remote meta tests are at https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/main/src/chromiumos/tast/remote/bundles/cros/meta/.
 package meta

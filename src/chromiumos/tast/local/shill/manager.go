@@ -32,7 +32,7 @@ type Technology string
 
 // Device technologies
 // Refer to Flimflam type options in
-// https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/master/system_api/dbus/shill/dbus-constants.h#334
+// https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/main/system_api/dbus/shill/dbus-constants.h#334
 const (
 	TechnologyCellular Technology = shillconst.TypeCellular
 	TechnologyEthernet Technology = shillconst.TypeEthernet

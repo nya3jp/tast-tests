@@ -37,7 +37,7 @@ tast -verbose run localhost:9222 network.HostapHwsim.validity
 # Make modifications.
 ## Find the appropriate src/third_party/wpa_supplicant-*/
 ## source tree. See the hostap-test ebuild for its CROS_WORKON_LOCALNAME:
-##   https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/master/net-wireless/hostap-test/hostap-test-9999.ebuild
+##   https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/net-wireless/hostap-test/hostap-test-9999.ebuild
 ## That is, src/third_party/wpa_supplicant-2.8 as of May 2020.
 ## Make your modifications to, e.g., tests/hwsim/test_<relevant_module>.py, or
 ## wpa_supplicant/<foo>.c.
@@ -121,5 +121,5 @@ optional arguments:
 [hwsim-based test framework]: https://w1.fi/cgit/hostap/plain/tests/hwsim/README
 [network.HostapHwsim]: hostap_hwsim.go
 [slides]: https://goto.google.com/hostap-hwsim-slides
-[cros_vm docs]: https://chromium.googlesource.com/chromiumos/docs/+/master/cros_vm.md
+[cros_vm docs]: https://chromium.googlesource.com/chromiumos/docs/+/main/cros_vm.md
 [deploy to the correct root]: https://crbug.com/341708

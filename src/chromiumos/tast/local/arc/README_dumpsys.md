@@ -156,4 +156,4 @@ Android R before it is published to AOSP, we might need to take `.proto` files
 from Android internal (TBD).
 
 [android10-dev-proto]: https://android.googlesource.com/platform/frameworks/base/+/refs/heads/android10-dev/core/proto/
-[gsutil-doc]: https://chromium.googlesource.com/chromiumos/docs/+/master/archive_mirrors.md#updating-localmirror-localmirror_private-getting-files-onto-localmirror-command-line-interface
+[gsutil-doc]: https://chromium.googlesource.com/chromiumos/docs/+/main/archive_mirrors.md#updating-localmirror-localmirror_private-getting-files-onto-localmirror-command-line-interface

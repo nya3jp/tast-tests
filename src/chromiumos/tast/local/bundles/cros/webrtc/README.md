@@ -167,7 +167,7 @@ frames.
 [MediaStream Recording]: https://www.w3.org/TR/mediastream-recording/
 [README.md]: https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/modules/mediarecorder/README.md
 [RFC7742]: https://tools.ietf.org/html/rfc7742#section-5
-[Tast webrtc folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/webrtc/
+[Tast webrtc folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/webrtc/
 [WebRTC architecture]: http://webrtc.github.io/webrtc-org/architecture/#
 [fake video capture device]: http://webrtc.github.io/webrtc-org/testing/
 [Video Capabilities]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/video/README.md#capabilities-and-capability-test
