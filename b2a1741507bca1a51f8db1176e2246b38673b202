@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "71842c1e_b7f0710c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-19T01:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79447b9d_98682620",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "eb8fd74e_4736d0fe",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -128,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "309f3a67_911db7f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-19T01:22:26Z",
+      "side": 1,
+      "message": "This file uses policyutil.VerifySettingsState, which has been changed in this CL to use LaunchOSSettings.\n\nI don\u0027t think other changes are needed in this file. The ui.FindParams part is needed for the test.",
+      "parentUuid": "794b34bb_48e0b080",
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a6848fb_4b55bf7e",
@@ -151,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9735e7c6_ad2d9cf4",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-19T01:22:26Z",
+      "side": 1,
+      "message": "Done. Used context.WithTimeout",
+      "parentUuid": "4a6848fb_4b55bf7e",
+      "range": {
+        "startLine": 240,
+        "startChar": 17,
+        "endLine": 240,
+        "endChar": 33
+      },
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0298d9e9_537190aa",
@@ -164,6 +230,54 @@
       "writtenOn": "2021-01-18T09:22:49Z",
       "side": 1,
       "message": "nit: OS Settings",
+      "range": {
+        "startLine": 242,
+        "startChar": 60,
+        "endLine": 242,
+        "endChar": 71
+      },
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a0a573_30373296",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-19T01:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0298d9e9_537190aa",
+      "range": {
+        "startLine": 242,
+        "startChar": 60,
+        "endLine": 242,
+        "endChar": 71
+      },
+      "revId": "b2a1741507bca1a51f8db1176e2246b38673b202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b4c091_8e6c5ca5",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-19T01:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0298d9e9_537190aa",
       "range": {
         "startLine": 242,
         "startChar": 60,
