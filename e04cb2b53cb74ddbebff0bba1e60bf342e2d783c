@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2563d1d9_50d82653",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T16:20:39Z",
+      "side": 1,
+      "message": "Will those tests run locally? Or are you referring to a remote $DUT? (I haven\u0027t run tests on a remote DUT before, but I think I have a doc for that bookmarked somewhere). I was hoping we could do that with a specialized tryjob like we do with Chrome, but I don\u0027t see any UI for that.",
+      "parentUuid": "490f2808_870dc224",
+      "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b14dd40_c0d1d004",
@@ -105,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f0312c_39e91623",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T16:20:39Z",
+      "side": 1,
+      "message": "Agreed that property.go could likely be re-factored to use this, but also that it should be done separately :-)",
+      "parentUuid": "4b14dd40_c0d1d004",
+      "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b38a3ee_2c35a5dc",
@@ -118,6 +154,30 @@
       "writtenOn": "2021-01-18T10:08:40Z",
       "side": 1,
       "message": "nit: Not sure if this change is needed (for consistency?). But with this change, it is slightly more straightforward to me to embed PropertyHolder pointer in child objects instead of dereference+copy. Copy is safe here but need to check PropertyHolder for sure when reading. The downside is bad performance with multiple layer of pointer.",
+      "range": {
+        "startLine": 233,
+        "startChar": 81,
+        "endLine": 233,
+        "endChar": 82
+      },
+      "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a143005e_d17f509c",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T16:20:39Z",
+      "side": 1,
+      "message": "I did this during the refactoring process and left it for consistency and so that we can return nil on error, but it\u0027s not necessary and I\u0027m not sure which pattern is better so I will revert this here.\n\n(The child objects, e.g. Service, use anonymous embedding, so I\u0027m not sure that holding a pointer would be as convenient. I\u0027m not really concerned with performance in the test code, compared to the other overhead it will be negligible, but readability and maintainability certainly matter, and I\u0027m new to go).",
+      "parentUuid": "7b38a3ee_2c35a5dc",
       "range": {
         "startLine": 233,
         "startChar": 81,
