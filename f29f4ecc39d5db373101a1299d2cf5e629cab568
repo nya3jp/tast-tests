@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e547fd75_50e9f011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-19T18:39:38Z",
+      "side": 0,
+      "message": "Maybe include the binary reference in the new section too (since the video_decode_accelerator_tests binary is also referenced for the non-perf tests)?",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 36
+      },
+      "revId": "f29f4ecc39d5db373101a1299d2cf5e629cab568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

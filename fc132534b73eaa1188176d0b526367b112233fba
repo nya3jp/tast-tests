@@ -33,6 +33,86 @@
       "message": "jchinlee@ PTAL",
       "revId": "fc132534b73eaa1188176d0b526367b112233fba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baa425db_dfb25de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-19T18:39:38Z",
+      "side": 1,
+      "message": "This sentence is unfinished?",
+      "revId": "fc132534b73eaa1188176d0b526367b112233fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f093e39_185b2755",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-19T18:39:38Z",
+      "side": 1,
+      "message": "optional: \"but simply itemizes the capabilities\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 76,
+        "endLine": 92,
+        "endChar": 77
+      },
+      "revId": "fc132534b73eaa1188176d0b526367b112233fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8f2978_a10dfc3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-19T18:39:38Z",
+      "side": 1,
+      "message": "Do these actually display correctly for you? I know they weren\u0027t changed in this CL but double checking, it doesn\u0027t seem to have worked for me before either.",
+      "range": {
+        "startLine": 114,
+        "startChar": 35,
+        "endLine": 114,
+        "endChar": 56
+      },
+      "revId": "fc132534b73eaa1188176d0b526367b112233fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f53eb994_54a518a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-19T18:39:38Z",
+      "side": 1,
+      "message": "With links like these do we want to embed the commit hash too, or is it intentional that we don\u0027t, so that when the link gets out of sync it\u0027s obvious (downside --- have to locate the new link without having the old information immediately accessible)?",
+      "revId": "fc132534b73eaa1188176d0b526367b112233fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
