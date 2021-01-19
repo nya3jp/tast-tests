@@ -195,11 +195,11 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
 	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
-	c := &chrome.Chrome{}
-	if err := c.PrepareExtensions(ctx); err != nil {
+	extDirs, err := chrome.DeprecatedPrepareExtensions()
+	if err != nil {
 		return err
 	}
-	extList := strings.Join(c.ExtDirs(), ",")
+	extList := strings.Join(extDirs, ",")
 	extensionArgs := extensionArgs(chrome.TestExtensionID, extList)
 	p.opts = append(p.opts, chrome.ExtraArgs("--lacros-chrome-additional-args="+strings.Join(extensionArgs, "####")))
 
@@ -219,7 +219,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		p.opts = append(p.opts, chrome.ExtraArgs("--lacros-chrome-path="+p.lacrosPath))
 	}
 
-	var err error
 	if p.cr, err = chrome.New(ctx, p.opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

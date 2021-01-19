@@ -168,7 +168,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 	}
 
 	l := &LacrosChrome{lacrosPath: p.LacrosPath}
-	extList := strings.Join(p.Chrome.ExtDirs(), ",")
+	extList := strings.Join(p.Chrome.DeprecatedExtDirs(), ",")
 	args := []string{
 		"--ozone-platform=wayland",                 // Use wayland to connect to exo wayland server.
 		"--no-sandbox",                             // Disable sandbox for now
