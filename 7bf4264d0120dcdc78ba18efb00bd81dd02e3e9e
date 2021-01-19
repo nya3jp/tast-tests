@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f231325a_67e83cca",
+        "filename": "src/chromiumos/tast/common/perf/perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T22:56:05Z",
+      "side": 1,
+      "message": "I don\u0027t think this CUJPerf is a good idea.  I\u0027ll provide my comments on recorder.go.",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4ac84f4_d267d263",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
         "patchSetId": 13
@@ -215,6 +232,24 @@
       "writtenOn": "2021-01-19T21:50:56Z",
       "side": 1,
       "message": "We agreed that the histograms are stored into a different JSON file, not perf.Values.  Please fix this.",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed92225_3d56d937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-19T22:56:05Z",
+      "side": 1,
+      "message": "Sorry this was my misunderstanding.\n\nStill, I don\u0027t think use of perf.Values is a good format to encode those histograms.  Why not simply using json.Marshal?   Once you have something like map[string]*Histogram, then:\n  data, err :\u003d json.Marshal(hists)\n  if err !\u003d nil {\n    return errors.Wrap(err, \"failed to marshal\")\n  }\n  return ioutil.SaveFile(output, data, 0644)\n\nThat will store sufficient data in much more natural format.",
+      "parentUuid": "7d206668_e3bade2c",
       "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
