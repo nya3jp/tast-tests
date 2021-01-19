@@ -6,7 +6,12 @@ package hwsec
 
 import (
 	"context"
+	"encoding/base64"
 	"strconv"
+	"strings"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/shutil"
 )
 
 // TpmManagerBinary is used to interact with the tpm_managerd process over
@@ -90,4 +95,45 @@ func (c *TpmManagerBinary) Status(ctx context.Context) ([]byte, error) {
 // NonsensitiveStatus calls "tpm_manager_client status --nonsensitive".
 func (c *TpmManagerBinary) NonsensitiveStatus(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "status", "--nonsensitive")
+}
+
+func (c *TpmManagerBinary) tempFile(ctx context.Context, prefix string) (string, error) {
+	out, err := c.runner.Run(ctx, "mktemp", "/tmp/"+prefix+".XXXXX")
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(out)), err
+}
+
+func (c *TpmManagerBinary) removeFile(ctx context.Context, filename string) error {
+	_, err := c.runner.Run(ctx, "rm", "-f", "--", filename)
+	return err
+}
+
+func (c *TpmManagerBinary) readFile(ctx context.Context, filename string) ([]byte, error) {
+	return c.runner.Run(ctx, "cat", "--", filename)
+}
+
+func (c *TpmManagerBinary) writeFile(ctx context.Context, filename string, data []byte) error {
+	tmpFile, err := c.tempFile(ctx, "tast_tpm_manager_write")
+	if err != nil {
+		return errors.Wrap(err, "failed to create temp file")
+	}
+	defer c.removeFile(ctx, tmpFile)
+	b64String := base64.StdEncoding.EncodeToString(data)
+	if _, err := c.runner.Run(ctx, "sh", "-c", "echo "+shutil.Escape(b64String)+">"+tmpFile); err != nil {
+		return errors.Wrap(err, "failed to echo string")
+	}
+	_, err = c.runner.Run(ctx, "sh", "-c", "base64 -d "+tmpFile+">"+filename)
+	return err
+}
+
+// GetLocalTPMData would read the local_tpm_data.
+func (c *TpmManagerBinary) GetLocalTPMData(ctx context.Context) ([]byte, error) {
+	return c.readFile(ctx, "/var/lib/tpm_manager/local_tpm_data")
+}
+
+// SetLocalTPMData would write the local_tpm_data.
+func (c *TpmManagerBinary) SetLocalTPMData(ctx context.Context, data []byte) error {
+	return c.writeFile(ctx, "/var/lib/tpm_manager/local_tpm_data", data)
 }
