@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8e79fa_34b2b2da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "I was unaware of these. Handy. That said, I see plenty of examples of both, even in the network/ subdir, and the C++ programmer in me kind of likes the explicit format for typed values... *shrug*.",
+      "parentUuid": "3d6af743_9981310a",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3929d109_b62469b8",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a685eae_a0bb869a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "OK I found the documentation on that. This seems unnecessarily verbose to me - the defer() logic could be easily fixed elsewhere, but I will assume there are good Reasons for the pattern :-)\n\nThis will make the Helper less helpful, but we share enough of the code that it\u0027s probably still worthwhile.\n\nI will fix this in the ShillCellularReady test and subsequent tests.\n\nI\u0027m not sure what you mean about \"shortened ctx\". I see some examples where we use contextutil.Shorten to generate a shortened context, I don\u0027t see why we need that here? (That seems somewhat orthogonal to the first note).",
+      "parentUuid": "3929d109_b62469b8",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "905259de_fcf4667b",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-01-18T08:55:34Z",
       "side": 1,
       "message": "How about adding a comment for better readability?\n\n// waitForEnabled waits for cellular technology being enabled/disabled within 3 seconds.",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe9ca4b_4d2bdb15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "905259de_fcf4667b",
       "revId": "adab200218cbbd4a54d030c477581815794f049e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b7cf62_6aef4560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5cddabb_6fe9e4f3",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ae577af_0952d8eb",
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00adf297_c2e288b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ae577af_0952d8eb",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9396300c_1fef07e6",
@@ -122,6 +218,24 @@
       "writtenOn": "2021-01-15T19:34:27Z",
       "side": 1,
       "message": "nit:\n\n ...(\"Unexpected powered state: got %t, want %t\", powered, expected)",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c765cd4_31509c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9396300c_1fef07e6",
       "revId": "adab200218cbbd4a54d030c477581815794f049e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ad8ea4_3a7114a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "I try to avoid \u0027otherwise\u0027 in comments since the false case should clearly be the opposite of the true case, but I will try to clarify this.",
+      "parentUuid": "0c07fade_8c48454d",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5df4ae78_19ecf486",
@@ -162,6 +300,24 @@
       "writtenOn": "2021-01-18T08:55:34Z",
       "side": 1,
       "message": "Same here",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "301eda9c_a2b970b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5df4ae78_19ecf486",
       "revId": "adab200218cbbd4a54d030c477581815794f049e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +339,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f267deb0_8e7ce9cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8e061ec_335623a9",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f87c8747_ce70bd2e",
@@ -196,6 +370,30 @@
       "writtenOn": "2021-01-15T19:34:27Z",
       "side": 1,
       "message": "nit: I think just \"...%d: %s\" is fine here",
+      "range": {
+        "startLine": 46,
+        "startChar": 41,
+        "endLine": 46,
+        "endChar": 46
+      },
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a50ff82_9f7c2acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f87c8747_ce70bd2e",
       "range": {
         "startLine": 46,
         "startChar": 41,
@@ -229,6 +427,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83aa9545_24444254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e3848afc_a9ec5e6a",
+      "range": {
+        "startLine": 50,
+        "startChar": 40,
+        "endLine": 50,
+        "endChar": 45
+      },
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "613de8a6_8133b1fb",
@@ -252,6 +474,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b036fb7_4fb6c2e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "613de8a6_8133b1fb",
+      "range": {
+        "startLine": 54,
+        "startChar": 41,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b75a5ab_2b5ef2c3",
@@ -265,6 +511,30 @@
       "writtenOn": "2021-01-15T19:34:27Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 58,
+        "startChar": 44,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f60bbfe_21a4b8db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-19T19:26:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b75a5ab_2b5ef2c3",
       "range": {
         "startLine": 58,
         "startChar": 44,
