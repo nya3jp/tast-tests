@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f3c4e09_2c6eeace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-19T04:18:46Z",
+      "side": 1,
+      "message": "Why the amd64 dependency?",
+      "range": {
+        "startLine": 43,
+        "startChar": 40,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "63b18376637f48a88df62fb00d29511c08080066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37614ba1_287e5afc",
+        "filename": "src/chromiumos/tast/local/multivm/state_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-01-19T04:18:46Z",
+      "side": 1,
+      "message": "Remove this comment?",
+      "range": {
+        "startLine": 330,
+        "startChar": 3,
+        "endLine": 330,
+        "endChar": 96
+      },
+      "revId": "63b18376637f48a88df62fb00d29511c08080066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
