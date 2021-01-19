@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "579c31dd_1ec4f887",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-19T01:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "febc8180_4f2c8ade",
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "021c1266_2fdb4d1b",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-18T01:49:28Z",
       "side": 1,
       "message": "Do you need to defer here? or does Release mess up the error message?",
+      "range": {
+        "startLine": 608,
+        "startChar": 3,
+        "endLine": 608,
+        "endChar": 8
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b09a3380_1de6231a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-19T01:17:26Z",
+      "side": 1,
+      "message": "I have no idea if it messes up the error message, but just coming from C++, it seems much safer to not attempt to use something after it\u0027s been released.",
+      "parentUuid": "021c1266_2fdb4d1b",
       "range": {
         "startLine": 608,
         "startChar": 3,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff1d6bc0_7252b1ab",
+        "filename": "src/chromiumos/tast/local/screenshot/capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-19T01:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e60c8efc_8cf5d777",
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "284164a0_a1dfb35c",
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d7f7931_8e4f27a3",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-19T01:17:26Z",
+      "side": 1,
+      "message": "attempting to call goldctl ... --commit 89.12345 says that 89.12345 is not a valid commit ID (since it\u0027s not hexadecimal). This will require a new goldctl binary before we can update this.",
+      "parentUuid": "284164a0_a1dfb35c",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5c4e941_9cad4342",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-01-18T01:49:28Z",
       "side": 1,
       "message": "Why do all of these functions emit fatal errors rather than just returning an error message?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5e7f47d_79fb4b52",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-19T01:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5c4e941_9cad4342",
       "range": {
         "startLine": 32,
         "startChar": 1,
@@ -150,6 +258,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f2c5b6_80a52d8b",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-19T01:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46343a1b_91907e96",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1764b060_f4dcd9e7",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-19T01:17:26Z",
+      "side": 1,
+      "message": "The context is in each individual error",
+      "parentUuid": "7670b774_b5c9e709",
+      "range": {
+        "startLine": 92,
+        "startChar": 31,
+        "endLine": 92,
+        "endChar": 43
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf38fe2b_c82742e2",
@@ -163,6 +319,30 @@
       "writtenOn": "2021-01-18T01:49:28Z",
       "side": 1,
       "message": "any reason not to use testexec?  If not, please switch it (and use the dumplogonfailure option if appropriate).",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 12
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5d4efd_2a7f5160",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-19T01:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf38fe2b_c82742e2",
       "range": {
         "startLine": 98,
         "startChar": 8,
