@@ -19,12 +19,10 @@ import (
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 	"github.com/golang/protobuf/proto"
-	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
-	"chromiumos/tast/local/chrome/internal/browserwatcher"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/chrome/jslog"
@@ -128,17 +126,15 @@ type Chrome struct {
 	// Its fields must not be altered after its construction.
 	cfg config
 
-	devsess *cdputil.Session // DevTools session
+	sess *driver.Session
 
 	exts          *extension.Files
 	testExtConn   *Conn // connection to test extension exposing APIs
 	signinExtConn *Conn // connection to signin profile test extension
 
-	loginPending   bool // true if login is pending until ContinueLogin is called
-	tracingStarted bool // true when tracing is started
+	loginPending bool // true if login is pending until ContinueLogin is called
 
-	watcher       *browserwatcher.Watcher // tries to catch Chrome restarts
-	logAggregator *jslog.Aggregator       // collects JS console output
+	logAggregator *jslog.Aggregator // collects JS console output
 }
 
 // User returns the username that was used to log in to Chrome.
@@ -155,7 +151,7 @@ func (c *Chrome) DeprecatedExtDirs() []string {
 // e.g. "127.0.0.1:38725". This port should not be accessed from outside of this package,
 // but it is exposed so that the port's owner can be easily identified.
 func (c *Chrome) DebugAddrPort() string {
-	return c.devsess.DebugAddrPort()
+	return c.sess.DebugAddrPort()
 }
 
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
@@ -174,9 +170,8 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	}
 
 	c := &Chrome{
-		cfg:            *cfg,
-		tracingStarted: false,
-		logAggregator:  jslog.NewAggregator(),
+		cfg:           *cfg,
+		logAggregator: jslog.NewAggregator(),
 	}
 
 	// Cap the timeout to be certain length depending on the login mode. Sometimes
@@ -224,7 +219,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	if err := c.restartChromeForTesting(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to restart chrome for testing")
 	}
-	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort); err != nil {
+	if c.sess, err = driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, c.logAggregator); err != nil {
 		return nil, errors.Wrapf(c.chromeErr(err), "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
 
@@ -320,13 +315,9 @@ func (c *Chrome) Close(ctx context.Context) error {
 		c.exts.RemoveAll()
 	}
 
-	if c.devsess != nil {
-		c.devsess.Close(ctx)
-	}
-
 	var firstErr error
-	if c.watcher != nil {
-		firstErr = c.watcher.Close()
+	if c.sess != nil {
+		firstErr = c.sess.Close(ctx)
 	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
@@ -395,7 +386,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 
 	// If the test case started the tracing but somehow StopTracing isn't called,
 	// the tracing should be stopped in ResetState.
-	if c.tracingStarted {
+	if c.sess.TracingStarted() {
 		// As noted in the comment of c.StartTracing, the tracingStarted flag is
 		// marked before actually StartTracing request is sent because
 		// StartTracing's failure doesn't necessarily mean that tracing isn't
@@ -403,7 +394,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		// and tracing actually didn't start. Because of that, StopTracing's error
 		// wouldn't cause an error of ResetState, but simply reporting the error
 		// message.
-		if _, err := c.StopTracing(ctx); err != nil {
+		if _, err := c.sess.StopTracing(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
 		}
 	}
@@ -473,14 +464,10 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 // replacing "context deadline exceeded" errors that can occur when Chrome is crashing
 // with more-descriptive ones.
 func (c *Chrome) chromeErr(orig error) error {
-	if c.watcher == nil {
+	if c.sess == nil {
 		return orig
 	}
-	werr := c.watcher.Err()
-	if werr == nil {
-		return orig
-	}
-	return werr
+	return c.sess.Watcher().ReplaceErr(orig)
 }
 
 // restartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
@@ -632,9 +619,6 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
 		return err
 	}
-
-	// Start watching the new browser.
-	c.watcher = browserwatcher.NewWatcher(GetRootPID)
 	return nil
 }
 
@@ -705,54 +689,26 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 // from the specified URL is opened. You can assume that the page loading has
 // been finished when this function returns.
 func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*Conn, error) {
-	if url == "" {
-		testing.ContextLog(ctx, "Creating new blank page")
-	} else {
-		testing.ContextLog(ctx, "Creating new page with URL ", url)
-	}
-	targetID, err := c.devsess.CreateTarget(ctx, url, opts...)
-	if err != nil {
-		return nil, err
-	}
-
-	conn, err := c.newConnInternal(ctx, targetID, url)
-	if err != nil {
-		return nil, err
-	}
-	if url != "" && url != BlankURL {
-		if err := conn.WaitForExpr(ctx, fmt.Sprintf("location.href !== %q", BlankURL)); err != nil {
-			return nil, errors.Wrap(err, "failed to wait for navigation")
-		}
-	}
-	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for loading")
-	}
-	return conn, nil
-}
-
-// newConnInternal is a convenience function that creates a new Conn connected to the specified target.
-// url is only used for logging JavaScript console messages.
-func (c *Chrome) newConnInternal(ctx context.Context, id TargetID, url string) (*Conn, error) {
-	return driver.NewConn(ctx, c.devsess, id, c.logAggregator, url, c.chromeErr)
+	return c.sess.NewConn(ctx, url, opts...)
 }
 
 // Target describes a DevTools target.
-type Target = target.Info
+type Target = driver.Target
 
 // TargetID is an ID assigned to a DevTools target.
-type TargetID = target.ID
+type TargetID = driver.TargetID
 
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
-type TargetMatcher = cdputil.TargetMatcher
+type TargetMatcher = driver.TargetMatcher
 
 // MatchTargetID returns a TargetMatcher that matches targets with the supplied ID.
 func MatchTargetID(id TargetID) TargetMatcher {
-	return func(t *Target) bool { return t.TargetID == id }
+	return driver.MatchTargetID(id)
 }
 
 // MatchTargetURL returns a TargetMatcher that matches targets with the supplied URL.
 func MatchTargetURL(url string) TargetMatcher {
-	return func(t *Target) bool { return t.URL == url }
+	return driver.MatchTargetURL(url)
 }
 
 // NewConnForTarget iterates through all available targets and returns a connection to the
@@ -763,21 +719,17 @@ func MatchTargetURL(url string) TargetMatcher {
 //	f := func(t *Target) bool { return t.URL == "http://example.net/" }
 //	conn, err := cr.NewConnForTarget(ctx, f)
 func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
-	t, err := c.devsess.WaitForTarget(ctx, tm)
-	if err != nil {
-		return nil, c.chromeErr(err)
-	}
-	return c.newConnInternal(ctx, t.TargetID, t.URL)
+	return c.sess.NewConnForTarget(ctx, tm)
 }
 
 // FindTargets returns the info about Targets, which satisfies the given cond condition.
 func (c *Chrome) FindTargets(ctx context.Context, tm TargetMatcher) ([]*Target, error) {
-	return c.devsess.FindTargets(ctx, tm)
+	return c.sess.FindTargets(ctx, tm)
 }
 
 // CloseTarget closes the target identified by the given id.
 func (c *Chrome) CloseTarget(ctx context.Context, id TargetID) error {
-	return c.devsess.CloseTarget(ctx, id)
+	return c.sess.CloseTarget(ctx, id)
 }
 
 // ExtensionBackgroundPageURL returns the URL to the background page for
@@ -1457,12 +1409,6 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	// remove the file at cdputil.DebuggingPortPath, which should be
 	// recreated after the port gets ready.
 	os.Remove(cdputil.DebuggingPortPath)
-	// And stop the browser crash watcher temporarily.
-	err = c.watcher.Close()
-	c.watcher = nil // clear watcher anyway to avoid double close
-	if err != nil {
-		return err
-	}
 
 	if err = oobeConn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
 		return err
@@ -1471,18 +1417,15 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	// We also close our WebSocket connection to the browser.
 	oobeConn.Close()
 	oobeConn = nil
-	c.devsess.Close(ctx)
-	c.devsess = nil
+	c.sess.Close(ctx)
+	c.sess = nil
 
 	if err = cryptohome.WaitForUserMount(ctx, c.cfg.user); err != nil {
 		return err
 	}
 
-	// The original browser process should be gone now, so start watching for the new one.
-	c.watcher = browserwatcher.NewWatcher(GetRootPID)
-
-	// Then, get the possibly-changed debugging port and establish a new WebSocket connection.
-	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort); err != nil {
+	// Get the possibly-changed debugging port and establish a new WebSocket connection.
+	if c.sess, err = driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, c.logAggregator); err != nil {
 		return c.chromeErr(err)
 	}
 
@@ -1505,22 +1448,12 @@ func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool,
 // Sometimes, the request to start tracing reaches the browser process, but there
 // is a timeout while waiting for the reply.
 func (c *Chrome) StartTracing(ctx context.Context, categories []string) error {
-	// Note: even when StartTracing fails, it might be due to the case that the
-	// StartTracing request is successfully sent to the browser and tracing
-	// collection has started, but the context deadline is exceeded before Tast
-	// receives the reply.  Therefore, tracingStarted flag is marked beforehand.
-	c.tracingStarted = true
-	return c.devsess.StartTracing(ctx, categories)
+	return c.sess.StartTracing(ctx, categories)
 }
 
 // StopTracing stops trace collection and returns the collected trace events.
 func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
-	traces, err := c.devsess.StopTracing(ctx)
-	if err != nil {
-		return nil, err
-	}
-	c.tracingStarted = false
-	return traces, nil
+	return c.sess.StopTracing(ctx)
 }
 
 // SaveTraceToFile marshals the given trace into a binary protobuf and saves it
