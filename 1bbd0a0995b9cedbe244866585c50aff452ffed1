@@ -127,6 +127,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c10af168_8d3c9ad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_playstore_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-19T15:24:37Z",
+      "side": 1,
+      "message": "Your test is failing CQ because you didn\u0027t specify a timeout. The arc package requires a longer timeout. This is the actual error:\ntast-local-tests-crosint-0.0.1-r4602: --- FAIL: TestTimeout (0.00s)\ntast-local-tests-crosint-0.0.1-r4602:     testcheck.go:48: arc.UnicornPlaystoreOn: timeout is too short (0s \u003c 4m50s)\ntast-local-tests-crosint-0.0.1-r4602:     testcheck.go:48: arc.UnicornPlaystoreOn.vm: timeout is too short (0s \u003c 4m50s)",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 103
+      },
+      "revId": "1bbd0a0995b9cedbe244866585c50aff452ffed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ec2901d_86480661",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_playstore_on.go",
         "patchSetId": 1
