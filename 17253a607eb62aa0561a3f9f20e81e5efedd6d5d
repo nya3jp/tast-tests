@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82c15dd6_f9d42636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/null_platform_format.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-19T22:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e68deb32_acab3f5d",
+      "range": {
+        "startLine": 22,
+        "startChar": 68,
+        "endLine": 22,
+        "endChar": 75
+      },
+      "revId": "17253a607eb62aa0561a3f9f20e81e5efedd6d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e49bf028_da756c17",
@@ -112,6 +136,30 @@
       "side": 1,
       "message": "Agree, moving constants and variables right before their first use is the preferred style for tast.",
       "parentUuid": "e49bf028_da756c17",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "17253a607eb62aa0561a3f9f20e81e5efedd6d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60edc09f_aca2b759",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/null_platform_format.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1477097
+      },
+      "writtenOn": "2021-01-19T22:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "874386a7_164da9f2",
       "range": {
         "startLine": 45,
         "startChar": 0,
