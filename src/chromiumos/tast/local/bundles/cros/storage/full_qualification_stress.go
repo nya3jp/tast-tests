@@ -60,6 +60,10 @@ func init() {
 			Val:     stressRunner,
 			Timeout: 5 * time.Hour,
 		}, {
+			Name:    "mini_soak",
+			Val:     miniSoakRunner,
+			Timeout: 2 * time.Hour,
+		}, {
 			Name:    "teardown_benchmarks",
 			Val:     setupBenchmarks,
 			Timeout: 1 * time.Hour,
@@ -136,7 +140,9 @@ func setupBenchmarks(ctx context.Context, s *testing.State, rw *stress.FioResult
 
 // soakTestBlock runs long, write-intensive storage stresses.
 func soakTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
-	testConfigNoVerify := &stress.TestConfig{}
+	testConfigNoVerify := &stress.TestConfig{
+		Duration: soakBlockTimeout / 2,
+	}
 	testConfigVerify := &stress.TestConfig{
 		VerifyOnly:   true,
 		ResultWriter: rw,
@@ -487,6 +493,13 @@ func stressRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWri
 			}
 		}
 	}
+}
+
+// miniSoakRunner is a minimized version of the storage stress consisting from
+// a single attempt of a soak subtest.
+// This stress is used for storage qualification v2 validation.
+func miniSoakRunner(ctx context.Context, s *testing.State, rw *stress.FioResultWriter, slcConfig slcQualConfig) {
+	soakTestBlock(ctx, s, rw, slcConfig)
 }
 
 // FullQualificationStress runs a full version of disk IO qualification test.
