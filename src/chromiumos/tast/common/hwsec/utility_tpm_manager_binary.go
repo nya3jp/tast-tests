@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"strings"
 
+	tmpb "chromiumos/system_api/tpm_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -348,4 +349,33 @@ func (u *UtilityTpmManagerBinary) ResetDALock(ctx context.Context) (string, erro
 	}
 
 	return msg, nil
+}
+
+// DropResetLockPermissions drops the reset lock permissions and return a callback to restore the permissions.
+func (u *UtilityTpmManagerBinary) DropResetLockPermissions(ctx context.Context) (func() error, error) {
+	rawData, err := u.binary.GetLocalTPMData(ctx)
+	if err != nil {
+		return func() error { return nil }, errors.Wrap(err, "failed to get local TPM data")
+	}
+	data, err := UnmarshalLocalData(rawData)
+	if err != nil {
+		return func() error { return nil }, errors.Wrap(err, "failed to unmarshal local TPM data")
+	}
+	data.LockoutPassword = []byte{}
+	data.OwnerDelegate = &tmpb.AuthDelegate{}
+	newData, err := MarshalLocalData(data)
+	if err != nil {
+		return func() error { return nil }, errors.Wrap(err, "failed to marshal local TPM data")
+	}
+	err = u.binary.SetLocalTPMData(ctx, newData)
+	if err != nil {
+		return func() error { return nil }, errors.Wrap(err, "failed to get local TPM data")
+	}
+	return func() error {
+		err := u.binary.SetLocalTPMData(ctx, rawData)
+		if err != nil {
+			return errors.Wrap(err, "failed to get local TPM data")
+		}
+		return nil
+	}, nil
 }
