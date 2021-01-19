@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8ce4d4_72aeca89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-19T22:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc4ae126_2d51b196",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "c3bf24cebedd22b18d9f70b116869a03200aedab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb4bfa1d_fcc28b2b",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-01-19T09:40:42Z",
       "side": 1,
       "message": "As you have created a clean up context it would make sense to use it here too. Maybe increase the time for the clean up context too.",
+      "range": {
+        "startLine": 93,
+        "startChar": 15,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "c3bf24cebedd22b18d9f70b116869a03200aedab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b09c6e6_570ce4ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_gallery_from_notifications.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-19T22:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4bfa1d_fcc28b2b",
       "range": {
         "startLine": 93,
         "startChar": 15,
