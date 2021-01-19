@@ -56,6 +56,30 @@
       },
       "revId": "6f5352add489a950c9eb2855ae1c10b1d6e7bc1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8d5386_87cfbb5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-19T23:08:04Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a good question.\nI agree with having the same contents among the performance tests.\n\nRegarding the content, I think we don\u0027t have to have a video specifically video conference.\nSuch videos likely have a small number of moving things.\nI wonder if we should have a video that has mutilple of moving facts.\nI am going to create all resolution files from 4k videos in https://media.xiph.org/video/derf/.\nHow do you think and what videos do you think the best in the videos?",
+      "parentUuid": "4bfcdbd3_7df0ec89",
+      "range": {
+        "startLine": 141,
+        "startChar": 21,
+        "endLine": 141,
+        "endChar": 31
+      },
+      "revId": "6f5352add489a950c9eb2855ae1c10b1d6e7bc1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
