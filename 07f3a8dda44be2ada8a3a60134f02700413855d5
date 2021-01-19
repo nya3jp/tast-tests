@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5283bd59_009cde3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-19T15:16:36Z",
+      "side": 1,
+      "message": "Instead, could you move L96 to L90?",
+      "revId": "07f3a8dda44be2ada8a3a60134f02700413855d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c68ad8_164cce39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video_new.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-19T15:16:36Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "07f3a8dda44be2ada8a3a60134f02700413855d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ec8c78_6e708383",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-19T15:16:36Z",
+      "side": 1,
+      "message": "Could you document what is the first return value?",
+      "revId": "07f3a8dda44be2ada8a3a60134f02700413855d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde8b6d7_360fe973",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-19T15:16:36Z",
+      "side": 1,
+      "message": "nit: can be just src to prefer shorter name.",
+      "range": {
+        "startLine": 143,
+        "startChar": 50,
+        "endLine": 143,
+        "endChar": 64
+      },
+      "revId": "07f3a8dda44be2ada8a3a60134f02700413855d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
