@@ -155,9 +155,6 @@ type Chrome struct {
 // User returns the username that was used to log in to Chrome.
 func (c *Chrome) User() string { return c.cfg.user }
 
-// TestExtID returns the ID of the extension that exposes test-only APIs.
-func (c *Chrome) TestExtID() string { return c.testExtID }
-
 // ExtDirs returns the directories holding the test extensions.
 func (c *Chrome) ExtDirs() []string {
 	return append(append([]string(nil), c.cfg.extraExtDirs...), c.testExtDir)
