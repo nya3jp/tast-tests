@@ -360,18 +360,18 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	defer st.End()
 
 	// Try to close all "normal" pages and apps.
-	targetFilter := func(t *target.Info) bool {
+	targetFilter := func(t *Target) bool {
 		return t.Type == "page" || t.Type == "app"
 	}
-	targets, err := c.devsess.FindTargets(ctx, targetFilter)
+	targets, err := c.FindTargets(ctx, targetFilter)
 	if err != nil {
 		return errors.Wrap(err, "failed to get targets")
 	}
-	var closingTargets []*target.Info
+	var closingTargets []*Target
 	if len(targets) > 0 {
 		testing.ContextLogf(ctx, "Closing %d target(s)", len(targets))
 		for _, t := range targets {
-			if err := c.devsess.CloseTarget(ctx, t.TargetID); err != nil {
+			if err := c.CloseTarget(ctx, t.TargetID); err != nil {
 				testing.ContextLogf(ctx, "Failed to close %v: %v", t.URL, err)
 			} else {
 				// Record all targets that have promised to close
@@ -381,7 +381,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	}
 	// Wait for the targets to finish closing
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		targets, err := c.devsess.FindTargets(ctx, targetFilter)
+		targets, err := c.FindTargets(ctx, targetFilter)
 		if err != nil {
 			return errors.Wrap(err, "failed to get targets")
 		}
@@ -797,16 +797,27 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 
 // newConnInternal is a convenience function that creates a new Conn connected to the specified target.
 // url is only used for logging JavaScript console messages.
-func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
+func (c *Chrome) newConnInternal(ctx context.Context, id TargetID, url string) (*Conn, error) {
 	return NewConn(ctx, c.devsess, id, c.logAggregator, url, c.chromeErr)
 }
+
+// Target describes a DevTools target.
+type Target = target.Info
+
+// TargetID is an ID assigned to a DevTools target.
+type TargetID = target.ID
 
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
 type TargetMatcher = cdputil.TargetMatcher
 
+// MatchTargetID returns a TargetMatcher that matches targets with the supplied ID.
+func MatchTargetID(id TargetID) TargetMatcher {
+	return func(t *Target) bool { return t.TargetID == id }
+}
+
 // MatchTargetURL returns a TargetMatcher that matches targets with the supplied URL.
 func MatchTargetURL(url string) TargetMatcher {
-	return func(t *target.Info) bool { return t.URL == url }
+	return func(t *Target) bool { return t.URL == url }
 }
 
 // NewConnForTarget iterates through all available targets and returns a connection to the
@@ -822,6 +833,16 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 		return nil, c.chromeErr(err)
 	}
 	return c.newConnInternal(ctx, t.TargetID, t.URL)
+}
+
+// FindTargets returns the info about Targets, which satisfies the given cond condition.
+func (c *Chrome) FindTargets(ctx context.Context, tm TargetMatcher) ([]*Target, error) {
+	return c.devsess.FindTargets(ctx, tm)
+}
+
+// CloseTarget closes the target identified by the given id.
+func (c *Chrome) CloseTarget(ctx context.Context, id TargetID) error {
+	return c.devsess.CloseTarget(ctx, id)
 }
 
 // ExtensionBackgroundPageURL returns the URL to the background page for
@@ -937,8 +958,8 @@ func (c *Chrome) Responded(ctx context.Context) error {
 
 // getFirstOOBETarget returns the first OOBE-related DevTools target that it finds.
 // nil is returned if no target is found.
-func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*target.Info, error) {
-	targets, err := c.devsess.FindTargets(ctx, func(t *target.Info) bool {
+func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*Target, error) {
+	targets, err := c.FindTargets(ctx, func(t *Target) bool {
 		return strings.HasPrefix(t.URL, oobePrefix)
 	})
 	if err != nil {
@@ -953,19 +974,19 @@ func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*target.Info, error) {
 // enterpriseEnrollTargets returns the Gaia WebView targets, which are used
 // to help enrollment on the device.
 // Returns nil if none are found.
-func (c *Chrome) enterpriseEnrollTargets(ctx context.Context, userDomain string) ([]*target.Info, error) {
-	isGAIAWebView := func(t *target.Info) bool {
+func (c *Chrome) enterpriseEnrollTargets(ctx context.Context, userDomain string) ([]*Target, error) {
+	isGAIAWebView := func(t *Target) bool {
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
 
-	targets, err := c.devsess.FindTargets(ctx, isGAIAWebView)
+	targets, err := c.FindTargets(ctx, isGAIAWebView)
 	if err != nil {
 		return nil, err
 	}
 
 	// It's common for multiple targets to be returned.
 	// We want to run the command specifically on the "apps" target.
-	var enterpriseTargets []*target.Info
+	var enterpriseTargets []*Target
 	for _, target := range targets {
 		u, err := url.Parse(target.URL)
 		if err != nil {
@@ -994,7 +1015,7 @@ func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	ctx, st := timing.Start(ctx, "wait_for_oobe")
 	defer st.End()
 
-	var target *target.Info
+	var target *Target
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		if target, err = c.getFirstOOBETarget(ctx); err != nil {
@@ -1007,7 +1028,7 @@ func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
 		return nil, errors.Wrap(c.chromeErr(err), "OOBE target not found")
 	}
 
-	conn, err := c.newConnInternal(ctx, target.TargetID, target.URL)
+	conn, err := c.NewConnForTarget(ctx, MatchTargetID(target.TargetID))
 	if err != nil {
 		return nil, err
 	}
@@ -1249,14 +1270,14 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 		}
 	}
 
-	isGAIAWebView := func(t *target.Info) bool {
+	isGAIAWebView := func(t *Target) bool {
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
 
 	testing.ContextLog(ctx, "Waiting for GAIA webview")
-	var target *target.Info
+	var target *Target
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if targets, err := c.devsess.FindTargets(ctx, isGAIAWebView); err != nil {
+		if targets, err := c.FindTargets(ctx, isGAIAWebView); err != nil {
 			return err
 		} else if len(targets) != 1 {
 			return errors.Errorf("got %d GAIA targets; want 1", len(targets))
@@ -1268,7 +1289,7 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 		return errors.Wrap(c.chromeErr(err), "GAIA webview not found")
 	}
 
-	gaiaConn, err := c.newConnInternal(ctx, target.TargetID, target.URL)
+	gaiaConn, err := c.NewConnForTarget(ctx, MatchTargetID(target.TargetID))
 	if err != nil {
 		return errors.Wrap(c.chromeErr(err), "failed to connect to GAIA webview")
 	}
@@ -1535,7 +1556,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 
 // IsTargetAvailable checks if there is any matched target.
 func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool, error) {
-	targets, err := c.devsess.FindTargets(ctx, tm)
+	targets, err := c.FindTargets(ctx, tm)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get targets")
 	}
