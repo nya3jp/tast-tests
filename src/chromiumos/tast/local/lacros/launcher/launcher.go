@@ -38,14 +38,13 @@ type LacrosChrome struct {
 	Devsess       *cdputil.Session  // Debugging session for lacros-chrome
 	cmd           *testexec.Cmd     // The command context used to start lacros-chrome.
 	logAggregator *jslog.Aggregator // collects JS console output
-	testExtID     string            // ID for test extension exposing APIs
 	testExtConn   *chrome.Conn      // connection to test extension exposing APIs
 	lacrosPath    string            // Root directory for lacros-chrome.
 }
 
 // ConnectToLacrosChrome connects to a running lacros instance (e.g launched by the UI) and returns a LacrosChrome object that can be used to interact with it.
-func ConnectToLacrosChrome(ctx context.Context, chrome *chrome.Chrome, lacrosPath, userDataDir string) (*LacrosChrome, error) {
-	l := &LacrosChrome{testExtID: chrome.TestExtID(), lacrosPath: lacrosPath}
+func ConnectToLacrosChrome(ctx context.Context, lacrosPath, userDataDir string) (*LacrosChrome, error) {
+	l := &LacrosChrome{lacrosPath: lacrosPath}
 	debuggingPortPath := filepath.Join(userDataDir, "DevToolsActivePort")
 	var err error
 	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath, cdputil.WaitPort); err != nil {
@@ -168,7 +167,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		return nil, errors.Wrap(err, "failed to create temp dir")
 	}
 
-	l := &LacrosChrome{testExtID: p.Chrome.TestExtID(), lacrosPath: p.LacrosPath}
+	l := &LacrosChrome{lacrosPath: p.LacrosPath}
 	extList := strings.Join(p.Chrome.ExtDirs(), ",")
 	args := []string{
 		"--ozone-platform=wayland",                 // Use wayland to connect to exo wayland server.
@@ -187,7 +186,7 @@ func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
 		"--use-fake-ui-for-media-stream",                      // Avoid the need to grant camera/microphone permissions.
 		chrome.BlankURL,                                       // Specify first tab to load.
 	}
-	args = append(args, extensionArgs(l.testExtID, extList)...)
+	args = append(args, extensionArgs(chrome.TestExtensionID, extList)...)
 
 	l.cmd = testexec.CommandContext(ctx, "/usr/local/bin/python3", append([]string{"/usr/local/bin/mojo_connection_lacros_launcher.py",
 		"-s", mojoSocketPath, filepath.Join(p.LacrosPath, "chrome")}, args...)...)
@@ -276,7 +275,7 @@ func (l *LacrosChrome) TestAPIConn(ctx context.Context) (*chrome.TestConn, error
 		return &chrome.TestConn{Conn: l.testExtConn}, nil
 	}
 
-	bgURL := chrome.ExtensionBackgroundPageURL(l.testExtID)
+	bgURL := chrome.ExtensionBackgroundPageURL(chrome.TestExtensionID)
 	testing.ContextLog(ctx, "Waiting for test API extension at ", bgURL)
 	var err error
 	if l.testExtConn, err = l.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL)); err != nil {

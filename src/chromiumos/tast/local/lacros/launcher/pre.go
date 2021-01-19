@@ -200,7 +200,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		return err
 	}
 	extList := strings.Join(c.ExtDirs(), ",")
-	extensionArgs := extensionArgs(c.TestExtID(), extList)
+	extensionArgs := extensionArgs(chrome.TestExtensionID, extList)
 	p.opts = append(p.opts, chrome.ExtraArgs("--lacros-chrome-additional-args="+strings.Join(extensionArgs, "####")))
 
 	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
