@@ -92,7 +92,7 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 		return nil, errors.Wrap(err, "failed to wait for animation finished")
 	}
 
-	desktopView, err := mediaview.DescendantWithTimeout(ctx, FindParams{ClassName: "DesktopMediaPicker_DesktopMediaSourceView", Role: RoleTypeButton}, timeout)
+	desktopView, err := mediaview.DescendantWithTimeout(ctx, FindParams{ClassName: "DesktopMediaSourceView", Role: RoleTypeButton}, 30*time.Second)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find the desktop view")
 	}
