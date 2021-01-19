@@ -45,10 +45,7 @@ func NewUtilityTpmManagerBinary(r CmdRunner) (*UtilityTpmManagerBinary, error) {
 // checkCommandAndReturn is a simple helper that checks if binaryMsg returned is successful, and returns the corresponding message and error.
 func checkCommandAndReturn(ctx context.Context, binaryMsg []byte, err error, command, successMsg string) (string, error) {
 	// Convert msg first because it's still used when there's an error.
-	msg := ""
-	if binaryMsg != nil {
-		msg = string(binaryMsg)
-	}
+	msg := string(binaryMsg)
 
 	// Check if the command succeeds.
 	if err != nil {
@@ -120,6 +117,112 @@ func (u *UtilityTpmManagerBinary) Status(ctx context.Context) (string, error) {
 	return checkStatusCommandAndReturn(ctx, binaryMsg, err, "Status")
 }
 
+// NonsensitiveStatusInfo contains the dictionary attack related information.
+type NonsensitiveStatusInfo struct {
+	// Whether a TPM is enabled on the system.
+	IsEnabled bool
+
+	// Whether the TPM has been owned.
+	IsOwned bool
+
+	// Whether the owner password is still retained.
+	IsOwnerPasswordPresent bool
+
+	// Whether tpm manager is capable of reset DA.
+	HasResetLockPermissions bool
+}
+
+func parseStringMap(ctx context.Context, msg string, checkMatch bool, prefixes []string) (map[string]string, error) {
+	lines := strings.Split(msg, "\n")
+	parsed := map[string]string{}
+	// TODO(yich): This compare is slow when we have big msg and prefixes.
+	for _, line := range lines {
+		for _, prefix := range prefixes {
+			if !strings.HasPrefix(line, prefix) {
+				continue
+			}
+			if _, found := parsed[prefix]; found {
+				testing.ContextLogf(ctx, "Command have duplicate prefix, message %q", msg)
+				return nil, errors.Errorf("duplicate prefix %q found", prefix)
+			}
+			parsed[prefix] = line[len(prefix):]
+		}
+	}
+	if checkMatch && len(parsed) != len(prefixes) {
+		return nil, errors.Errorf("missing attribute/prefix, message %q", msg)
+	}
+	return parsed, nil
+}
+
+// parseNonsensitiveStatusInfo tries to parse the output of NonsensitiveStatus from msg, if checkStatus is true, then we'll verify that the output of the command contains a success message.
+func parseNonsensitiveStatusInfo(ctx context.Context, checkStatus bool, msg string) (info *NonsensitiveStatusInfo, returnedError error) {
+	const (
+		IsEnablePrefix                = "  is_enabled: "
+		IsOwnedPrefix                 = "  is_owned: "
+		IsOwnerPasswordPresentPrefix  = "  is_owner_password_present: "
+		HasResetLockPermissionsPrefix = "  has_reset_lock_permissions: "
+		StatusPrefix                  = "  status: "
+	)
+	prefixes := []string{
+		IsEnablePrefix,
+		IsOwnedPrefix,
+		IsOwnerPasswordPresentPrefix,
+		HasResetLockPermissionsPrefix,
+		StatusPrefix,
+	}
+
+	parsed, err := parseStringMap(ctx, msg, checkStatus, prefixes)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse string map")
+	}
+
+	if checkStatus {
+		// We need to check the status.
+		if parsed[StatusPrefix] != tpmManagerStatusSuccessMessage {
+			return nil, errors.Errorf("incorrect status %q from NonsensitiveStatusInfo", parsed[StatusPrefix])
+		}
+	}
+
+	isEnabled := false
+	if _, err := fmt.Sscanf(parsed[IsEnablePrefix], "%t", &isEnabled); err != nil {
+		return nil, errors.Wrapf(err, "isEnabled doesn't start with a valid boolean %q", parsed[IsEnablePrefix])
+	}
+	isOwned := false
+	if _, err := fmt.Sscanf(parsed[IsOwnedPrefix], "%t", &isOwned); err != nil {
+		return nil, errors.Wrapf(err, "isOwned doesn't start with a valid boolean %q", parsed[IsOwnedPrefix])
+	}
+	ownerPass := false
+	if _, err := fmt.Sscanf(parsed[IsOwnerPasswordPresentPrefix], "%t", &ownerPass); err != nil {
+		return nil, errors.Wrapf(err, "ownerPass doesn't start with a valid boolean %q", parsed[IsOwnerPasswordPresentPrefix])
+	}
+	lockPerm := false
+	if _, err := fmt.Sscanf(parsed[HasResetLockPermissionsPrefix], "%t", &lockPerm); err != nil {
+		return nil, errors.Wrapf(err, "lockPerm doesn't start with a valid boolean %q", parsed[HasResetLockPermissionsPrefix])
+	}
+
+	return &NonsensitiveStatusInfo{
+		IsEnabled:               isEnabled,
+		IsOwned:                 isOwned,
+		IsOwnerPasswordPresent:  ownerPass,
+		HasResetLockPermissions: lockPerm,
+	}, nil
+}
+
+// GetNonsensitiveStatus retrieves the NonsensitiveStatusInfo.
+func (u *UtilityTpmManagerBinary) GetNonsensitiveStatus(ctx context.Context) (info *NonsensitiveStatusInfo, returnedError error) {
+	binaryMsg, err := u.binary.NonsensitiveStatus(ctx)
+
+	// Convert msg first because it's still used when there's an error.
+	msg := string(binaryMsg)
+
+	if err != nil {
+		return nil, errors.Wrapf(err, "calling NonsensitiveStatus failed with message %q", msg)
+	}
+
+	// Now try to parse everything.
+	return parseNonsensitiveStatusInfo(ctx, true, msg)
+}
+
 // DAInfo contains the dictionary attack related information.
 type DAInfo struct {
 	// Counter is the dictionary attack lockout counter.
@@ -146,50 +249,36 @@ func parseDAInfo(ctx context.Context, checkStatus bool, msg string) (info *DAInf
 	)
 	prefixes := []string{CounterPrefix, ThresholdPrefix, InEffectPrefix, RemainingPrefix, StatusPrefix}
 
-	lines := strings.Split(msg, "\n")
-
-	parsed := map[string]string{}
-	for _, line := range lines {
-		for _, prefix := range prefixes {
-			if strings.HasPrefix(line, prefix) {
-				if _, found := parsed[prefix]; found {
-					testing.ContextLogf(ctx, "GetDAInfo command have duplicate prefix, message %q", msg)
-					return &DAInfo{}, errors.Errorf("duplicate prefix %q found", prefix)
-				}
-				parsed[prefix] = line[len(prefix):]
-			}
-		}
-	}
-
-	if (checkStatus && len(parsed) != 5) || (!checkStatus && len(parsed) != 4) {
-		return &DAInfo{}, errors.Errorf("missing attribute/prefix in GetDAInfo output, message %q", msg)
+	parsed, err := parseStringMap(ctx, msg, checkStatus, prefixes)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse string map")
 	}
 
 	if checkStatus {
 		// We need to check the status.
 		if parsed[StatusPrefix] != tpmManagerStatusSuccessMessage {
-			return &DAInfo{}, errors.Errorf("incorrect status %q from GetDAInfo", parsed[StatusPrefix])
+			return nil, errors.Errorf("incorrect status %q from GetDAInfo", parsed[StatusPrefix])
 		}
 	}
 
 	counter := -1
 	if _, err := fmt.Sscanf(parsed[CounterPrefix], "%d", &counter); err != nil {
-		return &DAInfo{}, errors.Wrapf(err, "counter doesn't start with a valid integer %q", parsed[CounterPrefix])
+		return nil, errors.Wrapf(err, "counter doesn't start with a valid integer %q", parsed[CounterPrefix])
 	}
 
 	threshold := -1
 	if _, err := fmt.Sscanf(parsed[ThresholdPrefix], "%d", &threshold); err != nil {
-		return &DAInfo{}, errors.Wrapf(err, "threshold doesn't start with a valid integer %q", parsed[ThresholdPrefix])
+		return nil, errors.Wrapf(err, "threshold doesn't start with a valid integer %q", parsed[ThresholdPrefix])
 	}
 
 	inEffect := false
 	if _, err := fmt.Sscanf(parsed[InEffectPrefix], "%t", &inEffect); err != nil {
-		return &DAInfo{}, errors.Wrapf(err, "in effect doesn't start with a valid boolean %q", parsed[InEffectPrefix])
+		return nil, errors.Wrapf(err, "in effect doesn't start with a valid boolean %q", parsed[InEffectPrefix])
 	}
 
 	remaining := -1
 	if _, err := fmt.Sscanf(parsed[RemainingPrefix], "%d", &remaining); err != nil {
-		return &DAInfo{}, errors.Wrapf(err, "remaining doesn't start with a valid integer %q", parsed[RemainingPrefix])
+		return nil, errors.Wrapf(err, "remaining doesn't start with a valid integer %q", parsed[RemainingPrefix])
 	}
 
 	return &DAInfo{Counter: counter, Threshold: threshold, InEffect: inEffect, Remaining: remaining}, nil
@@ -200,13 +289,10 @@ func (u *UtilityTpmManagerBinary) GetDAInfo(ctx context.Context) (info *DAInfo, 
 	binaryMsg, err := u.binary.GetDAInfo(ctx)
 
 	// Convert msg first because it's still used when there's an error.
-	msg := ""
-	if binaryMsg != nil {
-		msg = string(binaryMsg)
-	}
+	msg := string(binaryMsg)
 
 	if err != nil {
-		return &DAInfo{}, errors.Wrapf(err, "calling GetDAInfo failed with message %q", msg)
+		return nil, errors.Wrapf(err, "calling GetDAInfo failed with message %q", msg)
 	}
 
 	// Now try to parse everything.
@@ -218,10 +304,7 @@ func (u *UtilityTpmManagerBinary) ResetDALock(ctx context.Context) (string, erro
 	binaryMsg, err := u.binary.ResetDALock(ctx)
 
 	// Convert msg first because it's still used when there's an error.
-	msg := ""
-	if binaryMsg != nil {
-		msg = string(binaryMsg)
-	}
+	msg := string(binaryMsg)
 
 	// Check if the command succeeds.
 	if err != nil {
