@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ad8520_e15c37f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_init_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-20T16:22:17Z",
+      "side": 1,
+      "message": "to avoid unnecessary process, could you use syscall directly?\n\nunix.Kill(oldPID, syscall.SIGTERM)\n\ncf) https://pkg.go.dev/golang.org/x/sys/unix#Kill",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 80
+      },
+      "revId": "c1223430a71f0aca992c0c3941fce293fe82fe80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32cbe9c6_5033265f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_init_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-20T16:22:17Z",
+      "side": 1,
+      "message": "nit: could you comment the error is intentionally ignored here?",
+      "revId": "c1223430a71f0aca992c0c3941fce293fe82fe80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292b3c51_0578db58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_init_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-20T16:22:17Z",
+      "side": 1,
+      "message": "I guess this can be timing issue?\nSIGTERM handling in ARC may take some time, so at this point, the old one may still alive?\nShould we wait for the completion of the kill above, like the oldPID process is gone?",
+      "revId": "c1223430a71f0aca992c0c3941fce293fe82fe80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
