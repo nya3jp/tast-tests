@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec222e13_9128490a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T06:33:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6087b59d_f58477de",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "681debe9_1bfc7af6",
