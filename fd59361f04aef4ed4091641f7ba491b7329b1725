@@ -16,6 +16,24 @@
       "message": "For my knowledge, what about this instance of upstream? does it need to be removed too? It is \"exp\", so not sure.",
       "revId": "fd59361f04aef4ed4091641f7ba491b7329b1725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc749f1_21ad98ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-20T23:57:29Z",
+      "side": 0,
+      "message": "From the test result we observed in G3 VM test. Surprisingly Japanese + IME service does not have internet dependency. Maybe as Leo explained, basic functions should work.",
+      "parentUuid": "91772b1e_4adc0180",
+      "revId": "fd59361f04aef4ed4091641f7ba491b7329b1725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
