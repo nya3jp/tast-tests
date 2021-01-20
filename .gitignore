@@ -18,3 +18,6 @@ android/out/
 
 # Nested checkout
 src/chromiumos/tast/remote/firmware/data/fw-testing-configs/
+
+# Intelij
+.idea
