@@ -879,6 +879,12 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	}
+
+	// Enable verbose logging on gaia_auth_fetcher to help debug some login failures. See crbug.com/1166530
+	if c.loginMode == gaiaLogin {
+		args = append(args, "--vmodule=gaia_auth_fetcher=1")
+	}
+
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
 	}
