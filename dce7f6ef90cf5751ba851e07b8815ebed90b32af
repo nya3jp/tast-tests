@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6087b59d_f58477de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "I plan on adding different test cases, like ZipMount, for things like DriveFS. There was an issue getting some of that to work, so for now, we just have zip.",
+      "parentUuid": "c5875ac2_cf78c7b0",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "681debe9_1bfc7af6",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-19T00:31:36Z",
       "side": 1,
       "message": "I\u0027m presuming now that DriveFS isn\u0027t used anymore we can remove this",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1beacc3b_1e86530a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "681debe9_1bfc7af6",
       "range": {
         "startLine": 36,
         "startChar": 4,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-01-19T08:15:48Z",
       "side": 1,
       "message": "nit: use a s.Run for each iteration to know which failed",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28b2f73_6470a8ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "I assume you mean that I should add the iteration to the function descriptor for s.Run? Doing that.",
+      "parentUuid": "a7732fd3_85a04116",
       "range": {
         "startLine": 59,
         "startChar": 2,
@@ -134,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e847ff4_6f692e82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "Done.\n\ncrbug.com/1168360",
+      "parentUuid": "b7f448a4_d6d41d83",
+      "range": {
+        "startLine": 70,
+        "startChar": 35,
+        "endLine": 70,
+        "endChar": 49
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88d75d55_429faf41",
@@ -147,6 +243,30 @@
       "writtenOn": "2021-01-19T00:31:36Z",
       "side": 1,
       "message": "cleanupCtx",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 19
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9a2d9d_8254600c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88d75d55_429faf41",
       "range": {
         "startLine": 79,
         "startChar": 16,
@@ -174,6 +294,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb63f84_212440c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5185a2f1_70e186ac",
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2993df65_d7e56aab",
@@ -187,6 +325,30 @@
       "writtenOn": "2021-01-19T00:31:36Z",
       "side": 1,
       "message": "cleanupCtx",
+      "range": {
+        "startLine": 114,
+        "startChar": 19,
+        "endLine": 114,
+        "endChar": 22
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9bac85c_28e815e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2993df65_d7e56aab",
       "range": {
         "startLine": 114,
         "startChar": 19,
@@ -214,6 +376,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fdb0fc6_c028042e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cb33be0_daeebc29",
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2308379e_2cffddf1",
@@ -227,6 +407,30 @@
       "writtenOn": "2021-01-19T08:15:48Z",
       "side": 1,
       "message": "Can this be shorter to make the test faster?",
+      "range": {
+        "startLine": 153,
+        "startChar": 97,
+        "endLine": 153,
+        "endChar": 99
+      },
+      "revId": "dce7f6ef90cf5751ba851e07b8815ebed90b32af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7572f01c_2dc2225a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "I ran into an issue when using 15s. I think it was from powerd attempting suspend after a failure (and not resetting the alarm properly?), but I\u0027m not sure. It will take some debugging to fix this. I picked 30s since suspend is effectively guaranteed to take less time than that.",
+      "parentUuid": "2308379e_2cffddf1",
       "range": {
         "startLine": 153,
         "startChar": 97,

@@ -214,6 +214,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "553c8e12_0b10cfed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7444c050_12966272",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af469c68_0b0cb6bc",
@@ -227,6 +245,24 @@
       "writtenOn": "2021-01-14T09:44:30Z",
       "side": 1,
       "message": "As this action may have impact beyond this test, the cleanup should be made more robust by allocating time for it in case of a global timeout. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed50b697_5ddccbc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af469c68_0b0cb6bc",
       "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -262,6 +298,24 @@
       "side": 1,
       "message": "It can go either way. I have it this way since this cgroup doesn\u0027t exist yet (without a CL that this Cq-Depends on), but I wanted to make sure that the suspend failure reproduced regularly with a ToT image.\n\nI\u0027ll just change it to fatal for now.",
       "parentUuid": "5a5cd8f4_e2ee61a7",
+      "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01116164_9d58d1d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-20T06:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "299b1303_021383c6",
       "revId": "4bf5485c5179447a9ce925aa553e98d37d306502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
