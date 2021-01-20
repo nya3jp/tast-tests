@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffe61ec_d45f8965",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-20T22:23:14Z",
+      "side": 1,
+      "message": "A couple of questions:\n\n1) What is the correspondence between the files in this CL and the files in that URL? For example, I couldn\u0027t find a GTAV-AV1-8bit-1920x1080-2997kbps.ivf.\n\n2) To the best of my knowledge, the license that applies is http://download.opencontent.netflix.com.s3.amazonaws.com/AV1/Chimera/license.txt which is http://creativecommons.org/licenses/by-nc-nd/4.0/. Thus, we should link to the license.txt from our README. Also, I\u0027m not sure about the NonCommercial and NoDerivatives requirements. Wouldn\u0027t we be considered a commercial project? (I don\u0027t know); and wouldn\u0027t the .json files be considered derivatives ? (I also don\u0027t know). Even just extracting part of the streams may be considered derivatives.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "5e1993370402ef045e65442efc61dbc8824ea821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08932318_04c33162",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-20T22:23:14Z",
+      "side": 1,
+      "message": "Maybe create a bug and add it to our hotlist so I can track merging this back to M89.",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "5e1993370402ef045e65442efc61dbc8824ea821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
