@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f70b58d_4804f1c4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-20T19:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7a7d49e_1c259123",
+      "range": {
+        "startLine": 6,
+        "startChar": 22,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86195121_93561d56",
@@ -87,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ad2184_1afcc82d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-20T19:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86195121_93561d56",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01175541_369a141b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-20T19:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a84a4fc0_7a7505c0",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e11a9ba_54bd55f2",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-01-18T11:30:24Z",
       "side": 1,
       "message": "Do we need to use \"Fp\" in function names inside fingerprint package? All functions inside that pacakge should be related to fingerprint",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e75da97_44ce7e49",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-20T19:28:35Z",
+      "side": 1,
+      "message": "Ok let\u0027s remove fp and make it simple. Callers will always say \"fingerprint.GetBoard\" and if they want the platform board name they will use some other package.",
+      "parentUuid": "8e11a9ba_54bd55f2",
       "range": {
         "startLine": 36,
         "startChar": 5,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2777854f_62b6db84",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-20T19:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333961e1_6e74cb97",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 63
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b079b2fa_23175f1a",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-01-18T11:30:24Z",
       "side": 1,
       "message": "let\u0027s also add \"outStr\" to have more info",
+      "range": {
+        "startLine": 61,
+        "startChar": 13,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "bfd44ef332383d78678c0ca6cc61b22181e22c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5dd7806_f8475b5f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-20T19:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b079b2fa_23175f1a",
       "range": {
         "startLine": 61,
         "startChar": 13,
