@@ -33,7 +33,8 @@ var highLevelTPMDaemonsToRestart = []string{
 }
 
 var optionalDaemons = map[string]struct{}{
-	"u2fd": {},
+	"bootlockboxd": {},
+	"u2fd":         {},
 }
 
 // OOBE and TPM-related files that should be cleared after TPM is soft-cleared.
@@ -67,6 +68,28 @@ var dirsToRemove = []string{
 	"/var/lib/u2f",
 }
 
+// ResetTPMDaemons would try to stop all TPM daemons, and return a callback function to restart them.
+// Stops ui and all hwsec daemons except for trunksd before changing the TPM state so that they
+// don't run into weird states. Restarts those daemons before returning.
+//
+// trunksd is needed by the changing the TPM state.
+func ResetTPMDaemons(ctx context.Context) (func() error, error) {
+	copyOfHighLevelDaemons := append([]string(nil), highLevelTPMDaemonsToRestart...)
+	jobsToRestart := append(copyOfHighLevelDaemons, "ui")
+	jobsToRestart = removeOptionaNotExistJobs(ctx, jobsToRestart)
+
+	resumeDaemons := func() error {
+		return ensureJobsStarted(ctx, jobsToRestart)
+	}
+
+	jobsToStop := reverseStringSlice(jobsToRestart)
+	if err := stopJobs(ctx, jobsToStop); err != nil {
+		return resumeDaemons,
+			errors.Wrapf(err, "failed to stop TPM daemons: %v", jobsToStop)
+	}
+	return resumeDaemons, nil
+}
+
 // ResetTPMAndSystemStates soft-clears the TPM, resets the OOBE state, device ownership, and
 // TPM-related states, and restarts UI and TPM-related daemons. System key used by encstateful is
 // restored after TPM is soft-cleared.
@@ -97,21 +120,13 @@ func ResetTPMAndSystemStates(ctx context.Context) (firstErr error) {
 		}
 	}
 
-	// Stops ui and all hwsec daemons except for trunksd before soft-clearing the TPM so that they
-	// don't run into weird states. Restarts those daemons before returning.
-	//
-	// trunksd is needed by the tpm_softclear command below and is stopped/started separately.
-	copyOfHighLevelDaemons := append([]string(nil), highLevelTPMDaemonsToRestart...)
-	jobsToRestart := append(copyOfHighLevelDaemons, "ui")
-	jobsToRestart = removeOptionaNotExistJobs(ctx, jobsToRestart)
-
+	resumeDaemons, err := ResetTPMDaemons(ctx)
 	defer func() {
-		if err := ensureJobsStarted(ctx, jobsToRestart); err != nil {
+		if err := resumeDaemons(); err != nil {
 			logOrCopyErr(ctx, err, &firstErr)
 		}
 	}()
-	jobsToStop := reverseStringSlice(jobsToRestart)
-	if err = stopJobs(ctx, jobsToStop); err != nil {
+	if err != nil {
 		logOrCopyErr(ctx, err, &firstErr)
 		return firstErr
 	}
