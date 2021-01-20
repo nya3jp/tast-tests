@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f9141bb_3a491161",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-20T03:21:53Z",
+      "side": 1,
+      "message": "I think it is still a good move separating cellular tests from generic network test. If you found code duplicate on both network and cellular, we may move the common code to tast/local/network [1]\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/network/",
+      "revId": "cd9feb4a503abbe03827dd62074f468770dbf1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
