@@ -159,6 +159,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ac360ed1_05a6a328",
+        "filename": "src/chromiumos/tast/local/android/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "I scrapped the WakeScreen method in favor of a generic \"PressKeyCode\" one, so we can pass in the ui constants.",
+      "parentUuid": "a2b761de_d6b10330",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "485e53f1_520570e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
         "patchSetId": 4
@@ -341,6 +365,30 @@
       "side": 1,
       "message": "ctxutil.MaxTimeout will make it so that something will run until the entire test times out.\nthe default tast test timeout is 2 minutes.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/bundle/local.go\n\nAlso, timeouts can be set per parameterized test if wanted.\n\nSince the test is specifically trying to transfer the file, it would probably be fine to let it use up the entire time transferring.",
       "parentUuid": "51ba6f07_66bc7de3",
+      "range": {
+        "startLine": 56,
+        "startChar": 30,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c471d065_ceab585a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "I set the timeout explicitly in the parameterized tests now, as well as including it in the parameters so we can pass it into the RPCs.",
+      "parentUuid": "398ede36_18d2bc48",
       "range": {
         "startLine": 56,
         "startChar": 30,
@@ -739,6 +787,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca1c301_4aff69d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "Changed it to get the share targets from the page after chatting offline, so we don\u0027t need a second discovery manager.",
+      "parentUuid": "1a37278b_885434f1",
+      "range": {
+        "startLine": 56,
+        "startChar": 14,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f96c6449_b3c7ef51",
@@ -918,6 +990,30 @@
       "side": 1,
       "message": "Ok I remember that discussion now. I would suggest putting the module import in the local getDiscoveryManager_() function which is an un-used duplicate and use that to get the discovery manager. You can make it async function to deal with the module wait and startDiscovery can then use that, otherwiser you are talking to two different discovery managers and will get confusing/buggy.",
       "parentUuid": "06f0e891_44bf6aa9",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 38
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "975a4f2f_2210f9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "Changed it to get the share targets from the page after chatting offline, so we don\u0027t need a second discovery manager.",
+      "parentUuid": "d40a8f2d_d3d568ac",
       "range": {
         "startLine": 100,
         "startChar": 6,
