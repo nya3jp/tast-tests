@@ -74,7 +74,7 @@ func Scan(ctx context.Context, s *testing.State) {
 			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
 		}
 	}()
-	defer ippusbbridge.Kill(cleanupCtx, &devInfo)
+	defer ippusbbridge.Kill(cleanupCtx, devInfo)
 
 	extDir, err := ioutil.TempDir("", "tast.documentscanapi.Scan.")
 	if err != nil {

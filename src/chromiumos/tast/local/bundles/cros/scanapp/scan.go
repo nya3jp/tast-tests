@@ -83,7 +83,7 @@ func Scan(ctx context.Context, s *testing.State) {
 			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
 		}
 	}()
-	defer ippusbbridge.Kill(cleanupCtx, &devInfo)
+	defer ippusbbridge.Kill(cleanupCtx, devInfo)
 
 	// Launch the Scan app, configure the settings, and perform scans.
 	app, err := scanapp.Launch(ctx, tconn)
