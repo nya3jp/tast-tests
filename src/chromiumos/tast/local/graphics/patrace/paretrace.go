@@ -174,7 +174,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string, 
 		s.Fatal("There was either a crash or an OOM")
 	}
 
-	perfValues, err := metrics.StopRecording()
+	perfValues, err := metrics.StopRecording(ctx)
 	if err != nil {
 		s.Fatal("Error while recording power metrics: ", err)
 	}

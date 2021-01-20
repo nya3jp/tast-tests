@@ -307,3 +307,8 @@ func (cs *PackageCStatesMetrics) Snapshot(ctx context.Context, values *perf.Valu
 	cs.lastStats = stats
 	return nil
 }
+
+// Stop does nothing.
+func (cs *PackageCStatesMetrics) Stop(ctx context.Context, values *perf.Values) error {
+	return nil
+}
