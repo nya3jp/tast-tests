@@ -19,20 +19,24 @@ import (
 )
 
 // KeepAlivePath returns the path to ippusb_bridge's keepalive socket.
-func KeepAlivePath(devInfo *usbprinter.DevInfo) string {
+func KeepAlivePath(devInfo usbprinter.DevInfo) string {
 	return fmt.Sprintf("/run/ippusb/%s-%s_keep_alive.sock", devInfo.VID, devInfo.PID)
 }
 
 // Kill searches the process tree to kill the ippusb_bridge process. It also
 // removes the ippusb_bridge and ippusb_bridge keepalive sockets.
-func Kill(ctx context.Context, devInfo *usbprinter.DevInfo) error {
-	ps, err := process.Processes()
+func Kill(ctx context.Context, devInfo usbprinter.DevInfo) error {
+	ps, err := process.ProcessesWithContext(ctx)
 	if err != nil {
 		return err
 	}
 
 	for _, p := range ps {
-		if name, err := p.Name(); err != nil || name != "ippusb_bridge" {
+		if name, err := p.NameWithContext(ctx); err != nil || name != "ippusb_bridge" {
+			continue
+		}
+		if status, err := p.StatusWithContext(ctx); err != nil || status == "Z" {
+			// Skip child processes that have already been killed from earlier test iterations.
 			continue
 		}
 
@@ -52,12 +56,12 @@ func Kill(ctx context.Context, devInfo *usbprinter.DevInfo) error {
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed to wait for ippusb_bridge to exit")
 		}
-		if err := os.Remove(fmt.Sprintf("/run/ippusb/%s-%s.sock", devInfo.VID, devInfo.PID)); err != nil && !os.IsNotExist(err) {
-			return errors.Wrap(err, "failed to remove ippusb_bridge socket")
-		}
-		if err := os.Remove(KeepAlivePath(devInfo)); err != nil && !os.IsNotExist(err) {
-			return errors.Wrap(err, "failed to remove ippusb_bridge keepalive socket")
-		}
+	}
+	if err := os.Remove(fmt.Sprintf("/run/ippusb/%s-%s.sock", devInfo.VID, devInfo.PID)); err != nil && !os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to remove ippusb_bridge socket")
+	}
+	if err := os.Remove(KeepAlivePath(devInfo)); err != nil && !os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to remove ippusb_bridge keepalive socket")
 	}
 	return nil
 }
