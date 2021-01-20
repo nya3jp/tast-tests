@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bce7ec6_1f3fe9c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-20T00:57:55Z",
+      "side": 1,
+      "message": "nice test. have some questions about handling failed launches",
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2743694_f388194a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-20T00:57:55Z",
+      "side": 1,
+      "message": "Is this just for terminal?\n\nHow about filter it by app.InstallSource \u003d\u003d System and app.Type \u003d\u003d Web ?",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e8e1db0_d57bab1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-20T00:57:55Z",
+      "side": 1,
+      "message": "maybe\n\n   if chromeURL \u003d\u003d \"\"\n       continue\n\n   ...\n\nto save one indentation level",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae79ff6d_47bf54ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-20T00:57:55Z",
+      "side": 1,
+      "message": "Just to verify, will this dump the UI tree (as specified by faillog.DumpUITreeOnError) here?\n\nCan we get a screenshot as well?",
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d56a24db_a43a5f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-20T00:57:55Z",
+      "side": 1,
+      "message": "WDYT if we print the names (or URLs) of the failed SWAs? This should be easier to pin-point the failing part (e.g. a specific app or a SWA platform problem)",
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
