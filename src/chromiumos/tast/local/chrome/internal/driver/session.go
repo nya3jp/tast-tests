@@ -96,6 +96,11 @@ func (s *Session) Watcher() *browserwatcher.Watcher {
 	return s.watcher
 }
 
+// JSLogAggregator returns the JavaScript log aggregated associated with the session.
+func (s *Session) JSLogAggregator() *jslog.Aggregator {
+	return s.agg
+}
+
 // NewConn creates a new Chrome renderer and returns a connection to it.
 // If url is empty, an empty page (about:blank) is opened. Otherwise, the page
 // from the specified URL is opened. You can assume that the page loading has
