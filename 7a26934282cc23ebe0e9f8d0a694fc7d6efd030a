@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "479538ce_dd485adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T03:47:10Z",
+      "side": 1,
+      "message": "I was aiming to filter out any that are missing the chrome:// URL (including any future SWAs) as opposed to directly targeting Terminal. Updated the comment.",
+      "parentUuid": "c2743694_f388194a",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e8e1db0_d57bab1b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-20T00:57:55Z",
       "side": 1,
       "message": "maybe\n\n   if chromeURL \u003d\u003d \"\"\n       continue\n\n   ...\n\nto save one indentation level",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16a6112_474808bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T03:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e8e1db0_d57bab1b",
       "range": {
         "startLine": 76,
         "startChar": 2,
@@ -83,6 +131,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88c90bee_39585083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T03:47:10Z",
+      "side": 1,
+      "message": "Woops. No actually faillog.DumpUITreeOnError is actually useless here (will only get called at end of test). I\u0027ve updated the function to include screenshot capture instead, I figure having a visual view is more relevant for debugging then the UI tree as we\u0027re not really doing any heavy UI navigation, WDYT?",
+      "parentUuid": "ae79ff6d_47bf54ed",
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d56a24db_a43a5f06",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
         "patchSetId": 4
@@ -94,6 +160,24 @@
       "writtenOn": "2021-01-20T00:57:55Z",
       "side": 1,
       "message": "WDYT if we print the names (or URLs) of the failed SWAs? This should be easier to pin-point the failing part (e.g. a specific app or a SWA platform problem)",
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7e183d4_b4cf78af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T03:47:10Z",
+      "side": 1,
+      "message": "We do above when it fails (i.e. line 80 \"Failed navigating to %q: %v\")",
+      "parentUuid": "d56a24db_a43a5f06",
       "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
