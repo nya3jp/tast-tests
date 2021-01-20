@@ -246,6 +246,30 @@
       },
       "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de41bcb1_1d414c83",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-20T05:52:32Z",
+      "side": 1,
+      "message": "Huh, interesting. Regardless, better I think to change that separately.",
+      "parentUuid": "d1a284e2_74a0eae6",
+      "range": {
+        "startLine": 233,
+        "startChar": 81,
+        "endLine": 233,
+        "endChar": 82
+      },
+      "revId": "e04cb2b53cb74ddbebff0bba1e60bf342e2d783c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
