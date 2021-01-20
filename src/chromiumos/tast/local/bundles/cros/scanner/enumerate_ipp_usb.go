@@ -11,7 +11,9 @@ import (
 
 	lpb "chromiumos/system_api/lorgnette_proto"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/scanner/cups"
 	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
@@ -33,7 +35,8 @@ func init() {
 		Desc:         "Tests that IPP-USB devices are correctly found",
 		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"virtual_usb_printer"},
+		SoftwareDeps: []string{"virtual_usb_printer", "cups", "chrome"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -63,6 +66,11 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 	defer func() {
 		usbprinter.StopPrinter(ctx, printer, devInfo)
 	}()
+	if info.attributes != "" || info.esclCapabilities != "" {
+		if err := cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
+			s.Fatal("Failed to wait for CUPS configuration: ", err)
+		}
+	}
 
 	s.Log("Requesting scanner list")
 	l, err := lorgnette.New(ctx)

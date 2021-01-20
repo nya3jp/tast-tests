@@ -17,7 +17,9 @@ import (
 	lpb "chromiumos/system_api/lorgnette_proto"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/scanner/cups"
 	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/local/testexec"
@@ -34,7 +36,8 @@ func init() {
 		Desc:         "Tests eSCL scanning via an ipp-over-usb tunnel",
 		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"virtual_usb_printer"},
+		SoftwareDeps: []string{"virtual_usb_printer", "cups", "chrome"},
+		Pre:          chrome.LoggedIn(),
 		Data:         []string{sourceImage, goldenImage},
 		Params: []testing.Param{{
 			Name: "usb",
@@ -115,6 +118,9 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
 		}
 	}()
+	if err := cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
+		s.Fatal("Failed to wait for CUPS configuration: ", err)
+	}
 
 	var deviceName string
 	if testOpt.Network {
