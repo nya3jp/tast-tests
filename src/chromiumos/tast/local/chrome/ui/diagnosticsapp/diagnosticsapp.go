@@ -59,7 +59,7 @@ func WaitForApp(ctx context.Context, tconn *chrome.TestConn) error {
 	defer dxRootnode.Release(ctx)
 
 	// Find the session log button to verify app is rendering.
-	if _, err := dxRootnode.DescendantWithTimeout(ctx, DxLogButton, 20*time.Second); err != nil {
+	if _, err := dxRootnode.DescendantWithTimeout(ctx, DxLogButton, 20*time.Minute); err != nil {
 		return errors.Wrap(err, "failed to render diagnostics app")
 	}
 	return nil
