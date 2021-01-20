@@ -1,16 +1,15 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
 // This file implements functions to interact with the DUT's embedded controller (EC).
 
-package firmware
+package reporters
 
 import (
 	"context"
 	"regexp"
 
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 )
 
@@ -22,17 +21,17 @@ var (
 )
 
 // ECVersion queries ectool for the EC version on the active firmware.
-func ECVersion(ctx context.Context, d *dut.DUT) (string, error) {
-	output, err := d.Command("ectool", "version").Output(ctx)
+func (r *Reporter) ECVersion(ctx context.Context) (string, error) {
+	output, err := r.CommandOutput(ctx, "ectool", "version")
 	if err != nil {
-		return "", errors.Wrap(err, "running 'ectool version' on dut")
+		return "", errors.Wrap(err, "running 'ectool version' on DUT")
 	}
-	match := reFirmwareCopy.FindSubmatch(output)
+	match := reFirmwareCopy.FindStringSubmatch(output)
 	if len(match) == 0 {
 		return "", errors.Errorf("did not find firmware copy in 'ectool version' output: %s", output)
 	}
 	var reActiveFWVersion *regexp.Regexp
-	switch string(match[1]) {
+	switch match[1] {
 	case "RO":
 		reActiveFWVersion = reROVersion
 	case "RW":
@@ -40,9 +39,9 @@ func ECVersion(ctx context.Context, d *dut.DUT) (string, error) {
 	default:
 		return "", errors.Errorf("unexpected match from reFirmwareCopy: got %s; want RO or RW", match[1])
 	}
-	match = reActiveFWVersion.FindSubmatch(output)
+	match = reActiveFWVersion.FindStringSubmatch(output)
 	if len(match) == 0 {
 		return "", errors.Errorf("failed to match regexp %s in ectool version output: %s", reActiveFWVersion, output)
 	}
-	return string(match[1]), nil
+	return match[1], nil
 }
