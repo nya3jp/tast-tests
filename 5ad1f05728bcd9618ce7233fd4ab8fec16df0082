@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a8140e_897e8037",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-20T12:46:59Z",
+      "side": 1,
+      "message": "Thanks for adding the test",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d49a67_99c117ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-20T12:46:59Z",
+      "side": 1,
+      "message": "nit: missing . at the end of the comment",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
