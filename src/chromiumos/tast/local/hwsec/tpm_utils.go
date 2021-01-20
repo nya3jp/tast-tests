@@ -10,7 +10,9 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/testexec"
@@ -31,9 +33,16 @@ const (
 var highLevelTPMDaemonsToRestart = []string{
 	"tpm_managerd", "chapsd", "bootlockboxd", "attestationd", "u2fd", "cryptohomed",
 }
+var tpmService = []string{
+	"tcsd",
+	"trunksd",
+}
 
 var optionalDaemons = map[string]struct{}{
-	"u2fd": {},
+	"bootlockboxd": {},
+	"tcsd":         {},
+	"trunksd":      {},
+	"u2fd":         {},
 }
 
 // OOBE and TPM-related files that should be cleared after TPM is soft-cleared.
@@ -67,6 +76,34 @@ var dirsToRemove = []string{
 	"/var/lib/u2f",
 }
 
+// StopTPMDaemons would try to stop all TPM daemons, and return a callback function to restart them.
+func StopTPMDaemons(ctx context.Context, stopTPMService, stopUI bool) (func(ctx context.Context) error, error) {
+	var jobsToRestart []string
+
+	if stopTPMService {
+		jobsToRestart = append(jobsToRestart, tpmService...)
+	}
+
+	jobsToRestart = append(jobsToRestart, highLevelTPMDaemonsToRestart...)
+
+	if stopUI {
+		jobsToRestart = append(jobsToRestart, "ui")
+	}
+
+	jobsToRestart = removeOptionaNotExistJobs(ctx, jobsToRestart)
+
+	resumeDaemons := func(ctx context.Context) error {
+		return ensureJobsStarted(ctx, jobsToRestart)
+	}
+
+	jobsToStop := reverseStringSlice(jobsToRestart)
+	if err := stopJobs(ctx, jobsToStop); err != nil {
+		resumeDaemons(ctx)
+		return nil, errors.Wrapf(err, "failed to stop TPM daemons: %v", jobsToStop)
+	}
+	return resumeDaemons, nil
+}
+
 // ResetTPMAndSystemStates soft-clears the TPM, resets the OOBE state, device ownership, and
 // TPM-related states, and restarts UI and TPM-related daemons. System key used by encstateful is
 // restored after TPM is soft-cleared.
@@ -97,24 +134,24 @@ func ResetTPMAndSystemStates(ctx context.Context) (firstErr error) {
 		}
 	}
 
+	ctxForResumeDaemons := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
 	// Stops ui and all hwsec daemons except for trunksd before soft-clearing the TPM so that they
 	// don't run into weird states. Restarts those daemons before returning.
 	//
 	// trunksd is needed by the tpm_softclear command below and is stopped/started separately.
-	copyOfHighLevelDaemons := append([]string(nil), highLevelTPMDaemonsToRestart...)
-	jobsToRestart := append(copyOfHighLevelDaemons, "ui")
-	jobsToRestart = removeOptionaNotExistJobs(ctx, jobsToRestart)
-
-	defer func() {
-		if err := ensureJobsStarted(ctx, jobsToRestart); err != nil {
-			logOrCopyErr(ctx, err, &firstErr)
-		}
-	}()
-	jobsToStop := reverseStringSlice(jobsToRestart)
-	if err = stopJobs(ctx, jobsToStop); err != nil {
+	resumeDaemons, err := StopTPMDaemons(ctx, false, true)
+	if err != nil {
 		logOrCopyErr(ctx, err, &firstErr)
 		return firstErr
 	}
+	defer func(ctx context.Context) {
+		if err := resumeDaemons(ctx); err != nil {
+			logOrCopyErr(ctx, err, &firstErr)
+		}
+	}(ctxForResumeDaemons)
 
 	// Actually clears the TPM.
 	if err = testexec.CommandContext(ctx, "tpm_softclear").Run(); err != nil {
@@ -161,22 +198,13 @@ func GetTPMVersion(ctx context.Context) (version string, err error) {
 //
 // There might be multiple errors happening in this function. All but the first error will be
 // logged, and only the first error will be returned.
-func RestartTPMDaemons(ctx context.Context) (firstErr error) {
-	// Trunksd must restart first prior to other TPM daemons.
-	daemonsToRestart := append([]string{trunksd}, highLevelTPMDaemonsToRestart...)
-	daemonsToRestart = removeOptionaNotExistJobs(ctx, daemonsToRestart)
-	daemonsToStop := reverseStringSlice(daemonsToRestart)
-
-	defer func() {
-		if err := ensureJobsStarted(ctx, daemonsToRestart); err != nil {
-			logOrCopyErr(ctx, err, &firstErr)
-		}
-	}()
-	if err := stopJobs(ctx, daemonsToStop); err != nil {
-		logOrCopyErr(ctx, err, &firstErr)
+func RestartTPMDaemons(ctx context.Context) error {
+	// We would restart the additional TPM service without the ui.
+	resumeCallback, err := StopTPMDaemons(ctx, true, false)
+	if err != nil {
+		return err
 	}
-
-	return firstErr
+	return resumeCallback(ctx)
 }
 
 // logOrCopyErr sets errOfInterest to newErr if errOfInterest is nil; otherwise, logs it.
