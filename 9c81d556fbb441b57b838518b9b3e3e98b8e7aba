@@ -16,6 +16,92 @@
       "message": "I will rebase this CL after https://crrev.com/c/2635504 is landed.",
       "revId": "9c81d556fbb441b57b838518b9b3e3e98b8e7aba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb70d90e_7307c603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-01-20T11:59:08Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "9c81d556fbb441b57b838518b9b3e3e98b8e7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6530601_12fd82ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-01-20T11:59:08Z",
+      "side": 1,
+      "message": "nit: variables should be declared as close as possible to their first use. Move this block to line 121 as you don\u0027t need tconn before that.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 4
+      },
+      "revId": "9c81d556fbb441b57b838518b9b3e3e98b8e7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d48214_4fe25be5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-01-20T11:59:08Z",
+      "side": 1,
+      "message": "nit: as above, move this block to line 92",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 25
+      },
+      "revId": "9c81d556fbb441b57b838518b9b3e3e98b8e7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04af3f6_d63af251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-01-20T11:59:08Z",
+      "side": 1,
+      "message": "Is it ensured that the QR code detection is always disabled when the sub test starts?\nWould it make sense to perform another toggle when it is disabled after the first one to reduce possible flakyness?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 34
+      },
+      "revId": "9c81d556fbb441b57b838518b9b3e3e98b8e7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
