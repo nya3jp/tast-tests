@@ -82,6 +82,32 @@ func ReadBatteryCapacity(devPath string) (float64, error) {
 	return float64(capacity), nil
 }
 
+// ReadBatteryChargeNow returns the charge of a battery in Ah.
+// which comes from /sys/class/power_supply/<supply name>/charge_now.
+func ReadBatteryChargeNow(devPath string) (float64, error) {
+	charge, err := readInt64(path.Join(devPath, "charge_now"))
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read charge from %v", devPath)
+	}
+	return float64(charge) / 1000000, nil
+}
+
+// ReadBatteryEnergy returns the remaining energy of a battery in Wh.
+func ReadBatteryEnergy(devPath string) (float64, error) {
+	charge, err := ReadBatteryChargeNow(devPath)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read energy from %v", devPath)
+	}
+
+	voltage, err := readFloat64(path.Join(devPath, "voltage_min_design"))
+	if err != nil {
+		// autotest/files/client/cros/power/power_status.py uses current
+		// voltage in case it can't get the specced one.
+		return 0., errors.Wrap(err, "failed to read voltage_min_design")
+	}
+	return charge * float64(voltage) / 1000000, nil
+}
+
 // ReadSystemPower returns system power consumption in Watts.
 // It is assumed that power supplies at devPath have attributes
 // voltage_now and current_now.
