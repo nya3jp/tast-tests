@@ -125,3 +125,8 @@ func (b *SysfsThermalMetrics) Snapshot(ctx context.Context, values *perf.Values)
 
 	return nil
 }
+
+// Stop does nothing.
+func (b *SysfsThermalMetrics) Stop(ctx context.Context, values *perf.Values) error {
+	return nil
+}
