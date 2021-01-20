@@ -124,17 +124,14 @@ func Unlock() {
 type Chrome struct {
 	// cfg contains configurations computed from options given to chrome.New.
 	// Its fields must not be altered after its construction.
-	cfg config
-
+	cfg  config
+	exts *extension.Files
+	agg  *jslog.Aggregator // collects JS console output
 	sess *driver.Session
 
-	exts          *extension.Files
+	loginPending  bool  // true if login is pending until ContinueLogin is called
 	testExtConn   *Conn // connection to test extension exposing APIs
 	signinExtConn *Conn // connection to signin profile test extension
-
-	loginPending bool // true if login is pending until ContinueLogin is called
-
-	logAggregator *jslog.Aggregator // collects JS console output
 }
 
 // User returns the username that was used to log in to Chrome.
@@ -156,7 +153,7 @@ func (c *Chrome) DebugAddrPort() string {
 
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
-func New(ctx context.Context, opts ...Option) (*Chrome, error) {
+func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	if locked {
 		panic("Cannot create Chrome instance while precondition is being used")
 	}
@@ -169,11 +166,6 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		return nil, err
 	}
 
-	c := &Chrome{
-		cfg:           *cfg,
-		logAggregator: jslog.NewAggregator(),
-	}
-
 	// Cap the timeout to be certain length depending on the login mode. Sometimes
 	// chrome.New may fail and get stuck on an unexpected screen. Without timeout,
 	// it simply runs out the entire timeout. See https://crbug.com/1078873.
@@ -183,14 +175,6 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	}
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
-
-	// Clean up the partially-initialized object on error.
-	toClose := c
-	defer func() {
-		if toClose != nil {
-			toClose.Close(ctx)
-		}
-	}()
 
 	if err := checkSoftwareDeps(ctx); err != nil {
 		return nil, err
@@ -212,16 +196,36 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
-	if c.exts, err = extension.PrepareExtensions(c.cfg.extraExtDirs, c.cfg.signinExtKey); err != nil {
+	exts, err := extension.PrepareExtensions(cfg.extraExtDirs, cfg.signinExtKey)
+	if err != nil {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
+	defer func() {
+		if retErr != nil {
+			exts.RemoveAll()
+		}
+	}()
 
-	if err := c.restartChromeForTesting(ctx); err != nil {
+	if err := restartChromeForTesting(ctx, cfg, exts); err != nil {
 		return nil, errors.Wrap(err, "failed to restart chrome for testing")
 	}
-	if c.sess, err = driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, c.logAggregator); err != nil {
-		return nil, errors.Wrapf(c.chromeErr(err), "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
+
+	agg := jslog.NewAggregator()
+	defer func() {
+		if retErr != nil {
+			agg.Close()
+		}
+	}()
+
+	sess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, agg)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
+	defer func() {
+		if retErr != nil {
+			sess.Close(ctx)
+		}
+	}()
 
 	if cfg.loginMode != noLogin && !cfg.keepState {
 		if err := cryptohome.RemoveUserDir(ctx, cfg.normalizedUser); err != nil {
@@ -229,10 +233,12 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
-	if c.cfg.deferLogin {
-		c.loginPending = true
+	loginPending := false
+	if cfg.deferLogin {
+		loginPending = true
 	} else {
-		if err := c.logIn(ctx); err != nil {
+		sess, err = logIn(ctx, cfg, sess)
+		if err != nil {
 			return nil, err
 		}
 	}
@@ -243,7 +249,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		// Background target from login persists for a few seconds, causing 2 background targets.
 		// Polling until connected to the unique target.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			bconn, err := c.NewConnForTarget(ctx, MatchTargetURL(vkBackgroundPageURL))
+			bconn, err := sess.NewConnForTarget(ctx, MatchTargetURL(vkBackgroundPageURL))
 			if err != nil {
 				return err
 			}
@@ -254,8 +260,13 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
-	toClose = nil
-	return c, nil
+	return &Chrome{
+		cfg:          *cfg,
+		exts:         exts,
+		agg:          agg,
+		sess:         sess,
+		loginPending: loginPending,
+	}, nil
 }
 
 // checkSoftwareDeps ensures the current test declares necessary software dependencies.
@@ -321,9 +332,9 @@ func (c *Chrome) Close(ctx context.Context) error {
 	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
-		c.logAggregator.Save(filepath.Join(dir, "jslog.txt"))
+		c.agg.Save(filepath.Join(dir, "jslog.txt"))
 	}
-	c.logAggregator.Close()
+	c.agg.Close()
 
 	// As the chronos home directory is cleared during chrome.New(), we
 	// should manually move these crashes from the user crash directory to
@@ -460,23 +471,13 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	return nil
 }
 
-// chromeErr returns c.watcher.err() if non-nil or orig otherwise. This is useful for
-// replacing "context deadline exceeded" errors that can occur when Chrome is crashing
-// with more-descriptive ones.
-func (c *Chrome) chromeErr(orig error) error {
-	if c.sess == nil {
-		return orig
-	}
-	return c.sess.Watcher().ReplaceErr(orig)
-}
-
 // restartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
-func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
+func restartChromeForTesting(ctx context.Context, cfg *config, exts *extension.Files) error {
 	ctx, st := timing.Start(ctx, "restart")
 	defer st.End()
 
-	if err := c.restartSession(ctx); err != nil {
+	if err := restartSession(ctx, cfg); err != nil {
 		// Timeout is often caused by TPM slowness. Save minidumps of related processes.
 		if dir, ok := testing.ContextOutDir(ctx); ok {
 			minidump.SaveWithoutCrash(ctx, dir,
@@ -503,29 +504,29 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
 		"--no-startup-window",                        // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
-		"--cros-region=" + c.cfg.region,              // Force the region.
+		"--cros-region=" + cfg.region,                // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 		"--enable-oobe-test-api",                     // Enable OOBE helper functions for authentication.
 		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 	}
-	if c.cfg.enroll {
+	if cfg.enroll {
 		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
 	}
 
-	if c.cfg.skipOOBEAfterLogin {
+	if cfg.skipOOBEAfterLogin {
 		args = append(args, "--oobe-skip-postlogin")
 	}
 
-	if !c.cfg.installWebApp {
+	if !cfg.installWebApp {
 		args = append(args, "--disable-features=DefaultWebAppInstallation")
 	}
 
-	if c.cfg.vkEnabled {
+	if cfg.vkEnabled {
 		args = append(args, "--enable-virtual-keyboard")
 	}
 
 	// Enable verbose logging on some enrollment related files.
-	if c.cfg.enableLoginVerboseLogs {
+	if cfg.enableLoginVerboseLogs {
 		args = append(args,
 			"--vmodule="+strings.Join([]string{
 				"*auto_enrollment_check_screen*=1",
@@ -535,19 +536,19 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 				"*auto_enrollment_controller*=1"}, ","))
 	}
 
-	if c.cfg.loginMode != gaiaLogin {
+	if cfg.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	}
-	args = append(args, c.exts.ChromeArgs()...)
-	if c.cfg.policyEnabled {
+	args = append(args, exts.ChromeArgs()...)
+	if cfg.policyEnabled {
 		args = append(args, "--profile-requires-policy=true")
 	} else {
 		args = append(args, "--profile-requires-policy=false")
 	}
-	if c.cfg.dmsAddr != "" {
-		args = append(args, "--device-management-url="+c.cfg.dmsAddr)
+	if cfg.dmsAddr != "" {
+		args = append(args, "--device-management-url="+cfg.dmsAddr)
 	}
-	switch c.cfg.arcMode {
+	switch cfg.arcMode {
 	case arcDisabled:
 		// Make sure ARC is never enabled.
 		args = append(args, "--arc-availability=none")
@@ -561,7 +562,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		// Allow ARC being enabled on the device to test ARC with real gaia accounts.
 		args = append(args, "--arc-availability=officially-supported")
 	}
-	if c.cfg.arcMode == arcEnabled || c.cfg.arcMode == arcSupported {
+	if cfg.arcMode == arcEnabled || cfg.arcMode == arcSupported {
 		args = append(args,
 			// Do not sync the locale with ARC.
 			"--arc-disable-locale-sync",
@@ -569,24 +570,24 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 			"--arc-play-store-auto-update=off",
 			// Make 1 Android pixel always match 1 Chrome devicePixel.
 			"--force-remote-shell-scale=")
-		if !c.cfg.restrictARCCPU {
+		if !cfg.restrictARCCPU {
 			args = append(args,
 				// Disable CPU restrictions to let tests run faster
 				"--disable-arc-cpu-restriction")
 		}
 	}
 
-	if len(c.cfg.enableFeatures) != 0 {
-		args = append(args, "--enable-features="+strings.Join(c.cfg.enableFeatures, ","))
+	if len(cfg.enableFeatures) != 0 {
+		args = append(args, "--enable-features="+strings.Join(cfg.enableFeatures, ","))
 	}
 
-	if len(c.cfg.disableFeatures) != 0 {
-		args = append(args, "--disable-features="+strings.Join(c.cfg.disableFeatures, ","))
+	if len(cfg.disableFeatures) != 0 {
+		args = append(args, "--disable-features="+strings.Join(cfg.disableFeatures, ","))
 	}
 
-	args = append(args, c.cfg.extraArgs...)
+	args = append(args, cfg.extraArgs...)
 	var envVars []string
-	if c.cfg.breakpadTestMode {
+	if cfg.breakpadTestMode {
 		envVars = append(envVars,
 			"CHROME_HEADLESS=",
 			"BREAKPAD_DUMP_LOCATION=/home/chronos/crash") // Write crash dumps outside cryptohome.
@@ -624,7 +625,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 
 // restartSession stops the "ui" job, clears policy files and the user's cryptohome if requested,
 // and restarts the job.
-func (c *Chrome) restartSession(ctx context.Context) error {
+func restartSession(ctx context.Context, cfg *config) error {
 	testing.ContextLog(ctx, "Restarting ui job")
 	ctx, st := timing.Start(ctx, "restart_ui")
 	defer st.End()
@@ -636,7 +637,7 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 		return err
 	}
 
-	if !c.cfg.keepState {
+	if !cfg.keepState {
 		const chronosDir = "/home/chronos"
 		// This always fails because /home/chronos is a mount point, but all files
 		// under the directory should be removed.
@@ -845,8 +846,8 @@ func (c *Chrome) Responded(ctx context.Context) error {
 
 // getFirstOOBETarget returns the first OOBE-related DevTools target that it finds.
 // nil is returned if no target is found.
-func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*Target, error) {
-	targets, err := c.FindTargets(ctx, func(t *Target) bool {
+func getFirstOOBETarget(ctx context.Context, sess *driver.Session) (*driver.Target, error) {
+	targets, err := sess.FindTargets(ctx, func(t *Target) bool {
 		return strings.HasPrefix(t.URL, oobePrefix)
 	})
 	if err != nil {
@@ -861,12 +862,12 @@ func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*Target, error) {
 // enterpriseEnrollTargets returns the Gaia WebView targets, which are used
 // to help enrollment on the device.
 // Returns nil if none are found.
-func (c *Chrome) enterpriseEnrollTargets(ctx context.Context, userDomain string) ([]*Target, error) {
+func enterpriseEnrollTargets(ctx context.Context, sess *driver.Session, userDomain string) ([]*Target, error) {
 	isGAIAWebView := func(t *Target) bool {
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
 
-	targets, err := c.FindTargets(ctx, isGAIAWebView)
+	targets, err := sess.FindTargets(ctx, isGAIAWebView)
 	if err != nil {
 		return nil, err
 	}
@@ -898,6 +899,10 @@ func (c *Chrome) enterpriseEnrollTargets(ctx context.Context, userDomain string)
 // WaitForOOBEConnection waits for that the OOBE page is shown, then returns
 // a connection to the page. The caller must close the returned connection.
 func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
+	return waitForOOBEConnection(ctx, c.sess)
+}
+
+func waitForOOBEConnection(ctx context.Context, sess *driver.Session) (*driver.Conn, error) {
 	testing.ContextLog(ctx, "Finding OOBE DevTools target")
 	ctx, st := timing.Start(ctx, "wait_for_oobe")
 	defer st.End()
@@ -905,17 +910,17 @@ func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	var target *Target
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		if target, err = c.getFirstOOBETarget(ctx); err != nil {
+		if target, err = getFirstOOBETarget(ctx, sess); err != nil {
 			return err
 		} else if target == nil {
 			return errors.Errorf("no %s target", oobePrefix)
 		}
 		return nil
 	}, loginPollOpts); err != nil {
-		return nil, errors.Wrap(c.chromeErr(err), "OOBE target not found")
+		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE target not found")
 	}
 
-	conn, err := c.NewConnForTarget(ctx, MatchTargetID(target.TargetID))
+	conn, err := sess.NewConnForTarget(ctx, MatchTargetID(target.TargetID))
 	if err != nil {
 		return nil, err
 	}
@@ -928,10 +933,10 @@ func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	// Cribbed from telemetry/internal/backends/chrome/cros_browser_backend.py in Catapult.
 	testing.ContextLog(ctx, "Waiting for OOBE")
 	if err = conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
-		return nil, errors.Wrap(c.chromeErr(err), "OOBE didn't show up (Oobe.readyForTesting not found)")
+		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE didn't show up (Oobe.readyForTesting not found)")
 	}
 	if err = conn.WaitForExpr(ctx, "typeof OobeAPI == 'object'"); err != nil {
-		return nil, errors.Wrap(c.chromeErr(err), "OOBE didn't show up (OobeAPI not found)")
+		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE didn't show up (OobeAPI not found)")
 	}
 
 	connToRet := conn
@@ -939,11 +944,11 @@ func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	return connToRet, nil
 }
 
-// userDomain will return the "domain" section (without top level domain) of the c.user.
+// userDomain will return the "domain" section (without top level domain) of user.
 // e.g. something@managedchrome.com will return "managedchrome"
 // or x@domainp1.domainp2.com would return "domainp1domainp2"
-func (c *Chrome) userDomain() (string, error) {
-	m := domainRe.FindStringSubmatch(c.cfg.user)
+func userDomain(user string) (string, error) {
+	m := domainRe.FindStringSubmatch(user)
 	// This check mandates the same format as the fake DM server.
 	if len(m) != 2 {
 		return "", errors.New("'user' must have exactly 1 '@' and atleast one '.' after the @")
@@ -951,11 +956,11 @@ func (c *Chrome) userDomain() (string, error) {
 	return strings.Replace(m[1], ".", "", -1), nil
 }
 
-// fullUserDomain will return the full "domain" (including top level domain) of the c.user.
+// fullUserDomain will return the full "domain" (including top level domain) of user.
 // e.g. something@managedchrome.com will return "managedchrome.com"
 // or x@domainp1.domainp2.com would return "domainp1.domainp2.com"
-func (c *Chrome) fullUserDomain() (string, error) {
-	m := fullDomainRe.FindStringSubmatch(c.cfg.user)
+func fullUserDomain(user string) (string, error) {
+	m := fullDomainRe.FindStringSubmatch(user)
 	// If nothing is returned, the enrollment will fail.
 	if len(m) != 2 {
 		return "", errors.New("'user' must have exactly 1 '@'")
@@ -966,27 +971,27 @@ func (c *Chrome) fullUserDomain() (string, error) {
 // waitForEnrollmentLoginScreen will wait for the Enrollment screen to complete
 // and the Enrollment login screen to appear. If the login screen does not appear
 // the testing.Poll will timeout.
-func (c *Chrome) waitForEnrollmentLoginScreen(ctx context.Context) error {
+func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config, sess *driver.Session) error {
 	testing.ContextLog(ctx, "Waiting for enrollment to complete")
-	fullDomain, err := c.fullUserDomain()
+	fullDomain, err := fullUserDomain(cfg.user)
 	if err != nil {
 		return errors.Wrap(err, "no valid full user domain found")
 	}
 	loginBanner := fmt.Sprintf(`document.querySelectorAll('span[title=%q]').length;`,
 		fullDomain)
 
-	userDomain, err := c.userDomain()
+	userDomain, err := userDomain(cfg.user)
 	if err != nil {
 		return errors.Wrap(err, "no vaid user domain found")
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		gaiaTargets, err := c.enterpriseEnrollTargets(ctx, userDomain)
+		gaiaTargets, err := enterpriseEnrollTargets(ctx, sess, userDomain)
 		if err != nil {
 			return errors.Wrap(err, "no Enrollment webview targets")
 		}
 		for _, gaiaTarget := range gaiaTargets {
-			webViewConn, err := c.NewConnForTarget(ctx, MatchTargetURL(gaiaTarget.URL))
+			webViewConn, err := sess.NewConnForTarget(ctx, MatchTargetURL(gaiaTarget.URL))
 			if err != nil {
 				// If an error occurs during connection, continue to try.
 				// Enrollment will only exceed if the eval below succeeds.
@@ -1011,14 +1016,14 @@ func (c *Chrome) waitForEnrollmentLoginScreen(ctx context.Context) error {
 }
 
 // enterpriseOOBELogin will complete the oobe login after Enrollment completes.
-func (c *Chrome) enterpriseOOBELogin(ctx context.Context) error {
-	if err := c.waitForEnrollmentLoginScreen(ctx); err != nil {
-		return errors.Wrap(c.chromeErr(err), "could not enroll")
+func enterpriseOOBELogin(ctx context.Context, cfg *config, sess *driver.Session) error {
+	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
 	}
 
 	// Reconnect to OOBE to log in after enrollment.
 	// See crrev.com/c/2144279 for details.
-	conn, err := c.WaitForOOBEConnection(ctx)
+	conn, err := waitForOOBEConnection(ctx, sess)
 	if err != nil {
 		return errors.Wrap(err, "failed to reconnect to OOBE after enrollment")
 	}
@@ -1027,7 +1032,7 @@ func (c *Chrome) enterpriseOOBELogin(ctx context.Context) error {
 	testing.ContextLog(ctx, "Performing login after enrollment")
 	// Now login like "normal".
 	if err := conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false)",
-		c.cfg.user, c.cfg.pass, c.cfg.gaiaID)); err != nil {
+		cfg.user, cfg.pass, cfg.gaiaID)); err != nil {
 		return err
 	}
 
@@ -1041,58 +1046,65 @@ func (c *Chrome) ContinueLogin(ctx context.Context) error {
 		return errors.New("ContinueLogin can be called once after DeferLogin option is used")
 	}
 	c.loginPending = false
-	if err := c.logIn(ctx); err != nil {
-		return err
-	}
-	return nil
+	var err error
+	c.sess, err = logIn(ctx, &c.cfg, c.sess)
+	return err
 }
 
 // logIn performs a user or guest login based on the loginMode.
-func (c *Chrome) logIn(ctx context.Context) error {
-	switch c.cfg.loginMode {
+// This function may restart Chrome and make an existing session unavailable.
+// Therefore it takes ownership of sess and returns a new session.
+func logIn(ctx context.Context, cfg *config, sess *driver.Session) (*driver.Session, error) {
+	switch cfg.loginMode {
 	case noLogin:
-		return nil
+		return sess, nil
 	case fakeLogin, gaiaLogin:
-		if err := c.loginUser(ctx); err != nil {
-			return err
+		if err := loginUser(ctx, cfg, sess); err != nil {
+			return sess, err
 		}
 		// Clear all notifications after logging in so none will be shown at the beginning of tests.
 		// TODO(crbug/1079235): move this outside of the switch once the test API is available in guest mode.
-		tconn, err := c.TestAPIConn(ctx)
+		tconn, err := sess.NewConnForTarget(ctx, driver.MatchTargetURL(ExtensionBackgroundPageURL(TestExtensionID)))
 		if err != nil {
-			return err
+			return sess, err
 		}
 		if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
-			return errors.Wrap(err, "failed to clear notifications")
+			return sess, errors.Wrap(err, "failed to clear notifications")
 		}
-		return nil
+		return sess, nil
 	case guestLogin:
-		if err := c.logInAsGuest(ctx); err != nil {
-			return err
+		if err := logInAsGuest(ctx, cfg, sess); err != nil {
+			return sess, err
 		}
-		return nil
+		// Restart session.
+		newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, sess.JSLogAggregator())
+		if err != nil {
+			return sess, err
+		}
+		sess.Close(ctx)
+		return newSess, nil
 	default:
-		return errors.Errorf("unknown login mode: %v", c.cfg.loginMode)
+		return sess, errors.Errorf("unknown login mode: %v", cfg.loginMode)
 	}
 }
 
 // loginUser logs in to a freshly-restarted Chrome instance.
 // It waits for the login process to complete before returning.
-func (c *Chrome) loginUser(ctx context.Context) error {
-	conn, err := c.WaitForOOBEConnection(ctx)
+func loginUser(ctx context.Context, cfg *config, sess *driver.Session) error {
+	conn, err := waitForOOBEConnection(ctx, sess)
 	if err != nil {
 		return err
 	}
 	defer conn.Close()
 
-	testing.ContextLogf(ctx, "Logging in as user %q", c.cfg.user)
+	testing.ContextLogf(ctx, "Logging in as user %q", cfg.user)
 	ctx, st := timing.Start(ctx, "login")
 	defer st.End()
 
-	switch c.cfg.loginMode {
+	switch cfg.loginMode {
 	case fakeLogin:
 		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', %t)",
-			c.cfg.user, c.cfg.pass, c.cfg.gaiaID, c.cfg.enroll)); err != nil {
+			cfg.user, cfg.pass, cfg.gaiaID, cfg.enroll)); err != nil {
 			return err
 		}
 	case gaiaLogin:
@@ -1100,25 +1112,25 @@ func (c *Chrome) loginUser(ctx context.Context) error {
 		if err := shill.WaitForOnline(ctx); err != nil {
 			return err
 		}
-		if err = c.performGAIALogin(ctx, conn); err != nil {
+		if err := performGAIALogin(ctx, cfg, sess, conn); err != nil {
 			return err
 		}
 	}
 
-	if c.cfg.enroll {
-		if err := c.enterpriseOOBELogin(ctx); err != nil {
+	if cfg.enroll {
+		if err := enterpriseOOBELogin(ctx, cfg, sess); err != nil {
 			return err
 		}
 	}
 
-	if err = cryptohome.WaitForUserMount(ctx, c.cfg.normalizedUser); err != nil {
+	if err = cryptohome.WaitForUserMount(ctx, cfg.normalizedUser); err != nil {
 		return err
 	}
 
-	if c.cfg.skipOOBEAfterLogin {
+	if cfg.skipOOBEAfterLogin {
 		testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
 		if err = testing.Poll(ctx, func(ctx context.Context) error {
-			if t, err := c.getFirstOOBETarget(ctx); err != nil {
+			if t, err := getFirstOOBETarget(ctx, sess); err != nil {
 				// This is likely Chrome crash. So there's no chance that
 				// waiting for the dismiss succeeds later. Quit the polling now.
 				return testing.PollBreak(err)
@@ -1127,7 +1139,7 @@ func (c *Chrome) loginUser(ctx context.Context) error {
 			}
 			return nil
 		}, loginPollOpts); err != nil {
-			return errors.Wrap(c.chromeErr(err), "OOBE not dismissed")
+			return errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE not dismissed")
 		}
 	}
 
@@ -1137,7 +1149,7 @@ func (c *Chrome) loginUser(ctx context.Context) error {
 // performGAIALogin waits for and interacts with the GAIA webview to perform login.
 // This function is heavily based on NavigateGaiaLogin() in Catapult's
 // telemetry/telemetry/internal/backends/chrome/oobe.py.
-func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
+func performGAIALogin(ctx context.Context, cfg *config, sess *driver.Session, oobeConn *Conn) error {
 	if err := oobeConn.Exec(ctx, "Oobe.skipToLoginForTesting()"); err != nil {
 		return err
 	}
@@ -1164,7 +1176,7 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	testing.ContextLog(ctx, "Waiting for GAIA webview")
 	var target *Target
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if targets, err := c.FindTargets(ctx, isGAIAWebView); err != nil {
+		if targets, err := sess.FindTargets(ctx, isGAIAWebView); err != nil {
 			return err
 		} else if len(targets) != 1 {
 			return errors.Errorf("got %d GAIA targets; want 1", len(targets))
@@ -1173,19 +1185,19 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 			return nil
 		}
 	}, loginPollOpts); err != nil {
-		return errors.Wrap(c.chromeErr(err), "GAIA webview not found")
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "GAIA webview not found")
 	}
 
-	gaiaConn, err := c.NewConnForTarget(ctx, MatchTargetID(target.TargetID))
+	gaiaConn, err := sess.NewConnForTarget(ctx, MatchTargetID(target.TargetID))
 	if err != nil {
-		return errors.Wrap(c.chromeErr(err), "failed to connect to GAIA webview")
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to connect to GAIA webview")
 	}
 	defer gaiaConn.Close()
 
 	testing.ContextLog(ctx, "Performing GAIA login")
 
 	// Fill in username.
-	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", c.cfg.user); err != nil {
+	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", cfg.user); err != nil {
 		return errors.Wrap(err, "failed to fill username field")
 	}
 	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
@@ -1199,18 +1211,18 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	}
 	if authType == passwordAuth {
 		testing.ContextLog(ctx, "This account uses password authentication")
-		if c.cfg.pass == "" {
+		if cfg.pass == "" {
 			return errors.New("please supply a password with chrome.Auth()")
 		}
-		if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", c.cfg.pass); err != nil {
+		if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", cfg.pass); err != nil {
 			return errors.Wrap(err, "failed to fill in password field")
 		}
 	} else if authType == contactAuth {
 		testing.ContextLog(ctx, "This account uses contact email authentication")
-		if c.cfg.contact == "" {
+		if cfg.contact == "" {
 			return errors.New("please supply a contact email with chrome.Contact()")
 		}
-		if err := insertGAIAField(ctx, gaiaConn, "input[name=email]", c.cfg.contact); err != nil {
+		if err := insertGAIAField(ctx, gaiaConn, "input[name=email]", cfg.contact); err != nil {
 			return errors.Wrap(err, "failed to fill in contact email field")
 		}
 	} else {
@@ -1234,8 +1246,8 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	}
 
 	// Perform Unicorn login if parent user given.
-	if c.cfg.parentUser != "" {
-		if err := c.performUnicornParentLogin(ctx, oobeConn, gaiaConn); err != nil {
+	if cfg.parentUser != "" {
+		if err := performUnicornParentLogin(ctx, cfg, sess, oobeConn, gaiaConn); err != nil {
 			return err
 		}
 	}
@@ -1306,10 +1318,10 @@ func insertGAIAField(ctx context.Context, gaiaConn *Conn, selector, value string
 // performUnicornParentLogin Logs in a parent account and accepts Unicorn permissions.
 // This function is heavily based on NavigateUnicornLogin() in Catapult's
 // telemetry/telemetry/internal/backends/chrome/oobe.py.
-func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaConn *Conn) error {
-	normalizedParentUser, err := session.NormalizeEmail(c.cfg.parentUser, false)
+func performUnicornParentLogin(ctx context.Context, cfg *config, sess *driver.Session, oobeConn, gaiaConn *Conn) error {
+	normalizedParentUser, err := session.NormalizeEmail(cfg.parentUser, false)
 	if err != nil {
-		return errors.Wrapf(err, "failed to normalize email %q", c.cfg.user)
+		return errors.Wrapf(err, "failed to normalize email %q", cfg.user)
 	}
 
 	testing.ContextLogf(ctx, "Clicking button that matches parent email: %q", normalizedParentUser)
@@ -1366,11 +1378,11 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 		}
 		return errors.New("no button matches email")
 	}, loginPollOpts); err != nil {
-		return errors.Wrap(c.chromeErr(err), "failed to select parent user")
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to select parent user")
 	}
 
 	testing.ContextLog(ctx, "Typing parent password")
-	if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", c.cfg.parentPass); err != nil {
+	if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", cfg.parentPass); err != nil {
 		return err
 	}
 	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
@@ -1382,16 +1394,17 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return gaiaConn.Exec(ctx, clickAgreeQuery)
 	}, loginPollOpts); err != nil {
-		return errors.Wrap(c.chromeErr(err), "failed to accept Unicorn permissions")
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to accept Unicorn permissions")
 	}
 
 	return nil
 }
 
 // logInAsGuest logs in to a freshly-restarted Chrome instance as a guest user.
-// It waits for the login process to complete before returning.
-func (c *Chrome) logInAsGuest(ctx context.Context) error {
-	oobeConn, err := c.WaitForOOBEConnection(ctx)
+// After calling this function, callers should close sess and start a new
+// session. It waits for the login process to complete before returning.
+func logInAsGuest(ctx context.Context, cfg *config, sess *driver.Session) error {
+	oobeConn, err := waitForOOBEConnection(ctx, sess)
 	if err != nil {
 		return err
 	}
@@ -1410,25 +1423,13 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	// recreated after the port gets ready.
 	os.Remove(cdputil.DebuggingPortPath)
 
-	if err = oobeConn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
+	if err := oobeConn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
 		return err
 	}
 
-	// We also close our WebSocket connection to the browser.
-	oobeConn.Close()
-	oobeConn = nil
-	c.sess.Close(ctx)
-	c.sess = nil
-
-	if err = cryptohome.WaitForUserMount(ctx, c.cfg.user); err != nil {
+	if err := cryptohome.WaitForUserMount(ctx, cfg.user); err != nil {
 		return err
 	}
-
-	// Get the possibly-changed debugging port and establish a new WebSocket connection.
-	if c.sess, err = driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, c.logAggregator); err != nil {
-		return c.chromeErr(err)
-	}
-
 	return nil
 }
 
