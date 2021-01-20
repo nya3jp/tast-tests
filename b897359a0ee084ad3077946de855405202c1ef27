@@ -16,6 +16,29 @@
       "message": "Tom\u0027s turn",
       "revId": "b897359a0ee084ad3077946de855405202c1ef27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "101ccf72_1913c2d8",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-20T20:53:42Z",
+      "side": 1,
+      "message": "nit: same: dont start with get*",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "b897359a0ee084ad3077946de855405202c1ef27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
