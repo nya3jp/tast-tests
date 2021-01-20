@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a356773_03e7d725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T23:30:56Z",
+      "side": 1,
+      "message": "Done in a follow up CL.",
+      "parentUuid": "71c912e7_2e41d8b1",
+      "range": {
+        "startLine": 45,
+        "startChar": 23,
+        "endLine": 45,
+        "endChar": 50
+      },
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3593e09_80be5f0a",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-01-20T16:07:24Z",
       "side": 1,
       "message": "Looks unused. What is this for?",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e676adf9_7c1b6869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T23:30:56Z",
+      "side": 1,
+      "message": "Opens up an empty browser window to type the chrome:// URLs into. I\u0027ve added a comment",
+      "parentUuid": "e3593e09_80be5f0a",
       "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b82e19_24a37b17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T23:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3d49a67_99c117ef",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa12530c_1e3ea1c0",
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d962cda1_ffd6e802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T23:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa12530c_1e3ea1c0",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98196320_1e3230d5",
@@ -105,6 +183,24 @@
       "writtenOn": "2021-01-20T16:07:24Z",
       "side": 1,
       "message": "you can use s.Error() instead here. Or, s.Fatal() is you decide to use s.Run().",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a26482_28652d70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T23:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98196320_1e3230d5",
       "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +228,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48aeaa78_6bb800bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T23:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34ec853d_2b31d714",
+      "range": {
+        "startLine": 85,
+        "startChar": 174,
+        "endLine": 85,
+        "endChar": 183
+      },
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3b2afaa_8a4cee6a",
@@ -145,6 +265,24 @@
       "writtenOn": "2021-01-20T16:07:24Z",
       "side": 1,
       "message": "Go heavily prefers short name using surrounding context. In this case, \"conn\" is enough, since there\u0027s no other conn (while there\u0027s tconn).",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d2061e_94969b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-01-20T23:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b2afaa_8a4cee6a",
       "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
