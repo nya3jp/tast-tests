@@ -104,7 +104,7 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]strin
 		return nil, nil, errors.Wrap(err, "failed to connect Test API")
 	}
 
-	installedSystemWebApps, err := apps.GetListOfSystemWebApps(ctx, tconn)
+	installedSystemWebApps, err := apps.ListSystemWebApps(ctx, tconn)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to get installed system apps")
 	}
