@@ -263,8 +263,8 @@ func (sf *SharedFolders) AddFolder(folder string) {
 }
 
 // Unshare unshares folders from Linux.
-func (sf *SharedFolders) Unshare(ctx context.Context, tconn *chrome.TestConn, folders ...string) error {
-	s, err := settings.OpenLinuxSettings(ctx, tconn, settings.ManageSharedFolders)
+func (sf *SharedFolders) Unshare(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, folders ...string) error {
+	s, err := settings.OpenLinuxSettings(ctx, tconn, cr, settings.ManageSharedFolders)
 	if err != nil {
 		return errors.Wrap(err, "failed to find Manage shared folders")
 	}
@@ -284,8 +284,8 @@ func (sf *SharedFolders) Unshare(ctx context.Context, tconn *chrome.TestConn, fo
 }
 
 // CheckNoSharedFolders checks there are no folders listed in the Managed shared folders page.
-func (sf *SharedFolders) CheckNoSharedFolders(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container) error {
-	s, err := settings.OpenLinuxSettings(ctx, tconn, settings.ManageSharedFolders)
+func (sf *SharedFolders) CheckNoSharedFolders(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, cr *chrome.Chrome) error {
+	s, err := settings.OpenLinuxSettings(ctx, tconn, cr, settings.ManageSharedFolders)
 	if err != nil {
 		return errors.Wrap(err, "failed to find Manage shared folders")
 	}
@@ -315,8 +315,8 @@ func (sf *SharedFolders) CheckNoSharedFolders(ctx context.Context, tconn *chrome
 }
 
 // UnshareAll unshares all shared folders.
-func (sf *SharedFolders) UnshareAll(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container) error {
-	s, err := settings.OpenLinuxSettings(ctx, tconn, settings.ManageSharedFolders)
+func (sf *SharedFolders) UnshareAll(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, cr *chrome.Chrome) error {
+	s, err := settings.OpenLinuxSettings(ctx, tconn, cr, settings.ManageSharedFolders)
 	if err != nil {
 		return errors.Wrap(err, "failed to open Manage shared folders")
 	}
