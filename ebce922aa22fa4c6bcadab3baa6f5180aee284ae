@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb9235e_865e69e4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-20T04:56:08Z",
+      "side": 1,
+      "message": "does it open the installer?  Don\u0027t we still have to click the \"turn on\" button?  Maybe the regex for developersButton matches the wrong thing?",
+      "range": {
+        "startLine": 72,
+        "startChar": 86,
+        "endLine": 72,
+        "endChar": 107
+      },
+      "revId": "ebce922aa22fa4c6bcadab3baa6f5180aee284ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401fcd65_38d9f88f",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-20T04:56:08Z",
+      "side": 1,
+      "message": "Won\u0027t this button only be there if the left menu is visible?",
+      "range": {
+        "startLine": 76,
+        "startChar": 53,
+        "endLine": 76,
+        "endChar": 69
+      },
+      "revId": "ebce922aa22fa4c6bcadab3baa6f5180aee284ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af10c291_18aa62e7",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-20T04:56:08Z",
+      "side": 1,
+      "message": "I thought this wasn\u0027t needed anymore as it would open with the settings already on the screen?",
+      "revId": "ebce922aa22fa4c6bcadab3baa6f5180aee284ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d73f5cb_29172e55",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-20T04:56:08Z",
+      "side": 1,
+      "message": "This seems inaccurate to the code now?",
+      "range": {
+        "startLine": 122,
+        "startChar": 28,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "ebce922aa22fa4c6bcadab3baa6f5180aee284ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
