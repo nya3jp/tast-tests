@@ -16,6 +16,23 @@
       "message": "My apologies, I edited the wrong CL.",
       "revId": "15125b9ede9a0cfb786f0b333ae5f51cf980b9aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aef4fcc_6d33eaaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-01-20T14:23:01Z",
+      "side": 1,
+      "message": "ping?",
+      "revId": "15125b9ede9a0cfb786f0b333ae5f51cf980b9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
