@@ -21,7 +21,7 @@ import (
 const defaultTimeout = 15 * time.Second
 
 // ExpandedItemsClass define the class name of the expanded launcher view which is used as search parameters in ui.
-const ExpandedItemsClass = "ui/app_list/AppListItemView"
+const ExpandedItemsClass = "AppListItemView"
 
 // SearchAndLaunchWithQuery searches a query in the launcher and executes an app from the list.
 func SearchAndLaunchWithQuery(ctx context.Context, tconn *chrome.TestConn, query, appName string) error {
@@ -129,7 +129,7 @@ func OpenExpandedView(ctx context.Context, tconn *chrome.TestConn) error {
 	params := ui.FindParams{ClassName: ExpandedItemsClass}
 	exist, err := ui.Exists(ctx, tconn, params)
 	if err != nil {
-		return errors.Wrap(err, "cannot check if ui/app_list/AppListItemView exists")
+		return errors.Wrap(err, "cannot check if AppListItemView exists")
 	}
 	if exist {
 		// Even if it exist, active window may cover it in tablet mode. Check for active windows.
@@ -238,7 +238,7 @@ func RenameFolder(ctx context.Context, tconn *chrome.TestConn, from, to string, 
 		return errors.Wrap(err, "failed to open expanded launcher before renaming folder")
 	}
 
-	// Chrome add prefix "Folder " to all folder names in ui/app_list/AppListItemView.
+	// Chrome add prefix "Folder " to all folder names in AppListItemView.
 	fromFolderSearchName := "Folder " + from
 	toFolderSearchName := "Folder " + to
 
