@@ -10,6 +10,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 )
 
 const (
@@ -18,12 +19,12 @@ const (
 
 // Profile wraps a Profile D-Bus object in shill.
 type Profile struct {
-	PropertyHolder
+	*dbusutil.PropertyHolder
 }
 
 // NewProfile connects to a profile in Shill.
 func NewProfile(ctx context.Context, path dbus.ObjectPath) (*Profile, error) {
-	ph, err := NewPropertyHolder(ctx, dbusProfileInterface, path)
+	ph, err := dbusutil.NewPropertyHolder(ctx, dbusService, dbusProfileInterface, path)
 	if err != nil {
 		return nil, err
 	}
@@ -33,7 +34,7 @@ func NewProfile(ctx context.Context, path dbus.ObjectPath) (*Profile, error) {
 // GetEntry calls the GetEntry method on the profile.
 func (p *Profile) GetEntry(ctx context.Context, entryID string) (map[string]interface{}, error) {
 	var entryProps map[string]interface{}
-	if err := p.dbusObject.Call(ctx, "GetEntry", entryID).Store(&entryProps); err != nil {
+	if err := p.Call(ctx, "GetEntry", entryID).Store(&entryProps); err != nil {
 		return nil, errors.Wrapf(err, "failed to get entry %s", entryID)
 	}
 	return entryProps, nil
@@ -41,5 +42,5 @@ func (p *Profile) GetEntry(ctx context.Context, entryID string) (map[string]inte
 
 // DeleteEntry calls the DeleteEntry method on the profile.
 func (p *Profile) DeleteEntry(ctx context.Context, entryID string) error {
-	return p.dbusObject.Call(ctx, "DeleteEntry", entryID).Err
+	return p.Call(ctx, "DeleteEntry", entryID).Err
 }
