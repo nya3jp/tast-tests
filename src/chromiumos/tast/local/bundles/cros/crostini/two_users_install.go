@@ -66,7 +66,7 @@ func TwoUsersInstall(ctx context.Context, s *testing.State) {
 	}()
 
 	// Install Crostini and shut it down.
-	if err = installAndShutDown(ctx, firstTconn, iOptionsUser1); err != nil {
+	if err = installAndShutDown(ctx, firstTconn, firstCr, iOptionsUser1); err != nil {
 		s.Fatalf("Failed to test Crostini for %s: %s", iOptionsUser1.UserName, err)
 	}
 
@@ -88,7 +88,7 @@ func TwoUsersInstall(ctx context.Context, s *testing.State) {
 	}()
 
 	// Install Crostini and shut it down.
-	if err = installAndShutDown(ctx, secondTconn, iOptionsUser2); err != nil {
+	if err = installAndShutDown(ctx, secondTconn, secondCr, iOptionsUser2); err != nil {
 		s.Fatalf("Failed to test Crostini for user %s: %s", iOptionsUser2.UserName, err)
 	}
 
@@ -137,9 +137,9 @@ func cleanup(ctx context.Context, opts ...chrome.Option) error {
 	return nil
 }
 
-func installAndShutDown(ctx context.Context, tconn *chrome.TestConn, iOptions *cui.InstallationOptions) error {
+func installAndShutDown(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, iOptions *cui.InstallationOptions) error {
 	// Install Crostini.
-	if _, err := cui.InstallCrostini(ctx, tconn, iOptions); err != nil {
+	if _, err := cui.InstallCrostini(ctx, tconn, cr, iOptions); err != nil {
 		return errors.Wrapf(err, "failed to install Crostini for user %s", iOptions.UserName)
 	}
 

@@ -500,7 +500,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	} else {
 		// Install Crostini.
 		iOptions := GetInstallerOptions(s, p.vmMode == component, p.debianVersion, p.container == largeContainer, p.cr.User())
-		if _, err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
+		if _, err := cui.InstallCrostini(ctx, p.tconn, p.cr, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}
 	}
@@ -571,7 +571,7 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 	} else {
 		if p.cont != nil {
 			// Open the Linux settings.
-			st, err := settings.OpenLinuxSettings(ctx, p.tconn)
+			st, err := settings.OpenLinuxSettings(ctx, p.tconn, p.cr)
 			if err != nil {
 				s.Log("Failed to open Linux Settings: ", err)
 			}
