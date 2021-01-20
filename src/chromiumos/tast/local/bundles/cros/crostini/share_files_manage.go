@@ -95,6 +95,7 @@ func init() {
 func ShareFilesManage(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -112,7 +113,7 @@ func ShareFilesManage(ctx context.Context, s *testing.State) {
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont); err != nil {
+		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont, cr); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()

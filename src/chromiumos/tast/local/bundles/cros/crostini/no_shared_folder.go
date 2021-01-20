@@ -90,6 +90,7 @@ func init() {
 func NoSharedFolder(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
@@ -98,7 +99,7 @@ func NoSharedFolder(ctx context.Context, s *testing.State) {
 
 	// Check list of shared folders in Settings app.
 	sharedFolders := sharedfolders.NewSharedFolders()
-	if err := sharedFolders.CheckNoSharedFolders(ctx, tconn, cont); err != nil {
+	if err := sharedFolders.CheckNoSharedFolders(ctx, tconn, cont, cr); err != nil {
 		s.Fatal("Failed to check shared folders list by default: ", err)
 	}
 }

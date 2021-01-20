@@ -222,7 +222,7 @@ func startLxdServer(ctx context.Context, containerMetadata, containerRootfs stri
 }
 
 // InstallCrostini prepares image and installs Crostini from UI.
-func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *InstallationOptions) (uint64, error) {
+func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, iOptions *InstallationOptions) (uint64, error) {
 	// Check for /dev/kvm before we do anything else.
 	// On some boards in the lab the existence of this is flaky crbug.com/1072877
 	if _, err := os.Stat("/dev/kvm"); err != nil {
@@ -260,14 +260,7 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, iOptions *Inst
 		}
 	}
 
-	// Install Crostini from Settings.
-	settings, err := settings.Open(ctx, tconn)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to open Settings")
-	}
-	defer settings.Close(ctx)
-
-	if err := settings.OpenInstaller(ctx); err != nil {
+	if err := settings.OpenInstaller(ctx, tconn, cr); err != nil {
 		return 0, errors.Wrap(err, "failed to launch crostini installation from Settings")
 	}
 	installer := New(tconn)

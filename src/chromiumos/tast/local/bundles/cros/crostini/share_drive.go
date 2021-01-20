@@ -139,7 +139,7 @@ func ShareDrive(ctx context.Context, s *testing.State) {
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont); err != nil {
+		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont, cr); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
@@ -171,7 +171,7 @@ func ShareDrive(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to share Google Drive: ", err)
 	}
 
-	if err := checkDriveResults(ctx, tconn, cont); err != nil {
+	if err := checkDriveResults(ctx, tconn, cont, cr); err != nil {
 		s.Fatal("Failed to verify sharing results: ", err)
 	}
 
@@ -267,9 +267,9 @@ func ShareDrive(ctx context.Context, s *testing.State) {
 	}
 }
 
-func checkDriveResults(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container) error {
+func checkDriveResults(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, cr *chrome.Chrome) error {
 	// Check the shared folders on Settings.
-	s, err := settings.OpenLinuxSettings(ctx, tconn, settings.ManageSharedFolders)
+	s, err := settings.OpenLinuxSettings(ctx, tconn, cr, settings.ManageSharedFolders)
 	if err != nil {
 		return errors.Wrap(err, "failed to find Manage shared folders")
 	}
