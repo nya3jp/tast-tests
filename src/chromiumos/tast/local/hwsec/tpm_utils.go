@@ -10,7 +10,9 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/testexec"
@@ -33,7 +35,8 @@ var highLevelTPMDaemonsToRestart = []string{
 }
 
 var optionalDaemons = map[string]struct{}{
-	"u2fd": {},
+	"bootlockboxd": {},
+	"u2fd":         {},
 }
 
 // OOBE and TPM-related files that should be cleared after TPM is soft-cleared.
@@ -67,6 +70,28 @@ var dirsToRemove = []string{
 	"/var/lib/u2f",
 }
 
+// ResetTPMDaemons would try to stop all TPM daemons, and return a callback function to restart them.
+// Stops ui and all hwsec daemons except for trunksd before changing the TPM state so that they
+// don't run into weird states. Restarts those daemons before returning.
+//
+// trunksd is needed by the changing the TPM state.
+func ResetTPMDaemons(ctx context.Context) (func(ctx context.Context) error, error) {
+	copyOfHighLevelDaemons := append([]string(nil), highLevelTPMDaemonsToRestart...)
+	jobsToRestart := append(copyOfHighLevelDaemons, "ui")
+	jobsToRestart = removeOptionaNotExistJobs(ctx, jobsToRestart)
+
+	resumeDaemons := func(ctx context.Context) error {
+		return ensureJobsStarted(ctx, jobsToRestart)
+	}
+
+	jobsToStop := reverseStringSlice(jobsToRestart)
+	if err := stopJobs(ctx, jobsToStop); err != nil {
+		resumeDaemons(ctx)
+		return nil, errors.Wrapf(err, "failed to stop TPM daemons: %v", jobsToStop)
+	}
+	return resumeDaemons, nil
+}
+
 // ResetTPMAndSystemStates soft-clears the TPM, resets the OOBE state, device ownership, and
 // TPM-related states, and restarts UI and TPM-related daemons. System key used by encstateful is
 // restored after TPM is soft-cleared.
@@ -97,24 +122,20 @@ func ResetTPMAndSystemStates(ctx context.Context) (firstErr error) {
 		}
 	}
 
-	// Stops ui and all hwsec daemons except for trunksd before soft-clearing the TPM so that they
-	// don't run into weird states. Restarts those daemons before returning.
-	//
-	// trunksd is needed by the tpm_softclear command below and is stopped/started separately.
-	copyOfHighLevelDaemons := append([]string(nil), highLevelTPMDaemonsToRestart...)
-	jobsToRestart := append(copyOfHighLevelDaemons, "ui")
-	jobsToRestart = removeOptionaNotExistJobs(ctx, jobsToRestart)
+	ctxForResumeDaemons := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
 
-	defer func() {
-		if err := ensureJobsStarted(ctx, jobsToRestart); err != nil {
-			logOrCopyErr(ctx, err, &firstErr)
-		}
-	}()
-	jobsToStop := reverseStringSlice(jobsToRestart)
-	if err = stopJobs(ctx, jobsToStop); err != nil {
+	resumeDaemons, err := ResetTPMDaemons(ctx)
+	if err != nil {
 		logOrCopyErr(ctx, err, &firstErr)
 		return firstErr
 	}
+	defer func(ctx context.Context) {
+		if err := resumeDaemons(ctx); err != nil {
+			logOrCopyErr(ctx, err, &firstErr)
+		}
+	}(ctxForResumeDaemons)
 
 	// Actually clears the TPM.
 	if err = testexec.CommandContext(ctx, "tpm_softclear").Run(); err != nil {
