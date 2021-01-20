@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 )
 
 const (
@@ -19,12 +20,12 @@ const (
 
 // Service wraps a Service D-Bus object in shill.
 type Service struct {
-	PropertyHolder
+	*dbusutil.PropertyHolder
 }
 
 // NewService connects to a service in Shill.
 func NewService(ctx context.Context, path dbus.ObjectPath) (*Service, error) {
-	ph, err := NewPropertyHolder(ctx, dbusServiceInterface, path)
+	ph, err := dbusutil.NewPropertyHolder(ctx, dbusService, dbusServiceInterface, path)
 	if err != nil {
 		return nil, err
 	}
@@ -50,15 +51,15 @@ func (s *Service) GetDevice(ctx context.Context) (*Device, error) {
 
 // Connect calls the Connect method on the service.
 func (s *Service) Connect(ctx context.Context) error {
-	return s.dbusObject.Call(ctx, "Connect").Err
+	return s.Call(ctx, "Connect").Err
 }
 
 // Disconnect calls the Disconnect method on the service.
 func (s *Service) Disconnect(ctx context.Context) error {
-	return s.dbusObject.Call(ctx, "Disconnect").Err
+	return s.Call(ctx, "Disconnect").Err
 }
 
 // Remove calls the Remove method on the service.
 func (s *Service) Remove(ctx context.Context) error {
-	return s.dbusObject.Call(ctx, "Remove").Err
+	return s.Call(ctx, "Remove").Err
 }
