@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a17712a8_5e0a222a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-20T21:26:07Z",
+      "side": 1,
+      "message": "You should use the Cq-Depend: for this (and also for the CL that\u0027s listed here)",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 65
+      },
+      "revId": "15125b9ede9a0cfb786f0b333ae5f51cf980b9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cbebe34d_2cc8ce0e",
