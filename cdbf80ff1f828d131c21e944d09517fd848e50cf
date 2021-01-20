@@ -164,6 +164,30 @@
       },
       "revId": "cdbf80ff1f828d131c21e944d09517fd848e50cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78fb0135_432c4dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/characteristics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-01-20T07:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a4f5d5_6d79f6ef",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "cdbf80ff1f828d131c21e944d09517fd848e50cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
