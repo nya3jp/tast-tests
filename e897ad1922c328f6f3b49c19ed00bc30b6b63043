@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fe9c8f_f6a18abb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T08:04:10Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "e897ad1922c328f6f3b49c19ed00bc30b6b63043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01b2ef4_6fb94228",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T08:04:10Z",
+      "side": 1,
+      "message": "nit: link the bug with a TODO to move to the precondition",
+      "revId": "e897ad1922c328f6f3b49c19ed00bc30b6b63043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8bc398_10e268cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T08:04:10Z",
+      "side": 1,
+      "message": "nit: log errors in this defer using s.Error",
+      "revId": "e897ad1922c328f6f3b49c19ed00bc30b6b63043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f294a7da_20d64cee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T08:04:10Z",
+      "side": 1,
+      "message": "You still need to call Wait after Kill\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go;l\u003d271",
+      "revId": "e897ad1922c328f6f3b49c19ed00bc30b6b63043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959d9d93_02022556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T08:04:10Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 10
+      },
+      "revId": "e897ad1922c328f6f3b49c19ed00bc30b6b63043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
