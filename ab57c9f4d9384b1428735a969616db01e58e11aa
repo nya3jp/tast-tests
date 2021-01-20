@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d73f6c1_338d2071",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-20T03:29:37Z",
+      "side": 1,
+      "message": "Related to this, do you know why this returns multiple targets? I haven\u0027t seen such errors for ChromeVox extension...",
+      "parentUuid": "ac5618f9_cab90671",
+      "range": {
+        "startLine": 148,
+        "startChar": 19,
+        "endLine": 148,
+        "endChar": 30
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "425ec7fc_3b5ef73e",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 2
@@ -99,6 +123,122 @@
         "startChar": 1,
         "endLine": 163,
         "endChar": 2
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad0c2fe5_2e7ad1af",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-20T03:29:37Z",
+      "side": 1,
+      "message": "Related to this, why we have to try this multiple times?",
+      "parentUuid": "425ec7fc_3b5ef73e",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eab3c07_63d8736b",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-20T03:29:37Z",
+      "side": 1,
+      "message": "I\u0027m slightly afraid that this would introduce flakiness because there is no synchronization taken (from my experiences of ARC tests flakiness).\n\nFor example, if the test side is so slow that when the test starts to wait for the first utterance, the tts side may already start the second utterance.\n\nWhat do you think?",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d0d502b_5f8addab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-20T03:29:37Z",
+      "side": 1,
+      "message": "nit: how about using chromeos-a11y-eng@google.com? tast-users mailing list is too general, I think.",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "532c4867_6900e2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-20T03:29:37Z",
+      "side": 1,
+      "message": "I think we should not close this\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?l\u003d876\u0026rcl\u003d4ff432f541d5f2cf77292b3596e3ccd3e77296c4",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d669f90_4004b741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-20T03:29:37Z",
+      "side": 1,
+      "message": "If we use s.Fatal here, other defer statement won\u0027t run. We can use s.Error instead.",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 10
       },
       "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
