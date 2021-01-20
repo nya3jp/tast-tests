@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e76fc3c_c95ed537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-20T04:12:25Z",
+      "side": 1,
+      "message": "I don\u0027t think SWAs can live without URLs. Terminal/Crostini is a special case, all SWAs should have a valid URL.\n\nTerminal has a URL, but it\u0027s not reported (because Crostini publisher manages it)",
+      "parentUuid": "479538ce_dd485adf",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e8e1db0_d57bab1b",
@@ -143,6 +167,24 @@
       "side": 1,
       "message": "Woops. No actually faillog.DumpUITreeOnError is actually useless here (will only get called at end of test). I\u0027ve updated the function to include screenshot capture instead, I figure having a visual view is more relevant for debugging then the UI tree as we\u0027re not really doing any heavy UI navigation, WDYT?",
       "parentUuid": "ae79ff6d_47bf54ed",
+      "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e69bdc62_bf170428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-01-20T04:12:25Z",
+      "side": 1,
+      "message": "Yep. Screenshot is more useful and quicker to triage.",
+      "parentUuid": "88c90bee_39585083",
       "revId": "7a26934282cc23ebe0e9f8d0a694fc7d6efd030a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
