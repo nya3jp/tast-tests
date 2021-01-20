@@ -16,6 +16,138 @@
       "message": "Hi Hiroki and Sara,\n\nHere\u0027s a change to add a tast test for ChromeVox. I\u0027d appreciate your help in reviewing this, since I\u0027m still new to tast 😊 \n\nThanks and I appreciate your feedback!",
       "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "102fdb22_b5a052b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-20T01:26:37Z",
+      "side": 1,
+      "message": "thanks for the work Aki, a few quick comments. ",
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64ceec24_8a517055",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-20T01:26:37Z",
+      "side": 1,
+      "message": "I think you can simplify this to:\n\"return cv.Eval(...)\"",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 11
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5618f9_cab90671",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-20T01:26:37Z",
+      "side": 1,
+      "message": "should we also check targets length? (before we iterate over it)",
+      "range": {
+        "startLine": 148,
+        "startChar": 19,
+        "endLine": 148,
+        "endChar": 30
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425ec7fc_3b5ef73e",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-20T01:26:37Z",
+      "side": 1,
+      "message": "can change this to use testing.Poll\n\neg- https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/a11y/a11y.go;l\u003d83\n\nWe should defer to a timeout if we wait too long for the condition \"valid \u003d\u003d false\"",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cedb8c3_43cc377a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-20T01:26:37Z",
+      "side": 1,
+      "message": "nit: add err here",
+      "range": {
+        "startLine": 80,
+        "startChar": 44,
+        "endLine": 80,
+        "endChar": 46
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c765f2_4dafb8ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-20T01:26:37Z",
+      "side": 1,
+      "message": "nit: add err here",
+      "range": {
+        "startLine": 88,
+        "startChar": 44,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
