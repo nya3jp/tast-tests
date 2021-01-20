@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92aea07a_6419eca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-20T02:17:59Z",
+      "side": 1,
+      "message": "Thanks for pointing me to that doc. Maybe we should have a direct link to that in https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/README.md?\n\nSomeone should probably also fix audio/soundcardinit. That anti-pattern is why I thought this would be OK.\n\nI think I might just leave these in network/ in that case since they share common code with other tests in the directory. I will plan to go ahead and just abandon this CL.",
+      "parentUuid": "ab6f2ae4_0d1964ab",
+      "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa00c6a2_506c2a37",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/shill_cellular_enable_and_connect.go",
         "patchSetId": 2
