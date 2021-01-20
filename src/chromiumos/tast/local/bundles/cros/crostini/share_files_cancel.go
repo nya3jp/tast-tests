@@ -91,6 +91,7 @@ func init() {
 func ShareFilesCancel(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -109,7 +110,7 @@ func ShareFilesCancel(ctx context.Context, s *testing.State) {
 
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont); err != nil {
+		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont, cr); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
@@ -125,7 +126,7 @@ func ShareFilesCancel(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click Cancel on the share confirm dialog: ", err)
 	}
 
-	if err := sharedFolders.CheckNoSharedFolders(ctx, tconn, cont); err != nil {
+	if err := sharedFolders.CheckNoSharedFolders(ctx, tconn, cont, cr); err != nil {
 		s.Fatal("Failed to check shared folders list by default: ", err)
 	}
 }

@@ -114,7 +114,7 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Unshare shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(ctx, tconn, cont); err != nil {
+		if err := sharedFolders.UnshareAll(ctx, tconn, cont, cr); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
@@ -139,7 +139,7 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	sharedFolders.AddFolder(filesapp.Playfiles + " › " + Movies)
 
 	// Verify on Settings.
-	st, err := settings.OpenLinuxSettings(ctx, tconn, settings.ManageSharedFolders)
+	st, err := settings.OpenLinuxSettings(ctx, tconn, cr, settings.ManageSharedFolders)
 	if err != nil {
 		s.Fatal("Failed to open Manage shared folders: ", err)
 	}

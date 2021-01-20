@@ -80,7 +80,7 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 	}()
 
 	// Install Crostini.
-	resultDiskSize, err := ui.InstallCrostini(ctx, tconn, iOptions)
+	resultDiskSize, err := ui.InstallCrostini(ctx, tconn, cr, iOptions)
 	if err != nil {
 		s.Fatal("Failed to install Crostini: ", err)
 	}
@@ -98,14 +98,14 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the container: ", err)
 	}
 
-	if err := verifyDiskSize(ctx, tconn, cont, resultDiskSize); err != nil {
+	if err := verifyDiskSize(ctx, tconn, cr, cont, resultDiskSize); err != nil {
 		s.Fatal("Failed to verify disk size: ", err)
 	}
 }
 
-func verifyDiskSize(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, size uint64) error {
+func verifyDiskSize(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, cont *vm.Container, size uint64) error {
 	// Open the Linux settings.
-	st, err := settings.OpenLinuxSettings(ctx, tconn)
+	st, err := settings.OpenLinuxSettings(ctx, tconn, cr)
 	if err != nil {
 		return errors.Wrap(err, "failed to open Linux Settings")
 	}

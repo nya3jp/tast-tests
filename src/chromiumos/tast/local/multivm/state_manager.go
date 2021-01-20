@@ -214,7 +214,7 @@ func (s *StateManager) Activate(ctx context.Context, st StateManagerTestingState
 			iOptions := crostini.GetInstallerOptions(st, true, s.useCrostini.debianVersion, s.useCrostini.largeContainer, s.cr.User())
 			iOptions.UserName = s.cr.User()
 			iOptions.MinDiskSize = s.useCrostini.minDiskSize
-			if _, err := cui.InstallCrostini(ctx, s.tconn, iOptions); err != nil {
+			if _, err := cui.InstallCrostini(ctx, s.tconn, s.cr, iOptions); err != nil {
 				return errors.Wrap(err, "failed to install Crostini")
 			}
 			var err error

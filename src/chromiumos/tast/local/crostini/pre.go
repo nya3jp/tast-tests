@@ -501,7 +501,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	} else {
 		// Install Crostini.
 		iOptions := GetInstallerOptions(s, p.vmMode == component, p.debianVersion, p.container == largeContainer, p.cr.User())
-		if _, err := cui.InstallCrostini(ctx, p.tconn, iOptions); err != nil {
+		if _, err := cui.InstallCrostini(ctx, p.tconn, p.cr, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}
 	}
@@ -571,7 +571,7 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 		s.Log("keepState not uninstalling Crostini and deleting image in cleanUp")
 	} else {
 		if p.cont != nil {
-			if err := uninstallLinuxFromUI(ctx, p.tconn); err != nil {
+			if err := uninstallLinuxFromUI(ctx, p.tconn, p.cr); err != nil {
 				s.Log("Failed to close settings window after uninstalling Linux: ", err)
 			}
 			p.cont = nil
@@ -610,9 +610,9 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 	}
 }
 
-func uninstallLinuxFromUI(ctx context.Context, tconn *chrome.TestConn) error {
+func uninstallLinuxFromUI(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
 	// Open the Linux settings.
-	st, err := settings.OpenLinuxSettings(ctx, tconn)
+	st, err := settings.OpenLinuxSettings(ctx, tconn, cr)
 	if err != nil {
 		return errors.Wrap(err, "failed to open Linux Settings")
 	}
