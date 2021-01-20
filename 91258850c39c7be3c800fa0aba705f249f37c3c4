@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6209eaf_feebe781",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-01-20T14:01:10Z",
+      "side": 1,
+      "message": "I don\u0027t know why but the CQ uses 13729.0.0 which is quite old and has a known issue.\n",
+      "revId": "91258850c39c7be3c800fa0aba705f249f37c3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
