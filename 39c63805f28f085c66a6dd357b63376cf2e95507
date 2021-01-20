@@ -16,6 +16,23 @@
       "message": "Hello Leo, please help me review this change. Thank you.",
       "revId": "39c63805f28f085c66a6dd357b63376cf2e95507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523a2eca_73a5d5ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-01-20T06:19:30Z",
+      "side": 1,
+      "message": "Hello Ricardo, please help me CR+2 again because the original CR+2 was lost when Mike changed the branch. Thank you.",
+      "revId": "39c63805f28f085c66a6dd357b63376cf2e95507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
