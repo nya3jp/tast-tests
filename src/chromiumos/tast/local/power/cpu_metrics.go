@@ -102,3 +102,8 @@ func (c *ProcfsCPUMetrics) Snapshot(ctx context.Context, values *perf.Values) er
 	c.lastJiffies = jiffies
 	return nil
 }
+
+// Stop does nothing.
+func (c *ProcfsCPUMetrics) Stop(ctx context.Context, values *perf.Values) error {
+	return nil
+}

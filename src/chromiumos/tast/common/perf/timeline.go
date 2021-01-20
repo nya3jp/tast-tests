@@ -20,6 +20,7 @@ import (
 // Start    - capture any initial state needed to start metrics collection.
 //            Called from Timeline.Start.
 // Snapshot - Log one data point. Called from Timeline.Snapshot.
+// Stop     - Log one last data point. Called from Timeline.StopRecording.
 
 // TimelineDatasource is an interface that is implemented to add a source of
 // metrics to a Timeline.
@@ -27,6 +28,7 @@ type TimelineDatasource interface {
 	Setup(ctx context.Context, prefix string) error
 	Start(ctx context.Context) error
 	Snapshot(ctx context.Context, values *Values) error
+	Stop(ctx context.Context, values *Values) error
 }
 
 // timestampSource is the only default TimelineDatasource. Snapshot records the
@@ -62,6 +64,11 @@ func (t *timestampSource) Snapshot(_ context.Context, v *Values) error {
 		return errors.New("failed to snapshot Timeline, Start wasn't called")
 	}
 	v.Append(t.metric, time.Now().Sub(t.begin).Seconds())
+	return nil
+}
+
+// Stop does nothing.
+func (t *timestampSource) Stop(_ context.Context, v *Values) error {
 	return nil
 }
 
@@ -163,6 +170,16 @@ func (t *Timeline) snapshot(ctx context.Context, v *Values) error {
 	return nil
 }
 
+// stop gives the metrics last chance to report values before test finishes.
+func (t *Timeline) stop(ctx context.Context, v *Values) error {
+	for _, s := range t.sources {
+		if err := s.Stop(ctx, v); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 // StartRecording starts capturing metrics in a goroutine. The sampling interval is specified as a parameter of NewTimeline. StartRecording may not be called twice, unless StopRecording is called in-between.
 func (t *Timeline) StartRecording(ctx context.Context) error {
 	if t.recordingStatus != nil {
@@ -205,7 +222,7 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 }
 
 // StopRecording stops capturing metrics and returns the captured metrics.
-func (t *Timeline) StopRecording() (*Values, error) {
+func (t *Timeline) StopRecording(ctx context.Context) (*Values, error) {
 	if t.recordingStatus == nil {
 		return nil, errors.New("not recording yet")
 	}
@@ -222,6 +239,12 @@ func (t *Timeline) StopRecording() (*Values, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	val := NewValues()
+	if err := t.stop(ctx, val); err != nil {
+		return nil, err
+	}
+	t.recordingValues.Merge(val)
 
 	result := t.recordingValues
 	t.recordingValues = nil

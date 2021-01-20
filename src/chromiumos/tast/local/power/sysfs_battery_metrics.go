@@ -82,6 +82,32 @@ func ReadBatteryCapacity(devPath string) (float64, error) {
 	return float64(capacity), nil
 }
 
+// ReadBatteryChargeNow returns the charge of a battery in Ah.
+// which comes from /sys/class/power_supply/<supply name>/charge_now.
+func ReadBatteryChargeNow(devPath string) (float64, error) {
+	charge, err := readInt64(path.Join(devPath, "charge_now"))
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read charge from %v", devPath)
+	}
+	return float64(charge) / 1000000, nil
+}
+
+// ReadBatteryEnergy returns the remaining energy of a battery in Wh.
+func ReadBatteryEnergy(devPath string) (float64, error) {
+	charge, err := ReadBatteryChargeNow(devPath)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read energy from %v", devPath)
+	}
+
+	voltage, err := readFloat64(path.Join(devPath, "voltage_min_design"))
+	if err != nil {
+		// autotest/files/client/cros/power/power_status.py uses current
+		// voltage in case it can't get the specced one.
+		return 0., errors.Wrap(err, "failed to read voltage_min_design")
+	}
+	return charge * float64(voltage) / 1000000, nil
+}
+
 // ReadSystemPower returns system power consumption in Watts.
 // It is assumed that power supplies at devPath have attributes
 // voltage_now and current_now.
@@ -163,8 +189,10 @@ func SysfsBatteryPath(ctx context.Context) (string, error) {
 
 // SysfsBatteryMetrics hold the metrics read from sysfs.
 type SysfsBatteryMetrics struct {
-	powerMetric perf.Metric
-	batteryPath string
+	powerMetric     perf.Metric
+	batteryPath     string
+	dischargeMetric perf.Metric
+	initialEnergy   float64
 }
 
 // Assert that SysfsBatteryMetrics can be used in perf.Timeline.
@@ -194,7 +222,12 @@ func (b *SysfsBatteryMetrics) Setup(ctx context.Context, prefix string) error {
 		return errors.Errorf("unexpected number of batteries: got %d; want 1", len(batteryPaths))
 	}
 	b.batteryPath = batteryPaths[0]
+	b.initialEnergy, err = ReadBatteryEnergy(b.batteryPath)
+	if err != nil {
+		return err
+	}
 	b.powerMetric = perf.Metric{Name: prefix + "system", Unit: "W", Direction: perf.SmallerIsBetter, Multiple: true}
+	b.dischargeMetric = perf.Metric{Name: prefix + "discharge_mwh", Unit: "mWh", Direction: perf.SmallerIsBetter, Multiple: false}
 	return nil
 }
 
@@ -213,5 +246,15 @@ func (b *SysfsBatteryMetrics) Snapshot(ctx context.Context, values *perf.Values)
 		return err
 	}
 	values.Append(b.powerMetric, power)
+	return nil
+}
+
+// Stop reports the total amount of energy used during the test.
+func (b *SysfsBatteryMetrics) Stop(ctx context.Context, values *perf.Values) error {
+	energy, err := ReadBatteryEnergy(b.batteryPath)
+	if err != nil {
+		return err
+	}
+	values.Set(b.dischargeMetric, 1000.*(b.initialEnergy-energy))
 	return nil
 }
