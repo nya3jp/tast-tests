@@ -175,6 +175,30 @@
       },
       "revId": "ebce922aa22fa4c6bcadab3baa6f5180aee284ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f001eda3_d0524aeb",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-20T05:42:29Z",
+      "side": 1,
+      "message": "file a bug for this?  it affects ChromeVox right?",
+      "parentUuid": "6a49f413_74269667",
+      "range": {
+        "startLine": 122,
+        "startChar": 28,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "ebce922aa22fa4c6bcadab3baa6f5180aee284ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
