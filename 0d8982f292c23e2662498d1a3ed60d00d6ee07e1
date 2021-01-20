@@ -39,6 +39,24 @@
       "message": "Verify by running wifi.SimpleConnect.80211g and wifi.PMKSACaching.",
       "revId": "0d8982f292c23e2662498d1a3ed60d00d6ee07e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb641c37_6b21f16c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-20T05:52:32Z",
+      "side": 1,
+      "message": "I leased a DUT and the tests mostly passed. (The lease timed out, I didn\u0027t realize the tests would take so long to run). I would expect all or most of them to fail if these changes broke anything.",
+      "parentUuid": "bb4fc7dc_01074392",
+      "revId": "0d8982f292c23e2662498d1a3ed60d00d6ee07e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
