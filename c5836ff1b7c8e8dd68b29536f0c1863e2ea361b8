@@ -33,6 +33,23 @@
       "message": "+Rohit for engprod merge approval",
       "revId": "c5836ff1b7c8e8dd68b29536f0c1863e2ea361b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fb2e18c_01afb991",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000373
+      },
+      "writtenOn": "2021-01-20T05:55:35Z",
+      "side": 1,
+      "message": "Approved in the bug. LGTM",
+      "revId": "c5836ff1b7c8e8dd68b29536f0c1863e2ea361b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
