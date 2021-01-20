@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab6f2ae4_0d1964ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-20T01:42:44Z",
+      "side": 1,
+      "message": "Could you put this at one level above as deanlaio@ recommended?\n\nIn Tast, packages containing the tests are called \"category\" and handled with a special treatment in Tast framework.\nIt is said that the category must be directly under the bundle package (in this case chromiumos/tast/local/bundles/cros/).\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#code-location\n\n\u003d\u003d quote \u003d\u003d\n The category package needs to be directly under the bundle package. Thus the category package path should be matched with chromiumos/tast/(local|remote)/bundles/(?P\u003cbundlename\u003e[^/]+)/(?P\u003ccategory\u003e[^/]+).\n\u003d\u003d quote end \u003d\u003d\n\nMaybe we should have some mechanical check in the framework.",
+      "parentUuid": "e7b21ad2_d534cc68",
+      "revId": "c7ca405d11acb2976f9a57d6cc35c03e8d4612a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa00c6a2_506c2a37",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/shill_cellular_enable_and_connect.go",
         "patchSetId": 2
