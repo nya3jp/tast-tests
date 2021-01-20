@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/testing"
 )
 
 const (
@@ -67,14 +66,15 @@ func MountComponent(ctx context.Context, image string) error {
 }
 
 // UnmountComponent unmounts any active VM component.
-func UnmountComponent(ctx context.Context) {
+func UnmountComponent(ctx context.Context) error {
 	if err := unix.Unmount(TerminaMountDir, 0); err != nil {
-		testing.ContextLog(ctx, "Failed to unmount component: ", err)
+		return errors.Wrap(err, "failed to unmount component")
 	}
 
 	if err := os.Remove(TerminaMountDir); err != nil {
-		testing.ContextLog(ctx, "Failed to remove component mount directory: ", err)
+		return errors.Wrap(err, "failed to remove component mount directory")
 	}
+	return nil
 }
 
 // getMilestone returns the Chrome OS milestone for this build.

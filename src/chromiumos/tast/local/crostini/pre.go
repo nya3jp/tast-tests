@@ -26,6 +26,7 @@ import (
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
+	dlcutil "chromiumos/tast/local/dlc"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
@@ -600,6 +601,23 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 			}
 			p.cont = nil
 		}
+
+		// Unmount the VM image to prevent later tests from
+		// using it by accident. Otherwise we may have a dlc
+		// test use the component or vice versa.
+		if p.vmMode == component {
+			if err := vm.UnmountComponent(ctx); err != nil {
+				s.Error("Failed to unmount cros-termina component: ", err)
+			}
+		} else {
+			if err := dlcutil.Cleanup(ctx, dlcutil.Info{
+				ID:      "termina-dlc",
+				Package: "package",
+			}); err != nil {
+				s.Error("Failed to unmount termina-dlc: ", err)
+			}
+		}
+
 		if err := vm.DeleteImages(); err != nil {
 			s.Log("Error deleting images: ", err)
 		}
