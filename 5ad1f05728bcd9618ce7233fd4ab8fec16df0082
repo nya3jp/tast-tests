@@ -20,6 +20,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71c912e7_2e41d8b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-20T16:07:24Z",
+      "side": 1,
+      "message": "(it is not newly introduced in this CL, so option for this CL, but)\nwe often avoid method prefixes like \"Get\", \"Is\", \"Has\", unlike other languages, in Go.\n\nMaybe apps.SystemWebApps(...) or apps.ListSystemWebApps(...) (using List as a verb).",
+      "range": {
+        "startLine": 45,
+        "startChar": 23,
+        "endLine": 45,
+        "endChar": 50
+      },
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3593e09_80be5f0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-20T16:07:24Z",
+      "side": 1,
+      "message": "Looks unused. What is this for?",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3d49a67_99c117ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
         "patchSetId": 5
@@ -31,6 +71,80 @@
       "writtenOn": "2021-01-20T12:46:59Z",
       "side": 1,
       "message": "nit: missing . at the end of the comment",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa12530c_1e3ea1c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-20T16:07:24Z",
+      "side": 1,
+      "message": "(optional): How about using s.Run() which provides slightly more context on the log so what happened is easier to understand in case of investigation of failures.",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98196320_1e3230d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-20T16:07:24Z",
+      "side": 1,
+      "message": "you can use s.Error() instead here. Or, s.Fatal() is you decide to use s.Run().",
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ec853d_2b31d714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-20T16:07:24Z",
+      "side": 1,
+      "message": "(optional) how about using retErr for consistency with other tests.",
+      "range": {
+        "startLine": 85,
+        "startChar": 174,
+        "endLine": 85,
+        "endChar": 183
+      },
+      "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b2afaa_8a4cee6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-20T16:07:24Z",
+      "side": 1,
+      "message": "Go heavily prefers short name using surrounding context. In this case, \"conn\" is enough, since there\u0027s no other conn (while there\u0027s tconn).",
       "revId": "5ad1f05728bcd9618ce7233fd4ab8fec16df0082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
