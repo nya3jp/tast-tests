@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88f3cbd_71fb590e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T20:33:43Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16bd8a39_4d9fc5e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T20:33:43Z",
+      "side": 1,
+      "message": "Not sure if this is useful. There is only one caller. Unless the functions are moved to a separate package they can\u0027t be shared between tests.",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea427dc3_82e9f430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T20:33:43Z",
+      "side": 1,
+      "message": "You can call s.Error multiple times. It\u0027s easier and makes sense in this case to pass State as a parameter to start. Another option is to log the extra errors and just return the first one.",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d600e5f_2980214e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T20:33:43Z",
+      "side": 1,
+      "message": "nit: use Kill",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b4717b3_8dee015c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T20:33:43Z",
+      "side": 1,
+      "message": "Don\u0027t store context in a struct. All functions that need a context should get it as a paramter",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69e9e1e0_103b8a18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T20:33:43Z",
+      "side": 1,
+      "message": "minor nit: use a different letter. s is normally used for State",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 7
+      },
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad01607_f85e906a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-20T20:33:43Z",
+      "side": 1,
+      "message": "use a defer for stopTrichechus\nyou can use a named error return and check it for nil to see if it needs to be stopped\nsame for dugong",
+      "range": {
+        "startLine": 132,
+        "startChar": 91,
+        "endLine": 132,
+        "endChar": 105
+      },
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
