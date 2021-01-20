@@ -33,6 +33,29 @@
       "message": "adding tast-owenrs@",
       "revId": "da18c44ac42ef62e58e118198756a3aac8787b67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd20358d_49a2aea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/a11y/a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-01-20T01:28:37Z",
+      "side": 1,
+      "message": "for future reference, could you add a quick comment on why we are using 20s? can add here or to function comment in line 80.",
+      "range": {
+        "startLine": 90,
+        "startChar": 34,
+        "endLine": 90,
+        "endChar": 35
+      },
+      "revId": "da18c44ac42ef62e58e118198756a3aac8787b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
