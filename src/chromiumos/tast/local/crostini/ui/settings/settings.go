@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/ossettings"
 	"chromiumos/tast/local/chrome/uig"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -69,51 +69,34 @@ type Settings struct {
 	tconn *chrome.TestConn
 }
 
-// Open finds or launches Settings app and returns a Settings instance.
-func Open(ctx context.Context, tconn *chrome.TestConn) (*Settings, error) {
-	// Open Settings app.
-	if err := ash.HideVisibleNotifications(ctx, tconn); err != nil {
-		return nil, errors.Wrap(err, "failed to hide all notifications in OpenSettings()")
+// OpenLinuxSubpage opens Linux subpage on Settings page. If Linux is not installed, it opens the installer.
+func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*Settings, error) {
+	// Condition to satisfy verification of LaunchAtPageURL
+	condition := func(ctx context.Context) (bool, error) {
+		return ossettings.DescendantNodeExists(ctx, tconn, developersButton)
+	}
+	if err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", condition); err != nil {
+		return nil, errors.Wrap(err, "failed to launch Settings page and go to Crostini subpage")
 	}
 	s := &Settings{tconn}
-	if err := s.ensureOpen(ctx); err != nil {
-		return nil, errors.Wrap(err, "error in OpenSettings()")
+
+	// Navigate to Developers page or Linux settings page.
+	if err := uig.Do(ctx, tconn, uig.Retry(2,
+		uig.FindWithTimeout(settingsWindow, uiTimeout).
+			FindWithTimeout(developersButton, uiTimeout).
+			FocusAndWait(uiTimeout).
+			LeftClick())); err != nil {
+		return nil, errors.Wrap(err, "failed to click button Developer")
 	}
 	return s, nil
 }
 
-func navigateToDevelopers(ctx context.Context, tconn *chrome.TestConn) error {
-	err := uig.Do(ctx, tconn, uig.FindWithTimeout(settingsWindow, uiTimeout).
-		FindWithTimeout(advancedButton, uiTimeout).
-		FocusAndWait(uiTimeout).
-		LeftClick().WithNamef("clickAdvanced()"))
-	if err != nil {
-		return errors.Wrap(err, "failed to click Advanced")
-	}
-	// Navigate to Developers page or Linux settings page.
-	return uig.Do(ctx, tconn, uig.Retry(2,
-		uig.FindWithTimeout(settingsWindow, uiTimeout).
-			FindWithTimeout(developersButton, uiTimeout).
-			FocusAndWait(uiTimeout).
-			LeftClick()).WithNamef("navigateToDevelopers()"))
-}
-
-// OpenLinuxSettings open finds or launches Settings app and navigate to Linux Settings and its sub settings if any.
+// OpenLinuxSettings opens Settings app and navigate to Linux Settings and its sub settings if any.
 // Returns a Settings instance.
-func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, subSettings ...string) (s *Settings, err error) {
-	s, err = Open(ctx, tconn)
+func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, subSettings ...string) (*Settings, error) {
+	s, err := OpenLinuxSubpage(ctx, tconn, cr)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to open the Settings app")
-	}
-	defer func() {
-		if err != nil && s != nil {
-			s.Close(ctx)
-		}
-	}()
-
-	// Navigate to Developers settings page.
-	if err = navigateToDevelopers(ctx, tconn); err != nil {
-		return nil, errors.Wrap(err, "failed to open Linux settings")
+		return nil, errors.Wrap(err, "failed to open linux subpage on Settings app")
 	}
 
 	// Find the sub Settings.
@@ -136,38 +119,18 @@ func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName st
 	return &Settings{tconn: tconn}, nil
 }
 
-// ensureOpen checks if the settings app is open, and opens it if it is not.
-func (s *Settings) ensureOpen(ctx context.Context) error {
-	shown, err := ash.AppShown(ctx, s.tconn, apps.Settings.ID)
-	if err != nil {
-		return err
-	}
-	if shown {
-		return nil
-	}
-	if err := apps.Launch(ctx, s.tconn, apps.Settings.ID); err != nil {
-		return errors.Wrap(err, "failed to launch settings app")
-	}
-	if err := ash.WaitForApp(ctx, s.tconn, apps.Settings.ID); err != nil {
-		return errors.Wrap(err, "Settings app did not appear in the shelf")
-	}
-	return nil
-}
-
 // OpenInstaller clicks the "Turn on" Linux button to open the Crostini installer.
 //
 // It also clicks next to skip the information screen.  An ui.Installer
 // page object can be constructed after calling OpenInstaller to adjust the settings and to complete the installation.
-func (s *Settings) OpenInstaller(ctx context.Context) error {
-	if err := s.ensureOpen(ctx); err != nil {
-		return errors.Wrap(err, "error in OpenInstaller()")
+func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
+	s, err := OpenLinuxSubpage(ctx, tconn, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to open linux subpage on Settings app")
 	}
-	if err := navigateToDevelopers(ctx, s.tconn); err != nil {
-		return errors.Wrap(err, "error in OpenInstaller()")
-	}
-	return uig.Do(ctx, s.tconn,
-		uig.Steps(
-			uig.FindWithTimeout(nextButton, uiTimeout).LeftClick()).WithNamef("OpenInstaller()"))
+	defer s.Close(ctx)
+	return uig.Do(ctx, tconn,
+		uig.Steps(uig.FindWithTimeout(nextButton, uiTimeout).LeftClick()).WithNamef("OpenInstaller()"))
 }
 
 // Close closes the Settings App.

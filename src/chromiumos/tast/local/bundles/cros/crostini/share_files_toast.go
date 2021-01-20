@@ -95,6 +95,7 @@ func init() {
 func ShareFilesToast(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
 	// Use a shortened context for test operations to reserve time for cleanup.
@@ -113,7 +114,7 @@ func ShareFilesToast(ctx context.Context, s *testing.State) {
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont); err != nil {
+		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont, cr); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
@@ -127,7 +128,7 @@ func ShareFilesToast(ctx context.Context, s *testing.State) {
 	}
 
 	// Unshare My files. This is part of the test, different from clean up in line 72.
-	if err := unshareMyFiles(ctx, tconn, cont, sharedFolders); err != nil {
+	if err := unshareMyFiles(ctx, tconn, cont, cr, sharedFolders); err != nil {
 		s.Fatal("Failed to unshare My files: ", err)
 	}
 }
@@ -184,12 +185,12 @@ func checkShareResults(ctx context.Context, tconn *chrome.TestConn, cont *vm.Con
 	return nil
 }
 
-func unshareMyFiles(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, sharedFolders *sharedfolders.SharedFolders) error {
-	if err := sharedFolders.Unshare(ctx, tconn, sharedfolders.MyFiles); err != nil {
+func unshareMyFiles(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, cr *chrome.Chrome, sharedFolders *sharedfolders.SharedFolders) error {
+	if err := sharedFolders.Unshare(ctx, tconn, cr, sharedfolders.MyFiles); err != nil {
 		return errors.Wrap(err, "failed to delete shared folder My files")
 	}
 
-	if err := sharedFolders.CheckNoSharedFolders(ctx, tconn, cont); err != nil {
+	if err := sharedFolders.CheckNoSharedFolders(ctx, tconn, cont, cr); err != nil {
 		return errors.Wrap(err, "failed to verify shared folder list after unshare My files")
 	}
 

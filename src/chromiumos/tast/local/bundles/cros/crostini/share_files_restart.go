@@ -111,7 +111,7 @@ func ShareFilesRestart(ctx context.Context, s *testing.State) {
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(ctx, tconn, cont); err != nil {
+		if err := sharedFolders.UnshareAll(ctx, tconn, cont, cr); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
@@ -120,7 +120,7 @@ func ShareFilesRestart(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to share My files: ", err)
 	}
 
-	if err := checkResults(ctx, tconn, cont); err != nil {
+	if err := checkResults(ctx, tconn, cont, cr); err != nil {
 		s.Fatal("Faied to verify results after sharing My files: ", err)
 	}
 
@@ -134,14 +134,14 @@ func ShareFilesRestart(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the shared folders again after restart Crostini.
-	if err := checkResults(ctx, tconn, cont); err != nil {
+	if err := checkResults(ctx, tconn, cont, cr); err != nil {
 		s.Fatal("Faied to verify results after restarting Crostini: ", err)
 	}
 }
 
-func checkResults(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container) error {
+func checkResults(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, cr *chrome.Chrome) error {
 	// Check shared folders on the Settings app.
-	st, err := settings.OpenLinuxSettings(ctx, tconn, settings.ManageSharedFolders)
+	st, err := settings.OpenLinuxSettings(ctx, tconn, cr, settings.ManageSharedFolders)
 	if err != nil {
 		return errors.Wrap(err, "failed to open Manage shared folders")
 	}

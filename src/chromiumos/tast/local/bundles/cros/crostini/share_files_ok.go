@@ -94,6 +94,7 @@ func init() {
 func ShareFilesOK(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -111,7 +112,7 @@ func ShareFilesOK(ctx context.Context, s *testing.State) {
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont); err != nil {
+		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont, cr); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
@@ -121,7 +122,7 @@ func ShareFilesOK(ctx context.Context, s *testing.State) {
 	}
 
 	// Check shared folders on the Settings app.
-	st, err := settings.OpenLinuxSettings(ctx, tconn, settings.ManageSharedFolders)
+	st, err := settings.OpenLinuxSettings(ctx, tconn, cr, settings.ManageSharedFolders)
 	if err != nil {
 		s.Fatal("Failed to open Manage shared folders: ", err)
 	}
