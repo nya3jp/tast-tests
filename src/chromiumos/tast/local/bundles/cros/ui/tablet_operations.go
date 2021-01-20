@@ -186,7 +186,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		}
 		// Tap the chrome icon in the app-list to re-activate the browser window.
 		findParams := chromeui.FindParams{
-			ClassName: "ui/app_list/AppListItemView",
+			ClassName: "AppListItemView",
 			Attributes: map[string]interface{}{
 				"name": regexp.MustCompile("(Chrome|Chromium)"),
 			},
