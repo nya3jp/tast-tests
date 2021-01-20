@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6385aa48_a2208ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-20T19:59:07Z",
+      "side": 1,
+      "message": "If we don\u0027t shorten the context before passing it to some asynchronous function, then the context may expire before we have a chance to run the deferred cleanup functions (especially if any of those are asynchronous themselves).\n\nIn any event, holding the context in this sort of struct makes it impossible for the user to set specific timeouts for each operation. As the helper object grows and includes more functionality and the test coverage increases, this can constrain usage. With the context embedded in the struct, you are stating that \"all operations performed by this struct must finish before the deadline given by the context passed in when it was constructed\" no matter how many or what kind of operation it is.",
+      "parentUuid": "9a685eae_a0bb869a",
+      "revId": "adab200218cbbd4a54d030c477581815794f049e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "905259de_fcf4667b",
