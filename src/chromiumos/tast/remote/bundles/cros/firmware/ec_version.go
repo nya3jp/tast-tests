@@ -7,7 +7,7 @@ package firmware
 import (
 	"context"
 
-	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -23,9 +23,10 @@ func init() {
 }
 
 func ECVersion(ctx context.Context, s *testing.State) {
-	version, err := firmware.ECVersion(ctx, s.DUT())
+	r := reporters.New(s.DUT())
+	version, err := r.ECVersion(ctx)
 	if err != nil {
-		s.Fatal("Failed to determine ec version: ", err)
+		s.Fatal("Failed to determine EC version: ", err)
 	}
 	s.Log("EC version: ", version)
 }
