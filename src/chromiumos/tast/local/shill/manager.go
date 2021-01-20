@@ -24,7 +24,7 @@ const (
 
 // Manager wraps a Manager D-Bus object in shill.
 type Manager struct {
-	PropertyHolder
+	*dbusutil.PropertyHolder
 }
 
 // Technology is the type of a shill device's technology
@@ -43,11 +43,16 @@ const (
 
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
-	ph, err := NewPropertyHolder(ctx, dbusManagerInterface, dbusManagerPath)
+	ph, err := dbusutil.NewPropertyHolder(ctx, dbusService, dbusManagerInterface, dbusManagerPath)
 	if err != nil {
 		return nil, err
 	}
 	return &Manager{PropertyHolder: ph}, nil
+}
+
+// CreateWatcher returns a PropertiesWatcher to observe the Manager "PropertyChanged" signal.
+func (m *Manager) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {
+	return NewPropertiesWatcher(ctx, m.DBusObject)
 }
 
 // FindMatchingService returns the first Service that matches |expectProps|.
@@ -59,7 +64,7 @@ func (m *Manager) FindMatchingService(ctx context.Context, expectProps map[strin
 	defer st.End()
 
 	var servicePath dbus.ObjectPath
-	if err := m.dbusObject.Call(ctx, "FindMatchingService", expectProps).Store(&servicePath); err != nil {
+	if err := m.Call(ctx, "FindMatchingService", expectProps).Store(&servicePath); err != nil {
 		return nil, err
 	}
 	service, err := NewService(ctx, servicePath)
@@ -169,7 +174,7 @@ func (m *Manager) DeviceByType(ctx context.Context, deviceType string) (*Device,
 // ConfigureService configures a service with the given properties and returns its path.
 func (m *Manager) ConfigureService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
 	var service dbus.ObjectPath
-	if err := m.dbusObject.Call(ctx, "ConfigureService", props).Store(&service); err != nil {
+	if err := m.Call(ctx, "ConfigureService", props).Store(&service); err != nil {
 		return "", errors.Wrap(err, "failed to configure service")
 	}
 	return service, nil
@@ -178,7 +183,7 @@ func (m *Manager) ConfigureService(ctx context.Context, props map[string]interfa
 // ConfigureServiceForProfile configures a service at the given profile path.
 func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.ObjectPath, props map[string]interface{}) (dbus.ObjectPath, error) {
 	var service dbus.ObjectPath
-	if err := m.dbusObject.Call(ctx, "ConfigureServiceForProfile", path, props).Store(&service); err != nil {
+	if err := m.Call(ctx, "ConfigureServiceForProfile", path, props).Store(&service); err != nil {
 		return "", errors.Wrap(err, "failed to configure service")
 	}
 	return service, nil
@@ -187,7 +192,7 @@ func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.Obje
 // CreateProfile creates a profile.
 func (m *Manager) CreateProfile(ctx context.Context, name string) (dbus.ObjectPath, error) {
 	var profile dbus.ObjectPath
-	if err := m.dbusObject.Call(ctx, "CreateProfile", name).Store(&profile); err != nil {
+	if err := m.Call(ctx, "CreateProfile", name).Store(&profile); err != nil {
 		return "", errors.Wrap(err, "failed to create profile")
 	}
 	return profile, nil
@@ -196,7 +201,7 @@ func (m *Manager) CreateProfile(ctx context.Context, name string) (dbus.ObjectPa
 // PushProfile pushes a profile.
 func (m *Manager) PushProfile(ctx context.Context, name string) (dbus.ObjectPath, error) {
 	var profile dbus.ObjectPath
-	if err := m.dbusObject.Call(ctx, "PushProfile", name).Store(&profile); err != nil {
+	if err := m.Call(ctx, "PushProfile", name).Store(&profile); err != nil {
 		return "", errors.Wrap(err, "failed to create profile")
 	}
 	return profile, nil
@@ -204,32 +209,32 @@ func (m *Manager) PushProfile(ctx context.Context, name string) (dbus.ObjectPath
 
 // RemoveProfile removes the profile with the given name.
 func (m *Manager) RemoveProfile(ctx context.Context, name string) error {
-	return m.dbusObject.Call(ctx, "RemoveProfile", name).Err
+	return m.Call(ctx, "RemoveProfile", name).Err
 }
 
 // PopProfile pops the profile with the given name if it is on top of the stack.
 func (m *Manager) PopProfile(ctx context.Context, name string) error {
-	return m.dbusObject.Call(ctx, "PopProfile", name).Err
+	return m.Call(ctx, "PopProfile", name).Err
 }
 
 // PopAllUserProfiles removes all user profiles from the stack of managed profiles leaving only default profiles.
 func (m *Manager) PopAllUserProfiles(ctx context.Context) error {
-	return m.dbusObject.Call(ctx, "PopAllUserProfiles").Err
+	return m.Call(ctx, "PopAllUserProfiles").Err
 }
 
 // RequestScan requests a scan for the specified technology.
 func (m *Manager) RequestScan(ctx context.Context, technology Technology) error {
-	return m.dbusObject.Call(ctx, "RequestScan", string(technology)).Err
+	return m.Call(ctx, "RequestScan", string(technology)).Err
 }
 
 // EnableTechnology enables a technology interface.
 func (m *Manager) EnableTechnology(ctx context.Context, technology Technology) error {
-	return m.dbusObject.Call(ctx, "EnableTechnology", string(technology)).Err
+	return m.Call(ctx, "EnableTechnology", string(technology)).Err
 }
 
 // DisableTechnology disables a technology interface.
 func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) error {
-	return m.dbusObject.Call(ctx, "DisableTechnology", string(technology)).Err
+	return m.Call(ctx, "DisableTechnology", string(technology)).Err
 }
 
 func (m *Manager) hasTechnology(ctx context.Context, technologyProperty string, technology Technology) (bool, error) {

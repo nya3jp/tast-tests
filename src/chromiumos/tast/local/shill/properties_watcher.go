@@ -14,9 +14,18 @@ import (
 	"chromiumos/tast/local/dbusutil"
 )
 
-// PropertiesWatcher watches for "PropertyChanged" signals.
+// PropertiesWatcher watches for Shill "PropertyChanged" signals.
 type PropertiesWatcher struct {
 	watcher *dbusutil.SignalWatcher
+}
+
+// NewPropertiesWatcher returns a PropertiesWatcher to observe the shill specific "PropertyChanged" signal.
+func NewPropertiesWatcher(ctx context.Context, obj *dbusutil.DBusObject) (*PropertiesWatcher, error) {
+	watcher, err := obj.CreateWatcher(ctx, "PropertyChanged")
+	if err != nil {
+		return nil, err
+	}
+	return &PropertiesWatcher{watcher: watcher}, nil
 }
 
 // Close stops watching for signals.
@@ -88,50 +97,4 @@ func (pw *PropertiesWatcher) ExpectIn(ctx context.Context, prop string, expected
 			}
 		}
 	}
-}
-
-// PropertyHolder provides methods to access properties of a DBus object.
-// The DBus object must provides GetProperties and SetProperty methods, and a PropertyChanged signal.
-type PropertyHolder struct {
-	dbusObject *dbusutil.DBusObject
-}
-
-// NewPropertyHolder creates a DBus object with the given path and interface used for accessing properties.
-func NewPropertyHolder(ctx context.Context, iface string, path dbus.ObjectPath) (PropertyHolder, error) {
-	dbusObject, err := dbusutil.NewDBusObject(ctx, dbusService, iface, path)
-	if err != nil {
-		return PropertyHolder{}, err
-	}
-	return PropertyHolder{dbusObject: dbusObject}, nil
-}
-
-// CreateWatcher returns a PropertiesWatcher to observe the "PropertyChanged" signal.
-func (h *PropertyHolder) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {
-	watcher, err := h.dbusObject.CreateWatcher(ctx, "PropertyChanged")
-	if err != nil {
-		return nil, err
-	}
-	return &PropertiesWatcher{watcher: watcher}, nil
-}
-
-// GetProperties calls dbus GetProperties method on the interface and returns the result.
-// The dbus call may fail with dbusutil.DBusErrorUnknownObject if the ObjectPath is not valid.
-// Callers can check it with dbusutil.IsDBusError if it's expected.
-func (h *PropertyHolder) GetProperties(ctx context.Context) (*dbusutil.Properties, error) {
-	return dbusutil.NewProperties(ctx, h.dbusObject)
-}
-
-// ObjectPath returns the underlying object's D-Bus path.
-func (h *PropertyHolder) ObjectPath() dbus.ObjectPath {
-	return h.dbusObject.ObjectPath()
-}
-
-// String return the string of underlying dbusObject.
-func (h *PropertyHolder) String() string {
-	return h.dbusObject.String()
-}
-
-// SetProperty calls SetProperty on the interface to set property to the given value.
-func (h *PropertyHolder) SetProperty(ctx context.Context, prop string, value interface{}) error {
-	return h.dbusObject.Call(ctx, "SetProperty", prop, value).Err
 }
