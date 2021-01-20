@@ -8,16 +8,19 @@ package a11y
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
 
 const (
 	chromeVoxExtensionURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/chromevox/background/background.html"
+	googleTtsExtensionID  = "gjjabgpgjpampikjhjpfhneeoapjbjaf"
 )
 
 // Feature represents an accessibility feature in Chrome OS.
@@ -36,8 +39,8 @@ const (
 // SetFeatureEnabled sets the specified accessibility feature enabled/disabled using the provided connection to the extension.
 func SetFeatureEnabled(ctx context.Context, tconn *chrome.TestConn, feature Feature, enable bool) error {
 	if err := tconn.Call(ctx, nil, `(feature, enable) => {
-		  return tast.promisify(tast.bind(chrome.accessibilityFeatures[feature], "set"))({value: enable});
-		}`, feature, enable); err != nil {
+      return tast.promisify(tast.bind(chrome.accessibilityFeatures[feature], "set"))({value: enable});
+    }`, feature, enable); err != nil {
 		return errors.Wrapf(err, "failed to toggle %v to %t", feature, enable)
 	}
 	return nil
@@ -111,5 +114,84 @@ func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.T
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		return errors.Wrap(err, "failed to get current focus")
 	}
+	return nil
+}
+
+// DoCommand performs a ChromeVox command.
+func (cv *ChromeVoxConn) DoCommand(ctx context.Context, cmd string) error {
+	expr := fmt.Sprintf("CommandHandler.onCommand('%s');", cmd)
+	if err := cv.Eval(ctx, expr, nil); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// GoogleTtsConn represents a connection to the Google TTS extension background page.
+type GoogleTtsConn struct {
+	*chrome.Conn
+}
+
+// NewGoogleTtsConn returns a connection to the Google TTS extension's background page.
+// If the extension is not ready, the connection will be closed before returning.
+// Otherwise the calling function will close the connection.
+func NewGoogleTtsConn(ctx context.Context, c *chrome.Chrome) (*GoogleTtsConn, error) {
+	// This block closes all but one instance of the Google TTS engine background
+	// page.
+	// We need this block before we can get a connection to the Google TTS engine
+	// background page because trying to connect when there are multiple instances
+	// triggers the following error:
+	// Error: 2 targets matched while unique match was expected.
+	devsess, err := cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort)
+	if err != nil {
+		return nil, err
+	}
+	bgURL := chrome.ExtensionBackgroundPageURL(googleTtsExtensionID)
+	targets, err := devsess.FindTargets(ctx, chrome.MatchTargetURL(bgURL))
+	if err != nil {
+		return nil, err
+	}
+	for i, t := range targets {
+		if i == 0 {
+			// Close all but the first instance.
+			continue
+		}
+		devsess.CloseTarget(ctx, t.TargetID)
+	}
+
+	var extConn *chrome.Conn
+	valid := false
+	for valid == false {
+		extConn, err = c.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+		if err == nil {
+			valid = true
+		}
+	}
+
+	err = extConn.WaitForExpr(ctx, `document.readyState === "complete"`)
+	if err != nil {
+		extConn.Close()
+		return nil, errors.Wrap(err, "timed out waiting for Google TTS engine background page to load")
+	}
+
+	err = extConn.WaitForExpr(ctx, "window.engine.initialized_")
+	if err != nil {
+		extConn.Close()
+		return nil, errors.Wrap(err, "timed out waiting for Google TTS engine to initialize")
+	}
+
+	return &GoogleTtsConn{extConn}, nil
+}
+
+// ExpectSpeech verifies that the given utterances are spoken by the Google TTS
+// engine.
+func (tts *GoogleTtsConn) ExpectSpeech(ctx context.Context, utterances []string) error {
+	for _, utterance := range utterances {
+		expr := fmt.Sprintf(`window.engine.utterance_ === "%s"`, utterance)
+		if err := tts.WaitForExpr(ctx, expr); err != nil {
+			return errors.Wrapf(err, "timed out waiting for utterance: %s", utterance)
+		}
+	}
+
 	return nil
 }
