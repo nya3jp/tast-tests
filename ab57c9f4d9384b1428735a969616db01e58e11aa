@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ccea6b_71564a25",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-20T22:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64ceec24_8a517055",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 11
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac5618f9_cab90671",
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "Related to this, do you know why this returns multiple targets? I haven\u0027t seen such errors for ChromeVox extension...",
       "parentUuid": "ac5618f9_cab90671",
+      "range": {
+        "startLine": 148,
+        "startChar": 19,
+        "endLine": 148,
+        "endChar": 30
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c42d7b2_62e24e99",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-20T22:57:05Z",
+      "side": 1,
+      "message": "Sounds good. Let\u0027s only iterate over this if len(targets) \u003e 1\n\nI\u0027m not sure why multiple targets are returned. I ran into the issue when doing NewConnForTarget(), so I had to come up with a workaround.",
+      "parentUuid": "4d73f6c1_338d2071",
       "range": {
         "startLine": 148,
         "startChar": 19,
@@ -152,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d56516_7332017a",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-20T22:57:05Z",
+      "side": 1,
+      "message": "Done. We need to try multiple times since it may take some time for the extra background targets to be closed.",
+      "parentUuid": "ad0c2fe5_2e7ad1af",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0eab3c07_63d8736b",
@@ -165,6 +237,30 @@
       "writtenOn": "2021-01-20T03:29:37Z",
       "side": 1,
       "message": "I\u0027m slightly afraid that this would introduce flakiness because there is no synchronization taken (from my experiences of ARC tests flakiness).\n\nFor example, if the test side is so slow that when the test starts to wait for the first utterance, the tts side may already start the second utterance.\n\nWhat do you think?",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a340f1_01f27e87",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-20T22:57:05Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I agree that this could be flaky, so I revised my approach.\n\nNow, we start expecting speech in a separate goroutine, then we perform an action when the goroutine is ready. This will hopefully catch scenarios like the one you described above.\n\nThoughts on my implementation?",
+      "parentUuid": "0eab3c07_63d8736b",
       "range": {
         "startLine": 181,
         "startChar": 1,
@@ -198,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "415eb93d_8f836cad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-20T22:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d0d502b_5f8addab",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "532c4867_6900e2df",
@@ -211,6 +331,30 @@
       "writtenOn": "2021-01-20T03:29:37Z",
       "side": 1,
       "message": "I think we should not close this\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?l\u003d876\u0026rcl\u003d4ff432f541d5f2cf77292b3596e3ccd3e77296c4",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "414d212f_fc1e5214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-20T22:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "532c4867_6900e2df",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -244,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d07dc11_4fb11d29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-20T22:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d669f90_4004b741",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cedb8c3_43cc377a",
@@ -267,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b89711c_0bfbc2d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-20T22:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cedb8c3_43cc377a",
+      "range": {
+        "startLine": 80,
+        "startChar": 44,
+        "endLine": 80,
+        "endChar": 46
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02c765f2_4dafb8ea",
@@ -280,6 +472,30 @@
       "writtenOn": "2021-01-20T01:26:37Z",
       "side": 1,
       "message": "nit: add err here",
+      "range": {
+        "startLine": 88,
+        "startChar": 44,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2738debe_d0a9d3d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-20T22:57:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02c765f2_4dafb8ea",
       "range": {
         "startLine": 88,
         "startChar": 44,
