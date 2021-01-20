@@ -203,6 +203,21 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		axEventTestStep{
 			Key: "Tab",
 			Params: ui.FindParams{
+				ClassName: arca11y.CheckBox,
+				Name:      "CheckBoxWithStateDescription",
+				Role:      ui.RoleTypeCheckBox,
+				Attributes: map[string]interface{}{
+					"checked": ui.CheckedStateFalse,
+				},
+			},
+			Event: axEventLog{
+				EventType:  ui.EventTypeFocus,
+				TargetName: "CheckBoxWithStateDescription",
+			},
+		},
+		axEventTestStep{
+			Key: "Tab",
+			Params: ui.FindParams{
 				ClassName: arca11y.SeekBar,
 				Name:      "seekBar",
 				Role:      ui.RoleTypeSlider,

@@ -24,6 +24,12 @@
         android:text="CheckBox"
         android:tooltipText="checkbox tooltip" />
 
+    <CheckBox
+        android:id="@+id/checkBoxWithStateDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CheckBoxWithStateDescription" />
+
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="match_parent"
