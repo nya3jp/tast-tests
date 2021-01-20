@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83598a8f_86c2feb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a8ffed_60003ebb",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fd512b0_4deedc95",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-15T15:01:32Z",
       "side": 1,
       "message": "Adding \"Files\" to the end seems a bit redundant. The test will get the parameterized version\u0027s filename added to the test name anyway",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "716fb15e_726082a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "The main distinction is files vs. text(plain text, URLs, etc), since the CrOS setup is a little different. I\u0027ll change the test name for now though, and see later if we can work in text shares in the same parameterized test.\n\nStrangely \"CrosToAndroid\" isn\u0027t a valid test name (looks like a Tast bug, the run commmand can\u0027t find the test). Filed crbug/1168339 for that, and renamed it \"CrosSenderAndroidReceiver\" in the meantime.",
+      "parentUuid": "5fd512b0_4deedc95",
       "range": {
         "startLine": 27,
         "startChar": 21,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04a189da_df612cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "After chatting with James a bit, we were able to simplify sender.js a bit (turns out share targets are accessible without creating a new discovery manager). Let me know what you think with the changes.",
+      "parentUuid": "f15679b7_4f3ac9dd",
+      "range": {
+        "startLine": 34,
+        "startChar": 48,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcfbabd5_96b43ad1",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
         "patchSetId": 5
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-15T15:01:32Z",
       "side": 1,
       "message": "Will you reuse these values in the other tests?",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 17
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4b93fbd_f765429d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "I\u0027ll do the timeout in the test params instead, but we might want to share them with CB-\u003eCB and phone-\u003eCB too. I\u0027ll add them to nearbyshare/constants.go.",
+      "parentUuid": "bcfbabd5_96b43ad1",
       "range": {
         "startLine": 56,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fd7bf1_8ebf5d8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22e902fa_8a4e8f77",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 39
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "805a0918_f1203e77",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-01-15T15:01:32Z",
       "side": 1,
       "message": "Not sure what this function does from the name",
+      "range": {
+        "startLine": 106,
+        "startChar": 35,
+        "endLine": 106,
+        "endChar": 48
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c4615a1_cbbed6b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "Changed to ExtractCrosTestFiles",
+      "parentUuid": "805a0918_f1203e77",
       "range": {
         "startLine": 106,
         "startChar": 35,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec2f96a_05a79a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f781f06_cc9956cc",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 143,
+        "endChar": 15
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd296527_6caf0fa2",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-01-15T15:01:32Z",
       "side": 1,
       "message": "is this struct and this file just for chromeos side?\n\ncros_send.go ?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 64
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75265699_a92fa749",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/send.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-20T23:23:20Z",
+      "side": 1,
+      "message": "Yes it\u0027s just for chromeos",
+      "parentUuid": "fd296527_6caf0fa2",
       "range": {
         "startLine": 20,
         "startChar": 0,
