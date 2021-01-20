@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f56db3a_42e3b450",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2021-01-20T14:20:01Z",
+      "side": 1,
+      "message": "I think remaining battery capacity + energy before the test starts would always be helpful. (We could have a potential problem when the battery is worn out and stops giving sufficient voltage even when it\u0027s above the `power.LowBatteryShutdownPercent()`.)\n\nAdded logic to fail the tests by looking at the `lowBatteryMargin`, since it\u0027s already provided for all the tests. If you\u0027re ok with this I guess it\u0027d be best to rename it to `expectedMaxCapacityDischarge`.\n\nI tested the battery drain on my nami DUT and it discharged less than 1% when running test for 5 minutes with 100% CPU use. Default `lowBatteryMargin` value is 2%.",
+      "revId": "84a69683d1144d6f8e6ba92989f9a2faec33ed47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
