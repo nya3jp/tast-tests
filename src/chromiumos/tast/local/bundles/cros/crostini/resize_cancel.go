@@ -93,6 +93,7 @@ func init() {
 func ResizeCancel(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	tconn := pre.TestAPIConn
+	cr := s.PreValue().(crostini.PreData).Chrome
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -101,7 +102,7 @@ func ResizeCancel(ctx context.Context, s *testing.State) {
 	defer crostini.RunCrostiniPostTest(cleanupCtx, pre)
 
 	// Open the Linux settings.
-	st, err := settings.OpenLinuxSettings(ctx, tconn)
+	st, err := settings.OpenLinuxSettings(ctx, tconn, cr)
 	if err != nil {
 		s.Fatal("Failed to open Linux Settings: ", err)
 	}

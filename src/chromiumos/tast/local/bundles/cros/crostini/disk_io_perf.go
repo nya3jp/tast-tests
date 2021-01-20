@@ -233,9 +233,10 @@ func DiskIOPerf(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	kb := s.PreValue().(crostini.PreData).Keyboard
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
 	defer crostini.RunCrostiniPostTest(ctx, s.PreValue().(crostini.PreData))
 
-	settingsApp, err := settings.OpenLinuxSettings(ctx, tconn)
+	settingsApp, err := settings.OpenLinuxSettings(ctx, tconn, cr)
 	if err != nil {
 		s.Fatal("Failed to open Linux settings: ", err)
 	}

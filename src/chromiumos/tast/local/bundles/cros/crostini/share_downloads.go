@@ -95,6 +95,7 @@ func init() {
 func ShareDownloads(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
 	cont := s.PreValue().(crostini.PreData).Container
+	cr := s.PreValue().(crostini.PreData).Chrome
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -112,7 +113,7 @@ func ShareDownloads(ctx context.Context, s *testing.State) {
 	sharedFolders := sharedfolders.NewSharedFolders()
 	// Clean up shared folders in the end.
 	defer func() {
-		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont); err != nil {
+		if err := sharedFolders.UnshareAll(cleanupCtx, tconn, cont, cr); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}()
@@ -123,14 +124,14 @@ func ShareDownloads(ctx context.Context, s *testing.State) {
 	}
 	sharedFolders.AddFolder(sharedfolders.SharedDownloads)
 
-	if err := checkShareDownloadsResults(ctx, tconn, cont); err != nil {
+	if err := checkShareDownloadsResults(ctx, tconn, cont, cr); err != nil {
 		s.Fatal("Failed to check share results after sharing Downloads: ", err)
 	}
 }
 
-func checkShareDownloadsResults(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container) error {
+func checkShareDownloadsResults(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, cr *chrome.Chrome) error {
 	// Check shared folders on the Settings app.
-	s, err := settings.OpenLinuxSettings(ctx, tconn, settings.ManageSharedFolders)
+	s, err := settings.OpenLinuxSettings(ctx, tconn, cr, settings.ManageSharedFolders)
 	if err != nil {
 		return errors.Wrap(err, "failed to open Manage shared folders")
 	}

@@ -92,6 +92,7 @@ func init() {
 
 func ResizeRestart(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
+	cr := pre.Chrome
 	tconn := pre.TestAPIConn
 	keyboard := pre.Keyboard
 	cont := pre.Container
@@ -103,7 +104,7 @@ func ResizeRestart(ctx context.Context, s *testing.State) {
 	defer crostini.RunCrostiniPostTest(cleanupCtx, pre)
 
 	// Open the Linux settings.
-	st, err := settings.OpenLinuxSettings(ctx, tconn)
+	st, err := settings.OpenLinuxSettings(ctx, tconn, cr)
 	if err != nil {
 		s.Fatal("Failed to open Linux Settings: ", err)
 	}
