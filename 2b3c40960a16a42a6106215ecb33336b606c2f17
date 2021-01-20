@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30585cb_ff7f0367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-20T22:52:45Z",
+      "side": 1,
+      "message": "I had this commented out because I deployed the packages to an image that didn\u0027t have sirenia set.",
+      "parentUuid": "e88f3cbd_71fb590e",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16bd8a39_4d9fc5e8",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d208146_6ee9e79f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-20T22:52:45Z",
+      "side": 1,
+      "message": "The point of this is to provide a low development/maintenance cost way to disambiguate errors when the same error is happening in multiple similar contexts.\n\nIt is possible parts of this test will get moved out into code that is shared between different tests.",
+      "parentUuid": "16bd8a39_4d9fc5e8",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea427dc3_82e9f430",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2021-01-20T20:33:43Z",
       "side": 1,
       "message": "You can call s.Error multiple times. It\u0027s easier and makes sense in this case to pass State as a parameter to start. Another option is to log the extra errors and just return the first one.",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e82275_046ee8ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-20T22:52:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea427dc3_82e9f430",
       "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1df5edd_f1d77a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-20T22:52:45Z",
+      "side": 1,
+      "message": "I am trying to give the daemons a chance to run any cleanup code like they would if they were stopped from upstart. sending SIGKILL doesn\u0027t do this. I looked into Wait() and IIUC it has a timeout which calls SIGKILL.",
+      "parentUuid": "9d600e5f_2980214e",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b4717b3_8dee015c",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
         "patchSetId": 2
@@ -82,6 +154,24 @@
       "writtenOn": "2021-01-20T20:33:43Z",
       "side": 1,
       "message": "Don\u0027t store context in a struct. All functions that need a context should get it as a paramter",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7ec92c_b03ddedc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-20T22:52:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b4717b3_8dee015c",
       "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc104e3_c7f061b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-20T22:52:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69e9e1e0_103b8a18",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 7
+      },
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ad01607_f85e906a",
@@ -122,6 +236,30 @@
       "writtenOn": "2021-01-20T20:33:43Z",
       "side": 1,
       "message": "use a defer for stopTrichechus\nyou can use a named error return and check it for nil to see if it needs to be stopped\nsame for dugong",
+      "range": {
+        "startLine": 132,
+        "startChar": 91,
+        "endLine": 132,
+        "endChar": 105
+      },
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a735b7a_c06b42da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-20T22:52:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad01607_f85e906a",
       "range": {
         "startLine": 132,
         "startChar": 91,
