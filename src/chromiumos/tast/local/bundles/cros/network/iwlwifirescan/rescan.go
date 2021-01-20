@@ -36,7 +36,7 @@ func restartInterface(ctx context.Context) error {
 }
 
 // waitForIfaceRemoval waits until the interface is removed from shill.
-func waitForIfaceRemoval(ctx context.Context, pw *shill.PropertiesWatcher, iface string) error {
+func waitForIfaceRemoval(ctx context.Context, pw *dbusutil.PropertiesWatcher, iface string) error {
 	// We use PropertiesWatcher instead of polling here. As the removal and
 	// recovery might happen in the same polling cycle, in that case, we
 	// will miss the interface change with polling.
