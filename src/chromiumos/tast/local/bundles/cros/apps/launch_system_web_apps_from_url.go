@@ -42,7 +42,7 @@ func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	systemWebApps, err := apps.GetListOfSystemWebApps(ctx, tconn)
+	systemWebApps, err := apps.ListSystemWebApps(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get list of SWAs: ", err)
 	}

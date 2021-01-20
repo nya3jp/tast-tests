@@ -219,8 +219,8 @@ func LaunchSystemWebApp(ctx context.Context, tconn *chrome.TestConn, appName, ur
 	}`, appName, url)
 }
 
-// GetListOfSystemWebApps retrieves a list of installed apps and filters down the system web apps.
-func GetListOfSystemWebApps(ctx context.Context, tconn *chrome.TestConn) ([]*ash.ChromeApp, error) {
+// ListSystemWebApps retrieves a list of installed apps and filters down the system web apps.
+func ListSystemWebApps(ctx context.Context, tconn *chrome.TestConn) ([]*ash.ChromeApp, error) {
 	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.waitForSystemWebAppsInstall)"); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for all system web apps to be installed")
 	}
