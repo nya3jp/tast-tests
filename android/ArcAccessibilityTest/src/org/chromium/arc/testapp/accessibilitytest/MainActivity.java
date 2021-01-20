@@ -10,6 +10,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 /** Test Activity for arc.Accessibility* tast tests. */
@@ -31,6 +34,44 @@ public class MainActivity extends Activity {
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                });
+
+        CheckBox checkBox = findViewById(R.id.checkBoxWithStateDescription);
+        if (Build.VERSION.SDK_INT >= 29) {
+            checkBox.setStateDescription("state description not checked");
+        }
+        checkBox.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (Build.VERSION.SDK_INT < 29) {
+                            return;
+                        }
+                        if (checkBox.isChecked()) {
+                            checkBox.setStateDescription("state description checked");
+                        } else {
+                            checkBox.setStateDescription("state description not checked");
+                        }
+                    }
+                });
+
+        SeekBar seekBar = findViewById(R.id.seekBar);
+        seekBar.setStateDescription("state description " + 25);
+        seekBar.setOnSeekBarChangeListener(
+                new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        if (Build.VERSION.SDK_INT < 29) {
+                            return;
+                        }
+                        seekBar.setStateDescription("state description " + progress);
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {}
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {}
                 });
 
         // TODO(sarakato): Set contents of webView element once b/150734712 has been resolved.
