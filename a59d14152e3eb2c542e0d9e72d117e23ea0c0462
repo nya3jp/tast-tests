@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4870f796_e907345d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-20T20:47:46Z",
+      "side": 1,
+      "message": "I\u0027m curious, why is this a remote test? for wificell tests, this is because we have to configure other lab peripherals (e.g., APs, pcaps), but in this kind of test you don\u0027t need to touch the AP, and for this current test, you\u0027re only leveraging RPC services on the DT -- so it could really just be a local test.\n\nIf the intention is to lay down a design in which you will eventually have to configure a variety of peer devices too, then maybe that\u0027s fine and we stick with a remote test.",
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2d4e296_2e42098d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
         "patchSetId": 2
@@ -42,6 +59,121 @@
         "startChar": 36,
         "endLine": 37,
         "endChar": 52
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e8ae2c_97484eaa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-20T20:47:46Z",
+      "side": 1,
+      "message": "this seems to describe the action at line 65, not here at line 43-63",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a6009d4_c8a32630",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-20T20:47:46Z",
+      "side": 1,
+      "message": "\u0027passphrase\u0027 parameter?",
+      "range": {
+        "startLine": 54,
+        "startChar": 26,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfca4332_ca13b106",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-20T20:47:46Z",
+      "side": 1,
+      "message": "did you mean to use the \u0027ssid\u0027 parameter?",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "412e9dd8_e799563a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_basic_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-20T20:47:46Z",
+      "side": 1,
+      "message": "any ping test? or is just checking that we made it as far as DHCP configuration good enough?\n\ntypically we\u0027d do some clean up (e.g., \u0027defer func() {\n  disconnectWifi(...) // + error handling?\n}()`) too",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f74b757_5ef8f049",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-01-20T20:47:46Z",
+      "side": 1,
+      "message": "Will you actually need to modify the hostapd package? Your current setup doesn\u0027t actually run hostapd anywhere -- you\u0027re just using a static (commercial) AP. I suppose changes like this aren\u0027t totally harmful, but they\u0027re not really complete either; hostapd.conf would expect more configuration (such as \"ieee80211ax\u003d1\"; see http://w1.fi/cgit/hostap/tree/hostapd/hostapd.conf).\n\nIf you intend to eventually do some representation of the precise AP configuration, I wonder if that should be a new type, rather than overloading the hostapd package.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 38
       },
       "revId": "a59d14152e3eb2c542e0d9e72d117e23ea0c0462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
