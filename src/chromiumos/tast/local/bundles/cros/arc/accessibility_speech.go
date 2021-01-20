@@ -21,9 +21,10 @@ import (
 )
 
 type expectedSpeechLog struct {
-	CheckBox []string
-	SeekBar  []string
-	Slider   []string
+	CheckBox                     []string
+	CheckBoxWithStateDescription []string
+	SeekBar                      []string
+	Slider                       []string
 }
 
 func init() {
@@ -40,6 +41,9 @@ func init() {
 				CheckBox: []string{
 					"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle",
 				},
+				CheckBoxWithStateDescription: []string{
+					"CheckBoxWithStateDescription", "Check box", "Not checked", "Press Search+Space to toggle",
+				},
 				SeekBar: []string{
 					"seekBar", "Slider", "25", "Min 0", "Max 100",
 				},
@@ -54,8 +58,11 @@ func init() {
 				CheckBox: []string{
 					"CheckBox", "Check box", "not checked", "Press Search+Space to toggle",
 				},
+				CheckBoxWithStateDescription: []string{
+					"CheckBoxWithStateDescription", "Check box", "state description not checked", "Press Search+Space to toggle",
+				},
 				SeekBar: []string{
-					"seekBar", "Slider", "25%", "Min 0", "Max 100",
+					"seekBar", "Slider", "state description 25", "Min 0", "Max 100",
 				},
 				Slider: []string{
 					"Slider", "30%", "Min 0", "Max 10",
@@ -105,6 +112,9 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		}, {
 			"Search+Right",
 			s.Param().(expectedSpeechLog).CheckBox,
+		}, {
+			"Search+Right",
+			s.Param().(expectedSpeechLog).CheckBoxWithStateDescription,
 		}, {
 			"Search+Right",
 			s.Param().(expectedSpeechLog).SeekBar,

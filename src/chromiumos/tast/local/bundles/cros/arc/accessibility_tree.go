@@ -26,6 +26,11 @@ type axTreeNode struct {
 	Children   []*axTreeNode
 }
 
+type expectedNode struct {
+	CheckBoxAttributes map[string]interface{}
+	SeekBarAttributes  map[string]interface{}
+}
+
 // findParams constructs ui.FindParams from the given axTreeNode.
 func (n *axTreeNode) findParams() ui.FindParams {
 	return ui.FindParams{Name: n.Name, Role: n.Role, Attributes: n.Attributes}
@@ -41,9 +46,17 @@ func init() {
 		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
+			Val: expectedNode{
+				CheckBoxAttributes: map[string]interface{}{},
+				SeekBarAttributes:  map[string]interface{}{},
+			},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "vm",
+			Name: "vm",
+			Val: expectedNode{
+				CheckBoxAttributes: map[string]interface{}{"checkedStateDescription": "state description not checked"},
+				SeekBarAttributes:  map[string]interface{}{"value": "state description 25"},
+			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -114,8 +127,14 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 						Attributes: map[string]interface{}{"tooltip": "checkbox tooltip"},
 					},
 					&axTreeNode{
-						Name: "seekBar",
-						Role: ui.RoleTypeSlider,
+						Name:       "CheckBoxWithStateDescription",
+						Role:       ui.RoleTypeCheckBox,
+						Attributes: s.Param().(expectedNode).CheckBoxAttributes,
+					},
+					&axTreeNode{
+						Name:       "seekBar",
+						Role:       ui.RoleTypeSlider,
+						Attributes: s.Param().(expectedNode).SeekBarAttributes,
 					},
 					&axTreeNode{
 						Role: ui.RoleTypeSlider,
