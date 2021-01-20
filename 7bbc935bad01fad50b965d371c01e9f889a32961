@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d41bd2c_5454299d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1461,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-20T19:21:41Z",
+      "side": 1,
+      "message": "nit: maybe this function should be moved somewhere?  Are you thinking to do that in another CL?",
+      "revId": "7bbc935bad01fad50b965d371c01e9f889a32961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
