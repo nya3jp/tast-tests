@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2849b0a1_472dc3a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-21T08:58:46Z",
+      "side": 1,
+      "message": "Don\u0027t compare errors using strings. There should be a way to determine the error type.",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 72
+      },
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03a13d96_054f18be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-21T08:58:46Z",
+      "side": 1,
+      "message": "Use either state to report errors or an error return. Don\u0027t combine the two.\nIf this is designed to be moved to a separate package, use error returns. If you want to return multiple errors, just return the first or last and log the rest.\nFor the defer you can use a bool to check if everything worked as expected.",
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbfc362_d3090f36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-21T08:58:46Z",
+      "side": 1,
+      "message": "minor nit: consider adding a helper to check for these lines. It will also make error reporting easier.",
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a29e8956_a1b80eae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-21T08:58:46Z",
+      "side": 1,
+      "message": "Use a more descriptive string. Same below.",
+      "range": {
+        "startLine": 205,
+        "startChar": 11,
+        "endLine": 205,
+        "endChar": 33
+      },
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

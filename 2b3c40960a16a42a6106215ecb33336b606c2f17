@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "839c8892_b2412ca5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-21T08:58:46Z",
+      "side": 1,
+      "message": "Don\u0027t leave it in the CL.",
+      "parentUuid": "f30585cb_ff7f0367",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16bd8a39_4d9fc5e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
         "patchSetId": 2
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "The point of this is to provide a low development/maintenance cost way to disambiguate errors when the same error is happening in multiple similar contexts.\n\nIt is possible parts of this test will get moved out into code that is shared between different tests.",
       "parentUuid": "16bd8a39_4d9fc5e8",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b19e62_e509f9cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-21T08:58:46Z",
+      "side": 1,
+      "message": "error.Wrap should be used to disambiguate errors from different contexts. You are already using it below, just use different strings for different steps.",
+      "parentUuid": "4d208146_6ee9e79f",
       "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +173,24 @@
       "side": 1,
       "message": "I am trying to give the daemons a chance to run any cleanup code like they would if they were stopped from upstart. sending SIGKILL doesn\u0027t do this. I looked into Wait() and IIUC it has a timeout which calls SIGKILL.",
       "parentUuid": "9d600e5f_2980214e",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a82dbeb5_428678d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-21T08:58:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1df5edd_f1d77a1f",
       "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
