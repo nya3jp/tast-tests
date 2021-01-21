@@ -48,6 +48,12 @@ func (a *ARC) Install(ctx context.Context, path string, installOptions ...adb.In
 	return a.device.Install(ctx, path, installOptions...)
 }
 
+// InstallMultiple installs a split APK to the Android system.
+// By default, it uses InstallOptionReplaceApp and InstallOptionAllowVersionDowngrade.
+func (a *ARC) InstallMultiple(ctx context.Context, apks []string, installOptions ...adb.InstallOption) error {
+	return a.device.InstallMultiple(ctx, apks, installOptions...)
+}
+
 // InstalledPackages returns a set of currently-installed packages, e.g. "android".
 // This operation is slow (700+ ms), so unnecessary calls should be avoided.
 func (a *ARC) InstalledPackages(ctx context.Context) (map[string]struct{}, error) {
