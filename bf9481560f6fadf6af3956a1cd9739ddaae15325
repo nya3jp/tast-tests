@@ -16,6 +16,24 @@
       "message": "(optional) do you need to exclude *.iml?",
       "revId": "bf9481560f6fadf6af3956a1cd9739ddaae15325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c4c7e8_b10fcd86",
+        "filename": ".gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-21T16:24:01Z",
+      "side": 1,
+      "message": "That isn\u0027t needed in my case. If a scenario comes up where it is needed, we can add it then.",
+      "parentUuid": "c24a3a8f_ebc7a80e",
+      "revId": "bf9481560f6fadf6af3956a1cd9739ddaae15325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
