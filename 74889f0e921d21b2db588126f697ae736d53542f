@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbf215fd_8b17e312",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-01-21T06:44:19Z",
+      "side": 1,
+      "message": "\u003e - Is a new test a superset of `UniformScaleFactor` test? Or are there any difference between initial part of the new test and `UniformScaleFactor`?\nagree. it\u0027s enough just to append the activity switching journey to the original test I think.",
+      "parentUuid": "897cefba_900686e0",
+      "revId": "74889f0e921d21b2db588126f697ae736d53542f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25d83b0c_ba1591b0",
         "filename": "android/ArcPerAppDensityTest/AndroidManifest.xml",
         "patchSetId": 4
