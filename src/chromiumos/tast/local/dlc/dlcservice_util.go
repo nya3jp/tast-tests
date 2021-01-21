@@ -50,7 +50,16 @@ func Purge(ctx context.Context, id string) error {
 	return nil
 }
 
-// Cleanup removes all DLC related states and restarts dlcservice.
+// Uninstall calls the DBus method to uninstall a DLC
+func Uninstall(ctx context.Context, id string) error {
+	testing.ContextLog(ctx, "Uninstalling DLC: ", id)
+	if err := testexec.CommandContext(ctx, "dlcservice_util", "--uninstall", "--id="+id).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to uninstall")
+	}
+	return nil
+}
+
+// Cleanup removes all DLC related states and restarts dlcservice. Note that this will delete the DLC image from disk!
 func Cleanup(ctx context.Context, infos ...Info) error {
 	for _, info := range infos {
 		// Unmount the DLC.

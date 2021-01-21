@@ -610,10 +610,7 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 				s.Error("Failed to unmount cros-termina component: ", err)
 			}
 		} else {
-			if err := dlcutil.Cleanup(ctx, dlcutil.Info{
-				ID:      "termina-dlc",
-				Package: "package",
-			}); err != nil {
+			if err := dlcutil.Uninstall(ctx, "termina-dlc"); err != nil {
 				s.Error("Failed to unmount termina-dlc: ", err)
 			}
 		}
