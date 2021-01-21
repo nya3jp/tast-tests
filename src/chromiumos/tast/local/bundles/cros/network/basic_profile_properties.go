@@ -75,7 +75,7 @@ func BasicProfileProperties(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the profile properties.
-	profProps, err := newProfile.GetProperties(ctx)
+	profProps, err := newProfile.GetShillProperties(ctx)
 	if err != nil {
 		s.Fatal("Failed getting profile properties: ", err)
 	}

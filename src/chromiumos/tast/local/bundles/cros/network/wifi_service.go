@@ -425,7 +425,7 @@ func (s *WifiService) SelectedService(ctx context.Context, _ *empty.Empty) (*net
 	if err != nil {
 		return nil, err
 	}
-	prop, err := dev.GetProperties(ctx)
+	prop, err := dev.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get WiFi device properties")
 	}
@@ -508,7 +508,7 @@ func (s *WifiService) AssureDisconnect(ctx context.Context, request *network.Ass
 	}
 	defer pw.Close(ctx)
 
-	props, err := service.GetProperties(ctx)
+	props, err := service.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get service properties")
 	}
@@ -551,7 +551,7 @@ func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServic
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create service object")
 	}
-	props, err := service.GetProperties(ctx)
+	props, err := service.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get service properties")
 	}
@@ -667,7 +667,7 @@ func (s *WifiService) cleanProfiles(ctx context.Context, m *shill.Manager) error
 		if err != nil {
 			return errors.Wrap(err, "failed to get active profile")
 		}
-		props, err := profile.GetProperties(ctx)
+		props, err := profile.GetShillProperties(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get properties from profile object")
 		}
@@ -705,7 +705,7 @@ func (s *WifiService) removeMatchedEntries(ctx context.Context, m *shill.Manager
 		return errors.Wrap(err, "failed to get profiles")
 	}
 	for _, p := range profiles {
-		props, err := p.GetProperties(ctx)
+		props, err := p.GetShillProperties(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get properties from profile object")
 		}
@@ -935,7 +935,7 @@ func (s *WifiService) MACRandomizeSupport(ctx context.Context, _ *empty.Empty) (
 		return nil, err
 	}
 
-	prop, err := dev.GetProperties(ctx)
+	prop, err := dev.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get WiFi device properties")
 	}
@@ -955,7 +955,7 @@ func (s *WifiService) GetMACRandomize(ctx context.Context, _ *empty.Empty) (*net
 		return nil, err
 	}
 
-	prop, err := dev.GetProperties(ctx)
+	prop, err := dev.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get WiFi device properties")
 	}
@@ -977,7 +977,7 @@ func (s *WifiService) SetMACRandomize(ctx context.Context, req *network.SetMACRa
 		return nil, err
 	}
 
-	prop, err := dev.GetProperties(ctx)
+	prop, err := dev.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get WiFi device properties")
 	}
@@ -1026,7 +1026,7 @@ func (s *WifiService) WaitScanIdle(ctx context.Context, _ *empty.Empty) (*empty.
 	defer pw.Close(ctx)
 
 	// Check initial state.
-	prop, err := dev.GetProperties(ctx)
+	prop, err := dev.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get properties of WiFi device")
 	}
@@ -1107,7 +1107,7 @@ func (s *WifiService) ExpectWifiFrequencies(ctx context.Context, req *network.Ex
 	defer cancel()
 
 	for {
-		props, err := service.GetProperties(shortCtx)
+		props, err := service.GetShillProperties(shortCtx)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get service properties")
 		}
@@ -1152,7 +1152,7 @@ func (s *WifiService) GetBgscanConfig(ctx context.Context, e *empty.Empty) (*net
 		return nil, err
 	}
 
-	props, err := dev.GetProperties(ctx)
+	props, err := dev.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the WiFi device properties")
 	}
@@ -1306,7 +1306,7 @@ func (s *WifiService) ConfigureAndAssertAutoConnect(ctx context.Context,
 
 	// Service may become connected between ConfigureService and CreateWatcher, we would lose the property changing event of IsConnected then.
 	// Checking once after creating watcher should be good enough since we expect that the connection should not disconnect without our attempt.
-	p, err := service.GetProperties(ctx)
+	p, err := service.GetShillProperties(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -1419,7 +1419,7 @@ func (s *WifiService) ExpectShillProperty(req *network.ExpectShillPropertyReques
 
 		// Check the current value of the property.
 		if p.Method != network.ExpectShillPropertyRequest_ON_CHANGE {
-			props, err := service.GetProperties(ctx)
+			props, err := service.GetShillProperties(ctx)
 			if err != nil {
 				return err
 			}
@@ -1726,7 +1726,7 @@ func (s *WifiService) waitForWifiAvailable(ctx context.Context, m *shill.Manager
 	}
 	defer pw.Close(ctx)
 
-	prop, err := m.GetProperties(ctx)
+	prop, err := m.GetShillProperties(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get Manager's properties from shill")
 	}
@@ -1775,7 +1775,7 @@ func (s *WifiService) GetWifiEnabled(ctx context.Context, _ *empty.Empty) (*netw
 		return nil, err
 	}
 
-	prop, err := manager.GetProperties(ctx)
+	prop, err := manager.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get Manager' properties from shill")
 	}
@@ -1821,7 +1821,7 @@ func (s *WifiService) SetDHCPProperties(ctx context.Context, req *network.SetDHC
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a Manager object")
 	}
-	prop, err := m.GetProperties(ctx)
+	prop, err := m.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get Manager's properties")
 	}
@@ -2111,7 +2111,7 @@ func (s *WifiService) GetGlobalFTProperty(ctx context.Context, _ *empty.Empty) (
 		return nil, errors.Wrap(err, "failed to create a shill manager")
 	}
 
-	props, err := m.GetProperties(ctx)
+	props, err := m.GetShillProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the shill manager properties")
 	}

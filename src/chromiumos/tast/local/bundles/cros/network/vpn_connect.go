@@ -226,7 +226,7 @@ func configureStaticIP(ctx context.Context, interfaceName, address string, manag
 		return errors.Wrapf(err, "failed to find the device with interface name %s", interfaceName)
 	}
 
-	deviceProp, err := device.GetProperties(ctx)
+	deviceProp, err := device.GetShillProperties(ctx)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get properties of device %v", device)
 	}
