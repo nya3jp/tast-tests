@@ -19,5 +19,8 @@
             android:name=".SurfaceViewActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".SecondActivity">
+        </activity>
     </application>
 </manifest>
