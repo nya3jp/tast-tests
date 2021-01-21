@@ -495,12 +495,36 @@ type ConnSource interface {
 	NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error)
 }
 
+// Conns simply wraps a list of Conn and provides a method to Close all of them.
+type Conns []*chrome.Conn
+
+// Close closes all of the connections.
+func (cs Conns) Close() error {
+	var firstErr error
+	numErrs := 0
+	for _, c := range cs {
+		if err := c.Close(); err != nil {
+			numErrs++
+			if firstErr == nil {
+				firstErr = err
+			}
+		}
+	}
+	if numErrs == 0 {
+		return nil
+	}
+	if numErrs == 1 {
+		return firstErr
+	}
+	return errors.Wrapf(firstErr, "failed closing multiple connections: encountered %d errors; first one follows", numErrs)
+}
+
 // CreateWindows create n browser windows with specified URL and wait for them to become visible.
 // It will fail and return an error if at least one request fails to fulfill. Note that this will
 // parallelize the requests to create windows, which may be bad if the caller
 // wants to measure the performance of Chrome. This should be used for a
 // preparation, before the measurement happens.
-func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, url string, n int) (chrome.Conns, error) {
+func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, url string, n int) (Conns, error) {
 	prevvis := 0
 	if err := ForEachWindow(ctx, tconn, func(w *Window) error {
 		if w.IsVisible {
@@ -512,7 +536,7 @@ func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, u
 	}
 
 	g, dctx := errgroup.WithContext(ctx)
-	conns := chrome.Conns(make([]*chrome.Conn, 0, n))
+	conns := Conns(make([]*chrome.Conn, 0, n))
 	var mu sync.Mutex
 	for i := 0; i < n; i++ {
 		g.Go(func() error {
