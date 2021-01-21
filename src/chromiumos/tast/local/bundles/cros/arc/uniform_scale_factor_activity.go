@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -9,6 +9,7 @@ import (
 	"image/color"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/perappdensity"
 	"chromiumos/tast/local/chrome/ash"
@@ -19,8 +20,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UniformScaleFactor,
-		Desc:         "Checks that the uniform scale factor is applied to Android applications",
+		Func:         UniformScaleFactorActivity,
+		Desc:         "Checks that the uniform scale factor is persisted across activities in Android applications",
 		Contacts:     []string{"sarakato@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
@@ -30,9 +31,12 @@ func init() {
 	})
 }
 
-func UniformScaleFactor(ctx context.Context, s *testing.State) {
-	const squareSidePx = 100
-
+func UniformScaleFactorActivity(ctx context.Context, s *testing.State) {
+	const (
+		squareSidePx = 100
+		idPrefix     = perappdensity.PackageName + ":id/"
+		sendID       = idPrefix + "button"
+	)
 	cr := s.PreValue().(arc.PreData).Chrome
 	a := s.PreValue().(arc.PreData).ARC
 
@@ -55,6 +59,12 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get internal display info: ", err)
 	}
 
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	defer d.Close(ctx)
+
 	origShelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, dispInfo.ID)
 	if err != nil {
 		s.Fatal("Failed to get shelf behavior: ", err)
@@ -69,6 +79,19 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 
 	wantPixelCount := (int)((dd * squareSidePx) * (dd * squareSidePx))
 	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateFullscreen, wantPixelCount, color.Black); err != nil {
+		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
+	}
+
+	if err := d.Object(ui.ID(sendID)).Click(ctx); err != nil {
+		s.Fatalf("Failed to click %s button: %v", sendID, err)
+	}
+
+	var colorRed color.RGBA
+	colorRed.R = 255
+	colorRed.G = 0
+	colorRed.B = 0
+	colorRed.A = 255
+	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateFullscreen, wantPixelCount, colorRed); err != nil {
 		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
 	}
 }
