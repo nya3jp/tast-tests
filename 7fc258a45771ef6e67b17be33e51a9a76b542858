@@ -16,6 +16,23 @@
       "message": "Awesome. The new layout looks better.",
       "revId": "7fc258a45771ef6e67b17be33e51a9a76b542858",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f09bc27_f37233cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-21T07:04:25Z",
+      "side": 1,
+      "message": "It\u0027s new to me that other services are using the similar functions. I had a wrong impression that the design is only used in shill and others are using the more common DBus.Properties: https://dbus.freedesktop.org/doc/dbus-java/api/org/freedesktop/DBus.Properties.html. It\u0027s probably because I see that shill/property_store* is under shill dir and that we have a copy of \u0027const char kGetPropertiesFunction[] \u003d \"GetProperties\";\u0027 in system_api/dbus/shill/dbus-constants.h.\n\nIs there a doc for the dbus APIs that you\u0027re going to use? I\u0027d like to take a glance out of curiosity.",
+      "revId": "7fc258a45771ef6e67b17be33e51a9a76b542858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
