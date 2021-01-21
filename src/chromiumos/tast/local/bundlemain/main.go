@@ -197,7 +197,7 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 		}
 	}
 
-	if err := crash.MarkTestInProgress(s.TestInstance().Name); err != nil {
+	if err := crash.MarkTestInProgress(s.TestName()); err != nil {
 		s.Log("Failed to mark crash test in progress: ", err)
 	}
 
