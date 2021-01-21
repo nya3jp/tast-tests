@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1dcb62_4f716c71",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T08:16:09Z",
+      "side": 1,
+      "message": "Chrome.Close used to not close signinExtConn, but I added this since it\u0027s a clear leak...",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "ee9e56689954dcefac116d0081e9dc9f481ecad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
