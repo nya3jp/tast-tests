@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c24a3a8f_ebc7a80e",
+        "filename": ".gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T07:18:29Z",
+      "side": 1,
+      "message": "(optional) do you need to exclude *.iml?",
+      "revId": "bf9481560f6fadf6af3956a1cd9739ddaae15325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
