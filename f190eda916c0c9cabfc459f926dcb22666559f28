@@ -16,6 +16,149 @@
       "message": "Responded to feedback, this should be ready for another review!",
       "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c7986b4_43b242f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T02:18:05Z",
+      "side": 1,
+      "message": "Thanks for addressing my comments!",
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f789a6db_5851208a",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T02:18:05Z",
+      "side": 1,
+      "message": "Would you mind adding explanation on what ch1 and ch2 are in the doc comment above?",
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8bb9eda_5538af31",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T02:18:05Z",
+      "side": 1,
+      "message": "How about adding a precondition check before sending an event to ch1, e.g. verifying `window.engine.utterance_ ` is different from the first expectation.",
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45007281_c948f177",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T02:18:05Z",
+      "side": 1,
+      "message": "The purpose of ch1 is just to wait for tts ready and theoretically only true is sent. I think just waiting for an event is fine.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 2
+      },
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c40c464_bf4dde83",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T02:18:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a65a8c_55eff3ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T02:18:05Z",
+      "side": 1,
+      "message": "nit: no need these lines?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e7d29c_bdb9fc4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T02:18:05Z",
+      "side": 1,
+      "message": "optional: Would you make this part clearer? e.g. \"executes commands to ChromeVox and verifies Google TTS receives speech request and process it\".",
+      "range": {
+        "startLine": 20,
+        "startChar": 36,
+        "endLine": 20,
+        "endChar": 81
+      },
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

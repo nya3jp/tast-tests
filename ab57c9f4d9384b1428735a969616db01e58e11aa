@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7160c9d4_57a0c211",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T02:18:05Z",
+      "side": 1,
+      "message": "Thanks! I would ask tast-owners if it\u0027s expected behavior or not. This part of code seems tricky...",
+      "parentUuid": "4c42d7b2_62e24e99",
+      "range": {
+        "startLine": 148,
+        "startChar": 19,
+        "endLine": 148,
+        "endChar": 30
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "425ec7fc_3b5ef73e",
@@ -261,6 +285,30 @@
       "side": 1,
       "message": "Thanks for pointing this out. I agree that this could be flaky, so I revised my approach.\n\nNow, we start expecting speech in a separate goroutine, then we perform an action when the goroutine is ready. This will hopefully catch scenarios like the one you described above.\n\nThoughts on my implementation?",
       "parentUuid": "0eab3c07_63d8736b",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "ab57c9f4d9384b1428735a969616db01e58e11aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6564f5e_eb3e3dc3",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T02:18:05Z",
+      "side": 1,
+      "message": "Thanks for updating it!\n\nI still think there is really a small chance that this would become flaky, but I also think it\u0027s okay to submit it first and see how it works.",
+      "parentUuid": "c9a340f1_01f27e87",
       "range": {
         "startLine": 181,
         "startChar": 1,
