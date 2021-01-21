@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b11739c0_5016d292",
+        "filename": "src/chromiumos/tast/local/chrome/conns.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T06:21:51Z",
+      "side": 1,
+      "message": "(off topic)\nI\u0027m wondering if we really need this.\nIt\u0027s probably fine to have a utility method, like CloseConns(cons []*Conn) error somewhere outside, but I\u0027m not sure if we should provide like this from Chrome package.",
+      "revId": "d77510ac85280403d30d4d30470a5ddfe77ee978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc5a700_fb26346e",
+        "filename": "src/chromiumos/tast/local/chrome/deprecated.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T06:21:51Z",
+      "side": 1,
+      "message": "Could you add TODO / file a bug to remove this? I\u0027m happy to take a look later, since the only external use case is from Lacros.",
+      "revId": "d77510ac85280403d30d4d30470a5ddfe77ee978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
