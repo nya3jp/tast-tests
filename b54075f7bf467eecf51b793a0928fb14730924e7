@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ea3277_c89454e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-21T18:58:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b8781e_06f17480",
+      "range": {
+        "startLine": 50,
+        "startChar": 66,
+        "endLine": 50,
+        "endChar": 75
+      },
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad7f47e2_ba8afbd1",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "156b0364_e57684fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-21T18:58:21Z",
+      "side": 1,
+      "message": "good point. there two things here to measure:\n\na) make sure that latest Roblox version has an acceptable OBB time\n\nb) make sure that we don\u0027t introduce regressions in OBB for a specific version of Roblox\n\n\nAnd a) and b) are kind of incompatible. \n\nif we only test a), we will lose history. We might see variations in the results that could be caused by a bigger/smaller OBB file in newer version of Roblox.\nThere a few ways to try to test latest Roblox version, but downloading latest version in \"runtime\" looks unreliable, too many things could fail.\n\n\nif we only test b), we might not know whether latest version of Roblox has good OBB performance. But will give us at least a \"reference\".\n\nIdeally we should test both a) and b)... but it is not trivial, specially a).\n\n\nFor simplicity, this test only does b).\na) is outside the scope of this CL. Should a) be needed in the future, we need to think of a good plan... interesting problem to solve for sure.",
+      "parentUuid": "ad7f47e2_ba8afbd1",
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcea8c10_da2fbdb4",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-01-21T07:51:44Z",
       "side": 1,
       "message": "What about using function below to wait for CPU Idle specifically or add it along with `WaitUntilCPUCoolDown`?  \n\nFrom https://crbug.com/1144502 and group discussion https://groups.google.com/a/chromium.org/g/tast-users/c/wDhg2ohq9-s/, the limit used for `WaitUntilCPUCoolDown` is generic (not device specific) and may be outdated.  \n\n```\n\tif err :\u003d cpu.WaitUntilIdle(ctx); err !\u003d nil {\n            ...\n        }\n```",
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "507a4964_7745b499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-21T18:58:21Z",
+      "side": 1,
+      "message": "good catch.",
+      "parentUuid": "fcea8c10_da2fbdb4",
       "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3260b5_51416658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-21T18:58:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46e360d0_f538f04c",
+      "range": {
+        "startLine": 145,
+        "startChar": 10,
+        "endLine": 145,
+        "endChar": 18
+      },
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b912043_1ff18e50",
@@ -111,6 +195,30 @@
       "writtenOn": "2021-01-21T07:51:44Z",
       "side": 1,
       "message": "obb_unzip_time?",
+      "range": {
+        "startLine": 155,
+        "startChar": 37,
+        "endLine": 155,
+        "endChar": 45
+      },
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "913d554c_99cce9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-21T18:58:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b912043_1ff18e50",
       "range": {
         "startLine": 155,
         "startChar": 37,
