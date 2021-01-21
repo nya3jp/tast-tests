@@ -52,6 +52,24 @@
       "parentUuid": "4dc749f1_21ad98ed",
       "revId": "fd59361f04aef4ed4091641f7ba491b7329b1725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78de355c_ec4fa732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-01-21T00:27:36Z",
+      "side": 0,
+      "message": "I will add a comment separately in the g3doc soon. Can you give CR+2 if no more question? Thanks.",
+      "parentUuid": "f29c88b0_0f912c60",
+      "revId": "fd59361f04aef4ed4091641f7ba491b7329b1725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
