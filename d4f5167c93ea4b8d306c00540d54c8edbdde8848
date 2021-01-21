@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa2de4a_94d78d3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-21T23:42:29Z",
+      "side": 1,
+      "message": "nit: we\u0027re not in \"tast-tests\", but in the \"tast\" repo",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48df07c1_f7e49de3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-21T23:42:29Z",
+      "side": 1,
+      "message": "nit: It\u0027s customary to upload that CL as well and link\nit from here (crrev.com/c/...) for reviewers to see\nwhat you\u0027re planning to do with the code.",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ab20d085_c710c6f5",
@@ -14,6 +60,46 @@
       "writtenOn": "2021-01-21T22:02:39Z",
       "side": 1,
       "message": "mcasas@ hiroh@ PTAL",
+      "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48b328b_22c12a91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-21T23:42:29Z",
+      "side": 1,
+      "message": "LGTM % comments addressed. \n\n+tast-owners for review.",
+      "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b284908e_bd7dfa92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-21T23:42:29Z",
+      "side": 1,
+      "message": "There seems to be a HWDecodeAV1_4K [1] so it should probably be added \nin this CL.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/caps/caps.go;l\u003d39?q\u003dHWDecodeAV1_4K",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 46
+      },
       "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
