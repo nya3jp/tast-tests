@@ -16,6 +16,24 @@
       "message": "nit: maybe this function should be moved somewhere?  Are you thinking to do that in another CL?",
       "revId": "7bbc935bad01fad50b965d371c01e9f889a32961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59d09e35_7acca3a7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1461,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T01:59:21Z",
+      "side": 1,
+      "message": "Ah yes I agree it\u0027s good to move this function as well. I\u0027m planning to do a big move of functions defined in this file in a later CL, so let me do it together.",
+      "parentUuid": "2d41bd2c_5454299d",
+      "revId": "7bbc935bad01fad50b965d371c01e9f889a32961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
