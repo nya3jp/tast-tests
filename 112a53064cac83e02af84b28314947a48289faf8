@@ -573,6 +573,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe290556_1317592c",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-21T21:09:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab784780_19afc8ef",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 10
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac514fc4_c0427c59",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-21T21:09:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab784780_19afc8ef",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 10
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41e417ff_5027547f",
@@ -927,6 +975,30 @@
       "side": 1,
       "message": "So I get that this is wasting some CPU cycles copying(though go may optimize that away), but I think it is import to avoid accidental unintentional side effects, especially when reusing a node.\nFor example someone may write:\nbutton :\u003d nodewith.Role(role.button).OnScreen().Enabled()\nstart :\u003d button.Name(\"Start\")\nstop :\u003d button.Name(\"Stop\")\n\nIf we didn\u0027t copy, button, start, and stop would all point to the same Finder that is looking for a stop button.",
       "parentUuid": "75765ff8_16e4ad69",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 14
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f51d689_25c05b6b",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-01-21T21:09:25Z",
+      "side": 1,
+      "message": "You are right. Let\u0027s see how it works and get back to it.",
+      "parentUuid": "adc42a64_947a6418",
       "range": {
         "startLine": 146,
         "startChar": 1,
