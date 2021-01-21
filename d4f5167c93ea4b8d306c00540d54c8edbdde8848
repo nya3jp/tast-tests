@@ -102,6 +102,30 @@
       },
       "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7048b0_3e2d99cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-21T23:56:21Z",
+      "side": 1,
+      "message": "Thank you Miguel. That is true. In fact, we might need to add 10bit support here as well.",
+      "parentUuid": "b284908e_bd7dfa92",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
