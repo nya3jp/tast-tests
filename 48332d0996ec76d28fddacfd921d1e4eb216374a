@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a9ed5f8_8d4caef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71587c28_6e74d7e5",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 16
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "580eae0b_ebff6a48",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-06T08:42:20Z",
       "side": 1,
       "message": "nit: %q",
+      "range": {
+        "startLine": 202,
+        "startChar": 33,
+        "endLine": 202,
+        "endChar": 35
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "244a77f8_a49087d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "580eae0b_ebff6a48",
       "range": {
         "startLine": 202,
         "startChar": 33,
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4a3d37a_6da5c5e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae5dceb8_9ca5013d",
+      "range": {
+        "startLine": 301,
+        "startChar": 12,
+        "endLine": 301,
+        "endChar": 19
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1b0fcb0_0d8ba6cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd6eb974_01d6dace",
+      "range": {
+        "startLine": 301,
+        "startChar": 45,
+        "endLine": 301,
+        "endChar": 49
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9240e9be_6297282a",
@@ -106,6 +202,24 @@
       "writtenOn": "2021-01-06T08:42:20Z",
       "side": 1,
       "message": "nit: unnecessary empty line. expected is initialized in the block of L305-L311.",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "809b6ab1_76fdcb76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9240e9be_6297282a",
       "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +270,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15199d0_aac32409",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd8a36f0_a5efb2bb",
+      "range": {
+        "startLine": 314,
+        "startChar": 24,
+        "endLine": 314,
+        "endChar": 27
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "916ae6ac_80b73141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c9b18c_d793883b",
+      "range": {
+        "startLine": 314,
+        "startChar": 88,
+        "endLine": 314,
+        "endChar": 97
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c74b3bae_3e8612cf",
@@ -169,6 +331,30 @@
       "writtenOn": "2021-01-06T08:42:20Z",
       "side": 1,
       "message": "nit: \"timestamp\"",
+      "range": {
+        "startLine": 321,
+        "startChar": 25,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95172d29_431a9e20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c74b3bae_3e8612cf",
       "range": {
         "startLine": 321,
         "startChar": 25,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb22116_e9f41ecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a62e49_15874699",
+      "range": {
+        "startLine": 327,
+        "startChar": 25,
+        "endLine": 327,
+        "endChar": 34
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f510c64_6399c255",
@@ -219,6 +429,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb58d95d_6e1b8efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f510c64_6399c255",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d1c1f2f_4d88afc4",
@@ -232,6 +460,30 @@
       "writtenOn": "2021-01-06T08:42:20Z",
       "side": 1,
       "message": "could you use time package here?",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aebaf77f_0996d6c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d1c1f2f_4d88afc4",
       "range": {
         "startLine": 24,
         "startChar": 20,
@@ -265,6 +517,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "027ac3f3_3fe5a843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f65f8dc4_158b9467",
+      "range": {
+        "startLine": 30,
+        "startChar": 14,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22aeb918_2233512f",
@@ -284,6 +560,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54afc121_8b906100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "The mix of WaitGroup and error channel is causing me a lot of headache:\nI use a 1000 line channel, to prevent dead lock:\nGiven the receiver of errorCh is running once all workers are done, I need to buffer all errors messages. If the sum of the error lines is greater than the channel buffer, there is a deadlock. I want to collect more than one error line from the worker if possible (see line 110).",
+      "parentUuid": "22aeb918_2233512f",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e872480_0e0c775d",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
         "patchSetId": 3
@@ -295,6 +589,24 @@
       "writtenOn": "2021-01-06T08:42:20Z",
       "side": 1,
       "message": "unused.",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3579262b_be7bae0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e872480_0e0c775d",
       "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -324,6 +636,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e15b760c_34053f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Given the command last 10s, I wanted to scan output while the command is running. Won\u0027t SeparatedOutput wait for the command to complete?",
+      "parentUuid": "119e001a_e4bce8ec",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 5
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd5bbd72_a5edc27e",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
         "patchSetId": 3
@@ -335,6 +671,24 @@
       "writtenOn": "2021-01-06T08:42:20Z",
       "side": 1,
       "message": "could you declare the variable when needed?\nYou can inline at L106 in this case.",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f791e36d_8b141abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd5bbd72_a5edc27e",
       "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -356,6 +710,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e7ad7c8_b97819cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Replaced with a close(errorCh) after wg.Wait(). It implies wg.Done is done after any addition to errorCh, otherwise go will crash (see https://tour.golang.org/concurrency/4), so I left the defer function. I used src/platform/graphics/src/trace_profiling/cmd/profile/remote/ssh_target.go as \"inspiration\".",
+      "parentUuid": "4cedfa3d_62c1d337",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "115e0a42_bbd1b509",
@@ -369,6 +741,24 @@
       "writtenOn": "2021-01-06T08:42:20Z",
       "side": 1,
       "message": "nit: could you use line comment?",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4dcdd8_0a0ea154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-21T22:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "115e0a42_bbd1b509",
       "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
