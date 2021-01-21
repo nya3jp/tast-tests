@@ -33,6 +33,24 @@
       "message": "nit: IIRC this function is only called from chrome itself and some part of ash code to prepare fake app entries.\n\nSince ash is under chrome directory (it\u0027s chrome/ash), maybe extension.ChownContentsToChrome is already accessible -- and so you can remove this function from Chrome package itself.  You don\u0027t need to do that now but maybe better to be done in another CL.\n\nMaybe also ash package was a bad code location for things like PrepareFakeApps and its related preconditions/failures.",
       "revId": "f13a38409b36d64024676a88b9c8482023e0e2b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544da4f5_7c68c62c",
+        "filename": "src/chromiumos/tast/local/chrome/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T01:59:10Z",
+      "side": 1,
+      "message": "That\u0027s a good point, let me remove this function.\n\nActually I guess we can remove the ChownContentsToChrome call in the ash package since we run the function for directories specified in chrome.UnpackedExtension anyway. But I\u0027ll keep it for now to avoid accidentally changing the behavior.",
+      "parentUuid": "d64fc688_104742e1",
+      "revId": "f13a38409b36d64024676a88b9c8482023e0e2b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
