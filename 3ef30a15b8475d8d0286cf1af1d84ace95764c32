@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20f1e18_b42201e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/math_kids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-01-21T00:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab42f96b_c2b991f5",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 39
+      },
+      "revId": "3ef30a15b8475d8d0286cf1af1d84ace95764c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb35e691_77437805",
@@ -129,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bafd25c_5ec035b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/math_kids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-01-21T00:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd615b3e_1ab4cb5b",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "3ef30a15b8475d8d0286cf1af1d84ace95764c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abd5b188_0cf0260a",
@@ -166,6 +214,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "abd5b188_0cf0260a",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "3ef30a15b8475d8d0286cf1af1d84ace95764c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9622d208_f6b97036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/math_kids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-01-21T00:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8039a63_97b0e1df",
       "range": {
         "startLine": 123,
         "startChar": 2,
