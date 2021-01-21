@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -86,7 +87,9 @@ func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 }
 
 func (f *bootedFixture) Reset(ctx context.Context) error {
-	// TODO(nya): Should we also check that p.cr is still usable?
+	if err := f.cr.ResetState(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset chrome")
+	}
 	return f.init.Restore(ctx, f.arc)
 }
 
