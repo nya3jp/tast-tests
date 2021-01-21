@@ -6,13 +6,19 @@ package arc
 
 import (
 	"context"
+	//"image"
+	"image/color"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/perappdensity"
-	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/display"
+	//"chromiumos/tast/local/bundles/cros/arc/screenshot"
+	//"chromiumos/tast/local/chrome"
+	//"chromiumos/tast/local/chrome/ash"
+	//"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing/hwdep"
 )
 
@@ -30,7 +36,11 @@ func init() {
 }
 
 func UniformScaleFactor(ctx context.Context, s *testing.State) {
-	const squareSidePx = 100
+	const (
+		squareSidePx = 100
+		viewID       = perappdensity.PackageName + ":id/" + "view"
+		secondActivity = ".SecondActivity"
+	)
 
 	cr := s.PreValue().(arc.PreData).Chrome
 	a := s.PreValue().(arc.PreData).ARC
@@ -49,25 +59,59 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	d, err := a.NewUIDevice(ctx)
 	if err != nil {
-		s.Fatal("Failed to get internal display info: ", err)
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	defer d.Close(ctx)
+
+	if err := arc.BootstrapCommand(ctx, perappdensity.Setprop, "persist.sys.enablechromecaption", "0").Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to set developer option: ", err)
 	}
 
-	origShelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, dispInfo.ID)
+	testing.ContextLog(ctx, "Running app, with uniform scaling enabled")
+/*	act, err := perappdensity.StartActivityWithWindowState(ctx, tconn, a, arc.WindowStateFullscreen, perappdensity.ViewActivity)
 	if err != nil {
-		s.Fatal("Failed to get shelf behavior: ", err)
-	}
-
-	// Hide shelf.
-	if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorAlwaysAutoHide); err != nil {
-		s.Fatal("Failed to set shelf behavior to Always Auto Hide: ", err)
-	}
-	// Restore shelf state to original behavior.
-	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
-
+		s.Fatal("failed to start activity after enabling uniform scale factor: ", err)
+	}*/
 	wantPixelCount := (int)((dd * squareSidePx) * (dd * squareSidePx))
-	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateFullscreen, wantPixelCount); err != nil {
+
+	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateMaximized, wantPixelCount, color.Black); err != nil {
 		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
 	}
+
+	if err := d.Object(ui.ID(viewID)).Click(ctx); err != nil {
+		s.Fatalf("Failed to click %s view: %v", viewID, err)
+	}
+/*
+	if err := d.Object(ui.ID(viewID)).Click(ctx); err != nil {
+		s.Fatalf("Failed to click %s view: %v", viewID, err)
+	}*/
+	/*secondAct*/_, err = perappdensity.StartActivityWithWindowState(ctx, tconn, a, arc.WindowStateMaximized, ".SecondActivity")
+		if err != nil {
+			s.Fatal("failed to start activity after enabling uniform scale factor: ", err)
+		}
+
+
+ //act.Close()
+/*	secondAct, err := arc.NewActivity(a, perappdensity.PackageName, secondActivity)
+	if err != nil {
+		s.Fatal("Failed to get secondActivity: ", err)
+	}
+	if err := secondAct.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
+		s.Fatal("Failed to set window state to normal: ", err)
+	}
+
+	ashWindowState, err := (arc.WindowStateFullscreen).ToAshWindowState()
+	if err != nil {
+		s.Fatal("Failed to get ash window state: ", err)
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, perappdensity.PackageName, ashWindowState); err != nil {
+		s.Fatalf("Failed to wait for the activity to have required window state %q %+v", arc.WindowStateFullscreen, err)
+	}
+
+	if err := perappdensity.VerifyPixelCount(ctx, cr, a, color.RGBA{255, 0, 0, 255}, wantPixelCount, secondAct); err != nil {
+		s.Fatal("Failed to confirm uniform scale factor state after switching activities: ", err)
+	}
+*/
 }

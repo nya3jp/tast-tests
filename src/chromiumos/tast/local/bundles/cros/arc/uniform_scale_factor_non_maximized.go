@@ -108,7 +108,7 @@ func UniformScaleFactorNonMaximized(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get baseline pixel count: ", err)
 	}
 
-	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateNormal, baselinePixelCount); err != nil {
+	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateNormal, baselinePixelCount, color.Black); err != nil {
 		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
 	}
 }
