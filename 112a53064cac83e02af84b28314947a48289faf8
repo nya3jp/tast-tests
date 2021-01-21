@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ec06477_7eb4eefa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-21T21:39:17Z",
+      "side": 1,
+      "message": "You could consider naming the package something else, since the package name is used so infrequently now.  eg uiauto or autoui\n\nui :\u003d autoui.New()\n\nautoui.Run(ui.LeftClick, ui.Focus, ...)",
+      "parentUuid": "d56076c3_155c0010",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd80b2ef_44230529",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
         "patchSetId": 2
@@ -294,6 +318,30 @@
       "side": 1,
       "message": "I just couldn\u0027t think of a better name. any suggestions?",
       "parentUuid": "fd882a04_7eff1eb3",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e44f40f2_f8ba4510",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-21T21:39:17Z",
+      "side": 1,
+      "message": "UIContext -\u003e ui (see other comment), uic or uictx\nUIOperation -\u003e uiop",
+      "parentUuid": "f17fb5c3_0be7c56c",
       "range": {
         "startLine": 28,
         "startChar": 5,
