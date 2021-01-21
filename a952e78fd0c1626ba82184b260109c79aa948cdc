@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2090a5ce_23a14af1",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T01:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dde81b07_cd086ba3",
+      "range": {
+        "startLine": 152,
+        "startChar": 9,
+        "endLine": 152,
+        "endChar": 41
+      },
+      "revId": "a952e78fd0c1626ba82184b260109c79aa948cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "deb417ef_ea59edea",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-21T01:17:58Z",
       "side": 1,
       "message": "Can you avoid passing TestHookState, and use testing.ContextLog for logging?",
+      "range": {
+        "startLine": 182,
+        "startChar": 46,
+        "endLine": 182,
+        "endChar": 72
+      },
+      "revId": "a952e78fd0c1626ba82184b260109c79aa948cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f18e99_d52b61ab",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T01:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deb417ef_ea59edea",
       "range": {
         "startLine": 182,
         "startChar": 46,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e01e4e6d_b0db003e",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T01:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5629370b_2b8806c7",
+      "range": {
+        "startLine": 192,
+        "startChar": 25,
+        "endLine": 192,
+        "endChar": 33
+      },
+      "revId": "a952e78fd0c1626ba82184b260109c79aa948cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6ae8f08_1e0f3bad",
@@ -106,6 +178,30 @@
       "writtenOn": "2021-01-21T01:17:58Z",
       "side": 1,
       "message": "What should we do when the earlier hwsecGetTPMStatus call failed?",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 254,
+        "endChar": 3
+      },
+      "revId": "a952e78fd0c1626ba82184b260109c79aa948cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47ae6215_8c7829d3",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T01:56:50Z",
+      "side": 1,
+      "message": "Passing nil into hwsecCheckTPMStatus, and it would failed if the TPM is owned but doesn\u0027t have the permission to reset DA counter.",
+      "parentUuid": "c6ae8f08_1e0f3bad",
       "range": {
         "startLine": 252,
         "startChar": 2,
