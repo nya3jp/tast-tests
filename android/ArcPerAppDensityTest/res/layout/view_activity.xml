@@ -12,8 +12,8 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+      android:layout_width="@dimen/side_length"
+      android:layout_height="@dimen/side_length"
         android:foreground="@android:color/black" />
 
 </LinearLayout>
