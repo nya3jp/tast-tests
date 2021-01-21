@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "543d0e17_4e65397b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1397805
+      },
+      "writtenOn": "2021-01-21T00:54:56Z",
+      "side": 1,
+      "message": "Drive by: This Tast test is predicated on testing the FUSE-based ZIP implementation (fuse-zip), which is only enabled if the files-zip-mount Chrome flag is enabled. I wasn\u0027t sure how the test is ensuring that flag is set (it\u0027s currently disabled by default) to make sure that we\u0027re using fuse-zip here, not the old FileSystemProvider implementation (ZipArchiver).",
+      "revId": "e897ad1922c328f6f3b49c19ed00bc30b6b63043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d01b2ef4_6fb94228",
