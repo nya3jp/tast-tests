@@ -21,16 +21,24 @@ import (
 
 // CmdRunnerLocal implements CmdRunner for local test.
 type CmdRunnerLocal struct {
+	printLog bool
 }
 
-// NewCmdRunner creates a new command runnder for local test.
+// NewCmdRunner creates a new command runner for local test.
 func NewCmdRunner() (*CmdRunnerLocal, error) {
-	return &CmdRunnerLocal{}, nil
+	return &CmdRunnerLocal{printLog: true}, nil
+}
+
+// NewLoglessCmdRunner creates a new command runner for local test, which wouldn't print logs.
+func NewLoglessCmdRunner() (*CmdRunnerLocal, error) {
+	return &CmdRunnerLocal{printLog: false}, nil
 }
 
 // Run implements the one of hwsec.CmdRunner.
 func (r *CmdRunnerLocal) Run(ctx context.Context, cmd string, args ...string) ([]byte, error) {
-	testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
+	if r.printLog {
+		testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
+	}
 	return testexec.CommandContext(ctx, cmd, args...).Output()
 }
 
