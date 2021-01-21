@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "921524af_9e7c605c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T07:16:23Z",
+      "side": 1,
+      "message": "This sounds like a part of session\u0027s responsibility, since this is tied to the lifetime? (Used for initialization session with tconn?)",
+      "revId": "16b937fdc1db424fbe282fe7d34d20855b380453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d47ea6b_7ebb3b56",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T07:16:23Z",
+      "side": 1,
+      "message": "So, I expect that on error case, sess should be closed, but it looks not.",
+      "range": {
+        "startLine": 1064,
+        "startChar": 13,
+        "endLine": 1064,
+        "endChar": 39
+      },
+      "revId": "16b937fdc1db424fbe282fe7d34d20855b380453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
