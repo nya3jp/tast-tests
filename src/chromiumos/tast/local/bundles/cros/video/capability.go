@@ -44,6 +44,7 @@ var avtestLabelToCapability = map[string]capability{
 	"hw_video_acc_vp8":         {caps.HWDecodeVP8, false},
 	"hw_video_acc_vp9":         {caps.HWDecodeVP9, false},
 	"hw_video_acc_vp9_2":       {caps.HWDecodeVP9_2, false},
+	"hw_video_acc_av1":         {caps.HWDecodeAV1, true},
 	"hw_video_acc_h264_4k":     {caps.HWDecodeH264_4K, true},
 	"hw_video_acc_vp8_4k":      {caps.HWDecodeVP8_4K, true},
 	"hw_video_acc_vp9_4k":      {caps.HWDecodeVP9_4K, true},
