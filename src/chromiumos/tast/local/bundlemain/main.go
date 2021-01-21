@@ -128,7 +128,7 @@ func ensureDiskSpace(ctx context.Context, purgeable []string) (uint64, error) {
 }
 
 func hwsecResetDACounter(ctx context.Context) error {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
+	cmdRunner, err := hwseclocal.NewLoglessCmdRunner()
 	if err != nil {
 		return errors.Wrap(err, "failed to create CmdRunner")
 	}
@@ -146,7 +146,7 @@ func hwsecResetDACounter(ctx context.Context) error {
 }
 
 func hwsecCheckDACounter(ctx context.Context) error {
-	cmdRunner, err := hwseclocal.NewCmdRunner()
+	cmdRunner, err := hwseclocal.NewLoglessCmdRunner()
 	if err != nil {
 		return errors.Wrap(err, "failed to create CmdRunner")
 	}

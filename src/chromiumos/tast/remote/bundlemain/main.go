@@ -29,7 +29,7 @@ import (
 )
 
 func hwsecResetDACounter(ctx context.Context, s *testing.TestHookState) error {
-	cmdRunner, err := hwsecremote.NewCmdRunner(s.DUT())
+	cmdRunner, err := hwsecremote.NewLoglessCmdRunner(s.DUT())
 	if err != nil {
 		return errors.Wrap(err, "failed to create CmdRunner")
 	}
@@ -47,7 +47,7 @@ func hwsecResetDACounter(ctx context.Context, s *testing.TestHookState) error {
 }
 
 func hwsecCheckDACounter(ctx context.Context, s *testing.TestHookState) error {
-	cmdRunner, err := hwsecremote.NewCmdRunner(s.DUT())
+	cmdRunner, err := hwsecremote.NewLoglessCmdRunner(s.DUT())
 	if err != nil {
 		return errors.Wrap(err, "failed to create CmdRunner")
 	}
