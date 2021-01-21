@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -108,7 +109,25 @@ func UniformScaleFactorNonMaximized(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get baseline pixel count: ", err)
 	}
 
-	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateNormal, baselinePixelCount); err != nil {
-		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
+	if err := arc.BootstrapCommand(ctx, perappdensity.Setprop, perappdensity.UniformScaleFactorSetting, "1").Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to set developer option: ", err)
+	}
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to set tablet mode to false: ", err)
+	}
+	defer cleanup(ctx)
+
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	act, err := perappdensity.StartActivityWithWindowState(ctx, tconn, a, arc.WindowStateFullscreen, perappdensity.ViewActivity)
+	if err != nil {
+		s.Fatal("Failed to start activity after enabling uniform scale factor: ", err)
+	}
+
+	if err := perappdensity.VerifyPixelCount(ctx, cr, a, color.Black, baselinePixelCount, act); err != nil {
+		s.Fatal("Failed to confirm number of pixels after enabling uniform scale factor: ", err)
 	}
 }
