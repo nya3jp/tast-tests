@@ -16,6 +16,63 @@
       "message": "Hi Tast owner, could you PTAL? Thanks!",
       "revId": "ae713e4c0fa46cc29daee5ff8673b74315b569be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0dd296e_2da65c02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T07:29:42Z",
+      "side": 1,
+      "message": "LGTM with misc fix requests.",
+      "revId": "ae713e4c0fa46cc29daee5ff8673b74315b569be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "326d266b_12978859",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T07:29:42Z",
+      "side": 1,
+      "message": "nit: let\u0027s add \"break\" here.",
+      "revId": "ae713e4c0fa46cc29daee5ff8673b74315b569be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0948b9f_0c874ded",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T07:29:42Z",
+      "side": 1,
+      "message": "nit: this can be simplified.\n\ncommandArgs \u003d append(commandArgs, apk...)",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 2
+      },
+      "revId": "ae713e4c0fa46cc29daee5ff8673b74315b569be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
