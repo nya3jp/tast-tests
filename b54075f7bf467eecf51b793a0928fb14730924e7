@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e08a9e_1d544f3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-01-21T07:51:44Z",
+      "side": 1,
+      "message": "Thanks for adding this perf tast!  I\u0027ve added some comments for your review.",
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b8781e_06f17480",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-01-21T07:51:44Z",
+      "side": 1,
+      "message": "typo: does not*",
+      "range": {
+        "startLine": 50,
+        "startChar": 66,
+        "endLine": 50,
+        "endChar": 75
+      },
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7f47e2_ba8afbd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-01-21T07:51:44Z",
+      "side": 1,
+      "message": "The APK could change over time, which this tast may misrepresent performance of newest APK version Roblox app loading time when an updated version is rolled out?  Does appcompat tast testing download latest APKs from the internet?  \n\nCan we set the tast to only download if the latest developer APK hash is different that the one currently used by tast to minimize possible download failures but still ensuring we are testing against the newest APK?",
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcea8c10_da2fbdb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-01-21T07:51:44Z",
+      "side": 1,
+      "message": "What about using function below to wait for CPU Idle specifically or add it along with `WaitUntilCPUCoolDown`?  \n\nFrom https://crbug.com/1144502 and group discussion https://groups.google.com/a/chromium.org/g/tast-users/c/wDhg2ohq9-s/, the limit used for `WaitUntilCPUCoolDown` is generic (not device specific) and may be outdated.  \n\n```\n\tif err :\u003d cpu.WaitUntilIdle(ctx); err !\u003d nil {\n            ...\n        }\n```",
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e360d0_f538f04c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-01-21T07:51:44Z",
+      "side": 1,
+      "message": "To make log cleared on what the tast is measuring, should it say \"OBB unzip time\"?  Same suggestion below.",
+      "range": {
+        "startLine": 145,
+        "startChar": 10,
+        "endLine": 145,
+        "endChar": 18
+      },
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b912043_1ff18e50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-01-21T07:51:44Z",
+      "side": 1,
+      "message": "obb_unzip_time?",
+      "range": {
+        "startLine": 155,
+        "startChar": 37,
+        "endLine": 155,
+        "endChar": 45
+      },
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
