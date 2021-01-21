@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/policyutil"
@@ -77,12 +78,12 @@ func AllowedLanguages(ctx context.Context, s *testing.State) {
 			}
 
 			// In the following block we try to access "chrome://os-settings/osLanguages/details".
-			// But it cannot be opened using cr.NewConn(ctx, "chrome://os-settings/osLanguages/details").
+			// But it cannot be opened using apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osLanguages").
 			// Instead, we navigate through "chrome://os-settings/osLanguages", then click on Languages link.
 			// Open the os settings languages page.
-			conn, err := cr.NewConn(ctx, "chrome://os-settings/osLanguages")
+			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osLanguages")
 			if err != nil {
-				s.Fatal("Failed to connect to the settings page: ", err)
+				s.Fatal("Failed to open the os settings page: ", err)
 			}
 			defer conn.Close()
 			// Find and click on languages link.
