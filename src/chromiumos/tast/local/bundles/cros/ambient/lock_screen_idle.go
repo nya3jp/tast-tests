@@ -80,6 +80,7 @@ func setup(
 		ctx,
 		chrome.Auth(username, password, ""),
 		chrome.GAIALogin(),
+		chrome.EnableFeatures("ChromeOSAmbientMode:FineArtAlbumEnabled/true/CulturalInstitutePhotosEnabled/true/FeaturedPhotoAlbumEnabled/true/FeaturedPhotosEnabled/true"),
 	)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to start Chrome")
@@ -130,22 +131,16 @@ func prepareAmbientMode(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "toggling ambient mode failed")
 	}
 
-	artRadioButton, err := ui.FindWithTimeout(
+	if err := ui.StableFindAndClick(
 		ctx,
 		tconn,
 		ui.FindParams{
 			Role: ui.RoleTypeButton,
 			Name: "Select Art gallery albums",
 		},
-		5*time.Second,
-	)
-	if err != nil {
-		return errors.Wrap(err, "finding art gallery radio button failed")
-	}
-	defer artRadioButton.Release(ctx)
-
-	if err := artRadioButton.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "opening art gallery failed")
+		defaultOSSettingsPollOptions,
+	); err != nil {
+		return errors.Wrap(err, "clicking on art gallery radio button failed")
 	}
 
 	artAlbumParams := ui.FindParams{
@@ -157,9 +152,14 @@ func prepareAmbientMode(ctx context.Context, tconn *chrome.TestConn) error {
 		ctx,
 		tconn,
 		artAlbumParams,
-		5*time.Second,
+		defaultOSSettingsPollOptions.Timeout,
 	); err != nil {
 		return errors.Wrap(err, "failed waiting for art gallery albums")
+	}
+
+	// Sleep briefly because artAlbum buttons may not be clickable yet.
+	if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep")
 	}
 
 	artAlbums, err := ui.FindAll(ctx, tconn, artAlbumParams)
@@ -168,16 +168,11 @@ func prepareAmbientMode(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	defer artAlbums.Release(ctx)
 
-	// Turn off all art gallery albums.
-	for _, artAlbum := range artAlbums {
+	// Turn off all but one art gallery albums.
+	for _, artAlbum := range artAlbums[1:] {
 		if err := artAlbum.LeftClick(ctx); err != nil {
-			return errors.Wrap(err, "deselecting art gallery failed")
+			return errors.Wrap(err, "deselecting art album failed")
 		}
-	}
-
-	// Turn on one art gallery album.
-	if err := artAlbums[0].LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "selecting first art gallery item failed: ")
 	}
 
 	if err := ambient.SetTimeouts(
