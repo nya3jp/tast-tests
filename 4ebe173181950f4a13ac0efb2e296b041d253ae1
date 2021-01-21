@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa65ba91_ca6d4e76",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-21T04:46:51Z",
+      "side": 0,
+      "message": "PropertiesWatcher and PropertyHolder are also useful and generic. Do you want to also move it to dbusutil? Of course we can move them as needed.",
+      "revId": "4ebe173181950f4a13ac0efb2e296b041d253ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
