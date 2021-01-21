@@ -186,7 +186,7 @@ func waitForDeviceProperty(ctx context.Context, d *shill.Device, prop string, ex
 	}
 	defer pw.Close(ctx)
 
-	props, err := d.GetProperties(ctx)
+	props, err := d.GetShillProperties(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get device properties")
 	}

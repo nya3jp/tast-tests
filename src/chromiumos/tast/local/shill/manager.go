@@ -92,7 +92,7 @@ func (m *Manager) WaitForServiceProperties(ctx context.Context, expectProps map[
 
 // ProfilePaths returns a list of profile paths.
 func (m *Manager) ProfilePaths(ctx context.Context) ([]dbus.ObjectPath, error) {
-	p, err := m.GetProperties(ctx)
+	p, err := m.GetShillProperties(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -118,7 +118,7 @@ func (m *Manager) Profiles(ctx context.Context) ([]*Profile, error) {
 
 // ActiveProfile returns the active profile.
 func (m *Manager) ActiveProfile(ctx context.Context) (*Profile, error) {
-	props, err := m.GetProperties(ctx)
+	props, err := m.GetShillProperties(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -131,7 +131,7 @@ func (m *Manager) ActiveProfile(ctx context.Context) (*Profile, error) {
 
 // Devices returns a list of devices.
 func (m *Manager) Devices(ctx context.Context) ([]*Device, error) {
-	p, err := m.GetProperties(ctx)
+	p, err := m.GetShillProperties(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -157,7 +157,7 @@ func (m *Manager) DeviceByType(ctx context.Context, deviceType string) (*Device,
 		return nil, err
 	}
 	for _, d := range devices {
-		properties, err := d.GetProperties(ctx)
+		properties, err := d.GetShillProperties(ctx)
 		if err != nil {
 			return nil, err
 		}
@@ -239,7 +239,7 @@ func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) 
 }
 
 func (m *Manager) hasTechnology(ctx context.Context, technologyProperty string, technology Technology) (bool, error) {
-	prop, err := m.GetProperties(ctx)
+	prop, err := m.GetShillProperties(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get properties")
 	}
@@ -276,7 +276,7 @@ func (m *Manager) DevicesByTechnology(ctx context.Context, technology Technology
 	}
 
 	for _, dev := range devs {
-		p, err := dev.GetProperties(ctx)
+		p, err := dev.GetShillProperties(ctx)
 		if err != nil {
 			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
 				// This error is forgivable as a device may go down anytime.
@@ -304,7 +304,7 @@ func (m *Manager) DeviceByName(ctx context.Context, iface string) (*Device, erro
 	}
 
 	for _, dev := range devs {
-		p, err := dev.GetProperties(ctx)
+		p, err := dev.GetShillProperties(ctx)
 		if err != nil {
 			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
 				// This error is forgivable as a device may go down anytime.
