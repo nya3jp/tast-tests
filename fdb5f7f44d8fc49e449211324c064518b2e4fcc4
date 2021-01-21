@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d24b863_80d04392",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T01:26:29Z",
+      "side": 1,
+      "message": "Should we skip this when earlier hwsecGetDACounter failed?",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 66
+      },
+      "revId": "fdb5f7f44d8fc49e449211324c064518b2e4fcc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
