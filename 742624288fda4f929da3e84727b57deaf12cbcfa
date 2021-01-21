@@ -16,6 +16,23 @@
       "message": "Hi Ricardo, can I have +2 again? It\u0027s lost. Thank you!",
       "revId": "742624288fda4f929da3e84727b57deaf12cbcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5509540_0c00e802",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2021-01-21T00:24:10Z",
+      "side": 1,
+      "message": "thanks!",
+      "revId": "742624288fda4f929da3e84727b57deaf12cbcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
