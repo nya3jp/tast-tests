@@ -51,6 +51,24 @@
       "parentUuid": "8f09bc27_f37233cd",
       "revId": "7fc258a45771ef6e67b17be33e51a9a76b542858",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50aaff1c_73b502f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-01-21T20:06:42Z",
+      "side": 1,
+      "message": "nit: I think having both functions NewProperties() \u0026 NewDbusProperties() is confusing. IIUC, NewProperties is only for shill and NewDbusProperties is general, so other services can use it.\n\nMaybe, change NewProperties()/GetProperties() to NewShillProperties()/GetShillProperties(), WDYT?",
+      "parentUuid": "05a168a9_790c0995",
+      "revId": "7fc258a45771ef6e67b17be33e51a9a76b542858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
