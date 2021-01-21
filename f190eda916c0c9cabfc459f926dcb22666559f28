@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "422b5b6c_f50b0eb4",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-21T18:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f789a6db_5851208a",
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8bb9eda_5538af31",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "927bf670_2b679554",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-21T18:31:09Z",
+      "side": 1,
+      "message": "Sounds good, added a precondition check and return false if it\u0027s not met.",
+      "parentUuid": "d8bb9eda_5538af31",
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45007281_c948f177",
@@ -82,6 +118,30 @@
       "writtenOn": "2021-01-21T02:18:05Z",
       "side": 1,
       "message": "The purpose of ch1 is just to wait for tts ready and theoretically only true is sent. I think just waiting for an event is fine.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 2
+      },
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e803d252_0624dd43",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-21T18:31:09Z",
+      "side": 1,
+      "message": "After adding a precondition check in expectSpeech, this value can actually be false. So I will keep this check here.",
+      "parentUuid": "45007281_c948f177",
       "range": {
         "startLine": 201,
         "startChar": 1,
@@ -115,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "affe736b_5130ca9d",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-21T18:31:09Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "0c40c464_bf4dde83",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a65a8c_55eff3ba",
@@ -138,6 +222,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2d384d_f5f2cb07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-21T18:31:09Z",
+      "side": 1,
+      "message": "I get a presubmit error if I don\u0027t include these lines, so I think I need to include them.",
+      "parentUuid": "e1a65a8c_55eff3ba",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4e7d29c_bdb9fc4b",
@@ -151,6 +259,30 @@
       "writtenOn": "2021-01-21T02:18:05Z",
       "side": 1,
       "message": "optional: Would you make this part clearer? e.g. \"executes commands to ChromeVox and verifies Google TTS receives speech request and process it\".",
+      "range": {
+        "startLine": 20,
+        "startChar": 36,
+        "endLine": 20,
+        "endChar": 81
+      },
+      "revId": "f190eda916c0c9cabfc459f926dcb22666559f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e863930_5d9a526e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/spoken_feedback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-21T18:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4e7d29c_bdb9fc4b",
       "range": {
         "startLine": 20,
         "startChar": 36,
