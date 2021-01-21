@@ -8,18 +8,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewActivity">
+    tools:context=".SecondActivity">
 
+    <!-- Add a margin, as switching activities causes caption bar to be visible -->
     <View
         android:id="@+id/view"
+        android:layout_marginTop="50dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:foreground="@android:color/black" />
-
-  <Button
-      android:id="@+id/button"
-      android:layout_width="190dp"
-      android:layout_height="84dp"
-      android:text="Open New Activity" />
+        android:foreground="#FF0000" />
 
 </LinearLayout>
