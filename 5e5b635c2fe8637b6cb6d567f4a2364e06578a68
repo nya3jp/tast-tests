@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7a2b5c_2fd6f7e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-01-21T00:01:54Z",
+      "side": 1,
+      "message": "Hi, if not changed repo upload . is keep failing.",
+      "parentUuid": "8200588f_fc2b6dca",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "5e5b635c2fe8637b6cb6d567f4a2364e06578a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e65bd33_9da35021",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-07T18:08:37Z",
       "side": 1,
       "message": "This should probably be run specifically on arc. Can we add a BugReport method to arc/commands.go?\n\nIt should just be something like:\n func (a *ARC) BugReport(ctx context.Context, outDir filepath.Path) *testexec.Cmd {\n   return a.device.Command(ctx, \"bugreport\", outDir)\n }\n\nThen here we can just call a.BugReport(...)",
+      "range": {
+        "startLine": 131,
+        "startChar": 15,
+        "endLine": 131,
+        "endChar": 56
+      },
+      "revId": "5e5b635c2fe8637b6cb6d567f4a2364e06578a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c29f8c86_bd76d0ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-01-21T00:01:54Z",
+      "side": 1,
+      "message": "Hi Brendan, \nyes, I added the code snippet in the arc/commands.go. I got error like this, https://paste.googleplex.com/5878829441613824. Please let me know your suggestions. Thanks.",
+      "parentUuid": "6e65bd33_9da35021",
       "range": {
         "startLine": 131,
         "startChar": 15,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40990f99_f0c0027f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-01-21T00:01:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d58dcc3_aaee593c",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 42
+      },
+      "revId": "5e5b635c2fe8637b6cb6d567f4a2364e06578a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41382b4e_c3a0695b",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-07T18:08:37Z",
       "side": 1,
       "message": "This path is created but not used.",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 46
+      },
+      "revId": "5e5b635c2fe8637b6cb6d567f4a2364e06578a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c670a1_75a65455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-01-21T00:01:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "41382b4e_c3a0695b",
       "range": {
         "startLine": 137,
         "startChar": 5,
