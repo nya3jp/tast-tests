@@ -7,8 +7,11 @@
 package org.chromium.arc.testapp.perappdensitytest;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 
 /** Test Activity for arc.PerAppDensity test. */
 public class ViewActivity extends Activity {
@@ -20,5 +23,13 @@ public class ViewActivity extends Activity {
         // Hide action bar.
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.view_activity);
+
+        Button btn = (Button)findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            startActivity(new Intent(ViewActivity.this, SecondActivity.class));
+          }
+        });
     }
 }
