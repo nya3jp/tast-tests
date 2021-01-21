@@ -35,6 +35,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d7edc2_67c87e62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-21T01:16:28Z",
+      "side": 1,
+      "message": "Really nice how much cleaner the test code is with ui2",
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26cdde9b_6cbaf519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-21T01:16:28Z",
+      "side": 1,
+      "message": "This is so compact now, very cool!",
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04c0e6b8_56a0437d",
@@ -152,6 +186,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85ca16af_38a3d784",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-21T01:16:28Z",
+      "side": 1,
+      "message": "Would be nice to have a comment for this function that explains in general how nodes are found, how queries are chained together, how finding children nodes is supported, etc.",
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5609f31_870689de",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-21T01:16:28Z",
+      "side": 1,
+      "message": "Do we need to define this one here? Seems like FindQuery doesn\u0027t need it to be",
+      "range": {
+        "startLine": 81,
+        "startChar": 6,
+        "endLine": 81,
+        "endChar": 11
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e417ff_5027547f",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-21T01:16:28Z",
+      "side": 1,
+      "message": "maybe make this a constant somewhere, since this needs to match the error in findwith.go",
+      "range": {
+        "startLine": 253,
+        "startChar": 37,
+        "endLine": 253,
+        "endChar": 60
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4121b1_afd40071",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-21T01:16:28Z",
+      "side": 1,
+      "message": "will not wait",
+      "range": {
+        "startLine": 349,
+        "startChar": 6,
+        "endLine": 349,
+        "endChar": 15
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2527f35d_9cd20d75",
         "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
         "patchSetId": 2
@@ -169,6 +289,23 @@
         "endLine": 372,
         "endChar": 110
       },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ee3b9a3_c43236b0",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-21T01:16:28Z",
+      "side": 1,
+      "message": "I haven\u0027t fully wrapped my head around everything yet, but these would be the same, right?\n```\nac.LeftClick(nodewith.Name(\"child\").Ancestor(nodewith.Name(\"parent\")))\nac.LeftClick(nodewith.Name(\"parent\"), nodewith.Name(\"child\"))\n```\n\nIs there a reason to have this Ancestor Finder instead of just composing the queries?",
       "revId": "112a53064cac83e02af84b28314947a48289faf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
