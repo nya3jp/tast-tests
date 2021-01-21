@@ -5,7 +5,6 @@
 package extension
 
 import (
-	"context"
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/json"
@@ -16,7 +15,6 @@ import (
 	"strconv"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/internal/driver"
 )
 
 const chromeUser = "chronos" // Chrome Unix username
@@ -94,15 +92,4 @@ func readKeyFromExtensionManifest(path string) ([]byte, error) {
 		return base64.StdEncoding.DecodeString(enc)
 	}
 	return nil, nil
-}
-
-// AddTastLibrary introduces tast library into the page for the given conn.
-// This introduces a variable named "tast" to its scope, and it is the
-// caller's responsibility to avoid the conflict.
-func AddTastLibrary(ctx context.Context, conn *driver.Conn) error {
-	// Ensure the page is loaded so the tast library will be added properly.
-	if err := conn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		return errors.Wrap(err, "failed waiting for page to load")
-	}
-	return conn.Eval(ctx, tastLibrary, nil)
 }
