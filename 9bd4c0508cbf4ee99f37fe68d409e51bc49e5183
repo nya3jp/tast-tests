@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b600570f_22354e2b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T02:01:31Z",
+      "side": 1,
+      "message": "I found that this may fail because sess.NewConnForTarget does not wait for the test extension to be ready. In particular I observed that this occasionally fails for \"ReferenceError: tast is not defined\". Let me fix it...",
+      "range": {
+        "startLine": 1071,
+        "startChar": 0,
+        "endLine": 1071,
+        "endChar": 113
+      },
+      "revId": "9bd4c0508cbf4ee99f37fe68d409e51bc49e5183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
