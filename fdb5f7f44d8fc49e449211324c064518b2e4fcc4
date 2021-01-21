@@ -22,6 +22,30 @@
       },
       "revId": "fdb5f7f44d8fc49e449211324c064518b2e4fcc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "823ce003_2ebecf03",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T02:04:30Z",
+      "side": 1,
+      "message": "I think it still worth to check the value again when the earlier hwsecGetDACounter failed.\nSo I set hwsecDACounter to zero when it failed.",
+      "parentUuid": "2d24b863_80d04392",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 66
+      },
+      "revId": "fdb5f7f44d8fc49e449211324c064518b2e4fcc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
