@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97034a45_b510a3fb",
+        "filename": "src/chromiumos/tast/local/chrome/conns.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T08:26:23Z",
+      "side": 1,
+      "message": "Yes I agree. I created a change at crrev.com/c/2640519.",
+      "parentUuid": "b11739c0_5016d292",
+      "revId": "d77510ac85280403d30d4d30470a5ddfe77ee978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bc5a700_fb26346e",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-21T06:21:51Z",
       "side": 1,
       "message": "Could you add TODO / file a bug to remove this? I\u0027m happy to take a look later, since the only external use case is from Lacros.",
+      "revId": "d77510ac85280403d30d4d30470a5ddfe77ee978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c88bc8a3_2235bcad",
+        "filename": "src/chromiumos/tast/local/chrome/deprecated.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T08:26:23Z",
+      "side": 1,
+      "message": "Sure, filed a bug crbug.com/1169013.",
+      "parentUuid": "9bc5a700_fb26346e",
       "revId": "d77510ac85280403d30d4d30470a5ddfe77ee978",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
