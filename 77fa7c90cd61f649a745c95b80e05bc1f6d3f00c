@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e91559_ebf4020e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T10:57:43Z",
+      "side": 1,
+      "message": "because you\u0027re changing main_accessibility layout, other arc.Accessibility* tests would be affected. Can you test them and adjust them if necessary?",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "77fa7c90cd61f649a745c95b80e05bc1f6d3f00c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b23d7646_de932513",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-01-21T10:26:10Z",
       "side": 1,
       "message": "calling setStateDescription probably invoke crash (or some error, at least) in pi-arc because that API doesn\u0027t exist.\n\nProbably you can check `Build.VERSION.SDK_INT` before actually calling that API.\n\nFYI, androidx has AccessibilityNodeInfoCompat and does like below:\nhttps://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:core/core/src/main/java/androidx/core/view/accessibility/AccessibilityNodeInfoCompat.java;l\u003d2846;drc\u003d7c7d42058c51b34c61be33c05e08102ac6f3d631",
+      "revId": "77fa7c90cd61f649a745c95b80e05bc1f6d3f00c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4005574_aa068c81",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-21T10:57:43Z",
+      "side": 1,
+      "message": "can you apply `google-java-format -a` for this? indentation doesn\u0027t look correct.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 13
+      },
       "revId": "77fa7c90cd61f649a745c95b80e05bc1f6d3f00c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
