@@ -26,11 +26,14 @@ func NewPropertyHolder(ctx context.Context, service, iface string, path dbus.Obj
 	return &PropertyHolder{dbusObject}, nil
 }
 
-// GetProperties calls dbus GetProperties method on the interface and returns the result.
-// The dbus call may fail with DBusErrorUnknownObject if the ObjectPath is not valid.
-// Callers can check it with IsDBusError if it's expected.
+// GetProperties calls NewProperties with the PropertyHolder object and returns the result.
 func (h *PropertyHolder) GetProperties(ctx context.Context) (*Properties, error) {
 	return NewProperties(ctx, h.DBusObject)
+}
+
+// GetShillProperties calls NewShillProperties with the PropertyHolder object and returns the result.
+func (h *PropertyHolder) GetShillProperties(ctx context.Context) (*Properties, error) {
+	return NewShillProperties(ctx, h.DBusObject)
 }
 
 // SetProperty calls SetProperty on the interface to set property to the given value.
