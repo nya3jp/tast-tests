@@ -22,18 +22,26 @@ import (
 
 // CmdRunnerRemote implements CmdRunner for remote test.
 type CmdRunnerRemote struct {
-	d *dut.DUT
+	d        *dut.DUT
+	printLog bool
 }
 
 // Run implements the one of hwsec.CmdRunner.
 func (r *CmdRunnerRemote) Run(ctx context.Context, cmd string, args ...string) ([]byte, error) {
-	testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
+	if r.printLog {
+		testing.ContextLogf(ctx, "Running: %s", shutil.EscapeSlice(append([]string{cmd}, args...)))
+	}
 	return r.d.Command(cmd, args...).Output(ctx)
 }
 
 // NewCmdRunner creates a new CmdRunnerRemote instance associated with d.
 func NewCmdRunner(d *dut.DUT) (*CmdRunnerRemote, error) {
-	return &CmdRunnerRemote{d}, nil
+	return &CmdRunnerRemote{d: d, printLog: true}, nil
+}
+
+// NewLoglessCmdRunner creates a new CmdRunnerRemote instance associated with d, which wouldn't print logs.
+func NewLoglessCmdRunner(d *dut.DUT) (*CmdRunnerRemote, error) {
+	return &CmdRunnerRemote{d: d, printLog: false}, nil
 }
 
 // HelperRemote extends the function set from hwsec.Helper for remote test.
