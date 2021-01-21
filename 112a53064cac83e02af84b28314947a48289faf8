@@ -94,6 +94,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d56076c3_155c0010",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "I wanted to, but if the package is eventually going to be called ui, it will lead to naming conflicts. I am definitely open to name change ideas for the package, variable, and structs if they make things more readable/intuitive.",
+      "parentUuid": "04c0e6b8_56a0437d",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd80b2ef_44230529",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
         "patchSetId": 2
@@ -105,6 +129,30 @@
       "writtenOn": "2021-01-21T01:13:41Z",
       "side": 1,
       "message": "setWallpaperMenu would make things more readable",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 13
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "666d01ee_8f4d5de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd80b2ef_44230529",
       "range": {
         "startLine": 41,
         "startChar": 1,
@@ -128,6 +176,30 @@
       "writtenOn": "2021-01-21T01:13:41Z",
       "side": 1,
       "message": "From a readability standpoint I think the args here should be swapped.  left click x until y.",
+      "range": {
+        "startLine": 46,
+        "startChar": 55,
+        "endLine": 46,
+        "endChar": 90
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c0f27f6_e9f0bbc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e3e005_1d2fd851",
       "range": {
         "startLine": 46,
         "startChar": 55,
@@ -163,6 +235,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6d51a1c4_7b2ed390",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0673975c_e651c1cb",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fd882a04_7eff1eb3",
         "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
         "patchSetId": 2
@@ -186,6 +282,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f17fb5c3_0be7c56c",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "I just couldn\u0027t think of a better name. any suggestions?",
+      "parentUuid": "fd882a04_7eff1eb3",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3aa47449_e8c7bd90",
         "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
         "patchSetId": 2
@@ -197,6 +317,30 @@
       "writtenOn": "2021-01-21T03:38:40Z",
       "side": 1,
       "message": "I think SetTimeout is more readable. \n\nLooking at ac.WithTimeout(...).LeftClick(...), I want to change it to ac.LeftClick(...).WithTimeout(...), which is of course not possible.\n\ne.g: ac.SetTimeout(...).LeftClick(...)",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 40
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ab7068_132b74fb",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "I think the concern of calling it SetTimeout is that users would expect it to be permanent. \nfor example:\nac.SetTimeout(...).LeftClick(...)\nac.RightClick(...)\n\nReading this makes me think that RightClick would also use the timeout from SetTimeout because it comes later.\nI think that WithTimeout better explains the intent that it is temporary and will not effect later calls.\nThought?",
+      "parentUuid": "3aa47449_e8c7bd90",
       "range": {
         "startLine": 46,
         "startChar": 29,
@@ -293,6 +437,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf22f59_25a32b1a",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d405ffa2_fc37ad1c",
+      "range": {
+        "startLine": 75,
+        "startChar": 29,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdaa067e_24ec8553",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Move this function to nodewith, and added more comments.",
+      "parentUuid": "85ca16af_38a3d784",
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5609f31_870689de",
@@ -306,6 +492,30 @@
       "writtenOn": "2021-01-21T01:16:28Z",
       "side": 1,
       "message": "Do we need to define this one here? Seems like FindQuery doesn\u0027t need it to be",
+      "range": {
+        "startLine": 81,
+        "startChar": 6,
+        "endLine": 81,
+        "endChar": 11
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d974d61_5abb6cb5",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "This is needed because we have to define the variable before we use it. We also can\u0027t redefine a variable, so if we use \"let nodes \u003d node.findAll(...)\" in the query then it would break due to nodes being defined multiple times.",
+      "parentUuid": "b5609f31_870689de",
       "range": {
         "startLine": 81,
         "startChar": 6,
@@ -341,6 +551,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab784780_19afc8ef",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "I think that ClassName is too diverse, just like regular Name. We don\u0027t have a source of truth for it. Also, new ClassNames would be introduced with every code change where a developer makes a new class that can be seen from the a11y tree.",
+      "parentUuid": "b712f1b8_b7547541",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 10
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41e417ff_5027547f",
         "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
         "patchSetId": 2
@@ -352,6 +586,30 @@
       "writtenOn": "2021-01-21T01:16:28Z",
       "side": 1,
       "message": "maybe make this a constant somewhere, since this needs to match the error in findwith.go",
+      "range": {
+        "startLine": 253,
+        "startChar": 37,
+        "endLine": 253,
+        "endChar": 60
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a59ca79_bdb80b8b",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41e417ff_5027547f",
       "range": {
         "startLine": 253,
         "startChar": 37,
@@ -385,6 +643,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1a7205_6c1937d2",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd4121b1_afd40071",
+      "range": {
+        "startLine": 349,
+        "startChar": 6,
+        "endLine": 349,
+        "endChar": 15
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2527f35d_9cd20d75",
@@ -398,6 +680,30 @@
       "writtenOn": "2021-01-21T01:13:41Z",
       "side": 1,
       "message": "having the constraint that the finders need to come at the end here makes this more difficult to work with.  I\u0027m wondering if there will be other similar cases in the future.\n\nWhy is there both multiple finders, and finder.Ancestor which does the same thing?\n\nAnother point of confusion with the ...finders is which order do they go in?  Parent first or window first?  is it:\n\nui.LeftClick(window, button)\nor\nui.LeftClick(button, window)?\n\n\ngenerally I think\n\nbutton \u003d nodewith.Role(role.Button).Ancestor(window)\nui.LeftClickUntil(button, ui.Gone(button))\n\nis more readable than\n\nbutton \u003d nodewith.Role(role.Button)\nui.leftClickUntil(ui.Gone(window, button), window, button)",
+      "range": {
+        "startLine": 372,
+        "startChar": 91,
+        "endLine": 372,
+        "endChar": 110
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b5180a_94d3ac9f",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "I agree. I am changing this to only allow the use of ancestors.",
+      "parentUuid": "2527f35d_9cd20d75",
       "range": {
         "startLine": 372,
         "startChar": 91,
@@ -431,6 +737,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffeff60f_ba412b05",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/debug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Go style suggest to avoid adding the word get: go/go-style/decisions#getters",
+      "parentUuid": "521702de_f8d6d49f",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c70228a8_3fec816b",
@@ -444,6 +774,30 @@
       "writtenOn": "2021-01-21T03:38:40Z",
       "side": 1,
       "message": "first is not copied.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adbbac08_15e9823f",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c70228a8_3fec816b",
       "range": {
         "startLine": 48,
         "startChar": 8,
@@ -477,6 +831,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abd53217_71529505",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98c625e9_8c51af0b",
+      "range": {
+        "startLine": 103,
+        "startChar": 17,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ee3b9a3_c43236b0",
@@ -494,6 +872,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca3a928_4641a9d3",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Both of those would be right. That being said, I am switching it to only using the ancestor method for 2 reasons.\n1) without ancestor it is not clear which of these is correct:\n ac.LeftClick(nodewith.Name(\"parent\"), nodewith.Name(\"child\"))\n ac.LeftClick(nodewith.Name(\"child\"), nodewith.Name(\"parent\"))\n2) In case like LeftClickUntil, it is cleaner to read with the function at the end, which is not possible with the ...Finder method.\n\nLook at Matthew Warton\u0027s comment on LeftClickUntil for more details.",
+      "parentUuid": "4ee3b9a3_c43236b0",
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75765ff8_16e4ad69",
@@ -507,6 +903,30 @@
       "writtenOn": "2021-01-21T03:38:40Z",
       "side": 1,
       "message": "Why it creates a copy in these methods? In this case, \n\nnodewith.Role(...).ClassName(...).State(...)\n\nwill create multiple instances.",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 14
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adc42a64_947a6418",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "So I get that this is wasting some CPU cycles copying(though go may optimize that away), but I think it is import to avoid accidental unintentional side effects, especially when reusing a node.\nFor example someone may write:\nbutton :\u003d nodewith.Role(role.button).OnScreen().Enabled()\nstart :\u003d button.Name(\"Start\")\nstop :\u003d button.Name(\"Stop\")\n\nIf we didn\u0027t copy, button, start, and stop would all point to the same Finder that is looking for a stop button.",
+      "parentUuid": "75765ff8_16e4ad69",
       "range": {
         "startLine": 146,
         "startChar": 1,
@@ -554,6 +974,30 @@
       "side": 1,
       "message": "f.Attribute(\"name\", regexp.MustCompile(\".*\")) covers this but a bit verbose.\n\nI\u0027d suggest: func NameMatch(n string)",
       "parentUuid": "05134c69_85b37aaf",
+      "range": {
+        "startLine": 208,
+        "startChar": 5,
+        "endLine": 208,
+        "endChar": 9
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8e7277_0148bef7",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-21T18:31:46Z",
+      "side": 1,
+      "message": "Yeah, a ton more methods will be coming to this file in follow up CLs. I want to add methods for many of the state variables as well as common forms of regex, like NameContains().\n\nI just left at this because I thought it was enough to review for one CL and to make sure the library looks good.",
+      "parentUuid": "d4ad5528_b56c07c8",
       "range": {
         "startLine": 208,
         "startChar": 5,
