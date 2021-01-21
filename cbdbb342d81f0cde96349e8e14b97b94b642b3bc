@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "944749a9_9c552c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/abc_spelling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-01-21T00:35:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cca27f7_250d2e82",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 39
+      },
+      "revId": "cbdbb342d81f0cde96349e8e14b97b94b642b3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dd446bf_72513407",
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "5dd446bf_72513407",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "cbdbb342d81f0cde96349e8e14b97b94b642b3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "030996ea_c8632d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/abc_spelling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-01-21T00:35:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6cfcbb8_072f7f9a",
       "range": {
         "startLine": 120,
         "startChar": 2,
