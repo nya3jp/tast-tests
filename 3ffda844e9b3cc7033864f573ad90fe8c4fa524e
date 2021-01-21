@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91bd3fc_b0944a49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-21T18:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2849b0a1_472dc3a8",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 72
+      },
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03a13d96_054f18be",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-01-21T08:58:46Z",
       "side": 1,
       "message": "Use either state to report errors or an error return. Don\u0027t combine the two.\nIf this is designed to be moved to a separate package, use error returns. If you want to return multiple errors, just return the first or last and log the rest.\nFor the defer you can use a bool to check if everything worked as expected.",
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f4b9ffa_2b19abdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-21T18:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03a13d96_054f18be",
       "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7930a6b1_31ce00c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-21T18:48:23Z",
+      "side": 1,
+      "message": "I made the change, but it increases the complexity in exchange for compact code and simpler error handling.",
+      "parentUuid": "3cbfc362_d3090f36",
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a29e8956_a1b80eae",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-01-21T08:58:46Z",
       "side": 1,
       "message": "Use a more descriptive string. Same below.",
+      "range": {
+        "startLine": 205,
+        "startChar": 11,
+        "endLine": 205,
+        "endChar": 33
+      },
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "384d1f4c_661fcd7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-21T18:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29e8956_a1b80eae",
       "range": {
         "startLine": 205,
         "startChar": 11,

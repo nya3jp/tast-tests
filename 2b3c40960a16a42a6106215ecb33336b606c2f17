@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "830b3351_9005411e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-21T18:48:23Z",
+      "side": 1,
+      "message": "It has to be here or the test will fail. Only images that are built with chromeos-base/sirenia can run this test and that would be brought in either by USE\u003dmanatee or USE\u003dsirenia.\n\nI mistakenly left it commented out when I uploaded because locally I manually deployed sirenia. Currently only amd64-generic and arm64-generic have USE\u003dsirenia set. USE\u003dmanatee is only set by eve-manatee at the moment, but that will change as we add overlays.",
+      "parentUuid": "839c8892_b2412ca5",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16bd8a39_4d9fc5e8",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "error.Wrap should be used to disambiguate errors from different contexts. You are already using it below, just use different strings for different steps.",
       "parentUuid": "4d208146_6ee9e79f",
+      "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "835e0b9b_6bb0aac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-21T18:48:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "74b19e62_e509f9cb",
       "revId": "2b3c40960a16a42a6106215ecb33336b606c2f17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
