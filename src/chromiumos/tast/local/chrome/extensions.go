@@ -7,6 +7,7 @@ package chrome
 import (
 	"context"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/extension"
 )
 
@@ -21,5 +22,9 @@ func ComputeExtensionID(dir string) (string, error) {
 // This introduces a variable named "tast" to its scope, and it is the
 // caller's responsibility to avoid the conflict.
 func AddTastLibrary(ctx context.Context, conn *Conn) error {
-	return extension.AddTastLibrary(ctx, conn)
+	// Ensure the page is loaded so the tast library will be added properly.
+	if err := conn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		return errors.Wrap(err, "failed waiting for page to load")
+	}
+	return conn.Eval(ctx, extension.TastLibraryJS, nil)
 }
