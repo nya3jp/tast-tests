@@ -16,6 +16,46 @@
       "message": "Syntax for --vmodule looks correct to me",
       "revId": "15a2f48c0d4315ed979832b89644fb891ed6d92c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02822918_80f2d6f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T04:25:06Z",
+      "side": 1,
+      "message": "LGTM with small fix.\n",
+      "revId": "15a2f48c0d4315ed979832b89644fb891ed6d92c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03960075_54d6947d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T04:25:06Z",
+      "side": 1,
+      "message": "c.cfg.loginMode\n\nThis was changed very recently in my CL: crrev.com/c/2632548",
+      "range": {
+        "startLine": 615,
+        "startChar": 6,
+        "endLine": 615,
+        "endChar": 15
+      },
+      "revId": "15a2f48c0d4315ed979832b89644fb891ed6d92c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
