@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
      Use of this source code is governed by a BSD-style license that can be
      found in the LICENSE file.
 -->
@@ -8,16 +8,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewActivity">
+    tools:context=".SecondActivity">
 
+    <!-- Add a margin, as switching activities causes caption bar to be visible -->
     <View
         android:id="@+id/view"
+        android:layout_marginTop="50dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:foreground="@android:color/black" />
-
-    <Button
-        android:id="@+id/button"
-        android:text="Open New Activity" />
+        android:foreground="#FF0000" />
 
 </LinearLayout>
