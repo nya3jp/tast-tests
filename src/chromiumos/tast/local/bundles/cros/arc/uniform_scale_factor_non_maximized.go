@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -41,16 +42,11 @@ func init() {
 func baselinePixelCount(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC) (int, error) {
 	const cleanupTime = 10 * time.Second
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to set tablet mode to false")
-	}
-	defer cleanup(ctx)
-
 	act, err := perappdensity.StartActivityWithWindowState(ctx, tconn, a, arc.WindowStateNormal, perappdensity.ViewActivity)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to start activity")
 	}
+	defer act.Close()
 	defer act.Stop(ctx, tconn)
 
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
@@ -103,12 +99,32 @@ func UniformScaleFactorNonMaximized(ctx context.Context, s *testing.State) {
 	// Restore shelf state to original behavior.
 	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to set tablet mode to false: ", err)
+	}
+	defer cleanup(ctx)
+
 	baselinePixelCount, err := baselinePixelCount(ctx, cr, tconn, a)
 	if err != nil {
 		s.Fatal("Failed to get baseline pixel count: ", err)
 	}
 
-	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateNormal, baselinePixelCount); err != nil {
-		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
+	if err := arc.BootstrapCommand(ctx, perappdensity.Setprop, perappdensity.UniformScaleFactorSetting, "1").Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to set developer option: ", err)
+	}
+	defer arc.BootstrapCommand(ctx, perappdensity.Setprop, perappdensity.UniformScaleFactorSetting, "0").Run(testexec.DumpLogOnError)
+
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	act, err := perappdensity.StartActivityWithWindowState(ctx, tconn, a, arc.WindowStateNormal, perappdensity.ViewActivity)
+	if err != nil {
+		s.Fatal("Failed to start activity after enabling uniform scale factor: ", err)
+	}
+	defer act.Close()
+
+	if err := perappdensity.ConfirmPixelCountInActivitySurface(ctx, cr, a, color.Black, baselinePixelCount, act); err != nil {
+		s.Fatal("Failed to confirm number of pixels after enabling uniform scale factor: ", err)
 	}
 }
