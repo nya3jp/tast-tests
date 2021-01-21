@@ -6,12 +6,18 @@ package arc
 
 import (
 	"context"
+	"image/color"
 	"time"
 
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/perappdensity"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -30,10 +36,19 @@ func init() {
 }
 
 func UniformScaleFactor(ctx context.Context, s *testing.State) {
-	const squareSidePx = 100
+	const (
+		squareSidePx   = 100
+		viewID         = perappdensity.PackageName + ":id/" + "view"
+		secondActivity = ".SecondActivity"
+	)
 
 	cr := s.PreValue().(arc.PreData).Chrome
 	a := s.PreValue().(arc.PreData).ARC
+
+	if err := arc.BootstrapCommand(ctx, perappdensity.Setprop, perappdensity.UniformScaleFactorSetting, "1").Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to set developer option: ", err)
+	}
+	defer arc.BootstrapCommand(ctx, perappdensity.Setprop, perappdensity.UniformScaleFactorSetting, "0").Run(testexec.DumpLogOnError)
 
 	dd, err := perappdensity.MeasureDisplayDensity(ctx, a)
 	if err != nil {
@@ -54,6 +69,11 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get internal display info: ", err)
 	}
 
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get display mode: ", err)
+	}
+
 	origShelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, dispInfo.ID)
 	if err != nil {
 		s.Fatal("Failed to get shelf behavior: ", err)
@@ -66,8 +86,61 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 	// Restore shelf state to original behavior.
 	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
-	wantPixelCount := (int)((dd * squareSidePx) * (dd * squareSidePx))
-	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateFullscreen, wantPixelCount); err != nil {
-		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
 	}
+	defer d.Close(ctx)
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
+	if err != nil {
+		s.Fatal("Failed to set tablet mode to true: ", err)
+	}
+	defer cleanup(ctx)
+
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	viewAct, err := perappdensity.StartActivityWithWindowState(ctx, tconn, a, arc.WindowStateFullscreen, perappdensity.ViewActivity)
+	if err != nil {
+		s.Fatal("Failed to start activity after enabling uniform scale factor: ", err)
+	}
+	defer viewAct.Close()
+
+	squarePixelCount := (int)((dd * squareSidePx) * (dd * squareSidePx))
+	if err := perappdensity.ConfirmPixelCountInActivitySurface(ctx, cr, a, color.Black, squarePixelCount, viewAct); err != nil {
+		s.Fatal("Failed to confirm uniform scale factor state on ViewActivity: ", err)
+	}
+
+	view := d.Object(ui.PackageName(perappdensity.PackageName),
+		ui.ClassName("android.view.View"),
+		ui.ID(viewID))
+
+	viewBounds, err := view.GetBounds(ctx)
+	if err != nil {
+		s.Fatal("Failed to get view bounds: ", err)
+	}
+
+	// A point inside of the view, which we will click.
+	point := coords.NewPoint(
+		int(float64(squareSidePx)/dispMode.DeviceScaleFactor*perappdensity.UniformScaleFactor),
+		int(float64(viewBounds.Left+viewBounds.Width/2)/dispMode.DeviceScaleFactor*perappdensity.UniformScaleFactor))
+	if err := mouse.Click(ctx, tconn, point, mouse.LeftButton); err != nil {
+		s.Fatal("Failed to click on the view: ", err)
+	}
+
+	secondAct, err := arc.NewActivity(a, perappdensity.PackageName, secondActivity)
+	if err != nil {
+		s.Fatal("Failed to get secondActivity: ", err)
+	}
+	defer secondAct.Close()
+
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for idle: ", err)
+	}
+
+	if err := perappdensity.ConfirmPixelCountInActivitySurface(ctx, cr, a, color.RGBA{255, 0, 0, 255}, squarePixelCount, secondAct); err != nil {
+		s.Fatal("Failed to confirm uniform scale factor state after switching activities: ", err)
+	}
+
 }
