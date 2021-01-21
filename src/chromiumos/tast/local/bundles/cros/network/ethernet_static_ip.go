@@ -161,7 +161,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get device: ", err)
 	}
-	deviceProp, err := device.GetProperties(ctx)
+	deviceProp, err := device.GetShillProperties(ctx)
 	if err != nil {
 		s.Fatal("Failed to get properties of device: ", err)
 	}
