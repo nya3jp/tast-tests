@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70aa72ed_c48fba88",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T08:27:34Z",
+      "side": 1,
+      "message": "This is a pure code move, let us do it separately.",
+      "parentUuid": "81067255_598ff3be",
+      "revId": "7878aa7dc51a21ba4e8b109e57e5348cfaa6428c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc674178_7e6ee068",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f48e60fc_c1a08140",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T08:27:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc674178_7e6ee068",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "7878aa7dc51a21ba4e8b109e57e5348cfaa6428c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04abfb89_56601f8a",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-01-21T06:42:04Z",
       "side": 1,
       "message": "ditto\n\nuid, err :\u003d strconv.ParseInt(...\nif err !\u003d nil {\n  ...\n}\n\ngid, err :\u003d ...",
+      "revId": "7878aa7dc51a21ba4e8b109e57e5348cfaa6428c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "789ae210_0c3bdab4",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T08:27:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "04abfb89_56601f8a",
       "revId": "7878aa7dc51a21ba4e8b109e57e5348cfaa6428c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
