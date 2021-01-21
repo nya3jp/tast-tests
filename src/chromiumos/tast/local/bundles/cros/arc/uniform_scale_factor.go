@@ -6,8 +6,10 @@ package arc
 
 import (
 	"context"
+	"image/color"
 	"time"
 
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/perappdensity"
 	"chromiumos/tast/local/chrome/ash"
@@ -30,7 +32,10 @@ func init() {
 }
 
 func UniformScaleFactor(ctx context.Context, s *testing.State) {
-	const squareSidePx = 100
+	const (
+		squareSidePx = 100
+		viewID       = perappdensity.PackageName + ":id/" + "view"
+	)
 
 	cr := s.PreValue().(arc.PreData).Chrome
 	a := s.PreValue().(arc.PreData).ARC
@@ -54,6 +59,12 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get internal display info: ", err)
 	}
 
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	defer d.Close(ctx)
+
 	origShelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, dispInfo.ID)
 	if err != nil {
 		s.Fatal("Failed to get shelf behavior: ", err)
@@ -67,7 +78,20 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
 	wantPixelCount := (int)((dd * squareSidePx) * (dd * squareSidePx))
-	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateFullscreen, wantPixelCount); err != nil {
+	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateFullscreen, wantPixelCount, color.Black); err != nil {
+		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
+	}
+
+	if err := d.Object(ui.ID(viewID)).Click(ctx); err != nil {
+		s.Fatalf("Failed to click %s view: %v", viewID, err)
+	}
+
+	var colorRed color.RGBA
+	colorRed.R = 255
+	colorRed.G = 0
+	colorRed.B = 0
+	colorRed.A = 255
+	if err := perappdensity.VerifyPixelsWithUSFEnabled(ctx, cr, tconn, a, arc.WindowStateFullscreen, wantPixelCount, colorRed); err != nil {
 		s.Fatal("Failed to confirm state after enabling uniform scale factor: ", err)
 	}
 }
