@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3672e02_e95e0221",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T08:16:30Z",
+      "side": 1,
+      "message": "Yes, that sounds right. I\u0027ve moved TestConn to the driver package.",
+      "parentUuid": "921524af_9e7c605c",
+      "revId": "16b937fdc1db424fbe282fe7d34d20855b380453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d47ea6b_7ebb3b56",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-21T07:16:23Z",
       "side": 1,
       "message": "So, I expect that on error case, sess should be closed, but it looks not.",
+      "range": {
+        "startLine": 1064,
+        "startChar": 13,
+        "endLine": 1064,
+        "endChar": 39
+      },
+      "revId": "16b937fdc1db424fbe282fe7d34d20855b380453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6a17b1_58a3a087",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T08:16:30Z",
+      "side": 1,
+      "message": "I should have said a session is returned even in the case of errors. I can return a session only when it succeeds, but it makes both this function and its caller complicated. Let me update comments.",
+      "parentUuid": "6d47ea6b_7ebb3b56",
       "range": {
         "startLine": 1064,
         "startChar": 13,
