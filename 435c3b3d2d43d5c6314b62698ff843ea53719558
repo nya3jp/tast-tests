@@ -16,6 +16,52 @@
       "message": "Fixed. Could you PTALA? Thanks!",
       "revId": "435c3b3d2d43d5c6314b62698ff843ea53719558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f94946_50056971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-21T19:03:29Z",
+      "side": 1,
+      "message": "please consider another term? this not strictly bound to obb. OBB is only source. Per your test it is more resource unpacking that includes writing to data directory.\nWDYT?",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "435c3b3d2d43d5c6314b62698ff843ea53719558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01928439_b3267299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-21T19:03:29Z",
+      "side": 1,
+      "message": "could installing from zip be part of InstallMultiple. I am not very sure that we would have real use case when we need to pass apks separately. WDYT?",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 44
+      },
+      "revId": "435c3b3d2d43d5c6314b62698ff843ea53719558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
