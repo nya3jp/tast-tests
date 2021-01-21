@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d21488_aeceba7a",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-21T04:29:24Z",
+      "side": 1,
+      "message": "I see, as long as this situation is not expected printing the log should be fine. Thanks!",
+      "parentUuid": "cb87709e_a60d85ab",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 75
+      },
+      "revId": "a952e78fd0c1626ba82184b260109c79aa948cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5629370b_2b8806c7",
