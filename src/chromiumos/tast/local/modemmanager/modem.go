@@ -17,6 +17,7 @@ const (
 	dbusModemmanagerPath           = "/org/freedesktop/ModemManager1"
 	dbusModemmanagerService        = "org.freedesktop.ModemManager1"
 	dbusModemmanagerModemInterface = "org.freedesktop.ModemManager1.Modem"
+	dbusModemmanagerSimInterface   = "org.freedesktop.ModemManager1.Sim"
 )
 
 // Modem wraps a Modemmanager.Modem D-Bus object.
@@ -51,4 +52,13 @@ func NewModem(ctx context.Context) (*Modem, error) {
 		return nil, err
 	}
 	return &Modem{ph}, nil
+}
+
+// GetSimProperties creates a PropertyHolder for the Sim object and returns the associated Properties.
+func (m *Modem) GetSimProperties(ctx context.Context, simPath dbus.ObjectPath) (*dbusutil.Properties, error) {
+	ph, err := dbusutil.NewPropertyHolder(ctx, dbusModemmanagerService, dbusModemmanagerSimInterface, simPath)
+	if err != nil {
+		return nil, err
+	}
+	return ph.GetDBusProperties(ctx)
 }
