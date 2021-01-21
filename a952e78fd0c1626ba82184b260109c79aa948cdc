@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb87709e_a60d85ab",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T02:25:04Z",
+      "side": 1,
+      "message": "When we saw this message, which means there is a bug in the system, and we would need to fix it.\n\nThis message would be helpful to help us find out the wired state is cause by previous test(autotest/tast-test) or not.",
+      "parentUuid": "98ce27f3_728b89d3",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 75
+      },
+      "revId": "a952e78fd0c1626ba82184b260109c79aa948cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5629370b_2b8806c7",
         "filename": "src/chromiumos/tast/local/bundlemain/main.go",
         "patchSetId": 8
