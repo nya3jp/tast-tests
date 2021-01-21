@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f141056a_5b055b58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T06:42:04Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "7878aa7dc51a21ba4e8b109e57e5348cfaa6428c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81067255_598ff3be",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T06:42:04Z",
+      "side": 1,
+      "message": "(this is from the original code so I mark it as optional but):\nLet\u0027s simplify the implementation.\n\nreturn filepath.Walk(dir, func(...) error {\n  ...\n  return os.Chown(p, sysutil.ChronosUID, sysutil.ChronosGID)\n})",
+      "revId": "7878aa7dc51a21ba4e8b109e57e5348cfaa6428c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc674178_7e6ee068",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T06:42:04Z",
+      "side": 1,
+      "message": "nit/style\n\nwe often write\n\nu, err :\u003d user.Lookup(username)\nif err !\u003d nil {\n ...",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "7878aa7dc51a21ba4e8b109e57e5348cfaa6428c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04abfb89_56601f8a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T06:42:04Z",
+      "side": 1,
+      "message": "ditto\n\nuid, err :\u003d strconv.ParseInt(...\nif err !\u003d nil {\n  ...\n}\n\ngid, err :\u003d ...",
+      "revId": "7878aa7dc51a21ba4e8b109e57e5348cfaa6428c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
