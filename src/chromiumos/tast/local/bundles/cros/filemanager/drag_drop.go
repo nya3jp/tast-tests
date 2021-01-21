@@ -28,6 +28,7 @@ func init() {
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",
 		},
+		Timeout:      4 * time.Minute,
 		Attr:         []string{"group:mainline"},
 		Data:         []string{"drag_drop_manifest.json", "drag_drop_background.js", "drag_drop_window.js", "drag_drop_window.html"},
 		SoftwareDeps: []string{"chrome"},
