@@ -16,6 +16,184 @@
       "message": "This definitely isn\u0027t full or done, but I feel that this is enough of a CL to get a review of the underlying structure. Definitely don\u0027t want to make the CL larger. Will definitely have follow up CLs to fill out the library.",
       "revId": "112a53064cac83e02af84b28314947a48289faf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9f1d81_51886375",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-21T01:13:41Z",
+      "side": 1,
+      "message": "Looks awesome :) please merge so we can use it.",
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c0e6b8_56a0437d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-21T01:13:41Z",
+      "side": 1,
+      "message": "would be better to call this ui for readability I think.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd80b2ef_44230529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-21T01:13:41Z",
+      "side": 1,
+      "message": "setWallpaperMenu would make things more readable",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 13
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e3e005_1d2fd851",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-21T01:13:41Z",
+      "side": 1,
+      "message": "From a readability standpoint I think the args here should be swapped.  left click x until y.",
+      "range": {
+        "startLine": 46,
+        "startChar": 55,
+        "endLine": 46,
+        "endChar": 90
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0673975c_e651c1cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-21T01:13:41Z",
+      "side": 1,
+      "message": "change",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd882a04_7eff1eb3",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-21T01:13:41Z",
+      "side": 1,
+      "message": "optional nit: I feel like naming this AutomationContext is exposing implementation details unnecessarily.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2527f35d_9cd20d75",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-21T01:13:41Z",
+      "side": 1,
+      "message": "having the constraint that the finders need to come at the end here makes this more difficult to work with.  I\u0027m wondering if there will be other similar cases in the future.\n\nWhy is there both multiple finders, and finder.Ancestor which does the same thing?\n\nAnother point of confusion with the ...finders is which order do they go in?  Parent first or window first?  is it:\n\nui.LeftClick(window, button)\nor\nui.LeftClick(button, window)?\n\n\ngenerally I think\n\nbutton \u003d nodewith.Role(role.Button).Ancestor(window)\nui.LeftClickUntil(button, ui.Gone(button))\n\nis more readable than\n\nbutton \u003d nodewith.Role(role.Button)\nui.leftClickUntil(ui.Gone(window, button), window, button)",
+      "range": {
+        "startLine": 372,
+        "startChar": 91,
+        "endLine": 372,
+        "endChar": 110
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05134c69_85b37aaf",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-21T01:13:41Z",
+      "side": 1,
+      "message": "I assume NameRegex is coming in a subsequent CL?",
+      "range": {
+        "startLine": 208,
+        "startChar": 5,
+        "endLine": 208,
+        "endChar": 9
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
