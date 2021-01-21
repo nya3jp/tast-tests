@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18acbb2f_404e5ea8",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T01:40:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b603832e_cf766721",
+      "range": {
+        "startLine": 138,
+        "startChar": 63,
+        "endLine": 139,
+        "endChar": 48
+      },
+      "revId": "6b78fea7fedbef4ca0f39ae3167ab604b5c3b642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56310257_ab74165f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-21T01:10:40Z",
       "side": 1,
       "message": "style: Please try to minimize nest levels for readability. In this case you can use \"continue\" to reduce one level.\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 42
+      },
+      "revId": "6b78fea7fedbef4ca0f39ae3167ab604b5c3b642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "914d6638_af47a1fd",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T01:40:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56310257_ab74165f",
       "range": {
         "startLine": 144,
         "startChar": 3,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53687243_882fc5e4",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T01:40:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc290ab0_7f25d6f1",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "6b78fea7fedbef4ca0f39ae3167ab604b5c3b642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9894fdb_192b2bb7",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0abbcf0c_99ff52b0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T01:40:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9894fdb_192b2bb7",
+      "range": {
+        "startLine": 181,
+        "startChar": 9,
+        "endLine": 181,
+        "endChar": 35
+      },
+      "revId": "6b78fea7fedbef4ca0f39ae3167ab604b5c3b642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84520a1a_de89d486",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-01-21T01:10:40Z",
       "side": 1,
       "message": "We don\u0027t need to handle nil specially. string([]byte(nil)) is an empty string.",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 2
+      },
+      "revId": "6b78fea7fedbef4ca0f39ae3167ab604b5c3b642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e95256_a29d15c8",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-21T01:40:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84520a1a_de89d486",
       "range": {
         "startLine": 237,
         "startChar": 1,
