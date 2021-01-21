@@ -34,7 +34,7 @@ func NewService(ctx context.Context, path dbus.ObjectPath) (*Service, error) {
 
 // GetDevice returns the Device object corresponding to the Service object
 func (s *Service) GetDevice(ctx context.Context) (*Device, error) {
-	serviceProps, err := s.GetProperties(ctx)
+	serviceProps, err := s.GetShillProperties(ctx)
 	if err != nil {
 		return nil, err
 	}
