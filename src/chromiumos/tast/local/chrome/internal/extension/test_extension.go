@@ -134,7 +134,7 @@ func writeTestExtension(dir, key string) (id string, err error) {
 	for _, f := range []struct{ name, data string }{
 		{"manifest.json", manifest},
 		// Use tast library by default in Test extension.
-		{"background.js", tastLibrary},
+		{"background.js", TastLibraryJS},
 	} {
 		if err = ioutil.WriteFile(filepath.Join(dir, f.name), []byte(f.data), 0644); err != nil {
 			return "", err
@@ -148,7 +148,7 @@ func writeTestExtension(dir, key string) (id string, err error) {
 }
 
 const (
-	// tastLibrary defines the utility library for Tast tests in JavaScript.
+	// TastLibraryJS defines the utility library for Tast tests in JavaScript.
 	// tast.promisify:
 	//   it takes Chrome style async API, which satisfies:
 	//   - The last param is a completion callback.
@@ -168,7 +168,7 @@ const (
 	//   expected context. tast.bind can help the situation:
 	//
 	//     tast.promisify(tast.bind(chrome.accessibilityFeatures.spokenFeedback, "set"))
-	tastLibrary = `
+	TastLibraryJS = `
 tast = {};
 tast.promisify = function(f) {
   return (...args) => new Promise((resolve, reject) => {
