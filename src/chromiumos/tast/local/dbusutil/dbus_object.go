@@ -18,6 +18,7 @@ type DBusObject struct {
 }
 
 const dbusGetPropsMethod = "org.freedesktop.DBus.Properties.Get"
+const dbusGetAllPropsMethod = "org.freedesktop.DBus.Properties.GetAll"
 
 // NewDBusObject creates a DBusObject.
 func NewDBusObject(ctx context.Context, service, iface string, path dbus.ObjectPath) (*DBusObject, error) {
@@ -48,9 +49,14 @@ func (d *DBusObject) Call(ctx context.Context, method string, args ...interface{
 	return d.obj.CallWithContext(ctx, d.iface+"."+method, 0, args...)
 }
 
-// Get calls org.freedesktop.DBus.Properties.Get and store the result into val.
+// Get calls org.freedesktop.DBus.Properties.Get and stores the result into val.
 func (d *DBusObject) Get(ctx context.Context, propName string, val interface{}) error {
 	return d.obj.CallWithContext(ctx, dbusGetPropsMethod, 0, d.iface, propName).Store(val)
+}
+
+// GetAll calls org.freedesktop.DBus.Properties.GetAll and stores the result into val.
+func (d *DBusObject) GetAll(ctx context.Context, val interface{}) error {
+	return d.obj.CallWithContext(ctx, dbusGetAllPropsMethod, 0, d.iface).Store(val)
 }
 
 // CreateWatcher returns a SignalWatcher to observe the specified signals.
