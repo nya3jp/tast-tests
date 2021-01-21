@@ -55,7 +55,7 @@ func waitForIfaceRemoval(ctx context.Context, pw *shill.PropertiesWatcher, iface
 			if err != nil {
 				return err
 			}
-			devProps, err := dev.GetProperties(ctx)
+			devProps, err := dev.GetShillProperties(ctx)
 			if err != nil {
 				if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
 					// This error is forgivable as a device may go down anytime.
