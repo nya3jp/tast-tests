@@ -228,13 +228,15 @@ const (
 
 var showAPKPathWarningOnce sync.Once
 
-// Install installs an APK file to the Android system.
+// install install an APK or an split APK to the Android system.
 // By default, it uses InstallOptionReplaceApp and InstallOptionAllowVersionDowngrade.
-func (d *Device) Install(ctx context.Context, path string, installOptions ...InstallOption) error {
-	if strings.HasPrefix(path, apkPathPrefix) {
-		showAPKPathWarningOnce.Do(func() {
-			testing.ContextLog(ctx, "WARNING: When files under tast-tests/android are modified, APKs on the DUT should be pushed manually. See tast-tests/android/README.md")
-		})
+func (d *Device) install(ctx context.Context, adbCommand string, apks []string, installOptions ...InstallOption) error {
+	for _, apk := range apks {
+		if strings.HasPrefix(apk, apkPathPrefix) {
+			showAPKPathWarningOnce.Do(func() {
+				testing.ContextLog(ctx, "WARNING: When files under tast-tests/android are modified, APKs on the DUT should be pushed manually. See tast-tests/android/README.md")
+			})
+		}
 	}
 
 	if err := d.ShellCommand(ctx, "settings", "put", "global", "verifier_verify_adb_installs", "0").Run(testexec.DumpLogOnError); err != nil {
@@ -243,11 +245,13 @@ func (d *Device) Install(ctx context.Context, path string, installOptions ...Ins
 
 	installOptions = append(installOptions, InstallOptionReplaceApp)
 	installOptions = append(installOptions, InstallOptionAllowVersionDowngrade)
-	commandArgs := []string{"install"}
+	commandArgs := []string{adbCommand}
 	for _, installOption := range installOptions {
 		commandArgs = append(commandArgs, string(installOption))
 	}
-	commandArgs = append(commandArgs, path)
+	for _, apk := range apks {
+		commandArgs = append(commandArgs, apk)
+	}
 	out, err := d.Command(ctx, commandArgs...).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return err
@@ -260,9 +264,21 @@ func (d *Device) Install(ctx context.Context, path string, installOptions ...Ins
 		return err
 	}
 	if !matched {
-		return errors.Errorf("failed to install %v %q", path, string(out))
+		return errors.Errorf("failed to install %v %q", apks, string(out))
 	}
 	return nil
+}
+
+// Install installs an APK file to the Android system.
+// By default, it uses InstallOptionReplaceApp and InstallOptionAllowVersionDowngrade.
+func (d *Device) Install(ctx context.Context, path string, installOptions ...InstallOption) error {
+	return d.install(ctx, "install", []string{path}, installOptions...)
+}
+
+// InstallMultiple installs a split APK to the Android system.
+// By default, it uses InstallOptionReplaceApp and InstallOptionAllowVersionDowngrade.
+func (d *Device) InstallMultiple(ctx context.Context, apks []string, installOptions ...InstallOption) error {
+	return d.install(ctx, "install-multiple", apks, installOptions...)
 }
 
 // InstalledPackages returns a set of currently-installed packages, e.g. "android".
