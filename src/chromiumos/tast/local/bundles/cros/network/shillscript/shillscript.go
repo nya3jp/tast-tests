@@ -259,7 +259,7 @@ func GetProfileList(ctx context.Context) ([]*shill.Profile, error) {
 		return nil, errors.Wrap(err, "failed creating shill manager object")
 	}
 	// Refresh the in-memory profile list.
-	if _, err := manager.GetProperties(ctx); err != nil {
+	if _, err := manager.GetShillProperties(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed refreshing the in-memory profile list")
 	}
 	// Get current profiles.
