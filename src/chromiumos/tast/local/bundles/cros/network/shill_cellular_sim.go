@@ -26,7 +26,7 @@ func ShillCellularSim(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper")
 	}
-	if properties, err := helper.Device.GetProperties(ctx); err != nil {
+	if properties, err := helper.Device.GetShillProperties(ctx); err != nil {
 		s.Fatal("Failed to get Device properties: ", err)
 	} else if simPresent, err := properties.GetBool(shillconst.DevicePropertyCellularSIMPresent); err != nil {
 		s.Fatal("Failed to get SIMPresent property: ", err)
