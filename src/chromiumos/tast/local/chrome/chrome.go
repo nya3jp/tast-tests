@@ -408,16 +408,14 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		}
 	}
 
-	// If testExtCon was created, free all remote JS objects.
-	if c.testExtConn != nil {
-		if err := driver.PrivateReleaseAllObjects(ctx, c.testExtConn); err != nil {
-			return errors.Wrap(err, "failed to free tast remote JS object group")
-		}
-	}
-
 	tconn, err := c.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get test API connection")
+	}
+
+	// Free all remote JS objects in the test extension.
+	if err := driver.PrivateReleaseAllObjects(ctx, tconn.Conn); err != nil {
+		return errors.Wrap(err, "failed to free tast remote JS object group")
 	}
 
 	if c.cfg.vkEnabled {
