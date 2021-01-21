@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddddab2d_9dee6ef8",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-21T18:57:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "326d266b_12978859",
+      "revId": "ae713e4c0fa46cc29daee5ff8673b74315b569be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0948b9f_0c874ded",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-01-21T07:29:42Z",
       "side": 1,
       "message": "nit: this can be simplified.\n\ncommandArgs \u003d append(commandArgs, apk...)",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 2
+      },
+      "revId": "ae713e4c0fa46cc29daee5ff8673b74315b569be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50787dac_74f058f2",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-21T18:57:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0948b9f_0c874ded",
       "range": {
         "startLine": 252,
         "startChar": 1,
