@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0d115f_feae510c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-21T06:48:15Z",
+      "side": 1,
+      "message": "According to the commit message, conceptually these *Conn should be a part of Session\u0027s responsibility, because they\u0027re tied to the Chrome\u0027s process lifetime.",
+      "revId": "bfc33323e23d3d2879c60205849edcf997c8480d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
