@@ -69,6 +69,24 @@
       "parentUuid": "05a168a9_790c0995",
       "revId": "7fc258a45771ef6e67b17be33e51a9a76b542858",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "078005a0_0dfbae35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-21T22:05:39Z",
+      "side": 1,
+      "message": "I made Get/NewProperties use the conventional form and renamed the existing functions to Get/NewShillProperties in the follow-up CL (extracted from the modemmanager changes).",
+      "parentUuid": "50aaff1c_73b502f0",
+      "revId": "7fc258a45771ef6e67b17be33e51a9a76b542858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
