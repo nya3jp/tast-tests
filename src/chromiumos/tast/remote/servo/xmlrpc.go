@@ -98,6 +98,19 @@ func intToXMLInteger(i int) (string, error) {
 	return strconv.FormatInt(int64(i), 10), nil
 }
 
+// xmlDoubleToFloat64 converts double-like strings such as "1.5" into float64s.
+func xmlDoubleToFloat64(s string) (float64, error) {
+	if len(s) == 0 {
+		return 0.0, errors.New("xmlDoubleToFloat64 got empty xml value")
+	}
+	return strconv.ParseFloat(s, 64)
+}
+
+// float64ToXMLDouble converts a Go float64 to an XML-RPC double-like string.
+func float64ToXMLDouble(f float64) string {
+	return strconv.FormatFloat(f, 'f', -1, 64)
+}
+
 // newValue creates an XML-RPC <value>.
 func newValue(in interface{}) (value, error) {
 	// TODO(jeffcarp): Support more data types.
@@ -112,6 +125,8 @@ func newValue(in interface{}) (value, error) {
 			return value{}, err
 		}
 		return value{Int: i}, nil
+	case float64:
+		return value{Double: float64ToXMLDouble(v)}, nil
 	}
 
 	return value{}, errors.Errorf("%q not of supported type", in)
@@ -179,6 +194,12 @@ func (r *response) unpack(out []interface{}) error {
 				return err
 			}
 			*o = i
+		case *float64:
+			f, err := xmlDoubleToFloat64(p.Value.Double)
+			if err != nil {
+				return err
+			}
+			*o = f
 		}
 	}
 
