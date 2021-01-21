@@ -10,9 +10,8 @@ import (
 	"image"
 	"image/color"
 	"math"
-	"time"
 
-	"chromiumos/tast/ctxutil"
+	//"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/screen"
@@ -35,6 +34,10 @@ const (
 	PackageName = "org.chromium.arc.testapp.perappdensitytest"
 	// ViewActivity is the name of view (main) activity.
 	ViewActivity = ".ViewActivity"
+	// UniformScaleFactor applies 1.25 scaling.
+	UniformScaleFactor = 1.25
+	// UniformScaleFactorSetting string.
+	UniformScaleFactorSetting = "persist.sys.ui.uniform_app_scaling"
 )
 
 // Change is a struct containing information to perform density changes.
@@ -55,17 +58,17 @@ func (dc *Change) Execute(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, ew
 		return errors.Wrapf(err, "could not change scale factor using %q", dc.KeySequence)
 	}
 
-	if err := confirmBlackPixelCount(ctx, cr, a, int(dc.BlackPixelCount), screenshot.GrabScreenshot); err != nil {
+	if err := confirmPixelCount(ctx, cr, a, int(dc.BlackPixelCount), screenshot.GrabScreenshot, color.Black); err != nil {
 		return errors.Wrap(err, "could not check number of black pixels")
 	}
 	return nil
 }
 
-// confirmBlackPixelCount confirms that the number of black pixels is equal to wantPixelCount.
-// As the drawing of the black pixels is handled by the Android framework, which does this and
+// confirmPixelCount confirms that the number of clr pixels is equal to wantPixelCount.
+// As the drawing of the colored pixels is handled by the Android framework, which does this and
 // scale factor computation with floats, we need to account for small tolerance when performing
 // the diff calculation.
-func confirmBlackPixelCount(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, wantPixelCount int, grabScreenshot func(context.Context, *chrome.Chrome) (image.Image, error)) error {
+func confirmPixelCount(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, wantPixelCount int, grabScreenshot func(context.Context, *chrome.Chrome) (image.Image, error), clr color.Color) error {
 	// Need to wait for relayout to complete, before grabbing new screenshot.
 	if err := screen.WaitForStableFrames(ctx, a, PackageName); err != nil {
 		return errors.Wrap(err, "failed waiting for updated frames")
@@ -74,11 +77,11 @@ func confirmBlackPixelCount(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, 
 	if err != nil {
 		return errors.Wrap(err, "failed to grab screenshot")
 	}
-	n := screenshot.CountPixels(img, color.Black)
+	n := screenshot.CountPixels(img, clr)
 	diff := math.Abs(float64(wantPixelCount-n) / float64(wantPixelCount))
 	// Allow a small epsilon as wantPixelCount is computed as a float.
 	if diff > 0.01 {
-		return errors.Errorf("wrong number of black pixels, got: %d, want: %d", n, wantPixelCount)
+		return errors.Errorf("wrong number of %+v pixels, got: %d, want: %d", clr, n, wantPixelCount)
 	}
 	return nil
 }
@@ -120,8 +123,10 @@ func StartActivityWithWindowState(ctx context.Context, tconn *chrome.TestConn, a
 		return nil, errors.Wrap(err, "failed to create new activity")
 	}
 
-	if err := act.Start(ctx, tconn); err != nil {
-		return nil, errors.Wrap(err, "failed to start the activity")
+	if activity == ViewActivity {
+		if err := act.Start(ctx, tconn); err != nil {
+			return nil, errors.Wrap(err, "failed to start the activity")
+		}
 	}
 
 	if err := ash.WaitForVisible(ctx, tconn, PackageName); err != nil {
@@ -143,37 +148,9 @@ func StartActivityWithWindowState(ctx context.Context, tconn *chrome.TestConn, a
 	return act, nil
 }
 
-// VerifyPixelsWithUSFEnabled enables Uniform Scale Factor(USF), which applies a scale factor of 1.25. It then confirms that the
-// 1.25 scaling has been correctly applied by checking the number of pixels drawn.
-// nonScaledPixelCount is the size of the drawn square, before USF is applied. This value is used to compute the expected of the
-// drawn square.
-func VerifyPixelsWithUSFEnabled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, windowState arc.WindowState, nonScaledPixelCount int) error {
-	const (
-		// Uniform scale factor applies 1.25 scaling.
-		uniformScaleFactor        = 1.25
-		uniformScaleFactorSetting = "persist.sys.ui.uniform_app_scaling"
-		cleanupTime               = 10 * time.Second // time reserved for cleanup.
-	)
-	if err := arc.BootstrapCommand(ctx, Setprop, uniformScaleFactorSetting, "1").Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to set developer option")
-	}
-
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		return errors.Wrap(err, "failed to set tablet mode to false")
-	}
-	defer cleanup(ctx)
-
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
-
-	testing.ContextLog(ctx, "Running app, with uniform scaling enabled")
-	act, err := StartActivityWithWindowState(ctx, tconn, a, windowState, ViewActivity)
-	if err != nil {
-		return errors.Wrap(err, "failed to start activity after enabling uniform scale factor")
-	}
-	defer act.Close()
-
+// VerifyPixelCount confirms that 1.25 scaling has been correctly applied by checking the number of clr pixels drawn.
+func VerifyPixelCount(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, clr color.Color, nonScaledPixelCount int, act *arc.Activity) error {
+	const uniformScaleFactor = 1.25
 	// Multiply each side of the drawn square by uniform scale factor.
 	wantPixelCount := (int)((float64)(nonScaledPixelCount) * uniformScaleFactor * uniformScaleFactor)
 
@@ -184,7 +161,7 @@ func VerifyPixelsWithUSFEnabled(ctx context.Context, cr *chrome.Chrome, tconn *c
 	grabScreenshot := func(ctx context.Context, cr *chrome.Chrome) (image.Image, error) {
 		return screenshot.GrabAndCropScreenshot(ctx, cr, bounds)
 	}
-	if err := confirmBlackPixelCount(ctx, cr, a, wantPixelCount, grabScreenshot); err != nil {
+	if err := confirmPixelCount(ctx, cr, a, wantPixelCount, grabScreenshot, clr); err != nil {
 		return errors.Wrap(err, "failed to verify uniform scale factor state")
 	}
 	return nil
@@ -225,7 +202,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 		return errors.Wrap(err, "failed to wait for the activity to be fullscreen")
 	}
 
-	if err := confirmBlackPixelCount(ctx, cr, a, int(expectedInitialPixelCount), screenshot.GrabScreenshot); err != nil {
+	if err := confirmPixelCount(ctx, cr, a, int(expectedInitialPixelCount), screenshot.GrabScreenshot, color.Black); err != nil {
 		return errors.Wrap(err, "failed to check initial state: ")
 	}
 
