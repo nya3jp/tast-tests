@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b79a8411_44e92082",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2021-01-21T08:30:41Z",
+      "side": 1,
+      "message": "FilesZipMount is the one to use indeed.",
+      "parentUuid": "5a30eb13_00269ef3",
+      "range": {
+        "startLine": 69,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "e897ad1922c328f6f3b49c19ed00bc30b6b63043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b8bc398_10e268cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
         "patchSetId": 7
