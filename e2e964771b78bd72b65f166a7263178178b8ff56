@@ -16,6 +16,23 @@
       "message": "PTAL, thanks.",
       "revId": "e2e964771b78bd72b65f166a7263178178b8ff56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24749757_7436fbbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-22T01:57:12Z",
+      "side": 1,
+      "message": "+2\n\nAlthough I\u0027m a bit skeptic that this patch will fix it.\n\nIf the test fails on start activity, it should be failing on all tests...\nUnless there is something wrong in the Activity itself, which in that case we should fix that instead of adding a poll.\n\nin the bug it would be great to attach logcat... perhaps it contains useful info.\n",
+      "revId": "e2e964771b78bd72b65f166a7263178178b8ff56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
