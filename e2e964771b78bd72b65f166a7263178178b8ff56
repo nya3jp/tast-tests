@@ -33,6 +33,23 @@
       "message": "+2\n\nAlthough I\u0027m a bit skeptic that this patch will fix it.\n\nIf the test fails on start activity, it should be failing on all tests...\nUnless there is something wrong in the Activity itself, which in that case we should fix that instead of adding a poll.\n\nin the bug it would be great to attach logcat... perhaps it contains useful info.\n",
       "revId": "e2e964771b78bd72b65f166a7263178178b8ff56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7133b7a_85fa91e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-01-22T02:28:35Z",
+      "side": 1,
+      "message": "Is this specific to this test, or does that happen to other tests as well? If it is a general issue, maybe it\u0027s better to identify the root cause first and fix it in chromiumos/tast/local/arc.",
+      "revId": "e2e964771b78bd72b65f166a7263178178b8ff56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
