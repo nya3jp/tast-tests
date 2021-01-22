@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba48a891_f2450f3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-22T17:04:58Z",
+      "side": 1,
+      "message": "PTAL. This now moves property_watcher.go back to shill/ in response to the observation in the subsequent CL that the implementation is shill specific. (We don\u0027t currently use it outside of Shill and I don\u0027t have any immediate plans to do so).\n",
+      "revId": "6006edeea1c109f02da7c28dc338a6a0575a2071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
