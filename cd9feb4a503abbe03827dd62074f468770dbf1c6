@@ -16,6 +16,24 @@
       "message": "I think it is still a good move separating cellular tests from generic network test. If you found code duplicate on both network and cellular, we may move the common code to tast/local/network [1]\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/network/",
       "revId": "cd9feb4a503abbe03827dd62074f468770dbf1c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31b4cca_28328604",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-22T16:03:10Z",
+      "side": 1,
+      "message": "Well, looking more closely there aren\u0027t actually any co-dependencies at the moment, but I\u0027m still hesitant to split up cellular from \"network\". That would suggest that we should also move wifi specific tests to a wifi directory and the same for vpn. If anything I would be tempted to create a \u0027shill\u0027 directory and move shill focused tests there (which might not leave anything in network, I\u0027m not sure).",
+      "parentUuid": "9f9141bb_3a491161",
+      "revId": "cd9feb4a503abbe03827dd62074f468770dbf1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
