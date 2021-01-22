@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df8587f9_177230a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "It is for the testing of the settings UI itself. \nWe should test depend on user behavior.",
+      "parentUuid": "c4739ffd_b5c81fe6",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dcf4814_3b8cfd9b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
         "patchSetId": 12
@@ -642,6 +660,24 @@
       "writtenOn": "2021-01-14T19:21:56Z",
       "side": 1,
       "message": "This looks like identical as the code in task_switch_cuj.go?  Can you also fix task_switch_cuj.go to consolidate the implementation?",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1471b60b_18eaf53e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5c88bca_7567fdfa",
       "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

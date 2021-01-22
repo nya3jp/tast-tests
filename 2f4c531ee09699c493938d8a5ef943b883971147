@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece48523_41f65600",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff9d421_af57c37c",
+      "range": {
+        "startLine": 247,
+        "startChar": 24,
+        "endLine": 247,
+        "endChar": 30
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "759585ca_1241ab1d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "nit: better to use StableLeftClick",
+      "range": {
+        "startLine": 279,
+        "startChar": 16,
+        "endLine": 279,
+        "endChar": 25
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5f7916_eff1eab4",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "759585ca_1241ab1d",
       "range": {
         "startLine": 279,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c13564_e2731c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "720d0a7c_9638d8e0",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81fd2dc8_fd68963c",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "nit: defer is not necessary",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58e4287_282ef570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81fd2dc8_fd68963c",
       "range": {
         "startLine": 96,
         "startChar": 1,
@@ -112,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b8c961d_23c624af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "everyday_multi_tasking_cuj and quik_check_cuj would open a lot of tabs, it need to wait page loaded.",
+      "parentUuid": "5d88f28c_39824158",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57682f5a_f9d5b6e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
         "patchSetId": 13
@@ -123,6 +237,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "nit: StableLeftClick might be better.",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e92de0_5bdec6ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57682f5a_f9d5b6e5",
       "range": {
         "startLine": 32,
         "startChar": 13,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e4b0b5_274df21a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da8545bc_9029a7e4",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20de9cb9_9263886b",
@@ -169,6 +331,24 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "Can you move this to \"ash\" package?  Looks like a generic utility.",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "285bde66_2f673b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "We didn\u0027t use this function any more. I have removed it.",
+      "parentUuid": "20de9cb9_9263886b",
       "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -219,6 +399,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3465a4a_29c71d46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02c9f6ed_9b0d334c",
+      "range": {
+        "startLine": 108,
+        "startChar": 13,
+        "endLine": 108,
+        "endChar": 20
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73308fd_0ee74f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "458051be_38a0dd8e",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 12
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d6a8688_cd074e26",
@@ -232,6 +460,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "remove \"field\".  \"subject\", \"content\"",
+      "range": {
+        "startLine": 109,
+        "startChar": 64,
+        "endLine": 109,
+        "endChar": 91
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27fe5aa_20a35a30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d6a8688_cd074e26",
       "range": {
         "startLine": 109,
         "startChar": 64,
@@ -265,6 +517,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f636e009_be0e69e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5be89c6_62ee7979",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 34
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6efd2b8_534b7175",
@@ -278,6 +554,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 34
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a91967_80182233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6efd2b8_534b7175",
       "range": {
         "startLine": 144,
         "startChar": 1,
@@ -305,6 +605,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "937ac455_74a6b194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4a7a54_44f57a4f",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a31988a2_ce76c7a3",
@@ -318,6 +636,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "What is \"some applications\"?",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "961db75d_3d650448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a31988a2_ce76c7a3",
       "range": {
         "startLine": 20,
         "startChar": 21,
@@ -353,6 +695,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a19cb04_8ff68e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "I have removed it.",
+      "parentUuid": "293cfb0d_52235808",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6265237b_a31d33d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
         "patchSetId": 13
@@ -364,6 +730,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "Could you explain why does this have to use WaitForLocationChangeCompleted? What type of location changes happen during the username typing?",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0464394d_d88471f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "I have removed it.",
+      "parentUuid": "6265237b_a31d33d1",
       "range": {
         "startLine": 76,
         "startChar": 1,
@@ -399,6 +789,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "489185a4_17515ee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "I have removed it.",
+      "parentUuid": "031da6a2_0d02a945",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43d7ebc7_9c8c818f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
         "patchSetId": 13
@@ -410,6 +824,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e080695d_6e21c511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "I have removed it.",
+      "parentUuid": "43d7ebc7_9c8c818f",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -445,6 +883,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e19c0971_b607d603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "I have removed it.",
+      "parentUuid": "12546ede_4e778bd3",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44568169_90dc2f4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
         "patchSetId": 13
@@ -456,6 +918,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "\"Play starts a netflix video.\"\n\nPlease provide a verb and end with a period, the doc comment should be a plain sentence.  This applies to all other comments in this CL.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "366bc6f5_4d2c7adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44568169_90dc2f4d",
       "range": {
         "startLine": 113,
         "startChar": 0,
@@ -489,6 +975,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a69ba2d_091a013a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a7180bb_6762d6e0",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64ae670f_effb07c5",
@@ -502,6 +1012,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "nil",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef7f71b_ca2e4358",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64ae670f_effb07c5",
       "range": {
         "startLine": 33,
         "startChar": 9,
@@ -560,6 +1094,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7296dc47_ec90326b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "\"on New(), check the bluetooth settings before enabling it, and recover the bluetooth status after this.\"\nI think it should implement in the test case.\n\n\"disconnect the bluetooth devices which remain connected\"\nDisable bluetooth will disconnect the bluetooth devices but it don\u0027t forget the device name.\nDo you think it\u0027s better to remove the bluetooth device from the list?",
+      "parentUuid": "cf114eb8_cb9dcb99",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 27
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3246f71e_1243d45e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20052a42_18feb33b",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c50d2ae_efdf0831",
         "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
         "patchSetId": 13
@@ -571,6 +1153,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "Do not use grpc errors outside of grpc. Just use errors.New()",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 68
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b9c516b_76951009",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c50d2ae_efdf0831",
       "range": {
         "startLine": 50,
         "startChar": 9,
@@ -604,6 +1210,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e60fc2_00101868",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be24298b_dba83990",
+      "range": {
+        "startLine": 63,
+        "startChar": 38,
+        "endLine": 63,
+        "endChar": 43
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1650a8f_b3366ded",
@@ -617,6 +1247,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "Use StableLeftClick",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "832bb38e_63dcfa57",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1650a8f_b3366ded",
       "range": {
         "startLine": 66,
         "startChar": 6,
@@ -650,6 +1304,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f3b435_7f108457",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6c4f6a_b751a0e6",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "605bdfe6_8b354a72",
@@ -663,6 +1341,30 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "Maybe use of deviceName clarifies the error message more: e.g. errors.Wrapf(err, \"%q is not connected\", deviceName)",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 63
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc840d3_78de158a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "605bdfe6_8b354a72",
       "range": {
         "startLine": 73,
         "startChar": 10,
@@ -696,6 +1398,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c08c6e63_211bc249",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/doc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06df7c10_f92fe260",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 76
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "274dd79a_cdde74c1",
@@ -715,6 +1441,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2972e2d3_6864d2ef",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "274dd79a_cdde74c1",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03ac906f_761435f2",
         "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
         "patchSetId": 13
@@ -726,6 +1470,24 @@
       "writtenOn": "2021-01-19T19:47:26Z",
       "side": 1,
       "message": "ditto",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29fbee0c_fa766887",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2021-01-22T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03ac906f_761435f2",
       "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
