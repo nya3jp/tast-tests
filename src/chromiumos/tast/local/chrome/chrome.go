@@ -10,10 +10,8 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"net/url"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strings"
 	"time"
 
@@ -26,11 +24,11 @@ import (
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
+	"chromiumos/tast/local/chrome/internal/login"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
-	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -56,25 +54,13 @@ const (
 	// TestExtensionID is an extension ID of the autotest extension. It
 	// corresponds to testExtensionKey.
 	TestExtensionID = extension.TestExtensionID
-)
-
-const (
-	oobePrefix = "chrome://oobe"
 
 	// BlankURL is the URL corresponding to the about:blank page.
 	BlankURL = "about:blank"
 
-	// localPassword is used in OOBE login screen. When contact email approval flow is used,
-	// there is no password supplied by the user and this local password will be used to encrypt
-	// cryptohome instead.
-	localPassword = "test0000"
+	// vkBackgroundPageURL is the virtual keyboard background page url.
+	vkBackgroundPageURL = "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background.html"
 )
-
-// Virtual keyboard background page url.
-const vkBackgroundPageURL = "chrome-extension://jkghodnilhceideoidjikpgommlajknk/background.html"
-
-// Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
-var loginPollOpts = &testing.PollOptions{Interval: 10 * time.Millisecond}
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Chrome.Close.
 var locked = false
@@ -95,16 +81,6 @@ var prePackages = []string{
 	"chromiumos/tast/local/multivm",
 	"chromiumos/tast/local/wpr",
 }
-
-//  domainRe is a regex used to obtain the domain (without top level domain) out of an email string.
-//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
-//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
-var domainRe = regexp.MustCompile(`^[^@]+@([^@]+)\.[^.@]*$`)
-
-//  fullDomainRe is a regex used to obtain the full domain (with top level domain) out of an email string.
-//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
-//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
-var fullDomainRe = regexp.MustCompile(`^[^@]+@([^@]+)$`)
 
 // Lock prevents from New or Chrome.Close from being called until Unlock is called.
 // It can only be called by preconditions and is idempotent.
@@ -236,8 +212,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	if cfg.DeferLogin {
 		loginPending = true
 	} else {
-		err := logIn(ctx, cfg, sess)
-		if err == errNeedNewSession {
+		if err := login.LogIn(ctx, cfg, sess); err == login.ErrNeedNewSession {
 			// Restart session.
 			newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, agg)
 			if err != nil {
@@ -787,199 +762,10 @@ func (c *Chrome) Responded(ctx context.Context) error {
 	return nil
 }
 
-// getFirstOOBETarget returns the first OOBE-related DevTools target that it finds.
-// nil is returned if no target is found.
-func getFirstOOBETarget(ctx context.Context, sess *driver.Session) (*Target, error) {
-	targets, err := sess.FindTargets(ctx, func(t *Target) bool {
-		return strings.HasPrefix(t.URL, oobePrefix)
-	})
-	if err != nil {
-		return nil, err
-	}
-	if len(targets) == 0 {
-		return nil, nil
-	}
-	return targets[0], nil
-}
-
-// enterpriseEnrollTargets returns the Gaia WebView targets, which are used
-// to help enrollment on the device.
-// Returns nil if none are found.
-func enterpriseEnrollTargets(ctx context.Context, sess *driver.Session, userDomain string) ([]*Target, error) {
-	isGAIAWebView := func(t *Target) bool {
-		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
-	}
-
-	targets, err := sess.FindTargets(ctx, isGAIAWebView)
-	if err != nil {
-		return nil, err
-	}
-
-	// It's common for multiple targets to be returned.
-	// We want to run the command specifically on the "apps" target.
-	var enterpriseTargets []*Target
-	for _, target := range targets {
-		u, err := url.Parse(target.URL)
-		if err != nil {
-			continue
-		}
-
-		q := u.Query()
-		clientID := q.Get("client_id")
-		managedDomain := q.Get("manageddomain")
-
-		if clientID != "" && managedDomain != "" {
-			if strings.Contains(clientID, "apps.googleusercontent.com") &&
-				strings.Contains(managedDomain, userDomain) {
-				enterpriseTargets = append(enterpriseTargets, target)
-			}
-		}
-	}
-
-	return enterpriseTargets, nil
-}
-
 // WaitForOOBEConnection waits for that the OOBE page is shown, then returns
 // a connection to the page. The caller must close the returned connection.
 func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
-	return waitForOOBEConnection(ctx, c.sess)
-}
-
-func waitForOOBEConnection(ctx context.Context, sess *driver.Session) (*Conn, error) {
-	testing.ContextLog(ctx, "Finding OOBE DevTools target")
-	ctx, st := timing.Start(ctx, "wait_for_oobe")
-	defer st.End()
-
-	var target *Target
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		if target, err = getFirstOOBETarget(ctx, sess); err != nil {
-			return err
-		} else if target == nil {
-			return errors.Errorf("no %s target", oobePrefix)
-		}
-		return nil
-	}, loginPollOpts); err != nil {
-		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE target not found")
-	}
-
-	conn, err := sess.NewConnForTarget(ctx, MatchTargetID(target.TargetID))
-	if err != nil {
-		return nil, err
-	}
-	defer func() {
-		if conn != nil {
-			conn.Close()
-		}
-	}()
-
-	// Cribbed from telemetry/internal/backends/chrome/cros_browser_backend.py in Catapult.
-	testing.ContextLog(ctx, "Waiting for OOBE")
-	if err = conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
-		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE didn't show up (Oobe.readyForTesting not found)")
-	}
-	if err = conn.WaitForExpr(ctx, "typeof OobeAPI == 'object'"); err != nil {
-		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE didn't show up (OobeAPI not found)")
-	}
-
-	connToRet := conn
-	conn = nil
-	return connToRet, nil
-}
-
-// userDomain will return the "domain" section (without top level domain) of user.
-// e.g. something@managedchrome.com will return "managedchrome"
-// or x@domainp1.domainp2.com would return "domainp1domainp2"
-func userDomain(user string) (string, error) {
-	m := domainRe.FindStringSubmatch(user)
-	// This check mandates the same format as the fake DM server.
-	if len(m) != 2 {
-		return "", errors.New("'user' must have exactly 1 '@' and atleast one '.' after the @")
-	}
-	return strings.Replace(m[1], ".", "", -1), nil
-}
-
-// fullUserDomain will return the full "domain" (including top level domain) of user.
-// e.g. something@managedchrome.com will return "managedchrome.com"
-// or x@domainp1.domainp2.com would return "domainp1.domainp2.com"
-func fullUserDomain(user string) (string, error) {
-	m := fullDomainRe.FindStringSubmatch(user)
-	// If nothing is returned, the enrollment will fail.
-	if len(m) != 2 {
-		return "", errors.New("'user' must have exactly 1 '@'")
-	}
-	return m[1], nil
-}
-
-// waitForEnrollmentLoginScreen will wait for the Enrollment screen to complete
-// and the Enrollment login screen to appear. If the login screen does not appear
-// the testing.Poll will timeout.
-func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
-	testing.ContextLog(ctx, "Waiting for enrollment to complete")
-	fullDomain, err := fullUserDomain(cfg.User)
-	if err != nil {
-		return errors.Wrap(err, "no valid full user domain found")
-	}
-	loginBanner := fmt.Sprintf(`document.querySelectorAll('span[title=%q]').length;`,
-		fullDomain)
-
-	userDomain, err := userDomain(cfg.User)
-	if err != nil {
-		return errors.Wrap(err, "no vaid user domain found")
-	}
-
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		gaiaTargets, err := enterpriseEnrollTargets(ctx, sess, userDomain)
-		if err != nil {
-			return errors.Wrap(err, "no Enrollment webview targets")
-		}
-		for _, gaiaTarget := range gaiaTargets {
-			webViewConn, err := sess.NewConnForTarget(ctx, MatchTargetURL(gaiaTarget.URL))
-			if err != nil {
-				// If an error occurs during connection, continue to try.
-				// Enrollment will only exceed if the eval below succeeds.
-				continue
-			}
-			defer webViewConn.Close()
-			content := -1
-			if err := webViewConn.Eval(ctx, loginBanner, &content); err != nil {
-				return err
-			}
-			// Found the login screen.
-			if content == 1 {
-				return nil
-			}
-		}
-		return errors.New("Enterprise Enrollment login screen not found")
-	}, &testing.PollOptions{Timeout: 45 * time.Second}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// enterpriseOOBELogin will complete the oobe login after Enrollment completes.
-func enterpriseOOBELogin(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
-	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
-		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
-	}
-
-	// Reconnect to OOBE to log in after enrollment.
-	// See crrev.com/c/2144279 for details.
-	conn, err := waitForOOBEConnection(ctx, sess)
-	if err != nil {
-		return errors.Wrap(err, "failed to reconnect to OOBE after enrollment")
-	}
-	defer conn.Close()
-
-	testing.ContextLog(ctx, "Performing login after enrollment")
-	// Now login like "normal".
-	if err := conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false)",
-		cfg.User, cfg.Pass, cfg.GAIAID)); err != nil {
-		return err
-	}
-
-	return nil
+	return login.WaitForOOBEConnection(ctx, c.sess)
 }
 
 // ContinueLogin continues login deferred by DeferLogin option. It is an error to call
@@ -990,8 +776,7 @@ func (c *Chrome) ContinueLogin(ctx context.Context) error {
 	}
 	c.loginPending = false
 
-	err := logIn(ctx, &c.cfg, c.sess)
-	if err == errNeedNewSession {
+	if err := login.LogIn(ctx, &c.cfg, c.sess); err == login.ErrNeedNewSession {
 		// Restart session.
 		newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, c.agg)
 		if err != nil {
@@ -1000,387 +785,6 @@ func (c *Chrome) ContinueLogin(ctx context.Context) error {
 		c.sess.Close(ctx)
 		c.sess = newSess
 	} else if err != nil {
-		return err
-	}
-	return nil
-}
-
-var errNeedNewSession = errors.New("Chrome restarted; need a new session")
-
-// logIn performs a user or guest login based on the loginMode.
-// This function may restart Chrome and make an existing session unavailable,
-// in which case errNeedNewSession is returned.
-func logIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
-	switch cfg.LoginMode {
-	case config.NoLogin:
-		return nil
-	case config.FakeLogin, config.GAIALogin:
-		if err := loginUser(ctx, cfg, sess); err != nil {
-			return err
-		}
-		// Clear all notifications after logging in so none will be shown at the beginning of tests.
-		// TODO(crbug/1079235): move this outside of the switch once the test API is available in guest mode.
-		tconn, err := sess.TestAPIConn(ctx)
-		if err != nil {
-			return err
-		}
-		if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
-			return errors.Wrap(err, "failed to clear notifications")
-		}
-		return nil
-	case config.GuestLogin:
-		if err := logInAsGuest(ctx, cfg, sess); err != nil {
-			return err
-		}
-		// logInAsGuest restarted Chrome. Let the caller know that they
-		// need to recreate a session.
-		return errNeedNewSession
-	default:
-		return errors.Errorf("unknown login mode: %v", cfg.LoginMode)
-	}
-}
-
-// loginUser logs in to a freshly-restarted Chrome instance.
-// It waits for the login process to complete before returning.
-func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
-	conn, err := waitForOOBEConnection(ctx, sess)
-	if err != nil {
-		return err
-	}
-	defer conn.Close()
-
-	testing.ContextLogf(ctx, "Logging in as user %q", cfg.User)
-	ctx, st := timing.Start(ctx, "login")
-	defer st.End()
-
-	switch cfg.LoginMode {
-	case config.FakeLogin:
-		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', %t)",
-			cfg.User, cfg.Pass, cfg.GAIAID, cfg.Enroll)); err != nil {
-			return err
-		}
-	case config.GAIALogin:
-		// GAIA login requires Internet connectivity.
-		if err := shill.WaitForOnline(ctx); err != nil {
-			return err
-		}
-		if err := performGAIALogin(ctx, cfg, sess, conn); err != nil {
-			return err
-		}
-	}
-
-	if cfg.Enroll {
-		if err := enterpriseOOBELogin(ctx, cfg, sess); err != nil {
-			return err
-		}
-	}
-
-	if err = cryptohome.WaitForUserMount(ctx, cfg.NormalizedUser); err != nil {
-		return err
-	}
-
-	if cfg.SkipOOBEAfterLogin {
-		testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
-		if err = testing.Poll(ctx, func(ctx context.Context) error {
-			if t, err := getFirstOOBETarget(ctx, sess); err != nil {
-				// This is likely Chrome crash. So there's no chance that
-				// waiting for the dismiss succeeds later. Quit the polling now.
-				return testing.PollBreak(err)
-			} else if t != nil {
-				return errors.Errorf("%s target still exists", oobePrefix)
-			}
-			return nil
-		}, loginPollOpts); err != nil {
-			return errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE not dismissed")
-		}
-	}
-
-	return nil
-}
-
-// performGAIALogin waits for and interacts with the GAIA webview to perform login.
-// This function is heavily based on NavigateGaiaLogin() in Catapult's
-// telemetry/telemetry/internal/backends/chrome/oobe.py.
-func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Session, oobeConn *Conn) error {
-	if err := oobeConn.Exec(ctx, "Oobe.skipToLoginForTesting()"); err != nil {
-		return err
-	}
-
-	var url string
-	if err := oobeConn.Eval(ctx, "window.location.href", &url); err != nil {
-		return err
-	}
-	if strings.HasPrefix(url, "chrome://oobe/gaia-signin") {
-		// Force show GAIA webview even if the cryptohome exists. When there is an existing
-		// user on the device, the login screen would be chrome://oobe/gaia-signin instead
-		// of the accounts.google.com webview. Use Oobe.showAddUserForTesting() to open that
-		// webview so we can reuse the same login logic below.
-		testing.ContextLogf(ctx, "Found %s, force opening GAIA webview", url)
-		if err := oobeConn.Exec(ctx, "Oobe.showAddUserForTesting()"); err != nil {
-			return err
-		}
-	}
-
-	isGAIAWebView := func(t *Target) bool {
-		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
-	}
-
-	testing.ContextLog(ctx, "Waiting for GAIA webview")
-	var target *Target
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if targets, err := sess.FindTargets(ctx, isGAIAWebView); err != nil {
-			return err
-		} else if len(targets) != 1 {
-			return errors.Errorf("got %d GAIA targets; want 1", len(targets))
-		} else {
-			target = targets[0]
-			return nil
-		}
-	}, loginPollOpts); err != nil {
-		return errors.Wrap(sess.Watcher().ReplaceErr(err), "GAIA webview not found")
-	}
-
-	gaiaConn, err := sess.NewConnForTarget(ctx, MatchTargetID(target.TargetID))
-	if err != nil {
-		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to connect to GAIA webview")
-	}
-	defer gaiaConn.Close()
-
-	testing.ContextLog(ctx, "Performing GAIA login")
-
-	// Fill in username.
-	if err := insertGAIAField(ctx, gaiaConn, "#identifierId", cfg.User); err != nil {
-		return errors.Wrap(err, "failed to fill username field")
-	}
-	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
-		return errors.Wrap(err, "failed to click on the primary action button")
-	}
-
-	// Fill in password / contact email.
-	authType, err := getAuthType(ctx, gaiaConn)
-	if err != nil {
-		return errors.Wrap(err, "could not determine the authentication type for this account")
-	}
-	if authType == config.PasswordAuth {
-		testing.ContextLog(ctx, "This account uses password authentication")
-		if cfg.Pass == "" {
-			return errors.New("please supply a password with chrome.Auth()")
-		}
-		if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", cfg.Pass); err != nil {
-			return errors.Wrap(err, "failed to fill in password field")
-		}
-	} else if authType == config.ContactAuth {
-		testing.ContextLog(ctx, "This account uses contact email authentication")
-		if cfg.Contact == "" {
-			return errors.New("please supply a contact email with chrome.Contact()")
-		}
-		if err := insertGAIAField(ctx, gaiaConn, "input[name=email]", cfg.Contact); err != nil {
-			return errors.Wrap(err, "failed to fill in contact email field")
-		}
-	} else {
-		return errors.Errorf("got an invalid authentication type (%q) for this account", authType)
-	}
-	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
-		return errors.Wrap(err, "failed to click on the primary action button")
-	}
-
-	// Wait for contact email approval and fill in local password.
-	if authType == config.ContactAuth {
-		testing.ContextLog(ctx, "Please go to https://g.co/verifyaccount to approve the login request")
-		testing.ContextLog(ctx, "Waiting for approval")
-		if err := oobeConn.WaitForExpr(ctx, "OobeAPI.screens.ConfirmSamlPasswordScreen.isVisible()"); err != nil {
-			return errors.Wrap(err, "failed to wait for OOBE password screen")
-		}
-		testing.ContextLog(ctx, "The login request is approved. Entering local password")
-		if err := oobeConn.Call(ctx, nil, `(pw) => { OobeAPI.screens.ConfirmSamlPasswordScreen.enterManualPasswords(pw); }`, localPassword); err != nil {
-			return errors.Wrap(err, "failed to fill in local password field")
-		}
-	}
-
-	// Perform Unicorn login if parent user given.
-	if cfg.ParentUser != "" {
-		if err := performUnicornParentLogin(ctx, cfg, sess, oobeConn, gaiaConn); err != nil {
-			return err
-		}
-	}
-
-	return nil
-}
-
-// getAuthType determines the authentication type by checking whether the current page
-// is expecting a password or contact email input.
-func getAuthType(ctx context.Context, gaiaConn *Conn) (config.AuthType, error) {
-	const query = `
-	(function() {
-		if (document.getElementById('password')) {
-			return 'password';
-		}
-		if (document.getElementsByName('email').length > 0) {
-			return 'contact';
-		}
-		return "";
-	})();
-	`
-	t := config.UnknownAuth
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := gaiaConn.Eval(ctx, query, &t); err != nil {
-			return err
-		}
-		if t == config.PasswordAuth || t == config.ContactAuth {
-			return nil
-		}
-		return errors.New("failed to locate password or contact input field")
-	}, loginPollOpts); err != nil {
-		return config.UnknownAuth, err
-	}
-
-	return t, nil
-}
-
-// insertGAIAField fills a field of the GAIA login form.
-func insertGAIAField(ctx context.Context, gaiaConn *Conn, selector, value string) error {
-	// Ensure that the input exists.
-	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
-		"document.querySelector(%q)", selector)); err != nil {
-		return errors.Wrapf(err, "failed to wait for %q element", selector)
-	}
-	// Ensure the input field is empty.
-	// This confirms that we are not using the field before it is cleared.
-	fieldReady := fmt.Sprintf(`
-		(function() {
-			const field = document.querySelector(%q);
-			return field.value === "";
-		})()`, selector)
-	if err := gaiaConn.WaitForExpr(ctx, fieldReady); err != nil {
-		return errors.Wrapf(err, "failed to wait for %q element to be empty", selector)
-	}
-
-	// Fill the field with value.
-	script := fmt.Sprintf(`
-		(function() {
-			const field = document.querySelector(%q);
-			field.value = %q;
-		})()`, selector, value)
-	if err := gaiaConn.Exec(ctx, script); err != nil {
-		return errors.Wrapf(err, "failed to use %q element", selector)
-	}
-	return nil
-}
-
-// performUnicornParentLogin Logs in a parent account and accepts Unicorn permissions.
-// This function is heavily based on NavigateUnicornLogin() in Catapult's
-// telemetry/telemetry/internal/backends/chrome/oobe.py.
-func performUnicornParentLogin(ctx context.Context, cfg *config.Config, sess *driver.Session, oobeConn, gaiaConn *Conn) error {
-	normalizedParentUser, err := session.NormalizeEmail(cfg.ParentUser, false)
-	if err != nil {
-		return errors.Wrapf(err, "failed to normalize email %q", cfg.User)
-	}
-
-	testing.ContextLogf(ctx, "Clicking button that matches parent email: %q", normalizedParentUser)
-	buttonTextQuery := `
-		(function() {
-			const buttons = document.querySelectorAll('%[1]s');
-			if (buttons === null){
-				throw new Error('no buttons found on screen');
-			}
-			return [...buttons].map(button=>button.textContent);
-		})();`
-
-	clickButtonQuery := `
-                (function() {
-                        const buttons = document.querySelectorAll('%[1]s');
-                        if (buttons === null){
-                                throw new Error('no buttons found on screen');
-                        }
-                        for (const button of buttons) {
-                                if (button.textContent.indexOf(%[2]q) !== -1) {
-                                        button.click();
-                                        return;
-                                }
-                        }
-                        throw new Error(%[2]q + ' button not found');
-                })();`
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var buttons []string
-		if err := gaiaConn.Eval(ctx, fmt.Sprintf(buttonTextQuery, "[data-email]"), &buttons); err != nil {
-			return err
-		}
-	NextButton:
-		for _, button := range buttons {
-			if len(button) < len(normalizedParentUser) {
-				continue NextButton
-			}
-			// The end of button text contains the email.
-			// Trim email to be the same length as normalizedParentUser.
-			potentialEmail := button[len(button)-len(normalizedParentUser):]
-
-			// Compare email to parent.
-			for i := range normalizedParentUser {
-				// Ignore wildcards.
-				if potentialEmail[i] == '*' {
-					continue
-				}
-				if potentialEmail[i] != normalizedParentUser[i] {
-					continue NextButton
-				}
-			}
-
-			// Button matches. Click it.
-			return gaiaConn.Exec(ctx, fmt.Sprintf(clickButtonQuery, "[data-email]", button))
-		}
-		return errors.New("no button matches email")
-	}, loginPollOpts); err != nil {
-		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to select parent user")
-	}
-
-	testing.ContextLog(ctx, "Typing parent password")
-	if err := insertGAIAField(ctx, gaiaConn, "input[name=password]", cfg.ParentPass); err != nil {
-		return err
-	}
-	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
-		return errors.Wrap(err, "failed to click on the primary action button")
-	}
-
-	testing.ContextLog(ctx, "Accepting Unicorn permissions")
-	clickAgreeQuery := fmt.Sprintf(clickButtonQuery, "button", "agree")
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return gaiaConn.Exec(ctx, clickAgreeQuery)
-	}, loginPollOpts); err != nil {
-		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to accept Unicorn permissions")
-	}
-
-	return nil
-}
-
-// logInAsGuest logs in to a freshly-restarted Chrome instance as a guest user.
-// Due to Chrome restart, sess might be unavailable upon returning from this
-// function. This function waits for the login process to complete before
-// returning.
-func logInAsGuest(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
-	oobeConn, err := waitForOOBEConnection(ctx, sess)
-	if err != nil {
-		return err
-	}
-	defer func() {
-		if oobeConn != nil {
-			oobeConn.Close()
-		}
-	}()
-
-	testing.ContextLog(ctx, "Logging in as a guest user")
-	ctx, st := timing.Start(ctx, "login_guest")
-	defer st.End()
-
-	// guestLoginForTesting() relaunches the browser. In advance,
-	// remove the file at cdputil.DebuggingPortPath, which should be
-	// recreated after the port gets ready.
-	os.Remove(cdputil.DebuggingPortPath)
-
-	if err := oobeConn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
-		return err
-	}
-
-	if err := cryptohome.WaitForUserMount(ctx, cfg.User); err != nil {
 		return err
 	}
 	return nil
