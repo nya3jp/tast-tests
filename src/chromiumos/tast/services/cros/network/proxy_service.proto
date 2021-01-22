@@ -1,0 +1,43 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.network;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/network";
+
+// ProxyService allows to remotely start and configure an HTTP proxy server instance on
+// the DUT. The proxy only supports basic authentication.
+service ProxyService {
+  // Start starts a proxy server instance with the given configuration.
+  rpc StartServer(StartServerRequest) returns (StartServerResponse) {}
+
+  // Stop stops the running server instance.
+  rpc StopServer(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message AuthCredentials {
+  string username = 1;
+  string password = 2;
+}
+
+message StartServerRequest {
+  // Optional. Port where the proxy should listen for incoming connections. Must be a valid port
+  // value (1 to 65535). If not set, the default value is 3128.
+  uint32 port = 1;
+  // Credentials for basic authentication. If set, clients connecting to the proxy server
+  // must provide the same credentials for authentication otherwise the connection will fail.
+  // Leave unset if the proxy should not require authentication.
+  AuthCredentials auth_credentials = 2;
+}
+
+message StartServerResponse {
+  // The host and port where the proxy is listening for connections, in the format
+  // <host>:<port>. Clients should use this value to point to the proxy server.
+  // NOTE: This is an HTTP proxy.
+  string host_and_port = 1;
+}

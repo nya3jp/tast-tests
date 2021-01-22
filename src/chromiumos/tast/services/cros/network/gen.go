@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. iwlwifi_pci_rescan.proto wifi_service.proto bluetooth_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. iwlwifi_pci_rescan.proto wifi_service.proto bluetooth_service.proto proxy_service.proto
 
 package network
 
