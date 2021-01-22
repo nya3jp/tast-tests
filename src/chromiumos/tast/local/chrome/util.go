@@ -5,15 +5,82 @@
 package chrome
 
 import (
+	"compress/gzip"
+	"context"
 	"io/ioutil"
 	"os"
 	"os/user"
 	"path/filepath"
 	"strconv"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"github.com/golang/protobuf/proto"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/chrome/internal/extension"
+	"chromiumos/tast/testing"
 )
+
+// ExtensionBackgroundPageURL returns the URL to the background page for
+// the extension with the supplied ID.
+func ExtensionBackgroundPageURL(extID string) string {
+	return extension.BackgroundPageURL(extID)
+}
+
+// ComputeExtensionID computes the 32-character ID that Chrome will use for an unpacked
+// extension in dir. If the extension's manifest file contains a public key, it is hashed
+// into the ID; otherwise the directory name is hashed.
+func ComputeExtensionID(dir string) (string, error) {
+	return extension.ComputeExtensionID(dir)
+}
+
+// AddTastLibrary introduces tast library into the page for the given conn.
+// This introduces a variable named "tast" to its scope, and it is the
+// caller's responsibility to avoid the conflict.
+func AddTastLibrary(ctx context.Context, conn *Conn) error {
+	// Ensure the page is loaded so the tast library will be added properly.
+	if err := conn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		return errors.Wrap(err, "failed waiting for page to load")
+	}
+	return conn.Eval(ctx, extension.TastLibraryJS, nil)
+}
+
+// SaveTraceToFile marshals the given trace into a binary protobuf and saves it
+// to a gzip archive at the specified path.
+func SaveTraceToFile(ctx context.Context, trace *trace.Trace, path string) error {
+	data, err := proto.Marshal(trace)
+	if err != nil {
+		return errors.Wrap(err, "could not marshal trace to binary")
+	}
+
+	file, err := os.OpenFile(path, os.O_CREATE|os.O_RDWR, 0644)
+	if err != nil {
+		return errors.Wrap(err, "could not open file")
+	}
+	defer func() {
+		if err := file.Close(); err != nil {
+			testing.ContextLog(ctx, "Failed to close file: ", err)
+		}
+	}()
+
+	writer := gzip.NewWriter(file)
+	defer func() {
+		if err := writer.Close(); err != nil {
+			testing.ContextLog(ctx, "Failed to close gzip writer: ", err)
+		}
+	}()
+
+	if _, err := writer.Write(data); err != nil {
+		return errors.Wrap(err, "could not write the data")
+	}
+
+	if err := writer.Flush(); err != nil {
+		return errors.Wrap(err, "could not flush the gzip writer")
+	}
+
+	return nil
+}
 
 // moveUserCrashDumps copies the contents of the user crash directory to the
 // system crash directory.
