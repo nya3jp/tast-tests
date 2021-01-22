@@ -13,6 +13,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/internal/chromeproc"
 )
 
 const (
@@ -21,9 +22,8 @@ const (
 
 // Watcher watches the browser process to attempt to identify situations where Chrome is crashing.
 type Watcher struct {
-	getBrowserPID func() (int, error)
-	done          chan bool  // used to tell the watcher's goroutine to exit
-	closed        chan error // used to wait for the goroutine to exit
+	done   chan bool  // used to tell the watcher's goroutine to exit
+	closed chan error // used to wait for the goroutine to exit
 
 	initialPID        int32 // first browser PID that was seen; initially -1
 	sessionManagerPID int32 // the session manager PID that was seen; initially -1
@@ -33,10 +33,8 @@ type Watcher struct {
 }
 
 // NewWatcher creates a new Watcher and starts it.
-// getBrowserPID is a function that returns a PID of a browser process.
-func NewWatcher(getBrowserPID func() (int, error)) *Watcher {
+func NewWatcher() *Watcher {
 	bw := &Watcher{
-		getBrowserPID:     getBrowserPID,
 		done:              make(chan bool, 1),
 		closed:            make(chan error, 1),
 		initialPID:        -1,
@@ -113,7 +111,7 @@ func (bw *Watcher) check() bool {
 		return true
 	}
 
-	pid, err := bw.getBrowserPID()
+	pid, err := chromeproc.GetRootPID()
 	if err != nil {
 		// The browser process might not have started yet. Just keep checking.
 		return true
