@@ -232,7 +232,9 @@ const clickNode = `
 		var loc = this.location;
 		var centerpoint = {"x": loc.left + loc.width/2, "y": loc.top + loc.height/2};
 		await tast.promisify(chrome.autotestPrivate.mouseMove)(centerpoint, 0);
-		await tast.promisify(chrome.autotestPrivate.mouseClick)(button);
+		await tast.promisify(chrome.autotestPrivate.mousePress)(button);
+		await tast.promisify(await new Promise((resolve, reject) => setTimeout(resolve, 10)));
+		await tast.promisify(chrome.autotestPrivate.mouseRelease)(button);
 	}`
 
 func (n *Node) mouseClick(ctx context.Context, ct clickType) error {
