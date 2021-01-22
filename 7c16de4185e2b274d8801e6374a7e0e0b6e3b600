@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fad8524_cafeec2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-22T22:14:01Z",
+      "side": 1,
+      "message": "Thanks for the reviews. Could you PTALA? Thanks!",
+      "revId": "7c16de4185e2b274d8801e6374a7e0e0b6e3b600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

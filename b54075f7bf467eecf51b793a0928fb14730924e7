@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1204b16_95198d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-22T22:14:01Z",
+      "side": 1,
+      "message": "Could you add more info about what do you mean by \"log\"? To print the version in the log?\n\nThe version is documented in .go file (as well in the .external file).\nSee L74. The version is \"886\", exactly as downloaded from mentor.\n\nWould that be enough?",
+      "parentUuid": "bec6cb04_65482343",
+      "revId": "b54075f7bf467eecf51b793a0928fb14730924e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fcea8c10_da2fbdb4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
         "patchSetId": 2
