@@ -16,6 +16,46 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "4eeaf2d7aa10be722a5237e8b9dee961efdd85c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4fe067a_0d80fbfb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests_tpm1.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-01-22T19:01:55Z",
+      "side": 1,
+      "message": "In general initialisms/acronyms should have consistent case: so, \"tpm\" or \"TPM\", but not \"Tpm\". In this case, UtilityTpmManagerBinary should be renamed to UtilityTPMManagerBinary.\n\nThat\u0027s out-of-scope for this change, but I would recommend adding a quick CL to rename this and several other functions/methods/types/testnames, for stylistic consistency.",
+      "range": {
+        "startLine": 49,
+        "startChar": 40,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "4eeaf2d7aa10be722a5237e8b9dee961efdd85c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f605328_bae12bb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_tpm_live_tests_tpm1.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-01-22T19:01:55Z",
+      "side": 1,
+      "message": "Please defer this command earlier in the function. That way, if the test fatally exits after modifying the TPM state, then we will still be able to cleanup. Be sure to reserve time for cleanup: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "revId": "4eeaf2d7aa10be722a5237e8b9dee961efdd85c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
