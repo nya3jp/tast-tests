@@ -6,15 +6,12 @@
 package chrome
 
 import (
-	"compress/gzip"
 	"context"
 	"fmt"
-	"os"
 	"path/filepath"
 	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
-	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
@@ -381,6 +378,13 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	return nil
 }
 
+// Conn represents a connection to a web content view, e.g. a tab.
+type Conn = driver.Conn
+
+// JSObject is a reference to a JavaScript object.
+// JSObjects must be released or they will stop the JavaScript GC from freeing the memory they reference.
+type JSObject = driver.JSObject
+
 // NewConn creates a new Chrome renderer and returns a connection to it.
 // If url is empty, an empty page (about:blank) is opened. Otherwise, the page
 // from the specified URL is opened. You can assume that the page loading has
@@ -427,12 +431,6 @@ func (c *Chrome) FindTargets(ctx context.Context, tm TargetMatcher) ([]*Target, 
 // CloseTarget closes the target identified by the given id.
 func (c *Chrome) CloseTarget(ctx context.Context, id TargetID) error {
 	return c.sess.CloseTarget(ctx, id)
-}
-
-// ExtensionBackgroundPageURL returns the URL to the background page for
-// the extension with the supplied ID.
-func ExtensionBackgroundPageURL(extID string) string {
-	return extension.BackgroundPageURL(extID)
 }
 
 // TestConn is a connection to the Tast test extension's background page.
@@ -527,40 +525,4 @@ func (c *Chrome) StartTracing(ctx context.Context, categories []string) error {
 // StopTracing stops trace collection and returns the collected trace events.
 func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
 	return c.sess.StopTracing(ctx)
-}
-
-// SaveTraceToFile marshals the given trace into a binary protobuf and saves it
-// to a gzip archive at the specified path.
-func SaveTraceToFile(ctx context.Context, trace *trace.Trace, path string) error {
-	data, err := proto.Marshal(trace)
-	if err != nil {
-		return errors.Wrap(err, "could not marshal trace to binary")
-	}
-
-	file, err := os.OpenFile(path, os.O_CREATE|os.O_RDWR, 0644)
-	if err != nil {
-		return errors.Wrap(err, "could not open file")
-	}
-	defer func() {
-		if err := file.Close(); err != nil {
-			testing.ContextLog(ctx, "Failed to close file: ", err)
-		}
-	}()
-
-	writer := gzip.NewWriter(file)
-	defer func() {
-		if err := writer.Close(); err != nil {
-			testing.ContextLog(ctx, "Failed to close gzip writer: ", err)
-		}
-	}()
-
-	if _, err := writer.Write(data); err != nil {
-		return errors.Wrap(err, "could not write the data")
-	}
-
-	if err := writer.Flush(); err != nil {
-		return errors.Wrap(err, "could not flush the gzip writer")
-	}
-
-	return nil
 }
