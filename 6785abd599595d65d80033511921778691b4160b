@@ -493,6 +493,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "106ff74f_3a32b261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:59:11Z",
+      "side": 1,
+      "message": "looks good",
+      "parentUuid": "8cf1e30c_fd8d0d5a",
+      "range": {
+        "startLine": 92,
+        "startChar": 48,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9f5b83c_c685cc76",
@@ -624,6 +648,30 @@
       "side": 1,
       "message": "I was thinking about hiding the EventWaitAndGet RPC instead of calling it directly for some other reasons (in the Android-\u003eCB case we\u0027ll have to parse its output). Maybe androidDevice.ReceiveFile can store its callback ID in a ReceiveFileCallbackID field, and I can add something like androidDevice.AwaitLocalConfirmation() that can use it as an arg to eventWaitAndGet. How\u0027s that sound?",
       "parentUuid": "f60d20be_abc1dde0",
+      "range": {
+        "startLine": 147,
+        "startChar": 46,
+        "endLine": 147,
+        "endChar": 56
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de78a892_dd2498dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:59:11Z",
+      "side": 1,
+      "message": "I like that idea as long as you expect things to always be called in order without overlap as in:\ncallbackID1 :\u003d ...\ncallbackID2 :\u003d ...\nawait callback1\nawait callback2\nwould not work if you are just storing one call back id",
+      "parentUuid": "3e7c491c_9c73d741",
       "range": {
         "startLine": 147,
         "startChar": 46,
