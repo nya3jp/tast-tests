@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4672bd36_823be185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-22T09:23:49Z",
+      "side": 1,
+      "message": "minor nit: add a comment on why this is a SIGTERM",
+      "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a55863f_2c7bb20c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-22T09:23:49Z",
+      "side": 1,
+      "message": "minor nit: split into multiple lies, it\u0027s hard to follow.\nDoes it make sense for the process to exit normally? Shouldn\u0027t it always stop due to the signal?",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 111
+      },
+      "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf876d4_56f68f94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-22T09:23:49Z",
+      "side": 1,
+      "message": "already initialized; only call start once",
+      "range": {
+        "startLine": 108,
+        "startChar": 21,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50b7ed3_047218c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-22T09:23:49Z",
+      "side": 1,
+      "message": "nit: maybe validate?",
+      "range": {
+        "startLine": 213,
+        "startChar": 38,
+        "endLine": 213,
+        "endChar": 42
+      },
+      "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32c11d6_7fc99548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-22T09:23:49Z",
+      "side": 1,
+      "message": "return",
+      "range": {
+        "startLine": 234,
+        "startChar": 2,
+        "endLine": 234,
+        "endChar": 12
+      },
+      "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ead065_df6f8648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-22T09:23:49Z",
+      "side": 1,
+      "message": "nit: not needed",
+      "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575dec10_1fd236d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-22T09:23:49Z",
+      "side": 1,
+      "message": "Will this test be extended? It does nothing when useSystemServices is true.",
+      "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3d615b_105410cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-22T09:23:49Z",
+      "side": 1,
+      "message": "Shorten the main context and use the old one for cleanup. This ensures that in case of timeout Stop can still be executed.",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
