@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81929ee4_a1aebe39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/cups/services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-01-22T18:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5756161b_639aa44b",
+      "revId": "4b4b33763d036b23238223ea157be02958fc1a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b3872be_bb2007b3",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-22T00:02:11Z",
       "side": 1,
       "message": "All of those invocations may fail and will return an error on failure.  Please add the error handlings:\n  if err :\u003d ippusbbridge.Kill(ctx, \u0026devInfo); err !\u003d nil {\n    return errors.Wrap(err, \"...)\n  }\n  ...",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 49
+      },
+      "revId": "4b4b33763d036b23238223ea157be02958fc1a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b215248d_f8d3e4f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/cups/services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-01-22T18:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b3872be_bb2007b3",
       "range": {
         "startLine": 29,
         "startChar": 0,
