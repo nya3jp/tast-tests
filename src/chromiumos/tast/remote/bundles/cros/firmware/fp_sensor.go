@@ -7,7 +7,6 @@ package firmware
 import (
 	"context"
 	"regexp"
-	"time"
 
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/rpc"
@@ -15,10 +14,6 @@ import (
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
-)
-
-const (
-	waitForBiodToStartTimeout = 30 * time.Second
 )
 
 func init() {
@@ -56,7 +51,7 @@ func FpSensor(ctx context.Context, s *testing.State) {
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := upstartService.CheckJob(ctx, &platform.CheckJobRequest{JobName: "biod"})
 		return err
-	}, &testing.PollOptions{Timeout: waitForBiodToStartTimeout})
+	}, &testing.PollOptions{Timeout: fingerprint.WaitForBiodToStartTimeout})
 
 	if err != nil {
 		s.Fatal("Timed out waiting for biod to start: ", err)
