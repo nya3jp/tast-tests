@@ -87,6 +87,24 @@
       "parentUuid": "50aaff1c_73b502f0",
       "revId": "7fc258a45771ef6e67b17be33e51a9a76b542858",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31edcd7a_4af76bb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-22T02:17:41Z",
+      "side": 1,
+      "message": "Thanks for the clarification. Along with the next CL, the code sharing still makes sense in the case.",
+      "parentUuid": "078005a0_0dfbae35",
+      "revId": "7fc258a45771ef6e67b17be33e51a9a76b542858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
