@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f2b6bf_fb4af77c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-22T20:07:25Z",
+      "side": 1,
+      "message": "Ah, good catch. I found these the first time I did this but missed it this round. (Emacs has go-rename also, thanks for the heads up).",
+      "parentUuid": "08a0a318_eef27064",
+      "revId": "360e0bc70bc11dd9d2dc4e43bfc4daa56bb58b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b79f6b8_e586a225",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef76c389_1b45c71b",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-22T20:07:25Z",
+      "side": 1,
+      "message": "I agree with the more specific typing. I had wanted to keep the Get/GetAll semantics similar, but the Get pattern allows for passing in a specifically typed variable, which isn\u0027t really needed here, so agreed, done.",
+      "parentUuid": "6b79f6b8_e586a225",
+      "range": {
+        "startLine": 58,
+        "startChar": 49,
+        "endLine": 58,
+        "endChar": 64
+      },
+      "revId": "360e0bc70bc11dd9d2dc4e43bfc4daa56bb58b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04d4924b_94e8cc71",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-01-22T02:37:08Z",
       "side": 1,
       "message": "IIRC, this is shill specific too because the format of the signals are different.\n\n  org.freedesktop.DBus.Properties.PropertiesChanged (STRING interface_name,\n                                                     DICT\u003cSTRING,VARIANT\u003e changed_properties,\n                                                     ARRAY\u003cSTRING\u003e invalidated_properties);\n\nwhile shill has\n\n  PropertiesChanged (STRING key, VARIANT value)\n\nIf watcher is not yet used, perhaps can rename/comment this to be shill specific for now to avoid confusion and generalize the PropertiesWatcher later. WDYT?",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "360e0bc70bc11dd9d2dc4e43bfc4daa56bb58b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef526a5e_a228fb54",
+        "filename": "src/chromiumos/tast/local/dbusutil/property_holder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-22T20:07:25Z",
+      "side": 1,
+      "message": "Also a good catch, thanks!\n\nHaving this function here always felt a little awkward to me anyway.\nIn the previous CL I will move this to NewPropertiesWatcher, move PropertiesWatcher back to shill/, and add simple CreateWatcher functions to Manager/Service/Device. We can add a dbusutil.PropertiesWatcher if/when we need it (and possibly have the Shill one embed that if it makes sense).",
+      "parentUuid": "04d4924b_94e8cc71",
       "range": {
         "startLine": 35,
         "startChar": 9,
