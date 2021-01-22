@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5a9dd54f_964d4f05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-22T04:41:43Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "ee9e56689954dcefac116d0081e9dc9f481ecad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fe1dcb62_4f716c71",
         "filename": "src/chromiumos/tast/local/chrome/internal/driver/session.go",
         "patchSetId": 5
@@ -20,6 +37,23 @@
         "endLine": 82,
         "endChar": 2
       },
+      "revId": "ee9e56689954dcefac116d0081e9dc9f481ecad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338e3f88_5e76c2b3",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-22T04:41:43Z",
+      "side": 1,
+      "message": "optional/nit: I know this comes from the original code,\nbut we often prefer fmt.Sprintf() to concat three or more pieces, IIUC.",
       "revId": "ee9e56689954dcefac116d0081e9dc9f481ecad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
