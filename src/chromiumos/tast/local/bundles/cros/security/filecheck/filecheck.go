@@ -14,6 +14,7 @@ import (
 	"strings"
 	"syscall"
 
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -25,6 +26,7 @@ type Pattern struct {
 	mode         *os.FileMode // mode perm bits must exactly match
 	notMode      *os.FileMode // none of these perm bits may be set
 	skipChildren bool         // should children (if this is a dir) be skipped?
+	errors       []string     // set when the pattern is invalid
 }
 
 // NewPattern returns a new Pattern that verifies that paths matched by m meet the requirements specified by rs.
@@ -48,6 +50,11 @@ func (p *Pattern) check(fi os.FileInfo) (problems []string) {
 			}
 		}
 		return false
+	}
+
+	if len(p.errors) > 0 {
+		problems = append(problems, p.errors...)
+		return
 	}
 
 	st := fi.Sys().(*syscall.Stat_t)
@@ -80,6 +87,9 @@ func (p *Pattern) check(fi os.FileInfo) (problems []string) {
 
 func (p *Pattern) String() string {
 	var fields []string
+	if len(p.errors) > 0 {
+		fields = append(fields, fmt.Sprintf("error=%v", p.errors))
+	}
 	if len(p.uids) > 0 {
 		fields = append(fields, fmt.Sprintf("uids=%v", p.uids))
 	}
@@ -106,6 +116,34 @@ func UID(uids ...uint32) Option { return func(p *Pattern) { p.uids = uids } }
 
 // GID requires that the path be owned by one of the supplied group IDs.
 func GID(gids ...uint32) Option { return func(p *Pattern) { p.gids = gids } }
+
+// Users returns options that permit a path to be owned by any of the supplied
+// users (all of which must exist).
+func Users(usernames ...string) Option {
+	uids := make([]uint32, len(usernames))
+	var err error
+	for i, u := range usernames {
+		uids[i], err = sysutil.GetUID(u)
+		if err != nil {
+			return func(p *Pattern) { p.errors = append(p.errors, fmt.Sprintf("Failed to find uid: %v", err)) }
+		}
+	}
+	return UID(uids...)
+}
+
+// Groups returns options that permit a path to be owned by any of the supplied
+// groups (all of which must exist).
+func Groups(gs ...string) Option {
+	gids := make([]uint32, len(gs))
+	var err error
+	for i, g := range gs {
+		gids[i], err = sysutil.GetGID(g)
+		if err != nil {
+			return func(p *Pattern) { p.errors = append(p.errors, fmt.Sprintf("Failed to find gid: %v", err)) }
+		}
+	}
+	return GID(gids...)
+}
 
 // checkMode panics if m contains any non-permission-related bits.
 func checkMode(m os.FileMode) {

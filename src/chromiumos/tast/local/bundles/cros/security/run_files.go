@@ -34,6 +34,8 @@ func RunFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.PathRegexp("arc(vm)?/host_generated/.*\\.prop"), chk.UID(0), chk.GID(0), chk.Mode(0644)),
 		// ARCVM-specific files (ignored on ARC builds)
 		chk.NewPattern(chk.Path("arcvm/host_generated/fstab"), chk.UID(0), chk.GID(0), chk.Mode(0644)),
+		chk.NewPattern(chk.Path("arcvm/host_generated/oem/etc/media_profiles.xml"), chk.Users("arc-camera"), chk.Groups("arc-camera"), chk.Mode(0644)),
+		chk.NewPattern(chk.Path("arcvm/host_generated/oem/etc/permissions/platform.xml"), chk.Users("crosvm"), chk.Groups("crosvm"), chk.Mode(0644)),
 	}
 
 	problems, _, err := chk.Check(ctx, root, patterns)
