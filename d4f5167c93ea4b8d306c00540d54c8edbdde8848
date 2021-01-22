@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51a3bcc6_82da258a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-22T01:11:25Z",
+      "side": 1,
+      "message": "Sorry, missed this msg earlier. I made previous changes including \"v4l2 tests\" as well with this name. Looks like I made mistakes there as well then. Fixed this. \n\nIs there an official name for each repo?",
+      "parentUuid": "faa2de4a_94d78d3f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48df07c1_f7e49de3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-21T23:42:29Z",
       "side": 1,
       "message": "nit: It\u0027s customary to upload that CL as well and link\nit from here (crrev.com/c/...) for reviewers to see\nwhat you\u0027re planning to do with the code.",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "684316ee_4a2d8405",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-22T01:11:25Z",
+      "side": 1,
+      "message": "oh, I see. I was going to upload the other CL soon, but seems complicated than I thought. I will add it here once it is uploaded.",
+      "parentUuid": "48df07c1_f7e49de3",
       "range": {
         "startLine": 11,
         "startChar": 22,
