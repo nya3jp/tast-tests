@@ -14,6 +14,7 @@ import (
 	"strings"
 	"syscall"
 
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -106,6 +107,34 @@ func UID(uids ...uint32) Option { return func(p *Pattern) { p.uids = uids } }
 
 // GID requires that the path be owned by one of the supplied group IDs.
 func GID(gids ...uint32) Option { return func(p *Pattern) { p.gids = gids } }
+
+// Users returns options that permit a path to be owned by any of the supplied
+// users (all of which must exist).
+func Users(s *testing.State, usernames ...string) Option {
+	uids := make([]uint32, len(usernames))
+	var err error
+	for i, u := range usernames {
+		uids[i], err = sysutil.GetUID(u)
+		if err != nil {
+			s.Fatal("Failed to find uid: ", err)
+		}
+	}
+	return UID(uids...)
+}
+
+// Groups returns options that permit a path to be owned by any of the supplied
+// groups (all of which must exist).
+func Groups(s *testing.State, gs ...string) Option {
+	gids := make([]uint32, len(gs))
+	var err error
+	for i, g := range gs {
+		gids[i], err = sysutil.GetGID(g)
+		if err != nil {
+			s.Fatal("Failed to find gid: ", err)
+		}
+	}
+	return GID(gids...)
+}
 
 // checkMode panics if m contains any non-permission-related bits.
 func checkMode(m os.FileMode) {
