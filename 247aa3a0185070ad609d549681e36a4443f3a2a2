@@ -16,6 +16,29 @@
       "message": "Sorry for no update for a while... but this change is now ready for try again.",
       "revId": "247aa3a0185070ad609d549681e36a4443f3a2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0032179_9528c305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-01-22T21:11:53Z",
+      "side": 1,
+      "message": "I think we can remove these as well.\n\nPlease also remove the \"do not change this string\" warnings in the comments at https://source.chromium.org/chromium/chromium/src/+/master:sandbox/linux/syscall_broker/broker_process.cc;l\u003d74;drc\u003d110b1bbc18d009e231b8c9b1a6fdfdae7e21828a \nand\nhttps://source.chromium.org/chromium/chromium/src/+/master:sandbox/linux/syscall_broker/broker_process.cc;l\u003d90;drc\u003d110b1bbc18d009e231b8c9b1a6fdfdae7e21828a",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 0
+      },
+      "revId": "247aa3a0185070ad609d549681e36a4443f3a2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
