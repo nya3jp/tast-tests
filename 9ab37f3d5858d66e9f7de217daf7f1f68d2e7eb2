@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ed8bd8_32da79fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-22T19:21:24Z",
+      "side": 1,
+      "message": "Ok. I think the way that is usually handled in Tast is to create a \"Service\". Then the remote test can use the service and the local test can call directly.\n\nExample:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/services/cros/platform/upstart_service.proto\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/platform/upstart_service.go\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/upstart/upstart.go",
+      "parentUuid": "15b282af_0397cd33",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "9ab37f3d5858d66e9f7de217daf7f1f68d2e7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be1012c2_d8947538",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Done, but the fingerprint package cannot access testing.State which contains the runtime argument for servo, so enabling HW WP must be done in test files.",
       "parentUuid": "be1012c2_d8947538",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 38
+      },
+      "revId": "9ab37f3d5858d66e9f7de217daf7f1f68d2e7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da56df1e_a5afdd3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-22T19:21:24Z",
+      "side": 1,
+      "message": "Not sure I follow. Can you pass testing.State as an argument to fingerprint.InitializeKnownState ?",
+      "parentUuid": "590fea97_7f836025",
       "range": {
         "startLine": 149,
         "startChar": 11,
