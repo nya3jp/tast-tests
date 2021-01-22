@@ -11,6 +11,12 @@ import (
 	"chromiumos/tast/local/chrome/internal/extension"
 )
 
+// ExtensionBackgroundPageURL returns the URL to the background page for
+// the extension with the supplied ID.
+func ExtensionBackgroundPageURL(extID string) string {
+	return extension.BackgroundPageURL(extID)
+}
+
 // ComputeExtensionID computes the 32-character ID that Chrome will use for an unpacked
 // extension in dir. If the extension's manifest file contains a public key, it is hashed
 // into the ID; otherwise the directory name is hashed.
