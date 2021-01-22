@@ -19,11 +19,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CryptohomeTPMLiveTests,
+		Func: CryptohomeTPMLiveTestsTPM2,
 		Desc: "Runs cryptohome's TPM live tests, which test TPM keys, PCR, and NVRAM functionality",
 		Contacts: []string{
 			"cros-hwsec@chromium.org",
-			"garryxiao@chromium.org",
+			"yich@chromium.org",
 		},
 		SoftwareDeps: []string{"tpm2"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -31,7 +31,8 @@ func init() {
 	})
 }
 
-func CryptohomeTPMLiveTests(ctx context.Context, s *testing.State) {
+// CryptohomeTPMLiveTestsTPM2 would check cryptohome-tpm-live-test running as expect.
+func CryptohomeTPMLiveTestsTPM2(ctx context.Context, s *testing.State) {
 	cmdRunner, err := hwseclocal.NewCmdRunner()
 	if err != nil {
 		s.Fatal("Failed to create CmdRunner: ", err)
@@ -57,7 +58,7 @@ func CryptohomeTPMLiveTests(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
 
-	if out, err := testexec.CommandContext(ctx, "cryptohome-tpm-live-test", "--tpm2_use_system_owner_password").CombinedOutput(); err != nil {
+	if out, err := testexec.CommandContext(ctx, "cryptohome-tpm-live-test").CombinedOutput(); err != nil {
 		logFile := filepath.Join(s.OutDir(), "tpm_live_test_output.txt")
 		if writeErr := ioutil.WriteFile(logFile, out, 0644); writeErr != nil {
 			s.Errorf("Failed to write to %s: %v", logFile, writeErr)
