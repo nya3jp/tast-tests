@@ -17,7 +17,7 @@ import (
 )
 
 // OptinTimeout is the maximum amount of time that Optin is expected to take.
-const OptinTimeout = 3 * time.Minute
+const OptinTimeout = 5 * time.Minute
 
 // arcApp maps ArcAppDict definition
 // https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
@@ -78,7 +78,7 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 
 // Perform steps through opt-in flow and waits for it to complete.
 func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
-	ctx, cancel := context.WithTimeout(ctx, 3*time.Minute)
+	ctx, cancel := context.WithTimeout(ctx, OptinTimeout)
 	defer cancel()
 
 	SetPlayStoreEnabled(ctx, tconn, true)
