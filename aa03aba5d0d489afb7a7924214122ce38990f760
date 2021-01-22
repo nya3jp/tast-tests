@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ea2259_b86a0409",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-22T04:56:59Z",
+      "side": 1,
+      "message": "LGTM with comments.",
+      "revId": "aa03aba5d0d489afb7a7924214122ce38990f760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0056ac2f_b5b5f0b1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-22T04:56:59Z",
+      "side": 1,
+      "message": "Because this very rare pattern, can this be more explicit specifically for the responsibility to close it? Some suggestion:\n\nA session is returned even in the case of error, so the caller must always close the returned session in any case, not only in the succeeded cases.\nThe returned session may be the given session, specifically if Chrome is not restarted.\n\nSpecifically, TB very H, I really do not want to spread this pattern to any other code base, because it is 1) rare pattern in the code base, 2) needs to be more careful who has responsibility to be closed, and 3) also needs to take care of the responsibility inside this implementation, so it is in general more complicated to be maintained unless both author/reviewer are very clear at the responsibility model.",
+      "range": {
+        "startLine": 985,
+        "startChar": 28,
+        "endLine": 987,
+        "endChar": 11
+      },
+      "revId": "aa03aba5d0d489afb7a7924214122ce38990f760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e72ff0_7d29d383",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-22T04:56:59Z",
+      "side": 1,
+      "message": "could you add more comments why it is necessary to do so?\n(optional): and if it is mandatory, why not keep restarting the session here, and return sess or newsess like what you did in logIn?",
+      "range": {
+        "startLine": 1335,
+        "startChar": 3,
+        "endLine": 1336,
+        "endChar": 11
+      },
+      "revId": "aa03aba5d0d489afb7a7924214122ce38990f760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
