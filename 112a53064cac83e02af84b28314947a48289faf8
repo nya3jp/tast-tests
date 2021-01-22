@@ -986,6 +986,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ee1a5c_cc021ed7",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/nodewith/nodewith.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-22T07:23:31Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "9ca3a928_4641a9d3",
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75765ff8_16e4ad69",
