@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b31831_84e9ac53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-22T17:10:43Z",
+      "side": 1,
+      "message": "A ctx issue and some nits in comments.",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dfa7ca6_27818d05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-22T17:10:43Z",
+      "side": 1,
+      "message": "// waitForEnabled polls for the specified enable state for cellular.",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aace38ca_f3adb6aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-22T17:10:43Z",
+      "side": 1,
+      "message": "// waitForPowered polls for the specified power state for cellular.",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aae9ee3_0b6d437f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-22T17:10:43Z",
+      "side": 1,
+      "message": "The Golang\u0027s function/method comment is tricky. The first word is the function/method name and should be treated as a noun (though \"Enable\" looks like a verb...).\n\n// Enable enables the Cellular device and ensures that it is enabled and powered.",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5a64dd_85bc0a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-22T17:10:43Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e3cbd8_47f6db11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-22T17:10:43Z",
+      "side": 1,
+      "message": "it successfully flips AutoConnect to the specified value.\nReturns false without error means AutoConnect equals to the given value.",
+      "range": {
+        "startLine": 144,
+        "startChar": 21,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8c9908_37198383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-01-22T17:10:43Z",
+      "side": 1,
+      "message": "You have to reserve some time to call SetServiceAutoConnect() in defer function:\n\norigCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 3*time.Second)\ndefer cancel()\nif wasAutoConnect, err :\u003d helper.SetServiceAutoConnect(ctx, false); err !\u003d nil {\n  ...\n} else if wasAutoConnect {\n  defer func(ctx context.Context) {\n    if _, err :\u003d helper.SetServiceAutoConnect(ctx, true); err !\u003d nil {\n      s.Fatal(\"Failed to enable AutoConnect: \", err)\n    }\n  }(origCtx)\n}\n\nRefer to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
