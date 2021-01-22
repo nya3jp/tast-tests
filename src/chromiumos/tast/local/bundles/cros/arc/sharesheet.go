@@ -122,7 +122,7 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 }
 
 // setUpARC starts an ARC device and starts UI automator.
-func setUpARC(ctx context.Context, cr *chrome.Chrome, outDir string) (*arc.ARC, *arcui.Device, error) {
+func setUpARC(ctx context.Context, cr *chrome.Chrome, outDir string) (*arc.ARC, *ui.Device, error) {
 	// Setup ARC device.
 	arcDevice, err := arc.New(ctx, outDir)
 	if err != nil {
