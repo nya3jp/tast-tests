@@ -133,26 +133,6 @@ func init() {
 			ExtraAttr: []string{"group:mainline", "informational"},
 			// If the gpu process is not sandboxed, it will not create a broker.
 			ExtraSoftwareDeps: []string{"crashpad", "gpu_sandboxing"},
-		}, {
-			Name: "broker_by_cmdline_breakpad_mock_consent",
-			Val: chromeCrashLoggedInParams{
-				ptype:   chromecrash.BrokerByCmdline,
-				handler: chromecrash.Breakpad,
-				consent: crash.MockConsent,
-			},
-			ExtraAttr: []string{"group:mainline"},
-			// If the gpu process is not sandboxed, it will not create a broker.
-			ExtraSoftwareDeps: []string{"breakpad", "gpu_sandboxing"},
-		}, {
-			Name: "broker_by_cmdline_crashpad_mock_consent",
-			Val: chromeCrashLoggedInParams{
-				ptype:   chromecrash.BrokerByCmdline,
-				handler: chromecrash.Crashpad,
-				consent: crash.MockConsent,
-			},
-			ExtraAttr: []string{"group:mainline", "informational"},
-			// If the gpu process is not sandboxed, it will not create a broker.
-			ExtraSoftwareDeps: []string{"crashpad", "gpu_sandboxing"},
 		}},
 	})
 }
