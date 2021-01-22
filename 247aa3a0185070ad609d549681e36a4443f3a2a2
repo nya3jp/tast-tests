@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db6bfc9a_ac1417b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-22T04:42:58Z",
+      "side": 1,
+      "message": "Sorry for no update for a while... but this change is now ready for try again.",
+      "revId": "247aa3a0185070ad609d549681e36a4443f3a2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
