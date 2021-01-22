@@ -16,6 +16,24 @@
       "message": "Do we still want this?",
       "revId": "abbcf909c676a578f5fb5e3ca46aef71757630cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b751569d_0f6d3218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-01-22T04:01:36Z",
+      "side": 1,
+      "message": "It\u0027s been a while and I cannot recall very well why we can\u0027t just merge it. But iirc, not all devices support reporting power usage at that time.\n\nDo you know if we have any bugs recently related to power consumption? If so, then I think we can revisit this CL to see if it is feasible to add it. If not for a while, I think we can lower the priority of this task and leave it here. WDYT?",
+      "parentUuid": "7e85dac2_5053efa7",
+      "revId": "abbcf909c676a578f5fb5e3ca46aef71757630cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
