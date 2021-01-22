@@ -35,6 +35,7 @@ func init() {
 			"jchinlee@chromium.org",
 			"chromeos-gfx-video@google.com",
 		},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"vaapi"},
 		Params: []testing.Param{{
 			Name: "vp9",
