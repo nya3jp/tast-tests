@@ -16,6 +16,24 @@
       "message": "I need to do this in the script via \"echo $$ \u003e /sys/fs/cgroup/freezer/ui/cgroup.procs\". This avoids a race condition where instances of find and cat are forked before cgroup membership is established.",
       "revId": "9d20b943f47f3f8fadc2cd42eb24b9ef418ebfb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45646a3a_63f83a8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-01-22T07:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55b19c01_59701455",
+      "revId": "9d20b943f47f3f8fadc2cd42eb24b9ef418ebfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
