@@ -7,11 +7,13 @@ package apps
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -296,4 +298,36 @@ func ChromeOrChromium(ctx context.Context, tconn *chrome.TestConn) (App, error) 
 		}
 	}
 	return App{}, errors.New("Neither Chrome or Chromium were found in available apps")
+}
+
+// InstallPWAForURL navigates to a PWA, attempts to install and returns the installed app ID.
+func InstallPWAForURL(ctx context.Context, cr *chrome.Chrome, pwaURL string, timeout time.Duration) (string, error) {
+	if _, err := cr.NewConn(ctx, pwaURL); err != nil {
+		return "", errors.Wrapf(err, "failed to open URL %q", pwaURL)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to connect to test API")
+	}
+
+	// The installability checks occur asynchronously for PWAs.
+	// Wait for the Install button to appear in the Chrome omnibox before installing.
+	pollOpts := testing.PollOptions{Timeout: timeout}
+	params := ui.FindParams{
+		ClassName: "PwaInstallView",
+		Role:      ui.RoleTypeButton,
+	}
+	if _, err := ui.StableFind(ctx, tconn, params, &pollOpts); err != nil {
+		return "", errors.Wrap(err, "failed to wait for the install button in the omnibox")
+	}
+
+	evalString := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.installPWAForCurrentURL)(%d)", timeout.Milliseconds())
+
+	var appID string
+	if err := tconn.EvalPromise(ctx, evalString, &appID); err != nil {
+		return "", errors.Wrap(err, "failed to run installPWAForCurrentURL")
+	}
+
+	return appID, nil
 }

@@ -1,0 +1,21 @@
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<head>
+    <title>Web Share Target PWA</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="manifest" href="/sharesheet_manifest.json" />
+    <link rel="icon" href="/sharesheet_icon.png" type="image/png" />
+  </head>
+  
+  <body>
+    <h1>Minimal Web Share Target PWA</h1>
+    <script type="text/javascript">
+      if (navigator.serviceWorker != null) {
+        navigator.serviceWorker.register('/sharesheet_service.js')
+        .then(function(registration) {
+          console.log('Registered events at scope: ', registration.scope);
+        });
+      }
+    </script>
+  </body>
