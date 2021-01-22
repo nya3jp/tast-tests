@@ -9,10 +9,12 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"regexp"
 	"time"
 
+	"github.com/mafredri/cdp/protocol/target"
+
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -41,7 +43,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 		viewDownloadsAction = "android.intent.action.VIEW_DOWNLOADS"
 		setWallpaperAction  = "android.intent.action.SET_WALLPAPER"
 
-		filesAppURL        = "chrome-extension://hhaomjibdihmijegdhdafkllkbggdgoj/main.html"
+		filesAppURL        = `chrome-extension://hhaomjibdihmijegdhdafkllkbggdgoj/main.*\.html`
 		wallpaperPickerURL = "chrome-extension://obklkkbkpaoaejdabbfldmcfplpdgolj/main.html"
 	)
 
@@ -70,7 +72,11 @@ func IntentForward(ctx context.Context, s *testing.State) {
 			return
 		}
 
-		conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
+		urlMatcher := func(t *target.Info) bool {
+			matched, _ := regexp.MatchString(url, t.URL)
+			return matched
+		}
+		conn, err := cr.NewConnForTarget(ctx, urlMatcher)
 		if err != nil {
 			s.Errorf("%s(%s) -> %s: %v", action, data, url, err)
 		} else {
