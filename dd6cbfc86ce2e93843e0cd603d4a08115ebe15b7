@@ -16,6 +16,24 @@
       "message": "The guideline is 20+ consecutive success to be considered as stable.\nI found one error on a device which looks actually related to DLC.\nWas the cause already identified and fixed?",
       "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c97943_f6191f0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-01-22T17:47:41Z",
+      "side": 1,
+      "message": "Hi @hidehiko, it seems that it was successful 666/667 runs.\nThe flake seems to have been:\n```\n2021-01-10T08:24:45.210819Z ERR dlcservice[21046]: [ERROR:object_proxy.cc(621)] Failed to call method: org.chromium.ImageLoaderInterface.LoadDlcImage: object_path\u003d /org/chromium/ImageLoader: org.freedesktop.DBus.Error.TimedOut: Failed to activate service \u0027org.chromium.ImageLoader\u0027: timed out\n2021-01-10T08:24:45.210911Z ERR dlcservice[21046]: [ERROR:dbus_method_invoker.h(112)] CallMethodAndBlockWithTimeout(...): Domain\u003ddbus, Code\u003dorg.freedesktop.DBus.Error.TimedOut, Message\u003dFailed to activate service \u0027org.chromium.ImageLoader\u0027: timed out\n```\n\nWhere imageloader failed to be brought up, my guess is that imageloader startup conf didn\u0027t bringup the daemon after it when to sleep.\n\nSafe to land?",
+      "parentUuid": "6eb487ac_01a91e4e",
+      "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
