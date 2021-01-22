@@ -81,7 +81,7 @@ func Tiktok(ctx context.Context, s *testing.State) {
 // verify Tiktok reached main activity page of the app.
 func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		loginButtonID                  = "com.zhiliaoapp.musically:id/blu"
+		loginText                      = "Already have an account? Log in"
 		loginWithGoogleButtonClassName = "android.view.ViewGroup"
 		loginWithPreviousDeviceText    = "Log in with previous device"
 		emailAddressID                 = "com.google.android.gms:id/container"
@@ -119,7 +119,7 @@ func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	}
 
 	// Press until KEYCODE_TAB until login button is focused.
-	loginButton := d.Object(ui.ID(loginButtonID))
+	loginButton := d.Object(ui.TextMatches("(?i)" + loginText))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if loginBtnFocused, err := loginButton.IsFocused(ctx); err != nil {
 			return errors.New("login button not focused yet")
@@ -133,9 +133,9 @@ func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	}
 
 	// Check for login button.
-	loginButton = d.Object(ui.ID(loginButtonID))
+	loginButton = d.Object(ui.TextMatches("(?i)" + loginText))
 	if err := loginButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Error("LoginButton doesn't exist: ", err)
+		s.Log("LoginButton doesn't exist: ", err)
 	} else if err := loginButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on loginButton: ", err)
 	}
