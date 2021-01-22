@@ -28,3 +28,9 @@ func AddTastLibrary(ctx context.Context, conn *Conn) error {
 	}
 	return conn.Eval(ctx, extension.TastLibraryJS, nil)
 }
+
+// ExtensionBackgroundPageURL returns the URL to the background page for
+// the extension with the supplied ID.
+func ExtensionBackgroundPageURL(extID string) string {
+	return extension.BackgroundPageURL(extID)
+}
