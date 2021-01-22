@@ -11,14 +11,24 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/reporters"
+	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
+
+// RollbackState is the tate of the anti-rollback block.
+type RollbackState struct {
+	BlockID    int
+	MinVersion int
+	RWVersion  int
+}
 
 const (
 	// nocturne and nami are special cases and have "_fp" appended.
@@ -26,6 +36,8 @@ const (
 	// See go/cros-fingerprint-firmware-branching-and-signing.
 	fingerprintBoardNameSuffix  = "_fp"
 	fingerprintFirmwarePathBase = "/opt/google/biod/fw/"
+	// WaitForBiodToStartTimeout is the time to wait for biod to start.
+	WaitForBiodToStartTimeout = 30 * time.Second
 )
 
 func boardFromCrosConfig(ctx context.Context, d *dut.DUT) (string, error) {
@@ -77,7 +89,7 @@ func FlashFirmware(ctx context.Context, d *dut.DUT) error {
 		return errors.Wrap(err, "failed to get fp firmware path")
 	}
 	flashCmd := []string{"flash_fp_mcu", fpFirmwarePath}
-	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(flashCmd))
+	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(flashCmd))
 	if err := d.Command(flashCmd[0], flashCmd[1:]...).Run(ctx); err != nil {
 		return errors.Wrap(err, "flash_fp_mcu failed")
 	}
@@ -96,7 +108,7 @@ func FlashFirmware(ctx context.Context, d *dut.DUT) error {
 func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string) error {
 	// Check version and see if the FPMCU is in a good state.
 	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
-	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(versionCmd))
+	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
 	out, err := d.Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
 
 	if err == nil {
@@ -113,4 +125,148 @@ func InitializeKnownState(ctx context.Context, d *dut.DUT, outdir string) error 
 		}
 	}
 	return nil
+}
+
+// InitializeHWAndSWWriteProtect ensures hardware and software write protect are initialized as requested.
+func InitializeHWAndSWWriteProtect(ctx context.Context, d *dut.DUT, pxy *servo.Proxy, enableHWWP, enableSWWP bool) error {
+	testing.ContextLogf(ctx, "Initializing HW WP to %t, SW WP to %t", enableHWWP, enableSWWP)
+	// HW write protect must be disabled to disable SW write protect.
+	hwWPArg := servo.FWWPStateOff
+	if !enableSWWP {
+		if err := pxy.Servo().SetFWWPState(ctx, hwWPArg); err != nil {
+			return errors.Wrap(err, "failed to disable HW write protect")
+		}
+	}
+
+	swWPArg := "disable"
+	if enableSWWP {
+		swWPArg = "enable"
+	}
+	// TODO(b/116396469): Add error checking once it's fixed.
+	// This command can return error even on success, so ignore error for now.
+	_ = d.Command("ectool", "--name=cros_fp", "flashprotect", swWPArg).Run(ctx)
+	// TODO(b/116396469): "flashprotect enable" command is slow, so wait for
+	// it to complete before attempting to reboot.
+	testing.Sleep(ctx, 2*time.Second)
+	if err := RebootFpmcu(ctx, d, "RW"); err != nil {
+		return err
+	}
+
+	if enableHWWP {
+		hwWPArg = servo.FWWPStateOn
+	}
+	if err := pxy.Servo().SetFWWPState(ctx, hwWPArg); err != nil {
+		return errors.Wrapf(err, "failed to set HW write protect to %q", hwWPArg)
+	}
+	// TODO(b/182597335): Check the correct flags, which is different for different chips.
+	return nil
+}
+
+// RebootFpmcu reboots the fingerprint MCU. It does not reboot the AP.
+func RebootFpmcu(ctx context.Context, d *dut.DUT, bootTo string) error {
+	testing.ContextLog(ctx, "Rebooting FPMCU")
+	// This command returns error even on success, so ignore error. b/116396469
+	_ = d.Command("ectool", "--name=cros_fp", "reboot_ec").Run(ctx)
+	if bootTo == "RO" {
+		testing.Sleep(ctx, 500*time.Millisecond)
+		err := d.Command("ectool", "--name=cros_fp", "rwsigaction", "abort").Run(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to abort rwsig")
+		}
+	}
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		firmwareCopy, err := RunningFirmwareCopy(ctx, d)
+		if err != nil {
+			return err
+		}
+		if firmwareCopy != bootTo {
+			return errors.Errorf("FPMCU booted to %q, expected %q", firmwareCopy, bootTo)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond})
+
+	// Double check we are still in the expected image.
+	firmwareCopy, err := RunningFirmwareCopy(ctx, d)
+	if err != nil {
+		return err
+	}
+	if firmwareCopy != bootTo {
+		return errors.Errorf("FPMCU booted to %q, expected %q", firmwareCopy, bootTo)
+	}
+	return nil
+}
+
+// RunningFirmwareCopy returns the firmware copy on FPMCU (RO or RW).
+func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (string, error) {
+	versionCmd := []string{"ectool", "--name=cros_fp", "version"}
+	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(versionCmd))
+	out, err := d.Command(versionCmd[0], versionCmd[1:]...).Output(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to query FPMCU version")
+	}
+	versionInfoMap := parseColonDelimitedOutput(string(out))
+	firmwareCopy := versionInfoMap["Firmware copy"]
+	if firmwareCopy != "RO" && firmwareCopy != "RW" {
+		return "", errors.New("cannot find firmware copy string")
+	}
+	return firmwareCopy, nil
+}
+
+// RollbackInfo returns the rollbackinfo of the fingerprint MCU.
+func RollbackInfo(ctx context.Context, d *dut.DUT) ([]byte, error) {
+	cmd := []string{"ectool", "--name=cros_fp", "rollbackinfo"}
+	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
+	out, err := d.Command(cmd[0], cmd[1:]...).Output(ctx)
+	if err != nil {
+		return []byte{}, errors.Wrap(err, "failed to query FPMCU rollbackinfo")
+	}
+	return out, nil
+}
+
+// CheckRollbackSetToInitialValue checks the anti-rollback block is set to initial values.
+func CheckRollbackSetToInitialValue(ctx context.Context, d *dut.DUT) error {
+	return CheckRollbackState(ctx, d, RollbackState{
+		BlockID:    1,
+		MinVersion: 0,
+		RWVersion:  0,
+	})
+}
+
+// CheckRollbackState checks that the anti-rollback block is set to expected values.
+func CheckRollbackState(ctx context.Context, d *dut.DUT, expected RollbackState) error {
+	rollbackInfo, err := RollbackInfo(ctx, d)
+	if err != nil {
+		return err
+	}
+	rollbackInfoMap := parseColonDelimitedOutput(string(rollbackInfo))
+	if rollbackInfoMap["Rollback block id"] != strconv.Itoa(expected.BlockID) ||
+		rollbackInfoMap["Rollback min version"] != strconv.Itoa(expected.MinVersion) ||
+		rollbackInfoMap["RW rollback version"] != strconv.Itoa(expected.RWVersion) {
+		testing.ContextLogf(ctx, "Rollback info: %q", string(rollbackInfo))
+		return errors.New("Rollback not set to initial value")
+	}
+	return nil
+}
+
+// AddEntropy adds entropy to the fingerprint MCU.
+func AddEntropy(ctx context.Context, d *dut.DUT, reset bool) error {
+	cmd := []string{"ectool", "--name=cros_fp", "addentropy"}
+	if reset {
+		cmd = append(cmd, "reset")
+	}
+	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(cmd))
+	return d.Command(cmd[0], cmd[1:]...).Run(ctx)
+}
+
+// parseColonDelimitedOutput parses colon delimited information to a map.
+func parseColonDelimitedOutput(output string) map[string]string {
+	ret := map[string]string{}
+	for _, line := range strings.Split(output, "\n") {
+		splits := strings.Split(line, ":")
+		if len(splits) != 2 {
+			continue
+		}
+		ret[strings.TrimSpace(splits[0])] = strings.TrimSpace(splits[1])
+	}
+	return ret
 }
