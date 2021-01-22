@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd56cc14_26aeecc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T16:47:58Z",
+      "side": 1,
+      "message": "You should never upload passwords to chromium-review gerrit. It is public.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "7293ceab4bc5ff7a1acf83770067416c16b7f879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f2f8eea_c57072c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T16:47:58Z",
+      "side": 1,
+      "message": "ui. should work here and be what you want. No need to copy it to arc private variables.",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "7293ceab4bc5ff7a1acf83770067416c16b7f879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee7b005_993c36d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T16:47:58Z",
+      "side": 1,
+      "message": "Instead of left clicking, use FocusAndWait(). That should ensure it is ready to receive typing. The bug seems to be that it starts typing before the field is actually focused.",
+      "range": {
+        "startLine": 120,
+        "startChar": 17,
+        "endLine": 120,
+        "endChar": 26
+      },
+      "revId": "7293ceab4bc5ff7a1acf83770067416c16b7f879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0377a1ae_4f8578c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T16:47:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 148,
+        "startChar": 20,
+        "endLine": 148,
+        "endChar": 29
+      },
+      "revId": "7293ceab4bc5ff7a1acf83770067416c16b7f879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
