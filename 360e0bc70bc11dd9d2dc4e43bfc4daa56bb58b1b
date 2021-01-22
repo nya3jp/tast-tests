@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7f9680_18770e4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-22T06:32:03Z",
+      "side": 1,
+      "message": "one more nit.",
+      "revId": "360e0bc70bc11dd9d2dc4e43bfc4daa56bb58b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b79f6b8_e586a225",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-22T06:32:03Z",
+      "side": 1,
+      "message": "nit: Unlike Get, I think this must be *map[string]interface{}, so there\u0027s no need to allow arbitrary type here. The prototype:\n\n  func (d *DBusObject) GetAll(ctx context.Context) (map[string]interface{}, error)\n\nmight be more straight-forward, WDYT?",
+      "range": {
+        "startLine": 58,
+        "startChar": 49,
+        "endLine": 58,
+        "endChar": 64
+      },
+      "revId": "360e0bc70bc11dd9d2dc4e43bfc4daa56bb58b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04d4924b_94e8cc71",
