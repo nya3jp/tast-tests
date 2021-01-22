@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af373d4f_aaba16b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-22T02:30:28Z",
+      "side": 1,
+      "message": "Don\u0027t submit until changes are submitted to tast-tests-private (for the variable) and the goldctl binary is uploaded.\n\nBoth are required to run the test I\u0027ve added",
+      "revId": "09b5aa3cc8e88abcf22581bb83211d41a254f775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9001d35b_035ac060",
         "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
         "patchSetId": 5
