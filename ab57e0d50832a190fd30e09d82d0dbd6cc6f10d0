@@ -16,6 +16,23 @@
       "message": "Can you implement the new capabilties to avtest_label_detect?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/avtest_label_detect",
       "revId": "ab57e0d50832a190fd30e09d82d0dbd6cc6f10d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b255744_d399bfff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:49:55Z",
+      "side": 1,
+      "message": "Looks good from a tast point of view. Please resolve any comments from other reviewers before submitting.",
+      "revId": "ab57e0d50832a190fd30e09d82d0dbd6cc6f10d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
