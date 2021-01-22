@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d340b039_052f6910",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-22T15:29:49Z",
+      "side": 1,
+      "message": "perhaps put this before Root() so the 3 root functions are together",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 1
+      },
+      "revId": "a8627dca8649d6c5bb8fdc5aa1dc47597ee1c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e605fab7_9409481f",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
         "patchSetId": 6

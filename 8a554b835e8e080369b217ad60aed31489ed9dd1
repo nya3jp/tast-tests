@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5f3899e_96ae036f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-22T15:29:49Z",
+      "side": 1,
+      "message": "Yes it looks better but I still don\u0027t love the flow of using it. Did eng/vecore@ recommend against adding this code as a test function to the product? that way, we can just call the js function directly from the chrome conn without needed to read the js from a file in every test run.\n\nOr is there a reason we cannot do it that way that i\u0027ve missed?",
+      "parentUuid": "04a189da_df612cf3",
+      "range": {
+        "startLine": 34,
+        "startChar": 48,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcfbabd5_96b43ad1",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
         "patchSetId": 5
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "Yes it\u0027s just for chromeos",
       "parentUuid": "fd296527_6caf0fa2",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 64
+      },
+      "revId": "8a554b835e8e080369b217ad60aed31489ed9dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33df5ee9_bc7e7d9a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/send.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-01-22T15:29:49Z",
+      "side": 1,
+      "message": "Can you mention that in the comments of the file too",
+      "parentUuid": "75265699_a92fa749",
       "range": {
         "startLine": 20,
         "startChar": 0,
