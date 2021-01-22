@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -95,9 +94,6 @@ const (
 	// code path should be similar enough that we don't need separate tests for
 	// those process types.
 	GPUProcess
-	// BrokerByCmdline is similar to Broker, but finds a broker process by
-	// process command lines instead of reading /var/log/chrome/chrome.
-	BrokerByCmdline
 	// Broker indicates a process with --type=broker. Broker processes go through
 	// a special code path because they are forked directly.
 	Broker
@@ -113,8 +109,6 @@ func (ptype ProcessType) String() string {
 		return "GPUProcess"
 	case Broker:
 		return "Broker"
-	case BrokerByCmdline:
-		return "BrokerByCmdline"
 	default:
 		return "Unknown ProcessType " + strconv.Itoa(int(ptype))
 	}
@@ -181,7 +175,6 @@ func crashReporterRunning(ctx context.Context) (bool, error) {
 type CrashTester struct {
 	ptype     ProcessType
 	waitFor   CrashFileType
-	logReader *syslog.ChromeReader
 	killedPID int
 }
 
@@ -197,33 +190,14 @@ func NewCrashTester(ctx context.Context, ptype ProcessType, waitFor CrashFileTyp
 		return nil, errors.Errorf("waitFor out of range: %v", waitFor)
 	}
 
-	var logReader *syslog.ChromeReader
-	var err error
-	if ptype == Broker {
-		// Broker processes don't reliably set their command line arguments as seen
-		// by Process.Cmdline(). (They try, but setproctitle sometimes fails and
-		// leaves the process with its parent's command line.) Instead of finding
-		// broker processes by looking for a process with "--type=broker", we find
-		// it by scanning the Chrome log looking for a line that indicates the
-		// broker's PID.
-		logReader, err = syslog.NewChromeReader(ctx, syslog.ChromeLogFile)
-		if err != nil {
-			return nil, errors.Wrap(err, "could not get Chrome log reader")
-		}
-	}
-
 	return &CrashTester{
-		ptype:     ptype,
-		waitFor:   waitFor,
-		logReader: logReader,
+		ptype:   ptype,
+		waitFor: waitFor,
 	}, nil
 }
 
 // Close closes a CrashTester. It must be called on all CrashTesters returned from NewCrashTester.
 func (ct *CrashTester) Close() {
-	if ct.logReader != nil {
-		ct.logReader.Close()
-	}
 }
 
 // verifyChromeConfFile verifies that the Chrome configuration file
@@ -354,11 +328,6 @@ func getChromePIDs(ctx context.Context) ([]int, error) {
 	return pids, nil
 }
 
-const (
-	parentLine = `BrokerProcess::Init(), in parent, child is `
-	childLine  = `BrokerProcess::Init(), in child`
-)
-
 // getNonBrowserProcess returns a Process structure of a single Chrome process
 // of the indicated type. If more than one such process exists, the first one is
 // returned. Does not wait for the process to come up -- if none exist, this
@@ -374,7 +343,7 @@ func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Proces
 			return process.Process{}, errors.Errorf("no Chrome %s's found", ct.ptype)
 		}
 		return processes[0], nil
-	case BrokerByCmdline:
+	case Broker:
 		processes, err := chrome.GetBrokerProcesses()
 		if err != nil {
 			return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
@@ -383,29 +352,6 @@ func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Proces
 			return process.Process{}, errors.Errorf("no Chrome %s's found", ct.ptype)
 		}
 		return processes[0], nil
-	case Broker:
-		for {
-			entry, err := ct.logReader.Read()
-			if err != nil {
-				return process.Process{}, errors.Wrap(err, "error reading Chrome logs")
-			}
-			var pid int
-			if entry.Content == childLine {
-				pid = entry.PID
-			} else if strings.HasPrefix(entry.Content, parentLine) {
-				if pid, err = strconv.Atoi(strings.TrimPrefix(entry.Content, parentLine)); err != nil {
-					return process.Process{}, errors.Wrapf(err, "error parsing %q in Chrome logs", entry.Content)
-				}
-			} else {
-				continue
-			}
-			proc, err := process.NewProcess(int32(pid))
-			if err != nil {
-				// The process may have already died, keep looking for another.
-				continue
-			}
-			return *proc, nil
-		}
 	default:
 		return process.Process{}, errors.Errorf("unexpected ProcessType %s", ct.ptype)
 	}
