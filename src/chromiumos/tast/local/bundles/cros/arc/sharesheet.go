@@ -12,12 +12,12 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	arcui "chromiumos/tast/local/android/ui"
+	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
 	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/ui/sharesheet"
 	"chromiumos/tast/testing"
 )
 
@@ -46,11 +46,6 @@ func init() {
 	})
 }
 
-const (
-	arcSharesheetUITimeout    = 15 * time.Second
-	arcSharesheetPollInterval = 2 * time.Second
-)
-
 func Sharesheet(ctx context.Context, s *testing.State) {
 	const (
 		appShareLabel        = "ARC Chrome Sharesheet Test"
@@ -61,7 +56,6 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 
 	username := s.RequiredVar("arc.Sharesheet.username")
 	password := s.RequiredVar("arc.Sharesheet.password")
-	pollOpts := testing.PollOptions{Interval: arcSharesheetPollInterval, Timeout: arcSharesheetUITimeout}
 
 	// Setup Chrome.
 	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCEnabled(),
@@ -112,122 +106,19 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed selecting file %q: %v", expectedFileName, err)
 	}
 
-	if err := waitForActionBarStabilized(ctx, tconn, files, &pollOpts); err != nil {
-		s.Fatal("Failed waiting for the Share button to appear: ", err)
+	if err := files.ClickShareButton(ctx); err != nil {
+		s.Fatal("Failed clicking share button: ", err)
 	}
 
-	if err := clickShareButton(ctx, files, &pollOpts); err != nil {
-		s.Fatal("Failed clicking the share sheet button: ", err)
-	}
-
-	if err := clickAppOnStableSharesheet(ctx, tconn, files, &pollOpts, appShareLabel); err != nil {
-		s.Fatal("Failed waiting for app to appear on sharesheet: ", err)
+	if err := sharesheet.ClickApp(ctx, tconn, appShareLabel); err != nil {
+		s.Fatal("Failed clicking app on stable sharesheet: ", err)
 	}
 
 	// Wait for the file contents to show in the Android test app.
-	fileContentField := uiAutomator.Object(arcui.ID(fileContentsID), arcui.Text(expectedFileContents))
-	if err := fileContentField.WaitForExists(ctx, arcSharesheetUITimeout); err != nil {
+	fileContentField := uiAutomator.Object(ui.ID(fileContentsID), ui.Text(expectedFileContents))
+	if err := fileContentField.WaitForExists(ctx, 15*time.Second); err != nil {
 		s.Fatalf("Failed waiting for file contents %q to appear in ARC window: %v", expectedFileContents, err)
 	}
-}
-
-// waitForActionBarStabilized makes sure the Action bar is stable as items are loaded asynchronously.
-func waitForActionBarStabilized(ctx context.Context, tconn *chrome.TestConn, f *filesapp.FilesApp, pollOpts *testing.PollOptions) error {
-	// Get the Action bar which contains the Share button.
-	params := chromeui.FindParams{
-		Role: chromeui.RoleTypeContentInfo,
-	}
-	actionBar, err := f.Root.DescendantWithTimeout(ctx, params, arcSharesheetUITimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed to find Action bar")
-	}
-	defer actionBar.Release(ctx)
-
-	// Setup a watcher to wait for the Share button to show.
-	ew, err := chromeui.NewWatcher(ctx, actionBar, chromeui.EventTypeActiveDescendantChanged)
-	if err != nil {
-		return errors.Wrap(err, "failed getting a watcher for the files Action bar")
-	}
-	defer ew.Release(ctx)
-
-	// Check the Action bar for any Activedescendantchanged events occurring in a 2 second interval.
-	// If any events are found continue polling until 10s is reached.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return ew.EnsureNoEvents(ctx, arcSharesheetPollInterval)
-	}, pollOpts); err != nil {
-		return errors.Wrapf(err, "failed waiting %v for action bar to stabilize", pollOpts.Timeout)
-	}
-
-	return nil
-}
-
-// clickShareButton clicks the Share button in the Action bar on the Files app.
-func clickShareButton(ctx context.Context, f *filesapp.FilesApp, pollOpts *testing.PollOptions) error {
-	// Get the Share button.
-	params := chromeui.FindParams{
-		Role: chromeui.RoleTypeButton,
-		Name: "Share",
-	}
-	shareButton, err := f.Root.DescendantWithTimeout(ctx, params, arcSharesheetUITimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed to find Share button")
-	}
-	defer shareButton.Release(ctx)
-
-	return shareButton.StableLeftClick(ctx, pollOpts)
-}
-
-// clickAppOnStableSharesheet clicks the requested app on the sharesheet.
-// The app must be available in the first 8 apps.
-func clickAppOnStableSharesheet(ctx context.Context, tconn *chrome.TestConn, f *filesapp.FilesApp, pollOpts *testing.PollOptions, appShareLabel string) error {
-	quickEditButton, err := waitForAppOnStableSharesheet(ctx, f, tconn, appShareLabel, pollOpts)
-	if err != nil {
-		return errors.Wrap(err, "failed waiting for Sharesheet window to stabilize")
-	}
-	defer quickEditButton.Release(ctx)
-
-	return quickEditButton.StableLeftClick(ctx, pollOpts)
-}
-
-// waitForAppOnStableSharesheet waits for the Sharesheet to stabilize and returns the ARC apps node.
-func waitForAppOnStableSharesheet(ctx context.Context, f *filesapp.FilesApp, tconn *chrome.TestConn, appName string, pollOpts *testing.PollOptions) (*chromeui.Node, error) {
-	// Get the Sharesheet View popup window.
-	params := chromeui.FindParams{
-		ClassName: "View",
-		Name:      "Share",
-	}
-	sharesheetWindow, err := chromeui.FindWithTimeout(ctx, tconn, params, arcSharesheetUITimeout)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find Sharesheet window")
-	}
-	defer sharesheetWindow.Release(ctx)
-
-	// Setup a watcher to wait for the apps list in Sharesheet to stabilize.
-	ew, err := chromeui.NewWatcher(ctx, sharesheetWindow, chromeui.EventTypeActiveDescendantChanged)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed getting a watcher for the Sharesheet views window")
-	}
-	defer ew.Release(ctx)
-
-	// Check the Sharesheet window for any Activedescendantchanged events occurring in a 2 second interval.
-	// If any events are found continue polling until 10s is reached.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return ew.EnsureNoEvents(ctx, arcSharesheetPollInterval)
-	}, pollOpts); err != nil {
-		return nil, errors.Wrapf(err, "failed waiting %v for Sharesheet window to stabilize", pollOpts.Timeout)
-	}
-
-	// Get the app button to click.
-	params = chromeui.FindParams{
-		Role: chromeui.RoleTypeButton,
-		Name: appName,
-	}
-	appButton, err := sharesheetWindow.DescendantWithTimeout(ctx, params, arcSharesheetUITimeout)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to find app %q on Sharesheet window", appName)
-	}
-
-	return appButton, nil
 }
 
 // setUpARC starts an ARC device and starts UI automator.
