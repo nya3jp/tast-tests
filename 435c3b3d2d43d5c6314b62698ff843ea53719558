@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62877ba1_32d00ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-22T05:19:25Z",
+      "side": 1,
+      "message": "Please consider broader update, \nRobloxUnpackingPerf\nroblox_unpacking_perf.go\nor similar.",
+      "parentUuid": "8d3f4720_a21a33d5",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "435c3b3d2d43d5c6314b62698ff843ea53719558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01928439_b3267299",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
         "patchSetId": 3
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Yes, good point. It will make the code easier to read.\n\nAlthough I\u0027d wait a bit until more people start to use the \"install-multiple\" API.\nThe rationale behind that is:\n\n- should the .zip include a manifest file?\n- what happens if the .zip includes files that are not .apk?\n- how are these .zip creates? should we have a tool for that that prevents from creating invalid .zips?\n- should \"install-multiple\" install all \"splits\", or only the ones that makes sense to the platform ?\n- should we create a file format? or just use App Bundle files? (although we cannot have access to the 3rd party App Bundle files)\n\n\nSo I\u0027d wait bit, learn what are the different needs, and based on that create a API that satisfies the different use cases.\n\nThoughts?",
       "parentUuid": "01928439_b3267299",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 44
+      },
+      "revId": "435c3b3d2d43d5c6314b62698ff843ea53719558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "507fdf08_e587ac1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-22T05:19:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f46ddc93_bfda89e4",
       "range": {
         "startLine": 73,
         "startChar": 17,
