@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11817fb6_e52c1f42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-22T17:35:46Z",
+      "side": 1,
+      "message": "LGTM with a nit",
+      "revId": "441af86d8ff6f732d5b3b3b2c2d5baeb025e0a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3212925b_50ccef0d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-22T17:35:46Z",
+      "side": 1,
+      "message": "nit: my personal preference is to move those types/constants to this package from config then config refers to login.Mode type. I feel it\u0027s a bit cleaner.  wdyt?",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "441af86d8ff6f732d5b3b3b2c2d5baeb025e0a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
