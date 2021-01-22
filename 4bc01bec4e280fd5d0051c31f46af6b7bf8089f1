@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f269985e_fd610ddb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-01-22T16:38:09Z",
+      "side": 1,
+      "message": "Hi Pavol,\n\nPTAL!\n\nproxy_service.pb.go is auto-generated from the proto file.\n\nI followed the steps at https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#Defining-gRPC-services.\n\nThanks,\nAndreea",
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
