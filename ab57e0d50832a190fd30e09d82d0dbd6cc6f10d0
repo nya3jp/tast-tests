@@ -51,6 +51,29 @@
       "parentUuid": "d229c307_3a272927",
       "revId": "ab57e0d50832a190fd30e09d82d0dbd6cc6f10d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2aa915_9657e6f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-22T17:27:30Z",
+      "side": 1,
+      "message": "The other reference to this enum is HWDecodeAV1_4K10BPP [1], although\nI like this way better (because it lines up with |HWDecodeAV1_10BPP|\nin l.48). Can we leave this and change caps.go ?\n\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/caps/caps.go?q\u003dHWDecodeAV1_4K10BPP",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 56
+      },
+      "revId": "ab57e0d50832a190fd30e09d82d0dbd6cc6f10d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
