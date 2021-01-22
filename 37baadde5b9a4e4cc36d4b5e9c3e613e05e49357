@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3d9889_92101a06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-01-22T16:29:12Z",
+      "side": 1,
+      "message": "Sorry for the wait!\n\nIn the future, if I\u0027m unresponsive, feel free to ping me directly! I get a lot of reviews and sometimes things get lost...",
+      "revId": "37baadde5b9a4e4cc36d4b5e9c3e613e05e49357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb6e850_cee42825",
