@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa68b439_c60ac139",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-22T16:16:45Z",
+      "side": 1,
+      "message": "The whole chain of https://crrev.com/c/2635994 is waiting this CL + an uprev. It would be great if we can merge this ASAP. Thanks a lot :)",
+      "parentUuid": "e7698c73_80194fa5",
+      "revId": "37baadde5b9a4e4cc36d4b5e9c3e613e05e49357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb6e850_cee42825",
