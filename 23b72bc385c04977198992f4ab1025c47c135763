@@ -16,6 +16,24 @@
       "message": "This is good, though maybe ash might not be a great place to supply both of them (Conns and CreateNewWindows). Let me think about that.",
       "revId": "23b72bc385c04977198992f4ab1025c47c135763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ffd4129_c2c1fa64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-22T05:03:35Z",
+      "side": 1,
+      "message": "+1.\nMoreover, I\u0027m not very sure if we should provide Conns type at anywhere.",
+      "parentUuid": "41039591_716de062",
+      "revId": "23b72bc385c04977198992f4ab1025c47c135763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
