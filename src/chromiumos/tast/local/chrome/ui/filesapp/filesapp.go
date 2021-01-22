@@ -740,3 +740,45 @@ func (f *FilesApp) DragAndDropFile(ctx context.Context, fileName string, dropPoi
 
 	return f.waitForListBox(ctx)
 }
+
+// ClickShareButton waits for the Action bar to stabilize and clicks the Share button.
+// Assumes a file has been selected already.
+func (f *FilesApp) ClickShareButton(ctx context.Context) error {
+	// Get the Action bar which contains the Share button.
+	params := ui.FindParams{
+		Role: ui.RoleTypeContentInfo,
+	}
+	actionBar, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find Action bar")
+	}
+	defer actionBar.Release(ctx)
+
+	// Setup a watcher to wait for the Share button to show.
+	ew, err := ui.NewWatcher(ctx, actionBar, ui.EventTypeActiveDescendantChanged)
+	if err != nil {
+		return errors.Wrap(err, "failed getting a watcher for the files Action bar")
+	}
+	defer ew.Release(ctx)
+
+	// Check the Action bar for any Activedescendantchanged events occurring in a 2 second interval.
+	// If any events are found continue polling until 10s is reached.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return ew.EnsureNoEvents(ctx, f.stablePollOpts.Interval)
+	}, f.stablePollOpts); err != nil {
+		return errors.Wrapf(err, "failed waiting %v for action bar to stabilize", f.stablePollOpts.Timeout)
+	}
+
+	// Get the Share button.
+	params = ui.FindParams{
+		Role: ui.RoleTypeButton,
+		Name: "Share",
+	}
+	shareButton, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find Share button")
+	}
+	defer shareButton.Release(ctx)
+
+	return shareButton.StableLeftClick(ctx, f.stablePollOpts)
+}
