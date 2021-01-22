@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a61cf1_88e45f3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:44:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0cf44c9_4c55dc00",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "18f09e83bf238eb37c13d70be16f22f838246e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bb1eeb2_abd0c8af",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-01-22T14:28:01Z",
       "side": 1,
       "message": "comment here and the next few functions",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "18f09e83bf238eb37c13d70be16f22f838246e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "642b2d5e_4b19b89c",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/nodewith/nodewith.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bb1eeb2_abd0c8af",
       "range": {
         "startLine": 31,
         "startChar": 5,

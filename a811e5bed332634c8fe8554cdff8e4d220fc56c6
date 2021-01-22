@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c62c4ce_e535187d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:44:07Z",
+      "side": 1,
+      "message": "I decided to call the package uiauto and this type just Context.\nThat way in test we can use:\nui :\u003d uiauto.New()\nui...\nuiauto...\nAlso, when passing the type around, it is *uiauto.Context\n\nAny final thoughts before submitting?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "a811e5bed332634c8fe8554cdff8e4d220fc56c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
