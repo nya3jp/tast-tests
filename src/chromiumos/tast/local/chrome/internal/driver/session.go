@@ -44,8 +44,8 @@ type Session struct {
 }
 
 // NewSession connects to a local Chrome process and creates a new Session.
-func NewSession(ctx context.Context, debuggingPortPath string, portWait cdputil.PortWaitOption, getBrowserPID func() (int, error), agg *jslog.Aggregator) (cr *Session, retErr error) {
-	watcher := browserwatcher.NewWatcher(getBrowserPID)
+func NewSession(ctx context.Context, debuggingPortPath string, portWait cdputil.PortWaitOption, agg *jslog.Aggregator) (cr *Session, retErr error) {
+	watcher := browserwatcher.NewWatcher()
 	defer func() {
 		if retErr != nil {
 			watcher.Close()
