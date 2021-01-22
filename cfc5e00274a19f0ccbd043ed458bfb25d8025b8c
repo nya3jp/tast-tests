@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06085680_a15a53e6",
+        "filename": "src/chromiumos/tast/local/screenshot/gold.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-22T02:22:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d99ea7ca_fcdc39c2",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "cfc5e00274a19f0ccbd043ed458bfb25d8025b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5c4e941_9cad4342",

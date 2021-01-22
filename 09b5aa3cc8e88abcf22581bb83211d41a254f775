@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9001d35b_035ac060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-01-22T02:22:57Z",
+      "side": 1,
+      "message": "TODO: At the moment, I get the error \"Test Vars should be an array literal of string literals\" (I tried to use a constant). See if we can switch to a constant, and if not, unexpose the constant.",
+      "revId": "09b5aa3cc8e88abcf22581bb83211d41a254f775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
