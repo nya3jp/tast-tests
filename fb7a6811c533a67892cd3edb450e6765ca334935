@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c25235da_bca76219",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-22T19:44:08Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "fb7a6811c533a67892cd3edb450e6765ca334935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a4fe14_cca971ce",
+        "filename": "src/chromiumos/tast/local/printing/ippusbbridge/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-22T19:44:08Z",
+      "side": 1,
+      "message": "Thanks for making those changes!",
+      "revId": "fb7a6811c533a67892cd3edb450e6765ca334935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
