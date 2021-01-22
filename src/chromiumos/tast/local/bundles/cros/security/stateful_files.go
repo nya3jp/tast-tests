@@ -14,7 +14,6 @@ import (
 
 	chk "chromiumos/tast/local/bundles/cros/security/filecheck"
 	"chromiumos/tast/local/moblab"
-	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -37,31 +36,6 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		maxErrors = 5 // max to print
 	)
 
-	// These functions return options that permit a path to be owned by any of the supplied
-	// users or groups (all of which must exist).
-	users := func(usernames ...string) chk.Option {
-		uids := make([]uint32, len(usernames))
-		var err error
-		for i, u := range usernames {
-			uids[i], err = sysutil.GetUID(u)
-			if err != nil {
-				s.Fatal("Failed to find uid: ", err)
-			}
-		}
-		return chk.UID(uids...)
-	}
-	groups := func(gs ...string) chk.Option {
-		gids := make([]uint32, len(gs))
-		var err error
-		for i, g := range gs {
-			gids[i], err = sysutil.GetGID(g)
-			if err != nil {
-				s.Fatal("Failed to find gid: ", err)
-			}
-		}
-		return chk.GID(gids...)
-	}
-
 	// The basic approach here is to specify patterns for paths within a top-level directory, and then add a catch-all
 	// Tree pattern that checks anything in the directory that wasn't already explicitly checked or skipped.
 	// Any top-level directories not explicitly handled are matched by the final AllPaths pattern.
@@ -70,92 +44,92 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Path("dev_image_old"), chk.SkipChildren()), // only exists for dev images
 		chk.NewPattern(chk.Path("dev_image_new"), chk.SkipChildren()), // only exists for dev images
 
-		chk.NewPattern(chk.Path("encrypted/chronos"), users("chronos"), groups("chronos"), chk.Mode(0755), chk.SkipChildren()), // contents checked by security.UserFiles*
+		chk.NewPattern(chk.Path("encrypted/chronos"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0755), chk.SkipChildren()), // contents checked by security.UserFiles*
 
-		chk.NewPattern(chk.Path("encrypted/var/cache/app_pack"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/cache/app_pack"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
 		// TODO(crbug.com/905719): Check for a specific user:group and mode.
-		chk.NewPattern(chk.Path("encrypted/var/cache/camera"), users("chronos", "root"), chk.NotMode(02), chk.SkipChildren()),
-		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_component_policy"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_extensions"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_external_policy_data"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Path("encrypted/var/cache/device_policy_external_data"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Path("encrypted/var/cache/display_profiles"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Path("encrypted/var/cache/edb"), users("root"), groups("portage"), chk.Mode(0755), chk.SkipChildren()),
-		chk.NewPattern(chk.Tree("encrypted/var/cache/echo"), users("root"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/cache/external_cache"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Tree("encrypted/var/cache/ldconfig"), users("root"), groups("root"), chk.NotMode(077)),
-		chk.NewPattern(chk.Tree("encrypted/var/cache/modemfwd"), users("modem"), groups("modem"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/cache/shared_extensions"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Tree("encrypted/var/cache/shill"), users("shill"), groups("shill"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/cache/signin_profile_component_policy"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Path("encrypted/var/cache/signin_profile_extensions"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Tree("encrypted/var/cache"), users("root"), groups("root"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/cache/camera"), chk.Users("chronos", "root"), chk.NotMode(02), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_component_policy"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_extensions"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_external_policy_data"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/cache/device_policy_external_data"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/cache/display_profiles"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/cache/edb"), chk.Users("root"), chk.Groups("portage"), chk.Mode(0755), chk.SkipChildren()),
+		chk.NewPattern(chk.Tree("encrypted/var/cache/echo"), chk.Users("root"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/cache/external_cache"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Tree("encrypted/var/cache/ldconfig"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)),
+		chk.NewPattern(chk.Tree("encrypted/var/cache/modemfwd"), chk.Users("modem"), chk.Groups("modem"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/cache/shared_extensions"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Tree("encrypted/var/cache/shill"), chk.Users("shill"), chk.Groups("shill"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/cache/signin_profile_component_policy"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/cache/signin_profile_extensions"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Tree("encrypted/var/cache"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)),
 
-		chk.NewPattern(chk.Tree("encrypted/var/coredumps"), users("chronos"), groups("chronos"), chk.NotMode(077)),
+		chk.NewPattern(chk.Tree("encrypted/var/coredumps"), chk.Users("chronos"), chk.Groups("chronos"), chk.NotMode(077)),
 
-		chk.NewPattern(chk.Tree("encrypted/var/lib/bluetooth"), users("bluetooth"), chk.NotMode(027)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/bootlockbox"), users("bootlockboxd"), groups("bootlockboxd"), chk.NotMode(022)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/chaps"), users("chaps"), groups("chronos-access"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/lib/cras"), users("cras"), groups("cras"), chk.Mode(0755)),                     // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/lib/cras"), users("cras"), groups("cras"), chk.Mode(0644), chk.SkipChildren()), // children
-		chk.NewPattern(chk.Tree("encrypted/var/lib/chaps/database"), users("chaps"), groups("chronos-access"), chk.NotMode(027)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/dhcpcd"), users("dhcp"), groups("dhcp"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/lib/gentoo"), users("root"), chk.NotMode(022), chk.SkipChildren()),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/imageloader"), users("imageloaderd"), groups("imageloaderd"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/lib/metrics/uma-events"), users("metrics"), groups("metrics"), chk.Mode(0666)),
-		chk.NewPattern(chk.Path("encrypted/var/lib/metrics"), users("metrics"), groups("metrics"), chk.Mode(0755)),                                     // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/lib/metrics"), users("metrics", "root"), groups("metrics", "root"), chk.Mode(0644), chk.SkipChildren()), // children
-		chk.NewPattern(chk.Tree("encrypted/var/lib/ml_service"), users("ml-service"), groups("ml-service"), chk.NotMode(02)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/modemfwd"), users("modem"), groups("modem"), chk.NotMode(022)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/oobe_config_restore"), users("oobe_config_restore"), groups("oobe_config_restore"), chk.NotMode(022)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/oobe_config_save"), users("oobe_config_save"), groups("oobe_config_save"), chk.NotMode(022)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/power_manager"), users("power"), groups("power"), chk.NotMode(022)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/shill"), users("shill"), groups("shill"), chk.NotMode(022)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/timezone"), users("chronos", "root"), chk.NotMode(022)),
-		chk.NewPattern(chk.Tree("encrypted/var/lib/tpm"), users("root"), groups("root"), chk.NotMode(077)),
-		chk.NewPattern(chk.Path("encrypted/var/lib/whitelist"), users("root"), groups("policy-readers"), chk.Mode(0750)), // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/lib/whitelist"), users("root"), groups("root"), chk.NotMode(022)),         // children
-		chk.NewPattern(chk.Tree("encrypted/var/lib"), users("root"), groups("root"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/bluetooth"), chk.Users("bluetooth"), chk.NotMode(027)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/bootlockbox"), chk.Users("bootlockboxd"), chk.Groups("bootlockboxd"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/chaps"), chk.Users("chaps"), chk.Groups("chronos-access"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/lib/cras"), chk.Users("cras"), chk.Groups("cras"), chk.Mode(0755)),                     // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/lib/cras"), chk.Users("cras"), chk.Groups("cras"), chk.Mode(0644), chk.SkipChildren()), // children
+		chk.NewPattern(chk.Tree("encrypted/var/lib/chaps/database"), chk.Users("chaps"), chk.Groups("chronos-access"), chk.NotMode(027)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/dhcpcd"), chk.Users("dhcp"), chk.Groups("dhcp"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/lib/gentoo"), chk.Users("root"), chk.NotMode(022), chk.SkipChildren()),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/imageloader"), chk.Users("imageloaderd"), chk.Groups("imageloaderd"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/lib/metrics/uma-events"), chk.Users("metrics"), chk.Groups("metrics"), chk.Mode(0666)),
+		chk.NewPattern(chk.Path("encrypted/var/lib/metrics"), chk.Users("metrics"), chk.Groups("metrics"), chk.Mode(0755)),                                     // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/lib/metrics"), chk.Users("metrics", "root"), chk.Groups("metrics", "root"), chk.Mode(0644), chk.SkipChildren()), // children
+		chk.NewPattern(chk.Tree("encrypted/var/lib/ml_service"), chk.Users("ml-service"), chk.Groups("ml-service"), chk.NotMode(02)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/modemfwd"), chk.Users("modem"), chk.Groups("modem"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/oobe_config_restore"), chk.Users("oobe_config_restore"), chk.Groups("oobe_config_restore"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/oobe_config_save"), chk.Users("oobe_config_save"), chk.Groups("oobe_config_save"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/power_manager"), chk.Users("power"), chk.Groups("power"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/shill"), chk.Users("shill"), chk.Groups("shill"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/timezone"), chk.Users("chronos", "root"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/tpm"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)),
+		chk.NewPattern(chk.Path("encrypted/var/lib/whitelist"), chk.Users("root"), chk.Groups("policy-readers"), chk.Mode(0750)), // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/lib/whitelist"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)),         // children
+		chk.NewPattern(chk.Tree("encrypted/var/lib"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)),
 
-		chk.NewPattern(chk.Tree("encrypted/var/log/asan"), users("root"), groups("root"), chk.Mode(0777|os.ModeSticky)),
-		chk.NewPattern(chk.Tree("encrypted/var/log/chrome/Crash Reports/uploads.log"), users("root"), groups("root"), chk.Mode(0644)),
-		chk.NewPattern(chk.Tree("encrypted/var/log/chrome/Crash Reports"), users("chronos"), groups("chronos"), chk.NotMode(077)),
-		chk.NewPattern(chk.Tree("encrypted/var/log/chrome"), users("chronos"), groups("chronos"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/log/emerge.log"), users("portage"), groups("portage"), chk.Mode(0660)),
-		chk.NewPattern(chk.Tree("encrypted/var/log/metrics"), users("root", "chronos", "metrics", "shill"), chk.NotMode(022)),
-		chk.NewPattern(chk.Tree("encrypted/var/log/modemfwd"), users("modem"), groups("modem"), chk.NotMode(022)),
-		chk.NewPattern(chk.Tree("encrypted/var/log/power_manager"), users("power"), groups("power"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/log/usbmon"), users("root", "tcpdump"), groups("root", "tcpdump"), chk.SkipChildren()), // only created by tests
-		chk.NewPattern(chk.Path("encrypted/var/log/vmlog"), users("metrics"), groups("metrics"), chk.Mode(0755)),                      // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/log/vmlog"), users("metrics"), groups("metrics"), chk.Mode(0644)),                      // children
-		chk.NewPattern(chk.Path("encrypted/var/log"), users("root"), groups("syslog"), chk.Mode(0775|os.ModeSticky)),                  // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/log"), users("syslog", "root"), groups("syslog", "root"), chk.NotMode(022)),            // children
+		chk.NewPattern(chk.Tree("encrypted/var/log/asan"), chk.Users("root"), chk.Groups("root"), chk.Mode(0777|os.ModeSticky)),
+		chk.NewPattern(chk.Tree("encrypted/var/log/chrome/Crash Reports/uploads.log"), chk.Users("root"), chk.Groups("root"), chk.Mode(0644)),
+		chk.NewPattern(chk.Tree("encrypted/var/log/chrome/Crash Reports"), chk.Users("chronos"), chk.Groups("chronos"), chk.NotMode(077)),
+		chk.NewPattern(chk.Tree("encrypted/var/log/chrome"), chk.Users("chronos"), chk.Groups("chronos"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/log/emerge.log"), chk.Users("portage"), chk.Groups("portage"), chk.Mode(0660)),
+		chk.NewPattern(chk.Tree("encrypted/var/log/metrics"), chk.Users("root", "chronos", "metrics", "shill"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/log/modemfwd"), chk.Users("modem"), chk.Groups("modem"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/log/power_manager"), chk.Users("power"), chk.Groups("power"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/log/usbmon"), chk.Users("root", "tcpdump"), chk.Groups("root", "tcpdump"), chk.SkipChildren()), // only created by tests
+		chk.NewPattern(chk.Path("encrypted/var/log/vmlog"), chk.Users("metrics"), chk.Groups("metrics"), chk.Mode(0755)),                      // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/log/vmlog"), chk.Users("metrics"), chk.Groups("metrics"), chk.Mode(0644)),                      // children
+		chk.NewPattern(chk.Path("encrypted/var/log"), chk.Users("root"), chk.Groups("syslog"), chk.Mode(0775|os.ModeSticky)),                  // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/log"), chk.Users("syslog", "root"), chk.Groups("syslog", "root"), chk.NotMode(022)),            // children
 
-		chk.NewPattern(chk.Path("encrypted/var/spool/crash"), users("root"), groups("crash-access"), chk.Mode(0770|os.ModeSetgid)), // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/spool/crash"), users("root"), groups("crash-access"), chk.NotMode(002)),             // children
+		chk.NewPattern(chk.Path("encrypted/var/spool/crash"), chk.Users("root"), chk.Groups("crash-access"), chk.Mode(0770|os.ModeSetgid)), // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/spool/crash"), chk.Users("root"), chk.Groups("crash-access"), chk.NotMode(002)),             // children
 
-		chk.NewPattern(chk.Path("encrypted/var/tmp"), users("root"), groups("root"), chk.Mode(0777|os.ModeSticky), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/tmp"), chk.Users("root"), chk.Groups("root"), chk.Mode(0777|os.ModeSticky), chk.SkipChildren()),
 
-		chk.NewPattern(chk.Tree("encrypted"), users("root"), chk.NotMode(022)),
-		chk.NewPattern(chk.PathRegexp(`^encrypted\.`), users("root"), groups("root"), chk.Mode(0600)),
+		chk.NewPattern(chk.Tree("encrypted"), chk.Users("root"), chk.NotMode(022)),
+		chk.NewPattern(chk.PathRegexp(`^encrypted\.`), chk.Users("root"), chk.Groups("root"), chk.Mode(0600)),
 
-		chk.NewPattern(chk.Tree("etc"), users("root"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("etc"), chk.Users("root"), chk.NotMode(022)),
 
-		chk.NewPattern(chk.Path("home/.shadow"), users("root"), groups("root"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Path("home/root"), users("root"), groups("root"), chk.Mode(0751|os.ModeSticky)),                    // directory itself
-		chk.NewPattern(chk.Tree("home/root"), users("root"), groups("root"), chk.Mode(0700), chk.SkipChildren()),              // top-level children
-		chk.NewPattern(chk.Path("home/user"), users("root"), groups("root"), chk.Mode(0755)),                                  // directory itself
-		chk.NewPattern(chk.Tree("home/user"), users("chronos"), groups("chronos-access"), chk.Mode(0700), chk.SkipChildren()), // top-level children
-		chk.NewPattern(chk.Tree("home"), users("root"), groups("root"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("home/.shadow"), chk.Users("root"), chk.Groups("root"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("home/root"), chk.Users("root"), chk.Groups("root"), chk.Mode(0751|os.ModeSticky)),                    // directory itself
+		chk.NewPattern(chk.Tree("home/root"), chk.Users("root"), chk.Groups("root"), chk.Mode(0700), chk.SkipChildren()),              // top-level children
+		chk.NewPattern(chk.Path("home/user"), chk.Users("root"), chk.Groups("root"), chk.Mode(0755)),                                  // directory itself
+		chk.NewPattern(chk.Tree("home/user"), chk.Users("chronos"), chk.Groups("chronos-access"), chk.Mode(0700), chk.SkipChildren()), // top-level children
+		chk.NewPattern(chk.Tree("home"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)),
 
 		chk.NewPattern(chk.Path("unencrypted/apkcache"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Tree("unencrypted/attestation"), users("attestation", "root"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("unencrypted/preserve"), users("root"), chk.NotMode(02)),                 // directory itself
-		chk.NewPattern(chk.Path("unencrypted/preserve/cros-update"), chk.SkipChildren()),                 // only exists for testing
-		chk.NewPattern(chk.Path("unencrypted/preserve/log"), chk.SkipChildren()),                         // only exists for testing
-		chk.NewPattern(chk.Tree("unencrypted/preserve"), users("attestation", "root"), chk.NotMode(022)), // other children
-		chk.NewPattern(chk.Path("unencrypted/userspace_swap.tmp"), users("chronos"), chk.SkipChildren()),
-		chk.NewPattern(chk.Tree("unencrypted"), users("root"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("unencrypted/attestation"), chk.Users("attestation", "root"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("unencrypted/preserve"), chk.Users("root"), chk.NotMode(02)),                 // directory itself
+		chk.NewPattern(chk.Path("unencrypted/preserve/cros-update"), chk.SkipChildren()),                     // only exists for testing
+		chk.NewPattern(chk.Path("unencrypted/preserve/log"), chk.SkipChildren()),                             // only exists for testing
+		chk.NewPattern(chk.Tree("unencrypted/preserve"), chk.Users("attestation", "root"), chk.NotMode(022)), // other children
+		chk.NewPattern(chk.Path("unencrypted/userspace_swap.tmp"), chk.Users("chronos"), chk.SkipChildren()),
+		chk.NewPattern(chk.Tree("unencrypted"), chk.Users("root"), chk.NotMode(022)),
 
 		chk.NewPattern(chk.Path("var_overlay"), chk.SkipChildren()), // only exists for dev images
 
@@ -164,92 +138,92 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		// TODO(crbug.com/1083285): Avoid creating this file with 0666 permissions.
 		chk.NewPattern(chk.Path("wipe_mark_file"), chk.Mode(0666)),
 
-		chk.NewPattern(chk.Root(), users("root"), groups("root"), chk.Mode(0755)), // stateful_partition directory itself
-		chk.NewPattern(chk.AllPaths(), users("root"), chk.NotMode(022)),           // everything else not already matched
+		chk.NewPattern(chk.Root(), chk.Users("root"), chk.Groups("root"), chk.Mode(0755)), // stateful_partition directory itself
+		chk.NewPattern(chk.AllPaths(), chk.Users("root"), chk.NotMode(022)),               // everything else not already matched
 	}
 
 	// prependPatterns prepends the supplied patterns to the main patterns slice.
 	prependPatterns := func(newPatterns ...*chk.Pattern) { patterns = append(newPatterns, patterns...) }
 
 	if _, err := user.Lookup("tss"); err == nil {
-		prependPatterns(chk.NewPattern(chk.Tree("var-overlay/lib/tpm"), users("tss"), chk.NotMode(022)))
+		prependPatterns(chk.NewPattern(chk.Tree("var-overlay/lib/tpm"), chk.Users("tss"), chk.NotMode(022)))
 	}
 
 	if _, err := user.Lookup("tpm_manager"); err == nil {
 		prependPatterns(
-			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager"), users("tpm_manager"), groups("tpm_manager"), chk.NotMode(022)),
-			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager/local_tpm_data"), users("root"), groups("root"), chk.NotMode(077)))
+			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager"), chk.Users("tpm_manager"), chk.Groups("tpm_manager"), chk.NotMode(022)),
+			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager/local_tpm_data"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)))
 	}
 
 	if _, err := user.Lookup("trunks"); err == nil {
 		prependPatterns(
-			chk.NewPattern(chk.Path("encrypted/var/lib/trunks"), users("trunks"), groups("trunks"), chk.NotMode(022)))
+			chk.NewPattern(chk.Path("encrypted/var/lib/trunks"), chk.Users("trunks"), chk.Groups("trunks"), chk.NotMode(022)))
 	}
 
 	if _, err := user.Lookup("biod"); err == nil {
 		prependPatterns(
-			chk.NewPattern(chk.Tree("encrypted/var/log/bio_crypto_init"), users("biod", "root"), groups("biod", "root"), chk.NotMode(022)),
-			chk.NewPattern(chk.Tree("encrypted/var/log/biod"), users("biod", "root"), groups("biod", "root"), chk.NotMode(022)))
+			chk.NewPattern(chk.Tree("encrypted/var/log/bio_crypto_init"), chk.Users("biod", "root"), chk.Groups("biod", "root"), chk.NotMode(022)),
+			chk.NewPattern(chk.Tree("encrypted/var/log/biod"), chk.Users("biod", "root"), chk.Groups("biod", "root"), chk.NotMode(022)))
 	}
 
 	if _, err := user.Lookup("buffet"); err == nil {
-		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/buffet"), users("buffet"), groups("buffet"), chk.NotMode(02)))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/buffet"), chk.Users("buffet"), chk.Groups("buffet"), chk.NotMode(02)))
 	}
 
 	if _, err := user.Lookup("cups"); err == nil {
 		prependPatterns(
-			chk.NewPattern(chk.Tree("encrypted/var/cache/cups"), users("cups"), groups("cups", "nobody"), chk.NotMode(02)),
-			chk.NewPattern(chk.Tree("encrypted/var/spool/cups"), users("cups"), groups("cups", "nobody"), chk.NotMode(02)))
+			chk.NewPattern(chk.Tree("encrypted/var/cache/cups"), chk.Users("cups"), chk.Groups("cups", "nobody"), chk.NotMode(02)),
+			chk.NewPattern(chk.Tree("encrypted/var/spool/cups"), chk.Users("cups"), chk.Groups("cups", "nobody"), chk.NotMode(02)))
 	}
 
 	if _, err := user.Lookup("android-root"); err == nil {
 		prependPatterns(
-			chk.NewPattern(chk.Tree("unencrypted/art-data"), users("android-root", "root"), chk.NotMode(022)))
+			chk.NewPattern(chk.Tree("unencrypted/art-data"), chk.Users("android-root", "root"), chk.NotMode(022)))
 	}
 
 	if _, err := user.Lookup("cdm-oemcrypto"); err == nil {
-		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/lib/oemcrypto"), users("cdm-oemcrypto"), groups("cdm-oemcrypto"), chk.Mode(0700), chk.SkipChildren()))
+		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/lib/oemcrypto"), chk.Users("cdm-oemcrypto"), chk.Groups("cdm-oemcrypto"), chk.Mode(0700), chk.SkipChildren()))
 	}
 
 	if _, err := user.Lookup("fwupd"); err == nil {
 		prependPatterns(
-			chk.NewPattern(chk.Path("encrypted/var/cache/fwupd"), users("fwupd"), groups("fwupd"), chk.SkipChildren()),
-			chk.NewPattern(chk.Path("encrypted/var/lib/fwupd"), users("fwupd"), groups("fwupd"), chk.SkipChildren()))
+			chk.NewPattern(chk.Path("encrypted/var/cache/fwupd"), chk.Users("fwupd"), chk.Groups("fwupd"), chk.SkipChildren()),
+			chk.NewPattern(chk.Path("encrypted/var/lib/fwupd"), chk.Users("fwupd"), chk.Groups("fwupd"), chk.SkipChildren()))
 	}
 
 	if _, err := user.Lookup("dlcservice"); err == nil {
-		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/dlc"), users("dlcservice"), groups("dlcservice"), chk.NotMode(022)))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/dlc"), chk.Users("dlcservice"), chk.Groups("dlcservice"), chk.NotMode(022)))
 		// encrypted dlc-images is created by dev_utils.sh script prior to bind
 		// mounting unencrypted dlc-images directory.
-		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/dlc-images"), users("root"), groups("root"), chk.NotMode(022)))
-		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/dlcservice"), users("dlcservice"), groups("dlcservice"), chk.NotMode(022)))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/dlc-images"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/dlcservice"), chk.Users("dlcservice"), chk.Groups("dlcservice"), chk.NotMode(022)))
 	}
 
 	if _, err := user.Lookup("wilco_dtc"); err == nil {
-		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/lib/wilco/storage.img"), users("wilco_dtc"), groups("wilco_dtc"), chk.NotMode(022)))
+		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/lib/wilco/storage.img"), chk.Users("wilco_dtc"), chk.Groups("wilco_dtc"), chk.NotMode(022)))
 	}
 
 	if _, err := user.Lookup("cros_healthd"); err == nil {
-		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/cache/diagnostics"), users("cros_healthd"), groups("cros_healthd"), chk.SkipChildren()))
+		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/cache/diagnostics"), chk.Users("cros_healthd"), chk.Groups("cros_healthd"), chk.SkipChildren()))
 	}
 
 	if _, err := user.Lookup("displaylink"); err == nil {
-		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/log/displaylink"), users("displaylink"), groups("displaylink"), chk.NotMode(022), chk.SkipChildren()))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/log/displaylink"), chk.Users("displaylink"), chk.Groups("displaylink"), chk.NotMode(022), chk.SkipChildren()))
 	}
 
 	if _, err := user.Lookup("sound_card_init"); err == nil {
-		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/sound_card_init"), users("sound_card_init"), groups("sound_card_init"), chk.NotMode(022)))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/sound_card_init"), chk.Users("sound_card_init"), chk.Groups("sound_card_init"), chk.NotMode(022)))
 	}
 
 	if _, err := user.Lookup("rmtfs"); err == nil {
-		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/rmtfs"), users("rmtfs"), chk.NotMode(022)))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/rmtfs"), chk.Users("rmtfs"), chk.NotMode(022)))
 	}
 
 	if moblab.IsMoblab() {
 		// On moblab devices, there are additional user dirs and tons of stuff (MySQL, etc.) in /var.
 		prependPatterns(
-			chk.NewPattern(chk.Tree("home/chronos"), users("chronos", "root")),
-			chk.NewPattern(chk.Tree("home/moblab"), users("moblab", "root")),
+			chk.NewPattern(chk.Tree("home/chronos"), chk.Users("chronos", "root")),
+			chk.NewPattern(chk.Tree("home/moblab"), chk.Users("moblab", "root")),
 			chk.NewPattern(chk.Tree("var"), chk.SkipChildren()))
 	}
 
