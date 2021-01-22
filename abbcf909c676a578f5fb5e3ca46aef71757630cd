@@ -34,6 +34,24 @@
       "parentUuid": "7e85dac2_5053efa7",
       "revId": "abbcf909c676a578f5fb5e3ca46aef71757630cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4881e5d_c498cc85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-01-22T05:32:25Z",
+      "side": 1,
+      "message": "As a general camera optimization work it would be great to have some power numbers. Could you help rebase and see if it still works (maybe after the SWA cleanup landed to reduce some work if needed)?\n\nIf it simply works I think we can just merge it. Or we can re-evaluate if we see any blocker.",
+      "parentUuid": "b751569d_0f6d3218",
+      "revId": "abbcf909c676a578f5fb5e3ca46aef71757630cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
