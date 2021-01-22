@@ -16,6 +16,46 @@
       "message": "Can you make this modification to the show_accessibility_options_in_system_tray_menu.go test as well? That was not included in the commit that introduced the LaunchOSSettings().\n\nIn this case please pick a new commit msg title for the CL.",
       "revId": "c3fcd178f9ec13096121b9801933d82fc8feee7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "373401dc_a94b4f13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allowed_languages.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-22T15:46:16Z",
+      "side": 1,
+      "message": "You left the \"/details\" part.",
+      "revId": "c3fcd178f9ec13096121b9801933d82fc8feee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8b4c2d_ef964f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allowed_languages.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-01-22T15:46:16Z",
+      "side": 1,
+      "message": "nit: OS",
+      "range": {
+        "startLine": 86,
+        "startChar": 32,
+        "endLine": 86,
+        "endChar": 34
+      },
+      "revId": "c3fcd178f9ec13096121b9801933d82fc8feee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
