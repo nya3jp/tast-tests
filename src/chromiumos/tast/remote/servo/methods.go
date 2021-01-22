@@ -88,6 +88,15 @@ const (
 	DurLongPress KeypressDuration = "long_press"
 )
 
+// A FWWPStateValue is a string accepted by the FWWPState control.
+type FWWPStateValue string
+
+// These are the string values that can be passed to the FWWPState control.
+const (
+	FWWPStateOff FWWPStateValue = "force_off"
+	FWWPStateOn  FWWPStateValue = "force_on"
+)
+
 // A PowerStateValue is a string accepted by the PowerState control.
 type PowerStateValue string
 
@@ -280,6 +289,16 @@ func (s *Servo) SetPowerState(ctx context.Context, value PowerStateValue) error 
 	defer cancel()
 	s.SetString(shortCtx, PowerState, string(value))
 	return nil
+}
+
+// SetFWWPState sets the FWWPState control.
+// Because this is particularly disruptive, it is always logged.
+func (s *Servo) SetFWWPState(ctx context.Context, value FWWPStateValue) error {
+	testing.ContextLogf(ctx, "Setting %q to %q", FWWPState, value)
+	// Don't use SetStringAndCheck because the state can be "on" after we set "force_on".
+	shortCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
+	defer cancel()
+	return s.SetString(shortCtx, FWWPState, string(value))
 }
 
 // SetV4Role sets the V4Role control for a servo v4.
