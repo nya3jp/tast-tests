@@ -7,6 +7,7 @@ package apps
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -296,4 +297,25 @@ func ChromeOrChromium(ctx context.Context, tconn *chrome.TestConn) (App, error) 
 		}
 	}
 	return App{}, errors.New("Neither Chrome or Chromium were found in available apps")
+}
+
+// InstallPWAForURL navigates to a PWA, attempts to install and returns the installed app ID.
+func InstallPWAForURL(ctx context.Context, cr *chrome.Chrome, pwaURL string, timeout time.Duration) (string, error) {
+	if _, err := cr.NewConn(ctx, pwaURL); err != nil {
+		return "", errors.Wrapf(err, "failed to open URL %q", pwaURL)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to connect to test API")
+	}
+
+	evalString := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.installPWAForCurrentURL)(%d)", timeout.Milliseconds())
+
+	var appID string
+	if err := tconn.EvalPromise(ctx, evalString, &appID); err != nil {
+		return "", err
+	}
+
+	return appID, nil
 }
