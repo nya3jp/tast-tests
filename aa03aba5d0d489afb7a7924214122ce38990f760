@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb34df9_f115475d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-22T05:35:34Z",
+      "side": 1,
+      "message": "After chatting offline we decided to let the function not take the ownership of sess, and instead return whether the caller should restart the session.",
+      "parentUuid": "0056ac2f_b5b5f0b1",
+      "range": {
+        "startLine": 985,
+        "startChar": 28,
+        "endLine": 987,
+        "endChar": 11
+      },
+      "revId": "aa03aba5d0d489afb7a7924214122ce38990f760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19e72ff0_7d29d383",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-22T04:56:59Z",
       "side": 1,
       "message": "could you add more comments why it is necessary to do so?\n(optional): and if it is mandatory, why not keep restarting the session here, and return sess or newsess like what you did in logIn?",
+      "range": {
+        "startLine": 1335,
+        "startChar": 3,
+        "endLine": 1336,
+        "endChar": 11
+      },
+      "revId": "aa03aba5d0d489afb7a7924214122ce38990f760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7bce59a_d2d9fb84",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-22T05:35:34Z",
+      "side": 1,
+      "message": "Made it clear that it\u0027s due to Chrome restart.",
+      "parentUuid": "19e72ff0_7d29d383",
       "range": {
         "startLine": 1335,
         "startChar": 3,
