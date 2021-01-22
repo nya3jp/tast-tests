@@ -578,6 +578,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21a7076c_d5748542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-22T16:25:32Z",
+      "side": 1,
+      "message": "Then, I\u0027d recommend as follows:\n\n1) Extract the content of the current goroutine function into a sync function, which returns error.\n2) Get rid of WorkGroup, instead use just errorCh.\n\nerrorCh :\u003d make(chan error, ...)\nnumTasks :\u003d 0\nfor ... {\n  for ... {\n    ...\n    go func(...) {\n      errorCh \u003c- /* calling the new sync function */\n    }()\n    numTasks++\n  }\n}\n\nfor i :\u003d 0; i \u003c numTasks; i++ {\n  if err :\u003d \u003c-errorCh; err !\u003d nil {\n    s.Error(...)\n  }\n}",
+      "parentUuid": "54afc121_8b906100",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e872480_0e0c775d",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
         "patchSetId": 3
@@ -648,6 +666,30 @@
       "side": 1,
       "message": "Given the command last 10s, I wanted to scan output while the command is running. Won\u0027t SeparatedOutput wait for the command to complete?",
       "parentUuid": "119e001a_e4bce8ec",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 5
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24db38e5_0e728325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-22T16:25:32Z",
+      "side": 1,
+      "message": "Yes, it will wait. \u003e SeparatedOutput wait for the command to complete?\nIf it is necessary to return during the subprocess run, could you terminate and collect the subprocess in case of error cases? Currently, they are kept stale.\n\nThough, I\u0027m wondering if it has enough benefit.\n1) In case of success, which is expected, it runs 10 secs anyways.\n2) In case of error, indeed it can return earlier, but it should be rare and the max duration is capped by 10 secs like above.\n\nWDYT?",
+      "parentUuid": "e15b760c_34053f64",
       "range": {
         "startLine": 83,
         "startChar": 4,
