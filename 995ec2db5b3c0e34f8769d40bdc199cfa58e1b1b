@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5968eb_8062ce9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-22T06:51:05Z",
+      "side": 1,
+      "message": "This will be the last CL of this series. Thanks for your help on reviewing!\n",
+      "revId": "995ec2db5b3c0e34f8769d40bdc199cfa58e1b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
