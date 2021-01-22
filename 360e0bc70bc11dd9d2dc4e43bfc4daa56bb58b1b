@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a0a318_eef27064",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-22T02:37:08Z",
+      "side": 1,
+      "message": "I see some old PropertyHolder.GetProperties calls are missed and not renamed properly, e.g. several usages in local/bundles/cros/network/wifi_service.go.\n\nSome tools might help with this, for example, https://pkg.go.dev/golang.org/x/tools/cmd/gorename. (Personally, I use https://github.com/fatih/vim-go, which has GoRename command)",
+      "revId": "360e0bc70bc11dd9d2dc4e43bfc4daa56bb58b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04d4924b_94e8cc71",
+        "filename": "src/chromiumos/tast/local/dbusutil/property_holder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-22T02:37:08Z",
+      "side": 1,
+      "message": "IIRC, this is shill specific too because the format of the signals are different.\n\n  org.freedesktop.DBus.Properties.PropertiesChanged (STRING interface_name,\n                                                     DICT\u003cSTRING,VARIANT\u003e changed_properties,\n                                                     ARRAY\u003cSTRING\u003e invalidated_properties);\n\nwhile shill has\n\n  PropertiesChanged (STRING key, VARIANT value)\n\nIf watcher is not yet used, perhaps can rename/comment this to be shill specific for now to avoid confusion and generalize the PropertiesWatcher later. WDYT?",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "360e0bc70bc11dd9d2dc4e43bfc4daa56bb58b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
