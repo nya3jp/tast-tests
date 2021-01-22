@@ -104,6 +104,30 @@
       },
       "revId": "6f5352add489a950c9eb2855ae1c10b1d6e7bc1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27c56ec4_3bacaf7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_new_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-22T04:13:49Z",
+      "side": 1,
+      "message": "Ok. I generated the new files (lossless) whose number of frames are 30.\nDo they look good to you?\ncrowd_run_180p_30frames.webm   1.1M\ncrowd_run_360p_30frames.webm   4.4M\ncrowd_run_720p_30frames.webm    21M\ncrowd_run_1080p_30frames.webm   48M\ncrowd_run_2160p_30frames.webm  194M",
+      "parentUuid": "7ef1eff1_e11d01fa",
+      "range": {
+        "startLine": 141,
+        "startChar": 21,
+        "endLine": 141,
+        "endChar": 31
+      },
+      "revId": "6f5352add489a950c9eb2855ae1c10b1d6e7bc1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
