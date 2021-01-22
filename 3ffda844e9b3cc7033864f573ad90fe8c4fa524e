@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "539fc8e1_4863fa2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-22T09:23:49Z",
+      "side": 1,
+      "message": "I like the for with conditions, maybe just inline what newConditionalLineIter is doing into the body of the for to make it simpler.\n\nOn the other hand I have a more fundamental question. Does it make sense to validate the entire output of the process? Would it be sufficient just to wait for the correct line to be emitted? Use testing.Poll in that case.",
+      "parentUuid": "7930a6b1_31ce00c9",
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a29e8956_a1b80eae",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
         "patchSetId": 3
