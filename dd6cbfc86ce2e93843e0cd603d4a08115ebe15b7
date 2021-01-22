@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb487ac_01a91e4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-22T02:10:54Z",
+      "side": 1,
+      "message": "The guideline is 20+ consecutive success to be considered as stable.\nI found one error on a device which looks actually related to DLC.\nWas the cause already identified and fixed?",
+      "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
