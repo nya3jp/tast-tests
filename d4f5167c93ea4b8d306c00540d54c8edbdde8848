@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd95f86a_0d6dbd97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-22T19:46:32Z",
+      "side": 1,
+      "message": "updated to above title. \n\nI understood that file name (in this case \"capability\") in the path\ncan also be used.",
+      "parentUuid": "6f49c204_c379d82b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48df07c1_f7e49de3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
