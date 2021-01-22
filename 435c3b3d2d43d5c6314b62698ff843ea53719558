@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe222a4_b83a5c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_obb_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-22T22:14:01Z",
+      "side": 1,
+      "message": "sure. using roblox_uncompress_obb_perf.go to match the docs and be more explicit about what it is doing.",
+      "parentUuid": "62877ba1_32d00ee2",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "435c3b3d2d43d5c6314b62698ff843ea53719558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01928439_b3267299",
