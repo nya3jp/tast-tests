@@ -140,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecc759c0_6cbfefe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ec06477_7eb4eefa",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd80b2ef_44230529",
@@ -352,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e44ace99_be5f291e",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e44f40f2_f8ba4510",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3aa47449_e8c7bd90",
@@ -399,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c255f576_b2977650",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:44:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01ab7068_132b74fb",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 40
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29df2f3c_d978a4e9",
@@ -422,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba107082_1acf2bb0",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:44:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29df2f3c_d978a4e9",
+      "range": {
+        "startLine": 57,
+        "startChar": 29,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5134d79d_19dbaf10",
@@ -435,6 +531,30 @@
       "writtenOn": "2021-01-21T03:38:40Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 68,
+        "startChar": 29,
+        "endLine": 68,
+        "endChar": 41
+      },
+      "revId": "112a53064cac83e02af84b28314947a48289faf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1f0040_62f47e41",
+        "filename": "src/chromiumos/tast/local/chrome/ui2/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-22T15:44:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5134d79d_19dbaf10",
       "range": {
         "startLine": 68,
         "startChar": 29,
