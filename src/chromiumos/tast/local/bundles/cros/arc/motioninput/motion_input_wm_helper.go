@@ -112,8 +112,11 @@ func RunTestWithWMParams(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start an activity: ", err)
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		return act.Start(ctx, tconn)
+	}, &testing.PollOptions{Timeout: 30 * time.Second})
+	if err != nil {
+		s.Fatal("Failed to start activity: ", err)
 	}
 	defer act.Stop(ctx, tconn)
 
