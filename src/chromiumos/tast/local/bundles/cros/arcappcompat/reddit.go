@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -80,24 +80,32 @@ func Reddit(ctx context.Context, s *testing.State) {
 // verify Reddit reached main activity page of the app.
 func launchAppForReddit(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		allowButtonText = "ALLOW"
-		continueID      = "com.google.android.gms:id/continue_button"
-		skipButtonText  = "Skip"
-		homeClassName   = "android.view.ViewGroup"
-		homeDes         = "Home"
+		allowButtonText             = "ALLOW"
+		continueID                  = "com.google.android.gms:id/continue_button"
+		continueText                = "Continue"
+		skipButtonText              = "Skip"
+		homeDes                     = "Home"
+		whileUsingThisAppButtonText = "WHILE USING THE APP"
 	)
+	// Click on continue button to sign in using gmail account.
+	continueButton := d.Object(ui.TextStartsWith("(?i)" + continueText))
+	if err := continueButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("continueButton doesn't exist: ", err)
+	} else if err := continueButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on continueButton: ", err)
+	}
 
 	// Click on skip button.
 	skipButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+skipButtonText))
-	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := skipButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("skipButton doesn't exist: ", err)
 	} else if err := skipButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on skipButton: ", err)
 	}
 
 	// Click on continue button to sign in using gmail account.
-	continueButton := d.Object(ui.ID(continueID))
-	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	continueButton = d.Object(ui.ID(continueID))
+	if err := continueButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("continueButton doesn't exist: ", err)
 	} else if err := continueButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on continueButton: ", err)
@@ -105,7 +113,7 @@ func launchAppForReddit(ctx context.Context, s *testing.State, tconn *chrome.Tes
 
 	// Click on continue button to sign back in Reddit using gmail account.
 	continueButton = d.Object(ui.ID(continueID))
-	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := continueButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("continueButton doesn't exist: ", err)
 	} else if err := continueButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on continueButton: ", err)
@@ -113,7 +121,7 @@ func launchAppForReddit(ctx context.Context, s *testing.State, tconn *chrome.Tes
 
 	// Click on skip button.
 	skipButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+skipButtonText))
-	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+	if err := skipButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("skipButton doesn't exist: ", err)
 	} else if err := skipButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on skipButton: ", err)
@@ -127,8 +135,16 @@ func launchAppForReddit(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to click on allowButton: ", err)
 	}
 
+	// Click on allow while using this app button to record audio.
+	clickOnWhileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+	if err := clickOnWhileUsingThisAppButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnWhileUsingThisApp Button doesn't exists: ", err)
+	} else if err := clickOnWhileUsingThisAppButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnWhileUsingThisApp Button: ", err)
+	}
+
 	// Check for homeIcon on homePage.
-	homeIcon := d.Object(ui.ClassName(homeClassName), ui.Description(homeDes))
+	homeIcon := d.Object(ui.DescriptionMatches("(?i)" + homeDes))
 	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("homeIcon doesn't exists: ", err)
 	}
