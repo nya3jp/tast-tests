@@ -138,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d048f427_0de21b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-22T22:02:54Z",
+      "side": 1,
+      "message": "I did consider polling for the correct line to be emitted. The code this testing is in an early enough state I want to catch unexpected log statements during the early daemon startup.\n\nI inlined the condition checking logic.",
+      "parentUuid": "539fc8e1_4863fa2c",
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a29e8956_a1b80eae",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
         "patchSetId": 3
