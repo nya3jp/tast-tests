@@ -192,7 +192,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		}
 	}()
 
-	sess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, agg)
+	sess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to establish connection to Chrome Debuggin Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
 	}
@@ -214,7 +214,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	} else {
 		if err := login.LogIn(ctx, cfg, sess); err == login.ErrNeedNewSession {
 			// Restart session.
-			newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, agg)
+			newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, agg)
 			if err != nil {
 				return nil, err
 			}
@@ -778,7 +778,7 @@ func (c *Chrome) ContinueLogin(ctx context.Context) error {
 
 	if err := login.LogIn(ctx, &c.cfg, c.sess); err == login.ErrNeedNewSession {
 		// Restart session.
-		newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, GetRootPID, c.agg)
+		newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, c.agg)
 		if err != nil {
 			return err
 		}
