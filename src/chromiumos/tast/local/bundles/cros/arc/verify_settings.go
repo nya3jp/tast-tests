@@ -93,7 +93,12 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 	}
 	defer apps.Release(ctx)
 
-	if err := apps.LeftClick(ctx); err != nil {
+	condition := func(ctx context.Context) (bool, error) {
+		return chromeui.Exists(ctx, tconn, appsParam)
+	}
+
+	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 2 * time.Second}
+	if err := apps.LeftClickUntil(ctx, condition, &opts); err != nil {
 		s.Fatal("Failed to click the Apps Heading: ", err)
 	}
 
