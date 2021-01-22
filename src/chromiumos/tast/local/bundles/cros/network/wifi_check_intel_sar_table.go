@@ -201,6 +201,7 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 
 // getSARTableFromASL parses ASL formatted data and returns
 // the array of integers from the body of the section labeled with the given key.
+// Returns nil if dynamic SAR table is missing as it is a valid case.
 // TODO(kglund) unit test this function
 func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
 	// Below is an example of the format for the ASL data being parsed.
@@ -251,8 +252,8 @@ func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
 		return nil, err
 	}
 	if values == nil {
-		// A missing dynamic SAR table should cause failure.
-		return nil, errors.Errorf("SAR table %s not found", tableName)
+		// Missing dynamic SAR table.
+		return nil, nil
 	}
 
 	// tableIndices[1] should be the length of the array.
@@ -293,7 +294,7 @@ func verifyAndGetGeoTables(decodedSSDT []byte, s *testing.State) []geoSARTable {
 
 // verifyTable checks the table of type sarTableType contained within decodedSSDT
 // against a set of SAR limits. These limits serve as a validity check for the SAR
-// and are not based on a true regulatory standard. The test will fail if the SSDT
+// and are not based on a true regulatory standard. The test will pass if the SSDT
 // provided does not contain SAR tables.
 func verifyTable(decodedSSDT []byte, tableType sarTableType, geoTables []geoSARTable, s *testing.State) {
 	// There is a special case for SAR tables that indicates an unused or no-op
@@ -311,6 +312,11 @@ func verifyTable(decodedSSDT []byte, tableType sarTableType, geoTables []geoSART
 	sarTable, err := getSARTableFromASL(decodedSSDT, tableType)
 	if err != nil {
 		s.Fatal("Error parsing SAR table: ", err)
+	}
+	if sarTable == nil {
+		// If no dynamic SAR tables are present, the test should pass automatically.
+		s.Logf("No %s SAR table found", tableName)
+		return
 	}
 
 	// SAR values are stored in their raw form as ints, which are decoded here
