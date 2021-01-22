@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f49c204_c379d82b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-22T17:27:30Z",
+      "side": 1,
+      "message": "The \"repo\" name is shown in this Gerrit interface under the \"Reviewers\"\nand \"CC\" sections, and doesn\u0027t need to be added to the CL title. \nIt\u0027s customary (and sometimes compulsory like in chromiumos-overlay)\nto add the path or part thereof to indicate what the CL is doing,\nin this case for example the title could be:\n\n  video/capability: add av1 decoder caps translation",
+      "parentUuid": "51a3bcc6_82da258a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "d4f5167c93ea4b8d306c00540d54c8edbdde8848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48df07c1_f7e49de3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
