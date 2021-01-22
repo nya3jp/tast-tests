@@ -74,6 +74,30 @@
       },
       "revId": "ab57e0d50832a190fd30e09d82d0dbd6cc6f10d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f953df_d22a41b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-22T19:26:03Z",
+      "side": 1,
+      "message": "Agreed. I thought we should change caps.go. I wasn\u0027t sure it was intended or by mistake, but thought this postfix aligns better with how things are named.\n\nWhen I tried this, I actually got below error. Looks like there is some requirement for naming convention.\n[FAILED] chromiumos/platform/tast-tests: tast_lint                         \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/media/caps/caps.go:44:2: don\u0027t use underscores in Go names; const HWDecodeAV1_4K_10BPP should be HWDecodeAV1_4K10BPP\n      \n        Refer the following documents for details:\n         http://golang.org/doc/effective_go.html#mixed-caps",
+      "parentUuid": "ce2aa915_9657e6f7",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 56
+      },
+      "revId": "ab57e0d50832a190fd30e09d82d0dbd6cc6f10d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
