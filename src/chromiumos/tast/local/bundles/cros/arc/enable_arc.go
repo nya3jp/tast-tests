@@ -84,7 +84,12 @@ func turnOnPlayStore(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	defer appsbutton.Release(ctx)
 
-	if err := appsbutton.LeftClick(ctx); err != nil {
+	condition := func(ctx context.Context) (bool, error) {
+		return ui.Exists(ctx, tconn, appParams)
+	}
+
+	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 2 * time.Second}
+	if err := appsbutton.LeftClickUntil(ctx, condition, &opts); err != nil {
 		return errors.Wrap(err, "failed to click the Apps heading")
 	}
 
