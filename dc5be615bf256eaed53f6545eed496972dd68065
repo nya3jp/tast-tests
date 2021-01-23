@@ -16,6 +16,23 @@
       "message": "added link to corresponding change in avtest_label_detect\n(this change is in the middle), \nbut still uploaded because I thoughtat least need to link it here. ",
       "revId": "dc5be615bf256eaed53f6545eed496972dd68065",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7bab44_e32d1ac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-23T16:06:54Z",
+      "side": 1,
+      "message": "seems to be environment issue.\n\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket.appspot.com/8857355357969865616/+/steps/init_sdk/0/steps/call_chromite.api.SdkService_Create/0/steps/call_build_API_script/0/stdout\n\n17:53:24: ERROR: Creating chroot failed!\nreturn code: 1; command: /b/s/w/ir/k/chromiumos_workspace/src/scripts/sdk_lib/make_chroot.sh --stage3_path /b/s/w/ir/k/chromiumos_workspace/.cache/sdks/cros-sdk-2021.01.20.123718.tar.xz --chroot /b/s/w/ir/cache/cros_chroot --cache_dir /b/s/w/ir/k/chromiumos_workspace/.cache\ncmd\u003d[\u0027/b/s/w/ir/k/chromiumos_workspace/src/scripts/sdk_lib/make_chroot.sh\u0027, \u0027--stage3_path\u0027, \u0027/b/s/w/ir/k/chromiumos_workspace/.cache/sdks/cros-sdk-2021.01.20.123718.tar.xz\u0027, \u0027--chroot\u0027, \u0027/b/s/w/ir/cache/cros_chroot\u0027, \u0027--cache_dir\u0027, \u0027/b/s/w/ir/k/chromiumos_workspace/.cache\u0027]\nbuild_api: Unhandled exception:",
+      "revId": "dc5be615bf256eaed53f6545eed496972dd68065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
