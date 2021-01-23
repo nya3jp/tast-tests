@@ -89,7 +89,7 @@ func launchAppForEdjingMix(ctx context.Context, s *testing.State, tconn *chrome.
 		allowID        = "com.android.packageinstaller:id/permission_allow_button"
 		recordingText  = "REC"
 	)
-
+	var flag bool
 	// Click on next button until skip button exists.
 	nextButton := d.Object(ui.Text(nextText))
 	skipButton := d.Object(ui.Text(skipText))
@@ -101,31 +101,38 @@ func launchAppForEdjingMix(ctx context.Context, s *testing.State, tconn *chrome.
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Error("Skip button doesn't exist: ", err)
+		s.Log("nextButton doesn't exist: ", err)
+		pressAllowKeysEdjingMix(ctx, s, d)
+		// To bypass pressKeysEdjingMix()
+		flag = true
+
 	} else if err := skipButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on skip button: ", err)
 	}
 
-	// Click on skip button until try for free button exists.
-	tryForFreeButton := d.Object(ui.Text(tryForFreeText))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := tryForFreeButton.Exists(ctx); err != nil {
-			s.Log(" Click on skip button until tryForFree button exist")
-			skipButton.Click(ctx)
-			return err
+	if !flag {
+		// Click on skip button until try for free button exists.
+		tryForFreeButton := d.Object(ui.Text(tryForFreeText))
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := tryForFreeButton.Exists(ctx); err != nil {
+				s.Log(" Click on skip button until tryForFree button exist")
+				skipButton.Click(ctx)
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
+			s.Log("try for free doesn't exist: ", err)
 		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.ShortUITimeout}); err != nil {
-		s.Error(" tryForFree button doesn't exist: ", err)
-	}
-
-	pressKeysEdjingMix(ctx, s, d)
-	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-		s.Log("Failed to enter KEYCODE_ENTER: ", err)
+		pressKeysEdjingMix(ctx, s, d)
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_ENTER: ", err)
+		} else {
+			s.Log("Entered KEYCODE_ENTER")
+		}
+		pressAllowKeysEdjingMix(ctx, s, d)
 	} else {
-		s.Log("Entered KEYCODE_ENTER")
+		pressAllowKeysEdjingMix(ctx, s, d)
 	}
-	pressAllowKeysEdjingMix(ctx, s, d)
 
 	// Click on skip button
 	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
