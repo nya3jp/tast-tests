@@ -39,11 +39,6 @@ var capabilitiesToVerify = map[string]caps.Capability{
 	"hw_video_acc_enc_vp8_4k":  {caps.HWEncodeVP8_4K, false},
 	"hw_video_acc_enc_vp9_4k":  {caps.HWEncodeVP9_4K, false},
 	"hw_jpeg_acc_enc":          {caps.HWEncodeJPEG, false},
-	"builtin_usb_camera":       {caps.BuiltinUSBCamera, false},
-	"builtin_mipi_camera":      {caps.BuiltinMIPICamera, false},
-	"vivid_camera":             {caps.VividCamera, false},
-	"builtin_camera":           {caps.BuiltinCamera, false},
-	"builtin_or_vivid_camera":  {caps.BuiltinOrVividCamera, false},
 }
 
 // Capability compares the static capabilities versus those detected in the DUT.
