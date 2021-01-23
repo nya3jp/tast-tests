@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ca2592d_595b1b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-23T01:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85cc0525_52db9228",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "05de2e0b110401aa62b7796ef7f1d87d6fb44ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91d119fa_9c40b792",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7261565_2cd1e363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-23T01:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91d119fa_9c40b792",
+      "range": {
+        "startLine": 76,
+        "startChar": 79,
+        "endLine": 76,
+        "endChar": 110
+      },
+      "revId": "05de2e0b110401aa62b7796ef7f1d87d6fb44ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "797afe10_60f61465",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-22T16:25:32Z",
       "side": 1,
       "message": "ditto\n\nint(nDuration.Seocnds() * sn.MaxFrequency / 1000)",
+      "range": {
+        "startLine": 78,
+        "startChar": 33,
+        "endLine": 78,
+        "endChar": 79
+      },
+      "revId": "05de2e0b110401aa62b7796ef7f1d87d6fb44ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a49abca9_d31a63b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-23T01:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "797afe10_60f61465",
       "range": {
         "startLine": 78,
         "startChar": 33,
