@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "831f4ba5_30aafd76",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-23T01:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "425fcc0d_d20ecd6a",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 18
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ac83ab0_eba77f02",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-01-22T02:03:30Z",
       "side": 1,
       "message": "It\u0027s nice to avoid establishing another connection to Chrome while chrome.Chrome already has one. I guess you wanted to use FindTargets/CloseTargets? Actually I have in-flight CL to add target-related APIs to chrome.Chrome, does it help? crrev.com/c/2636712",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a67180c_a0af92af",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-23T01:06:32Z",
+      "side": 1,
+      "message": "Yes, I needed to use FindTargets() and CloseTargets(), so I needed to create a new devsess. But I think your CL would be really helpful, so I can wait for it to land!\n\nJust to confirm, after your CL lands, I can just do:\n\nNewGoogleTTSConn(ctx context.Context, c *chrome.Chrome) (*GoogleTTSConn, error) {\n    targets :\u003d c.FindTargets(...)\n    ....\n    for _, t :\u003d range targets[1:] {\n        c.CloseTarget(...)\n    }\n    ...\n}",
+      "parentUuid": "1ac83ab0_eba77f02",
       "range": {
         "startLine": 136,
         "startChar": 0,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da40c28c_fcc6bbb2",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-23T01:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c58de9e_3a700c4e",
+      "range": {
+        "startLine": 159,
+        "startChar": 34,
+        "endLine": 159,
+        "endChar": 36
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "212c44a5_c198a15c",
@@ -134,6 +206,30 @@
       "writtenOn": "2021-01-22T02:03:30Z",
       "side": 1,
       "message": "It\u0027s easy to forget calling Close on every error cases. I recommend using defer statements instead.\n\nThere are two typical ways.\n\n1. Use a named return value\n\n func NewGoogleTtsConn(ctx context.Context, c *chrome.Chrome) (ttsConn *GoogleTtsConn, retErr error) {\n   ...\n   defer func() {\n     if retErr !\u003d nil {\n       extConn.Close()\n     }\n   }()\n   ...\n   return nil\n }\n\n2. Use a `success` flag\n\n func NewGoogleTtsConn(ctx context.Context, c *chrome.Chrome) (*GoogleTtsConn, error) {\n   ...\n   success :\u003d false\n   defer func() {\n     if !success {\n       extConn.Close()\n     }\n   }()\n   ...\n   success \u003d true\n   return nil\n }",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 17
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e1c13e_2ee4d198",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-23T01:06:32Z",
+      "side": 1,
+      "message": "Ah yes, thank you for reminding me (you mentioned something similar in a previous CL). I decided to use the named return value, since it seems cleaner and is what you suggested in the previous CL:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2593324/4/src/chromiumos/tast/local/accessibility/accessibility.go#43",
+      "parentUuid": "212c44a5_c198a15c",
       "range": {
         "startLine": 164,
         "startChar": 2,
@@ -169,6 +265,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ab94d6f_3b66f630",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-23T01:06:32Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s unfortunate. I\u0027m not sure it would be good to modify the source code just for tests, but what about the following approach?\n\n1. Create a New TTS conn\n2. Inject JavaScript into the TTS background page, which will populate an array with all spoken utterances. This can be done by rapidly polling engine.utterance_ and pushing to an array if it changes.\n3. Perform commands.\n4. Retrieve all spoken utterances from TTS background page.\n5. Compare actual and expected utterances.\n\nAny thoughts on this approach?",
+      "parentUuid": "7f964539_847914a8",
+      "range": {
+        "startLine": 184,
+        "startChar": 26,
+        "endLine": 184,
+        "endChar": 38
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66041563_4535725d",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 4
@@ -180,6 +300,30 @@
       "writtenOn": "2021-01-22T02:03:30Z",
       "side": 1,
       "message": "nit: I recommend relocating this method between doCommand and GoogleTTSConn so that ChromeVoxConn\u0027s methods are grouped.",
+      "range": {
+        "startLine": 211,
+        "startChar": 25,
+        "endLine": 211,
+        "endChar": 49
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e8a285_d5467aae",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-01-23T01:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66041563_4535725d",
       "range": {
         "startLine": 211,
         "startChar": 25,
