@@ -24,7 +24,8 @@ func init() {
 			"pmoy@google.com",
 			"khegde@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		// TODO(b/178274447): Test is flaky due to Chrome bootstrapping
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"diagnostics"},
 		Fixture:      "crosHealthdRunning",
 	})
