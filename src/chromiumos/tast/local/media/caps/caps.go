@@ -5,6 +5,18 @@
 // Package caps is a package for capabilities used in autotest-capability.
 package caps
 
+import (
+	"context"
+	"fmt"
+	"regexp"
+	"strings"
+
+	"chromiumos/tast/autocaps"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
+)
+
 // These are constant strings for capabilities in autotest-capability.
 // Tests may list these in SoftwareDeps.
 // See the below link for detail.
@@ -71,3 +83,87 @@ const (
 	BuiltinCamera        = Prefix + "builtin_camera"
 	BuiltinOrVividCamera = Prefix + "builtin_or_vivid_camera"
 )
+
+// Capability bundles a capability's name and if its optional. The optional
+// field allows skipping the verification of a capability and is used on devices
+// that technically support e.g. 4K HW decoding, but don't have the static
+// autocaps labels set because these devices are so slow that running 4K tests
+// would be a huge drain on lab resources.
+type Capability struct {
+	Name     string // The name of the capability
+	Optional bool   // Whether the capability is optional
+}
+
+// VerifyCapabilities compares the capabilities statically defined by the
+// autocaps package against those detected by the avtest_label_detect command
+// line tool. The function logic follows the table below, essentially verifying
+// that a capability is detected if expected and is not detected if not expected
+// (either marked as "no" or not statically defined). Capabilities statically
+// marked as "disable", or those with Capability.Optional set are not verified.
+//
+//                 |        Static capability       |
+//                 | Yes         | No / Not defined |
+//   --------------|-------------|------------------|
+//   Detected      | OK          | Fail             |
+//   Not detected  | Fail        | OK               |
+//
+// For more information see:
+// /src/third_party/chromiumos-overlay/chromeos-base/autotest-capability-default/files/managed-capabilities.yaml
+func VerifyCapabilities(ctx context.Context, avtestLabelToCapability map[string]Capability) (err error) {
+	// Get capabilities computed by autocaps package.
+	staticCaps, err := autocaps.Read(autocaps.DefaultCapabilityDir, nil)
+	if err != nil {
+		return errors.Wrap(err, "failed to read statically-set capabilities")
+	}
+	testing.ContextLog(ctx, "Statically-set capabilities: ", staticCaps)
+
+	// Get capabilities detected by "avtest_label_detect" command.
+	cmd := testexec.CommandContext(ctx, "avtest_label_detect")
+	avOut, err := cmd.Output()
+	if err != nil {
+		cmd.DumpLog(ctx)
+		errors.Wrap(err, "failed to execute avtest_label_detect")
+	}
+
+	var detectedLabelRegexp = regexp.MustCompile(`(?m)^Detected label: (.*)$`)
+	detectedCaps := make(map[string]struct{})
+	for _, m := range detectedLabelRegexp.FindAllStringSubmatch(string(avOut), -1) {
+		label := strings.TrimSpace(m[1])
+		if c, found := avtestLabelToCapability[label]; found {
+			detectedCaps[stripPrefix(c.Name)] = struct{}{}
+		}
+	}
+	testing.ContextLog(ctx, "avtest_label_detect result: ", detectedCaps)
+
+	for _, c := range avtestLabelToCapability {
+		c.Name = stripPrefix(c.Name)
+		state, ok := staticCaps[c.Name]
+		if !ok {
+			// This is a sanity check: avtestLabelToCapability is using a capability
+			// name that is unknown to autocaps.
+			err = errors.Wrapf(err, "Static capabilities don't include %q", c.Name)
+			continue
+		}
+
+		_, wasDetected := detectedCaps[c.Name]
+		switch state {
+		case autocaps.Yes:
+			if !wasDetected {
+				err = errors.Wrapf(err, "%q statically set but not detected", c.Name)
+			}
+		case autocaps.No:
+			if wasDetected && !c.Optional {
+				err = errors.Wrapf(err, "%q detected but not statically set and not optional", c.Name)
+			}
+		}
+	}
+	return err
+}
+
+// stripPrefix removes Prefix from the beginning of cap.
+func stripPrefix(cap string) string {
+	if !strings.HasPrefix(cap, Prefix) {
+		panic(fmt.Sprintf("%q doesn't start with %q", cap, Prefix))
+	}
+	return cap[len(Prefix):]
+}
