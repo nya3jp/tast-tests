@@ -6,14 +6,9 @@ package video
 
 import (
 	"context"
-	"fmt"
-	"regexp"
-	"strings"
 
-	"chromiumos/tast/autocaps"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/logging"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -21,25 +16,14 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Capability,
 		Desc:     "Compare capabilities computed by autocaps package with ones detected by avtest_label_detect",
-		Contacts: []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts: []string{"hiroh@chromium.org", "chromeos-gfx-video@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 	})
 }
 
-// capability defines a single entry in the avtestLabelToCapability map.
-type capability struct {
-	name     string // The name of the capability
-	optional bool   // Whether the capability is optional
-}
-
-// avtestLabelToCapability is a map from labels detected by avtest_label_detect to capabilities
-// set in the autocaps package. Capabilities marked as optional can be omitted, even if they
-// are detected by avtest_label_detect. This is e.g. necessary for devices that technically support
-// 4K HW decoding, but don't have the autocaps labels set because these device are so slow that
-// running 4K tests is a huge drain on lab resources.
-// See /src/third_party/chromiumos-overlay/chromeos-base/autotest-capability-default/files/managed-capabilities.yaml
-// for the meaning of each label.
-var avtestLabelToCapability = map[string]capability{
+// capabilitiesToVerify is a map of capabilities to verify indexed by the
+// avtest_label_detect  capability name.
+var capabilitiesToVerify = map[string]caps.Capability{
 	"hw_video_acc_h264":        {caps.HWDecodeH264, false},
 	"hw_video_acc_vp8":         {caps.HWDecodeVP8, false},
 	"hw_video_acc_vp9":         {caps.HWDecodeVP9, false},
@@ -62,15 +46,7 @@ var avtestLabelToCapability = map[string]capability{
 	"builtin_or_vivid_camera":  {caps.BuiltinOrVividCamera, false},
 }
 
-// Capability compares the results between autocaps package and avtest_label_detect.
-// The test failure is decided as follows, where OK and Fail stands for success and
-// failure, respectively. For the capability marked "disable", we don't check
-// them, because the capability is not disabled in driver level, but disabled in
-// Chrome level by default, which an user can enable it by chrome://flags.
-//  avldetect\autocaps        | Yes  | No   | Disable |
-//        detected            | OK   | Fail | OK      |
-//        detected (optional) | OK   | OK   | OK      |
-//        not detected        | Fail | OK   | OK      |
+// Capability compares the static capabilities versus those detected in the DUT.
 func Capability(ctx context.Context, s *testing.State) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
@@ -78,57 +54,7 @@ func Capability(ctx context.Context, s *testing.State) {
 	}
 	defer vl.Close()
 
-	// Get capabilities computed by autocaps package.
-	staticCaps, err := autocaps.Read(autocaps.DefaultCapabilityDir, nil)
-	if err != nil {
-		s.Fatal("Failed to read statically-set capabilities: ", err)
+	if err := caps.VerifyCapabilities(ctx, capabilitiesToVerify); err != nil {
+		s.Fatal("Test failed: ", err)
 	}
-	testing.ContextLog(ctx, "Statically-set capabilities: ", staticCaps)
-
-	// Get capabilities detected by "avtest_label_detect" command.
-	cmd := testexec.CommandContext(ctx, "avtest_label_detect")
-	avOut, err := cmd.Output()
-	if err != nil {
-		cmd.DumpLog(ctx)
-		s.Fatal("Failed to execute avtest_label_detect: ", err)
-	}
-
-	var detectedLabelRegexp = regexp.MustCompile(`(?m)^Detected label: (.*)$`)
-	detectedCaps := make(map[string]struct{})
-	for _, m := range detectedLabelRegexp.FindAllStringSubmatch(string(avOut), -1) {
-		label := strings.TrimSpace(m[1])
-		if c, found := avtestLabelToCapability[label]; found {
-			detectedCaps[stripPrefix(c.name)] = struct{}{}
-		}
-	}
-	testing.ContextLog(ctx, "avtest_label_detect result: ", detectedCaps)
-
-	for _, c := range avtestLabelToCapability {
-		c.name = stripPrefix(c.name)
-		_, wasDetected := detectedCaps[c.name]
-		state, ok := staticCaps[c.name]
-		if !ok {
-			s.Errorf("Static capabilities don't include %q", c.name)
-			continue
-		}
-
-		switch state {
-		case autocaps.Yes:
-			if !wasDetected {
-				s.Errorf("%q statically set but not detected", c.name)
-			}
-		case autocaps.No:
-			if wasDetected && !c.optional {
-				s.Errorf("%q detected but not statically set and not optional", c.name)
-			}
-		}
-	}
-}
-
-// stripPrefix removes caps.Prefix from the beginning of cap.
-func stripPrefix(cap string) string {
-	if !strings.HasPrefix(cap, caps.Prefix) {
-		panic(fmt.Sprintf("%q doesn't start with %q", cap, caps.Prefix))
-	}
-	return cap[len(caps.Prefix):]
 }
