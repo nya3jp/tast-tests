@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9361e2_d26c64cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bluetooth/bluetooth.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Hmm, it is not very clear to me what it would measure or what type of useful information it can provide. And it does not use the bluetooth config UI in the quick settings?\n\nAnyways, possibly that wouldn\u0027t be a role of the code review. If this is exactly what\u0027s wanted, probably that is fine.",
+      "parentUuid": "df8587f9_177230a0",
+      "revId": "807243d0ece035b15fecc95d6fd73defb407e453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dcf4814_3b8cfd9b",

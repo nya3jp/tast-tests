@@ -226,6 +226,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f25a92f_a2cdebc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Hmm, okay. And they can\u0027t use webutil.WaitForQuiescence?\nIt is very hard for me to review this type of CLs without the actual test scenario usages.",
+      "parentUuid": "8b8c961d_23c624af",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57682f5a_f9d5b6e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
         "patchSetId": 13
@@ -349,6 +367,24 @@
       "side": 1,
       "message": "We didn\u0027t use this function any more. I have removed it.",
       "parentUuid": "20de9cb9_9263886b",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f221aa_3de10b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "285bde66_2f673b33",
       "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -717,6 +753,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "567cef3d_80d26ffc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a19cb04_8ff68e8e",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6265237b_a31d33d1",
@@ -754,6 +814,30 @@
       "side": 1,
       "message": "I have removed it.",
       "parentUuid": "6265237b_a31d33d1",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab4839d_70493301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0464394d_d88471f9",
       "range": {
         "startLine": 76,
         "startChar": 1,
@@ -811,6 +895,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae894c48_6554e5ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "489185a4_17515ee5",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43d7ebc7_9c8c818f",
@@ -858,6 +966,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85af5b68_1d2e6365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e080695d_6e21c511",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12546ede_4e778bd3",
@@ -895,6 +1027,30 @@
       "side": 1,
       "message": "I have removed it.",
       "parentUuid": "12546ede_4e778bd3",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85662a45_20b46662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e19c0971_b607d603",
       "range": {
         "startLine": 101,
         "startChar": 0,
@@ -1135,6 +1291,30 @@
         "startChar": 9,
         "endLine": 38,
         "endChar": 16
+      },
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034394ec_d1c3e124",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "New() will enable the bluetooth when it is disabled.  Right?\nIf it is already enabled, the test using this package will forcibly disable the bluetooth at the end.  I don\u0027t think that\u0027s wanted.\n\nRegarding disconnecting of bluetooth device, I think that is a great idea.",
+      "parentUuid": "7296dc47_ec90326b",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 27
       },
       "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -1453,6 +1633,24 @@
       "side": 1,
       "message": "ok",
       "parentUuid": "274dd79a_cdde74c1",
+      "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb79070c_2d15a5d8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/ossettings/ossettings.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2972e2d3_6864d2ef",
       "revId": "2f4c531ee09699c493938d8a5ef943b883971147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
