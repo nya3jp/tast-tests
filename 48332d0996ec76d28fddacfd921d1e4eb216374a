@@ -594,6 +594,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6ff732_c2e291fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-23T01:12:23Z",
+      "side": 1,
+      "message": "Done: if I ensure that each worker returns a single error line, then I can wait in a finite loop.",
+      "parentUuid": "21a7076c_d5748542",
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e872480_0e0c775d",
@@ -690,6 +708,30 @@
       "side": 1,
       "message": "Yes, it will wait. \u003e SeparatedOutput wait for the command to complete?\nIf it is necessary to return during the subprocess run, could you terminate and collect the subprocess in case of error cases? Currently, they are kept stale.\n\nThough, I\u0027m wondering if it has enough benefit.\n1) In case of success, which is expected, it runs 10 secs anyways.\n2) In case of error, indeed it can return earlier, but it should be rare and the max duration is capped by 10 secs like above.\n\nWDYT?",
       "parentUuid": "e15b760c_34053f64",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 5
+      },
+      "revId": "48332d0996ec76d28fddacfd921d1e4eb216374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7f9c23_9af5ffde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-23T01:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24db38e5_0e728325",
       "range": {
         "startLine": 83,
         "startChar": 4,
