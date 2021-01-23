@@ -81,25 +81,19 @@ func Canva(ctx context.Context, s *testing.State) {
 // verify Canva reached main activity page of the app.
 func launchAppForCanva(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		googleText     = "Continue with Google"
-		emailAddressID = "com.google.android.gms:id/container"
-		homeIconText   = "Create a design"
+		googleSignInText = "Continue with Google"
+		homeIconText     = "Create a design"
 	)
 
 	// Click on sign in button.
-	googleSignInButton := d.Object(ui.Text(googleText))
+	googleSignInButton := d.Object(ui.Text(googleSignInText))
 	if err := googleSignInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("sign in button doesn't exist: ", err)
+		// For selecting Gmail account
+		s.Log("googleSignInButton doesn't exist and press Tab and Enter: ", err)
+		d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0)
+		d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0)
 	} else if err := googleSignInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on sign in button: ", err)
-	}
-
-	// Click on email address.
-	emailAddress := d.Object(ui.ID(emailAddressID))
-	if err := emailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("EmailAddress doesn't exist: ", err)
-	} else if err := emailAddress.Click(ctx); err != nil {
-		s.Fatal("Failed to click on EmailAddress: ", err)
 	}
 
 	// Check for home icon.
