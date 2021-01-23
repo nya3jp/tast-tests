@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d38c502_ac4fc41d",
+        "filename": "src/chromiumos/tast/local/android/adb/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-23T01:38:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d340b039_052f6910",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 1
+      },
+      "revId": "a8627dca8649d6c5bb8fdc5aa1dc47597ee1c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80f3ff21_f93bef44",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "619fc6f6_a8b0ebc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_sender_android_receiver.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-23T01:38:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "80f3ff21_f93bef44",
+      "range": {
+        "startLine": 102,
+        "startChar": 27,
+        "endLine": 102,
+        "endChar": 72
+      },
+      "revId": "a8627dca8649d6c5bb8fdc5aa1dc47597ee1c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e605fab7_9409481f",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-01-21T19:19:13Z",
       "side": 1,
       "message": "Once you have access to the nearby-discovery-page element, you could also directly access \".shareTargets_\". It\u0027s technically implied private, but it doesn\u0027t seem any less fragile than scraping the page. That variable name is not likely to change any time soon.",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "a8627dca8649d6c5bb8fdc5aa1dc47597ee1c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5390194c_3a10bd8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/data/sender.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-23T01:38:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e605fab7_9409481f",
       "range": {
         "startLine": 37,
         "startChar": 8,

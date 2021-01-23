@@ -682,6 +682,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd70fed6_12eb35a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_android_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-01-23T01:38:23Z",
+      "side": 1,
+      "message": "Yep that should be fine. The only time we get a callbackID like this is when we start sending or receiving, and that callbackID is used until the share is over. We can only do one or the other at a time, so it should be fine to store a single callbackID.",
+      "parentUuid": "de78a892_dd2498dd",
+      "range": {
+        "startLine": 147,
+        "startChar": 46,
+        "endLine": 147,
+        "endChar": 56
+      },
+      "revId": "6785abd599595d65d80033511921778691b4160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ae677de_bfd42ac6",
