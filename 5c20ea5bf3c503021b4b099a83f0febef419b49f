@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98163dfb_98c6b865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 0,
+      "message": "Please keep this -- we want the playstore app window in this test.",
+      "revId": "5c20ea5bf3c503021b4b099a83f0febef419b49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

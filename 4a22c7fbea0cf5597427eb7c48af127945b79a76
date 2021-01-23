@@ -1,0 +1,503 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f5e5437_40494c6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "This is probably better to be in \"ash\" package (src/chromiumos/tast/local/chrome/ash). Please move there.",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90191a1a_74641361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "This is probably better to be in \"ash\" package (src/chromiumos/tast/local/chrome/ash). Please move there.",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03927ab_b72e0447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/misc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "The fix (https://chromium-review.googlesource.com/c/chromium/src/+/2634121) should be ready from 13744.0.0. So I think this can be removed now.\nCan you remove this?",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3edfa71e_bfcaba72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "I don\u0027t think these sentences make much sense.  What is \"some applications\"?  Isn\u0027t gmail an application?\nYou don\u0027t need to say \"launch by search\".  That\u0027s not what describes this type.\n\nI guess it would be something like:\n  // Gmail provides controls of Gmail Android app.",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 78
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dea3ab8_84baf6e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "\"initial\" isn\u0027t a verb.  Please use a standard English sentence for the comment.",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "421c382a_712335ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gmail/gmail.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Close \"closes\" the gmail app window.\n\nAlso, similar to the comment in \"netflix\" package, I am not sure it is a good idea to close the app window through \"Close\" method. It is always a good idea to keep the app window in erroneous situation.",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d36ceaa0_ac288476",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a correct doc comment for this type.  Please provide the comment for what it does.\n\nAn example would be:\n// Netflix provides the control of netflix website.",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 51
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7245b60_46453346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Please make a call of n.conn.Close() somewhere in the method (I recommend to do that in Close method).",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f6e2f35_4535252c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Please use ui.WaitUntilExists if you don\u0027t need the node.",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8afc18af_32802892",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "I am afraid that this log message looks strange to me.  How about: \"Home is found, assuming the login is completed already\".",
+      "range": {
+        "startLine": 45,
+        "startChar": 27,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "081b0338_0ca33be6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "You should close conn here.",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c21b9a8_153b405e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "how about making this to be a method of Netflix?  That way you can omit\n  func (n *Netflix) signIn(ctx context.Context, tconn *chrome.TestConn, username, password string) error {\n\nThat way you can omit the \u0027conn\u0027 param.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd44672_c431222f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Maybe it\u0027s good to have a log message here.\n  testing.ContextLog(ctx, \"Attempting to log into netflix\")",
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a1c71e7_570b5f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Why not clicking \"signIn\" button which is supposed to be in the home page?",
+      "range": {
+        "startLine": 61,
+        "startChar": 30,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185d5eb8_d1973ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "Please use ui.WaitUntilExists",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "368d71e0_e019696c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "If this is just a rename of WaitForQuiescence, why does this have to be defined?  Also it is exposed.  Is it used outside?",
+      "range": {
+        "startLine": 110,
+        "startChar": 18,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b68b784a_e99f64a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "ditto: use ui.WaitUntilExists",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 32
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c077628_28575f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/netflix/netflix.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "I am afraid this is incorrect. This closes the tab / window of the netflix page.\n\nI think it\u0027s better to keep this doc-comment as-is, but the content of Close should be using Close() instead of CloseTarget().  Close closes the connection, while CloseTarget closes the tab actually.\n\nWhen something wrong happens, keeping the browser tab is usually helpful (they are visible in the screenshot of the faillog).  If you want to close the tab / window, it\u0027s better to use another method like \"CloseTarget\", which shouldn\u0027t be called in defer.",
+      "range": {
+        "startLine": 132,
+        "startChar": 24,
+        "endLine": 132,
+        "endChar": 34
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "688b9dd2_f16fdf64",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "seems not used at all.  Please remove.",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6924c3_8c0397b4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "I think the log message should start with a capital letter. Also, I don\u0027t think it\u0027s common to have a log format with the package name like this.\n\nI think it\u0027s better to say like \"Connecting %q bluetooth device via os settings\".  What do you think?",
+      "range": {
+        "startLine": 50,
+        "startChar": 27,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2867dd54_cb43870f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "For a similar reason I wrote in the \"netflix\" package, I guess it is better NOT to close the settings window on erroneous situation, as the screenshot can reveal more detailed information.\n\nPlease move this line right before \"return nil\", and remove \"defer\".  That way, it closes the app-window in normal operation as expected, while the developer can see the screenshot when it fails.",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29aafbe8_8884cad7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "ditto: e.g. \"Checking the connectivity of %q bluetooth device\" ?",
+      "range": {
+        "startLine": 85,
+        "startChar": 27,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660c9f08_a691c7af",
+        "filename": "src/chromiumos/tast/local/chrome/ui/bluetooth/bluetooth.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-23T05:16:22Z",
+      "side": 1,
+      "message": "For the same reason, I guess it\u0027s better to not close the settings window as a defer.",
+      "range": {
+        "startLine": 90,
+        "startChar": 12,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "4a22c7fbea0cf5597427eb7c48af127945b79a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
