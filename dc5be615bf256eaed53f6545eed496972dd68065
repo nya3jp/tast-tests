@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "528cb1d9_ffe13323",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-23T01:09:04Z",
+      "side": 1,
+      "message": "added link to corresponding change in avtest_label_detect\n(this change is in the middle), \nbut still uploaded because I thoughtat least need to link it here. ",
+      "revId": "dc5be615bf256eaed53f6545eed496972dd68065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
