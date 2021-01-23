@@ -16,6 +16,24 @@
       "message": "Archana, could you add this code snippet again. I remember canva was failing on multiple devices before due to clicking of email address was not handled.\n\n\t// Click on email address.\n\temailAddress :\u003d d.Object(ui.ID(emailAddressID))\n\tif err :\u003d emailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err !\u003d nil {\n\t\ts.Log(\"EmailAddress doesn\u0027t exist: \", err)\n\t} else if err :\u003d emailAddress.Click(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to click on EmailAddress: \", err)\n\t}",
       "revId": "1af121848144607211b166495ab62bf71706ddcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77dfd501_233de57e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/canva.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2021-01-23T07:40:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "36833109_8ca5f545",
+      "revId": "1af121848144607211b166495ab62bf71706ddcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
