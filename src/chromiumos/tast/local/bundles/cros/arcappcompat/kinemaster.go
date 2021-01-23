@@ -85,6 +85,7 @@ func launchAppForKinemaster(ctx context.Context, s *testing.State, tconn *chrome
 		cancelText              = "Cancel"
 		continueToAppID         = "close-button"
 		closeID                 = "com.nexstreaming.app.kinemasterfree:id/skip_ad_button"
+		closeButtonID           = "com.nexstreaming.app.kinemasterfree:id/collapse_button"
 		noText                  = "No"
 		okText                  = "OK"
 		homeID                  = "com.nexstreaming.app.kinemasterfree:id/mediaListView"
@@ -165,6 +166,14 @@ func launchAppForKinemaster(ctx context.Context, s *testing.State, tconn *chrome
 		s.Log("cancelButton doesn't exists: ", err)
 	} else if err := cancelButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on cancelButton: ", err)
+	}
+
+	// Click on close button.
+	clickOnCloseButton = d.Object(ui.ID(closeButtonID))
+	if err := clickOnCloseButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("clickOnCloseButton doesn't exists: ", err)
+	} else if err := clickOnCloseButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnCloseButton: ", err)
 	}
 
 	// Click on add button.
