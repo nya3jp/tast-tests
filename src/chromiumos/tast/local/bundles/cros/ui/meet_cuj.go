@@ -240,7 +240,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 			screenRecorder.Release(ctx)
 		}()
-		screenRecorder.Start(ctx)
+		screenRecorder.Start(ctx, tconn)
 	}
 
 	tweakPerfValues := func(pv *perf.Values) error { return nil }
