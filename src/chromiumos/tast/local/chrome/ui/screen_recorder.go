@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -121,7 +122,7 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 
 // Start creates a new media recorder and starts to record the screen. As long as ScreenRecorder
 // is not recording, it can start to record again.
-func (r *ScreenRecorder) Start(ctx context.Context) error {
+func (r *ScreenRecorder) Start(ctx context.Context, tconn *chrome.TestConn) error {
 	if r.isRecording == true {
 		return errors.New("recorder already started")
 	}
@@ -130,6 +131,23 @@ func (r *ScreenRecorder) Start(ctx context.Context) error {
 		return errors.Wrap(err, "failed to start to record screen")
 	}
 	r.isRecording = true
+
+	params := FindParams{Name: "Notification close", Role: RoleTypeButton}
+	closeButton, err := FindWithTimeout(ctx, tconn, params, 15*time.Second)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to find the screen sharing alert dialog, might have disappeared already")
+		return nil
+	}
+	defer closeButton.Release(ctx)
+
+	if err := closeButton.StableLeftClick(ctx, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to click the close button on the alert dialog")
+	}
+
+	params = FindParams{ClassName: "MessagePopupView", Role: "alertDialog"}
+	if err := WaitUntilGone(ctx, tconn, params, 30*time.Second); err != nil {
+		return errors.Wrap(err, "the alert dialog failed to disappear")
+	}
 
 	return nil
 }
