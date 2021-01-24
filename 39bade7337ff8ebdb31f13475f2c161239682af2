@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1beae962_0b337c22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-24T22:58:28Z",
+      "side": 1,
+      "message": "Let\u0027s check in avtest_label_detect CL first. Otherwise video.Capability will fail on volteer.",
+      "revId": "39bade7337ff8ebdb31f13475f2c161239682af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
