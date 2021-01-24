@@ -20,6 +20,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b7c6614_82011044",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-24T23:59:08Z",
+      "side": 1,
+      "message": "use cq-depends for the tast-tests-private changes",
+      "parentUuid": "af373d4f_aaba16b3",
+      "revId": "09b5aa3cc8e88abcf22581bb83211d41a254f775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eea35a4_1b6cb9da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-24T23:59:08Z",
+      "side": 1,
+      "message": "Please add a mailing group as well in case you are OOO.",
+      "revId": "09b5aa3cc8e88abcf22581bb83211d41a254f775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9001d35b_035ac060",
         "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
         "patchSetId": 5
@@ -31,6 +66,75 @@
       "writtenOn": "2021-01-22T02:22:57Z",
       "side": 1,
       "message": "TODO: At the moment, I get the error \"Test Vars should be an array literal of string literals\" (I tried to use a constant). See if we can switch to a constant, and if not, unexpose the constant.",
+      "revId": "09b5aa3cc8e88abcf22581bb83211d41a254f775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df92bbcd_a22cbdfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-24T23:59:08Z",
+      "side": 1,
+      "message": "you could also make a change to the linter to allow this particular case",
+      "parentUuid": "9001d35b_035ac060",
+      "revId": "09b5aa3cc8e88abcf22581bb83211d41a254f775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a2fe8c1_97eefe9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-24T23:59:08Z",
+      "side": 1,
+      "message": "Longer term, consider adding a structured output mode to the gold uploader that puts json or something sensible on stdout.\n\nAlthough if this is only for the test it is not so important.",
+      "revId": "09b5aa3cc8e88abcf22581bb83211d41a254f775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b84462_e074946f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-24T23:59:08Z",
+      "side": 1,
+      "message": "Not sure if it is available in ChromiumOS, but if it is you should use cmp.Diff: go/go-test-examples#cmp-diff",
+      "revId": "09b5aa3cc8e88abcf22581bb83211d41a254f775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6423b1ba_ded7bd60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/screenshot/diff_lib.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-24T23:59:08Z",
+      "side": 1,
+      "message": "From a tast reviewer perspective I don\u0027t think the \"expect...\" style is allowed, please add hidehiko@ or nya@ to get their approval if you want to keep it with this style.\n\ngo/go-style/decisions#assert\n\nPreviously discussed (with decision) here:\nhttps://groups.google.com/a/google.com/g/tast-reviewers/c/r9_PqdzZbEw/m/FgFPz_IFAwAJ",
       "revId": "09b5aa3cc8e88abcf22581bb83211d41a254f775",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
