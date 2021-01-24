@@ -399,7 +399,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			}
 
 			if screenRecorder != nil {
-				if err := screenRecorder.Start(ctx); err != nil {
+				if err := screenRecorder.Start(ctx, p.tconn); err != nil {
 					s.Log("Failed to start screen record: ", err)
 				} else {
 					s.Log("Start screen recording")
@@ -482,7 +482,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 
 	if screenRecorder != nil {
-		if err := screenRecorder.Start(ctx); err != nil {
+		if err := screenRecorder.Start(ctx, p.tconn); err != nil {
 			s.Log("Failed to start screen record: ", err)
 		} else {
 			s.Log("Start screen recording")
