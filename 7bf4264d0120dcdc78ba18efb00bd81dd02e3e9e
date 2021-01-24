@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a72cbe3_0217d723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-24T04:21:55Z",
+      "side": 1,
+      "message": "Jun, Thanks for you comments again. I responded most of the comments. For some comments, I proposed different implementation approaches with your comments. Please check. I will leave this to our team to submit next patch.",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f231325a_67e83cca",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-01-19T21:50:56Z",
       "side": 1,
       "message": "I don\u0027t think the use of \"timeline\" is a good idea for this purpose.  Consider creating your own goroutine by yourself.  Within the goroutine, you can make waiting and calculation of Joule.",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1115b8_3882770f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-24T04:21:55Z",
+      "side": 1,
+      "message": "Jun, IMHO, we should not create our own go routine. Reading current_now and voltage_now is a repetitive job based on given interval (eg: read every second). This is exactly what the \"timeline\" does. Timeline provides Start(), Stop(), job handling at fixed interval with its own clock, sleep, timeout, error handling, etc. I think it\u0027s not good if we create a similar one by copy most of implementation from it. This timeline instance used here only has one data source, and it is internally used by the this battery tracker and won\u0027t interfere with any other metrics used in recorder. I propose to keep the current implementation. How do you think?",
+      "parentUuid": "c4ac84f4_d267d263",
       "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -152,6 +187,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12183e28_d86dcd59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-24T04:21:55Z",
+      "side": 1,
+      "message": "Good catch. Will change.",
+      "parentUuid": "7ee4bee0_aa1b70f1",
+      "range": {
+        "startLine": 145,
+        "startChar": 16,
+        "endLine": 145,
+        "endChar": 22
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80a8e26c_9f500e83",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
         "patchSetId": 13
@@ -256,6 +315,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db70f49a_23dbd45a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-24T04:21:55Z",
+      "side": 1,
+      "message": "Ok, we will only store the histogram data into new file. Keep existing metrics in results_chart.json",
+      "parentUuid": "8ed92225_3d56d937",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4973e2a7_cd5a818c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 13
@@ -267,6 +344,24 @@
       "writtenOn": "2021-01-19T21:50:56Z",
       "side": 1,
       "message": "Please remove this.  Rather, it\u0027s better to create a new method, such as \u0027Merge\u0027 to Histogram struct;\n  // Merge merges the data from other.\n  func (h *Histogram) Merge(other *Histogram) error",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56bbfbe3_a0283df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-24T04:21:55Z",
+      "side": 1,
+      "message": "How about a (h *Histogram)Concat(other *Histogram)? We are simply concatenating the buckets in to one slice, instead of merging them. Merge is not needed at this time because the external process just process each bucket.",
+      "parentUuid": "4973e2a7_cd5a818c",
       "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -313,6 +408,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc9d5a05_301575c0",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-24T04:21:55Z",
+      "side": 1,
+      "message": "I propose changing this to ReadBatteryProperty() but keep it in the power package because we want to reuse the power package internal function readInt64().",
+      "parentUuid": "fccfa97e_abd14757",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 1
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42267c76_3f23a485",
         "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
         "patchSetId": 13
@@ -336,6 +455,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e11c680_ff83cc8f",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-24T04:21:55Z",
+      "side": 1,
+      "message": "The purpose was to extend the SysfsBatteryMetrics to support multiple batteries, along with this change:\n\ntype SysfsBatteryMetrics struct {\n\tpowerMetric  perf.Metric\n\tbatteryPaths []string.  \u003c\u003d\u003d\u003d\u003d\u003d\u003d\n\tprefix       string\n}\n\nBut if all Chromebook supports only one battery, it\u0027s OK we revert the change.",
+      "parentUuid": "42267c76_3f23a485",
+      "range": {
+        "startLine": 105,
+        "startChar": 21,
+        "endLine": 105,
+        "endChar": 62
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6db1ba57_9d1cab2d",
         "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
         "patchSetId": 13
@@ -347,6 +490,24 @@
       "writtenOn": "2021-01-19T21:50:56Z",
       "side": 1,
       "message": "This changes the behavior of SysfsBatteryMetrics. What are the other power sources and why do they need to be aggregated as a sum?",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f35e55_8210692b",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-24T04:21:55Z",
+      "side": 1,
+      "message": "We will change it.",
+      "parentUuid": "6db1ba57_9d1cab2d",
       "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
