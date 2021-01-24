@@ -22,6 +22,52 @@
       },
       "revId": "a811e5bed332634c8fe8554cdff8e4d220fc56c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7813a5_b8f742ea",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-24T22:42:13Z",
+      "side": 1,
+      "message": "node has not stopped changing location after %d ms, perhaps increase timeout or use ImmediateLocation",
+      "range": {
+        "startLine": 155,
+        "startChar": 22,
+        "endLine": 155,
+        "endChar": 50
+      },
+      "revId": "a811e5bed332634c8fe8554cdff8e4d220fc56c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a647763a_68d85020",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-24T22:42:13Z",
+      "side": 1,
+      "message": "multiple nodes matched query, if you expect this and only want the first use First()",
+      "range": {
+        "startLine": 112,
+        "startChar": 18,
+        "endLine": 112,
+        "endChar": 74
+      },
+      "revId": "a811e5bed332634c8fe8554cdff8e4d220fc56c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
