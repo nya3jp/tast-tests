@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "196ef2af_86898659",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T08:42:01Z",
+      "side": 1,
+      "message": "LGTM % remaining nit.\n\nThanks for the good work!",
+      "revId": "61056f3525f5123bb5596c6ad57db095cd6122fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70b5e15_ebecd25f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T08:42:01Z",
+      "side": 1,
+      "message": "Much nicer now 😊.",
+      "revId": "61056f3525f5123bb5596c6ad57db095cd6122fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb3b3fb_9e858bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T08:42:01Z",
+      "side": 1,
+      "message": "Don\u0027t you want to error out in this else case?",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "61056f3525f5123bb5596c6ad57db095cd6122fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e3f0b8_3a8f8b4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T08:42:01Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 3
+      },
+      "revId": "61056f3525f5123bb5596c6ad57db095cd6122fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -154,6 +154,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea4ec3bc_3e9403ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T08:42:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d048f427_0de21b8d",
+      "revId": "3ffda844e9b3cc7033864f573ad90fe8c4fa524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a29e8956_a1b80eae",
