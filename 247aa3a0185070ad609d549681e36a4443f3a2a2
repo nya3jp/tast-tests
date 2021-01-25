@@ -39,6 +39,30 @@
       },
       "revId": "247aa3a0185070ad609d549681e36a4443f3a2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af872292_aabf518e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-25T10:27:08Z",
+      "side": 1,
+      "message": "Good catch! Removed these.\n\nSure about broker_process.cc lines. I will send a CL separately.",
+      "parentUuid": "f0032179_9528c305",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 0
+      },
+      "revId": "247aa3a0185070ad609d549681e36a4443f3a2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
