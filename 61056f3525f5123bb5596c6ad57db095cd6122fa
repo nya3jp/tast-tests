@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed82e72_c5801224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-25T16:48:41Z",
+      "side": 1,
+      "message": "I could but that isn\u0027t really want I intended to test. I will add a comment since this question might otherwise come up again.",
+      "parentUuid": "7eb3b3fb_9e858bdd",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "61056f3525f5123bb5596c6ad57db095cd6122fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1e3f0b8_3a8f8b4e",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-01-25T08:42:01Z",
       "side": 1,
       "message": "Same as above",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 3
+      },
+      "revId": "61056f3525f5123bb5596c6ad57db095cd6122fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43295afd_d8f1b330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-25T16:48:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1e3f0b8_3a8f8b4e",
       "range": {
         "startLine": 208,
         "startChar": 2,
