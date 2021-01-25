@@ -8,14 +8,18 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"os"
 	"os/exec"
 	"strconv"
 	"strings"
 	"syscall"
 	"time"
 
+	"github.com/godbus/dbus"
+
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -254,8 +258,10 @@ func Manatee(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	// Set up services if necessary.
 	d := newSireniaServices()
 	if !testCase.useSystemServices {
+		s.Log("Starting test Sirenia services")
 		if err := d.Start(ctx); err != nil {
 			s.Fatal("Failed to start sirenia services: ", err)
 		}
@@ -264,5 +270,58 @@ func Manatee(ctx context.Context, s *testing.State) {
 				s.Error("Failed to stop sirenia services: ", err)
 			}
 		}()
+	} else {
+		s.Log("Using Sirenia services provided by the system")
+	}
+
+	// D-Bus constants for use with dugong / ManaTEE.
+	const (
+		dbusName      = "org.chromium.ManaTEE"
+		dbusPath      = "/org/chromium/ManaTEE1"
+		dbusInterface = "org.chromium.ManaTEEInterface"
+
+		dbusMethodStartTEEApplication = ".StartTEEApplication"
+		testTEEAppID                  = "shell"
+		testCmd                       = "uname -a\n"
+	)
+
+	// Check ManaTEE D-Bus API through dugong.
+	conn, obj, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
+	if err != nil {
+		s.Fatalf("Failed to connect to %s: %v", dbusName, err)
+	}
+
+	if conn.SupportsUnixFDs() != true {
+		s.Fatal("Connection needs Unix FD support: ", err)
+	}
+
+	s.Log("Starting test TEE app")
+	var errorCode int32
+	var fds []interface{}
+	if err := obj.CallWithContext(ctx, dbusInterface+dbusMethodStartTEEApplication, 0, testTEEAppID).Store(&errorCode, &fds); err != nil {
+		s.Fatal("Failed to start TEE app: ", err)
+	}
+	if errorCode != 0 {
+		s.Errorf("Unexpected return code: got %d; expected 0", errorCode)
+	}
+	var fdIn dbus.UnixFD
+	var fdOut dbus.UnixFD
+	if err := dbus.Store(fds, &fdIn, &fdOut); err != nil {
+		s.Fatal("Failed unpack return value: ", err)
+	}
+	s.Logf("Received file descriptors %d and %d", fdIn, fdOut)
+
+	fileIn := bufio.NewReader(os.NewFile(uintptr(fdIn), "TEE App In"))
+	fileOut := os.NewFile(uintptr(fdOut), "TEE App In")
+
+	if _, err := fileOut.WriteString(testCmd); err != nil {
+		s.Error("Failed to send data to TEE App: ", err)
+	}
+
+	line, err := fileIn.ReadString('\n')
+	if err != nil {
+		s.Error("Failed to read data from TEE App: ", err)
+	} else {
+		s.Logf("Received: %q", line)
 	}
 }
