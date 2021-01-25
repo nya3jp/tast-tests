@@ -244,6 +244,28 @@ func (f *Finder) Name(n string) *Finder {
 	return f.Attribute("name", n)
 }
 
+// NameContaining creates a Finder with a name containing the specified string.
+func NameContaining(n string) *Finder {
+	r := regexp.MustCompile(fmt.Sprintf(".*%s.*", regexp.QuoteMeta(n)))
+	return Attribute("name", r)
+}
+
+// NameContaining creates a copy of the input Finder with a name containing the specified string.
+func (f *Finder) NameContaining(n string) *Finder {
+	r := regexp.MustCompile(fmt.Sprintf(".*%s.*", regexp.QuoteMeta(n)))
+	return f.Attribute("name", r)
+}
+
+// NameRegex creates a Finder with a name containing the specified regexp.
+func NameRegex(r *regexp.Regexp) *Finder {
+	return Attribute("name", r)
+}
+
+// NameRegex creates a copy of the input Finder with a name containing the specified regexp.
+func (f *Finder) NameRegex(r *regexp.Regexp) *Finder {
+	return f.Attribute("name", r)
+}
+
 // ClassName creates a Finder with the specified class name.
 func ClassName(n string) *Finder {
 	return Attribute("className", n)
@@ -252,4 +274,204 @@ func ClassName(n string) *Finder {
 // ClassName creates a copy of the input Finder with the specified class name.
 func (f *Finder) ClassName(n string) *Finder {
 	return f.Attribute("className", n)
+}
+
+// AutofillAvailable creates a Finder with AutofillAvailable set to true.
+func AutofillAvailable() *Finder {
+	return State(state.AutofillAvailable, true)
+}
+
+// AutofillAvailable creates a copy of the input Finder with AutofillAvailable set to true.
+func (f *Finder) AutofillAvailable() *Finder {
+	return f.State(state.AutofillAvailable, true)
+}
+
+// Collapsed creates a Finder with Collapsed set to true.
+func Collapsed() *Finder {
+	return State(state.Collapsed, true)
+}
+
+// Collapsed creates a copy of the input Finder with Collapsed set to true.
+func (f *Finder) Collapsed() *Finder {
+	return f.State(state.Collapsed, true)
+}
+
+// Default creates a Finder with Default set to true.
+func Default() *Finder {
+	return State(state.Default, true)
+}
+
+// Default creates a copy of the input Finder with Default set to true.
+func (f *Finder) Default() *Finder {
+	return f.State(state.Default, true)
+}
+
+// Editable creates a Finder with Editable set to true.
+func Editable() *Finder {
+	return State(state.Editable, true)
+}
+
+// Editable creates a copy of the input Finder with Editable set to true.
+func (f *Finder) Editable() *Finder {
+	return f.State(state.Editable, true)
+}
+
+// Expanded creates a Finder with Expanded set to true.
+func Expanded() *Finder {
+	return State(state.Expanded, true)
+}
+
+// Expanded creates a copy of the input Finder with Expanded set to true.
+func (f *Finder) Expanded() *Finder {
+	return f.State(state.Expanded, true)
+}
+
+// Focusable creates a Finder with Focusable set to true.
+func Focusable() *Finder {
+	return State(state.Focusable, true)
+}
+
+// Focusable creates a copy of the input Finder with Focusable set to true.
+func (f *Finder) Focusable() *Finder {
+	return f.State(state.Focusable, true)
+}
+
+// Focused creates a Finder with Focused set to true.
+func Focused() *Finder {
+	return State(state.Focused, true)
+}
+
+// Focused creates a copy of the input Finder with Focused set to true.
+func (f *Finder) Focused() *Finder {
+	return f.State(state.Focused, true)
+}
+
+// Horizontal creates a Finder with Horizontal set to true.
+func Horizontal() *Finder {
+	return State(state.Horizontal, true)
+}
+
+// Horizontal creates a copy of the input Finder with Horizontal set to true.
+func (f *Finder) Horizontal() *Finder {
+	return f.State(state.Horizontal, true)
+}
+
+// Hovered creates a Finder with Hovered set to true.
+func Hovered() *Finder {
+	return State(state.Hovered, true)
+}
+
+// Hovered creates a copy of the input Finder with Hovered set to true.
+func (f *Finder) Hovered() *Finder {
+	return f.State(state.Hovered, true)
+}
+
+// Ignored creates a Finder with Ignored set to true.
+func Ignored() *Finder {
+	return State(state.Ignored, true)
+}
+
+// Ignored creates a copy of the input Finder with Ignored set to true.
+func (f *Finder) Ignored() *Finder {
+	return f.State(state.Ignored, true)
+}
+
+// Invisible creates a Finder with Invisible set to true.
+func Invisible() *Finder {
+	return State(state.Invisible, true)
+}
+
+// Invisible creates a copy of the input Finder with Invisible set to true.
+func (f *Finder) Invisible() *Finder {
+	return f.State(state.Invisible, true)
+}
+
+// Linked creates a Finder with Linked set to true.
+func Linked() *Finder {
+	return State(state.Linked, true)
+}
+
+// Linked creates a copy of the input Finder with Linked set to true.
+func (f *Finder) Linked() *Finder {
+	return f.State(state.Linked, true)
+}
+
+// Multiline creates a Finder with Multiline set to true.
+func Multiline() *Finder {
+	return State(state.Multiline, true)
+}
+
+// Multiline creates a copy of the input Finder with Multiline set to true.
+func (f *Finder) Multiline() *Finder {
+	return f.State(state.Multiline, true)
+}
+
+// Multiselectable creates a Finder with Multiselectable set to true.
+func Multiselectable() *Finder {
+	return State(state.Multiselectable, true)
+}
+
+// Multiselectable creates a copy of the input Finder with Multiselectable set to true.
+func (f *Finder) Multiselectable() *Finder {
+	return f.State(state.Multiselectable, true)
+}
+
+// Offscreen creates a Finder with Offscreen set to true.
+func Offscreen() *Finder {
+	return State(state.Offscreen, true)
+}
+
+// Offscreen creates a copy of the input Finder with Offscreen set to true.
+func (f *Finder) Offscreen() *Finder {
+	return f.State(state.Offscreen, true)
+}
+
+// Protected creates a Finder with Protected set to true.
+func Protected() *Finder {
+	return State(state.Protected, true)
+}
+
+// Protected creates a copy of the input Finder with Protected set to true.
+func (f *Finder) Protected() *Finder {
+	return f.State(state.Protected, true)
+}
+
+// Required creates a Finder with Required set to true.
+func Required() *Finder {
+	return State(state.Required, true)
+}
+
+// Required creates a copy of the input Finder with Required set to true.
+func (f *Finder) Required() *Finder {
+	return f.State(state.Required, true)
+}
+
+// RichlyEditable creates a Finder with RichlyEditable set to true.
+func RichlyEditable() *Finder {
+	return State(state.RichlyEditable, true)
+}
+
+// RichlyEditable creates a copy of the input Finder with RichlyEditable set to true.
+func (f *Finder) RichlyEditable() *Finder {
+	return f.State(state.RichlyEditable, true)
+}
+
+// Vertical creates a Finder with Vertical set to true.
+func Vertical() *Finder {
+	return State(state.Vertical, true)
+}
+
+// Vertical creates a copy of the input Finder with Vertical set to true.
+func (f *Finder) Vertical() *Finder {
+	return f.State(state.Vertical, true)
+}
+
+// Visited creates a Finder with Visited set to true.
+func Visited() *Finder {
+	return State(state.Visited, true)
+}
+
+// Visited creates a copy of the input Finder with Visited set to true.
+func (f *Finder) Visited() *Finder {
+	return f.State(state.Visited, true)
 }
