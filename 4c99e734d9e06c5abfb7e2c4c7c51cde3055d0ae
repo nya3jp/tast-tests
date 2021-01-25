@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c41c25_3a8baf81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-25T05:01:06Z",
+      "side": 1,
+      "message": "Please always file a bug and specify a bug number in CLs. For this change I filed one:\n\n BUG\u003dchromium:1170186",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "4c99e734d9e06c5abfb7e2c4c7c51cde3055d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2de24adf_86651ac0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-25T05:01:06Z",
+      "side": 1,
+      "message": "Hi Xibin, thanks for your patience! I\u0027m very close to land all refactoring changes. The last refactoring change is crrev.com/c/2642667.\n\nI also wrote a change for chrome extension persistent directory, crrev.com/c/2644592.\n\nCould you please rebase your change on top of these changes?",
+      "revId": "4c99e734d9e06c5abfb7e2c4c7c51cde3055d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80f07937_4dc569da",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-25T05:01:06Z",
+      "side": 1,
+      "message": "Please make the naming and description clear that:\n\n- We will reuse a Chrome session only when parameters passed to chrome.New are compatible\n- When we can\u0027t reuse a Chrome session, we will restart Chrome as usual",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 28
+      },
+      "revId": "4c99e734d9e06c5abfb7e2c4c7c51cde3055d0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
