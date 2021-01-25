@@ -14,8 +14,14 @@ import (
 )
 
 var videoTestFiles = []string{
+	"test_vectors/av1/00000527.ivf",
+	"test_vectors/av1/00000527.ivf.json",
+	"test_vectors/av1/00000535.ivf",
+	"test_vectors/av1/00000535.ivf.json",
 	"test_vectors/av1/00000548.ivf",
 	"test_vectors/av1/00000548.ivf.json",
+	"test_vectors/av1/00001131.ivf",
+	"test_vectors/av1/00001131.ivf.json",
 	"test_vectors/av1/48_delayed.ivf",
 	"test_vectors/av1/48_delayed.ivf.json",
 	"test_vectors/av1/av1-1-b8-02-allintra.ivf",
