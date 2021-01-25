@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9d76e38_e119b729",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-01-25T23:17:20Z",
+      "side": 1,
+      "message": "lgtm, thanks!",
+      "revId": "52bb4523b6d9102b8f9bc5d1ad6136b6af471b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b732379_2f63ea6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_maximized_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-01-25T23:17:20Z",
+      "side": 1,
+      "message": "nit: seteup -\u003e setup",
+      "range": {
+        "startLine": 76,
+        "startChar": 21,
+        "endLine": 76,
+        "endChar": 27
+      },
+      "revId": "52bb4523b6d9102b8f9bc5d1ad6136b6af471b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f6e17c_5914ca8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_maximized_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-01-25T23:17:20Z",
+      "side": 1,
+      "message": "nit: obtain the duplicated",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "52bb4523b6d9102b8f9bc5d1ad6136b6af471b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
