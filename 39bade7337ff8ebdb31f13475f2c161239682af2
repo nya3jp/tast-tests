@@ -34,6 +34,24 @@
       "parentUuid": "1beae962_0b337c22",
       "revId": "39bade7337ff8ebdb31f13475f2c161239682af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaaec873_06cea142",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-25T18:41:41Z",
+      "side": 1,
+      "message": "did find relevant error message\n\ntast-remote-tests-cros-0.0.1-r4967: # chromiumos/tast/local/bundles/cros/video\ntast-remote-tests-cros-0.0.1-r4967: src/chromiumos/tast/local/bundles/cros/video/capability.go:53:32: undefined: caps.HWDecodeAV1_4K_10BPP\n\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket.appspot.com/8857289291567784976/+/steps/init_sdk/0/steps/call_chromite.api.SdkService_Create/0/steps/call_build_API_script/0/stdout",
+      "parentUuid": "5d7c4d37_e910ce5f",
+      "revId": "39bade7337ff8ebdb31f13475f2c161239682af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
