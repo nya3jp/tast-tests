@@ -77,6 +77,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "780d6e98_8f884834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-01-25T14:27:51Z",
+      "side": 1,
+      "message": "Could something be using username but empty password?",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9afeea1c_d5faa521",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
         "patchSetId": 1
@@ -116,6 +139,29 @@
         "startChar": 1,
         "endLine": 67,
         "endChar": 7
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eefb320_6d884a81",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-01-25T14:27:51Z",
+      "side": 1,
+      "message": "I suspect that it will be a burden for the tests to choose this and (almost?) no test will care about specifying a specific port.\nMaybe we can have the port auto-chosen?\nCan the proxy auto-choose? If not, I\u0027ve seen code somewhere else (but might have been autotest) that iterates ports and tries to start the server, and then returns the first one that succeeded.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
       },
       "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
