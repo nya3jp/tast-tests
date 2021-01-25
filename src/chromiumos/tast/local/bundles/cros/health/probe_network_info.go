@@ -44,10 +44,10 @@ func ProbeNetworkInfo(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Every system should have the field headers and at least two network
-	// devices. The VPN type is always present as a network device.
+	// Every system should have the field headers and at least one network
+	// devices.
 	lines := strings.Split(strings.TrimRight(string(b), "\n"), "\n")
-	if len(lines) < 3 {
+	if len(lines) < 2 {
 		writeResultToFile()
 		s.Fatal("Could not find any lines of network info")
 	}
