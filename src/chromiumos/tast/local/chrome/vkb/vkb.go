@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/testing"
 )
 
@@ -152,10 +153,20 @@ func TapKey(ctx context.Context, tconn *chrome.TestConn, keyName string) error {
 	}
 	defer key.Release(ctx)
 
-	if err := key.LeftClick(ctx); err != nil {
-		return errors.Wrapf(err, "failed to click key %s", keyName)
+	// Note: Must use mouse Move + Press + Sleep + Release here instead of Click.
+	// Mouse click is simulated by calling Chrome private api `chrome.autotestPrivate.mouseClick`.
+	// It works for most cases except virtual keyboard.
+	// In vkb extension, it listens to keyPress to send vk layout event to decoder
+	// before sending the actual key tap event.
+	// Mouse click is too quick and causes a racing issue that decoder receives tap key without layout info.
+	if err := mouse.Move(ctx, tconn, key.Location.CenterPoint(), 10*time.Millisecond); err != nil {
+		return errors.Wrapf(err, "failed to move mouse to key %s", keyName)
 	}
-	return nil
+	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+		return errors.Wrapf(err, "failed to press key %s: ", keyName)
+	}
+	testing.Sleep(ctx, 50*time.Millisecond)
+	return mouse.Release(ctx, tconn, mouse.LeftButton)
 }
 
 // FindKeyNode returns the ui node of the specified key.
