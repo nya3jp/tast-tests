@@ -56,6 +56,30 @@
       },
       "revId": "3052f6fb9c3cbfa3ad1d4f62c20e4b1a8a720ebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c745e432_7fef0e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-01-25T17:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c72aafe8_28601df4",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "3052f6fb9c3cbfa3ad1d4f62c20e4b1a8a720ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
