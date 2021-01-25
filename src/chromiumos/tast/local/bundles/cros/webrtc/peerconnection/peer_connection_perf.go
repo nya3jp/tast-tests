@@ -101,20 +101,19 @@ func measureCPU(ctx context.Context, p *perf.Values) error {
 
 // waitForPeerConnectionStabilized waits up to maxStreamWarmUp for the
 // transmitted resolution to reach streamWidth x streamHeight, or returns error.
-func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn, parseTxStatsJS string) error {
+func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn) error {
 	testing.ContextLogf(ctx, "Waiting at most %v seconds for tx resolution rampup, target %dx%d", maxStreamWarmUp, streamWidth, streamHeight)
-	var txMeasurement txMeas
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := conn.EvalPromise(ctx, parseTxStatsJS, &txMeasurement); err != nil {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var txm txMeas
+		if err := readRTCReport(ctx, conn, localPeerConnection, "outbound-rtp", &txm); err != nil {
 			return testing.PollBreak(err)
 		}
-		if txMeasurement.FrameHeight != streamHeight || txMeasurement.FrameWidth != streamWidth {
-			return errors.Errorf("still waiting for tx resolution to reach %dx%d, current: %.0fx%.0f", streamWidth, streamHeight, txMeasurement.FrameWidth, txMeasurement.FrameHeight)
+		if txm.FrameHeight != streamHeight || txm.FrameWidth != streamWidth {
+			return errors.Errorf("still waiting for tx resolution to reach %dx%d, current: %.0fx%.0f", streamWidth, streamHeight, txm.FrameWidth, txm.FrameHeight)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: maxStreamWarmUp, Interval: time.Second})
-	if err != nil {
-		return errors.Wrap(err, "timeout waiting for tx resolution to stabilise")
+	}, &testing.PollOptions{Timeout: maxStreamWarmUp, Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "timeout waiting for tx resolution to stabilize")
 	}
 	return nil
 }
@@ -122,62 +121,32 @@ func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn, par
 // measureRTCStats parses the WebRTC Tx and Rx Stats, and stores them into p.
 // See https://www.w3.org/TR/webrtc-stats/#stats-dictionaries for more info.
 func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) error {
-	parseStatsJS :=
-		`new Promise(function(resolve, reject) {
-			const rtcKeys = [%v];
-			const result = {};
-
-			%s.getStats(null).then(stats => {
-				if (stats === null) {
-					reject("getStats() failed");
-					return;
-				}
-				for (const stat of stats) {
-					const report = stat[1]
-					for (const statName in report) {
-						const index = rtcKeys.indexOf(statName);
-						if (index != -1) {
-							result[rtcKeys[index]] = report[statName];
-						}
-					}
-				}
-				resolve(result);
-			});
-		})`
-	// These keys should coincide in name with the txMeas JSON ones.
-	txStats := "'framesPerSecond', 'framesEncoded', 'totalEncodeTime', 'frameWidth', 'frameHeight'"
-	parseTxStatsJS := fmt.Sprintf(parseStatsJS, txStats, "localPeerConnection")
-	var txMeasurements []txMeas
-
-	// These keys should coincide in name with the rxMeas JSON ones.
-	rxStats := "'framesDecoded', 'totalDecodeTime'"
-	parseRxStatsJS := fmt.Sprintf(parseStatsJS, rxStats, "remotePeerConnection")
-	var rxMeasurements []rxMeas
-
-	if err := waitForPeerConnectionStabilized(ctx, conn, parseTxStatsJS); err != nil {
+	if err := waitForPeerConnectionStabilized(ctx, conn); err != nil {
 		return err
 	}
 
+	var txMeasurements []txMeas
+	var rxMeasurements []rxMeas
 	for i := 0; i < timeSamples; i++ {
 		if err := testing.Sleep(ctx, time.Second); err != nil {
 			return err
 		}
 
-		var txMeasurement txMeas
-		if err := conn.EvalPromise(ctx, parseTxStatsJS, &txMeasurement); err != nil {
+		var txm txMeas
+		if err := readRTCReport(ctx, conn, localPeerConnection, "outbound-rtp", &txm); err != nil {
 			return errors.Wrap(err, "failed to retrieve and/or parse getStats()")
 		}
-		testing.ContextLogf(ctx, "Measurement: %+v", txMeasurement)
-		txMeasurements = append(txMeasurements, txMeasurement)
+		testing.ContextLogf(ctx, "Measurement: %+v", txm)
+		txMeasurements = append(txMeasurements, txm)
 
-		var rxMeasurement rxMeas
-		if err := conn.EvalPromise(ctx, parseRxStatsJS, &rxMeasurement); err != nil {
+		var rxm rxMeas
+		if err := readRTCReport(ctx, conn, remotePeerConnection, "inbound-rtp", &rxm); err != nil {
 			return errors.Wrap(err, "failed to retrieve and/or parse getStats()")
 		}
-		testing.ContextLogf(ctx, "Measurement: %+v", rxMeasurement)
-		rxMeasurements = append(rxMeasurements, rxMeasurement)
+		testing.ContextLogf(ctx, "Measurement: %+v", rxm)
+		rxMeasurements = append(rxMeasurements, rxm)
 
-		if rxMeasurement.FramesDecoded == 0 {
+		if rxm.FramesDecoded == 0 {
 			// Wait until the first frame is decoded before analyzind its contents.
 			// Slow devices might take a substantial amount of time: b/158848650.
 			continue
