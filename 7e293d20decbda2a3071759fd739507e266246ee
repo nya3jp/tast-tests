@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "801d1121_958c4db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-25T16:45:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dfa7ca6_27818d05",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aace38ca_f3adb6aa",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-01-22T17:10:43Z",
       "side": 1,
       "message": "// waitForPowered polls for the specified power state for cellular.",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4cc35a_dbe8e1c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-25T16:45:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aace38ca_f3adb6aa",
       "revId": "7e293d20decbda2a3071759fd739507e266246ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcd3db25_6920370d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-25T16:45:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2aae9ee3_0b6d437f",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c5a64dd_85bc0a97",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-01-22T17:10:43Z",
       "side": 1,
       "message": "ditto",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed63f816_b75b855f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-25T16:45:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c5a64dd_85bc0a97",
       "revId": "7e293d20decbda2a3071759fd739507e266246ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +181,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "552655dd_95d60f19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-25T16:45:24Z",
+      "side": 1,
+      "message": "I don\u0027t love \u0027flips\u0027, but I changed this to ise active tense and mentioned the error case.",
+      "parentUuid": "f2e3cbd8_47f6db11",
+      "range": {
+        "startLine": 144,
+        "startChar": 21,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd8c9908_37198383",
@@ -122,6 +218,24 @@
       "writtenOn": "2021-01-22T17:10:43Z",
       "side": 1,
       "message": "You have to reserve some time to call SetServiceAutoConnect() in defer function:\n\norigCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 3*time.Second)\ndefer cancel()\nif wasAutoConnect, err :\u003d helper.SetServiceAutoConnect(ctx, false); err !\u003d nil {\n  ...\n} else if wasAutoConnect {\n  defer func(ctx context.Context) {\n    if _, err :\u003d helper.SetServiceAutoConnect(ctx, true); err !\u003d nil {\n      s.Fatal(\"Failed to enable AutoConnect: \", err)\n    }\n  }(origCtx)\n}\n\nRefer to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "revId": "7e293d20decbda2a3071759fd739507e266246ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "211f54f2_c9c45006",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_enable_and_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-01-25T16:45:24Z",
+      "side": 1,
+      "message": "That seems... problematic. Why 3 seconds? If the test fails we are likely in a bad state anyway. It also seems unfortunate that we don\u0027t just extend the context on error to allow for cleanup. Multiple shortenings could result in unintended flakiness. (I realize this is an established pattern, please go ahead and ignore my grumbling).\n\nI will add it, and make the time a constant in helper (3 seconds seems too long for this, I will make it 1 second).",
+      "parentUuid": "bd8c9908_37198383",
       "revId": "7e293d20decbda2a3071759fd739507e266246ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
