@@ -8,6 +8,8 @@ violated.
 
 ### AOM files
 The license of the video files is [AOM license].
+* [00000527.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000527.ivf)
+* [00000535.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000535.ivf)
 * [00000548.ivf](https://people.xiph.org/~tterribe/av1/samples-all/00000548.ivf)
 * [av1-1-b8-02-allintra.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/intra/av1-1-b8-02-allintra.ivf)
 * [av1-1-b8-03-sizeup.ivf](https://code.videolan.org/videolan/dav1d-test-data/-/blob/0b1ae65ec0c949bb1aac496d1b3f8bde5ffb10b8/8-bit/resize/av1-1-b8-03-sizeup.ivf)
