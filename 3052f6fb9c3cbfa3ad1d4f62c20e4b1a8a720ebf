@@ -16,6 +16,46 @@
       "message": "PTAL\nThanks",
       "revId": "3052f6fb9c3cbfa3ad1d4f62c20e4b1a8a720ebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ac020e_f9558c8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T17:52:48Z",
+      "side": 1,
+      "message": "(adding myself as reviewer to unblock khmel@)\n\n+2\n\nI\u0027m good to land this CL and see whether it fixes it.\nHowever, in case it fixes it, the original bug shouldn\u0027t be closed... or perhaps it should be closed but a new one should be filed.\nMy point is if \"dex2aot\" is the problem and Wait For exist\" is not reliable, then it should be fixed properly.\n\n",
+      "revId": "3052f6fb9c3cbfa3ad1d4f62c20e4b1a8a720ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72aafe8_28601df4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T17:52:48Z",
+      "side": 1,
+      "message": "nit: add TODO line that reference the bug \n\n  // TODO(b/168184423): Further investigation needed.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "3052f6fb9c3cbfa3ad1d4f62c20e4b1a8a720ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
