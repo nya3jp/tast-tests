@@ -148,6 +148,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c217eb3_5fad2a4a",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-25T09:44:27Z",
+      "side": 1,
+      "message": "This CL landed.\n\nYour snippet LGTM.",
+      "parentUuid": "3a67180c_a0af92af",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c58de9e_3a700c4e",
         "filename": "src/chromiumos/tast/local/a11y/a11y.go",
         "patchSetId": 4
@@ -301,6 +325,30 @@
       "side": 1,
       "message": "This wasn\u0027t what I was suggesting offline when I said define the property.\n\nDo something like...\nwindow.testUtteranceList \u003d [];\n...\nObject.defineProperty(engine, \u0027utterance_\u0027,\n  {\n    get: () \u003d\u003e window.testUtteranceList[window.testUtteranceList.length - 1],\n    set: utterance \u003d\u003e window.testUtteranceList.push(utterance)\n  }\n);\n\nin your injected js from the test.",
       "parentUuid": "8ab94d6f_3b66f630",
+      "range": {
+        "startLine": 184,
+        "startChar": 26,
+        "endLine": 184,
+        "endChar": 38
+      },
+      "revId": "52784fdeba94de87c2b2049d7f67ed20eeda6671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13be538_9ac375f5",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-25T09:44:27Z",
+      "side": 1,
+      "message": "Yes, defining a property may resolve the race condition, though it\u0027s a bit tricky.",
+      "parentUuid": "3acb411e_ef33d444",
       "range": {
         "startLine": 184,
         "startChar": 26,

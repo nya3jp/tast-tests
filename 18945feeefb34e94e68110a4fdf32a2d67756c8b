@@ -16,6 +16,29 @@
       "message": "Responded to comments. Thank you for the input and let me know your thoughts!",
       "revId": "18945feeefb34e94e68110a4fdf32a2d67756c8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c253d95_98550f0d",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-25T09:44:27Z",
+      "side": 1,
+      "message": "deferred close of extConn should be here so that it\u0027s not leaked in error cases below.",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 2
+      },
+      "revId": "18945feeefb34e94e68110a4fdf32a2d67756c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
