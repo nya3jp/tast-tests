@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "424744ed_d6756cd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T18:29:42Z",
+      "side": 1,
+      "message": "nit:\n\nupdates the ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e82c22_c0ba3ba6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T18:29:42Z",
+      "side": 1,
+      "message": "nit: I\u0027d use as test:\n\n  mdformat --in_place README.md\n\nIt will autoformat the doc according to g3doc requirements. An although in Tast (IIRC) we are not following g3doc guidelines, it doesn\u0027t hurt to autoformat it. It will auto-indent \u0026 add/remove blank lines make it is easier to read\n\n\ninfo: go/mdformat",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f5ffbbca_06d4554b",
@@ -48,6 +94,92 @@
       "writtenOn": "2021-01-25T16:25:57Z",
       "side": 1,
       "message": "tast-owners@: README update, PTAL",
+      "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd3fe33_f800ceed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T18:29:42Z",
+      "side": 1,
+      "message": "+nya\n\nNits... but not sure where the .PNG file should be stored. Deferring to nya@\n\n\nShuhei-san,\nThis CL is adding a .PNG file used in the README.md. It is placed in the same folder as the .go files.\n\nIs there a recommendation for where the PNG files should be placed? Thanks.\n",
+      "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d007403a_b0c8a772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T18:29:42Z",
+      "side": 1,
+      "message": "nit: while you are here, I don\u0027t think we have TOC autogenerator.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "837cc0fd_abb89681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T18:29:42Z",
+      "side": 1,
+      "message": "huge nit:\n\nnoticed some inconsistencies in the links.\n\n- some are inlined (see L63)\n- some are referenced at the bottom, but just used once (like this one)\n- some are referenced at the bottom and used multiple times, like `Software Dependencies`\n\nwould be great to have a consistent for the links... either all referenced at the bottom (or at the bottom of each section for the ones that are referenced only once).\nOr all inlined.",
+      "range": {
+        "startLine": 33,
+        "startChar": 45,
+        "endLine": 33,
+        "endChar": 69
+      },
+      "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2235cde_c0492d88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T18:29:42Z",
+      "side": 1,
+      "message": "nit: I guess the line will keep changing in time. what about using a permanent link?",
+      "range": {
+        "startLine": 598,
+        "startChar": 17,
+        "endLine": 598,
+        "endChar": 167
+      },
       "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
