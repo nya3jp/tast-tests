@@ -16,6 +16,24 @@
       "message": "Let\u0027s check in avtest_label_detect CL first. Otherwise video.Capability will fail on volteer.",
       "revId": "39bade7337ff8ebdb31f13475f2c161239682af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7c4d37_e910ce5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-01-25T17:14:07Z",
+      "side": 1,
+      "message": "Thank you Hiro for the info. I also thought there might be some dependency, but build error message was saying something else, so wasn\u0027t sure. Let\u0027s do that then.",
+      "parentUuid": "1beae962_0b337c22",
+      "revId": "39bade7337ff8ebdb31f13475f2c161239682af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
