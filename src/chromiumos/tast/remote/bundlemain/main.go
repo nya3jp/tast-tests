@@ -34,9 +34,9 @@ func hwsecGetDACounter(ctx context.Context, s *testing.TestHookState) (int, erro
 		return 0, errors.Wrap(err, "failed to create CmdRunner")
 	}
 
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	tpmManagerUtil, err := hwsec.NewUtilityTPMManagerBinary(cmdRunner)
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
+		return 0, errors.Wrap(err, "failed to create UtilityTPMManagerBinary")
 	}
 
 	// Get the TPM dictionary attack info
@@ -53,9 +53,9 @@ func hwsecGetTPMStatus(ctx context.Context, s *testing.TestHookState) (*hwsec.No
 		return nil, errors.Wrap(err, "failed to create CmdRunner")
 	}
 
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	tpmManagerUtil, err := hwsec.NewUtilityTPMManagerBinary(cmdRunner)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
+		return nil, errors.Wrap(err, "failed to create UtilityTPMManagerBinary")
 	}
 
 	// Get the TPM nonsensitive status info
@@ -106,16 +106,16 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 	}
 
 	// Store current TPM status before running the tast.
-	hwsecTpmStatus, err := hwsecGetTPMStatus(ctx, s)
+	hwsecTPMStatus, err := hwsecGetTPMStatus(ctx, s)
 	if err != nil {
 		s.Log("Failed to get TPM status: ", err)
-		hwsecTpmStatus = nil
+		hwsecTPMStatus = nil
 	}
 
 	return func(ctx context.Context, s *testing.TestHookState) {
 
 		// Ensure the TPM is in the expect status after tast finish.
-		if err := hwsecCheckTPMStatus(ctx, s, hwsecTpmStatus); err != nil {
+		if err := hwsecCheckTPMStatus(ctx, s, hwsecTPMStatus); err != nil {
 			s.Error("Failed to check TPM status: ", err)
 		}
 

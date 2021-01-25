@@ -46,9 +46,9 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create UtilityCryptohomeBinary: ", err)
 	}
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	tpmManagerUtil, err := hwsec.NewUtilityTPMManagerBinary(cmdRunner)
 	if err != nil {
-		s.Fatal("Failed to create UtilityTpmManagerBinary: ", err)
+		s.Fatal("Failed to create UtilityTPMManagerBinary: ", err)
 	}
 	helper, err := hwseclocal.NewHelper(cryptohomeUtil)
 	if err != nil {

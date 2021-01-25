@@ -108,24 +108,24 @@ func (dc *DaemonController) RestartAttestation(ctx context.Context) error {
 	return dc.waitForDBusService(ctx, "org.chromium.Attestation")
 }
 
-// StartTpmManager starts tpm_managerd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) StartTpmManager(ctx context.Context) error {
+// StartTPMManager starts tpm_managerd and waits until the D-Bus interface is responsive.
+func (dc *DaemonController) StartTPMManager(ctx context.Context) error {
 	if _, err := dc.r.Run(ctx, "start", "tpm_managerd"); err != nil {
 		return errors.Wrap(err, "failed to start tpm_manager")
 	}
 	return dc.waitForDBusService(ctx, "org.chromium.TpmManager")
 }
 
-// StopTpmManager stops tpm_managerd.
-func (dc *DaemonController) StopTpmManager(ctx context.Context) error {
+// StopTPMManager stops tpm_managerd.
+func (dc *DaemonController) StopTPMManager(ctx context.Context) error {
 	if _, err := dc.r.Run(ctx, "stop", "tpm_managerd"); err != nil {
 		return errors.Wrap(err, "failed to stop tpm_manager")
 	}
 	return nil
 }
 
-// RestartTpmManager restarts tpm_managerd and waits until the D-Bus interface is responsive.
-func (dc *DaemonController) RestartTpmManager(ctx context.Context) error {
+// RestartTPMManager restarts tpm_managerd and waits until the D-Bus interface is responsive.
+func (dc *DaemonController) RestartTPMManager(ctx context.Context) error {
 	if _, err := dc.r.Run(ctx, "restart", "tpm_managerd"); err != nil {
 		return errors.Wrap(err, "failed to restart tpm_manager")
 	}
