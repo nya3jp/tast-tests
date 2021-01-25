@@ -145,7 +145,8 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		return nil, err
 	}
 
-	exts, err := extension.PrepareExtensions(cfg.ExtraExtDirs, cfg.SigninExtKey)
+	guestModeLogin := cfg.LoginMode == config.GuestLogin
+	exts, err := extension.PrepareExtensions(cfg.ExtraExtDirs, cfg.SigninExtKey, guestModeLogin)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
