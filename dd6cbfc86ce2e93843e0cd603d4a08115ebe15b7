@@ -52,6 +52,24 @@
       "parentUuid": "73c97943_f6191f0a",
       "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb1caab6_b8559ea9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-01-25T21:04:15Z",
+      "side": 1,
+      "message": "\u003e Specifically, IIUC, imageloader is a key backend service for DLC, right?\n\nYes, it\u0027s the one that performs mounting the DLC image itself.\n\n\u003eWhat\u0027s the reason why the service was stopped? Was it cause due to testing special condition, or something caused by some other bad tests which accidentally stopped the service accidentally?\n\nThis \"flake\" seems to happen once in a while for imageloader.\nImagloader isn\u0027t stopped by anyone, it stops on it\u0027s own, it actually exits after an inactive period.\nDBus is incharge of \"[re]starting\" imageloader if a DBus method is invoked on it.\nBut ^ this seems to \"flake\" sometimes. As far as I can tell -\u003e which leads to the timeout.",
+      "parentUuid": "c2b1c644_6165e1a6",
+      "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
