@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eac0abb_e4ff1625",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-25T15:01:50Z",
+      "side": 1,
+      "message": "Can you reuse SelectContextMenu instead?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go;l\u003d336?q\u003dtast-tests%20NewFolder\n\nAlso, please add \"Share\" to constants:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go;l\u003d36?q\u003dtast-tests%20NewFolder",
+      "range": {
+        "startLine": 746,
+        "startChar": 19,
+        "endLine": 746,
+        "endChar": 35
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d056b20_e3d2fbd9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-25T15:01:50Z",
+      "side": 1,
+      "message": "Can\u0027t we use default interval which is 100ms?",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0fc3dd_2fb2be54",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-25T15:01:50Z",
+      "side": 1,
+      "message": "Why you just cannot use ui.StableFind?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/automation.go;l\u003d313?q\u003dtast-tests%20StableLeftClick",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "008dfae3_b3c74433",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-25T15:01:50Z",
+      "side": 1,
+      "message": "this argument is a bit confusing, at least because it\u0027s name says that it is used for polling, but it is used much broader",
+      "range": {
+        "startLine": 33,
+        "startChar": 95,
+        "endLine": 33,
+        "endChar": 103
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20ec67ac_7175e380",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-25T15:01:50Z",
+      "side": 1,
+      "message": "nit: to get",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb58725a_568a6f7e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-25T15:01:50Z",
+      "side": 1,
+      "message": "there is no \"2 seconds\" constant in this function, you only receive pollOpts which can have other numbers inside",
+      "range": {
+        "startLine": 52,
+        "startChar": 86,
+        "endLine": 52,
+        "endChar": 87
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77cf985f_bab4ff63",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-25T15:01:50Z",
+      "side": 1,
+      "message": "nit: ActiveDescendantChanged",
+      "range": {
+        "startLine": 52,
+        "startChar": 40,
+        "endLine": 52,
+        "endChar": 63
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d8fff0_880acbfd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-25T15:01:50Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 53,
+        "startChar": 51,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7edb45c6_939e5cf2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/sharesheet/sharesheet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-01-25T15:01:50Z",
+      "side": 1,
+      "message": "same: to wait",
+      "range": {
+        "startLine": 57,
+        "startChar": 40,
+        "endLine": 57,
+        "endChar": 47
+      },
+      "revId": "2b2a47735b3a49fc7f9bafe5f47a93325c8da050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
