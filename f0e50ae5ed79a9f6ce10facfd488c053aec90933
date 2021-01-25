@@ -16,6 +16,166 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "936c75c6_2a5ebac1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T18:09:29Z",
+      "side": 1,
+      "message": "Let me start from high level comments.",
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a453c28a_de39c398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T18:09:29Z",
+      "side": 1,
+      "message": "In general, doing two independent things in one function is a pattern to be avoided.\nSpecifically in this case, the caller is unique.\nCould you split it into two functions?",
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d43225bf_0ab58c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T18:09:29Z",
+      "side": 1,
+      "message": "will crash if err is not nil.\nYou can directly call resume after the err check.",
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea11063_e2f48864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T18:09:29Z",
+      "side": 1,
+      "message": "is this (\u003d stop some services) required to call DropResetLockPermission?\nIf so, could you encapsulate it inside the DropResetLockPermissions?",
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7258ba5e_48bb0634",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/daemons_restart_stress.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T18:09:29Z",
+      "side": 1,
+      "message": "where does this magic number come from? Could you add comments how you decide this number?",
+      "range": {
+        "startLine": 125,
+        "startChar": 34,
+        "endLine": 125,
+        "endChar": 37
+      },
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b29e6a7_752a9c0f",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T18:09:29Z",
+      "side": 1,
+      "message": "this does not sound \"reset\". According to the doc, maybe this is named for the older behavior?",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 100
+      },
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "586bb595_0caf4fd2",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T18:09:29Z",
+      "side": 1,
+      "message": "conflicting with the actual implementation.",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 71
+      },
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e378337_c7a26a71",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T18:09:29Z",
+      "side": 1,
+      "message": "maybe\n\njobsToRestart :\u003d append([]string{\"ui\"}, highLevelTPMDaemonsToRestart...)",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 62
+      },
+      "revId": "f0e50ae5ed79a9f6ce10facfd488c053aec90933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
