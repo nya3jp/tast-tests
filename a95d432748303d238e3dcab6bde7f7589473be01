@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a96f2dfe_d9419d9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-25T09:11:56Z",
+      "side": 1,
+      "message": "thanks for doing this!",
+      "revId": "a95d432748303d238e3dcab6bde7f7589473be01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf3dc26_f4d2bd51",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/MainActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-01-25T09:11:56Z",
+      "side": 1,
+      "message": "All of them should be done if api version is R or later. Can you make a method doing these and call it from onCreate only when R+?",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "a95d432748303d238e3dcab6bde7f7589473be01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
