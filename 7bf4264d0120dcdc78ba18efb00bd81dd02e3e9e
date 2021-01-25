@@ -93,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2afa3940_602f1268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-25T15:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb9505f_6f53ce43",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 21
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "119866ad_8bbee0b0",
@@ -106,6 +130,30 @@
       "writtenOn": "2021-01-19T21:50:56Z",
       "side": 1,
       "message": "Remove this cast",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 11
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf8515e_ca0748d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-25T15:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "119866ad_8bbee0b0",
       "range": {
         "startLine": 132,
         "startChar": 4,
@@ -139,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b308e1e9_1e1dbfc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-25T15:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "766cbb58_968b8934",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5d49bce_b7118aab",
@@ -152,6 +224,30 @@
       "writtenOn": "2021-01-19T21:50:56Z",
       "side": 1,
       "message": "Remove this cast",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79422cd4_2ac75218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-25T15:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5d49bce_b7118aab",
       "range": {
         "startLine": 142,
         "startChar": 4,
@@ -209,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64f12f7_9759fc40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-25T15:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12183e28_d86dcd59",
+      "range": {
+        "startLine": 145,
+        "startChar": 16,
+        "endLine": 145,
+        "endChar": 22
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80a8e26c_9f500e83",
@@ -222,6 +342,30 @@
       "writtenOn": "2021-01-19T21:50:56Z",
       "side": 1,
       "message": "Remove this cast",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 12
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be66d4c_4c131d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-25T15:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a8e26c_9f500e83",
       "range": {
         "startLine": 148,
         "startChar": 5,
@@ -255,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b0e8b1_db62a881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/battery_info_tracker.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-25T15:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fea70e33_136295f2",
+      "range": {
+        "startLine": 160,
+        "startChar": 5,
+        "endLine": 160,
+        "endChar": 12
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79c6b880_2613be7b",
@@ -268,6 +436,30 @@
       "writtenOn": "2021-01-19T21:50:56Z",
       "side": 1,
       "message": "nit:\n  const metricsPrefix \u003d \"TPS.\"\n\n(no need the parenthesis)",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "234214d8_54a2ab88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-25T15:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c6b880_2613be7b",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -379,6 +571,24 @@
       "writtenOn": "2021-01-19T21:50:56Z",
       "side": 1,
       "message": "this seems no longer used.  Please remove.",
+      "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb8855c4_708e48ad",
+        "filename": "src/chromiumos/tast/local/power/rapl_power_metrics.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1455878
+      },
+      "writtenOn": "2021-01-25T15:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f65f2626_820af04d",
       "revId": "7bf4264d0120dcdc78ba18efb00bd81dd02e3e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
