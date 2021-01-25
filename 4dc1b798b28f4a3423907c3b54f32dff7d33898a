@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23bdfb6d_cfdd946b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-01-25T10:26:20Z",
+      "side": 1,
+      "message": "qq: Which code performs the migration? What is done during the migration?",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51aaf98e_5444073f",
@@ -60,6 +77,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61b5354d_e0be44f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-01-25T10:26:20Z",
+      "side": 1,
+      "message": "Is it OK to overwrite the entire vault?\nNewer version chrome may not work well with the current version data.\n\nHow about only overwriting android-data?",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f75ad4b3_28418312",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
         "patchSetId": 2
@@ -78,6 +112,40 @@
         "endLine": 129,
         "endChar": 39
       },
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f119a89_b8aeb140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-01-25T10:26:20Z",
+      "side": 1,
+      "message": "Instead of relying on the current log format, how about getting this value directly by doing the same thing as arc-setup?",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337732a7_cc49e556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-01-25T10:26:20Z",
+      "side": 1,
+      "message": "ditto.",
       "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
