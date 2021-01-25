@@ -33,6 +33,29 @@
       "message": "Yuke, could you take a look from infra team\u0027s point of view, to make sure we are on the same page?",
       "revId": "a404d535ac65035a277eae76723943f7cd64be78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccdf9697_dd9006cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T09:11:22Z",
+      "side": 1,
+      "message": "optional: I think, in this case, rather than strip by ourselves only, we should communicate with infra team, because it is unexepcted.",
+      "range": {
+        "startLine": 17,
+        "startChar": 58,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "a404d535ac65035a277eae76723943f7cd64be78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
