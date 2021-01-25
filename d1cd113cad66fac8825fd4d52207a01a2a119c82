@@ -96,6 +96,54 @@
       },
       "revId": "d1cd113cad66fac8825fd4d52207a01a2a119c82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "716b04ba_3729ef2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_tpm_live_tests_tpm2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-25T08:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d53f7900_deb480a4",
+      "range": {
+        "startLine": 34,
+        "startChar": 78,
+        "endLine": 34,
+        "endChar": 84
+      },
+      "revId": "d1cd113cad66fac8825fd4d52207a01a2a119c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41f6906_ab471c4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_tpm_live_tests_tpm2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-25T08:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d1715a2_45d158d1",
+      "range": {
+        "startLine": 34,
+        "startChar": 29,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "d1cd113cad66fac8825fd4d52207a01a2a119c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
