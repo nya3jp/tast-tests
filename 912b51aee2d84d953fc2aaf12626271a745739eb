@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7b888b_420f8700",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T17:44:59Z",
+      "side": 0,
+      "message": "I think these should be kept, or extensions should be installed to a brand new directory, then rename the dir.\nOtherwise, stale files could be leaked.",
+      "revId": "912b51aee2d84d953fc2aaf12626271a745739eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
