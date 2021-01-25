@@ -9,16 +9,18 @@ It is recommended to use a fishfood build because it's guaranteed to have been
 compiled correctly.
 
 ## Creating the lacros tarball
-### Using an existing fishfood build (recommended)
+### Using an existing build (recommended)
 
-Run the following commands to grab the latest fishfood build and convert it
-into a tarball usable by the Tast tests.
+Run the following commands to grab the latest build and convert it into a
+tarball usable by the Tast tests. It is recommended to use the latest qualified
+fishfood build, for now. After compression, the tarball should not exceed 150
+MB.
 
 ```sh
-export BUILD=`gsutil.py ls gs://chrome-lacros-fishfood/x86_64 | sort | tail -n 1`
-gsutil.py cp ${BUILD%%/}/lacros.zip /tmp/lacros_binary.zip
+export BUILD=`gsutil.py cat gs://chrome-unsigned/desktop-5c0tCh/latest/linux64.txt`
+gsutil.py cp gs://chrome-unsigned/desktop-5c0tCh/$BUILD/lacros64/lacros.zip /tmp/lacros_binary.zip
 unzip /tmp/lacros_binary.zip -d /tmp/lacros_binary
-tar -cf /tmp/lacros_binary.tar -C /tmp lacros_binary
+tar -C /tmp -cf - lacros_binary  | xz -ce --threads 0 - > /tmp/lacros_binary.tar
 ```
 
 ### Building manually (not recommended)
@@ -36,7 +38,7 @@ export LACROS_OUTDIR=<your out dir> # e.g. out/Lacros
 cd $LACROS_OUTDIR
 mkdir /tmp/lacros_binary
 cp -r {chrome,nacl_helper,nacl_irt_x86_64.nexe,locales,*.pak,icudtl.dat,snapshot_blob.bin,swiftshader,crashpad_handler,WidevineCdm} /tmp/lacros_binary
-tar -cf /tmp/lacros_binary.tar -C /tmp lacros_binary
+tar -C /tmp -cf - lacros_binary  | xz -ce --threads 0 - > /tmp/lacros_binary.tar
 ```
 
 The content of the tarball should be a single 'lacros_binary' directory with the
