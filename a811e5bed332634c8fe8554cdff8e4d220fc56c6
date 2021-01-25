@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed86a5dd_55cc3909",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-25T15:23:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6c62c4ce_e535187d",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "a811e5bed332634c8fe8554cdff8e4d220fc56c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da7813a5_b8f742ea",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb53a9ff_a6033a23",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-25T15:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7813a5_b8f742ea",
+      "range": {
+        "startLine": 155,
+        "startChar": 22,
+        "endLine": 155,
+        "endChar": 50
+      },
+      "revId": "a811e5bed332634c8fe8554cdff8e4d220fc56c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a647763a_68d85020",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-24T22:42:13Z",
       "side": 1,
       "message": "multiple nodes matched query, if you expect this and only want the first use First()",
+      "range": {
+        "startLine": 112,
+        "startChar": 18,
+        "endLine": 112,
+        "endChar": 74
+      },
+      "revId": "a811e5bed332634c8fe8554cdff8e4d220fc56c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbbf6e42_1cc8324f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2021-01-25T15:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a647763a_68d85020",
       "range": {
         "startLine": 112,
         "startChar": 18,
