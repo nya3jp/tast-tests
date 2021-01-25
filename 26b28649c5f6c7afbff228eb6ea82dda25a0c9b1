@@ -22,6 +22,30 @@
       },
       "revId": "26b28649c5f6c7afbff228eb6ea82dda25a0c9b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "149fcb3d_9be18016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-01-25T18:32:21Z",
+      "side": 1,
+      "message": "This was one of the reasons. Sometimes it still worked even with that issue though.",
+      "parentUuid": "91d0410f_0073b050",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 44
+      },
+      "revId": "26b28649c5f6c7afbff228eb6ea82dda25a0c9b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
