@@ -259,6 +259,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a69393_0bab403f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T08:42:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a950b76_ba4531eb",
+      "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "575dec10_1fd236d5",
@@ -290,6 +308,24 @@
       "side": 1,
       "message": "Yes it will be extended. This is only the first part. In the near term I plan to add logic to call into the D-Bus API in the next part, and after that add in handling for the authenticated storage daemon.\n\nOne thing to note is: The only way to test useSystemServices being true right now is locally. eve-manatee doesn\u0027t have any lab devices (it requires non-standard firmware on eve). We are working toward getting some manatee lab devices probably volteer because it is new enough we don\u0027t need to change the firmware.\n\nI am trying to get some integration test coverage before there is manatee support in the labs because I don\u0027t know how long that will take. Also, we want to keep workflow options open for developers who don\u0027t have a ManaTEE enabled device.",
       "parentUuid": "575dec10_1fd236d5",
+      "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c7f4021_0bd16275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T08:42:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8834ee70_017e360e",
       "revId": "2b0c0c837c148a9028f5d5e2a9e2ffc711c7195b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
