@@ -16,6 +16,132 @@
       "message": "Hi Pavol,\n\nPTAL!\n\nproxy_service.pb.go is auto-generated from the proto file.\n\nI followed the steps at https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#Defining-gRPC-services.\n\nThanks,\nAndreea",
       "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f04c44_ec732f29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-25T13:30:02Z",
+      "side": 1,
+      "message": "LGTM. Mostly style nits.",
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd988a54_7a003fd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-25T13:30:02Z",
+      "side": 1,
+      "message": "remove the empty line ?",
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03460ea6_272974ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-25T13:30:02Z",
+      "side": 1,
+      "message": "prefer to keep the temporary variable scoped to the if conditional if it is not referenced elsewhere:\n\nif auth :\u003d ...; auth !\u003d ... {\n}",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afeea1c_d5faa521",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-25T13:30:02Z",
+      "side": 1,
+      "message": "Same here, keep err scoped to the if conditional.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf97f96_99cb1793",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-25T13:30:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 7
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "614305eb_44ffd164",
+        "filename": "src/chromiumos/tast/services/cros/network/proxy_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-01-25T13:30:02Z",
+      "side": 1,
+      "message": "missing space",
+      "range": {
+        "startLine": 35,
+        "startChar": 35,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "4bc01bec4e280fd5d0051c31f46af6b7bf8089f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
