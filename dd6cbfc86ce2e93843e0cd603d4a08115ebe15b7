@@ -34,6 +34,24 @@
       "parentUuid": "6eb487ac_01a91e4e",
       "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b1c644_6165e1a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T09:01:44Z",
+      "side": 1,
+      "message": "Hmm... to be safer, I\u0027d like to understand the situation more.\n\nSpecifically, IIUC, imageloader is a key backend service for DLC, right?\nWhat\u0027s the reason why the service was stopped? Was it cause due to testing special condition, or something caused by some other bad tests which accidentally stopped the service accidentally? Or, was it an actual flake that users could see?",
+      "parentUuid": "73c97943_f6191f0a",
+      "revId": "dd6cbfc86ce2e93843e0cd603d4a08115ebe15b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
