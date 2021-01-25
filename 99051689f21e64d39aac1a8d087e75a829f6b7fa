@@ -22,6 +22,47 @@
       },
       "revId": "99051689f21e64d39aac1a8d087e75a829f6b7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0347de21_81c4519c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T17:14:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3850013c_42ceda4b",
+      "range": {
+        "startLine": 237,
+        "startChar": 52,
+        "endLine": 237,
+        "endChar": 63
+      },
+      "revId": "99051689f21e64d39aac1a8d087e75a829f6b7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9dc32be_7b241cb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T17:14:46Z",
+      "side": 1,
+      "message": "Make sure this assignment to err does not override the existing error. stopDugong can fail and stopTrichechus can succeed, returning nil.",
+      "revId": "99051689f21e64d39aac1a8d087e75a829f6b7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
