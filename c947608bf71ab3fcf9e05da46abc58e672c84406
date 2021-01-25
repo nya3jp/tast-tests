@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e0eda14_48a8cc5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-01-25T15:19:40Z",
+      "side": 1,
+      "message": "What\u0027s the best way to reach out to the Tast team in the future for situations like this? tast-owners@google.com?\n\nAlso, what\u0027s the process for onboarding new Tast owners? I\u0027m considering the possibility of onboarding a couple of folks from the Chrome OS security team.",
+      "parentUuid": "268658eb_9d5f6f69",
+      "revId": "c947608bf71ab3fcf9e05da46abc58e672c84406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc645ded_45a30da2",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50ca2a9d_5d41ec9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-01-25T15:19:40Z",
+      "side": 1,
+      "message": "Yeah in the immediate future we don\u0027t have the functionality that will consume the results of this test, so running it on every build (even on postsubmit) would be a waste of resources. We\u0027ll make it run on postsubmit soon.",
+      "parentUuid": "bc645ded_45a30da2",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "c947608bf71ab3fcf9e05da46abc58e672c84406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9890bc61_12d931df",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxing/process_utils.go",
         "patchSetId": 2
@@ -54,6 +96,30 @@
       "writtenOn": "2021-01-25T09:37:04Z",
       "side": 1,
       "message": "Hmm? I thought os.ErrNotExist wrapped by os.PathError can be still detected by os.IsNotExist.\n\nAlso you can use errors.Is to compare two errors with unwrapping. For example, errors.Is(err, syscall.EINVAL)",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 35
+      },
+      "revId": "c947608bf71ab3fcf9e05da46abc58e672c84406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "445e798b_f5d6de85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxing/process_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-01-25T15:19:40Z",
+      "side": 1,
+      "message": "Oh errors.ls is nice. I copied this from security.SandboxedServices but I can try to fix both of them in a follow-up CL.",
+      "parentUuid": "9890bc61_12d931df",
       "range": {
         "startLine": 356,
         "startChar": 0,
