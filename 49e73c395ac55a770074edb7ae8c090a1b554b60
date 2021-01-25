@@ -16,6 +16,24 @@
       "message": "I am still looking for a way around this.\n\nThe test waits for the art album buttons to appear on line 151, but they don\u0027t register a click sometimes unless there is a brief sleep. I don\u0027t know how else to wait for the buttons to be fully instantiated and clickable.",
       "revId": "49e73c395ac55a770074edb7ae8c090a1b554b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "176dbac4_2547ed75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-01-25T18:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab8fa86d_e5927872",
+      "revId": "49e73c395ac55a770074edb7ae8c090a1b554b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
