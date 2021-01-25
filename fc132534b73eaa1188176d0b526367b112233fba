@@ -203,6 +203,24 @@
       "message": "With links like these do we want to embed the commit hash too, or is it intentional that we don\u0027t, so that when the link gets out of sync it\u0027s obvious (downside --- have to locate the new link without having the old information immediately accessible)?",
       "revId": "fc132534b73eaa1188176d0b526367b112233fba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5826d462_43cff8f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-01-25T16:25:57Z",
+      "side": 1,
+      "message": "Hmm good question -- I rather not have the hash, so whatever is linked\nis the most recent version, even though it might indeed fall out of\nsync and end up in a dead link :(",
+      "parentUuid": "f53eb994_54a518a4",
+      "revId": "fc132534b73eaa1188176d0b526367b112233fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
