@@ -16,6 +16,46 @@
       "message": "LGTM \\o/",
       "revId": "bf9b62852f14ab1b0df186a57f2bdb5b18b97485",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2556fe99_31cac26c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-25T18:00:53Z",
+      "side": 1,
+      "message": "LGTM.\n\nJust curious; I searched the code base and found that some other files (bundles/cros/arc/video/accel_video.go, bundles/cros/arc/video/test_cases.go, media/encoding/perf.go, media/encoding/stream_params.go).\nThose are just comments and so not essential, but maybe better to be edited too?",
+      "revId": "bf9b62852f14ab1b0df186a57f2bdb5b18b97485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4277ce58_f4f7f8be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/test_cases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2021-01-25T18:00:53Z",
+      "side": 1,
+      "message": "nit: the name looks like video_encode_accelerator_perf_tests?",
+      "range": {
+        "startLine": 12,
+        "startChar": 38,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "bf9b62852f14ab1b0df186a57f2bdb5b18b97485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
