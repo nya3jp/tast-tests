@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "933eef8e_dfa87427",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T17:44:59Z",
+      "side": 1,
+      "message": "I was surprised that there\u0027re no other use of this in Tast!",
+      "revId": "5e98d0fc50016c8ba6c945a69320037251406abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
