@@ -92,7 +92,8 @@ func ProbeSystemInfo(ctx context.Context, s *testing.State) {
 	osVersion := strings.Join(versionComponents, ".")
 	osReleaseChannel := lsbValues[lsbrelease.ReleaseTrack]
 
-	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategorySystem, s.OutDir())
+	params := croshealthd.TelemParams{Category: croshealthd.TelemCategorySystem}
+	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get system info: ", err)
 	}
