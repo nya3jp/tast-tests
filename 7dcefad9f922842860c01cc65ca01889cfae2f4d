@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55689855_6d4a6130",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-25T02:56:16Z",
+      "side": 1,
+      "message": "LGTM % one nit missed in previous review.",
+      "revId": "7dcefad9f922842860c01cc65ca01889cfae2f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e16d7788_195d6430",
+        "filename": "src/chromiumos/tast/local/dbusutil/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-25T02:56:16Z",
+      "side": 1,
+      "message": "nit: just noticed that we had GetUint16s above. It seems golang built-in packages also use Uint e.g. https://golang.org/pkg/strconv/#ParseUint.",
+      "range": {
+        "startLine": 136,
+        "startChar": 25,
+        "endLine": 136,
+        "endChar": 26
+      },
+      "revId": "7dcefad9f922842860c01cc65ca01889cfae2f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
