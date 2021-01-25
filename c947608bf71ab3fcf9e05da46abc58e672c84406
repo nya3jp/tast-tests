@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "268658eb_9d5f6f69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-25T09:37:04Z",
+      "side": 1,
+      "message": "Hi, I guess you had delays in Tast reviews. I\u0027m sorry for that.\n",
+      "revId": "c947608bf71ab3fcf9e05da46abc58e672c84406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc645ded_45a30da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-25T09:37:04Z",
+      "side": 1,
+      "message": "You don\u0027t even want to run it as an informational test? It\u0027s okay but just to confirm...",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "c947608bf71ab3fcf9e05da46abc58e672c84406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9890bc61_12d931df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxing/process_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-01-25T09:37:04Z",
+      "side": 1,
+      "message": "Hmm? I thought os.ErrNotExist wrapped by os.PathError can be still detected by os.IsNotExist.\n\nAlso you can use errors.Is to compare two errors with unwrapping. For example, errors.Is(err, syscall.EINVAL)",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 35
+      },
+      "revId": "c947608bf71ab3fcf9e05da46abc58e672c84406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
