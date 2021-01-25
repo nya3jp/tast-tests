@@ -7,6 +7,7 @@ package driver
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
 	"github.com/mafredri/cdp/protocol/target"
@@ -253,4 +254,17 @@ func (s *Session) StopTracing(ctx context.Context) (*trace.Trace, error) {
 // TracingStarted returns whether tracing has started.
 func (s *Session) TracingStarted() bool {
 	return s.tracingStarted
+}
+
+// PrepareForRestart prepares for Chrome restart.
+//
+// This function removes a debugging port file for a current Chrome process.
+// By calling this function before purposefully restarting Chrome, you can
+// reliably connect to a new Chrome process without accidentally connecting to
+// an old Chrome process by a race condition.
+func PrepareForRestart() error {
+	if err := os.Remove(cdputil.DebuggingPortPath); err != nil && !os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to prepare for Chrome restart")
+	}
+	return nil
 }
