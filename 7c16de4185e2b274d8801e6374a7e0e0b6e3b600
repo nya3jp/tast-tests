@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79be4b3d_6b502956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_uncompress_obb_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T17:55:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62335e6e_1f856e27",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "7c16de4185e2b274d8801e6374a7e0e0b6e3b600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4597659_f1c48744",
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "860309a9_08016b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_uncompress_obb_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T17:55:26Z",
+      "side": 1,
+      "message": "I did that intentionally. That\u0027s the line that regex is trying to match.\nIf I split it in two, it might be confusing.\nSimilar to what was done in other Tast code. e.g:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/dumpsys.go;l\u003d70?q\u003ddumpsys.go\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)",
+      "parentUuid": "b4597659_f1c48744",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 99
+      },
+      "revId": "7c16de4185e2b274d8801e6374a7e0e0b6e3b600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9943e573_f21149af",
@@ -111,6 +159,30 @@
       "writtenOn": "2021-01-25T00:37:48Z",
       "side": 1,
       "message": "Is it necessary to log this? Does obbTimeMS mean anything if Atoi returns an error?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 39
+      },
+      "revId": "7c16de4185e2b274d8801e6374a7e0e0b6e3b600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1375bb99_70e98f8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/roblox_uncompress_obb_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-01-25T17:55:26Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "9943e573_f21149af",
       "range": {
         "startLine": 147,
         "startChar": 0,
