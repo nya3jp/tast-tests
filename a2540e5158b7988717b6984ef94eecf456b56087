@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acddfc14_5b692037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T09:07:03Z",
+      "side": 1,
+      "message": "Because this function for goroutine is relatively bigger.\nFor the future maintenance, could you extract it into a function returning an error, so that compiler will be able to capture mistakes.",
+      "revId": "a2540e5158b7988717b6984ef94eecf456b56087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca024645_4f46423f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T09:07:03Z",
+      "side": 1,
+      "message": "nit: could you move this into the L78\u0027s if block, since it is used only there.",
+      "revId": "a2540e5158b7988717b6984ef94eecf456b56087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1fc09d_8c9e4463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T09:07:03Z",
+      "side": 1,
+      "message": "could you avoid multiline errors?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\nif needed, you can dump it into an output file.",
+      "range": {
+        "startLine": 104,
+        "startChar": 70,
+        "endLine": 104,
+        "endChar": 86
+      },
+      "revId": "a2540e5158b7988717b6984ef94eecf456b56087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
