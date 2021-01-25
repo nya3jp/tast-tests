@@ -196,7 +196,8 @@ func DisableFeatures(features ...string) Option {
 
 // UnpackedExtension returns an Option that can be passed to New to make Chrome load an unpacked
 // extension in the supplied directory.
-// Ownership of the extension directory and its contents may be modified by New.
+// The specified directory is copied to a different location before loading, so modifications to
+// the directory do not take effect after starting Chrome.
 func UnpackedExtension(dir string) Option {
 	return func(cfg *config.Config) { cfg.ExtraExtDirs = append(cfg.ExtraExtDirs, dir) }
 }
