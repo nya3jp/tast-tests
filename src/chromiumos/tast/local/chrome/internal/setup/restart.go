@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/config"
+	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
@@ -44,7 +44,9 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	}
 
 	// Remove the file where Chrome will write its debugging port after it's restarted.
-	os.Remove(cdputil.DebuggingPortPath)
+	if err := driver.PrepareForRestart(); err != nil {
+		return err
+	}
 
 	testing.ContextLog(ctx, "Asking session_manager to enable Chrome testing")
 	args := []string{
