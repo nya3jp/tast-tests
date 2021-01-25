@@ -16,6 +16,138 @@
       "message": "Andres, can you review this CL as you wrote the code in play.go.\n",
       "revId": "72a062570c21d332f4d3a90eb8da8f320df9f651",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a02857ec_abbe42b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-25T19:37:26Z",
+      "side": 1,
+      "message": "LGTM! % minor comments\n\ntast-owners@ PTAL\n\nmcasas@ FYI",
+      "revId": "72a062570c21d332f4d3a90eb8da8f320df9f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee9986c_6e157883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-25T19:37:26Z",
+      "side": 1,
+      "message": "landscape-primary",
+      "range": {
+        "startLine": 330,
+        "startChar": 52,
+        "endLine": 330,
+        "endChar": 61
+      },
+      "revId": "72a062570c21d332f4d3a90eb8da8f320df9f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc670bb3_f3d2afe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-25T19:37:26Z",
+      "side": 1,
+      "message": "landscape-primary",
+      "range": {
+        "startLine": 61,
+        "startChar": 52,
+        "endLine": 61,
+        "endChar": 61
+      },
+      "revId": "72a062570c21d332f4d3a90eb8da8f320df9f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5402d497_666390f3",
+        "filename": "src/chromiumos/tast/local/media/screen/screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-25T19:37:26Z",
+      "side": 1,
+      "message": "nit: End with period.",
+      "range": {
+        "startLine": 5,
+        "startChar": 58,
+        "endLine": 5,
+        "endChar": 62
+      },
+      "revId": "72a062570c21d332f4d3a90eb8da8f320df9f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dee9c87_ae2fd9d2",
+        "filename": "src/chromiumos/tast/local/media/screen/screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-25T19:37:26Z",
+      "side": 1,
+      "message": "I would name this function RotateDisplayToLandscapePrimary and the documentation can be:\n\n  // RotateDisplayToLandscapePrimary rotates the display to landscape-primary.",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "72a062570c21d332f4d3a90eb8da8f320df9f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28669abc_3baed0ab",
+        "filename": "src/chromiumos/tast/local/media/screen/screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-01-25T19:37:26Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like you use this argument.",
+      "range": {
+        "startLine": 18,
+        "startChar": 49,
+        "endLine": 18,
+        "endChar": 67
+      },
+      "revId": "72a062570c21d332f4d3a90eb8da8f320df9f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
