@@ -41,14 +41,21 @@ func init() {
 }
 
 const (
-	androidFileContexts  = "/etc/selinux/arc/contexts/files/android_file_contexts"
-	dataDirFileContexts  = "/tmp/data_file_contexts"
-	androidDataPath      = "/home/.shadow/[a-z0-9]*/mount/root/android-data"
-	dataPrefix           = "/data"
-	matchPathConFileName = `matchpath_con_output`
+	androidFileContextsP  = "/etc/selinux/arc/contexts/files/android_file_contexts"
+	androidFileContextsVM = "/etc/selinux/arc/contexts/files/android_file_contexts_vm"
+	dataDirFileContexts   = "/tmp/data_file_contexts"
+	androidDataPath       = "/home/.shadow/[a-z0-9]*/mount/root/android-data"
+	dataPrefix            = "/data"
+	matchPathConFileName  = `matchpath_con_output`
 )
 
 func createSELinuxPolicyFile(ctx context.Context) error {
+	androidFileContexts := androidFileContextsP
+	if vmEnabled, err := arc.VMEnabled(); err != nil {
+		return errors.Wrap(err, "failed to check whether ARCVM is enabled")
+	} else if vmEnabled {
+		androidFileContexts = androidFileContextsVM
+	}
 	// Read SELinux android file contexts and find the lines starting with /data.
 	f, err := os.Open(androidFileContexts)
 	if err != nil {
