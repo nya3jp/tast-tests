@@ -23,6 +23,16 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:            "chromeLoggedInGuest",
+		Desc:            "Logged into a guest user session",
+		Contacts:        []string{"benreich@chromium.org"},
+		Impl:            NewLoggedInFixture(GuestLogin()),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:            "chromeLoggedInWith100FakeApps",
 		Desc:            "Logged into a user session with 100 fake apps",
 		Contacts:        []string{"mukai@chromium.org"},
