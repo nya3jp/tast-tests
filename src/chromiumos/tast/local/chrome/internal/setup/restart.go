@@ -51,7 +51,9 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	}
 
 	// Remove the file where Chrome will write its debugging port after it's restarted.
-	os.Remove(cdputil.DebuggingPortPath)
+	if err := PrepareForRestart(); err != nil {
+		return err
+	}
 
 	testing.ContextLog(ctx, "Asking session_manager to enable Chrome testing")
 	args := []string{
@@ -248,4 +250,17 @@ func restartSession(ctx context.Context, cfg *config.Config) error {
 		}
 	}
 	return upstart.EnsureJobRunning(ctx, "ui")
+}
+
+// PrepareForRestart prepares for Chrome restart.
+//
+// This function removes a debugging port file for a current Chrome process.
+// By calling this function before purposefully restarting Chrome, you can
+// reliably connect to a new Chrome process without accidentally connecting to
+// an old Chrome process by a race condition.
+func PrepareForRestart() error {
+	if err := os.Remove(cdputil.DebuggingPortPath); err != nil && !os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to prepare for Chrome restart")
+	}
+	return nil
 }

@@ -6,11 +6,10 @@ package login
 
 import (
 	"context"
-	"os"
 
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
+	"chromiumos/tast/local/chrome/internal/setup"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -38,7 +37,9 @@ func logInAsGuest(ctx context.Context, cfg *config.Config, sess *driver.Session)
 	// guestLoginForTesting() relaunches the browser. In advance,
 	// remove the file at cdputil.DebuggingPortPath, which should be
 	// recreated after the port gets ready.
-	os.Remove(cdputil.DebuggingPortPath)
+	if err := setup.PrepareForRestart(); err != nil {
+		return err
+	}
 
 	if err := oobeConn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
 		return err
