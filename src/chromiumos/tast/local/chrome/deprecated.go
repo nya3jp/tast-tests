@@ -30,7 +30,7 @@ func DeprecatedNewConn(ctx context.Context, s *cdputil.Session, id target.ID, la
 // DEPRECATED: Do not call this function. It's available only for compatibility
 // with old code.
 func DeprecatedPrepareExtensions() (extDirs []string, err error) {
-	exts, err := extension.PrepareExtensions(nil, "")
+	exts, err := extension.PrepareExtensions(nil, "", false)
 	if err != nil {
 		return nil, err
 	}
