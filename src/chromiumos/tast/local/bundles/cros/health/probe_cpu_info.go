@@ -151,7 +151,8 @@ func verifyCStates(lines []string) error {
 }
 
 func ProbeCPUInfo(ctx context.Context, s *testing.State) {
-	b, err := croshealthd.RunTelem(ctx, croshealthd.TelemCategoryCPU, s.OutDir())
+	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryCPU}
+	b, err := croshealthd.RunTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to run telem command: ", err)
 	}

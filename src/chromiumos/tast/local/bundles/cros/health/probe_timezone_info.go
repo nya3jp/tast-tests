@@ -27,7 +27,8 @@ func init() {
 }
 
 func ProbeTimezoneInfo(ctx context.Context, s *testing.State) {
-	records, err := croshealthd.RunAndParseTelem(ctx, croshealthd.TelemCategoryTimezone, s.OutDir())
+	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryTimezone}
+	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to get timezone telemetry info: ", err)
 	}
