@@ -67,45 +67,28 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 	width := info.WorkArea.Width
 	height := info.WorkArea.Height
 
-	// Position the windows so that they will get some occlusion changes while we drag the maximized window. Here we place one in each corner.
-	count := 0
 	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-		if err := ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal); err != nil {
-			return errors.Wrap(err, "failed to set window state")
+		if err := ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized); err != nil {
+			return errors.Wrapf(err, "failed to maximize window %d", w.ID)
 		}
-		bounds := coords.NewRect(0, 0, width, height)
-		if count%2 == 0 {
-			bounds.Left = width / 2
-		}
-		if count/2 == 0 {
-			bounds.Top = height / 2
-		}
-		if _, _, err := ash.SetWindowBounds(ctx, tconn, w.ID, bounds, info.ID); err != nil {
-			return errors.Wrap(err, "failed to set window bounds")
-		}
-		count++
 		return nil
 	}); err != nil {
 		s.Fatal("Failed to setup windows: ", err)
 	}
 
-	// Maximize the first window. It is required to use this feature.
-	windows, err := ash.GetAllWindows(ctx, tconn)
+	// Get the first window.
+	maximizedWindow, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+		return true
+	})
 	if err != nil {
-		s.Fatal("Failed to obtain the window list: ", err)
-	}
-	window := windows[0]
-	if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateMaximized); err != nil {
-		s.Fatalf("Failed to set the state of window (%d): %v", window.ID, err)
+		s.Fatal("Failed to obtain the first window: ", err)
 	}
 
-	// Check that the window we maximized is the active window, otherwise this test won't work.
-	maximizedWindow, err := ash.GetWindow(ctx, tconn, window.ID)
-	if err != nil {
-		s.Fatal("Failed to obtain window: ", err)
+	if maximizedWindow.State != ash.WindowStateMaximized {
+		s.Fatalf("The first window %d is not maximized (state %q)", maximizedWindow.ID, maximizedWindow.State)
 	}
 	if !maximizedWindow.IsActive {
-		s.Fatal("First window in list is not active window: ", err)
+		s.Fatalf("The first window %d is not active", maximziedWindow.ID)
 	}
 
 	// Start the drag in the middle of the caption. Drag down to unmaximize, then circle around to trigger some
