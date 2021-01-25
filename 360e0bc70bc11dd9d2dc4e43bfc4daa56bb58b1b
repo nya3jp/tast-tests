@@ -145,6 +145,30 @@
       },
       "revId": "360e0bc70bc11dd9d2dc4e43bfc4daa56bb58b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cde3460_128fd475",
+        "filename": "src/chromiumos/tast/local/dbusutil/property_holder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2021-01-25T02:56:16Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "ef526a5e_a228fb54",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "360e0bc70bc11dd9d2dc4e43bfc4daa56bb58b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
