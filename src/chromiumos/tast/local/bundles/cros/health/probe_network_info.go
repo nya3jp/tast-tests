@@ -31,7 +31,8 @@ func init() {
 }
 
 func ProbeNetworkInfo(ctx context.Context, s *testing.State) {
-	b, err := croshealthd.RunTelem(ctx, croshealthd.TelemCategoryNetwork, s.OutDir())
+	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryNetwork}
+	b, err := croshealthd.RunTelem(ctx, params, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to run telem command: ", err)
 	}
