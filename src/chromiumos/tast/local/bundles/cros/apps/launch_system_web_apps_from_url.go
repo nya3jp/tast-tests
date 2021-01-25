@@ -29,13 +29,24 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Val: []chrome.Option{},
+		}, {
+			Name: "guest",
+			Val:  []chrome.Option{chrome.GuestLogin()},
+		}},
 	})
 }
 
 // LaunchSystemWebAppsFromURL tries to navigate to System Web Apps from their chrome:// URL.
 func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	chromeOpts := s.Param().([]chrome.Option)
+
+	cr, err := chrome.New(ctx, chromeOpts...)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -72,7 +83,7 @@ func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
 		s.Run(ctx, app.ShortName, func(ctx context.Context, s *testing.State) {
 			s.Log("Navigating to ", chromeURL)
 			if err := verifyAndLaunchSystemWebAppFromURL(ctx, cr, tconn, kb, s.OutDir(), app.Name, chromeURL); err != nil {
-				s.Fatalf("Failed navigating to %q: %v", chromeURL, err)
+				s.Fatalf("Failed to navigate to %q: %v", chromeURL, err)
 			}
 		})
 	}
