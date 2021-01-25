@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "980f8915_3a8bd509",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-25T11:25:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "04a6070e_2b09572e",
+      "revId": "c3fcd178f9ec13096121b9801933d82fc8feee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "373401dc_a94b4f13",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "982c0949_5e617618",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allowed_languages.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-25T11:25:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "373401dc_a94b4f13",
+      "revId": "c3fcd178f9ec13096121b9801933d82fc8feee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da8b4c2d_ef964f6f",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-01-22T15:46:16Z",
       "side": 1,
       "message": "nit: OS",
+      "range": {
+        "startLine": 86,
+        "startChar": 32,
+        "endLine": 86,
+        "endChar": 34
+      },
+      "revId": "c3fcd178f9ec13096121b9801933d82fc8feee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1345b7_e10261a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allowed_languages.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-01-25T11:25:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da8b4c2d_ef964f6f",
       "range": {
         "startLine": 86,
         "startChar": 32,
