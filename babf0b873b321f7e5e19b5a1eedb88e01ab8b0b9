@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfed319f_12974756",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T17:10:12Z",
+      "side": 1,
+      "message": "PTAL.\nNote: another CL for webrtc to clean up remaining deprecated API calls will come separately.\n",
+      "revId": "babf0b873b321f7e5e19b5a1eedb88e01ab8b0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
