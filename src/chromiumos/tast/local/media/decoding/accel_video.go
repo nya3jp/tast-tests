@@ -39,6 +39,18 @@ const (
 	VDVDA
 )
 
+// ValidatorType represents the validator types used in video_decode_accelerator_tests.
+type ValidatorType int
+
+const (
+	// MD5 is to validate the correctness of decoded frames by comparing with
+	// md5hash of expected frames.
+	MD5 ValidatorType = iota
+	// SSIM is to validate the correctness of decoded frames by computing SSIM
+	// values with expected frames.
+	SSIM
+)
+
 func generateCmdArgs(outDir, filename string, decoderType DecoderType) []string {
 	args := []string{
 		filename,
@@ -104,8 +116,8 @@ func RunAccelVideoTest(ctx context.Context, outDir, filename string, decoderType
 }
 
 // RunAccelVideoTestWithTestVectors runs video_decode_accelerator_tests --gtest_filter=VideoDecoderTest.FlushAtEndOfStream
-// with the specified video files using the direct VideoDecoder.
-func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVectors []string) error {
+// --validator_type=validatorType with the specified video files using the direct VideoDecoder.
+func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVectors []string, validatorType ValidatorType) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return errors.Wrap(err, "failed to set values for verbose logging")
@@ -124,6 +136,11 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 	var failedFilenames []string
 	for _, file := range testVectors {
 		args := generateCmdArgs(outDir, file, VD)
+		if validatorType == SSIM {
+			args = append(args, "--validator_type=ssim")
+		} else if validatorType == MD5 {
+			args = append(args, "--validator_type=md5")
+		}
 		filename := filepath.Base(file)
 		if _, err = runAccelVideoTestCmd(shortCtx,
 			exec, "VideoDecoderTest.FlushAtEndOfStream",
