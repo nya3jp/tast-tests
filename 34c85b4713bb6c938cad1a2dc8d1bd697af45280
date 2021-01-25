@@ -16,6 +16,23 @@
       "message": "This CL fell off the table :-)\n\nPTAL",
       "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "266f95c8_96e6ae5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-01-25T05:25:03Z",
+      "side": 1,
+      "message": "LGTM mod optional question/comment on URLs (re. links including hash), thanks!",
+      "revId": "34c85b4713bb6c938cad1a2dc8d1bd697af45280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
