@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/logging"
+	"chromiumos/tast/local/media/screen"
 	"chromiumos/tast/testing"
 )
 
@@ -48,6 +49,17 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrap(err, "failed to set values for verbose logging")
 	}
 	defer vl.Close()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to test API")
+	}
+	defer tconn.Close()
+
+	// For consistency across test runs, ensure that the device is in landscape-primary orientation.
+	if err = screen.SetLandscapeOrientation(ctx, cr, tconn); err != nil {
+		return errors.Wrap(err, "failed to set display to landscape orientation")
+	}
 
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()

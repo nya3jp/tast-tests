@@ -23,9 +23,9 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/logging"
+	"chromiumos/tast/local/media/screen"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -318,6 +318,7 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 		return errors.Wrapf(err, "failed to open %v", url)
 	}
 	defer conn.Close()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to test API")
@@ -325,28 +326,8 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chr
 	defer tconn.Close()
 
 	// For consistency across test runs, ensure that the device is in landscape-primary orientation.
-	dispInfo, err := display.GetInternalInfo(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get internal display info")
-	}
-	orient, err := display.GetOrientation(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get the display orientation")
-	}
-	s.Logf("Original display orientation = %q", orient.Type)
-	if orient.Type != display.OrientationLandscapePrimary {
-		s.Log("Rotating the display to get to 'landscape-primary'")
-		if err := display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, display.Rotate270); err != nil {
-			return errors.Wrap(err, "failed to rotate display")
-		}
-		// Make sure that the rotation worked.
-		orient, err = display.GetOrientation(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to get the display orientation")
-		}
-		if orient.Type != display.OrientationLandscapePrimary {
-			return errors.New("the display is not in the expected landscape-primary orientation")
-		}
+	if err = screen.SetLandscapeOrientation(ctx, cr, tconn); err != nil {
+		return errors.Wrap(err, "failed to set display to landscape orientation")
 	}
 
 	// Make the video go to full screen mode by pressing 'f': requestFullScreen() needs a user gesture.
