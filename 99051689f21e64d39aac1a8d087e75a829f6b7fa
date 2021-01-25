@@ -63,6 +63,24 @@
       "message": "Make sure this assignment to err does not override the existing error. stopDugong can fail and stopTrichechus can succeed, returning nil.",
       "revId": "99051689f21e64d39aac1a8d087e75a829f6b7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d49336f_261e988a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-25T18:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9dc32be_7b241cb6",
+      "revId": "99051689f21e64d39aac1a8d087e75a829f6b7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
