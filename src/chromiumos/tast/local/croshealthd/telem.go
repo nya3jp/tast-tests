@@ -23,6 +23,12 @@ import (
 // cros_healthd telem command.
 type TelemCategory string
 
+// TelemParams supply the category and pid information for running telem.
+type TelemParams struct {
+	Category TelemCategory
+	PID      int
+}
+
 // Categories for the cros_healthd telem command.
 const (
 	TelemCategoryBacklight         TelemCategory = "backlight"
@@ -42,16 +48,22 @@ const (
 // populated.
 const NotApplicable = "N/A"
 
-// RunTelem runs cros-health-tool's telem command with the given category and
+// RunTelem runs cros-health-tool's telem command with the given params and
 // returns the output. It also dumps the output to a file for debugging. An
 // error is returned if there is a failure to run the command or save the output
 // to a file.
-func RunTelem(ctx context.Context, category TelemCategory, outDir string) ([]byte, error) {
+func RunTelem(ctx context.Context, params TelemParams, outDir string) ([]byte, error) {
 	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
 		return nil, errors.Wrap(err, "failed to start cros_healthd")
 	}
 
-	args := []string{"telem", fmt.Sprintf("--category=%s", category)}
+	args := []string{"telem"}
+	if params.Category != "" {
+		args = append(args, fmt.Sprintf("--category=%s", params.Category))
+	}
+	if params.PID != 0 {
+		args = append(args, fmt.Sprintf("--category=%s", params.PID))
+	}
 	b, err := testexec.CommandContext(ctx, "cros-health-tool", args...).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrap(err, "command failed")
@@ -70,8 +82,8 @@ func RunTelem(ctx context.Context, category TelemCategory, outDir string) ([]byt
 // two-dimensional array. An error is returned if there is a failure to obtain
 // or parse the output or if a line of output has an unexpected number of
 // fields.
-func RunAndParseTelem(ctx context.Context, category TelemCategory, outDir string) ([][]string, error) {
-	b, err := RunTelem(ctx, category, outDir)
+func RunAndParseTelem(ctx context.Context, params TelemParams, outDir string) ([][]string, error) {
+	b, err := RunTelem(ctx, params, outDir)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run telem command")
 	}
