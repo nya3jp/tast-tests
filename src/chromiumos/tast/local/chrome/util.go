@@ -13,7 +13,18 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/chrome/internal/driver"
 )
+
+// PrepareForRestart prepares for Chrome restart.
+//
+// This function removes a debugging port file for a current Chrome process.
+// By calling this function before purposefully restarting Chrome, you can
+// reliably connect to a new Chrome process without accidentally connecting to
+// an old Chrome process by a race condition.
+func PrepareForRestart() error {
+	return driver.PrepareForRestart()
+}
 
 // moveUserCrashDumps copies the contents of the user crash directory to the
 // system crash directory.

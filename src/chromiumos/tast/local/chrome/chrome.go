@@ -258,6 +258,26 @@ func (c *Chrome) Close(ctx context.Context) error {
 	return firstErr
 }
 
+// Reconnect reconnects to a running Chrome process.
+//
+// When you want to purposefully restart Chrome (e.g. testing Chrome's crash
+// behavior), call PrepareForRestart, restart Chrome, and call Reconnect. Then
+// you can safely reconnect to a new Chrome process.
+//
+// This method invalidates all open connections, including test API connections.
+func (c *Chrome) Reconnect(ctx context.Context) error {
+	ctx, cancel := context.WithTimeout(ctx, 20*time.Second)
+	defer cancel()
+
+	newSess, err := driver.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.WaitPort, c.agg)
+	if err != nil {
+		return err
+	}
+	c.sess.Close(ctx)
+	c.sess = newSess
+	return nil
+}
+
 // ResetState attempts to reset Chrome's state (e.g. by closing all pages).
 // Tests typically do not need to call this; it is exposed primarily for other packages.
 func (c *Chrome) ResetState(ctx context.Context) error {
