@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff03f4f0_29077b21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T17:32:40Z",
+      "side": 1,
+      "message": "Hmm... In general, I prefer keeping things in named files, rather than moving many stuff to util,\nbecause util can contain whatever conveniently, so it can quickly turn into kitchen sink.\n\nMore details:\n- conn.go: this is on border to me. I think we can keep the file, but I do not have strong opinion to merge it into chrome.go.\n- extensions.go: I\u0027d recommend to keep it. And, instead, move ExtensionBackgroundPageURL to the file.\n- I\u0027d prefer keeping SaveTraceToFile closer to {Start,Stop}Tracing. I would introduce trace.go, or another package.\n\nWDYT?",
+      "revId": "f6966871a2d794a710ad6b1d612e94869dc3900e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
