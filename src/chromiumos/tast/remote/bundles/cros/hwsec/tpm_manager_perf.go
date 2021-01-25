@@ -18,8 +18,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: TpmManagerPerf,
-		Desc: "Tpm manager performance test",
+		Func: TPMManagerPerf,
+		Desc: "TPM manager performance test",
 		Attr: []string{
 			"hwsec_destructive_crosbolt_perbuild",
 			"group:hwsec_destructive_crosbolt",
@@ -36,8 +36,8 @@ const (
 	notOwned = "owned: false"
 )
 
-// waitUntilTpmManagerReady is a helper function to wait until cryptohome initialized.
-func waitUntilTpmManagerReady(ctx context.Context, tpmManagerUtil *hwsec.UtilityTpmManagerBinary) error {
+// waitUntilTPMManagerReady is a helper function to wait until cryptohome initialized.
+func waitUntilTPMManagerReady(ctx context.Context, tpmManagerUtil *hwsec.UtilityTPMManagerBinary) error {
 	return testing.Poll(ctx, func(context.Context) error {
 		status, err := tpmManagerUtil.Status(ctx)
 		if err != nil {
@@ -53,8 +53,8 @@ func waitUntilTpmManagerReady(ctx context.Context, tpmManagerUtil *hwsec.Utility
 	})
 }
 
-// TpmManagerPerf do the performance test for tpm_manager.
-func TpmManagerPerf(ctx context.Context, s *testing.State) {
+// TPMManagerPerf do the performance test for tpm_manager.
+func TPMManagerPerf(ctx context.Context, s *testing.State) {
 	r, err := hwsecremote.NewCmdRunner(s.DUT())
 	if err != nil {
 		s.Fatal("Failed to create new command runner: ", err)
@@ -76,12 +76,12 @@ func TpmManagerPerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(r)
+	tpmManagerUtil, err := hwsec.NewUtilityTPMManagerBinary(r)
 	if err != nil {
-		s.Fatal("Failed to create UtilityTpmManagerBinary: ", err)
+		s.Fatal("Failed to create UtilityTPMManagerBinary: ", err)
 	}
 
-	err = waitUntilTpmManagerReady(ctx, tpmManagerUtil)
+	err = waitUntilTPMManagerReady(ctx, tpmManagerUtil)
 	if err != nil {
 		s.Fatal("Failed to wait tpm_manager ready: ", err)
 	}

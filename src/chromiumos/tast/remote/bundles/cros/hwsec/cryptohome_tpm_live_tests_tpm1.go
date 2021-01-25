@@ -47,9 +47,9 @@ func CryptohomeTPMLiveTestsTPM1(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	tpmManagerUtil, err := hwsec.NewUtilityTPMManagerBinary(cmdRunner)
 	if err != nil {
-		s.Fatal("Failed to create UtilityTpmManagerBinary: ", err)
+		s.Fatal("Failed to create UtilityTPMManagerBinary: ", err)
 	}
 
 	s.Log("Start resetting TPM if needed")

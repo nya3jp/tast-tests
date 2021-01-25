@@ -19,7 +19,7 @@ import (
 )
 
 const (
-	getTPMStatusSuccessMessage             = "GetTpmStatus success."
+	getTPMStatusSuccessMessage             = "GetTPMStatus success."
 	tpmIsReadyString                       = "TPM Ready: true"
 	tpmIsNotReadyString                    = "TPM Ready: false"
 	tpmIsAttestationPreparedString         = "Attestation Prepared: true"
