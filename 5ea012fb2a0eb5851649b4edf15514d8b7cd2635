@@ -16,6 +16,46 @@
       "message": "hiroh@ PTAL\n\nSteve, others FYI",
       "revId": "5ea012fb2a0eb5851649b4edf15514d8b7cd2635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbce903a_3ecdbc99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-25T01:20:33Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "5ea012fb2a0eb5851649b4edf15514d8b7cd2635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "234b956f_76a3a491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-25T01:20:33Z",
+      "side": 1,
+      "message": "Shik, can you assign someone in camera team, who is more familiar with camera capabilties?\n\nThanks in advance.",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "5ea012fb2a0eb5851649b4edf15514d8b7cd2635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
