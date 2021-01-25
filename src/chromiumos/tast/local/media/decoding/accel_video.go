@@ -105,7 +105,8 @@ func RunAccelVideoTest(ctx context.Context, outDir, filename string, decoderType
 
 // RunAccelVideoTestWithTestVectors runs video_decode_accelerator_tests --gtest_filter=VideoDecoderTest.FlushAtEndOfStream
 // with the specified video files using the direct VideoDecoder.
-func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVectors []string) error {
+// If validateByVisual is true, the rightness of a decoder is validate by computing SSIM.
+func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVectors []string, validateByVisual bool) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return errors.Wrap(err, "failed to set values for verbose logging")
@@ -124,6 +125,9 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 	var failedFilenames []string
 	for _, file := range testVectors {
 		args := generateCmdArgs(outDir, file, VD)
+		if validateByVisual {
+			args = append(args, "--validate_by_visual")
+		}
 		filename := filepath.Base(file)
 		if _, err = runAccelVideoTestCmd(shortCtx,
 			exec, "VideoDecoderTest.FlushAtEndOfStream",
