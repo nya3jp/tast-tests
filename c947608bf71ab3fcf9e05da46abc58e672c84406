@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbbba64c_55e9b7ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hardening_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-01-25T15:20:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "50ca2a9d_5d41ec9c",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "c947608bf71ab3fcf9e05da46abc58e672c84406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9890bc61_12d931df",
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "Oh errors.ls is nice. I copied this from security.SandboxedServices but I can try to fix both of them in a follow-up CL.",
       "parentUuid": "9890bc61_12d931df",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 35
+      },
+      "revId": "c947608bf71ab3fcf9e05da46abc58e672c84406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da471d0_3dc2b5cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxing/process_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-01-25T15:20:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "445e798b_f5d6de85",
       "range": {
         "startLine": 356,
         "startChar": 0,
