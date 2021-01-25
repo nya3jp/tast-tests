@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84c07209_a60cfe4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T17:21:54Z",
+      "side": 1,
+      "message": "Sorry for delayed reply.",
+      "revId": "595a810508ad2a8e5d8ebf337ff8ec38e7d131b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ed8cb4_47230f30",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T17:21:54Z",
+      "side": 1,
+      "message": "nit/style: vkBackgroundPageURL is ...",
+      "revId": "595a810508ad2a8e5d8ebf337ff8ec38e7d131b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3a9671_5b1540cb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T17:21:54Z",
+      "side": 1,
+      "message": "(optional,style):\nif err :\u003d login.LogIn(...); err \u003d\u003d ... {\n  ...",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 37
+      },
+      "revId": "595a810508ad2a8e5d8ebf337ff8ec38e7d131b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c09349_50dcbc61",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-01-25T17:21:54Z",
+      "side": 1,
+      "message": "ditto for style.",
+      "range": {
+        "startLine": 779,
+        "startChar": 0,
+        "endLine": 781,
+        "endChar": 36
+      },
+      "revId": "595a810508ad2a8e5d8ebf337ff8ec38e7d131b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
