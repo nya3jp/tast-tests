@@ -19,6 +19,7 @@ import (
 type Files struct {
 	user         *testExtension
 	signin       *testExtension
+	guest        bool
 	extraExtDirs []string
 }
 
@@ -30,7 +31,7 @@ type Files struct {
 // non-empty string, the sign-in profile test extension is also created using
 // the key. extraExtDirs specifies directories of extra extensions to be
 // installed.
-func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey string) (files *Files, retErr error) {
+func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey string, guestMode bool) (files *Files, retErr error) {
 	// Ensure destDir does not exist at the beginning.
 	if _, err := os.Stat(destDir); err == nil {
 		return nil, errors.Errorf("%s must not exist at the beginning", destDir)
@@ -83,6 +84,7 @@ func PrepareExtensions(destDir string, extraExtDirs []string, signinExtensionKey
 		user:         user,
 		signin:       signin,
 		extraExtDirs: copiedExtraExtDirs,
+		guest:        guestMode,
 	}, nil
 }
 
@@ -105,6 +107,8 @@ func (f *Files) ChromeArgs() []string {
 		args = append(args,
 			"--load-signin-profile-test-extension="+f.signin.Dir(),
 			"--whitelisted-extension-id="+f.signin.ID())
+	} else if f.guest {
+		args = append(args, "--load-guest-mode-test-extension="+f.user.Dir())
 	} else {
 		args = append(args, "--whitelisted-extension-id="+f.user.ID())
 	}
