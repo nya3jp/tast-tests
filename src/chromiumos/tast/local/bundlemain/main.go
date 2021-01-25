@@ -131,9 +131,9 @@ func hwsecResetDACounter(ctx context.Context) error {
 		return errors.Wrap(err, "failed to create CmdRunner")
 	}
 
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	tpmManagerUtil, err := hwsec.NewUtilityTPMManagerBinary(cmdRunner)
 	if err != nil {
-		return errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
+		return errors.Wrap(err, "failed to create UtilityTPMManagerBinary")
 	}
 
 	// Reset the TPM dictionary attack counter
@@ -149,9 +149,9 @@ func hwsecCheckDACounter(ctx context.Context) error {
 		return errors.Wrap(err, "failed to create CmdRunner")
 	}
 
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	tpmManagerUtil, err := hwsec.NewUtilityTPMManagerBinary(cmdRunner)
 	if err != nil {
-		return errors.Wrap(err, "failed to create UtilityTpmManagerBinary")
+		return errors.Wrap(err, "failed to create UtilityTPMManagerBinary")
 	}
 
 	// Get the TPM dictionary attack info
