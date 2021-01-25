@@ -72,7 +72,8 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"nvme"},
 			// TODO(http://b/175305207): some zork nvme controllers lock up
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("dalboz", "morphius")),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("dalboz", "morphius"),
+				hwdep.Nvme()),
 		}, {
 			Name:      "nvme_wear_level",
 			Val:       newRoutineParams(croshealthd.RoutineNVMEWearLevel),
@@ -80,6 +81,7 @@ func init() {
 			// nvme_wear_level requires specific offsets in the nvme log that
 			// are only currently defined for wilco devices.
 			ExtraSoftwareDeps: []string{"nvme", "wilco"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Nvme()),
 		}, {
 			Name:      "prime_search",
 			Val:       newRoutineParams(croshealthd.RoutinePrimeSearch),
