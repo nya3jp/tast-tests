@@ -13,10 +13,10 @@ import (
 )
 
 // DAInfo returns DAInfo only if the results from tpm_manager and cryptohome match.
-func DAInfo(ctx context.Context, cryptohome *hwsec.UtilityCryptohomeBinary, tpmManager *hwsec.UtilityTpmManagerBinary) (*hwsec.DAInfo, error) {
+func DAInfo(ctx context.Context, cryptohome *hwsec.UtilityCryptohomeBinary, tpmManager *hwsec.UtilityTPMManagerBinary) (*hwsec.DAInfo, error) {
 	infoT, err := tpmManager.GetDAInfo(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get dictionary attack info from TpmManager")
+		return nil, errors.Wrap(err, "failed to get dictionary attack info from TPMManager")
 	}
 
 	infoC, err := cryptohome.GetDAInfo(ctx)
