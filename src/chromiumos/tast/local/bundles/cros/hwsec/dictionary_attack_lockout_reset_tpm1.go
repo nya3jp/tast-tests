@@ -50,9 +50,9 @@ func DictionaryAttackLockoutResetTPM1(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create UtilityCryptohomeBinary: ", err)
 	}
-	tpmManagerUtil, err := hwsec.NewUtilityTpmManagerBinary(cmdRunner)
+	tpmManagerUtil, err := hwsec.NewUtilityTPMManagerBinary(cmdRunner)
 	if err != nil {
-		s.Fatal("Failed to create UtilityTpmManagerBinary: ", err)
+		s.Fatal("Failed to create UtilityTPMManagerBinary: ", err)
 	}
 
 	// In this test, we want to check if DA counter increases, and then reset it to see if everything is correct.

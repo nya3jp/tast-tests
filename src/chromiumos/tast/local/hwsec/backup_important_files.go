@@ -35,7 +35,7 @@ func BackupTPMManagerDataIfIntact(ctx context.Context) error {
 	if !ok {
 		return errors.New("owner password not found")
 	}
-	if err := fsutil.CopyFile(hwsec.TpmManagerLocalDataPath, tpmManagerLocalDataBackupPath); err != nil {
+	if err := fsutil.CopyFile(hwsec.TPMManagerLocalDataPath, tpmManagerLocalDataBackupPath); err != nil {
 		return errors.Wrap(err, "failed to copy tpm manager local data")
 	}
 	return nil
@@ -43,7 +43,7 @@ func BackupTPMManagerDataIfIntact(ctx context.Context) error {
 
 // RestoreTPMManagerData copies the backup file back to the location of tpm manager local data.
 func RestoreTPMManagerData(ctx context.Context) error {
-	if err := fsutil.CopyFile(tpmManagerLocalDataBackupPath, hwsec.TpmManagerLocalDataPath); err != nil {
+	if err := fsutil.CopyFile(tpmManagerLocalDataBackupPath, hwsec.TPMManagerLocalDataPath); err != nil {
 		return errors.Wrap(err, "failed to copy tpm manager local data backup")
 	}
 	return nil
