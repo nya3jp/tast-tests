@@ -1,0 +1,102 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51aaf98e_5444073f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T10:24:53Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d364e3be_ab987273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T10:24:53Z",
+      "side": 1,
+      "message": "defer an umount for the directory.",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8b6976f_10e2862b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T10:24:53Z",
+      "side": 1,
+      "message": "Use a cleanup context.",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f75ad4b3_28418312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T10:24:53Z",
+      "side": 1,
+      "message": "\u003e \"curently\" is a possible misspelling of \"currently\".\n\nPlease fix. Also missing a .",
+      "parentUuid": "f841d03a_107f2cf3",
+      "range": {
+        "startLine": 129,
+        "startChar": 31,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb26fa2_70ce53d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-01-25T10:24:53Z",
+      "side": 1,
+      "message": "nit: move this into the error case below.",
+      "revId": "4dc1b798b28f4a3423907c3b54f32dff7d33898a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
