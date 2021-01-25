@@ -9,12 +9,13 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/faillog"
-	"chromiumos/tast/local/chrome/ui/filesapp"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -51,40 +52,20 @@ func Smoke(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Open the Files App.
-	files, err := filesapp.Launch(ctx, tconn)
+	ui := uiauto.New(tconn)
+	files, err := filesapp.Launch(ctx, tconn, ui)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Release(ctx)
 
-	// Open the Downloads folder and check for the test file.
-	if err := files.OpenDownloads(ctx); err != nil {
-		s.Fatal("Opening Downloads folder failed: ", err)
-	}
-	if err := files.WaitForFile(ctx, textFile, 10*time.Second); err != nil {
-		s.Fatal("Waiting for test file failed: ", err)
-	}
-
-	// Open the More Options menu.
-	params := ui.FindParams{
-		Name: "More…",
-		Role: ui.RoleTypePopUpButton,
-	}
-	more, err := files.Root.DescendantWithTimeout(ctx, params, 10*time.Second)
-	if err != nil {
-		s.Fatal("Waiting for More menu failed: ", err)
-	}
-	defer more.Release(ctx)
-	if err := more.LeftClick(ctx); err != nil {
-		s.Fatal("Clicking More menu failed: ", err)
-	}
-
-	// Check the More Options menu is open.
-	params = ui.FindParams{
-		Name: "New folder",
-		Role: ui.RoleTypeStaticText,
-	}
-	if err := files.Root.WaitUntilDescendantExists(ctx, params, 10*time.Second); err != nil {
-		s.Fatal("Waiting for More menu to open failed: ", err)
+	if err := uiauto.Run(ctx,
+		// Open the Downloads folder and check for the test file.
+		files.OpenDownloads(),
+		files.WaitForFile(textFile),
+		// Open the more menu and check for the new folder button.
+		files.ClickMoreMenuItem(),
+		ui.WaitUntilExists(nodewith.Name("New folder").Role(role.MenuItem).Ancestor(filesapp.WindowFinder)),
+	); err != nil {
+		s.Fatal("Failed to smoke test the Files App: ", err)
 	}
 }

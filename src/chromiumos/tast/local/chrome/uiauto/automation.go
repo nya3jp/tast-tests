@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto/checked"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -72,15 +73,26 @@ func (ac *Context) WithPollOpts(pollOpts testing.PollOptions) *Context {
 	}
 }
 
+// Action is a function that takes a context and returns an error.
+type Action = func(context.Context) error
+
 // Run runs a sequence of steps that take a context and return an error.
 // It is made to enable easy chaining of ui actions.
-func Run(ctx context.Context, steps ...func(context.Context) error) error {
-	for i, f := range steps {
-		if err := f(ctx); err != nil {
-			return errors.Wrapf(err, "failed execution on step %d", i+1)
+func Run(ctx context.Context, steps ...Action) error {
+	return Combine("execution", steps...)(ctx)
+}
+
+// Combine combines a list of functions from Context to error into one function.
+// Combine adds the name of the operation into the error message to clarify the step.
+func Combine(name string, steps ...Action) Action {
+	return func(ctx context.Context) error {
+		for i, f := range steps {
+			if err := f(ctx); err != nil {
+				return errors.Wrapf(err, "failed %s on step %d", name, i+1)
+			}
 		}
+		return nil
 	}
-	return nil
 }
 
 // NodeInfo is a mapping of chrome.automation API AutomationNode.
@@ -185,7 +197,7 @@ func (ac *Context) ImmediateLocation(ctx context.Context, finder *nodewith.Finde
 
 // Exists returns a function that returns nil if a node exists.
 // If any node in the chain is not found, it will return an error.
-func (ac *Context) Exists(finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) Exists(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
 		q, err := finder.GenerateQuery()
 		if err != nil {
@@ -209,7 +221,7 @@ func (ac *Context) Exists(finder *nodewith.Finder) func(context.Context) error {
 }
 
 // WaitUntilExists returns a function that waits until the node found by the input finder exists.
-func (ac *Context) WaitUntilExists(finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) WaitUntilExists(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
 		return testing.Poll(ctx, func(ctx context.Context) error {
 			return ac.Exists(finder)(ctx)
@@ -219,7 +231,7 @@ func (ac *Context) WaitUntilExists(finder *nodewith.Finder) func(context.Context
 
 // Gone returns a function that returns nil if a node does not exist.
 // If any node in the chain is not found, it will return nil.
-func (ac *Context) Gone(finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) Gone(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
 		q, err := finder.GenerateQuery()
 		if err != nil {
@@ -247,7 +259,7 @@ func (ac *Context) Gone(finder *nodewith.Finder) func(context.Context) error {
 }
 
 // WaitUntilGone returns a function that waits until the node found by the input finder is gone.
-func (ac *Context) WaitUntilGone(finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) WaitUntilGone(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
 		return testing.Poll(ctx, func(ctx context.Context) error {
 			return ac.Gone(finder)(ctx)
@@ -267,7 +279,7 @@ const (
 // mouseClick returns a function that clicks on the location of the node found by the input finder.
 // It will wait until the location is stable before clicking.
 // This returns a function to make it chainable in ui.Run.
-func (ac *Context) mouseClick(ct clickType, finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) mouseClick(ct clickType, finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
 		loc, err := ac.Location(ctx, finder)
 		if err != nil {
@@ -289,7 +301,7 @@ func (ac *Context) mouseClick(ct clickType, finder *nodewith.Finder) func(contex
 // immediateMouseClick returns a function that clicks on the location of the node found by the input finder.
 // It will not wait until the location is stable before clicking.
 // This returns a function to make it chainable in ui.Run.
-func (ac *Context) immediateMouseClick(ct clickType, finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) immediateMouseClick(ct clickType, finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
 		loc, err := ac.ImmediateLocation(ctx, finder)
 		if err != nil {
@@ -311,42 +323,42 @@ func (ac *Context) immediateMouseClick(ct clickType, finder *nodewith.Finder) fu
 // LeftClick returns a function that left clicks on the location of the node found by the input finder.
 // It will wait until the location is stable before clicking.
 // This returns a function to make it chainable in ui.Run.
-func (ac *Context) LeftClick(finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) LeftClick(finder *nodewith.Finder) Action {
 	return ac.mouseClick(leftClick, finder)
 }
 
 // RightClick returns a function that right clicks on the location of the node found by the input finder.
 // It will wait until the location is stable before clicking.
 // This returns a function to make it chainable in ui.Run.
-func (ac *Context) RightClick(finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) RightClick(finder *nodewith.Finder) Action {
 	return ac.mouseClick(rightClick, finder)
 }
 
 // DoubleClick returns a function that double clicks on the location of the node found by the input finder.
 // It will wait until the location is stable before clicking.
 // This returns a function to make it chainable in ui.Run.
-func (ac *Context) DoubleClick(finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) DoubleClick(finder *nodewith.Finder) Action {
 	return ac.mouseClick(doubleClick, finder)
 }
 
 // ImmediateLeftClick returns a function that left clicks on the location of the node found by the input finder.
 // It will not wait until the location is stable before clicking.
 // This returns a function to make it chainable in ui.Run.
-func (ac *Context) ImmediateLeftClick(finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) ImmediateLeftClick(finder *nodewith.Finder) Action {
 	return ac.immediateMouseClick(leftClick, finder)
 }
 
 // ImmediateRightClick returns a function that right clicks on the location of the node found by the input finder.
 // It will not wait until the location is stable before clicking.
 // This returns a function to make it chainable in ui.Run.
-func (ac *Context) ImmediateRightClick(finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) ImmediateRightClick(finder *nodewith.Finder) Action {
 	return ac.immediateMouseClick(rightClick, finder)
 }
 
 // ImmediateDoubleClick returns a function that double clicks on the location of the node found by the input finder.
 // It will not wait until the location is stable before clicking.
 // This returns a function to make it chainable in ui.Run.
-func (ac *Context) ImmediateDoubleClick(finder *nodewith.Finder) func(context.Context) error {
+func (ac *Context) ImmediateDoubleClick(finder *nodewith.Finder) Action {
 	return ac.immediateMouseClick(doubleClick, finder)
 }
 
@@ -354,7 +366,7 @@ func (ac *Context) ImmediateDoubleClick(finder *nodewith.Finder) func(context.Co
 // It will try to click the node once before it checks the condition.
 // This is useful for situations where there is no indication of whether the node is ready to receive clicks.
 // It uses the polling options from the Context.
-func (ac *Context) LeftClickUntil(finder *nodewith.Finder, condition func(context.Context) error) func(context.Context) error {
+func (ac *Context) LeftClickUntil(finder *nodewith.Finder, condition func(context.Context) error) Action {
 	return func(ctx context.Context) error {
 		if err := ac.LeftClick(finder)(ctx); err != nil {
 			return errors.Wrap(err, "failed to initially click the node")
@@ -368,5 +380,39 @@ func (ac *Context) LeftClickUntil(finder *nodewith.Finder, condition func(contex
 			}
 			return nil
 		}, &ac.pollOpts)
+	}
+}
+
+// FocusAndWait returns a functoin that calls the focus() JS method of the found node.
+// This can be used to scroll to nodes which aren't currently visible, enabling them to be clicked.
+// The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
+// The EventWatcher waits the duration of timeout for the event to occur.
+func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		ew, err := NewRootWatcher(ctx, ac.tconn, event.Focus)
+		if err != nil {
+			return errors.Wrap(err, "failed to create focus event watcher")
+		}
+		defer ew.Release(ctx)
+
+		q, err := finder.GenerateQuery()
+		if err != nil {
+			return err
+		}
+		query := fmt.Sprintf(`
+		(async () => {
+			%s
+			node.focus();
+		})()
+	`, q)
+
+		if err := ac.tconn.Eval(ctx, query, nil); err != nil {
+			return errors.Wrap(err, "failed to call focus() on the node")
+		}
+
+		if _, err := ew.WaitForEvent(ctx, ac.pollOpts.Timeout); err != nil {
+			return errors.Wrap(err, "failed to wait for the focus event on the specified node")
+		}
+		return nil
 	}
 }
