@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3850013c_42ceda4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/manatee.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-01-25T16:48:41Z",
+      "side": 1,
+      "message": "I brought this back because I want the test to fail if the stop doesn\u0027t succeed.",
+      "range": {
+        "startLine": 237,
+        "startChar": 52,
+        "endLine": 237,
+        "endChar": 63
+      },
+      "revId": "99051689f21e64d39aac1a8d087e75a829f6b7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
