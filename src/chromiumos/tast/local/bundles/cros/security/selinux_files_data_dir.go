@@ -41,14 +41,29 @@ func init() {
 }
 
 const (
-	androidFileContexts  = "/etc/selinux/arc/contexts/files/android_file_contexts"
-	dataDirFileContexts  = "/tmp/data_file_contexts"
-	androidDataPath      = "/home/.shadow/[a-z0-9]*/mount/root/android-data"
-	dataPrefix           = "/data"
-	matchPathConFileName = `matchpath_con_output`
+	androidFileContextsP  = "/etc/selinux/arc/contexts/files/android_file_contexts"
+	androidFileContextsVM = "/etc/selinux/arc/contexts/files/android_file_contexts_vm"
+	dataDirFileContexts   = "/tmp/data_file_contexts"
+	androidDataPath       = "/home/.shadow/[a-z0-9]*/mount/root/android-data"
+	dataPrefix            = "/data"
+	matchPathConFileName  = `matchpath_con_output`
 )
 
-func createSELinuxPolicyFile(ctx context.Context) error {
+// isARCVM returns true if the test software dependencies include "android_vm".
+func isARCVM(softwareDeps []string) bool {
+	for _, dep := range softwareDeps {
+		if dep == "android_vm" {
+			return true
+		}
+	}
+	return false
+}
+
+func createSELinuxPolicyFile(ctx context.Context, s *testing.State) error {
+	androidFileContexts := androidFileContextsP
+	if isARCVM(s.SoftwareDeps()) {
+		androidFileContexts = androidFileContextsVM
+	}
 	// Read SELinux android file contexts and find the lines starting with /data.
 	f, err := os.Open(androidFileContexts)
 	if err != nil {
@@ -108,7 +123,7 @@ func SELinuxFilesDataDir(ctx context.Context, s *testing.State) {
 
 	// Create the temporarySELinux policy file.
 	s.Log("Creating the temporary SELinux context file for matchpathcon command")
-	if err := createSELinuxPolicyFile(ctx); err != nil {
+	if err := createSELinuxPolicyFile(ctx, s); err != nil {
 		s.Fatal("Failed to successfully create SELinux policy file: ", err)
 	}
 	defer func() {
