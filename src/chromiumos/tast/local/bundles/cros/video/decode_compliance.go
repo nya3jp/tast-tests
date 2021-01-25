@@ -14,6 +14,8 @@ import (
 )
 
 var av1CommonFiles = []string{
+	"test_vectors/av1/00000527.ivf",
+	"test_vectors/av1/00000535.ivf",
 	"test_vectors/av1/00000548.ivf",
 	"test_vectors/av1/48_delayed.ivf",
 	"test_vectors/av1/av1-1-b8-02-allintra.ivf",
