@@ -80,9 +80,10 @@ func Artflow(ctx context.Context, s *testing.State) {
 // verify Artflow reached main activity page of the app.
 func launchAppForArtflow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		allowButtonText      = "ALLOW"
-		selectGmailAccountID = "com.google.android.gms:id/container"
-		homeID               = "android:id/content"
+		allowButtonText             = "ALLOW"
+		whileUsingThisAppButtonText = "WHILE USING THE APP"
+		selectGmailAccountID        = "com.google.android.gms:id/container"
+		homeClassName               = "android.widget.FrameLayout"
 	)
 
 	var gmailAccountIndex int
@@ -95,16 +96,24 @@ func launchAppForArtflow(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to click on allowButton: ", err)
 	}
 
+	// Click on allow while using this app button.
+	whileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+	if err := whileUsingThisAppButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("whileUsingThisAppButton Button doesn't exists: ", err)
+	} else if err := whileUsingThisAppButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on whileUsingThisAppButton Button: ", err)
+	}
+
 	// Click on select gmail account.
 	selectSelectGmailAccount := d.Object(ui.ID(selectGmailAccountID), ui.Index(gmailAccountIndex))
 	if err := selectSelectGmailAccount.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("selectSelectGmailAccount doesn't exists: ", err)
 	} else if err := selectSelectGmailAccount.Click(ctx); err != nil {
-		s.Fatal("Failed to click on selectSelectGmailAccount: ", err)
+		s.Log("Failed to click on selectSelectGmailAccount: ", err)
 	}
 
 	// Check for home icon.
-	homeIcon := d.Object(ui.ID(homeID), ui.PackageName(appPkgName))
+	homeIcon := d.Object(ui.ClassName(homeClassName), ui.PackageName(appPkgName))
 	if err := homeIcon.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("homeIcon doesn't exist: ", err)
 	}
