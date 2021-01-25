@@ -16,6 +16,23 @@
       "message": "hiroh@ PTAL\n\n\nSteve, others FYI",
       "revId": "299d85e6267cdfa7566decab6c2080741fe7b427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a23e23f_b579c693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-01-25T01:19:01Z",
+      "side": 1,
+      "message": "LGTM. ",
+      "revId": "299d85e6267cdfa7566decab6c2080741fe7b427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
