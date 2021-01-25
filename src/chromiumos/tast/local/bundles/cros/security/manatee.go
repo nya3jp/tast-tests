@@ -8,14 +8,19 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"io"
+	"os"
 	"os/exec"
 	"strconv"
 	"strings"
 	"syscall"
 	"time"
 
+	"github.com/godbus/dbus"
+
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -254,8 +259,10 @@ func Manatee(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	// Set up services if necessary.
 	d := newSireniaServices()
 	if !testCase.useSystemServices {
+		s.Log("Starting test Sirenia services")
 		if err := d.Start(ctx); err != nil {
 			s.Fatal("Failed to start sirenia services: ", err)
 		}
@@ -264,5 +271,56 @@ func Manatee(ctx context.Context, s *testing.State) {
 				s.Error("Failed to stop sirenia services: ", err)
 			}
 		}()
+	} else {
+		s.Log("Using Sirenia services provided by the system")
+	}
+
+	// D-Bus constants for use with dugong / ManaTEE.
+	const (
+		dbusName      = "org.chromium.ManaTEE"
+		dbusPath      = "/org/chromium/ManaTEE1"
+		dbusInterface = "org.chromium.ManaTEEInterface"
+
+		dbusMethodStartTEEApplication = ".StartTEEApplication"
+		testTEEAppID                  = "shell"
+		testCmd                       = "echo 'check that shell works'\n"
+		expectedCmdResult             = "check that shell works\n"
+	)
+
+	// Set up and validate D-Bus connection.
+	conn, obj, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
+	if err != nil {
+		s.Fatalf("Failed to connect to %s: %v", dbusName, err)
+	}
+	if conn.SupportsUnixFDs() != true {
+		s.Fatal("Connection needs Unix FD support: ", err)
+	}
+
+	// Invoke ManaTEE D-Bus API through dugong.
+	s.Log("Starting test TEE app")
+	var errorCode int32
+	var fdIn dbus.UnixFD
+	var fdOut dbus.UnixFD
+	if err := obj.CallWithContext(ctx, dbusInterface+dbusMethodStartTEEApplication, 0, testTEEAppID).Store(&errorCode, &fdIn, &fdOut); err != nil {
+		s.Fatal("Failed to start TEE app: ", err)
+	}
+	if errorCode != 0 {
+		s.Errorf("Unexpected return code: got %d; expected 0", errorCode)
+	}
+	s.Logf("Received file descriptors %d and %d", fdIn, fdOut)
+
+	// Communicate over file descriptors.
+	fileIn := bufio.NewReader(os.NewFile(uintptr(fdIn), "TEE App In"))
+	fileOut := os.NewFile(uintptr(fdOut), "TEE App In")
+
+	if _, err := fileOut.WriteString(testCmd); err != nil {
+		s.Error("Failed to send data to TEE App: ", err)
+	}
+
+	line, err := fileIn.ReadString('\n')
+	if err != nil && err != io.EOF {
+		s.Error("Failed to read data from TEE App: ", err)
+	} else if line != expectedCmdResult {
+		s.Errorf("Got %q; expected %q", line, expectedCmdResult)
 	}
 }
