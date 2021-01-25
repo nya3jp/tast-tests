@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee25126f_2872b870",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-01-25T17:55:12Z",
+      "side": 1,
+      "message": "Maybe we can prepare the extension in a new directory before remove the existing ones? If any error happens during the PrepareExtensions() procedure, we can keep the existing session with existing extensions.",
+      "revId": "5e98d0fc50016c8ba6c945a69320037251406abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "933eef8e_dfa87427",
