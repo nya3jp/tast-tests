@@ -599,35 +599,13 @@ func (a *App) GetDeviceID(ctx context.Context) (DeviceID, error) {
 	return id, nil
 }
 
-// TODO(b/172340545): Remove this map after crrev.com/c/2596588 fully landed.
-var legacyStateMap = map[string]string{
-	"fps-30":      "_30fps",
-	"fps-60":      "_60fps",
-	"grid-3x3":    "_3x3",
-	"grid-4x4":    "_4x4",
-	"grid-golden": "golden",
-	"timer-3s":    "_3sec",
-	"timer-10s":   "_10sec",
-}
-
 // GetState returns whether a state is active in CCA.
 func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 	var result bool
 	if err := a.conn.Call(ctx, &result, "Tast.getState", state); err != nil {
 		return false, errors.Wrapf(err, "failed to get state: %v", state)
 	}
-	lState, hasLegacy := legacyStateMap[state]
-	if !hasLegacy {
-		return result, nil
-	}
-	var lResult bool
-	if err := a.conn.Call(ctx, &lResult, "Tast.getState", lState); err != nil {
-		return false, errors.Wrapf(err, "failed to get legacy state: %v", lState)
-	}
-	// Before/After migration only state with old/new name will be flagged
-	// or unflagged, another new/old name state will always be false. Thus,
-	// combining obtained two values with || is what we need here.
-	return result || lResult, nil
+	return result, nil
 }
 
 // PortraitModeSupported returns whether portrait mode is supported by the current active video device.
@@ -1179,13 +1157,7 @@ func (a *App) SwitchMode(ctx context.Context, mode Mode) error {
 
 // WaitForState waits until state become active/inactive.
 func (a *App) WaitForState(ctx context.Context, state string, active bool) error {
-	var getState string
-	if lState, hasLegacy := legacyStateMap[state]; hasLegacy {
-		getState = fmt.Sprintf("Tast.getState(%q) || Tast.getState(%q)", state, lState)
-	} else {
-		getState = fmt.Sprintf("Tast.getState(%q)", state)
-	}
-	code := fmt.Sprintf("(%s) === %t", getState, active)
+	code := fmt.Sprintf("Tast.getState(%q) === %t", state, active)
 	if err := a.conn.WaitForExpr(ctx, code); err != nil {
 		return errors.Wrapf(err, "failed to wait for state %s to set to %v", state, active)
 	}
