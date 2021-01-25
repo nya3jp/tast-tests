@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b835f9a_9581a28a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-01-25T00:59:41Z",
+      "side": 1,
+      "message": "There are some other unrelated changes in this cl.  Please either add them to the description or remove them from the change.\n\nOtherwise LGTM",
+      "revId": "4281ce7aaab0c1e362ef84b1c8fd67dcae8c137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
